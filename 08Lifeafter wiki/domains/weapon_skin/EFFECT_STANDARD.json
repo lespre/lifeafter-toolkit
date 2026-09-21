@@ -1,0 +1,256 @@
+{
+ "schema": "weapon-skin-effect-standard/v1",
+ "authority": "user 2026-09-13（Weapon Skin Effect Detail Standard，通用规则，不得按样本写死）",
+ "effect_types": [
+  "hit_effect",
+  "kill_effect",
+  "damage_number",
+  "projectile_effect",
+  "slash_effect",
+  "combat_sound",
+  "combat_crosshair",
+  "exclusive_combat_animation",
+  "exclusive_idle_animation",
+  "special_interaction",
+  "nucleus_linkage",
+  "other",
+  "unresolved"
+ ],
+ "labels_cn": {
+  "hit_effect": "命中效果",
+  "kill_effect": "击败特效",
+  "damage_number": "伤害跳字",
+  "projectile_effect": "攻击弹道",
+  "slash_effect": "挥砍特效",
+  "combat_sound": "战斗音效",
+  "combat_crosshair": "攻击准心",
+  "exclusive_combat_animation": "专属战斗动作",
+  "exclusive_idle_animation": "专属待机动作",
+  "special_interaction": "特殊交互",
+  "nucleus_linkage": "核芯联动",
+  "other": "其它",
+  "unresolved": "未解析"
+ },
+ "attack_visual_effect": {
+  "business_slot": "attack_visual_effect",
+  "hot_weapon": "projectile_effect",
+  "cold_weapon": "slash_effect",
+  "rule": "二者同一业务位置，类型必须保留；类型由武器类别（canonical coldarm_types/weapon_type=50）决定"
+ },
+ "grade_standard": {
+  "chuan_shi": {
+   "label_cn": "传世",
+   "legacy_label": "传世级",
+   "required": [
+    "hit_effect",
+    "kill_effect",
+    "damage_number",
+    "attack_visual_effect",
+    "combat_sound",
+    "combat_crosshair",
+    "exclusive_combat_animation",
+    "exclusive_idle_animation"
+   ],
+   "optional": [
+    "special_interaction",
+    "nucleus_linkage"
+   ]
+  },
+  "dian_cang": {
+   "label_cn": "典藏",
+   "legacy_label": "典藏级",
+   "required": [
+    "hit_effect",
+    "kill_effect",
+    "damage_number",
+    "attack_visual_effect",
+    "combat_sound",
+    "combat_crosshair"
+   ],
+   "optional": [
+    "special_interaction",
+    "nucleus_linkage"
+   ]
+  },
+  "zi_pi": {
+   "label_cn": "紫皮",
+   "legacy_label": "紫皮级",
+   "required": [
+    "hit_effect",
+    "attack_visual_effect"
+   ],
+   "optional": []
+  },
+  "other": {
+   "label_cn": "其它",
+   "legacy_label": null,
+   "required": [],
+   "optional": []
+  }
+ },
+ "grade_status": "unresolved",
+ "grade_note": "canonical level/priority 尚无入证据映射到 传世/典藏/紫皮 ⇒ 不硬映射；level/priority 保留，旧中文标签仅 legacy_grade_label。grade 未闭环时不得执行强制缺项判定（completeness_status=grade_unresolved），只给 provisional 参考统计。",
+ "field_semantic_map": {
+  "hit_sfx_functions": {
+   "effect_type": "hit_effect",
+   "status": "inferred_high"
+  },
+  "fire_sfx_path": {
+   "effect_type": "combat_sound",
+   "status": "inferred_medium"
+  },
+  "sound_functions": {
+   "effect_type": "combat_sound",
+   "status": "inferred_high"
+  },
+  "extension_defeat_functions": {
+   "effect_type": "kill_effect",
+   "status": "inferred_high"
+  },
+  "jump_word_functions": {
+   "effect_type": "damage_number",
+   "status": "inferred_high"
+  },
+  "trace_functions": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_high"
+  },
+  "skin_trajectory_type": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_medium"
+  },
+  "coldarm_types": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_medium"
+  },
+  "skin_replace_anims": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_low"
+  },
+  "aim_cross_functions": {
+   "effect_type": "combat_crosshair",
+   "status": "inferred_high"
+  },
+  "play_anim_moudle": {
+   "effect_type": "exclusive_combat_animation",
+   "status": "inferred_medium"
+  },
+  "hold_functions": {
+   "effect_type": "exclusive_combat_animation",
+   "status": "inferred_low"
+  },
+  "idle_anim": {
+   "effect_type": "exclusive_idle_animation",
+   "status": "inferred_high"
+  },
+  "switch_weapon": {
+   "effect_type": "special_interaction",
+   "status": "inferred_low"
+  },
+  "socket": {
+   "effect_type": "special_interaction",
+   "status": "inferred_low"
+  },
+  "nucleus_replace_ids": {
+   "effect_type": "nucleus_linkage",
+   "status": "inferred_high"
+  },
+  "link_nucleus": {
+   "effect_type": "nucleus_linkage",
+   "status": "inferred_high"
+  },
+  "weapon_sfx_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "skin_bullet_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "special_preview_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "experience_video": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "back_scale": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "force_assist_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_ids": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_model_names": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_socket_names": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "v2_soft_bone_ids": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "v2_self_soft_bone_id": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  }
+ },
+ "not_by_source_name": [
+  "weapon_skin_sfx_function_data",
+  "weapon_skin_effect_show_data",
+  "weapon_skin_behavior_res_data",
+  "weapon_skin_sound_data_for_query"
+ ],
+ "status_vocabulary": [
+  "verified_present",
+  "verified_absent",
+  "unresolved",
+  "not_required",
+  "optional_not_present",
+  "exception"
+ ],
+ "status_rule": "“当前 source 没找到”只能是 unresolved；verified_absent 需明确不存在证据",
+ "ui": {
+  "single_section": "特效与战斗表现",
+  "order": [
+   "hit_effect",
+   "kill_effect",
+   "damage_number",
+   "attack_visual_effect",
+   "combat_sound",
+   "combat_crosshair",
+   "exclusive_combat_animation",
+   "exclusive_idle_animation",
+   "special_interaction",
+   "nucleus_linkage",
+   "other"
+  ],
+  "rules": [
+   "标配优先展示",
+   "选配有则展示",
+   "不适用不制造空栏目",
+   "unresolved 仅在 Workbench View 标出",
+   "禁止同时出现「特效详情」+「战斗表现」两套重复栏目"
+  ]
+ },
+ "exceptions": {
+  "1110023": {
+   "name": "玉饮琼花",
+   "grade": "zi_pi",
+   "kind": [
+    "grade_exception",
+    "presentation_exception"
+   ],
+   "note": "紫皮规则的明确例外：实际拥有超出紫皮标配的表现项；不得因此修改全体紫皮规则"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "at": "2026-09-21T13:20:32+08:00",
+ "from": "v0.1（board 派生 grade / 名称来自 runtime UI 快照）",
+ "to": "v0.2",
+ "body": "canonical weapon_skin_data（BA8A）为主",
+ "migration": {
+  "+canonical_rows": [
+   11100061,
+   11100231,
+   11100271,
+   11100281,
+   11100901,
+   11101141,
+   11101341,
+   11101451,
+   11101681,
+   11101691,
+   11101701,
+   11101771,
+   11101781,
+   11101811,
+   11101831
+  ],
+  "-board_derived_rows": [
+   1110184,
+   1110185,
+   1110186,
+   1110190
+  ],
+  "grade": "board label → deprecated；level/priority 为 canonical",
+  "name": "runtime UI lookup → canonical_row_field_chs（111 条逐条一致）",
+  "listing_status": "不变（unresolved）"
+ },
+ "archived_to": "artifacts\\historical\\weapon_skin\\v01_status_patch",
+ "sha256": {
+  "WEAPON_SKIN_RESOLVED.jsonl": "0c39542fd63fb2269a0fe043b16b23844e73ba19e8b8dfa7527e7f5c56dbc8ee"
+ }
+}

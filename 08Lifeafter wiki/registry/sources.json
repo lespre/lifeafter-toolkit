@@ -1,0 +1,327 @@
+{
+ "_meta": {
+  "schema_version": 1,
+  "generated": "2026-09-12T18:53:26",
+  "generator": "workbench phase1",
+  "canonical_of": [
+   "data/live_sources.json",
+   "data/source_registry.json",
+   "data/audit/client_file_maps/*"
+  ],
+  "rule": "业务 artifact 以后引用 snapshot_id + source_id，不自己写 package path",
+  "v12": "canonical FID 登记；entry 必须与其 snapshot 基准一同使用"
+ },
+ "packages": [
+  {
+   "source_id": "documents-py314-current",
+   "snapshot_id": "test-documents-508bb5bd",
+   "package": "E:\\mrzh\\Documents\\script.py314.lc.npk",
+   "sha256": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
+   "bytes": 188306920,
+   "source_type": "script_npk",
+   "source_kind": "current-documents-hotfix",
+   "role": "test-primary",
+   "snapshot_role": "current-documents-hotfix",
+   "active": true,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "mrzh-root-py314-full",
+   "snapshot_id": "test-root-0f824b35120f",
+   "package": "E:\\mrzh\\script.py314.lc.npk",
+   "sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+   "bytes": 455619092,
+   "source_type": "script_npk",
+   "source_kind": "full-client-baseline",
+   "role": "test-primary",
+   "snapshot_role": "client-full-baseline",
+   "active": true,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "mrzh-documents-py3-legacy",
+   "snapshot_id": "test-documents-py3-8618ca1d8e2b",
+   "package": "E:\\mrzh\\Documents\\script.py3.npk",
+   "sha256": "8618ca1d8e2b29539cd13b1bc4b32aee9a44260761526298f7d41dc249f872b6",
+   "bytes": 473764988,
+   "source_type": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "role": "test-primary",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "mrzh-documents-script-legacy",
+   "snapshot_id": "test-documents-script-c230d49114f0",
+   "package": "E:\\mrzh\\Documents\\script.npk",
+   "sha256": "c230d49114f01e88107a0e1613273177ea85573bc8f48ca9c383162bf4e4982c",
+   "bytes": 340643664,
+   "source_type": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "role": "test-primary",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "mrzh-root-script-legacy",
+   "snapshot_id": "test-root-script-43023f17c128",
+   "package": "E:\\mrzh\\script.npk",
+   "sha256": "43023f17c12823866e9d2203a5a9c96ead5925b39c4b243b0560a000261635a1",
+   "bytes": 229084544,
+   "source_type": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "role": "test-primary",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-classic-current",
+   "snapshot_id": "live-documents-79c0d06f53db",
+   "package": "E:\\LifeAfter\\Documents\\script.py314.lc.npk",
+   "sha256": "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d",
+   "bytes": 366060232,
+   "source_type": "script_npk",
+   "source_kind": "current-documents-hotfix",
+   "role": "production-comparison",
+   "snapshot_role": "current-documents-hotfix",
+   "active": true,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-root-py314-full",
+   "snapshot_id": "live-root-683098c34851",
+   "package": "E:\\LifeAfter\\script.py314.lc.npk",
+   "sha256": "683098c34851f77676eb8b6a6710a6e7b2e11e3b952958e3af1837419d8c627e",
+   "bytes": 400155696,
+   "source_type": "script_npk",
+   "source_kind": "full-client-baseline",
+   "role": "production-comparison",
+   "snapshot_role": "client-full-baseline",
+   "active": true,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-documents-py3-legacy",
+   "snapshot_id": "live-documents-py3-c3e6d347e3b8",
+   "package": "E:\\LifeAfter\\Documents\\script.py3.npk",
+   "sha256": "c3e6d347e3b85af6ac2ce07d59fe94eb34c3b452c0c45b12eb2a697d1c5b80d7",
+   "bytes": 349857404,
+   "source_type": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "role": "production-comparison",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-documents-script-legacy",
+   "snapshot_id": "live-documents-script-afa7d6e84be7",
+   "package": "E:\\LifeAfter\\Documents\\script.npk",
+   "sha256": "afa7d6e84be7213bacaa7aebf764bb25718c2fb112d67d79c7f2df8f1baf3756",
+   "bytes": 332566292,
+   "source_type": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "role": "production-comparison",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-root-py3-legacy",
+   "snapshot_id": "live-root-py3-6329fa77cce9",
+   "package": "E:\\LifeAfter\\script.py3.npk",
+   "sha256": "6329fa77cce9c8d54c16de411672caecbeff07bdb3d83a48d3ff175626cf2350",
+   "bytes": 365064336,
+   "source_type": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "role": "production-comparison",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  },
+  {
+   "source_id": "lifeafter-root-script-legacy",
+   "snapshot_id": "live-root-script-8e6cd795897b",
+   "package": "E:\\LifeAfter\\script.npk",
+   "sha256": "8e6cd795897be4f95609e80f854847b56ba757e8bd4e20f54ca376f616435368",
+   "bytes": 1441472,
+   "source_type": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "role": "production-comparison",
+   "snapshot_role": "historical-fallback",
+   "active": false,
+   "p3_state": "legacy-live_sources-v3（未迁移 P3 行级状态）",
+   "provenance": {
+    "file": "data/live_sources.json",
+    "schema_version": 3
+   }
+  }
+ ],
+ "table_sources": [
+  {
+   "logical_path": "com\\cdata\\common_item_data_base.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "FID": "B42760CCA41DBC25",
+   "entry": 18005,
+   "source_type": "table_body",
+   "p3_state": "verified",
+   "used_by": [
+    "domains/item"
+   ]
+  },
+  {
+   "logical_path": "com\\cdata\\fashion_data.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "FID": "E1645717C83FC968",
+   "entry": 24340,
+   "source_type": "table_body",
+   "p3_state": "verified",
+   "used_by": [
+    "domains/fashion"
+   ]
+  },
+  {
+   "logical_path": "com\\cdata\\appear_id_2_fashion_id.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "FID": "5FA629EFB3B8CB74",
+   "entry": 10243,
+   "source_type": "module_stub",
+   "p3_state": "unresolved(data body not located)",
+   "used_by": [
+    "domains/fashion"
+   ]
+  },
+  {
+   "logical_path": "com\\cdata\\gift_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "FID": "C5998AD60B305608",
+   "entry": 21287,
+   "source_type": "table_body",
+   "p3_state": "verified(structure)",
+   "used_by": [
+    "domains/item",
+    "boards/gift_data_text_sources"
+   ]
+  },
+  {
+   "logical_path": "com\\utils\\DataHelpers.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "FID": "BE842BC2295D957F",
+   "entry": 20487,
+   "source_type": "module",
+   "p3_state": "verified",
+   "used_by": [
+    "evidence/item/dispatch"
+   ]
+  },
+  {
+   "logical_path": "com\\components\\avatar\\BagCompBase.py",
+   "snapshot_id": "test-documents-328b8446",
+   "FID": "0D86C2AE10376C4E",
+   "entry": 1410,
+   "source_type": "module",
+   "p3_state": "verified",
+   "used_by": [
+    "evidence/item/consumer"
+   ]
+  },
+  {
+   "logical_path": "com\\components\\avatar\\RewardPoolComp.py",
+   "snapshot_id": "test-documents-328b8446",
+   "FID": "9E87D78784DC59B6",
+   "entry": 17084,
+   "source_type": "module",
+   "p3_state": "verified",
+   "used_by": [
+    "evidence/lottery/runtime"
+   ]
+  },
+  {
+   "logical_path": "com\\huodong\\controller\\OptionalVersionMgrController.py",
+   "snapshot_id": "test-documents-328b8446",
+   "FID": "173C6E66B9DBBD59",
+   "entry": 2430,
+   "source_type": "module",
+   "p3_state": "verified",
+   "used_by": [
+    "residuals/lottery"
+   ]
+  },
+  {
+   "logical_path": "ui\\PanelWeaponSkinCollection.py",
+   "snapshot_id": "test-documents-328b8446",
+   "FID": "BC1BEF691C819C9C",
+   "entry": null,
+   "source_type": "module",
+   "p3_state": "verified",
+   "used_by": [
+    "domains/weapon_skin"
+   ]
+  },
+  {
+   "logical_path": "com\\cdata\\reward_pool_data_base.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "FID": "D558884A36C972C5",
+   "entry": 21380,
+   "source_type": "table_body",
+   "p3_state": "verified",
+   "used_by": [
+    "domains/lottery"
+   ],
+   "note": "FID 在 current 包映射到 entry 23049（FID-first 解析实证）"
+  }
+ ],
+ "faceted_inventory": {
+  "file": "data/table_index_entries.jsonl",
+  "records": 76143,
+  "role": "全量表/模块 entry 清单（entry↔table_name↔role↔table_body）"
+ },
+ "p3_state_source": {
+  "file": "data/RELIABLE_SOURCES.json",
+  "generated_by": "tools/build_reliable_sources.py",
+  "migrated": false
+ }
+}

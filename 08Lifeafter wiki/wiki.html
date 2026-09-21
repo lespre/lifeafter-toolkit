@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日之后 · Lifeafter Wiki</title>
+<script src="data/manifest.js"></script>
+<script src="data/publication_policy.js"></script>
+<script src="data/workbench_status.js?v=wb1"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--border2:#d4d4d8;--hover:#f4f4f5;--red:#b91c1c;--redbg:#fef2f2;--redbd:#fecaca;--amber:#92400e;--amberbg:#fffbeb;--amberbd:#fde68a;--radius:10px;--shadow:0 1px 2px rgba(0,0,0,.04),0 1px 3px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(250,250,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:14px 24px}
+.topin,.wrap{max-width:1200px;margin:0 auto}.title-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+h1{font-size:20px;font-weight:650;letter-spacing:-.01em}.sub{color:var(--muted);font-size:12.5px;margin-top:4px}
+.tool-link{font-size:12px;color:#3f3f46;text-decoration:none;border:1px solid var(--border2);background:#fff;border-radius:7px;padding:5px 9px}.tool-link:hover{background:var(--hover);color:var(--fg)}
+.wrap{padding:24px 24px 60px}h2{font-size:15px;font-weight:650;margin:26px 0 6px;padding-bottom:6px;border-bottom:1px solid var(--border)}h3.group{font-size:13px;font-weight:650;color:var(--muted);margin:14px 0 8px}
+.alert{border:1px solid var(--redbd);background:var(--redbg);color:#7f1d1d;border-radius:10px;padding:14px 16px;margin:6px 0 18px}.alert b{font-weight:700}.alert p+ p{margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}.card.audit{background:#fffdf8;border-color:var(--amberbd)}.card.published{text-decoration:none;color:var(--fg);border-color:#86efac;background:#f0fdf4}.card.published:hover{background:#dcfce7;border-color:#4ade80}.cname{font-size:14px;font-weight:650}.csub{font-size:11.5px;color:var(--muted);line-height:1.5}.badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:6px;border:1px solid var(--amberbd);color:var(--amber);background:var(--amberbg);white-space:nowrap;margin-left:6px;vertical-align:1px}
+.gate{margin-top:12px;border:1px dashed var(--border2);border-radius:8px;background:#fff;padding:10px 12px;color:#52525b;font-size:12px}.gate code{font-family:ui-monospace,Consolas,monospace;font-size:11px}.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+/* 阅读优先：中性卡面、清晰焦点、窄屏友好。 */
+:root{--accent:#6d28d9}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+.card.published{background:var(--card);border-color:var(--border);transition:border-color .15s,box-shadow .15s}
+.card.published:hover{background:#faf8ff;border-color:#c4b5fd;box-shadow:0 3px 12px #6d28d912}
+.card.published .cname{line-height:1.65}
+.state-line{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.state-chip{font-size:10px;line-height:1.4;padding:1px 7px;border:1px solid var(--border);border-radius:999px;background:#f4f4f5;color:#52525b}
+.state-chip.verified{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
+.state-chip.unresolved{background:#fffbeb;color:#a16207;border-color:#fde68a}
+.state-chip.quarantined{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
+.state-chip.runtime-final-unknown{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
+a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #a78bfa;outline-offset:3px}
+.home-tools{margin:4px 0 22px}.search-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search-row input{flex:1;min-width:180px;padding:11px 13px;border:1px solid var(--border2);border-radius:9px;font:inherit;background:white}
+.search-row button{padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:white;font:inherit;cursor:pointer}
+.search-status{font-size:12px;color:var(--muted);margin-top:8px}
+.category-nav{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.category-nav a{padding:5px 10px;background:white;border:1px solid var(--border);border-radius:7px;text-decoration:none;color:#52525b;font-size:12px}
+.category-nav a:hover{color:var(--accent);border-color:#c4b5fd}
+.alert{background:#f5f3ff;border-color:#ddd6fe;color:#4c1d95;font-size:12px;padding:11px 14px}
+.alert details{margin-top:6px}.alert summary{cursor:pointer;font-weight:600}.alert details p{margin-top:7px;color:#625d70}
+.preflight{grid-column:1/-1;background:transparent!important;box-shadow:none;font-size:12px}.preflight summary{cursor:pointer;font-weight:600}.preflight .csub{margin-top:8px}
+.home-empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--border2);border-radius:10px}
+@media(max-width:540px){.topbar{padding:12px 16px}.wrap{padding:18px 16px 40px}.grid{grid-template-columns:1fr}h1{font-size:18px}.title-row{gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card.published{transition:none}}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+details.tech{margin-top:10px;border:1px dashed var(--border);border-radius:8px;background:rgba(0,0,0,.015)}
+details.tech>summary{cursor:pointer;padding:7px 10px;font-size:12px;color:#6b7280;font-weight:600}
+details.tech .csub{padding:0 10px 10px}
+.wb-domains{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.wb-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wb-head h2{font-size:15px;font-weight:600}
+.wb-sub{color:var(--muted);font-size:12px;margin:6px 0 10px}
+.wb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.wb-card{border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--bg)}
+.wb-name{font-weight:600;font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.wb-id{color:var(--muted);font-weight:400;font-size:11px}
+.wb-tbl{width:100%;font-size:12px;margin:8px 0;border-collapse:collapse}
+.wb-tbl th{text-align:left;color:var(--muted);font-weight:400;padding:1px 0;vertical-align:top;white-space:nowrap;padding-right:8px}
+.wb-tbl td{word-break:break-all}
+.wb-link{font-size:12px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topin">
+  <div class="title-row"><h1>明日之后 · Lifeafter Wiki</h1><a class="tool-link" href="live_reader.html">本地工具 · 现场读取 NPK</a></div>
+  <div class="sub" id="gen">读取发布策略中…</div>
+</div></div>
+
+<div class="wrap">
+  <section id="wbDomains" class="wb-domains">
+    <div class="wb-head"><h2>Workbench Domains</h2>
+      <span class="sub">Wiki View：浏览用；技术字段（snapshot 基准 / 溯源 / 证据 / residual）在 Workbench View</span>
+      <a class="tool-link" href="workbench_status.html">Workbench Status →</a></div>
+    <p class="wb-sub">数据来自 artifacts/active（不是 board 文件清单）。verdict/证据/残差以 Workbench 为准。</p>
+    <div id="wbDomainGrid" class="wb-grid"></div>
+  </section>
+  <div class="home-tools">
+    <div class="search-row"><input id="homeSearch" type="search" aria-label="搜索板块" placeholder="找板块：武器皮肤、核芯、芯片、奖池…" autocomplete="off"><button id="clearSearch" type="button">清空</button></div>
+    <div id="searchStatus" class="search-status" role="status" aria-live="polite">只搜索板块名称；条目内容请进入板块检索。</div>
+    <nav id="categoryNav" class="category-nav" aria-label="分类快捷跳转"></nav>
+  </div>
+  <div id="homeEmpty" class="home-empty" hidden>没有匹配的板块，试试换个关键词或清空搜索。</div>
+  <div class="alert">
+    <p><b>资料可查 ≠ 当前可得或活动开启。服务器分支、快照与证据范围以各板记录为准。</b></p>
+    <details><summary>查看来源与发布边界</summary><p>公开资料保留行级文字/配置来源；可解、可回放不等于可交易、可领取或业务启用。</p><p>发布链：源包锁 → NPK entry/file ID → 同包表/CHS → 行键与字段原值 → 名称来源 → selector/reward/item 或 consumer 语义 → 证据等级。未知或隔离 board 一律不发布。</p></details>
+  </div>
+
+  <h2>图鉴</h2>
+  <h3 class="group">零、新更新与预告专栏（游戏未上线资源预告）</h3>
+  <div class="grid" data-wiki-group="零、新更新与预告专栏（游戏未上线资源预告）">
+    <details class="card audit preflight"><summary>预告说明 · 范围与限制</summary><div class="csub">本栏两张子卡：（1）武器皮肤-仅行为资源未上线＝快照中仅有行为资源、无父项/道具行的皮肤 ID（不表示上线或可得）；（2）新奖池活动＝过期时间晚于快照日期的活动实例清单（含历史返场排期与未来新档；是否测试服独有新内容须对照《明日之后完整历史更新汇总》逐条判定，板上不做该断言）。资源入包/字符串命中/主题词/行为资源新增均不足以推断未上线。</div></details>
+  </div>
+
+  <h2>一、道具总表</h2>
+  <div class="grid" data-wiki-group="一、道具总表"></div>
+
+  <h2>二、时装类</h2>
+  <div class="grid" data-wiki-group="二、时装类"></div>
+
+  <h2>三、战力类</h2>
+  <div class="grid" data-wiki-group="三、战力类"></div>
+
+  <h2>四、奖池</h2>
+  <div class="grid" data-wiki-group="四、奖池"></div>
+
+  <div class="gate">公开规则：未知或已隔离的板块默认拒绝展示；原始客户端包只读，读取工具只证明条目可解，不代表业务已启用。</div>
+  <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary>
+    <div class="csub mono">公开门禁：data/publication_policy.json ｜ 数据规范：docs/SCHEMA.md ｜ 流水线：docs/PIPELINE.md ｜ 旧板块审计：03拆包产物/wiki_position_chain_audit_20260902</div>
+  </details>
+</div>
+<script>
+// 标题清理：首页卡面不允许裸英文工程词（与 board.html 同规则）
+const TITLE_CN=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时结果未确认'],
+  [/LOTTERY_POOL_RESOLVED/g,'奖池解析'],[/ITEM_MASTER/g,'道具总表'],[/static config/g,'静态配置'],
+  [/\bunresolved\b/g,'待确认'],[/\bverified\b/g,'已核验'],[/\bcandidate\b/g,'候选'],[/\bquarantined\b/g,'已隔离'],
+  [/all_equips/g,'装备属性表'],[/common_item_data_base/g,'道具总表'],[/weapon_skin_data/g,'武器皮肤表'],
+  [/reward_pool_data_base/g,'奖池表'],[/gift_data/g,'礼盒表'],[/huodong_conf/g,'活动配置'],[/item_master/gi,'道具总表'],[/schema\s*(\d+)/g,'结构 $1'],[/\bschema\b/g,'结构']];
+function zhTitle(s){let out=String(s??'');for(const [re,rp] of TITLE_CN)out=out.replace(re,rp);return out;}
+const M=window.WIKI_MANIFEST;
+const P=window.WIKI_PUBLICATION_POLICY;
+const policyCounts={};
+Object.values(P?.boards||{}).forEach(v=>{const k=v.publication_status;policyCounts[k]=(policyCounts[k]||0)+1;});
+const homeCards=[];
+const pub=M&&Array.isArray(M.boards)?M.boards.length:0;
+document.getElementById('gen').textContent=M&&P
+  ? `公开板块 ${pub} · 已隔离旧板块 ${policyCounts.quarantined||0} · 已退休 ${policyCounts.retired||0} · 未发布 ${policyCounts.unpublished||0}`
+  : '目录或发布策略加载失败，请刷新页面；若仍失败，请检查 data 目录文件是否完整。';
+// 中文/阿拉伯序号 → 数值（组内排序用）
+const SEQ_MAP={'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9,'十':10,'十一':11,'十二':12,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7};
+function catSeq(category){
+  const tailSeg=category.split(' / ').pop();     // 尾段可含斜杠（如（三）背包/挂件）
+  const m=tailSeg.match(/[（(]([^（）()]+)[）)]/);
+  if(!m) return [999,category];
+  const inner=m[1].trim();
+  const first=inner.split(/[、,，]/)[0];          // 数字/中文序号取第一个分量
+  const num=SEQ_MAP[first]!==undefined?SEQ_MAP[first]:999;
+  return [num,inner];
+}
+const STATE_ZH={verified:"已核验",unresolved:"待确认",quarantined:"已隔离","static config":"静态配置","runtime final unknown":"运行时结果未确认",candidate:"候选"};
+function renderStateSummary(b){
+  const summary=b.state_summary||{};
+  const order=["verified","unresolved","quarantined","static config","runtime final unknown"];
+  const klass={"static config":"static-config","runtime final unknown":"runtime-final-unknown"};
+  return order.filter(key=>Object.prototype.hasOwnProperty.call(summary,key))
+    .map(key=>`<span class="state-chip ${klass[key]||key}" title="${key}">${STATE_ZH[key]||key} ${summary[key]}</span>`).join("");
+}
+if(M&&Array.isArray(M.boards)){
+  // 按大类分组
+  const groups={};
+  for(const b of M.boards){
+    const head=b.category.split(' / ')[0];
+    (groups[head]=groups[head]||[]).push(b);
+  }
+  for(const head of Object.keys(groups).sort((a,b)=>"零一二三四".indexOf(a[0])-"零一二三四".indexOf(b[0]))){
+    const target=document.querySelector(`[data-wiki-group="${CSS.escape(head)}"]`);
+    if(!target) continue;
+    target.id='category-'+Object.keys(groups).indexOf(head);
+    const jump=document.createElement('a');jump.href='#'+target.id;jump.textContent=head.split('（')[0];
+    document.getElementById('categoryNav').appendChild(jump);
+    const multi=groups[head].length>1;
+    const list=groups[head].slice().sort((a,b)=>catSeq(a.category)[0]-catSeq(b.category)[0]);
+    const cards=[];
+    list.forEach(board=>{
+      const card=document.createElement('a');
+      card.className='card published';
+      card.href='board.html?b='+encodeURIComponent(board.board);
+      const catName=board.category.split(' / ').pop().trim();
+      let nm=board.name.replace(/^当前包 · /,'');
+      let note='';
+      const tail=nm.match(/（([^（）]+)）\s*$/);
+      if(tail){ note=tail[1]; nm=nm.slice(0, tail.index); }
+      const name=document.createElement('div'); name.className='cname';
+      name.textContent=zhTitle(catName);
+      const sub=document.createElement('div'); sub.className='csub';
+      const ns=board.name_status_summary||{};
+  const nsTxt=Object.keys(ns).length?` · 名称 已核验${ns.verified||0}/待确认${ns.candidate||0}/未命名${ns.unresolved||0}`:"";
+  sub.textContent=(multi?`${zhTitle(nm.trim())} · `:'')+`${board.items} 条${note&&!multi?' · '+note:''} · 已通过定位链门禁`+nsTxt;
+      const state=document.createElement('div');state.className='state-line';state.innerHTML=renderStateSummary(board);
+      card.append(name,sub,state);
+      cards.push({el:card,seq:catSeq(board.category)[0]});
+      homeCards.push({card,hay:(board.category+' '+board.name+' '+board.board).toLowerCase()});
+    });
+    // audit 占位卡按序号混排注入（战力新序：（二）护具 / （五）无人机 先搁置）
+    const AUDIT={
+      '一、道具总表':[],
+      '二、时装类':[],
+      '三、战力类':[['（二）护具','先搁置','头盔、护甲、护盾。'],['（五）无人机','先搁置','待完成本体、模块和属性链定位。']],
+      '四、奖池':[]
+    };
+    (AUDIT[head]||[]).forEach(a=>{
+      const d=document.createElement('div'); d.className='card audit';
+      d.innerHTML=`<div class="cname">${a[0]}<span class="badge">${a[1]}</span></div><div class="csub">${a[2]}</div>`;
+      cards.push({el:d,seq:catSeq(a[0])[0]});
+    });
+    cards.sort((x,y)=>x.seq-y.seq).forEach(c=>target.appendChild(c.el));
+  }
+}
+function filterHome(){
+  const q=document.getElementById('homeSearch').value.trim().toLowerCase();
+  let count=0;
+  for(const x of homeCards){x.card.hidden=!!q&&!x.hay.includes(q);if(!x.card.hidden)count++;}
+  document.getElementById('searchStatus').textContent=q?`匹配 ${count} / ${homeCards.length} 个板块 · 搜索不含板内条目`:`全部 ${homeCards.length} 个板块 · 条目内容请进入板块检索`;
+  document.getElementById('homeEmpty').hidden=!q||count>0;
+}
+document.getElementById('homeSearch').addEventListener('input',filterHome);
+document.getElementById('clearSearch').addEventListener('click',()=>{document.getElementById('homeSearch').value='';filterHome();document.getElementById('homeSearch').focus();});
+filterHome();
+</script>
+<script>
+// Workbench Domains（数据来自 data/workbench_status.js ← registry/chains.json + residuals + state）
+(function(){
+  const S=window.WIKI_WORKBENCH_STATUS; if(!S) return;
+  const D=S.status&&S.status.domains||{}; const H={'item':'物品','weapon_skin':'武器皮肤','fashion':'时装','lottery':'奖池'};
+  // 武器皮肤图鉴的唯一入口 = weapon_skin_sfx_text_sources（115，当前包 328b8446 基准）；
+  // weapon_skin_active 是内部审计投影（active 结构 126），不作为图鉴入口。
+  const BOARD={'item':'item_master_active','weapon_skin':'weapon_skin_sfx_text_sources','fashion':'fashion_active','lottery':'lottery_rewards_active'};
+  const g=document.getElementById('wbDomainGrid'); if(!g) return;
+  const BOARD_PAGE='board'+'.html?b=';   // 运行时拼接：首页不出现静态直链（沿用旧首页约束）
+  // v1.3：Wiki View 与 Workbench View 分层（同一 Domain 数据；Wiki 隐藏技术字段）
+  const WB_PAGE={item:'workbench_items.html',weapon_skin:'workbench_entity.html?kind=weapon_skin',
+    fashion:'workbench.html',lottery:'workbench_lottery.html'};
+  const fmt=(d,k)=>{const v=d&&d[k];return v===undefined||v===null?'—':(typeof v==='object'?JSON.stringify(v):String(v));};
+  for(const k of ['item','weapon_skin','fashion','lottery']){
+    const d=D[k]||{};
+    const rows=k==='item'?[['verified rows',fmt(d,'rows')],['namespaces',fmt(d,'namespaces')],['residual',fmt(d,'residual')]]
+      :k==='weapon_skin'?[['active 结构行数',fmt(d,'rows')],['residual',fmt(d,'residual')],['图鉴入口', '115 图鉴板']]
+      :k==='fashion'?[['语义状态',fmt(d,'verified')],['unresolved',(d.unresolved||[]).length+' 项'],['hard block',fmt(d,'hard_block')]]
+      :[['pool',fmt(d.pool&&d.pool.records)],['target 类型',fmt(d,'reward_target_type')],['runtime_final',fmt(d,'runtime_final')]];
+    const card=document.createElement('div'); card.className='wb-card';
+    card.innerHTML='<div class="wb-name">'+H[k]+'<span class="wb-id">'+k+'</span></div>'
+      +'<table class="wb-tbl">'+rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+String(r[1])+'</td></tr>').join('')+'</table>'
+      +'<div class="wb-links"><a class="wb-link" href="'+BOARD_PAGE+BOARD[k]+'&view=wiki">Wiki View（浏览）→</a>'
+      +'<a class="wb-link" href="'+WB_PAGE[k]+'&view=workbench">Workbench View（快照/溯源/证据）→</a></div>';
+    g.appendChild(card);
+  }
+})();
+</script>
+</body>
+</html>

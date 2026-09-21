@@ -1,0 +1,1142 @@
+{
+ "schema": "weapon-skin-source-registry/v1",
+ "snapshot_basis": "test-documents-ba8a239a",
+ "authority": "user 2026-09-13（All Sources Acquisition & Cross-Validation）",
+ "roles": [
+  "identity",
+  "naming",
+  "variant",
+  "weapon_type",
+  "level_priority",
+  "listing",
+  "acquisition",
+  "sale",
+  "behavior",
+  "historical_only"
+ ],
+ "sources": [
+  {
+   "source_id": "weapon_skin.main",
+   "source_role": [
+    "identity",
+    "level_priority",
+    "weapon_type",
+    "sale",
+    "variant"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_data.py",
+   "family": "weapon_skin_data",
+   "data_entry": 11817,
+   "data_fid": null,
+   "chs_entry": 21177,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 11817,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_data.py",
+     "family": "weapon_skin_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 11983,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 11817,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 21177,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_data_chs.py",
+     "family": "weapon_skin_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 10424,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 21177,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 126,
+   "keys": 126,
+   "fields_contributed": [
+    "camera_conf_id",
+    "camera_conf_id_2",
+    "charm_value",
+    "jump_param",
+    "level",
+    "model_extra_position_offset",
+    "model_extra_scale",
+    "model_path",
+    "obtain_limit",
+    "priority",
+    "sale_ts",
+    "weapon_type",
+    "yk_accessory_model_line_id"
+   ],
+   "identity_key": "skin_item_id",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "v0.2 canonical 主体；level/priority/sale_ts/model_path… 全字段"
+  },
+  {
+   "source_id": "weapon_skin.sfx_function",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_sfx_function_data.py",
+   "family": "weapon_skin_sfx_function_data",
+   "data_entry": 18238,
+   "data_fid": null,
+   "chs_entry": 9096,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 18238,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_sfx_function_data.py",
+     "family": "weapon_skin_sfx_function_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 11556,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 18238,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 9096,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_sfx_function_data_chs.py",
+     "family": "weapon_skin_sfx_function_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 14933,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 9096,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 348,
+   "keys": 348,
+   "fields_contributed": [
+    "level",
+    "sfx_params",
+    "sfx_type",
+    "skin_id"
+   ],
+   "identity_key": "skin_id?（待证）",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "sfx_params/level/sfx_type/skin_id —— 特效条目候选来源"
+  },
+  {
+   "source_id": "weapon_skin.behavior_res",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_behavior_res_data.py",
+   "family": "weapon_skin_behavior_res_data",
+   "data_entry": 15939,
+   "data_fid": null,
+   "chs_entry": 22997,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 15939,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_behavior_res_data.py",
+     "family": "weapon_skin_behavior_res_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 6375,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 15939,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 22997,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_behavior_res_data_chs.py",
+     "family": "weapon_skin_behavior_res_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 24310,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 22997,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 80,
+   "keys": 80,
+   "fields_contributed": [
+    "fire_sfx_path",
+    "trajectory_path_real",
+    "trajectory_sfx_path",
+    "trajectory_sfx_path_nor"
+   ],
+   "identity_key": "未证",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "fire_sfx_path/trajectory_* —— 行为/特效路径"
+  },
+  {
+   "source_id": "weapon_skin.pendant",
+   "source_role": "accessory",
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_pendant_data.py",
+   "family": "weapon_skin_pendant_data",
+   "data_entry": 17596,
+   "data_fid": null,
+   "chs_entry": 24549,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 17596,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_pendant_data.py",
+     "family": "weapon_skin_pendant_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 1387,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 17596,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 24549,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_pendant_data_chs.py",
+     "family": "weapon_skin_pendant_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 1027,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 24549,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 17,
+   "keys": 17,
+   "fields_contributed": [
+    "jump_param",
+    "level",
+    "model_paths",
+    "model_sockets",
+    "order",
+    "order_group",
+    "slots",
+    "soft_bone_ids"
+   ],
+   "identity_key": "未证",
+   "status": "accessory_source",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "已从 Combat Presentation 毕业阻断中移除；不塞 effect_type",
+   "accessory_kind": "cosmetic/accessory"
+  },
+  {
+   "source_id": "weapon_skin.nucleus_replace",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_replace_nucleus_conf.py",
+   "family": "weapon_skin_replace_nucleus_conf",
+   "data_entry": 17724,
+   "data_fid": null,
+   "chs_entry": 20148,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 17724,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_replace_nucleus_conf.py",
+     "family": "weapon_skin_replace_nucleus_conf",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 8061,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 17724,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 20148,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_replace_nucleus_conf_chs.py",
+     "family": "weapon_skin_replace_nucleus_conf_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 9783,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 20148,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 324,
+   "keys": 324,
+   "fields_contributed": [
+    "buff_id",
+    "is_custom_param",
+    "nucleus_id",
+    "param_name",
+    "param_val"
+   ],
+   "identity_key": "未证",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "核芯联动配置（buff_id/nucleus_id/param_*）"
+  },
+  {
+   "source_id": "weapon_skin.sound_query",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_sound_data_for_query.py",
+   "family": "weapon_skin_sound_data_for_query",
+   "data_entry": 18978,
+   "data_fid": null,
+   "chs_entry": 14371,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 18978,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_sound_data_for_query.py",
+     "family": "weapon_skin_sound_data_for_query",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 10162,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 18978,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 14371,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_sound_data_for_query_chs.py",
+     "family": "weapon_skin_sound_data_for_query_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 5178,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 14371,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 390,
+   "keys": 390,
+   "fields_contributed": [
+    "sound"
+   ],
+   "identity_key": "未证",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "音效查询表"
+  },
+  {
+   "source_id": "weapon_skin.coldarm_anim_stage",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder（BA8A）",
+   "logical_table": "com\\cdata\\weapon_skin_coldarm_atk_anim_stage_data.py",
+   "family": "weapon_skin_coldarm_atk_anim_stage_data",
+   "data_entry": 17341,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_partial",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：未找到配对 CHS 条目 | chs payload: no_canonical_entry",
+   "note": "冷兵器攻击动画阶段（slot 结构）"
+  },
+  {
+   "source_id": "item.common_item",
+   "source_role": [
+    "naming"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\common_item_data_base.py",
+   "family": "common_item_data",
+   "data_entry": 18005,
+   "data_fid": "B42760CCA41DBC25",
+   "chs_entry": 23928,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 18005,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\common_item_data_base.py",
+     "family": "common_item_data_base",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": "B42760CCA41DBC25",
+     "declared_size": 1979020,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 18005,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 23928,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\common_item_data_base_chs.py",
+     "family": "common_item_data_base_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 3500753,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 23928,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 37934,
+   "keys": 37934,
+   "fields_contributed": [
+    "desc",
+    "from_map",
+    "hide_obtain_popup",
+    "icon",
+    "id",
+    "item_value",
+    "level",
+    "max_stack_num",
+    "name",
+    "source",
+    "yh_value"
+   ],
+   "identity_key": "item_id = skin_item_id（已证）",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "名称链（name field slot → CHS text）"
+  },
+  {
+   "source_id": "shop.store_v2",
+   "source_role": [
+    "sale",
+    "listing"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table + decoder（BA8A）",
+   "logical_table": "com\\cdata\\store_v2_data.py",
+   "family": "store_v2_data",
+   "data_entry": 24576,
+   "data_fid": null,
+   "chs_entry": 18705,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 24576,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\store_v2_data.py",
+     "family": "store_v2_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 73360,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 24576,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 18705,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\store_v2_data_chs.py",
+     "family": "store_v2_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 9427,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 18705,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 1292,
+   "keys": 1292,
+   "fields_contributed": [
+    "fashion_type",
+    "is_present",
+    "item_id",
+    "level1_tab_type",
+    "level2_tab_type",
+    "money_count",
+    "money_id",
+    "real_cost",
+    "use_voucher_ids"
+   ],
+   "identity_key": "未证（是否含 skin_item_id 待查）",
+   "status": "acquired_and_decoded",
+   "confidence": "verified",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": null,
+   "note": "商店表（是否引用皮肤 ID 未证）"
+  },
+  {
+   "source_id": "weapon_skin.effect_show",
+   "source_role": [
+    "behavior",
+    "naming"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "pipelines/parsing/effect_show.py 专用解析（uleb 行表 + 0x76 同源 hash 索引）",
+   "logical_table": "com\\cdata\\weapon_skin_effect_show_data.py",
+   "family": "weapon_skin_effect_show_data",
+   "data_entry": 3671,
+   "data_fid": null,
+   "chs_entry": 19852,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 3671,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_effect_show_data.py",
+     "family": "weapon_skin_effect_show_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 6285,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 3671,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 19852,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_effect_show_data_chs.py",
+     "family": "weapon_skin_effect_show_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 4451,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 19852,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 0,
+   "keys": 0,
+   "fields_contributed": [],
+   "identity_key": "hash(skin_id) 注册行（56）",
+   "status": "payload_acquired_decode_gap",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：通用 decoder 解出 0 行（格式需专用解析）",
+   "note": "特效展示表：专用解析成功（56 注册行，行内容=类目+特效名）；residual=注册行≠UI 当前行"
+  },
+  {
+   "source_id": "weapon_skin.coldarm_knife_light",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table ok + decoder 0 行",
+   "logical_table": "com\\cdata\\weapon_skin_coldarm_knife_light_data.py",
+   "family": "weapon_skin_coldarm_knife_light_data",
+   "data_entry": 12674,
+   "data_fid": null,
+   "chs_entry": 17419,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 12674,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\weapon_skin_coldarm_knife_light_data.py",
+     "family": "weapon_skin_coldarm_knife_light_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 6116,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 12674,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 17419,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\weapon_skin_coldarm_knife_light_data_chs.py",
+     "family": "weapon_skin_coldarm_knife_light_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 6160,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 17419,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 0,
+   "keys": 0,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "payload_acquired_decode_gap",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：通用 decoder 解出 0 行（格式需专用解析）",
+   "note": "冷兵器刀光"
+  },
+  {
+   "source_id": "weapon_skin.accessory_items",
+   "source_role": [
+    "variant"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder 0 行",
+   "logical_table": "com\\cdata\\weapon_skin_accessory_items.py",
+   "family": "weapon_skin_accessory_items",
+   "data_entry": null,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_unresolved",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：payload resolution: no_canonical_entry",
+   "note": "配饰 items（no_canonical_entry ⇒ 只能按 inventory entry 取）"
+  },
+  {
+   "source_id": "weapon_kind.skin_item",
+   "source_role": [
+    "weapon_type",
+    "identity"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder 0 行",
+   "logical_table": "com\\cdata\\weapon_kind_to_skin_item_data.py",
+   "family": "weapon_kind_to_skin_item_data",
+   "data_entry": null,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_unresolved",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：payload resolution: no_canonical_entry",
+   "note": "武器种类 ↔ 皮肤 item 映射（连边候选，但需先解出）"
+  },
+  {
+   "source_id": "coldarm_type.skin_item",
+   "source_role": [
+    "weapon_type",
+    "identity"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder 0 行",
+   "logical_table": "com\\cdata\\coldarm_type_to_skin_item_data.py",
+   "family": "coldarm_type_to_skin_item_data",
+   "data_entry": null,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_unresolved",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：payload resolution: no_canonical_entry",
+   "note": "冷兵器类型 ↔ 皮肤 item 映射（连边候选）"
+  },
+  {
+   "source_id": "skin.replace_anims",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder 0 行",
+   "logical_table": "com\\cdata\\skin_replace_anims_dict.py",
+   "family": "skin_replace_anims_dict",
+   "data_entry": null,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_unresolved",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：payload resolution: no_canonical_entry",
+   "note": "挥砍/替换动作字典"
+  },
+  {
+   "source_id": "skin.simple_anim",
+   "source_role": [
+    "behavior"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "inventory entry 直取 + decoder 0 行",
+   "logical_table": "com\\cdata\\skin_simple_anim_data.py",
+   "family": "skin_simple_anim_data",
+   "data_entry": 20038,
+   "data_fid": null,
+   "chs_entry": null,
+   "chs_fid": null,
+   "payload_ref": null,
+   "rows": null,
+   "keys": null,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "physical_source_partial",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：未找到配对 CHS 条目 | chs payload: no_canonical_entry",
+   "note": "简易动画（CHS 缺失）"
+  },
+  {
+   "source_id": "shop.common_exchange",
+   "source_role": [
+    "acquisition",
+    "exchange"
+   ],
+   "source_type": "canonical_table",
+   "snapshot": "test-documents-ba8a239a",
+   "acquisition_method": "resolve_table ok + decoder 0 行",
+   "logical_table": "com\\cdata\\common_exchange_shop_data.py",
+   "family": "common_exchange_shop_data",
+   "data_entry": 7804,
+   "data_fid": null,
+   "chs_entry": 7697,
+   "chs_fid": null,
+   "payload_ref": {
+    "data": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 7804,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "data",
+     "table_name": "com\\cdata\\common_exchange_shop_data.py",
+     "family": "common_exchange_shop_data",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 88658,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 7804,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    },
+    "chs": {
+     "snapshot_id": "test-documents-ba8a239a",
+     "entry_index": 7697,
+     "entry_basis": "test-documents-ba8a239a:inventory-basis",
+     "role": "chs",
+     "table_name": "com\\cdata\\common_exchange_shop_data_chs.py",
+     "family": "common_exchange_shop_data_chs",
+     "source_id": "workcopy-ba8a239a",
+     "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+     "file_id": null,
+     "declared_size": 1409,
+     "payload_sha256": null,
+     "status": "ok",
+     "provenance": {
+      "resolution": "inventory-basis-entry",
+      "entry": 7697,
+      "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+     }
+    }
+   },
+   "rows": 0,
+   "keys": 0,
+   "fields_contributed": [],
+   "identity_key": "未证",
+   "status": "payload_acquired_decode_gap",
+   "confidence": "unresolved",
+   "provenance": "tools/build_weapon_skin_source_graph.py（locator+decoder 实测）",
+   "residual": "decode/resolve 未完成：通用 decoder 解出 0 行（格式需专用解析）",
+   "note": "兑换商店（是否含皮肤未证）"
+  },
+  {
+   "source_id": "runtime.equip_skin_consumer",
+   "source_role": [
+    "identity",
+    "runtime"
+   ],
+   "source_type": "runtime_code",
+   "snapshot": null,
+   "acquisition_method": "代码/证据（无物理 body）",
+   "logical_module": "ui\\EquipSkinComp.py",
+   "physical_source": "unresolved",
+   "identity_key": "skin_item_id",
+   "status": "runtime_semantic_only",
+   "confidence": "verified",
+   "provenance": "evidence/weapon_skin/three_bindings.json",
+   "residual": null,
+   "note": "EquipSkinComp.get_equip_skin_item_ids 消费 skin_item_id"
+  },
+  {
+   "source_id": "runtime.panel_collection",
+   "source_role": [
+    "identity",
+    "runtime",
+    "naming"
+   ],
+   "source_type": "runtime_code",
+   "snapshot": null,
+   "acquisition_method": "代码/证据（无物理 body）",
+   "logical_module": "ui\\PanelWeaponSkinCollection.py",
+   "physical_source": "unresolved",
+   "identity_key": "skin_item_id",
+   "status": "runtime_semantic_only",
+   "confidence": "verified",
+   "provenance": "evidence/weapon_skin/three_bindings.json",
+   "residual": null,
+   "note": "图鉴面板 update_right_info（名称/展示）"
+  },
+  {
+   "source_id": "runtime.get_item_data",
+   "source_role": [
+    "runtime",
+    "identity"
+   ],
+   "source_type": "runtime_code",
+   "snapshot": null,
+   "acquisition_method": "代码/证据（无物理 body）",
+   "logical_module": "com\\utils\\DataHelpers.py",
+   "physical_source": "unresolved",
+   "identity_key": "item_id",
+   "status": "runtime_semantic_only",
+   "confidence": "verified",
+   "provenance": "evidence/item/consumers.json",
+   "residual": null,
+   "note": "DataHelpers.get_item_data → namespace dispatch"
+  },
+  {
+   "source_id": "runtime.timed_rule",
+   "source_role": [
+    "variant",
+    "runtime"
+   ],
+   "source_type": "runtime_code",
+   "snapshot": null,
+   "acquisition_method": "代码/证据（无物理 body）",
+   "logical_module": "is_timed_skin_id（shape 规则）",
+   "physical_source": "unresolved",
+   "identity_key": "skin_item_id",
+   "status": "runtime_semantic_only",
+   "confidence": "verified",
+   "provenance": "artifacts/active/weapon_skin/RULES.json",
+   "residual": null,
+   "note": "timed/permanent 判断；本阶段不重调查"
+  },
+  {
+   "source_id": "runtime.listing_consumer",
+   "source_role": [
+    "listing"
+   ],
+   "source_type": "runtime_code",
+   "snapshot": null,
+   "acquisition_method": "代码/证据（无物理 body）",
+   "logical_module": "（未发现）",
+   "physical_source": "unresolved",
+   "identity_key": "—",
+   "status": "runtime_semantic_only",
+   "confidence": "unresolved",
+   "provenance": "—",
+   "residual": "未发现该消费者 ⇒ 相关字段只能 unresolved",
+   "note": "sale/shop/acquisition 的 runtime 消费者未获证 ⇒ listing 只能 unresolved"
+  },
+  {
+   "source_id": "hist.board.sfx_text_sources",
+   "source_role": [
+    "historical_only"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "data/boards/weapon_skin_sfx_text_sources.json",
+   "exists": true,
+   "size": 2631268,
+   "identity_key": "skin_id",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "115 行；官方描述/特效名/上架日期/旧中文 grade 的展示来源"
+  },
+  {
+   "source_id": "hist.board.static_candidates",
+   "source_role": [
+    "historical_only"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "data/boards/weapon_skin_static_candidates_v01.json",
+   "exists": true,
+   "size": 1067254,
+   "identity_key": "skin_id",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "候选板（含 static_fields）"
+  },
+  {
+   "source_id": "hist.board.structure",
+   "source_role": [
+    "historical_only"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "data/boards/weapon_skin_structure_v01.json",
+   "exists": true,
+   "size": 6427,
+   "identity_key": "—",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "结构板"
+  },
+  {
+   "source_id": "hist.board.behavior_preview",
+   "source_role": [
+    "historical_only"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "data/boards/skin_behavior_preview.json",
+   "exists": true,
+   "size": 57947,
+   "identity_key": "—",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "行为资源预览板"
+  },
+  {
+   "source_id": "hist.artifact.v01",
+   "source_role": [
+    "historical_only"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "artifacts/historical/weapon_skin/v01/WEAPON_SKIN_RESOLVED.jsonl",
+   "exists": true,
+   "size": 63989,
+   "identity_key": "skin_item_id",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "旧 artifact（115 行，board 派生 grade）"
+  },
+  {
+   "source_id": "presentation.user_catalog_ip",
+   "source_role": [
+    "ip_liaison"
+   ],
+   "source_type": "historical_derived",
+   "snapshot": null,
+   "acquisition_method": "文件直读（仅对照/回归/冲突检测）",
+   "path": "data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv#联动IP",
+   "exists": false,
+   "size": null,
+   "identity_key": "skin_id",
+   "status": "historical_only",
+   "confidence": "legacy_derived",
+   "provenance": "historical/presentation；禁止作为 truth source（不得决定 identity/listing/grade/name_status）",
+   "residual": null,
+   "note": "用户提供的历史目录：128 行中 23 行有联动IP（→ legacy 板 ip_now → 展示边车）；canonical weapon_skin_data 无 IP 字段"
+  }
+ ]
+}

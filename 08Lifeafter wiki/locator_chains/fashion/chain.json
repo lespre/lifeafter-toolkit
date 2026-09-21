@@ -1,0 +1,73 @@
+{
+ "chain_id": "fashion.broken",
+ "domain": "fashion",
+ "title": "断链模板（runtime 语义可用 / physical 硬阻断）",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_module",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "decoded_row",
+  "business_identity",
+  "name_binding",
+  "resolved_entity"
+ ],
+ "evidence_refs": [
+  "evidence/fashion/a2f_semantic.json",
+  "evidence/fashion/hard_block.json",
+  "artifacts/active/fashion/FASHION_IDENTITY_STATE.json",
+  "residuals/fashion/binding_residuals.json"
+ ],
+ "residuals": [
+  "raw-row binding unresolved（row_key == slot52 = 0/2356）",
+  "physical locator chain = hard-blocked",
+  "三个 key 空间（runtime_fashion_key / export slot52 / structural row_key）= NO RELATION PROVEN"
+ ],
+ "rejected_routes": [
+  {
+   "route": "BigTableSplit",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "x9",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "theme",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "tI 无法映射匿名 body",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "pure hash",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "resource IDX",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "module payload hidden-body",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  },
+  {
+   "route": "Python static path → native boundary",
+   "reason": "已证否",
+   "evidence_ref": "evidence/fashion/hard_block.json"
+  }
+ ],
+ "instances_file": "locator_chains/fashion/instances.jsonl"
+}

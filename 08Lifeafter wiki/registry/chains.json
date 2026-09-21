@@ -1,0 +1,190 @@
+{
+ "_meta": {
+  "schema_version": 1,
+  "generated": "2026-09-13T05:06:59",
+  "generator": "workbench phase1",
+  "purpose": "取代 391KB 交接日志，作为“现在做到哪”的权威状态入口；dimension 不可压成一个 boolean",
+  "dimensions": [
+   "structural_binding",
+   "runtime_binding",
+   "business_identity",
+   "name_binding",
+   "physical_payload_binding",
+   "runtime_final"
+  ],
+  "wording_note": "snapshot entry-space mismatch 是当前继续解析/复现的主要基础设施阻断；修复后重新分类，不能预设 residual 会全部消失（仍可能存在真正没有 namespace / runtime 证据的 ID）",
+  "web_client": {
+   "registry": "registry/web_client.json",
+   "default_data_source": "Workbench API 分页（/api/items、/api/lottery/pools、/api/lottery/rewards）",
+   "api_first_boards": [
+    "item_master_active",
+    "lottery_pool_active",
+    "lottery_rewards_active"
+   ],
+   "offline_full_projection": [
+    "item_master_active",
+    "lottery_pool_active",
+    "lottery_rewards_active"
+   ],
+   "lightweight_projections": [
+    "item_stats",
+    "lottery_stats",
+    "fashion_active"
+   ],
+   "view_modes": [
+    "wiki",
+    "workbench"
+   ],
+   "page_size_max": 200,
+   "no_silent_fallback": "API 不可用时明确报错 + 显式离线全量；禁止回退 legacy board / historical"
+  }
+ },
+ "chains": [
+  {
+   "domain": "item",
+   "investigation": "closed",
+   "active_artifact": "artifacts/active/item/ITEM_MASTER.jsonl",
+   "runtime_dispatch": "verified",
+   "business_identity": "verified_for_included_rows",
+   "name_binding": "verified",
+   "structural_binding": "verified",
+   "physical_payload_binding": "verified(common_item 全量表 36,038 行已解)",
+   "runtime_final": "n/a(静态物品索引)",
+   "rows": 30467,
+   "namespaces": 6,
+   "residual_count": 554,
+   "residual_ref": "residuals/item/unresolved_namespace_ids.json",
+   "legacy_artifacts": [
+    "ITEM_MASTER_v01(1,189)",
+    "v02(28,884)",
+    "v03(30,252)"
+   ],
+   "evidence_ref": "evidence/item/",
+   "v11": "runtime namespace raw-row membership 证据加入；216 个 id 升级（recipe 206 / reward_pool 9 / space_data 1）",
+   "v12": "snapshot-native 解析；216 行 identity verified on BA8A snapshot；residual 554（549 无成员 + 5 ambiguous）"
+  },
+  {
+   "domain": "fashion",
+   "investigation": "closed",
+   "active_artifact": "artifacts/active/fashion/FASHION_IDENTITY_STATE.json",
+   "runtime_semantic": "verified",
+   "structural_binding": "unresolved",
+   "runtime_binding": "unresolved",
+   "business_identity": "unresolved",
+   "name_binding": "unresolved",
+   "physical_payload_binding": "unresolved",
+   "runtime_final": "unresolved",
+   "hard_block": "A2F data body 静态不可定位（native 边界 + bindict_mmap_enabled=0 + 禁止注入/内存读取）",
+   "prohibition": [
+    "runtime_fashion_key",
+    "export_fashion_id_slot52",
+    "structural_row_key 三者永久禁止混用"
+   ],
+   "residual_ref": "residuals/fashion/",
+   "evidence_ref": "evidence/fashion/"
+  },
+  {
+   "domain": "weapon_skin",
+   "investigation": "closed",
+   "active_artifact": "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl",
+   "runtime_row_binding": "verified",
+   "business_identity": "verified",
+   "name_binding": "verified（canonical_row_field_chs：common_item row → field slot → CHS；122/126）",
+   "structural_binding": "verified",
+   "rows": 126,
+   "residual": [
+    1110184,
+    1110185,
+    1110186,
+    1110190
+   ],
+   "residual_ref": "residuals/weapon_skin/",
+   "evidence_ref": "evidence/weapon_skin/",
+   "legacy_artifact": "artifacts/historical/weapon_skin/v01（115 行，board 派生）+ v01_status_patch",
+   "canonical_status_fields": {
+    "listing_status": {
+     "field": "listing_status",
+     "classes": [
+      "verified_listed",
+      "verified_unlisted",
+      "unresolved"
+     ],
+     "supported_today": [
+      "unresolved"
+     ],
+     "evidence_state": "同快照 sale/shop/exchange = absent；不变更、不扩展调查",
+     "residual_ref": "residuals/weapon_skin/listing_status.json"
+    },
+    "name_status": {
+     "field": "name_status",
+     "classes": [
+      "verified",
+      "unresolved",
+      "unsafe"
+     ],
+     "counts": {
+      "verified": 122,
+      "unresolved": 4,
+      "unsafe": 0
+     },
+     "rule": "verified 必须 name_evidence_type=canonical_row_field_chs（canonical 名称链可回放）"
+    },
+    "not_listing_fields": [
+     "sale_ts（时间戳）",
+     "release_state（仅 legacy 板旧派生值）"
+    ],
+    "grade_status": {
+     "field": "grade_status",
+     "classes": [
+      "deprecated_board_derived"
+     ],
+     "canonical_keys": [
+      "level",
+      "priority"
+     ],
+     "legacy": [
+      "legacy_grade_label（historical_presentation_only）"
+     ],
+     "rule": "旧中文 grade 为 board 派生；无 level/priority→中文 grade 映射证据，禁止派生"
+    }
+   },
+   "active_artifact_version": "v0.2",
+   "v131_note": "投影不再输出硬编码 release_state；board.html 皮肤渲染器改为数据驱动（原按旧板 id 硬编码 ⇒ Workbench 板两个状态筛选未生效）",
+   "canonical_body": "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl（v0.2，126 行 = canonical weapon_skin_data @BA8A）",
+   "physical_payload_binding": "verified（registry/tables.json#snapshot_payload_bindings.weapon_skin → BA8A data 11817 / CHS 21177）",
+   "v14_p2_note": "Golden Chain 收口：canonical body 重建；v0.1 = diff/historical；4 个 board-only 行（1110184/1110185/1110186/1110190）留在 diff 与链级样本，不塞回 canonical；1110185/1110186 保持 unresolved",
+   "timed_relation": "unresolved（本阶段不重调查；禁止用 timed/permanent 推 listing）",
+   "canonical_entry_board": "weapon_skin_sfx_text_sources",
+   "canonical_entry_basis": "test-documents-328b8446（当前包，FID 直读）",
+   "active_artifact_basis": "test-documents-ba8a239a（pre-09-10 工作副本）",
+   "active_artifact_status": "superseded_for_display",
+   "active_artifact_note": "WEAPON_SKIN_RESOLVED.jsonl（126）保留为内部审计/交叉核对基准；图鉴展示与业务口径以 weapon_skin_sfx_text_sources（覆盖 131 行 = 113 主卡 + 18 时限变体 + 2 行为资源预告）为准",
+   "coverage_20260913": {
+    "board_top_level_cards": 115,
+    "main_current_parent": 113,
+    "behavior_preview_only": 2,
+    "timed_variants_nested": 18,
+    "rows_covered": 131,
+    "resource": "current package 328b8446"
+   }
+  },
+  {
+   "domain": "lottery",
+   "investigation": "layered_closed",
+   "active_artifact": [
+    "artifacts/active/lottery/LOTTERY_POOL.jsonl",
+    "artifacts/active/lottery/LOTTERY_REWARD_TARGETS.jsonl"
+   ],
+   "pool_structure": "verified",
+   "static_target_typing": "verified",
+   "reward_to_item_formal_join": "unresolved",
+   "runtime_final": "unresolved_replacement_overlay",
+   "residual_ref": "residuals/lottery/",
+   "evidence_ref": "evidence/lottery/",
+   "layering_rule": "LOTTERY_POOL 与 LOTTERY_REWARD_TARGETS 永久分层，禁止合并成“最终奖池表”",
+   "unresolved_targets": 1665,
+   "v11": "reward_pool raw row keys 已解（23,281 = LOTTERY base 组件一致）；2,427 条 target 重新分类为 item",
+   "v12": "FID-first 命中 current reward_pool data entry 23049；current CHS 绑定 unresolved"
+  }
+ ]
+}

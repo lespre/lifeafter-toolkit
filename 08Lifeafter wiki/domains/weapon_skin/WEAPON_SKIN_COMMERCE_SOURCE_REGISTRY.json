@@ -1,0 +1,194 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "client_channel": "client_channel=test",
+ "chains": {
+  "listing": {
+   "sources_found": 0,
+   "status": "unresolved"
+  },
+  "sale": {
+   "sources_found": 1,
+   "verified_rows": 19
+  },
+  "acquisition": {
+   "sources_found": 1,
+   "likely_rows": 19
+  }
+ },
+ "sources": [
+  {
+   "source_id": "weapon_skin_data.sale_ts",
+   "source_class": "canonical_raw",
+   "logical_table": "weapon_skin_data",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "entry 11817",
+   "decoder_status": "decoded",
+   "key_space": "skin_item_id",
+   "fields_contributed": [
+    "sale_ts"
+   ],
+   "relation_type": "candidate_sale_time",
+   "evidence_refs": [
+    "值域 1724860800–1788364800（2024-08-28 → 2026-09-02，日粒度）",
+    "124/126 非零（2 条为 0/null）",
+    "6/18 与 store_v2 行 start_ts 完全相等 ⇒ cross-row consistency"
+   ],
+   "residual": "字段名 sale_ts 不等于语义已证；未找到 runtime/UI consumer ⇒ semantic_status=likely"
+  },
+  {
+   "source_id": "store_v2_data",
+   "source_class": "canonical_raw",
+   "logical_table": "store_v2_data",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "locator resolve ok（1,222 行）",
+   "decoder_status": "decoded",
+   "key_space": "store row key 1000–70097；item_id 值空间含 18 个 canonical 皮肤 id",
+   "fields_contributed": [
+    "item_id",
+    "money_id",
+    "money_count",
+    "real_cost",
+    "origin_cost",
+    "start_ts",
+    "end_ts",
+    "total_limit",
+    "daily_limit",
+    "weekly_limit",
+    "monthly_limit",
+    "period_id",
+    "goods_id",
+    "category",
+    "disabled",
+    "hide_in_store",
+    "level1_tab_type",
+    "level2_tab_type",
+    "sort_id"
+   ],
+   "relation_type": "verified_sale_config",
+   "evidence_refs": [
+    "E1 字段语义 item_id；E2 值域 ∈ canonical skin_item_id",
+    "E-explicit：同行含 money_id/money_count/start_ts/end_ts/limits"
+   ],
+   "residual": "listing 门控（disabled/时间窗语义）未证 ⇒ 不推导 listing",
+   "price_jump": {
+    "status": "unresolved",
+    "detail": "real_cost/origin_cost = jump:N；用 read_jump_group 在 x{ body 与 raw payload 两种基址下均未解出合理组 ⇒ 目标表未定位",
+    "residual": "价格数值未解（不影响 sale 配置事实）"
+   }
+  },
+  {
+   "source_id": "common_exchange_shop_data",
+   "source_class": "canonical_raw",
+   "logical_table": "common_exchange_shop_data",
+   "logical_module": "com\\cdata\\common_exchange_shop_data.py",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "entry 7804（CHS 7697）",
+   "decoder_status": "index_level_parsed",
+   "structure": {
+    "rows": 70,
+    "key_space": "1..70（行键）",
+    "row_encoding": "36 <sub> <n> + n×(uleb) 组编码"
+   },
+   "key_space": "行内数值 1..85649（去重 376）",
+   "fields_contributed": [
+    "exchange cost/reward 数值（未命名语义）"
+   ],
+   "relation_type": "unresolved",
+   "skin_refs_found": [],
+   "evidence_refs": [
+    "E-structural：索引层行表可解析（70 行）",
+    "E-负证据：376 个数值无一 ∈ canonical skin_item_id"
+   ],
+   "residual": "行内数值语义未命名（疑为索引/奖励 id，非皮肤 id）⇒ 不能连边",
+   "element_semantics": {
+    "status": "unresolved",
+    "detail": "770 个元素多为小序号（1..85649，去重 376），既非皮肤 id 也非 common_item 键 ⇒ 目标 namespace 未识别",
+    "not_upgraded": "未达 verified_no_skin_target_in_snapshot（该结论要求 namespace 完整解）"
+   }
+  },
+  {
+   "source_id": "gift_data",
+   "source_class": "canonical_raw",
+   "logical_table": "gift_data",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "entry 19768",
+   "decoder_status": "decoded",
+   "key_space": "gift row key（5,443 行）",
+   "fields_contributed": [
+    "rand_ids",
+    "reward_counts",
+    "buy_ids",
+    "redeem_reward"
+   ],
+   "relation_type": "unresolved",
+   "evidence_refs": [
+    "E-负证据：5,443 行字段值中无 canonical skin_item_id（奖励经 jump 引用）"
+   ],
+   "residual": "需先解 jump→奖励链才可能连边；本阶段不硬连",
+   "jump_chain": {
+    "status": "mechanism_resolved_target_unresolved",
+    "detail": "read_jump_group 可解 gift.rand_ids（例 130001 → [11478, 11474, 27787, 6721, 1, 1800, 289, 1]）",
+    "residual": "目标为物品/奖励 id 空间，未落到皮肤身份；未穷举 ⇒ 不建边"
+   }
+  },
+  {
+   "source_id": "lottery_domain",
+   "source_class": "derived_domain",
+   "logical_table": "LOTTERY_* artifacts",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "2 个 jsonl",
+   "decoder_status": "n/a",
+   "key_space": "pool_key / item namespace",
+   "fields_contributed": [
+    "reward targets"
+   ],
+   "relation_type": "unresolved",
+   "evidence_refs": [
+    "E-负证据：现有 lottery 产物中未发现 canonical skin_item_id 作为 target"
+   ],
+   "residual": "仅当 target_type=item 且 item namespace 落到皮肤身份时才可连（本阶段未命中）"
+  },
+  {
+   "source_id": "historical:board_sale_date",
+   "source_class": "historical_source",
+   "logical_table": "data/boards/weapon_skin_sfx_text_sources.json",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "legacy board",
+   "decoder_status": "n/a",
+   "key_space": "skin_id",
+   "fields_contributed": [
+    "sale_date"
+   ],
+   "relation_type": "historical_display",
+   "evidence_refs": [
+    "旧板派生字段"
+   ],
+   "residual": "只作 historical/display，不参与 canonical truth"
+  },
+  {
+   "source_id": "runtime_store_consumer",
+   "source_class": "runtime_semantic",
+   "logical_table": "（未定位）",
+   "snapshot": "test-documents-ba8a239a",
+   "physical_binding": "unresolved",
+   "decoder_status": "not_found",
+   "key_space": null,
+   "fields_contributed": [],
+   "relation_type": "unresolved",
+   "evidence_refs": [
+    "本快照静态资产未定位到 store/acquisition consumer（E5 unavailable）"
+   ],
+   "residual": "listing 判定依赖此类 consumer ⇒ 缺它则 listing 只能 unresolved",
+   "status": "unavailable_in_current_static_assets",
+   "note": "与 Combat Presentation 的 E5 同口径：静态资产未定位到 store consumer ⇒ 不再无限追；Listing 因此只能 bounded_unresolved"
+  }
+ ],
+ "listing_model": [
+  "configured",
+  "active",
+  "visible",
+  "purchasable",
+  "listed"
+ ],
+ "sale_chain": "frozen"
+}

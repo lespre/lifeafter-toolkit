@@ -1,0 +1,35 @@
+{
+ "domain": "weapon_skin",
+ "canonical": "artifacts/active/weapon_skin/RULES.json",
+ "canonical_status_fields": {
+  "listing_status": {
+   "classes": [
+    "verified_listed",
+    "verified_unlisted",
+    "unresolved"
+   ],
+   "supported_today": [
+    "unresolved"
+   ],
+   "rule": "无同快照上架/商城证据即 unresolved；sale_ts/release_state 都不是上架状态"
+  },
+  "name_status": {
+   "classes": [
+    "verified",
+    "unresolved",
+    "unsafe"
+   ],
+   "rule": "有字符串 ≠ verified；verified 必须 name_evidence_type=verified_runtime_ui_lookup"
+  }
+ },
+ "rules": [
+  "skin_id ≠ skin_item_id（id 空间隔离）",
+  "runtime_row_binding 只在 skin_item_id → WEAPON_SKIN_DATA.data.get 成立时 verified",
+  "SFX 名 / all_equips name / huodong_conf name 不得充当正式皮肤名",
+  "前端筛选必须由 canonical 字段驱动（禁止按 board id 硬编码渲染器）"
+ ],
+ "residual_ref": [
+  "residuals/weapon_skin/unresolved_ids.json",
+  "residuals/weapon_skin/listing_status.json"
+ ]
+}

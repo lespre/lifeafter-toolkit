@@ -1,0 +1,59 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "known_sources": 35,
+ "decoded_sources": 13,
+ "mapping_only_sources": [
+  "weapon_skin.skin_2_sfx_function_map",
+  "weapon_skin.skin_2_sfx_function_map_detail",
+  "weapon_skin.skin_function_item_id_to_anim_name"
+ ],
+ "runtime_only_sources": [
+  "EquipSkinComp.is_timed_skin_id",
+  "EquipSkinComp.get_perm_skin_id",
+  "runtime_store_consumer（unavailable_in_current_static_assets）"
+ ],
+ "historical_only_sources": [
+  "presentation.legacy_board_labels",
+  "anchor.user_catalog",
+  "data/boards/weapon_skin_sfx_text_sources.json"
+ ],
+ "bounded_unresolved_sources": [
+  "store price jump target",
+  "common_exchange_shop_data elements",
+  "gift reward → 皮肤身份",
+  "lottery replacement path",
+  "activity reward 引用",
+  "timed grant 路径",
+  "map_detail 逐元素语义",
+  "animation subtype",
+  "sound pool 未被 verified jump 命中的行"
+ ],
+ "content_sources": [
+  "weapon_skin_data",
+  "common_item_data_base",
+  "sfx_function",
+  "behavior_res",
+  "effect_show",
+  "nucleus_conf",
+  "sound",
+  "store_v2_data"
+ ],
+ "source_to_entity_bindings": {
+  "v3_bindings_rows": 404,
+  "corroboration_cells": 403,
+  "same_fact_cases": 150
+ },
+ "same_fact_corroboration": [
+  "verified_same_fact",
+  "same_category_only",
+  "same_skin_only",
+  "unresolved"
+ ],
+ "outstanding_decode_gaps": [
+  "weapon_skin_effect_show_data（已解）",
+  "skin_2_sfx_function_map 逐 ref 语义（已解，偏移规则未命名）",
+  "common_exchange_shop_data 元素 namespace",
+  "store price jump 目标表"
+ ],
+ "legacy_board_is_not_truth": true
+}

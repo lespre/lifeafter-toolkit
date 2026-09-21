@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>L0 隔离诊断 · prim0</title>
+<style>
+ body{margin:0;background:#101214;color:#dfe6ec;font:13px/1.6 system-ui,"Microsoft YaHei",sans-serif;overflow:hidden}
+ #bar{position:fixed;left:0;top:0;right:0;padding:8px 12px;background:#171a1ecc;z-index:9;display:flex;gap:8px;flex-wrap:wrap}
+ button{background:#232a31;color:#dfe6ec;border:1px solid #39424c;border-radius:5px;padding:4px 10px;cursor:pointer}
+ #out{position:fixed;left:0;bottom:0;right:0;max-height:36%;overflow:auto;background:#0c0e10cc;
+      padding:8px 12px;font:11px/1.5 ui-monospace,Consolas,monospace;z-index:9;white-space:pre-wrap}
+</style></head>
+<body>
+<div id="bar">
+  <b>L0 隔离</b>
+  <button id="bIso">① 只留 prim0 + MeshBasic 红</button>
+  <button id="bCam">② 按包围球强制重设相机</button>
+  <button id="bSh">③ 换最小 ShaderMaterial 红（非 GLSL3）</button>
+  <button id="bBack">还原</button>
+  <button id="bSrc">④ 源公式(source)</button>
+</div>
+<div id="out"></div>
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.min.js",
+ "three/addons/":"./assets/vendor/three/addons/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+
+const BASE='./assets/3d/weapon_skin/1110171/';
+// prim → manifest 源颜色贴图（neox_material.json：weapon 取 Tex0，crystal 取 t_basecolor）
+// ★ source 级：完整源公式（asm d982 531-550），GLSL3 才可用 textureLod
+const VS_SRC = `precision highp float;
+out vec2 vUv; out vec3 vN; out vec3 vP;
+void main(){
+  vUv = uv;
+  vN  = normalize(normalMatrix * normal);
+  vec4 wp = modelMatrix * vec4(position, 1.0);
+  vP  = wp.xyz;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}`;
+const FS_SRC = `precision highp float;
+in vec2 vUv; in vec3 vN; in vec3 vP;
+uniform sampler2D uBaseColor;
+uniform samplerCube uCustomIbl;
+uniform float u_rotate_angle;            /* 材质级 cb0[7].w  ★本材质记录未提供 → 诊断值 */
+uniform float u_cube_brightness;         /* 材质级 cb0[8].x  ★本材质记录未提供 → 诊断值（asm 554 用在直接光亮度上）*/
+uniform float u_lightmap_factor;         /* 场景级 cb1[86].z  → scene_level_unresolved */
+uniform float u_env_day2night_exposure;  /* 场景级 cb1[239].x → scene_level_unresolved（asm 549）*/
+uniform float uRough, uF0Scale, uStrength, uAlbedoGain, uFresnelOn;
+out vec4 outColor;
+void main(){
+  vec3 albedo = texture(uBaseColor, vUv).rgb;
+  /* asm 537-539：roughness → LOD */
+  float rgh = max(uRough, 0.0019);
+  float lod = 5.0 + 1.2 * log2(rgh);
+  vec3  V   = normalize(vP - cameraPosition);
+  vec3  N   = normalize(vN);
+  vec3  R   = reflect(V, N);
+  /* asm 531-536,540：绕 Y 轴旋转，角 = u_rotate_angle */
+  float c   = cos(u_rotate_angle), s2 = sin(u_rotate_angle);
+  vec3  Rs  = vec3(R.x*s2 + R.z*c, R.y, -R.x*c + R.z*s2);
+  /* asm 541：显式 LOD 采样源 cube */
+  vec4  sm  = textureLod(uCustomIbl, Rs, lod);
+  /* asm 542-544：亮度解码 (rgb*a*16)^2 */
+  vec3  L   = pow(sm.rgb * sm.a * 16.0, vec3(2.0));
+  /* asm 545-548：clamp + 混比整形 */
+  vec3  Lc  = min(L, vec3(1.5));
+  vec3  Lp  = L + u_lightmap_factor * (Lc * 0.299805 - L);
+  /* asm 549：× 环境曝光 */
+  Lp *= u_env_day2night_exposure;
+  /* asm 508-518：菲涅尔/镜面项（Schlick 形式等价；原式是多项式曲线） */
+  float NoV = max(dot(N, -V), 0.0);
+  float fres = pow(1.0 - NoV, 5.0);
+  vec3  F   = mix(vec3(uF0Scale), vec3(1.0), fres * uFresnelOn);
+  vec3  env = Lp * F;
+  /* asm 550：IBL × 菲涅尔；再叠加源 albedo 的基底项（uAlbedoGain 为诊断基底权重） */
+  vec3  col = albedo * uAlbedoGain + env * uStrength * albedo;
+  outColor = vec4(col, 1.0);
+}`;
+/* ★ 更正（2026-09-17）：原表把 **全部 7 个 prim 都指向 `_a`**，导致 lab 页整体呈蓝紫。
+   与 viewer 回退预览表（SRC）此前是同一个错误。按已裁定的口径修正：
+     weapon (prim0/4)  → Tex0      = `_b_m`（金色主体；GLB 的 w012_a 与 c159 的 t_basecolor=001a
+                                    经 A/B 受控对照证明不是可见基色）
+     crystal(prim1/2/3/5/6) → t_basecolor = `_a`（晶体公式 §3.5 的 T）
+   裁定依据见 03拆包产物/裁定_weapon基色真值_20260917.md（_a 方案 gold 0.0% / violet 37.02%）。 */
+const PRIM={'0':'src_tex/012_b_m.png','1':'src_tex/012_a.png','2':'src_tex/012_a.png','3':'src_tex/012_a.png',
+            '4':'src_tex/010_b_m.png','5':'src_tex/010_a.png','6':'src_tex/010_a.png'};
+let CUBE='qiangpi';   // 当前源 cube 选择
+let MATS=[];   // ROOT/MESHES/FRAMES/LASTINFO 在第 100 行原有声明处
+// 源资源装载：贴图 = manifest 的源颜色图；cube = src_cube/faces 六面（身份已由 NPK path_id 闭环）
+const _texs={}, _cubes={};
+function srcTex(f){ if(_texs[f]) return _texs[f];
+  const t=new THREE.TextureLoader().load(BASE+f);
+  t.colorSpace=THREE.SRGBColorSpace; t.wrapS=t.wrapT=THREE.RepeatWrapping; _texs[f]=t; return t; }
+function srcCube(n){ if(_cubes[n]) return _cubes[n];
+  const t=new THREE.CubeTextureLoader().load([0,1,2,3,4,5].map(function(i){ return BASE+'src_cube/faces/'+n+'_f'+i+'_m0.png'; }));
+  t.colorSpace=THREE.NoColorSpace; t.generateMipmaps=true;
+  t.minFilter=THREE.LinearMipmapLinearFilter; t.magFilter=THREE.LinearFilter;
+  t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; _cubes[n]=t; return t; }
+const OUT=document.getElementById('out');
+window.__shaderLog=[];
+const log=s=>{OUT.textContent+=s+'\n';};
+
+const renderer=new THREE.WebGLRenderer({antialias:false, preserveDrawingBuffer:true});   // ★ 否则 toDataURL 读到空白缓冲
+renderer.setPixelRatio(1); renderer.setSize(innerWidth,innerHeight);
+renderer.toneMapping=THREE.NoToneMapping; renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.debug.checkShaderErrors=true;
+renderer.debug.onShaderError=(gl,program,vs,fs)=>{ try{
+  window.__shaderLog.push({LINK:gl.getProgramParameter(program,gl.LINK_STATUS),
+    prog:String(gl.getProgramInfoLog(program)||''), vert:String(gl.getShaderInfoLog(vs)||''),
+    frag:String(gl.getShaderInfoLog(fs)||'')});
+  log('!! onShaderError '+String(gl.getShaderInfoLog(fs)||'').slice(0,300));
+}catch(e){} };
+document.body.appendChild(renderer.domElement);
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x101214); scene.environment=null;
+const camera=new THREE.PerspectiveCamera(34, innerWidth/innerHeight, 0.1, 500);
+camera.position.set(3.4,1.6,4.6);
+const ctl=new OrbitControls(camera,renderer.domElement);
+
+let ROOT=null, MESHES=[], FRAMES=0, LASTINFO=null;
+const VEC=v=>v?[+v.x.toFixed(4),+v.y.toFixed(4),+v.z.toFixed(4)]:null;
+
+function renderOnce(){
+  renderer.info.reset();                       // ★ 本帧增量
+  renderer.render(scene,camera);
+  const r=renderer.info.render;
+  LASTINFO={calls:r.calls, triangles:r.triangles, points:r.points, lines:r.lines, frames:FRAMES};
+  return LASTINFO;
+}
+function loop(){ requestAnimationFrame(loop); try{ctl.update();}catch(e){} renderOnce(); FRAMES++; }
+
+function camInfo(){
+  const d=new THREE.Vector3(); camera.getWorldDirection(d);
+  return {position:VEC(camera.position), near:camera.near, far:camera.far,
+          direction:VEC(d), up:VEC(camera.up), fov:camera.fov, aspect:+camera.aspect.toFixed(4),
+          layers:camera.layers.mask, matrixWorld:Array.from(camera.matrixWorld.elements).map(x=>+x.toFixed(4))};
+}
+function boxInfo(){
+  if(!ROOT) return null;
+  const box=new THREE.Box3().setFromObject(ROOT), s=new THREE.Vector3(), c=new THREE.Vector3();
+  box.getSize(s); box.getCenter(c);
+  const sph=new THREE.Sphere(); box.getBoundingSphere(sph);
+  return {min:VEC(box.min),max:VEC(box.max),size:VEC(s),center:VEC(c),
+          sphere_center:VEC(sph.center), sphere_radius:+sph.radius.toFixed(4),
+          root:{position:VEC(ROOT.position),rotation:[ROOT.rotation.x,ROOT.rotation.y,ROOT.rotation.z].map(x=>+x.toFixed(4)),
+                scale:VEC(ROOT.scale), visible:ROOT.visible},
+          meshCount:MESHES.length};
+}
+function prim0Info(){
+  const o=MESHES[0]; if(!o) return null;
+  let pv=true, p=o.parent; while(p){ if(p.visible===false){pv=false;break;} p=p.parent; }
+  return {uuid:o.uuid, visible:o.visible, parentChainVisible:pv, frustumCulled:o.frustumCulled,
+          renderOrder:o.renderOrder, materialType:o.material&&o.material.type,
+          worldMatrix:Array.from(o.matrixWorld.elements).map(x=>+x.toFixed(4)),
+          geometry:{attrs:Object.keys(o.geometry.attributes), index:!!o.geometry.index,
+                    drawRange:o.geometry.drawRange&&{start:o.geometry.drawRange.start,count:o.geometry.drawRange.count}}};
+}
+
+function preview(){
+  if(!MESHES.length) return;
+  MESHES.forEach((o,i)=>{
+    const t=new THREE.TextureLoader().load(BASE+(PRIM[i]||PRIM[0]));
+    t.colorSpace=THREE.SRGBColorSpace; t.wrapS=t.wrapT=THREE.RepeatWrapping;
+    o.material=new THREE.MeshBasicMaterial({map:t, color:0xffffff, toneMapped:false, side:THREE.DoubleSide});
+    o.material.userData.__test='source_texture_preview';
+    o.visible=true; o.frustumCulled=true; o.renderOrder=0;
+  });
+  OUT.textContent='模式：源贴图预览（无光照·非最终材质）\n';
+  log('提示：点①测常量红 → ②调相机 → ③测最小 shader；还原=回到本预览');
+}
+window.__lab={
+  preview:function(){ preview(); return 'preview'; },
+  /* 在同一帧内 render 后立刻读像素（不依赖 drawingBuffer 保留） */
+  grab:function(){
+    const gl=renderer.getContext();
+    renderer.render(scene,camera);
+    const w=renderer.domElement.width, h=renderer.domElement.height;
+    const px=new Uint8Array(w*h*4);
+    gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,px);
+    let red=0,n=0,sum=[0,0,0];
+    for(let i=0;i<px.length;i+=4){ const R=px[i],G=px[i+1],B=px[i+2];
+      if(R>180&&G<70&&B<70) red++;
+      if(!(R<20&&G<22&&B<24)) n++;                       // 非背景(近似黑)像素数
+      sum[0]+=R; sum[1]+=G; sum[2]+=B; }
+    const tot=w*h;
+    return JSON.stringify({w:w,h:h,red_px:red,red_pct:+(red/tot*100).toFixed(2),
+      nonbg_px:n, mean:[Math.round(sum[0]/tot),Math.round(sum[1]/tot),Math.round(sum[2]/tot)]});
+  },
+  /* ★ 完整源公式：逐材质源 cube + 源 albedo（GLSL3 显式 LOD） */
+  source:function(cubeName, opt){
+    try{
+      opt = opt || {};
+      if(cubeName) CUBE = cubeName;
+      MESHES.forEach(function(o2, i){
+        const kind = (i===0 || i===4) ? 'weapon' : 'crystal';
+        const useCube = opt.perKind ? (kind==='weapon' ? 'qiangpi' : 'car_studio01') : CUBE;
+        const m = new THREE.ShaderMaterial({
+          glslVersion: THREE.GLSL3,
+          vertexShader: VS_SRC, fragmentShader: FS_SRC,
+          uniforms: {
+            uBaseColor:  { value: srcTex(PRIM[i] || PRIM[0]) },
+            uCustomIbl:  { value: srcCube(useCube) },
+            uStrength:   { value: (opt.strength===undefined?1.0:opt.strength) },
+            u_rotate_angle:           { value: (opt.rotateAngle===undefined?0.35:opt.rotateAngle) },
+            u_cube_brightness:        { value: (opt.cubeBrightness===undefined?1.0:opt.cubeBrightness) },
+            u_lightmap_factor:        { value: (opt.lightmapFactor===undefined?0.0:opt.lightmapFactor) },
+            u_env_day2night_exposure: { value: (opt.envExposure===undefined?0.25:opt.envExposure) },
+            uF0Scale:    { value: (opt.f0===undefined?0.08:opt.f0) },
+            uFresnelOn:  { value: (opt.fresnel===undefined?1.0:opt.fresnel) },
+            uRough:      { value: (opt.rough===undefined?0.4:opt.rough) },
+            uAlbedoGain: { value: (opt.albedoGain===undefined?0.6:opt.albedoGain) },
+            
+          },
+          side: THREE.DoubleSide
+        });
+        m.userData.__prim = i; m.userData.__kind = kind; m.userData.__cube = useCube;
+        o2.material = m; o2.visible = true; MATS.push(m);
+      });
+      try{ renderer.compile(scene, camera); }catch(e){}
+      return JSON.stringify({mode:'source', cube:CUBE, perKind:!!opt.perKind, mats:MATS.length,
+        bound: MATS.map(function(m){ return m.userData.__kind+':'+m.userData.__cube+
+          ':'+((m.uniforms.uCustomIbl.value && m.uniforms.uCustomIbl.value.image)?'cube6':'none'); })});
+    }catch(e){ return 'EXC '+(e&&e.message); }
+  },
+  show:function(list){
+    MESHES.forEach(function(o,i){ o.visible = (list.indexOf(i)>=0); });
+    return JSON.stringify({visible:list, total:MESHES.length});
+  },
+  calls:()=>LASTINFO,
+  box:()=>boxInfo(),
+  cam:()=>camInfo(),
+  prim0:()=>prim0Info(),
+  shaderLog:()=>window.__shaderLog.slice(-3),
+  /* ① 隔离 prim0 + MeshBasic 红 */
+  isolate:function(){
+    if(!ROOT) return 'no_root';
+    scene.traverse(o=>{ if(o.isMesh) o.visible=false; });
+    const o=MESHES[0];
+    o.visible=true; o.frustumCulled=false; o.renderOrder=999;
+    o.material=new THREE.MeshBasicMaterial({color:0xff0000, side:THREE.DoubleSide,
+      depthTest:false, depthWrite:false, toneMapped:false});
+    o.material.userData.__test='MeshBasic_red';
+    return JSON.stringify({isolated:true, mesh:prim0Info()});
+  },
+  /* ③ 最小 ShaderMaterial（非 GLSL3，走兼容路径） */
+  minimalShader:function(){
+    const o=MESHES[0];
+    const m=new THREE.ShaderMaterial({
+      vertexShader:'void main(){ gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader:'void main(){ gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); }',
+      side:THREE.DoubleSide, depthTest:false, depthWrite:false
+    });
+    o.material=m; m.userData.__test='MinimalShader_red';
+    return JSON.stringify({switched:true, materialType:o.material.type, glslVersion:o.material.glslVersion||null});
+  },
+  /* ② 按包围球强制重设相机 */
+  forceCam:function(){
+    const b=boxInfo(); if(!b) return 'no_box';
+    const c=new THREE.Vector3(...b.sphere_center), R=b.sphere_radius;
+    camera.position.set(c.x, c.y, c.z + R*2.5);
+    camera.near=Math.max(R/1000, 0.001); camera.far=R*100;
+    camera.lookAt(c); camera.updateProjectionMatrix();
+    try{ ctl.target.copy(c); ctl.update(); }catch(e){}
+    return JSON.stringify({forced:true, cam:camInfo()});
+  },
+  restore:function(){
+    try{
+      scene.traverse(function(o){ if(o.isMesh) o.visible=true; });
+      MESHES.forEach(function(o,j){
+        var m=new THREE.MeshBasicMaterial({color:0xffffff, side:THREE.DoubleSide, toneMapped:false});
+        var t=new THREE.TextureLoader().load(BASE+(PRIM[j]||PRIM[0]));
+        t.colorSpace=THREE.SRGBColorSpace; m.map=t; o.material=m; o.frustumCulled=true; o.renderOrder=0;
+      });
+      return 'restored';
+    }catch(e){ return 'EXC '+e.message; }
+  },
+  frames:()=>FRAMES
+};
+
+new GLTFLoader().load(BASE+'dual.glb', function(g){
+  try{
+    ROOT=g.scene; let i=-1;
+    ROOT.traverse(function(o){ if(o.isMesh){ i++; MESHES.push(o); } });
+    scene.add(ROOT);
+    log('GLB loaded mesh='+MESHES.length);
+    // ★ 相机：直接按包围球摆位（不依赖 OrbitControls 初始状态）
+    var box=new THREE.Box3().setFromObject(ROOT), sp=new THREE.Sphere();
+    box.getBoundingSphere(sp);
+    var c=sp.center.clone(), R=Math.max(sp.radius,0.001);
+    camera.position.set(c.x, c.y, c.z + R*2.2);
+    camera.near=Math.max(R/1000,0.001); camera.far=R*100;
+    camera.lookAt(c); camera.updateProjectionMatrix();
+    try{ ctl.target.copy(c); ctl.update(); }catch(e){}
+    log('camera -> '+JSON.stringify([+camera.position.x.toFixed(3),+camera.position.y.toFixed(3),+camera.position.z.toFixed(3)])+'  R='+R.toFixed(3));
+    // ★ 材质：最简 MeshBasic（无光照即可见），纹理异步到位
+    MESHES.forEach(function(o,j){
+      var m=new THREE.MeshBasicMaterial({color:0xffffff, side:THREE.DoubleSide, toneMapped:false});
+      o.material=m; o.visible=true; o.frustumCulled=true; o.renderOrder=0;
+      (function(mm,f){
+        var t=new THREE.TextureLoader().load(f, function(){ mm.map=t; mm.color.set(0xffffff); mm.needsUpdate=true; },
+                                                  undefined, function(){ log('tex fail '+f); });
+        t.colorSpace=THREE.SRGBColorSpace; t.wrapS=t.wrapT=THREE.RepeatWrapping;
+      })(m, BASE+(PRIM[j]||PRIM[0]));
+    });
+    loop();
+    window.__labReady=true;
+    setTimeout(function(){ log('自检像素: '+window.__lab.grab()); }, 2500);
+  }catch(e){ log('INIT ERR '+e.message); try{loop();window.__labReady=true;}catch(e2){} }
+}, undefined, function(e){ log('GLB fail '+e); });
+window.addEventListener('error',function(ev){ log('JS ERROR: '+ev.message); });
+</script>
+</body></html>

@@ -1,0 +1,43 @@
+{
+ "generated_at": "2026-09-21T13:20:32+08:00",
+ "canonical_rows": 126,
+ "v01_rows": 115,
+ "intersection": 111,
+ "canonical_only": [
+  11100061,
+  11100231,
+  11100271,
+  11100281,
+  11100901,
+  11101141,
+  11101341,
+  11101451,
+  11101681,
+  11101691,
+  11101701,
+  11101771,
+  11101781,
+  11101811,
+  11101831
+ ],
+ "legacy_only_board_derived": [
+  1110184,
+  1110185,
+  1110186,
+  1110190
+ ],
+ "name_chain": {
+  "verified": 126,
+  "unresolved": 0,
+  "crosscheck_vs_v01": "canonical 命中行名称与 v0.1 逐条一致（111/111）"
+ },
+ "grade": {
+  "v01_used_board_label": 115,
+  "v02_policy": "grade deprecated；仅 level/priority canonical；legacy_grade_label 仅展示"
+ },
+ "listing_status": {
+  "v02": "unresolved（全部）",
+  "policy": "不扩展调查，不变更"
+ },
+ "note": "以 canonical body 为主体；未裁 canonical 行，未把 board-only 行塞回 canonical。"
+}

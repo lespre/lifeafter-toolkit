@@ -1,0 +1,133 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "model": "canonical_level（单轴 2/3/4/5/6）+ catalog_level_label + label_provenance",
+ "sources": [
+  {
+   "source_id": "weapon_skin_data.level",
+   "source_class": "canonical_raw",
+   "role": "canonical_level_axis",
+   "values": {
+    "2": 8,
+    "3": 29,
+    "4": 52,
+    "5": 22,
+    "6": 15
+   },
+   "status": "acquired_and_decoded",
+   "evidence": "canonical physical（BA8A entry 11817）"
+  },
+  {
+   "source_id": "weapon_skin_data.priority",
+   "source_class": "canonical_raw",
+   "role": "priority_axis",
+   "values": {
+    "1": 37,
+    "2": 27,
+    "3": 18,
+    "4": 9,
+    "5": 10,
+    "6": 5,
+    "7": 3,
+    "8": 4,
+    "9": 2,
+    "10": 1,
+    "11": 4,
+    "12": 1,
+    "13": 1,
+    "15": 2,
+    "16": 1,
+    "17": 1
+   },
+   "status": "acquired_and_decoded"
+  },
+  {
+   "source_id": "weapon_skin_data.charm_value",
+   "source_class": "canonical_raw",
+   "role": "level_axis_corroboration",
+   "status": "acquired_and_decoded",
+   "evidence": {
+    "2": {
+     "30": 3,
+     "40": 2,
+     "100": 3
+    },
+    "3": {
+     "0": 2,
+     "30": 6,
+     "40": 2,
+     "100": 19
+    },
+    "4": {
+     "0": 6,
+     "300": 46
+    },
+    "5": {
+     "0": 2,
+     "1000": 20
+    },
+    "6": {
+     "1000": 5,
+     "1500": 5,
+     "2500": 5
+    }
+   }
+  },
+  {
+   "source_id": "weapon_skin_data.play_anim_moudle+switch_weapon",
+   "source_class": "runtime_semantic",
+   "role": "level_axis_corroboration",
+   "status": "structural_verified",
+   "evidence": {
+    "2": {
+     "play_anim_moudle": 0,
+     "switch_weapon": 0,
+     "n": 8
+    },
+    "3": {
+     "play_anim_moudle": 0,
+     "switch_weapon": 0,
+     "n": 29
+    },
+    "4": {
+     "play_anim_moudle": 0,
+     "switch_weapon": 0,
+     "n": 52
+    },
+    "5": {
+     "play_anim_moudle": 4,
+     "switch_weapon": 3,
+     "n": 22
+    },
+    "6": {
+     "play_anim_moudle": 15,
+     "switch_weapon": 6,
+     "n": 15
+    }
+   },
+   "note": "仅 level≥5 非空 ⇒ 支持「level 是 business tier」，但未找到直接读 level 的 consumer ⇒ 不是 runtime consumer 证据"
+  },
+  {
+   "source_id": "presentation.legacy_board_labels",
+   "source_class": "historical_display",
+   "role": "historical_label",
+   "status": "historical_only",
+   "values": {
+    "3直售级": 27,
+    "4紫皮级": 44,
+    "2白送级": 8,
+    "5典藏级": 19,
+    "6传世级": 15,
+    "未配置": 2
+   },
+   "note": "只作 display/historical；不参与 canonical truth"
+  },
+  {
+   "source_id": "anchor.user_catalog",
+   "source_class": "historical_display",
+   "role": "catalog_label_naming",
+   "status": "anchor_only",
+   "note": "白送/直售/紫皮 = user_defined；典藏/传世 = 官方名称但客户端无映射源 ⇒ official_user_confirmed"
+  }
+ ],
+ "client_side_mapping_source_found": false
+}

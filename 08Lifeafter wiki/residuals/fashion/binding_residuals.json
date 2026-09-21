@@ -1,0 +1,61 @@
+{
+ "domain": "fashion",
+ "kind": "binding_residuals",
+ "generated": "2026-09-12T18:54:20",
+ "residuals": [
+  {
+   "id": "raw_row_binding",
+   "status": "unresolved",
+   "detail": "row_key == export slot52 fashion_id = 0/2356（对象错位）"
+  },
+  {
+   "id": "business_identity",
+   "status": "unresolved",
+   "detail": "owned/wear/preview 语义已证，但 raw-row 绑定未证"
+  },
+  {
+   "id": "name_binding",
+   "status": "unresolved",
+   "detail": "前置未满足，未评估"
+  },
+  {
+   "id": "physical_payload_binding",
+   "status": "unresolved",
+   "detail": "Documents/root/base/simple/export/oversea 谁进 runtime 未定"
+  },
+  {
+   "id": "a2f_value_set",
+   "status": "not_extracted",
+   "detail": "A2F 独立 data body 未定位"
+  }
+ ],
+ "tried_routes": [
+  "tI path table",
+  "纯哈希派生（72 组 × 6 FID）",
+  "BigTableSplit（注册表仅 7 张）",
+  "x9 replace",
+  "theme replace",
+  "com.tdata.<scope>.data_translator_data_file_id 查表",
+  "file-version registry（native）",
+  "Documents\\res\\*.idx（资源 MD5 索引）",
+  "A2F module payload 结构分类（coverage≈100%，普通 Python loader stub）",
+  "npk 条目 c1/c2 + 尾部 16B（校验值/全零，无 companion 指针）",
+  "root 快照独立定位",
+  "客户端自带 debug/log 开关（无）",
+  "原生引擎符号扫描（bin 树内无引擎）"
+ ],
+ "rejected_routes": [
+  "模块内嵌 native data body（明确 rejected）",
+  "x9/theme/BigTableSplit 重开",
+  "纯 hash 猜测",
+  "进程注入/内存读取（安全红线）"
+ ],
+ "current_gap": "A2F data body 的静态定位；需要 native loader 观察（禁止注入 ⇒ 当前不可得）",
+ "hard_blocked": true,
+ "hard_block_reason": "native 边界：bindict_mmap_enabled=0（磁盘无运行时副本）+ 引擎二进制不可静态获取 + 禁止注入/内存读取/绕反作弊",
+ "evidence_ref": [
+  "registry/chains.json",
+  "registry/tables.json",
+  "analysis/audit/root_source_metadata_v1.json"
+ ]
+}

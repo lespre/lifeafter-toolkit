@@ -1,0 +1,1841 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "client_channel": "client_channel=test",
+ "chains": [
+  "listing",
+  "sale",
+  "acquisition"
+ ],
+ "edges": [
+  {
+   "from": "weapon_skin:1110001",
+   "to": "store_v2_data:50001",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110002",
+   "to": "store_v2_data:50002",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110003",
+   "to": "store_v2_data:50003",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110007",
+   "to": "store_v2_data:50010",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110008",
+   "to": "store_v2_data:50011",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110014",
+   "to": "store_v2_data:50012",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110015",
+   "to": "store_v2_data:50013",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110019",
+   "to": "store_v2_data:50014",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110030",
+   "to": "store_v2_data:50018",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110035",
+   "to": "store_v2_data:50016",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110088",
+   "to": "store_v2_data:50019",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110122",
+   "to": "store_v2_data:50021",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110125",
+   "to": "store_v2_data:50020",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110127",
+   "to": "store_v2_data:50022",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110133",
+   "to": "store_v2_data:50024",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110134",
+   "to": "store_v2_data:50023",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110138",
+   "to": "store_v2_data:50025",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110149",
+   "to": "store_v2_data:50026",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "weapon_skin:1110158",
+   "to": "store_v2_data:50027",
+   "chain": "sale",
+   "relation": "verified_sale_config",
+   "status": "verified",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品",
+    "E2 key-space：item_id 值 ∈ canonical skin_item_id",
+    "E-explicit mapping：同一 store 行带 money/price/start/end/limit"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50001",
+   "to": "weapon_skin:1110001",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50002",
+   "to": "weapon_skin:1110002",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50003",
+   "to": "weapon_skin:1110003",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50010",
+   "to": "weapon_skin:1110007",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50011",
+   "to": "weapon_skin:1110008",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50012",
+   "to": "weapon_skin:1110014",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50013",
+   "to": "weapon_skin:1110015",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50014",
+   "to": "weapon_skin:1110019",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50018",
+   "to": "weapon_skin:1110030",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50016",
+   "to": "weapon_skin:1110035",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50019",
+   "to": "weapon_skin:1110088",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50021",
+   "to": "weapon_skin:1110122",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50020",
+   "to": "weapon_skin:1110125",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50022",
+   "to": "weapon_skin:1110127",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50024",
+   "to": "weapon_skin:1110133",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50023",
+   "to": "weapon_skin:1110134",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50025",
+   "to": "weapon_skin:1110138",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50026",
+   "to": "weapon_skin:1110149",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  },
+  {
+   "from": "store_v2_data:50027",
+   "to": "weapon_skin:1110158",
+   "chain": "acquisition",
+   "relation": "direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "evidence_refs": [
+    "E1 字段语义：store_v2_data.item_id = 被售物品"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": "start_ts/end_ts（unix 秒，日粒度）"
+  }
+ ],
+ "unresolved_edges": [
+  {
+   "from": "common_exchange_shop_data:*",
+   "to": "weapon_skin:*",
+   "chain": "acquisition",
+   "relation": "exchange",
+   "status": "unresolved",
+   "why": "行内 376 个数值无一命中皮肤 id"
+  },
+  {
+   "from": "gift_data:*",
+   "to": "weapon_skin:*",
+   "chain": "acquisition",
+   "relation": "gift/bundle",
+   "status": "unresolved",
+   "why": "无直接皮肤 id（奖励经 jump）"
+  },
+  {
+   "from": "lottery_*",
+   "to": "weapon_skin:*",
+   "chain": "acquisition",
+   "relation": "lottery",
+   "status": "unresolved",
+   "why": "现有产物未发现皮肤 id 作为 target"
+  },
+  {
+   "from": "weapon_skin:*",
+   "to": "listing_state",
+   "chain": "listing",
+   "relation": "availability_gate",
+   "status": "unresolved",
+   "why": "无可证明的 active flag / enable predicate / 时间窗语义"
+  },
+  {
+   "from": "runtime_store_consumer",
+   "to": "listing_state",
+   "chain": "listing",
+   "relation": "consumer",
+   "status": "unresolved",
+   "why": "静态资产未定位到 consumer（E5 unavailable）"
+  }
+ ],
+ "forbidden_inferences": [
+  "raw_row 存在",
+  "有名称",
+  "有特效",
+  "level 高",
+  "timed/permanent",
+  "board 出现"
+ ],
+ "counts": {
+  "sale_verified": 19,
+  "acquisition_likely": 19,
+  "unresolved": 5,
+  "listing_gate_unresolved": 19,
+  "acquisition_paths_total": 126,
+  "multi_path_skins": 0
+ },
+ "listing_gate_edges": [
+  {
+   "from": "weapon_skin:1110001",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110002",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110003",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110007",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110008",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110014",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110015",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110019",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110030",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110035",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110088",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110122",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110125",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110127",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110133",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110134",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110138",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110149",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  },
+  {
+   "from": "weapon_skin:1110158",
+   "to": "listing:active",
+   "status": "unresolved",
+   "why": "无 enable predicate / consumer 证据"
+  }
+ ],
+ "acquisition_path_edges": [
+  {
+   "from": "weapon_skin:1110001",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110002",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110003",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110004",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110005",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110006",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110007",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110008",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110009",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110010",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110011",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110012",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110013",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110014",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110015",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110016",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110017",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110018",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110019",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110020",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110021",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110022",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110023",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110024",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110025",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110026",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110027",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110028",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110030",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110031",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110032",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110033",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110034",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110035",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110036",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110058",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110087",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110088",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110089",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110090",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110114",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110115",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110116",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110117",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110118",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110119",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110120",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110121",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110122",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110123",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110124",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110125",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110126",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110127",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110128",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110129",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110130",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110131",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110132",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110133",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110134",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110135",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110136",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110137",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110138",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110139",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110140",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110141",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110142",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110143",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110144",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110145",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110146",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110147",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110148",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110149",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110150",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110151",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110152",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110153",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110154",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110155",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110156",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110157",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110158",
+   "to": "acquisition:direct_shop",
+   "status": "likely",
+   "source_refs": [
+    "store_v2_data"
+   ],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110159",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110160",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110161",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110162",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110163",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110164",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110165",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110166",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110167",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110168",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110169",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110170",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110171",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110172",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110173",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110174",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110175",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110176",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110177",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110178",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110179",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110180",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110181",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110182",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110183",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:1110197",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11100061",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11100231",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11100271",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11100281",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11100901",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101141",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101341",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101451",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101681",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101691",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101701",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101771",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101781",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101811",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  },
+  {
+   "from": "weapon_skin:11101831",
+   "to": "acquisition:unresolved",
+   "status": "unresolved",
+   "source_refs": [],
+   "snapshot_basis": "test-documents-ba8a239a",
+   "time_basis": null
+  }
+ ]
+}

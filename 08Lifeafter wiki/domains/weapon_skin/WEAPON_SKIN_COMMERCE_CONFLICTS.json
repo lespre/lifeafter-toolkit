@@ -1,0 +1,19 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "client_channel": "client_channel=test",
+ "conflicts": [
+  {
+   "field": "sale_ts vs store.start_ts",
+   "detail": "6/18 完全相等、12/18 不等 ⇒ sale_ts 不是 store 起始时间的同义字段",
+   "resolution_status": "unresolved（保留两者，不静默选一）"
+  }
+ ],
+ "residuals": [
+  "listing 全员 unresolved：缺可用性门控语义证据（disabled/时间窗只是候选）",
+  "sale_ts 语义 likely（发布/首发日），无 runtime/UI consumer 证据",
+  "acquisition=direct_shop 由销售配置推出（业务语义）⇒ likely",
+  "exchange/gift/lottery/activity 均无皮肤显式引用 ⇒ unresolved，不硬连",
+  "timed 子变体无独立 commerce 来源；是否经 parent 未证 ⇒ 不继承",
+  "old-only 4：store/exchange/gift/lottery 均无命中 ⇒ 不升级为有 commerce 证据"
+ ]
+}

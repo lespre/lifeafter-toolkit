@@ -1,0 +1,32 @@
+{
+ "domain": "lottery",
+ "kind": "runtime_final_residual",
+ "generated": "2026-09-12T18:54:20",
+ "status": "unresolved_replacement_overlay",
+ "applies_to": "全部 23,567 条静态 reward target",
+ "mechanisms": [
+  {
+   "name": "child replacement",
+   "module": "com\\components\\avatar\\RewardPoolComp.py",
+   "FID": "9E87D78784DC59B6",
+   "symbols": [
+    "replace_child_reward_by_random",
+    "reward_dct",
+    "get_reward"
+   ]
+  },
+  {
+   "name": "optional version overlay",
+   "module": "com\\huodong\\controller\\OptionalVersionMgrController.py",
+   "FID": "173C6E66B9DBBD59",
+   "symbols": [
+    "on_replace_child_reward",
+    "child_pool_id_2_item_no",
+    "optional_pool_replace_data",
+    "optional_version_data"
+   ]
+  }
+ ],
+ "conclusion": "static config ≠ runtime final；未解析 overlay 前不得声称 runtime_final=verified",
+ "hard_blocked": false
+}

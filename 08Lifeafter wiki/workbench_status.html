@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workbench Status · LifeAfter Local Data Workbench</title>
+<script src="assets/workbench_client.js?v=v13"></script>
+<script src="data/workbench_status.js?v=wb1"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--red:#b91c1c;--green:#15803d;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;padding:20px}
+a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+h1{font-size:18px} h2{font-size:15px;margin:16px 0 8px}
+.sub,.wb-note{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.ok{color:var(--green)} .warn{color:var(--amber)} .bad{color:var(--red)}
+.wb-notice{padding:8px 10px;border-radius:8px;border:1px solid var(--border)} .wb-notice.bad{border-color:#fecaca;background:#fef2f2}
+</style>
+</head><body>
+<div class="topbar">
+  <div><h1>Workbench Status <span class="badge" id="ver">v1.3</span></h1>
+  <div class="sub">数据来源：<code>/api/coverage</code>（registry/snapshots+tables+chains + artifacts/active + residuals + state/REGRESSION）；<b>非手写</b>。</div></div>
+  <div class="sub"><a href="workbench.html">← Workbench 首页</a> · <a href="workbench_items.html">物品</a> · <a href="workbench_lottery.html">奖池</a> · <a href="wiki.html">Wiki View</a></div>
+</div>
+<div id="apiwrap"></div>
+<div id="root"></div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const rows=[];
+  function table(head,body){return '<table><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr>'+body+'</table>';}
+  function renderCoverage(c){
+    $("ver").textContent=c.workbench_version||"v1.3";
+    // 1. snapshot
+    rows.push('<div class="card"><h2>Snapshot</h2>'+table(['snapshot_id','channel','scope','sha256','bytes','status','server_branch'],
+      (c.snapshots||[]).map(s=>`<tr><td><code>${WB.esc(s.snapshot_id)}</code></td><td>${WB.esc(s.client_channel)}</td>
+        <td>${WB.esc(s.package_scope)}</td><td class="sub">${WB.esc(String(s.sha256).slice(0,12))}…</td>
+        <td>${Number(s.bytes||0).toLocaleString()}</td><td>${WB.esc(s.status)}</td>
+        <td class="warn">${WB.esc(s.server_branch)}</td></tr>`).join(''))+
+      `<div class="sub">inventory 基准 = <code>${WB.esc(c.inventory_basis_snapshot)}</code> · current 热更 = <code>${WB.esc(c.active_current_snapshot)}</code></div></div>`);
+    // 2. 表覆盖（分快照）
+    const cov=c.snapshot_table_coverage||{};
+    const sids=Object.keys(cov);
+    rows.push('<div class="card"><h2>逻辑表覆盖（按 snapshot 分开统计）</h2>'+
+      table(['snapshot_id','逻辑表数','ok','未解析','状态分布'],
+        sids.map(sid=>`<tr><td><code>${WB.esc(sid)}</code></td><td>${cov[sid].tables}</td>
+          <td class="ok">${cov[sid].ok}</td><td class="warn">${cov[sid].not_ok}</td>
+          <td class="sub">${WB.esc(JSON.stringify(cov[sid].statuses))}</td></tr>`).join(''))+
+      `<div class="sub">物理绑定（同一逻辑表的不同物理实例）：合计 ${WB.esc((c.physical_binding_coverage||{}).total)} ·
+       ok ${WB.esc((c.physical_binding_coverage||{}).ok)} · 未解析 ${WB.esc((c.physical_binding_coverage||{}).not_ok)}</div>`+
+      '<details><summary>逐表绑定矩阵</summary>'+table(['逻辑表','BA8A','current'],
+        (c.tables||[]).map(t=>{const b=t.bindings||{};const fmt=s=>b[s]?`<code>${WB.esc(b[s].status)}</code> entry=${WB.esc(b[s].data_entry)} chs=${WB.esc(b[s].chs_status)}`:'—';
+          return `<tr><td class="sub">${WB.esc(t.logical_table)}</td><td>${fmt('test-documents-ba8a239a')}</td><td>${fmt('test-documents-328b8446')}</td></tr>`;}).join(''))+
+      '</details></div>');
+    // 3. 未决计数
+    const un=c.unresolved_counts||{};
+    rows.push('<div class="card"><h2>Residual（residuals/ 实测计数）</h2>'+table(['domain','文件','count','buckets'],
+      Object.entries(un).flatMap(([d,files])=>Object.entries(files).map(([f,v])=>
+        `<tr><td><b>${WB.esc(d)}</b></td><td>${WB.esc(f)}</td><td class="warn">${WB.esc(v.count)}</td>
+         <td class="sub">${WB.esc(JSON.stringify(v.buckets||{}))}</td></tr>`)).join(''))+
+      `<div class="sub">${WB.esc((c.notes||{}).wording||"")}</div></div>`);
+    // 4. active artifacts（含 hash）
+    rows.push('<div class="card"><h2>Active artifacts（当前 hash 实测）</h2>'+table(['domain','artifact','rows','bytes','sha256','mtime'],
+      (c.active_artifacts||[]).map(a=>`<tr><td>${WB.esc(a.domain)}</td><td class="sub"><code>${WB.esc(a.artifact)}</code></td>
+        <td>${a.rows!=null?Number(a.rows).toLocaleString():"—"}</td><td>${Number(a.bytes).toLocaleString()}</td>
+        <td class="sub">${WB.esc(a.sha256.slice(0,16))}…</td><td class="sub">${WB.esc(a.mtime)}</td></tr>`).join(''))+'</div>');
+    // 5. Web client 契约
+    const w=c.web_client||{};
+    rows.push('<div class="card"><h2>Web Client（registry/web_client.json）</h2>'+
+      `<div class="sub">默认查询路径：API 分页 · API-first 板块：${WB.esc(JSON.stringify(Object.keys(w.api_first_boards||{})))}</div>`+
+      `<div class="sub">offline_full_projection（不作为默认 Web 路径）：${WB.esc(JSON.stringify(w.offline_full_projection||[]))}</div>`+
+      `<div class="sub">视图分层：${WB.esc(JSON.stringify(Object.keys(w.view_modes||{})))}（共享同一 Domain 数据）</div></div>`);
+    // 6. 回归
+    const r=c.regression||{};
+    rows.push('<div class="card"><h2>Regression</h2>'+(r.tests?`<div>最近一次：<b>${r.tests}</b> 项 · ${WB.esc(r.result)} · ${WB.esc(r.at)}
+      （expected failures ${WB.esc(r.expected_failures)}，exit ${WB.esc(r.exit_code)}）</div><div class="sub">${WB.esc(r.command)}</div>`
+      :'<div class="bad">未记录：运行全量测试后写入 state/REGRESSION.json</div>')+'</div>');
+    // 7. chains（保留原有维度视图）
+    const S=window.WIKI_WORKBENCH_STATUS||{};
+    if(S.chains){
+      rows.push('<div class="card"><h2>四条核心链（chains.json）</h2>'+table(['domain','investigation','维度状态','residual','evidence'],
+        S.chains.map(c2=>`<tr><td><b>${WB.esc(c2.domain)}</b></td><td class="ok">${WB.esc(c2.investigation)}</td>
+          <td class="sub">${Object.entries(c2).filter(([k])=>!['domain','investigation','active_artifact','residual_ref','evidence_ref','legacy_artifact','legacy_artifacts','rows','namespaces','residual_count','prohibition','hard_block','layering_rule','v12'].includes(k))
+            .map(([k,v])=>WB.esc(k+": "+(typeof v==='object'?JSON.stringify(v):v))).join('<br>')}</td>
+          <td>${WB.esc(JSON.stringify(c2.residual||c2.residual_count||''))}</td><td class="sub">${WB.esc(c2.evidence_ref||'')}</td></tr>`).join(''))+'</div>');
+    }
+    $("root").innerHTML=rows.join('');
+  }
+
+  async function go(){
+    try{
+      const c=await WB.api("/api/coverage");
+      $("apiwrap").innerHTML='<div class="card sub">实时数据：/api/coverage · 生成于 '+WB.esc(c.generated)+'</div>';
+      renderCoverage(c);
+    }catch(err){
+      WB.error($("apiwrap"),err);
+      const S=window.WIKI_WORKBENCH_STATUS;
+      if(!S){ $("root").innerHTML='<div class="card bad">workbench_status.js 未加载：请先运行 python -m pipelines.projection.build_boards</div>'; return; }
+      $("root").innerHTML='<div class="card"><h2>构建时静态快照（API 不可用）</h2><div class="sub">以下来自 data/workbench_status.js；未回退 legacy 数据。</div>'+
+        '<div class="sub">'+WB.esc(JSON.stringify(S.regression||{}))+'</div></div>';
+    }
+  }
+  go();
+})();
+</script>
+</body></html>

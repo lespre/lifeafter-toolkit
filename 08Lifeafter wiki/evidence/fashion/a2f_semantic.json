@@ -1,0 +1,10 @@
+{
+ "claim": "appear_id → A2F.data.get(appear_id) → runtime_fashion_key → FASHION_DATA 语义链成立",
+ "status": "verified",
+ "evidence_type": "runtime_code_chain",
+ "producer": "APPEAR_ID_2_FASHION_ID.data.get",
+ "consumer": "FashionPage.get_fashion_data / PanelFashionPreview.init_role",
+ "module": "com\\cdata\\appear_id_2_fashion_id.py",
+ "snapshot_source": "test-documents-ba8a239a#10243 (FID 5FA629EFB3B8CB74)",
+ "restriction": "仅 semantic 层；raw-row / business / name / physical payload 一律 unresolved"
+}

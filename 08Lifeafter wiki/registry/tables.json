@@ -1,0 +1,975 @@
+{
+ "_meta": {
+  "schema_version": 1,
+  "generated": "2026-09-12T18:53:52",
+  "generator": "workbench phase1",
+  "full_inventory": {
+   "file": "data/table_index_entries.jsonl",
+   "records": 76143,
+   "note": "全量 entry↔table_name↔role↔table_body；本文件只收关键表"
+  },
+  "body_status_enum": [
+   "decoded",
+   "partial",
+   "module-only",
+   "unresolved",
+   "n/a"
+  ],
+  "v12": "snapshot-aware payload binding；entry 必须与 snapshot_id+entry_basis 同用"
+ },
+ "tables": [
+  {
+   "table": "com\\cdata\\common_item_data_base.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "data_entry": 18005,
+   "chs_entry": 23928,
+   "FID": "B42760CCA41DBC25",
+   "body_status": "decoded(36,038 行 / 7 个 P4-A2 schema)",
+   "decoder_status": "ok",
+   "used_by": [
+    "domains/item",
+    "boards/item_master_v01"
+   ],
+   "note": "base 019394 与 018005 两份快照条目；P4 绑 018005"
+  },
+  {
+   "table": "com\\cdata\\fashion_data.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "data_entry": 24340,
+   "chs_entry": 22449,
+   "FID": "E1645717C83FC968",
+   "body_status": "decoded(19,276 行)",
+   "decoder_status": "ok",
+   "used_by": [
+    "domains/fashion"
+   ],
+   "note": "CHS FID D016140651FEAB34"
+  },
+  {
+   "table": "com\\cdata\\appear_id_2_fashion_id.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "module_entry": 10243,
+   "FID": "5FA629EFB3B8CB74",
+   "body_status": "module stub only；独立 data body 未定位",
+   "decoder_status": "n/a",
+   "used_by": [
+    "domains/fashion"
+   ],
+   "note": "module payload = 普通 Python loader stub，coverage≈100%；native 边界"
+  },
+  {
+   "table": "com\\cdata\\gift_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 21287,
+   "FID": "C5998AD60B305608",
+   "body_status": "decoded(5,477 行, board)",
+   "decoder_status": "ok",
+   "used_by": [
+    "domains/item(gift_data 748)",
+    "boards/gift_data_text_sources"
+   ],
+   "note": "与 reward 源快照 BA8A 不一致（跨快照 caveat）"
+  },
+  {
+   "table": "com\\cdata\\all_equips_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "module_entry": 3317,
+   "FID": "1F8E9684E1B97CE0",
+   "body_status": "data body 需自适应配对（BA8A: base A130A31532FAF63C / CHS 94AB0B3FD057EF01）",
+   "decoder_status": "pair-locator 超时(>300s)",
+   "used_by": [
+    "boards/weapon_attrs_schema_static"
+   ],
+   "note": "name/desc/icon 文本槽错位 → 禁命名"
+  },
+  {
+   "table": "chip_type（池 CHS）",
+   "snapshot_id": "test-documents-ba8a239a",
+   "data_entry": 3278,
+   "FID": "21BFD156882FEA36",
+   "body_status": "chs pool(65 名)",
+   "decoder_status": "ok",
+   "used_by": [
+    "boards/chip_item_catalog"
+   ],
+   "note": "chip conf entry 9729 FID 628CEBDC133329C4"
+  },
+  {
+   "table": "com\\cdata\\bullets_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 24763,
+   "body_status": "未解（非 x{ 帧 / own CHS 缺失）",
+   "decoder_status": "failed",
+   "used_by": [
+    "residuals/item"
+   ]
+  },
+  {
+   "table": "com\\cdata\\edible_item_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 15523,
+   "body_status": "未解",
+   "decoder_status": "failed",
+   "used_by": [
+    "residuals/item"
+   ]
+  },
+  {
+   "table": "com\\cdata\\recipe.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 20952,
+   "body_status": "未解（非 x{ 帧）",
+   "decoder_status": "failed",
+   "used_by": [
+    "residuals/item"
+   ]
+  },
+  {
+   "table": "com\\cdata\\reward_pool_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 21380,
+   "body_status": "未解（index tail 不支持）",
+   "decoder_status": "failed",
+   "used_by": [
+    "domains/lottery"
+   ],
+   "note": "池结构改由 LOTTERY_POOL_RESOLVED_v0.1 提供"
+  },
+  {
+   "table": "com\\cdata\\trade_items.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 22239,
+   "body_status": "部分解(1,822 key / 无 CHS)",
+   "decoder_status": "partial",
+   "used_by": [
+    "residuals/item"
+   ]
+  },
+  {
+   "table": "com\\cdata\\space_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 16940,
+   "body_status": "未解",
+   "decoder_status": "failed",
+   "used_by": [
+    "residuals/item"
+   ]
+  },
+  {
+   "table": "com\\cdata\\player_module_appear_data.py",
+   "snapshot_id": "test-documents-328b8446",
+   "data_entry": 3546,
+   "body_status": "未解（非 x{ 帧）",
+   "decoder_status": "failed",
+   "used_by": [
+    "boards/fashion_face_slots"
+   ]
+  },
+  {
+   "table": "com\\utils\\DataHelpers.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "module_entry": 20487,
+   "FID": "BE842BC2295D957F",
+   "body_status": "module(payload 可读)",
+   "decoder_status": "ok",
+   "used_by": [
+    "evidence/item"
+   ],
+   "note": "item dispatch producer"
+  },
+  {
+   "table": "com\\components\\avatar\\BagCompBase.py",
+   "snapshot_id": "test-documents-328b8446",
+   "module_entry": 1410,
+   "FID": "0D86C2AE10376C4E",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [
+    "evidence/item"
+   ],
+   "note": "item consumer"
+  },
+  {
+   "table": "com\\components\\avatar\\RewardPoolComp.py",
+   "snapshot_id": "test-documents-328b8446",
+   "module_entry": 17084,
+   "FID": "9E87D78784DC59B6",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [
+    "evidence/lottery"
+   ],
+   "note": "reward 运行时判据"
+  },
+  {
+   "table": "com\\huodong\\controller\\OptionalVersionMgrController.py",
+   "snapshot_id": "test-documents-328b8446",
+   "module_entry": 2430,
+   "FID": "173C6E66B9DBBD59",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [
+    "residuals/lottery"
+   ],
+   "note": "replacement overlay"
+  },
+  {
+   "table": "com\\lang\\TableImportHelper.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "module_entry": 69993,
+   "FID": "A8D468AB34D86D47",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [],
+   "note": "data_file_id 来自 com.tdata.<scope>.data_translator_data_file_id"
+  },
+  {
+   "table": "com\\consts\\BigTableSplitConsts.py",
+   "snapshot_id": "test-documents-ba8a239a",
+   "module_entry": 20459,
+   "FID": "30E5E6D6090D9980",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [],
+   "note": "仅 7 张分片表；A2F 不在其中"
+  },
+  {
+   "table": "ui\\PanelWeaponSkinCollection.py",
+   "snapshot_id": "root(BC1BEF691C819C9C)",
+   "FID": "BC1BEF691C819C9C",
+   "body_status": "module",
+   "decoder_status": "ok",
+   "used_by": [
+    "domains/weapon_skin"
+   ],
+   "note": "update_right_info(skin_item_id) → get_item_data"
+  }
+ ],
+ "snapshot_payload_bindings": {
+  "bullets": {
+   "logical_table": "com\\cdata\\bullets_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 24763,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 18596,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 20401,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 17026,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "edible_item": {
+   "logical_table": "com\\cdata\\edible_item_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 15523,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 269539,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 5676,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 184959,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "recipe": {
+   "logical_table": "com\\cdata\\recipe.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 20952,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 355462,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 10189,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 427377,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "advanced_recipe_material": {
+   "logical_table": "com\\cdata\\advanced_recipe_material_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 8790,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 2161,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 4462,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 9389,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "advanced_recipe": {
+   "logical_table": "com\\cdata\\advanced_recipe_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 21689,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 1194,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 19268,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 1015,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "chat_bubble": {
+   "logical_table": "com\\cdata\\chat_bubble_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 7436,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 1041,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 9658,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 702,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "spray_paint": {
+   "logical_table": "com\\cdata\\spray_paint_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 8853,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 9434,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 18497,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 23945,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "plants_seed": {
+   "logical_table": "com\\cdata\\plants_seed_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 5452,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 1349,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 11820,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 1104,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "space_data": {
+   "logical_table": "com\\cdata\\space_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 16940,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 249971,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 7726,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 104343,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "belt_chip": {
+   "logical_table": "com\\cdata\\belt_chip_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 2552,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 51270,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 24191,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 11977,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "entry_not_in_snapshot_basis",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "reward_pool": {
+   "logical_table": "com\\cdata\\reward_pool_data_base.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 21380,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": "D558884A36C972C5",
+      "declared_size": 1091069,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 10496,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 655092,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": 23049,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": "D558884A36C972C5",
+      "declared_size": 648736,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "common_item": {
+   "logical_table": "com\\cdata\\common_item_data_base.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 18005,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": "B42760CCA41DBC25",
+      "declared_size": 1979020,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 23928,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 3500753,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": 19394,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": "B42760CCA41DBC25",
+      "declared_size": 905648,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "gift": {
+   "logical_table": "com\\cdata\\gift_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 19768,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": "C5998AD60B305608",
+      "declared_size": 270314,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 14746,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 900168,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": 21287,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": "C5998AD60B305608",
+      "declared_size": 133264,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "fashion": {
+   "logical_table": "com\\cdata\\fashion_data.py",
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 670,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": "E1645717C83FC968",
+      "declared_size": 831311,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 20834,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "file_id": null,
+      "declared_size": 653969,
+      "status": "ok"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    },
+    "test-documents-328b8446": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": 24340,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": "E1645717C83FC968",
+      "declared_size": 1000864,
+      "status": "ok"
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-328b8446",
+      "entry_index": null,
+      "entry_basis": "test-documents-328b8446:package-native",
+      "file_id": null,
+      "declared_size": null,
+      "status": "entry_not_in_snapshot_basis"
+     },
+     "status": "ok",
+     "note": "同一逻辑表在不同 snapshot 的物理实例；禁止 silent fallback"
+    }
+   }
+  },
+  "weapon_skin": {
+   "logical_table": "com\\cdata\\weapon_skin_data.py",
+   "module_entry": null,
+   "module_fid": null,
+   "bindings": {
+    "test-documents-ba8a239a": {
+     "data_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 11817,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "role": "data",
+      "table_name": "com\\cdata\\weapon_skin_data.py",
+      "family": "weapon_skin_data",
+      "source_id": "workcopy-ba8a239a",
+      "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+      "file_id": null,
+      "declared_size": 11983,
+      "payload_sha256": null,
+      "status": "ok",
+      "provenance": {
+       "resolution": "inventory-basis-entry",
+       "entry": 11817,
+       "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+      }
+     },
+     "chs_payload_ref": {
+      "snapshot_id": "test-documents-ba8a239a",
+      "entry_index": 21177,
+      "entry_basis": "test-documents-ba8a239a:inventory-basis",
+      "role": "chs",
+      "table_name": "com\\cdata\\weapon_skin_data_chs.py",
+      "family": "weapon_skin_data_chs",
+      "source_id": "workcopy-ba8a239a",
+      "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+      "file_id": null,
+      "declared_size": 10424,
+      "payload_sha256": null,
+      "status": "ok",
+      "provenance": {
+       "resolution": "inventory-basis-entry",
+       "entry": 21177,
+       "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+      }
+     },
+     "status": "ok",
+     "decode_status": {
+      "rows": 126,
+      "tail_decode_status": "resolved(125)/opaque-unresolved(1)"
+     },
+     "note": "canonical：resolve_table(BA8A, com\\cdata\\weapon_skin_data.py) → data 11817 / CHS 21177；FID 在该快照 payload_map 中不可得 ⇒ data_fid=false 如实留空（不猜）",
+     "name_source": {
+      "logical_table": "com\\cdata\\common_item_data_base.py",
+      "binding": {
+       "snapshot_id": "test-documents-ba8a239a",
+       "entry_index": 18005,
+       "entry_basis": "test-documents-ba8a239a:inventory-basis",
+       "role": "data",
+       "table_name": "com\\cdata\\common_item_data_base.py",
+       "family": "common_item_data_base",
+       "source_id": "workcopy-ba8a239a",
+       "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+       "file_id": "B42760CCA41DBC25",
+       "declared_size": 1979020,
+       "payload_sha256": null,
+       "status": "ok",
+       "provenance": {
+        "resolution": "inventory-basis-entry",
+        "entry": 18005,
+        "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+       }
+      },
+      "chs": {
+       "snapshot_id": "test-documents-ba8a239a",
+       "entry_index": 23928,
+       "entry_basis": "test-documents-ba8a239a:inventory-basis",
+       "role": "chs",
+       "table_name": "com\\cdata\\common_item_data_base_chs.py",
+       "family": "common_item_data_base_chs",
+       "source_id": "workcopy-ba8a239a",
+       "package_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+       "file_id": null,
+       "declared_size": 3500753,
+       "payload_sha256": null,
+       "status": "ok",
+       "provenance": {
+        "resolution": "inventory-basis-entry",
+        "entry": 23928,
+        "note": "该 entry 只在本 snapshot 基准内有效；FID 另记（若已知）"
+       }
+      }
+     }
+    }
+   },
+   "residual": "current 快照未绑定（无声明路径/无 canonical CHS FID）；module_fid 未证"
+  }
+ }
+}

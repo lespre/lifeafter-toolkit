@@ -1,0 +1,1150 @@
+{
+  "index_name": "通用皮肤活动定位索引",
+  "created_time": "2026-08-29 16:07:05",
+  "source_file": "ui_01.gpk / 023666.bin (Spine动画资源索引)",
+  "source_path": "E:\\提取成果\\拆包产物\\ui_01\\023666.bin",
+  "total_paths": 9098,
+  "categories": {
+    "收藏图鉴": [
+      {
+        "name": "bawangbieji",
+        "path": "ui/spine_new/shoucangtujian/bawangbieji/bawangbieji_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chihaizhige",
+        "path": "ui/spine_new/shoucangtujian/chihaizhige/chihaizhige_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chiyuezhongyan",
+        "path": "ui/spine_new/shoucangtujian/chiyuezhongyan/chiyuezhongyan_female.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dihuangkaijia",
+        "path": "ui/spine_new/shoucangtujian/dihuangkaijia/dihuangkaijia_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dunhuangfeitian",
+        "path": "ui/spine_new/shoucangtujian/dunhuangfeitian/dunhuangfeitian_jiangli_lingqu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huanzuanjingmeng",
+        "path": "ui/spine_new/shoucangtujian/huanzuanjingmeng/huanzijingmang_female_fx_1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiamianzhixing",
+        "path": "ui/spine_new/shoucangtujian/jiamianzhixing/jiamianzhixing_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lightup",
+        "path": "ui/spine_new/shoucangtujian/lightup/tujian_lightup_1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "linglong",
+        "path": "ui/spine_new/shoucangtujian/linglong/linglong_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "sairenzhige",
+        "path": "ui/spine_new/shoucangtujian/sairenzhige/sairenzhige_jiangli_lingqu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "sheniandatujian",
+        "path": "ui/spine_new/shoucangtujian/sheniandatujian/shenian_tujian_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xingyunjinghong",
+        "path": "ui/spine_new/shoucangtujian/xingyunjinghong/xingyunjinghong_jiangli_lingqu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yonghenghuamian",
+        "path": "ui/spine_new/shoucangtujian/yonghenghuamian/chuiguangzhimeng_role_loop.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "典藏时装": [
+      {
+        "name": "diancangshizhuang_lizi.atlas",
+        "path": "ui/spine/diancangshizhuang/diancangshizhuang_lizi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang_nv.atlas",
+        "path": "ui/spine/diancangshizhuang/diancangshizhuang_nv.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang_renwu.atlas",
+        "path": "ui/spine/diancangshizhuang/diancangshizhuang_renwu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang_longnian",
+        "path": "ui/spine/yz_vx/diancangshizhuang_longnian/longyingyuxiao_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "aobing",
+        "path": "ui/spine_new/diancangshizhuang/aobing/longzhimibao/icon_glow.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "bawangbieji",
+        "path": "ui/spine_new/diancangshizhuang/bawangbieji/bawangbieji_btn1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "bingfenhuang",
+        "path": "ui/spine_new/diancangshizhuang/bingfenhuang/bingfenghuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "buyanzhihua",
+        "path": "ui/spine_new/diancangshizhuang/buyanzhihua/buyanzhihua_female_1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chihaizhige",
+        "path": "ui/spine_new/diancangshizhuang/chihaizhige/chihaitianzi_female.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chiyuezhongyan",
+        "path": "ui/spine_new/diancangshizhuang/chiyuezhongyan/chiyuezhongyan_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dunhuangfeitian",
+        "path": "ui/spine_new/diancangshizhuang/dunhuangfeitian/dunhuangfeitian_btn.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "honglianyehuo",
+        "path": "ui/spine_new/diancangshizhuang/honglianyehuo/honglianyehuo_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huanzuanjingmeng",
+        "path": "ui/spine_new/diancangshizhuang/huanzuanjingmeng/choujiang_niudan_btn.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jihuzhixing",
+        "path": "ui/spine_new/diancangshizhuang/jihuzhixing/jihu_fly.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "kaijiayongshi",
+        "path": "ui/spine_new/diancangshizhuang/kaijiayongshi/fudai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "linglong",
+        "path": "ui/spine_new/diancangshizhuang/linglong/linglong_btn1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "liushijixiang",
+        "path": "ui/spine_new/diancangshizhuang/liushijixiang/liushijixiang_female.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "ranse",
+        "path": "ui/spine_new/diancangshizhuang/ranse/diancangsz_anniu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "sairenzhige",
+        "path": "ui/spine_new/diancangshizhuang/sairenzhige/xingyunjinghong_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shahaiyizhu",
+        "path": "ui/spine_new/diancangshizhuang/shahaiyizhu/pailiantu_2.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xingyunjinghong",
+        "path": "ui/spine_new/diancangshizhuang/xingyunjinghong/xinghejuecheng_female.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yonghenghuamian",
+        "path": "ui/spine_new/diancangshizhuang/yonghenghuamian/btn.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "活动": [
+      {
+        "name": "haiyang_zhanyi_juben_huodong1",
+        "path": "ui/spine/haiyang_zhanyi_juben_huodong1/huodong1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "haiyanghuodong_gongzhu",
+        "path": "ui/spine/haiyanghuodong_gongzhu/haiyanghuodong_gongzhu_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "haiyanghuodong_zhangyu",
+        "path": "ui/spine/haiyanghuodong_zhangyu/haiyanghuodongjinghua_zhangyu_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huodong",
+        "path": "ui/spine/huodong/qiandao_01.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huodong_choujiang_us_zhekou_tc",
+        "path": "ui/spine/huodong_choujiang_us_zhekou_tc/huodong_choujiang_us_zhekou_tc.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huodongjiangli",
+        "path": "ui/spine/huodongjiangli/jianglitanchuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shizhuang_tanchuang",
+        "path": "ui/spine/shizhuang_tanchuang/huodongyigui.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiarihuodong",
+        "path": "ui/spine/xiarihuodong/quan.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xinnianhuodong",
+        "path": "ui/spine/xinnianhuodong/dianziyanhua/vx_firework_blue.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yz_vx",
+        "path": "ui/spine/yz_vx/huodong_siqu_xuanshang/huodong_siqu_xuanshang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/bianshenpaidui/huodong_leyuanpaidui_jizhang_item.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lindongji",
+        "path": "ui/spine_new/lindongji/huodongyemian/jiangli_glow.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shuangdan",
+        "path": "ui/spine_new/shuangdan/jizihuodong/btn_dec.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tianmengfukai",
+        "path": "ui/spine_new/tianmengfukai/huodong_yaojing_wodemeng_jieguo_tishi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiaerzhen",
+        "path": "ui/spine_new/xiaerzhen/huodongrukou/ink.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xunbaoduojin",
+        "path": "ui/spine_new/xunbaoduojin/huodongrukou/handoff.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhishengfu",
+        "path": "ui/spine_new/zhishengfu/zhisheng_huodong.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhongxiahuayu",
+        "path": "ui/spine_new/zhongxiahuayu/huodong_zhongxia_dakashouce_tc.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhounian2025",
+        "path": "ui/spine_new/zhounian2025/honghuihuodong/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "bainianhongbao",
+        "path": "ui/spine_new/zhutihuodong/bainianhongbao/caishen.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "biyelvxing",
+        "path": "ui/spine_new/zhutihuodong/biyelvxing/fanye.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chaojidatujian",
+        "path": "ui/spine_new/zhutihuodong/chaojidatujian/chunjiedatujian_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "cheku",
+        "path": "ui/spine_new/zhutihuodong/cheku/anniu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chemohuodong",
+        "path": "ui/spine_new/zhutihuodong/chemohuodong/deng.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chenshizhencang",
+        "path": "ui/spine_new/zhutihuodong/chenshizhencang/teshu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chunjiefanli",
+        "path": "ui/spine_new/zhutihuodong/chunjiefanli/chunjiefanli_bggx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chunjieguangchangxvanchaun",
+        "path": "ui/spine_new/zhutihuodong/chunjieguangchangxvanchaun/chunjie_qjgx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chunjiwuzhong",
+        "path": "ui/spine_new/zhutihuodong/chunjiwuzhong/cj_wz.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dati",
+        "path": "ui/spine_new/zhutihuodong/dati/saoguang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dongfangmingzhu",
+        "path": "ui/spine_new/zhutihuodong/dongfangmingzhu/dongfangmingzhu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dongritianmeng",
+        "path": "ui/spine_new/zhutihuodong/dongritianmeng/dongritianmeng_gx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dunhuang",
+        "path": "ui/spine_new/zhutihuodong/dunhuang/biaoti.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "duolaoduode",
+        "path": "ui/spine_new/zhutihuodong/duolaoduode/dldd.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "fanlitanchuang",
+        "path": "ui/spine_new/zhutihuodong/fanlitanchuang/fanli.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "feijun98",
+        "path": "ui/spine_new/zhutihuodong/feijun98/feijun98_vx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "feituxunli",
+        "path": "ui/spine_new/zhutihuodong/feituxunli/ftxl.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "fengraozhixia",
+        "path": "ui/spine_new/zhutihuodong/fengraozhixia/xiarxiaodui_gx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "fulirili",
+        "path": "ui/spine_new/zhutihuodong/fulirili/flrl_sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "gonghuijiaju",
+        "path": "ui/spine_new/zhutihuodong/gonghuijiaju/duihuan.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "hongbaoyu",
+        "path": "ui/spine_new/zhutihuodong/hongbaoyu/hongbaoyu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huanxinchufa",
+        "path": "ui/spine_new/zhutihuodong/huanxinchufa/xfyy.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiajufanchang",
+        "path": "ui/spine_new/zhutihuodong/jiajufanchang/caidai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiamianqishi",
+        "path": "ui/spine_new/zhutihuodong/jiamianqishi/jiamianqishi_jixunye.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jielibaoxiang",
+        "path": "ui/spine_new/zhutihuodong/jielibaoxiang/biaoti.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jinhai",
+        "path": "ui/spine_new/zhutihuodong/jinhai/jinhai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "kaijiayongshi",
+        "path": "ui/spine_new/zhutihuodong/kaijiayongshi/bianshen/kjys_bs.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "kaixueji",
+        "path": "ui/spine_new/zhutihuodong/kaixueji/kaixue_heji.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "kongzhitai",
+        "path": "ui/spine_new/zhutihuodong/kongzhitai/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "kouling",
+        "path": "ui/spine_new/zhutihuodong/kouling/quwei.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lianju",
+        "path": "ui/spine_new/zhutihuodong/lianju/juji_dandao.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "licaifanli",
+        "path": "ui/spine_new/zhutihuodong/licaifanli/fukai/lcfx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lingkezhuangyuan",
+        "path": "ui/spine_new/zhutihuodong/lingkezhuangyuan/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "linglongliandong",
+        "path": "ui/spine_new/zhutihuodong/linglongliandong/jiaoyihang/jyh.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "meiribuff",
+        "path": "ui/spine_new/zhutihuodong/meiribuff/fuli_buff.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "nailongliandong",
+        "path": "ui/spine_new/zhutihuodong/nailongliandong/touwei/nl_tw.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "ofeishiguang",
+        "path": "ui/spine_new/zhutihuodong/ofeishiguang/guang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "ofeishike",
+        "path": "ui/spine_new/zhutihuodong/ofeishike/shuangxilinmen.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "pcxuanchuan",
+        "path": "ui/spine_new/zhutihuodong/pcxuanchuan/guangshu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "peifangbanjiadiedai",
+        "path": "ui/spine_new/zhutihuodong/peifangbanjiadiedai/guang01.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "pintuhuodong",
+        "path": "ui/spine_new/zhutihuodong/pintuhuodong/dasao.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "qiandao",
+        "path": "ui/spine_new/zhutihuodong/qiandao/zixuan.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "qifujie",
+        "path": "ui/spine_new/zhutihuodong/qifujie/boss/yw_boss.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "qingganhuiliu",
+        "path": "ui/spine_new/zhutihuodong/qingganhuiliu/anniu02.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "renlaren",
+        "path": "ui/spine_new/zhutihuodong/renlaren/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shangshijishu",
+        "path": "ui/spine_new/zhutihuodong/shangshijishu/shangshi_sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shanyaofengshang",
+        "path": "ui/spine_new/zhutihuodong/shanyaofengshang/caiguang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shengdanjijin",
+        "path": "ui/spine_new/zhutihuodong/shengdanjijin/shengdanjijin_sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shengdanshu",
+        "path": "ui/spine_new/zhutihuodong/shengdanshu/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shuangbeichongzhi",
+        "path": "ui/spine_new/zhutihuodong/shuangbeichongzhi/sbcz_sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shuangbeihuodong",
+        "path": "ui/spine_new/zhutihuodong/shuangbeihuodong/sbjl.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shuilian",
+        "path": "ui/spine_new/zhutihuodong/shuilian/bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "sishijixiang",
+        "path": "ui/spine_new/zhutihuodong/sishijixiang/fudai/sishifudai_1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "sunyou",
+        "path": "ui/spine_new/zhutihuodong/sunyou/sg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tehuilibao",
+        "path": "ui/spine_new/zhutihuodong/tehuilibao/huo.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tianmijiangli",
+        "path": "ui/spine_new/zhutihuodong/tianmijiangli/anniu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tiaotiaole",
+        "path": "ui/spine_new/zhutihuodong/tiaotiaole/guang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tongxingzheng",
+        "path": "ui/spine_new/zhutihuodong/tongxingzheng/2026_chunjitonmgxingzheng/huaban.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "wanfantiaozhan",
+        "path": "ui/spine_new/zhutihuodong/wanfantiaozhan/loding.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "wurenji",
+        "path": "ui/spine_new/zhutihuodong/wurenji/choujiang_xinwurenji_main.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xianjinghuodong",
+        "path": "ui/spine_new/zhutihuodong/xianjinghuodong/yanwu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiarijijin",
+        "path": "ui/spine_new/zhutihuodong/xiarijijin/xrjj.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xieguren",
+        "path": "ui/spine_new/zhutihuodong/xieguren/pinjiexieguren/xgr_fz.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xincunzhehuiliu",
+        "path": "ui/spine_new/zhutihuodong/xincunzhehuiliu/xcz_huikiu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xinnianliwu",
+        "path": "ui/spine_new/zhutihuodong/xinnianliwu/liwu_tc.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xinpianbaodi",
+        "path": "ui/spine_new/zhutihuodong/xinpianbaodi/jiantou.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiwangxindeng",
+        "path": "ui/spine_new/zhutihuodong/xiwangxindeng/xiwangxindeng_bggx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiyangyanglianming",
+        "path": "ui/spine_new/zhutihuodong/xiyangyanglianming/manghefuke/xyy_mh.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xuerendasaidiedai",
+        "path": "ui/spine_new/zhutihuodong/xuerendasaidiedai/lizi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xunzhaobianshenqi",
+        "path": "ui/spine_new/zhutihuodong/xunzhaobianshenqi/xunzhaobianshenqi_gx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yaojinmijing",
+        "path": "ui/spine_new/zhutihuodong/yaojinmijing/yaojin_gx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yinghuaji",
+        "path": "ui/spine_new/zhutihuodong/yinghuaji/paizhaohuodong/yhj_pzhd.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yinxinbuji",
+        "path": "ui/spine_new/zhutihuodong/yinxinbuji/anniu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yurenjie",
+        "path": "ui/spine_new/zhutihuodong/yurenjie/yrj_dllq.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zanhua",
+        "path": "ui/spine_new/zhutihuodong/zanhua/srhd.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhisheng",
+        "path": "ui/spine_new/zhutihuodong/zhisheng/dianji.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhoujifen",
+        "path": "ui/spine_new/zhutihuodong/zhoujifen/hudie.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhounianqing",
+        "path": "ui/spine_new/zhutihuodong/zhounianqing/guangchangdati/dati.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jkzhexin",
+        "path": "ui/zhutihuodong_v5/zhutihuodong/jkzhexin/choujiang/pailian01/vx_pailian_shizhuang_dingzhi.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "抽奖": [
+      {
+        "name": "bingtuanchoujiang",
+        "path": "ui/spine/bingtuanchoujiang/bingtuan_choujiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "bufanghuichoujiang",
+        "path": "ui/spine/bufanghuichoujiang/bufanghuichoujiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "choujiang_eva",
+        "path": "ui/spine/choujiang_eva/choujiang_eva.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "fudanchoujiang_spine",
+        "path": "ui/spine/fudanchoujiang_spine/fudanchoujiang_huang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huancai_choujiang",
+        "path": "ui/spine/huancai_choujiang/huancai_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "huodong_choujiang_us_zhekou_tc",
+        "path": "ui/spine/huodong_choujiang_us_zhekou_tc/huodong_choujiang_us_zhekou_tc.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jinglichoujiang",
+        "path": "ui/spine/jinglichoujiang/dajiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "liulangzhicheng_shuangqiang",
+        "path": "ui/spine/liulangzhicheng_shuangqiang/shuangqiang_choujiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shizhuangchoujiang-fx",
+        "path": "ui/spine/shizhuangchoujiang-fx/shizhuangchoujiang_fx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xuyuanxinge",
+        "path": "ui/spine/xuyuanxinge/binghaofu/choujiang_reward.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yz_vx",
+        "path": "ui/spine/yz_vx/bingtuan_choujiang/bingtuan_choujiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zaijuchoujiang_bg",
+        "path": "ui/spine/zaijuchoujiang_bg/qiliu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhaozilong",
+        "path": "ui/spine/zhaozilong/zhaozilong_choujiang/zhaozilong_jiaohu_01.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "choujiang",
+        "path": "ui/spine_new/choujiang/chuochuole/choujiang_bggx.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "common",
+        "path": "ui/spine_new/common/jiangli_dec/choujiang_jiangli_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang",
+        "path": "ui/spine_new/diancangshizhuang/huanzuanjingmeng/choujiang_niudan_btn.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangwuqichoujiang",
+        "path": "ui/spine_new/diancangwuqichoujiang/diedai/hexin01.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiajuchoujiang",
+        "path": "ui/spine_new/jiajuchoujiang/chaopaihuoguo/chaipaihuoguo_smoke.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/feirenzailiandong/feirenzaichoujiang_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "pailian",
+        "path": "ui/spine_new/pailian/jiaoyihangchoujiang/jyhpl.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shengcunfu",
+        "path": "ui/spine_new/shengcunfu/choujiang/shengcunfu_choujiang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shizhuangchoujiang",
+        "path": "ui/spine_new/shizhuangchoujiang/ex-aid/aikesaide.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shuangdan",
+        "path": "ui/spine_new/shuangdan/jizihuodong/choujiang_btn_dec.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "wuqichoujiang",
+        "path": "ui/spine_new/wuqichoujiang/lizi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yihuagongming",
+        "path": "ui/spine_new/yihuagongming/choujiang/yihuagongming_choujiang_rain.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhang",
+        "path": "ui/spine_new/zhang/choujiangfanchang/anniu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhuanpanchoujiang",
+        "path": "ui/spine_new/zhuanpanchoujiang/2026xinnian/2026xinnian_anniu_loop1.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhutihuodong",
+        "path": "ui/spine_new/zhutihuodong/wurenji/choujiang_xinwurenji_main.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "福袋": [
+      {
+        "name": "diancangshizhuang",
+        "path": "ui/spine_new/diancangshizhuang/aobing/main/aobing_fudai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/jindan/goudan_mian_fudai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhutihuodong",
+        "path": "ui/spine_new/zhutihuodong/sishijixiang/fudai/sishifudai_1.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "武器皮肤": [
+      {
+        "name": "weapon",
+        "path": "ui/spine/weapon/weapon_qingshe/weapon_qingshe.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang",
+        "path": "ui/spine_new/diancangshizhuang/honglianyehuo/honglianyehuo_weapon.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "wuqifangyin",
+        "path": "ui/spine_new/wuqifangyin/weapon_fx_slc.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "载具": [
+      {
+        "name": "jixun_xuanchuanye",
+        "path": "ui/spine/jixun_xuanchuanye/yinghua/car.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "charm",
+        "path": "ui/spine_new/charm/charm_card_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang",
+        "path": "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_car.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/daolanye/car.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shengcunfu",
+        "path": "ui/spine_new/shengcunfu/dajin/dajin_card_glod.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "stage4_spine",
+        "path": "ui/spine_new/stage4_spine/stage4_card.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "store",
+        "path": "ui/spine_new/store/store_tequan_card.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiaochoupai",
+        "path": "ui/spine_new/xiaochoupai/jiesuan_card.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "ziliaopian",
+        "path": "ui/spine_new/ziliaopian/dongji_2025/yinru/chouqian_card.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "家具": [
+      {
+        "name": "banbenjiaju_xuehua",
+        "path": "ui/spine/banbenjiaju_xuehua/banbenjiaju_xuehua.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "baozhi_youxi_jiaju2",
+        "path": "ui/spine/baozhi_youxi_jiaju2/baozhi_youxi_jiaju2_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "guofengjiaju",
+        "path": "ui/spine/guofengjiaju/guofengjiajiu_aixin.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiaju",
+        "path": "ui/spine/jiaju/new_gangqinpu/new_gangqinpu.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiaju_jita_par",
+        "path": "ui/spine/jiaju_jita_par/jita_par.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiqirenjiaju",
+        "path": "ui/spine/jiqirenjiaju/jiaju_kuosan.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tiaowuji_yinfu",
+        "path": "ui/spine/tiaowuji_yinfu/banbenjiaju_xuehua.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "vx_leyuan_jiaju",
+        "path": "ui/spine/vx_leyuan_jiaju/caidai.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xiaowangzi",
+        "path": "ui/spine/xiaowangzi/xiaowangzijiajuchi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiaju_t2",
+        "path": "ui/spine_new/jiaju_t2/btn/shengxiahuixuan_btn.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiajuchoujiang",
+        "path": "ui/spine_new/jiajuchoujiang/chaopaihuoguo/chaipaihuoguo_smoke.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiajuwanfa",
+        "path": "ui/spine_new/jiajuwanfa/qianlanyueding/qianlanyueding.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/jiajuchoujiang/buff.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhongxiahuayu",
+        "path": "ui/spine_new/zhongxiahuayu/yunying_jiaju_zixuan_kuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhutihuodong",
+        "path": "ui/spine_new/zhutihuodong/gonghuijiaju/duihuan.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "称号": [
+      {
+        "name": "longyandaolanye",
+        "path": "ui/spine/longyandaolanye/title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shizhuangranse",
+        "path": "ui/spine/shizhuangranse/title_glow.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yz_vx",
+        "path": "ui/spine/yz_vx/gaizao_bp/title_guide/title_guide.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "ziliaopian_v6",
+        "path": "ui/spine/ziliaopian_v6/daohang_title_lizi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "charm",
+        "path": "ui/spine_new/charm/charm_store_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "chunjie_manian",
+        "path": "ui/spine_new/chunjie_manian/daolanye/daolanye_subtitle.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "diancangshizhuang",
+        "path": "ui/spine_new/diancangshizhuang/dunhuangfeitian/dunhuangfeitian_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "haidiaowanfa",
+        "path": "ui/spine_new/haidiaowanfa/tongji_shangjing/chenghao_four.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiajuchoujiang",
+        "path": "ui/spine_new/jiajuchoujiang/chaopaihuoguo/chaopaihuoguo_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jiesuan",
+        "path": "ui/spine_new/jiesuan/new/jiesuan_chenghao.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "jixun",
+        "path": "ui/spine_new/jixun/yingxinbuji/yingxingbuji_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lushuicunjuqing",
+        "path": "ui/spine_new/lushuicunjuqing/juqing_lushui_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "lushuicuntanan",
+        "path": "ui/spine_new/lushuicuntanan/jiesuan_title_bg.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "pailian",
+        "path": "ui/spine_new/pailian/aobing/aobing_pailian_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shizhuangchoujiang",
+        "path": "ui/spine_new/shizhuangchoujiang/qianghuomeigui/qianghuomeigui_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "shoucangtujian",
+        "path": "ui/spine_new/shoucangtujian/bawangbieji/bawangbieji_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "tianshangshi",
+        "path": "ui/spine_new/tianshangshi/common/chenshizhencang_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xunbaoduojin",
+        "path": "ui/spine_new/xunbaoduojin/huodongrukou/xunbaoduojin_shiyuejianglin_subtitle.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yuekafu",
+        "path": "ui/spine_new/yuekafu/peijianxitong/dazao_tc_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhishengfu",
+        "path": "ui/spine_new/zhishengfu/yugao_title.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhutihuodong",
+        "path": "ui/spine_new/zhutihuodong/chaojidatujian/chunjiedatujian_title.atlas",
+        "type": "spine_animation"
+      }
+    ],
+    "头像框/名片框": [
+      {
+        "name": "boss_infect_blood",
+        "path": "ui/spine/boss_infect_blood/baozi/yihua_touxiang_baozi.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "dongmei_touxiangkuang",
+        "path": "ui/spine/dongmei_touxiangkuang/touxiangkuang_dongmei.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "mingpiankuang",
+        "path": "ui/spine/mingpiankuang/img_biankuang36.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "touxiang_ani",
+        "path": "ui/spine/touxiang_ani/icon_touxiang_64.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "touxiang_jiushiguang",
+        "path": "ui/spine/touxiang_jiushiguang/icon_touxiang_04.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "touxiangkuang",
+        "path": "ui/spine/touxiangkuang/baitianetouxiangkuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "xinchuntouxiangkuang",
+        "path": "ui/spine/xinchuntouxiangkuang/xinchunzhuti.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "yz_vx",
+        "path": "ui/spine/yz_vx/touxiang_liuguang/touxiang_liuguang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhaozilong",
+        "path": "ui/spine/zhaozilong/zhaozilong_touxiangkuang/zhaozilong_touxiangkuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "zhaozilong_mingpiankuang",
+        "path": "ui/spine/zhaozilong_mingpiankuang/zhaozilong_mingpiankuang.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "gexingwuliao",
+        "path": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_101.atlas",
+        "type": "spine_animation"
+      },
+      {
+        "name": "touxiang",
+        "path": "ui/spine_new/touxiang/changlongtouxiangkuang.atlas",
+        "type": "spine_animation"
+      }
+    ]
+  },
+  "usage": "本索引可用于快速定位收藏图鉴、典藏时装、活动、抽奖、武器皮肤、载具、家具、称号等内容的Spine动画资源，配合对应的纹理文件可查看实际效果"
+}

@@ -1,0 +1,280 @@
+{
+ "product": "WEAPON_SKIN_EFFECTS",
+ "authority": "user 2026-09-13（Weapon Skin Effect Detail Standard，通用规则，不得按样本写死）",
+ "source_doc": "domains/weapon_skin/EFFECT_STANDARD.json",
+ "role": "服务/投影层机器可读副本：effect_type 词表 + 中文标签 + UI 顺序 + 字段语义映射 + 各等级标配",
+ "effect_types": [
+  "hit_effect",
+  "kill_effect",
+  "damage_number",
+  "projectile_effect",
+  "slash_effect",
+  "combat_sound",
+  "combat_crosshair",
+  "exclusive_combat_animation",
+  "exclusive_idle_animation",
+  "special_interaction",
+  "nucleus_linkage",
+  "other",
+  "unresolved"
+ ],
+ "labels_cn": {
+  "hit_effect": "命中效果",
+  "kill_effect": "击败特效",
+  "damage_number": "伤害跳字",
+  "projectile_effect": "攻击弹道",
+  "slash_effect": "挥砍特效",
+  "combat_sound": "战斗音效",
+  "combat_crosshair": "攻击准心",
+  "exclusive_combat_animation": "专属战斗动作",
+  "exclusive_idle_animation": "专属待机动作",
+  "special_interaction": "特殊交互",
+  "nucleus_linkage": "核芯联动",
+  "other": "其它",
+  "unresolved": "未解析"
+ },
+ "ui_order": [
+  "hit_effect",
+  "kill_effect",
+  "damage_number",
+  "attack_visual_effect",
+  "combat_sound",
+  "combat_crosshair",
+  "exclusive_combat_animation",
+  "exclusive_idle_animation",
+  "special_interaction",
+  "nucleus_linkage",
+  "other"
+ ],
+ "effect_fields": {
+  "hit_effect": [
+   "hit_sfx_functions"
+  ],
+  "kill_effect": [
+   "extension_defeat_functions"
+  ],
+  "damage_number": [
+   "jump_word_functions"
+  ],
+  "projectile_effect": [],
+  "slash_effect": [],
+  "combat_sound": [
+   "fire_sfx_path",
+   "sound_functions"
+  ],
+  "combat_crosshair": [
+   "aim_cross_functions"
+  ],
+  "exclusive_combat_animation": [
+   "play_anim_moudle",
+   "hold_functions"
+  ],
+  "exclusive_idle_animation": [
+   "idle_anim"
+  ],
+  "special_interaction": [
+   "switch_weapon",
+   "socket"
+  ],
+  "nucleus_linkage": [
+   "nucleus_replace_ids",
+   "link_nucleus"
+  ],
+  "other": [
+   "weapon_sfx_path",
+   "skin_bullet_model_path",
+   "special_preview_model_path",
+   "experience_video",
+   "back_scale",
+   "force_assist_model_path",
+   "soft_bone_ids",
+   "soft_bone_model_names",
+   "soft_bone_socket_names",
+   "v2_soft_bone_ids",
+   "v2_self_soft_bone_id"
+  ],
+  "unresolved": []
+ },
+ "field_map": {
+  "hit_sfx_functions": {
+   "effect_type": "hit_effect",
+   "status": "inferred_high"
+  },
+  "fire_sfx_path": {
+   "effect_type": "combat_sound",
+   "status": "inferred_medium"
+  },
+  "sound_functions": {
+   "effect_type": "combat_sound",
+   "status": "inferred_high"
+  },
+  "extension_defeat_functions": {
+   "effect_type": "kill_effect",
+   "status": "inferred_high"
+  },
+  "jump_word_functions": {
+   "effect_type": "damage_number",
+   "status": "inferred_high"
+  },
+  "trace_functions": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_high"
+  },
+  "skin_trajectory_type": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_medium"
+  },
+  "coldarm_types": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_medium"
+  },
+  "skin_replace_anims": {
+   "effect_type": "attack_visual_effect",
+   "status": "inferred_low"
+  },
+  "aim_cross_functions": {
+   "effect_type": "combat_crosshair",
+   "status": "inferred_high"
+  },
+  "play_anim_moudle": {
+   "effect_type": "exclusive_combat_animation",
+   "status": "inferred_medium"
+  },
+  "hold_functions": {
+   "effect_type": "exclusive_combat_animation",
+   "status": "inferred_low"
+  },
+  "idle_anim": {
+   "effect_type": "exclusive_idle_animation",
+   "status": "inferred_high"
+  },
+  "switch_weapon": {
+   "effect_type": "special_interaction",
+   "status": "inferred_low"
+  },
+  "socket": {
+   "effect_type": "special_interaction",
+   "status": "inferred_low"
+  },
+  "nucleus_replace_ids": {
+   "effect_type": "nucleus_linkage",
+   "status": "inferred_high"
+  },
+  "link_nucleus": {
+   "effect_type": "nucleus_linkage",
+   "status": "inferred_high"
+  },
+  "weapon_sfx_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "skin_bullet_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "special_preview_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "experience_video": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "back_scale": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "force_assist_model_path": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_ids": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_model_names": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "soft_bone_socket_names": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "v2_soft_bone_ids": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  },
+  "v2_self_soft_bone_id": {
+   "effect_type": "other",
+   "status": "inferred_low"
+  }
+ },
+ "tier_standard": {
+  "chuan_shi": {
+   "required": [
+    "hit_effect",
+    "kill_effect",
+    "damage_number",
+    "attack_visual_effect",
+    "combat_sound",
+    "combat_crosshair",
+    "exclusive_combat_animation",
+    "exclusive_idle_animation"
+   ],
+   "optional": [
+    "special_interaction",
+    "nucleus_linkage"
+   ],
+   "legacy_label": "传世级"
+  },
+  "dian_cang": {
+   "required": [
+    "hit_effect",
+    "kill_effect",
+    "damage_number",
+    "attack_visual_effect",
+    "combat_sound",
+    "combat_crosshair"
+   ],
+   "optional": [
+    "special_interaction",
+    "nucleus_linkage"
+   ],
+   "legacy_label": "典藏级"
+  },
+  "zi_pi": {
+   "required": [
+    "hit_effect",
+    "attack_visual_effect"
+   ],
+   "optional": [],
+   "legacy_label": "紫皮级"
+  },
+  "other": {
+   "required": [],
+   "optional": [],
+   "legacy_label": null
+  }
+ },
+ "weapon_type_labels": {
+  "1": "突击步枪",
+  "5": "狙击枪",
+  "50": "冷兵器",
+  "4": "霰弹枪",
+  "6": "手枪",
+  "7": "榴弹炮",
+  "20": "喷火器",
+  "3": "弓箭",
+  "8": "电磁机枪",
+  "51": "护臂/盾"
+ },
+ "ip_liaison": {
+  "supported_today": [
+   "既知 23 款有值（其余为未解析）"
+  ],
+  "source": "data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv#联动IP（用户提供的历史目录）→ legacy 板 ip_now → 展示边车 PRESENTATION_LEGACY.jsonl",
+  "field_in_canonical": null,
+  "note": "canonical weapon_skin_data 无 IP 字段；IP 属展示层（presentation_only），不得决定身份/绑定/listing"
+ },
+ "grade_status": "unresolved"
+}

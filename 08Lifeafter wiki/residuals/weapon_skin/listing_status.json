@@ -1,0 +1,26 @@
+{
+ "domain": "weapon_skin",
+ "field": "listing_status",
+ "value": "unresolved",
+ "rows": 126,
+ "count": 126,
+ "supported_today": [
+  "unresolved"
+ ],
+ "hard_blocked": false,
+ "counts": {
+  "verified_listed": 0,
+  "verified_unlisted": 0,
+  "unresolved": 126
+ },
+ "why": "同快照无 sale/shop/exchange 的 runtime consumer/字段语义证据",
+ "not_listed_evidence": [
+  "sale_ts 存在",
+  "raw row 存在",
+  "有名称",
+  "board 出现",
+  "timed/permanent"
+ ],
+ "policy": "不扩展调查；只有明确证据才可升级 verified_listed/verified_unlisted",
+ "generated_at": "2026-09-21T13:20:32+08:00"
+}

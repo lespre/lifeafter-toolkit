@@ -1,0 +1,246 @@
+{
+ "schema": "weapon-skin-source-graph/v1",
+ "snapshot_basis": "test-documents-ba8a239a",
+ "rules": [
+  "整数相同 ≠ 连边",
+  "跨 snapshot 禁止静默 join",
+  "每条边必须有 evidence_ref",
+  "business/physical/name 三维独立"
+ ],
+ "edges": [
+  {
+   "from": "skin_item_id",
+   "to": "source:weapon_skin.main",
+   "relation": "runtime lookup",
+   "status": "verified",
+   "evidence_ref": [
+    "evidence/weapon_skin/three_bindings.json",
+    "artifacts/active/weapon_skin/RULES.json"
+   ],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "runtime consumer 以 skin_item_id 取 WEAPON_SKIN_DATA.data[skin_item_id]",
+   "relation_kind": "identity_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "source:item.common_item",
+   "relation": "name lookup",
+   "status": "verified",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl#name_chain"
+   ],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "common_item_data_base 行 key = skin_item_id，name 字段 → CHS slot（126 行中 122 命中）",
+   "relation_kind": "identity_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "timed_skin_id → permanent_skin_id",
+   "relation": "variant/timed",
+   "status": "unresolved",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/RULES.json"
+   ],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "timed relation 本阶段不重调查；变体行在 canonical body 中为独立行",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "source:presentation.user_catalog_ip",
+   "relation": "ip_liaison（展示层）",
+   "status": "verified",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/PRESENTATION_LEGACY.jsonl",
+    "domains/weapon_skin/SOURCE_REGISTRY.json"
+   ],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "IP 来自用户提供的历史目录（128 行/23 行有值），经 legacy 板 ip_now 进展示边车；presentation_only —— 不得决定 identity/listing/grade/name_status（canonical 无 IP 字段）",
+   "relation_kind": "identity_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "sale/shop/acquisition config",
+   "relation": "listing/acquisition",
+   "status": "unresolved",
+   "evidence_ref": [],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "未发现引用 skin_item_id 的 sale/shop/acquisition 消费者或配置 ⇒ listing_status 只能 unresolved",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_skin.sfx_function",
+   "relation": "effect records（多对一）",
+   "status": "verified",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS.jsonl",
+    "domains/weapon_skin/SOURCE_GRAPH.json"
+   ],
+   "rule": "skin_id 字段（348/348）+ 值域 ⊆ canonical + 共享路径词干：verified 153/348",
+   "rejected_alternatives": [
+    "按 name 相等配对（禁止）"
+   ],
+   "relation_kind": "presentation_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_skin.behavior_res",
+   "relation": "behavior records（主键=skin 键）",
+   "status": "verified",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS.jsonl"
+   ],
+   "rule": "主键 ⊆ canonical（75/78）+ 共享路径词干：verified 69/80",
+   "relation_kind": "presentation_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_skin.effect_show",
+   "relation": "注册行（hash(skin_id) 同源索引）",
+   "status": "verified",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS.jsonl"
+   ],
+   "rule": "两表 0x76 节点 key 同源 hash(skin_id) ⇒ 注册行定位；注册行≠UI 当前行（residual）",
+   "residual": null,
+   "relation_kind": "presentation_binding",
+   "source_class": "content_source"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_kind.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "unresolved_deferred",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [],
+   "rule": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified",
+   "residual": "需要专用解析后才能升级",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown",
+   "status_note": "本阶段未证 ⇒ unresolved_deferred；rejected 仅用于已有负证据证明错误的关系",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:coldarm_type.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "unresolved_deferred",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [],
+   "rule": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified",
+   "residual": "需要专用解析后才能升级",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown",
+   "status_note": "本阶段未证 ⇒ unresolved_deferred；rejected 仅用于已有负证据证明错误的关系",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:skin.replace_anims",
+   "relation": "候选（本阶段未解）",
+   "status": "unresolved_deferred",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [],
+   "rule": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified",
+   "residual": "需要专用解析后才能升级",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown",
+   "status_note": "本阶段未证 ⇒ unresolved_deferred；rejected 仅用于已有负证据证明错误的关系",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  }
+ ],
+ "generated": "2026-09-21T13:20:45+08:00",
+ "relation_kinds": [
+  "identity_binding",
+  "presentation_binding",
+  "corroboration_binding"
+ ],
+ "source_classes": [
+  "content_source",
+  "mapping_source",
+  "runtime_evidence_source"
+ ],
+ "open_edges": [
+  {
+   "from": "skin_item_id",
+   "to": "timed_skin_id → permanent_skin_id",
+   "relation": "variant/timed",
+   "status": "unresolved",
+   "why": "timed relation 本阶段不重调查；变体行在 canonical body 中为独立行"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "sale/shop/acquisition config",
+   "relation": "listing/acquisition",
+   "status": "unresolved",
+   "why": "未发现引用 skin_item_id 的 sale/shop/acquisition 消费者或配置 ⇒ listing_status 只能 unresolved"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_kind.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:coldarm_type.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:skin.replace_anims",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  }
+ ],
+ "status_vocab": [
+  "verified",
+  "unresolved",
+  "unresolved_deferred",
+  "rejected"
+ ],
+ "presentation_blockers": [
+  {
+   "from": "skin_item_id",
+   "to": "timed_skin_id → permanent_skin_id",
+   "relation": "variant/timed",
+   "status": "unresolved",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/RULES.json"
+   ],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "timed relation 本阶段不重调查；变体行在 canonical body 中为独立行",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "sale/shop/acquisition config",
+   "relation": "listing/acquisition",
+   "status": "unresolved",
+   "evidence_ref": [],
+   "snapshot": "test-documents-ba8a239a",
+   "rule": "未发现引用 skin_item_id 的 sale/shop/acquisition 消费者或配置 ⇒ listing_status 只能 unresolved",
+   "relation_kind": "identity_binding",
+   "source_class": "unknown"
+  }
+ ],
+ "accessory_sources": [
+  "weapon_skin.pendant"
+ ]
+}

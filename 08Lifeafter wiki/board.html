@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>板块 · Lifeafter Wiki</title>
+<script src="data/publication_policy.js?v=ec7cf93a17f7"></script>
+<script src="data/workbench_manifest.js?v=7ee9dbaa765c"></script>
+<script src="data/weapon_skin_audio_attachments.js?v=9c3b9c3eb04c"></script>
+<script src="data/media/weapon_skin_media.js?v=a7232deb9d2a"></script>
+<script src="data/media/weapon_skin_skeleton.js?v=f921edf44d09"></script>
+<!-- ★ 新增（2026-09-20，CUBE_PICKER）：环境立方体（IBL cube）清册。
+     ⚠ 源数据里**没有**选择器决定预览该用哪一套 cube ⇒ 查看器里的「环境 cube」下拉是**取证/对比工具**，
+     不代表「游戏就是这么选的」。清册由 03拆包产物/_target_1110025/_cubepick_build.py 按名字哈希枚举源容器后解码生成。
+     非 defer ⇒ 早于下方 defer 的 weapon_skin_viewer.js 执行，保证选择器首次填充时清册已就绪。 -->
+<script src="data/media/weapon_skin_cubes.js?v=cf095dc3fd73"></script>
+<!-- ★ 新增（2026-09-20，MERGE_FIX）：**自造近似**环境立方体清册（custom_studio_20260920）。
+     ⚠ 与上一行不同：这里面的 cube **不是游戏资产**（status='self_authored_approximate'，
+     authority=user_authorized_manual_20260920，由游戏自己的背景板重采样而来）。
+     它**故意落在**总清单既有枚举（source_verified/partial/unresolved）之外，因此绝不计入
+     「已定位源 cube」的 32 套；下拉里以独立分组「自造·近似（非游戏资产）」单列，文案写明非游戏资产。
+     本文件无副作用：只注册 window.WikiWeaponSkinCubesCustom，并在主清单已存在时**幂等** append
+     （同名不覆盖 ⇒ 踩不到真源 cube）。必须排在 weapon_skin_cubes.js 之后、defer 的 viewer.js 之前。 -->
+<script src="data/media/weapon_skin_cubes_custom.js?v=d40de75427ba"></script>
+<link rel="stylesheet" href="assets/weapon_skin_viewer.css?v=neox4">
+<script defer src="assets/weapon_skin_viewer.js?v=34983ec79804"></script>
+<script defer src="assets/weapon_skin_sfx_adapter.js?v=32d4c81fae01"></script>
+<link rel="stylesheet" href="board_shadcn.css?v=20260913-v03">
+<style>
+/* 品级多选下拉（2026-09-19）：作用域严格限定在 #fGrade，且全部加 !important。
+   目的：防止其它样式表里针对 label / input / .controls>* 的通用规则把面板撑宽、
+   把复选框与文字推到两端（用户已两次报该故障，第 3 次改为"不依赖层叠"的写法）。 */
+#fGrade{position:relative;flex:0 0 auto}
+#fGradeBtn{flex:0 0 auto}
+#fGradePanel{position:absolute;top:calc(100% + 4px);left:0;z-index:60;
+  width:250px!important;max-width:min(320px,80vw)!important;box-sizing:border-box!important;
+  max-height:300px;overflow:auto;background:#fff;border:1px solid #e4e4e7;border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px}
+#fGradePanel>div{display:flex!important;flex-direction:row!important;align-items:center!important;
+  justify-content:flex-start!important;gap:8px!important;width:100%!important;box-sizing:border-box!important;
+  padding:5px 8px!important;border-radius:7px;cursor:pointer;
+  white-space:nowrap!important;text-align:left!important;
+  font-size:12.5px!important;line-height:1.5!important;color:#3f3f46}
+#fGradePanel>div>input[type=checkbox]{flex:0 0 auto!important;width:14px!important;height:14px!important;
+  min-width:14px!important;margin:0!important;padding:0!important;accent-color:#6d28d9;cursor:pointer}
+#fGradePanel>div>span{flex:0 1 auto!important;min-width:0!important;max-width:100%!important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 骨骼接线（2026-09-19）：卡面内一行，只放状态与链接，不抢 3D 预览按钮的位置 */
+.skin-skel{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:6px!important;
+  margin:6px 0 2px;padding:5px 6px;border:1px dashed #d4d4d8;border-radius:8px;background:#fafafa}
+.skin-skel .skel-tag{font-size:12px;color:#3f3f46;background:#f4f4f5;border:1px solid #e4e4e7;
+  border-radius:6px;padding:1px 6px;white-space:nowrap}
+.skin-skel .skel-tag b{color:#6d28d9}
+.skin-skel .skel-link{font-size:12px;color:#3f3f46;text-decoration:none;border:1px solid #e4e4e7;
+  border-radius:6px;padding:1px 7px;background:#fff;white-space:nowrap}
+.skin-skel .skel-link:hover{background:#f4f4f5;text-decoration:underline}
+.skin-skel .skel-link.primary{color:#1d4ed8;border-color:#bfdbfe;background:#eff6ff;font-weight:600}
+.skin-skel .skel-warn{font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fde68a;
+  border-radius:6px;padding:1px 6px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topin">
+  <div class="crumb"><a href="wiki.html">← 返回 Wiki 总入口</a>　<a href="skeletons.html">骨骼库（典藏+传世 37 个 id）</a></div>
+  <h1 id="title">加载中…</h1>
+  <div class="meta-line" id="metaline"></div>
+  <div class="pills" id="pills"></div>
+</div></div>
+<div class="wrap">
+  <div class="notes" id="notes" style="display:none"></div>
+  <div class="controls">
+    <input id="q" type="search" aria-label="搜索板内条目" placeholder="搜索名称 / ID / 任意字段…" autocomplete="off">
+    <select id="fEv">
+      <option value="">全部证据等级</option>
+      <option value="structure">结构已解析</option>
+      <option value="verified">业务链已核验</option>
+      <option value="candidate">候选待验证</option>
+    </select>
+    <select id="fRelease" style="display:none"><option value="">全部上架状态</option></select>
+    <select id="fNameSt" style="display:none"><option value="">全部名称状态</option></select>
+    <div id="fGrade" style="display:none;position:relative">
+      <button type="button" id="fGradeBtn" aria-haspopup="listbox" aria-expanded="false" title="点击展开品级列表（可多选；一个都不勾 = 全部）"
+        style="font:inherit;font-size:12px;color:#3f3f46;background:#fff;border:1px solid #e4e4e7;border-radius:8px;padding:6px 10px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+        <span id="fGradeLabel">品级：全部</span><span style="color:#a1a1aa">▾</span>
+      </button>
+      <div id="fGradePanel" role="listbox" aria-multiselectable="true"
+        style="display:none;position:absolute;top:calc(100% + 4px);left:0;width:max-content;min-width:200px;max-width:320px;max-height:290px;overflow:auto;background:#fff;border:1px solid #e4e4e7;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:60;box-sizing:border-box"></div>
+    </div>
+    <select id="fType" style="display:none"><option value="">全部武器种类</option></select>
+    <select id="fIp" style="display:none"><option value="">全部联动IP</option></select>
+    <span id="listingHint" class="sort-hint" style="display:none"></span>
+    <span id="fCustomWrap"></span>
+    <span id="sortHint" class="sort-hint" style="display:none"></span>
+    <select id="fOrder" style="display:none" aria-label="排列依据">
+      <option value="gallery">排序：游戏图鉴序列</option>
+      <option value="id">排序：皮肤ID</option>
+    </select>
+    <button id="fDir" type="button" class="dir-btn" style="display:none" title="切换排列方向（↑/↓）" aria-label="切换排列方向">↓ 降序</button>
+    <span class="count" id="count" role="status" aria-live="polite"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+// 通用板块渲染：board.html?b=<board文件名>，动态加载 data/boards/<b>.js
+const FIELD_CN={weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_state:"版本状态",
+  store_zhencang:"当期商店 · 臻藏（宸晶臻石）",store_xishi:"当期商店 · 稀世（稀世之证）",
+  store_zhencang_source:"臻藏清单来源",store_xishi_source:"稀世清单来源",
+  model_path:"模型路径",located:"物理定位",pkg:"所在包",entry:"条目",cc:"c1c2指纹",
+  mesh_count:"网格数",mesh_total:"网格字节",effect_name:"战斗特效",desc:"描述",
+  gpk_entry:"gpk条目",file:"贴图文件",size:"尺寸",gold_score:"金色占比",
+  shape_hint:"形态推测",shape_hint_level:"推测说明",
+  tier:"档位",layer:"所属层",pool_id:"池ID",slot:"槽位",item_id:"物品ID",
+  prob:"原始概率",config_exp:"配置过期",server:"服务器分支",broadcast:"活动播报",
+  base:"外观基名",kind:"类别",duration_days:"期限(天)",model_id:"模型ID",desc_theme:"描述主题",
+  part:"部位",all_model_ids:"全部模型ID",variants:"同款款数",
+  all_parts:"全部部位",time_limited_variants:"时限档(天)",duration_variants:"期限档",
+  tl_model_ids:"时限版模型ID",has_permanent:"含永久款",sample_paths:"资源路径样例",desc_note:"描述说明",
+  hurt:"攻击力",power:"火力",damage:"理论伤害(攻×火力)",fire_speed:"射速",durability:"耐久",
+  base_score:"基础评分",weapon_type_code:"武器类型码",weapon_kind_code:"武器子类码",
+  vehicle_class:"载具类型",series:"模型系列",body_model:"模型路径",vehicle_type_code:"载具类型码",
+  item_ids:"关联物品ID",candidate_names:"候选名",
+  name_field_chs_slot:"名称字段CHS槽",name_value_chs_slot:"名称文本CHS槽",
+  desc_field_chs_slot:"说明字段CHS槽",desc_value_chs_slot:"说明文本CHS槽",
+  skin_id:"武器皮肤ID",sfx_item_count:"SFX子项数",catalog_layer:"图鉴层级",version_status:"快照对照（历史整理口径：用户参考表 v3-2 ⟶ BA8A 体验服 vs root 根包是否都有该行；不代表当前包状态）",
+  release_state:"上架状态",sale_date:"上架日",sale_ts:"上架时间戳",ip_now:"联动IP",
+  variant_type:"变体类型",permanent_skin_id:"永久皮肤ID",main_skin_id:"主皮肤ID",
+  variant_relation_state:"变体关系状态",variant_relation_rule:"变体关系依据",
+  preview_group:"预告分组",preview_note:"预告说明",variant_items:"时限变体",sfx_items:"SFX 子项",
+  name_resolution:"名称依据",official_name_status:"正式名状态",
+  weapon_type_display:"武器类型",weapon_type_label:"武器类型",named_sfx_item_count:"命名SFX数",official_desc:"当前官方描述",
+  official_name_status:"正式名状态",variant_item_count:"时限变体数",sfx_consensus_state:"SFX一致性线索",
+  skill_desc:"核芯特技",rank_star_segments:"星级段",grade_clean:"品级",skill_icon:"技能图标",
+  server_branch:"所属服务器",released:"上架状态",nucleus_attr_type:"核芯类型",item_id:"物品ID",
+  family:"攻防类别",max_stack_num:"最大堆叠数",hide_in_bag:"背包隐藏值",hide_in_bag_state:"背包隐藏状态",
+  record_key:"记录键",schema_ref:"结构引用",table:"静态表",identity_state:"身份状态",business_id_allowed:"允许作为业务ID",
+  static_name_literals:"同行静态名称字面值",unresolved_identity_candidates:"未解析身份候选",
+  structure_claim:"结构结论",runtime_final_state:"运行时最终状态",dataset_partition:"数据分区",component:"静态组件",
+  channel:"渠道",reliability_state:"来源可靠状态",pool_key:"奖池键",item_no:"槽位号",static_reward_raw:"静态 reward 原值",
+  generic_item_candidate:"generic item 候选",item_master_id:"ITEM_MASTER ID",merge_applied:"已执行 overlay 合并",
+  channel_merge_applied:"已执行渠道合并",source_lock_sha256:"源快照摘要",source_file_id:"源文件标识",
+  // ── 用户可见字段补全（工程字段给中文名，原始字段名只放悬停/技术详情）──
+  entry_index:"条目号",file_id:"文件标识",scalar_type:"标量类型",text:"文本",field_chs_slot:"名称字段槽",
+  value_chs_slot:"名称文本槽",decoded_sha256:"解码内容摘要",row_key:"行键",source_lock_sha256:"源快照摘要",
+  field_refs:"字段出处",name_source:"名称来源",source_entries:"来源条目",upstream:"上游源包",
+  package_sha256:"源包摘要",status_tags:"状态标签",structural_record_key:"结构记录键",
+  schema_refs:"结构引用",source_kind:"来源类型",source_path:"来源路径",source_sha256:"来源摘要",
+  identity_status:"身份状态",identity_reason:"身份说明",publication_tier:"数据等级",
+  hide_in_bag:"背包内隐藏",max_stack_num:"最大堆叠数",generic_item_id:"奖励道具ID候选",
+  item_count:"数量",pool_key:"奖池ID",item_no:"奖励槽位",record_id:"记录ID",
+  variant_relation_rule:"变体关系依据",sfx_type:"表现类型",sfx_type_label:"表现类型",
+  sfx_name:"表现名称",sfx_params:"表现参数",inline_groups:"内联组",source_table:"来源表",
+  evidence_note:"证据说明",note:"备注",notes:"说明",reason:"说明",position:"位置",
+  released:"是否上架",grade_label:"品级",star_segments:"星级段",attr_type:"属性类型",
+  item_master_id:"道具总表 ID",merge_applied:"已合并",kind:"类别",part:"部位",base:"基名",
+  // ── 补全：所有已发布板出现过的字段（含技术字段，中文标签后再折叠）──
+  id:"ID",icon:"图标",icon_path:"图标路径",name_status:"名称状态",name_display:"显示名称",
+  name_status_note:"名称状态说明",name_status_summary:"名称统计",candidate_name:"候选名称",
+  variant_relation_target:"变体关系目标",provenance:"来源信息",source:"来源说明",search_text:"搜索索引文本",text_provenance:"文本来源",
+  activity:"活动",instance_exp_date:"活动结束日期",instance_exp_ts:"活动结束时间戳",note_samples:"备注样例",
+  pool_count:"奖池数量",rows_in_window:"窗口内行数",combat_panel:"战斗表现面板",display_name:"展示名",
+  level:"品级",tags:"标签",user_evidence:"用户提供证据",attrs_offset:"属性表偏移",name_raw:"原始名称",
+  type_hint:"类型线索",schema6109_field23_hurt:"结构6109 字段23（伤害）",
+  schema6109_field35_power:"结构6109 字段35（威力）",candidate_name:"候选名称",
+  candidate_name_source:"候选名来源",candidate_name_status:"候选名状态",
+  timed_variants:"时限变体",timed_variant_count:"时限变体数",duration_label:"有效期",record:"记录",
+  weapon_type_state:"武器种类依据",weapon_type_inference:"武器种类推导",
+  verified_weapon_skin_identity:"武器皮肤身份已核验",es_registry_row_key:"UI 短名注册行键",
+  ui_short_name_es_key:"UI 短名键",ui_combat_short_names:"战斗短名候选",
+  ui_short_name_candidates:"UI 短名候选",listing_status:"上架状态（canonical）",listing_status_label:"上架状态",
+  listing_evidence:"上架状态证据",sale_ts_role:"上架时间戳（非上架状态）",name_status_label:"名称状态"};
+const FIXED=new Set(["id","name","evidence","source","evidence_level","provenance","text_provenance","sfx_items","timed_variants","timed_variant_count","weapon_type_inference","name_resolution","reference_fields","behavior_resources","field_provenance","variant_items","display_name","stats","variants","all_row_keys","schema_refs","text_provenance_note","weapon_type_label","weapon_type_code","rewards","pools","activity_pool_refs","status_tags","search_text"]);
+const HUGE_TABLE_MIN=15000;
+function buildHugeIndex(d){
+  // 大表（如全道具总表 35986 行）：预构建轻量检索串，避免每次按键 JSON.stringify 全表。
+  d._hay=(d.items||[]).map(it=>{
+  const vids=(it.variant_items||[]).map(v=>`${v.skin_id} ${v.display_name||v.name||""}`).join(" ");
+  return `${it.search_text||""} ${it.id} ${it.item_id??""} ${it.name||""} ${it.desc||""} ${it.icon||""} ${vids}`.toLowerCase();
+});
+}
+const EV_CN={structure:"结构已解析",verified:"业务链已核验",candidate:"候选待验证"};
+const STATE_CN={verified:"已核验",unresolved:"待确认",quarantined:"已隔离","static config":"静态配置",
+  "runtime final unknown":"运行时结果未确认",candidate:"候选"};
+const STATE_CLASS={verified:"verified",unresolved:"unresolved",quarantined:"quarantined","static config":"static-config","runtime final unknown":"runtime-final-unknown"};
+const esc=s=>String(s??"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+// 字段取值：优先顶层字段，其次 static_fields（候选板把 grade/weapon_type_label/sale_ts 放在 static_fields）。
+// 两处都是同快照真实字段，只读取、不推断。
+function pick(it,field){
+  if(!it)return undefined;
+  const v=it[field];
+  if(v!==undefined&&v!==null&&v!=="")return v;
+  const sf=it.static_fields;
+  return sf?sf[field]:undefined;
+}
+function renderStateTags(tags){
+  if(!Array.isArray(tags)||!tags.length)return "";
+  return `<span class="state-tags">${tags.map(tag=>`<span class="state-tag ${STATE_CLASS[tag]||"unresolved"}">${esc(STATE_CN[tag]||COMMON_VAL_CN[tag]||tag)}</span>`).join("")}</span>`;
+}
+// 游戏富文本染色：#f(N) 色段 / #cRRGGBB / #r 换行 / #n 复位 / {0} 变量保留
+// 色号为游戏文本近似映射（5=高亮金），可按实例校准
+const RT_COLORS={1:"#e8e8e8",2:"#7ed07e",3:"#58a6ff",4:"#c792ea",5:"#ffb300",6:"#ff7b72",7:"#79c0ff",8:"#56d4dd",9:"#ffa657",10:"#d2a8ff"};
+// 游戏富文本：单次扫描。token 表（按数据实测）：
+//   #cRRGGBB 文字色(6位) | #n 复位 | #r 换行 | #f(N) 色号(1..10 有近似映射，其余继承) 
+//   #p(路径) 内联图片 → 占位（本轮不做图片链，路径只进 title 便于审计）
+//   #H(...) 分段指令 → 按换行渲染（具体度量未证，注释保留原文）
+//   其它 #x / #x(..) / #xN 控制码 → 隐藏，不泄漏原文（title 保留）
+// 注意：#r1 / #r2019年 / #n(30天) 都是「token + 普通文本」，不得吞掉后面的数字/括号。
+const RT_TOKEN=/#(c[0-9a-fA-F]{6}|n|r|f\([^)]*\)|p\([^)]*\)|H\([^)]*\)|[A-Za-z](?:\([^)]{0,80}\)|\d{1,3})?)/g;
+function richText(s){
+  const t=esc(String(s??""));
+  let out="",i=0,m;
+  RT_TOKEN.lastIndex=0;
+  while((m=RT_TOKEN.exec(t))!==null){
+    out+=t.slice(i,m.index);
+    const tok=m[1];
+    if(tok.length===7&&tok[0]==="c"){out+=`</span><span class="rt" style="color:#${tok.slice(1)}">`;}
+    else if(tok==="n"){out+='</span><span class="rt">';}
+    else if(tok==="r"){out+="<br>";}
+    else if(tok.startsWith("f(")){const id=tok.slice(2,-1);out+=`</span><span class="rt" style="color:${RT_COLORS[id]||"inherit"}">`;}
+    else if(tok.startsWith("p(")){out+=`<span class="rt-img" title="${esc("图片：" + tok.slice(2,-1))}">［图片］</span>`;}
+    else if(tok.startsWith("H(")){out+="<br>";}
+    else {out+=`<span class="rt-ctl" title="${esc(tok)}"></span>`;}
+    i=m.index+m[0].length;
+  }
+  out+=t.slice(i);
+  return `<span class="rt">${out}</span>`;
+}
+function isRichText(v){return typeof v==="string"&&/#[A-Za-z]/.test(v)&&v.length<8000;}
+function getParam(k){return new URLSearchParams(location.search).get(k);}
+// ── 构建标记（缓存识别；独立挂在 body 顶部，不会被其它渲染覆盖）──
+(function wbStamp(){try{
+  const bar=document.createElement("div");
+  bar.id="wbBuildStamp";
+  bar.style.cssText="font:12px/1.5 -apple-system,'Segoe UI','Microsoft YaHei',sans-serif;color:#71717a;padding:4px 12px;background:#fffbe6;border-bottom:1px solid #fde68a";
+  bar.textContent="board.html build v1.3.2 / 2026-09-13 —— 若这里显示的日期不是今天，说明浏览器用了缓存旧页，请 Ctrl+F5 强刷";
+  document.body.insertBefore(bar, document.body.firstChild);
+  document.title="board.html build v1.3.2 · "+document.title;
+}catch(e){}})();
+const initialQuery=getParam("q")||"";
+const partFilter=(getParam("part")||"").split(",").map(s=>s.trim()).filter(Boolean);
+// 必须与 wiki.html 卡面规则一致：卡名仅显示分类尾段，不泄露生成器内部板名。
+function boardCardTitle(meta){
+  const category=String(meta?.category??"").trim();
+  const tail=category.split(" / ").pop().trim();
+  return zhTitle(tail||String(meta?.name??"未命名板块").trim());
+}
+function wbProjectionIds(){
+  const m=window.WIKI_WORKBENCH_MANIFEST;
+  return new Set(((m&&m.projections)||[]).map(p=>p.projection_id));
+}
+// v1.3：大数据 Domain 默认 API-first（不加载几十 MB board.js）；离线全量必须显式 ?offline=1
+const WB_API_FIRST={item_master_active:"workbench_items.html",lottery_pool_active:"workbench_lottery.html?tab=pools",
+  lottery_rewards_active:"workbench_lottery.html?tab=rewards"};
+const WB_OFFLINE_LABEL="offline_full_projection（artifacts/active 派生，数十 MB）";
+const WB_VIEW=(getParam("view")==="workbench")?"workbench":"wiki";
+function boardTitle(b){
+  const m=window.WIKI_WORKBENCH_MANIFEST;
+  const hit=((m&&m.projections)||[]).find(p=>p.projection_id===b);
+  return (hit&&hit.domain)?("Workbench · "+hit.domain):String(b);
+}
+function wbApiFirst(b){
+  return Object.prototype.hasOwnProperty.call(WB_API_FIRST,b)&&getParam("offline")!=="1";
+}
+function wbApiFirstNotice(b){
+  const page=WB_API_FIRST[b];
+  document.getElementById("title").textContent=boardTitle(b);
+  document.querySelector(".controls").style.display="none";
+  const n=document.getElementById("notes");n.style.display="block";
+  n.innerHTML="此板块已改为 <b>API 分页浏览</b>（单页 ≤ 200 行，不再首屏加载全量投影）。"
+   +"<div style=\"margin-top:6px\"><a href=\""+page+"\">→ 打开 Workbench API 页面</a>　"
+   +"<a href=\"?b="+encodeURIComponent(b)+"&offline=1\">→ 显式加载离线全量投影</a>"
+   +" <span class=\"sub\">("+WB_OFFLINE_LABEL+")</span></div>";
+  document.getElementById("grid").innerHTML='<div class="empty">未加载数据：大数据板块默认走 API，不做静默回退。</div>';
+}
+function loadBoard(b,cb){
+  if(wbApiFirst(b)){wbApiFirstNotice(b);return;}   // API-first：不加载全量投影，也不静默回退 legacy board
+  const s=document.createElement("script");
+  // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
+  s.src=wbProjectionIds().has(b)
+    ? `data/workbench_boards/${b}.js?v=wb1`
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20260904")}`;
+  s.onload=()=>{
+    const d=window["WIKI_BOARD_"+b];
+    if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
+    cb(d);
+  };
+  s.onerror=()=>showLoadError("板块数据文件读取失败："+b);
+  document.head.appendChild(s);
+}
+function showLoadError(reason){
+  document.getElementById("title").textContent="板块加载失败";
+  document.querySelector(".controls").style.display="none";
+  const n=document.getElementById("notes");n.style.display="block";
+  n.textContent=reason+"。请刷新页面重试；仍失败时，请检查 data/boards 下文件是否完整。可从顶部返回 Wiki 总入口。";
+  document.getElementById("grid").innerHTML='<div class="empty">未加载数据，没有把缺失数据视为空表。</div>';
+}
+let searchTimer=null;
+function scheduleSearch(event){
+  clearTimeout(searchTimer);
+  if(event&&event.isComposing)return;
+  searchTimer=setTimeout(render,160);
+}
+const RELEASE_CN={on_sale:"已上架",upcoming:"预告 · 未到上架日",no_sale_field:"未配上架时间",behavior_only:"仅行为资源（无父项/无道具行）"};
+// 英文枚举值 → 中文（只改显示；data 内原始值不变）
+const VERSION_STATUS_CN={"两个版本都有":"两个包都有","BA8/root 均有":"两个包都有",
+  "BA8 新增（相对 root 对照）":"只在体验服 BA8 有（root 无）",
+  "仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行":"只有体验服的行为资源（连皮肤主行、道具行都没有）"};
+const COMMON_VAL_CN={none:"无",unknown:"未知",unresolved:"待确认",verified:"已核验",quarantined:"已隔离",
+  candidate:"候选","static config":"静态配置","runtime final unknown":"运行时结果未确认",passed:"通过",
+  structure:"结构已解析","structure-only":"仅结构","current-snapshot-verified":"同快照已核验",yes:"是",no:"否"};
+const VALUE_CN={
+  // canonical 品级数值 → 中文短名（与 GRADE_TIERS 一致；旧 board 中文 grade 不再作为键）
+  level:{"2":"白送","3":"直售","4":"紫皮","5":"典藏","6":"传世"},
+  release_state:RELEASE_CN,
+  catalog_layer:{current_parent:"正式皮肤",time_limit_variant:"时限变体",behavior_preview_only:"仅行为资源（预告）"},
+  identity_status:{unresolved:"待确认",verified:"已核验",quarantined:"已隔离"},
+  identity_state:{unresolved:"待确认",verified:"已核验"},
+  publication_tier:{"static config":"静态配置",candidate:"候选",verified:"已核验"},
+  runtime_final_state:{unresolved:"未确认",unknown:"未知"},
+  runtime_status:{unresolved:"未确认",unknown:"未知"},
+  official_name_status:{verified:"已核验",no_item_row:"无道具行"},
+  preview_group:{upcoming_named:"已配正式名 · 未上架",behavior_only_no_name:"仅行为资源 · 无正式名"},
+  variant_type:{timed:"时限版"},
+  name_status:{verified:"已核验",candidate:"待确认",unresolved:"未命名"},
+  candidate_name_status:{candidate:"候选名（待确认）",unresolved:"无候选名"},
+  variant_relation_state:{verified_runtime_rule:"依据运行时规则已核验"},
+  evidence:{structure:"结构已解析",candidate:"候选待验证",verified:"业务链已核验"},
+  evidence_level:{"structure-only":"仅结构","current-snapshot-verified":"同快照已核验","static/candidate":"静态候选","user-verified":"用户已核验"},
+  audit_status:{passed:"通过",candidate:"候选"},
+  reliability_state:{verified:"已核验",unresolved:"待确认"},
+  hide_in_bag_state:{verified:"已核验",unresolved:"待确认"},
+  name_evidence:{unresolved:"待确认","name-slot":"名称槽直读","desc-first-map":"描述首句点名"},
+  sfx_consensus_state:{no_sfx_text:"无表现文本",sfx_consensus_unpromoted:"表现文本同名（未提升）",insufficient_sfx_names:"表现名不足"},
+  source_record_layer:{weapon_skin_data_record:"皮肤主表记录",legacy_nested_static_record:"嵌套静态记录",behavior_resource_record:"行为资源记录"},
+  source_kind:{no_user_reference_row:"参考表无对应行"},
+  ui_short_name_match:{none:"无"},
+  scope:{record:"记录"},
+  chain_status:{"replayed-structural":"结构回放"},
+  component:{base:"主表"},
+  dataset_partition:{records:"记录"},
+  status:{verified:"已核验",unresolved:"待确认","behavior_preview_no_current_name_source":"仅行为资源 · 无同快照名称来源",
+    "user_confirmed_time_limit_variant_no_official_item_row":"用户确认时限变体 · 无道具行"},
+  kind:{sfx_path:"表现资源路径",anim_replace:"动画替换"},
+  field:{name:"名称",hit_sfx_path:"命中表现路径",fire_sfx_path:"开火表现路径",trajectory_sfx_path:"弹道表现路径",
+    trajectory_sfx_path_nor:"弹道表现路径（常规）",trajectory_path_real:"弹道实际路径"},
+  role:{weapon_skin_base:"皮肤主表",weapon_skin_chs:"皮肤文本池",chip_type_chs_pool_kjxq:"芯片池文本池",
+    gift_data_base:"礼盒主表",common_item_kj1_base:"道具主表",reward_base:"奖励主表"},
+  src:{sfx:"表现配置",es:"UI 短名"},
+};
+// ── v1.3.1 canonical 状态词表（只做显示/筛选；业务结论一律来自 service / active artifact）──
+// listing_status = 唯一上架状态字段（verified_listed / verified_unlisted / unresolved）
+// release_state 仅出现在 legacy 板（data/boards/*）的旧派生值，仅作显示兼容，不是 canonical。
+// 上架状态可选值 = canonical listing_status + legacy 板 release_state（两个数据源都保留，标签统一用中文短名）
+const LISTING_CN={verified_listed:"已上架（已核验）",verified_unlisted:"未上架（已核验）",unresolved:"未解析（证据不足）",
+  on_sale:"已上架",upcoming:"预告 · 未到上架日",no_sale_field:"未配上架时间",behavior_only:"仅行为资源"};
+const NAME_CN={verified:"已核验",unresolved:"未命名/未解析",unsafe:"不安全（不可作为名称）",candidate:"待确认"};
+VALUE_CN.listing_status=LISTING_CN;
+VALUE_CN.release_state=LISTING_CN;
+VALUE_CN.name_status=NAME_CN;
+// canonical 优先，legacy 别名兜底（读值，不做判断）
+function listingOf(it){const v=it.listing_status;   // canonical 优先
+  if(v!==undefined&&v!==null&&v!=="")return v;
+  const r=pick(it,"release_state");                 // legacy 板字段兜底（保留数据源）
+  return (r===undefined||r===null)?"":r;}
+function nameStatusOf(it){const v=it.name_status;if(v)return v;
+  return it.candidate_name?"candidate":(it.name?"verified":"unresolved");}
+function listingSupported(){
+  const v=(DATA&&DATA.meta&&DATA.meta.status_vocab&&DATA.meta.status_vocab.listing_status)||null;
+  return v&&Array.isArray(v.supported_today)?v:null;}
+// 工程字段：不进卡面，统一折叠进「技术详情 / 数据来源 / 审计信息」
+const TECH_KEYS=new Set(["provenance","text_provenance","field_provenance","name_resolution","source","source_entries",
+  "locator_chain","upstream","source_lock_sha256","source_file_id","source_id","source_path","source_sha256",
+  "package_sha256","decoded_sha256","row_key","entry_index","file_id","field_refs","field_chs_slot","value_chs_slot",
+  "scalar_type","schema_ref","schema_refs","structural_record_key","search_text","status_tags","publication_tier",
+  "identity_status","identity_state","identity_reason","evidence","evidence_level","audit_status","reliability_state",
+  "hide_in_bag_state","name_evidence","sfx_consensus_state","source_record_layer","source_kind","scope","chain_status",
+  "component","dataset_partition","status","kind","role","src","record_key","record_id","text_provenance_note",
+  "candidate_name_source","candidate_name_status","candidate_reference_fields","static_fields",
+  "verified_weapon_skin_identity","variant_relation_state","variant_relation_rule","variant_relation_target","variant_relation_target_state","main_skin_id","variant_type",
+  "dataset","manifest_path","source_entry","node_type","value_type","origin","notes_src",
+  "icon","icon_path","texture","model","res_path","paths","sample_paths","sfx_paths","asset_paths","label_path",
+  "physical_fid","payload_sha","payload_sha256","source_state","identity_namespace","identity_ns","evidence_refs",
+  // 冗余/原始字段（与已有中文字段重合或仅是原始配置），收进技术详情
+  "sale_ts","instance_exp_ts","name_field_chs_slot","name_value_chs_slot","desc_field_chs_slot",
+  "desc_value_chs_slot","static_reward_raw","item_master_id"]);
+// 数据里可能写死的英文术语 → 中文（只在显示层替换，旧产物不用重跑）
+const TERM_CN=[[/common_item_data_base/g,"道具总表"],[/weapon_skin_behavior_res_data/g,"皮肤行为资源表"],
+  [/weapon_skin_data/g,"武器皮肤表"],[/reward_pool_data_base/g,"奖池表"],[/nucleus_build_data/g,"核芯配置表"],
+  [/gift_data/g,"礼盒表"],[/huodong_conf/g,"活动配置"],[/all_equips/g,"装备属性表"],[/item_master/gi,"道具总表"],
+  [/hide_in_bag/g,"背包内隐藏"],[/\bitem_id\b/g,"道具ID"],[/\bpool_id\b/g,"奖池ID"],[/\bpool_key\b/g,"奖池ID"],
+  [/\bslot\b/g,"槽位"],[/\bitem_no\b/g,"奖励槽位"],[/\brecord_id\b/g,"记录ID"],[/\brow_key\b/g,"行键"],
+  [/\bentry_index\b/g,"条目号"],[/\bfile_id\b/g,"文件标识"],[/\bschema\s*(\d+)/g,"结构 $1"],[/\bschema\b/g,"结构"],
+  [/\bprovenance\b/g,"来源信息"],[/\bsource_lock_sha256\b/g,"源快照摘要"],[/\bstatic config\b/g,"静态配置"],
+  [/\bruntime final unknown\b/g,"运行时结果未确认"],[/\bunresolved\b/g,"待确认"],[/\bverified\b/g,"已核验"],
+  [/\bquarantined\b/g,"已隔离"],[/schema\s*(\d+)/g,"结构 $1"],[/\bcandidate\b/g,"候选"]];
+function zhText(s){let out=String(s??"");for(const [re,rp] of TERM_CN)out=out.replace(re,rp);return out;}
+function renderTechSection(pairs){
+  // Wiki View / Workbench View 分层：折叠容器与标题始终保留（旧契约不变），只在容器内部换内容
+  if(WB_VIEW!=="workbench"){
+    return '<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="sub">'
+      +'Wiki View：技术字段（溯源 / 快照基准 / 证据）已隐藏；'
+      +'<a href="?b="+encodeURIComponent(getParam("b")||"")+"&view=workbench">切换到 Workbench View</a> 查看。</div></details>';
+  }
+  const rows=(pairs||[]).filter(([k,v])=>v!==null&&v!==undefined&&v!=="");
+  if(!rows.length)return "";
+  const html=rows.map(([k,v])=>{
+    const val=typeof v==="object"?JSON.stringify(v):fmtVal(k,v);
+    return `<div class="k" title="${esc(k)}">${esc(FIELD_CN[k]||k)}</div><div class="v mono">${esc(val)}</div>`;
+  }).join("");
+  return `<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv">${html}</div></details>`;
+}
+// 标题清理：板块标题里不允许出现裸英文工程词
+const TITLE_CN=[[/identity unresolved/g,"身份待确认"],[/runtime final unknown/g,"运行时结果未确认"],
+  [/LOTTERY_POOL_RESOLVED/g,"奖池解析"],[/ITEM_MASTER/g,"道具总表"],[/static config/g,"静态配置"],
+  [/\bunresolved\b/g,"待确认"],[/\bverified\b/g,"已核验"],[/\bcandidate\b/g,"候选"],[/\bquarantined\b/g,"已隔离"],
+  [/all_equips/g,"装备属性表"],[/common_item_data_base/g,"道具总表"],[/weapon_skin_data/g,"武器皮肤表"],
+  [/reward_pool_data_base/g,"奖池表"],[/gift_data/g,"礼盒表"],[/huodong_conf/g,"活动配置"],[/item_master/gi,"道具总表"],[/schema\s*(\d+)/g,"结构 $1"],[/\bschema\b/g,"结构"]];
+function zhTitle(s){let out=String(s??"");for(const [re,rp] of TITLE_CN)out=out.replace(re,rp);return out;}
+function fmtVal(k,v){
+  if(k==="version_status"&&VERSION_STATUS_CN[v])return VERSION_STATUS_CN[v];
+  if(v===true)return "是";if(v===false)return "否";
+  if(typeof v==="string"){
+    const m=VALUE_CN[k];if(m&&m[v])return m[v];
+    if(COMMON_VAL_CN[v]&&!FIELD_CN[v])return COMMON_VAL_CN[v];
+    return zhText(v);
+  }
+  if(k==="mesh_total"&&typeof v==="number")return (v/1024).toFixed(1)+" KB";
+  if(k==="gold_score"&&typeof v==="number")return (v*100).toFixed(1)+"%";
+  if(typeof v==="object"&&v!==null){
+    if(Array.isArray(v))return v.map(x=>(typeof x==="object"&&x!==null)?JSON.stringify(x):x).join("、");
+    return Object.entries(v).map(([a,b])=>`${a}星：${b}`).join("\n");
+  }
+  return String(v);
+}
+// 活动子卡：rewards 逐格渲染（一个活动一张卡，格子=面板展示奖励）
+function renderRewardsList(list){
+  return `<section class="rewards"><div class="rewards-title">活动奖励面板（${list.length} 格）</div>`+
+    list.map(r=>{
+      const pos=r.position!=null?`<span class="r-pos">${r.position+1}</span>`:"";
+      const meta=[r.item_id!=null?`道具ID ${r.item_id}`:""].filter(Boolean);
+      if(r.prob!=null)meta.push(`概率 ${(r.prob*100).toFixed(4)}%`);
+      if(r.config_exp)meta.push(`过期 ${r.config_exp}`);
+      const cand=r.name_candidate?`<div class="r-cand">候选：${esc(r.name_candidate)}</div>`:"";
+      return `<div class="reward"><div class="r-name">${pos}${esc(r.name||("ID "+r.item_id))}</div>`+
+        `<div class="r-meta">${meta.join(" · ")}</div>${cand}</div>`;
+    }).join("")+`</section>`;
+}
+// 兜底：任何 section/details 若渲染后没有任何内容行，则整体不输出（不出现空标题块）
+function dropEmptySections(html){
+  if(!html)return html;
+  return html.replace(/<(section|details)\b[^>]*>[\s\S]*?<\/\1>/g,(blk)=>{
+    const inner=blk.replace(/^<(section|details)\b[^>]*>/,"").replace(/<\/?(section|details)>$/,"");
+    // 内容行判定：覆盖全部真实行类名（含 perf-row / k / v / skin-hist / desc / stars 等）
+    const hasRow=/<(div|li|span)\b[^>]*class="[^"]*(kv|reward|pool|vv-row|behavior-resource|sfx-child|tech|sub|perf-row|skin-hist|desc|stars|nucleus-desc|rich|fact|audio-row)\b[^"]*"/.test(inner)
+      || /<(div|li)\b[^>]*class="(k|v)\b/.test(inner);
+    return hasRow?blk:"";
+  });
+}
+function fmtPct(p){
+  if(p==null)return "";
+  const s=(p*100).toFixed(6).replace(/0+$/,"").replace(/\.$/,"");
+  return `概率 ${s}%`;
+}
+// 子奖池映射：池 → slot → 奖励（含概率/过期原值/展示名桥/内部标记）
+function renderPools(pools){
+  if(!Array.isArray(pools)||!pools.length)return "";
+  return `<section class="pools"><div class="rewards-title">子奖池映射（${pools.length} 池）</div>`+
+    pools.map(p=>{
+      const rows=(p.rows||[]).map(r=>{
+        const meta=[r.slot!=null?`槽位 ${r.slot}`:""].filter(Boolean);
+        if(r.prob!=null)meta.push(fmtPct(r.prob));
+        if(r.prob_note)meta.push(`概率说明 ${zhText(r.prob_note)}`);
+        if(r.config_exp)meta.push(`过期 ${r.config_exp}`);
+        if(r.item_id!=null)meta.push(`道具ID ${r.item_id}`);
+        if(r.source_internal_marker&&r.source_internal_marker!==r.display_name&&r.source_internal_marker!==r.name)meta.push(`内部标记 ${r.source_internal_marker}`);
+        if(r.layer)meta.push(zhText(r.layer));
+        const nm=r.display_name||r.name||"(无ID)";
+        const bridge=(r.display_name&&r.display_name!==r.name)?`<div class="r-cand">展示名桥：${esc(r.name)}</div>`:"";
+        return `<div class="reward"><div class="r-name">${esc(nm)}</div><div class="r-meta">${meta.join(" · ")}</div>${bridge}</div>`;
+      }).join("");
+      return `<div class="pool"><div class="pool-head">池 ${esc(p.pool_id)} · ${esc(p.name)}（${p.rows?p.rows.length:0} 行）</div><div class="pool-rows">${rows}</div></div>`;
+    }).join("")+`</section>`;
+}
+function renderActivityPoolRefs(refs){
+  if(!Array.isArray(refs)||!refs.length)return "";
+  return `<section class="pools activity-pool-refs"><div class="rewards-title">逻辑活动池关系</div>`+
+    refs.map(r=>{
+      const meta=[zhText(r.role||""),zhText(r.status||"")].filter(Boolean).join(" · ");
+      return `<div class="pool"><div class="pool-head">池 ${esc(r.pool_id)}${meta?` · ${esc(meta)}`:""}</div>`+
+        `<div class="pool-rows"><div class="reward"><div class="r-name">${esc(r.note||"")}</div></div></div></div>`;
+    }).join("")+`</section>`;
+}
+let DATA=null;
+// ---- skin-mode（武器皮肤图鉴）紧凑卡片 ----
+function skinGradeTxt(it){return it.grade||(it.level!=null?("品级"+it.level):"");}
+// ── B. 品级视觉分级：层级由真实 grade/level 派生（不改底层 grade 数据）──
+//   6传世 / 5典藏 / 4紫皮 / 3直售 / 2白送 = 快照真实枚举的展示短名；未配置/未知 → 中性样式
+const GRADE_TIERS={6:{cls:"t6",label:"传世"},5:{cls:"t5",label:"典藏"},4:{cls:"t4",label:"紫皮"},
+  3:{cls:"t3",label:"直售"},2:{cls:"t2",label:"白送"}};
+function gradeTier(it){
+  const raw=String(it.grade||"").trim();
+  const m=raw.match(/^(\d)/);
+  const lv=m?Number(m[1]):(typeof it.level==="number"?it.level:null);
+  const neutral=!raw||["未配置","未知","无","未确认"].includes(raw);
+  return GRADE_TIERS[lv]||{cls:"unknown",label:neutral?"品级未确认":raw};
+}
+// ── C. 表现摘要：只用已有可回放字段（combat_panel[].cat / behavior_resources[].field），不新增推断 ──
+//   类目名 = 同快照 UI 面板类目；行为字段只映射语义可确认的，其余统一进「其他表现」
+const PERF_PANEL_CAT={"命中效果":"命中特效","击败特效":"击败特效","伤害跳字":"伤害跳字","攻击弹道":"枪口/弹道",
+  "挥砍特效":"挥砍特效","护臂开合":"护臂开合","战斗音效":"音效","攻击准星":"攻击准星","蓄力效果":"蓄力表现",
+  "核芯联动":"核芯联动","切枪动画":"切枪动画","特殊交互":"特殊交互"};
+const PERF_BEHAVIOR_CAT={fire_sfx_path:"开火表现",hit_sfx_path:"命中特效",extension_defeat_sfx:"击败特效",
+  explode_sfx_path:"爆炸特效",brass_sfx_path:"弹壳表现",
+  trajectory_sfx_path:"枪口/弹道",trajectory_sfx_path_nor:"枪口/弹道",trajectory_path_real:"枪口/弹道",
+  trajectory_sfx_path_trace:"枪口/弹道",trajectory_path_special:"枪口/弹道"};
+const PERF_OTHER="其他表现";
+// sfx_type 码 → 类目（码与标签均来自同快照 sfx_type_label，不新增语义）
+const PERF_SFX_TYPE={3:"命中特效",4:"击败特效",6:"枪口/弹道",7:"音效",9:"攻击准星",10:"伤害跳字",
+  13:"核芯联动",14:"蓄力表现",15:"专属动作",16:"专属待机动作",20:"切枪动画"};
+function perfSummary(it){
+  const labels=[],detail=[];
+  const push=(label,name,src,tip)=>{
+    if(!labels.includes(label))labels.push(label);
+    detail.push({label:label,name:name||"",src:src,tip:tip||""});
+  };
+  const panel=Array.isArray(it.combat_panel)?it.combat_panel:[];
+  if(panel.length){
+    for(const row of panel){
+      if(!row||!row.cat)continue;
+      push(PERF_PANEL_CAT[row.cat]||PERF_OTHER,row.name||"",row.src==="es"?"UI 面板":"同快照配置",row.name||"");
+    }
+  }else{
+    // 无 UI 面板时用 SFX 子项类目兜底（类目名=同快照 sfx_type_label；弱名只记类目）
+    for(const c of (it.sfx_items||[])){
+      if(!c)continue;
+      const label=PERF_SFX_TYPE[c.sfx_type]||PERF_OTHER;
+      push(label,isWeakName(c.display_name)?"":(c.display_name||""),c.sfx_type_label||"SFX 子项",c.sfx_params||"");
+    }
+  }
+  for(const r of (it.behavior_resources||[])){
+    if(!r||!r.field)continue;
+    push(PERF_BEHAVIOR_CAT[r.field]||PERF_OTHER,"","行为资源",r.path||"");
+  }
+  const named=detail.filter(d=>d.name&&!isWeakName(d.name));
+  return {labels:labels,count:detail.length,named:named,detail:detail};
+}
+// ── 特效与战斗表现：统一业务项（用户 2026-09-13 口径；固定顺序 1–10 + 其它）──
+// 只渲染业务项，不按 source/table 名拆栏目；同一信息只出现一次。
+const BIZ_ORDER=[
+ {k:"hit_effect",t:"命中效果"},
+ {k:"kill_effect",t:"击败特效"},
+ {k:"damage_number",t:"伤害跳字"},
+ {k:"attack_visual",t:"攻击弹道",melee:"挥砍特效"},
+ {k:"combat_sound",t:"战斗音效"},
+ {k:"combat_crosshair",t:"攻击准心"},
+ {k:"special_interaction",t:"特殊交互"},
+ {k:"nucleus_linkage",t:"核芯联动"},
+ {k:"exclusive_combat_animation",t:"专属战斗动作"},
+ {k:"exclusive_idle_animation",t:"专属待机动作"}
+];
+const BIZ_OTHER_T="其它";
+const BIZ_FROM_PANEL={"命中效果":"hit_effect","击败特效":"kill_effect","伤害跳字":"damage_number",
+ "攻击弹道":"attack_visual","挥砍特效":"attack_visual","战斗音效":"combat_sound","攻击准星":"combat_crosshair",
+ "攻击准心":"combat_crosshair","特殊交互":"special_interaction","核芯联动":"nucleus_linkage",
+ "蓄力效果":"charge","切枪动画":"special_interaction","护臂开合":"arm_open"};
+const BIZ_FROM_SFX={3:"hit_effect",4:"kill_effect",6:"attack_visual",7:"combat_sound",9:"combat_crosshair",
+ 10:"damage_number",13:"nucleus_linkage",14:"charge",15:"exclusive_combat_animation",
+ 16:"exclusive_idle_animation",20:"special_interaction"};
+const BIZ_FROM_BEHAVIOR={hit_sfx_path:"hit_effect",fire_sfx_path:"combat_sound",hold_sfx_path:"combat_sound",
+ hold_sfx_loop_path:"combat_sound",trajectory_sfx_path:"attack_visual",trajectory_sfx_path_nor:"attack_visual",
+ trajectory_path_real:"attack_visual",trajectory_sfx_path_trace:"attack_visual",trajectory_path_special:"attack_visual",
+ skin_replace_anims:"attack_visual",defeat_args:"kill_effect",defeat_model:"kill_effect",
+ extension_defeat_sfx:"kill_effect",explode_sfx_path:"explode",brass_sfx_path:"brass",
+ socket:"special_interaction",preview_range_sfx_path:"preview_extra"};
+const BIZ_EXTRA_LABEL={charge:"蓄力表现",switch_anim:"切枪动画",arm_open:"护臂开合",explode:"爆炸特效",
+ brass:"弹壳表现",preview_extra:"预览表现"};
+const BIZ_FROM_CANON={hit_effect:"hit_effect",kill_effect:"kill_effect",damage_number:"damage_number",
+ projectile_effect:"attack_visual",slash_effect:"attack_visual",combat_sound:"combat_sound",
+ combat_crosshair:"combat_crosshair",special_interaction:"special_interaction",nucleus_linkage:"nucleus_linkage",
+ exclusive_combat_animation:"exclusive_combat_animation",exclusive_idle_animation:"exclusive_idle_animation",
+ other:"preview_extra"};
+function combatItems(it){
+  const isMelee=/冷兵器|护臂/.test(it.weapon_type_label||"");
+  // 其余项顺序（非 10 项内）：保留各自业务名，不按 source 表名生成
+  const EXTRA_ORDER=["charge","arm_open","explode","brass","preview_extra","switch_anim"];
+  const acc={};
+  const put=(k,name,src)=>{
+    if(!k)return;
+    const o=acc[k]||(acc[k]={srcs:[],names:[]});
+    if(src&&o.srcs.indexOf(src)<0)o.srcs.push(src);
+    if(name&&!isWeakName(name)&&o.names.indexOf(name)<0)o.names.push(name);
+  };
+  (it.combat_panel||[]).forEach(r=>{if(r&&r.cat)put(BIZ_FROM_PANEL[r.cat],r.name,r.src==="es"?"UI 面板":"同快照配置");});
+  (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.display_name,"同快照配置");});
+  (it.behavior_resources||[]).forEach(r=>{if(r&&r.field)put(BIZ_FROM_BEHAVIOR[r.field],"","行为资源");});
+  const ef=it.effects;
+  if(ef&&ef.types)Object.keys(ef.types).forEach(t=>{
+    const o=ef.types[t]||{};const nm=(o.names&&o.names[0])||"";
+    put(BIZ_FROM_CANON[t],nm,"canonical");
+  });
+  const main=[];
+  BIZ_ORDER.forEach(b=>{const o=acc[b.k];if(!o)return;
+    main.push({k:b.k,label:(b.melee&&isMelee)?b.melee:b.t,name:o.names[0]||"",srcs:o.srcs});});
+  // 其余项：逐项成行（如「护臂开合」是护臂专属特效，自己一行）；无标签的合并进「其它」
+  const known=EXTRA_ORDER.filter(k=>acc[k]);
+  known.forEach(k=>main.push({k:k,label:BIZ_EXTRA_LABEL[k],name:acc[k].names[0]||"",srcs:acc[k].srcs}));
+  const rest=Object.keys(acc).filter(k=>!BIZ_ORDER.some(b=>b.k===k)&&known.indexOf(k)<0);
+  if(rest.length){
+    const srcs=[],names=[];
+    rest.forEach(k=>{acc[k].srcs.forEach(x=>{if(srcs.indexOf(x)<0)srcs.push(x);});
+      names.push(acc[k].names[0]||BIZ_EXTRA_LABEL[k]||k);});
+    main.push({k:"other",label:"其它",name:names.join("、"),srcs:srcs});
+  }
+  return main;
+}
+function renderCombatUnified(it){
+  const items=combatItems(it);
+  if(!items.length)return "";
+  const rows=items.map(d=>{
+    const tip=d.detail?` title="${esc(d.detail)}"`:"";
+    return `<li class="perf-row"${tip}><span class="perf-cat">${esc(d.label)}</span>`+
+      (d.name?`<span class="perf-name">${esc(d.name)}</span>`:`<span class="perf-name weak">已配置</span>`)+
+      `<span class="perf-src">${esc(d.srcs.join(" · "))}</span></li>`;}).join("");
+  return `<ul class="perf-list">${rows}</ul>`;
+}
+function renderSkinAudio(it){
+  const bank=(window.WEAPON_SKIN_AUDIO_ATTACHMENTS||{}).skins||{};
+  const rec=bank[String(it.skin_id??it.id??"")];
+  if(!rec||!Array.isArray(rec.groups)||!rec.groups.length)return "";
+  let n=0;
+  const groups=rec.groups.map(g=>{
+    const items=g.items||[];n+=items.length;
+    const rows=items.map(x=>{
+      const pend=x.pending?'<i class="pres-mark">待确认</i>':"";
+      const src="assets/audio/weapon_skin/"+(g.dir||rec.dir)+"/"+x.file;
+      return `<li class="audio-row" title="${esc(x.file)}"><span class="audio-label">${esc(x.label||"音效")}</span>${pend}<audio controls preload="metadata" src="${esc(src)}"></audio></li>`;
+    }).join("");
+    return (g.label?`<div class="audio-group">${esc(g.label)}</div>`:"")+`<ul class="audio-list">${rows}</ul>`;
+  }).join("");
+  return `<details class="audio"><summary>皮肤音效 ${n} 条</summary>${groups}`+
+    `<div class="audio-note">音频由客户端音频库静态提取；含义为人工听辨标注，仅供试听参考。</div></details>`;
+}
+function renderPerfDetail(it){
+  const items=combatItems(it);
+  if(!items.length)return "";
+  const wb=(WB_VIEW==="workbench")?`<div class="fx-wbmark">level=${esc(it.canonical_level??it.level??"unresolved")}（${esc(it.catalog_level_label||"未配置")}）｜completeness=${esc(it.completeness_status||"unresolved")}</div>`:"";
+  return `<details class="perf"><summary>特效与战斗表现 ${items.length} 项</summary>`+renderCombatUnified(it)+wb+
+    `<div class="perf-note">条目按固定业务顺序展示（命中效果/击败特效/伤害跳字/攻击弹道·挥砍/战斗音效/攻击准心/特殊交互/核芯联动/专属战斗动作/专属待机动作/其它）；文本来自 UI 面板名、同快照配置名或行为资源字段，不是皮肤正式名称。</div></details>`;
+}
+
+/* ★★ 补回（2026-09-18）：viewer 接线块 —— 此前从 git HEAD 还原 board.html 时丢失，
+   本块来自损坏版（中文乱码、代码完好）。中文串已按英文键名修复。 */
+function skinMediaRecord(it){
+  const bank=(window.WEAPON_SKIN_MEDIA||{}).skins||{};
+  const keys=[it.skin_id,it.skin_item_id,it.id,it.structural_record_key].filter(value=>value!==null&&value!==undefined);
+  for(const key of keys){if(bank[String(key)])return bank[String(key)];}
+  return null;
+}
+function mediaPosterSrc(record){const poster=record&&record.poster;return typeof poster==="string"?poster:(poster&&poster.src)||"";}
+function mediaPreviewReady(record){
+  const preview=record&&record.preview_3d;
+  return !!(preview&&preview.status==="ready"&&(preview.manifest||preview.model||(preview.states&&Object.keys(preview.states).length)));
+}
+function renderSkinMedia(it,name){
+  const record=skinMediaRecord(it);if(!record)return "";
+  const poster=mediaPosterSrc(record),ready=mediaPreviewReady(record);
+  if(!poster&&!ready)return "";
+  const material=(record.preview_3d&&record.preview_3d.material_fidelity)||"";
+  const note=(record.preview_3d&&record.preview_3d.fidelity_note)||"";
+  /* 2026-09-19：取值口径统一为有定义的四个（+ 兼容旧值）；徽标 hover 显示该条的依据与未决项 */
+  const fidelity={source_matched:"源材质匹配",source:"源数据",source_candidate:"源数据（候选级）",
+                  approximate:"材质近似",unbuilt:"未建（无材质链）"}[material]||material;
+  const fidTitle=note?`材质保真度依据：${note}`:(material||"");
+  return `<div class="skin-media">${poster?`<img src="${esc(poster)}" alt="${esc(name)}预览" loading="lazy" decoding="async">`:""}`+
+    `${fidelity?`<span class="skin-media-fidelity" title="${esc(fidTitle)}">${esc(fidelity)}</span>`:""}`+
+    `${ready?`<span class="skin-media-actions"><button class="skin-media-button" type="button" data-skin-id="${esc(it.skin_id??it.skin_item_id??it.id)}" onclick="openSkin3D(event,this)">3D 预览</button></span>`:""}</div>`;
+}
+function openSkin3D(event,button){
+  event.preventDefault();event.stopPropagation();
+  const bank=(window.WEAPON_SKIN_MEDIA||{}).skins||{},record=bank[String(button.dataset.skinId)];
+  if(!record)return;
+  const card=button.closest(".skin-card"),title=card&&card.querySelector(".skin-name");
+  if(window.WikiWeaponViewer)window.WikiWeaponViewer.open(record,{title:title?title.textContent:"武器 3D 预览"});
+}
+
+/* ★★ 骨骼接线（2026-09-19，Lead）：把已有骨骼/挂点产出绑进 wiki。
+   数据源 data/media/weapon_skin_skeleton.js（由 SKEL2_all_37.json + _skeletons/ 实际文件生成）。
+   诚实口径：逐骨 TRS 未定证 ⇒ 预览是"层级自动布局"，页面必须明说；源侧无骨架的给挂点复原。 */
+function skinSkeletonRecord(it){
+  const bank=(window.WEAPON_SKIN_SKELETON||{}).skins||{};
+  const keys=[it.skin_id,it.skin_item_id,it.id,it.structural_record_key].filter(value=>value!==null&&value!==undefined);
+  for(const key of keys){if(bank[String(key)])return bank[String(key)];}
+  return null;
+}
+function renderSkinSkeleton(it){
+  const rec=skinSkeletonRecord(it);if(!rec)return "";
+  const id=esc(rec.skin_id),parts=[];
+  if(rec.has_skeleton){
+    const nr=(rec.roots&&rec.roots.length>1)?`（${rec.roots.length} 个根）`:"";
+    parts.push(`<span class="skel-tag" title="源 .mesh 内骨骼名数；逐骨 92 B 绑定数据块的字段语义未定证">骨骼 <b>${esc(rec.bone_count)}</b> 根${nr}</span>`);
+    parts.push(`<a class="skel-link primary" href="${esc(rec.preview)}">3D 层级预览</a>`);
+    if(rec.skeleton_glb)parts.push(`<a class="skel-link" href="${esc(rec.skeleton_glb)}" download>骨架 GLB</a>`);
+    if(rec.skeleton_json)parts.push(`<a class="skel-link" href="${esc(rec.skeleton_json)}" download>骨架 JSON</a>`);
+  }else{
+    parts.push(`<span class="skel-tag" title="四重证据：全变体 flag=0 ／ biped 串=0 ／ .gim 无 CutBones ／ 64 条命名探测 0 命中">源侧无骨架 · 挂点复原</span>`);
+    parts.push(`<a class="skel-link primary" href="${esc(rec.preview)}">3D 挂点预览</a>`);
+    if(rec.mount_json)parts.push(`<a class="skel-link" href="${esc(rec.mount_json)}" download>挂点 JSON</a>`);
+  }
+  const vRaw=rec.self_check&&rec.self_check.parent_lt_self_violations;
+  const vN=Array.isArray(vRaw)?vRaw.length:(typeof vRaw==="number"?vRaw:0);
+  const warn=vN?`<span class="skel-warn" title="自检：parent&lt;self 违规 ${esc(vN)} 处（页面用真实 children 树渲染，不用 parent 索引）">⚠ ${esc(vN)} 处自检告警</span>`:"";
+  /* 时限变体（11101451/11101691/11101771）各有独立 id 与骨骼/挂点产出，但基卡不渲染独立行
+     ⇒ 在这里补成 37/37 可查（2026-09-19，viewer-auditor 发现 34/37 后由 Lead 补）。 */
+  const bank=(window.WEAPON_SKIN_SKELETON||{}).skins||{},base=String(rec.skin_id),vparts=[];
+  for(const v of (it.variant_items||[])){
+    const vid=(v&&v.skin_id!=null)?String(v.skin_id):null;
+    if(!vid||vid===base)continue;
+    const vr=bank[vid];if(!vr)continue;
+    const label=vr.has_skeleton?`变体 ${vid}：骨骼 ${vr.bone_count} 根`:`变体 ${vid}：源侧无骨架 · 挂点`;
+    vparts.push(`<a class="skel-link" href="${esc(vr.preview)}" title="时限变体 id（与基卡共用模型）">${esc(label)}</a>`);
+  }
+  return `<div class="skin-skel">${parts.join("")}${warn}${vparts.join("")}</div>`;
+}
+
+function skinTypeTxt(it){return it.weapon_type_label||it.weapon_type!=null?("类型"+it.weapon_type):"";}
+function renderSkinCard(it){
+  // 卡面只放普通玩家关心的字段；工程字段走 renderSkinDetail 里的「技术详情」折叠区
+  const name=it.name_display||it.name||it.display_name||("未命名皮肤 · ID "+(it.skin_id??it.id));
+  const tier=gradeTier(it);
+  const perf=perfSummary(it);
+  const tags=[];   // 只放 facts/头部未覆盖的信息（上架时间·武器类型·联动IP·上架/名称状态只在头部与 facts 各出现一次）
+  // 卡面顺序：品级 → 武器种类 → 上架时间/状态 → 联动IP → 表现摘要 → 时限变体 → 名称/预告等状态
+  // 品级徽章已移到大标题左侧（.skin-head-row），tags 里不再重复渲染
+
+  if(perf.count){
+    const chips=perf.named.slice(0,3).map(d=>`<span class="skin-tag perf-chip" title="${esc(d.label)}">${esc(d.name)}</span>`).join("");
+    tags.push(`<span class="skin-tag perf-tag" title="表现摘要：同快照 UI 面板条目 + 行为资源字段（表现子项，不是皮肤正式名）">表现特性 ${perf.count} 项</span>`+chips);
+  }
+  const vCount=(Array.isArray(it.variant_items)?it.variant_items.length:0)||it.variant_item_count||0;
+  if(vCount)tags.push(`<span class="skin-tag" title="时限变体（内容并入本卡）">时限变体 ${vCount}</span>`);
+  if(it.catalog_layer==="behavior_preview_only")tags.push('<span class="skin-tag preview">仅行为资源</span>');
+  // ── 卡面标注（用户 2026-09-13 卡统一设计）：武器类型 / 特效数目 / 部分特效名 / 联动IP / 状态 ──
+  const facts=[];
+  const wtCn=it.weapon_type_cn||typeCN(it.weapon_type_label||pick(it,"weapon_type_label")||"");
+  if(wtCn)facts.push(`<span class="fact"><b>武器类型</b>${esc(wtCn)}</span>`);
+  {const ef=it.effects;
+   if(ef&&ef.count!=null)facts.push(`<span class="fact" title="按 canonical 字段判定的特效类别数">`+
+     `<b>特效</b>${ef.count} 项${ef.present&&ef.present.length?`（${esc(ef.present.slice(0,3).join("、"))}${ef.present.length>3?"…":""}）`:""}</span>`);
+   if(ef&&ef.names&&ef.names.length)facts.push(`<span class="fact" title="特效名来自展示层（legacy 板副本，presentation_only）">`+
+     `<b>特效名</b>${esc(ef.names.slice(0,3).join("、"))}${ef.names_total>3?` 等 ${ef.names_total} 个`:""}<i class="pres-mark">历史</i></span>`);}
+  {const ip=it.ip_liaison;   // 没有 IP 就不显示这一项（用户 2026-09-13）
+   if(ip)facts.push(`<span class="fact" title="联动IP（展示层：用户参考目录，presentation_only）"><b>联动IP</b>${esc(ip)}</span>`);}
+  {const ls=listingOf(it);if(ls)facts.push(`<span class="fact state"><b>上架状态</b>${esc(LISTING_CN[ls]||ls)}</span>`);}
+  {const nst=nameStatusOf(it);facts.push(`<span class="fact state"><b>名称</b>${esc(NAME_CN[nst]||nst||"未解析")}</span>`);}
+  const detail=renderSkinDetail(it);
+  const qNow=String((DATA&&DATA._query)||"");
+  const vFocus=qNow&&(it.variant_items||[]).some(v=>variantHit(v,qNow));
+  return `<div class="skin-card grade-${tier.cls}${vFocus?" open":""}">`+renderSkinMedia(it,name)+renderSkinSkeleton(it)+`
+    <div class="skin-summary" role="button" tabindex="0" aria-expanded="${vFocus?"true":"false"}" onclick="toggleSkin(this)" onkeydown="onSkinKey(event,this)">
+      <div class="skin-head-row">
+        <span class="skin-tag grade-badge ${tier.cls}" title="level=${esc(it.level!=null?it.level:"未配置")}">${esc(tier.label)}</span>
+        <span class="skin-name">${esc(name)}</span>
+        <span class="skin-head-right">
+          <span class="skin-sale" title="sale_ts／sale_date（时间戳，非上架状态）">上架 ${esc(it.sale_date||"未知")}</span>
+          <span class="skin-id" title="skin_item_id">皮肤ID ${esc(it.skin_id??it.id)}</span>
+        </span>
+      </div>
+      <div class="skin-facts">${facts.join("")}</div>
+      <div class="skin-tags">${tags.join("")}</div>
+    </div>
+    <div class="skin-detail"${vFocus?"":" hidden"}>${detail}</div>
+  </div>`;
+}
+function toggleSkin(head){
+  const card=head.parentElement,detail=card.querySelector(".skin-detail");
+  if(!detail)return;
+  detail.hidden=!detail.hidden;card.classList.toggle("open",!detail.hidden);
+  head.setAttribute("aria-expanded",String(!detail.hidden));
+}
+function onSkinKey(event,head){
+  if(event.key==="Enter"||event.key===" "){event.preventDefault();toggleSkin(head);}
+}
+function renderSkinDetail(it){
+  // 展开顺序（用户 2026-09-11）：官方描述 → 时限变体 → 表现详情 → 历史参考 → 技术详情
+  const parts=[];
+  if(it.official_desc)parts.push(`<h4>官方描述</h4><div class="skin-desc">${isRichText(it.official_desc)?richText(it.official_desc):esc(it.official_desc)}${it.official_desc_source?'<i class="pres-mark">历史目录</i>':""}</div>`);
+  // 历史参考信息：只输出**有值**的行；全部为空 ⇒ 整块不渲染（不写「—」占位）
+  {
+    const histRows=[];
+    if(it.legacy_grade_label)histRows.push(`<div>旧版品级标签：${esc(it.legacy_grade_label)}　<i class="pres-mark">旧板派生 · 仅历史展示</i></div>`);
+    // 枚举/内部码 → 中文；无信息（none/null）直接省略该行
+    const HIST_CN={none:"无",name_slot:"名称槽直读",desc_first_map:"描述首句点名",
+      derived_from_sale_ts_utc:"由上架时间戳推导",derived_from_sale_ts:"由上架时间戳推导",
+      legacy_board:"旧板派生",user_catalog:"用户参考目录",
+      canonical_row_field_chs:"名称槽字段直读（主表行）",
+      "user-provided-historical-catalog":"用户参考目录",
+      "user_catalog_ip":"用户参考目录（联动IP）",
+      legacy_board_presentation:"旧板展示层"};
+    const _cn=v=>v==null?"":(HIST_CN[String(v)]||String(v));
+    const _ne=_cn(it.name_evidence_type), _sd=_cn(it.sale_date_source);
+    const _skip=v=>!v||v==="无";
+    if(!_skip(_ne)||!_skip(_sd))histRows.push(`<div>${_skip(_ne)?"":`名称证据：${esc(_ne)}`}${(!_skip(_ne)&&!_skip(_sd))?"　":""}${_skip(_sd)?"":`上架日期来源：${esc(_sd)}`}</div>`);
+    const _rsRaw=((it.historical_ref||{}).reference_source);
+    // 未知内部码不展示原文（可见区禁英文/术语）——只给中文泛称，原文进 title
+    const _rs=_rsRaw?(HIST_CN[String(_rsRaw)]||"用户/历史参考"):"";
+    if(_rs)histRows.push(`<div>历史目录来源：${esc(_rs)}</div>`);
+    if(histRows.length)parts.push(`<h4>历史参考信息</h4><div class="skin-hist">${histRows.join("")}</div>`);
+  }
+  if(it.variant_items&&it.variant_items.length)parts.push(renderVariantItems(it.variant_items,it));
+  const perfDetail=renderPerfDetail(it);
+  if(perfDetail)parts.push(perfDetail);
+  const audioDetail=renderSkinAudio(it);
+  if(audioDetail)parts.push(audioDetail);
+  const ref=renderReferenceFields(it.reference_fields,it);
+  if(ref)parts.push(ref);
+  parts.push(renderTechSection([
+    ["skin_id",it.skin_id],["catalog_layer",it.catalog_layer],["model_path",it.model_path],
+    ["version_status",it.version_status],["sfx_consensus_state",it.sfx_consensus_state],
+    ["official_name_status",it.official_name_status],["reference_fields",it.reference_fields],
+    ["field_provenance",it.field_provenance],["provenance",it.provenance],["source",it.source],
+    ["asset_paths",(it.behavior_resources||[]).map(r=>`${BEHAVIOR_FIELD_CN[r.field]||r.field}: ${r.path}`)],
+  ]));
+  return dropEmptySections(parts.join(""));
+}
+// 战斗表现面板：SFX 行即战斗表现（同源）。类目在左、名字在右（与游戏 UI 一致）。
+const COMBAT_ORDER=[3,4,10,6,7,9,14,13];
+const TYPE_CAT_CN={3:"命中效果",4:"击败特效",10:"伤害跳字",6:"攻击弹道",7:"战斗音效",9:"攻击准星",14:"蓄力效果",13:"核芯联动"};
+function isWeakName(n){const t=String(n==null?"":n).trim();return !t||/^(未装配|未命名|占位|暂无|无$|待定)/.test(t)||/未命名|占位|未配置/.test(t)||["跳字","音效","弹道","准星","核芯联动","特殊切换","蓄力","命中","战斗动作","休闲待机","切枪动画","专属动作","专属待机","待机","动作","皮肤特效","特殊待机"].indexOf(t)>=0;}
+function renderSfxChildren(children){
+  if(!Array.isArray(children)||!children.length)return "";
+  return `<section class="sfx-children"><div class="sfx-children-title">表现子项（${children.length}）</div>`+
+    children.map(child=>{
+      let label=child.display_name||child.sfx_name||"未命名 SFX 配置";
+      const weak=/^(未装配|未命名|占位)/.test(label);
+      const type=child.sfx_type_label||(`类型 ${child.sfx_type??"未配置"}`);
+      const tip=child.sfx_params?` title="${esc(child.sfx_params)}"`:"";
+      const cls=weak?"sfx-child weak":"sfx-child";
+      if(weak)label="（"+label+"）";
+      return `<div class="${cls}"${tip}><div class="sfx-child-name">${esc(label)}</div><div class="sfx-child-meta">${esc(type)} · 行 ${esc(child.row_key)}</div></div>`;
+    }).join("")+
+    `</section>`;
+}
+function renderReferenceFields(ref,cur){
+  if(!ref||typeof ref!=="object")return "";
+  const pairs=[];
+  // 仅保留当前无法直接读取的历史事实：曾用名、版本状态
+  const curName=(cur&&(cur.name||cur.display_name))||"";
+  if(ref.name&&curName&&ref.name!==curName)pairs.push(["历史曾用名",ref.name]);
+  else if(ref.name&&!curName)pairs.push(["历史整理参考名",ref.name]);
+  if(!pairs.length)return "";
+  return `<section class="reference"><div class="reference-title">历史参考（曾用名）</div>`+
+    pairs.map(([k,v])=>`<div class="kv"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div>`).join("")+`</section>`;
+}
+const BEHAVIOR_FIELD_CN={fire_sfx_path:"开火特效资源",hit_sfx_path:"命中特效资源",trajectory_path_real:"弹道资源(real)",trajectory_sfx_path:"弹道特效资源",trajectory_sfx_path_nor:"弹道资源(nor)",trajectory_sfx_path_special:"弹道资源(special)",trajectory_path_special:"弹道资源(特殊)",trajectory_path:"弹道资源",skin_replace_anims:"替换动作ID",idle_sfx_path:"待机资源",victory_sfx_path:"胜利资源",defeat_sfx_path:"击败资源",charge_sfx_path:"蓄力资源",jump_sfx_path:"跳跃资源",attack_sfx_path:"攻击资源",muzzle_sfx_path:"枪口资源",special_sfx_path:"特殊资源"};
+function renderBehaviorResources(resources){
+  if(!Array.isArray(resources)||!resources.length)return "";
+  const rows=resources.map(r=>{
+    const cn=BEHAVIOR_FIELD_CN[r.field]||FIELD_CN[r.field]||"表现资源";
+    return `<div class="behavior-resource" title="${esc(r.path)}"><span class="br-cn">${esc(cn)}</span><span class="br-path">已配置</span></div>`;
+  }).join("");
+  return `<section class="behavior-resources"><div class="behavior-resources-title">行为资源（武器特效路径配置）</div>${rows}</section>`;
+}
+// 时限变体 = 主卡内的附属信息：紧凑列表，不生成子卡，只展示与主项不同的字段
+function variantDurationLabel(v){
+  const src=String(v.display_name||v.name||"");
+  const m=src.match(/（(\d+)天）/);
+  if(m)return m[1]+"天版";
+  return "时限版";
+}
+function variantDiffChips(v,main){
+  const chips=[];
+  if(v.grade&&main&&v.grade!==main.grade)chips.push(`品级 ${esc(v.grade)}`);
+  if(v.weapon_type_label&&main&&v.weapon_type_label!==main.weapon_type_label)chips.push(`武器类型 ${esc(v.weapon_type_label)}`);
+  const vDate=v.sale_date||(v.sale_ts?new Date(v.sale_ts*1000).toLocaleDateString("zh-CN"):"");
+  const mDate=(main&&(main.sale_date||(main.sale_ts?new Date(main.sale_ts*1000).toLocaleDateString("zh-CN"):"")))||"";
+  if(vDate&&vDate!==mDate)chips.push(`上架时间 ${esc(vDate)}`);
+  const vn=String(v.name||"");
+  if(vn){
+    const base=String((main&&(main.name||main.display_name))||"");
+    if(vn.replace(/（[^）]*）/g,"")!==base)chips.push(`名 ${esc(vn)}`);
+  }
+  if(Array.isArray(v.sfx_items)&&v.sfx_items.length)chips.push(`${v.sfx_items.length} 项表现`);
+  if(v.behavior_resources&&v.behavior_resources.length)chips.push(`${v.behavior_resources.length} 项行为资源`);
+  if(v.official_name_status==="no_item_row")chips.push("无道具行");
+  return chips;
+}
+function variantHit(v,q){
+  if(!q)return false;
+  return String(v.skin_id).includes(q)||String(v.display_name||v.name||"").toLowerCase().includes(q);
+}
+function renderVariantItems(variants,main){
+  if(!Array.isArray(variants)||!variants.length)return "";
+  const q=String((DATA&&DATA._query)||"");
+  let anyHit=false;
+  const rows=variants.map(v=>{
+    const hit=variantHit(v,q);if(hit)anyHit=true;
+    const tech=[`时限皮肤 ID ${v.skin_id}`,`永久皮肤 ${v.permanent_skin_id}`,
+      v.model_path?`模型 ${v.model_path}`:"",v.version_status?`版本状态 ${v.version_status}`:"",
+      v.variant_relation_rule?`关系依据 ${v.variant_relation_rule}`:""].filter(Boolean).join(" ｜ ");
+    return `<li class="vv-row${hit?" vv-hit":""}" data-vid="${esc(v.skin_id)}" title="${esc(tech)}">`+
+      `<span class="vv-dur">${esc(variantDurationLabel(v))}</span>`+
+      `<span class="vv-id">ID ${esc(v.skin_id)}</span>`+
+      variantDiffChips(v,main).map(c=>`<span class="vv-chip">${c}</span>`).join("")+`</li>`;
+  }).join("");
+  return `<details class="vv"${anyHit?" open":""}><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul></details>`;
+}
+function referenceTitle(ref){
+  return ref&&ref.name?`<div class="reference-name">历史整理参考：${esc(ref.name)}</div>`:"";
+}
+// 候选板时限变体：紧凑行（期限版 · 时限皮肤ID · 仅与父项不同的字段）；不生成子卡、不重复父项内容。
+// 每条时限记录自身的静态/审计字段保留在「时限变体逐记录」折叠区，技术板仍可逐条追溯。
+function renderTimedVariants(variants,main){
+  if(!Array.isArray(variants)||!variants.length)return "";   // 空块不渲染
+  const q=String((DATA&&DATA._query)||"");
+  let anyHit=false;
+  const rows=variants.map(v=>{
+    const hit=!!q&&String(v.skin_id).includes(q); if(hit)anyHit=true;
+    const chips=[];
+    if(v.grade&&v.parent_grade&&v.grade!==v.parent_grade)chips.push(`品级 ${esc(v.grade)}`);
+    if(v.weapon_type_label&&v.parent_weapon_type_label&&v.weapon_type_label!==v.parent_weapon_type_label)chips.push(`武器种类 ${esc(typeCN(v.weapon_type_label))}`);
+    const vd=v.sale_ts?new Date(v.sale_ts*1000).toLocaleDateString("zh-CN"):"";
+    const pd=v.parent_sale_ts?new Date(v.parent_sale_ts*1000).toLocaleDateString("zh-CN"):"";
+    if(vd&&vd!==pd)chips.push(`上架时间 ${esc(vd)}`);
+    // 名称只在「去掉期限后缀后确实不同」时才显示，避免重复父项名称
+    const stripDur=s=>String(s||"").replace(/[（(][^）)]*[)）]/g,"").trim();
+    const vn=stripDur(v.candidate_name),mn=stripDur(main&&main.candidate_name);
+    if(vn&&vn!==mn)chips.push(`名 ${esc(vn)}`);
+    const tech=[`时限皮肤ID ${v.skin_id}`,`永久皮肤ID ${v.permanent_skin_id}`,
+      v.variant_relation_state?`关系依据 ${v.variant_relation_state}`:""].filter(Boolean).join(" ｜ ");
+    return `<li class="vv-row${hit?" vv-hit":""}" data-vid="${esc(v.skin_id)}" title="${esc(tech)}">`+
+      `<span class="vv-dur">${esc(v.duration_label)}</span>`+
+      `<span class="vv-id">ID ${esc(v.skin_id)}</span>`+
+      chips.map(c=>`<span class="vv-chip">${c}</span>`).join("")+`</li>`;
+  }).join("");
+  const audit=variants.map(v=>{
+    const r=v.record||{};
+    const sf=r.static_fields||{};
+    const pairs=[["时限皮肤ID",v.skin_id],["永久皮肤ID",v.permanent_skin_id],
+      ["等级 level",sf.level],["优先级 priority",sf.priority],["legacy 品级标签（board 派生 · 仅历史展示）",sf.legacy_grade_label],
+    ["武器种类",sf.weapon_type_label],["上架时间",sf.sale_ts],
+      ["名称状态",r.name_status],["身份状态",r.identity_status],["数据等级",r.publication_tier],
+      ["模型",sf.model_path],["结构记录键",r.structural_record_key],["来源层",r.source_record_layer]];
+    return `<div class="vv-audit"><div class="vv-audit-id">时限皮肤 ID ${esc(v.skin_id)}</div><div class="kv">`+
+      pairs.filter(([,x])=>x!==null&&x!==undefined&&x!=="").map(([k,x])=>`<div class="k">${esc(k)}</div><div class="v">${esc(fmtVal(k,x))}</div>`).join("")+
+      `</div></div>`;
+  }).join("");
+  return `<details class="vv"${anyHit?" open":""}><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul>`+
+    `<details class="vv-tech"><summary>时限变体逐记录（技术 / 审计字段）</summary><div class="vv-audit-list">${audit}</div></details></details>`;
+}
+function renderCandidateSfxChildren(children){
+  if(!Array.isArray(children)||!children.length)return "";
+  return `<section class="sfx-children"><div class="sfx-children-title">SFX 静态子项（${children.length}；文本不是皮肤正式名）</div>`+
+    children.map(child=>{
+      const sf=child.static_fields||{};
+      const label=child.sfx_static_text||"未命名 SFX 配置";
+      const type=sf.sfx_type_label||(`类型 ${sf.sfx_type??"未配置"}`);
+      const tip=sf.sfx_params?` title="${esc(sf.sfx_params)}"`:"";
+      return `<div class="sfx-child"${tip}><div class="sfx-child-name">${esc(label)}</div>`+
+        `<div class="sfx-child-meta">${esc(type)} · ${esc(child.structural_record_key||"")} · identity unresolved</div></div>`;
+    }).join("")+`</section>`;
+}
+function renderCandidatePairs(title,obj){
+  if(!obj||typeof obj!=="object")return "";
+  const rows=Object.entries(obj).filter(([,v])=>v!==null&&v!==""&&!(Array.isArray(v)&&!v.length));
+  if(!rows.length)return "";
+  return `<section class="reference"><div class="reference-title">${esc(title)}</div>`+
+    rows.map(([k,v])=>`<div class="kv"><div class="k">${esc(FIELD_CN[k]||k)}</div><div class="v">${esc(fmtVal(k,v))}</div></div>`).join("")+`</section>`;
+}
+function renderCandidateSkinCard(it){
+  // 玩家图鉴优先展示：candidate_name > 未命名皮肤 · ID；候选名不得升级为 verified
+  const dispName=it.name_display||it.candidate_name||("未命名皮肤 · ID "+(it.structural_record_key||it.id));
+  const candStatus=it.name_status||(it.candidate_name?"candidate":"unresolved");
+  const candTier=gradeTier({level:pick(it,"level")});
+  const candType=pick(it,"weapon_type_label");
+  const candVariants=Array.isArray(it.timed_variants)?it.timed_variants:[];
+  const candQuery=String((DATA&&DATA._query)||"");
+  const candVFocus=!!candQuery&&candVariants.some(v=>String(v.skin_id).includes(candQuery));
+  const variantBlock=candVariants.length?renderTimedVariants(candVariants,it):"";
+  const candidate=it.candidate_name?`<div class="reference-name">候选名来源：历史整理参考表（未核验，非正式身份）</div>`:"";
+  const ui=(it.ui_short_name_candidates||[]).map(x=>`<div class="reward"><div class="r-name">${esc(x.text)}</div><div class="r-meta">${esc(x.status||"candidate")} · 非正式皮肤名</div></div>`).join("");
+  const uiSection=ui?`<section class="rewards"><div class="rewards-title">UI / 战斗表现短名候选</div>${ui}</section>`:"";
+  const entry=it.source_entry||{};
+  const sourceEntry=entry.package?`<div class="skin-row mono">${esc(entry.package)} · 条目号 ${esc(entry.entry_index)} · 文件标识 ${esc(entry.file_id)}</div>`:"";
+  return `<div class="skin-card${candVFocus?" open":""}"><div class="skin-summary" role="button" tabindex="0" aria-expanded="${candVFocus?"true":"false"}" onclick="toggleSkin(this)" onkeydown="onSkinKey(event,this)">
+      <div class="skin-top"><div><div class="skin-name">${esc(dispName)}</div>${candidate}</div><div class="skin-id">${esc(it.id)}</div></div>
+      <div class="skin-tags"><span class="skin-tag grade-badge ${candTier.cls}" title="level=${esc(pick(it,"level")!=null?pick(it,"level"):"未配置")}">${esc(candTier.label)}</span>${candType?`<span class="skin-tag" title="weapon_type_label">武器种类 ${esc(typeCN(candType))}${pick(it,"weapon_type_state")==="candidate_asset_path_convention"?"（候选·资源路径推导）":""}</span>`:""}${candStatus==="candidate"?`<span class="skin-tag name-candidate" title="name_status">名称待确认</span>`:`<span class="skin-tag name-unresolved" title="name_status">未命名</span>`}${candVariants.length?`<span class="skin-tag" title="时限变体（并入本卡，不单独成卡）">时限变体 ${candVariants.length}</span>`:""}${it.sfx_items&&it.sfx_items.length?`<span class="skin-tag">${it.sfx_items.length} 项表现（特效）</span>`:""}</div>
+    </div><div class="skin-detail"${candVFocus?"":" hidden"}>
+      ${variantBlock}${uiSection}${renderBehaviorResources(it.behavior_resources)}${renderCandidateSfxChildren(it.sfx_items)}
+      <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary>${sourceEntry}
+        ${renderCandidatePairs("静态配置字段",it.static_fields)}
+        ${renderCandidatePairs("历史参考字段（候选）",it.candidate_reference_fields)}
+        <div class="kv"><div class="k" title="source">来源说明</div></div><div class="kv"><div class="k">审计明细</div><div class="v"><a href="board.html?b=weapon_skin_static_candidates_v01">武器皮肤 · 静态候选（隐藏审计板 · 逐记录）</a></div></div><div class="v">${esc(it.source)}</div></div></details>
+    </div></div>`;
+}
+function typeCN(label){return String(label||"").replace(/（\d+）$/,"");}
+function fillOptions(sel,values,label,key,counts){
+  sel.innerHTML="";
+  const all=document.createElement("option");all.value="";all.textContent=label;sel.appendChild(all);
+  for(const value of values){const option=document.createElement("option");option.value=String(value);
+    let base=String((key&&VALUE_CN[key]&&VALUE_CN[key][value])||zhText(value));
+    if(key==="grade")base=base.replace(/级$/,"");   // 品级展示去掉尾部"级"（只改文案，不动值）
+    const n=counts&&counts[value]!=null?`（${counts[value]}）`:"";
+    option.textContent=base+n;sel.appendChild(option);}
+}
+/* 品级筛选（2026-09-19，用户要求）：**控件仍是"一个下拉"，点开列表后在里面勾选（可多选）**。
+   语义：勾 0 个 = 全部；勾 N 个 = 命中其中任一即显示（OR）。
+   值仍沿用 canonical level / legacy grade 的字符串（不改数据口径，只换控件）。 */
+let GRADE_SELECTED=new Set();   // 模块级勾选状态（面板重建时不丢）
+function fillGradeGroup(box,values,label,key,counts){
+  const panel=box&&box.querySelector("#fGradePanel");
+  if(!panel)return;
+  panel.innerHTML="";
+  for(const value of values){
+    const cbId="fgcb_"+String(value).replace(/[^0-9A-Za-z_-]/g,"_");
+    /* ★ 行元素用 <div> 而不是 <label>：board_shadcn.css 里有针对 label 的全局规则
+       （曾把行撑成全宽、复选框贴左文字贴右 ⇒ 面板被拉宽，用户已看到该故障）。
+       用 div + 显式 inline 样式，并逐项钉死宽度/对齐，避免再被全局规则影响。 */
+    const row=document.createElement("div");
+    row.style.cssText="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;"
+      +"gap:8px;width:100%;box-sizing:border-box;font-size:12.5px;line-height:1.5;color:#3f3f46;"
+      +"padding:5px 8px;border-radius:7px;cursor:pointer;white-space:nowrap;text-align:left";
+    row.addEventListener("mouseenter",()=>{row.style.background="#f4f4f5";});
+    row.addEventListener("mouseleave",()=>{row.style.background="transparent";});
+    const cb=document.createElement("input");
+    cb.type="checkbox";cb.id=cbId;cb.name="fGrade";cb.value=String(value);
+    cb.checked=GRADE_SELECTED.has(String(value));
+    cb.style.cssText="margin:0;flex:0 0 auto;width:14px;height:14px;accent-color:#6d28d9;cursor:pointer";
+    let base=String((key&&VALUE_CN[key]&&VALUE_CN[key][value])||zhText(value));
+    if(key==="grade")base=base.replace(/级$/,"");
+    const n=counts&&counts[value]!=null?`（${counts[value]}）`:"";
+    const txt=document.createElement("span");
+    txt.textContent=base+n;
+    txt.style.cssText="flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis";
+    row.appendChild(cb);row.appendChild(txt);
+    /* 点行（非复选框本身）切换勾选，并派发 change 让容器的监听器统一处理 */
+    row.addEventListener("click",function(e){
+      if(e.target===cb)return;
+      cb.checked=!cb.checked;
+      cb.dispatchEvent(new Event("change",{bubbles:true}));
+    });
+    panel.appendChild(row);
+  }
+  updateGradeBtnLabel();
+}
+/* 按钮文案：品级：全部 / 品级：典藏 / 品级：典藏、传世 / 品级：典藏、传世 等4项 */
+function updateGradeBtnLabel(){
+  const lab=document.getElementById("fGradeLabel");
+  if(!lab)return;
+  if(!GRADE_SELECTED.size){lab.textContent="品级：全部";return;}
+  const txt=[...GRADE_SELECTED].map(v=>String((VALUE_CN.level&&VALUE_CN.level[v])||zhText(v)).replace(/级$/,""));
+  lab.textContent="品级："+(txt.length<=2?txt.join("、"):(txt.slice(0,2).join("、")+" 等"+txt.length+"项"));
+}
+/* 读取当前勾选的品级集合（空集 = 全部） */
+function readGradeChecked(){
+  const panel=document.getElementById("fGradePanel");
+  if(panel)return new Set([...panel.querySelectorAll('input[type=checkbox]:checked')].map(x=>x.value));
+  return GRADE_SELECTED;
+}
+function fillFilterSelects(items){
+  // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
+  const cfg=DATA.meta&&Array.isArray(DATA.meta.filters)?DATA.meta.filters:null;
+  const oSel=document.getElementById("fOrder");
+  // 核芯卡排序控件独立于筛选（meta.filters 不隐藏它）
+  const nucleusSort=items.some(it=>it.sort_660);
+  if(nucleusSort){
+    oSel.innerHTML=`<option value="new" selected>排序：新出在前</option><option value="old">排序：旧出在前</option>`;
+    oSel.selectedIndex=0;oSel.style.display="";
+  }
+  // 期次板时间排序（items 带 period_date=按活动期次时间排；默认近期到早期）
+  const timeSort=!nucleusSort&&items.some(it=>it.period_date);
+  if(timeSort){
+    oSel.innerHTML=`<option value="new" selected>排序：近期到早期</option><option value="old">排序：早期到近期</option>`;
+    oSel.selectedIndex=0;oSel.style.display="";
+    const gSel=document.getElementById("fGrade"),tSel=document.getElementById("fType"),
+          iSel=document.getElementById("fIp"),wrap=document.getElementById("fCustomWrap"),
+          relSel2=document.getElementById("fRelease"),nsSel2=document.getElementById("fNameSt");
+    gSel.style.display=tSel.style.display=iSel.style.display=relSel2.style.display=nsSel2.style.display="none";
+    wrap.innerHTML="";DATA._custFilters=[];
+    return;
+  }
+  const gSel=document.getElementById("fGrade"),tSel=document.getElementById("fType"),
+        iSel=document.getElementById("fIp"),relSel=document.getElementById("fRelease"),
+        nsSel=document.getElementById("fNameSt"),
+        wrap=document.getElementById("fCustomWrap");
+  wrap.innerHTML="";DATA._custFilters=[];
+  if(cfg&&cfg.length){
+    gSel.style.display=tSel.style.display=iSel.style.display=relSel.style.display=nsSel.style.display="none";
+    if(!nucleusSort)oSel.style.display="none";
+    cfg.forEach((f,ix)=>{
+      const set=new Set();
+      items.forEach(it=>{const v=it[f.key];if(v!=null&&String(v)!=="")set.add(String(v));});
+      if(!set.size)return;
+      const sel=document.createElement("select");
+      fillOptions(sel,[...set].sort(),"全部"+zhText(FIELD_CN[f.key]||f.label||f.key),f.key);
+      sel.setAttribute("aria-label",zhText(FIELD_CN[f.key]||f.label||f.key));
+      sel.onchange=render;
+      wrap.appendChild(sel);
+      DATA._custFilters.push({key:f.key,sel});
+    });
+    return;
+  }
+  const skinLike=items.some(it=>pick(it,"level")!=null||pick(it,"weapon_type_label"));
+  document.getElementById("sortHint").style.display="none";
+  const dirEl0=document.getElementById("fDir");
+  if(!skinLike){gSel.style.display=tSel.style.display=iSel.style.display=relSel.style.display=nsSel.style.display=oSel.style.display="none";if(dirEl0)dirEl0.style.display="none";return;}
+  gSel.style.display=tSel.style.display=iSel.style.display=relSel.style.display=nsSel.style.display=oSel.style.display="";
+  if(items.some(it=>it.sort_660)){
+    // 核芯卡：默认新出在前（660 编号降序）
+    oSel.innerHTML=`<option value="new" selected>排序：新出在前</option><option value="old">排序：旧出在前</option>`;
+    oSel.selectedIndex=0;
+  } else if(items.some(it=>pick(it,"level")!=null||pick(it,"weapon_type_label")||pick(it,"sale_ts"))){
+    // 武器皮肤图鉴 / 静态候选：排列依据与方向分开（排列依据=皮肤ID / 上架时间）。
+    // 本快照无可靠图鉴顺序字段（catalog_order/collection_order/sort_order/图鉴序号 全空，
+    // priority 只有 16 个去重值=分级不是顺序）→ 不提供「图鉴顺序」项，也不拿名称/sale_ts/ID 伪造，
+    // 默认「皮肤 ID ↓」（顶层只有永久主记录；时限变体并入主卡、不参与顶层排列）。
+    document.getElementById("sortHint").textContent="排列依据：无可靠图鉴顺序字段 → 默认皮肤 ID ↓（顶层仅永久主记录；时限变体并入主卡、不参与排列）";
+    document.getElementById("sortHint").style.display="";
+    oSel.innerHTML=`<option value="id" selected>排列依据：皮肤 ID</option><option value="sale">排列依据：上架时间</option>`;
+    oSel.selectedIndex=0;
+    const dirEl=document.getElementById("fDir");
+    if(dirEl&&!dirEl.dataset.dir){dirEl.dataset.dir="desc";dirEl.textContent="↓ 降序";}
+    if(dirEl)dirEl.style.display="";
+  } else {
+    oSel.innerHTML=`<option value="gallery">排序：游戏图鉴序列</option><option value="id">排序：皮肤ID</option>`;
+  }
+  // 五路独立筛选（真实枚举生成，可任意组合；与排序互不干扰）
+  const grades=new Set(),types=new Set(),ips=new Set(),rels=new Set(),nsts=new Set();
+  const relCounts={},nsCounts={},gradeCounts={};
+  items.forEach(it=>{
+    // 品级筛选：优先 canonical level；legacy 板没有 level 时退回其自带 grade（仅该板展示用）
+    const lv=pick(it,"level"),gRaw=pick(it,"grade");
+    const tKey=(gRaw!=null&&gRaw!=="")?String(gRaw):(lv!=null?String(lv):null);
+    if(tKey!=null){grades.add(tKey);gradeCounts[tKey]=(gradeCounts[tKey]||0)+1;}
+    const wt=pick(it,"weapon_type_label");
+    if(wt)types.add(typeCN(wt));
+    const ipv=pick(it,"ip_now")||pick(it,"ip_liaison");   // legacy=ip_now；canonical=ip_liaison（展示层）
+  if(ipv)ips.add(ipv);
+    const ls=listingOf(it);if(ls){rels.add(ls);relCounts[ls]=(relCounts[ls]||0)+1;}
+    const nsv=nameStatusOf(it);nsts.add(nsv);nsCounts[nsv]=(nsCounts[nsv]||0)+1;
+  });
+  // 「（无联动）」只在确实存在联动与非联动混合时提供，避免整板无联动数据时出现空筛选
+  if(ips.size&&items.some(it=>!(pick(it,"ip_now")||pick(it,"ip_liaison"))))ips.add("（无联动）");
+  const fill=(sel,set,allLabel,mapKey,counts)=>{
+    fillOptions(sel,[...set].sort((a,b)=>String(a).localeCompare(String(b),"zh-CN",{numeric:true})),allLabel,mapKey,counts);
+    // 该维度没有真实值 → 不显示空下拉（如候选板无联动IP）
+    if(sel.options.length<=1)sel.style.display="none";
+  };
+  // 品级筛选：**勾选制（可多选）**，不再是单选下拉；未勾选 = 全部
+  const gradeSorted=[...grades].sort((a,b)=>String(a).localeCompare(String(b),"zh-CN",{numeric:true}));
+  fillGradeGroup(gSel,gradeSorted,"品级","level",gradeCounts);
+  gSel.style.display=grades.size?"":"none";
+  fill(tSel,types,"全部武器种类");
+  fill(iSel,ips,"全部联动IP");
+  // 两个状态筛选：**只要行里有该字段就显示**（不再用 options.length 这种 HTML-only 判定，
+  // 否则真实浏览器外的环境/缓存差异会让下拉"消失"，表现为"筛选不可用"）
+  fill(relSel,rels,"全部上架状态","listing_status",relCounts);
+  fill(nsSel,nsts,"全部名称状态","name_status",nsCounts);
+  relSel.style.display=rels.size?"":"none";
+  nsSel.style.display=nsts.size?"":"none";
+  const relHint=document.getElementById("listingHint");
+  if(relHint){
+    const vs=listingSupported();
+    relHint.style.display="none";
+    if(!rels.size){
+      relHint.textContent="上架状态：本板行内没有上架状态字段（listing_status / release_state 均缺失）→ 不提供该筛选";
+      relHint.style.display="";
+    } else if(rels.size===1&&vs&&vs.supported_today){
+      const only=[...rels][0];
+      relSel.title="canonical listing_status 当前支持类别："+vs.supported_today.join("、")
+        +((vs.evidence_state&&vs.evidence_state.note)?("；"+vs.evidence_state.note):"");
+      relHint.textContent="上架状态：仅 "+vs.supported_today.map(x=>LISTING_CN[x]||x).join("、")
+        +"（canonical 字段；同快照无 sale/shop/exchange 证据，不伪造分类）";
+      relHint.style.display="";
+    }
+  }
+}
+function renderItemCard(it){
+  const rows=Object.entries(it)
+    .filter(([k,v])=>!FIXED.has(k)&&v!==null&&v!=="")
+    .map(([k,v])=>`<div class="k">${esc(FIELD_CN[k]||k)}</div><div class="v">${esc(fmtVal(k,v))}</div>`);
+  return `<div class="i"><div class="i-head">
+    <div><div class="i-name">${esc(it.name||it.display_name||it.id)}</div>
+    <div class="i-id" title="id">道具ID ${esc(it.item_id??it.id)}</div></div>
+    <span class="head-tags"><span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${renderStateTags(it.status_tags)}</span></div>
+    <div class="kv">${rows.join("")}</div>
+    ${renderTechSection([["provenance",it.provenance],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}</div>`;
+}
+const HUGE_STEP=500;
+let hugeScrollBound=false;
+let hugeLoading=false;
+function hugePrepare(q,fe){
+  DATA._query=q;
+  const hay=DATA._hay,matched=[];
+  for(let i=0;i<DATA.items.length;i++){
+    const it=DATA.items[i];
+    if(fe&&it.evidence!==fe)continue;
+    if(partFilter.length&&!partFilter.includes(String(it.part??"")))continue;
+    if(q&&!hay[i].includes(q))continue;
+    matched.push(it);
+  }
+  DATA._hugeMatched=matched;
+  DATA._hugeQ=q;
+}
+function hugeUpdateCount(total,shown){
+  const cnt=document.getElementById("count");
+  cnt.textContent=DATA._hugeQ
+    ? `命中 ${total} 条（关键字「${DATA._hugeQ}」）· 已显示 ${shown}`
+    : `全表 ${DATA.items.length} 条 · 已显示 ${shown} 条 · 共 ${total} 条可浏览`;
+}
+function hugeDraw(reset){
+  if(!reset&&hugeLoading)return;
+  hugeLoading=true;
+  setTimeout(()=>{hugeLoading=false;},180);
+  const matched=DATA._hugeMatched||[];
+  const g=document.getElementById("grid");
+  if(reset){DATA._hugeOffset=0;g.innerHTML="";}
+  if(!matched.length){
+    if(reset)g.innerHTML='<div class="empty">无匹配条目</div>';
+    hugeUpdateCount(0,0);
+    const bar=document.getElementById("hugeBar");if(bar)bar.remove();
+    return;
+  }
+  if(reset)g.innerHTML="";
+  const start=DATA._hugeOffset;
+  const slice=matched.slice(start,start+HUGE_STEP);
+  if(slice.length)g.insertAdjacentHTML("beforeend",slice.map(renderItemCard).join(""));
+  DATA._hugeOffset=start+slice.length;
+  const total=matched.length,shown=Math.min(DATA._hugeOffset,total);
+  hugeUpdateCount(total,shown);
+  const old=document.getElementById("hugeBar");
+  if(shown<total){
+    if(old)old.querySelector("button").textContent=`加载更多（剩余 ${total-shown} 条）`;
+    else{
+      const bar=document.createElement("div");
+      bar.id="hugeBar";
+      bar.style.cssText="text-align:center;padding:18px 0 30px";
+      bar.innerHTML=`<button style="cursor:pointer;padding:9px 26px;border:1px solid #d4d4d8;border-radius:8px;background:#fff;font-size:13px">加载更多（剩余 ${total-shown} 条）</button>`;
+      bar.querySelector("button").addEventListener("click",()=>hugeDraw(false));
+      g.after(bar);
+    }
+    if(!hugeScrollBound){
+      hugeScrollBound=true;
+      window.addEventListener("scroll",()=>{
+        const bar=document.getElementById("hugeBar");
+        if(!bar)return;
+        if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-700){
+          hugeDraw(false);
+          setTimeout(()=>{
+            const bar2=document.getElementById("hugeBar");
+            if(bar2&&window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-700)hugeDraw(false);
+          },220);
+        }
+      },{passive:true});
+    }
+  }else if(old)old.remove();
+}
+function render(){
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  if(DATA)DATA._query=q;
+  const fe=document.getElementById("fEv").value;
+  const fg=readGradeChecked();   // 勾选制：空集 = 全部品级（多选，OR 命中）
+  const ft=document.getElementById("fType").value;
+  const fi=document.getElementById("fIp").value;
+  const frel=document.getElementById("fRelease").value;
+  const fns=document.getElementById("fNameSt").value;
+  // v1.3.1：皮肤渲染器（含品级/武器种类/上架状态/名称状态筛选）改为**数据驱动**，
+// 不再硬编码旧板 id —— 否则 Workbench 板 weapon_skin_active 会走通用渲染器，两个状态筛选等于没生效。
+const skinBoard=b==="weapon_skin_sfx_text_sources"
+  ||(Array.isArray(DATA&&DATA.items)&&DATA.items.some(it=>it.listing_status!==undefined||it.skin_item_id!==undefined
+      ||(Array.isArray(it.variant_items)&&(it.grade!==undefined||it.weapon_type_label!==undefined))));
+  // 排列 = 依据(fOrder) + 方向(fDir)；兼容旧的合并值（id_asc/sale_desc 等）
+  const dirSel=document.getElementById("fDir");
+  function sortState(){
+    const raw=document.getElementById("fOrder").value;
+    const legacy={id_asc:["id","asc"],id_desc:["id","desc"],sale_asc:["sale","asc"],sale_desc:["sale","desc"]}[raw];
+    if(legacy)return {key:legacy[0],dir:legacy[1]};
+    return {key:raw||"id",dir:(dirSel&&dirSel.dataset.dir)||"desc"};
+  }
+  function keyOf(it){
+    if(!skinBoard)return 0;
+    return it.skin_id||it.structural_record_key||0;
+  }
+  function saleOf(it){const s=pick(it,"sale_ts");return typeof s==="number"?s:0;}
+  const candidateSkinBoard=b==="weapon_skin_static_candidates_v01";
+  if(Array.isArray(DATA._hay)&&DATA.items.length>=HUGE_TABLE_MIN){
+    // 大表（全道具总表等）：轻量索引过滤 + 分批渲染（按钮/滚动触底加载），可浏览到全部条目。
+    hugePrepare(q,fe);
+    hugeDraw(true);
+    return;
+  }
+  const items=DATA.items.filter(it=>{
+    if(fe&&it.evidence!==fe)return false;
+    if(partFilter.length&&!partFilter.includes(String(it.part??"")))return false;
+    if(Array.isArray(DATA._custFilters)){
+      for(const cf of DATA._custFilters){
+        const v=cf.sel?cf.sel.value:"";
+        if(v&&String(it[cf.key]??"")!==v)return false;
+      }
+    }
+    if(fg.size){
+      const lv=pick(it,"level"),gRaw=pick(it,"grade");
+      const tKey=(gRaw!=null&&gRaw!=="")?String(gRaw):String(lv==null?"":lv);
+      if(!fg.has(tKey))return false;   // 多选：命中任意一个勾选项即保留
+    }
+    if(ft){
+      const wt=pick(it,"weapon_type_label");
+      if(!wt||typeCN(wt)!==ft)return false;
+    }
+    if(fi){
+      const ip=pick(it,"ip_now")||pick(it,"ip_liaison")||"";
+      if((ip||"（无联动）")!==fi)return false;
+    }
+    if(frel&&String(listingOf(it)??"")!==frel)return false;
+    if(fns){const ns=nameStatusOf(it);if(ns!==fns)return false;}
+    if(q){const hay=JSON.stringify(it).toLowerCase();if(!hay.includes(q))return false;}
+    return true;
+  });
+  const g=document.getElementById("grid");g.innerHTML="";
+  const hasSfxChildren=items.some(it=>Array.isArray(it.sfx_items));
+  const childCount=items.reduce((sum,it)=>sum+(Array.isArray(it.sfx_items)?it.sfx_items.length:0),0);
+  const currentParents=items.filter(it=>it.catalog_layer==="current_parent").length;
+  const behaviorPreviews=items.filter(it=>it.catalog_layer==="behavior_preview_only").length;
+  const variantCount=items.reduce((sum,it)=>sum+(Array.isArray(it.variant_items)?it.variant_items.length:0),0);
+  const sfxInView=items.reduce((sum,it)=>sum+(Array.isArray(it.sfx_items)?it.sfx_items.length:0),0);
+  // 名称三级统计（可见范围内；变体按附属记录计入）
+  const nameStats=(m=>{
+    const acc={verified:0,candidate:0,unresolved:0};
+    for(const it of items){
+      const st=it.name_status||(it.candidate_name?"candidate":(it.name?"verified":"unresolved"));
+      if(acc[st]!==undefined)acc[st]++;
+      for(const v of (it.variant_items||[])){
+        const vs=v.name_status||(v.name?"verified":"candidate");
+        if(acc[vs]!==undefined)acc[vs]++;
+      }
+    }
+    return acc;
+  })();
+  const timedVariantsShown=items.reduce((sum,it)=>sum+((Array.isArray(it.timed_variants)?it.timed_variants.length:0)),0);
+  document.getElementById("count").textContent=candidateSkinBoard
+    ? `显示 ${items.length} / ${DATA.items.length} 条静态候选（顶层仅永久记录；${timedVariantsShown} 个时限变体并入主卡、不计款） · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · ${sfxInView} 个表现子项`
+    : (skinBoard||hasSfxChildren)
+    ? `显示 ${items.length} / ${DATA.items.length} 款皮肤 · ${currentParents} 主皮肤 · 时限变体 ${variantCount}（并入主卡，不单独计款） · ${behaviorPreviews} 行为预告 · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · 上架状态 ${(()=>{const acc={};for(const it of items){const k=listingOf(it)||"（无字段）";acc[k]=(acc[k]||0)+1;}const vs=listingSupported();return Object.entries(acc).map(([k,v])=>`${LISTING_CN[k]||k} ${v}`).join(" / ")+(vs?`（canonical 支持类别：${vs.supported_today.map(x=>LISTING_CN[x]||x).join("、")}）`:"");})()}`
+    : `显示 ${items.length} / ${DATA.items.length} 条`;
+  if(!items.length){g.innerHTML='<div class="empty">无匹配条目</div>';return;}
+  if(skinBoard){
+    // 排序（默认 = 上架时间 ↓：新在前，预告排最前；同日按皮肤 ID ↓）
+    const st=sortState();
+    const NO_SALE=Number.MAX_SAFE_INTEGER;
+    const sign=st.dir==="asc"?1:-1;
+    const byId=(a,b)=>sign*((keyOf(a)||0)-(keyOf(b)||0));
+    const bySale=(a,b)=>{
+      const x=saleOf(a)||NO_SALE,y=saleOf(b)||NO_SALE;
+      return sign*(x-y)||byId(a,b);
+    };
+    items.sort(st.key==="sale"?bySale:byId);
+    g.innerHTML=items.map(renderSkinCard).join("");
+    return;
+  }
+  if(candidateSkinBoard){
+    const st=sortState();
+    const sign=st.dir==="asc"?1:-1,NO_SALE=Number.MAX_SAFE_INTEGER;
+    const byId=(a,b)=>sign*((a.structural_record_key||0)-(b.structural_record_key||0));
+    const bySale=(a,b)=>sign*((pick(a,"sale_ts")||NO_SALE)-(pick(b,"sale_ts")||NO_SALE))||byId(a,b);
+    items.sort(st.key==="sale"?bySale:byId);
+    g.innerHTML=items.map(renderCandidateSkinCard).join("");
+    return;
+  }
+  const orderBy=document.getElementById("fOrder").value;
+  const timeOrder=items.some(it=>it.period_date)&&(orderBy==="new"||orderBy==="old")&&!items.some(it=>it.sort_660);
+  const nucleusOrder=!timeOrder&&items.some(it=>it.sort_660)&&orderBy!=="";
+  const list=timeOrder
+    ? [...items].sort((a,b)=>orderBy==="old"
+        ? String(a.period_date).localeCompare(String(b.period_date))
+        : String(b.period_date).localeCompare(String(a.period_date)))
+    : nucleusOrder
+    ? [...items].sort((a,b)=>orderBy==="old"
+        ? (a.sort_660||0)-(b.sort_660||0)
+        : (b.sort_660||0)-(a.sort_660||0))
+    : items;
+  g.innerHTML=list.map(it=>{
+    const nucleusMode=!!it.rank_star_segments;
+    const sumKeys=nucleusMode?new Set(["item_id","grade_clean","skill_icon","skill_desc","weapon_type_display","weapon_type_label","weapon_type_code"]):new Set();
+    const allPairs=Object.entries(it).filter(([k])=>!FIXED.has(k)&&!sumKeys.has(k)&&it[k]!==null&&it[k]!=="");
+    const techPairs=allPairs.filter(([k])=>TECH_KEYS.has(k));
+    const extra=allPairs.filter(([k])=>!TECH_KEYS.has(k));
+    const techSection=renderTechSection([...techPairs,["source",it.source]]);
+    const lotteryMode=!nucleusMode&&String(DATA.meta&&DATA.meta.category||"").startsWith("四、奖池");
+    const rowHtml=([k,v])=>{
+      const cn=FIELD_CN[k]||k;const mono=(k==="model_path"||k==="cc"||k==="file")?"mono":"";
+      if(nucleusMode&&k==="rank_star_segments"&&v&&typeof v==="object"&&!Array.isArray(v)){
+        const segs=Object.keys(v).sort((a,b)=>Number(a)-Number(b))
+          .map(s=>`<div class="star"><b>${esc(s)}星</b><div class="star-txt">${richText(zhText(String(v[s])))}</div></div>`).join("");
+        return `<div class="k">星级段</div><div class="v stars">${segs}</div>`;
+      }
+      if(k==="skill_desc")return `<div class="k">${cn}</div><div class="v nucleus-desc">${richText(String(v))}</div>`;
+      if(k==="skill_icon"&&nucleusMode)return "";
+      if(isRichText(v))return `<div class="k">${cn}</div><div class="v rich">${richText(zhText(String(v)))}</div>`;
+      let val=fmtVal(k,v);
+      if(k==="shape_hint"&&v)return `<div class="k">${cn}</div><div class="v"><span class="hint">${esc(v)}</span></div>`;
+      if(k==="ip"&&v)return `<div class="k">${cn}</div><div class="v"><span class="tag-ip">${esc(v)}</span></div>`;
+      return `<div class="k">${cn}</div><div class="v ${mono}">${esc(val)}</div>`;
+    };
+    const rows=extra.map(rowHtml).join("");
+    const childSection=renderSfxChildren(it.sfx_items);
+    const rewardsSection=Array.isArray(it.rewards)&&it.rewards.length?renderRewardsList(it.rewards):"";
+    const poolsSection=renderPools(it.pools);
+    const activityPoolRefsSection=renderActivityPoolRefs(it.activity_pool_refs);
+    const referenceSection=renderReferenceFields(it.reference_fields);
+    const behaviorSection=renderBehaviorResources(it.behavior_resources);
+    const variantSection=renderVariantItems(it.variant_items,it);
+    // 抽奖类卡（分类前缀「四、奖池」）：默认只显示概要 kv，点名称展开 rewards/pools/refs 等详情
+    let bodyHtml;
+    if(lotteryMode){
+      const SUMMARY_SET=new Set(["activity","server_branch","branch_source","panel_rows",
+        "store_zhencang","store_xishi","store_zhencang_source","store_xishi_source"]);
+      const sum=[],det=[];
+      for(const [k,v] of extra){ (SUMMARY_SET.has(k)?sum:det).push(rowHtml([k,v])); }
+      const emptyRow='<div class="k">概要</div><div class="v">（无）</div>';
+      bodyHtml=`<div class="kv">${sum.length?sum.join(""):emptyRow}</div>`+
+        `<div class="i-detail" hidden><div class="kv">${det.length?det.join(""):emptyRow}</div>`+
+        `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
+        `${techSection}</div>`;
+    }else if(nucleusMode){
+      const sum=[];
+      if(it.grade_clean)sum.push(`<div class="k">品级</div><div class="v">${esc(it.grade_clean)}</div>`);
+      if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
+      if(it.skill_icon)sum.push(`<div class="k">技能图标</div><div class="v mono">${esc(it.skill_icon)}</div>`);
+      if(it.skill_desc)sum.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
+      bodyHtml=`<div class="kv">${sum.join("")}<div class="i-more" hidden>${rows}</div></div>`+
+        `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
+        `${techSection}`;
+    }else{
+      bodyHtml=`<div class="kv">${rows}</div>${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}${techSection}`;
+    }
+    return `<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}">
+      <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
+        <div><div class="i-name">${esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
+        ${referenceTitle(it.reference_fields)}
+        <div class="i-id" title="id">${nucleusMode?`道具ID ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div></div>
+        <span class="head-tags"><span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${renderStateTags(it.status_tags)}</span>
+      </div>
+      ${bodyHtml}
+    </div>`;
+  }).join("");
+}
+function onDetailKey(event,head){
+  if(event.key==="Enter"||event.key===" "){event.preventDefault();toggleDetail(head);}
+}
+function toggleDetail(head){
+  const card=head.parentElement;
+  const target=card.querySelector(".i-detail")||card.querySelector(".i-more");
+  if(!target)return;
+  target.hidden=!target.hidden;
+  head.classList.toggle("open",!target.hidden);
+  head.setAttribute("aria-expanded",String(!target.hidden));
+}
+const b=getParam("b");
+const POLICY=window.WIKI_PUBLICATION_POLICY;
+const policyEntry=POLICY&&POLICY.boards?POLICY.boards[b]:null;
+function showQuarantine(reason){
+  document.title="板块已隔离 · Wiki";
+  document.getElementById("title").textContent="该板块已隔离，暂不展示旧数据";
+  document.getElementById("metaline").textContent="公开展示要求：源锁 → 条目/表 → 行级字段 → 名称来源 → 业务语义 → 证据等级。";
+  document.querySelector(".controls").style.display="none";
+  const n=document.getElementById("notes");
+  n.style.display="block";
+  n.textContent="隔离原因："+(reason||"该 board 未登记为可公开板块。")+" 原始 JSON 已保留，待逐行复证后才会重新发布。";
+  document.getElementById("grid").innerHTML='<div class="empty">没有可公开展示的数据</div>';
+}
+if(!b){document.getElementById("title").textContent="缺少板块参数 ?b=";}
+else if(!wbProjectionIds().has(b) && (!policyEntry || !["published","published_hidden"].includes(policyEntry.publication_status))){
+  showQuarantine(policyEntry&&policyEntry.reason);
+}
+else loadBoard(b,d=>{
+  DATA=d;document.getElementById("q").value=initialQuery;const m=d.meta;
+  if(b==="weapon_skin_sfx_text_sources"||b==="weapon_skin_static_candidates_v01"||b==="weapon_skin_active")document.body.classList.add("skin-mode");
+  const title=boardCardTitle(m);
+  document.title=title+" · Wiki";
+  document.getElementById("title").textContent=title;
+  document.getElementById("metaline").textContent=
+    `来源：${zhTitle(m.source_server)} · 生成 ${m.generated} · 源包摘要 ${String(m.package_sha).slice(0,16)}… · 条目等级 ${EV_CN[m.evidence]||m.evidence}`;
+  const cnt={};d.items.forEach(i=>cnt[i.evidence]=(cnt[i.evidence]||0)+1);
+  document.getElementById("pills").innerHTML=
+    `<span class="pill">条目 <b>${d.items.length}</b></span>`+
+    (partFilter.length?`<span class="pill">部位筛选 <b>${esc(partFilter.join(" / "))}</b></span>`:"")+
+    Object.entries(cnt).map(([k,v])=>`<span class="pill">${EV_CN[k]} <b>${v}</b></span>`).join("")+
+    Object.entries(m.state_summary||{}).map(([k,v])=>`<span class="pill state-pill ${STATE_CLASS[k]||"unresolved"}">${esc(STATE_CN[k]||k)} <b>${v}</b></span>`).join("")+
+    Object.entries(m.name_status_summary||{}).map(([k,v])=>`<span class="pill name-pill" title="name_status=${esc(k)}">名称${esc(VALUE_CN.name_status[k]||k)} <b>${v}</b></span>`).join("");
+  if(m.notes){
+    const n=document.getElementById("notes");n.style.display="block";
+    n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv"><div class="k">板块说明</div><div class="v">${esc(m.notes)}</div></div></details>`;
+  }
+  if(m.liaison_descs&&m.liaison_descs.length){
+    const notesEl=document.getElementById("notes");
+    const box=document.createElement("div");
+    box.className="notes";box.style.background="#ecfdf5";box.style.border="1px solid #a7f3d0";box.style.color="#065f46";
+    box.innerHTML="<b>联动外观官方描述（按主题全局对应，不逐款绑定）</b><ul style='margin:6px 0 0;padding-left:18px;line-height:1.7'>"+
+      m.liaison_descs.map(x=>`<li><b>${esc(x.theme)}</b>：${esc(x.text)}</li>`).join("")+"</ul>";
+    notesEl.parentNode.insertBefore(box,notesEl.nextSibling);
+  }
+  document.getElementById("q").addEventListener("input",scheduleSearch);
+  document.getElementById("q").addEventListener("compositionend",scheduleSearch);
+  document.getElementById("fEv").addEventListener("change",render);
+  /* 品级筛选：下拉面板（点开列表 → 里面勾选，可多选）。点面板外关闭。 */
+  (function(){
+    const box=document.getElementById("fGrade");
+    if(!box)return;
+    const btn=document.getElementById("fGradeBtn"),panel=document.getElementById("fGradePanel");
+    if(!btn||!panel)return;
+    btn.addEventListener("click",function(e){
+      e.stopPropagation();
+      const open=panel.style.display!=="none";
+      panel.style.display=open?"none":"block";
+      btn.setAttribute("aria-expanded",String(!open));
+    });
+    panel.addEventListener("click",function(e){e.stopPropagation();});
+    document.addEventListener("click",function(){
+      if(panel.style.display!=="none"){panel.style.display="none";btn.setAttribute("aria-expanded","false");}
+    });
+    box.addEventListener("change",function(){
+      GRADE_SELECTED=new Set([...panel.querySelectorAll('input[type=checkbox]:checked')].map(x=>x.value));
+      updateGradeBtnLabel();
+      render();
+    });
+  })();
+  document.getElementById("fType").addEventListener("change",render);
+  document.getElementById("fIp").addEventListener("change",render);
+  document.getElementById("fOrder").addEventListener("change",render);
+  // v1.3.2 修复：两个状态筛选此前漏绑 change ⇒ 选项可见但选择无效（用户报「筛选用不了」）
+  document.getElementById("fRelease").addEventListener("change",render);
+  document.getElementById("fNameSt").addEventListener("change",render);
+  {
+    // 排列方向：独立按钮，只切方向，不动筛选
+    const dirBtn=document.getElementById("fDir");
+    if(dirBtn&&!dirBtn.dataset.bound){
+      dirBtn.dataset.bound="1";
+      dirBtn.addEventListener("click",()=>{
+        const next=dirBtn.dataset.dir==="asc"?"desc":"asc";
+        dirBtn.dataset.dir=next;
+        dirBtn.textContent=next==="asc"?"↑ 升序":"↓ 降序";
+        render();
+      });
+    }
+  }
+  if((d.items||[]).length>=HUGE_TABLE_MIN)buildHugeIndex(d);
+  fillFilterSelects(d.items);
+  render();
+});
+</script>
+</body>
+</html>

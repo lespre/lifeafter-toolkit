@@ -1,0 +1,26 @@
+{
+ "_meta": {"schema_version": 1, "generated": "2026-09-12T18:55:06", "rule": "不删除旧资产，只标记状态；active pipeline 只允许读 active"},
+ "status_enum": ["active", "historical", "superseded", "legacy"],
+ "artifacts": {
+  "artifacts/active/item/ITEM_MASTER.jsonl": {"status": "active", "origin": "data/ITEM_MASTER_v03_1.jsonl"},
+  "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl": {"status": "active", "origin": "data/WEAPON_SKIN_RESOLVED_v0.1.jsonl"},
+  "artifacts/active/lottery/LOTTERY_POOL.jsonl": {"status": "active", "origin": "data/LOTTERY_POOL_RESOLVED_v01.jsonl"},
+  "artifacts/active/lottery/LOTTERY_REWARD_TARGETS.jsonl": {"status": "active", "origin": "data/LOTTERY_REWARD_TARGETS_v0.1.jsonl"},
+  "artifacts/active/fashion/FASHION_IDENTITY_STATE.json": {"status": "active", "origin": "新建（不生成 resolved）"},
+  "artifacts/historical/item/v01": {"status": "historical", "origin": "data/ITEM_MASTER_v01.jsonl"},
+  "artifacts/historical/item/v02": {"status": "historical", "origin": "data/ITEM_MASTER_v02.jsonl"},
+  "artifacts/historical/item/v03": {"status": "historical", "origin": "data/ITEM_MASTER_v03.jsonl"},
+  "data/ITEM_MASTER_v01.jsonl": {"status": "superseded", "note": "原件保留；v01 另有 published board"},
+  "data/ITEM_MASTER_v02.jsonl": {"status": "superseded"},
+  "data/ITEM_MASTER_v03.jsonl": {"status": "superseded"},
+  "data/ITEM_MASTER_v03_1.jsonl": {"status": "superseded", "note": "已复制为 active"},
+  "data/WEAPON_SKIN_RESOLVED_v0.1.jsonl": {"status": "superseded", "note": "已复制为 active"},
+  "data/LOTTERY_POOL_RESOLVED_v01.jsonl": {"status": "superseded"},
+  "data/LOTTERY_REWARD_TARGETS_v0.1.jsonl": {"status": "superseded"},
+  "data/boards/*": {"status": "legacy", "note": "现有 board 仍是 Wiki 的展示源；按 projection 契约可随时重建"},
+  "data/NAME_LOCATOR.db / id_locator_index.db / ITEM_IDENTITY_LOCATOR.db / FASHION_IDENTITY_LOCATOR.db / id_occurrence_index.db": {"status": "legacy", "note": "定位链基建，仍被 evidence 复用；未纳入 registry canonical"},
+  "tools/*": {"status": "legacy", "note": "既有 builder 保留；domain builder 以 wrapper 复用，不重写"},
+  "03拆包产物/config_work/*": {"status": "legacy", "note": "76,544 文件一次性脚本与工作副本，未纳管"}
+ },
+ "migration_policy": "先逻辑重构、再物理搬迁；本轮只新增 active/registry/domains/pipelines/residuals/evidence"
+}

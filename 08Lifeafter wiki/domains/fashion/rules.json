@@ -1,0 +1,11 @@
+{
+ "domain": "fashion",
+ "canonical": "artifacts/active/fashion/FASHION_IDENTITY_STATE.json",
+ "rules": [
+  "禁止生成 resolved 主表（raw-row 绑定未证）",
+  "三 namespace 永久禁止混用：runtime_fashion_key / export_fashion_id_slot52 / structural_row_key",
+  "runtime semantic verified ≠ business identity verified"
+ ],
+ "hard_block": "A2F data body 静态不可定位（native 边界；禁止注入/内存读取）",
+ "residual_ref": "residuals/fashion/binding_residuals.json"
+}

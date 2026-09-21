@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奖池浏览 · Workbench View</title>
+<script src="assets/workbench_client.js?v=v13"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--red:#b91c1c;--green:#15803d;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;padding:20px}
+a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+h1{font-size:18px}
+.sub,.wb-note{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.tabs{display:flex;gap:8px;margin-bottom:8px}
+.tabs button.active{background:#eef2ff;border-color:#c7d2fe}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input,select,button{font:inherit;padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:#fff}
+button{cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+tbody tr{cursor:pointer} tbody tr:hover{background:#f4f4f5}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.wb-badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.wb-badge.ok{color:var(--green);border-color:#bbf7d0} .wb-badge.warn{color:var(--amber);border-color:#fde68a}
+.wb-page-info{color:var(--muted);font-size:12px;padding:0 8px}
+.wb-pager{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.wb-snapshotbox{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 10px;margin:8px 0}
+.wb-sec{margin:10px 0} .wb-sec-h{font-weight:600;margin-bottom:4px}
+.wb-kv th{width:38%;color:var(--muted);font-weight:500}
+.wb-pre{background:#f8f8f8;border:1px solid var(--border);border-radius:6px;padding:6px 8px;overflow:auto;max-height:260px;font-size:12px}
+.wb-notice{padding:8px 10px;border-radius:8px;border:1px solid var(--border)} .wb-notice.bad{border-color:#fecaca;background:#fef2f2}
+.wb-claim{border-top:1px dashed var(--border);padding:6px 0}
+details summary{cursor:pointer;color:#1d4ed8;font-size:13px}
+.split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:12px}
+@media(max-width:1000px){.split{grid-template-columns:1fr}}
+.wb-kind{background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:0 6px;font-size:12px}
+</style>
+</head><body>
+<div class="card">
+  <h1>奖池浏览 <span class="wb-badge">Workbench View</span></h1>
+  <div class="sub">数据源：<code>/api/lottery/pools</code> 与 <code>/api/lottery/rewards</code>（分页 ≤ 200）。
+  两层<b>永不合并</b>：池结构层（静态配置）与奖励目标层（静态分类 + runtime_final 未解析）分开浏览。
+  本页不加载 16MB / 21MB 的 lottery board.js。普通浏览：<a href="board.html?b=lottery_rewards_active&amp;view=wiki">Wiki View</a>。</div>
+</div>
+
+<div class="card">
+  <div class="tabs">
+    <button id="tab-pools">奖池结构层（pool）</button>
+    <button id="tab-rewards">奖励目标层（reward target）</button>
+  </div>
+  <div class="filters">
+    <input id="q" type="search" placeholder="搜索：pool_key / item_no / 原始 reward" style="min-width:220px">
+    <input id="pool_key" type="number" placeholder="pool_key" style="width:120px">
+    <select id="reward_target_type"><option value="">全部 target 类型</option></select>
+    <select id="item_namespace"><option value="">全部 item namespace</option></select>
+    <select id="runtime_final_status"><option value="">全部 runtime_final 状态</option></select>
+    <label class="sub"><input type="checkbox" id="unresolved_only"> 仅 unresolved</label>
+    <select id="page_size"><option>50</option><option>100</option><option>200</option></select>
+    <button id="go">查询</button><button id="reset">重置</button>
+  </div>
+  <div class="sub" id="status" style="margin-top:6px">就绪（API-first）</div>
+</div>
+
+<div class="split">
+  <div class="card"><div id="list"></div><div class="wb-pager" id="pager"></div></div>
+  <div class="card" id="detail"><div class="sub">点击任意一行查看统一 Entity Detail（lottery_pool / lottery_reward）。</div></div>
+</div>
+
+<script>
+(function(){
+  const S={tab:"pools",q:"",pool_key:"",reward_target_type:"",item_namespace:"",runtime_final_status:"",
+           unresolved_only:false,page:1,page_size:50};
+  const $=id=>document.getElementById(id);
+  const list=$("list"),pager=$("pager"),detail=$("detail"),status=$("status");
+  const url=new URLSearchParams(location.search);
+  if(url.get("tab")) S.tab=url.get("tab");
+  if(url.get("pool_key")) S.pool_key=url.get("pool_key");
+  if(url.get("view")) WB.setMode(url.get("view"));
+
+  function paintTabs(){
+    $("tab-pools").className=S.tab==="pools"?"active":"";
+    $("tab-rewards").className=S.tab==="rewards"?"active":"";
+    ["reward_target_type","item_namespace","runtime_final_status","unresolved_only"].forEach(id=>{
+      $(id).disabled=(S.tab!=="rewards");
+    });
+  }
+
+  function fillSelect(id,values){
+    const sel=$(id),cur=sel.value;
+    sel.innerHTML='<option value="">全部</option>'+Object.entries(values||{}).map(([k,v])=>
+      `<option value="${WB.esc(k)}">${WB.esc(WB.zh(k))}（${v}）</option>`).join("");
+    if(cur) sel.value=cur;
+  }
+
+  async function load(){
+    status.textContent="查询中…";
+    try{
+      if(S.tab==="pools"){
+        const d=await WB.api("/api/lottery/pools",{q:S.q,pool_key:S.pool_key||undefined,page:S.page,page_size:S.page_size});
+        renderPools(d.items||[]);
+        WB.renderPager(pager,d,p=>{S.page=p;load();});
+        status.innerHTML="API 在线 · pool 记录 "+(d.items||[]).length+" / 共 "+d.total.toLocaleString()+
+          " · components "+WB.esc(JSON.stringify((d.facets||{}).components||{}))+" · 数据源 <code>"+WB.esc(d.source_artifact)+"</code>";
+      }else{
+        const d=await WB.api("/api/lottery/rewards",{q:S.q,pool_key:S.pool_key||undefined,
+          reward_target_type:S.reward_target_type||undefined,item_namespace:S.item_namespace||undefined,
+          runtime_final_status:S.runtime_final_status||undefined,unresolved_only:S.unresolved_only?1:undefined,
+          page:S.page,page_size:S.page_size});
+        if(!S._facets){ S._facets=true;
+          fillSelect("reward_target_type",(d.facets||{}).reward_target_type||{});
+          fillSelect("item_namespace",(d.facets||{}).item_namespace||{});
+          fillSelect("runtime_final_status",(d.facets||{}).runtime_final_status||{});
+        }
+        renderRewards(d.items||[]);
+        WB.renderPager(pager,d,p=>{S.page=p;load();});
+        status.innerHTML="API 在线 · target "+(d.items||[]).length+" / 共 "+d.total.toLocaleString()+
+          " · 类型分布 "+WB.esc(JSON.stringify((d.facets||{}).reward_target_type||{}))+
+          " · <span class='wb-note'>"+WB.esc(d.layering_note||"")+"</span>";
+      }
+      status.className="sub";
+    }catch(err){ WB.error(status,err); list.innerHTML=""; pager.innerHTML=""; }
+  }
+
+  function renderPools(items){
+    if(!items.length){ list.innerHTML='<div class="sub">无匹配行。</div>'; return; }
+    list.innerHTML='<table><thead><tr><th>pool_key</th><th>item_no</th><th>静态 reward_raw</th><th>component</th><th>可靠性</th><th>runtime_final</th><th>详情</th></tr></thead><tbody>'
+      +items.map(r=>`<tr data-pk="${r.pool_key}"><td><code>${r.pool_key}</code></td><td>${r.item_no}</td>
+        <td>${WB.esc(JSON.stringify(r.static_reward_raw))}</td><td>${WB.esc(WB.zh(r.component))}</td>
+        <td>${WB.badge(WB.zh(r.reliability_state),r.reliability_state==="verified"?"ok":"warn")}</td>
+        <td>${WB.badge(WB.zh(r.runtime_final_state),"warn")}</td>
+        <td><a href="workbench_entity.html?kind=lottery_pool&amp;id=${r.pool_key}">entity →</a></td></tr>`).join("")+"</tbody></table>";
+    list.querySelectorAll("tbody tr").forEach(tr=>tr.addEventListener("click",e=>{
+      if(e.target.tagName==="A") return; showPool(tr.dataset.pk);
+    }));
+  }
+
+  function renderRewards(items){
+    if(!items.length){ list.innerHTML='<div class="sub">无匹配行。</div>'; return; }
+    list.innerHTML='<table><thead><tr><th>pool_key</th><th>item_no</th><th>target 类型</th><th>item_id</th><th>namespace</th><th>count</th><th>child_pool</th><th>runtime_final</th><th>详情</th></tr></thead><tbody>'
+      +items.map(r=>`<tr data-pk="${r.pool_key}" data-no="${r.item_no}">
+        <td><code>${r.pool_key}</code></td><td>${r.item_no}</td>
+        <td>${WB.badge(WB.zh(r.reward_target_type),r.reward_target_type==="item"?"ok":"warn")}</td>
+        <td>${r.item_id==null?"—":"<code>"+r.item_id+"</code>"}</td>
+        <td>${WB.esc(WB.zh(r.item_namespace))}</td><td>${r.item_count==null?"—":r.item_count}</td>
+        <td>${r.child_pool_key==null?"—":r.child_pool_key}</td>
+        <td>${WB.badge(WB.zh(r.runtime_final_status),"warn")}</td>
+        <td><a href="workbench_entity.html?kind=lottery_reward&amp;pool_key=${r.pool_key}&amp;item_no=${r.item_no}">entity →</a></td></tr>`).join("")+"</tbody></table>";
+    list.querySelectorAll("tbody tr").forEach(tr=>tr.addEventListener("click",e=>{
+      if(e.target.tagName==="A") return; showReward(tr.dataset.pk,tr.dataset.no);
+    }));
+  }
+
+  async function showPool(pk){
+    detail.innerHTML='<div class="sub">加载…</div>';
+    try{ detail.innerHTML=WB.renderEntity(await WB.api("/api/entity",{kind:"lottery_pool",id:pk})); }
+    catch(err){ WB.error(detail,err); }
+  }
+  async function showReward(pk,no){
+    detail.innerHTML='<div class="sub">加载…</div>';
+    try{ detail.innerHTML=WB.renderEntity(await WB.api("/api/entity",{kind:"lottery_reward",pool_key:pk,item_no:no})); }
+    catch(err){ WB.error(detail,err); }
+  }
+
+  $("tab-pools").addEventListener("click",()=>{S.tab="pools";S.page=1;paintTabs();load();});
+  $("tab-rewards").addEventListener("click",()=>{S.tab="rewards";S.page=1;paintTabs();load();});
+  $("go").addEventListener("click",()=>{
+    S.q=$("q").value.trim(); S.pool_key=$("pool_key").value.trim();
+    S.reward_target_type=$("reward_target_type").value; S.item_namespace=$("item_namespace").value;
+    S.runtime_final_status=$("runtime_final_status").value; S.unresolved_only=$("unresolved_only").checked;
+    S.page_size=parseInt($("page_size").value,10)||50; S.page=1; load();
+  });
+  $("reset").addEventListener("click",()=>{
+    Object.assign(S,{q:"",pool_key:"",reward_target_type:"",item_namespace:"",runtime_final_status:"",unresolved_only:false,page:1});
+    $("q").value="";$("pool_key").value="";$("unresolved_only").checked=false; load();
+  });
+  $("q").addEventListener("keydown",e=>{if(e.key==="Enter")$("go").click();});
+  paintTabs(); load();
+})();
+</script>
+</body></html>

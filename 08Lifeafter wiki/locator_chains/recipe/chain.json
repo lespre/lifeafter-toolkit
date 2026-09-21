@@ -1,0 +1,39 @@
+{
+ "chain_id": "recipe.recipe_data",
+ "domain": "recipe",
+ "title": "recipe namespace 标准化（BA8A row-key 成员升级）",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_module",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "chs_entry",
+  "decoded_row",
+  "structural_key",
+  "schema",
+  "business_identity",
+  "name_binding",
+  "resolved_entity"
+ ],
+ "evidence_refs": [
+  "evidence/item/namespace_membership_upgrade.json",
+  "artifacts/active/item/ITEM_MASTER.jsonl",
+  "analysis/audit/v11_namespace_keys.json"
+ ],
+ "residuals": [
+  "206 recipe rows 名称 unresolved（recipe 表无名称槽位证据）",
+  "schema_ref 未记录（BA8A 成员资格升级路径不产出 schema）"
+ ],
+ "rejected_routes": [
+  {
+   "route": "把 recipe row key 当 common_item 道具",
+   "reason": "不同 namespace 表",
+   "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+  }
+ ],
+ "instances_file": "locator_chains/recipe/instances.jsonl"
+}

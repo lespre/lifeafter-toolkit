@@ -1,0 +1,11 @@
+{
+ "domain": "lottery",
+ "canonical": ["artifacts/active/lottery/LOTTERY_POOL_RULES.json", "artifacts/active/lottery/LOTTERY_REWARD_TARGETS_RULES.json"],
+ "rules": [
+  "LOTTERY_POOL 与 LOTTERY_REWARD_TARGETS 永久分层，禁止合并为“最终奖池表”",
+  "不填 item_master_id；不建立 reward→item 正式 join（需 runtime reward namespace 证据）",
+  "runtime_final = unresolved（replacement overlay 未解析）",
+  "先由 runtime 判定 reward 是 item，才允许用 ITEM_MASTER 查 namespace（顺序不可反）"
+ ],
+ "residual_ref": ["residuals/lottery/unresolved_targets.json", "residuals/lottery/replacement_overlay.json"]
+}

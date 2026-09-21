@@ -1,0 +1,564 @@
+{
+ "schema": "locator-chain/v1",
+ "generated": "2026-09-13T06:18:26",
+ "entry_point": "locator_chains/registry.json",
+ "auditor": "python -m tools.audit_locator_chains",
+ "explain": "python -m api.cli explain <kind> <key>",
+ "chains": [
+  {
+   "chain_id": "weapon_skin.golden",
+   "domain": "weapon_skin",
+   "title": "武器皮肤（Golden Reference Chain）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/weapon_skin/chain.json",
+   "instances_file": "locator_chains/weapon_skin/instances.jsonl",
+   "instance_count": 6,
+   "broken_instances": 6,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "namespace": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "logical_table": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "snapshot_binding": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "payload_binding": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "row_binding": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "field_binding": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "business_identity": {
+     "verified": 2,
+     "not_applicable": 4
+    },
+    "name_binding": {
+     "verified": 1,
+     "unresolved": 1,
+     "not_applicable": 4
+    },
+    "current_snapshot_binding": {
+     "not_applicable": 6
+    },
+    "runtime_final": {
+     "unresolved": 2,
+     "not_applicable": 4
+    }
+   },
+   "residuals": [
+    "payload 已登记 registry（BA8A data 11817 / CHS 21177）",
+    "canonical 126 行 vs v0.1 115 行：intersection 111 / canonical-only 15 / board-only 4（1110184、1110185、1110186、1110190）",
+    "canonical 4 行无 common_item 名称行 ⇒ name_status=unresolved（11100061、11101341、11101681、11101831）",
+    "grade 为 board 派生 ⇒ deprecated；canonical 只有 level/priority，映射无证据",
+    "listing_status 仅支持 unresolved（同快照无 sale/shop/exchange 证据）",
+    "timed relation 本阶段不重调查 ⇒ runtime_final unresolved"
+   ],
+   "rejected_routes": [
+    {
+     "route": "SFX 名 / all_equips name / huodong_conf name 作为正式皮肤名",
+     "reason": "非名称来源",
+     "evidence_ref": "artifacts/active/weapon_skin/RULES.json"
+    }
+   ],
+   "rejected_route_count": 1,
+   "legacy_dependencies": [
+    "data/boards"
+   ],
+   "legacy_debt": [
+    {
+     "dependency": "data/boards",
+     "status": "repaid",
+     "note": "active 结论已不依赖该源：RULES.generated_from 只含 canonical 来源，并有删除该源仍可重建的测试守护",
+     "evidence": "artifacts/active/weapon_skin/RULES.json#generated_from"
+    }
+   ],
+   "evidence_refs": [
+    "artifacts/active/weapon_skin/RULES.json",
+    "evidence/weapon_skin/three_bindings.json",
+    "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl",
+    "artifacts/active/weapon_skin/STATUS_VOCAB.json"
+   ],
+   "display_basis": "test-documents-328b8446（当前包）",
+   "display_entry_board": "weapon_skin_sfx_text_sources",
+   "canonical_artifact_basis": "test-documents-ba8a239a（pre-09-10，superseded_for_display）"
+  },
+  {
+   "chain_id": "item.common_item",
+   "domain": "item",
+   "title": "道具主链（common_item 优先，非 17 namespace 全量）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/item/chain.json",
+   "instances_file": "locator_chains/item/instances.jsonl",
+   "instance_count": 4,
+   "broken_instances": 3,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 3,
+     "unresolved": 1
+    },
+    "namespace": {
+     "verified": 3,
+     "unresolved": 1
+    },
+    "logical_table": {
+     "verified": 3,
+     "not_applicable": 1
+    },
+    "snapshot_binding": {
+     "verified": 3,
+     "not_applicable": 1
+    },
+    "payload_binding": {
+     "verified": 3,
+     "not_applicable": 1
+    },
+    "row_binding": {
+     "verified": 3,
+     "not_applicable": 1
+    },
+    "field_binding": {
+     "verified": 1,
+     "unresolved": 2,
+     "not_applicable": 1
+    },
+    "business_identity": {
+     "verified": 3,
+     "not_applicable": 1
+    },
+    "name_binding": {
+     "verified": 2,
+     "unresolved": 1,
+     "not_applicable": 1
+    },
+    "current_snapshot_binding": {
+     "unresolved": 3,
+     "not_applicable": 1
+    },
+    "runtime_final": {
+     "not_applicable": 4
+    }
+   },
+   "residuals": [
+    "554 item unresolved（namespace membership 断点）",
+    "current CHS 绑定 unresolved（current 侧不能完整解码）",
+    "BA8A verified ≠ current verified"
+   ],
+   "rejected_routes": [
+    {
+     "route": "raw 表存在即认为 business namespace",
+     "reason": "raw_presence ≠ business namespace",
+     "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+    }
+   ],
+   "rejected_route_count": 1,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "evidence/item/dispatch.json",
+    "evidence/item/consumers.json",
+    "evidence/item/namespace_membership_upgrade.json",
+    "artifacts/active/item/ITEM_MASTER.jsonl",
+    "registry/tables.json#snapshot_payload_bindings",
+    "analysis/audit/v11_namespace_keys.json"
+   ]
+  },
+  {
+   "chain_id": "belt_chip.conflict",
+   "domain": "belt_chip",
+   "title": "冲突链模板（business verified / physical 断链）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/belt_chip/chain.json",
+   "instances_file": "locator_chains/belt_chip/instances.jsonl",
+   "instance_count": 3,
+   "broken_instances": 3,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 3
+    },
+    "namespace": {
+     "verified": 3
+    },
+    "logical_table": {
+     "verified": 3
+    },
+    "snapshot_binding": {
+     "verified": 3
+    },
+    "payload_binding": {
+     "verified": 3
+    },
+    "row_binding": {
+     "rejected": 3
+    },
+    "field_binding": {
+     "not_applicable": 3
+    },
+    "business_identity": {
+     "verified": 3
+    },
+    "name_binding": {
+     "verified": 3
+    },
+    "current_snapshot_binding": {
+     "unresolved": 3
+    },
+    "runtime_final": {
+     "not_applicable": 3
+    }
+   },
+   "residuals": [
+    "54 chip item id 不在 belt_chip raw key 集（671 条）⇒ structural binding unresolved",
+    "common_item ∩ belt_chip 双列已并入 belt_chip（实现重复，非业务双身份）"
+   ],
+   "rejected_routes": [
+    {
+     "route": "改回 common_item 以消除冲突",
+     "reason": "runtime dispatch 明确指向 belt_chip",
+     "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+    },
+    {
+     "route": "用 671 row key 反推 chip id",
+     "reason": "整数碰撞不是映射证据",
+     "evidence_ref": "analysis/audit/v11_namespace_keys.json"
+    }
+   ],
+   "rejected_route_count": 2,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "registry/namespaces.json",
+    "artifacts/active/item/ITEM_MASTER.jsonl",
+    "analysis/audit/v11_namespace_keys.json"
+   ]
+  },
+  {
+   "chain_id": "gift.gift_data",
+   "domain": "gift",
+   "title": "gift_data namespace 标准化",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/gift/chain.json",
+   "instances_file": "locator_chains/gift/instances.jsonl",
+   "instance_count": 2,
+   "broken_instances": 2,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 2
+    },
+    "namespace": {
+     "verified": 2
+    },
+    "logical_table": {
+     "verified": 2
+    },
+    "snapshot_binding": {
+     "verified": 2
+    },
+    "payload_binding": {
+     "verified": 2
+    },
+    "row_binding": {
+     "verified": 2
+    },
+    "field_binding": {
+     "not_applicable": 2
+    },
+    "business_identity": {
+     "verified": 2
+    },
+    "name_binding": {
+     "verified": 2
+    },
+    "current_snapshot_binding": {
+     "unresolved": 2
+    },
+    "runtime_final": {
+     "not_applicable": 2
+    }
+   },
+   "residuals": [
+    "748 gift_data rows：名称来源分散（部分取 CHS 槽位，部分行未记录槽位）",
+    "raw_presence 显示 common_item_data_base=false（礼物不是 common_item 行）"
+   ],
+   "rejected_routes": [
+    {
+     "route": "用整数碰撞把 gift id 归到 common_item",
+     "reason": "runtime dispatch 指向 gift_data",
+     "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+    }
+   ],
+   "rejected_route_count": 1,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "evidence/item/consumers.json",
+    "evidence/item/namespace_membership_upgrade.json",
+    "artifacts/active/item/ITEM_MASTER.jsonl"
+   ]
+  },
+  {
+   "chain_id": "recipe.recipe_data",
+   "domain": "recipe",
+   "title": "recipe namespace 标准化（BA8A row-key 成员升级）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/recipe/chain.json",
+   "instances_file": "locator_chains/recipe/instances.jsonl",
+   "instance_count": 2,
+   "broken_instances": 2,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 2
+    },
+    "namespace": {
+     "verified": 2
+    },
+    "logical_table": {
+     "verified": 2
+    },
+    "snapshot_binding": {
+     "verified": 2
+    },
+    "payload_binding": {
+     "verified": 2
+    },
+    "row_binding": {
+     "verified": 2
+    },
+    "field_binding": {
+     "not_applicable": 2
+    },
+    "business_identity": {
+     "verified": 2
+    },
+    "name_binding": {
+     "unresolved": 2
+    },
+    "current_snapshot_binding": {
+     "unresolved": 2
+    },
+    "runtime_final": {
+     "not_applicable": 2
+    }
+   },
+   "residuals": [
+    "206 recipe rows 名称 unresolved（recipe 表无名称槽位证据）",
+    "schema_ref 未记录（BA8A 成员资格升级路径不产出 schema）"
+   ],
+   "rejected_routes": [
+    {
+     "route": "把 recipe row key 当 common_item 道具",
+     "reason": "不同 namespace 表",
+     "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+    }
+   ],
+   "rejected_route_count": 1,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "evidence/item/namespace_membership_upgrade.json",
+    "artifacts/active/item/ITEM_MASTER.jsonl",
+    "analysis/audit/v11_namespace_keys.json"
+   ]
+  },
+  {
+   "chain_id": "fashion.broken",
+   "domain": "fashion",
+   "title": "断链模板（runtime 语义可用 / physical 硬阻断）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/fashion/chain.json",
+   "instances_file": "locator_chains/fashion/instances.jsonl",
+   "instance_count": 2,
+   "broken_instances": 2,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 1,
+     "unresolved": 1
+    },
+    "namespace": {
+     "verified": 1,
+     "not_applicable": 1
+    },
+    "logical_table": {
+     "verified": 1,
+     "not_applicable": 1
+    },
+    "snapshot_binding": {
+     "verified": 1,
+     "not_applicable": 1
+    },
+    "payload_binding": {
+     "verified": 1,
+     "not_applicable": 1
+    },
+    "row_binding": {
+     "unresolved": 1,
+     "rejected": 1
+    },
+    "field_binding": {
+     "not_applicable": 2
+    },
+    "business_identity": {
+     "unresolved": 2
+    },
+    "name_binding": {
+     "unresolved": 2
+    },
+    "current_snapshot_binding": {
+     "unresolved": 2
+    },
+    "runtime_final": {
+     "not_applicable": 2
+    }
+   },
+   "residuals": [
+    "raw-row binding unresolved（row_key == slot52 = 0/2356）",
+    "physical locator chain = hard-blocked",
+    "三个 key 空间（runtime_fashion_key / export slot52 / structural row_key）= NO RELATION PROVEN"
+   ],
+   "rejected_routes": [
+    {
+     "route": "BigTableSplit",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "x9",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "theme",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "tI 无法映射匿名 body",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "pure hash",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "resource IDX",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "module payload hidden-body",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    },
+    {
+     "route": "Python static path → native boundary",
+     "reason": "已证否",
+     "evidence_ref": "evidence/fashion/hard_block.json"
+    }
+   ],
+   "rejected_route_count": 8,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "evidence/fashion/a2f_semantic.json",
+    "evidence/fashion/hard_block.json",
+    "artifacts/active/fashion/FASHION_IDENTITY_STATE.json",
+    "residuals/fashion/binding_residuals.json"
+   ]
+  },
+  {
+   "chain_id": "lottery.four_chains",
+   "domain": "lottery",
+   "title": "奖池（四条子链：A 池配置 / B 静态解释 / C item namespace / D runtime final）",
+   "kind": "semantic+physical+name（同一实例内三维独立）",
+   "definition": "locator_chains/lottery/chain.json",
+   "instances_file": "locator_chains/lottery/instances.jsonl",
+   "instance_count": 10,
+   "broken_instances": 8,
+   "completeness": {
+    "runtime_semantic": {
+     "verified": 10
+    },
+    "namespace": {
+     "not_applicable": 4,
+     "verified": 4,
+     "unresolved": 2
+    },
+    "logical_table": {
+     "verified": 2,
+     "not_applicable": 8
+    },
+    "snapshot_binding": {
+     "verified": 2,
+     "not_applicable": 8
+    },
+    "payload_binding": {
+     "verified": 2,
+     "not_applicable": 8
+    },
+    "row_binding": {
+     "verified": 2,
+     "not_applicable": 8
+    },
+    "field_binding": {
+     "not_applicable": 10
+    },
+    "business_identity": {
+     "verified": 2,
+     "not_applicable": 8
+    },
+    "name_binding": {
+     "not_applicable": 10
+    },
+    "current_snapshot_binding": {
+     "not_applicable": 10
+    },
+    "runtime_final": {
+     "not_applicable": 2,
+     "unresolved": 8
+    }
+   },
+   "residuals": [
+    "1,665 unresolved targets（static 层无 namespace 证据）",
+    "runtime_final = unresolved_replacement_overlay（本轮不追）",
+    "37 pool_key 非 item（reward pool 自身键）"
+   ],
+   "rejected_routes": [
+    {
+     "route": "整数恰好在 ITEM_MASTER 即视为 reward→item join",
+     "reason": "必须先通过 target_type=item 门槛",
+     "evidence_ref": "evidence/lottery/reward_branch.json"
+    }
+   ],
+   "rejected_route_count": 1,
+   "legacy_dependencies": [],
+   "legacy_debt": [],
+   "evidence_refs": [
+    "evidence/lottery/reward_pool_rowkeys.json",
+    "evidence/lottery/reward_branch.json",
+    "evidence/lottery/replacement_overlay.json",
+    "artifacts/active/lottery/LOTTERY_REWARD_TARGETS.jsonl"
+   ]
+  }
+ ],
+ "totals": {
+  "chains": 7,
+  "instances": 29,
+  "broken_instances": 26
+ }
+}

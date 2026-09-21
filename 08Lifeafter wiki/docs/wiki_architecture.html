@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>08Lifeafter Wiki · 系统架构图（2026-09-06）</title>
+<style>
+  body{margin:0;background:#020617;font-family:"JetBrains Mono","Microsoft YaHei",Consolas,monospace;color:#cbd5e1}
+  .wrap{max-width:1500px;margin:0 auto;padding:18px 14px 40px}
+  h1{font-size:17px;color:#f1f5f9;margin:2px 0 2px;font-weight:650}
+  .sub{font-size:11px;color:#64748b;margin-bottom:10px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22d3ee;margin-right:8px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  svg{border:1px solid #1e293b;border-radius:14px;background:#020617}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:10.5px;color:#94a3b8}
+  .lg{display:flex;align-items:center;gap:6px}
+  .sw{width:12px;height:12px;border-radius:3px;border:1px solid}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  .card{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:12px 14px}
+  .card h3{font-size:12px;margin:0 0 7px;display:flex;align-items:center;gap:7px}
+  .card ul{list-style:none;margin:0;padding:0;font-size:10.5px;color:#94a3b8;line-height:1.75}
+  .c1{width:7px;height:7px;border-radius:50%;display:inline-block}
+  .foot{margin-top:14px;font-size:10px;color:#475569}
+  @media(max-width:900px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><span class="dot"></span>08Lifeafter Wiki · 数据系统架构（现状 as-is）</h1>
+  <div class="sub">快照 2026-09-06 · 三层：定位筛选与解码 → 各业务定位类 → wiki 呈现 · 全部数字来自发布策略/测试/构建产物实读</div>
+
+<svg width="1480" height="1370" viewBox="0 0 1480 1370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="08Lifeafter wiki 三层架构图">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111c2e" stroke-width="0.6"/>
+    </pattern>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arwV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+  <rect width="1480" height="1370" fill="url(#grid)"/>
+
+  <!-- ============ 跨层主箭号（先画，垫底） ============ -->
+  <line x1="200" y1="430" x2="200" y2="560" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arwV)"/>
+  <line x1="740" y1="470" x2="740" y2="560" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arwV)"/>
+  <line x1="1190" y1="440" x2="1190" y2="560" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arwV)"/>
+  <line x1="400" y1="830" x2="400" y2="910" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arw)"/>
+  <line x1="740" y1="830" x2="740" y2="910" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arw)"/>
+  <line x1="1100" y1="830" x2="1100" y2="910" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arw)"/>
+
+  <!-- ============ L1 定位筛选与解码 ============ -->
+  <rect x="24" y="52" width="1432" height="366" rx="14" fill="rgba(76,29,149,0.06)" stroke="#a78bfa" stroke-dasharray="8,5" stroke-width="1.2"/>
+  <text x="40" y="76" fill="#a78bfa" font-size="15" font-weight="700">一、定位筛选与解码</text>
+  <text x="40" y="94" fill="#64748b" font-size="10">证据链起点：源包锁 → NPK entry/FID → 同包表/CHS → 行键与字段原值 → 名称来源 → 业务语义</text>
+
+  <g>
+    <rect x="40" y="108" width="270" height="86" rx="8" fill="#0f172a"/>
+    <rect x="40" y="108" width="270" height="86" rx="8" fill="rgba(76,29,149,0.35)" stroke="#a78bfa" stroke-width="1.4"/>
+    <text x="54" y="132" fill="#ede9fe" font-size="13" font-weight="700">源包 · 只读锁 ✓</text>
+    <text x="54" y="152" fill="#c4b5fd" font-size="10.5">BA8 工作副本 25,485 条</text>
+    <text x="54" y="168" fill="#c4b5fd" font-size="10.5">正式服对照 79c0d06f53db（8 表）</text>
+    <text x="54" y="184" fill="#c4b5fd" font-size="10.5">原始只读 · 副本先行核验</text>
+  </g>
+  <line x1="310" y1="151" x2="350" y2="151" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="356" y="108" width="272" height="86" rx="8" fill="#0f172a"/>
+    <rect x="356" y="108" width="272" height="86" rx="8" fill="rgba(76,29,149,0.35)" stroke="#a78bfa" stroke-width="1.4"/>
+    <text x="370" y="132" fill="#ede9fe" font-size="13" font-weight="700">NPK entry → FID ✓</text>
+    <text x="370" y="152" fill="#c4b5fd" font-size="10.5">manifest 文件 ID 索引</text>
+    <text x="370" y="168" fill="#c4b5fd" font-size="10.5">主 chs 文本池 EF3A</text>
+    <text x="370" y="184" fill="#c4b5fd" font-size="10.5">同 FID = 同表（两服实证）</text>
+  </g>
+  <line x1="628" y1="151" x2="668" y2="151" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="674" y="108" width="352" height="86" rx="8" fill="#0f172a"/>
+    <rect x="674" y="108" width="352" height="86" rx="8" fill="rgba(76,29,149,0.35)" stroke="#a78bfa" stroke-width="1.4"/>
+    <text x="688" y="132" fill="#ede9fe" font-size="13" font-weight="700">通道层级（表族多通道）✓ 铁律</text>
+    <text x="688" y="152" fill="#c4b5fd" font-size="10.5">ykxq = 全量主通道（huodong 1382 行）</text>
+    <text x="688" y="168" fill="#c4b5fd" font-size="10.5">kj1 / kjxq = 覆盖层 · 子集（858 行）</text>
+    <text x="688" y="184" fill="#c4b5fd" font-size="10.5">⚠ 教训 09-06：kj1 误当全量 → 核芯 10/72 期</text>
+  </g>
+  <line x1="1026" y1="151" x2="1066" y2="151" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="1072" y="108" width="368" height="86" rx="8" fill="#0f172a"/>
+    <rect x="1072" y="108" width="368" height="86" rx="8" fill="rgba(76,29,149,0.35)" stroke="#a78bfa" stroke-width="1.4"/>
+    <text x="1086" y="132" fill="#ede9fe" font-size="13" font-weight="700">解码器 ✓</text>
+    <text x="1086" y="152" fill="#c4b5fd" font-size="10.5">decode_table_rows_with_chs_slots</text>
+    <text x="1086" y="168" fill="#c4b5fd" font-size="10.5">（带 chs 槽位 = 防漏行解码）</text>
+    <text x="1086" y="184" fill="#c4b5fd" font-size="10.5">Temp 探针即用即删 · 用完核验</text>
+  </g>
+
+  <g>
+    <rect x="40" y="216" width="430" height="80" rx="8" fill="#0f172a"/>
+    <rect x="40" y="216" width="430" height="80" rx="8" fill="rgba(76,29,149,0.2)" stroke="#6d28d9" stroke-width="1.2"/>
+    <text x="54" y="240" fill="#ddd6fe" font-size="12.5" font-weight="700">定位链工具族 ✓</text>
+    <text x="54" y="260" fill="#c4b5fd" font-size="10.5">外观锚点 → 载体表（同现定位 · 51 文件实证）</text>
+    <text x="54" y="278" fill="#c4b5fd" font-size="10.5">四锚点同现 / 行为资源侦察 / 全表扫描</text>
+  </g>
+  <g>
+    <rect x="500" y="216" width="450" height="80" rx="8" fill="#0f172a"/>
+    <rect x="500" y="216" width="450" height="80" rx="8" fill="rgba(76,29,149,0.2)" stroke="#6d28d9" stroke-width="1.2"/>
+    <text x="514" y="240" fill="#ddd6fe" font-size="12.5" font-weight="700">名册回填链 ✓ 纪律</text>
+    <text x="514" y="260" fill="#c4b5fd" font-size="10.5">名字源 = 同快照 NPK 表内字段层级</text>
+    <text x="514" y="278" fill="#c4b5fd" font-size="10.5">禁 CSV 中间层当名字源 · 缺名 = 诚实“未回填”+id</text>
+  </g>
+  <g>
+    <rect x="980" y="216" width="460" height="80" rx="8" fill="#0f172a"/>
+    <rect x="980" y="216" width="460" height="80" rx="8" fill="rgba(76,29,149,0.2)" stroke="#6d28d9" stroke-width="1.2"/>
+    <text x="994" y="240" fill="#ddd6fe" font-size="12.5" font-weight="700">服务器分支判据 ✓</text>
+    <text x="994" y="260" fill="#c4b5fd" font-size="10.5">kj1/kjxq = BA8 专属覆盖 · 进化武器 → 经典服</text>
+    <text x="994" y="278" fill="#c4b5fd" font-size="10.5">huodong 期名两服共享 vs conf = 简单服内容</text>
+  </g>
+  <g>
+    <rect x="40" y="312" width="1400" height="86" rx="10" fill="#0f172a"/>
+    <rect x="40" y="312" width="1400" height="86" rx="10" fill="rgba(76,29,149,0.12)" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="56" y="336" fill="#c4b5fd" font-size="12.5" font-weight="700">名册层边界（静态证据墙）⚠</text>
+    <text x="56" y="357" fill="#94a3b8" font-size="10.8">道具层（common_item）：全道具总表 35,986 · 核芯名册 660000 段 · 芯片 330/331 段（331018-26 名册真实缺口 = 诚实 ?）</text>
+    <text x="56" y="376" fill="#94a3b8" font-size="10.8">专表层：皮肤表 id ≠ 道具 key（1110001=家装材料实证 → 武器板隔离）· 载具本体名册 BA8 未定位（挂起）· 发奖组合/当前池 = 服务端运行时（静态不锁）</text>
+  </g>
+
+  <!-- ============ L2 各业务定位类 ============ -->
+  <rect x="24" y="438" width="1432" height="390" rx="14" fill="rgba(6,78,59,0.06)" stroke="#34d399" stroke-dasharray="8,5" stroke-width="1.2"/>
+  <text x="40" y="462" fill="#34d399" font-size="15" font-weight="700">二、各业务定位类（奖池六格 + 战力五节）</text>
+  <text x="40" y="480" fill="#64748b" font-size="10">获取链：抽奖转盘不放回 / 宸世臻藏 / 满减市场 / 神秘商店 / 限定核芯研制 / 限定芯片保底 · 每池行带 prob_note+evidence</text>
+
+  <g>
+    <rect x="40" y="494" width="640" height="150" rx="10" fill="#0f172a"/>
+    <rect x="40" y="494" width="640" height="150" rx="10" fill="rgba(6,78,59,0.22)" stroke="#34d399" stroke-width="1.3"/>
+    <text x="56" y="518" fill="#d1fae5" font-size="12.5" font-weight="700">四、奖池六格（活动子卡板）✓ 已转正</text>
+    <text x="56" y="540" fill="#6ee7b7" font-size="10.8">（一）抽奖活动板：帝皇一期 + 再临二期 × 经典/简单双分支（4 子卡）</text>
+    <text x="56" y="558" fill="#6ee7b7" font-size="10.8">（二）宸世臻藏 exchange：1757 格 · 887 已回填名 · 870 诚实“No item-name join”</text>
+    <text x="56" y="576" fill="#6ee7b7" font-size="10.8">（三）满减市场：10 活动期 · 半闭合（静态无商品定价载体，如实标注）</text>
+    <text x="56" y="594" fill="#6ee7b7" font-size="10.8">（四）神秘商店 = RandomDiscountHD：3 期 + 返场锚点（冰蕊银华=黄金年代池行）</text>
+    <text x="56" y="612" fill="#6ee7b7" font-size="10.8">（五）限定核芯研制：72 期（ykxq 全量 · 2023-08~2026-09）</text>
+    <text x="56" y="630" fill="#6ee7b7" font-size="10.8">（六）限定芯片保底：30 期（conf 1:1 · 破盾强攻=经典期名 / 连环暴击=简单 conf）</text>
+  </g>
+
+  <g>
+    <rect x="710" y="494" width="360" height="150" rx="10" fill="#0f172a"/>
+    <rect x="710" y="494" width="360" height="150" rx="10" fill="rgba(6,78,59,0.22)" stroke="#34d399" stroke-width="1.3"/>
+    <text x="726" y="518" fill="#d1fae5" font-size="12.5" font-weight="700">三、战力类排列（新）✓</text>
+    <text x="726" y="540" fill="#6ee7b7" font-size="10.8">（一）武器：结构卡已发布（schema 6109 地基）</text>
+    <text x="726" y="558" fill="#fca5a5" font-size="10.8">　　　旧 3 板（皮肤/数值/贴图）已删 09-06 · 重做后再建</text>
+    <text x="726" y="576" fill="#6ee7b7" font-size="10.8">（二）护具 先搁置占位（头盔/护甲/护盾）</text>
+    <text x="726" y="594" fill="#6ee7b7" font-size="10.8">（三）核芯卡：77（76 经典服 + 1 简单独有）</text>
+    <text x="726" y="612" fill="#6ee7b7" font-size="10.8">（四）芯片名册：67（330 进攻/331 防御）</text>
+    <text x="726" y="630" fill="#6ee7b7" font-size="10.8">（五）无人机 先搁置占位 · 载具链挂起</text>
+  </g>
+
+  <g>
+    <rect x="1100" y="494" width="340" height="150" rx="10" fill="#0f172a"/>
+    <rect x="1100" y="494" width="340" height="150" rx="10" fill="rgba(6,78,59,0.22)" stroke="#34d399" stroke-width="1.3"/>
+    <text x="1116" y="518" fill="#d1fae5" font-size="12.5" font-weight="700">活动期次判定规则 ✓</text>
+    <text x="1116" y="540" fill="#6ee7b7" font-size="10.8">期名语义：登场=新核芯首出（~1 月）</text>
+    <text x="1116" y="558" fill="#6ee7b7" font-size="10.8">返场=老核芯回归（~2 周）同名可多轮</text>
+    <text x="1116" y="576" fill="#6ee7b7" font-size="10.8">期名≠当期内容：两服分层（huodong vs conf）</text>
+    <text x="1116" y="594" fill="#6ee7b7" font-size="10.8">kj1 sub_title 占位污染已标注不再冒充</text>
+    <text x="1116" y="612" fill="#6ee7b7" font-size="10.8">“未上线”须先对照历史更新汇总排除</text>
+    <text x="1116" y="630" fill="#6ee7b7" font-size="10.8">孤儿池/未闭引用 = 候选标注不宣称</text>
+  </g>
+
+  <g>
+    <rect x="40" y="660" width="1400" height="80" rx="10" fill="#0f172a"/>
+    <rect x="40" y="660" width="1400" height="80" rx="10" fill="rgba(6,78,59,0.12)" stroke="#059669" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="56" y="686" fill="#a7f3d0" font-size="12" font-weight="700">生成器（一板一源，证据直读）✓</text>
+    <text x="56" y="708" fill="#94a3b8" font-size="10.8">tools/rebuild_*.py（kaijia/emperor 并入/manjian/mystery/lottery_research_panels 双模式/exchange 回填/零栏双卡…）→ data/boards/*.json</text>
+    <text x="56" y="726" fill="#94a3b8" font-size="10.8">纪律：JSON/JS 只能由 rebuild/build 生成 · 每行原始 prob_note/evidence/evidence_level · 源记录 → 日志 06 交接（27.95）</text>
+  </g>
+
+  <!-- ============ L3 wiki 呈现 ============ -->
+  <rect x="24" y="848" width="1432" height="300" rx="14" fill="rgba(8,51,68,0.07)" stroke="#22d3ee" stroke-dasharray="8,5" stroke-width="1.2"/>
+  <text x="40" y="872" fill="#22d3ee" font-size="15" font-weight="700">三、wiki 呈现</text>
+
+  <g>
+    <rect x="40" y="888" width="290" height="104" rx="8" fill="#0f172a"/>
+    <rect x="40" y="888" width="290" height="104" rx="8" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+    <text x="54" y="912" fill="#fecdd3" font-size="13" font-weight="700">发布门禁 publication_policy ✓</text>
+    <text x="54" y="933" fill="#fda4af" font-size="10.8">35 板注册 · 20 published</text>
+    <text x="54" y="951" fill="#fda4af" font-size="10.8">quarantined（隔离=证据缺口）</text>
+    <text x="54" y="969" fill="#fda4af" font-size="10.8">retired / unpublished · 未知不发布</text>
+  </g>
+  <line x1="330" y1="940" x2="368" y2="940" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="374" y="888" width="330" height="104" rx="8" fill="#0f172a"/>
+    <rect x="374" y="888" width="330" height="104" rx="8" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.4"/>
+    <text x="388" y="912" fill="#cffafe" font-size="13" font-weight="700">data/boards · 35 板 JSON ✓</text>
+    <text x="388" y="933" fill="#67e8f9" font-size="10.8">板级 meta（category/filters/name）</text>
+    <text x="388" y="951" fill="#67e8f9" font-size="10.8">条目级 evidence + prob_note 原值</text>
+    <text x="388" y="969" fill="#67e8f9" font-size="10.8">manifest 汇总 → 主页渲染</text>
+  </g>
+  <line x1="704" y1="940" x2="742" y2="940" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="748" y="888" width="330" height="104" rx="8" fill="#0f172a"/>
+    <rect x="748" y="888" width="330" height="104" rx="8" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.4"/>
+    <text x="762" y="912" fill="#cffafe" font-size="13" font-weight="700">wiki.html 主页分区 ✓</text>
+    <text x="762" y="933" fill="#67e8f9" font-size="10.8">零预告 / 一道具 / 二时装</text>
+    <text x="762" y="951" fill="#67e8f9" font-size="10.8">三战力（一武器…五无人机）</text>
+    <text x="762" y="969" fill="#67e8f9" font-size="10.8">四奖池（六格）· catSeq 混排占位卡</text>
+  </g>
+  <line x1="1078" y1="940" x2="1116" y2="940" stroke="#475569" stroke-width="1.4" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="1122" y="888" width="318" height="104" rx="8" fill="#0f172a"/>
+    <rect x="1122" y="888" width="318" height="104" rx="8" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.4"/>
+    <text x="1136" y="912" fill="#cffafe" font-size="13" font-weight="700">board.html 渲染件 ✓</text>
+    <text x="1136" y="933" fill="#67e8f9" font-size="10.8">图鉴卡/折叠/皮肤 5 列/星级段</text>
+    <text x="1136" y="951" fill="#67e8f9" font-size="10.8">富文本染色 richText（#f/#c/#r）</text>
+    <text x="1136" y="969" fill="#67e8f9" font-size="10.8">服务器筛选 = meta.filters 通用钩子</text>
+  </g>
+
+  <g>
+    <rect x="40" y="1012" width="1400" height="66" rx="8" fill="#0f172a"/>
+    <rect x="40" y="1012" width="1400" height="66" rx="8" fill="rgba(8,51,68,0.18)" stroke="#0891b2" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="56" y="1036" fill="#a5f3fc" font-size="12" font-weight="700">验证与版本 ✓</text>
+    <text x="56" y="1058" fill="#94a3b8" font-size="10.8">tests 57/57 门禁（gate 板序/items 断言 + 前端可用性 + 专项 rebuild 测试）· live_reader.html 现场读 NPK · git 提交链（27.95 交接日志）· 版本参数 ?v= 防缓存</text>
+  </g>
+
+  <!-- 图例 -->
+  <g font-size="11" fill="#94a3b8">
+    <rect x="40" y="1178" width="14" height="14" rx="3" fill="rgba(76,29,149,0.35)" stroke="#a78bfa"/><text x="62" y="1190">一 · 定位筛选与解码（源/通道/解码）</text>
+    <rect x="330" y="1178" width="14" height="14" rx="3" fill="rgba(6,78,59,0.35)" stroke="#34d399"/><text x="352" y="1190">二 · 各业务定位类（奖池/战力）</text>
+    <rect x="620" y="1178" width="14" height="14" rx="3" fill="rgba(8,51,68,0.4)" stroke="#22d3ee"/><text x="642" y="1190">三 · wiki 呈现</text>
+    <rect x="830" y="1178" width="14" height="14" rx="3" fill="rgba(136,19,55,0.4)" stroke="#fb7185"/><text x="852" y="1190">发布门禁</text>
+    <text x="1020" y="1190" fill="#4ade80">✓ 实证</text>
+    <text x="1100" y="1190" fill="#fbbf24">⚠ 缺口/隔离/占位</text>
+  </g>
+</svg>
+
+  <div class="legend">
+    <div class="lg"><span class="sw" style="background:rgba(76,29,149,.35);border-color:#a78bfa"></span>数据层：源包 / 通道 / 解码</div>
+    <div class="lg"><span class="sw" style="background:rgba(6,78,59,.35);border-color:#34d399"></span>业务层：定位结果与规则</div>
+    <div class="lg"><span class="sw" style="background:rgba(8,51,68,.4);border-color:#22d3ee"></span>呈现层：wiki 页面</div>
+    <div class="lg"><span class="sw" style="background:rgba(136,19,55,.4);border-color:#fb7185"></span>门禁：发布策略</div>
+    <div class="lg"><span style="color:#4ade80">✓</span>实证确认</div>
+    <div class="lg"><span style="color:#fbbf24">⚠</span>缺口/隔离/挂起/运行时边界</div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3><span class="c1" style="background:#a78bfa"></span>一 · 定位筛选与解码</h3>
+      <ul>
+        <li>• 只读双源：BA8 工作副本 + 正式服对照</li>
+        <li>• 通道铁律：ykxq 全量 vs kj1/kjxq 覆盖子集</li>
+        <li>• 解码器带 chs 槽位防漏行；主 chs=EF3A</li>
+        <li>• Temp 探针即用即删 + 完成核验</li>
+      </ul></div>
+    <div class="card"><h3><span class="c1" style="background:#34d399"></span>二 · 各业务定位类</h3>
+      <ul>
+        <li>• 奖池六格全转正：抽奖/宸世/满减/神秘/核芯 72 期/芯片 30 期</li>
+        <li>• 战力五节：武器（旧 3 板已删，地基卡保留）/护具占位/核芯 77/芯片 67/无人机占位</li>
+        <li>• 双服分层：期名（huodong 共享）≠ 内容（conf=简单服）</li>
+        <li>• 载具链挂起：本体名册 BA8 未定位（vehicle proto=物理层）</li>
+      </ul></div>
+    <div class="card"><h3><span class="c1" style="background:#22d3ee"></span>三 · wiki 呈现</h3>
+      <ul>
+        <li>• 门禁：35 注册 / 20 published / 隔离不发布</li>
+        <li>• 主页五分区 + 奖池六格；占位卡按序号混排</li>
+        <li>• board.html：折叠/富文本染色/服务器筛选</li>
+        <li>• 测试 57/57 + live_reader + git 27.95</li>
+      </ul></div>
+  </div>
+
+  <div class="foot">08Lifeafter wiki · 数据边界：一板一源 · 证据优先 · 禁拼接 · 孤儿/未闭内容诚实标注 · 生成时间 2026-09-06</div>
+</div>
+</body>
+</html>

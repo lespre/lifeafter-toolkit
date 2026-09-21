@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entity Detail · Workbench View</title>
+<script src="assets/workbench_client.js?v=v13"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--red:#b91c1c;--green:#15803d;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;padding:20px}
+a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+h1{font-size:18px}
+.sub,.wb-note{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+input,select,button{font:inherit;padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:#fff}
+button{cursor:pointer}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.wb-badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.wb-badge.ok{color:var(--green);border-color:#bbf7d0} .wb-badge.warn{color:var(--amber);border-color:#fde68a}
+.wb-snapshotbox{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 10px;margin:8px 0}
+.wb-sec{margin:10px 0} .wb-sec-h{font-weight:600;margin-bottom:4px}
+.wb-kv th{width:34%;color:var(--muted);font-weight:500}
+.wb-kv th,.wb-kv td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.wb-pre{background:#f8f8f8;border:1px solid var(--border);border-radius:6px;padding:6px 8px;overflow:auto;max-height:320px;font-size:12px}
+.wb-notice{padding:8px 10px;border-radius:8px;border:1px solid var(--border)} .wb-notice.bad{border-color:#fecaca;background:#fef2f2}
+.wb-claim{border-top:1px dashed var(--border);padding:6px 0}
+details summary{cursor:pointer;color:#1d4ed8;font-size:13px}
+.wb-media{border-top:1px dashed var(--border);padding-top:6px}
+.wb-kind{background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:0 6px;font-size:12px}
+</style>
+</head><body>
+<div class="card">
+  <h1>Entity Detail <span class="wb-badge">Workbench View</span></h1>
+  <div class="sub">统一详情框架：<b>Identity · Data · Source · Evidence · Provenance · Residuals</b>（+ Media 预留）。
+  数据源 <code>/api/entity</code>；snapshot 基准与 current 绑定状态必须可见，不简化为 <code>verified</code>。</div>
+  <div style="margin-top:8px" class="sub">
+    类型
+    <select id="kind">
+      <option value="item">item</option>
+      <option value="weapon_skin">weapon_skin</option>
+      <option value="lottery_pool">lottery_pool</option>
+      <option value="lottery_reward">lottery_reward</option>
+    </select>
+    <input id="id" placeholder="item_id / skin_id / pool_key" style="width:180px">
+    <input id="item_no" placeholder="item_no（仅 lottery_reward）" style="width:200px">
+    <button id="go">打开</button>
+  </div>
+</div>
+<div id="root"><div class="card sub">请输入实体 id，或用列表页点击进入。</div></div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id), root=$("root");
+  const u=new URLSearchParams(location.search);
+  if(u.get("kind")) $("kind").value=u.get("kind");
+  if(u.get("id")) $("id").value=u.get("id");
+  if(u.get("pool_key")) $("id").value=u.get("pool_key");
+  if(u.get("item_no")) $("item_no").value=u.get("item_no");
+  if(u.get("view")) WB.setMode(u.get("view"));
+
+  async function open(){
+    const kind=$("kind").value;
+    const params={kind:kind};
+    if(kind==="lottery_reward"){ params.pool_key=$("id").value.trim(); params.item_no=$("item_no").value.trim(); }
+    else { params.id=$("id").value.trim(); }
+    root.innerHTML='<div class="card sub">加载中…</div>';
+    try{
+      const d=await WB.api("/api/entity",params);
+      root.innerHTML='<div class="card">'+WB.renderEntity(d)+
+        '</div><div class="card sub">数据源：Workbench API（services/entity_service.py 组合 active artifact + evidence + residuals）；'+
+        '本页不做任何业务判断。</div>';
+      document.title=(d.title||d.kind)+" · Entity Detail";
+    }catch(err){ root.innerHTML='<div class="card"></div>'; WB.error(root.firstChild,err); }
+  }
+  $("go").addEventListener("click",open);
+  ["id","item_no"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")open();}));
+  if($("id").value) open();
+})();
+</script>
+</body></html>

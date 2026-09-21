@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>冰蕊银华 · 环境对比（jiayuan02a）</title>
+<style>
+  html,body{margin:0;padding:0;background:#071015;color:#dfe7ee;font:14px/1.6 "Microsoft YaHei",system-ui,sans-serif}
+  #bar{padding:10px 14px;background:#0d1a22;border-bottom:1px solid #1d3340;position:sticky;top:0;z-index:9}
+  #bar b{color:#ffe578} #bar .k{color:#8fd0ff} #stat{color:#9fb3c0;margin-left:8px}
+  button{background:#1b3a4a;color:#dfe7ee;border:1px solid #2c5a72;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px}
+  button:hover{background:#245066}
+  iframe{display:block;width:100%;height:calc(100vh - 92px);border:0;background:#071015}
+</style>
+</head>
+<body>
+<div id="bar">
+  <b>环境对比页</b>：本页 = board.html（原样内嵌）+ 自动把冰蕊银华的<b class="k">环境立方体</b>切到 <b class="k">jiayuan02a</b>
+  <button id="btn">手动切到 jiayuan02a</button>
+  <button id="btn2">切回默认 qiangpi</button>
+  <span id="stat">等待 board 加载…</span>
+  <div style="margin-top:4px;color:#9fb3c0;font-size:12.5px">
+    实测：<b style="color:#ffe578">jiayuan02a</b> 主体 p50 <b style="color:#ffe578">0.4883</b> / p95 <b style="color:#ffe578">0.8227</b> / 近白 <b style="color:#ffe578">3.85%</b>
+    ｜ 默认 qiangpi：0.4724 / 0.6833 / 0.34% ｜ 游戏内：0.7763 / 0.9952 / 38.90%
+    ｜ ⚠️ 源数据里<b>没有选择器</b>决定该用哪套，本页只是把另一套真实源资产摆出来对比，不代表它就是游戏用的那套。
+  </div>
+</div>
+<iframe id="f" src="board.html?b=weapon_skin_sfx_text_sources&view=wiki"></iframe>
+<script>
+(function () {
+  var f = document.getElementById('f'), stat = document.getElementById('stat');
+  function mark(t, bad) { stat.textContent = '｜' + t; stat.style.color = bad ? '#ffb3b3' : '#8fe3a0'; }
+  function win() { try { return f.contentWindow; } catch (e) { return null; } }
+  function openSkin() {
+    var w = win(); if (!w || !w.WikiWeaponViewer) return false;
+    var M = w.WEAPON_SKIN_MEDIA || {}, base = (M.skins || {})['1110025'] || {};
+    var rec = Object.assign({}, base, { skin_id: '1110025',
+      preview_3d: { status: 'ready', manifest: 'assets/3d/weapon_skin/1110025/viewer.json' } });
+    try { w.WikiWeaponViewer.open(rec, { title: '冰蕊银华 · 环境对比 jiayuan02a' }); return true; }
+    catch (e) { mark('open 失败：' + e, true); return false; }
+  }
+  function cube(name) {
+    var w = win(); if (!w || !w.WikiWeaponViewer || typeof w.WikiWeaponViewer.__cubeAB !== 'function') return false;
+    try { w.WikiWeaponViewer.__cubeAB(name); mark('Cube = ' + name + '（' + Date.now() % 100000 + '）'); return true; }
+    catch (e) { mark('切换失败：' + e, true); return false; }
+  }
+  document.getElementById('btn').onclick = function () { cube('jiayuan02a'); };
+  document.getElementById('btn2').onclick = function () { cube('qiangpi'); };
+  // 自动流程：等 board 就绪 → 打开皮肤 → 等模型加载 → 切 cube
+  var n = 0;
+  var iv = setInterval(function () {
+    var w = win();
+    if (w && w.WikiWeaponViewer && w.WEAPON_SKIN_MEDIA) {
+      clearInterval(iv);
+      mark('board 就绪，正在打开冰蕊银华…');
+      openSkin();
+      setTimeout(function () { cube('jiayuan02a'); }, 25000);   // 等模型加载完再切，避免打断加载
+      return;
+    }
+    if (++n > 80) { clearInterval(iv); mark('board 加载超时，请手工点上面的按钮', true); }
+  }, 500);
+})();
+</script>
+</body>
+</html>

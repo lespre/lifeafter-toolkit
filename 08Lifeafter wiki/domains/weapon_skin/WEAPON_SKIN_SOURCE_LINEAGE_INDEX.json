@@ -1,0 +1,89 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "client_channel": "client_channel=test",
+ "note": "最终 projection 的每个主字段都能反查 artifact → source → snapshot → raw record → evidence",
+ "fields": {
+  "identity": {
+   "artifact": "WEAPON_SKIN_RESOLVED.jsonl",
+   "source": "weapon_skin_data（entry 11817）",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "row key = skin_item_id",
+   "evidence": "canonical physical + locator"
+  },
+  "name": {
+   "artifact": "WEAPON_SKIN_RESOLVED.jsonl#name_chain",
+   "source": "common_item_data_base（entry 18005）→ CHS（23928）",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "name field slot → value CHS slot",
+   "evidence": "CHS 文本直读（122 verified / 4 no_canonical_row）"
+  },
+  "level": {
+   "artifact": "WEAPON_SKIN_GRADE_ASSIGNMENTS.jsonl",
+   "source": "weapon_skin_data.level",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "level 2/3/4/5/6",
+   "evidence": "canonical raw（126/126）+ charm/门控结构证据"
+  },
+  "catalog_level_label": {
+   "artifact": "WEAPON_SKIN_GRADE_RULES.json",
+   "source": "user_defined / official",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "5 档标签",
+   "evidence": "user_defined(2/3/4) / official_user_confirmed(5/6)"
+  },
+  "weapon_type": {
+   "artifact": "WEAPON_SKIN_RESOLVED.jsonl",
+   "source": "weapon_skin_data.weapon_type",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "data_fields.weapon_type",
+   "evidence": "canonical raw"
+  },
+  "priority": {
+   "artifact": "WEAPON_SKIN_GRADE_ASSIGNMENTS.jsonl",
+   "source": "weapon_skin_data.priority",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "1..17",
+   "evidence": "canonical raw；priority_status=likely（不决定 label 为 verified）"
+  },
+  "effect/presentation": {
+   "artifact": "EFFECT_COMPLETENESS_V2.jsonl + EFFECT_STANDARD.json",
+   "source": "sfx_function / behavior_res / effect_show / nucleus / sound",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "逐业务项折叠（不按 source 分行）",
+   "evidence": "WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl + corroboration matrix"
+  },
+  "timed_relation": {
+   "artifact": "WEAPON_SKIN_VARIANTS.jsonl",
+   "source": "EquipSkinComp.is_timed_skin_id + get_perm_skin_id",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "timed_id // 10 = parent",
+   "evidence": "静态探针命中（entry 14032）"
+  },
+  "sale_config": {
+   "artifact": "WEAPON_SKIN_SALES.jsonl",
+   "source": "store_v2_data.item_id",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "store row（item_id/money*/start/end/limit）",
+   "evidence": "字段语义 + 值域命中 + 同行价格/时段"
+  },
+  "listing": {
+   "artifact": "WEAPON_SKIN_LISTING.jsonl",
+   "source": "（未证 consumer）",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "5 层模型",
+   "evidence": "configured=verified；active/visible/purchasable/listed=unresolved"
+  },
+  "acquisition": {
+   "artifact": "WEAPON_SKIN_ACQUISITION.jsonl",
+   "source": "store_v2_data（direct_shop）",
+   "snapshot": "test-documents-ba8a239a",
+   "raw": "acquisition_paths[]",
+   "evidence": "likely（direct_shop）；其余路径 bounded unresolved"
+  }
+ },
+ "residual_refs": [
+  "residuals/weapon_skin/grade_conflicts_residuals.json",
+  "domains/weapon_skin/WEAPON_SKIN_COMMERCE_CONFLICTS.json",
+  "domains/weapon_skin/SOURCE_CONFLICTS.json"
+ ]
+}
