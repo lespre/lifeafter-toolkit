@@ -1,0 +1,294 @@
+/* shadcn/ui 风格 Qt 样式表 */
+
+QMainWindow, QWidget {
+    background-color: #fafafa;
+    color: #18181b;
+    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    font-size: 13px;
+}
+
+/* === 卡片容器 === */
+#card {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+}
+#cardTitle {
+    font-weight: 600;
+    font-size: 13px;
+    color: #18181b;
+    padding-bottom: 4px;
+}
+
+/* === 卡片/分组框 === */
+QGroupBox {
+    background-color: rgba(255, 255, 255, 240);
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    margin-top: 22px;
+    padding: 14px 12px 12px 12px;
+    font-weight: 600;
+    color: #18181b;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 12px;
+    top: 2px;
+    padding: 0 6px;
+    color: #18181b;
+    background-color: transparent;
+}
+
+/* === 标签页 === */
+QTabWidget::pane {
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    background-color: #ffffff;
+    top: -1px;
+}
+QTabBar::tab {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 8px 20px;
+    margin-right: 4px;
+    color: #71717a;
+    font-weight: 500;
+}
+QTabBar::tab:selected {
+    background-color: #ffffff;
+    border-color: #e4e4e7;
+    color: #18181b;
+    font-weight: 600;
+}
+QTabBar::tab:hover:!selected {
+    color: #18181b;
+    background-color: #f4f4f5;
+}
+
+/* === 输入框 === */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #18181b;
+    selection-background-color: #18181b;
+    selection-color: #ffffff;
+}
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border-color: #18181b;
+    outline: none;
+}
+QLineEdit:disabled, QTextEdit:disabled {
+    background-color: #f4f4f5;
+    color: #a1a1aa;
+}
+
+/* === 按钮 === */
+QPushButton {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    padding: 7px 16px;
+    color: #18181b;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background-color: #f4f4f5;
+    border-color: #d4d4d8;
+}
+QPushButton:pressed {
+    background-color: #e4e4e7;
+}
+QPushButton:disabled {
+    background-color: #f4f4f5;
+    color: #a1a1aa;
+    border-color: #e4e4e7;
+}
+
+/* 主按钮（深色） */
+QPushButton#primaryButton {
+    background-color: #18181b;
+    border: 1px solid #18181b;
+    color: #fafafa;
+    font-weight: 600;
+}
+QPushButton#primaryButton:hover {
+    background-color: #27272a;
+    border-color: #27272a;
+}
+QPushButton#primaryButton:pressed {
+    background-color: #3f3f46;
+}
+
+/* 危险按钮 */
+QPushButton#dangerButton {
+    background-color: #ffffff;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+QPushButton#dangerButton:hover {
+    background-color: #fef2f2;
+}
+
+/* === 单选框/复选框 === */
+QRadioButton, QCheckBox {
+    spacing: 8px;
+    color: #18181b;
+    font-weight: 500;
+}
+QRadioButton::indicator, QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #d4d4d8;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+QRadioButton::indicator {
+    border-radius: 8px;
+}
+QRadioButton::indicator:checked, QCheckBox::indicator:checked {
+    background-color: #18181b;
+    border-color: #18181b;
+}
+
+/* === 进度条 === */
+QProgressBar {
+    background-color: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    height: 20px;
+    text-align: center;
+    color: #71717a;
+    font-size: 11px;
+}
+QProgressBar::chunk {
+    background-color: #18181b;
+    border-radius: 5px;
+}
+
+/* === 滚动条 === */
+QScrollBar:vertical {
+    background-color: transparent;
+    width: 10px;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background-color: #d4d4d8;
+    border-radius: 5px;
+    min-height: 30px;
+    margin: 2px;
+}
+QScrollBar::handle:vertical:hover {
+    background-color: #a1a1aa;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+QScrollBar:horizontal {
+    background-color: transparent;
+    height: 10px;
+    margin: 0;
+}
+QScrollBar::handle:horizontal {
+    background-color: #d4d4d8;
+    border-radius: 5px;
+    min-width: 30px;
+    margin: 2px;
+}
+QScrollBar::handle:horizontal:hover {
+    background-color: #a1a1aa;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+/* === 树形视图 === */
+QTreeView {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    outline: none;
+    alternate-background-color: #fafafa;
+}
+QTreeView::item {
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: 1px 4px;
+}
+QTreeView::item:selected {
+    background-color: #f4f4f5;
+    color: #18181b;
+}
+QTreeView::item:hover {
+    background-color: #fafafa;
+}
+QTreeView::branch {
+    background-color: transparent;
+}
+QHeaderView::section {
+    background-color: #fafafa;
+    border: none;
+    border-bottom: 1px solid #e4e4e7;
+    padding: 8px;
+    font-weight: 600;
+    color: #71717a;
+}
+
+/* === 数值调节框 === */
+QDoubleSpinBox, QSpinBox {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    padding: 5px 8px;
+    color: #18181b;
+}
+QDoubleSpinBox:focus, QSpinBox:focus {
+    border-color: #18181b;
+}
+
+/* === 标签 === */
+QLabel {
+    color: #18181b;
+}
+QLabel#mutedLabel {
+    color: #71717a;
+    font-size: 12px;
+}
+QLabel#titleLabel {
+    font-size: 18px;
+    font-weight: 700;
+    color: #18181b;
+}
+QLabel#subtitleLabel {
+    font-size: 13px;
+    color: #71717a;
+}
+
+/* === 状态栏 === */
+QStatusBar {
+    background-color: #ffffff;
+    border-top: 1px solid #e4e4e7;
+    color: #71717a;
+    font-size: 12px;
+}
+
+/* === 分割线 === */
+QFrame[frameShape="4"], QFrame[frameShape="5"] {
+    color: #e4e4e7;
+    max-width: 1px;
+    max-height: 1px;
+}
+
+/* === 滚动区域 === */
+QScrollArea {
+    background-color: transparent;
+    border: none;
+}
+QScrollArea > QWidget > QWidget {
+    background-color: transparent;
+}

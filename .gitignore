@@ -1,0 +1,57 @@
+# 构建环境与缓存
+.buildenv/
+__pycache__/
+*.pyc
+
+# 运行产物 / 大文件
+indexes/
+output/
+*.etl
+
+# 版本构建目录（保留源码与 .spec，剔除产物）
+**/dist_v*/
+**/dist_fix*/
+**/dist_final/
+**/dist_release/
+**/dist_debug/
+**/dist/
+**/build_v*/
+**/build_final/
+**/build_release/
+**/build_debug2/
+**/build/
+**/spec_debug/
+
+# 二进制制品（exe 不进仓；astcenc 为第三方工具例外）
+*.exe
+!工具库/07_纹理转换/astcenc-avx2.exe
+
+# 归档旧件
+_archive/
+
+# 游戏素材（版权原因一律不入仓）
+*.dds
+*.ktx
+*.mesh
+*.gim
+*.glb
+*.tga
+*.wpk
+*.gpk
+*.npk
+*.fpk
+*.cube
+
+# junction（指向 wiki 数据目录，不可入仓）
+3D预览器/poster/assets/3d/
+
+# 杂项
+*.zip
+*.7z
+*.rar
+*.log
+*.tmp
+**/build_fix*/
+**/la_capture/run/
+工具库/06_皮肤定位链/jiguang_ui_analysis.json
+*.pkg

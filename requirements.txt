@@ -1,0 +1,16 @@
+# 核心容器读取/解压
+cryptography>=42
+zstandard>=0.22
+lz4>=4.3
+
+# 纹理与预览（按需）
+Pillow>=10
+texture2ddecoder>=1.0
+numpy>=1.26
+scipy>=1.12
+
+# 图形界面（只运行命令行时可不安装）
+PySide6>=6.7
+
+# 开发回归（生产运行可不安装）
+pytest>=8

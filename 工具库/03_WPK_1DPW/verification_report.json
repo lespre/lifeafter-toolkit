@@ -1,0 +1,378 @@
+{
+  "acceptance_checks": {
+    "all_artifacts_read_back_with_hashes": true,
+    "all_idx_wpk_and_slot_sources_resolved": true,
+    "all_negative_controls_rejected": true,
+    "entry_padding_and_next_boundary_match": true,
+    "final_dds_manual_header_and_pillow_parse": true,
+    "final_dds_not_pure_blank_by_pixel_stats": true,
+    "idx_and_embedded_1dpw_fields_match": true,
+    "idx_magic_layout_count_and_trailer": true,
+    "payload_size_excludes_0x30_header": true,
+    "preview_pixels_match_final_dds": true,
+    "source_sha_locks_match": true,
+    "source_stable_end_to_end": true,
+    "target_idx_hash_and_pkg_match": true,
+    "wpd1_ac_stage1_restores_dtsz": true,
+    "wpk_and_embedded_magics_match": true,
+    "zstd_strict_eof_no_unused_and_size_match": true
+  },
+  "algorithm_provenance": {
+    "commit": "64ae097d00c60bfec6e1d37076d2bcd3d0b76f02",
+    "nested_source": "core/wpk/payload.py",
+    "repository": "https://github.com/liubairun/NeoXtractor-IDXWPK",
+    "role": "candidate implementation only; acceptance is based on this target sample's boundaries, hashes, strict codec completion, and Pillow parse",
+    "stage1_source": "core/wpk/decryption.py"
+  },
+  "all_acceptance_checks_pass": true,
+  "artifact_manifest": {
+    "path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifact_manifest.csv",
+    "rows": 5,
+    "sha256": "3c1a7d752d81b1138e8b5e7b2c860c735dfc4437db629f3793b01b12abc1d201"
+  },
+  "artifacts": [
+    {
+      "absolute_path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifacts\\000005_77f55b584213beb7a0f0c0410b56ec86_outer.1dpw",
+      "description": "exact header_size + payload_size slice from ui4.wpk",
+      "head16_hex": "314450570200000077f55b584213beb7",
+      "layer": "1DPW outer entry",
+      "relative_path": "artifacts/000005_77f55b584213beb7a0f0c0410b56ec86_outer.1dpw",
+      "sha256": "216c6672a0caa839ab8d68e4f44b978e627356c1eee9c0287e21ef01a1234e19",
+      "size": 323
+    },
+    {
+      "absolute_path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifacts\\000005_77f55b584213beb7a0f0c0410b56ec86_payload.wpd1",
+      "description": "payload beginning with AC control header",
+      "head16_hex": "414301009b58ef31c3c3d9c1f2d6719d",
+      "layer": "WPD1 payload",
+      "relative_path": "artifacts/000005_77f55b584213beb7a0f0c0410b56ec86_payload.wpd1",
+      "sha256": "0d34e780b14cdb2942c28d0472137d84ca7012b21baf317ca88e0803b6ebac76",
+      "size": 275
+    },
+    {
+      "absolute_path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifacts\\000005_77f55b584213beb7a0f0c0410b56ec86_stage1.dtsz",
+      "description": "DTSZ wrapper plus complete Zstandard frame",
+      "head16_hex": "4454535a28b52ffd6014aced0700420b",
+      "layer": "stage-1 decoded",
+      "relative_path": "artifacts/000005_77f55b584213beb7a0f0c0410b56ec86_stage1.dtsz",
+      "sha256": "0e322cd8f92f73ced698fc721b700b871905ce2f1feab9b4c60472e28fcd7612",
+      "size": 267
+    },
+    {
+      "absolute_path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifacts\\000005_77f55b584213beb7a0f0c0410b56ec86_final.dds",
+      "description": "strictly decompressed DDS resource",
+      "head16_hex": "444453207c00000007100800b8000000",
+      "layer": "final resource",
+      "relative_path": "artifacts/000005_77f55b584213beb7a0f0c0410b56ec86_final.dds",
+      "sha256": "b6daa6d78217f494c69aab68039b37f7e519d9ff10512f901d2623c71fcd5a28",
+      "size": 44308
+    },
+    {
+      "absolute_path": "E:\\提取成果\\明日拆包\\03_WPK_1DPW\\artifacts\\000005_77f55b584213beb7a0f0c0410b56ec86_preview.png",
+      "description": "deterministic PNG conversion; pixels hash-match DDS decode",
+      "head16_hex": "89504e470d0a1a0a0000000d49484452",
+      "layer": "derived preview",
+      "relative_path": "artifacts/000005_77f55b584213beb7a0f0c0410b56ec86_preview.png",
+      "sha256": "aa585f272df63c9c5e56a544af62986a7ab3af9fad6b5ba32479554c80572d5a",
+      "size": 634
+    }
+  ],
+  "audit_id": "run_004_PC_BinDict与1DPW专项_001/03_1dpw",
+  "bundle_validation": {
+    "csv_row_count_matches": true,
+    "json_final_readback_reparse": true,
+    "json_prewrite_reparse": true
+  },
+  "claim_boundary": {
+    "not_proven": [
+      "full decode coverage of all current 4811 UI IDX records",
+      "the PC-tag branch (3 records in exploratory inventory, not selected here)",
+      "the ENON branch",
+      "any FPK decoding or relation between FPK and 1DPW",
+      "runtime/client behavior"
+    ],
+    "proven": "one current real PC ui4.wpk 1DPW AC/DTSZ entry, with final DDS parser validation"
+  },
+  "conclusion_zh": "对当前 ui.idx SHA-256 锁定快照中的零基记录 5，已从 ui4.wpk 精确读取 0x30+275 字节，恢复 AC stage-1 的 DTSZ/Zstandard 数据，并严格解出可由 Pillow verify+load 的 240×184 DDS。正确链通过且五项负对照全部失败，因此这不是只切出 1DPW 外壳或偶然 magic 命中；该真实 AC/DTSZ 实例的 1DPW 层事实上已破解。",
+  "decode_chain": {
+    "final_resource": {
+      "alpha_max": 214,
+      "alpha_min": 0,
+      "dds_declared_height": 184,
+      "dds_declared_width": 240,
+      "dds_header_size": 124,
+      "format_load": "DDS",
+      "format_verify": "DDS",
+      "frames": 1,
+      "height": 184,
+      "magic_ascii": "DDS ",
+      "mode": "RGBA",
+      "nonblack_rgb_pixels": 808,
+      "nontransparent_pixels": 43480,
+      "not_pure_blank_by_pixel_stats": true,
+      "pillow_load_pass": true,
+      "pillow_verify_pass": true,
+      "pixel_count": 44160,
+      "preview": {
+        "alpha_max": 214,
+        "alpha_min": 0,
+        "format_load": "PNG",
+        "format_verify": "PNG",
+        "frames": 1,
+        "height": 184,
+        "mode": "RGBA",
+        "nonblack_rgb_pixels": 808,
+        "nontransparent_pixels": 43480,
+        "not_pure_blank_by_pixel_stats": true,
+        "pillow_load_pass": true,
+        "pillow_verify_pass": true,
+        "pixel_count": 44160,
+        "rgba_pixel_sha256": "9cd67c08aadc8bab83e0d1aed42c81441f84bdb3709c83bac0bdeca62044a336",
+        "unique_rgba_colors": 18,
+        "width": 240
+      },
+      "rgba_pixel_sha256": "9cd67c08aadc8bab83e0d1aed42c81441f84bdb3709c83bac0bdeca62044a336",
+      "sha256": "b6daa6d78217f494c69aab68039b37f7e519d9ff10512f901d2623c71fcd5a28",
+      "size_bytes": 44308,
+      "unique_rgba_colors": 18,
+      "width": 240
+    },
+    "nested": {
+      "decoded_sha256": "b6daa6d78217f494c69aab68039b37f7e519d9ff10512f901d2623c71fcd5a28",
+      "decoded_size": 44308,
+      "decompressor_eof": true,
+      "frame_content_size": 44308,
+      "frame_dict_id": 0,
+      "frame_has_checksum": false,
+      "frame_window_size": 44308,
+      "unused_data_size": 0,
+      "wrapper_ascii": "DTSZ",
+      "wrapper_size": 267,
+      "zstd_frame_magic_hex": "28b52ffd",
+      "zstd_frame_size": 263
+    },
+    "stage1": {
+      "actual_body_len": 267,
+      "aes_aligned_bytes": 128,
+      "aux4_hex_neutral_name": "9b58ef31",
+      "derived_or_override_key_hex": "0e0b01006a6b2e7c3036382f6e65745c",
+      "header_reverse_xor_5a_applied": true,
+      "kdf_body_len": 267,
+      "output_head16_hex": "4454535a28b52ffd6014aced0700420b",
+      "output_sha256": "0e322cd8f92f73ced698fc721b700b871905ce2f1feab9b4c60472e28fcd7612",
+      "output_size": 267,
+      "p": 1,
+      "prefix_len": 128,
+      "t": 0,
+      "tag_ascii": "AC",
+      "tag_u16le": 17217,
+      "xor_tail_bytes": 0
+    }
+  },
+  "execution_boundary": {
+    "client_started": false,
+    "fact_source_root_read_only": "E:\\mrzh",
+    "fpk_equals_1dpw_claimed": false,
+    "fpk_read": false,
+    "output_root": "E:\\提取成果\\明日拆包\\03_WPK_1DPW",
+    "source_modified": false,
+    "target_payload_executed_or_imported": false
+  },
+  "existing_tool_audit": {
+    "blind_48_byte_strip_present": true,
+    "classification": "auxiliary tool-code audit; not a game-data fact source",
+    "decision": "not reused for WPD1/AC: this snapshot only slices/strips 1DPW and has no AC/PC stage-1 or DTSZ/ENON decoder",
+    "parse_wpk_idx_present": true,
+    "payload_size_used_as_total_slice": true,
+    "reusable_for_this_cryptographic_verification": false,
+    "snapshot": {
+      "mtime_ns": 1787930981378556900,
+      "path": "E:\\提取成果\\明日之后拆包工具\\01_核心解包器\\lifeafter_unpacker_full.py",
+      "sha256": "6cd2375d2f937c310cbc6cc109a813bf46e081e0e56bbf59af8176dc085a5584",
+      "size": 45278,
+      "stable_during_hash": true
+    },
+    "stage1_decoder_markers": {
+      "DTSZ": false,
+      "ENON": false,
+      "decode_payload_stage1": false,
+      "derive_wpd1_key": false
+    }
+  },
+  "idx": {
+    "declared_record_count": 4811,
+    "expected_size_formula": "0x20 + 4811 * 0x24 + 4 = 173232",
+    "file_size": 173232,
+    "header_hex": "534b5057a36e000001000000cb120000060c0c0c0c0c0c0c0c0c0c0c0c0c0c0c",
+    "header_size": 32,
+    "header_size_counts": {
+      "48": 4811
+    },
+    "magic_ascii": "SKPW",
+    "pkg_low8_counts": {
+      "3": 4677,
+      "4": 122,
+      "255": 12
+    },
+    "record_size": 36,
+    "size_derived_record_count": 4811,
+    "trailer_hex": "a36e0000"
+  },
+  "negative_controls": {
+    "entry_offset_plus_1": {
+      "expected_1DPW": false,
+      "negative_control_pass": true,
+      "observed_magic_hex": "44505702"
+    },
+    "kdf_body_len_minus_1": {
+      "accepted_pipeline": false,
+      "image_error_type": "UnidentifiedImageError",
+      "known_wrapper_at_offset_0": false,
+      "negative_control_pass": true,
+      "nested_error": null,
+      "output_head16_hex": "7c968cdabf73ce80be8bf3788f0cf285",
+      "output_sha256": "e32b401293e1da7d0e4095c69ce1d4b8cbd1873b4268f846c080a6223e661a74",
+      "output_size": 267,
+      "pillow_image_success": false,
+      "strict_nested_success": false,
+      "wrong_kdf_body_len": 266
+    },
+    "payload_size_misread_as_total_minus_0x30": {
+      "accepted_pipeline": false,
+      "image_error_type": "UnidentifiedImageError",
+      "known_wrapper_at_offset_0": false,
+      "negative_control_pass": true,
+      "nested_error": null,
+      "output_head16_hex": "ac2de3b9aa25a34aef25ad2e4f93eb0b",
+      "output_sha256": "fc787af422176d665cc1873667cd38dc9856249f54778f4b970bf9e789778e4c",
+      "output_size": 219,
+      "pillow_image_success": false,
+      "strict_nested_success": false,
+      "wrong_body_len": 219,
+      "wrong_payload_size_after_header": 227,
+      "wrong_raw_read_size": 275
+    },
+    "skip_ac_reverse_xor_5a": {
+      "accepted_pipeline": false,
+      "image_error_type": "UnidentifiedImageError",
+      "known_wrapper_at_offset_0": false,
+      "negative_control_pass": true,
+      "nested_error": null,
+      "output_head16_hex": "c3792a4f8ad67bca0d8a0a7fd1bff09c",
+      "output_sha256": "db27e89cec96418b31d673262d315739e1e4cf82316fbbacc8cbaa8037e55ac9",
+      "output_size": 267,
+      "pillow_image_success": false,
+      "strict_nested_success": false
+    },
+    "zero_aes_key": {
+      "accepted_pipeline": false,
+      "image_error_type": "UnidentifiedImageError",
+      "known_wrapper_at_offset_0": false,
+      "negative_control_pass": true,
+      "nested_error": null,
+      "output_head16_hex": "118aad79bf2a9b17d899d63be05e7cb3",
+      "output_sha256": "f7b4632907f292d98f1a2ea4ea63cbc12fa867a4346ab27807dec063f5ca411c",
+      "output_size": 267,
+      "pillow_image_success": false,
+      "strict_nested_success": false
+    }
+  },
+  "runtime_versions": {
+    "Pillow": "12.3.0",
+    "cryptography": "50.0.0",
+    "python": "3.11.15",
+    "zstandard": "0.25.0"
+  },
+  "schema_version": 1,
+  "source_inventory": {
+    "all_indexed_sources_resolved": true,
+    "missing_sources": [],
+    "packages": [
+      {
+        "exists": true,
+        "magic_ascii": "FKPW",
+        "path": "E:\\mrzh\\Documents\\res\\ui3.wpk",
+        "pkg_low8": 3,
+        "size": 67108864
+      },
+      {
+        "exists": true,
+        "magic_ascii": "FKPW",
+        "path": "E:\\mrzh\\Documents\\res\\ui4.wpk",
+        "pkg_low8": 4,
+        "size": 2097152
+      }
+    ],
+    "slot_file": {
+      "directory": "E:\\mrzh\\Documents\\res\\ui",
+      "existing_files": 12,
+      "files_starting_1DPW": 12,
+      "indexed_records": 12
+    }
+  },
+  "source_snapshots": [
+    {
+      "mtime_ns": 1787830717783868300,
+      "path": "E:\\mrzh\\Documents\\res\\ui.idx",
+      "sha256": "cbba19c9a56e68fc0f68c6a431411aa97c329b4c8da5618eb16da765e6a8341f",
+      "size": 173232,
+      "stable_during_hash": true
+    },
+    {
+      "mtime_ns": 1787830717781255800,
+      "path": "E:\\mrzh\\Documents\\res\\ui4.wpk",
+      "sha256": "4bd07c4f0dd8d9d9503c43eb809614e308bb4d04ccbda0e5ac5e5e5421bc07c3",
+      "size": 2097152,
+      "stable_during_hash": true
+    }
+  ],
+  "status": "PASS",
+  "target_record": {
+    "computed_4k_padding": 3773,
+    "embedded_1dpw": {
+      "aux_0x1c_u32_neutral_name": 1193825747,
+      "field_0x18": 0,
+      "hash_hex": "77f55b584213beb7a0f0c0410b56ec86",
+      "header_field_at_0x24": 247267376,
+      "header_sha256": "2d65570703e7c05e6922b424bd76824651edc7d4504426a711662c9bee1b8aed",
+      "magic_ascii": "1DPW",
+      "payload_size_at_0x20": 275,
+      "reserved_0x28_hex": "0000000000000000",
+      "version": 2
+    },
+    "entry_end": 1950019,
+    "entry_end_hex": "0x001DC143",
+    "field_0x10": 0,
+    "file_offset": 1949696,
+    "file_offset_hex": "0x001DC000",
+    "hash_hex": "77f55b584213beb7a0f0c0410b56ec86",
+    "header_field": 247267376,
+    "header_field_hex": "0x0EBD0030",
+    "header_high16": 3773,
+    "header_size": 48,
+    "idx_record_offset": 212,
+    "idx_record_offset_hex": "0xD4",
+    "idx_record_sha256": "8d113c4f435a88b837e8941fed0348be72c740864cdf42adbad91a0871571514",
+    "index_zero_based": 5,
+    "next_magic_ascii": "1DPW",
+    "next_offset": 1953792,
+    "next_offset_hex": "0x001DD000",
+    "padded_end": 1953792,
+    "padded_end_hex": "0x001DD000",
+    "padding_all_zero": true,
+    "padding_sha256": "d2e83c604222ccf15234b3d43115d2a7e8a7669279cba79d0487a60122e357c1",
+    "padding_size": 3773,
+    "payload_size": 275,
+    "pkg_low8": 4,
+    "pkg_raw": 4,
+    "pkg_raw_hex": "0x00000004",
+    "previous_offset": 1945600,
+    "previous_offset_hex": "0x001DB000",
+    "source_kind": "wpk",
+    "source_path": "E:\\mrzh\\Documents\\res\\ui4.wpk",
+    "total_read_size": 323,
+    "wpk_magic_ascii": "FKPW",
+    "wpk_size": 2097152
+  },
+  "verdict": "PASS — 当前哈希锁定真实 WPK 条目的 1DPW/WPD1 AC 层已被事实性解开"
+}
