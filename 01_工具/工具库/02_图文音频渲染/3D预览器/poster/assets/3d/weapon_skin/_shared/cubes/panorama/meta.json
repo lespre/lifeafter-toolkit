@@ -1,0 +1,95 @@
+{
+ "name": "panorama",
+ "logical": "common\\env_map\\panorama.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12398,
+ "off": 81475160,
+ "comp": 350901,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12398,
+   "base": 1940537680,
+   "off": 81475160,
+   "comp": 350901,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "981e673b318906101f2e5761d2e8b4ad6ba210569e3dda29534cc01b1ecaacea",
+ "sha16": "981e673b31890610",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f0_m0.png",
+   "bytes": 33239,
+   "rgba_sha16": "81842c7c69eacadd",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f1_m0.png",
+   "bytes": 33239,
+   "rgba_sha16": "7af9052fcd9fb17c",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f2_m0.png",
+   "bytes": 26024,
+   "rgba_sha16": "e1fa93b97369f884",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f3_m0.png",
+   "bytes": 41697,
+   "rgba_sha16": "18adb6f8d4ef2dc7",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f4_m0.png",
+   "bytes": 37310,
+   "rgba_sha16": "e9edf262eed89855",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\panorama\\faces\\panorama_f5_m0.png",
+   "bytes": 31471,
+   "rgba_sha16": "901417ce4b1e7237",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

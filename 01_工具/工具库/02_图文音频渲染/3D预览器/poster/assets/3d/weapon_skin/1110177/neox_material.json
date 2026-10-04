@@ -1,0 +1,1381 @@
+{
+ "schema": "neox_material/v2",
+ "skin": "1110177",
+ "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+ "source": {
+  "bind_c159": "003994.c159",
+  "material_c159": "003996.c159",
+  "material_c159_sha256": "c5d02b483a27b580ad9dd78cf70d2a3f152f45c7dc8399a1d545e47e2a7abb31",
+  "bind_c159_sha256": "623ca98b87bcdb30c8b790fffe2abe0cff90067fce379381a53e25e47a4d87b7",
+  "mesh": "003995.mesh (LOD1)",
+  "mesh_sha256": "faff017dde8bb1e992b7958211a4dc6855e1e46b2ace6044a490a86a8663fed8"
+ },
+ "glb": {
+  "path": "dual.glb",
+  "sha256": "e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2"
+ },
+ "geometry_glb_sha256": "e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2",
+ "parser_sha256": null,
+ "required_by_program_family": {
+  "pbr_default(weapon 分支)": {
+   "required_slots": [
+    "Tex0",
+    "ParamMap",
+    "NormalMap"
+   ]
+  },
+  "pbr_crystal(crystal 分支)": {
+   "required_slots": [
+    "Tex0",
+    "t_basecolor",
+    "NormalMap"
+   ]
+  }
+ },
+ "slot_binding_basis": {
+  "A_c159_path_blocks": "c159(003996.c159) 每材质路径块直读（c159_029_pair.json L649-765）",
+  "B_cluster_order": "同集群贴图组顺序 b_m,s_m,a,n,m —— 由 1110171 两个组 ground truth（gpk_raw_8u32.json label）实证",
+  "C_content_signature": "004011/004012/004013 内容签名与 1110171 的 a/n/m ground truth 逐项同族（_t5_decode_stats.json）",
+  "unresolved": "未取得「逻辑名 → GPK 条目 idx」的名称级直证（weapon.gpk 条目字段不含路径哈希，见 _known_loop/gpk_namehash_vs_pathid.json）；因此 029 的 5 张贴图到槽位的归属为 candidate-high（A+B+C 三重印证），非 name-level 直证。"
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "mtl_idx": 0,
+   "material": "skin_2003_029_0",
+   "chain_material_raw": "mmskin_2003_029_0",
+   "glb_material": "skin_2003_029_blade",
+   "shader": "shader\\pbr_default.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "源 shader=pbr_default（不透明金属基底）→ viewer 的 weapon 分支；与 1110171 prim0（pbr_weapon）同分支；非 pbr_crystal 故不按晶体处理",
+   "attribution": "c159 路径块内 4 条路径直读 + 集群角色补齐 Tex0",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质基色路径 029001a.tga",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "binding_evidence": {
+      "status": "REFERENCE_IMAGE_DIRECT",
+      "basis": "用户提供的游戏参考图：极光剑为**金色剑身 + 银白护手 + 红宝石**。内容指纹：029_a.png RGB均值 [84.3,196.9,254.9]（冷/青蓝）、029_b_m.png [210.6,178.3,140.6]（暖/金）。⇒ 该 shader 的基色必须是**暖金那张**，即 029_b_m。",
+      "note": "本武器与 1110171 同源命名体系（GPK 集群顺序推定），但 1110177 有参考图作金标准，故此处为**直接依据**而非候选。"
+     },
+     "file": "src_tex/029_b_m.png",
+     "prev_local_file": "src_tex/029_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "bind_fix_20260919": "20260918_234628"
+    },
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质基色路径 029001a.tga",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "binding_basis": "REFERENCE_IMAGE_DIRECT",
+     "binding_evidence": {
+      "status": "REFERENCE_IMAGE_DIRECT",
+      "basis": "用户提供的游戏参考图：极光剑为**金色剑身 + 银白护手 + 红宝石**。内容指纹：029_a.png RGB均值 [84.3,196.9,254.9]（冷/青蓝）、029_b_m.png [210.6,178.3,140.6]（暖/金）。⇒ 该 shader 的基色必须是**暖金那张**，即 029_b_m。",
+      "note": "本武器与 1110171 同源命名体系（GPK 集群顺序推定），但 1110177 有参考图作金标准，故此处为**直接依据**而非候选。"
+     },
+     "file": "src_tex/029_b_m.png",
+     "evidence_level": "ordered_1to1_candidate_high",
+     "bind_fix_20260919": "20260918_234628"
+    },
+    "ParamMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001m.tga",
+     "slot": "ParamMap",
+     "local_file": "src_tex/029_m.png",
+     "sha256": "882664c3bab76ee7f0abc9da28ec4d17bf6ab08e61d18864c356d7ebd80672ae",
+     "evidence": "c159 该材质 ParamMap 路径 Declared",
+     "confidence": "high",
+     "classification_rule": "rule:001m.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_m.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质法线路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_n.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "evidence": "c159 该材质 cube 路径声明；与 1110171 同一逻辑路径",
+     "confidence": "high",
+     "classification_rule": "rule:\\.cube",
+     "color_space": "linear",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "dds_header": "legacy DDS, B8G8R8A8_UNORM, 128x128, 6 faces, mips=8",
+     "state": "source_resource_verified",
+     "sampling": "sampling_unresolved",
+     "file": "src_cube/qiangpi.dds",
+     "evidence_level": "dual_path_consistent"
+    },
+    "t_surfacemap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001s_m.tga",
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/029_s_m.png",
+     "sha256": "61277c05cc19fd788a7e0dee1e6eb169575ba4e7eaa0f8253e02c256d6a2917f",
+     "evidence": "集群 004010 内容签名为 s_m 角色；material0 路径块未声明该槽 → 仅登记资源，不参与渲染",
+     "confidence": "candidate-high",
+     "classification_rule": "rule:001s_m.tga",
+     "color_space": "linear",
+     "viewer_usage": "NOT_CONSUMED",
+     "file": "src_tex/029_s_m.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    }
+   },
+   "missing_required": []
+  },
+  {
+   "prim": 1,
+   "mtl_idx": 1,
+   "material": "skin_2003_029_1",
+   "chain_material_raw": "mmskin_2003_029_1",
+   "glb_material": "skin_2003_029_crystal",
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "crystal",
+   "attribution": "c159 路径块 7 条路径直读（槽名↔逻辑名）",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001b_m.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质首路径 029001b_m.tga（掩码）",
+     "confidence": "high",
+     "classification_rule": "rule:001b_m.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_b_m.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_n.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\car_studio01.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/car_studio01.dds",
+     "sha256": "bea649d8525cdc3ecb77b1fbb0e388d85632645732fd00ad99f0010fa857e83d",
+     "evidence": "c159 该材质 cube 路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:\\.cube",
+     "color_space": "linear",
+     "faces_glob": "src_cube/faces/car_studio01_f{0..5}_m0.png",
+     "state": "source_resource_verified",
+     "sampling": "sampling_unresolved",
+     "file": "src_cube/car_studio01.dds",
+     "evidence_level": "dual_path_consistent"
+    },
+    "DetailMap": {
+     "logical_path": "common\\textures\\crystal_bump_n02.tga",
+     "slot": "DetailMap",
+     "local_file": "src_tex/crystal_bump_n02.png",
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "source_resource_verified",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）",
+     "file": null,
+     "evidence_level": "declared_path_direct",
+     "prev_local_file": null,
+     "binding_basis": "DECLARED_PATH_NAME_RESOLVED",
+     "why_not_direct": null,
+     "source": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 8486,
+      "o": 584027152,
+      "comp": 99424,
+      "dec": 349680,
+      "flag": 12,
+      "sha16": "2c5bd70ff4877e13"
+     },
+     "changed_by": "Lead 20260919（common\\ 声明名 .tga→.dds 命中；LEAD_declpath_scan2.json）"
+    },
+    "t_caustic_tex": {
+     "state": "not_shipped",
+     "local_file": null,
+     "logical_path": "weapon\\skin\\skin_1012_013\\testures\\crystal_caustic_uvva002.tga",
+     "reason": "源声明为跨皮肤路径 skin_1012_013\\testures\\crystal_caustic_uvva002.tga（含 3 个拼写变体）⇒ 221 容器全 MISS ⇒ 未发布",
+     "rule": "不得用 prim2 的图代填（Lead 裁决 2026-09-19·采纳 chain-auditor 顶替判定）",
+     "previously_bound": "src_tex/crystal_caustic_uvva.png",
+     "evidence_level": "ordered_1to1_candidate_high",
+     "production_ok": false,
+     "production_reason": "顺序冲突风险槽（审核 P0-1）：caustic/reflection 类存在明确顺序冲突，只能作候选，不得进生产绑定"
+    },
+    "t_reflection_tex": {
+     "logical_path": "common\\textures\\crystal_reflection_uvva.tga",
+     "slot": "t_reflection_tex",
+     "local_file": "src_tex/crystal_reflection_uvva.png",
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "source_resource_verified",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）",
+     "file": null,
+     "evidence_level": "declared_path_direct",
+     "production_ok": false,
+     "production_reason": "顺序冲突风险槽（审核 P0-1）：caustic/reflection 类存在明确顺序冲突，只能作候选，不得进生产绑定",
+     "prev_local_file": null,
+     "binding_basis": "DECLARED_PATH_NAME_RESOLVED",
+     "why_not_direct": null,
+     "source": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 8517,
+      "o": 592234204,
+      "comp": 76877,
+      "dec": 213080,
+      "flag": 12,
+      "sha16": "97d2333a342aeb4d"
+     },
+     "changed_by": "Lead 20260919（common\\ 声明名 .tga→.dds 命中；LEAD_declpath_scan2.json）"
+    },
+    "t_basecolor": {
+     "prev_local_file": null,
+     "local_file": "src_tex/029_b_m.png",
+     "content_class": "color",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "evidence_level": "content_class_signature",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "changed_by": "Lead 20260919"
+    }
+   },
+   "missing_required": [],
+   "crystal_params": {
+    "u_detail_tilling": 1.3,
+    "u_detail_intensity": 1.3,
+    "u_emissive_strength": 0.49,
+    "u_emissive_fresnel": 0.8,
+    "u_rotate_angle": 3.09,
+    "u_cube_brightness": 0.71,
+    "u_base_color": [
+     0.3373,
+     0.3373,
+     0.3373,
+     1.0
+    ],
+    "u_crystal_color": [
+     0.251,
+     0.2196,
+     0.2314,
+     1.0
+    ],
+    "u_base_metallic": 0.6,
+    "u_crystal_metallic": 0.95,
+    "u_crystal_specular": 1,
+    "u_caustic_tilling": 1,
+    "u_caustic_depth": 0.78,
+    "u_caustic_brightness": 1.24,
+    "u_refraction_rotation": 0.26,
+    "u_refraction_contrast": 1,
+    "u_refraction_brightness": 1.2,
+    "u_refraction_color": [
+     0.6588,
+     0.6824,
+     0.7608,
+     1.0
+    ],
+    "u_subsurface_color": [
+     0.2627,
+     0.302,
+     0.4039,
+     1.0
+    ],
+    "provenance": "c159 per-material block from 03_执行\\20_提取/weapon/c159_029_pair.json (group1/block0, score=41); pair row 逐项含 off/raw/value；group↔material 由 1110177 旧 viewer.json material_layers.per_submesh 交叉印证（base/crystal color 逐值相等）；source_sha256=cc1209a661ff8f15493cfde3be90bb6162228c84867c6fd6e48ea469cea79a80",
+    "_rows_raw": [
+     {
+      "name": "u_detail_tilling",
+      "type": "f32",
+      "off": 2393,
+      "raw": "6666a63f"
+     },
+     {
+      "name": "u_detail_intensity",
+      "type": "f32",
+      "off": 2402,
+      "raw": "6666a63f"
+     },
+     {
+      "name": "u_emissive_strength",
+      "type": "f32",
+      "off": 2411,
+      "raw": "48e1fa3e"
+     },
+     {
+      "name": "u_emissive_fresnel",
+      "type": "f32",
+      "off": 2420,
+      "raw": "cdcc4c3f"
+     },
+     {
+      "name": "u_rotate_angle",
+      "type": "f32",
+      "off": 2429,
+      "raw": "8fc24540"
+     },
+     {
+      "name": "u_cube_brightness",
+      "type": "f32",
+      "off": 2438,
+      "raw": "8fc2353f"
+     },
+     {
+      "name": "u_base_color",
+      "type": "f32[4]",
+      "off": 2447,
+      "raw": "0400000096b2ac3e96b2ac3e96b2ac3e0000803f"
+     },
+     {
+      "name": "u_crystal_color",
+      "type": "f32[4]",
+      "off": 2472,
+      "raw": "040000001283803ed3de603e1ff46c3e0000803f"
+     },
+     {
+      "name": "u_base_metallic",
+      "type": "f32",
+      "off": 2497,
+      "raw": "9a99193f"
+     },
+     {
+      "name": "u_crystal_metallic",
+      "type": "f32",
+      "off": 2506,
+      "raw": "3333733f"
+     },
+     {
+      "name": "u_crystal_specular",
+      "type": "i32",
+      "off": 2515,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_caustic_tilling",
+      "type": "i32",
+      "off": 2524,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_caustic_depth",
+      "type": "f32",
+      "off": 2533,
+      "raw": "14ae473f"
+     },
+     {
+      "name": "u_caustic_brightness",
+      "type": "f32",
+      "off": 2542,
+      "raw": "52b89e3f"
+     },
+     {
+      "name": "u_refraction_rotation",
+      "type": "f32",
+      "off": 2551,
+      "raw": "b81e853e"
+     },
+     {
+      "name": "u_refraction_contrast",
+      "type": "i32",
+      "off": 2560,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_refraction_brightness",
+      "type": "f32",
+      "off": 2569,
+      "raw": "9a99993f"
+     },
+     {
+      "name": "u_refraction_color",
+      "type": "f32[4]",
+      "off": 2578,
+      "raw": "040000001ea7283fc4b12e3fcac3423f0000803f"
+     },
+     {
+      "name": "u_subsurface_color",
+      "type": "f32[4]",
+      "off": 2603,
+      "raw": "040000009d80863ebe9f9a3efbcbce3e0000803f"
+     }
+    ]
+   },
+   "crystal_params_basis": "REFERENCE_IMAGE_DIRECT(红宝石/银白护手为材质参数而非贴图) + c159-per-material-block",
+   "withheld_slots": {
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_a.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "state": "withheld_from_render_input",
+     "binding_basis": "REFERENCE_IMAGE_DIRECT（用户在 2026-09-17 给出游戏参考图：金色剑身 + 银白护手 + 中央/柄尾红宝石）＋ 受控对照 D1 vs D2：同 manifest 只改此一处，护手由蓝转银白、红宝石出现；- 该槽在本族被移出渲染输入，颜色全部来自 c159 常量 u_crystal_color/u_base_color（逐 prim 各自值）",
+     "restore_rule": "把该对象原样移回 textures.t_basecolor 即恢复 D1 口径（T=029_a 青蓝）"
+    }
+   },
+   "binding_basis": {
+    "Tex0": "c159 material1/2 路径块首项 029001b_m.tga（掩码；viewer 取 .r 作 q_mm）",
+    "NormalMap": "c159 material1/2 路径块 029001n.tga",
+    "t_custom_ibl": "c159 声明；prim1=car_studio01.cube（本地已定位，source_resource_verified）；prim2=fashion_qiangpi.cube（**本地未定位 → missing**）",
+    "t_basecolor": "REFERENCE_IMAGE_DIRECT（用户在 2026-09-17 给出游戏参考图：金色剑身 + 银白护手 + 中央/柄尾红宝石）＋ 受控对照 D1 vs D2：同 manifest 只改此一处，护手由蓝转银白、红宝石出现；- 该槽在本族被移出渲染输入，颜色全部来自 c159 常量 u_crystal_color/u_base_color（逐 prim 各自值）",
+    "crystal_params": "c159 per-material 参数块（group1/block0→prim1, group2/block1→prim2），逐 prim 各自值，provenance 见 prim.crystal_params.provenance"
+   },
+   "source_uniforms": {
+    "u_detail_tilling": {
+     "value": 1.3,
+     "type": "f32",
+     "entry_offset": 2393,
+     "payload_offset": 2398,
+     "raw_bytes_hex": "6666a63f",
+     "confidence": "high"
+    },
+    "u_detail_intensity": {
+     "value": 1.3,
+     "type": "f32",
+     "entry_offset": 2402,
+     "payload_offset": 2407,
+     "raw_bytes_hex": "6666a63f",
+     "confidence": "high"
+    },
+    "u_emissive_strength": {
+     "value": 0.49,
+     "type": "f32",
+     "entry_offset": 2411,
+     "payload_offset": 2416,
+     "raw_bytes_hex": "48e1fa3e"
+    },
+    "u_emissive_fresnel": {
+     "value": 0.8,
+     "type": "f32",
+     "entry_offset": 2420,
+     "payload_offset": 2425,
+     "raw_bytes_hex": "cdcc4c3f"
+    },
+    "u_rotate_angle": {
+     "value": 3.09,
+     "type": "f32",
+     "entry_offset": 2429,
+     "payload_offset": 2434,
+     "raw_bytes_hex": "8fc24540"
+    },
+    "u_cube_brightness": {
+     "value": 0.71,
+     "type": "f32",
+     "entry_offset": 2438,
+     "payload_offset": 2443,
+     "raw_bytes_hex": "8fc2353f"
+    },
+    "u_base_color": {
+     "value": [
+      0.3373,
+      0.3373,
+      0.3373,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 2447,
+     "payload_offset": 2452,
+     "raw_bytes_hex": "0400000096b2ac3e96b2ac3e96b2ac3e0000803f",
+     "confidence": "high"
+    },
+    "u_crystal_color": {
+     "value": [
+      0.251,
+      0.2196,
+      0.2314,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 2472,
+     "payload_offset": 2477,
+     "raw_bytes_hex": "040000001283803ed3de603e1ff46c3e0000803f",
+     "confidence": "high"
+    },
+    "u_base_metallic": {
+     "value": 0.6,
+     "type": "f32",
+     "entry_offset": 2497,
+     "payload_offset": 2502,
+     "raw_bytes_hex": "9a99193f",
+     "confidence": "high"
+    },
+    "u_crystal_metallic": {
+     "value": 0.95,
+     "type": "f32",
+     "entry_offset": 2506,
+     "payload_offset": 2511,
+     "raw_bytes_hex": "3333733f",
+     "confidence": "high"
+    },
+    "u_crystal_specular": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 2515,
+     "payload_offset": 2520,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_caustic_tilling": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 2524,
+     "payload_offset": 2529,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_caustic_depth": {
+     "value": 0.78,
+     "type": "f32",
+     "entry_offset": 2533,
+     "payload_offset": 2538,
+     "raw_bytes_hex": "14ae473f",
+     "confidence": "high"
+    },
+    "u_caustic_brightness": {
+     "value": 1.24,
+     "type": "f32",
+     "entry_offset": 2542,
+     "payload_offset": 2547,
+     "raw_bytes_hex": "52b89e3f",
+     "confidence": "high"
+    },
+    "u_refraction_rotation": {
+     "value": 0.26,
+     "type": "f32",
+     "entry_offset": 2551,
+     "payload_offset": 2556,
+     "raw_bytes_hex": "b81e853e",
+     "confidence": "high"
+    },
+    "u_refraction_contrast": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 2560,
+     "payload_offset": 2565,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_refraction_brightness": {
+     "value": 1.2,
+     "type": "f32",
+     "entry_offset": 2569,
+     "payload_offset": 2574,
+     "raw_bytes_hex": "9a99993f",
+     "confidence": "high"
+    },
+    "u_refraction_color": {
+     "value": [
+      0.6588,
+      0.6824,
+      0.7608,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 2578,
+     "payload_offset": 2583,
+     "raw_bytes_hex": "040000001ea7283fc4b12e3fcac3423f0000803f",
+     "confidence": "high"
+    },
+    "u_subsurface_color": {
+     "value": [
+      0.2627,
+      0.302,
+      0.4039,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 2603,
+     "payload_offset": 2608,
+     "raw_bytes_hex": "040000009d80863ebe9f9a3efbcbce3e0000803f",
+     "confidence": "high"
+    },
+    "u_base_specular": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_detail_offset_x": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_detail_offset_y": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_refraction_mipmap": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_refraction_opacity": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    }
+   },
+   "source_uniforms_provenance": [
+    {
+     "c159": "003996.c159",
+     "block_off": 2393,
+     "pair_score": 38,
+     "confidence": "high",
+     "src": "ENV_uniforms_per_prim.json:skins"
+    },
+    {
+     "c159": "003996.c159",
+     "block_off": 2393,
+     "pair_score": 38,
+     "confidence": null,
+     "src": "ENV_uniforms_per_prim.json:crystal_uniforms"
+    }
+   ],
+   "source_uniforms_note": "值取自已建审计产物 ENV_uniforms_per_prim.json（c159 名称表+数值块配对，逐条带 entry/payload 偏移与 raw hex）；缺项为 absent_in_c159/unresolved，未编造。"
+  },
+  {
+   "prim": 2,
+   "mtl_idx": 2,
+   "material": "skin_2003_029_2",
+   "chain_material_raw": "mmskin_2003_029_2",
+   "glb_material": "skin_2003_029_crystal",
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "crystal",
+   "attribution": "c159 路径块 8 条路径直读（槽名↔逻辑名）",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001b_m.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质首路径 029001b_m.tga（掩码）",
+     "confidence": "high",
+     "classification_rule": "rule:001b_m.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_b_m.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear",
+     "file": "src_tex/029_n.png",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "status": "DIRECT",
+     "local_file": "src_cube/fashion_qiangpi.dds",
+     "container": "res\\063.fpk",
+     "index": 3416,
+     "offset": 230169208,
+     "clen": 351473,
+     "olen": 524408,
+     "flag": 12,
+     "olen_check": "128 + 6×87380 = 524408 ✓（128²×6面×8mips B8G8R8A8）",
+     "payload_sha256_prefix": "34252fcb4d641227",
+     "faces_installed": "src_cube/faces/fashion_qiangpi_f0_m0.png … f5_m0.png（128²，各面 sha 不同）",
+     "decoder_selfcheck": "已知 qiangpi(#14213) 逐字节 == 项目 src_cube/qiangpi.dds、face0 == 项目 PNG ⇒ 解码器可信",
+     "discovery": "c159 内嵌明文路径 'common\\\\env_map\\\\fashion_qiangpi.cube' → path_id → 容器索引命中；由 chain-auditor T1c 交付（控制组自校验通过）",
+     "prior_state": "该槽此前为 None ⇒ iblCube=null ⇒ **IBL 注入整块不触发**，是 prim2 晶体近乎不可见的直接原因之一",
+     "file": "src_cube/fashion_qiangpi.dds",
+     "evidence_level": "declared_path_direct",
+     "prev_sha256": null,
+     "sha256": "84464365bac1baf1c8e3cade7e8faaa0779df92cc92342ef1a31706c353deea2",
+     "face_sha16": [
+      "1cfb564743472e07",
+      "01152834c87e2578",
+      "80fa62960aa71de1",
+      "66c38062989d1340",
+      "d82d0cc32a15c580",
+      "69b53ae8c12b4dbe"
+     ],
+     "faces": 6,
+     "faces_glob": "src_cube/faces/fashion_qiangpi_f{i}_m0.png",
+     "source": {
+      "container": "res.npk",
+      "row": 4620,
+      "by": "declared_path_name",
+      "evidence": "common\\env_map\\fashion_qiangpi.cube 按声明名在 res.npk 命中（fid=mm3 双哈希）"
+     },
+     "binding_basis": "C159_DECLARED_PATH_NAME_RESOLVED",
+     "changed_by": "Lead 20260919（原盘上 fashion_qiangpi.dds sha16 34252fcb4d641227 非声明资产，已按 res.npk#4620 重取并重切六面）",
+     "bind_fix_20260919": "20260918_234628"
+    },
+    "DetailMap": {
+     "logical_path": "common\\textures\\crystal_bump_n_uvva.tga",
+     "slot": "DetailMap",
+     "local_file": "src_tex/crystal_bump_n_uvva.png",
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "source_resource_verified",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）",
+     "file": null,
+     "evidence_level": "declared_path_direct",
+     "prev_local_file": null,
+     "binding_basis": "DECLARED_PATH_NAME_RESOLVED",
+     "why_not_direct": null,
+     "source": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 8489,
+      "o": 584356000,
+      "comp": 325788,
+      "dec": 786476,
+      "flag": 12,
+      "sha16": "a2625d7757c72099"
+     },
+     "changed_by": "Lead 20260919（common\\ 声明名 .tga→.dds 命中；LEAD_declpath_scan2.json）"
+    },
+    "t_caustic_tex": {
+     "status": "NAMED_SEMANTIC_MATCH",
+     "local_file": "src_tex/crystal_caustic_uvva.png",
+     "container": "res\\063.fpk",
+     "index": 8662,
+     "offset": 427879188,
+     "flag": 12,
+     "fmt": "TGA/RGBA",
+     "size": "256x256",
+     "olen": 262188,
+     "olen_check": "256*256*4 + 44 = 262188 ✓（证明 32 位 RGBA，alpha 通道真实存在）",
+     "rgba_sha16": "afb5b1c357fe4532",
+     "alpha_extrema": [
+      255,
+      255
+     ],
+     "alpha_conclusion": "**alpha 恒 255 是源值**，非解码丢失（由 olen 算术独立证实）",
+     "discovery": "c159 对象内嵌明文依赖路径 → path_id('common\\\\textures\\\\crystal_caustic_uvva.tga'=B41F9B0A404CCD02) → 容器索引命中。见 03_执行\\30_分析\\_target_1110171\\GEM_provenance.json",
+     "why_not_direct": "c159 给的是**路径集合**（顺序≠槽位序，已证伪）；本绑定是「槽位名 t_caustic_tex ↔ 路径名 crystal_caustic_uvva」的**语义匹配**，非槽位级直证。",
+     "used_by": "次表面层 u_subsurface_color：L493 (1-Tex0.g) → L494 ×u_subsurface_color → L495 ×NdotV → L496 sat(·t4.a) → L780-781 ×π·Z → L978-981 **additive** 进 r0；L990 r0=r1.w·r9+r0 的 mix 权重 r1.w 亦=t4.a",
+     "file": "src_tex/crystal_caustic_uvva.png",
+     "evidence_level": "ordered_1to1_candidate_high",
+     "production_ok": false,
+     "production_reason": "顺序冲突风险槽（审核 P0-1）：caustic/reflection 类存在明确顺序冲突，只能作候选，不得进生产绑定"
+    },
+    "t_reflection_tex": {
+     "logical_path": "common\\textures\\crystal_reflection_uvva.tga",
+     "slot": "t_reflection_tex",
+     "local_file": "src_tex/crystal_reflection_uvva.png",
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "source_resource_verified",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）",
+     "file": null,
+     "evidence_level": "declared_path_direct",
+     "production_ok": false,
+     "production_reason": "顺序冲突风险槽（审核 P0-1）：caustic/reflection 类存在明确顺序冲突，只能作候选，不得进生产绑定",
+     "prev_local_file": null,
+     "binding_basis": "DECLARED_PATH_NAME_RESOLVED",
+     "why_not_direct": null,
+     "source": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 8517,
+      "o": 592234204,
+      "comp": 76877,
+      "dec": 213080,
+      "flag": 12,
+      "sha16": "97d2333a342aeb4d"
+     },
+     "changed_by": "Lead 20260919（common\\ 声明名 .tga→.dds 命中；LEAD_declpath_scan2.json）"
+    },
+    "t_refraction_tex": {
+     "logical_path": "common\\textures\\refraction_envmap_3.tga",
+     "slot": "t_refraction_tex",
+     "local_file": "src_tex/refraction_envmap_3.png",
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "source_resource_verified",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）",
+     "file": null,
+     "evidence_level": "declared_path_direct",
+     "production_ok": false,
+     "production_reason": "顺序冲突风险槽（审核 P0-1）：caustic/reflection 类存在明确顺序冲突，只能作候选，不得进生产绑定",
+     "prev_local_file": null,
+     "binding_basis": "DECLARED_PATH_NAME_RESOLVED",
+     "why_not_direct": null,
+     "source": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 8710,
+      "o": 712575780,
+      "comp": 45186,
+      "dec": 174928,
+      "flag": 12,
+      "sha16": "accb47126f07f6a6"
+     },
+     "changed_by": "Lead 20260919（common\\ 声明名 .tga→.dds 命中；LEAD_declpath_scan2.json）"
+    },
+    "t_basecolor": {
+     "prev_local_file": null,
+     "local_file": "src_tex/029_b_m.png",
+     "content_class": "color",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "evidence_level": "content_class_signature",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "changed_by": "Lead 20260919"
+    }
+   },
+   "missing_required": [],
+   "crystal_params": {
+    "u_detail_tilling": 2,
+    "u_detail_intensity": 0.2,
+    "u_emissive_strength": 1.32,
+    "u_rotate_angle": 2.6,
+    "u_cube_brightness": 2.74,
+    "u_base_color": [
+     0.1216,
+     0.3961,
+     0.5059,
+     1.0
+    ],
+    "u_crystal_color": [
+     0.2431,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "u_crystal_metallic": 1,
+    "u_base_specular": 1,
+    "u_crystal_specular": 1,
+    "u_caustic_tilling": 0.1,
+    "u_caustic_depth": 0.26,
+    "u_caustic_brightness": 0.59,
+    "u_refraction_rotation": 0.18,
+    "u_refraction_contrast": -1,
+    "u_refraction_brightness": 5,
+    "u_refraction_color": [
+     1.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "u_subsurface_color": [
+     0.8549,
+     0.0,
+     0.0,
+     1.0
+    ],
+    "provenance": "c159 per-material block from 03_执行\\20_提取/weapon/c159_029_pair.json (group2/block1, score=39); pair row 逐项含 off/raw/value；group↔material 由 1110177 旧 viewer.json material_layers.per_submesh 交叉印证（base/crystal color 逐值相等）；source_sha256=cc1209a661ff8f15493cfde3be90bb6162228c84867c6fd6e48ea469cea79a80",
+    "_rows_raw": [
+     {
+      "name": "u_detail_tilling",
+      "type": "i32",
+      "off": 3221,
+      "raw": "02000000"
+     },
+     {
+      "name": "u_detail_intensity",
+      "type": "f32",
+      "off": 3230,
+      "raw": "cdcc4c3e"
+     },
+     {
+      "name": "u_emissive_strength",
+      "type": "f32",
+      "off": 3239,
+      "raw": "c3f5a83f"
+     },
+     {
+      "name": "u_rotate_angle",
+      "type": "f32",
+      "off": 3248,
+      "raw": "66662640"
+     },
+     {
+      "name": "u_cube_brightness",
+      "type": "f32",
+      "off": 3257,
+      "raw": "295c2f40"
+     },
+     {
+      "name": "u_base_color",
+      "type": "f32[4]",
+      "off": 3266,
+      "raw": "040000006c09f93d9fcdca3eaa82013f0000803f"
+     },
+     {
+      "name": "u_crystal_color",
+      "type": "f32[4]",
+      "off": 3291,
+      "raw": "0400000035ef783e00000000000000000000803f"
+     },
+     {
+      "name": "u_crystal_metallic",
+      "type": "i32",
+      "off": 3316,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_base_specular",
+      "type": "i32",
+      "off": 3325,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_crystal_specular",
+      "type": "i32",
+      "off": 3334,
+      "raw": "01000000"
+     },
+     {
+      "name": "u_caustic_tilling",
+      "type": "f32",
+      "off": 3343,
+      "raw": "cdcccc3d"
+     },
+     {
+      "name": "u_caustic_depth",
+      "type": "f32",
+      "off": 3352,
+      "raw": "b81e853e"
+     },
+     {
+      "name": "u_caustic_brightness",
+      "type": "f32",
+      "off": 3361,
+      "raw": "3d0a173f"
+     },
+     {
+      "name": "u_refraction_rotation",
+      "type": "f32",
+      "off": 3370,
+      "raw": "ec51383e"
+     },
+     {
+      "name": "u_refraction_contrast",
+      "type": "i32",
+      "off": 3379,
+      "raw": "ffffffff"
+     },
+     {
+      "name": "u_refraction_brightness",
+      "type": "i32",
+      "off": 3388,
+      "raw": "05000000"
+     },
+     {
+      "name": "u_refraction_color",
+      "type": "f32[4]",
+      "off": 3397,
+      "raw": "040000000000803f00000000000000000000803f"
+     },
+     {
+      "name": "u_subsurface_color",
+      "type": "f32[4]",
+      "off": 3422,
+      "raw": "04000000bada5a3f00000000000000000000803f"
+     }
+    ]
+   },
+   "crystal_params_basis": "REFERENCE_IMAGE_DIRECT(红宝石/银白护手为材质参数而非贴图) + c159-per-material-block",
+   "withheld_slots": {
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_a.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "state": "withheld_from_render_input",
+     "binding_basis": "REFERENCE_IMAGE_DIRECT（用户在 2026-09-17 给出游戏参考图：金色剑身 + 银白护手 + 中央/柄尾红宝石）＋ 受控对照 D1 vs D2：同 manifest 只改此一处，护手由蓝转银白、红宝石出现；- 该槽在本族被移出渲染输入，颜色全部来自 c159 常量 u_crystal_color/u_base_color（逐 prim 各自值）",
+     "restore_rule": "把该对象原样移回 textures.t_basecolor 即恢复 D1 口径（T=029_a 青蓝）"
+    }
+   },
+   "binding_basis": {
+    "Tex0": "c159 material1/2 路径块首项 029001b_m.tga（掩码；viewer 取 .r 作 q_mm）",
+    "NormalMap": "c159 material1/2 路径块 029001n.tga",
+    "t_custom_ibl": "c159 声明；prim1=car_studio01.cube（本地已定位，source_resource_verified）；prim2=fashion_qiangpi.cube（**本地未定位 → missing**）",
+    "t_basecolor": "REFERENCE_IMAGE_DIRECT（用户在 2026-09-17 给出游戏参考图：金色剑身 + 银白护手 + 中央/柄尾红宝石）＋ 受控对照 D1 vs D2：同 manifest 只改此一处，护手由蓝转银白、红宝石出现；- 该槽在本族被移出渲染输入，颜色全部来自 c159 常量 u_crystal_color/u_base_color（逐 prim 各自值）",
+    "crystal_params": "c159 per-material 参数块（group1/block0→prim1, group2/block1→prim2），逐 prim 各自值，provenance 见 prim.crystal_params.provenance"
+   },
+   "source_uniforms": {
+    "u_detail_tilling": {
+     "value": 2,
+     "type": "i32",
+     "entry_offset": 3221,
+     "payload_offset": 3226,
+     "raw_bytes_hex": "02000000",
+     "confidence": "high"
+    },
+    "u_detail_intensity": {
+     "value": 0.2,
+     "type": "f32",
+     "entry_offset": 3230,
+     "payload_offset": 3235,
+     "raw_bytes_hex": "cdcc4c3e",
+     "confidence": "high"
+    },
+    "u_emissive_strength": {
+     "value": 1.32,
+     "type": "f32",
+     "entry_offset": 3239,
+     "payload_offset": 3244,
+     "raw_bytes_hex": "c3f5a83f"
+    },
+    "u_rotate_angle": {
+     "value": 2.6,
+     "type": "f32",
+     "entry_offset": 3248,
+     "payload_offset": 3253,
+     "raw_bytes_hex": "66662640"
+    },
+    "u_cube_brightness": {
+     "value": 2.74,
+     "type": "f32",
+     "entry_offset": 3257,
+     "payload_offset": 3262,
+     "raw_bytes_hex": "295c2f40"
+    },
+    "u_base_color": {
+     "value": [
+      0.1216,
+      0.3961,
+      0.5059,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 3266,
+     "payload_offset": 3271,
+     "raw_bytes_hex": "040000006c09f93d9fcdca3eaa82013f0000803f",
+     "confidence": "high"
+    },
+    "u_crystal_color": {
+     "value": [
+      0.2431,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 3291,
+     "payload_offset": 3296,
+     "raw_bytes_hex": "0400000035ef783e00000000000000000000803f",
+     "confidence": "high"
+    },
+    "u_crystal_metallic": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 3316,
+     "payload_offset": 3321,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_base_specular": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 3325,
+     "payload_offset": 3330,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_crystal_specular": {
+     "value": 1,
+     "type": "i32",
+     "entry_offset": 3334,
+     "payload_offset": 3339,
+     "raw_bytes_hex": "01000000",
+     "confidence": "high"
+    },
+    "u_caustic_tilling": {
+     "value": 0.1,
+     "type": "f32",
+     "entry_offset": 3343,
+     "payload_offset": 3348,
+     "raw_bytes_hex": "cdcccc3d",
+     "confidence": "high"
+    },
+    "u_caustic_depth": {
+     "value": 0.26,
+     "type": "f32",
+     "entry_offset": 3352,
+     "payload_offset": 3357,
+     "raw_bytes_hex": "b81e853e",
+     "confidence": "high"
+    },
+    "u_caustic_brightness": {
+     "value": 0.59,
+     "type": "f32",
+     "entry_offset": 3361,
+     "payload_offset": 3366,
+     "raw_bytes_hex": "3d0a173f",
+     "confidence": "high"
+    },
+    "u_refraction_rotation": {
+     "value": 0.18,
+     "type": "f32",
+     "entry_offset": 3370,
+     "payload_offset": 3375,
+     "raw_bytes_hex": "ec51383e",
+     "confidence": "high"
+    },
+    "u_refraction_contrast": {
+     "value": -1,
+     "type": "i32",
+     "entry_offset": 3379,
+     "payload_offset": 3384,
+     "raw_bytes_hex": "ffffffff",
+     "confidence": "high"
+    },
+    "u_refraction_brightness": {
+     "value": 5,
+     "type": "i32",
+     "entry_offset": 3388,
+     "payload_offset": 3393,
+     "raw_bytes_hex": "05000000",
+     "confidence": "high"
+    },
+    "u_refraction_color": {
+     "value": [
+      1.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 3397,
+     "payload_offset": 3402,
+     "raw_bytes_hex": "040000000000803f00000000000000000000803f",
+     "confidence": "high"
+    },
+    "u_subsurface_color": {
+     "value": [
+      0.8549,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "type": "f32[4]",
+     "entry_offset": 3422,
+     "payload_offset": 3427,
+     "raw_bytes_hex": "04000000bada5a3f00000000000000000000803f",
+     "confidence": "high"
+    },
+    "u_base_metallic": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_detail_offset_x": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_detail_offset_y": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_refraction_mipmap": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    },
+    "u_refraction_opacity": {
+     "value": null,
+     "entry_offset": null,
+     "payload_offset": null,
+     "raw_bytes_hex": null,
+     "confidence": "absent_in_c159"
+    }
+   },
+   "source_uniforms_provenance": [
+    {
+     "c159": "003996.c159",
+     "block_off": 3221,
+     "pair_score": 36,
+     "confidence": "high",
+     "src": "ENV_uniforms_per_prim.json:skins"
+    },
+    {
+     "c159": "003996.c159",
+     "block_off": 3221,
+     "pair_score": 36,
+     "confidence": null,
+     "src": "ENV_uniforms_per_prim.json:crystal_uniforms"
+    }
+   ],
+   "source_uniforms_note": "值取自已建审计产物 ENV_uniforms_per_prim.json（c159 名称表+数值块配对，逐条带 entry/payload 偏移与 raw hex）；缺项为 absent_in_c159/unresolved，未编造。"
+  }
+ ],
+ "crystal_params_crosscheck": [
+  {
+   "prim": 1,
+   "sub": "1",
+   "base_color_manifest": [
+    0.3373,
+    0.3373,
+    0.3373,
+    1.0
+   ],
+   "base_color_viewerjson": [
+    0.3373,
+    0.3373,
+    0.3373
+   ],
+   "crystal_color_manifest": [
+    0.251,
+    0.2196,
+    0.2314,
+    1.0
+   ],
+   "crystal_color_viewerjson": [
+    0.251,
+    0.2196,
+    0.2314
+   ],
+   "base_color_match": true,
+   "crystal_color_match": true
+  },
+  {
+   "prim": 2,
+   "sub": "2",
+   "base_color_manifest": [
+    0.1216,
+    0.3961,
+    0.5059,
+    1.0
+   ],
+   "base_color_viewerjson": [
+    0.1216,
+    0.3961,
+    0.5059
+   ],
+   "crystal_color_manifest": [
+    0.2431,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "crystal_color_viewerjson": [
+    0.2431,
+    0.0,
+    0.0
+   ],
+   "base_color_match": true,
+   "crystal_color_match": true
+  }
+ ],
+ "binding_basis_summary": {
+  "date": "2026-09-17",
+  "reference_image": "金色剑身 + 银白/白护手 + 中央红宝石 + 柄尾红宝石 + 金色辉光（用户提供）",
+  "changes": [
+   {
+    "prim": 1,
+    "action": "t_basecolor → withheld_slots",
+    "note": "渲染输入改为 q_T=vec3(1.0)；源路径仍完整登记"
+   },
+   {
+    "prim": 2,
+    "action": "t_basecolor → withheld_slots",
+    "note": "渲染输入改为 q_T=vec3(1.0)；源路径仍完整登记"
+   }
+  ],
+  "evidence": {
+   "D0b": {
+    "file": "S177_gem_D0b_diag_nocp.png",
+    "setup": "cp 无 + diag env",
+    "blue_frac": 0.69,
+    "red_frac": 0.04,
+    "silver_frac": 2.03
+   },
+   "D1": {
+    "file": "S177_gem_D1_diag_cp.png",
+    "setup": "cp 有 + t_basecolor=029_a",
+    "blue_frac": 0.67,
+    "red_frac": 0.04,
+    "silver_frac": 2.03
+   },
+   "D2": {
+    "file": "S177_gem_D2_diag_notbase.png",
+    "setup": "cp 有 + q_T 无色",
+    "blue_frac": 0.0,
+    "red_frac": 0.06,
+    "silver_frac": 2.7
+   }
+  },
+  "viewer_gap": {
+   "u_emissive_fresnel": "参数已落 manifest，但 viewer 主链**未消费** → 金色辉光无法出现（需另开一轮，未自行加发光）",
+   "u_emissive_strength": "同上",
+   "u_subsurface_color": "参数已落 manifest，viewer 主链未消费（红宝石饱和度只能来自 u_crystal_color）",
+   "u_refraction_color": "同上",
+   "u_cube_brightness": "同上"
+  },
+  "render_blocker": {
+   "file": "assets/weapon_skin_viewer.js:1182（同型缺陷亦在 :1222）",
+   "code": "((typeof prevKey==='function')?prevKey():'')  // prevKey() 未绑定 this",
+   "trigger": "该材质无自有 customProgramCacheKey（iblCube=null；prim2 缺 fashion_qiangpi.cube）→ prevKey 落到 three 的 Material.prototype.customProgramCacheKey(){return this.onBeforeCompile.toString()}，this=undefined → TypeError → renderer.render 抛错 → **整帧中止（画面全黑、snapshot 无图）**",
+   "three_ref": "assets/vendor/three/three.core.min.js  Material.prototype.customProgramCacheKey",
+   "fix_suggestion": "改为 prevKey.call(m)（L1222 的 pk 同理）"
+  }
+ },
+ "evidence_levels": {
+  "reviewed_at": "2026-09-19",
+  "reviewer": "external read-only audit（Lead 采纳）",
+  "slot_binding_method": "ordered-1to1（按 c159 声明序 ↔ 区块内条目顺序）",
+  "slot_binding_evidence_level": "candidate-high",
+  "is_explicit_slot_path_proof": false,
+  "cube_binding": "dual_path_consistent（唯一双路一致的例外）",
+  "conflicts_note": "解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）；**所有 conflict 单独保留、不自动裁决**",
+  "production_rule": "证据等级为 candidate 的槽位不得作为生产绑定；带 production_ok=false 的槽位仅供诊断/对照，验收脚本应据此判 WARN/FAIL",
+  "note": "外部只读审核 2026-09-19（P0-1/P0-2，Lead 采纳）：本 manifest 的 weapon 基底槽位来自 c159 的 **ordered-1to1 顺序映射**，证据等级为 `ordered-1to1 / candidate-high`，**不是显式槽→路径直证**；解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）。cube（t_custom_ibl）是双路一致的例外。所有 conflict 单独保留、不自动裁决。"
+ }
+}

@@ -1,0 +1,237 @@
+{
+ "name": "custom_studio_20260920",
+ "status": "self_authored_approximate",
+ "authority": "user_authorized_manual_20260920",
+ "fidelity": "approximate",
+ "not_a_game_asset": true,
+ "derived_from": [
+  {
+   "path": "04_站点\\web/assets/3d/weapon_skin/_shared/bg_weapon_skin_ingame.png",
+   "sha256": "e60c1a1d5e16b1b40bf891d6b796f328eed551aa75b45d2131e40ac26e908f26",
+   "role": "游戏内武器皮肤背景板（房间内景，无武器、无 HUD）—— 本 cube 的**唯一**像素来源"
+  }
+ ],
+ "method": "背墙面=房间图（±X 侧墙/顶灯带/地面各自取源背板对应色带裁切缩放），正面=背墙镜像重模糊并向房间均色渐变，六面边界再向房间均色羽化 35% 以抑制接缝。",
+ "rejected_method": "v1「柱面全景投影到六面」已实测失败并弃用：等距柱状两极是奇点，+Y 出现漏斗旋涡、−Y 出现同心靶环，六面不可用（见报告 §失败记录）。",
+ "crop_bands": {
+  "ceiling": [
+   0,
+   215
+  ],
+  "wall": [
+   215,
+   690
+  ],
+  "floor": [
+   690,
+   886
+  ],
+  "wall_left_x": [
+   30,
+   320
+  ],
+  "wall_right_x": [
+   1352,
+   1642
+  ],
+  "back_x": [
+   337,
+   1341
+  ]
+ },
+ "border_feather": {
+  "strength": 0.35,
+  "margin": 0.18
+ },
+ "no_photometric_gain": true,
+ "photometric_note": "构造过程未施加任何全局增益/曝光/ACES/对比度调整；只有裁切、LANCZOS 缩放、高斯模糊与边界羽化。源背板本身是暗色棚拍图，故本 cube 整体偏暗（cube mean lum 0.1514）—— 这是**源的性质**，已如实登记，绝不用它去凑游戏参考图的亮度指标。",
+ "cubemap_order": [
+  "+X",
+  "-X",
+  "+Y",
+  "-Y",
+  "+Z",
+  "-Z"
+ ],
+ "face_size": 512,
+ "builder_script": "_build_custom_cube.py",
+ "faces": [
+  {
+   "face": 0,
+   "axis": "+X",
+   "file": "custom_studio_20260920_f0_m0.png",
+   "sha256": "78e55829e2d351d494b8d388ae9b13290829e1781d09bf39ebd5a572b5d0299f",
+   "bytes": 59177,
+   "mean_rgb": [
+    0.0416,
+    0.1474,
+    0.15
+   ],
+   "mean_lum": 0.1251,
+   "p95_lum": 0.198
+  },
+  {
+   "face": 1,
+   "axis": "-X",
+   "file": "custom_studio_20260920_f1_m0.png",
+   "sha256": "55343f5a9876a67b262773624437dc5937eafd8fd4c764746c9845a856c79d8c",
+   "bytes": 65720,
+   "mean_rgb": [
+    0.0425,
+    0.15,
+    0.153
+   ],
+   "mean_lum": 0.1274,
+   "p95_lum": 0.2249
+  },
+  {
+   "face": 2,
+   "axis": "+Y",
+   "file": "custom_studio_20260920_f2_m0.png",
+   "sha256": "5b1a3d6e0d73fae471370e4c78c235982764f24db4aaf4db7054c06ff1242525",
+   "bytes": 82239,
+   "mean_rgb": [
+    0.0636,
+    0.1677,
+    0.1668
+   ],
+   "mean_lum": 0.1455,
+   "p95_lum": 0.3084
+  },
+  {
+   "face": 3,
+   "axis": "-Y",
+   "file": "custom_studio_20260920_f3_m0.png",
+   "sha256": "621beacb4406b8b898da94dcef04462d574c0fd34a6bcda8bf5403d65c60e9e2",
+   "bytes": 118764,
+   "mean_rgb": [
+    0.1715,
+    0.2428,
+    0.2188
+   ],
+   "mean_lum": 0.2259,
+   "p95_lum": 0.5955
+  },
+  {
+   "face": 4,
+   "axis": "+Z",
+   "file": "custom_studio_20260920_f4_m0.png",
+   "sha256": "6dcf5d33bcc598213c6baa04361a04cbd2233056b557f05d2b646d0f52677dfa",
+   "bytes": 18550,
+   "mean_rgb": [
+    0.0407,
+    0.1695,
+    0.17
+   ],
+   "mean_lum": 0.1421,
+   "p95_lum": 0.164
+  },
+  {
+   "face": 5,
+   "axis": "-Z",
+   "file": "custom_studio_20260920_f5_m0.png",
+   "sha256": "a8528acd9ba931e1b3c1f21ce3c2b352da7a64f6e8d69b5b6d0565c5dfaf4f8a",
+   "bytes": 92858,
+   "mean_rgb": [
+    0.0404,
+    0.1697,
+    0.1702
+   ],
+   "mean_lum": 0.1422,
+   "p95_lum": 0.19
+  }
+ ],
+ "summary": {
+  "cube_mean_rgb": [
+   0.0667,
+   0.1745,
+   0.1715
+  ],
+  "cube_mean_lum": 0.1514,
+  "cube_p50_lum": 0.1327,
+  "cube_p95_lum": 0.315
+ },
+ "limitations": [
+  "由单张 LDR 显示用背板重建 ⇒ 只保留大域颜色/亮度结构（暗青绿墙、顶灯带、地面格栅），不复原真实几何",
+  "±X/±Y/−Y 面是源图对应色带的平面缩放，**不是**真实拍摄方向 ⇒ 反射中的具体形状不可当真",
+  "源为已 tone-mapped 的显示用背板，直接当线性 HDR 环境使用 ⇒ 能量偏低",
+  "未使用 .cube 容器的六面朝向/基变换证据 ⇒ 面朝向按 three.js 约定，未与引擎采样约定对齐"
+ ],
+ "note": "**自造近似立方体，非游戏资产**。仅用于观察环境反射对观感的影响；不得作为「游戏实际使用该环境」的证据，也不得计入「源数据驱动」目标。",
+ "rgbm_faces": [
+  {
+   "file": "rgbm/custom_studio_20260920_f0_m0.png",
+   "axis": "+X",
+   "sha256": "985146752d03729cd8f78c2b1ea02a542d7efef5758a1301128252357681d90e",
+   "bytes": 91013,
+   "alpha_mean": 0.0088,
+   "alpha_max": 0.02745,
+   "target_linear_mean": 0.015233,
+   "decoded_linear_mean": 0.015172,
+   "decode_roundtrip_max_abs_err": 0.024641
+  },
+  {
+   "file": "rgbm/custom_studio_20260920_f1_m0.png",
+   "axis": "-X",
+   "sha256": "2f8917e26ecd5b9ae42cd21e7e817bd31867b869b43c5bcc4afc0d1339c0881e",
+   "bytes": 99935,
+   "alpha_mean": 0.00906,
+   "alpha_max": 0.03922,
+   "target_linear_mean": 0.016474,
+   "decoded_linear_mean": 0.016681,
+   "decode_roundtrip_max_abs_err": 0.037782
+  },
+  {
+   "file": "rgbm/custom_studio_20260920_f2_m0.png",
+   "axis": "+Y",
+   "sha256": "2e45c0f0a314d1c8300dea5bd5d4715eb31f4076a1784d1d179e7267cf40de7b",
+   "bytes": 126031,
+   "alpha_mean": 0.00997,
+   "alpha_max": 0.04314,
+   "target_linear_mean": 0.023392,
+   "decoded_linear_mean": 0.02354,
+   "decode_roundtrip_max_abs_err": 0.042217
+  },
+  {
+   "file": "rgbm/custom_studio_20260920_f3_m0.png",
+   "axis": "-Y",
+   "sha256": "0b9c656c9081f40715257e9316e9d5f69cdabe7c810ee0b1ac6c7e44b6e0b0bd",
+   "bytes": 195477,
+   "alpha_mean": 0.01435,
+   "alpha_max": 0.05882,
+   "target_linear_mean": 0.066389,
+   "decoded_linear_mean": 0.0667,
+   "decode_roundtrip_max_abs_err": 0.057126
+  },
+  {
+   "file": "rgbm/custom_studio_20260920_f4_m0.png",
+   "axis": "+Z",
+   "sha256": "bb191ef0fcb85d7cafd0933fd3139ec81865efc7d6f199522ed11416d5272ef6",
+   "bytes": 23768,
+   "alpha_mean": 0.00941,
+   "alpha_max": 0.01176,
+   "target_linear_mean": 0.017443,
+   "decoded_linear_mean": 0.016677,
+   "decode_roundtrip_max_abs_err": 0.010246
+  },
+  {
+   "file": "rgbm/custom_studio_20260920_f5_m0.png",
+   "axis": "-Z",
+   "sha256": "8f815e6642047b5c6505ebefa5d5f7c2420c4e62650435377c1d8e19f78647ff",
+   "bytes": 145035,
+   "alpha_mean": 0.00948,
+   "alpha_max": 0.01961,
+   "target_linear_mean": 0.017845,
+   "decoded_linear_mean": 0.016986,
+   "decode_roundtrip_max_abs_err": 0.018204
+  }
+ ],
+ "rgbm_encoding": {
+  "why": "查看器源 IBL 分支按 asm 542-544 解码 pow(rgb*a*16,2)，且 cube 纹理 colorSpace=NoColorSpace；源六面 alpha mean 0.015(qiangpi)/0.028(jiayuan02a) 即 RGBM 乘子。最初只输出 RGB（a=1.0）⇒ 解码亮约 4400×，读数 p50=0.7898/>0.85=40.90% 属**编码假象**。",
+  "decode_in_viewer": "q_L = pow(rgb * a * 16.0, 2.0)   /* asm 542-544 */",
+  "texture_colorSpace": "NoColorSpace (viewer L1799)",
+  "encode": "s = sqrt(srgb_to_linear(rgb))/16 ; a = clamp(max_ch(s),1/255,1) ; rgb_out = s/a",
+  "target_radiance": "L = srgb_to_linear(交付 sRGB 面片值) —— 物理线性化，非为凑指标",
+  "verified": "RGBM PNG 回读解码与目标 L 的最大绝对误差见各面 decode_roundtrip_max_abs_err"
+ }
+}

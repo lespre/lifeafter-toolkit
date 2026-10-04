@@ -1,0 +1,996 @@
+{
+ "skin_id": "1110116",
+ "gim_path": "weapon\\skin\\skin_2003_017\\skin_2003_017.gim",
+ "mesh_path": "weapon\\skin\\skin_2003_017\\skin_2003_017.mesh",
+ "mesh_variants": [
+  {
+   "variant": "(main)",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017.mesh",
+   "row": 3685,
+   "flag": 1,
+   "bytes": 710860,
+   "sha16": "99a6c0f98c95032b"
+  },
+  {
+   "variant": "_lod01",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_lod01.mesh",
+   "row": 3696,
+   "flag": 1,
+   "bytes": 525097,
+   "sha16": "66feab91ffd7e7f9"
+  },
+  {
+   "variant": "_lod02",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_lod02.mesh",
+   "row": 3699,
+   "flag": 1,
+   "bytes": 301919,
+   "sha16": "6ecf55ab7ada70ff"
+  },
+  {
+   "variant": "_lod03",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_lod03.mesh",
+   "row": 3702,
+   "flag": 1,
+   "bytes": 194861,
+   "sha16": "994adee85ab11b07"
+  },
+  {
+   "variant": "_preview",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_preview.mesh",
+   "row": 3705,
+   "flag": 1,
+   "bytes": 710860,
+   "sha16": "99a6c0f98c95032b"
+  },
+  {
+   "variant": "_1",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_1.mesh",
+   "row": 3690,
+   "flag": 1,
+   "bytes": 3351,
+   "sha16": "e1d05f63e38964f4"
+  },
+  {
+   "variant": "_shadow",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_shadow.mesh",
+   "row": 3711,
+   "flag": 1,
+   "bytes": 133310,
+   "sha16": "37fbd5eae23319fb"
+  }
+ ],
+ "reason": null,
+ "mesh_row": 3685,
+ "mesh_variant": "(main)",
+ "mesh_bytes": 710860,
+ "mesh_sha16": "99a6c0f98c95032b",
+ "skeleton": {
+  "magic": "34 80 c8 bb",
+  "bytes": 710860,
+  "sha256": "99a6c0f98c95032bf6ffabcd7e8b6f1688d77cba5cbe0e8ef6bcac104e752e3d",
+  "unresolved": [
+   "逐骨 92B 块字段语义未定证（非 4x4/3x4 矩阵行结构；仅给偏移与长度）"
+  ],
+  "evidence": {
+   "header": "0x00 magic / 0x04 version / 0x06 const / 0x08 bone_flag / 0x0A bone_count; 无骨骼时 u32@0x0A=文件长度-16（实测 16711715）",
+   "per_bone_block": "gap(=sub_table_off-names_end) = 1 + 92n + 4 实测成立：True（n=35 gap=3225）",
+   "hierarchy": "切分 B：byte[0x0D..0x0D+n-1] 对应 bone[1..n-1]，0xFF=无父；校验 parent<self 违规=0 []"
+  },
+  "version_u16_0x04": 4,
+  "const_u16_0x06": 5,
+  "bone_flag_u16_0x08": 1,
+  "bone_count_u16_0x0A": 35,
+  "name_block_off": 47,
+  "parent_area": {
+   "start": 13,
+   "bytes": 34,
+   "hex": "00 01 02 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01"
+  },
+  "name_stride": 32,
+  "name_stride_candidates": [
+   32
+  ],
+  "bones": [
+   "biped root",
+   "biped bone00",
+   "biped bone01",
+   "biped bone02",
+   "biped bone03",
+   "biped bone10",
+   "biped bone11",
+   "biped bone12",
+   "biped bone13",
+   "biped bone14",
+   "biped bone15",
+   "biped bone16",
+   "biped bone20",
+   "biped bone21",
+   "biped bone22",
+   "biped bone23",
+   "biped bone24",
+   "biped bone25",
+   "biped bone26",
+   "biped bone30",
+   "biped bone31",
+   "biped bone32",
+   "biped bone33",
+   "biped bone34",
+   "biped bone35",
+   "biped bone36",
+   "biped bone37",
+   "biped bone38",
+   "biped bone39",
+   "biped bone40",
+   "biped bone41",
+   "biped bone42",
+   "biped bone43",
+   "biped bone44",
+   "biped bone45"
+  ],
+  "bone_count": 35,
+  "per_bone_block": {
+   "off": 1168,
+   "stride": 92,
+   "count": 35,
+   "trailer_u32_off": 4388,
+   "gap_bytes": 3225,
+   "formula_check": true
+  },
+  "sub_table": {
+   "sub_table_off": 4392,
+   "term_off": 4442,
+   "k": 5,
+   "tv": 24573,
+   "tf": 23505
+  },
+  "hierarchy": [
+   {
+    "i": 0,
+    "parent": null,
+    "root": true
+   },
+   {
+    "i": 1,
+    "parent": 0,
+    "root": false
+   },
+   {
+    "i": 2,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 3,
+    "parent": 2,
+    "root": false
+   },
+   {
+    "i": 4,
+    "parent": 3,
+    "root": false
+   },
+   {
+    "i": 5,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 6,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 7,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 8,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 9,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 10,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 11,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 12,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 13,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 14,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 15,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 16,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 17,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 18,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 19,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 20,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 21,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 22,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 23,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 24,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 25,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 26,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 27,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 28,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 29,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 30,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 31,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 32,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 33,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 34,
+    "parent": 1,
+    "root": false
+   }
+  ],
+  "hierarchy_state": "verified_parent_lt_child",
+  "biped_strings": 35,
+  "skeleton_state": "ok"
+ },
+ "bone_count": 35,
+ "bones": [
+  "biped root",
+  "biped bone00",
+  "biped bone01",
+  "biped bone02",
+  "biped bone03",
+  "biped bone10",
+  "biped bone11",
+  "biped bone12",
+  "biped bone13",
+  "biped bone14",
+  "biped bone15",
+  "biped bone16",
+  "biped bone20",
+  "biped bone21",
+  "biped bone22",
+  "biped bone23",
+  "biped bone24",
+  "biped bone25",
+  "biped bone26",
+  "biped bone30",
+  "biped bone31",
+  "biped bone32",
+  "biped bone33",
+  "biped bone34",
+  "biped bone35",
+  "biped bone36",
+  "biped bone37",
+  "biped bone38",
+  "biped bone39",
+  "biped bone40",
+  "biped bone41",
+  "biped bone42",
+  "biped bone43",
+  "biped bone44",
+  "biped bone45"
+ ],
+ "skeleton_state": "ok",
+ "name": null,
+ "level": 6,
+ "model_extra_scale": 1.27,
+ "gim_row": 3683,
+ "hierarchy_tree": {
+  "roots": [
+   0
+  ],
+  "children": [
+   [
+    1
+   ],
+   [
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+   ],
+   [
+    3
+   ],
+   [
+    4
+   ],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   [],
+   []
+  ],
+  "depth": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ascii_first_3_levels": [
+   "biped root",
+   "`-- biped bone00",
+   "    |-- biped bone01",
+   "    |-- biped bone10",
+   "    |-- biped bone11",
+   "    |-- biped bone12",
+   "    |-- biped bone13",
+   "    |-- biped bone14",
+   "    |-- biped bone15",
+   "    |-- biped bone16",
+   "    |-- biped bone20",
+   "    |-- biped bone21",
+   "    |-- biped bone22",
+   "    |-- biped bone23",
+   "    |-- biped bone24",
+   "    |-- biped bone25",
+   "    |-- biped bone26",
+   "    |-- biped bone30",
+   "    |-- biped bone31",
+   "    |-- biped bone32",
+   "    |-- biped bone33",
+   "    |-- biped bone34",
+   "    |-- biped bone35",
+   "    |-- biped bone36",
+   "    |-- biped bone37",
+   "    |-- biped bone38",
+   "    |-- biped bone39",
+   "    |-- biped bone40",
+   "    |-- biped bone41",
+   "    |-- biped bone42",
+   "    |-- biped bone43",
+   "    |-- biped bone44",
+   "    `-- biped bone45"
+  ]
+ },
+ "per_bone": [
+  {
+   "index": 0,
+   "name": "biped root",
+   "parent": null,
+   "depth": 0,
+   "children": [
+    1
+   ],
+   "raw_92B": "5a 56 8c 3e 00 00 00 00 00 00 00 00 5a 56 8c 3e 5a 56 8c 3e 5a 56 8c 3e 3d 12 f3 3e d1 0f 0d 41 00 00 00 00 00 00 00 00 d1 0f 0d 41 00 00 00 3f 00 00 00 3f fa 10 0d 41 90 fb 68 3f 00 00 00 00 00 00 00 00 90 fb 68 3f 00 00 00 3f 01 00 00 3f 51 af 69 3f 4a 63 49 3f 00 00 00 00",
+   "raw_92B_off": 1168,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 1,
+   "name": "biped bone00",
+   "parent": 0,
+   "depth": 1,
+   "children": [
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+   ],
+   "raw_92B": "00 00 00 00 4a 63 49 3f 00 00 00 3f 01 00 00 3f 24 33 4a 3f cc 53 21 3f 00 00 00 00 00 00 00 00 cc 53 21 3f 00 00 00 3f 00 00 00 3f cf 0f 38 3f ff 78 18 3f 00 00 80 32 00 00 00 00 ff 78 18 3f ff ff 7f 3e 00 00 80 3e 41 b6 1c 3f a0 79 39 3f 00 00 00 00 00 00 00 00 a0 79 39 3f",
+   "raw_92B_off": 1260,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 2,
+   "name": "biped bone01",
+   "parent": 1,
+   "depth": 2,
+   "children": [
+    3
+   ],
+   "raw_92B": "00 00 80 3e 00 00 80 3e b9 f9 3c 3f ae 67 17 3f 00 00 00 00 00 00 00 00 ae 67 17 3f ff ff 7f 3e 00 00 80 3e 61 ac 1b 3f ef 12 e8 3e 00 00 00 00 00 00 00 00 ef 12 e8 3e 00 00 80 3e 00 00 80 3e 7e 1b f3 3e de 6a 1e 3f 00 00 00 00 00 00 00 00 de 6a 1e 3f 01 00 80 3e 01 00 80 3e",
+   "raw_92B_off": 1352,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 3,
+   "name": "biped bone02",
+   "parent": 2,
+   "depth": 3,
+   "children": [
+    4
+   ],
+   "raw_92B": "71 80 22 3f d2 9b fb 3e 00 00 00 00 00 00 00 32 d2 9b fb 3e 00 00 80 3e 00 00 80 3e fc e8 02 3f 62 e7 de 3e 00 00 00 00 00 00 00 b2 62 e7 de 3e 00 00 80 3e 00 00 80 3e 8f 5e ea 3e 00 7d 83 3e 00 00 00 00 00 00 00 00 00 7d 83 3e 00 00 80 3e 00 00 80 3e 8e 0d b5 3e 13 89 a1 3e",
+   "raw_92B_off": 1444,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 4,
+   "name": "biped bone03",
+   "parent": 3,
+   "depth": 4,
+   "children": [],
+   "raw_92B": "00 00 00 00 00 00 00 00 13 89 a1 3e ff ff 7f 3e ff ff 7f 3e 78 19 b8 3e 1b c3 d3 3e 00 00 00 00 00 00 00 00 1b c3 d3 3e 00 00 80 3e 00 00 80 3e 98 cc df 3e 63 df e6 3e 00 00 00 00 00 00 00 00 63 df e6 3e 00 00 80 3e ff ff 7f 3e f8 f5 f1 3e ab ae dc 3e 00 00 00 00 00 00 00 00",
+   "raw_92B_off": 1536,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 5,
+   "name": "biped bone10",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "ab ae dc 3e ff ff 7f 3e ff ff 7f 3e ed 41 e8 3e 60 b8 44 3e 00 00 00 00 00 00 00 00 60 b8 44 3e 00 00 80 3e 00 00 80 3e 0d 6e b7 3e 9b 3f 66 3e 00 00 00 00 00 00 00 00 9b 3f 66 3e 00 00 80 3e 00 00 80 3e 08 7a b5 3e 84 1b b5 3e 00 00 00 00 00 00 00 00 84 1b b5 3e 00 00 80 3e",
+   "raw_92B_off": 1628,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 6,
+   "name": "biped bone11",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 80 3e 1e a6 bc 3e 03 dc 8e 3e 00 00 00 00 00 00 00 00 03 dc 8e 3e 00 00 80 3e ff ff 7f 3e d1 a0 b5 3e 67 92 ae 3e 00 00 00 00 00 00 00 00 67 92 ae 3e ff ff 7f 3e 00 00 80 3e 0d ea ba 3e f2 00 72 3e 00 00 00 00 00 00 00 00 f2 00 72 3e 01 00 80 3e 00 00 80 3e 92 27 b5 3e",
+   "raw_92B_off": 1720,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 7,
+   "name": "biped bone12",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "70 9c 93 3e 00 00 00 00 00 00 00 00 70 9c 93 3e 00 00 80 3e ff ff 7f 3e 1b 14 b6 3e ff 70 f8 3e 00 00 00 00 00 00 00 00 ff 70 f8 3e 00 00 80 3e ff ff 7f 3e 99 19 f9 3e 38 fb a5 3e 00 00 80 b2 00 00 00 00 38 fb a5 3e ff ff 7f 3e ff ff 7f 3e 05 f6 b8 3e 6a 52 f0 3e 00 00 00 00",
+   "raw_92B_off": 1812,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 8,
+   "name": "biped bone13",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 32 6a 52 f0 3e 00 00 80 3e 00 00 80 3e b2 00 f1 3e d3 c1 8f 3e 00 00 00 00 00 00 00 00 d3 c1 8f 3e 00 00 80 3e 00 00 80 3e 2f b4 b5 3e f2 4f 63 3e 00 00 00 00 00 00 00 00 f2 4f 63 3e 01 00 80 3e 00 00 80 3e 36 96 b5 3e 36 f1 d1 3e 00 00 00 00 00 00 00 00 36 f1 d1 3e",
+   "raw_92B_off": 1904,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 9,
+   "name": "biped bone14",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 80 3e 00 00 80 3e a0 b8 d2 3e 40 9d 47 3e 00 00 00 00 00 00 00 00 40 9d 47 3e 00 00 80 3e 00 00 80 3e 9e 33 b7 3e f1 1b 90 3e 00 00 00 00 00 00 00 00 f1 1b 90 3e 00 00 80 3e 01 00 80 3e 17 bc b5 3e a0 67 85 3e 00 00 00 00 00 00 00 00 a0 67 85 3e 00 00 80 3e fe ff 7f 3e",
+   "raw_92B_off": 1996,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 10,
+   "name": "biped bone15",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "99 19 b5 3e d0 09 7f 3e 00 00 00 00 00 00 00 00 d0 09 7f 3e 01 00 80 3e 00 00 80 3e 1e 05 b5 3e 37 13 b2 3e 00 00 00 00 00 00 00 00 37 13 b2 3e ff ff 7f 3e 00 00 80 3e 59 d1 bb 3e 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00",
+   "raw_92B_off": 2088,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 11,
+   "name": "biped bone16",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 53 fe 2e 34 0e 55 a4 ba f3 ff 7f 3f 00 00 00 00 00 00 80 bf d8 cd 0c 34 8e 2b 2f 34 00 00 00 00 0b 06 0d b4 f3 ff 7f bf 0e 55 a4 ba 00 00 00 00 00 6f 82 2f de 18 58 bc 17 ad 84 3b",
+   "raw_92B_off": 2180,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 12,
+   "name": "biped bone20",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 80 3f 55 d1 2d b4 a8 70 1c 3c 04 fd 7f bf 00 00 00 00 00 00 80 bf f4 24 a2 33 8a 99 2e 34 00 00 00 00 a4 78 a5 33 04 fd 7f 3f a8 70 1c 3c 00 00 00 00 ff 63 02 3f d2 4e 84 bd 19 5e a7 bf 00 00 80 3f bb 3e 37 b3 97 00 b5 bc ff ef 7f bf 00 00 00 00 00 00 80 bf 00 80 2c 2d",
+   "raw_92B_off": 2272,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 13,
+   "name": "biped bone21",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "f0 49 37 33 00 00 00 00 bf 3e 80 b0 ff ef 7f 3f 97 00 b5 bc 00 00 00 00 fe 63 02 3f 17 6c 41 bd 76 2b 48 c0 00 00 80 3f 25 40 37 b3 8d 74 a9 bc ff f1 7f bf 00 00 00 00 00 00 80 bf 15 5f 2c 2d f0 49 37 33 00 00 00 00 19 f5 6f b0 ff f1 7f 3f 8d 74 a9 bc 00 00 00 00 fd 63 02 3f",
+   "raw_92B_off": 2364,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 14,
+   "name": "biped bone22",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "ec e7 a7 bd 67 6b 96 c0 00 00 80 3f f5 aa f7 3e f4 04 35 3f e2 08 04 bf 00 00 00 00 ef aa f7 be f3 04 35 3f e5 08 04 3f 00 00 00 00 ae b9 3a 3f ae 23 4a b4 a7 20 2f 3f 00 00 00 00 13 86 c6 3f 53 3a f6 3e 04 92 1c 40 00 00 80 3f e3 94 1e bf 6e 61 d8 be 19 5c 29 bf 00 00 00 00",
+   "raw_92B_off": 2456,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 15,
+   "name": "biped bone23",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "4f e5 93 be c9 03 68 3f 8f f2 9d be 00 00 00 00 2b de 3a 3f 3e 78 1c 34 b7 f9 2e bf 00 00 00 00 73 51 ba bf f3 c8 47 bf f5 ee 8b 3f 00 00 80 3f d5 53 24 3f cc b6 31 be f7 33 3f bf 00 00 00 00 6a ee f0 3d 5f 1c 7c 3f bf ca 02 be 00 00 00 00 10 f9 41 3f 9d 95 c0 bb c2 0e 27 3f",
+   "raw_92B_off": 2548,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 16,
+   "name": "biped bone24",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 00 68 b2 17 3f 11 51 60 bf c9 61 93 40 00 00 80 3f 43 e2 c6 3e ff 0d 4b 3f 5e 22 f0 be 00 00 00 00 20 85 01 bf 65 e6 1b 3f 22 62 1c 3f 00 00 00 00 d5 28 45 3f c9 47 14 35 a5 4a 23 3f 00 00 00 00 84 96 66 3f 8d 8d 69 3e b8 b1 e4 40 00 00 80 3f f1 99 23 bf cc cc c9 3e",
+   "raw_92B_off": 2640,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 17,
+   "name": "biped bone25",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "ce 15 29 bf 00 00 00 00 a9 52 8c 3e de 46 6b 3f cc 06 91 3e 00 00 00 00 6a fa 37 3f 1d 9f 1a 34 e4 02 32 bf 00 00 00 00 0c fd 55 bf a3 14 7f 3f 83 da f4 40 00 00 80 3f 8f 92 40 bf 01 85 3a b4 3a ad 28 bf 00 00 00 00 72 92 a2 b3 00 00 80 3f fe 3f 3e b4 00 00 00 00 3c ad 28 3f",
+   "raw_92B_off": 2732,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 18,
+   "name": "biped bone26",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "be 0c b3 b3 90 92 40 bf 00 00 00 00 fc 07 76 bf ff b7 8a 3f 37 8e 08 40 00 00 80 3f 36 62 05 bf c5 a7 3d 3f 06 08 d9 be 00 00 00 00 2f 1e 13 3f 3c f3 2b 3f d6 60 ef 3e 00 00 00 00 f7 8e 21 3f 0c 56 e5 b4 07 95 46 bf 00 00 00 00 35 9e 74 bf 8c 3b 8c 3f 89 1c 43 40 00 00 80 3f",
+   "raw_92B_off": 2824,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 19,
+   "name": "biped bone30",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "6b 2f 9e 34 19 e9 3a 3f 08 ee 2e 3f 00 00 00 00 00 00 80 bf cf bd 88 34 ed c6 2a 34 00 00 00 00 1d c1 78 b3 08 ee 2e bf 19 e9 3a 3f 00 00 00 00 00 e9 3a bf dc 45 cf 3f e8 20 0d 41 00 00 80 3f 74 62 8c be 00 e8 0d b4 64 30 76 bf 00 00 00 00 00 86 9a 34 01 00 80 3f 00 bc 6b b4",
+   "raw_92B_off": 2916,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 20,
+   "name": "biped bone31",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 00 65 30 76 3f 00 e6 b4 b4 73 62 8c be 00 00 00 00 e6 e8 a4 bf fe 5e d5 3f 57 1f d1 40 00 00 80 3f a8 2c 34 33 df eb 1f 3f 22 e7 47 bf 00 00 00 00 00 00 80 3f 00 1c eb 2f 60 34 68 33 00 00 00 00 a8 7d 12 33 22 e7 47 bf df eb 1f bf 00 00 00 00 00 d8 3f bf f8 8b df 3f",
+   "raw_92B_off": 3008,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 21,
+   "name": "biped bone32",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "61 b5 82 3f 00 00 80 3f f5 b9 c8 bd 00 16 2d b4 78 c4 7e bf 00 00 00 00 00 73 9d 34 01 00 80 3f 00 da 4c b4 00 00 00 00 78 c4 7e 3f 2a ba a6 b4 f6 b9 c8 bd 00 00 00 00 69 70 26 bf 04 24 16 3f d8 58 09 c0 00 00 80 3f 88 61 11 3e 00 f0 4d b4 26 68 7d bf 00 00 00 00 80 f9 9c 34",
+   "raw_92B_off": 3100,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 22,
+   "name": "biped bone33",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "01 00 80 3f 00 90 22 b4 00 00 00 00 26 68 7d 3f 00 d5 8f b4 8b 61 11 3e 00 00 00 00 41 21 d5 3d 08 80 81 bd 33 89 2f c0 00 00 80 3f 1a 69 be 34 b0 b7 5b 3f cb 60 03 bf 00 00 00 00 00 00 80 3f 27 8b dc b4 60 34 8c 31 00 00 00 00 86 9a 5e b4 cb 60 03 bf b0 b7 5b bf 00 00 00 00",
+   "raw_92B_off": 3192,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 23,
+   "name": "biped bone34",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "01 d8 38 bf 74 bc e7 bf a5 90 a2 bf 00 00 80 3f 01 f4 da bd 00 c0 2b b4 64 88 7e bf 00 00 00 00 80 5d 9d 34 ff ff 7f 3f 00 80 4e b4 00 00 00 00 63 88 7e 3f 00 82 a7 b4 01 f4 da bd 00 00 00 00 07 d9 56 bf 00 1c 9b bf 36 fc a3 bd 00 00 80 3f 60 8b 9a b3 eb 38 04 3f e5 35 5b bf",
+   "raw_92B_off": 3284,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 24,
+   "name": "biped bone35",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 00 00 00 80 bf ca ac e0 b3 00 da b3 32 00 00 00 00 02 2a a9 b3 e5 35 5b 3f eb 38 04 3f 00 00 00 00 05 10 3c bf 98 5f 01 40 75 0e 35 40 00 00 80 3f 37 b4 e9 33 85 d4 7d 3f 93 0a 05 be 00 00 00 00 00 00 80 bf 8f 4c 04 34 b6 86 dc 33 00 00 00 00 d0 08 fd 33 93 0a 05 3e",
+   "raw_92B_off": 3376,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 25,
+   "name": "biped bone36",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "85 d4 7d 3f 00 00 00 00 00 70 22 bf 65 80 ab 3f fa df 5f 40 00 00 80 3f cd 6c 20 3f 84 1b ba 3e b4 77 30 3f 00 00 00 00 03 61 7a be 2e 7d 6e 3f 57 b5 89 be 00 00 00 00 b8 6c 3d bf 3a 10 4e b4 46 34 2c 3f 00 00 00 00 48 88 96 3f fd cf 9f 3e 3e 8e 3e 40 00 00 80 3f fa 22 5e 3e",
+   "raw_92B_off": 3468,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 26,
+   "name": "biped bone37",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "71 cb 55 b4 66 e7 79 bf 00 00 00 00 5d c9 9b 34 01 00 80 3f 03 c0 15 b4 00 00 00 00 68 e7 79 3f bf d5 87 b4 fd 22 5e 3e 00 00 00 00 f3 90 0f 40 01 ac 8b 3f ad e4 cc 3f 00 00 80 3f c0 a9 74 b4 d4 5c 21 3e 35 cd 7c bf 00 00 00 00 00 00 80 3f 3c 94 fd 33 b4 86 63 b4 00 00 00 00",
+   "raw_92B_off": 3560,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 27,
+   "name": "biped bone38",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "0f b4 b2 33 35 cd 7c bf d4 5c 21 be 00 00 00 00 ff 4f 54 bf 36 fb bc 3f 9b 34 26 3e 00 00 80 3f 11 36 5f be be 8e 18 b4 13 d8 79 bf 00 00 00 00 20 c4 9b 34 00 00 80 3f 02 e0 61 b4 00 00 00 00 13 d8 79 3f 88 a5 b0 b4 12 36 5f be 00 00 00 00 ed 2a e1 be f1 ff 21 3e b7 90 4f c0",
+   "raw_92B_off": 3652,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 28,
+   "name": "biped bone39",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 80 3f 0e 5c fe 3e 4e a2 3f 3f c5 d5 e0 be 00 00 00 00 8d 2c 5e 3f 3c 65 db be f7 b3 80 3e 00 00 00 00 cc de 0c b4 78 88 01 bf 72 cf 5c bf 00 00 00 00 05 c0 47 3e d5 19 1f 3f 10 a4 0f c0 00 00 80 3f 38 1b 2a bf 57 20 6e b4 93 4f 3f bf 00 00 00 00 cf 2c de b3 ff ff 7f 3f",
+   "raw_92B_off": 3744,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 29,
+   "name": "biped bone40",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "fc bf 5b b4 00 00 00 00 92 4f 3f 3f 65 65 7c b3 37 1b 2a bf 00 00 00 00 d6 60 8c bf 04 48 12 be 37 2c be 3f 00 00 80 3f 6d 7c 3d bf 05 87 09 bf 5a 0c cf 3e 00 00 00 00 1d 61 f1 be f7 eb 57 3f 27 e0 83 3e 00 00 00 00 bd 7a f5 be 02 77 37 b3 4d a8 60 bf 00 00 00 00 c6 5f 8d bf",
+   "raw_92B_off": 3836,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 30,
+   "name": "biped bone41",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "0a 4c 76 be 4d cf 0a 40 00 00 80 3f 86 5b d8 be 3b a6 67 3f c0 cc 51 bd 00 00 00 00 56 f7 65 3f ed f0 d9 3e 14 ff de 3d 00 00 00 00 f8 6f f6 3d 24 dd bd 33 ce 23 7e bf 00 00 00 00 9f c1 4c bf aa 61 23 3e 35 5a 7c 40 00 00 80 3f 45 b1 19 bf 2f 45 9d be e1 06 3d bf 00 00 00 00",
+   "raw_92B_off": 3928,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 31,
+   "name": "biped bone42",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "0b bb 4c bf 8c 20 6c 3e 4f e7 0d 3f 00 00 00 00 05 47 19 b4 1a 5d 6c 3f 85 a7 c4 be 00 00 00 00 8a a8 17 bf 39 65 fa bd 2b 08 6e 40 00 00 80 3f da 86 11 b4 72 10 0e bf d6 f6 54 bf 00 00 00 00 00 00 80 bf a8 2d 1c b3 0d fb 48 34 00 00 00 00 42 03 10 b4 d6 f6 54 3f 72 10 0e bf",
+   "raw_92B_off": 4020,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 32,
+   "name": "biped bone43",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 00 00 00 01 58 73 bf 6e 5a 37 3f 85 52 3d 40 00 00 80 3f b2 19 07 b4 14 a1 22 bf ca b4 45 bf 00 00 00 00 00 00 80 bf 24 fd 10 b3 44 c0 4c 34 00 00 00 00 ca 10 1e b4 ca b4 45 3f 14 a1 22 bf 00 00 00 00 fc 2f 36 bf b3 08 0e 40 32 0c 01 40 00 00 80 3f f1 8d 41 3f ed c0 25 bf",
+   "raw_92B_off": 4112,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 33,
+   "name": "biped bone44",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "d9 b2 c3 bd 00 00 00 00 8b 8c 27 3f fe 7a 3f 3f d8 12 e2 3d 00 00 00 00 13 da f1 b3 54 81 15 be bd 41 7d 3f 00 00 00 00 43 69 98 3f cd 74 84 3d 41 6e 36 40 00 00 80 3f 8e 79 47 3f c8 d1 1e 3f ab cf b6 bd 00 00 00 00 94 c9 1d bf 88 c7 48 3f 56 9b 90 3d 00 00 00 00 1a 17 e9 3d",
+   "raw_92B_off": 4204,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  },
+  {
+   "index": 34,
+   "name": "biped bone45",
+   "parent": 1,
+   "depth": 2,
+   "children": [],
+   "raw_92B": "00 80 40 b4 28 56 7e 3f 00 00 00 00 19 b6 1f 3f 1e 40 cc 3d 28 f3 ef 40 00 00 80 3f 20 72 12 bf 31 ac 08 3f e0 67 1f bf 00 00 00 00 ac ed b8 3e c1 76 58 3f 2a 4b c9 3e 00 00 00 00 3d 85 3c 3f 00 00 d8 b4 8c 31 2d bf 00 00 00 00 67 61 31 bf fa 38 ea 3e 00 4a fc 40 00 00 80 3f",
+   "raw_92B_off": 4296,
+   "raw_92B_bytes": 92,
+   "evidence": "逐骨块 off = 1168(=1167+1) + index*92；文件 skin_2003_017.mesh 行 3685"
+  }
+ ],
+ "self_check": {
+  "sum_children_plus_roots": 35,
+  "bone_count": 35,
+  "sum_ok": true,
+  "roots": [
+   0
+  ],
+  "cycle_state": "ok",
+  "cycle_evidence": "",
+  "parent_lt_self_violations": [],
+  "all_nodes_reached_from_roots": true
+ },
+ "layout": {
+  "mesh_bytes": 710860,
+  "skeleton_block_start": 13,
+  "bone_flag_u16_0x08": 1,
+  "bone_count_u16_0x0A": 35,
+  "parent_area": {
+   "off": 13,
+   "bytes": 34,
+   "end_exclusive": 47,
+   "hex": "00 01 02 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01"
+  },
+  "name_block_off": 47,
+  "name_stride": 32,
+  "names_end": 1167,
+  "per_bone_block_off": 1168,
+  "per_bone_stride": 92,
+  "per_bone_block_end_exclusive": 4388,
+  "trailer_u32_off": 4388,
+  "sub_table_off": 4392,
+  "term_off": 4442,
+  "sub_k": 5,
+  "sub_tv": 24573,
+  "sub_tf": 23505,
+  "geometry_segment_off": 4392,
+  "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 4392",
+  "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+  "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+ },
+ "glb_path": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\skel\\1110116_skeleton.glb",
+ "glb_check": {
+  "glb_header_ok": true,
+  "glb_bytes": 14292,
+  "json_nodes": 35,
+  "json_sum": 35,
+  "asset_version": "2.0"
+ }
+}

@@ -1,0 +1,52 @@
+﻿======================== lab=1 ========================
+applied=3 applied_prims=[0, 1, 2] failed=[] missing=[]
+prim  material                 status   slot             local_file               color      logical_path
+0     skin_2003_029_0          applied  Tex0             src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+0     skin_2003_029_0          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+0     skin_2003_029_0          applied  ParamMap         src_tex/029_m.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001m.tga
+0     skin_2003_029_0          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+0     skin_2003_029_0          applied  t_custom_ibl     src_cube/qiangpi.dds     linear     common\env_map\qiangpi.cube
+0     skin_2003_029_0          applied  t_surfacemap     src_tex/029_s_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001s_m.tga
+1     skin_2003_029_1          applied  Tex0             src_tex/029_b_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga
+1     skin_2003_029_1          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+1     skin_2003_029_1          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+1     skin_2003_029_1          applied  t_custom_ibl     src_cube/car_studio01.dds linear     common\env_map\car_studio01.cube
+1     skin_2003_029_1          applied  DetailMap        -MISSING-                linear     common\textures\crystal_bump_n02.tga
+1     skin_2003_029_1          applied  t_caustic_tex    -MISSING-                linear     weapon\skin\skin_1012_013\testures\crystal_caustic_uvva002.tga
+1     skin_2003_029_1          applied  t_reflection_tex -MISSING-                linear     common\textures\crystal_reflection_uvva.tga
+2     skin_2003_029_2          applied  Tex0             src_tex/029_b_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga
+2     skin_2003_029_2          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+2     skin_2003_029_2          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+2     skin_2003_029_2          applied  t_custom_ibl     -MISSING-                linear     common\env_map\fashion_qiangpi.cube
+2     skin_2003_029_2          applied  DetailMap        -MISSING-                linear     common\textures\crystal_bump_n_uvva.tga
+2     skin_2003_029_2          applied  t_caustic_tex    -MISSING-                linear     common\textures\crystal_caustic_uvva.tga
+2     skin_2003_029_2          applied  t_reflection_tex -MISSING-                linear     common\textures\crystal_reflection_uvva.tga
+2     skin_2003_029_2          applied  t_refraction_tex -MISSING-                linear     common\textures\refraction_envmap_3.tga
+
+======================== prod (�� lab) ========================
+applied=3 applied_prims=[0, 1, 2] failed=[] missing=[]
+prim  material                 status   slot             local_file               color      logical_path
+0     skin_2003_029_0          applied  Tex0             src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+0     skin_2003_029_0          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+0     skin_2003_029_0          applied  ParamMap         src_tex/029_m.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001m.tga
+0     skin_2003_029_0          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+0     skin_2003_029_0          applied  t_custom_ibl     src_cube/qiangpi.dds     linear     common\env_map\qiangpi.cube
+0     skin_2003_029_0          applied  t_surfacemap     src_tex/029_s_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001s_m.tga
+1     skin_2003_029_1          applied  Tex0             src_tex/029_b_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga
+1     skin_2003_029_1          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+1     skin_2003_029_1          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+1     skin_2003_029_1          applied  t_custom_ibl     src_cube/car_studio01.dds linear     common\env_map\car_studio01.cube
+1     skin_2003_029_1          applied  DetailMap        -MISSING-                linear     common\textures\crystal_bump_n02.tga
+1     skin_2003_029_1          applied  t_caustic_tex    -MISSING-                linear     weapon\skin\skin_1012_013\testures\crystal_caustic_uvva002.tga
+1     skin_2003_029_1          applied  t_reflection_tex -MISSING-                linear     common\textures\crystal_reflection_uvva.tga
+2     skin_2003_029_2          applied  Tex0             src_tex/029_b_m.png      linear     weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga
+2     skin_2003_029_2          applied  t_basecolor      src_tex/029_a.png        ab_test    weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga
+2     skin_2003_029_2          applied  NormalMap        src_tex/029_n.png        linear     weapon\skin\skin_2003_029\textures\skin_2003_029001n.tga
+2     skin_2003_029_2          applied  t_custom_ibl     -MISSING-                linear     common\env_map\fashion_qiangpi.cube
+2     skin_2003_029_2          applied  DetailMap        -MISSING-                linear     common\textures\crystal_bump_n_uvva.tga
+2     skin_2003_029_2          applied  t_caustic_tex    -MISSING-                linear     common\textures\crystal_caustic_uvva.tga
+2     skin_2003_029_2          applied  t_reflection_tex -MISSING-                linear     common\textures\crystal_reflection_uvva.tga
+2     skin_2003_029_2          applied  t_refraction_tex -MISSING-                linear     common\textures\refraction_envmap_3.tga
+
+screenshot: {'file': 'T5_1110177_prod.png', 'sha16': '28c785f428f9ca83', 'box': {'x': 100, 'y': 97, 'w': 1178, 'h': 718}, 'bytes': 727275}
+gl: {"fails":0,"linkFails":0,"useInvalid":0,"first":null}

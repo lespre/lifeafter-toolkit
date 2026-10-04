@@ -1,0 +1,95 @@
+{
+ "name": "basement_boxing_ring",
+ "logical": "common\\env_map\\basement_boxing_ring.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12303,
+ "off": 50071160,
+ "comp": 318236,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12303,
+   "base": 1940537680,
+   "off": 50071160,
+   "comp": 318236,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "known_verified"
+ ],
+ "sha256": "5b461a4733ed6dd52887cb523e5bcbdab8fc361f6cef22644f85abea24510b8b",
+ "sha16": "5b461a4733ed6dd5",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f0_m0.png",
+   "bytes": 32526,
+   "rgba_sha16": "53870aae192b1d35",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f1_m0.png",
+   "bytes": 29982,
+   "rgba_sha16": "6b1a0064097ff0cf",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f2_m0.png",
+   "bytes": 32232,
+   "rgba_sha16": "4eb65d4a488caefa",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f3_m0.png",
+   "bytes": 30916,
+   "rgba_sha16": "72ebfdf4cd333d50",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f4_m0.png",
+   "bytes": 24942,
+   "rgba_sha16": "20e06af840d72398",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\basement_boxing_ring\\faces\\basement_boxing_ring_f5_m0.png",
+   "bytes": 17883,
+   "rgba_sha16": "5a6b0dacf42d803e",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

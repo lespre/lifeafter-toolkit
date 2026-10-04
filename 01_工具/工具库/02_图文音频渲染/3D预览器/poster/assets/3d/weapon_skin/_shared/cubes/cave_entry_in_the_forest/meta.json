@@ -1,0 +1,95 @@
+{
+ "name": "cave_entry_in_the_forest",
+ "logical": "common\\env_map\\cave_entry_in_the_forest.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12472,
+ "off": 109341760,
+ "comp": 425626,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12472,
+   "base": 1940537680,
+   "off": 109341760,
+   "comp": 425626,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "5d4ea5f2262e0e94abd9e53d398d3455bde961c30068bb93a8387f6f84b44410",
+ "sha16": "5d4ea5f2262e0e94",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f0_m0.png",
+   "bytes": 41928,
+   "rgba_sha16": "bc001ce7e00c0062",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f1_m0.png",
+   "bytes": 42152,
+   "rgba_sha16": "171dba5b0386c149",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f2_m0.png",
+   "bytes": 43178,
+   "rgba_sha16": "bd64de6237412aff",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f3_m0.png",
+   "bytes": 35945,
+   "rgba_sha16": "dec75b3adcce6c72",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f4_m0.png",
+   "bytes": 39642,
+   "rgba_sha16": "a505b7cdc56cf74d",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\cave_entry_in_the_forest\\faces\\cave_entry_in_the_forest_f5_m0.png",
+   "bytes": 42632,
+   "rgba_sha16": "7af865f3c758bf2d",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

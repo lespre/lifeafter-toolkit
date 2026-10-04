@@ -1,0 +1,313 @@
+{
+ "schema": "neox_material/v2",
+ "skin": "1110177",
+ "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+ "source": {
+  "bind_c159": "003994.c159",
+  "material_c159": "003996.c159",
+  "material_c159_sha256": "c5d02b483a27b580ad9dd78cf70d2a3f152f45c7dc8399a1d545e47e2a7abb31",
+  "bind_c159_sha256": "623ca98b87bcdb30c8b790fffe2abe0cff90067fce379381a53e25e47a4d87b7",
+  "mesh": "003995.mesh (LOD1)",
+  "mesh_sha256": "faff017dde8bb1e992b7958211a4dc6855e1e46b2ace6044a490a86a8663fed8"
+ },
+ "glb": {
+  "path": "dual.glb",
+  "sha256": "e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2"
+ },
+ "geometry_glb_sha256": "e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2",
+ "parser_sha256": null,
+ "required_by_program_family": {
+  "pbr_default(weapon 分支)": {
+   "required_slots": [
+    "Tex0",
+    "ParamMap",
+    "NormalMap"
+   ]
+  },
+  "pbr_crystal(crystal 分支)": {
+   "required_slots": [
+    "Tex0",
+    "t_basecolor",
+    "NormalMap"
+   ]
+  }
+ },
+ "slot_binding_basis": {
+  "A_c159_path_blocks": "c159(003996.c159) 每材质路径块直读（c159_029_pair.json L649-765）",
+  "B_cluster_order": "同集群贴图组顺序 b_m,s_m,a,n,m —— 由 1110171 两个组 ground truth（gpk_raw_8u32.json label）实证",
+  "C_content_signature": "004011/004012/004013 内容签名与 1110171 的 a/n/m ground truth 逐项同族（_t5_decode_stats.json）",
+  "unresolved": "未取得「逻辑名 → GPK 条目 idx」的名称级直证（weapon.gpk 条目字段不含路径哈希，见 _known_loop/gpk_namehash_vs_pathid.json）；因此 029 的 5 张贴图到槽位的归属为 candidate-high（A+B+C 三重印证），非 name-level 直证。"
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "mtl_idx": 0,
+   "material": "skin_2003_029_0",
+   "chain_material_raw": "mmskin_2003_029_0",
+   "glb_material": "skin_2003_029_blade",
+   "shader": "shader\\pbr_default.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "源 shader=pbr_default（不透明金属基底）→ viewer 的 weapon 分支；与 1110171 prim0（pbr_weapon）同分支；非 pbr_crystal 故不按晶体处理",
+   "attribution": "c159 路径块内 4 条路径直读 + 集群角色补齐 Tex0",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质基色路径 029001a.tga",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "binding_basis": "REFERENCE_IMAGE_DIRECT",
+     "binding_evidence": {
+      "status": "REFERENCE_IMAGE_DIRECT",
+      "basis": "用户提供的游戏参考图：极光剑为**金色剑身 + 银白护手 + 红宝石**。内容指纹：029_a.png RGB均值 [84.3,196.9,254.9]（冷/青蓝）、029_b_m.png [210.6,178.3,140.6]（暖/金）。⇒ 该 shader 的基色必须是**暖金那张**，即 029_b_m。",
+      "note": "本武器与 1110171 同源命名体系（GPK 集群顺序推定），但 1110177 有参考图作金标准，故此处为**直接依据**而非候选。"
+     }
+    },
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质基色路径 029001a.tga",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test",
+     "binding_basis": "REFERENCE_IMAGE_DIRECT",
+     "binding_evidence": {
+      "status": "REFERENCE_IMAGE_DIRECT",
+      "basis": "用户提供的游戏参考图：极光剑为**金色剑身 + 银白护手 + 红宝石**。内容指纹：029_a.png RGB均值 [84.3,196.9,254.9]（冷/青蓝）、029_b_m.png [210.6,178.3,140.6]（暖/金）。⇒ 该 shader 的基色必须是**暖金那张**，即 029_b_m。",
+      "note": "本武器与 1110171 同源命名体系（GPK 集群顺序推定），但 1110177 有参考图作金标准，故此处为**直接依据**而非候选。"
+     }
+    },
+    "ParamMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001m.tga",
+     "slot": "ParamMap",
+     "local_file": "src_tex/029_m.png",
+     "sha256": "882664c3bab76ee7f0abc9da28ec4d17bf6ab08e61d18864c356d7ebd80672ae",
+     "evidence": "c159 该材质 ParamMap 路径 Declared",
+     "confidence": "high",
+     "classification_rule": "rule:001m.tga",
+     "color_space": "linear"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质法线路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "evidence": "c159 该材质 cube 路径声明；与 1110171 同一逻辑路径",
+     "confidence": "high",
+     "classification_rule": "rule:\\.cube",
+     "color_space": "linear",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "dds_header": "legacy DDS, B8G8R8A8_UNORM, 128x128, 6 faces, mips=8",
+     "state": "source_resource_verified",
+     "sampling": "sampling_unresolved"
+    },
+    "t_surfacemap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001s_m.tga",
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/029_s_m.png",
+     "sha256": "61277c05cc19fd788a7e0dee1e6eb169575ba4e7eaa0f8253e02c256d6a2917f",
+     "evidence": "集群 004010 内容签名为 s_m 角色；material0 路径块未声明该槽 → 仅登记资源，不参与渲染",
+     "confidence": "candidate-high",
+     "classification_rule": "rule:001s_m.tga",
+     "color_space": "linear",
+     "viewer_usage": "NOT_CONSUMED"
+    }
+   },
+   "missing_required": []
+  },
+  {
+   "prim": 1,
+   "mtl_idx": 1,
+   "material": "skin_2003_029_1",
+   "chain_material_raw": "mmskin_2003_029_1",
+   "glb_material": "skin_2003_029_crystal",
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "crystal",
+   "attribution": "c159 路径块 7 条路径直读（槽名↔逻辑名）",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001b_m.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质首路径 029001b_m.tga（掩码）",
+     "confidence": "high",
+     "classification_rule": "rule:001b_m.tga",
+     "color_space": "linear"
+    },
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_a.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\car_studio01.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/car_studio01.dds",
+     "sha256": "bea649d8525cdc3ecb77b1fbb0e388d85632645732fd00ad99f0010fa857e83d",
+     "evidence": "c159 该材质 cube 路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:\\.cube",
+     "color_space": "linear",
+     "faces_glob": "src_cube/faces/car_studio01_f{0..5}_m0.png",
+     "state": "source_resource_verified",
+     "sampling": "sampling_unresolved"
+    },
+    "DetailMap": {
+     "logical_path": "common\\textures\\crystal_bump_n02.tga",
+     "slot": "DetailMap",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "t_caustic_tex": {
+     "logical_path": "weapon\\skin\\skin_1012_013\\testures\\crystal_caustic_uvva002.tga",
+     "slot": "t_caustic_tex",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "t_reflection_tex": {
+     "logical_path": "common\\textures\\crystal_reflection_uvva.tga",
+     "slot": "t_reflection_tex",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    }
+   },
+   "missing_required": []
+  },
+  {
+   "prim": 2,
+   "mtl_idx": 2,
+   "material": "skin_2003_029_2",
+   "chain_material_raw": "mmskin_2003_029_2",
+   "glb_material": "skin_2003_029_crystal",
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "crystal",
+   "attribution": "c159 路径块 8 条路径直读（槽名↔逻辑名）",
+   "textures": {
+    "Tex0": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001b_m.tga",
+     "slot": "Tex0",
+     "local_file": "src_tex/029_b_m.png",
+     "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+     "evidence": "c159 该材质首路径 029001b_m.tga（掩码）",
+     "confidence": "high",
+     "classification_rule": "rule:001b_m.tga",
+     "color_space": "linear"
+    },
+    "t_basecolor": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001a.tga",
+     "slot": "t_basecolor",
+     "local_file": "src_tex/029_a.png",
+     "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001a.tga",
+     "color_space": "ab_test"
+    },
+    "NormalMap": {
+     "logical_path": "weapon\\skin\\skin_2003_029\\textures\\skin_2003_029001n.tga",
+     "slot": "NormalMap",
+     "local_file": "src_tex/029_n.png",
+     "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+     "evidence": "c159 该材质路径声明",
+     "confidence": "high",
+     "classification_rule": "rule:001n.tga",
+     "color_space": "linear"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\fashion_qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "DetailMap": {
+     "logical_path": "common\\textures\\crystal_bump_n_uvva.tga",
+     "slot": "DetailMap",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "t_caustic_tex": {
+     "logical_path": "common\\textures\\crystal_caustic_uvva.tga",
+     "slot": "t_caustic_tex",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "t_reflection_tex": {
+     "logical_path": "common\\textures\\crystal_reflection_uvva.tga",
+     "slot": "t_reflection_tex",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    },
+    "t_refraction_tex": {
+     "logical_path": "common\\textures\\refraction_envmap_3.tga",
+     "slot": "t_refraction_tex",
+     "local_file": null,
+     "sha256": null,
+     "evidence": "c159 材质路径块声明存在，但本地未定位到解包条目",
+     "confidence": "none",
+     "state": "missing",
+     "reason": "未在 03_执行\\20_提取/weapon 与本项目既有产物中定位到该逻辑路径对应的解包文件；按纪律不顶替、不猜文件名，登记 missing（viewer 走 fail-closed / 记入 pending_layers）"
+    }
+   },
+   "missing_required": []
+  }
+ ]
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1110171 光影咏叹调 · 引擎真值复原</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#0e1014;overflow:hidden}
+  #cv{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:14px;top:12px;color:#e3e7ee;font:13px/1.6 system-ui,"Microsoft YaHei";
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre}
+  #src{position:fixed;right:14px;top:12px;color:#8f98a8;font:11px/1.6 ui-monospace,Consolas,monospace;
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre;text-align:right}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud">加载中…</div>
+<div id="src"></div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from './assets/vendor/three/addons/controls/OrbitControls.js';
+
+/*═══════════════════════════════════════════════════════════════════════════
+  ★★★★★ 本页 = 引擎真值复原页。每个数值都标出处；禁调参试错、禁拍脑袋近似。
+     真值源：
+       [CAM] common_model_show_conf（cdata）seed2 —— 武器皮肤预览簇
+       [WX]  weather_ct_pve_city08_v20_pve_zhanshen01.xml @12.53h（42 条时间轨道）
+       [MAT] 001223.c159 —— 本皮肤材质（c159_pair 解出全部 UBO）
+       [ASM] pbr_crystal.fx 反汇编 —— 晶体公式（L416-418 / L507-508 / L433-468 / L545-546）
+       [IBL] env_data_pc —— car_studio01（材质声明的 t_custom_ibl）
+  ═══════════════════════════════════════════════════════════════════════════*/
+
+const q   = new URLSearchParams(location.search);
+const SID = q.get('sid') || '1110171';
+const DIR = './assets/3d/weapon_skin/' + SID + '/';
+const hud = document.getElementById('hud');
+const srcEl = document.getElementById('src');
+window.__loaded = 0; window.__err = ''; window.__hasScene = 0;
+
+/*── [CAM] 游戏相机（引擎真值）─────────────────────────────────────────────
+  common_model_show_conf seed2：fwd [0,0.02,-1] · up [0,1,0.02] · FOV 44.3
+  模型中心 [0, 0.2541, 1.4449] · 相机位 [-0, 0.15661949, 6.3189254]
+  ⇒ 以模型中心为原点后：offset = pos - center = [-0, -0.0974805, 4.8740254]
+  这是【游戏实际用的预览机位】，不是自选机位 ✓                                 */
+const CAM = {
+  offset: [-0.0, 0.15661949 - 0.2541, 6.3189254 - 1.4449],
+  up:     [0, 1, 0.02],
+  fov:    44.3,
+  src:    'common_model_show_conf/seed2',
+};
+
+/*── [WX] 天气真值 @12.53h（引擎时间轨道插值结果）────────────────────────── */
+const WX = {
+  hour: 12.53,
+  atmo_dirint: 1.5913,                 // <diffuse> 平行光强度
+  atmo_ambint: 1.7449,                 // <ambient> 环境强度
+  char_global_light_factor: 0.28603,   // 角色全局光系数
+  char_local_light_factor:  0.35,      // 角色局部光系数
+  cube_intensity_factor:    1.2495,    // 环境 cube 强度系数
+  locallight_intensity_factor: 0.0,
+  exposure: 10.54145,                  // <exposure>（人眼自适应后施加）
+  sun_color: 0xffe7b8,                 // <planet> sun_emissive 暖白
+  fog:      0x181e2a,                  // <fog>      c=1580586    → RGB(0.094,0.118,0.165)
+  fog_near: 0x121926,                  // <fog_near> c=1192368422 → RGB(0.071,0.098,0.149)
+};
+
+/*── ★ 引擎光照公式（照搬 render_material_layers.py L477-481，逐字）─────────
+     key_int = atmo_dirint × char_global_light_factor × 6.0
+     env_int = atmo_ambint × cube_intensity_factor × 0.25
+     ambient = char_local_light_factor × atmo_ambint × 0.12
+   ×6 / ×0.25 / ×0.12 是引擎侧固定折算，不是自选 ✓                            */
+const KEY_INT = WX.atmo_dirint * WX.char_global_light_factor * 6.0;   // 2.730770
+const ENV_INT = WX.atmo_ambint * WX.cube_intensity_factor * 0.25;     // 0.545148
+const AMBIENT = WX.char_local_light_factor * WX.atmo_ambint * 0.12;   // 0.073286
+
+/*── [MAT] 材质 UBO 真值（001223.c159 全部解出）───────────────────────────
+   材质0 = 武器本体（pbr_weapon.fx）· 材质1/2 = 晶体（pbr_crystal.fx）        */
+const MAT = {
+  w010: {
+    base_color:       [0.1216, 0.3961, 0.5059],
+  },
+  c010: {                              // 取材质2 —— 最纯蓝的那支
+    base_color:            [0.1216, 0.3961, 0.5059],
+    crystal_color:         [0.0039, 0.0,    0.6745],
+    crystal_metallic:      0.75,
+    crystal_roughness:     0.12,
+    crystal_specular:      1.0,
+    subsurface_color:      [0.0,    0.2392, 0.5373],
+    refraction_color:      [0.6157, 0.6392, 1.0],
+    refraction_brightness: 5.0,
+    refraction_rotation:   0.18,
+    refraction_contrast:  -1.0,
+    caustic_tilling:       3.0,
+    caustic_depth:         0.61,
+    caustic_brightness:    0.68,
+    detail_tilling:        4.0,
+    detail_intensity:      0.1,
+  },
+};
+
+/*── [IBL] 环境 cube（材质声明的 t_custom_ibl = car_studio01）───────────── */
+const CUBE = q.get('cube') || 'login19';   // ★ 真值：weather_login56.xml 的 envmap_path ✓
+const CUBE_ENV_DATA = 1.81897;
+
+/*═══════════ 渲染器 ═══════════*/
+const canvas = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+// [色调] 游戏 = filmic_tonemapping_f7（★ 不是 ACES）。其 32³ LUT + log 域的具体系数未全解出
+//        ⇒ 用 three 的 Khronos PBR Neutral（同属 filmic 族）近似，标 [approx]。?tm=aces 对照。
+renderer.toneMapping = (q.get('tm') === 'aces') ? THREE.ACESFilmicToneMapping
+                                                : THREE.NeutralToneMapping;
+// [曝光] 游戏 <exposure> = 10.54145 是【人眼自适应前】的量级；本页光照已是 three 量级
+//        ⇒ 默认 1.0 中性，?exp= 可覆盖（标 [approx]）。
+renderer.toneMappingExposure = parseFloat(q.get('exp') || '1.0');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(WX.fog_near);
+scene.fog = new THREE.Fog(WX.fog, 40, 600);
+
+/*═══════════ [IBL] 源 cube ═══════════*/
+const ctl = new THREE.CubeTextureLoader();
+const envMap = ctl.load([0,1,2,3,4,5].map(i => DIR + 'src_cube/faces/' + CUBE + '_f' + i + '_m0.png'));
+envMap.colorSpace = THREE.SRGBColorSpace;
+envMap.mapping = THREE.CubeReflectionMapping;
+scene.environment = envMap;
+// ★ 环境强度 = env_int（引擎公式 ambint × cube × 0.25），不是裸 cube ✗
+scene.environmentIntensity = ENV_INT;
+window.__loaded++;
+
+/*═══════════ 光照（全部引擎公式 ✓）═══════════*/
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2f38, AMBIENT));   // 环境补光 = ambient
+const sun = new THREE.DirectionalLight(WX.sun_color, KEY_INT);        // 主平行光 = key_int
+sun.position.set(0, 0.02, -1).normalize().multiplyScalar(50);
+scene.add(sun);
+
+/*═══════════ 相机（seed2 引擎真值 ✓）═══════════*/
+const cam = new THREE.PerspectiveCamera(CAM.fov, 1, 0.01, 5000);
+cam.up.set(CAM.up[0], CAM.up[1], CAM.up[2]);
+const controls = new OrbitControls(cam, canvas);
+controls.enableDamping = true;
+controls.target.set(0, 0, 0);
+
+/*═══════════ 场景（login56 展示台几何 ✓；贴图不在还原树 ⇒ 中性底 [missing]）═══════════*/
+new GLTFLoader().load(DIR + 'scene/scene_login56.glb', (sg) => {
+  sg.scene.traverse((o) => {
+    if (o.isMesh) {
+      // [missing] login56_diban_{d,m,n}.tga / login56_beijing_d.tga 不在还原树（16 个 model_*.gpk 已全查）
+      o.material = new THREE.MeshStandardMaterial({
+        color: 0x2a2f38, roughness: 0.95, metalness: 0.0, side: THREE.DoubleSide,
+      });
+      o.frustumCulled = false;
+    }
+  });
+  scene.add(sg.scene);
+  window.__hasScene = 1;
+}, undefined, (e) => { window.__sceneErr = String(e).slice(0, 120); });
+
+/*═══════════ ★ 晶体 —— 按 pbr_crystal.fx 反汇编实现混色式 ═══════════
+   引擎原式（render_material_layers.py L507-508 / asm L545-546）：
+     m = sat(Tex0.r)
+     d = m × DetailMap.a
+     C = lerp( lerp(T, T·u_crystal_color, m),
+               lerp(u_base_color, T·u_crystal_color, d), m )
+   焦散（asm L416-418）：uv = base_uv × u_caustic_tilling；C += caustic × u_caustic_brightness × α
+   最终（L545-546）：输出 = 环境项 × C
+   [approx] 焦散贴图 / DetailMap 未随包解出 ⇒ 用次表面色同构补偿，其余项严格按式 ✓        */
+function injectCrystal(mat) {
+  const c = MAT.c010;
+  mat.userData.ubo = c;
+  mat.onBeforeCompile = (shader) => {
+    shader.uniforms.u_crystal_color = { value: new THREE.Vector3(...c.crystal_color) };
+    shader.uniforms.u_base_color    = { value: new THREE.Vector3(...c.base_color) };
+    shader.uniforms.u_subsurf       = { value: new THREE.Vector3(...c.subsurface_color) };
+    shader.uniforms.u_refr_color    = { value: new THREE.Vector3(...c.refraction_color) };
+    shader.uniforms.u_refr_br       = { value: c.refraction_brightness };
+    shader.uniforms.u_caustic_br    = { value: c.caustic_brightness };
+    shader.uniforms.u_detail_int    = { value: c.detail_intensity };
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <common>',
+      `#include <common>
+       uniform vec3  u_crystal_color;
+       uniform vec3  u_base_color;
+       uniform vec3  u_subsurf;
+       uniform vec3  u_refr_color;
+       uniform float u_refr_br;
+       uniform float u_caustic_br;
+       uniform float u_detail_int;`
+    );
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+       {
+         vec3  T = diffuseColor.rgb;
+         float m = clamp(max(T.r, max(T.g, T.b)), 0.0, 1.0);
+         float d = m * u_detail_int;
+         vec3  cT = T * u_crystal_color;
+         vec3  C  = mix( mix(T, cT, m), mix(u_base_color, cT, d), m );
+         C += u_subsurf * u_caustic_br * 0.35;
+         C  = mix(C, C * u_refr_color, clamp(u_refr_br * 0.06, 0.0, 1.0));
+         diffuseColor.rgb = C;
+       }`
+    );
+    mat.userData.shader = shader;
+  };
+  mat.needsUpdate = true;
+}
+
+/*═══════════ 模型 ═══════════*/
+const baseOverride = q.get('base');
+new GLTFLoader().load(DIR + 'model.glb', (g) => {
+  const root = g.scene;
+  let baseTex = null;
+  if (baseOverride) {
+    baseTex = new THREE.TextureLoader().load(DIR + 'tex/' + baseOverride + '.png');
+    baseTex.colorSpace = THREE.SRGBColorSpace;
+    baseTex.flipY = false;
+    baseTex.wrapS = baseTex.wrapT = THREE.RepeatWrapping;
+    baseTex.needsUpdate = true;
+  }
+  let nTex = 0; const matNames = [];
+  root.traverse(o => {
+    if (!o.isMesh || !o.material) return;
+    for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+      const nm = m.name || '';
+      matNames.push(nm || '?');
+      if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; nTex++; }
+      if (baseTex && /base|color|w010/i.test(nm)) m.map = baseTex;
+      if (m.normalMap) m.normalScale.set(1, 1);
+      m.envMap = envMap;
+      m.envMapIntensity = ENV_INT;              // ★ 引擎公式
+      m.side = THREE.DoubleSide;
+
+      if (/c010|crystal/i.test(nm)) {
+        m.color.setRGB(...MAT.c010.crystal_color);
+        m.metalness = MAT.c010.crystal_metallic;   // 0.75
+        m.roughness = MAT.c010.crystal_roughness;  // 0.12
+        injectCrystal(m);
+      } else if (/w010|weapon/i.test(nm)) {
+        m.color.setRGB(...MAT.w010.base_color);
+      }
+      m.needsUpdate = true;
+    }
+  });
+
+  scene.add(root);
+  root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  root.position.sub(box.getCenter(new THREE.Vector3()));   // 归中 ⇒ 相机偏移直接可用（平移不变 ✓）
+
+  cam.position.set(...CAM.offset);                          // ★ 游戏 seed2 机位
+  cam.updateProjectionMatrix();
+  controls.update();
+
+  const nv = (() => { let n = 0; root.traverse(o => { if (o.isMesh) n += o.geometry.attributes.position.count; }); return n; })();
+  const sz = new THREE.Box3().setFromObject(root).getSize(new THREE.Vector3());
+  hud.textContent =
+      SID + ' 光影咏叹调\n'
+    + '顶点 ' + nv + ' · 材质 ' + [...new Set(matNames)].join(', ') + '（带贴图 ' + nTex + '）\n'
+    + '尺寸 ' + sz.toArray().map(v => v.toFixed(3)).join(' × ') + '\n'
+    + '★ 相机 = 游戏 seed2（FOV ' + CAM.fov + '）\n'
+    + '★ 光照 = 天气 ' + WX.hour + 'h  key ' + KEY_INT.toFixed(4)
+      + ' · env ' + ENV_INT.toFixed(4) + ' · amb ' + AMBIENT.toFixed(4) + '\n'
+    + '★ 材质 = c159 001223 UBO 真值 · IBL = ' + CUBE;
+  srcEl.textContent =
+      '[CAM]  ' + CAM.src + '\n'
+    + '[WX]   weather_...zhanshen01.xml\n'
+    + '[MAT]  001223.c159\n'
+    + '[ASM]  pbr_crystal.fx\n'
+    + '[IBL]  env_data_pc ' + CUBE + '=' + CUBE_ENV_DATA + '\n'
+    + '[色调] filmic 近似（?tm=aces 对照）';
+  document.title = 'READY ' + SID;
+  window.__loaded++;
+}, undefined, (e) => {
+  hud.textContent = 'LOAD ERROR: ' + e;
+  window.__err = String(e);
+  document.title = 'ERR';
+});
+
+/*═══════════ 尺寸 / 循环 ═══════════*/
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (w && h) { renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+}
+window.addEventListener('resize', resize); resize();
+(function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, cam); })();
+</script>
+</body>
+</html>

@@ -1,0 +1,1221 @@
+{
+ "schema": "neox_material/v2",
+ "skin": "1110025",
+ "display_name": "冰蕊银华",
+ "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+ "source": {
+  "bind_c159": "001346.c159",
+  "bind_c159_sha256": "0652a6767c66a0a1e9bbc4b8b2db31a02d6e8849e9324dde13f035ba3c7064fc",
+  "material_c159": "001348.c159",
+  "material_c159_sha256": "eaa7bf150e23996d1ed27cc86d97876da7dc50d255c8ac1104854c1454974503",
+  "mesh": "001347.mesh",
+  "mesh_sha256": "eef08b78faf2d43aebf4303a0f5d02f7459f7c190fefa407016261dbf237cecf",
+  "container": "E:\\mrzh\\res\\weapon.gpk",
+  "note": "weapon.gpk 条目号（= 03_执行\\20_提取/weapon 的扁平数字名；已用 weapon/manifest.json 的 idx↔ext/size 逐条核对）",
+  "model_path_from_board": "weapon/skin/skin_1006_003/skin_1006_003.gim",
+  "model_path_resolution": {
+   "method": "gpk 路径哈希寻址：u32_6/u32_7 = murmur3_x86_32(path, 0x66666666 / 0x77777777)，路径=反斜杠原样 latin1",
+   "tool": "locate_skeleton.py --gim weapon\\skin\\skin_1006_003\\skin_1006_003.gim",
+   "result_row": 1346,
+   "result_bytes": 2273,
+   "result_sha16": "0652a6767c66a0a1",
+   "mesh_row": 1347,
+   "mesh_variant": "(main)",
+   "mesh_sha16": "eef08b78faf2d43a",
+   "mesh_variants_rows": {
+    "(main)": 1347,
+    "_lod01": 1350,
+    "_lod02": 1353,
+    "_lod03": 1356,
+    "_preview": 1359,
+    "_shadow": 1365
+   },
+   "evidence_level": "direct_container_addressing（非推断）"
+  },
+  "block_selection": {
+   "state": "unresolved__two_routes_disagree",
+   "statement": "**两条路结论不一致，本清单不硬判\"哪一组才是引擎生产用\"**：本文件把 model_path 路径解析所得的主模型变体作为**绑定**（因为它是有直证的那条路），并把模板先例所指的预览变体**完整保留在磁盘上并逐条登记**（observed_but_unbound）。裁决权交给 lead。",
+   "route_1_path_resolution": {
+    "role": "BOUND",
+    "bind": "001346.c159",
+    "mesh": "001347.mesh",
+    "mat": "001348.c159",
+    "cube": "common\\env_map\\qiangpi.cube",
+    "proof": "murmur3(model_path) → weapon.gpk row 1346（sha16 0652a6767c66a0a1）⇒ 该皮肤声明的 .gim 就是这一条；同 stem 的 .mesh → row 1347，工具与项目骨骼登记表都标 variant=\"(main)\"",
+    "reproduces_shipped_truths": {
+     "1110177": "003994/003995/003996 ✔（= skin_2003_029.gim，主模型变体）",
+     "1110145": "000652/000653/000654 ✔（= skin_1001_014.gim，主模型变体）",
+     "1110024": "✘ 解析得 001372/001373/001374（主模型变体），而成品清单写的是 001384/001385/001386（预览变体）"
+    },
+    "corroboration": "项目自己的骨骼登记表 `04_站点\\web/data/media/weapon_skin_skeleton.json`（由 _target_1110171/SKEL2_all_37.json 生成）把每个皮肤 board model_path 的 mesh 一律标为 variant=\"(main)\"：1110024 → row 1373、1110177 → row 3995、1110145 → row 653。"
+   },
+   "route_2_template_precedent": {
+    "role": "observed_but_unbound",
+    "bind": "001358.c159",
+    "mesh": "001359.mesh",
+    "mat": "001360.c159",
+    "cube": "common\\env_map\\jiayuan02a.cube",
+    "proof": "`skin_1006_003_preview.gim` → weapon.gpk row 1358；同 stem `_preview.mesh` → row 1359（两个变体的 mesh 字节完全相同 sha16=eef08b78faf2d43a）",
+    "basis": "03_执行\\30_分析/_target_1110025/LEAD_pick_evidence.md（Lead 2026-09-20）§4 裁决 cand2：同武器族兄弟皮肤 1110024 的 wiki 成品用的是预览变体。该裁决文件 §7 自己写明「两组 material c159 在引擎语义上谁是生产用仍未定证」——本清单用 model_path 路径解析补上了这条未证项。"
+   },
+   "reproduced_truth_table": {
+    "rule": "「存在预览变体 ⇒ 取预览；否则取主模型」",
+    "1110024": "有预览变体 ⇒ 001384 ✔（与成品一致）",
+    "1110177": "无预览变体（skin_2003_029_preview.gim → row 4006 存在但成品没取它）⇒ 该规则**取 4006**，而成品是 003994 ✘",
+    "conclusion": "**没有任何单一结构规则能同时复现两条成品真值**：两条真值本身就是「主模型」与「预览」两种口味。故本清单按「哪条路有直证就用哪条」取主模型变体，并把另一口味登记留痕。"
+   },
+   "visual_delta": "两条路只差**材质文档与 IBL cube**（qiangpi vs jiayuan02a）；mesh 两侧字节完全相同 ⇒ 几何/GLB 零差异。因此换口味 = 改 source 三行 + t_custom_ibl 一行，磁盘上两套资产都已就位。",
+   "switch_recipe": "改用预览口味：source.bind_c159→001358.c159、material_c159→001360.c159、mesh→001359.mesh；primitives[*].textures.t_custom_ibl.local_file→src_cube/jiayuan02a.dds、faces_glob→src_cube/faces/jiayuan02a_f{i}_m0.png、sha256→3e88584a9a3febda1391e66a5e44474408f3f2dfbc620b6f6f96caba24437f03、face_sha16→见 observed_but_unbound.preview_cube.face_sha16；并把 state 改回 candidate。"
+  }
+ },
+ "glb": {
+  "path": "model.glb",
+  "sha256": "a8273c5f805387a684926325b63766ee4aa2119cd3a49d44722c458eef321a29"
+ },
+ "geometry_glb_sha256": "a8273c5f805387a684926325b63766ee4aa2119cd3a49d44722c458eef321a29",
+ "parser_sha256": null,
+ "required_by_program_family": {
+  "pbr_weapon (weapon 分支)": {
+   "required_slots": [
+    "Tex0",
+    "ParamMap",
+    "NormalMap"
+   ],
+   "required_if_present": [
+    "t_surfacemap",
+    "t_custom_ibl"
+   ]
+  }
+ },
+ "skeleton": {
+  "state": "no_weapon_skeleton__gim_binding_only",
+  "evidence": [
+   "绑定 gim（weapon.gpk#1346）含 MatrixToBone + Socket_0..7，**无 CutBones**",
+   "同 stem .mesh（weapon.gpk#1347）u16@0x08 bone_flag=0，全文 \"biped\" 串计数=0",
+   "locate_skeleton.py 判定 reason=no_weapon_skeleton__gim_binding_only",
+   "geometry 导出 mode=copy_already_standard（本就无骨骼块，未改任何字节）"
+  ],
+  "tool_output": "03_执行\\30_分析/_target_1110025/skel_probe/skin_1006_003_skeleton.json",
+  "unresolved": "逐骨 92B 块字段语义 / MatrixToBone 浮点块归属（本皮肤无骨架，不适用）"
+ },
+ "slot_binding_basis": {
+  "rule_R": "DDS 区块 = 「紧跟本皮肤模型 run 之后的连续 DDS 段」= weapon.gpk#1367-1371（5 个 1024² BC7，均 1398276 B）",
+  "block_structure": "单组 5 位，组内顺序 [b_m, s_m, a, n, m]（与 1110145 的 #667-671、1110177 的 #4009-4013 逐位同构）",
+  "block_attribution_proof": "① 1110024 成品清单自带 block_entry weapon.gpk#1393-1400，实测其 src_tex 的 8 张 PNG 与 #1393-1400 解码后的 RGBA 逐像素 sha 完全一致（8/8）；② 同法对 1110145 得 #667-675（9/9）、对 1110177 得 #4009-4013（5/5）⇒ 「DDS 区块紧跟本皮肤模型 run」有 3 个独立成品正控。",
+  "slot_naming_proof": "组内位置↔类名由 3 个正控的 PNG↔DDS 逐像素哈希直接确定：1110024 [b_m,a,n,m]×2 组；1110145/1110177 [b_m,s_m,a,n,m]。本例与后两者同位；内容签名双向一致（#1367 低饱和/高圆盘度⇒b_m；#1368 高饱和/disk≈0⇒s_m；#1369 B≡1 且 alpha<1⇒a；#1370 disk≈1⇒n；#1371 R≈0⇒m）",
+  "weapon_slot_mapping": "逐槽绑定沿用项目 6 款成品的实测约定：Tex0 = t_basecolor = <fam>_b_m.png；ParamMap = <fam>_m.png；NormalMap = <fam>_n.png；t_surfacemap = <fam>_s_m.png；t_custom_ibl = 该材质声明的 *.cube。（1110165 是 ParamMap←_a 的已知例外，与本皮肤无关）",
+  "l1_block": null,
+  "l1_note": "本皮肤区块为**单组 5 位**，无 512² LOD 组（区别于 1110024 的 2 组×4）",
+  "unresolved": "① weapon.gpk 匿名无明文名字表 ⇒ 槽位绑定等级为 ordered-1to1/content-signature candidate-high，**非显式 slot→path 直证**；② 025_a.png 在 weapon 口径 6 槽下无绑定消费者（仅 rough_repack 的 alpha 源）⇒ 记入 observed_but_unbound；③ prim1/2/4 的真实声明族为 crystal/subsurface，本清单按模板口径写 weapon；④ 主块两组口味（主模型 vs 预览）结论不一致 ⇒ 见 source.block_selection.state"
+ },
+ "observed_but_unbound": {
+  "preview_block": {
+   "bind": "001358.c159",
+   "mesh": "001359.mesh",
+   "mat": "001360.c159",
+   "bind_sha256": "b9a45fae40d309490a367a051a1a9b92c22b768843e7dd1c30a5e993e3b4c026",
+   "mesh_sha256": "eef08b78faf2d43aebf4303a0f5d02f7459f7c190fefa407016261dbf237cecf",
+   "mat_sha256": "01534b15301552d792d1489a27d91197cd4d7220cf9283b0dfe935f466d5137a",
+   "cube": "common\\env_map\\jiayuan02a.cube",
+   "gim_row_by_path_resolution": 1358,
+   "reason": "duplicate_render_variant_same_mesh_bytes —— 与绑定组的 mesh 字节完全相同；此组是 `skin_1006_003_preview.gim` 的绑定，也是 LEAD_pick_evidence.md 原先裁决采用的那一组",
+   "preview_cube": {
+    "local_file": "src_cube/jiayuan02a.dds",
+    "sha256": "3e88584a9a3febda1391e66a5e44474408f3f2dfbc620b6f6f96caba24437f03",
+    "faces_glob": "src_cube/faces/jiayuan02a_f{i}_m0.png",
+    "face_sha16": [
+     "35ff539f0e81f77f",
+     "e2214a2a2f3266be",
+     "177244ae7117bd00",
+     "a65dae999892df60",
+     "70873a141e2463d1",
+     "6b4c419f8baeaf9b"
+    ],
+    "source_entry": {
+     "container": "E:\\mrzh\\res.gpk",
+     "row": 4413,
+     "comp": 339111,
+     "dec": 524408,
+     "flag": 12
+    }
+   }
+  },
+  "keys": [
+   "025_a.png",
+   "src_cube/jiayuan02a.dds",
+   "src_cube/faces/jiayuan02a_f{0..5}_m0.png"
+  ],
+  "reason": "025_a.png：weapon 口径 6 槽未引用它（仅 rough_repack 的 alpha 源）；jiayuan02a.dds：预览口味组的声明 cube，已提取并切面留痕但未绑定（换口味用 source.block_selection.switch_recipe）"
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "mtl_idx": 0,
+   "material": "skin_1006_003_0",
+   "glb_material": "s0",
+   "faces": 10821,
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_declared_by_material_c159": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级口径（与模板 1110024 同构）：material c159 声明 3 个 shader 族 [pbr_weapon, pbr_crystal, pbr_subsurface, pbr_weapon, pbr_crystal]，绑定 c159 的 SubMesh 记录（本例编码 `0a 02 <u32 MtlIdx> 0c 01 <name>`）给出 Sub0..4 → MtlIdx 0..4；**本清单不据该映射把 prim 改判 crystal/subsurface**（模板 1110024 的材质同样声明多族却全写 weapon；viewer 的族↔shader_kind 一致性门会把不一致 prim 直接 fail-closed）。真实声明族已如实写入 shader_declared_by_material_c159 ⇒ 待 lead 裁决是否启用晶体链。",
+   "GROUP_INDEX": 0,
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/025_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001371",
+     "sha256": "54006e04cb36817bdadd1f3643ad56242f07a1e6405fa4a8ef16cdf4c4f03a5d",
+     "rgba_sha16": "3e94d9623b2b6f34",
+     "family_feature_mean_rgb": [
+      0.027,
+      0.187,
+      0.0
+     ],
+     "family_feature_cstd": [
+      0.092,
+      0.385,
+      0.0
+     ],
+     "alpha_mean": 0.073,
+     "file_bytes": 145244,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/025_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001370",
+     "sha256": "d5dd2e2ce7f56a56c987f074ce75a36d883ed8d88f84eff78f5ef7dff350c08d",
+     "rgba_sha16": "408e321bc1c9f3d1",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.499,
+      0.976
+     ],
+     "family_feature_cstd": [
+      0.094,
+      0.103,
+      0.068
+     ],
+     "alpha_mean": 1.0,
+     "file_bytes": 804482,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "logical_path": null,
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/025_s_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001368",
+     "sha256": "4d57e5b00e73d684179db7e9054766f0866643f1f439437a5d37e489655ca67f",
+     "rgba_sha16": "ec836150414f8616",
+     "family_feature_mean_rgb": [
+      0.191,
+      0.592,
+      0.564
+     ],
+     "family_feature_cstd": [
+      0.388,
+      0.367,
+      0.344
+     ],
+     "alpha_mean": 0.999,
+     "file_bytes": 1001481,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": null,
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "faces_glob": "src_cube/faces/qiangpi_f{i}_m0.png",
+     "faces": 6,
+     "source_entry": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 4501,
+      "comp": 348117,
+      "dec": 524408,
+      "flag": 12,
+      "by": "declared_path_name_hash(murmur3 x86 32, seed 0x66666666/0x77777777, latin1 反斜杠原样)"
+     },
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "face_sha16": [
+      "15beb9663c062eba",
+      "3355f34eeea9035d",
+      "c8bf2d86fb46c1ec",
+      "3b8b49746c36cee1",
+      "b9e1c9b31b2ba422",
+      "275d383cdcd46fc6"
+     ],
+     "binding_basis": "DECLARED_BY_MATERIAL_C159",
+     "confidence": "high",
+     "evidence_level": "declared_path_resolved_to_container_entry",
+     "why_not_direct": null
+    }
+   },
+   "missing_required": [],
+   "missing": [],
+   "declared_slot_groups": {
+    "basis": "material c159 的资源路径流按 Material_0..4 顺序切段；段长 [5,6,3,5,7]（合计 26 = 实抽路径数），与 shader 列表一一对应",
+    "evidence_level": "structure_heuristic_segmentation",
+    "this_prim": [
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001a.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001m.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001s_m.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001n.tga",
+     "common\\env_map\\qiangpi.cube"
+    ]
+   }
+  },
+  {
+   "prim": 1,
+   "mtl_idx": 1,
+   "material": "skin_1006_003_1",
+   "glb_material": "s0",
+   "faces": 772,
+   "shader": null,
+   "shader_declared_by_material_c159": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级口径（与模板 1110024 同构）：material c159 声明 3 个 shader 族 [pbr_weapon, pbr_crystal, pbr_subsurface, pbr_weapon, pbr_crystal]，绑定 c159 的 SubMesh 记录（本例编码 `0a 02 <u32 MtlIdx> 0c 01 <name>`）给出 Sub0..4 → MtlIdx 0..4；**本清单不据该映射把 prim 改判 crystal/subsurface**（模板 1110024 的材质同样声明多族却全写 weapon；viewer 的族↔shader_kind 一致性门会把不一致 prim 直接 fail-closed）。真实声明族已如实写入 shader_declared_by_material_c159 ⇒ 待 lead 裁决是否启用晶体链。",
+   "GROUP_INDEX": 0,
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/025_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001371",
+     "sha256": "54006e04cb36817bdadd1f3643ad56242f07a1e6405fa4a8ef16cdf4c4f03a5d",
+     "rgba_sha16": "3e94d9623b2b6f34",
+     "family_feature_mean_rgb": [
+      0.027,
+      0.187,
+      0.0
+     ],
+     "family_feature_cstd": [
+      0.092,
+      0.385,
+      0.0
+     ],
+     "alpha_mean": 0.073,
+     "file_bytes": 145244,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/025_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001370",
+     "sha256": "d5dd2e2ce7f56a56c987f074ce75a36d883ed8d88f84eff78f5ef7dff350c08d",
+     "rgba_sha16": "408e321bc1c9f3d1",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.499,
+      0.976
+     ],
+     "family_feature_cstd": [
+      0.094,
+      0.103,
+      0.068
+     ],
+     "alpha_mean": 1.0,
+     "file_bytes": 804482,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "logical_path": null,
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/025_s_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001368",
+     "sha256": "4d57e5b00e73d684179db7e9054766f0866643f1f439437a5d37e489655ca67f",
+     "rgba_sha16": "ec836150414f8616",
+     "family_feature_mean_rgb": [
+      0.191,
+      0.592,
+      0.564
+     ],
+     "family_feature_cstd": [
+      0.388,
+      0.367,
+      0.344
+     ],
+     "alpha_mean": 0.999,
+     "file_bytes": 1001481,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": null,
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "faces_glob": "src_cube/faces/qiangpi_f{i}_m0.png",
+     "faces": 6,
+     "source_entry": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 4501,
+      "comp": 348117,
+      "dec": 524408,
+      "flag": 12,
+      "by": "declared_path_name_hash(murmur3 x86 32, seed 0x66666666/0x77777777, latin1 反斜杠原样)"
+     },
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "face_sha16": [
+      "15beb9663c062eba",
+      "3355f34eeea9035d",
+      "c8bf2d86fb46c1ec",
+      "3b8b49746c36cee1",
+      "b9e1c9b31b2ba422",
+      "275d383cdcd46fc6"
+     ],
+     "binding_basis": "DECLARED_BY_MATERIAL_C159",
+     "confidence": "high",
+     "evidence_level": "declared_path_resolved_to_container_entry",
+     "why_not_direct": null
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "DetailMap",
+     "logical_path": "common\\textures\\crystal_bump_n03.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    },
+    {
+     "slot": "t_caustic_tex",
+     "logical_path": "common\\textures\\caustic3.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    },
+    {
+     "slot": "t_refraction_tex",
+     "logical_path": "common\\textures\\refraction_envmap_1.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    }
+   ],
+   "declared_slot_groups": {
+    "basis": "material c159 的资源路径流按 Material_0..4 顺序切段；段长 [5,6,3,5,7]（合计 26 = 实抽路径数），与 shader 列表一一对应",
+    "evidence_level": "structure_heuristic_segmentation",
+    "this_prim": [
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001b.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001a.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001n.tga",
+     "common\\textures\\crystal_bump_n03.tga",
+     "common\\textures\\caustic3.tga",
+     "common\\textures\\refraction_envmap_1.tga"
+    ]
+   }
+  },
+  {
+   "prim": 2,
+   "mtl_idx": 2,
+   "material": "skin_1006_003_2",
+   "glb_material": "s0",
+   "faces": 2616,
+   "shader": null,
+   "shader_declared_by_material_c159": "shader\\pbr_subsurface.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级口径（与模板 1110024 同构）：material c159 声明 3 个 shader 族 [pbr_weapon, pbr_crystal, pbr_subsurface, pbr_weapon, pbr_crystal]，绑定 c159 的 SubMesh 记录（本例编码 `0a 02 <u32 MtlIdx> 0c 01 <name>`）给出 Sub0..4 → MtlIdx 0..4；**本清单不据该映射把 prim 改判 crystal/subsurface**（模板 1110024 的材质同样声明多族却全写 weapon；viewer 的族↔shader_kind 一致性门会把不一致 prim 直接 fail-closed）。真实声明族已如实写入 shader_declared_by_material_c159 ⇒ 待 lead 裁决是否启用晶体链。",
+   "GROUP_INDEX": 0,
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/025_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001371",
+     "sha256": "54006e04cb36817bdadd1f3643ad56242f07a1e6405fa4a8ef16cdf4c4f03a5d",
+     "rgba_sha16": "3e94d9623b2b6f34",
+     "family_feature_mean_rgb": [
+      0.027,
+      0.187,
+      0.0
+     ],
+     "family_feature_cstd": [
+      0.092,
+      0.385,
+      0.0
+     ],
+     "alpha_mean": 0.073,
+     "file_bytes": 145244,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/025_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001370",
+     "sha256": "d5dd2e2ce7f56a56c987f074ce75a36d883ed8d88f84eff78f5ef7dff350c08d",
+     "rgba_sha16": "408e321bc1c9f3d1",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.499,
+      0.976
+     ],
+     "family_feature_cstd": [
+      0.094,
+      0.103,
+      0.068
+     ],
+     "alpha_mean": 1.0,
+     "file_bytes": 804482,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "logical_path": null,
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/025_s_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001368",
+     "sha256": "4d57e5b00e73d684179db7e9054766f0866643f1f439437a5d37e489655ca67f",
+     "rgba_sha16": "ec836150414f8616",
+     "family_feature_mean_rgb": [
+      0.191,
+      0.592,
+      0.564
+     ],
+     "family_feature_cstd": [
+      0.388,
+      0.367,
+      0.344
+     ],
+     "alpha_mean": 0.999,
+     "file_bytes": 1001481,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": null,
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "faces_glob": "src_cube/faces/qiangpi_f{i}_m0.png",
+     "faces": 6,
+     "source_entry": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 4501,
+      "comp": 348117,
+      "dec": 524408,
+      "flag": 12,
+      "by": "declared_path_name_hash(murmur3 x86 32, seed 0x66666666/0x77777777, latin1 反斜杠原样)"
+     },
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "face_sha16": [
+      "15beb9663c062eba",
+      "3355f34eeea9035d",
+      "c8bf2d86fb46c1ec",
+      "3b8b49746c36cee1",
+      "b9e1c9b31b2ba422",
+      "275d383cdcd46fc6"
+     ],
+     "binding_basis": "DECLARED_BY_MATERIAL_C159",
+     "confidence": "high",
+     "evidence_level": "declared_path_resolved_to_container_entry",
+     "why_not_direct": null
+    }
+   },
+   "missing_required": [],
+   "missing": [],
+   "declared_slot_groups": {
+    "basis": "material c159 的资源路径流按 Material_0..4 顺序切段；段长 [5,6,3,5,7]（合计 26 = 实抽路径数），与 shader 列表一一对应",
+    "evidence_level": "structure_heuristic_segmentation",
+    "this_prim": [
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001a.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001m.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001n.tga"
+    ]
+   }
+  },
+  {
+   "prim": 3,
+   "mtl_idx": 3,
+   "material": "skin_1006_003_3",
+   "glb_material": "s0",
+   "faces": 227,
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_declared_by_material_c159": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级口径（与模板 1110024 同构）：material c159 声明 3 个 shader 族 [pbr_weapon, pbr_crystal, pbr_subsurface, pbr_weapon, pbr_crystal]，绑定 c159 的 SubMesh 记录（本例编码 `0a 02 <u32 MtlIdx> 0c 01 <name>`）给出 Sub0..4 → MtlIdx 0..4；**本清单不据该映射把 prim 改判 crystal/subsurface**（模板 1110024 的材质同样声明多族却全写 weapon；viewer 的族↔shader_kind 一致性门会把不一致 prim 直接 fail-closed）。真实声明族已如实写入 shader_declared_by_material_c159 ⇒ 待 lead 裁决是否启用晶体链。",
+   "GROUP_INDEX": 0,
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/025_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001371",
+     "sha256": "54006e04cb36817bdadd1f3643ad56242f07a1e6405fa4a8ef16cdf4c4f03a5d",
+     "rgba_sha16": "3e94d9623b2b6f34",
+     "family_feature_mean_rgb": [
+      0.027,
+      0.187,
+      0.0
+     ],
+     "family_feature_cstd": [
+      0.092,
+      0.385,
+      0.0
+     ],
+     "alpha_mean": 0.073,
+     "file_bytes": 145244,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/025_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001370",
+     "sha256": "d5dd2e2ce7f56a56c987f074ce75a36d883ed8d88f84eff78f5ef7dff350c08d",
+     "rgba_sha16": "408e321bc1c9f3d1",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.499,
+      0.976
+     ],
+     "family_feature_cstd": [
+      0.094,
+      0.103,
+      0.068
+     ],
+     "alpha_mean": 1.0,
+     "file_bytes": 804482,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "logical_path": null,
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/025_s_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001368",
+     "sha256": "4d57e5b00e73d684179db7e9054766f0866643f1f439437a5d37e489655ca67f",
+     "rgba_sha16": "ec836150414f8616",
+     "family_feature_mean_rgb": [
+      0.191,
+      0.592,
+      0.564
+     ],
+     "family_feature_cstd": [
+      0.388,
+      0.367,
+      0.344
+     ],
+     "alpha_mean": 0.999,
+     "file_bytes": 1001481,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": null,
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "faces_glob": "src_cube/faces/qiangpi_f{i}_m0.png",
+     "faces": 6,
+     "source_entry": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 4501,
+      "comp": 348117,
+      "dec": 524408,
+      "flag": 12,
+      "by": "declared_path_name_hash(murmur3 x86 32, seed 0x66666666/0x77777777, latin1 反斜杠原样)"
+     },
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "face_sha16": [
+      "15beb9663c062eba",
+      "3355f34eeea9035d",
+      "c8bf2d86fb46c1ec",
+      "3b8b49746c36cee1",
+      "b9e1c9b31b2ba422",
+      "275d383cdcd46fc6"
+     ],
+     "binding_basis": "DECLARED_BY_MATERIAL_C159",
+     "confidence": "high",
+     "evidence_level": "declared_path_resolved_to_container_entry",
+     "why_not_direct": null
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "DetailMap",
+     "logical_path": "common\\textures\\detail_normal_snake_02_m.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    }
+   ],
+   "declared_slot_groups": {
+    "basis": "material c159 的资源路径流按 Material_0..4 顺序切段；段长 [5,6,3,5,7]（合计 26 = 实抽路径数），与 shader 列表一一对应",
+    "evidence_level": "structure_heuristic_segmentation",
+    "this_prim": [
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001a.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001m.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001s_m.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001n.tga",
+     "common\\textures\\detail_normal_snake_02_m.tga"
+    ]
+   }
+  },
+  {
+   "prim": 4,
+   "mtl_idx": 4,
+   "material": "skin_1006_003_4",
+   "glb_material": "s0",
+   "faces": 4,
+   "shader": null,
+   "shader_declared_by_material_c159": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级口径（与模板 1110024 同构）：material c159 声明 3 个 shader 族 [pbr_weapon, pbr_crystal, pbr_subsurface, pbr_weapon, pbr_crystal]，绑定 c159 的 SubMesh 记录（本例编码 `0a 02 <u32 MtlIdx> 0c 01 <name>`）给出 Sub0..4 → MtlIdx 0..4；**本清单不据该映射把 prim 改判 crystal/subsurface**（模板 1110024 的材质同样声明多族却全写 weapon；viewer 的族↔shader_kind 一致性门会把不一致 prim 直接 fail-closed）。真实声明族已如实写入 shader_declared_by_material_c159 ⇒ 待 lead 裁决是否启用晶体链。",
+   "GROUP_INDEX": 0,
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/025_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001367",
+     "sha256": "cdc31982ee95358322b4e762934288431eba9bcdb25f75baecb865cf48e11420",
+     "rgba_sha16": "c6ef0dce4a4aa72f",
+     "family_feature_mean_rgb": [
+      0.523,
+      0.523,
+      0.514
+     ],
+     "family_feature_cstd": [
+      0.147,
+      0.142,
+      0.14
+     ],
+     "alpha_mean": 0.943,
+     "file_bytes": 1214182,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/025_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001371",
+     "sha256": "54006e04cb36817bdadd1f3643ad56242f07a1e6405fa4a8ef16cdf4c4f03a5d",
+     "rgba_sha16": "3e94d9623b2b6f34",
+     "family_feature_mean_rgb": [
+      0.027,
+      0.187,
+      0.0
+     ],
+     "family_feature_cstd": [
+      0.092,
+      0.385,
+      0.0
+     ],
+     "alpha_mean": 0.073,
+     "file_bytes": 145244,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/025_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001370",
+     "sha256": "d5dd2e2ce7f56a56c987f074ce75a36d883ed8d88f84eff78f5ef7dff350c08d",
+     "rgba_sha16": "408e321bc1c9f3d1",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.499,
+      0.976
+     ],
+     "family_feature_cstd": [
+      0.094,
+      0.103,
+      0.068
+     ],
+     "alpha_mean": 1.0,
+     "file_bytes": 804482,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": "weapon.gpk 匿名无名字表 ⇒ 依「区块位置 + 内容签名 + 跨皮肤同构」定槽；非显式 slot→path 直证",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "logical_path": null,
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/025_s_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": null,
+     "block_entry": "weapon.gpk#001368",
+     "sha256": "4d57e5b00e73d684179db7e9054766f0866643f1f439437a5d37e489655ca67f",
+     "rgba_sha16": "ec836150414f8616",
+     "family_feature_mean_rgb": [
+      0.191,
+      0.592,
+      0.564
+     ],
+     "family_feature_cstd": [
+      0.388,
+      0.367,
+      0.344
+     ],
+     "alpha_mean": 0.999,
+     "file_bytes": 1001481,
+     "width_height": "1024x1024",
+     "classification": "content-signature",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "confidence": "high",
+     "why_not_direct": null,
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "logical_path": "common\\env_map\\qiangpi.cube",
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "faces_glob": "src_cube/faces/qiangpi_f{i}_m0.png",
+     "faces": 6,
+     "source_entry": {
+      "container": "E:\\mrzh\\res.gpk",
+      "row": 4501,
+      "comp": 348117,
+      "dec": 524408,
+      "flag": 12,
+      "by": "declared_path_name_hash(murmur3 x86 32, seed 0x66666666/0x77777777, latin1 反斜杠原样)"
+     },
+     "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+     "face_sha16": [
+      "15beb9663c062eba",
+      "3355f34eeea9035d",
+      "c8bf2d86fb46c1ec",
+      "3b8b49746c36cee1",
+      "b9e1c9b31b2ba422",
+      "275d383cdcd46fc6"
+     ],
+     "binding_basis": "DECLARED_BY_MATERIAL_C159",
+     "confidence": "high",
+     "evidence_level": "declared_path_resolved_to_container_entry",
+     "why_not_direct": null
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "DetailMap",
+     "logical_path": "common\\textures\\crystal_bump_n03.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    },
+    {
+     "slot": "t_caustic_tex",
+     "logical_path": "common\\textures\\crystal_caustic_01.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    },
+    {
+     "slot": "t_reflection_tex",
+     "logical_path": "common\\textures\\gem_fire.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    },
+    {
+     "slot": "t_refraction_tex",
+     "logical_path": "common\\textures\\refraction_envmap_1.tga",
+     "local_file": null,
+     "state": "not_shipped__declared_by_material_c159_but_not_extracted_in_this_build_scope",
+     "reason": "该资源位于 common 目录或不在本皮肤 DDS 区块内，本次构建未提取；**未用任何其它图顶替**。"
+    }
+   ],
+   "declared_slot_groups": {
+    "basis": "material c159 的资源路径流按 Material_0..4 顺序切段；段长 [5,6,3,5,7]（合计 26 = 实抽路径数），与 shader 列表一一对应",
+    "evidence_level": "structure_heuristic_segmentation",
+    "this_prim": [
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001b.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001a.tga",
+     "weapon\\skin\\skin_1006_003\\textures\\skin_1006_003001n.tga",
+     "common\\textures\\crystal_bump_n03.tga",
+     "common\\textures\\crystal_caustic_01.tga",
+     "common\\textures\\gem_fire.tga",
+     "common\\textures\\refraction_envmap_1.tga"
+    ]
+   }
+  }
+ ],
+ "missing": [
+  {
+   "slot": "DetailMap/t_caustic_tex/t_reflection_tex/t_refraction_tex",
+   "state": "not_shipped",
+   "reason": "绑定 material c159（001348.c159）在 common 目录声明、但本次构建作用域未提取的资源共 6 个不同文件：crystal_bump_n03.tga / caustic3.tga / refraction_envmap_1.tga / detail_normal_snake_02_m.tga / crystal_caustic_01.tga / gem_fire.tga（另有 car_flake.tga 只出现在**未绑定的预览口味** material 001360.c159 里）。**未用任何替代图顶替**。逐 prim 明细见 primitives[*].missing"
+  },
+  {
+   "slot": "poster.webp",
+   "state": "not_generated",
+   "reason": "海报需浏览器渲染；本任务禁开浏览器 ⇒ viewer.json 的 poster 置 null，不引用不存在的文件"
+  },
+  {
+   "slot": "skin_1006_003.mesh 骨骼",
+   "state": "not_shipped",
+   "reason": "源侧无骨架（no_weapon_skeleton__gim_binding_only，四重证据见 skeleton 字段）；**未编造骨骼**，model.glb 内无 skeleton/skin 节点"
+  }
+ ],
+ "evidence_levels": {
+  "reviewed_at": "2026-09-20",
+  "slot_binding_method": "ordered-1to1（c159 声明序 ↔ 区块内条目顺序）+ content-signature（解码后内容类）",
+  "slot_binding_evidence_level": "candidate-high",
+  "is_explicit_slot_path_proof": false,
+  "cube_binding": "declared_path_resolved（c159 声明路径 → murmur3 寻址 → res.gpk 命中 → 解码 sha 与登记一致）",
+  "block_selection_evidence_level": "PATH_RESOLUTION_DIRECT for route_1；TEMPLATE_PRECEDENT for route_2；**两者结论不一致 ⇒ 整体标 unresolved**",
+  "mesh_identity": "两组候选的 .mesh 字节完全相同（sha16 eef08b78faf2d43a）⇒ mesh/GLB 选择零风险",
+  "production_rule": "candidate 级证据不得当作已证语义；未解决的取径冲突见 source.block_selection",
+  "unresolved_items": [
+   "主块口味（主模型 vs 预览）最终裁决",
+   "prim1/2/4 是否改用 crystal/subsurface 渲染链",
+   "common 目录声明贴图的提取",
+   "MtlIdx → 材质表宿主",
+   "rough_repack 的 DXBC 级直证"
+  ]
+ }
+}

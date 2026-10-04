@@ -1,0 +1,7 @@
+{
+ "claim": "REWARD_POOL_DATA raw row 可解析（v1.1）",
+ "status": "verified",
+ "evidence_type": "decoder_facade",
+ "detail": "entry 21380 @ BA8A → 23,281 row keys，与 LOTTERY_POOL base 组件 23,281 完全一致",
+ "restriction": "不改变 runtime_final_status = unresolved_replacement_overlay；不重开 lottery runtime 逆向"
+}

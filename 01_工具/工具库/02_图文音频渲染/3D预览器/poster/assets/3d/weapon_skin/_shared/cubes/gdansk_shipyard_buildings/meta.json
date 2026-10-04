@@ -1,0 +1,96 @@
+{
+ "name": "gdansk_shipyard_buildings",
+ "logical": "common\\env_map\\gdansk_shipyard_buildings.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12384,
+ "off": 76597076,
+ "comp": 346373,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12384,
+   "base": 1940537680,
+   "off": 76597076,
+   "comp": 346373,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:cube_literal",
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "3c838953a5db91c1f941fba9332b0b2a36def310ec6d739bb32360770c722fbd",
+ "sha16": "3c838953a5db91c1",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f0_m0.png",
+   "bytes": 38164,
+   "rgba_sha16": "efdce8addcf703e0",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f1_m0.png",
+   "bytes": 37325,
+   "rgba_sha16": "6aca21bcb77b38ee",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f2_m0.png",
+   "bytes": 32088,
+   "rgba_sha16": "f2a4b11f1866c5a0",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f3_m0.png",
+   "bytes": 31439,
+   "rgba_sha16": "786c2c890d3e4061",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f4_m0.png",
+   "bytes": 36121,
+   "rgba_sha16": "a19855fa874acd0b",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\gdansk_shipyard_buildings\\faces\\gdansk_shipyard_buildings_f5_m0.png",
+   "bytes": 37033,
+   "rgba_sha16": "4d9554630f750f23",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

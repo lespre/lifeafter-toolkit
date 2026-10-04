@@ -1,0 +1,13 @@
+{
+ "domain": "item",
+ "canonical": "artifacts/active/item/RULES.json",
+ "hard_rules": [
+  "item_namespace 只由 runtime dispatch / consumer 链决定",
+  "raw_presence ≠ business namespace",
+  "整数碰撞 / 同名 / 唯一性 不构成 identity 证据",
+  "unresolved 行不得写入 active artifact",
+  "ITEM_MASTER 不是 common_item 表：它是统一业务物品索引"
+ ],
+ "evidence": ["evidence/item/dispatch.json", "evidence/item/consumers.json"],
+ "residual_ref": "residuals/item/unresolved_namespace_ids.json"
+}

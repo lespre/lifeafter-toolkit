@@ -1,0 +1,38 @@
+{
+ "chain_id": "lottery.four_chains",
+ "domain": "lottery",
+ "title": "奖池（四条子链：A 池配置 / B 静态解释 / C item namespace / D runtime final）",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "decoded_row",
+  "structural_key",
+  "business_identity",
+  "resolved_entity",
+  "runtime_final"
+ ],
+ "evidence_refs": [
+  "evidence/lottery/reward_pool_rowkeys.json",
+  "evidence/lottery/reward_branch.json",
+  "evidence/lottery/replacement_overlay.json",
+  "artifacts/active/lottery/LOTTERY_REWARD_TARGETS.jsonl"
+ ],
+ "residuals": [
+  "1,665 unresolved targets（static 层无 namespace 证据）",
+  "runtime_final = unresolved_replacement_overlay（本轮不追）",
+  "37 pool_key 非 item（reward pool 自身键）"
+ ],
+ "rejected_routes": [
+  {
+   "route": "整数恰好在 ITEM_MASTER 即视为 reward→item join",
+   "reason": "必须先通过 target_type=item 门槛",
+   "evidence_ref": "evidence/lottery/reward_branch.json"
+  }
+ ],
+ "instances_file": "locator_chains/lottery/instances.jsonl"
+}

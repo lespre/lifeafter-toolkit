@@ -1,0 +1,1154 @@
+# -*- coding: utf-8 -*-
+"""生成站点主页 index.html —— LifeAfter 拆包项目 · 左侧信息块 + 右侧三线两带。
+
+设计约束：
+  · 所有指标在生成时从真实来源读取，页面不写死；
+  · 只读；产物 = 04_站点/web/index.html（静态、离线、不引外部 CDN）；
+  · 任何一项采集失败都如实标注「读取失败」，不编造数值；
+  · 布局：桌面视口整页一屏装完（不出现纵向滚动条）——
+      顶栏（站名 + 门户入口，横贯整宽）
+      左信息块（大块标题 + 实时指标 + 各区体积 + 项目健康状态，固定宽 238~312px）
+      右主区（① ② ③ 三线各占一行 + D / Q 两带各占一行）
+      段块宽度有上限（clamp 到 232px），超宽屏也不拉伸抽满整宽；
+  · 段的详情走弹层（不撑开主布局）。
+
+用法：  python gen_home.py            # 采集 + 生成
+        python gen_home.py --json     # 只打印采集结果
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+PROJECT = Path(r"E:\la拆包项目")
+WEB = PROJECT / "04_站点" / "web"
+TOOLS = PROJECT / "01_工具"
+OUT = WEB / "index.html"
+# run_all.py index status 的同步产物（sidecar）；命令 stdout 无 JSON 时回退读它
+STATUS_SIDECAR = PROJECT / "03_执行" / "10_索引" / "indexes" / "lifeafter_files_status.json"
+PY312 = Path(r"C:\Users\<user>\py312_env\Scripts\python.exe")
+PY310_FALLBACK = Path(r"C:\Users\<user>\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe")
+
+FAILS: list[str] = []
+INDEX_FROM = ""  # 记录索引状态实际来源，供技术详情如实标注
+
+
+# ---------------------------------------------------------------- 采集
+def run(cmd, cwd=None, timeout=600):
+    exe = str(PY312 if PY312.exists() else PY310_FALLBACK)
+    p = subprocess.run([exe] + cmd, cwd=str(cwd or TOOLS),
+                       capture_output=True, timeout=timeout)
+    out = p.stdout.decode("utf-8", "replace")
+    err = p.stderr.decode("utf-8", "replace")
+    return p.returncode, out, err
+
+
+def collect_index():
+    """索引状态：run_all.py index status。
+
+    该命令默认把 JSON 同步到 sidecar 文件、stdout 只打印一行「已同步」，
+    因此按 ① --no-sidecar ② 裸命令 stdout ③ sidecar 文件 的顺序取，
+    三条路都拿不到才算读取失败。
+    """
+    global INDEX_FROM
+    last = None
+    for cmd, tag in ((["run_all.py", "index", "status", "--no-sidecar"], "统一入口 index status"),
+                     (["run_all.py", "index", "status"], "统一入口 index status（sidecar 同步）")):
+        try:
+            rc, out, err = run(cmd)
+            m = re.search(r"\{.*\}", out, re.S)
+            if m:
+                d = json.loads(m.group(0))
+                INDEX_FROM = tag
+                return d
+            last = (err or out).strip()[:200]
+        except Exception as e:  # noqa: BLE001
+            last = str(e)[:200]
+    try:
+        d = json.loads(STATUS_SIDECAR.read_text(encoding="utf-8"))
+        INDEX_FROM = f"统一入口 index status 的同步产物 {STATUS_SIDECAR.name}"
+        return d
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"索引状态读取失败：命令输出「{last or '空'}」/ 同步产物 {e}")
+        INDEX_FROM = "读取失败"
+        return {}
+
+
+def collect_tool_count():
+    try:
+        base = TOOLS / "工具库"
+        return sum(1 for p in base.rglob("*.py") if "__pycache__" not in p.parts)
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"工具数统计失败：{e}")
+        return None
+
+
+def collect_entries():
+    """统一入口子命令数：解析 run_all.py --help"""
+    try:
+        rc, out, err = run(["run_all.py", "--help"])
+        seen, order = set(), []
+        for line in out.splitlines():
+            m = re.match(r"\s*python run_all\.py\s+([a-z][a-z0-9-]*)", line)
+            if m and m.group(1) not in seen:
+                seen.add(m.group(1))
+                order.append(m.group(1))
+        return order
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"统一入口列表读取失败：{e}")
+        return []
+
+
+def collect_backlog():
+    try:
+        md = (PROJECT / "00_治理" / "待修问题清单.md").read_text(encoding="utf-8")
+        return {"open": len(re.findall(r"\[ \]", md)), "done": len(re.findall(r"\[x\]", md))}
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"待修清单读取失败：{e}")
+        return {"open": None, "done": None}
+
+
+def collect_pages():
+    try:
+        files = sorted(p.name for p in WEB.glob("*.html")
+                       if not p.name.startswith("_") and not p.name.startswith(".")
+                       and not p.name.startswith("board.html."))
+        return files
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"页面清单读取失败：{e}")
+        return []
+
+
+def collect_skin_assets():
+    try:
+        base = WEB / "assets" / "3d" / "weapon_skin"
+        return sum(1 for p in base.iterdir() if p.is_dir())
+    except Exception as e:  # noqa: BLE001
+        FAILS.append(f"皮肤资产目录统计失败：{e}")
+        return None
+
+
+def count_files(path: Path, budget=60.0):
+    """递归文件数；超预算返回 None（不阻塞生成）。"""
+    t0 = time.time()
+    n = 0
+    stack = [path]
+    try:
+        while stack:
+            if time.time() - t0 > budget:
+                return None
+            cur = stack.pop()
+            with os.scandir(cur) as it:
+                for e in it:
+                    try:
+                        if e.is_dir(follow_symlinks=False):
+                            stack.append(e.path)
+                        elif e.is_file(follow_symlinks=False):
+                            n += 1
+                    except OSError:
+                        continue
+    except OSError as e:
+        FAILS.append(f"文件数统计失败 {path.name}：{e}")
+        return None
+    return n
+
+
+def dir_size(path: Path, budget=90.0):
+    """目录体积（字节）；超预算或不存在返回 None（不阻塞生成）。"""
+    t0 = time.time()
+    total = 0
+    stack = [path]
+    if not path.exists():
+        FAILS.append(f"体积统计失败 {path}：目录不存在")
+        return None
+    try:
+        while stack:
+            if time.time() - t0 > budget:
+                return None
+            cur = stack.pop()
+            with os.scandir(cur) as it:
+                for e in it:
+                    try:
+                        if e.is_dir(follow_symlinks=False):
+                            stack.append(e.path)
+                        elif e.is_file(follow_symlinks=False):
+                            total += e.stat(follow_symlinks=False).st_size
+                    except OSError:
+                        continue
+    except OSError as e:
+        FAILS.append(f"体积统计失败 {path.name}：{e}")
+        return None
+    return total
+
+
+def human(n):
+    if n is None:
+        return "读取失败"
+    if n >= 1 << 30:
+        return f"{n / (1 << 30):.1f} GB"
+    if n >= 1 << 20:
+        return f"{n / (1 << 20):.0f} MB"
+    return f"{n} B"
+
+
+def collect():
+    idx = collect_index()
+    rows = idx.get("rows")
+    quick = idx.get("quick_check")
+    stale = idx.get("stale")
+    built = idx.get("built_at")
+    inv = idx.get("current_inventory_file_count")
+    totals = idx.get("row_totals") or {}
+    data = {
+        "rows": rows,
+        "quick": quick,
+        "stale": stale,
+        "built_at": built,
+        "inventory_files": inv,
+        "row_gpk": totals.get("gpk"),
+        "row_fpk": totals.get("fpk"),
+        "row_npk": totals.get("npk"),
+        "failed_containers": idx.get("failed_containers"),
+        "db": idx.get("database"),
+        "schema_version": idx.get("schema_version"),
+        "fingerprint": idx.get("stored_inventory_fingerprint"),
+        "index_from": INDEX_FROM,
+        "tools": collect_tool_count(),
+        "entries": collect_entries(),
+        "backlog": collect_backlog(),
+        "pages": collect_pages(),
+        "skin_assets": collect_skin_assets(),
+        # 各区体积（全部现读）
+        "size_deliver": dir_size(PROJECT / "02_资料" / "交付"),
+        "size_source": dir_size(PROJECT / "02_资料" / "源包"),
+        "files_source": count_files(PROJECT / "02_资料" / "源包"),
+        "size_review": dir_size(PROJECT / "03_执行" / "96_审阅区"),
+        "size_clean": dir_size(PROJECT / "03_执行" / "95_待清理"),
+        "skin_root": str(WEB / "assets" / "3d" / "weapon_skin"),
+        "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "fails": FAILS,
+    }
+    return data
+
+
+# ---------------------------------------------------------------- 页面内容
+def status_chip(st):
+    return {"ok": ("✅", "健康", "ok"), "warn": ("⚠️", "半吊子", "warn"),
+            "miss": ("✗", "缺", "miss")}[st]
+
+
+def health_report(d):
+    """项目健康状态：索引校验 / 数据新鲜 / 失败容器 / 待修条数，取最差一项。"""
+    bl = d["backlog"]
+    checks = []
+    idx_ok = d["quick"] == "ok"
+    checks.append(("索引校验", "通过" if idx_ok else "未通过", "ok" if idx_ok else "miss"))
+    if d["stale"] is False:
+        checks.append(("数据新鲜", "无过期", "ok"))
+    elif d["stale"] is True:
+        checks.append(("数据新鲜", "存在过期项", "warn"))
+    else:
+        checks.append(("数据新鲜", "读取失败", "miss"))
+    fc = d["failed_containers"]
+    if fc is None:
+        checks.append(("失败容器", "读取失败", "miss"))
+    else:
+        checks.append(("失败容器", f"{fc} 个", "ok" if fc == 0 else "warn"))
+    op = bl["open"]
+    if op is None:
+        checks.append(("待修问题", "读取失败", "miss"))
+    else:
+        checks.append(("待修问题", f"{op} 条未闭环", "ok" if op == 0 else "warn"))
+    order = {"ok": 0, "warn": 1, "miss": 2}
+    worst = max((c[2] for c in checks), key=lambda k: order[k])
+    return worst, {"ok": "良好", "warn": "注意", "miss": "异常"}[worst], checks
+
+
+LANES = [
+    {
+        "mark": "①", "name": "解码定位复原线",
+        "sub": "从物理包到场内事实 —— 文件在哪、这一行是什么",
+        "nodes": [
+            {
+                "id": "①-0", "name": "索引地基", "st": "ok",
+                "line": "统一索引已建成，逐库校验通过，当前无过期",
+                "has": ["图形包与资源包全量登记，共 230 万余行",
+                        "容器指纹与磁盘库存比对，60 个容器逐一对账",
+                        "健康状态可一条命令查询，一眼看是否过期",
+                        "重建入口：统一入口的「索引重建」"],
+                "miss": ["索引附属的三份记录，生成脚本全项目搜不到（待修 A6）",
+                         "数据包段的登记为 0，且没有重建脚本",
+                         "库内版本信息与附属记录仍写着重构前的旧路径（待修 A7）",
+                         "登记字节数与真实快照仍存在口径缺口，待复核（待修 C2）"],
+            },
+            {
+                "id": "①-1", "name": "定位复原", "st": "warn",
+                "line": "路径到文件号再到行已经走通，但名字这一路是另一套写法",
+                "has": ["逻辑路径 → 文件号 → 数据行的查询链，只读可用",
+                        "名字查询表与编号定位表都已建立",
+                        "命中不唯一时全部候选一并返回，不猜"],
+                "miss": ["名字还原与路径编号编码是两套实现，各写各的、互不校验",
+                         "两条链没有统一的命中率口径，无法判断谁更可信"],
+            },
+            {
+                "id": "①-2", "name": "解析复原", "st": "warn",
+                "line": "表、纹理、音频载荷都能解到行级，但导出靠一次性脚本",
+                "has": ["结构表族已识别，可查单行字段",
+                        "纹理与音频载荷可定点取出并解码",
+                        "解析器带原生判据自检（尺寸与附加流状态）"],
+                "miss": ["缺「解析结果 → 表格文件」的通用导出器，每个新表都得现写脚本",
+                         "表解码链的工作副本生成器路径算错，整条链入口不成立（待修 A2）",
+                         "批量出 3D 的工具名不副实，只做探测、跑不通（待修 A3）"],
+            },
+        ],
+    },
+    {
+        "mark": "②", "name": "图文音频渲染线",
+        "sub": "把复原出来的数据变成能看、能听的东西",
+        "nodes": [
+            {
+                "id": "②-1", "name": "三维装配", "st": "ok",
+                "line": "装配帧 → 网格 → 模型文件全链跑通，产出已被页面消费",
+                "has": ["统一入口已内置「部件 → 模型文件」子命令",
+                        "多部件世界坐标拼接 + 自检报告",
+                        "重跑产物与历史产出逐字节等价（已核验）",
+                        "斩神专题页正在消费 20 个模型文件"],
+                "miss": ["缺批量打包与图集：一次只出一件，没有成批出件能力",
+                         "没有把「定位 → 解析 → 出件 → 落位」串成一条命令（待修 B1）"],
+            },
+            {
+                "id": "②-2", "name": "贴图复原", "st": "warn",
+                "line": "常用贴图与立方体贴图能出，时装与立绘定位不到",
+                "has": ["常规贴图、六面立方体贴图解码链可用",
+                        "海报类立绘导出脚本存在",
+                        "色彩空间逐槽声明的硬约定已定稿"],
+                "miss": ["时装本体贴图名零命中，UV 判据在时装上失效（待修 B3）",
+                         "已确认客户端内不存在「名字 ↔ 网格/贴图」映射表",
+                         "立绘与展示图无法按编号定位（待修 B5）"],
+            },
+            {
+                "id": "②-3", "name": "音频复原", "st": "miss",
+                "line": "全线最弱：脚本停在重构前的旧路径，且没有页面消费",
+                "has": ["音效包切分与身份聚合脚本曾跑通过",
+                        "音频试听页在分析区曾产出过"],
+                "miss": ["源包目录下的音频脚本是双死路径，当前跑不通（待修 A5）",
+                         "试听页与链路全景图的生成脚本找不到（待修 E2）",
+                         "站点端零页面消费音频，做出来也没有出口"],
+            },
+            {
+                "id": "②-4", "name": "出图校色", "st": "warn",
+                "line": "色彩口径已定死，但上色方法散在记录里没成型",
+                "has": ["非交付面出图与色彩校验口径已落地",
+                        "色彩空间、立方体面、贴图翻转三项硬约定写死并验证过"],
+                "miss": ["染色链、折射链、晶体上色、源驱动材质四条上色路径待整理成可复用方法（待修 B4）",
+                         "7 份修复记录 + 3 份裁定文档散落两处，未成方法"],
+            },
+        ],
+    },
+    {
+        "mark": "③", "name": "前端展示交互线",
+        "sub": "数据怎么变页面、页面怎么发给别人看",
+        "nodes": [
+            {
+                "id": "③-1", "name": "页面与看板", "st": "ok",
+                "line": "页面已经在线运行，图鉴、板块、三维、工作台都能打开",
+                "has": ["图鉴首页 + 板块页 + 条目检索",
+                        "三维预览页与专题页（斩神系列）",
+                        "工作台四域看板（物品 / 武器皮肤 / 时装 / 奖池）",
+                        "全部离线可用，不依赖外部资源库"],
+                "miss": ["实验页与备份文件散落在站点根目录，待清理（待修 D1）",
+                         "资产目录下残留实验目录，无页面引用（待修 D3）"],
+            },
+            {
+                "id": "③-2", "name": "服务与契约", "st": "warn",
+                "line": "本地服务已经在跑，但接口层是空壳",
+                "has": ["本地只读服务已在运行，站点端口可用",
+                        "只提供索引元信息与单条摘要，不开放批量提取",
+                        "发布策略与板块准入在服务端强制执行"],
+                "miss": ["接口层目录是空的，没有任何实现",
+                         "服务该落在站点的接口目录下，现在是空壳",
+                         "工作台状态与看板数据走的是构建期注入，不是接口"],
+            },
+            {
+                "id": "③-3", "name": "资产落地与投影", "st": "miss",
+                "line": "缺落地器：115 套皮肤资产现在是不可重建的",
+                "has": ["武器皮肤资产已落位 115 套",
+                        "看板投影与构建脚本已可复跑"],
+                "miss": ["产出这 115 套资产的脚本找不到，按可重建性定义即不可重建（待修 B1）",
+                         "两个候选脚本一个死路径、一个只做探测",
+                         "历史上写了 40 多个一次性脚本，没有沉淀成落地器"],
+            },
+        ],
+    },
+]
+
+BANDS = [
+    {
+        "mark": "D", "name": "数据契约带", "st": "warn",
+        "role": "三条线唯一共用接口",
+        "line": "解码线的产出，经过这里才变成展示线能吃的形状",
+        "flow": ["字段规则", "板数据契约", "发布契约"],
+        "has": ["字段规则、板数据契约、发布契约三份约束文件已存在",
+                "发布策略可对板块逐条判定公开 / 隔离 / 退休",
+                "条目与皮肤的定位契约已固化进构建流程"],
+        "miss": ["没人对这条带负责：口径散在构建脚本里",
+                 "编号定位索引库被多个脚本共写，读写列未逐脚本核过（待修 E1）",
+                 "注册表的字段级职责未逐项核（待修 E3）"],
+    },
+    {
+        "mark": "Q", "name": "质量·交付·治理带", "st": "warn",
+        "role": "三道闸门",
+        "line": "任何一条线要交付，都得从这三个闸门过",
+        "gates": [
+            {"no": "闸门一", "name": "发布门禁", "st": "warn",
+             "line": "板数据契约 + 前端发布硬门禁；当前媒体重建跑不过去（待修 A9）"},
+            {"no": "闸门二", "name": "数据契约校验", "st": "warn",
+             "line": "字段级职责与共写关系未逐项核（待修 E1 / E3）"},
+            {"no": "闸门三", "name": "交付打包", "st": "miss",
+             "line": "完全空白：14 份源包快照是历史唯一载体，尚无外置备份与打包流程（待修 C1）"},
+        ],
+        "has": ["待修清单 34 条，一条条修、修完补日期与验证方式",
+                "发布策略可自动隔离旧板块",
+                "治理文档已分层（治理 / 文档 / 审阅区）"],
+        "miss": ["交付打包完全空白：没有离线包、没有快照外置备份",
+                 "不可重建清单需要按新客户端重写（待修 C1）",
+                 "文档与真实状态不一致（待修 A10：文档写 39，实测 37）",
+                 "垃圾清理四项未动（待修 D1-D4）"],
+    },
+]
+
+# 子界面入口（门户）—— 顶栏横排；手机上收进抽屉
+PORTALS = [
+    ("图鉴首页", "wiki.html", "ok"),
+    ("斩神系列专题", "zhanshen.html", "ok"),
+    ("板块浏览", "board.html", "ok"),
+    ("外观三维预览", "skin3d.html", "ok"),
+    ("武器模型", "weapon_models.html", "ok"),
+    ("工作台状态", "workbench_status.html", "warn"),
+]
+
+
+def esc(s):
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;"))
+
+
+def num(v):
+    return "读取失败" if v is None else f"{v:,}"
+
+
+def render_chip(n, key):
+    ic, label, klass = status_chip(n["st"])
+    return (f'<button type="button" class="chip {klass}" data-pop="{esc(key)}"'
+            f' data-id="{esc(n["id"])}" data-name="{esc(n["name"])}"'
+            f' data-st="{ic} {esc(label)}" data-klass="{klass}"'
+            f' aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么">'
+            f'<span class="crow"><span class="cid">{esc(n["id"])}</span>'
+            f'<span class="cst">{ic} {esc(label)}</span></span>'
+            f'<span class="cname">{esc(n["name"])}</span>'
+            f'<span class="cline">{esc(n["line"])}</span>'
+            f'<span class="cfoot">缺 {len(n["miss"])} 条</span>'
+            f'</button>')
+
+
+def render_lane(lane):
+    cnt = {"ok": 0, "warn": 0, "miss": 0}
+    for n in lane["nodes"]:
+        cnt[n["st"]] += 1
+    chips = []
+    for i, n in enumerate(lane["nodes"]):
+        if i:
+            chips.append('<span class="arw" aria-hidden="true"></span>')
+        chips.append(render_chip(n, f"{lane['mark']}-{i}"))
+    stats = (f'<span class="s ok">✅ {cnt["ok"]}</span>'
+             f'<span class="s warn">⚠️ {cnt["warn"]}</span>'
+             f'<span class="s miss">✗ {cnt["miss"]}</span>')
+    return f"""
+  <section class="lane" id="line-{lane['mark']}">
+    <div class="llabel">
+      <span class="row1"><span class="mk">{lane['mark']}</span><span class="nm">{esc(lane['name'])}</span></span>
+      <span class="lsub">{esc(lane['sub'])}</span>
+    </div>
+    <div class="chain">{''.join(chips)}<span class="rail" aria-hidden="true"></span></div>
+    <span class="lstat">{stats}</span>
+  </section>"""
+
+
+def render_band(b, key, i):
+    ic, label, klass = status_chip(b["st"])
+    if b.get("gates"):
+        inner = "".join(
+            f'<span class="gate {status_chip(g["st"])[2]}"><b>{esc(g["no"])}</b>'
+            f'<span class="gname">{esc(g["name"])}</span>'
+            f'<span class="gs">{status_chip(g["st"])[0]} {esc(status_chip(g["st"])[1])}</span></span>'
+            for g in b["gates"])
+    else:
+        inner = "".join(f'<span class="floww">{esc(x)}</span>' + (
+            '<span class="arw sm" aria-hidden="true"></span>' if j < len(b["flow"]) - 1 else "")
+            for j, x in enumerate(b["flow"]))
+    return f"""
+  <button type="button" class="row-band {klass}" id="band-{b['mark']}" data-pop="{esc(key)}"
+          data-id="{b['mark']}" data-name="{esc(b['name'])}" data-st="{ic} {esc(label)}"
+          data-klass="{klass}" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么">
+    <span class="blabel">
+      <span class="row1"><span class="mk v">{b['mark']}</span><span class="nm">{esc(b['name'])}</span></span>
+      <span class="role">{esc(b['role'])}</span>
+    </span>
+    <span class="bgates">{inner}<span class="rail" aria-hidden="true"></span></span>
+    <span class="bst">{ic} {esc(label)}</span>
+    <span class="bhint">缺 {len(b['miss'])} 条</span>
+  </button>"""
+
+
+def render_portals(css="plink"):
+    out = []
+    for name, href, st in PORTALS:
+        ic, label, klass = status_chip(st)
+        out.append(f'<a class="{css}" href="{esc(href)}" title="{esc(name)} · {ic} {esc(label)}">'
+                   f'<span class="dot {klass}"></span>{esc(name)}</a>')
+    return "\n".join(out)
+
+
+def render_left(d, hworst, checks):
+    """左信息块：大块标题 + 实时指标 + 各区体积 + 项目健康状态。"""
+    bl = d["backlog"]
+    src_n = d["files_source"]
+    src_txt = (f"{human(d['size_source'])} · {src_n} 文件" if src_n is not None
+               else human(d["size_source"]))
+
+    def kv(label, value, cls=""):
+        return (f'<div class="kv"><span>{esc(label)}</span>'
+                f'<b class="{cls}">{esc(value)}</b></div>')
+
+    metrics = "".join([
+        kv("索引行数", num(d["rows"])),
+        kv("工具", num(d["tools"])),
+        kv("统一入口", str(len(d["entries"])) if d["entries"] else "读取失败"),
+        kv("待修", str(bl["open"]) if bl["open"] is not None else "读取失败", "g"),
+        kv("已修", str(bl["done"]) if bl["done"] is not None else "读取失败"),
+        kv("站点页面", str(len(d["pages"])) if d["pages"] else "读取失败"),
+        kv("皮肤资产", num(d["skin_assets"])),
+    ])
+    sizes = "".join([
+        kv("交付", human(d["size_deliver"])),
+        kv("源包", src_txt),
+        kv("审阅区", human(d["size_review"])),
+        kv("垃圾（待清理）", human(d["size_clean"]), "g"),
+    ])
+    ck = "".join(
+        f'<span class="hck {k}"><span class="dot {k}"></span>{esc(n)} {esc(v)}</span>'
+        for n, v, k in checks)
+    lamp = {"ok": "良好", "warn": "注意", "miss": "异常"}[hworst]
+    return f"""
+  <aside id="left" aria-label="项目信息">
+    <div class="ltop">
+      <div class="leyebrow">LIFEAFTER · 拆包工程</div>
+      <h1 class="bigtitle">LifeAfter<br>拆包项目</h1>
+      <div class="lsub">三线两带 · 拆包状态总览</div>
+    </div>
+    <div class="lsec">
+      <h4>实时指标</h4>
+      {metrics}
+    </div>
+    <div class="lsec">
+      <h4>各区体积</h4>
+      {sizes}
+    </div>
+    <div class="health {hworst}" id="health">
+      <span class="lamp" aria-hidden="true"></span>
+      <div class="hbody">
+        <b>项目健康：{lamp}</b>
+        <div class="hcks">{ck}</div>
+      </div>
+    </div>
+  </aside>"""
+
+
+# ---- 弹层内容（不进主布局，点段才注入）
+def tpl_node(n, key):
+    has = "".join(f"<li>{esc(x)}</li>" for x in n["has"])
+    miss = "".join(f"<li>{esc(x)}</li>" for x in n["miss"])
+    return (f'<template id="p{esc(key)}"><p class="popline">{esc(n["line"])}</p>'
+            f'<div class="cols">'
+            f'<div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes">{has}</ul></div>'
+            f'<div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no">{miss}</ul></div>'
+            f'</div></template>')
+
+
+def tpl_band(b, key):
+    has = "".join(f"<li>{esc(x)}</li>" for x in b["has"])
+    miss = "".join(f"<li>{esc(x)}</li>" for x in b["miss"])
+    gates = ""
+    if b.get("gates"):
+        gates = '<div class="gates">' + "".join(
+            f'<div class="gate {status_chip(g["st"])[2]}"><div class="gno">{esc(g["no"])} · '
+            f'{status_chip(g["st"])[0]} {esc(status_chip(g["st"])[1])}</div>'
+            f'<div class="gname">{esc(g["name"])}</div>'
+            f'<div class="gline">{esc(g["line"])}</div></div>' for g in b["gates"]) + "</div>"
+    return (f'<template id="p{esc(key)}"><p class="popline">{esc(b["line"])}</p>{gates}'
+            f'<div class="cols">'
+            f'<div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes">{has}</ul></div>'
+            f'<div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no">{miss}</ul></div>'
+            f'</div></template>')
+
+
+def build(d):
+    hworst, htxt, checks = health_report(d)
+    bl = d["backlog"]
+    pages_n = len(d["pages"])
+    entries_txt = " / ".join(d["entries"]) if d["entries"] else "读取失败"
+
+    # 段的弹层（键 = 线标-序号 / 带标）
+    tpls = []
+    for lane in LANES:
+        for i, n in enumerate(lane["nodes"]):
+            tpls.append(tpl_node(n, f"{lane['mark']}-{i}"))
+    for b in BANDS:
+        tpls.append(tpl_band(b, b["mark"]))
+    if d["fails"]:
+        fl = "".join(f"<li>{esc(x)}</li>" for x in d["fails"])
+        tpls.append(f'<template id="pFAIL"><p class="popline">以下项目本次采集失败，页面按「读取失败」如实标注，未编造数值。</p>'
+                    f'<div class="cols one"><div class="col"><h4><span class="dot miss"></span>失败项</h4>'
+                    f'<ul class="no">{fl}</ul></div></div></template>')
+
+    tech = f"""<details class="tech">
+      <summary>技术详情</summary>
+      <div class="tbody">
+        <pre>索引库路径      : {esc(d['db'] or '读取失败')}
+索引状态来源    : {esc(d['index_from'] or '读取失败')}
+索引行数        : {esc(num(d['rows']))}
+库完整性校验    : {esc('通过' if d['quick'] == 'ok' else '未通过')}
+数据是否过期    : {esc('否' if d['stale'] is False else ('是' if d['stale'] is True else '读取失败'))}
+建库时间        : {esc(d['built_at'] or '读取失败')}
+容器登记数      : {esc(str(d['inventory_files']))}
+分段行数        : 图形包 {esc(num(d['row_gpk']))} / 资源包 {esc(num(d['row_fpk']))} / 数据包 {esc(num(d['row_npk']))}
+失败容器        : {esc(str(d['failed_containers']))}
+登记结构版本    : {esc(str(d['schema_version']))}
+库存指纹        : {esc((d['fingerprint'] or '')[:32])}…
+工具数          : {esc(num(d['tools']))}（01_工具/工具库/*.py）
+统一入口子命令  : {esc(entries_txt)}
+待修清单        : 未修 {esc(str(bl['open']))} / 已修 {esc(str(bl['done']))}
+站点页面(去实验页): {pages_n}
+皮肤资产目录    : {esc(num(d['skin_assets']))} 套 · {esc(d['skin_root'])}
+交付区体积      : {esc(human(d['size_deliver']))}（02_资料/交付）
+源包区体积      : {esc(human(d['size_source']))} · {esc(str(d['files_source']))} 文件（02_资料/源包）
+审阅区体积      : {esc(human(d['size_review']))}（03_执行/96_审阅区）
+待清理区体积    : {esc(human(d['size_clean']))}（03_执行/95_待清理，即垃圾）
+项目健康        : {esc(htxt)}（{'；'.join(f'{n}{v}' for n, v, _ in checks)}）
+生成时间        : {esc(d['generated_at'])}
+数据来源        : 统一入口 index status ｜ 01_工具/工具库/*.py 计数 ｜ 统一入口 --help 子命令
+                  00_治理/待修问题清单.md ｜ 04_站点/web/*.html ｜ assets/3d/weapon_skin/*
+                  02_资料/交付、02_资料/源包、03_执行/96_审阅区、03_执行/95_待清理 的目录体积
+生成脚本        : 04_站点/web/tools/gen_home.py（只读采集；重跑即刷新本页）</pre>
+      </div>
+    </details>"""
+
+    failchip = ""
+    if d["fails"]:
+        failchip = (f'<button type="button" class="fail" data-pop="FAIL" data-id="采集"'
+                    f' data-name="本次采集失败项" data-st="✗ 需人工核对" data-klass="miss"'
+                    f' aria-haspopup="dialog">采集失败 {len(d["fails"])} 项</button>')
+
+    drawer_info = (
+        '<h4>项目信息</h4>'
+        f'<div class="dkv"><span>索引行数</span><b>{esc(num(d["rows"]))}</b></div>'
+        f'<div class="dkv"><span>工具 / 统一入口</span><b>{esc(num(d["tools"]))} / '
+        f'{esc(str(len(d["entries"])) if d["entries"] else "读取失败")}</b></div>'
+        f'<div class="dkv"><span>待修 / 已修</span><b>{esc(str(bl["open"]))} / {esc(str(bl["done"]))}</b></div>'
+        f'<div class="dkv"><span>交付</span><b>{esc(human(d["size_deliver"]))}</b></div>'
+        f'<div class="dkv"><span>源包</span><b>{esc(human(d["size_source"]))}</b></div>'
+        f'<div class="dkv"><span>审阅区</span><b>{esc(human(d["size_review"]))}</b></div>'
+        f'<div class="dkv"><span>垃圾（待清理）</span><b>{esc(human(d["size_clean"]))}</b></div>'
+        f'<div class="dkv"><span>项目健康</span><b>{esc(htxt)}</b></div>')
+
+    html = TEMPLATE
+    repl = {
+        "@@LEFT@@": render_left(d, hworst, checks),
+        "@@GEN@@": d["generated_at"],
+        "@@BUILT@@": d["built_at"] or "读取失败",
+        "@@LANES@@": "".join(render_lane(l) for l in LANES),
+        "@@BANDS@@": "".join(render_band(b, b["mark"], i) for i, b in enumerate(BANDS)),
+        "@@PORTALS@@": render_portals(),
+        "@@TPLS@@": "\n".join(tpls),
+        "@@TECH@@": tech,
+        "@@FAILCHIP@@": failchip,
+        "@@NAV@@": "\n".join(f'<a href="{esc(h)}">{esc(n)}</a>' for n, h, *_ in PORTALS),
+        "@@JUMP@@": "".join(f'<a href="#line-{l["mark"]}">{l["mark"]} {esc(l["name"])}</a>' for l in LANES)
+                    + f'<a href="#band-D">D {esc(BANDS[0]["name"])}</a>'
+                    + f'<a href="#band-Q">Q {esc(BANDS[1]["name"])}</a>',
+        "@@DRAWER_INFO@@": drawer_info,
+    }
+    for k, v in repl.items():
+        html = html.replace(k, v)
+    return html, entries_txt
+
+
+TEMPLATE = r"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LifeAfter 拆包项目 · 三线状态</title>
+<style>
+  :root{
+    --bg:#05070c; --bg2:#080c14; --panel:#0b1220; --line:#1c2c44;
+    --fg:#dcebff; --dim:#7d93b0; --dim2:#5b7392;
+    --cyan:#22e0ff; --mag:#ff2e97; --violet:#9d7bff;
+    --ok:#8dff5a; --warn:#ffc02e; --miss:#ff4d6d;
+    --mono:ui-monospace,SFMono-Regular,Consolas,"Cascadia Mono","Microsoft YaHei",monospace;
+    --safe-t:env(safe-area-inset-top); --safe-b:env(safe-area-inset-bottom);
+    --top-h:48px;
+    /* 紧凑尺度：随视口高度缩放，保证桌面一屏装完 */
+    --g:clamp(4px,0.9vh,12px);
+    --py:clamp(4px,0.95vh,11px);
+    --fs-id:clamp(9.5px,1.15vh,12.5px);
+    --fs-nm:clamp(11.5px,1.5vh,17px);
+    --fs-sm:clamp(10px,1.45vh,14.5px);
+    --fs-lg:clamp(11px,1.3vh,14.5px);
+    /* 段块宽度上限：超宽屏也绝不拉伸抽满整宽 */
+    --chw:clamp(152px,14.5vw,232px);
+    --bw:clamp(126px,10.5vw,190px);
+    --leftw:clamp(238px,21vw,312px);
+    /* 箭头占位；段块按 4 列栅格定宽，三线跨行同宽对齐 */
+    --arw:clamp(13px,1.9vw,32px);
+    --slot:min(var(--chw), calc((100% - 3 * var(--arw)) / 4));
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    font-family:system-ui,"Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;
+    -webkit-text-size-adjust:100%}
+  body{overflow-x:hidden}
+  body.popon{overflow:hidden}
+  /* 背景：网格 + 双色光晕 + 扫描线 */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 12% -8%,rgba(34,224,255,.16),transparent 60%),
+      radial-gradient(760px 460px at 92% 4%,rgba(255,46,151,.13),transparent 62%),
+      radial-gradient(700px 500px at 50% 108%,rgba(157,123,255,.12),transparent 60%),
+      repeating-linear-gradient(0deg,rgba(34,224,255,.055) 0 1px,transparent 1px 44px),
+      repeating-linear-gradient(90deg,rgba(34,224,255,.055) 0 1px,transparent 1px 44px),
+      linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:repeating-linear-gradient(180deg,rgba(0,0,0,.20) 0 1px,transparent 1px 3px);
+    opacity:.5;animation:scan 7s linear infinite}
+  @keyframes scan{from{transform:translateY(0)}to{transform:translateY(3px)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- 顶栏：站名 + 门户入口（横贯整宽） ---------- */
+  #top{position:fixed;left:0;right:0;top:0;min-height:var(--top-h);z-index:60;
+    display:flex;align-items:center;gap:clamp(8px,1vw,16px);
+    padding:0 clamp(10px,1vw,16px);padding-top:var(--safe-t);
+    background:rgba(6,10,18,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(34,224,255,.35);
+    box-shadow:0 0 24px rgba(34,224,255,.16),inset 0 -1px 0 rgba(34,224,255,.18)}
+  #top .brand{display:flex;align-items:center;gap:8px;min-width:0;flex:0 0 auto}
+  #top .logo{width:20px;height:20px;flex:0 0 20px;position:relative}
+  #top .logo i{position:absolute;inset:0;border:1px solid var(--cyan);border-radius:4px;
+    box-shadow:0 0 10px rgba(34,224,255,.6),inset 0 0 8px rgba(34,224,255,.28)}
+  #top .logo i:nth-child(2){inset:4px;border-color:var(--mag);box-shadow:0 0 8px rgba(255,46,151,.6)}
+  #top h1{margin:0;font-size:13px;font-weight:800;letter-spacing:.4px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;
+    background:linear-gradient(92deg,var(--cyan),#ffffff 45%,var(--mag));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  #top h1 .short{display:none}
+  /* 门户入口：横排、不换行（不撑高顶栏），过窄时可横向滑动 */
+  #portalNav{display:flex;flex-wrap:nowrap;align-items:center;gap:clamp(5px,0.55vw,9px);
+    min-width:0;flex:1 1 auto;overflow-x:auto;overflow-y:hidden;
+    scrollbar-width:none;-ms-overflow-style:none}
+  #portalNav::-webkit-scrollbar{display:none}
+  .plink{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--fg);
+    font-size:var(--fs-lg);border:1px solid var(--line);border-radius:999px;white-space:nowrap;
+    padding:clamp(3px,0.7vh,7px) clamp(8px,0.9vw,13px);background:rgba(11,18,32,.82);
+    transition:transform .14s,border-color .14s,box-shadow .14s,color .14s;flex:0 0 auto}
+  .plink:hover{border-color:rgba(34,224,255,.65);color:var(--cyan);transform:translateY(-1px);
+    box-shadow:0 0 16px rgba(34,224,255,.25)}
+  #top .topR{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+  #top .tstamp{font-family:var(--mono);font-size:11px;color:var(--dim2);white-space:nowrap}
+  #burger{margin-left:auto;display:none;border:1px solid rgba(34,224,255,.5);background:rgba(11,18,32,.9);
+    color:var(--cyan);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+  #mask{display:none}
+
+  /* ---------- 抽屉（手机） ---------- */
+  #drawer{position:fixed;left:0;top:var(--top-h);bottom:0;width:86vw;max-width:340px;z-index:55;
+    background:linear-gradient(180deg,#070c16,#0a1120);border-right:1px solid rgba(34,224,255,.35);
+    box-shadow:8px 0 30px rgba(0,0,0,.7);transform:translateX(-104%);transition:transform .24s ease;
+    overflow-y:auto;padding:14px 12px calc(20px + var(--safe-b))}
+  body.nav #drawer{transform:translateX(0)}
+  #drawer h4{margin:14px 4px 8px;font-size:11px;letter-spacing:1.4px;color:var(--dim2)}
+  #drawer h4:first-child{margin-top:2px}
+  #drawer a{display:block;text-decoration:none;color:var(--fg);font-size:13.5px;padding:10px 12px;
+    border:1px solid var(--line);border-radius:8px;margin-bottom:7px;background:rgba(14,23,40,.75)}
+  #drawer a:active{border-color:var(--cyan);color:var(--cyan)}
+  .dkv{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:5px 4px;
+    border-bottom:1px dashed rgba(28,44,68,.8)}
+  .dkv span{color:var(--dim)} .dkv b{font-family:var(--mono);color:#fff}
+
+  /* ---------- 主区：左信息块 + 右三线两带 ---------- */
+  /* align-content:center → 左块与右区作为一整块在视口内垂直居中；
+     高视口下留白落在整块外，而不是让卡片内部空掉或把左块拉成一张长条 */
+  main{position:relative;z-index:2;max-width:1560px;margin:0 auto;
+    min-height:100vh;display:grid;grid-template-columns:var(--leftw) minmax(0,1fr);
+    align-items:stretch;align-content:center;gap:clamp(7px,0.9vh,13px);
+    padding:calc(var(--top-h) + var(--safe-t) + var(--g)) clamp(10px,1vw,16px) calc(var(--g) + var(--safe-b))}
+
+  /* 左信息块：固定宽度，不随屏幕拉伸；两块指标吃到剩余高度，行高自然撑开 */
+  #left{display:flex;flex-direction:column;gap:var(--g);
+    min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;
+    padding:clamp(10px,1.5vh,18px) clamp(10px,0.9vw,16px);
+    background:linear-gradient(180deg,rgba(11,18,32,.94),rgba(7,11,20,.9));
+    box-shadow:inset 0 1px 0 rgba(34,224,255,.1)}
+  #left .ltop,#left .health{flex:0 0 auto}
+  #left .lsec{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
+  #left .lsec h4{flex:0 0 auto}
+  .ltop{min-width:0}
+  .leyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2.4px;color:var(--dim2);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bigtitle{margin:clamp(3px,0.7vh,8px) 0 0;font-weight:900;letter-spacing:.5px;
+    font-size:clamp(21px,3.5vh,33px);line-height:1.14;
+    background:linear-gradient(96deg,var(--cyan),#ffffff 46%,var(--mag));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .lsub{margin-top:clamp(3px,0.7vh,7px);font-size:var(--fs-lg);color:var(--dim)}
+  .lsec{min-width:0}
+  .lsec h4{margin:0 0 clamp(2px,0.5vh,6px);font-size:10px;letter-spacing:1.6px;
+    color:var(--dim2);font-weight:600}
+  .kv{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    padding:clamp(2px,0.45vh,5px) 0;font-size:var(--fs-lg);
+    border-bottom:1px dashed rgba(28,44,68,.75)}
+  .kv:last-child{border-bottom:0;padding-bottom:0}
+  .kv span{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .kv b{font-family:var(--mono);font-size:clamp(12px,1.45vh,15px);color:#fff;font-weight:700;
+    font-variant-numeric:tabular-nums;white-space:nowrap;flex:0 0 auto}
+  .kv b.g{color:#ffd8a8}
+  .health{display:flex;align-items:center;gap:10px;border-radius:12px;min-width:0;
+    padding:clamp(6px,1.1vh,11px) clamp(8px,0.7vw,12px);border:1px solid var(--line)}
+  .health.ok{border-color:rgba(141,255,90,.5);background:linear-gradient(90deg,rgba(141,255,90,.15),rgba(141,255,90,.02))}
+  .health.warn{border-color:rgba(255,192,46,.55);background:linear-gradient(90deg,rgba(255,192,46,.15),rgba(255,192,46,.02))}
+  .health.miss{border-color:rgba(255,77,109,.6);background:linear-gradient(90deg,rgba(255,77,109,.17),rgba(255,77,109,.02))}
+  .lamp{width:13px;height:13px;border-radius:50%;flex:0 0 13px}
+  .health.ok .lamp{background:var(--ok);box-shadow:0 0 14px var(--ok),0 0 0 4px rgba(141,255,90,.16)}
+  .health.warn .lamp{background:var(--warn);box-shadow:0 0 14px var(--warn),0 0 0 4px rgba(255,192,46,.16)}
+  .health.miss .lamp{background:var(--miss);box-shadow:0 0 14px var(--miss),0 0 0 4px rgba(255,77,109,.18)}
+  .hbody{min-width:0}
+  .hbody b{font-size:clamp(12.5px,1.65vh,16px);font-weight:800;white-space:nowrap}
+  .health.ok .hbody b{color:var(--ok)} .health.warn .hbody b{color:var(--warn)} .health.miss .hbody b{color:var(--miss)}
+  .hcks{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:3px}
+  .hck{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--dim);
+    font-family:var(--mono);white-space:nowrap}
+  .hck.warn{color:#ffd98a} .hck.miss{color:#ffb3bf}
+
+  /* 右主区：三线 + 两带（行高有上限，富余高度变成上下留白，不摊进卡片里） */
+  #flow{display:flex;flex-direction:column;justify-content:center;gap:clamp(6px,1.1vh,14px);
+    min-width:0;overflow:hidden;min-height:min(80vh,780px)}
+
+  .lane{flex:1 1 0;min-height:0;max-height:min(210px,24vh);position:relative;overflow:hidden;
+    display:flex;align-items:stretch;gap:clamp(6px,0.8vw,14px);
+    border:1px solid var(--line);border-radius:12px;padding:var(--py) clamp(8px,0.9vw,14px);
+    background:linear-gradient(180deg,rgba(11,18,32,.9),rgba(7,11,20,.86))}
+  .lane::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:2px;border-radius:2px;
+    background:repeating-linear-gradient(180deg,var(--cyan) 0 12px,rgba(34,224,255,.05) 12px 26px);
+    box-shadow:0 0 12px rgba(34,224,255,.5);animation:rail 1.3s linear infinite}
+  @keyframes rail{to{background-position:0 26px}}
+  .llabel{flex:0 0 clamp(122px,11.5vw,180px);min-width:0;display:flex;flex-direction:column;
+    justify-content:center;gap:clamp(2px,0.5vh,5px);padding-left:9px}
+  .row1{display:flex;align-items:center;gap:6px;min-width:0}
+  .mk{font-family:var(--mono);font-size:clamp(13px,1.7vh,16px);font-weight:800;color:var(--cyan);
+    border:1px solid rgba(34,224,255,.5);border-radius:7px;width:clamp(22px,2.8vh,27px);height:clamp(22px,2.8vh,27px);
+    display:grid;place-items:center;background:rgba(34,224,255,.08);flex:0 0 auto}
+  .mk.v{color:var(--violet);border-color:rgba(157,123,255,.6);background:rgba(157,123,255,.1)}
+  .nm{font-size:var(--fs-nm);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .llabel .lsub{font-size:10px;color:var(--dim2);line-height:1.45;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .lstat{display:flex;gap:5px;flex-wrap:wrap;align-items:center;flex:0 0 auto;
+    padding-left:6px;border-left:1px dashed rgba(34,224,255,.28)}
+  .lstat .s{font-size:10.5px;font-family:var(--mono);opacity:.92;white-space:nowrap}
+  .lstat .s.ok{color:var(--ok)} .lstat .s.warn{color:var(--warn)} .lstat .s.miss{color:var(--miss)}
+  /* 段链：按 4 列栅格定宽（--slot），不伸不抽满；lane 2 恰满，lane 1/3 第 4 格留白 */
+  .chain{flex:1 1 0;display:flex;align-items:stretch;gap:0;min-width:0;overflow:hidden}
+  .chip{flex:0 1 var(--slot);max-width:var(--chw);min-width:0;appearance:none;font:inherit;
+    text-align:left;cursor:pointer;color:var(--fg);overflow:hidden;
+    display:flex;flex-direction:column;gap:clamp(2px,0.45vh,5px);
+    padding:var(--py) calc(var(--py) + 3px);
+    border:1px solid var(--line);border-left-width:3px;border-radius:10px;
+    background:linear-gradient(180deg,rgba(14,23,40,.92),rgba(8,13,24,.92));
+    transition:transform .14s,border-color .14s,box-shadow .14s}
+  .chip.ok{border-left-color:var(--ok)} .chip.warn{border-left-color:var(--warn)} .chip.miss{border-left-color:var(--miss)}
+  .chip:hover,.chip:focus-visible{border-color:rgba(34,224,255,.65);box-shadow:0 0 18px rgba(34,224,255,.2);
+    transform:translateY(-1px);outline:none}
+  .crow{display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0}
+  .cid{font-family:var(--mono);font-size:var(--fs-id);color:var(--cyan);letter-spacing:.6px}
+  .cst{font-size:var(--fs-sm);color:var(--dim);white-space:nowrap}
+  .chip.ok .cst{color:var(--ok)} .chip.warn .cst{color:var(--warn)} .chip.miss .cst{color:var(--miss)}
+  .cname{font-size:var(--fs-nm);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cline{flex:1 1 auto;font-size:var(--fs-sm);line-height:1.5;color:var(--dim);min-height:0;
+    display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .cfoot{flex:0 0 auto;font-family:var(--mono);font-size:10px;color:var(--dim2);
+    border-top:1px dashed rgba(28,44,68,.9);padding-top:clamp(2px,0.4vh,4px)}
+  .arw{position:relative;flex:0 0 var(--arw);height:2px;align-self:center;margin:0 1px;
+    border-radius:2px;background:linear-gradient(90deg,rgba(34,224,255,.12),rgba(34,224,255,.75))}
+  .arw::after{content:"";position:absolute;right:-1px;top:-3.5px;width:7px;height:7px;
+    border-right:2px solid var(--cyan);border-top:2px solid var(--cyan);transform:rotate(45deg);opacity:.9}
+  .arw::before{content:"";position:absolute;top:-1px;width:4px;height:4px;border-radius:50%;
+    background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:dot 1.5s linear infinite}
+  @keyframes dot{from{left:0;opacity:0}20%{opacity:1}90%{opacity:1}to{left:100%;opacity:0}}
+  .arw.sm{flex:0 0 clamp(9px,1.2vw,18px)}
+  /* 段链内尾部的虚线填充：把「第 4 格留白」画成导轨，宽度不摊给卡片 */
+  .rail{flex:1 1 auto;min-width:0;align-self:center;height:0;
+    border-top:1px dashed rgba(34,224,255,.22)}
+
+  /* 两条横切带 */
+  .row-band{width:100%;appearance:none;font:inherit;text-align:left;cursor:pointer;color:var(--fg);
+    display:flex;align-items:center;gap:clamp(6px,0.8vw,14px);flex:0 0 auto;
+    border:1px dashed rgba(157,123,255,.55);border-radius:12px;
+    padding:var(--py) clamp(8px,0.9vw,14px);
+    background:linear-gradient(90deg,rgba(157,123,255,.10),rgba(34,224,255,.06),rgba(255,46,151,.08));
+    position:relative;overflow:hidden;transition:box-shadow .14s,border-color .14s}
+  .row-band::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:repeating-linear-gradient(90deg,var(--violet) 0 10px,transparent 10px 20px);
+    background-size:20px 1px;animation:flow 1.4s linear infinite;opacity:.85}
+  @keyframes flow{to{background-position:20px 0}}
+  .row-band:hover,.row-band:focus-visible{border-color:rgba(157,123,255,.9);
+    box-shadow:0 0 22px rgba(157,123,255,.22);outline:none}
+  .blabel{flex:0 0 clamp(132px,11.5vw,180px);min-width:0;display:flex;flex-direction:column;gap:2px;
+    border-right:1px dashed rgba(157,123,255,.4);padding-right:10px}
+  .blabel .nm{font-size:clamp(11.5px,1.4vh,14px)}
+  .role{font-size:10.5px;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* 带内闸门：与段块同一套 4 列栅格，跨行同宽对齐 */
+  .bgates{flex:1 1 0;display:flex;align-items:stretch;gap:0;min-width:0;overflow:hidden}
+  .gate,.floww{flex:0 1 var(--slot);max-width:var(--slot);min-width:0;display:flex;align-items:center;
+    gap:6px;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;
+    padding:calc(var(--py) - 2px) calc(var(--py) + 1px);background:rgba(8,13,24,.7)}
+  .gate.warn{border-color:rgba(255,192,46,.42)} .gate.miss{border-color:rgba(255,77,109,.5)}
+  .gate b,.gate .gname{font-size:var(--fs-sm);font-weight:700;white-space:nowrap}
+  .gate b{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--cyan)}
+  .gate .gname{overflow:hidden;text-overflow:ellipsis}
+  .gate .gs{font-size:10px;white-space:nowrap;margin-left:auto}
+  .gate.warn .gs{color:var(--warn)} .gate.miss .gs{color:var(--miss)}
+  .floww{font-size:var(--fs-sm);justify-content:center;color:#cfe6ff}
+  .bst,.bhint{font-size:var(--fs-sm);white-space:nowrap;flex:0 0 auto}
+  .bst{color:var(--warn)} .bhint{font-family:var(--mono);color:var(--dim2)}
+
+  .dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:0 0 auto}
+  .dot.ok{background:var(--ok);box-shadow:0 0 7px var(--ok)}
+  .dot.warn{background:var(--warn);box-shadow:0 0 7px var(--warn)}
+  .dot.miss{background:var(--miss);box-shadow:0 0 7px var(--miss)}
+
+  /* 技术详情：折叠体浮层化 —— 展开也不改变主布局高度 */
+  details.tech{position:relative;flex:0 0 auto}
+  details.tech>summary{cursor:pointer;list-style:none;color:var(--cyan);border:1px solid rgba(34,224,255,.4);
+    border-radius:999px;padding:3px 10px;font-size:11.5px;background:rgba(11,18,32,.8);white-space:nowrap}
+  details.tech>summary::-webkit-details-marker{display:none}
+  details.tech>summary::before{content:"▸ ";font-size:10px}
+  details.tech[open]>summary::before{content:"▾ "}
+  .tbody{position:fixed;right:12px;bottom:calc(12px + var(--safe-b));z-index:80;width:min(760px,94vw);
+    max-height:min(62vh,620px);overflow:auto;border:1px solid rgba(34,224,255,.45);border-radius:12px;
+    background:rgba(6,10,18,.985);box-shadow:0 20px 60px rgba(0,0,0,.8);padding:10px 13px}
+  .tbody pre{font-family:var(--mono);font-size:11.5px;line-height:1.7;color:#9fd8ff;white-space:pre-wrap;
+    word-break:break-all;margin:6px 0 0}
+  .fail{border:1px solid rgba(255,77,109,.6);background:rgba(255,77,109,.12);color:#ffd7de;
+    border-radius:999px;padding:3px 10px;font:inherit;font-size:11.5px;cursor:pointer;white-space:nowrap}
+
+  /* ---------- 弹层（详情不进主布局） ---------- */
+  #pop{position:fixed;inset:0;z-index:120;display:none}
+  #pop.show{display:flex;align-items:center;justify-content:center;padding:16px}
+  .pop-mask{position:absolute;inset:0;background:rgba(2,5,10,.74);backdrop-filter:blur(3px);cursor:pointer}
+  .pop-box{position:relative;z-index:1;width:min(960px,96vw);max-height:min(80vh,780px);overflow:auto;
+    border:1px solid rgba(34,224,255,.5);border-radius:14px;background:linear-gradient(180deg,#0b1220,#070b14);
+    box-shadow:0 24px 70px rgba(0,0,0,.85)}
+  .pop-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:10px 14px;background:rgba(9,14,26,.985);border-bottom:1px solid var(--line)}
+  .ptag{font-family:var(--mono);font-size:11.5px;color:var(--cyan);border:1px solid rgba(34,224,255,.45);
+    border-radius:7px;padding:2px 8px;background:rgba(34,224,255,.08)}
+  .pname{font-size:16px;font-weight:800}
+  .pst{font-size:11.5px;border-radius:999px;padding:2px 10px;border:1px solid var(--line)}
+  .pst.ok{color:var(--ok);border-color:rgba(141,255,90,.45);background:rgba(141,255,90,.08)}
+  .pst.warn{color:var(--warn);border-color:rgba(255,192,46,.45);background:rgba(255,192,46,.08)}
+  .pst.miss{color:var(--miss);border-color:rgba(255,77,109,.45);background:rgba(255,77,109,.08)}
+  #popX{margin-left:auto;appearance:none;cursor:pointer;color:var(--fg);font:inherit;font-size:13px;
+    border:1px solid rgba(34,224,255,.5);background:rgba(12,20,36,.95);border-radius:9px;
+    padding:8px 14px;min-height:36px}
+  #popX:hover{color:var(--cyan);box-shadow:0 0 14px rgba(34,224,255,.3)}
+  .popBody{padding:10px 14px 14px}
+  .popline{margin:0 0 10px;font-size:13px;color:var(--dim);line-height:1.65}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cols.one{grid-template-columns:1fr}
+  .col h4{margin:0 0 6px;font-size:12.5px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .col ul{margin:0;padding-left:18px;font-size:13px;line-height:1.72}
+  .col ul.yes li::marker{color:var(--ok)}
+  .col ul.no li::marker{color:var(--miss)}
+  .col ul.no{color:#ffd3db}
+  .gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:0 0 12px}
+  .gates .gate{display:block;flex:none;max-width:none;border-radius:10px;padding:10px 12px;background:rgba(8,13,24,.8)}
+  .gno{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.6px}
+  .gates .gname{display:block;font-size:14px;font-weight:700;margin:4px 0 3px}
+  .gline{font-size:12.5px;color:var(--dim);line-height:1.6}
+  .gates .gate.warn{border-color:rgba(255,192,46,.45)} .gates .gate.miss{border-color:rgba(255,77,109,.5)}
+
+  /* ---------- 窄屏：≤1180 收起时间戳 ---------- */
+  @media (max-width:1180px){ #top .tstamp{display:none} }
+
+  /* ---------- 手机 / 小平板：左块改上下堆叠 ---------- */
+  @media (max-width:820px){
+    :root{--top-h:46px}
+    #burger{display:block}
+    #top h1 .full{display:none} #top h1 .short{display:inline}
+    #portalNav{display:none}
+    body.nav #mask{display:block;position:fixed;left:0;right:0;top:var(--top-h);bottom:0;z-index:50;
+      background:rgba(2,5,10,.55);backdrop-filter:blur(2px)}
+    main{min-height:0;grid-template-columns:minmax(0,1fr);padding-left:10px;padding-right:10px}
+    #left{gap:10px}
+    .bigtitle{font-size:clamp(24px,6.4vw,34px)}
+    #left .lsec{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+    #left .lsec h4{grid-column:1/-1}
+    .lane{flex:none;max-height:none;flex-direction:column;align-items:stretch;gap:7px;padding:9px 10px}
+    .llabel{flex:none;flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap;
+      border-right:0;border-bottom:1px dashed var(--line);padding:0 0 7px}
+    .llabel .lsub{display:none}
+    .chain{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:none;max-width:none;overflow:visible}
+    .chip{max-width:none;flex:none;padding:9px 10px}
+    .arw,.arw.sm{display:none}
+    .rail,.lstat{display:none}
+    .row-band{flex-direction:column;align-items:stretch;gap:7px;padding:9px 10px}
+    .blabel{flex:none;border-right:0;border-bottom:1px dashed rgba(157,123,255,.4);padding:0 0 7px}
+    .bgates{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:none;max-width:none;overflow:visible}
+    .gate,.floww{max-width:none}
+    .bst,.bhint{display:none}
+    #flow{justify-content:flex-start;min-height:0}
+    #pop.show{align-items:flex-end;padding:0}
+    .cols{grid-template-columns:1fr}
+    .pop-box{width:100%;max-width:100%;max-height:86vh;border-radius:14px 14px 0 0}
+    .popBody{padding-bottom:calc(16px + var(--safe-b))}
+    .tbody{left:8px;right:8px;width:auto;bottom:calc(8px + var(--safe-b));max-height:66vh}
+  }
+  @media (max-width:400px){
+    .chain{grid-template-columns:1fr}
+    .bgates{grid-template-columns:1fr}
+    #left .lsec{grid-template-columns:1fr}
+  }
+</style></head><body>
+<div id="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"><i></i><i></i></span>
+    <h1><span class="full">LifeAfter 拆包项目 · 三线两带状态</span><span class="short">拆包状态</span></h1>
+  </div>
+  <nav id="portalNav" aria-label="子界面入口">
+@@PORTALS@@
+  </nav>
+  <div class="topR">
+    <span class="tstamp">快照 @@BUILT@@ · 生成 @@GEN@@</span>
+    @@FAILCHIP@@
+    @@TECH@@
+    <button id="burger" aria-label="打开菜单" aria-expanded="false">菜单</button>
+  </div>
+</div>
+<div id="drawer" aria-label="站点导航">
+  <h4>子界面</h4>
+@@NAV@@
+  <h4>跳转生产线 / 横切带</h4>
+@@JUMP@@
+@@DRAWER_INFO@@
+</div>
+<div id="mask"></div>
+
+<main>
+@@LEFT@@
+  <section id="flow" aria-label="三线两带">
+@@LANES@@
+@@BANDS@@
+  </section>
+</main>
+
+<div id="pop" role="dialog" aria-modal="true" aria-label="段详情">
+  <div class="pop-mask" id="popMask"></div>
+  <div class="pop-box">
+    <div class="pop-top">
+      <span class="ptag" id="popTag"></span>
+      <span class="pname" id="popName"></span>
+      <span class="pst" id="popSt"></span>
+      <button type="button" id="popX" aria-label="关闭详情">✕ 关闭</button>
+    </div>
+    <div class="popBody" id="popBody"></div>
+  </div>
+</div>
+
+@@TPLS@@
+
+<script>
+(function(){
+  "use strict";
+  try{
+    var body=document.body, burger=document.getElementById('burger'),
+        mask=document.getElementById('mask'), drawer=document.getElementById('drawer'),
+        pop=document.getElementById('pop'), popBody=document.getElementById('popBody'),
+        popX=document.getElementById('popX');
+    function closeNav(){ body.classList.remove('nav'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener('click',function(){
+      var on=body.classList.toggle('nav');
+      burger.setAttribute('aria-expanded', on?'true':'false');
+    });
+    mask.addEventListener('click',closeNav);
+    Array.prototype.forEach.call(drawer.querySelectorAll('a'),function(a){
+      a.addEventListener('click',function(){ if(window.innerWidth<=820) closeNav(); });
+    });
+    function closePop(){
+      pop.classList.remove('show'); body.classList.remove('popon');
+      popBody.innerHTML=''; pop.setAttribute('aria-hidden','true');
+    }
+    function openPop(key,el){
+      var t=document.getElementById('p'+key); if(!t) return;
+      popBody.innerHTML='';
+      popBody.appendChild(t.content.cloneNode(true));
+      document.getElementById('popTag').textContent=el.getAttribute('data-id')||'';
+      document.getElementById('popName').textContent=el.getAttribute('data-name')||'';
+      var st=document.getElementById('popSt');
+      st.textContent=el.getAttribute('data-st')||'';
+      st.className='pst '+(el.getAttribute('data-klass')||'');
+      pop.classList.add('show'); body.classList.add('popon');
+      pop.setAttribute('aria-hidden','false');
+      try{ popX.focus(); }catch(e){}
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pop]'),function(el){
+      el.addEventListener('click',function(e){
+        e.preventDefault();
+        openPop(el.getAttribute('data-pop'),el);
+      });
+    });
+    popX.addEventListener('click',closePop);
+    document.getElementById('popMask').addEventListener('click',closePop);
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){ if(pop.classList.contains('show')) closePop(); else closeNav(); }
+    });
+    // 自检钩子（与站点其他页面一致）
+    window.__loaded=(window.__loaded||0)+1;
+    window.addEventListener('error',function(e){ window.__err=String(e.message||e); });
+  }catch(e){ window.__err=String(e); }
+})();
+</script>
+</body></html>
+"""
+
+
+def main():
+    d = collect()
+    if "--json" in sys.argv:
+        print(json.dumps(d, ensure_ascii=False, indent=2))
+        return 0
+    html, entries_txt = build(d)
+    OUT.write_text(html, encoding="utf-8")
+    print(f"[ok] 已生成 {OUT}")
+    print(f"     大小 {OUT.stat().st_size} 字节")
+    print(f"     索引来源={d['index_from']}")
+    print(f"     索引行数={d['rows']} 工具数={d['tools']} 入口={entries_txt} "
+          f"待修 {d['backlog']['open']}/已修 {d['backlog']['done']} 页面={len(d['pages'])}")
+    print(f"     交付={human(d['size_deliver'])} 源包={human(d['size_source'])}({d['files_source']} 文件) "
+          f"审阅区={human(d['size_review'])} 垃圾={human(d['size_clean'])}")
+    print(f"     项目健康={health_report(d)[1]}")
+    if d["fails"]:
+        print("     [warn] 采集失败项：" + " | ".join(d["fails"]))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

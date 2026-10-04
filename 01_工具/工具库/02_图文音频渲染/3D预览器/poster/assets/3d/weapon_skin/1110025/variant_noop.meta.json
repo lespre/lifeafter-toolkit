@@ -1,0 +1,17 @@
+{
+ "label": "noop",
+ "generated_at": "2026-09-20 13:34:28",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "03e9768e8b97dfb2",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "a6c78b49bad535f3",
+ "patch": {
+  "note": "负控：内容与基线等价（只换文件名），A/B 指标必须与 baseline 一致"
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_noop.json"
+}

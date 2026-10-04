@@ -1,0 +1,172 @@
+{
+ "product": "WEAPON_SKIN_GRADE_EFFECT_RULES",
+ "authority": "user_provided（bless 2026-09-13 重申）",
+ "version": "v1",
+ "note": "品级 → 特效配置的通用规则（游戏侧）。此文件是规则来源，不是数据结论；效果名→canonical 字段的映射标 status（verified=字段名直证 / inferred=按字段名推断，待实机或运行时消费者确认）。",
+ "field_mapping_status_legend": {
+  "verified": "字段名与效果名直证",
+  "inferred": "按字段名推断，待确认"
+ },
+ "effects": {
+  "命中效果": {
+   "fields": [
+    "hit_sfx_functions",
+    "fire_sfx_path"
+   ],
+   "status": "inferred"
+  },
+  "击败特效": {
+   "fields": [
+    "extension_defeat_functions"
+   ],
+   "status": "inferred"
+  },
+  "伤害跳字": {
+   "fields": [
+    "jump_word_functions"
+   ],
+   "status": "inferred"
+  },
+  "攻击弹道": {
+   "fields": [
+    "trace_functions",
+    "skin_trajectory_type"
+   ],
+   "status": "inferred",
+   "melee_note": "冷兵器为挥砍特效（候选字段 coldarm_types / skin_replace_anims，待确认）"
+  },
+  "战斗音效": {
+   "fields": [
+    "sound_functions"
+   ],
+   "status": "inferred"
+  },
+  "攻击准心": {
+   "fields": [
+    "aim_cross_functions"
+   ],
+   "status": "inferred"
+  },
+  "专属战斗动作": {
+   "fields": [
+    "play_anim_moudle",
+    "hold_functions"
+   ],
+   "status": "inferred"
+  },
+  "专属待机动作": {
+   "fields": [
+    "idle_anim"
+   ],
+   "status": "inferred"
+  },
+  "特殊交互": {
+   "fields": [
+    "switch_weapon",
+    "socket"
+   ],
+   "status": "inferred",
+   "confidence": "low（映射弱，待确认）"
+  },
+  "核芯联动": {
+   "fields": [
+    "nucleus_replace_ids",
+    "link_nucleus"
+   ],
+   "status": "inferred"
+  }
+ },
+ "tiers": {
+  "6": {
+   "name": "传世",
+   "standard": [
+    "命中效果",
+    "击败特效",
+    "伤害跳字",
+    "攻击弹道",
+    "战斗音效",
+    "攻击准心",
+    "专属战斗动作",
+    "专属待机动作"
+   ],
+   "optional": [
+    "特殊交互",
+    "核芯联动"
+   ]
+  },
+  "5": {
+   "name": "典藏",
+   "standard": [
+    "命中效果",
+    "击败特效",
+    "伤害跳字",
+    "攻击弹道",
+    "战斗音效",
+    "攻击准心"
+   ],
+   "optional": [
+    "特殊交互",
+    "核芯联动"
+   ]
+  },
+  "4": {
+   "name": "紫皮",
+   "standard": [
+    "命中效果",
+    "攻击弹道"
+   ],
+   "optional": [],
+   "exceptions": [
+    {
+     "name": "玉饮琼花",
+     "skin_item_id": 1110023,
+     "note": "紫皮标配之外的例外（实机/规则层面的特例，非数据错误）"
+    }
+   ]
+  },
+  "3": {
+   "name": "直售",
+   "standard": [],
+   "optional": []
+  },
+  "2": {
+   "name": "白送",
+   "standard": [],
+   "optional": []
+  }
+ },
+ "checks": [
+  "标配缺失（非变体行）需列为 deviation 待解释",
+  "变体行（（N天）等）天然字段少，不按本标准判",
+  "紫皮出现击败特效/伤害跳字/待机动作 = 偏离规则，需单独确认"
+ ],
+ "not_in_scope": [
+  "不得据此改 canonical 数据",
+  "不得据此反推 grade（grade 仍为 deprecated_board_derived）"
+ ],
+ "refinements_pending_confirmation": [
+  {
+   "id": "R1",
+   "claim": "冷兵器（canonical weapon_type=50，行内有 coldarm_types）不配置「攻击准心」；其「攻击弹道」以挥砍特效体现（coldarm_types / skin_replace_anims）。",
+   "status": "hypothesis_pending_user_confirmation",
+   "confidence": "high",
+   "evidence": "全部缺「攻击准心」的行都是 wt=50 且带 coldarm_types：赤月晶魄×3（传世）、紫焰蛇矛/诡秘之颅/阿赖耶识/极光剑（典藏）",
+   "impact": "若成立，则这些行不是偏离，而应记为 melee_exempt"
+  },
+  {
+   "id": "R2",
+   "claim": "非枪械类武器（如 weapon_type 20/8/51：极光盾等）不适用「攻击弹道」。",
+   "status": "hypothesis_pending_user_confirmation",
+   "confidence": "medium",
+   "evidence": "13 个非 wt=50 的紫皮行缺「攻击弹道」且无 coldarm_types（腾云/冰城小霸王/湮没星空 wt20、粉色剧目/神翼曙光/晶棘 wt8、极光盾 wt51…）",
+   "impact": "若成立，则需按 weapon_type 维护「该武器类别应有的特效集合」"
+  },
+  {
+   "id": "R3",
+   "claim": "时限变体行（名称含「（N天）」）字段天然较少，不按品级标配判。",
+   "status": "adopted_in_audit",
+   "confidence": "high",
+   "evidence": "11101451/11101691/11101771 等变体行只在少数字段有值，parent 行齐全"
+  }
+ ]
+}

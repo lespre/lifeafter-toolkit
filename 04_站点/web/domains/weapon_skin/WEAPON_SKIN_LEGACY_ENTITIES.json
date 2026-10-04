@@ -1,0 +1,26 @@
+{
+ "note": "永久隔离：不进入 canonical 126；可被 explain / 历史比较 / 冲突审计看到，但不得作为正式卡片",
+ "canonical_count": 126,
+ "entities": [
+  {
+   "skin_item_id": 1110184,
+   "status": "legacy_only_with_external_evidence",
+   "evidence": "behavior_res 行键存在"
+  },
+  {
+   "skin_item_id": 1110186,
+   "status": "legacy_only_with_external_evidence",
+   "evidence": "behavior_res 行键存在"
+  },
+  {
+   "skin_item_id": 1110190,
+   "status": "legacy_only_with_external_evidence",
+   "evidence": "behavior_res 行键存在"
+  },
+  {
+   "skin_item_id": 1110185,
+   "status": "legacy_only_unconfirmed",
+   "evidence": null
+  }
+ ]
+}

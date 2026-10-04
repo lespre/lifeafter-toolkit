@@ -1,0 +1,6396 @@
+<FxGroup
+	Name = "MyFx"
+	FxLifeSpan = "0.000"
+	FxStartDelayMin = "0.000"
+	FxStartDelayMax = "0.000"
+	PreRunTime = "0.000"
+	Loop = "FALSE"
+	EndLessPlay = "FALSE"
+	BillboardType = "0"
+	AffectedShaderCtrl = "TRUE"
+	Mode2d = "FALSE"
+	CanMergeRender = "TRUE"
+	WeatherTimeControl = "0"
+	WeatherNightAlpha = "1.000"
+	ParticleControl = "FALSE"
+	SfxGrade = "0"
+	ResidentType = "0"
+	SfxCategory = "0"
+	RenderCondition = "0"
+	MaxParticleCount = "28">
+	<Dummy
+		Name = "L_空特效_2"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.000"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		InheritPrsOnce = "FALSE"
+		TrackType = "0"
+		FixDummyTrack = "TRUE">
+		<TrackFixPoint
+			Forward = "0.000,0.000,1.000,0.000" />
+		<Dummy
+			Name = "L_空特效"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "0.000"
+			FxLifeSpan = "0.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			InheritPrsOnce = "FALSE"
+			TrackType = "4"
+			FixDummyTrack = "TRUE">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "1.000"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.9" />
+					<Frame
+						Time = "0.8977"
+						Value = "0.9" />
+					<Frame
+						Time = "1.0449"
+						Value = "1.1625" />
+					<Frame
+						Time = "1.2955"
+						Value = "1.3875" />
+					<Frame
+						Time = "1.5944"
+						Value = "1.5" />
+					<Frame
+						Time = "2"
+						Value = "1.5" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<Model
+				Name = "L_模型火_1"
+				PosOffset = "0.000000,0.100000,0.000000"
+				FxStartTime = "0.000"
+				FxLifeSpan = "1.500"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "0"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "0"
+				TrackType = "4"
+				TransparentMode = "5"
+				ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_qiliu_20_djs.gim"
+				AnimName = ""
+				AnimSeqName = ""
+				DirType = "2"
+				Scale = "FloatKeyFrame"
+				PostProcessKind = "0"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.000">
+				<TrackScale
+					XScale = "FloatKeyFrame"
+					YScale = "FloatKeyFrame"
+					ZScale = "FloatKeyFrame"
+					TimeLen = "1.000"
+					YZCopyFromX = "FALSE"
+					CycleType = "2">
+					<XScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1.2" />
+						<Frame
+							Time = "1"
+							Value = "1.7" />
+					</XScale>
+					<YScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "5" />
+					</YScale>
+					<ZScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1.2" />
+						<Frame
+							Time = "1"
+							Value = "1.7" />
+					</ZScale>
+				</TrackScale>
+				<ShaderComponent>
+					<Uniforms>
+						<Variables>
+							<Semantic
+								Value = "u_emissivecolor_Keyframe"
+								Name = "u_emissivecolor"
+								Type = "ColorKeyFrame"
+								DisplayName = "u_emissivecolor" />
+							<Semantic
+								Value = "u_overall_opacity_Keyframe"
+								Name = "u_overall_opacity"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_overall_opacity" />
+						</Variables>
+						<u_emissivecolor_Keyframe
+							ChangeType = "0">
+							<Frame
+								Time = "0"
+								Value = "255,255,208,115" />
+							<Frame
+								Time = "1"
+								Value = "255,255,137,48" />
+						</u_emissivecolor_Keyframe>
+						<u_overall_opacity_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0" />
+							<Frame
+								Time = "0.174"
+								Value = "1" />
+							<Frame
+								Time = "0.6107"
+								Value = "0.9" />
+							<Frame
+								Time = "1"
+								Value = "0" />
+						</u_overall_opacity_Keyframe>
+					</Uniforms>
+					<Macros>
+						<Variables />
+					</Macros>
+				</ShaderComponent>
+				<ScaleFrame
+					ChangeType = "4"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.48" />
+				</ScaleFrame>
+			</Model>
+			<Model
+				Name = "H_模型红"
+				PosOffset = "0.000000,0.100000,0.000000"
+				FxStartTime = "0.000"
+				FxLifeSpan = "1.700"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "4"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "1"
+				TrackType = "4"
+				TransparentMode = "2"
+				ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_14_hjl_djs.gim"
+				AnimName = ""
+				AnimSeqName = ""
+				DirType = "2"
+				Scale = "FloatKeyFrame"
+				PostProcessKind = "0"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.000">
+				<TrackScale
+					XScale = "FloatKeyFrame"
+					YScale = "FloatKeyFrame"
+					ZScale = "FloatKeyFrame"
+					TimeLen = "1.000"
+					YZCopyFromX = "FALSE"
+					CycleType = "2">
+					<XScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1.4" />
+						<Frame
+							Time = "1"
+							Value = "1.7" />
+					</XScale>
+					<YScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "3" />
+					</YScale>
+					<ZScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1.4" />
+						<Frame
+							Time = "1"
+							Value = "1.7" />
+					</ZScale>
+				</TrackScale>
+				<ShaderComponent>
+					<Uniforms>
+						<Variables>
+							<Semantic
+								Value = "u_emissivecolor_Keyframe"
+								Name = "u_emissivecolor"
+								Type = "ColorKeyFrame"
+								DisplayName = "u_emissivecolor" />
+							<Semantic
+								Value = "u_overall_opacity_Keyframe"
+								Name = "u_overall_opacity"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_overall_opacity" />
+						</Variables>
+						<u_emissivecolor_Keyframe
+							ChangeType = "0">
+							<Frame
+								Time = "0"
+								Value = "255,69,56,255" />
+							<Frame
+								Time = "1"
+								Value = "255,59,25,255" />
+						</u_emissivecolor_Keyframe>
+						<u_overall_opacity_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0" />
+							<Frame
+								Time = "0.2336"
+								Value = "0.35" />
+							<Frame
+								Time = "0.6962"
+								Value = "0.2901" />
+							<Frame
+								Time = "1"
+								Value = "0" />
+						</u_overall_opacity_Keyframe>
+					</Uniforms>
+					<Macros>
+						<Variables />
+					</Macros>
+				</ShaderComponent>
+				<ScaleFrame
+					ChangeType = "4"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.5" />
+				</ScaleFrame>
+			</Model>
+			<Model
+				Name = "M_m_流动_科技_1_1_1"
+				PosOffset = "0.000000,0.000000,0.000000"
+				FxStartTime = "0.000"
+				FxLifeSpan = "1.498"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "2"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "-2"
+				TrackType = "3"
+				TransparentMode = "5"
+				ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_qiliu_12_djs.gim"
+				AnimName = ""
+				AnimSeqName = ""
+				DirType = "2"
+				Scale = "FloatKeyFrame"
+				PostProcessKind = "0"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.600">
+				<TrackRotate
+					AxesDir = "0.000000,1.000000,0.000000"
+					StartAngle = "0.000"
+					EndAngle = "360.000"
+					TimeLen = "20.000"
+					CycleType = "0" />
+				<ShaderComponent>
+					<Uniforms>
+						<Variables>
+							<Semantic
+								Value = "u_diffuse_color_Keyframe"
+								Name = "u_diffuse_color"
+								Type = "ColorKeyFrame"
+								DisplayName = "u_diffuse_color" />
+							<Semantic
+								Value = "AlphaMtl_Keyframe"
+								Name = "AlphaMtl"
+								Type = "FloatKeyFrame"
+								DisplayName = "AlphaMtl" />
+							<Semantic
+								Value = "u_diffuse_intensity_Keyframe"
+								Name = "u_diffuse_intensity"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_diffuse_intensity" />
+							<Semantic
+								Value = "u_overall_opacity_Keyframe"
+								Name = "u_overall_opacity"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_overall_opacity" />
+							<Semantic
+								Value = "u_emissivecolor_Keyframe"
+								Name = "u_emissivecolor"
+								Type = "ColorKeyFrame"
+								DisplayName = "u_emissivecolor" />
+						</Variables>
+						<u_diffuse_color_Keyframe
+							ChangeType = "0">
+							<Frame
+								Time = "0.25"
+								Value = "240,255,221,34" />
+						</u_diffuse_color_Keyframe>
+						<AlphaMtl_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0" />
+							<Frame
+								Time = "0.2153"
+								Value = "1" />
+							<Frame
+								Time = "0.7328"
+								Value = "0.775" />
+							<Frame
+								Time = "1"
+								Value = "0" />
+						</AlphaMtl_Keyframe>
+						<u_diffuse_intensity_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0.5"
+								Value = "10" />
+						</u_diffuse_intensity_Keyframe>
+						<u_overall_opacity_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0" />
+							<Frame
+								Time = "0.2153"
+								Value = "1" />
+							<Frame
+								Time = "0.7328"
+								Value = "0.775" />
+							<Frame
+								Time = "1"
+								Value = "0" />
+						</u_overall_opacity_Keyframe>
+						<u_emissivecolor_Keyframe
+							ChangeType = "0">
+							<Frame
+								Time = "0.5"
+								Value = "243,255,212,73" />
+						</u_emissivecolor_Keyframe>
+					</Uniforms>
+					<Macros>
+						<Variables />
+					</Macros>
+				</ShaderComponent>
+				<ScaleFrame
+					ChangeType = "4"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1.1" />
+				</ScaleFrame>
+			</Model>
+			<Sprite
+				Name = "L_g_glow地_1"
+				PosOffset = "0.000000,0.100000,0.000000"
+				FxStartTime = "0.000"
+				FxLifeSpan = "2.000"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "0"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "-2"
+				TrackType = "4"
+				DirType = "2"
+				Direction = "0.000000,1.000000,0.000000"
+				DirectionRotate = "0.000"
+				Radius = "13.000"
+				SmoothStartTime = "0.000"
+				SmoothStart = "ColorKeyFrame"
+				SmoothStopTime = "0.000"
+				SmoothStop = "ColorKeyFrame"
+				EnableZBuffer = "TRUE"
+				RoundRadius = "0.000"
+				BlendMode = "0"
+				TextureClockRotate = "0"
+				TextureFlip = "FALSE"
+				Texture = "effect\textures\glow\glow01_yc.tga"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				RandomStartSpr = "FALSE"
+				IsSprBlend = "FALSE"
+				ColorKeyFrame = "ColorKeyFrame"
+				RandomOrig = "FALSE"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.000"
+				IsDecal = "FALSE"
+				DecalNeedDepth = "FALSE"
+				DecalYMax = "20.000"
+				EnableDecalTech = "TRUE"
+				DecalTech = ""
+				DecalColorName = ""
+				EnableEffectDecoupling = "TRUE"
+				TextureRatio = "1">
+				<TrackScale
+					XScale = "FloatKeyFrame"
+					YScale = "FloatKeyFrame"
+					ZScale = "FloatKeyFrame"
+					TimeLen = "0.200"
+					YZCopyFromX = "TRUE"
+					CycleType = "2">
+					<XScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+						<Frame
+							Time = "1"
+							Value = "2" />
+					</XScale>
+					<YScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "2" />
+						<Frame
+							Time = "0.1679"
+							Value = "2.45" />
+						<Frame
+							Time = "0.484"
+							Value = "2.775" />
+						<Frame
+							Time = "1"
+							Value = "3" />
+					</YScale>
+					<ZScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+					</ZScale>
+				</TrackScale>
+				<ColorFrame
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "0,12,9,6" />
+					<Frame
+						Time = "0.1146"
+						Value = "131,58,38,14" />
+					<Frame
+						Time = "0.8355"
+						Value = "120,53,30,8" />
+					<Frame
+						Time = "1"
+						Value = "0,16,7,1" />
+				</ColorFrame>
+				<SmoothStartFrame
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,0,0,0" />
+					<Frame
+						Time = "1"
+						Value = "255,255,255,255" />
+				</SmoothStartFrame>
+				<SmoothStopFrame
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,255,255,255" />
+					<Frame
+						Time = "1"
+						Value = "255,0,0,0" />
+				</SmoothStopFrame>
+			</Sprite>
+		</Dummy>
+		<Sprite
+			Name = "L_g_glow地"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.000"
+			FxLifeSpan = "1.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "0"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "2"
+			TrackType = "4"
+			DirType = "2"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "6.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "2"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow25.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.200"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+					<Frame
+						Time = "1"
+						Value = "2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,255,204,150" />
+				<Frame
+					Time = "0.1179"
+					Value = "97,254,166,52" />
+				<Frame
+					Time = "0.7508"
+					Value = "82,254,169,59" />
+				<Frame
+					Time = "1"
+					Value = "0,255,159,35" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Model
+			Name = "M_模型喇叭"
+			PosOffset = "0.000000,0.617280,0.000000"
+			FxStartTime = "0.000"
+			FxLifeSpan = "1.350"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "2"
+			TrackType = "4"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_qiliu_23_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "1.000"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1.2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1.1" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1.2" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+						<Semantic
+							Value = "u_emissive_color_Keyframe"
+							Name = "u_emissive_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_emissive_color" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Value = "u_base_color_Keyframe"
+							Name = "u_base_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_base_color" />
+						<Semantic
+							Name = "mask_tex"
+							Type = "String"
+							Value = "effect\textures\alpha\tex_alpha_tp104_04.tga"
+							DisplayName = "mask_tex" />
+						<Semantic
+							Value = "u_overall_opacity_Keyframe"
+							Name = "u_overall_opacity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_overall_opacity" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "0.2" />
+					</u_depth_bias_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "6" />
+					</u_diffuse_intensity_Keyframe>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.1395"
+							Value = "0.0889" />
+						<Frame
+							Time = "0.2719"
+							Value = "0.3112" />
+						<Frame
+							Time = "0.3664"
+							Value = "0.6" />
+						<Frame
+							Time = "0.5561"
+							Value = "0.6" />
+						<Frame
+							Time = "0.6501"
+							Value = "0.255" />
+						<Frame
+							Time = "0.8014"
+							Value = "0.09" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+					<u_emissive_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0.25"
+							Value = "245,255,172,64" />
+					</u_emissive_color_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,255,191,103" />
+						<Frame
+							Time = "0.3522"
+							Value = "255,255,165,55" />
+						<Frame
+							Time = "1"
+							Value = "255,255,168,30" />
+					</u_diffuse_color_Keyframe>
+					<u_base_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0.25"
+							Value = "136,0,0,0" />
+					</u_base_color_Keyframe>
+					<u_overall_opacity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.1395"
+							Value = "0.0889" />
+						<Frame
+							Time = "0.2719"
+							Value = "0.3112" />
+						<Frame
+							Time = "0.3664"
+							Value = "0.6" />
+						<Frame
+							Time = "0.5561"
+							Value = "0.6" />
+						<Frame
+							Time = "0.6501"
+							Value = "0.255" />
+						<Frame
+							Time = "0.8014"
+							Value = "0.09" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</u_overall_opacity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.5" />
+				<Frame
+					Time = "1"
+					Value = "0.9" />
+			</ScaleFrame>
+		</Model>
+	</Dummy>
+	<Model
+		Name = "M_m_流动_2"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.000"
+		FxLifeSpan = "1.498"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "2"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "-1"
+		TrackType = "0"
+		TransparentMode = "5"
+		ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_shangdian_05_djs.gim"
+		AnimName = ""
+		AnimSeqName = ""
+		DirType = "2"
+		Scale = "FloatKeyFrame"
+		PostProcessKind = "0"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		LightIntensity = "0.000"
+		FogIntensity = "0.600">
+		<TrackFixPoint
+			Forward = "0.000,-1.000,0.000,90.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_emissivecolor_Keyframe"
+						Name = "u_emissivecolor"
+						Type = "ColorKeyFrame"
+						DisplayName = "u_emissivecolor" />
+					<Semantic
+						Value = "u_overall_opacity_Keyframe"
+						Name = "u_overall_opacity"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_overall_opacity" />
+				</Variables>
+				<u_emissivecolor_Keyframe
+					ChangeType = "0">
+					<Frame
+						Time = "0.5"
+						Value = "127,255,211,159" />
+				</u_emissivecolor_Keyframe>
+				<u_overall_opacity_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0" />
+					<Frame
+						Time = "0.3267"
+						Value = "0.4375" />
+					<Frame
+						Time = "0.7466"
+						Value = "0.3688" />
+					<Frame
+						Time = "1"
+						Value = "0" />
+				</u_overall_opacity_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ScaleFrame
+			ChangeType = "4"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "0.55" />
+		</ScaleFrame>
+	</Model>
+	<ParticleSystem
+		Name = "H_ shandian01_1_1"
+		PosOffset = "0.000000,1.000000,0.000000"
+		FxStartTime = "1.016"
+		FxLifeSpan = "1.070"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "4"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "4"
+		TrackType = "0"
+		TrackCacheType = "2"
+		DisableBB = "TRUE"
+		EmitEven = "TRUE"
+		EmitUnevenTime = "1.000"
+		EmitEvenRandom = "0.000"
+		EmitSleepMin = "-1.000"
+		EmitSleepMax = "-1.000"
+		EmitActiveMin = "-1.000"
+		EmitActiveMax = "-1.000"
+		EmitAtBegin = "TRUE"
+		EmitAtGround = "FALSE"
+		PreEmitTime = "0.000"
+		EmissionType = "4"
+		SelBindBonesIdx = ""
+		BindBonesHead = "FALSE"
+		TrkShapeFile = ""
+		TrkShapeSample = "2"
+		MinEmissionHight = "1.000"
+		EmissionHight = "1.000"
+		PlaneDir = "0.000006,19.326662,4.027614"
+		EmissionDirDegree = "FloatKeyFrame"
+		EmissionRadius = "FloatKeyFrame"
+		MinRefThickerLen = "0.000"
+		EmissionRadius2 = "FloatKeyFrame"
+		RefThickerLen = "0.000"
+		Inside = "TRUE"
+		AnchorSum = "0"
+		MinParticlesPerSecond = "5.000"
+		ParticlesPerSecond = "5.000"
+		ParticlesPerUnitDistance = "0.000"
+		EmitterSpeedHint = "1"
+		EarlierTime = "0.000"
+		Gravity = "FloatKeyFrame"
+		AccelForward = "0.000000,-1.000000,0.000000"
+		MinFriction = "2.000"
+		Friction = "2.000"
+		MinSpriteLifespan = "0.200"
+		MaxSpriteLifespan = "0.500"
+		MinSpriteVelocity = "FloatKeyFrame"
+		MaxSpriteVelocity = "FloatKeyFrame"
+		RandomSum = "0.000000,0.000000,0.000000"
+		XDirDisturb = "FloatKeyFrame"
+		YDirDisturb = "FloatKeyFrame"
+		ZDirDisturb = "FloatKeyFrame"
+		DirDisturbYZCopyFromX = "FALSE"
+		RandomSumInterval = "0"
+		IsDerive = "FALSE"
+		DeriveValue = "0.500"
+		TrackActionType = "0"
+		CollisionPlane = "0"
+		CollisionPlaneOffset = "0.000"
+		RebondAttenuation = "0.500"
+		MinRadius = "0.500"
+		MaxRadius = "1.500"
+		AlongMoveDir = "FALSE"
+		ScaleStyle = "0"
+		SpriteScale = "FloatKeyFrame"
+		SpriteHeight = "FloatKeyFrame"
+		HWRatio = "FloatKeyFrame"
+		DirType = "0"
+		ParticleDir = "0.000000,1.000000,0.000000"
+		RandomOrigRotate = "TRUE"
+		OrigDegree = "0.000"
+		OrigDegreeRandom = "1.000"
+		RotDegreeSpeed = "FloatKeyFrame"
+		RotDegreeSpeedRandom = "0.000"
+		NoiseQuality = "0"
+		NoiseStrength = "FloatKeyFrame"
+		NoiseFrequency = "1.000"
+		NoiseScrollSpeed = "0.000"
+		NoiseOctaves = "1"
+		ParticleSortType = "1"
+		BlendMode = "7"
+		EnableZBuffer = "TRUE"
+		RoundRadius = "0.000"
+		TextureClockRotate = "1"
+		TextureFlip = "FALSE"
+		Texture = "effect\textures\lightning\lightning_01.spr"
+		SprWorkMode = "1"
+		SprSpeedRate = "15.000"
+		IsSprBlend = "FALSE"
+		SprStartRandom = "FALSE"
+		ColorType = "1"
+		ColorKeyFrame = "ColorKeyFrame"
+		ColorKeyFramePar = "ColorKeyFrame"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		DecalTech = ""
+		EffectColorName = ""
+		EnableEffectDecoupling = "TRUE"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000"
+		RotDegreeSpeedOld = "false">
+		<TrackFixPoint
+			Forward = "-0.048,0.167,0.985,-0.169" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_depth_bias_Keyframe"
+						Name = "u_depth_bias"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_depth_bias" />
+					<Semantic
+						Value = "u_emissive_color_Keyframe"
+						Name = "u_emissive_color"
+						Type = "ColorKeyFrame"
+						DisplayName = "u_emissive_color" />
+					<Semantic
+						Value = "u_emissive_intensity_Keyframe"
+						Name = "u_emissive_intensity"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_emissive_intensity" />
+				</Variables>
+				<u_depth_bias_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "20" />
+				</u_depth_bias_Keyframe>
+				<u_emissive_color_Keyframe
+					ChangeType = "0">
+					<Frame
+						Time = "0.25"
+						Value = "213,255,168,93" />
+				</u_emissive_color_Keyframe>
+				<u_emissive_intensity_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "2" />
+				</u_emissive_intensity_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables>
+					<Semantic
+						Name = "USE_SFXLIGHT_FOG"
+						Type = "Bool"
+						Value = "TRUE"
+						DisplayName = "USE_SFXLIGHT_FOG" />
+					<Semantic
+						Name = "USE_EMISSIVE_CONTROL"
+						Type = "Bool"
+						Value = "TRUE"
+						DisplayName = "USE_EMISSIVE_CONTROL" />
+				</Variables>
+			</Macros>
+		</ShaderComponent>
+		<ColorFrame
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "255,92,243,107" />
+		</ColorFrame>
+		<ColorFramePar
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "0,191,148,110" />
+			<Frame
+				Time = "0.2027"
+				Value = "236,26,20,13" />
+			<Frame
+				Time = "0.6528"
+				Value = "191,9,6,3" />
+			<Frame
+				Time = "1"
+				Value = "0,0,0,0" />
+		</ColorFramePar>
+		<GravityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "1" />
+		</GravityFrame>
+		<MaxSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "1" />
+		</MaxSpriteVelocityFrame>
+		<MinSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "1" />
+		</MinSpriteVelocityFrame>
+		<RotDegreeSpeedFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</RotDegreeSpeedFrame>
+		<EmissionRadiusFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "15" />
+		</EmissionRadiusFrame>
+		<EmissionRadius2Frame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionRadius2Frame>
+		<SpriteScaleFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1.2" />
+			<Frame
+				Time = "0.3364"
+				Value = "1.98" />
+			<Frame
+				Time = "1"
+				Value = "2.5" />
+		</SpriteScaleFrame>
+		<SpriteHeightFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "10" />
+		</SpriteHeightFrame>
+		<HWRatioFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "1" />
+		</HWRatioFrame>
+		<EmissionDirDegreeFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionDirDegreeFrame>
+		<NoiseStrengthFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</NoiseStrengthFrame>
+		<XDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</XDirDisturb>
+		<YDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</YDirDisturb>
+		<ZDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</ZDirDisturb>
+	</ParticleSystem>
+	<ParticleSystem
+		Name = "H_鬼火_射线_02"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.000"
+		FxLifeSpan = "1.321"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "4"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "2"
+		TrackType = "0"
+		TrackCacheType = "2"
+		DisableBB = "FALSE"
+		EmitEven = "TRUE"
+		EmitUnevenTime = "1.000"
+		EmitEvenRandom = "0.000"
+		EmitSleepMin = "-1.000"
+		EmitSleepMax = "-1.000"
+		EmitActiveMin = "-1.000"
+		EmitActiveMax = "-1.000"
+		EmitAtBegin = "TRUE"
+		EmitAtGround = "FALSE"
+		PreEmitTime = "0.000"
+		EmissionType = "1"
+		SelBindBonesIdx = ""
+		BindBonesHead = "FALSE"
+		TrkShapeFile = ""
+		TrkShapeSample = "2"
+		MinEmissionHight = "1.000"
+		EmissionHight = "1.000"
+		PlaneDir = "0.000000,1.000000,0.000000"
+		EmissionDirDegree = "FloatKeyFrame"
+		EmissionRadius = "FloatKeyFrame"
+		MinRefThickerLen = "0.000"
+		EmissionRadius2 = "FloatKeyFrame"
+		RefThickerLen = "0.000"
+		Inside = "FALSE"
+		AnchorSum = "0"
+		MinParticlesPerSecond = "6.000"
+		ParticlesPerSecond = "6.000"
+		ParticlesPerUnitDistance = "0.000"
+		EmitterSpeedHint = "1"
+		EarlierTime = "0.000"
+		Gravity = "FloatKeyFrame"
+		AccelForward = "0.000000,1.000000,0.000000"
+		MinFriction = "0.000"
+		Friction = "0.000"
+		MinSpriteLifespan = "0.250"
+		MaxSpriteLifespan = "0.400"
+		MinSpriteVelocity = "FloatKeyFrame"
+		MaxSpriteVelocity = "FloatKeyFrame"
+		RandomSum = "0.000000,0.000000,0.000000"
+		XDirDisturb = "FloatKeyFrame"
+		YDirDisturb = "FloatKeyFrame"
+		ZDirDisturb = "FloatKeyFrame"
+		DirDisturbYZCopyFromX = "FALSE"
+		RandomSumInterval = "0"
+		IsDerive = "FALSE"
+		DeriveValue = "0.500"
+		TrackActionType = "0"
+		CollisionPlane = "0"
+		CollisionPlaneOffset = "0.000"
+		RebondAttenuation = "0.500"
+		MinRadius = "3.000"
+		MaxRadius = "4.000"
+		AlongMoveDir = "FALSE"
+		ScaleStyle = "0"
+		SpriteScale = "FloatKeyFrame"
+		SpriteHeight = "FloatKeyFrame"
+		HWRatio = "FloatKeyFrame"
+		DirType = "2"
+		ParticleDir = "0.000000,1.000000,0.000000"
+		RandomOrigRotate = "TRUE"
+		OrigDegree = "0.000"
+		OrigDegreeRandom = "0.000"
+		RotDegreeSpeed = "FloatKeyFrame"
+		RotDegreeSpeedRandom = "0.000"
+		NoiseQuality = "0"
+		NoiseStrength = "FloatKeyFrame"
+		NoiseFrequency = "1.000"
+		NoiseScrollSpeed = "0.000"
+		NoiseOctaves = "1"
+		ParticleSortType = "0"
+		BlendMode = "5"
+		EnableZBuffer = "TRUE"
+		RoundRadius = "0.000"
+		TextureClockRotate = "0"
+		TextureFlip = "FALSE"
+		Texture = "effect\textures\glow\tex_glow_qirishijie_guangyun_hgz03_03.tga"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		IsSprBlend = "FALSE"
+		SprStartRandom = "TRUE"
+		ColorType = "1"
+		ColorKeyFrame = "ColorKeyFrame"
+		ColorKeyFramePar = "ColorKeyFrame"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		DecalTech = "shader\uber_fx_common.fx::TShader"
+		EffectColorName = ""
+		EnableEffectDecoupling = "TRUE"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000"
+		RotDegreeSpeedOld = "false">
+		<TrackFixPoint
+			Forward = "0.000,0.011,-1.000,180.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_depth_bias_Keyframe"
+						Name = "u_depth_bias"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_depth_bias" />
+					<Semantic
+						Value = "u_emissive_highlight_intensity_Keyframe"
+						Name = "u_emissive_highlight_intensity"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_emissive_highlight_intensity" />
+				</Variables>
+				<u_depth_bias_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "8" />
+				</u_depth_bias_Keyframe>
+				<u_emissive_highlight_intensity_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "4" />
+				</u_emissive_highlight_intensity_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables>
+					<Semantic
+						Name = "USE_VERTEXCOLOR"
+						Type = "Bool"
+						Value = "TRUE"
+						DisplayName = "USE_VERTEXCOLOR" />
+				</Variables>
+			</Macros>
+		</ShaderComponent>
+		<ColorFrame
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "255,92,243,107" />
+		</ColorFrame>
+		<ColorFramePar
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "0,255,213,136" />
+			<Frame
+				Time = "0.2651"
+				Value = "255,249,182,101" />
+			<Frame
+				Time = "0.5996"
+				Value = "150,255,109,5" />
+			<Frame
+				Time = "1"
+				Value = "0,51,32,10" />
+		</ColorFramePar>
+		<GravityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</GravityFrame>
+		<MaxSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.3" />
+		</MaxSpriteVelocityFrame>
+		<MinSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.2" />
+		</MinSpriteVelocityFrame>
+		<RotDegreeSpeedFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</RotDegreeSpeedFrame>
+		<EmissionRadiusFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.01" />
+		</EmissionRadiusFrame>
+		<EmissionRadius2Frame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionRadius2Frame>
+		<SpriteScaleFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "2.5" />
+			<Frame
+				Time = "1"
+				Value = "2" />
+		</SpriteScaleFrame>
+		<SpriteHeightFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+			<Frame
+				Time = "0.4122"
+				Value = "3.5625" />
+			<Frame
+				Time = "1"
+				Value = "6" />
+		</SpriteHeightFrame>
+		<HWRatioFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</HWRatioFrame>
+		<EmissionDirDegreeFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionDirDegreeFrame>
+		<NoiseStrengthFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</NoiseStrengthFrame>
+		<XDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</XDirDisturb>
+		<YDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</YDirDisturb>
+		<ZDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</ZDirDisturb>
+	</ParticleSystem>
+	<Dummy
+		Name = "L_空特效_1"
+		PosOffset = "-0.469839,0.000000,0.000000"
+		FxStartTime = "0.920"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		InheritPrsOnce = "FALSE"
+		TrackType = "1"
+		FixDummyTrack = "TRUE">
+		<TrackLine
+			StartPos = "0.000000,42.426720,0.000000"
+			EndPos = "0.525995,-7.919527,0.000000"
+			TimeLen = "0.050"
+			CycleType = "2"
+			RotByTan = "FALSE" />
+		<Dummy
+			Name = "L_空特效_1_1"
+			PosOffset = "0.163355,8.547825,-0.000002"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			InheritPrsOnce = "FALSE"
+			TrackType = "0"
+			FixDummyTrack = "TRUE">
+			<TrackFixPoint
+				Forward = "0.000,0.000,1.000,-90.000" />
+			<Sprite
+				Name = "M_g_glow_an"
+				PosOffset = "-2.472647,0.000000,0.000000"
+				FxStartTime = "0.920"
+				FxLifeSpan = "0.500"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "2"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "-1"
+				TrackType = "4"
+				DirType = "7"
+				Direction = "0.000000,1.000000,0.000000"
+				DirectionRotate = "0.000"
+				Radius = "6.000"
+				SmoothStartTime = "0.000"
+				SmoothStart = "ColorKeyFrame"
+				SmoothStopTime = "0.000"
+				SmoothStop = "ColorKeyFrame"
+				EnableZBuffer = "TRUE"
+				RoundRadius = "0.000"
+				BlendMode = "0"
+				TextureClockRotate = "0"
+				TextureFlip = "FALSE"
+				Texture = "effect\textures\glow\glow_01.tga"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				RandomStartSpr = "FALSE"
+				IsSprBlend = "FALSE"
+				ColorKeyFrame = "ColorKeyFrame"
+				RandomOrig = "FALSE"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.000"
+				IsDecal = "FALSE"
+				DecalNeedDepth = "FALSE"
+				DecalYMax = "20.000"
+				EnableDecalTech = "TRUE"
+				DecalTech = ""
+				DecalColorName = ""
+				EnableEffectDecoupling = "TRUE"
+				TextureRatio = "1">
+				<TrackScale
+					XScale = "FloatKeyFrame"
+					YScale = "FloatKeyFrame"
+					ZScale = "FloatKeyFrame"
+					TimeLen = "1.000"
+					YZCopyFromX = "FALSE"
+					CycleType = "0">
+					<XScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "2.8" />
+					</XScale>
+					<YScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1.2" />
+					</YScale>
+					<ZScale
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+					</ZScale>
+				</TrackScale>
+				<ShaderComponent>
+					<Uniforms>
+						<Variables>
+							<Semantic
+								Value = "u_depth_bias_Keyframe"
+								Name = "u_depth_bias"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_depth_bias" />
+						</Variables>
+						<u_depth_bias_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0.5"
+								Value = "-0.5" />
+						</u_depth_bias_Keyframe>
+					</Uniforms>
+					<Macros>
+						<Variables />
+					</Macros>
+				</ShaderComponent>
+				<ColorFrame
+					ChangeType = "4">
+					<Frame
+						Time = "0"
+						Value = "0,255,190,111" />
+					<Frame
+						Time = "0.4419"
+						Value = "52,255,179,74" />
+					<Frame
+						Time = "1"
+						Value = "0,255,188,66" />
+				</ColorFrame>
+				<SmoothStartFrame
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,0,0,0" />
+					<Frame
+						Time = "1"
+						Value = "255,255,255,255" />
+				</SmoothStartFrame>
+				<SmoothStopFrame
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,255,255,255" />
+					<Frame
+						Time = "1"
+						Value = "255,0,0,0" />
+				</SmoothStopFrame>
+			</Sprite>
+		</Dummy>
+		<Dummy
+			Name = "L_空特效_2_1"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			InheritPrsOnce = "FALSE"
+			TrackType = "4"
+			FixDummyTrack = "TRUE">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "1.000"
+				YZCopyFromX = "TRUE"
+				CycleType = "0">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1.2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<Model
+				Name = "M_模型枪_1"
+				PosOffset = "0.000000,13.683434,0.000000"
+				FxStartTime = "0.920"
+				FxLifeSpan = "0.700"
+				FxIgnore = "FALSE"
+				InheritEndLessPlay = "TRUE"
+				RenderLevel = "2"
+				HiddenInPCMode = "FALSE"
+				RenderOrder = "0"
+				RenderBias = "2"
+				TrackType = "0"
+				TransparentMode = "0"
+				ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_wuqi_01_djs.gim"
+				AnimName = ""
+				AnimSeqName = ""
+				DirType = "2"
+				Scale = "FloatKeyFrame"
+				PostProcessKind = "0"
+				SprWorkMode = "0"
+				SprSpeedRate = "1.000"
+				NearCullEnable = "FALSE"
+				FarCullEnable = "TRUE"
+				NearFade = "0.000"
+				NearCull = "0.000"
+				FarFade = "600.000"
+				FarCull = "800.000"
+				LightIntensity = "0.000"
+				FogIntensity = "0.000">
+				<TrackFixPoint
+					Forward = "-1.000,-0.009,0.000,0.000" />
+				<ShaderComponent>
+					<Uniforms>
+						<Variables>
+							<Semantic
+								Value = "u_overall_opacity_Keyframe"
+								Name = "u_overall_opacity"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_overall_opacity" />
+							<Semantic
+								Value = "u_dissolve_amount_Keyframe"
+								Name = "u_dissolve_amount"
+								Type = "FloatKeyFrame"
+								DisplayName = "u_dissolve_amount" />
+						</Variables>
+						<u_overall_opacity_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0.0125" />
+							<Frame
+								Time = "0.084"
+								Value = "0.9375" />
+							<Frame
+								Time = "0.4794"
+								Value = "0.8125" />
+							<Frame
+								Time = "1"
+								Value = "0" />
+						</u_overall_opacity_Keyframe>
+						<u_dissolve_amount_Keyframe
+							ChangeType = "0"
+							Interpolator = "0">
+							<Frame
+								Time = "0"
+								Value = "0" />
+							<Frame
+								Time = "0.6947"
+								Value = "0.9875" />
+							<Frame
+								Time = "1"
+								Value = "1" />
+						</u_dissolve_amount_Keyframe>
+					</Uniforms>
+					<Macros>
+						<Variables />
+					</Macros>
+				</ShaderComponent>
+				<ScaleFrame
+					ChangeType = "4"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1" />
+				</ScaleFrame>
+			</Model>
+		</Dummy>
+	</Dummy>
+	<ParticleSystem
+		Name = "H_鬼火_lizi_1"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.986"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "FALSE"
+		RenderLevel = "4"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "3"
+		TrackType = "0"
+		TrackCacheType = "2"
+		DisableBB = "FALSE"
+		EmitEven = "FALSE"
+		EmitUnevenTime = "1.000"
+		EmitEvenRandom = "0.000"
+		EmitSleepMin = "-1.000"
+		EmitSleepMax = "-1.000"
+		EmitActiveMin = "-1.000"
+		EmitActiveMax = "-1.000"
+		EmitAtBegin = "FALSE"
+		EmitAtGround = "FALSE"
+		PreEmitTime = "0.000"
+		EmissionType = "4"
+		SelBindBonesIdx = ""
+		BindBonesHead = "FALSE"
+		TrkShapeFile = ""
+		TrkShapeSample = "2"
+		MinEmissionHight = "15.000"
+		EmissionHight = "15.000"
+		PlaneDir = "0.000000,1.000000,0.000000"
+		EmissionDirDegree = "FloatKeyFrame"
+		EmissionRadius = "FloatKeyFrame"
+		MinRefThickerLen = "2.000"
+		EmissionRadius2 = "FloatKeyFrame"
+		RefThickerLen = "2.000"
+		Inside = "FALSE"
+		AnchorSum = "0"
+		MinParticlesPerSecond = "5.000"
+		ParticlesPerSecond = "5.000"
+		ParticlesPerUnitDistance = "0.000"
+		EmitterSpeedHint = "1"
+		EarlierTime = "0.000"
+		Gravity = "FloatKeyFrame"
+		AccelForward = "0.000000,1.000000,0.000000"
+		MinFriction = "0.000"
+		Friction = "0.000"
+		MinSpriteLifespan = "0.400"
+		MaxSpriteLifespan = "0.800"
+		MinSpriteVelocity = "FloatKeyFrame"
+		MaxSpriteVelocity = "FloatKeyFrame"
+		RandomSum = "1.000000,0.300000,1.000000"
+		XDirDisturb = "FloatKeyFrame"
+		YDirDisturb = "FloatKeyFrame"
+		ZDirDisturb = "FloatKeyFrame"
+		DirDisturbYZCopyFromX = "FALSE"
+		RandomSumInterval = "0"
+		IsDerive = "FALSE"
+		DeriveValue = "0.500"
+		TrackActionType = "0"
+		CollisionPlane = "0"
+		CollisionPlaneOffset = "0.000"
+		RebondAttenuation = "0.500"
+		MinRadius = "0.150"
+		MaxRadius = "0.350"
+		AlongMoveDir = "FALSE"
+		ScaleStyle = "0"
+		SpriteScale = "FloatKeyFrame"
+		SpriteHeight = "FloatKeyFrame"
+		HWRatio = "FloatKeyFrame"
+		DirType = "0"
+		ParticleDir = "1.000000,0.000000,0.000000"
+		RandomOrigRotate = "TRUE"
+		OrigDegree = "0.000"
+		OrigDegreeRandom = "360.000"
+		RotDegreeSpeed = "FloatKeyFrame"
+		RotDegreeSpeedRandom = "30.000"
+		NoiseQuality = "0"
+		NoiseStrength = "FloatKeyFrame"
+		NoiseFrequency = "1.000"
+		NoiseScrollSpeed = "0.000"
+		NoiseOctaves = "1"
+		ParticleSortType = "0"
+		BlendMode = "5"
+		EnableZBuffer = "TRUE"
+		RoundRadius = "0.000"
+		TextureClockRotate = "0"
+		TextureFlip = "FALSE"
+		Texture = "effect\textures\glow\dian_12.tga"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		IsSprBlend = "FALSE"
+		SprStartRandom = "FALSE"
+		ColorType = "1"
+		ColorKeyFrame = "ColorKeyFrame"
+		ColorKeyFramePar = "ColorKeyFrame"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		DecalTech = ""
+		EffectColorName = ""
+		EnableEffectDecoupling = "TRUE"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000"
+		RotDegreeSpeedOld = "false">
+		<TrackFixPoint
+			Forward = "0.000,0.000,1.000,0.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_depth_bias_Keyframe"
+						Name = "u_depth_bias"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_depth_bias" />
+				</Variables>
+				<u_depth_bias_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "3" />
+				</u_depth_bias_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ColorFrame
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "255,92,243,107" />
+		</ColorFrame>
+		<ColorFramePar
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "0,255,219,157" />
+			<Frame
+				Time = "0.2626"
+				Value = "157,255,217,153" />
+			<Frame
+				Time = "0.5177"
+				Value = "120,255,214,126" />
+			<Frame
+				Time = "1"
+				Value = "0,255,225,151" />
+		</ColorFramePar>
+		<GravityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "10" />
+		</GravityFrame>
+		<MaxSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "8" />
+		</MaxSpriteVelocityFrame>
+		<MinSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "5" />
+		</MinSpriteVelocityFrame>
+		<RotDegreeSpeedFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</RotDegreeSpeedFrame>
+		<EmissionRadiusFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.3" />
+		</EmissionRadiusFrame>
+		<EmissionRadius2Frame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionRadius2Frame>
+		<SpriteScaleFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "5" />
+			<Frame
+				Time = "0.3977"
+				Value = "0.86" />
+			<Frame
+				Time = "0.5558"
+				Value = "3.26" />
+			<Frame
+				Time = "1"
+				Value = "0.2" />
+		</SpriteScaleFrame>
+		<SpriteHeightFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</SpriteHeightFrame>
+		<HWRatioFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</HWRatioFrame>
+		<EmissionDirDegreeFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionDirDegreeFrame>
+		<NoiseStrengthFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</NoiseStrengthFrame>
+		<XDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</XDirDisturb>
+		<YDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.3" />
+		</YDirDisturb>
+		<ZDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</ZDirDisturb>
+	</ParticleSystem>
+	<ParticleSystem
+		Name = "M_lizi_闪电_01"
+		PosOffset = "0.566298,21.371817,0.000000"
+		FxStartTime = "0.920"
+		FxLifeSpan = "0.634"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "2"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "0"
+		TrackType = "0"
+		TrackCacheType = "2"
+		DisableBB = "FALSE"
+		EmitEven = "TRUE"
+		EmitUnevenTime = "1.000"
+		EmitEvenRandom = "0.000"
+		EmitSleepMin = "-1.000"
+		EmitSleepMax = "-1.000"
+		EmitActiveMin = "-1.000"
+		EmitActiveMax = "-1.000"
+		EmitAtBegin = "FALSE"
+		EmitAtGround = "FALSE"
+		PreEmitTime = "0.000"
+		EmissionType = "4"
+		SelBindBonesIdx = ""
+		BindBonesHead = "FALSE"
+		TrkShapeFile = ""
+		TrkShapeSample = "2"
+		MinEmissionHight = "1.000"
+		EmissionHight = "1.000"
+		PlaneDir = "0.000000,-1.000000,0.000000"
+		EmissionDirDegree = "FloatKeyFrame"
+		EmissionRadius = "FloatKeyFrame"
+		MinRefThickerLen = "0.000"
+		EmissionRadius2 = "FloatKeyFrame"
+		RefThickerLen = "0.000"
+		Inside = "TRUE"
+		AnchorSum = "0"
+		MinParticlesPerSecond = "3.000"
+		ParticlesPerSecond = "3.000"
+		ParticlesPerUnitDistance = "0.000"
+		EmitterSpeedHint = "1"
+		EarlierTime = "0.000"
+		Gravity = "FloatKeyFrame"
+		AccelForward = "0.000000,1.000000,0.000000"
+		MinFriction = "0.000"
+		Friction = "0.000"
+		MinSpriteLifespan = "0.200"
+		MaxSpriteLifespan = "0.400"
+		MinSpriteVelocity = "FloatKeyFrame"
+		MaxSpriteVelocity = "FloatKeyFrame"
+		RandomSum = "0.000000,0.000000,0.000000"
+		XDirDisturb = "FloatKeyFrame"
+		YDirDisturb = "FloatKeyFrame"
+		ZDirDisturb = "FloatKeyFrame"
+		DirDisturbYZCopyFromX = "FALSE"
+		RandomSumInterval = "0"
+		IsDerive = "FALSE"
+		DeriveValue = "0.500"
+		TrackActionType = "0"
+		CollisionPlane = "0"
+		CollisionPlaneOffset = "0.000"
+		RebondAttenuation = "0.500"
+		MinRadius = "2.000"
+		MaxRadius = "3.000"
+		AlongMoveDir = "TRUE"
+		ScaleStyle = "1"
+		SpriteScale = "FloatKeyFrame"
+		SpriteHeight = "FloatKeyFrame"
+		HWRatio = "FloatKeyFrame"
+		DirType = "0"
+		ParticleDir = "0.000000,1.000000,0.000000"
+		RandomOrigRotate = "FALSE"
+		OrigDegree = "0.000"
+		OrigDegreeRandom = "0.000"
+		RotDegreeSpeed = "FloatKeyFrame"
+		RotDegreeSpeedRandom = "0.000"
+		NoiseQuality = "0"
+		NoiseStrength = "FloatKeyFrame"
+		NoiseFrequency = "1.000"
+		NoiseScrollSpeed = "0.000"
+		NoiseOctaves = "1"
+		ParticleSortType = "0"
+		BlendMode = "8"
+		EnableZBuffer = "TRUE"
+		RoundRadius = "0.000"
+		TextureClockRotate = "0"
+		TextureFlip = "TRUE"
+		Texture = "effect\textures\lightning\shandian_05_yh_djs.spr"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		IsSprBlend = "FALSE"
+		SprStartRandom = "FALSE"
+		ColorType = "1"
+		ColorKeyFrame = "ColorKeyFrame"
+		ColorKeyFramePar = "ColorKeyFrame"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		DecalTech = ""
+		EffectColorName = ""
+		EnableEffectDecoupling = "TRUE"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000"
+		RotDegreeSpeedOld = "false">
+		<TrackFixPoint
+			Forward = "0.000,0.000,1.000,0.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_depth_bias_Keyframe"
+						Name = "u_depth_bias"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_depth_bias" />
+				</Variables>
+				<u_depth_bias_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "2" />
+				</u_depth_bias_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ColorFrame
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "255,92,243,107" />
+		</ColorFrame>
+		<ColorFramePar
+			ChangeType = "0">
+			<Frame
+				Time = "0"
+				Value = "0,255,212,154" />
+			<Frame
+				Time = "0.0698"
+				Value = "255,255,188,102" />
+			<Frame
+				Time = "0.1528"
+				Value = "251,255,209,145" />
+			<Frame
+				Time = "0.2259"
+				Value = "0,255,207,137" />
+			<Frame
+				Time = "0.3007"
+				Value = "183,253,184,124" />
+			<Frame
+				Time = "0.3771"
+				Value = "247,255,181,102" />
+			<Frame
+				Time = "0.6279"
+				Value = "45,255,154,60" />
+			<Frame
+				Time = "1"
+				Value = "0,0,0,0" />
+		</ColorFramePar>
+		<GravityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</GravityFrame>
+		<MaxSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.1" />
+		</MaxSpriteVelocityFrame>
+		<MinSpriteVelocityFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.1" />
+		</MinSpriteVelocityFrame>
+		<RotDegreeSpeedFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</RotDegreeSpeedFrame>
+		<EmissionRadiusFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionRadiusFrame>
+		<EmissionRadius2Frame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionRadius2Frame>
+		<SpriteScaleFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0.5"
+				Value = "0.6" />
+		</SpriteScaleFrame>
+		<SpriteHeightFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.1" />
+			<Frame
+				Time = "0.1725"
+				Value = "4" />
+			<Frame
+				Time = "1"
+				Value = "4" />
+		</SpriteHeightFrame>
+		<HWRatioFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</HWRatioFrame>
+		<EmissionDirDegreeFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</EmissionDirDegreeFrame>
+		<NoiseStrengthFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "1" />
+		</NoiseStrengthFrame>
+		<XDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</XDirDisturb>
+		<YDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</YDirDisturb>
+		<ZDirDisturb
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0" />
+		</ZDirDisturb>
+	</ParticleSystem>
+	<Dummy
+		Name = "L_空特效_3"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.920"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		InheritPrsOnce = "FALSE"
+		TrackType = "4"
+		FixDummyTrack = "TRUE">
+		<TrackScale
+			XScale = "FloatKeyFrame"
+			YScale = "FloatKeyFrame"
+			ZScale = "FloatKeyFrame"
+			TimeLen = "1.000"
+			YZCopyFromX = "TRUE"
+			CycleType = "0">
+			<XScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.4" />
+			</XScale>
+			<YScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</YScale>
+			<ZScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</ZScale>
+		</TrackScale>
+		<ParticleSystem
+			Name = "H_p_光刺_01"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "1.010"
+			FxLifeSpan = "0.100"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "3"
+			TrackType = "0"
+			TrackCacheType = "2"
+			DisableBB = "FALSE"
+			EmitEven = "FALSE"
+			EmitUnevenTime = "0.310"
+			EmitEvenRandom = "0.000"
+			EmitSleepMin = "-1.000"
+			EmitSleepMax = "-1.000"
+			EmitActiveMin = "-1.000"
+			EmitActiveMax = "-1.000"
+			EmitAtBegin = "FALSE"
+			EmitAtGround = "FALSE"
+			PreEmitTime = "0.000"
+			EmissionType = "3"
+			SelBindBonesIdx = ""
+			BindBonesHead = "FALSE"
+			TrkShapeFile = ""
+			TrkShapeSample = "2"
+			MinEmissionHight = "1.000"
+			EmissionHight = "1.000"
+			PlaneDir = "0.000000,1.000000,0.000000"
+			EmissionDirDegree = "FloatKeyFrame"
+			EmissionRadius = "FloatKeyFrame"
+			MinRefThickerLen = "0.000"
+			EmissionRadius2 = "FloatKeyFrame"
+			RefThickerLen = "0.000"
+			Inside = "FALSE"
+			AnchorSum = "0"
+			MinParticlesPerSecond = "3.000"
+			ParticlesPerSecond = "3.000"
+			ParticlesPerUnitDistance = "0.000"
+			EmitterSpeedHint = "1"
+			EarlierTime = "0.000"
+			Gravity = "FloatKeyFrame"
+			AccelForward = "0.000000,1.000000,0.000000"
+			MinFriction = "0.000"
+			Friction = "0.000"
+			MinSpriteLifespan = "0.120"
+			MaxSpriteLifespan = "0.300"
+			MinSpriteVelocity = "FloatKeyFrame"
+			MaxSpriteVelocity = "FloatKeyFrame"
+			RandomSum = "0.000000,0.000000,0.000000"
+			XDirDisturb = "FloatKeyFrame"
+			YDirDisturb = "FloatKeyFrame"
+			ZDirDisturb = "FloatKeyFrame"
+			DirDisturbYZCopyFromX = "FALSE"
+			RandomSumInterval = "0"
+			IsDerive = "FALSE"
+			DeriveValue = "0.500"
+			TrackActionType = "1"
+			CollisionPlane = "0"
+			CollisionPlaneOffset = "0.000"
+			RebondAttenuation = "0.500"
+			MinRadius = "4.500"
+			MaxRadius = "5.000"
+			AlongMoveDir = "TRUE"
+			ScaleStyle = "1"
+			SpriteScale = "FloatKeyFrame"
+			SpriteHeight = "FloatKeyFrame"
+			HWRatio = "FloatKeyFrame"
+			DirType = "0"
+			ParticleDir = "0.000000,1.000000,0.000000"
+			RandomOrigRotate = "FALSE"
+			OrigDegree = "0.000"
+			OrigDegreeRandom = "0.000"
+			RotDegreeSpeed = "FloatKeyFrame"
+			RotDegreeSpeedRandom = "0.000"
+			NoiseQuality = "0"
+			NoiseStrength = "FloatKeyFrame"
+			NoiseFrequency = "1.000"
+			NoiseScrollSpeed = "0.000"
+			NoiseOctaves = "1"
+			ParticleSortType = "0"
+			BlendMode = "8"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\trail\tex_trail_huo_01_zhf_djs.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			IsSprBlend = "FALSE"
+			SprStartRandom = "TRUE"
+			ColorType = "1"
+			ColorKeyFrame = "ColorKeyFrame"
+			ColorKeyFramePar = "ColorKeyFrame"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			DecalTech = ""
+			EffectColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			RotDegreeSpeedOld = "false">
+			<TrackFixPoint
+				Forward = "0.000,0.000,1.000,0.000" />
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,92,243,107" />
+			</ColorFrame>
+			<ColorFramePar
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,255,227,171" />
+				<Frame
+					Time = "0.2193"
+					Value = "255,255,199,103" />
+				<Frame
+					Time = "0.6047"
+					Value = "66,222,158,56" />
+				<Frame
+					Time = "1"
+					Value = "0,107,72,28" />
+			</ColorFramePar>
+			<GravityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</GravityFrame>
+			<MaxSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.01" />
+			</MaxSpriteVelocityFrame>
+			<MinSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.01" />
+			</MinSpriteVelocityFrame>
+			<RotDegreeSpeedFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</RotDegreeSpeedFrame>
+			<EmissionRadiusFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.5" />
+			</EmissionRadiusFrame>
+			<EmissionRadius2Frame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionRadius2Frame>
+			<SpriteScaleFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.2" />
+				<Frame
+					Time = "0.171"
+					Value = "0.2588" />
+				<Frame
+					Time = "1"
+					Value = "0.3" />
+			</SpriteScaleFrame>
+			<SpriteHeightFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.3" />
+				<Frame
+					Time = "0.174"
+					Value = "1.675" />
+				<Frame
+					Time = "1"
+					Value = "2.5" />
+			</SpriteHeightFrame>
+			<HWRatioFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</HWRatioFrame>
+			<EmissionDirDegreeFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionDirDegreeFrame>
+			<NoiseStrengthFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</NoiseStrengthFrame>
+			<XDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</XDirDisturb>
+			<YDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</YDirDisturb>
+			<ZDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</ZDirDisturb>
+		</ParticleSystem>
+		<ParticleSystem
+			Name = "H_p_光刺_an"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "1.000"
+			FxLifeSpan = "0.100"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "0"
+			TrackType = "0"
+			TrackCacheType = "2"
+			DisableBB = "FALSE"
+			EmitEven = "FALSE"
+			EmitUnevenTime = "0.310"
+			EmitEvenRandom = "0.000"
+			EmitSleepMin = "-1.000"
+			EmitSleepMax = "-1.000"
+			EmitActiveMin = "-1.000"
+			EmitActiveMax = "-1.000"
+			EmitAtBegin = "FALSE"
+			EmitAtGround = "FALSE"
+			PreEmitTime = "0.000"
+			EmissionType = "3"
+			SelBindBonesIdx = ""
+			BindBonesHead = "FALSE"
+			TrkShapeFile = ""
+			TrkShapeSample = "2"
+			MinEmissionHight = "0.100"
+			EmissionHight = "0.100"
+			PlaneDir = "0.000000,1.000000,0.000000"
+			EmissionDirDegree = "FloatKeyFrame"
+			EmissionRadius = "FloatKeyFrame"
+			MinRefThickerLen = "0.000"
+			EmissionRadius2 = "FloatKeyFrame"
+			RefThickerLen = "0.000"
+			Inside = "FALSE"
+			AnchorSum = "0"
+			MinParticlesPerSecond = "3.000"
+			ParticlesPerSecond = "3.000"
+			ParticlesPerUnitDistance = "0.000"
+			EmitterSpeedHint = "1"
+			EarlierTime = "0.000"
+			Gravity = "FloatKeyFrame"
+			AccelForward = "0.000000,1.000000,0.000000"
+			MinFriction = "0.000"
+			Friction = "0.000"
+			MinSpriteLifespan = "0.100"
+			MaxSpriteLifespan = "0.300"
+			MinSpriteVelocity = "FloatKeyFrame"
+			MaxSpriteVelocity = "FloatKeyFrame"
+			RandomSum = "0.000000,0.000000,0.000000"
+			XDirDisturb = "FloatKeyFrame"
+			YDirDisturb = "FloatKeyFrame"
+			ZDirDisturb = "FloatKeyFrame"
+			DirDisturbYZCopyFromX = "FALSE"
+			RandomSumInterval = "0"
+			IsDerive = "FALSE"
+			DeriveValue = "0.500"
+			TrackActionType = "1"
+			CollisionPlane = "0"
+			CollisionPlaneOffset = "0.000"
+			RebondAttenuation = "0.500"
+			MinRadius = "6.000"
+			MaxRadius = "6.500"
+			AlongMoveDir = "TRUE"
+			ScaleStyle = "1"
+			SpriteScale = "FloatKeyFrame"
+			SpriteHeight = "FloatKeyFrame"
+			HWRatio = "FloatKeyFrame"
+			DirType = "0"
+			ParticleDir = "0.000000,1.000000,0.000000"
+			RandomOrigRotate = "FALSE"
+			OrigDegree = "0.000"
+			OrigDegreeRandom = "0.000"
+			RotDegreeSpeed = "FloatKeyFrame"
+			RotDegreeSpeedRandom = "0.000"
+			NoiseQuality = "0"
+			NoiseStrength = "FloatKeyFrame"
+			NoiseFrequency = "1.000"
+			NoiseScrollSpeed = "0.000"
+			NoiseOctaves = "1"
+			ParticleSortType = "0"
+			BlendMode = "0"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\trail\tex_trail_x07_01.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			IsSprBlend = "FALSE"
+			SprStartRandom = "TRUE"
+			ColorType = "1"
+			ColorKeyFrame = "ColorKeyFrame"
+			ColorKeyFramePar = "ColorKeyFrame"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			DecalTech = ""
+			EffectColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			RotDegreeSpeedOld = "false">
+			<TrackFixPoint
+				Forward = "0.000,0.000,1.000,0.000" />
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,92,243,107" />
+			</ColorFrame>
+			<ColorFramePar
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,82,143,182" />
+				<Frame
+					Time = "0.1262"
+					Value = "161,255,192,115" />
+				<Frame
+					Time = "0.4269"
+					Value = "116,255,169,72" />
+				<Frame
+					Time = "1"
+					Value = "0,210,96,25" />
+			</ColorFramePar>
+			<GravityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</GravityFrame>
+			<MaxSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.01" />
+			</MaxSpriteVelocityFrame>
+			<MinSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.01" />
+			</MinSpriteVelocityFrame>
+			<RotDegreeSpeedFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</RotDegreeSpeedFrame>
+			<EmissionRadiusFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.2" />
+			</EmissionRadiusFrame>
+			<EmissionRadius2Frame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionRadius2Frame>
+			<SpriteScaleFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+				<Frame
+					Time = "0.171"
+					Value = "1.2938" />
+				<Frame
+					Time = "1"
+					Value = "1.5" />
+			</SpriteScaleFrame>
+			<SpriteHeightFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.3" />
+				<Frame
+					Time = "0.1573"
+					Value = "1.3749" />
+				<Frame
+					Time = "1"
+					Value = "2.3" />
+			</SpriteHeightFrame>
+			<HWRatioFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</HWRatioFrame>
+			<EmissionDirDegreeFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionDirDegreeFrame>
+			<NoiseStrengthFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</NoiseStrengthFrame>
+			<XDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</XDirDisturb>
+			<YDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</YDirDisturb>
+			<ZDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</ZDirDisturb>
+		</ParticleSystem>
+		<Sprite
+			Name = "H_g_glow"
+			PosOffset = "0.000000,2.261815,0.000000"
+			FxStartTime = "0.981"
+			FxLifeSpan = "0.100"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "2"
+			TrackType = "4"
+			DirType = "0"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "8.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "2"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\tex_glow_01_cs_tp60_01.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.200"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+					<Frame
+						Time = "0.0977"
+						Value = "1.4875" />
+					<Frame
+						Time = "0.4351"
+						Value = "1.825" />
+					<Frame
+						Time = "1"
+						Value = "2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "30" />
+					</u_depth_bias_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,209,141" />
+				<Frame
+					Time = "0.397"
+					Value = "187,253,201,119" />
+				<Frame
+					Time = "0.6512"
+					Value = "22,250,204,97" />
+				<Frame
+					Time = "1"
+					Value = "0,30,72,120" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Sprite
+			Name = "H_g_glow地"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.982"
+			FxLifeSpan = "0.200"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "2"
+			TrackType = "4"
+			DirType = "2"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "20.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "2"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow25.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.200"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.5" />
+					<Frame
+						Time = "0.0916"
+						Value = "1.0875" />
+					<Frame
+						Time = "0.2382"
+						Value = "1.3625" />
+					<Frame
+						Time = "1"
+						Value = "1.5" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,255,224,159" />
+				<Frame
+					Time = "0.2154"
+					Value = "255,254,206,110" />
+				<Frame
+					Time = "0.359"
+					Value = "108,254,180,77" />
+				<Frame
+					Time = "0.5216"
+					Value = "42,174,119,32" />
+				<Frame
+					Time = "1"
+					Value = "0,120,77,23" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Sprite
+			Name = "H_g_glow地_an"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.982"
+			FxLifeSpan = "1.300"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "-1"
+			TrackType = "4"
+			DirType = "2"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "13.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "0"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow_01.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.200"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+					<Frame
+						Time = "0.1199"
+						Value = "1.4875" />
+					<Frame
+						Time = "0.4351"
+						Value = "1.825" />
+					<Frame
+						Time = "1"
+						Value = "2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,190,127,44" />
+				<Frame
+					Time = "0.201"
+					Value = "82,154,117,26" />
+				<Frame
+					Time = "0.515"
+					Value = "52,75,32,0" />
+				<Frame
+					Time = "1"
+					Value = "0,56,23,5" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Sprite
+			Name = "M_g_爆点"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.982"
+			FxLifeSpan = "0.250"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "3"
+			TrackType = "4"
+			DirType = "2"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "8.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "8"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow_04_tp29.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.250"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.3" />
+					<Frame
+						Time = "0.1509"
+						Value = "0.8625" />
+					<Frame
+						Time = "0.2925"
+						Value = "1.1325" />
+					<Frame
+						Time = "1"
+						Value = "1.2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,255,214,140" />
+				<Frame
+					Time = "0.2128"
+					Value = "255,254,213,125" />
+				<Frame
+					Time = "0.4077"
+					Value = "112,255,176,81" />
+				<Frame
+					Time = "1"
+					Value = "0,120,77,31" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Model
+			Name = "M_模型_地扩散2"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.989"
+			FxLifeSpan = "0.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "1"
+			TrackType = "4"
+			TransparentMode = "2"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_jisha_dimiankuosan_hgz01_01_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "3"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.450"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "0.54" />
+					<Frame
+						Time = "0.3248"
+						Value = "0.8" />
+					<Frame
+						Time = "1"
+						Value = "1" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "10" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "2" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\veins\v_veins_tp116_08.tga"
+							DisplayName = "Tex0" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "0.2" />
+					</u_depth_bias_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,230,189,148" />
+						<Frame
+							Time = "1"
+							Value = "255,225,184,96" />
+					</u_diffuse_color_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "3" />
+					</u_diffuse_intensity_Keyframe>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0.5" />
+						<Frame
+							Time = "0.3063"
+							Value = "0.5" />
+						<Frame
+							Time = "0.5897"
+							Value = "0.2312" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.75" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "H_模型_gow"
+			PosOffset = "0.000000,-0.868607,0.000000"
+			FxStartTime = "1.034"
+			FxLifeSpan = "1.200"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "-1"
+			TrackType = "4"
+			TransparentMode = "0"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_jisha_glow_shu_hgz01_01_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "0"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.500"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1.9" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.85" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "0.1" />
+					</u_depth_bias_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,255,187,139" />
+						<Frame
+							Time = "0.1134"
+							Value = "255,255,158,61" />
+						<Frame
+							Time = "1"
+							Value = "255,255,106,14" />
+					</u_diffuse_color_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1" />
+					</u_diffuse_intensity_Keyframe>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.1365"
+							Value = "1" />
+						<Frame
+							Time = "0.2657"
+							Value = "0.425" />
+						<Frame
+							Time = "0.4545"
+							Value = "0.1375" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.7" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "M_地裂亮_1"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "1.040"
+			FxLifeSpan = "1.200"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "4"
+			TrackType = "0"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_jisha_dilie_hgz01_01_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackFixPoint
+				Forward = "-0.120,0.000,0.993,0.000" />
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "u_intensity_Keyframe"
+							Name = "u_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_intensity" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\debris\crack\tex_crack_02_yx_djs.tga"
+							DisplayName = "Tex0" />
+					</Variables>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.052"
+							Value = "1" />
+						<Frame
+							Time = "0.3435"
+							Value = "1" />
+						<Frame
+							Time = "0.7389"
+							Value = "0.4" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,255,255,255" />
+						<Frame
+							Time = "0.1362"
+							Value = "255,255,222,166" />
+						<Frame
+							Time = "0.3355"
+							Value = "255,255,218,159" />
+						<Frame
+							Time = "1"
+							Value = "255,255,68,0" />
+					</u_diffuse_color_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "3" />
+					</u_diffuse_intensity_Keyframe>
+					<u_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0.5" />
+						<Frame
+							Time = "0.5012"
+							Value = "0.5375" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+				<Frame
+					Time = "0.0092"
+					Value = "1.55" />
+				<Frame
+					Time = "0.026"
+					Value = "1.775" />
+				<Frame
+					Time = "0.0489"
+					Value = "2" />
+				<Frame
+					Time = "1"
+					Value = "2" />
+			</ScaleFrame>
+		</Model>
+		<Sprite
+			Name = "H_g_爆点_1"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "1.032"
+			FxLifeSpan = "0.250"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "3"
+			TrackType = "4"
+			DirType = "2"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "10.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "8"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\tex_glow_guangci_tp78_01.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "FALSE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.250"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.3" />
+					<Frame
+						Time = "0.1603"
+						Value = "0.75" />
+					<Frame
+						Time = "0.4137"
+						Value = "1.11" />
+					<Frame
+						Time = "1"
+						Value = "1.2" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "2" />
+					<Frame
+						Time = "0.1679"
+						Value = "2.45" />
+					<Frame
+						Time = "0.484"
+						Value = "2.775" />
+					<Frame
+						Time = "1"
+						Value = "3" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,79,169,255" />
+				<Frame
+					Time = "0.2128"
+					Value = "255,254,213,161" />
+				<Frame
+					Time = "0.4077"
+					Value = "112,255,225,163" />
+				<Frame
+					Time = "1"
+					Value = "0,41,27,120" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<Model
+			Name = "L_m_扩散_02"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "0.970"
+			FxLifeSpan = "0.900"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "0"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "1"
+			TrackType = "4"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_kuosan_hgz_02_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.600"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "0.5825" />
+					<Frame
+						Time = "0.3248"
+						Value = "0.875" />
+					<Frame
+						Time = "1"
+						Value = "1.1" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "1.815" />
+					<Frame
+						Time = "0.3248"
+						Value = "3.05" />
+					<Frame
+						Time = "1"
+						Value = "4" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "0.5825" />
+					<Frame
+						Time = "0.3248"
+						Value = "0.875" />
+					<Frame
+						Time = "1"
+						Value = "1.1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_overall_opacity_Keyframe"
+							Name = "u_overall_opacity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_overall_opacity" />
+						<Semantic
+							Value = "u_emissivecolor_Keyframe"
+							Name = "u_emissivecolor"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_emissivecolor" />
+						<Semantic
+							Value = "u_emissive_highlight_intensity_Keyframe"
+							Name = "u_emissive_highlight_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_highlight_intensity" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\veins\noise_04_tp05.tga"
+							DisplayName = "Tex0" />
+					</Variables>
+					<u_overall_opacity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.1405"
+							Value = "0.375" />
+						<Frame
+							Time = "0.1939"
+							Value = "1" />
+						<Frame
+							Time = "0.4489"
+							Value = "0.6125" />
+						<Frame
+							Time = "0.655"
+							Value = "0.175" />
+						<Frame
+							Time = "0.8489"
+							Value = "0.0875" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</u_overall_opacity_Keyframe>
+					<u_emissivecolor_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,16,13,9" />
+						<Frame
+							Time = "0.3389"
+							Value = "255,33,23,12" />
+						<Frame
+							Time = "1"
+							Value = "255,28,19,6" />
+					</u_emissivecolor_Keyframe>
+					<u_emissive_highlight_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "8" />
+					</u_emissive_highlight_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.7" />
+			</ScaleFrame>
+		</Model>
+		<ParticleSystem
+			Name = "H_粒子_1"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.200"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "2"
+			TrackType = "0"
+			TrackCacheType = "2"
+			DisableBB = "FALSE"
+			EmitEven = "FALSE"
+			EmitUnevenTime = "1.010"
+			EmitEvenRandom = "0.000"
+			EmitSleepMin = "0.000"
+			EmitSleepMax = "1.000"
+			EmitActiveMin = "-1.000"
+			EmitActiveMax = "-1.000"
+			EmitAtBegin = "FALSE"
+			EmitAtGround = "FALSE"
+			PreEmitTime = "0.000"
+			EmissionType = "10"
+			SelBindBonesIdx = ""
+			BindBonesHead = "FALSE"
+			TrkShapeFile = ""
+			TrkShapeSample = "2"
+			MinEmissionHight = "1.000"
+			EmissionHight = "1.000"
+			PlaneDir = "0.000000,-4.819330,0.000000"
+			EmissionDirDegree = "FloatKeyFrame"
+			EmissionRadius = "FloatKeyFrame"
+			MinRefThickerLen = "0.000"
+			EmissionRadius2 = "FloatKeyFrame"
+			RefThickerLen = "0.000"
+			Inside = "TRUE"
+			AnchorSum = "0"
+			MinParticlesPerSecond = "5.000"
+			ParticlesPerSecond = "5.000"
+			ParticlesPerUnitDistance = "0.000"
+			EmitterSpeedHint = "1"
+			EarlierTime = "0.000"
+			Gravity = "FloatKeyFrame"
+			AccelForward = "0.000000,14.772831,0.000000"
+			MinFriction = "2.500"
+			Friction = "2.500"
+			MinSpriteLifespan = "0.450"
+			MaxSpriteLifespan = "1.000"
+			MinSpriteVelocity = "FloatKeyFrame"
+			MaxSpriteVelocity = "FloatKeyFrame"
+			RandomSum = "5.000000,5.000000,5.000000"
+			XDirDisturb = "FloatKeyFrame"
+			YDirDisturb = "FloatKeyFrame"
+			ZDirDisturb = "FloatKeyFrame"
+			DirDisturbYZCopyFromX = "FALSE"
+			RandomSumInterval = "3"
+			IsDerive = "FALSE"
+			DeriveValue = "0.500"
+			TrackActionType = "0"
+			CollisionPlane = "0"
+			CollisionPlaneOffset = "0.000"
+			RebondAttenuation = "0.500"
+			MinRadius = "0.100"
+			MaxRadius = "0.250"
+			AlongMoveDir = "TRUE"
+			ScaleStyle = "1"
+			SpriteScale = "FloatKeyFrame"
+			SpriteHeight = "FloatKeyFrame"
+			HWRatio = "FloatKeyFrame"
+			DirType = "0"
+			ParticleDir = "0.000000,1.000000,0.000000"
+			RandomOrigRotate = "FALSE"
+			OrigDegree = "0.000"
+			OrigDegreeRandom = "0.000"
+			RotDegreeSpeed = "FloatKeyFrame"
+			RotDegreeSpeedRandom = "0.000"
+			NoiseQuality = "0"
+			NoiseStrength = "FloatKeyFrame"
+			NoiseFrequency = "1.000"
+			NoiseScrollSpeed = "0.000"
+			NoiseOctaves = "1"
+			ParticleSortType = "0"
+			BlendMode = "8"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			TextureClockRotate = "1"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow_14_cs.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			IsSprBlend = "FALSE"
+			SprStartRandom = "TRUE"
+			ColorType = "1"
+			ColorKeyFrame = "ColorKeyFrame"
+			ColorKeyFramePar = "ColorKeyFrame"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			DecalTech = ""
+			EffectColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			RotDegreeSpeedOld = "false">
+			<TrackFixPoint
+				Forward = "0.000,0.000,0.000,180.000" />
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_emissive_intensity_Keyframe"
+							Name = "u_emissive_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_intensity" />
+					</Variables>
+					<u_emissive_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "10" />
+					</u_emissive_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,92,243,107" />
+			</ColorFrame>
+			<ColorFramePar
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "127,255,255,255" />
+				<Frame
+					Time = "0.0365"
+					Value = "255,255,213,152" />
+				<Frame
+					Time = "0.4086"
+					Value = "255,255,174,83" />
+				<Frame
+					Time = "0.6944"
+					Value = "232,255,172,64" />
+				<Frame
+					Time = "1"
+					Value = "131,255,176,40" />
+			</ColorFramePar>
+			<GravityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0" />
+			</GravityFrame>
+			<MaxSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "60" />
+			</MaxSpriteVelocityFrame>
+			<MinSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "20" />
+			</MinSpriteVelocityFrame>
+			<RotDegreeSpeedFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</RotDegreeSpeedFrame>
+			<EmissionRadiusFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "3" />
+			</EmissionRadiusFrame>
+			<EmissionRadius2Frame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionRadius2Frame>
+			<SpriteScaleFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "5" />
+				<Frame
+					Time = "0.5878"
+					Value = "2.4074" />
+				<Frame
+					Time = "1"
+					Value = "2" />
+			</SpriteScaleFrame>
+			<SpriteHeightFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.45" />
+				<Frame
+					Time = "1"
+					Value = "0" />
+			</SpriteHeightFrame>
+			<HWRatioFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.5" />
+			</HWRatioFrame>
+			<EmissionDirDegreeFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionDirDegreeFrame>
+			<NoiseStrengthFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</NoiseStrengthFrame>
+			<XDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "5" />
+			</XDirDisturb>
+			<YDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "5" />
+			</YDirDisturb>
+			<ZDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "5" />
+			</ZDirDisturb>
+		</ParticleSystem>
+		<Model
+			Name = "M_模型气流升_1"
+			PosOffset = "0.000000,-0.200000,0.000000"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.700"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "5"
+			TrackType = "4"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_jisha_qiliu_01_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.500"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.7" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.5" />
+					<Frame
+						Time = "0.0931"
+						Value = "0.7888" />
+					<Frame
+						Time = "0.2015"
+						Value = "1.0337" />
+					<Frame
+						Time = "0.3252"
+						Value = "1.1738" />
+					<Frame
+						Time = "1"
+						Value = "1.2" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.7" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\trail\trail_11_lmq_djs.tga"
+							DisplayName = "Tex0" />
+						<Semantic
+							Value = "u_distort_intensity_Keyframe"
+							Name = "u_distort_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_distort_intensity" />
+						<Semantic
+							Value = "u_diffuse_uvspeed_y_Keyframe"
+							Name = "u_diffuse_uvspeed_y"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_uvspeed_y" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1" />
+					</u_depth_bias_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "20" />
+					</u_diffuse_intensity_Keyframe>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.2687"
+							Value = "1" />
+						<Frame
+							Time = "0.5237"
+							Value = "1" />
+						<Frame
+							Time = "0.6473"
+							Value = "0.4375" />
+						<Frame
+							Time = "0.7542"
+							Value = "0.2" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0.125"
+							Value = "251,255,212,122" />
+					</u_diffuse_color_Keyframe>
+					<u_distort_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1" />
+					</u_distort_intensity_Keyframe>
+					<u_diffuse_uvspeed_y_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "2.5" />
+					</u_diffuse_uvspeed_y_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.7" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "L_m_扩散_科技_1_2"
+			PosOffset = "0.000000,0.100000,0.000000"
+			FxStartTime = "1.050"
+			FxLifeSpan = "1.000"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "0"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "1"
+			TrackType = "4"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_qiliu_09_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.600"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.0565"
+						Value = "1.0438" />
+					<Frame
+						Time = "0.1359"
+						Value = "1.45" />
+					<Frame
+						Time = "1"
+						Value = "1.45" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "1.815" />
+					<Frame
+						Time = "0.3248"
+						Value = "3.05" />
+					<Frame
+						Time = "1"
+						Value = "4" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.2" />
+					<Frame
+						Time = "0.1021"
+						Value = "0.5825" />
+					<Frame
+						Time = "0.3248"
+						Value = "0.875" />
+					<Frame
+						Time = "1"
+						Value = "1.1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_overall_opacity_Keyframe"
+							Name = "u_overall_opacity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_overall_opacity" />
+						<Semantic
+							Value = "u_maintex_speed_y_Keyframe"
+							Name = "u_maintex_speed_y"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_maintex_speed_y" />
+						<Semantic
+							Value = "u_maintex_speed_x_Keyframe"
+							Name = "u_maintex_speed_x"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_maintex_speed_x" />
+						<Semantic
+							Value = "u_dissolve_amount_Keyframe"
+							Name = "u_dissolve_amount"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_dissolve_amount" />
+						<Semantic
+							Value = "u_emissivecolor_Keyframe"
+							Name = "u_emissivecolor"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_emissivecolor" />
+						<Semantic
+							Value = "u_emissive_highlight_intensity_Keyframe"
+							Name = "u_emissive_highlight_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_highlight_intensity" />
+					</Variables>
+					<u_overall_opacity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.1405"
+							Value = "0.375" />
+						<Frame
+							Time = "0.2824"
+							Value = "1" />
+						<Frame
+							Time = "0.4229"
+							Value = "0.375" />
+						<Frame
+							Time = "0.6107"
+							Value = "0.1875" />
+						<Frame
+							Time = "0.8489"
+							Value = "0.0875" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</u_overall_opacity_Keyframe>
+					<u_maintex_speed_y_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "-0.3" />
+					</u_maintex_speed_y_Keyframe>
+					<u_maintex_speed_x_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1.5" />
+					</u_maintex_speed_x_Keyframe>
+					<u_dissolve_amount_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0.7" />
+						<Frame
+							Time = "0.8137"
+							Value = "0.7" />
+						<Frame
+							Time = "0.8824"
+							Value = "0.7487" />
+						<Frame
+							Time = "0.9557"
+							Value = "0.8162" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_dissolve_amount_Keyframe>
+					<u_emissivecolor_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "127,255,221,120" />
+						<Frame
+							Time = "0.1262"
+							Value = "255,255,224,100" />
+						<Frame
+							Time = "0.3256"
+							Value = "255,255,221,70" />
+						<Frame
+							Time = "1"
+							Value = "255,255,191,0" />
+					</u_emissivecolor_Keyframe>
+					<u_emissive_highlight_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "2" />
+						<Frame
+							Time = "0.1374"
+							Value = "100" />
+						<Frame
+							Time = "0.258"
+							Value = "37.525" />
+						<Frame
+							Time = "0.4397"
+							Value = "13.025" />
+						<Frame
+							Time = "1"
+							Value = "2" />
+					</u_emissive_highlight_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.29" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "M_模型气流升_1_1_1"
+			PosOffset = "0.000000,-0.200000,0.000000"
+			FxStartTime = "1.008"
+			FxLifeSpan = "0.900"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "5"
+			TrackType = "4"
+			TransparentMode = "5"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_022\mod_skin_2003_022_jisha_qiliu_01_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.500"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.7" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.5" />
+					<Frame
+						Time = "0.0931"
+						Value = "1.1189" />
+					<Frame
+						Time = "0.2015"
+						Value = "1.6436" />
+					<Frame
+						Time = "0.3252"
+						Value = "1.9439" />
+					<Frame
+						Time = "1"
+						Value = "2" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0.7" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+						<Semantic
+							Value = "u_diffuse_intensity_Keyframe"
+							Name = "u_diffuse_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_intensity" />
+						<Semantic
+							Value = "AlphaMtl_Keyframe"
+							Name = "AlphaMtl"
+							Type = "FloatKeyFrame"
+							DisplayName = "AlphaMtl" />
+						<Semantic
+							Value = "u_diffuse_color_Keyframe"
+							Name = "u_diffuse_color"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_diffuse_color" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\trail\keji_02_wh_djs.tga"
+							DisplayName = "Tex0" />
+						<Semantic
+							Value = "u_distort_intensity_Keyframe"
+							Name = "u_distort_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_distort_intensity" />
+						<Semantic
+							Value = "u_diffuse_uvspeed_y_Keyframe"
+							Name = "u_diffuse_uvspeed_y"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_diffuse_uvspeed_y" />
+						<Semantic
+							Name = "mask_tex"
+							Type = "String"
+							Value = "effect\textures\alpha\tex_alpha_mask_tp60_04.tga"
+							DisplayName = "mask_tex" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1" />
+					</u_depth_bias_Keyframe>
+					<u_diffuse_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "20" />
+						<Frame
+							Time = "0.3542"
+							Value = "20" />
+						<Frame
+							Time = "0.4718"
+							Value = "13.1429" />
+						<Frame
+							Time = "0.6061"
+							Value = "7.619" />
+						<Frame
+							Time = "0.742"
+							Value = "3.0476" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</u_diffuse_intensity_Keyframe>
+					<AlphaMtl_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.2687"
+							Value = "1" />
+						<Frame
+							Time = "0.5237"
+							Value = "1" />
+						<Frame
+							Time = "0.6473"
+							Value = "0.4375" />
+						<Frame
+							Time = "0.7542"
+							Value = "0.2" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</AlphaMtl_Keyframe>
+					<u_diffuse_color_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "255,255,198,134" />
+						<Frame
+							Time = "0.1096"
+							Value = "255,255,203,84" />
+						<Frame
+							Time = "0.4518"
+							Value = "255,255,150,23" />
+						<Frame
+							Time = "1"
+							Value = "255,255,131,0" />
+					</u_diffuse_color_Keyframe>
+					<u_distort_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "0" />
+					</u_distort_intensity_Keyframe>
+					<u_diffuse_uvspeed_y_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "1" />
+					</u_diffuse_uvspeed_y_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.6" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "M_模型特效_2_1"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "0.970"
+			FxLifeSpan = "1.000"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "-2"
+			TrackType = "4"
+			TransparentMode = "2"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_56_hjl_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "1.000"
+				YZCopyFromX = "FALSE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1.5" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_overall_opacity_Keyframe"
+							Name = "u_overall_opacity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_overall_opacity" />
+						<Semantic
+							Value = "u_emissive_highlight_intensity_Keyframe"
+							Name = "u_emissive_highlight_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_highlight_intensity" />
+						<Semantic
+							Value = "u_emissivecolor_Keyframe"
+							Name = "u_emissivecolor"
+							Type = "ColorKeyFrame"
+							DisplayName = "u_emissivecolor" />
+						<Semantic
+							Value = "u_dissolve_amount_Keyframe"
+							Name = "u_dissolve_amount"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_dissolve_amount" />
+					</Variables>
+					<u_overall_opacity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.113"
+							Value = "1" />
+						<Frame
+							Time = "0.429"
+							Value = "0.85" />
+						<Frame
+							Time = "0.5435"
+							Value = "0.5375" />
+						<Frame
+							Time = "0.6992"
+							Value = "0.25" />
+						<Frame
+							Time = "0.8382"
+							Value = "0.1375" />
+						<Frame
+							Time = "1"
+							Value = "0" />
+					</u_overall_opacity_Keyframe>
+					<u_emissive_highlight_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+						<Frame
+							Time = "0.0992"
+							Value = "4" />
+						<Frame
+							Time = "0.3099"
+							Value = "2.1625" />
+						<Frame
+							Time = "0.5344"
+							Value = "1.525" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_emissive_highlight_intensity_Keyframe>
+					<u_emissivecolor_Keyframe
+						ChangeType = "0">
+						<Frame
+							Time = "0"
+							Value = "127,114,121,255" />
+						<Frame
+							Time = "1"
+							Value = "127,42,19,255" />
+					</u_emissivecolor_Keyframe>
+					<u_dissolve_amount_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "0.6321"
+							Value = "0" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_dissolve_amount_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.1" />
+				<Frame
+					Time = "0.1466"
+					Value = "0.2466" />
+				<Frame
+					Time = "1"
+					Value = "0.33" />
+			</ScaleFrame>
+		</Model>
+	</Dummy>
+	<Model
+		Name = "L_模型特效_1"
+		PosOffset = "0.000000,-1.388191,0.000000"
+		FxStartTime = "0.990"
+		FxLifeSpan = "0.834"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "0"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "0"
+		TrackType = "4"
+		TransparentMode = "2"
+		ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_qiliu_06_djs.gim"
+		AnimName = ""
+		AnimSeqName = ""
+		DirType = "0"
+		Scale = "FloatKeyFrame"
+		PostProcessKind = "0"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000">
+		<TrackScale
+			XScale = "FloatKeyFrame"
+			YScale = "FloatKeyFrame"
+			ZScale = "FloatKeyFrame"
+			TimeLen = "1.000"
+			YZCopyFromX = "FALSE"
+			CycleType = "0">
+			<XScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.7" />
+			</XScale>
+			<YScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.2" />
+			</YScale>
+			<ZScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</ZScale>
+		</TrackScale>
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_dissolve_amount_Keyframe"
+						Name = "u_dissolve_amount"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_dissolve_amount" />
+					<Semantic
+						Value = "u_emissivecolor_Keyframe"
+						Name = "u_emissivecolor"
+						Type = "ColorKeyFrame"
+						DisplayName = "u_emissivecolor" />
+				</Variables>
+				<u_dissolve_amount_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0" />
+					<Frame
+						Time = "0.5008"
+						Value = "0" />
+					<Frame
+						Time = "1"
+						Value = "1" />
+				</u_dissolve_amount_Keyframe>
+				<u_emissivecolor_Keyframe
+					ChangeType = "0">
+					<Frame
+						Time = "0.0039"
+						Value = "251,255,178,64" />
+				</u_emissivecolor_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ScaleFrame
+			ChangeType = "4"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.0001" />
+			<Frame
+				Time = "0.0489"
+				Value = "0.5288" />
+			<Frame
+				Time = "0.1145"
+				Value = "0.7425" />
+			<Frame
+				Time = "1"
+				Value = "0.9" />
+		</ScaleFrame>
+	</Model>
+	<Model
+		Name = "M_mod_地裂流光_1_1"
+		PosOffset = "0.593428,0.100000,0.887948"
+		FxStartTime = "1.022"
+		FxLifeSpan = "0.800"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		RenderLevel = "2"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "0"
+		TrackType = "0"
+		TransparentMode = "5"
+		ModelName = "effect\mesh\weapon\skin\skin_2003_019\mod_sandian_02_hjl_djs.gim"
+		AnimName = ""
+		AnimSeqName = ""
+		DirType = "2"
+		Scale = "FloatKeyFrame"
+		PostProcessKind = "0"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000">
+		<TrackFixPoint
+			Forward = "0.000,0.000,1.000,0.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "u_dissolve_amount_Keyframe"
+						Name = "u_dissolve_amount"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_dissolve_amount" />
+					<Semantic
+						Value = "u_overall_opacity_Keyframe"
+						Name = "u_overall_opacity"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_overall_opacity" />
+					<Semantic
+						Value = "u_emissivecolor_Keyframe"
+						Name = "u_emissivecolor"
+						Type = "ColorKeyFrame"
+						DisplayName = "u_emissivecolor" />
+					<Semantic
+						Value = "u_emissive_highlight_intensity_Keyframe"
+						Name = "u_emissive_highlight_intensity"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_emissive_highlight_intensity" />
+					<Semantic
+						Name = "t_mask01"
+						Type = "String"
+						Value = "effect\textures\veins\tex_noise_y.tga"
+						DisplayName = "t_mask01" />
+					<Semantic
+						Value = "u_mask01_speed_y_Keyframe"
+						Name = "u_mask01_speed_y"
+						Type = "FloatKeyFrame"
+						DisplayName = "u_mask01_speed_y" />
+					<Semantic
+						Name = "Tex0"
+						Type = "String"
+						Value = "effect\textures\debris\crack\tex_crack_tp71_05.tga"
+						DisplayName = "Tex0" />
+				</Variables>
+				<u_dissolve_amount_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "0" />
+				</u_dissolve_amount_Keyframe>
+				<u_overall_opacity_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+					<Frame
+						Time = "0.4427"
+						Value = "1" />
+					<Frame
+						Time = "0.5359"
+						Value = "0.55" />
+					<Frame
+						Time = "0.6366"
+						Value = "0.1875" />
+					<Frame
+						Time = "0.7206"
+						Value = "0.05" />
+					<Frame
+						Time = "1"
+						Value = "0" />
+				</u_overall_opacity_Keyframe>
+				<u_emissivecolor_Keyframe
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,255,253,198" />
+					<Frame
+						Time = "0.0682"
+						Value = "255,255,219,183" />
+					<Frame
+						Time = "0.2346"
+						Value = "255,255,212,169" />
+					<Frame
+						Time = "1"
+						Value = "255,255,68,0" />
+				</u_emissivecolor_Keyframe>
+				<u_emissive_highlight_intensity_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "30" />
+					<Frame
+						Time = "0.2416"
+						Value = "29.8125" />
+					<Frame
+						Time = "0.4924"
+						Value = "29.0625" />
+					<Frame
+						Time = "0.7156"
+						Value = "18.5625" />
+					<Frame
+						Time = "1"
+						Value = "15" />
+				</u_emissive_highlight_intensity_Keyframe>
+				<u_mask01_speed_y_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0.5"
+						Value = "-0.5" />
+				</u_mask01_speed_y_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ScaleFrame
+			ChangeType = "0"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.4" />
+			<Frame
+				Time = "0.0779"
+				Value = "1.35" />
+			<Frame
+				Time = "1"
+				Value = "1.35" />
+		</ScaleFrame>
+	</Model>
+	<Model
+		Name = "M_模型_金线1"
+		PosOffset = "0.000000,0.000000,0.000000"
+		FxStartTime = "0.920"
+		FxLifeSpan = "0.900"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "FALSE"
+		RenderLevel = "2"
+		HiddenInPCMode = "FALSE"
+		RenderOrder = "0"
+		RenderBias = "0"
+		TrackType = "0"
+		TransparentMode = "0"
+		ModelName = "effect\mesh\weapon\skin\skin_2003_018\mod_skin_2003_018_bp_baoci_hgz01_02.gim"
+		AnimName = ""
+		AnimSeqName = ""
+		DirType = "3"
+		Scale = "FloatKeyFrame"
+		PostProcessKind = "0"
+		SprWorkMode = "0"
+		SprSpeedRate = "1.000"
+		NearCullEnable = "FALSE"
+		FarCullEnable = "TRUE"
+		NearFade = "0.000"
+		NearCull = "0.000"
+		FarFade = "600.000"
+		FarCull = "800.000"
+		LightIntensity = "0.000"
+		FogIntensity = "0.000">
+		<TrackFixPoint
+			Forward = "0.000,0.000,1.000,0.000" />
+		<ShaderComponent>
+			<Uniforms>
+				<Variables>
+					<Semantic
+						Value = "AlphaMtl_Keyframe"
+						Name = "AlphaMtl"
+						Type = "FloatKeyFrame"
+						DisplayName = "AlphaMtl" />
+					<Semantic
+						Value = "u_diffuse_color_Keyframe"
+						Name = "u_diffuse_color"
+						Type = "ColorKeyFrame"
+						DisplayName = "u_diffuse_color" />
+				</Variables>
+				<AlphaMtl_Keyframe
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0" />
+					<Frame
+						Time = "0.1632"
+						Value = "0.7875" />
+					<Frame
+						Time = "0.2917"
+						Value = "0.4725" />
+					<Frame
+						Time = "0.4973"
+						Value = "0.1912" />
+					<Frame
+						Time = "0.99"
+						Value = "0.0675" />
+				</AlphaMtl_Keyframe>
+				<u_diffuse_color_Keyframe
+					ChangeType = "0">
+					<Frame
+						Time = "0"
+						Value = "255,255,255,255" />
+					<Frame
+						Time = "0.1379"
+						Value = "255,255,221,113" />
+					<Frame
+						Time = "0.2176"
+						Value = "255,255,179,80" />
+					<Frame
+						Time = "0.5714"
+						Value = "255,255,195,68" />
+					<Frame
+						Time = "1"
+						Value = "0,255,175,55" />
+				</u_diffuse_color_Keyframe>
+			</Uniforms>
+			<Macros>
+				<Variables />
+			</Macros>
+		</ShaderComponent>
+		<ScaleFrame
+			ChangeType = "4"
+			Interpolator = "0">
+			<Frame
+				Time = "0"
+				Value = "0.5" />
+			<Frame
+				Time = "0.2392"
+				Value = "2.1158" />
+			<Frame
+				Time = "0.4159"
+				Value = "2.6037" />
+			<Frame
+				Time = "1"
+				Value = "3" />
+		</ScaleFrame>
+	</Model>
+	<Dummy
+		Name = "L_空特效_1_1_1"
+		PosOffset = "0.000000,0.100000,0.000000"
+		FxStartTime = "1.120"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		InheritPrsOnce = "FALSE"
+		TrackType = "4"
+		FixDummyTrack = "TRUE">
+		<TrackScale
+			XScale = "FloatKeyFrame"
+			YScale = "FloatKeyFrame"
+			ZScale = "FloatKeyFrame"
+			TimeLen = "1.000"
+			YZCopyFromX = "TRUE"
+			CycleType = "2">
+			<XScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.25" />
+			</XScale>
+			<YScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</YScale>
+			<ZScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</ZScale>
+		</TrackScale>
+		<ParticleSystem
+			Name = "L_p_星点_02"
+			PosOffset = "0.000000,5.000000,0.000000"
+			FxStartTime = "1.120"
+			FxLifeSpan = "0.200"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "FALSE"
+			RenderLevel = "0"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "4"
+			TrackType = "0"
+			TrackCacheType = "2"
+			DisableBB = "FALSE"
+			EmitEven = "FALSE"
+			EmitUnevenTime = "1.000"
+			EmitEvenRandom = "0.000"
+			EmitSleepMin = "-1.000"
+			EmitSleepMax = "-1.000"
+			EmitActiveMin = "-1.000"
+			EmitActiveMax = "-1.000"
+			EmitAtBegin = "TRUE"
+			EmitAtGround = "FALSE"
+			PreEmitTime = "0.000"
+			EmissionType = "3"
+			SelBindBonesIdx = ""
+			BindBonesHead = "FALSE"
+			TrkShapeFile = ""
+			TrkShapeSample = "2"
+			MinEmissionHight = "2.000"
+			EmissionHight = "2.000"
+			PlaneDir = "0.000000,1.000000,0.000000"
+			EmissionDirDegree = "FloatKeyFrame"
+			EmissionRadius = "FloatKeyFrame"
+			MinRefThickerLen = "0.000"
+			EmissionRadius2 = "FloatKeyFrame"
+			RefThickerLen = "0.000"
+			Inside = "TRUE"
+			AnchorSum = "0"
+			MinParticlesPerSecond = "4.000"
+			ParticlesPerSecond = "4.000"
+			ParticlesPerUnitDistance = "0.000"
+			EmitterSpeedHint = "1"
+			EarlierTime = "0.000"
+			Gravity = "FloatKeyFrame"
+			AccelForward = "0.000000,-1.000000,0.000000"
+			MinFriction = "5.000"
+			Friction = "5.000"
+			MinSpriteLifespan = "0.300"
+			MaxSpriteLifespan = "0.500"
+			MinSpriteVelocity = "FloatKeyFrame"
+			MaxSpriteVelocity = "FloatKeyFrame"
+			RandomSum = "0.300000,0.100000,0.300000"
+			XDirDisturb = "FloatKeyFrame"
+			YDirDisturb = "FloatKeyFrame"
+			ZDirDisturb = "FloatKeyFrame"
+			DirDisturbYZCopyFromX = "FALSE"
+			RandomSumInterval = "0"
+			IsDerive = "FALSE"
+			DeriveValue = "0.500"
+			TrackActionType = "0"
+			CollisionPlane = "0"
+			CollisionPlaneOffset = "0.000"
+			RebondAttenuation = "0.500"
+			MinRadius = "2.000"
+			MaxRadius = "6.000"
+			AlongMoveDir = "TRUE"
+			ScaleStyle = "1"
+			SpriteScale = "FloatKeyFrame"
+			SpriteHeight = "FloatKeyFrame"
+			HWRatio = "FloatKeyFrame"
+			DirType = "0"
+			ParticleDir = "0.000000,1.000000,0.000000"
+			RandomOrigRotate = "FALSE"
+			OrigDegree = "0.000"
+			OrigDegreeRandom = "0.000"
+			RotDegreeSpeed = "FloatKeyFrame"
+			RotDegreeSpeedRandom = "0.000"
+			NoiseQuality = "0"
+			NoiseStrength = "FloatKeyFrame"
+			NoiseFrequency = "1.000"
+			NoiseScrollSpeed = "0.000"
+			NoiseOctaves = "1"
+			ParticleSortType = "0"
+			BlendMode = "8"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow_16_yh_djs.tga"
+			SprWorkMode = "1"
+			SprSpeedRate = "0.000"
+			IsSprBlend = "FALSE"
+			SprStartRandom = "TRUE"
+			ColorType = "1"
+			ColorKeyFrame = "ColorKeyFrame"
+			ColorKeyFramePar = "ColorKeyFrame"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			DecalTech = ""
+			EffectColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			RotDegreeSpeedOld = "false">
+			<TrackFixPoint
+				Forward = "0.000,0.000,1.000,0.000" />
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,92,243,107" />
+			</ColorFrame>
+			<ColorFramePar
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,200,149" />
+				<Frame
+					Time = "0.1964"
+					Value = "198,255,168,103" />
+				<Frame
+					Time = "0.8372"
+					Value = "127,255,213,89" />
+				<Frame
+					Time = "1"
+					Value = "127,255,204,0" />
+			</ColorFramePar>
+			<GravityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "50" />
+				<Frame
+					Time = "1"
+					Value = "150" />
+			</GravityFrame>
+			<MaxSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "800" />
+			</MaxSpriteVelocityFrame>
+			<MinSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "500" />
+			</MinSpriteVelocityFrame>
+			<RotDegreeSpeedFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</RotDegreeSpeedFrame>
+			<EmissionRadiusFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "7" />
+			</EmissionRadiusFrame>
+			<EmissionRadius2Frame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionRadius2Frame>
+			<SpriteScaleFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.5" />
+				<Frame
+					Time = "0.2015"
+					Value = "1.05" />
+				<Frame
+					Time = "0.4046"
+					Value = "0.6" />
+				<Frame
+					Time = "0.6412"
+					Value = "0.2625" />
+				<Frame
+					Time = "1"
+					Value = "0" />
+			</SpriteScaleFrame>
+			<SpriteHeightFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "3" />
+				<Frame
+					Time = "0.1924"
+					Value = "2.3438" />
+				<Frame
+					Time = "0.3725"
+					Value = "1.5625" />
+				<Frame
+					Time = "0.6855"
+					Value = "0.7813" />
+				<Frame
+					Time = "1"
+					Value = "0.5" />
+			</SpriteHeightFrame>
+			<HWRatioFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "1" />
+			</HWRatioFrame>
+			<EmissionDirDegreeFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionDirDegreeFrame>
+			<NoiseStrengthFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</NoiseStrengthFrame>
+			<XDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.3" />
+			</XDirDisturb>
+			<YDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.1" />
+			</YDirDisturb>
+			<ZDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.3" />
+			</ZDirDisturb>
+		</ParticleSystem>
+		<Sprite
+			Name = "H_公告板_爆闪2"
+			PosOffset = "0.000000,2.000000,0.000000"
+			FxStartTime = "1.120"
+			FxLifeSpan = "0.150"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "4"
+			TrackType = "4"
+			DirType = "0"
+			Direction = "0.000000,1.000000,0.000000"
+			DirectionRotate = "0.000"
+			Radius = "50.000"
+			SmoothStartTime = "0.000"
+			SmoothStart = "ColorKeyFrame"
+			SmoothStopTime = "0.000"
+			SmoothStop = "ColorKeyFrame"
+			EnableZBuffer = "TRUE"
+			RoundRadius = "0.000"
+			BlendMode = "2"
+			TextureClockRotate = "0"
+			TextureFlip = "FALSE"
+			Texture = "effect\textures\glow\glow_01.tga"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			RandomStartSpr = "FALSE"
+			IsSprBlend = "FALSE"
+			ColorKeyFrame = "ColorKeyFrame"
+			RandomOrig = "TRUE"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			IsDecal = "FALSE"
+			DecalNeedDepth = "FALSE"
+			DecalYMax = "20.000"
+			EnableDecalTech = "TRUE"
+			DecalTech = ""
+			DecalColorName = ""
+			EnableEffectDecoupling = "TRUE"
+			TextureRatio = "1">
+			<TrackScale
+				XScale = "FloatKeyFrame"
+				YScale = "FloatKeyFrame"
+				ZScale = "FloatKeyFrame"
+				TimeLen = "0.250"
+				YZCopyFromX = "TRUE"
+				CycleType = "2">
+				<XScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "0.3" />
+					<Frame
+						Time = "0.1252"
+						Value = "0.7638" />
+					<Frame
+						Time = "1"
+						Value = "1" />
+				</XScale>
+				<YScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</YScale>
+				<ZScale
+					ChangeType = "0"
+					Interpolator = "0">
+					<Frame
+						Time = "0"
+						Value = "1" />
+				</ZScale>
+			</TrackScale>
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_depth_bias_Keyframe"
+							Name = "u_depth_bias"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_depth_bias" />
+					</Variables>
+					<u_depth_bias_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0.5"
+							Value = "15" />
+					</u_depth_bias_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ColorFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "0,255,255,255" />
+				<Frame
+					Time = "0.0515"
+					Value = "255,255,198,124" />
+				<Frame
+					Time = "0.4186"
+					Value = "255,255,200,129" />
+				<Frame
+					Time = "0.5648"
+					Value = "105,255,176,97" />
+				<Frame
+					Time = "0.7126"
+					Value = "37,255,169,57" />
+				<Frame
+					Time = "1"
+					Value = "0,255,147,39" />
+			</ColorFrame>
+			<SmoothStartFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,0,0,0" />
+				<Frame
+					Time = "1"
+					Value = "255,255,255,255" />
+			</SmoothStartFrame>
+			<SmoothStopFrame
+				ChangeType = "0">
+				<Frame
+					Time = "0"
+					Value = "255,255,255,255" />
+				<Frame
+					Time = "1"
+					Value = "255,0,0,0" />
+			</SmoothStopFrame>
+		</Sprite>
+		<ParticleRes
+			Name = "M_ParticleRes"
+			PosOffset = "0.000000,0.000000,0.000000"
+			FxStartTime = "1.049"
+			FxLifeSpan = "0.616"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "2"
+			HiddenInPCMode = "FALSE"
+			TrackType = "0"
+			EmitEven = "FALSE"
+			EmitUnevenTime = "1.000"
+			EmitEvenRandom = "0.000"
+			EmitSleepMin = "-1.000"
+			EmitSleepMax = "-1.000"
+			EmitActiveMin = "-1.000"
+			EmitActiveMax = "-1.000"
+			EmitAtBegin = "TRUE"
+			EmitAtGround = "FALSE"
+			EmissionType = "3"
+			SelBindBonesIdx = ""
+			BindBonesHead = "FALSE"
+			TrkShapeFile = ""
+			TrkShapeSample = "2"
+			MinEmissionHight = "1.000"
+			EmissionHight = "1.000"
+			PlaneDir = "0.000000,1.000000,0.000000"
+			EmissionDirDegree = "FloatKeyFrame"
+			EmissionRadius = "FloatKeyFrame"
+			MinRefThickerLen = "0.000"
+			EmissionRadius2 = "FloatKeyFrame"
+			RefThickerLen = "0.000"
+			Inside = "TRUE"
+			AnchorSum = "0"
+			MinParticlesPerSecond = "5.000"
+			ParticlesPerSecond = "5.000"
+			ParticlesPerUnitDistance = "0.000"
+			EmitterSpeedHint = "1"
+			EarlierTime = "0.000"
+			Gravity = "FloatKeyFrame"
+			AccelForward = "0.000000,1.000000,0.000000"
+			MinFriction = "0.000"
+			Friction = "0.000"
+			MinSpriteLifespan = "2.000"
+			MaxSpriteLifespan = "4.000"
+			MinSpriteVelocity = "FloatKeyFrame"
+			MaxSpriteVelocity = "FloatKeyFrame"
+			RandomSum = "0.000000,0.000000,0.000000"
+			XDirDisturb = "FloatKeyFrame"
+			YDirDisturb = "FloatKeyFrame"
+			ZDirDisturb = "FloatKeyFrame"
+			DirDisturbYZCopyFromX = "FALSE"
+			RandomSumInterval = "0"
+			TrackActionType = "0"
+			CollisionPlane = "0"
+			CollisionPlaneOffset = "0.000"
+			RebondAttenuation = "0.500"
+			SfxName = "effect\fx\weapon\skin\skin_2003_029\fx_skin_2003_029_js_04.sfx"
+			AlongMoveDir = "FALSE"
+			RandomOrigRotate = "FALSE"
+			InitRotation = "TRUE"
+			SpinAxis = "0.000000,1.000000,0.000000"
+			OrigDegree = "0.000"
+			OrigDegreeRandom = "180.000"
+			RotDegreeSpeed = "FloatKeyFrame"
+			RotDegreeSpeedRandom = "0.000"
+			MinScale = "4.000"
+			MaxScale = "8.000"
+			NoiseQuality = "0"
+			NoiseStrength = "FloatKeyFrame"
+			NoiseFrequency = "1.000"
+			NoiseScrollSpeed = "0.000"
+			NoiseOctaves = "1"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000"
+			RotDegreeSpeedOld = "false">
+			<GravityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</GravityFrame>
+			<MaxSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</MaxSpriteVelocityFrame>
+			<MinSpriteVelocityFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.5" />
+			</MinSpriteVelocityFrame>
+			<RotDegreeSpeedFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</RotDegreeSpeedFrame>
+			<EmissionRadiusFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "2.5" />
+			</EmissionRadiusFrame>
+			<EmissionRadius2Frame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "5" />
+			</EmissionRadius2Frame>
+			<EmissionDirDegreeFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</EmissionDirDegreeFrame>
+			<NoiseStrengthFrame
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1" />
+			</NoiseStrengthFrame>
+			<XDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</XDirDisturb>
+			<YDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</YDirDisturb>
+			<ZDirDisturb
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0" />
+			</ZDirDisturb>
+			<TrackFixPoint
+				Forward = "0.000,0.000,1.000,0.000" />
+		</ParticleRes>
+	</Dummy>
+	<Dummy
+		Name = "L_空特效_1_2"
+		PosOffset = "0.000000,41.372993,0.000000"
+		FxStartTime = "0.920"
+		FxLifeSpan = "0.500"
+		FxIgnore = "FALSE"
+		InheritEndLessPlay = "TRUE"
+		InheritPrsOnce = "FALSE"
+		TrackType = "4"
+		FixDummyTrack = "TRUE">
+		<TrackScale
+			XScale = "FloatKeyFrame"
+			YScale = "FloatKeyFrame"
+			ZScale = "FloatKeyFrame"
+			TimeLen = "1.000"
+			YZCopyFromX = "FALSE"
+			CycleType = "0">
+			<XScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.5" />
+			</XScale>
+			<YScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "0.7" />
+				<Frame
+					Time = "0.0718"
+					Value = "3" />
+				<Frame
+					Time = "1"
+					Value = "3" />
+			</YScale>
+			<ZScale
+				ChangeType = "0"
+				Interpolator = "0">
+				<Frame
+					Time = "0"
+					Value = "1.5" />
+			</ZScale>
+		</TrackScale>
+		<Model
+			Name = "L_模型特效"
+			PosOffset = "-1.424116,0.000000,0.000000"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.800"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "0"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "0"
+			TrackType = "0"
+			TransparentMode = "0"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_shangdian_07_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackFixPoint
+				Forward = "-0.981,-0.006,-0.192,179.934" />
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_dissolve_amount_Keyframe"
+							Name = "u_dissolve_amount"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_dissolve_amount" />
+						<Semantic
+							Value = "u_emissive_highlight_intensity_Keyframe"
+							Name = "u_emissive_highlight_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_highlight_intensity" />
+					</Variables>
+					<u_dissolve_amount_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_dissolve_amount_Keyframe>
+					<u_emissive_highlight_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+						<Frame
+							Time = "0.1038"
+							Value = "46.9375" />
+						<Frame
+							Time = "0.2244"
+							Value = "13.25" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_emissive_highlight_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.2" />
+			</ScaleFrame>
+		</Model>
+		<Model
+			Name = "H_模型特效_3"
+			PosOffset = "1.772179,0.000000,0.000000"
+			FxStartTime = "0.920"
+			FxLifeSpan = "0.500"
+			FxIgnore = "FALSE"
+			InheritEndLessPlay = "TRUE"
+			RenderLevel = "4"
+			HiddenInPCMode = "FALSE"
+			RenderOrder = "0"
+			RenderBias = "0"
+			TrackType = "0"
+			TransparentMode = "0"
+			ModelName = "effect\mesh\weapon\skin\skin_2003_029\mod_skin_2003_029_dm_shangdian_07_djs.gim"
+			AnimName = ""
+			AnimSeqName = ""
+			DirType = "2"
+			Scale = "FloatKeyFrame"
+			PostProcessKind = "0"
+			SprWorkMode = "0"
+			SprSpeedRate = "1.000"
+			NearCullEnable = "FALSE"
+			FarCullEnable = "TRUE"
+			NearFade = "0.000"
+			NearCull = "0.000"
+			FarFade = "600.000"
+			FarCull = "800.000"
+			LightIntensity = "0.000"
+			FogIntensity = "0.000">
+			<TrackFixPoint
+				Forward = "1.000,0.006,0.000,180.000" />
+			<ShaderComponent>
+				<Uniforms>
+					<Variables>
+						<Semantic
+							Value = "u_dissolve_amount_Keyframe"
+							Name = "u_dissolve_amount"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_dissolve_amount" />
+						<Semantic
+							Value = "u_emissive_highlight_intensity_Keyframe"
+							Name = "u_emissive_highlight_intensity"
+							Type = "FloatKeyFrame"
+							DisplayName = "u_emissive_highlight_intensity" />
+						<Semantic
+							Name = "Tex0"
+							Type = "String"
+							Value = "effect\textures\lightning\lightning_01_ycy_djs.tga"
+							DisplayName = "Tex0" />
+					</Variables>
+					<u_dissolve_amount_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "0" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_dissolve_amount_Keyframe>
+					<u_emissive_highlight_intensity_Keyframe
+						ChangeType = "0"
+						Interpolator = "0">
+						<Frame
+							Time = "0"
+							Value = "1" />
+						<Frame
+							Time = "0.1038"
+							Value = "46.9375" />
+						<Frame
+							Time = "0.2244"
+							Value = "13.25" />
+						<Frame
+							Time = "1"
+							Value = "1" />
+					</u_emissive_highlight_intensity_Keyframe>
+				</Uniforms>
+				<Macros>
+					<Variables />
+				</Macros>
+			</ShaderComponent>
+			<ScaleFrame
+				ChangeType = "4"
+				Interpolator = "0">
+				<Frame
+					Time = "0.5"
+					Value = "0.2" />
+			</ScaleFrame>
+		</Model>
+	</Dummy>
+</FxGroup>

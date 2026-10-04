@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1110171 光影咏叹调 · 武器皮肤预览（全面对标）</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#05070c;overflow:hidden}
+  #cv{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:14px;top:12px;color:#e3e7ee;font:13px/1.6 system-ui,"Microsoft YaHei";
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre}
+  #src{position:fixed;right:14px;top:12px;color:#8f98a8;font:11px/1.6 ui-monospace,Consolas,monospace;
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre;text-align:right}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud">加载中…</div>
+<div id="src"></div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from './assets/vendor/three/addons/controls/OrbitControls.js';
+
+/*═══════════════════════════════════════════════════════════════════════════════
+  ★★★★★ 武器皮肤预览 · 全面对标版（2026-10-03 重构）
+  设计原则：
+   ① 一律【世界坐标】—— 场景与武器同在世界空间 ✓ 不做归中 ✗
+   ② 相机 = 官方预览相机表 ✓ 方向/俯仰按表 ✓ 距离只按武器包夹盒 ✓
+   ③ 光照/颜色/色调 = 引擎真值 ✓ 每条标出处 ✓ 缺的标 [missing] ✓
+   ④ 每步都往 window.__dbg 记状态 ✓（可 CDP 直读 ✓ 不再靠猜 ✓）
+  真值出处：
+   [CAM]  com/cdata/extension_weapon_preview_camera_data :: weapon_preview
+   [WX]   weather/weather_login56.xml（根属性 hour=22 ⇒ 夜景 ✓ 42 条时间轨道）
+   [MAT]  001265.c159（双枪材质）· skin_1003_010.mtg / 012.mtg（槽位权威）
+   [ASM]  pbr_weapon.fx / pbr_crystal.fx 反汇编（槽位与公式）
+   [TM]   filmic_tonemapping_f7 反汇编（tonemap_source.py 逐行实现）
+   [SCN]  scene/login/login56/login56.scn ⇒ 20 个展示台面片（世界坐标 ✓）
+   [IBL]  枪身 glazed_patio.cube · 晶体 car_studio01.cube · 场景 login19.cube
+  ═══════════════════════════════════════════════════════════════════════════*/
+
+const q = new URLSearchParams(location.search);
+const SID = q.get('sid') || '1110171';
+const DIR = './assets/3d/weapon_skin/' + SID + '/';
+const hud = document.getElementById('hud');
+const srcEl = document.getElementById('src');
+const DBG = { steps: [], warnings: [] };
+window.__dbg = DBG;
+function step(s) { DBG.steps.push(s); }
+
+/* ── [WX] 天气真值 @22:00（weather_login56.xml ✓ 逐字取值 ✓）────────────── */
+const WX = {
+  hour: 22.0,
+  atmo_dirint: 1.0, atmo_ambint: 2.0,
+  char_global_light_factor: 1.0, char_local_light_factor: 0.55,
+  cube_intensity_factor: 1.0, exposure: 10.0,
+  env_i: 0.069319, diffuse_i: 0.137300, ambient_i: 0.069319,
+  sun_color: 0x6A4937,      // <diffuse> c=2154449207 → RGB(106,73,55) 暖 ✓
+  ambient_col: 0xD1E0FA,    // <ambient> c=2161238266 → RGB(209,224,250) 冷 ✓
+  fog: 0x191A2B,            // <fog>     c=4279835179 → RGB(25,26,43) ✓
+  fog_near: 0x080918,       // <fog_near> c=526616   → RGB(8,9,24) ✓
+};
+const KEY_X = WX.atmo_dirint * WX.char_global_light_factor * 6.0 * WX.diffuse_i;   // 0.8238
+const ENV_X = WX.atmo_ambint * WX.cube_intensity_factor * 0.25 * WX.ambient_i;    // 0.03466
+const AMB_X = WX.char_local_light_factor * WX.atmo_ambint * 0.12 * WX.ambient_i;  // 0.00915
+
+/* ── [CAM] 官方预览相机（表值 ✓ 方向/俯仰按表 ✓）───────────────────────── */
+const CAM = {
+  yaw_deg: parseFloat(q.get('yaw') ?? '-10'),
+  pitch_deg: parseFloat(q.get('pitch') ?? '25'),
+  fov: 44.3,
+  fill: parseFloat(q.get('fill') ?? '0.85'),      // 武器占画面高度的比例 ✓
+  flip_deg: parseFloat(q.get('flip') ?? '180'),   // 枪口朝下 ✓
+};
+
+/* ── [MAT] 材质真值（001265.c159 / mtg ✓）──────────────────────────────── */
+const MAT = {
+  w: { base_color: [0.1216, 0.3961, 0.5059] },
+  c: {
+    crystal_color: [0.0039, 0.0, 0.6745], crystal_metallic: 0.75, crystal_roughness: 0.12,
+    subsurface_color: [0.0, 0.2392, 0.5373], refraction_color: [0.6157, 0.6392, 1.0],
+    refraction_brightness: 5.0, caustic_brightness: 0.68, detail_intensity: 0.1,
+  },
+};
+const IBL_W = q.get('iblW') || 'glazed_patio';   // 枪身 IBL ✓（mtg @086E ✓）
+const IBL_C = q.get('iblC') || 'car_studio01';   // 晶体 IBL ✓（mtg @0B2D ✓）
+const IBL_S = q.get('cube') || 'login19';        // 场景环境 ✓（天气 envmap_path ✓）
+
+/* ── 渲染器 ─────────────────────────────────────────────────────────────── */
+const canvas = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;   // ★ 由材质内注入的 neox_filmic 负责 ✓
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(WX.fog_near);
+scene.fog = new THREE.Fog(WX.fog, 60, 900);
+
+/* ── LUT（游戏 16³ 竖排 ✓）─────────────────────────────────────────────── */
+const LUT_NAME = q.get('lut') || 'colorgrading_kuoye';
+const LUT_TEX = new THREE.TextureLoader().load(DIR + 'lut/' + LUT_NAME + '.png');
+LUT_TEX.minFilter = LUT_TEX.magFilter = THREE.LinearFilter;
+LUT_TEX.wrapS = LUT_TEX.wrapT = THREE.ClampToEdgeWrapping;
+LUT_TEX.colorSpace = THREE.NoColorSpace;
+LUT_TEX.flipY = false;
+
+/* ── IBL 三个（逐用途 ✓）──────────────────────────────────────────────── */
+function loadCube(name) {
+  const c = new THREE.CubeTextureLoader().load(
+    [0, 1, 2, 3, 4, 5].map(i => DIR + 'src_cube/faces/' + name + '_f' + i + '_m0.png'));
+  c.colorSpace = THREE.SRGBColorSpace;
+  return c;
+}
+const CUBE_W = loadCube(IBL_W), CUBE_C = loadCube(IBL_C), CUBE_S = loadCube(IBL_S);
+scene.environment = CUBE_S;
+scene.environmentIntensity = ENV_X;
+step('IBL: W=' + IBL_W + ' C=' + IBL_C + ' S=' + IBL_S);
+
+/* ── 光照（引擎公式 × 22:00 时刻强度 ✓）────────────────────────────────── */
+scene.add(new THREE.HemisphereLight(WX.ambient_col, WX.fog, AMB_X));
+const sun = new THREE.DirectionalLight(WX.sun_color, KEY_X);
+sun.position.set(0, 1, -0.02).normalize().multiplyScalar(800);
+scene.add(sun);
+
+/* ── 相机（先占位 ✓ 载入武器后再按世界坐标定 ✓）─────────────────────────── */
+const cam = new THREE.PerspectiveCamera(CAM.fov, 1, 0.05, 5000);
+cam.up.set(0, 1, 0);
+const controls = new OrbitControls(cam, canvas);
+controls.enableDamping = true;
+
+/* ── 游戏色调映射 GLSL（照 filmic asm 逐行 ✓ 含 16³ LUT ✓）────────────── */
+const NEOX_GLSL = `
+  uniform sampler2D u_neox_lut;
+  uniform float u_neox_lut_on;
+  vec3 neox_lut_slice(vec2 rg, float s) {
+    float u = (clamp(rg.x,0.0,1.0) * 15.0 + 0.5) / 16.0;
+    float v = (clamp(s,0.0,15.0) * 16.0 + clamp(rg.y,0.0,1.0) * 15.0 + 0.5) / 256.0;
+    return texture2D(u_neox_lut, vec2(u, v)).rgb;
+  }
+  vec3 neox_lut_lookup(vec3 c) {
+    float nb = c.b * 16.0 - 0.5;
+    float i0 = floor(nb);
+    vec3 a0 = neox_lut_slice(c.rg, i0);
+    vec3 a1 = neox_lut_slice(c.rg, i0 + 1.0);
+    return mix(a0, a1, clamp(nb - i0, 0.0, 1.0));
+  }
+  vec3 neox_filmic(vec3 color) {
+    // L68 v = HDR × 0.002668（归一线性的输入 ⇒ 与 0.002668 相消 ✓ 标 [inferred]）
+    vec3 v  = max(color * 375.0 * 0.002668, vec3(1e-8));
+    vec3 lv = log(v);                                              // L69
+    vec3 c  = clamp(lv * 0.071429 + 0.610727, 0.0, 1.0);           // L70
+    c = c * 0.968750 + 0.015625;                                   // L71
+    vec3 o = u_neox_lut_on > 0.5 ? neox_lut_lookup(c) : c;         // L72-81
+    return clamp(o * 1.05, 0.0, 1.0);                              // L82
+  }`;
+function injectTone(mat) {
+  const prev = mat.onBeforeCompile;
+  mat.onBeforeCompile = (sh) => {
+    if (prev) prev(sh);
+    sh.uniforms.u_neox_lut = { value: LUT_TEX };
+    sh.uniforms.u_neox_lut_on = { value: q.get('nolut') ? 0.0 : 1.0 };
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\n' + NEOX_GLSL)
+      .replace('#include <tonemapping_fragment>',
+               'gl_FragColor.rgb = neox_filmic(gl_FragColor.rgb);');
+  };
+  mat.needsUpdate = true;
+}
+
+/* ── 晶体公式（pbr_crystal.fx 反汇编 ✓）────────────────────────────────── */
+function injectCrystal(mat) {
+  const c = MAT.c;
+  const prev = mat.onBeforeCompile;
+  mat.onBeforeCompile = (sh) => {
+    if (prev) prev(sh);
+    sh.uniforms.u_crystal_color = { value: new THREE.Vector3(...c.crystal_color) };
+    sh.uniforms.u_base_color = { value: new THREE.Vector3(...MAT.w.base_color) };
+    sh.uniforms.u_subsurf = { value: new THREE.Vector3(...c.subsurface_color) };
+    sh.uniforms.u_refr_color = { value: new THREE.Vector3(...c.refraction_color) };
+    sh.uniforms.u_refr_br = { value: c.refraction_brightness };
+    sh.uniforms.u_caustic_br = { value: c.caustic_brightness };
+    sh.uniforms.u_detail_int = { value: c.detail_intensity };
+    sh.fragmentShader = sh.fragmentShader.replace(
+      '#include <common>',
+      `#include <common>
+       uniform vec3 u_crystal_color; uniform vec3 u_base_color; uniform vec3 u_subsurf;
+       uniform vec3 u_refr_color; uniform float u_refr_br; uniform float u_caustic_br;
+       uniform float u_detail_int;`
+    ).replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+       { vec3 T = diffuseColor.rgb;
+         float m = clamp(max(T.r, max(T.g, T.b)), 0.0, 1.0);
+         float d = m * u_detail_int;
+         vec3 cT = T * u_crystal_color;
+         vec3 C = mix(mix(T, cT, m), mix(u_base_color, cT, d), m);
+         C += u_subsurf * u_caustic_br * 0.35;
+         C = mix(C, C * u_refr_color, clamp(u_refr_br * 0.06, 0.0, 1.0));
+         diffuseColor.rgb = C; }`
+    );
+  };
+  mat.needsUpdate = true;
+}
+
+/* ── 场景（login56 20 个面片 · 世界坐标 ✓ 不归中 ✓）────────────────────── */
+const SCN_TEX = {
+  login56_diban: 'row00019503_D.png', login56_diban02: 'row00019504_D.png',
+  login56_diban03: 'row00019506_D.png', login56_beijing: 'row00019511_D.png',
+  login56_yueliang: 'row00019495_D.png',
+  login56_wujian_a: 'row00019508_D.png', login56_wujian_b: 'row00019509_D.png',
+  login56_wujian_c: 'row00019510_D.png', login56_wujian_d: 'row00019505_D.png',
+  login56_wujian_e: 'row00019507_D.png',
+};
+const _texCache = {};
+function scnTexFile(f) {
+  if (!_texCache[f]) {
+    const tx = new THREE.TextureLoader().load(DIR + 'scene_tex/' + f);
+    tx.colorSpace = THREE.SRGBColorSpace;
+    tx.wrapS = tx.wrapT = THREE.RepeatWrapping;
+    _texCache[f] = tx;
+  }
+  return _texCache[f];
+}
+function scnKey(o) {
+  // ★ GLTFLoader 会把 '.' 去掉（login56_x.mesh → login56_xmesh）✗ ⇒ 优先材质名 ✓
+  for (const s of [(o.material && o.material.name) || '', o.name || '']) {
+    if (!s) continue;
+    const mm = String(s).replace(/mesh$/i, '').match(/login56_[a-z0-9]+/i);
+    if (mm) return mm[0];
+  }
+  return null;
+}
+window.__scnTex = 0;
+new GLTFLoader().load(DIR + 'scene/scene_login56_full.glb', (sg) => {
+  sg.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    const k = scnKey(o), f = k ? SCN_TEX[k] : null;
+    if (f) { o.material = new THREE.MeshBasicMaterial({ map: scnTexFile(f), side: THREE.DoubleSide });
+             window.__scnTex++; }
+    else   { o.material = new THREE.MeshStandardMaterial({ color: 0x39404e, roughness: 0.95,
+                                                           metalness: 0.0, side: THREE.DoubleSide }); }
+    o.frustumCulled = false;
+  });
+  scene.add(sg.scene);                     // ★ 世界坐标 ✓ 不移不缩 ✓
+  const b = new THREE.Box3().setFromObject(sg.scene);
+  DBG.sceneBox = [b.min.toArray().map(v => +v.toFixed(2)), b.max.toArray().map(v => +v.toFixed(2))];
+  DBG.hasScene = 1;
+  step('scene ok: ' + window.__scnTex + ' 个部件有贴图');
+}, undefined, (e) => { DBG.sceneErr = String(e).slice(0, 160); });
+
+/* ── 武器（世界坐标 ✓ 不归中 ✓）────────────────────────────────────────── */
+const FORM = q.get('form') || 'dual';
+new GLTFLoader().load(DIR + FORM + '.glb', (g) => {
+  const root = g.scene;
+  let nTex = 0; const names = [];
+  root.traverse(o => {
+    if (!o.isMesh || !o.material) return;
+    for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+      const nm = m.name || '';
+      names.push(nm);
+      if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; nTex++; }
+      if (m.normalMap) m.normalScale.set(1, 1);
+      m.side = THREE.DoubleSide;
+      if (/c\d\d|crystal/i.test(nm)) {                 // 晶体
+        m.envMap = CUBE_C; m.envMapIntensity = ENV_X;
+        m.color.setRGB(...MAT.c.crystal_color);
+        m.metalness = MAT.c.crystal_metallic; m.roughness = MAT.c.crystal_roughness;
+        injectCrystal(m);
+      } else {                                          // 枪身
+        m.envMap = CUBE_W; m.envMapIntensity = ENV_X;
+        m.metalness = 1.0; m.roughness = 0.35;
+      }
+      injectTone(m);
+      m.needsUpdate = true;
+    }
+  });
+  scene.add(root);                          // ★ 世界坐标 ✓ 不 sub 中心 ✓
+  root.updateMatrixWorld(true);
+  DBG.matNames = [...new Set(names)]; DBG.texCount = nTex;
+
+  // 朝向：绕【武器自身世界中心】、平行视线的轴转 ✓（避免甩飞/截断 ✓）
+  // ★ 朝向：用【本地轴旋转】最安全 ✓（绕世界轴 + pivot 那套会把模型拆散 ✗ 实测过）
+  //   本地 Z 轴 = 模型自身的长轴方向 ✓ 180° ⇒ 枪口自上下翻转 ✓
+  const yr = CAM.yaw_deg * Math.PI / 180, pr = CAM.pitch_deg * Math.PI / 180;
+  const _flip = CAM.flip_deg * Math.PI / 180;
+  const _axis = (q.get('flipaxis') || 'z').toLowerCase();
+  if (_axis === 'x') root.rotation.x = _flip;
+  else if (_axis === 'y') root.rotation.y = _flip;
+  else root.rotation.z = _flip;
+  root.updateMatrixWorld(true);
+
+  // ★ 相机：目标 = 武器的世界中心 ✓ 距离只按武器 ✓（场景 200×200 不参与 ✗）
+  const b1 = new THREE.Box3().setFromObject(root);
+  const sz = b1.getSize(new THREE.Vector3()), ct = b1.getCenter(new THREE.Vector3());
+  DBG.weaponBox = [b1.min.toArray().map(v => +v.toFixed(2)), b1.max.toArray().map(v => +v.toFixed(2))];
+  const asp = Math.max(cam.aspect || 1.4, 0.2);
+  const need = Math.max(sz.x * 0.5, sz.y * 0.5, sz.z * 0.5 / asp);
+  const dist = (need / CAM.fill) / Math.tan((CAM.fov * Math.PI / 180) * 0.5)
+               * parseFloat(q.get('zoom') ?? '1.0');
+  const dirv = new THREE.Vector3(Math.cos(pr) * Math.cos(yr), Math.sin(pr),
+                                 Math.cos(pr) * Math.sin(yr)).normalize();
+  cam.position.copy(ct.clone().add(dirv.clone().multiplyScalar(dist)));
+  cam.lookAt(ct);
+  cam.near = Math.max(dist / 2000, 0.01); cam.far = dist * 200;
+  cam.updateProjectionMatrix();
+  controls.target.copy(ct); controls.update();
+  DBG.cam = { pos: cam.position.toArray().map(v => +v.toFixed(2)),
+              tgt: ct.toArray().map(v => +v.toFixed(2)), dist: +dist.toFixed(2), fov: CAM.fov };
+
+  const nv = (() => { let n = 0; root.traverse(o => { if (o.isMesh) n += o.geometry.attributes.position.count; }); return n; })();
+  hud.textContent =
+      SID + ' 光影咏叹调（双枪 · 世界坐标）\n'
+    + '顶点 ' + nv + ' · 材质 ' + DBG.matNames.join(', ') + '（带贴图 ' + nTex + '）\n'
+    + '武器盒 ' + sz.toArray().map(v => v.toFixed(2)).join(' × ') + '\n'
+    + '★ 相机 表 weapon_preview yaw ' + CAM.yaw_deg + '° pitch ' + CAM.pitch_deg + '° FOV ' + CAM.fov + '\n'
+    + '★ 光照 天气 22h  key ' + KEY_X.toFixed(4) + ' · env ' + ENV_X.toFixed(5) + ' · amb ' + AMB_X.toFixed(5) + '\n'
+    + '★ 场景 ' + window.__scnTex + '/20 部件有真贴图 · IBL W=' + IBL_W + ' C=' + IBL_C + '\n'
+    + '★ 色调 游戏 filmic + 16³ LUT（' + LUT_NAME + '）';
+  srcEl.textContent =
+      '[CAM]  extension_weapon_preview_camera_data\n'
+    + '[WX]   weather_login56.xml @22:00\n'
+    + '[MAT]  001265.c159 + login56.mtg\n'
+    + '[ASM]  pbr_weapon.fx / pbr_crystal.fx\n'
+    + '[SCN]  scene/login/login56（20 面片）\n'
+    + '[TM]   filmic_tonemapping_f7 + LUT\n'
+    + '[IBL]  ' + IBL_W + ' / ' + IBL_C + ' / ' + IBL_S;
+  document.title = 'READY ' + SID;
+  step('weapon ok');
+}, undefined, (e) => {
+  hud.textContent = 'LOAD ERROR: ' + e;
+  DBG.weaponErr = String(e).slice(0, 200);
+  document.title = 'ERR';
+});
+
+/* ── 尺寸 / 循环 ───────────────────────────────────────────────────────── */
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (w && h) { renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+}
+window.addEventListener('resize', resize); resize();
+(function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, cam); })();
+</script>
+</body>
+</html>

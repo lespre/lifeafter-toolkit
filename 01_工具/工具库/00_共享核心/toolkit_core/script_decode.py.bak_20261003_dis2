@@ -1,0 +1,178 @@
+# -*- coding: utf-8 -*-
+r"""script_decode.py — 网易 NeoX Python 方言（客户端 py314）字节码反汇编器。
+
+★ 原理（已实测成立）：
+   客户端保留【标准 CPython 3.14 的指令宽度】（含 inline cache 槽），只是把 opcode 号换表。
+   ⇒ 用本地 Python 3.14 的标准库/已知源码模块做对拍，DP 对齐即可反推 opcode 表。
+
+★ 已锁定的映射（DP 对齐 functools.py ↔ 标准 functools.pyc，单候选者）：
+   0x4F LOAD_NAME · 0x78 STORE_NAME · 0x44 LOAD_CONST · 0x67 LOAD_SMALL_INT
+   0x6E IMPORT_NAME · 0x45 IMPORT_FROM · 0x7A LOAD_GLOBAL · 0x12 RETURN_VALUE
+   0x07 POP_TOP · 0x2A POP_EXCEPT · 0x22 NOP · 0x7E RAISE_VARARGS · 0x09 PUSH_EXC_INFO
+   0x17 CHECK_EXC_MATCH · 0x5A POP_JUMP_IF_NOT_NONE · 0x32 JUMP_BACKWARD_NO_INTERRUPT
+   0x6B STORE_ATTR · 0x73 LOAD_FAST_BORROW · 0x76 STORE_FAST · 0x56 CALL · 0x3F LOAD_ATTR
+   0x1A NOT_TAKEN · 0x58 POP_JUMP_IF_FALSE · 0x16 MAKE_FUNCTION · 0x31 LOAD_FAST
+   0x33 LOAD_FAST_BORROW_LOAD_FAST_BORROW · 0x38 BUILD_TUPLE · 0x52 BINARY_OP
+   0x61 COMPARE_OP · 0x6D BUILD_LIST · 0x1B FORMAT_SIMPLE · 0x08 TO_BOOL
+
+★ 铁证：`67 80`（LOAD_SMALL_INT 128）在客户端 functools 里恰好出现 1 次，
+   而 lru_cache 的默认 maxsize = 128 ⇒ 小整数是【值内联】的。
+"""
+from __future__ import annotations
+
+import struct
+from dataclasses import dataclass
+from pathlib import Path
+
+# ── opcode 表 ────────────────────────────────────────────────────────────────
+# 实测：客户端保留标准 3.14 的指令宽度（含 inline cache），只换 opcode 号。
+# 表由 lib/*（22 个模块，标准侧源码/字节码可得）批量 DP 对齐投票得出，
+# 落盘为同目录的 neoX_opcode_table.json（opname→客户端字节）与 neoX_op_widths.json。
+import json as _json
+
+_HERE = Path(__file__).with_name
+
+def _load_tables():
+    ops: dict[int, tuple[str, int]] = {}
+    try:
+        tbl = _json.loads(_HERE("neoX_opcode_table.json").read_text(encoding="utf-8"))
+        wid = _json.loads(_HERE("neoX_op_widths.json").read_text(encoding="utf-8"))
+        for opname, by in tbl.items():
+            ops[int(by)] = (opname, int(wid.get(opname, 2)))
+    except Exception:
+        pass
+    return ops
+
+OPS: dict[int, tuple[str, int]] = _load_tables() or {
+    0x4F: ("LOAD_NAME", 2), 0x78: ("STORE_NAME", 2), 0x44: ("LOAD_CONST", 2),
+    0x67: ("LOAD_SMALL_INT", 2), 0x6E: ("IMPORT_NAME", 2), 0x45: ("IMPORT_FROM", 2),
+    0x7A: ("LOAD_GLOBAL", 10), 0x12: ("RETURN_VALUE", 2), 0x07: ("POP_TOP", 2),
+    0x2A: ("POP_EXCEPT", 2), 0x22: ("NOP", 2), 0x7E: ("RAISE_VARARGS", 2),
+    0x09: ("PUSH_EXC_INFO", 2), 0x17: ("CHECK_EXC_MATCH", 2),
+    0x5A: ("POP_JUMP_IF_NOT_NONE", 2), 0x32: ("JUMP_BACKWARD_NO_INTERRUPT", 2),
+    0x6B: ("STORE_ATTR", 2), 0x73: ("LOAD_FAST_BORROW", 2), 0x76: ("STORE_FAST", 2),
+    0x56: ("CALL", 10), 0x3F: ("LOAD_ATTR", 10), 0x1A: ("NOT_TAKEN", 2),
+    0x58: ("POP_JUMP_IF_FALSE", 4), 0x16: ("MAKE_FUNCTION", 2), 0x31: ("LOAD_FAST", 2),
+    0x33: ("LOAD_FAST_BORROW_LOAD_FAST_BORROW", 4), 0x38: ("BUILD_TUPLE", 2),
+    0x52: ("BINARY_OP", 2), 0x61: ("COMPARE_OP", 2), 0x6D: ("BUILD_LIST", 2),
+    0x1B: ("FORMAT_SIMPLE", 2), 0x08: ("TO_BOOL", 2),
+}
+
+
+@dataclass
+class Ins:
+    off: int
+    op: int
+    name: str
+    arg: int
+
+
+def dis_code(body: bytes) -> list[Ins]:
+    """反汇编一段客户端字节码。未映射的 op 记为 ?，按 2 字节前进。
+    ★ 2026-10-02：支持本方言的 EXTENDED_ARG（= 0x3b，载荷在其后 1 字节）。
+      不合并高位 ⇒ 下标 >255 的常量/名字根本读不出来（实测踩过）。
+    """
+    out: list[Ins] = []
+    i, n = 0, len(body)
+    ext = None
+    while i < n - 1:
+        op = body[i]
+        if op == 0x3B:
+            ext = body[i + 1]
+            i += 2
+            continue
+        if op in OPS:
+            name, w = OPS[op]
+            if i + w > n:
+                break
+            arg = int.from_bytes(body[i + 1:i + w], "little")
+            if ext is not None:
+                arg = (ext << 8) | (arg & 0xFF)
+                ext = None
+            out.append(Ins(i, op, name, arg))
+            i += w
+        else:
+            out.append(Ins(i, op, "?", body[i + 1]))
+            i += 2
+            ext = None
+    return out
+
+
+def const_tables(buf: bytes, lo: int = 0, hi: int | None = None):
+    """扫出 `2e <n>` 序列（常量/名字/元组表）。返回 [(offset, count, [items])]。"""
+    hi = len(buf) if hi is None else hi
+    res = []
+    i = lo
+    while i < hi - 2:
+        if buf[i] == 0x2E:
+            cnt = buf[i + 1]
+            items, j, ok = [], i + 2, True
+            while len(items) < cnt and j < hi:
+                t = buf[j]
+                if t in (0xD3, 0xF3, 0xDA, 0xFA):
+                    ln = buf[j + 1]
+                    st = j + 2
+                    if ln == 0xFF:
+                        ln = struct.unpack_from("<I", buf, j + 2)[0]
+                        st = j + 6
+                    if 0 < ln <= 512 and st + ln <= hi and all(0x20 <= c < 0x7F for c in buf[st:st + ln]):
+                        items.append(buf[st:st + ln].decode("latin1"))
+                        j = st + ln
+                        continue
+                    ok = False
+                    break
+                if t == 0xBE and j + 5 <= hi:
+                    items.append(struct.unpack_from("<I", buf, j + 1)[0])
+                    j += 5
+                    continue
+                ok = False
+                break
+            if ok and len(items) == cnt:
+                res.append((i, cnt, items))
+            i += 2
+        else:
+            i += 1
+    return res
+
+
+def blobs(buf: bytes):
+    """所有码段：(offset, payload)。
+    ★ 2026-10-01 更正（子代理实测）：code 容器有两种 tag —— 0xfb 与 0x7b
+      （同一个 `80 00` 魔数，差 0x80 位）；只认 0xfb 会漏掉约一半 code 对象。
+    """
+    out = []
+    i, n = 0, len(buf)
+    while i < n - 7:
+        if buf[i] in (0xFB, 0x7B) and buf[i + 5:i + 7] == b"\x80\x00":
+            ln = struct.unpack_from("<I", buf, i + 1)[0]
+            if 0 < ln <= n - i - 7:
+                out.append((i, buf[i + 7:i + 7 + ln]))
+                i += 7 + ln
+                continue
+        i += 1
+    return out
+
+
+def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser(description="NeoX 方言字节码反汇编器")
+    ap.add_argument("module")
+    ap.add_argument("--blob", type=int, help="只反汇编指定偏移的码段")
+    ap.add_argument("--tables", action="store_true", help="列出常量/名字表")
+    a = ap.parse_args()
+    buf = Path(a.module).read_bytes()
+    print("★ %s ｜ %d B ｜ 码段 %d 个" % (Path(a.module).name, len(buf), len(blobs(buf))))
+    if a.tables:
+        for off, cnt, items in const_tables(buf):
+            print("   @%-8d 2e %-3d → %s" % (off, cnt, items[:10]))
+        return
+    for off, body in blobs(buf):
+        if a.blob is not None and off != a.blob:
+            continue
+        print("══ 码段 @%d（%d B）" % (off, len(body)))
+        for ins in dis_code(body):
+            print("   %5d  %-32s %s" % (ins.off, ins.name, ins.arg))
+
+
+if __name__ == "__main__":
+    main()

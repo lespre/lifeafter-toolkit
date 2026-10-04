@@ -1,0 +1,16 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "withdrawn": [
+  "level 2/3 = acquisition dimension",
+  "not_grade_tier",
+  "giveaway/direct_sale assignment"
+ ],
+ "conflicts": [],
+ "residuals": [
+  "level→中文名：2/3/4 为 user_defined（用户图鉴命名），不得当获取方式结论",
+  "典藏/传世为官方名称，但当前快照内未找到官方映射 source ⇒ official_user_confirmed（非 client_verified）",
+  "runtime_semantic_status=likely：未找到直接读 level 的 runtime consumer",
+  "priority_status=likely：无 consumer；仅能 verified「priority 不决定 catalog_level_label」",
+  "board-only 4 行（1110184/1110185/1110186/1110190）无 canonical level ⇒ 不参与 level 轴统计"
+ ]
+}

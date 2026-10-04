@@ -1,0 +1,95 @@
+{
+ "name": "glazed_patio",
+ "logical": "common\\env_map\\glazed_patio.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12451,
+ "off": 101151116,
+ "comp": 400422,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12451,
+   "base": 1940537680,
+   "off": 101151116,
+   "comp": 400422,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "3c06f63dc94ed8f79d0d4757f2f3db2c7a047373555e4f4c682a27c33d8b7b6f",
+ "sha16": "3c06f63dc94ed8f7",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f0_m0.png",
+   "bytes": 37003,
+   "rgba_sha16": "49777f8a720318a1",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f1_m0.png",
+   "bytes": 40969,
+   "rgba_sha16": "059b79e93dd75bbc",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f2_m0.png",
+   "bytes": 37987,
+   "rgba_sha16": "ff6bfce3167b6232",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f3_m0.png",
+   "bytes": 37506,
+   "rgba_sha16": "c0a558182785f9de",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f4_m0.png",
+   "bytes": 41541,
+   "rgba_sha16": "48a3ffbc82e4e2bc",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\glazed_patio\\faces\\glazed_patio_f5_m0.png",
+   "bytes": 36484,
+   "rgba_sha16": "c13ff76af2aece8f",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

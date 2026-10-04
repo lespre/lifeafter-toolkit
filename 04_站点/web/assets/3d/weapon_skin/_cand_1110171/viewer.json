@@ -1,0 +1,2987 @@
+{
+ "schema_version": 1,
+ "skin_id": "1110171",
+ "title": "光影咏叹调",
+ "poster": "poster.webp",
+ "default_state": "dual",
+ "default_camera": "game_reference",
+ "states": [
+  {
+   "id": "dual",
+   "label": "双枪形态",
+   "model": "dual.glb",
+   "material_layers": {
+    "status": "approximate",
+    "basis": "源 c159 参数（c159_pair.py 槽位引用组解析）+ 绑定 c159 的 MtlIdx 归属",
+    "global_rig": {
+     "env_intensity": 1.4,
+     "exposure": 1.75,
+     "tone_mapping": "ACESFilmic",
+     "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+     "emissive_gain": 0.25,
+     "bloom": {
+      "strength": 0.55,
+      "radius": 0.55,
+      "threshold": 0.8,
+      "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+     },
+     "roughness_mode": "source_R_unproven",
+     "roughness_note": "当前展示沿用 ParamMap.R≈0.06（**未证假设，标 unresolved**）。实测对照：改统一诊断常数 0.5 会使金属区更暗更蓝（1110171 亮度 201→188、1110177 120→96），故不在展示层采用；C 诊断组仍用 0.5 并标 diagnostic。"
+    },
+    "material_level_source_factor": "u_cube_brightness",
+    "not_yet_implemented": [
+     "crystal_bump/reflection/refraction/caustic 采样",
+     "crystal IBL cube",
+     "shader DXBC 公式",
+     "Sub0 刀身金色来源（默认参数/IBL/自发光/SFX 追踪中）"
+    ],
+    "per_submesh": {
+     "5": {
+      "u_detail_tilling": 4,
+      "u_detail_intensity": 0.1,
+      "u_base_color": [
+       0.1098,
+       0.3961,
+       0.502,
+       1
+      ],
+      "u_crystal_color": [
+       0.0,
+       0.2118,
+       0.8,
+       1
+      ],
+      "u_crystal_metallic": 1,
+      "u_crystal_specular": 1,
+      "u_caustic_tilling": 3,
+      "u_caustic_depth": 0.24,
+      "u_caustic_brightness": 1.3,
+      "u_refraction_rotation": 0.18,
+      "u_refraction_contrast": -1,
+      "u_refraction_brightness": 5,
+      "u_refraction_color": [
+       0.0941,
+       0.0549,
+       0.6353,
+       1
+      ],
+      "u_subsurface_color": [
+       0.0941,
+       0.3725,
+       0.6902,
+       1
+      ],
+      "source_block": "block3@6509 (c159 001265)",
+      "attribution": "candidate-high（结构顺序：5 个晶体材料 ↔ 5 个数值块，1:1 位置映射；无显式指针，非直证）",
+      "u_detail_offset_x": null,
+      "u_detail_offset_y": null,
+      "note_detail_offset": "block3 无 u_detail_offset_x/y 覆写 → 引擎默认未决；此前取值来自 block4/prim6 候选，已移除",
+      "removed_wrong_values": {
+       "u_crystal_color": [
+        0.0039,
+        0.0,
+        0.6745,
+        1.0
+       ]
+      }
+     },
+     "6": {
+      "base_color": [
+       0.1216,
+       0.3961,
+       0.5059
+      ],
+      "crystal_color": [
+       0.0039,
+       0.0,
+       0.6745
+      ],
+      "roughness": 0.12,
+      "refraction_color": [
+       0.6157,
+       0.6392,
+       1.0
+      ],
+      "subsurface_color": [
+       0.0,
+       0.2392,
+       0.5373
+      ],
+      "caustic_brightness": 0.68,
+      "u_crystal_metallic": 0.75,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     },
+     "2": {
+      "base_color": [
+       0.1216,
+       0.3961,
+       0.5059
+      ],
+      "crystal_color": [
+       0.0,
+       0.3647,
+       1.0
+      ],
+      "refraction_color": [
+       0.0,
+       0.2824,
+       1.0
+      ],
+      "subsurface_color": [
+       0.102,
+       0.4392,
+       1.0
+      ],
+      "caustic_brightness": 0.73,
+      "metalness_source": "u_crystal_metallic @ pbr_crystal cbuffer offset 5068（group 2/block 2）",
+      "u_crystal_color": [
+       0.0,
+       0.3647,
+       1.0,
+       1.0
+      ],
+      "u_base_color": [
+       0.1216,
+       0.3961,
+       0.5059,
+       1.0
+      ],
+      "attribution": "candidate（group↔材质顺序映射，工具既有规则）",
+      "layer_semantics": "unresolved（晶体层/基底层的具体混合未证实，不据此宣称源还原）",
+      "u_crystal_metallic": 0.75,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     },
+     "1": {
+      "metalness_source": "u_crystal_metallic @ pbr_crystal cbuffer offset 5068（group 1/block 0）",
+      "u_crystal_color": [
+       0.4314,
+       0.3333,
+       0.4824,
+       1.0
+      ],
+      "u_base_color": [
+       0.1216,
+       0.3961,
+       0.5059,
+       1.0
+      ],
+      "attribution": "candidate（group↔材质顺序映射，工具既有规则）",
+      "layer_semantics": "unresolved（晶体层/基底层的具体混合未证实，不据此宣称源还原）",
+      "u_crystal_metallic": 1,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     },
+     "3": {
+      "metalness_source": "u_crystal_metallic @ pbr_crystal cbuffer offset 5068（group 4/block 1）",
+      "u_crystal_color": [
+       0.2471,
+       0.0157,
+       0.2627,
+       1.0
+      ],
+      "u_base_color": [
+       0.1216,
+       0.3961,
+       0.5059,
+       1.0
+      ],
+      "attribution": "candidate（group↔材质顺序映射，工具既有规则）",
+      "layer_semantics": "unresolved（晶体层/基底层的具体混合未证实，不据此宣称源还原）",
+      "u_crystal_metallic": 1,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     }
+    },
+    "attribution": "candidate（面数锚 + 13 行块）",
+    "notes": [
+     "Sub5(faces=971) 与单枪同面数子网格 → 复用同参数（面数锚）",
+     "Sub6(faces=472) 与单枪同面数子网格 → 复用同参数（面数锚）",
+     "Sub1（14 行块）与 010 族同型块无法区分 → 不挂参数（宁缺勿错）",
+     "Sub2 用 001265 自身 13 行块（012 族独有）",
+     "Sub3（14 行块）与 010 族同型块无法区分 → 不挂参数（宁缺勿错）"
+    ],
+    "classification_basis": "源 shader（001265.c159 的 7 条材质记录：shaders=['pbr_weapon','pbr_crystal','pbr_crystal','pbr_crystal','pbr_weapon','pbr_crystal','pbr_crystal']）+ 绑定 001263.c159 的 MtlIdx；不按 per_submesh 参数是否存在判定",
+    "crystal_submeshes": [
+     1,
+     2,
+     3,
+     5,
+     6
+    ],
+    "weapon_submeshes": [
+     0,
+     4
+    ],
+    "submesh_source": [
+     {
+      "sub": 0,
+      "mtl_idx": 0,
+      "material": "skin_1003_012_0",
+      "shader": "pbr_weapon",
+      "kind": "weapon",
+      "base_texture": "012_a(001273.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 1,
+      "mtl_idx": 1,
+      "material": "skin_1003_012_1",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 2,
+      "mtl_idx": 2,
+      "material": "skin_1003_012_2",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "override"
+     },
+     {
+      "sub": 3,
+      "mtl_idx": 3,
+      "material": "skin_1003_012_3",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 4,
+      "mtl_idx": 4,
+      "material": "skin_1003_010_0",
+      "shader": "pbr_weapon",
+      "kind": "weapon",
+      "base_texture": "010_a(001226.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 5,
+      "mtl_idx": 5,
+      "material": "skin_1003_010_1",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "010_b_m(001224.dds)",
+      "params": "override"
+     },
+     {
+      "sub": 6,
+      "mtl_idx": 6,
+      "material": "skin_1003_010_2",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "010_b_m(001224.dds)",
+      "params": "override"
+     }
+    ],
+    "counts": {
+     "weapon": 2,
+     "crystal": 5,
+     "submeshes": 7
+    }
+   }
+  },
+  {
+   "id": "single",
+   "label": "单枪形态",
+   "model": "single.glb",
+   "material_layers": {
+    "status": "approximate",
+    "basis": "源 c159 参数（c159_pair.py 槽位引用组解析）+ 绑定 c159 的 MtlIdx 归属",
+    "global_rig": {
+     "env_intensity": 1.4,
+     "exposure": 1.75,
+     "tone_mapping": "ACESFilmic",
+     "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+     "emissive_gain": 0.25,
+     "bloom": {
+      "strength": 0.55,
+      "radius": 0.55,
+      "threshold": 0.8,
+      "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+     },
+     "roughness_mode": "source_R_unproven",
+     "roughness_note": "当前展示沿用 ParamMap.R≈0.06（**未证假设，标 unresolved**）。实测对照：改统一诊断常数 0.5 会使金属区更暗更蓝（1110171 亮度 201→188、1110177 120→96），故不在展示层采用；C 诊断组仍用 0.5 并标 diagnostic。"
+    },
+    "material_level_source_factor": "u_cube_brightness",
+    "not_yet_implemented": [
+     "crystal_bump/reflection/refraction/caustic 采样",
+     "crystal IBL cube",
+     "shader DXBC 公式",
+     "Sub0 刀身金色来源（默认参数/IBL/自发光/SFX 追踪中）"
+    ],
+    "per_submesh": {
+     "1": {
+      "base_color": [
+       0.1216,
+       0.3961,
+       0.5059
+      ],
+      "crystal_color": [
+       0.0,
+       0.1373,
+       0.5255
+      ],
+      "crystal_specular": 1,
+      "refraction_color": [
+       0.1882,
+       0.0941,
+       0.5255
+      ],
+      "refraction_brightness": 5,
+      "subsurface_color": [
+       0.2588,
+       0.4196,
+       0.6588
+      ],
+      "caustic_brightness": 0.97,
+      "caustic_depth": 0.24,
+      "u_crystal_metallic": 0.75,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     },
+     "2": {
+      "base_color": [
+       0.1216,
+       0.3961,
+       0.5059
+      ],
+      "crystal_color": [
+       0.0039,
+       0.0,
+       0.6745
+      ],
+      "roughness": 0.12,
+      "crystal_specular": 1,
+      "refraction_color": [
+       0.6157,
+       0.6392,
+       1.0
+      ],
+      "refraction_brightness": 5,
+      "subsurface_color": [
+       0.0,
+       0.2392,
+       0.5373
+      ],
+      "caustic_brightness": 0.68,
+      "caustic_depth": 0.61,
+      "u_crystal_metallic": 0.75,
+      "note_metallic": "晶体层参数（pbr_crystal cb0[10].y）；未实现其运算 → 不映射到 Three metalness；基底层按介电（metalness=0）处理"
+     }
+    },
+    "notes": [
+     "单枪 3 子网格：Sub0 无覆写（pbr_weapon→引擎默认），Sub1/Sub2 为 c159 覆写块（1:1）"
+    ],
+    "classification_basis": "本状态自己的源绑定：bind 001209.c159 / material 001223.c159 / mesh 001222.mesh → Sub0=MtlIdx0 skin_1003_010_0(pbr_weapon+001a)，Sub1/2=MtlIdx1/2 skin_1003_010_1/2(pbr_crystal+001b_m)",
+    "crystal_submeshes": [
+     1,
+     2
+    ],
+    "weapon_submeshes": [
+     0
+    ],
+    "submesh_source": [
+     {
+      "sub": 0,
+      "mtl_idx": 0,
+      "material": "skin_1003_012_0",
+      "shader": "pbr_weapon",
+      "kind": "weapon",
+      "base_texture": "012_a(001273.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 1,
+      "mtl_idx": 1,
+      "material": "skin_1003_012_1",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "override"
+     },
+     {
+      "sub": 2,
+      "mtl_idx": 2,
+      "material": "skin_1003_012_2",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "override"
+     },
+     {
+      "sub": 3,
+      "mtl_idx": 3,
+      "material": "skin_1003_012_3",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "012_b_m(001271.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 4,
+      "mtl_idx": 4,
+      "material": "skin_1003_010_0",
+      "shader": "pbr_weapon",
+      "kind": "weapon",
+      "base_texture": "010_a(001226.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 5,
+      "mtl_idx": 5,
+      "material": "skin_1003_010_1",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "010_b_m(001224.dds)",
+      "params": "unresolved_no_override"
+     },
+     {
+      "sub": 6,
+      "mtl_idx": 6,
+      "material": "skin_1003_010_2",
+      "shader": "pbr_crystal",
+      "kind": "crystal",
+      "base_texture": "010_b_m(001224.dds)",
+      "params": "unresolved_no_override"
+     }
+    ],
+    "counts": {
+     "weapon": 1,
+     "crystal": 2,
+     "submeshes": 3
+    },
+    "other_submeshes": [],
+    "previous_wrong": {
+     "crystal_submeshes": [
+      1,
+      2,
+      3,
+      5,
+      6
+     ],
+     "weapon_submeshes": [
+      0,
+      4
+     ],
+     "why": "原为直接复制 dual 的 7 材质清单；single.glb 仅 3 primitive → 索引越界，实验对象未被正确触达"
+    }
+   }
+  }
+ ],
+ "camera_presets": [
+  {
+   "label": "game_reference",
+   "position": [
+    -14.6129,
+    -2.2747,
+    -1.2894
+   ],
+   "target": [
+    0.0602,
+    -0.1842,
+    0.0986
+   ],
+   "up": [
+    -0.8246,
+    -0.5572,
+    -0.0982
+   ],
+   "distance": 14.8862,
+   "fov": 34,
+   "fit_span": 0.27,
+   "exact": true,
+   "basis": "用户实调参数（position/target/up/distance 原样保留）；左右转为世界竖直轴纯自转，up 随相机同步旋转以保持画面滚转恒定",
+   "state": "dual"
+  },
+  {
+   "id": "front",
+   "label": "正面",
+   "position": [
+    -9.0,
+    0.6,
+    0.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "screenshot",
+   "label": "3/4 视角（默认 · 与卡片同姿态）",
+   "position": [
+    -4.5,
+    1.7,
+    5.9
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "side",
+   "label": "侧面",
+   "position": [
+    0.0,
+    0.6,
+    9.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  }
+ ],
+ "background": "#071015",
+ "fidelity": {
+  "material": "approximate",
+  "sfx": "none"
+ },
+ "effects": {
+  "schema": "lifeafter-weapon-skin-effects/3",
+  "note": "颜色/缩放/alpha 全部来自源 .sfx 的 ColorFrame/TrackScale/SmoothStart-Stop 轨道；贴图为候选；挂点为模型包围盒近似",
+  "skin": {
+   "primary": "skin_1003_010",
+   "secondary": "skin_1003_012",
+   "display_name": "光影咏叹调"
+  },
+  "status": "partial",
+  "status_reason": "节点/颜色/缩放/时序/发射曲线=源证据；.spr 精灵表=源尺寸实证；贴图=candidate；精确挂点矩阵与 cube 物理文件仍 unresolved",
+  "loop_seconds": 2.0,
+  "assets_base": "",
+  "textures_dir": "sfx/tex/",
+  "color_format": "ColorFrame Value=(A,R,G,B)；alpha 由 SmoothStart/Stop 包络调制",
+  "blend_mode_map": {
+   "0": "normal",
+   "2": "additive",
+   "5": "additive",
+   "8": "additive",
+   "note": "8/5 的精确语义未直证，按加法处理（标 approximate）"
+  },
+  "attach": {
+   "mode": "binding_fx_idle_01",
+   "anchor": [
+    0.0,
+    0.0,
+    1.4462
+   ],
+   "evidence": "绑定 001209.c159 内 fx_idle_01 的 4x4 变换（16f，对齐偏移=marker+3，对角线为 1.0 反求）。基向量=单位阵，平移=(0,0,1.4462)",
+   "note": "默认只挂 fx_idle_01（待机）；muzzle_fire 等为触发事件，不复制整套效果"
+  },
+  "nodes": [
+   {
+    "name": "L_di",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.55,
+    "radius": 4.5,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\glow_01.tga",
+    "texture_candidate": "13211b0279d2a247.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       255.0,
+       215.0,
+       176.0
+      ]
+     },
+     {
+      "time": 0.0449,
+      "value": [
+       48.0,
+       255.0,
+       123.0,
+       72.0
+      ]
+     },
+     {
+      "time": 0.5183,
+      "value": [
+       33.0,
+       255.0,
+       117.0,
+       72.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       22.0,
+       8.0,
+       3.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       3.0
+      ]
+     },
+     {
+      "time": 0.0748,
+      "value": [
+       4.075
+      ]
+     },
+     {
+      "time": 0.1679,
+      "value": [
+       4.625
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       5.0
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "H_dian_03",
+    "tag": "ParticleSystem",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.101,
+    "life": 0.1,
+    "radius": null,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\lightning\\lightning07_cs.spr",
+    "texture_candidate": "a8764b3acfeaff93.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       92.0,
+       243.0,
+       107.0
+      ]
+     }
+    ],
+    "color_track_par": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       89.0,
+       149.0,
+       255.0
+      ]
+     },
+     {
+      "time": 0.0698,
+      "value": [
+       255.0,
+       76.0,
+       204.0,
+       255.0
+      ]
+     },
+     {
+      "time": 0.4718,
+      "value": [
+       187.0,
+       31.0,
+       98.0,
+       185.0
+      ]
+     },
+     {
+      "time": 0.6694,
+      "value": [
+       52.0,
+       19.0,
+       61.0,
+       115.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "GravityFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "MaxSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        95.0
+       ]
+      ]
+     ],
+     "MinSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        45.0
+       ]
+      ]
+     ],
+     "RotDegreeSpeedFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "EmissionRadiusFrame": [
+      [
+       0.0,
+       [
+        2.0
+       ]
+      ]
+     ],
+     "EmissionRadius2Frame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteScaleFrame": [
+      [
+       0.0,
+       [
+        1.2
+       ]
+      ],
+      [
+       1.0,
+       [
+        2.0
+       ]
+      ]
+     ],
+     "SpriteHeightFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "HWRatioFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionDirDegreeFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "NoiseStrengthFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "XDirDisturb": [
+      [
+       0.0,
+       [
+        0.1
+       ]
+      ]
+     ],
+     "YDirDisturb": [
+      [
+       0.0,
+       [
+        0.1
+       ]
+      ]
+     ],
+     "ZDirDisturb": [
+      [
+       0.0,
+       [
+        0.1
+       ]
+      ]
+     ]
+    },
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "minParticlesPerSecond": "6.000",
+    "particlesPerSecond": "6.000",
+    "minSpriteLifespan": "0.200",
+    "maxSpriteLifespan": "0.450",
+    "emitAtBegin": "FALSE",
+    "preEmitTime": "0.000",
+    "fxIgnore": "TRUE",
+    "sprWorkMode": "0",
+    "sprSpeedRate": "1.000",
+    "randomStartSpr": null,
+    "isSprBlend": "FALSE",
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_dian_02",
+    "tag": "ParticleSystem",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.035,
+    "life": 0.1,
+    "radius": null,
+    "blend_mode": 5,
+    "texture": "effect\\textures\\lightning\\lightning1_rzx_djs.spr",
+    "texture_candidate": "29018b74e99b4c74.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       92.0,
+       243.0,
+       107.0
+      ]
+     }
+    ],
+    "color_track_par": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       255.0,
+       241.0,
+       210.0
+      ]
+     },
+     {
+      "time": 0.0864,
+      "value": [
+       255.0,
+       255.0,
+       191.0,
+       95.0
+      ]
+     },
+     {
+      "time": 0.4103,
+      "value": [
+       255.0,
+       230.0,
+       145.0,
+       48.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.2
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "GravityFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "MaxSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        0.5
+       ]
+      ]
+     ],
+     "MinSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        0.01
+       ]
+      ]
+     ],
+     "RotDegreeSpeedFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "EmissionRadiusFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionRadius2Frame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteScaleFrame": [
+      [
+       0.0,
+       [
+        0.6
+       ]
+      ],
+      [
+       0.2153,
+       [
+        1.4225
+       ]
+      ],
+      [
+       1.0,
+       [
+        2.0
+       ]
+      ]
+     ],
+     "SpriteHeightFrame": [
+      [
+       0.0,
+       [
+        0.1
+       ]
+      ],
+      [
+       0.0565,
+       [
+        3.2262
+       ]
+      ],
+      [
+       1.0,
+       [
+        4.2
+       ]
+      ]
+     ],
+     "HWRatioFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionDirDegreeFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "NoiseStrengthFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "XDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "YDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "ZDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ]
+    },
+    "fixpoint": null,
+    "minParticlesPerSecond": "3.000",
+    "particlesPerSecond": "3.000",
+    "minSpriteLifespan": "0.150",
+    "maxSpriteLifespan": "0.250",
+    "emitAtBegin": "FALSE",
+    "preEmitTime": "0.000",
+    "fxIgnore": "TRUE",
+    "sprWorkMode": "0",
+    "sprSpeedRate": "1.000",
+    "randomStartSpr": null,
+    "isSprBlend": "FALSE",
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "M_旋转光环_纹理_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.3,
+    "radius": 10.0,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\ray_01_sk.tga",
+    "texture_candidate": "a97cc9f7303088c7.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       252.0,
+       229.0,
+       205.0
+      ]
+     },
+     {
+      "time": 0.0498,
+      "value": [
+       255.0,
+       255.0,
+       99.0,
+       56.0
+      ]
+     },
+     {
+      "time": 0.4086,
+      "value": [
+       255.0,
+       255.0,
+       88.0,
+       28.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       36.0,
+       19.0,
+       3.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.1
+      ]
+     },
+     {
+      "time": 0.1101,
+      "value": [
+       1.4538
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       2.0
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_旋转光环_暗底_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.55,
+    "radius": 8.0,
+    "blend_mode": 0,
+    "texture": "effect\\textures\\glow\\glow_01.tga",
+    "texture_candidate": "13211b0279d2a247.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       58.0,
+       51.0,
+       46.0
+      ]
+     },
+     {
+      "time": 0.0183,
+      "value": [
+       30.0,
+       34.0,
+       26.0,
+       20.0
+      ]
+     },
+     {
+      "time": 0.797,
+      "value": [
+       30.0,
+       22.0,
+       15.0,
+       9.0
+      ]
+     },
+     {
+      "time": 0.8586,
+      "value": [
+       18.0,
+       14.0,
+       10.0,
+       6.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.1
+      ]
+     },
+     {
+      "time": 0.0321,
+      "value": [
+       3.775
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       5.0
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "H_鬼火_粒子",
+    "tag": "ParticleSystem",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.04,
+    "life": 0.1,
+    "radius": null,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\glow\\glow_16_yh_djs.tga",
+    "texture_candidate": "7ce99117a10f5163.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       92.0,
+       243.0,
+       107.0
+      ]
+     }
+    ],
+    "color_track_par": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       253.0,
+       255.0,
+       248.0
+      ]
+     },
+     {
+      "time": 0.093,
+      "value": [
+       116.0,
+       255.0,
+       160.0,
+       38.0
+      ]
+     },
+     {
+      "time": 0.6229,
+      "value": [
+       127.0,
+       252.0,
+       141.0,
+       22.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       127.0,
+       128.0,
+       49.0,
+       0.0
+      ]
+     }
+    ],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "GravityFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "MaxSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        100.0
+       ]
+      ]
+     ],
+     "MinSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        50.0
+       ]
+      ]
+     ],
+     "RotDegreeSpeedFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "EmissionRadiusFrame": [
+      [
+       0.0,
+       [
+        0.01
+       ]
+      ]
+     ],
+     "EmissionRadius2Frame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteScaleFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ],
+      [
+       0.1924,
+       [
+        0.6288
+       ]
+      ],
+      [
+       0.574,
+       [
+        0.1338
+       ]
+      ],
+      [
+       1.0,
+       [
+        0.01
+       ]
+      ]
+     ],
+     "SpriteHeightFrame": [
+      [
+       0.0,
+       [
+        0.01
+       ]
+      ],
+      [
+       0.1347,
+       [
+        0.8579
+       ]
+      ],
+      [
+       1.0,
+       [
+        1.2
+       ]
+      ]
+     ],
+     "HWRatioFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionDirDegreeFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "NoiseStrengthFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "XDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "YDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "ZDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ]
+    },
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "minParticlesPerSecond": "3.000",
+    "particlesPerSecond": "3.000",
+    "minSpriteLifespan": "0.350",
+    "maxSpriteLifespan": "0.250",
+    "emitAtBegin": "FALSE",
+    "preEmitTime": "0.000",
+    "fxIgnore": "FALSE",
+    "sprWorkMode": "0",
+    "sprSpeedRate": "1.000",
+    "randomStartSpr": null,
+    "isSprBlend": "FALSE",
+    "lifespan_anomaly": "源异常：MinSpriteLifespan(0.350) > MaxSpriteLifespan(0.250)，不交换、按原值保留",
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_glow_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.15,
+    "radius": 10.0,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\glow\\glow_26_tp37.tga",
+    "texture_candidate": "f158aa703f3477a0.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       233.0,
+       197.0
+      ]
+     },
+     {
+      "time": 0.1744,
+      "value": [
+       255.0,
+       255.0,
+       134.0,
+       87.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       28.0,
+       10.0,
+       0.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.0
+      ]
+     },
+     {
+      "time": 0.0641,
+      "value": [
+       2.375
+      ]
+     },
+     {
+      "time": 0.3618,
+      "value": [
+       4.8125
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       6.0
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "H_鬼火_2",
+    "tag": "ParticleSystem",
+    "pos_offset": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "start": 0.002,
+    "life": 0.6,
+    "radius": null,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\dian_12.tga",
+    "texture_candidate": "7240b8319d081a0f.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       92.0,
+       243.0,
+       107.0
+      ]
+     }
+    ],
+    "color_track_par": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       255.0,
+       250.0,
+       229.0
+      ]
+     },
+     {
+      "time": 0.1545,
+      "value": [
+       152.0,
+       255.0,
+       204.0,
+       104.0
+      ]
+     },
+     {
+      "time": 0.3488,
+      "value": [
+       143.0,
+       255.0,
+       29.0,
+       51.0
+      ]
+     },
+     {
+      "time": 0.603,
+      "value": [
+       120.0,
+       147.0,
+       16.0,
+       255.0
+      ]
+     },
+     {
+      "time": 0.8007,
+      "value": [
+       98.0,
+       12.0,
+       36.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       12.0,
+       255.0,
+       101.0
+      ]
+     }
+    ],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "GravityFrame": [
+      [
+       0.5,
+       [
+        -20.0
+       ]
+      ]
+     ],
+     "MaxSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        130.0
+       ]
+      ]
+     ],
+     "MinSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        80.0
+       ]
+      ]
+     ],
+     "RotDegreeSpeedFrame": [
+      [
+       0.0,
+       [
+        100.0
+       ]
+      ]
+     ],
+     "EmissionRadiusFrame": [
+      [
+       0.0,
+       [
+        4.0
+       ]
+      ]
+     ],
+     "EmissionRadius2Frame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteScaleFrame": [
+      [
+       0.0,
+       [
+        2.0
+       ]
+      ],
+      [
+       0.1313,
+       [
+        0.0
+       ]
+      ],
+      [
+       0.2427,
+       [
+        1.7176
+       ]
+      ],
+      [
+       0.3511,
+       [
+        0.3059
+       ]
+      ],
+      [
+       0.4458,
+       [
+        1.5529
+       ]
+      ],
+      [
+       0.5405,
+       [
+        0.1882
+       ]
+      ],
+      [
+       0.6153,
+       [
+        1.3176
+       ]
+      ],
+      [
+       0.7145,
+       [
+        0.3529
+       ]
+      ],
+      [
+       0.7969,
+       [
+        1.1765
+       ]
+      ],
+      [
+       1.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteHeightFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "HWRatioFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionDirDegreeFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "NoiseStrengthFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "XDirDisturb": [
+      [
+       0.0,
+       [
+        2.0
+       ]
+      ]
+     ],
+     "YDirDisturb": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "ZDirDisturb": [
+      [
+       0.0,
+       [
+        2.0
+       ]
+      ]
+     ]
+    },
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "minParticlesPerSecond": "10.000",
+    "particlesPerSecond": "10.000",
+    "minSpriteLifespan": "0.600",
+    "maxSpriteLifespan": "1.500",
+    "emitAtBegin": "FALSE",
+    "preEmitTime": "0.000",
+    "fxIgnore": "TRUE",
+    "sprWorkMode": "1",
+    "sprSpeedRate": "0.000",
+    "randomStartSpr": null,
+    "isSprBlend": "FALSE",
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_爆闪_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     2.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.1,
+    "radius": 15.0,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\glow\\glow_02_sk2.tga",
+    "texture_candidate": "3a12617581e18f89.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       255.0,
+       189.0,
+       128.0
+      ]
+     },
+     {
+      "time": 0.0548,
+      "value": [
+       138.0,
+       255.0,
+       201.0,
+       163.0
+      ]
+     },
+     {
+      "time": 0.2076,
+      "value": [
+       123.0,
+       255.0,
+       183.0,
+       133.0
+      ]
+     },
+     {
+      "time": 0.5066,
+      "value": [
+       18.0,
+       255.0,
+       180.0,
+       124.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       255.0,
+       172.0,
+       100.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.5
+      ]
+     },
+     {
+      "time": 0.0658,
+      "value": [
+       1.5328
+      ]
+     },
+     {
+      "time": 0.1973,
+      "value": [
+       2.2704
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       3.5
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_旋转光环_andi",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.002,
+    "life": 1.5,
+    "radius": 35.0,
+    "blend_mode": 0,
+    "texture": "effect\\textures\\glow\\glow_01.tga",
+    "texture_candidate": "13211b0279d2a247.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       162.0,
+       144.0,
+       149.0
+      ]
+     },
+     {
+      "time": 0.0598,
+      "value": [
+       120.0,
+       132.0,
+       113.0,
+       114.0
+      ]
+     },
+     {
+      "time": 0.1578,
+      "value": [
+       127.0,
+       114.0,
+       96.0,
+       76.0
+      ]
+     },
+     {
+      "time": 0.5133,
+      "value": [
+       93.0,
+       114.0,
+       96.0,
+       76.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       114.0,
+       96.0,
+       76.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.0
+      ]
+     },
+     {
+      "time": 0.0595,
+      "value": [
+       2.0312
+      ]
+     },
+     {
+      "time": 0.1466,
+      "value": [
+       2.6875
+      ]
+     },
+     {
+      "time": 0.2992,
+      "value": [
+       3.0625
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       3.5
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "L_g_亮晕_01_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.005,
+    "life": 0.7,
+    "radius": 60.0,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\glow10_d.tga",
+    "texture_candidate": "77af349fc90bbd4c.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       179.0,
+       214.0,
+       255.0
+      ]
+     },
+     {
+      "time": 0.0664,
+      "value": [
+       198.0,
+       255.0,
+       247.0,
+       210.0
+      ]
+     },
+     {
+      "time": 0.1346,
+      "value": [
+       255.0,
+       255.0,
+       236.0,
+       215.0
+      ]
+     },
+     {
+      "time": 0.3555,
+      "value": [
+       138.0,
+       168.0,
+       175.0,
+       255.0
+      ]
+     },
+     {
+      "time": 0.701,
+      "value": [
+       30.0,
+       159.0,
+       171.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       149.0,
+       136.0,
+       255.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.2
+      ]
+     },
+     {
+      "time": 0.1145,
+      "value": [
+       0.68
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       1.0
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "M_g_glow_2_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.4,
+    "radius": 40.0,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\glow_tp25_08.tga",
+    "texture_candidate": "3ff59227caf571a5.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       0.0,
+       255.0,
+       107.0,
+       34.0
+      ]
+     },
+     {
+      "time": 0.0532,
+      "value": [
+       82.0,
+       251.0,
+       106.0,
+       22.0
+      ]
+     },
+     {
+      "time": 0.1628,
+      "value": [
+       255.0,
+       255.0,
+       144.0,
+       42.0
+      ]
+     },
+     {
+      "time": 0.2957,
+      "value": [
+       202.0,
+       232.0,
+       98.0,
+       20.0
+      ]
+     },
+     {
+      "time": 0.5681,
+      "value": [
+       41.0,
+       232.0,
+       106.0,
+       17.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       3.0,
+       232.0,
+       108.0,
+       20.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.0
+      ]
+     },
+     {
+      "time": 0.0763,
+      "value": [
+       2.9062
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       3.5
+      ]
+     }
+    ],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   },
+   {
+    "name": "H_鬼火_射线_01_1",
+    "tag": "ParticleSystem",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.003,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\glow\\tex_glow_xr_03_cc.tga",
+    "texture_candidate": "60b3ab497974d7d3.dds",
+    "texture_binding": "candidate",
+    "is_sprite_sheet": false,
+    "color_track": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       92.0,
+       243.0,
+       107.0
+      ]
+     }
+    ],
+    "color_track_par": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       218.0,
+       232.0
+      ]
+     },
+     {
+      "time": 0.0681,
+      "value": [
+       240.0,
+       255.0,
+       231.0,
+       220.0
+      ]
+     },
+     {
+      "time": 0.3056,
+      "value": [
+       202.0,
+       250.0,
+       228.0,
+       198.0
+      ]
+     },
+     {
+      "time": 0.505,
+      "value": [
+       75.0,
+       250.0,
+       209.0,
+       149.0
+      ]
+     },
+     {
+      "time": 0.6595,
+      "value": [
+       45.0,
+       39.0,
+       250.0,
+       46.0
+      ]
+     },
+     {
+      "time": 0.799,
+      "value": [
+       22.0,
+       250.0,
+       39.0,
+       32.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       0.0,
+       6.0,
+       13.0,
+       20.0
+      ]
+     }
+    ],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "GravityFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "MaxSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        0.3
+       ]
+      ]
+     ],
+     "MinSpriteVelocityFrame": [
+      [
+       0.0,
+       [
+        0.2
+       ]
+      ]
+     ],
+     "RotDegreeSpeedFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "EmissionRadiusFrame": [
+      [
+       0.0,
+       [
+        0.01
+       ]
+      ]
+     ],
+     "EmissionRadius2Frame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "SpriteScaleFrame": [
+      [
+       0.0,
+       [
+        0.7725
+       ]
+      ],
+      [
+       0.5756,
+       [
+        0.6189
+       ]
+      ],
+      [
+       1.0,
+       [
+        0.4299
+       ]
+      ]
+     ],
+     "SpriteHeightFrame": [
+      [
+       0.0,
+       [
+        0.5
+       ]
+      ],
+      [
+       0.1252,
+       [
+        2.4125
+       ]
+      ],
+      [
+       0.3527,
+       [
+        5.175
+       ]
+      ],
+      [
+       1.0,
+       [
+        9.0
+       ]
+      ]
+     ],
+     "HWRatioFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "EmissionDirDegreeFrame": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "NoiseStrengthFrame": [
+      [
+       0.0,
+       [
+        1.0
+       ]
+      ]
+     ],
+     "XDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "YDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ],
+     "ZDirDisturb": [
+      [
+       0.0,
+       [
+        0.0
+       ]
+      ]
+     ]
+    },
+    "fixpoint": "0.000,-1.000,0.000,90.000",
+    "minParticlesPerSecond": "5.000",
+    "particlesPerSecond": "5.000",
+    "minSpriteLifespan": "0.400",
+    "maxSpriteLifespan": "0.600",
+    "emitAtBegin": "TRUE",
+    "preEmitTime": "0.000",
+    "fxIgnore": "TRUE",
+    "sprWorkMode": "0",
+    "sprSpeedRate": "1.000",
+    "randomStartSpr": null,
+    "isSprBlend": "FALSE",
+    "track_structure": "{time, value:[...]}（严格校验，源内分量数仅 1/4，异常 0）"
+   }
+  ],
+  "unsupported": [
+   "拖尾（全树无 Trail）",
+   "Model 节点（3 件，需模型资源）",
+   "ParticleRes（粒子资源，需资源解码）"
+  ],
+  "pending": [
+   "绑定二进制 16f 矩阵偏移解析",
+   "枪口专节点与实机时序对照",
+   "绑定 c159 的 16f 挂点矩阵偏移解析（当前用主件几何中心）"
+  ],
+  "sfx_source": {
+   "logical_path": "effect\\fx\\weapon\\skin\\skin_1003_010\\fx_skin_1003_010_zs_02.sfx",
+   "sha16": "bc3a874b70893946",
+   "bytes": 83327,
+   "encoding": "GBK",
+   "container": "XML FxGroup"
+  },
+  "sprite_sheet_note": ".spr = 256x65536 精灵表（256 帧，垂直堆叠）→ 必须按源时序翻页，不得当静态贴图",
+  "particle_note": "ParticleSystem 节点带 13+ 条发射曲线（EmissionRadius/SpriteScale/速度/扰动），已随节点数据下发；渲染器按曲线发射",
+  "other_bindings": {
+   "muzzle_fire": [
+    2.4424,
+    0.3777,
+    -0.1526
+   ],
+   "hongwai": [
+    2.0263,
+    0.5971,
+    0.3157
+   ],
+   "sound": [
+    3.2,
+    0.48,
+    0.0
+   ],
+   "bag": [
+    1.8291,
+    0.5091,
+    0.3165
+   ],
+   "rotation": [
+    0.447,
+    0.0127,
+    0.0
+   ]
+  },
+  "particle_rule": {
+   "spawn": "按源 ParticlesPerSecond（Min==Max 实测相等）在节点 FxLifeSpan 内按速率出生；EmitAtBegin=TRUE 时开始即爆发",
+   "lifespan": "每个粒子寿命在 [MinSpriteLifespan, MaxSpriteLifespan] 内随机（固定种子）",
+   "fx_ignore": "FxIgnore=TRUE 的节点默认不启用（5 个粒子节点中 4 个为 TRUE）；语义未直证，仅在实验开关下启用",
+   "note": "出生/存活/死亡按粒子独立生命周期，不再用固定数量 sprite 永久循环"
+  },
+  "sheet_correction": {
+   "previous_claim": "256x65536 = 256 帧精灵表（作废）",
+   "actual": "规范解码器解出 256x256 单帧；此前 65536 来自我读错 DDS 头字段（offset 16/20 读成 height/width）",
+   "conclusion": ".spr = 普通单帧贴图，无需翻页；播放相关字段 SprWorkMode/SprSpeedRate 无精灵表证据"
+  },
+  "environment": {
+   "mode": "neutral_fixed",
+   "status": "environment_approximate",
+   "note": "源为逐材质 cube（qiangpi/car_studio01/fashion_qiangpi），物理条目 unresolved；按 GPT 意见使用固定中性环境作诊断，不逐皮肤拟合"
+  },
+  "color_frame_note": "源 69 帧全部 4 分量（{time,value} 结构，异常 0）；4 分量顺序仍无独立证据 → unproven"
+ },
+ "hemisphere_intensity": 0.8,
+ "key_intensity": 1.5,
+ "fill_intensity": 0.5,
+ "pose_rule": "用户定稿（2026-09-15）：默认=screenshot 3/4 相机 [-4.5,1.7,5.9]，模型无旋转。",
+ "material_layers": {
+  "status": "approximate",
+  "basis": "源 c159 参数（c159_pair.py 槽位引用组解析）+ 绑定 c159 的 MtlIdx 归属",
+  "global_rig": {
+   "env_intensity": 1.4,
+   "exposure": 1.75,
+   "tone_mapping": "ACESFilmic",
+   "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+   "emissive_gain": 0.25,
+   "bloom": {
+    "strength": 0.55,
+    "radius": 0.55,
+    "threshold": 0.8,
+    "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+   },
+   "roughness_mode": "source_R_unproven",
+   "roughness_note": "当前展示沿用 ParamMap.R≈0.06（**未证假设，标 unresolved**）。实测对照：改统一诊断常数 0.5 会使金属区更暗更蓝（1110171 亮度 201→188、1110177 120→96），故不在展示层采用；C 诊断组仍用 0.5 并标 diagnostic。"
+  },
+  "material_level_source_factor": "u_cube_brightness",
+  "not_yet_implemented": [
+   "crystal_bump/reflection/refraction/caustic 采样",
+   "crystal IBL cube",
+   "shader DXBC 公式",
+   "Sub0 刀身金色来源（默认参数/IBL/自发光/SFX 追踪中）"
+  ],
+  "note": "各形态参数在 states[].material_layers（双枪 7 子网格与单枪 3 子网格下标含义不同）"
+ },
+ "material_mapping": {
+  "rule": "按源 c159 材质表顺序定位（非按颜色）",
+  "basis": "001223.c159: material0=skin_1003_010_0 shader=pbr_weapon(001a/001m/001n) ; material1/2=skin_1003_010_1/_2 shader=pbr_crystal(001b_m)",
+  "unresolved": null,
+  "note": "Sub0→material0 为位置对应（待绑定 c159 的 MtlIdx 直证）；蓝色贴图 001a 是源刀身基色，游戏中的金色需从 shader/IBL/自发光/SFX 找，不换贴图",
+  "unresolved_old": "mesh 内无 per-primitive MtlIdx（sub 表 u16 为模型组，010 单枪三个 sub 全同值）；待从绑定 c159 取得 primitive→material 直证",
+  "direct_evidence": {
+   "status": "FOUND（原 unresolved 已作废）",
+   "file": "analysis/audit/c159_001212.json（对应 001212.c159，608 B）",
+   "evidence": "values[84].value = skin_1003_010_0 ; values[127].value = skin_1003_010_1 ; values[170].value = skin_1003_010_2",
+   "attribution": "batch_3d/c159_skin_map.json 中 skin_1003_010 的成员列表含 001212.c159（608 B）与 001209.c159（1853 B）",
+   "meaning": "Sub0/Sub1/Sub2 → 材质名 skin_1003_010_0/1/2 的**直证序列**存在；原先『mesh 内无 per-primitive MtlIdx，待取直证』的表述与事实不符，已废除。",
+   "source": "T4 查漏补缺报告（freeze-auditor, task-10）第 3 条；Lead 于 2026-09-17 复核 c159_001212.json 确认 values 索引"
+  },
+  "same_family_unconsumed": {
+   "count": 9,
+   "members": [
+    "001211",
+    "001212",
+    "001214",
+    "001215",
+    "001217",
+    "001218",
+    "001220",
+    "001221",
+    "001267"
+   ],
+   "note": "skin_1003_010 在 c159_skin_map.json 中共 13 个 c159，重建链只消费 001209/001223（单枪）与 001263/001265（双枪）；这 9 个除 001212 外均无 analysis/audit 侧车。属**待排查的现成候选池**，非已证缺陷。",
+   "source": "T4 报告第 3b 条"
+  }
+ },
+ "position": [
+  -4.5,
+  1.7,
+  5.9
+ ],
+ "source_chain": {
+  "bind": "001263.c159 (7 条 SubMesh 记录) / material 001265.c159 (7 材质) / mesh 001264.mesh (7 子网格)",
+  "dual": [
+   {
+    "sub": 0,
+    "mtl_idx": 0,
+    "name": "skin_1003_012_0"
+   },
+   {
+    "sub": 1,
+    "mtl_idx": 1,
+    "name": "skin_1003_012_1"
+   },
+   {
+    "sub": 2,
+    "mtl_idx": 2,
+    "name": "skin_1003_012_2"
+   },
+   {
+    "sub": 3,
+    "mtl_idx": 3,
+    "name": "skin_1003_012_3"
+   },
+   {
+    "sub": 4,
+    "mtl_idx": 4,
+    "name": "skin_1003_010_0"
+   },
+   {
+    "sub": 5,
+    "mtl_idx": 5,
+    "name": "skin_1003_010_1"
+   },
+   {
+    "sub": 6,
+    "mtl_idx": 6,
+    "name": "skin_1003_010_2"
+   }
+  ],
+  "single": "001209.c159 / 001223.c159 / 001222.mesh → Sub0=MtlIdx0 skin_1003_010_0(pbr_weapon+001a)，Sub1/2=MtlIdx1/2 skin_1003_010_1/2(pbr_crystal+001b_m)"
+ },
+ "environment_approximate": true,
+ "background_image": "../_shared/bg_weapon_skin_ingame.png",
+ "background_source": {
+  "file": "_shared/bg_weapon_skin_ingame.png",
+  "origin": "用户提供的游戏内武器皮肤背景图",
+  "sha16": "e60c1a1d5e16b1b4",
+  "usage": "仅 scene.background（环境仍为明亮中性摄影棚，标 environment_approximate；源 t_custom_ibl 是摄影棚 cube，与场景背景不同）"
+ },
+ "env_from_background": false,
+ "pose_accepted_by": "游戏内参考图（用户提供 8bdf3a6f）",
+ "exposure": 1.75,
+ "env_intensity": 1.4
+}

@@ -1,0 +1,14 @@
+{
+ "board": "fashion_active",
+ "domain": "fashion",
+ "projection_of": "artifacts/active/fashion/FASHION_IDENTITY_STATE.json",
+ "verified_chain": "runtime_semantic_verified",
+ "unresolved": {
+  "structural_row_binding": "row_key == export slot52 fashion_id = 0/2356（对象错位，非证据不足）",
+  "business_identity": "unresolved",
+  "name_binding": "unresolved",
+  "physical_payload_binding": "unresolved",
+  "a2f_value_set": "not_extracted（data body 不可定位）"
+ },
+ "items": null
+}

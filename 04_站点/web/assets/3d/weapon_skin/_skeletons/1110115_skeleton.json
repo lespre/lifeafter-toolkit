@@ -1,0 +1,287 @@
+{
+ "skin_id": "1110115",
+ "gim_path": "weapon\\skin\\skin_2003_013\\skin_2003_013.gim",
+ "mesh_path": "weapon\\skin\\skin_2003_013\\skin_2003_013.mesh",
+ "mesh_variants": [
+  {
+   "variant": "(main)",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013.mesh",
+   "row": 3606,
+   "flag": 1,
+   "bytes": 382031,
+   "sha16": "f367a45744f51395"
+  },
+  {
+   "variant": "_lod01",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_lod01.mesh",
+   "row": 3629,
+   "flag": 1,
+   "bytes": 263085,
+   "sha16": "33e0d3ae3a560ee7"
+  },
+  {
+   "variant": "_lod02",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_lod02.mesh",
+   "row": 3632,
+   "flag": 1,
+   "bytes": 160073,
+   "sha16": "b3ff72f3704db4a7"
+  },
+  {
+   "variant": "_lod03",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_lod03.mesh",
+   "row": 3635,
+   "flag": 1,
+   "bytes": 103574,
+   "sha16": "1164d73ce32ac216"
+  },
+  {
+   "variant": "_preview",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_preview.mesh",
+   "row": 3638,
+   "flag": 1,
+   "bytes": 382031,
+   "sha16": "f367a45744f51395"
+  },
+  {
+   "variant": "_1",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_1.mesh",
+   "row": 3611,
+   "flag": 1,
+   "bytes": 3351,
+   "sha16": "82c3eb0e4b6fec8e"
+  },
+  {
+   "variant": "_2",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_2.mesh",
+   "row": 3617,
+   "flag": 0,
+   "bytes": 564654,
+   "sha16": "8a0001a3fc19c3f3"
+  },
+  {
+   "variant": "_3",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_3.mesh",
+   "row": 3623,
+   "flag": 0,
+   "bytes": 564654,
+   "sha16": "6640fddfdf850167"
+  },
+  {
+   "variant": "_shadow",
+   "path": "weapon\\skin\\skin_2003_013\\skin_2003_013_shadow.mesh",
+   "row": 3644,
+   "flag": 1,
+   "bytes": 73064,
+   "sha16": "1759272ac8bf9f2f"
+  }
+ ],
+ "reason": null,
+ "mesh_row": 3606,
+ "mesh_variant": "(main)",
+ "mesh_bytes": 382031,
+ "mesh_sha16": "f367a45744f51395",
+ "skeleton": {
+  "magic": "34 80 c8 bb",
+  "bytes": 382031,
+  "sha256": "f367a45744f513952440c06a27363f682f47a42f9c6bc491985ac6e9acfda666",
+  "unresolved": [
+   "逐骨 92B 块字段语义未定证（非 4x4/3x4 矩阵行结构；仅给偏移与长度）"
+  ],
+  "evidence": {
+   "header": "0x00 magic / 0x04 version / 0x06 const / 0x08 bone_flag / 0x0A bone_count; 无骨骼时 u32@0x0A=文件长度-16（实测 16711685）",
+   "per_bone_block": "gap(=sub_table_off-names_end) = 1 + 92n + 4 实测成立：True（n=5 gap=465）",
+   "hierarchy": "切分 B：byte[0x0D..0x0D+n-1] 对应 bone[1..n-1]，0xFF=无父；校验 parent<self 违规=0 []"
+  },
+  "version_u16_0x04": 4,
+  "const_u16_0x06": 5,
+  "bone_flag_u16_0x08": 1,
+  "bone_count_u16_0x0A": 5,
+  "name_block_off": 17,
+  "parent_area": {
+   "start": 13,
+   "bytes": 4,
+   "hex": "00 01 02 03"
+  },
+  "name_stride": 32,
+  "name_stride_candidates": [
+   32
+  ],
+  "bones": [
+   "biped root",
+   "biped bone00",
+   "biped bone01",
+   "biped bone02",
+   "biped bone03"
+  ],
+  "bone_count": 5,
+  "per_bone_block": {
+   "off": 178,
+   "stride": 92,
+   "count": 5,
+   "trailer_u32_off": 638,
+   "gap_bytes": 465,
+   "formula_check": true
+  },
+  "sub_table": {
+   "sub_table_off": 642,
+   "term_off": 672,
+   "k": 3,
+   "tv": 12754,
+   "tf": 14654
+  },
+  "hierarchy": [
+   {
+    "i": 0,
+    "parent": null,
+    "root": true
+   },
+   {
+    "i": 1,
+    "parent": 0,
+    "root": false
+   },
+   {
+    "i": 2,
+    "parent": 1,
+    "root": false
+   },
+   {
+    "i": 3,
+    "parent": 2,
+    "root": false
+   },
+   {
+    "i": 4,
+    "parent": 3,
+    "root": false
+   }
+  ],
+  "hierarchy_state": "verified_parent_lt_child",
+  "biped_strings": 5,
+  "skeleton_state": "ok",
+  "roots": [
+   0
+  ],
+  "per_bone_layout": [
+   {
+    "index": 0,
+    "name": "biped root",
+    "parent": null,
+    "depth": 0,
+    "children": [
+     1
+    ],
+    "raw_92B_off": 178,
+    "raw_92B_bytes": 92
+   },
+   {
+    "index": 1,
+    "name": "biped bone00",
+    "parent": 0,
+    "depth": 1,
+    "children": [
+     2
+    ],
+    "raw_92B_off": 270,
+    "raw_92B_bytes": 92
+   },
+   {
+    "index": 2,
+    "name": "biped bone01",
+    "parent": 1,
+    "depth": 2,
+    "children": [
+     3
+    ],
+    "raw_92B_off": 362,
+    "raw_92B_bytes": 92
+   },
+   {
+    "index": 3,
+    "name": "biped bone02",
+    "parent": 2,
+    "depth": 3,
+    "children": [
+     4
+    ],
+    "raw_92B_off": 454,
+    "raw_92B_bytes": 92
+   },
+   {
+    "index": 4,
+    "name": "biped bone03",
+    "parent": 3,
+    "depth": 4,
+    "children": [],
+    "raw_92B_off": 546,
+    "raw_92B_bytes": 92
+   }
+  ],
+  "layout": {
+   "mesh_bytes": 382031,
+   "skeleton_block_start": 13,
+   "bone_flag_u16_0x08": 1,
+   "bone_count_u16_0x0A": 5,
+   "parent_area": {
+    "off": 13,
+    "bytes": 4,
+    "end_exclusive": 17,
+    "hex": "00 01 02 03"
+   },
+   "name_block_off": 17,
+   "name_stride": 32,
+   "names_end": 177,
+   "per_bone_block_off": 178,
+   "per_bone_stride": 92,
+   "per_bone_block_end_exclusive": 638,
+   "trailer_u32_off": 638,
+   "sub_table_off": 642,
+   "term_off": 672,
+   "sub_k": 3,
+   "sub_tv": 12754,
+   "sub_tf": 14654,
+   "geometry_segment_off": 642,
+   "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 642",
+   "geometry_segment_basis": "与该 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+   "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（消费方请按 sub_table_off 取用并自行校验）"
+  }
+ },
+ "bone_count": 5,
+ "bones": [
+  "biped root",
+  "biped bone00",
+  "biped bone01",
+  "biped bone02",
+  "biped bone03"
+ ],
+ "skeleton_state": "ok",
+ "name": null,
+ "level": 6,
+ "model_extra_scale": 1.27,
+ "geometry_out": {
+  "src_mesh": "weapon\\skin\\skin_2003_013\\skin_2003_013.mesh",
+  "src_sha16": "f367a45744f51395",
+  "src_row": 3606,
+  "src_variant": "(main)",
+  "geometry_segment_off": 642,
+  "out_mesh": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110115\\skin_2003_013.geometry.mesh",
+  "bytes_in": 382031,
+  "bytes_out": 381403,
+  "bone_count": 5,
+  "skin_id": "1110115",
+  "mode": "stripped_skeleton_header",
+  "cut_at": 642,
+  "header_bytes": 14,
+  "header_layout": {
+   "0x00": "magic 34 80 c8 bb (原样)",
+   "0x04": "u16 version (原样 4)",
+   "0x06": "u16 const (原样 5)",
+   "0x08": "u16 bone_flag = 0 (改写：无骨骼块)",
+   "0x0A": "u32 = 文件长度-16 = 381387 (改写：实测 flag0 口径)",
+   "0x0E": "源文件 offset 642 起原样字节（sub 表正好落在 0x0E，与 mesh_parse2.py:19-27 假设一致）"
+  },
+  "note": "不重排/不改字节/不补位；仅替换 14 字节头。把原 [cut_at:14] 头粘回即可无损还原",
+  "out_sha16": "e0c9b38ed58dc44f"
+ }
+}

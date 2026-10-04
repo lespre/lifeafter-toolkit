@@ -1,0 +1,1234 @@
+{
+ "generated_at": "2026-09-20T15:46:05",
+ "rules": {
+  "name_hash": "mm3(name,0x77777777)<<32 | mm3(name,0x66666666)",
+  "normalization": "仅 '/' -> '\\'",
+  "payload_off": "block_base + off + 20",
+  "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical"
+ },
+ "sources": {
+  "common_tex_container": "E:\\mrzh\\res.gpk",
+  "effect_container": "E:\\mrzh\\res\\effect_01.gpk"
+ },
+ "common_tex": [
+  {
+   "declared_name": "common\\textures\\crystal_bump_n03",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8488,
+   "block_base": 16,
+   "off": 584245356,
+   "comp": 110622,
+   "dec": 349680,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 584245392,
+   "payload_sha256": "eee7a8722214808d9ece11f78dff768e14a69d5e0d2b352b4d369a43d8f575ef",
+   "payload_sha16": "eee7a8722214808d",
+   "payload_bytes": 349680,
+   "out_dds": {
+    "path": "crystal_bump_n03.dds",
+    "sha256": "eee7a8722214808d9ece11f78dff768e14a69d5e0d2b352b4d369a43d8f575ef",
+    "bytes": 349680
+   },
+   "out_png": {
+    "path": "crystal_bump_n03.png",
+    "sha256": "d896edf6cd2e8c088a09009bd8917de7675256903c85aba8355fc6dd13d503fc",
+    "bytes": 153706
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    512,
+    512
+   ],
+   "mips": 10,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 255,
+    "max": 255,
+    "n_below_255": 0,
+    "pixels": 262144,
+    "frac_below_255": 0.0
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "12CB1CE8ED0E7DAC",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     512,
+     512
+    ],
+    "mips": 10,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 512,
+    "height": 512,
+    "mips": 10,
+    "canonical_pixel_sha256": "9c5003b3d0c1b523c9d923f4963516b0d6684e04feb8aa25e16ef643ec970797"
+   },
+   "sha16_expect": "eee7a8722214808d",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\caustic3",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8452,
+   "block_base": 16,
+   "off": 552871356,
+   "comp": 31218,
+   "dec": 87536,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 552871392,
+   "payload_sha256": "3be309012dc9ce2a96dccde74efe2bd312ec0a929c55342d12393f35930b4db8",
+   "payload_sha16": "3be309012dc9ce2a",
+   "payload_bytes": 87536,
+   "out_dds": {
+    "path": "caustic3.dds",
+    "sha256": "3be309012dc9ce2a96dccde74efe2bd312ec0a929c55342d12393f35930b4db8",
+    "bytes": 87536
+   },
+   "out_png": {
+    "path": "caustic3.png",
+    "sha256": "a887d61aa0f960d1019f68cdbebffab8d73b506866adbed95e25798247c513d9",
+    "bytes": 60038
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    256,
+    256
+   ],
+   "mips": 9,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 255,
+    "max": 255,
+    "n_below_255": 0,
+    "pixels": 65536,
+    "frac_below_255": 0.0
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "896861ACCCEE3CDE",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     256,
+     256
+    ],
+    "mips": 9,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 256,
+    "height": 256,
+    "mips": 9,
+    "canonical_pixel_sha256": "16cc1ca38a390b003236a5268b14add7c8de3839dea4bdba271fb9ad9a53fa2d"
+   },
+   "sha16_expect": "3be309012dc9ce2a",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\refraction_envmap_1",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8706,
+   "block_base": 16,
+   "off": 712352948,
+   "comp": 43423,
+   "dec": 174928,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 712352984,
+   "payload_sha256": "ab8e35ed77aa6922f539d7db919c68a945f7253a135f4f1bdd1ef7a417c30f07",
+   "payload_sha16": "ab8e35ed77aa6922",
+   "payload_bytes": 174928,
+   "out_dds": {
+    "path": "refraction_envmap_1.dds",
+    "sha256": "ab8e35ed77aa6922f539d7db919c68a945f7253a135f4f1bdd1ef7a417c30f07",
+    "bytes": 174928
+   },
+   "out_png": {
+    "path": "refraction_envmap_1.png",
+    "sha256": "b5ae2e89bad07c2303c0bf9bf2bb96657d799a85d62c16d8ed4d92a175d3d2c2",
+    "bytes": 87003
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    512,
+    256
+   ],
+   "mips": 10,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 255,
+    "max": 255,
+    "n_below_255": 0,
+    "pixels": 131072,
+    "frac_below_255": 0.0
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "77E8873082C61E1D",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     512,
+     256
+    ],
+    "mips": 10,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 512,
+    "height": 256,
+    "mips": 10,
+    "canonical_pixel_sha256": "3b613c4a36434035c316301572e033fb8396b372ba4e371c9acbbeda08cd8462"
+   },
+   "sha16_expect": "ab8e35ed77aa6922",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\detail_normal_snake_02_m",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8556,
+   "block_base": 16,
+   "off": 596500396,
+   "comp": 209210,
+   "dec": 349680,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 596500432,
+   "payload_sha256": "97ba4221233b838ee6f1c37ac54c8824f86db915217fe9ab0beedaa5efbe191a",
+   "payload_sha16": "97ba4221233b838e",
+   "payload_bytes": 349680,
+   "out_dds": {
+    "path": "detail_normal_snake_02_m.dds",
+    "sha256": "97ba4221233b838ee6f1c37ac54c8824f86db915217fe9ab0beedaa5efbe191a",
+    "bytes": 349680
+   },
+   "out_png": {
+    "path": "detail_normal_snake_02_m.png",
+    "sha256": "9110554b606fdb5381f2bb281e3d4dc5759cbe84294822427c00a242f4fe0cd7",
+    "bytes": 449615
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    512,
+    512
+   ],
+   "mips": 10,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 0,
+    "max": 255,
+    "n_below_255": 151297,
+    "pixels": 262144,
+    "frac_below_255": 0.577152
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "CAB986340BD90690",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     512,
+     512
+    ],
+    "mips": 10,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 512,
+    "height": 512,
+    "mips": 10,
+    "canonical_pixel_sha256": "2935d5c459889115175d1b830bc83f4d0d25a05fe5c2a256067d97c3199af5f7"
+   },
+   "sha16_expect": "97ba4221233b838e",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\crystal_caustic_01",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8491,
+   "block_base": 16,
+   "off": 584734208,
+   "comp": 49606,
+   "dec": 349680,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 584734244,
+   "payload_sha256": "44d26a7f37238853c2717a3087cec8bb20cd940a0ca56115671afb9f1f218818",
+   "payload_sha16": "44d26a7f37238853",
+   "payload_bytes": 349680,
+   "out_dds": {
+    "path": "crystal_caustic_01.dds",
+    "sha256": "44d26a7f37238853c2717a3087cec8bb20cd940a0ca56115671afb9f1f218818",
+    "bytes": 349680
+   },
+   "out_png": {
+    "path": "crystal_caustic_01.png",
+    "sha256": "c91e64446ef3e7a32c3a82b14b8d542955f046733142bf9cc6f6ba29847855b9",
+    "bytes": 70730
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    512,
+    512
+   ],
+   "mips": 10,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 255,
+    "max": 255,
+    "n_below_255": 0,
+    "pixels": 262144,
+    "frac_below_255": 0.0
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "E570A785A1056993",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     512,
+     512
+    ],
+    "mips": 10,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 512,
+    "height": 512,
+    "mips": 10,
+    "canonical_pixel_sha256": "069d82bd86c1813fc01a8e5654b8548f32a61b1e74efc26282ce43549c4fd490"
+   },
+   "sha16_expect": "44d26a7f37238853",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\gem_fire",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8619,
+   "block_base": 16,
+   "off": 600787648,
+   "comp": 37627,
+   "dec": 87536,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 600787684,
+   "payload_sha256": "3bcc19ed2a935186577cdf34b79546b55566238d147c249222725117db739ba1",
+   "payload_sha16": "3bcc19ed2a935186",
+   "payload_bytes": 87536,
+   "out_dds": {
+    "path": "gem_fire.dds",
+    "sha256": "3bcc19ed2a935186577cdf34b79546b55566238d147c249222725117db739ba1",
+    "bytes": 87536
+   },
+   "out_png": {
+    "path": "gem_fire.png",
+    "sha256": "f3c7d4c4bb224d704fbe8049b2538b1b958c186267cf16a072a4b8f3caf350ab",
+    "bytes": 74177
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    256,
+    256
+   ],
+   "mips": 9,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 255,
+    "max": 255,
+    "n_below_255": 0,
+    "pixels": 65536,
+    "frac_below_255": 0.0
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "973D690C913E58F5",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = ffff0000）",
+    "dims": [
+     256,
+     256
+    ],
+    "mips": 9,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 256,
+    "height": 256,
+    "mips": 9,
+    "canonical_pixel_sha256": "dfada2c7cf659ca367e90e86ca82dfb51e8c780eaa6e734e326385006c171cc7"
+   },
+   "sha16_expect": "3bcc19ed2a935186",
+   "sha16_match": true
+  },
+  {
+   "declared_name": "common\\textures\\car_flake",
+   "container_abs": "E:\\mrzh\\res.gpk",
+   "container_bytes": 1231876916,
+   "container_sha16": null,
+   "row": 8440,
+   "block_base": 16,
+   "off": 538544288,
+   "comp": 234607,
+   "dec": 349680,
+   "flag": 12,
+   "payload_off_rule": "block_base + off + 20",
+   "payload_abs_offset": 538544324,
+   "payload_sha256": "633091e956eb788567b2b2a30a7d4c236c8d8f2441c6a32973d3c9d0a34520fe",
+   "payload_sha16": "633091e956eb7885",
+   "payload_bytes": 349680,
+   "out_dds": {
+    "path": "car_flake.dds",
+    "sha256": "633091e956eb788567b2b2a30a7d4c236c8d8f2441c6a32973d3c9d0a34520fe",
+    "bytes": 349680
+   },
+   "out_png": {
+    "path": "car_flake.png",
+    "sha256": "4081a657726c0a652ae715b55072b87b7a15bd89e566e5b328632c363dd4e94f",
+    "bytes": 361677
+   },
+   "dds_format": {
+    "fourcc": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = fee32709）",
+    "canonical_fmt": "bc3"
+   },
+   "dims": [
+    512,
+    512
+   ],
+   "mips": 10,
+   "has_alpha_basis": {
+    "format_basis": "显式插值 alpha（独立 alpha 块）",
+    "decoder_support": "显式alpha"
+   },
+   "alpha_empirical": {
+    "min": 0,
+    "max": 255,
+    "n_below_255": 157014,
+    "pixels": 262144,
+    "frac_below_255": 0.598961
+   },
+   "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (01_工具/工具库/02_图文音频渲染/皮肤链与渲染/dds_rgba_canonical.py:148)",
+   "status": "ok",
+   "unresolved": null,
+   "fid_hex": "77630A0FFB775D10",
+   "dds_header": {
+    "magic_ok": true,
+    "header_bytes": 128,
+    "fourcc": "44585435",
+    "fourcc_ascii": "DXT5",
+    "dxgi": null,
+    "dxgi_valid": false,
+    "dxgi_note": "非 DX10：offset 128 不参与判定（payload 该处 = fee32709）",
+    "dims": [
+     512,
+     512
+    ],
+    "mips": 10,
+    "pf_flags": 4,
+    "rgbbits": 0,
+    "masks": {
+     "r": 0,
+     "g": 0,
+     "b": 0,
+     "a": 0
+    },
+    "fmt": "bc3",
+    "alpha_basis": "显式插值 alpha（独立 alpha 块）",
+    "alpha_supported": "显式alpha"
+   },
+   "decode_prov": {
+    "decoder": "texture2ddecoder",
+    "decoder_version": "1.0.6",
+    "raw_channel_order": "BGRA",
+    "applied_swizzle": "BGRA->RGBA",
+    "canonical_channel_order": "RGBA",
+    "fmt": "bc3",
+    "width": 512,
+    "height": 512,
+    "mips": 10,
+    "canonical_pixel_sha256": "d634147cdfa97b13f046d4deef173f7e6ab254cba5bfc079fce313988d17c9ab"
+   },
+   "sha16_expect": "633091e956eb7885",
+   "sha16_match": true
+  }
+ ],
+ "unresolved": [],
+ "container_rec": {
+  "kind": "gpk",
+  "bytes": 1231876916,
+  "entries": 19599,
+  "block_count": 1,
+  "payload_delta": 36,
+  "payload_off_rule": "block_base + off + 20",
+  "sha16": "ee5e4b2f0446e222",
+  "blocks": [
+   {
+    "block_index": 0,
+    "base": 16,
+    "entries": 19599,
+    "block_size": 1231876900,
+    "payload_delta": 36,
+    "payload_off_rule": "base + off + 20"
+   }
+  ]
+ },
+ "effect_container_rec": {
+  "kind": "gpk",
+  "bytes": 700157292,
+  "entries": 212151,
+  "block_count": 1,
+  "payload_delta": 36,
+  "payload_off_rule": "block_base + off + 20",
+  "sha16": "89cc9f78cb363360"
+ },
+ "aurora_1110177": {
+  "spr": [
+   {
+    "declared_name": "effect\\textures\\lightning\\lightning07_cs.spr",
+    "container_abs": "E:\\mrzh\\res\\effect_01.gpk",
+    "row": 207659,
+    "fid_hex": "34B8260F3A54D71E",
+    "block_base": 16,
+    "off": 595973020,
+    "comp": 143,
+    "dec": 582,
+    "flag": 12,
+    "payload_abs_offset": 595973056,
+    "payload_sha256": "7d0ecce9fd3cddd7a2ce92150dccd0848018ba60d90e220699df2489d6d5b91b",
+    "payload_sha16": "7d0ecce9fd3cddd7",
+    "sha16_expect": "7d0ecce9fd3cddd7",
+    "sha16_match": true,
+    "payload_bytes": 582,
+    "out_spr": {
+     "path": "1110177/lightning07_cs.spr",
+     "sha256": "7d0ecce9fd3cddd7a2ce92150dccd0848018ba60d90e220699df2489d6d5b91b",
+     "bytes": 582
+    },
+    "spr_header": {
+     "mode": "1",
+     "W": 512,
+     "H": 512,
+     "bpp": 16,
+     "param": 10000,
+     "raw_first_line": "1 512 512",
+     "n_lines": 19
+    },
+    "n_frames": 16,
+    "frames": [
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       0,
+       0,
+       128,
+       128
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       128,
+       0,
+       256,
+       128
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       256,
+       0,
+       384,
+       128
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       384,
+       0,
+       512,
+       128
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       0,
+       128,
+       128,
+       256
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       128,
+       128,
+       256,
+       256
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       256,
+       128,
+       384,
+       256
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       384,
+       128,
+       512,
+       256
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       0,
+       256,
+       128,
+       384
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       128,
+       256,
+       256,
+       384
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       256,
+       256,
+       384,
+       384
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       384,
+       256,
+       512,
+       384
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       0,
+       384,
+       128,
+       512
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       128,
+       384,
+       256,
+       512
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       256,
+       384,
+       384,
+       512
+      ]
+     },
+     {
+      "name": "lightning07_cs.tga",
+      "rect": [
+       384,
+       384,
+       512,
+       512
+      ]
+     }
+    ],
+    "frame_names": [
+     "lightning07_cs.tga"
+    ],
+    "not_a_dds": true,
+    "atlas": {
+     "rule": "spr 行 i 的图集 DDS = 行 i-1（spr_atlas_resolver.py 实测规则，仅 effect 族成立）",
+     "atlas_row": 207658,
+     "atlas_fid_hex": "57E4E87F71BF5E8E",
+     "atlas_block_base": 16,
+     "atlas_off": 595929036,
+     "atlas_comp": 43961,
+     "atlas_dec": 349700,
+     "atlas_flag": 12,
+     "atlas_sha256": "bac8caca7a08b03aed4da6ef51fc00062ac2b4850df3581a81edd21013544062",
+     "atlas_dims": [
+      512,
+      512
+     ],
+     "atlas_mips": 10,
+     "atlas_fourcc": "DX10",
+     "atlas_dxgi": 98,
+     "atlas_dxgi_valid": true,
+     "atlas_fmt": "bc7",
+     "alpha_basis": "BC7 含 alpha 通道（模式 0-3/6 有显式 alpha，4/5/7 隐含 1.0）",
+     "alpha_min": 0,
+     "alpha_max": 255,
+     "alpha_n_below_255": 262139,
+     "out_dds": "1110177/lightning07_cs__atlas207658.dds",
+     "out_png": "1110177/lightning07_cs__atlas207658.png",
+     "out_png_sha256": "dbc4d2e4fe65ff4fb1a2be20d79cc37f94bb38239c2b50c2400e1edb8d6fe589",
+     "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (06_皮肤定位链/dds_rgba_canonical.py:148)"
+    }
+   },
+   {
+    "declared_name": "effect\\textures\\lightning\\lightning_01.spr",
+    "container_abs": "E:\\mrzh\\res\\effect_01.gpk",
+    "row": 207671,
+    "fid_hex": "DC413C7A21C0B982",
+    "block_base": 16,
+    "off": 596076732,
+    "comp": 140,
+    "dec": 550,
+    "flag": 12,
+    "payload_abs_offset": 596076768,
+    "payload_sha256": "6e8b303b2233eb92b3bab2fe7f1d738929ee3e795098bea58e8bae7a43b47de4",
+    "payload_sha16": "6e8b303b2233eb92",
+    "sha16_expect": "6e8b303b2233eb92",
+    "sha16_match": true,
+    "payload_bytes": 550,
+    "out_spr": {
+     "path": "1110177/lightning_01.spr",
+     "sha256": "6e8b303b2233eb92b3bab2fe7f1d738929ee3e795098bea58e8bae7a43b47de4",
+     "bytes": 550
+    },
+    "spr_header": {
+     "mode": "1",
+     "W": 512,
+     "H": 512,
+     "bpp": 16,
+     "param": 10000,
+     "raw_first_line": "1 512 512",
+     "n_lines": 19
+    },
+    "n_frames": 16,
+    "frames": [
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       0,
+       0,
+       128,
+       128
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       128,
+       0,
+       256,
+       128
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       256,
+       0,
+       384,
+       128
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       384,
+       0,
+       512,
+       128
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       0,
+       128,
+       128,
+       256
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       128,
+       128,
+       256,
+       256
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       256,
+       128,
+       384,
+       256
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       384,
+       128,
+       512,
+       256
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       0,
+       256,
+       128,
+       384
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       128,
+       256,
+       256,
+       384
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       256,
+       256,
+       384,
+       384
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       384,
+       256,
+       512,
+       384
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       0,
+       384,
+       128,
+       512
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       128,
+       384,
+       256,
+       512
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       256,
+       384,
+       384,
+       512
+      ]
+     },
+     {
+      "name": "lightning_01.tga",
+      "rect": [
+       384,
+       384,
+       512,
+       512
+      ]
+     }
+    ],
+    "frame_names": [
+     "lightning_01.tga"
+    ],
+    "not_a_dds": true,
+    "atlas": {
+     "rule": "spr 行 i 的图集 DDS = 行 i-1（spr_atlas_resolver.py 实测规则，仅 effect 族成立）",
+     "atlas_row": 207670,
+     "atlas_fid_hex": "F4FB19148D726059",
+     "atlas_block_base": 16,
+     "atlas_off": 596038036,
+     "atlas_comp": 38676,
+     "atlas_dec": 349700,
+     "atlas_flag": 12,
+     "atlas_sha256": "b873a489cd12bc67f8933cf16995eb2bbfaeea641ab2bc0b7cde2bdf00ba6a71",
+     "atlas_dims": [
+      512,
+      512
+     ],
+     "atlas_mips": 10,
+     "atlas_fourcc": "DX10",
+     "atlas_dxgi": 98,
+     "atlas_dxgi_valid": true,
+     "atlas_fmt": "bc7",
+     "alpha_basis": "BC7 含 alpha 通道（模式 0-3/6 有显式 alpha，4/5/7 隐含 1.0）",
+     "alpha_min": 0,
+     "alpha_max": 255,
+     "alpha_n_below_255": 260533,
+     "out_dds": "1110177/lightning_01__atlas207670.dds",
+     "out_png": "1110177/lightning_01__atlas207670.png",
+     "out_png_sha256": "dde58c1eb420384f63b822cccfc82f149f1ee2a45cd50a939669a284d83e3d75",
+     "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (06_皮肤定位链/dds_rgba_canonical.py:148)"
+    }
+   },
+   {
+    "declared_name": "effect\\textures\\shandian_05_yh_djs.spr",
+    "container_abs": "E:\\mrzh\\res\\effect_01.gpk",
+    "row": 207712,
+    "fid_hex": "F3483C4CF8B01691",
+    "block_base": 16,
+    "off": 596542276,
+    "comp": 91,
+    "dec": 168,
+    "flag": 12,
+    "payload_abs_offset": 596542312,
+    "payload_sha256": "94dedcf52b8712c87df2178154cbfb96caab0f9e351d2da0e8bf673c7a0b0a6f",
+    "payload_sha16": "94dedcf52b8712c8",
+    "sha16_expect": "94dedcf52b8712c8",
+    "sha16_match": true,
+    "payload_bytes": 168,
+    "out_spr": {
+     "path": "1110177/shandian_05_yh_djs.spr",
+     "sha256": "94dedcf52b8712c87df2178154cbfb96caab0f9e351d2da0e8bf673c7a0b0a6f",
+     "bytes": 168
+    },
+    "spr_header": {
+     "mode": "0",
+     "W": 256,
+     "H": 256,
+     "bpp": 4,
+     "param": 1000,
+     "raw_first_line": "0 256 256",
+     "n_lines": 7
+    },
+    "n_frames": 4,
+    "frames": [
+     {
+      "name": "shandian_05_yh_djs.tga",
+      "rect": [
+       0,
+       0,
+       63,
+       255
+      ]
+     },
+     {
+      "name": "shandian_05_yh_djs.tga",
+      "rect": [
+       64,
+       0,
+       127,
+       255
+      ]
+     },
+     {
+      "name": "shandian_05_yh_djs.tga",
+      "rect": [
+       128,
+       0,
+       191,
+       255
+      ]
+     },
+     {
+      "name": "shandian_05_yh_djs.tga",
+      "rect": [
+       192,
+       0,
+       255,
+       255
+      ]
+     }
+    ],
+    "frame_names": [
+     "shandian_05_yh_djs.tga"
+    ],
+    "not_a_dds": true,
+    "atlas": {
+     "rule": "spr 行 i 的图集 DDS = 行 i-1（spr_atlas_resolver.py 实测规则，仅 effect 族成立）",
+     "atlas_row": 207711,
+     "atlas_fid_hex": "06784B33910F45CD",
+     "atlas_block_base": 16,
+     "atlas_off": 596507988,
+     "atlas_comp": 34266,
+     "atlas_dec": 87556,
+     "atlas_flag": 12,
+     "atlas_sha256": "d161da0bcb9eda59a030c2e6d624f1de79fac1817d1fad78504b237c5c9faec6",
+     "atlas_dims": [
+      256,
+      256
+     ],
+     "atlas_mips": 9,
+     "atlas_fourcc": "DX10",
+     "atlas_dxgi": 98,
+     "atlas_dxgi_valid": true,
+     "atlas_fmt": "bc7",
+     "alpha_basis": "BC7 含 alpha 通道（模式 0-3/6 有显式 alpha，4/5/7 隐含 1.0）",
+     "alpha_min": 0,
+     "alpha_max": 255,
+     "alpha_n_below_255": 64686,
+     "out_dds": "1110177/shandian_05_yh_djs__atlas207711.dds",
+     "out_png": "1110177/shandian_05_yh_djs__atlas207711.png",
+     "out_png_sha256": "bab99d2e79746152c747b44dfd52112c0b051001e540b4254a3923d43adba884",
+     "decode_entry": "dds_rgba_canonical.decode_bcn_bytes_canonical (06_皮肤定位链/dds_rgba_canonical.py:148)"
+    }
+   }
+  ],
+  "atlas": [],
+  "unresolved": [],
+  "shandian_tga_alias": {
+   "declared_name_tga": "effect\\textures\\shandian_05_yh_djs.tga",
+   "note": "声明为 .tga；其 .dds/.spr 换名候选与 shandian_05_yh_djs.spr 同位置",
+   "row": 207712,
+   "fid_hex": "F3483C4CF8B01691",
+   "payload_sha256": "94dedcf52b8712c87df2178154cbfb96caab0f9e351d2da0e8bf673c7a0b0a6f",
+   "payload_sha16": "94dedcf52b8712c8",
+   "shr16_matches_spr": true,
+   "payload_is_dds": false,
+   "payload_head": "3020323536203235360d0a340d0a313030300d0a7368616e6469616e5f30355f79685f646a732e74676120302030203633203235350d0a7368616e6469616e5f"
+  }
+ }
+}

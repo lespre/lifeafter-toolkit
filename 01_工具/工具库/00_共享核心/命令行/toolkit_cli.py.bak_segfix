@@ -1,0 +1,1756 @@
+# -*- coding: utf-8 -*-
+"""明日之后拆包器统一命令行：索引优先、定点查询、定点提取。"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+from toolkit_core.paths import (DEFAULT_NAMES_DICT, DEFAULT_OUTPUT_ROOT, INDEX_ROOT,
+                                PROJECT_ROOT)
+from toolkit_core.unified_index import (
+    AmbiguousMatch, IndexNotReady, UnifiedFileIndex, build_database, path_fid)
+
+for _stream in ("stdout", "stderr"):
+    try:
+        getattr(sys, _stream).reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError):
+        pass
+
+# ★ 原先写 Path(__file__).resolve().parents[3] —— 手算层级，项目明文禁止；
+#   且 2026-09-26 把散文件分进中文文件夹后（本文件在 00_共享核心/命令行/），
+#   层数又变了。改为从 toolkit_core.paths 取（那里已实现四优先级定位）。
+PROJECT_ROOT = PROJECT_ROOT
+DEFAULT_DB = INDEX_ROOT / "indexes" / "lifeafter_files.sqlite3"
+DEFAULT_FPK_INDEX = INDEX_ROOT / "fpk_fid_index.json"
+DEFAULT_RES_ROOT = Path(r"E:\mrzh")
+
+# ── 带 H · H-2：本地容器快照 ──
+#   ★ 治理边界：只允许扫 E:\mrzh（体验服）；正式服 E:\LifeAfter 与其它路径一律拒绝。
+SNAPSHOT_ALLOWED_ROOTS = (r"e:\mrzh",)
+DEFAULT_SNAPSHOT_ROOT = Path(r"E:\mrzh")
+SNAPSHOT_OUT_ROOT = PROJECT_ROOT / "03_执行" / "10_索引" / "patch_snapshots"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 命令 → 段位 登记（唯一入口：所有子命令都经由 _sp() 创建）
+#   ★ 为什么这么做：`map` 要打印「段位 → 命令」，而命令定义只能有一份
+#     （见 规范/CLI与EXE统一方案.md：两套定义会让「改一处、另一处静默坏掉」）。
+#     段位取自 help 开头的 [①-1] 前缀 —— 那是页面的跳转锚点，不能删；
+#     带子子命令的组（index/names/delta/resolver/texscan/snapshot）用 _inherit 继承。
+# ═══════════════════════════════════════════════════════════════════════════
+
+COMMANDS: list[dict[str, str]] = []          # [{seg, name, full, help}]
+_SEG_CONTEXT: dict[int, tuple[str, str]] = {}   # id(subparsers_action) -> (段位, 父命令)
+
+
+def _seg_of_help(help_text: str | None) -> str:
+    m = re.match(r"^\s*\[([^\]]+)\]", help_text or "")
+    return m.group(1) if m else ""
+
+
+def _sp(sub, name: str, help: str | None = None, seg: str | None = None, **kw):
+    """创建子命令并登记段位（`help` 仍原样传给 argparse ⇒ --help 输出不变）。"""
+    if help is not None:
+        kw["help"] = help
+    _add = getattr(sub, "add_parser")
+    parser = _add(name, **kw)
+    inherited, parent = _SEG_CONTEXT.get(id(sub), ("", ""))
+    seg = seg or _seg_of_help(help) or inherited
+    if seg:
+        COMMANDS.append({"seg": seg, "name": name,
+                         "full": ("%s %s" % (parent, name)) if parent else name,
+                         "help": help or ""})
+    return parser
+
+
+def _inherit(sub_action, seg: str, parent: str = "") -> None:
+    """让某个子命令组下的子子命令（它们没有 [段位] 前缀）继承段位。"""
+    _SEG_CONTEXT[id(sub_action)] = (seg, parent)
+
+
+def commands_by_seg() -> dict[str, list[str]]:
+    """段位 → 命令名（按登记顺序）。多次调用 build_parser() 也不会重复。
+
+    有子子命令的组只列子命令（`delta fetch` 而不是 `delta` + `delta fetch`）。
+    """
+    out: dict[str, list[str]] = {}
+    seen: set[tuple[str, str]] = set()
+    for c in COMMANDS:
+        k = (c["seg"], c["full"])
+        if k in seen:
+            continue
+        seen.add(k)
+        out.setdefault(c["seg"], []).append(c["full"])
+    for seg, names in out.items():
+        if len(names) < 2:
+            continue
+        out[seg] = [n for n in names
+                    if not any(o != n and o.startswith(n + " ") for o in names)]
+    return out
+
+
+
+def _sidecar_path(kind: str, database) -> Path:
+    """sidecar 落在与索引库同目录，命名沿用既有约定。"""
+    return Path(database).resolve().parent / f"lifeafter_files_{kind}.json"
+
+
+def _dump(value: object, destination: str | None = None, *,
+          sidecar: Path | None = None, quiet: bool = False) -> None:
+    """输出报告。
+
+    · 显式 --json：写到指定位置（原行为不变）
+    · 否则：默认同步到 sidecar，让状态文件随索引自动更新
+            （不这样做，索引重建后 sidecar 会停在旧值上误导下游）
+    · sidecar 写失败只告警，绝不影响命令本身的结果与退出码
+    """
+    text = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    # ★ 2026-09-28 修：所有命令的 --json 都写的是「裸用打 stdout（const="-"）」，
+    #   但这里一直把 "-" 当文件名 ⇒ 写出一个名为 `-` 的杂文件、stdout 反而空。
+    #   调用方（脚本 / 主页采集器 / 管道）拿不到 JSON。
+    if destination == "-":
+        print(text, end="")
+        return
+    if destination:
+        path = Path(destination).resolve()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+        print(f"已写入：{path}")
+        return
+    if sidecar is not None:
+        try:
+            path = Path(sidecar).resolve()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding="utf-8")
+            if not quiet:
+                # ★ 必须同时把 JSON 打到 stdout —— 保持 stdout 契约不变。
+                #   曾有版本在此 return 只打印「已同步」，导致解析 stdout 的
+                #   调用方（脚本 / 主页采集器 / 管道）静默拿到空值。
+                print(text, end="")
+                print(f"已同步：{path}", file=sys.stderr)
+            return
+        except OSError as exc:
+            print(f"⚠ sidecar 同步失败（不影响本次结果）：{exc}", file=sys.stderr)
+    print(text, end="")
+
+
+def _sync(args, kind: str) -> Path | None:
+    """取该命令的 sidecar 目标；--no-sidecar 时返回 None。"""
+    if getattr(args, "no_sidecar", False):
+        return None
+    return _sidecar_path(kind, args.db)
+
+
+def _open(args) -> UnifiedFileIndex:
+    return UnifiedFileIndex(args.db, res_root=getattr(args, "res_root", None))
+
+
+def cmd_index_build(args) -> int:
+    report = build_database(args.db, res_root=args.res_root, fpk_index=args.fpk_index,
+                            include=args.include, progress=None if args.quiet else print)
+    _dump(report, args.json, sidecar=_sync(args, "build"), quiet=args.quiet)
+    return 0 if not report["failures"] else 4
+
+
+def cmd_export(args) -> int:
+    """解析结果 → 表格文件（通用导出器）。
+
+    ★ 为什么要有这条命令：历史上每要一张表都现写一个一次性脚本（qj_*.py 写了 40+ 个），
+      每次都要重推「去哪拿 body、池子怎么解、是哪一族、行怎么落文件」。
+      现在固定成一条命令。
+
+    输入可以是：
+      · 一个 .bin 文件（条目解码后的载荷）
+      · 一个逻辑路径 / fid（先经索引定点提取，再导出）
+    """
+    import importlib
+    te = importlib.import_module("toolkit_core.table_export")
+
+    src = args.source
+    p = Path(src)
+
+    if p.is_file():
+        # ① 存在的文件：直接读载荷
+        payload = p.read_bytes()
+        origin = str(p)
+        if not payload:
+            print(f"[export] 输入文件是空的：{p}", file=sys.stderr)
+            print("[export] 空文件里没有任何表体可解。请检查是不是传错了路径。", file=sys.stderr)
+            return 6
+    else:
+        # ② 不是文件 ⇒ 当成逻辑路径 / fid，走索引定点提取
+        #    ★ 整段包裹：extract_path 对未命中会抛 KeyError，之前没接住 ⇒ 裸 Traceback
+        import tempfile
+        try:
+            tmp = Path(tempfile.gettempdir()) / "_export_entry.bin"
+            if tmp.exists():
+                tmp.unlink()
+            with _open(args) as index:
+                index.extract_path(src, tmp, overwrite=True)
+            payload = tmp.read_bytes()
+        except KeyError as exc:
+            print(f"[export] 既不是存在的文件，索引里也查不到：{src}", file=sys.stderr)
+            print(f"[export]   （{exc}）", file=sys.stderr)
+            print("[export] 提示：输入可以是 .bin 条目载荷的路径，或索引里存在的逻辑路径 / fid。",
+                  file=sys.stderr)
+            return 6
+        except IndexNotReady as exc:
+            print(f"[export] 索引不可用：{exc}", file=sys.stderr)
+            return 3
+        except Exception as exc:  # noqa: BLE001 - 如实报错，不丢栈
+            print(f"[export] 提取失败（{type(exc).__name__}）：{exc}", file=sys.stderr)
+            return 6
+        origin = f"{src}（经索引提取）"
+
+    rep = te.export_entry_bytes(payload, family=args.family,
+                                resolve_jumps=not args.no_jump)
+    print(f"[export] {origin}")
+    print(f"[export] {rep.get('body')}")
+    print(f"[export] {te.human_summary(rep)}")
+    if not rep.get("family"):
+        for x in rep.get("tried", []):
+            print(f"[export]   试过 {x.get('family')}：{x.get('error') or '无行'}")
+        print("[export] 说明：这张表当前解不出行。上面逐族列了失败原因，没有静默跳过。",
+              file=sys.stderr)
+        return 6
+    out = te.write_table(rep["rows"], args.out, args.format)
+    n = len(rep["rows"])
+    if args.json:
+        _dump({"origin": origin, "out": str(out), "family": rep["family"],
+               "rows": n, "unbound": len(rep.get("unbound") or []),
+               "tried": rep.get("tried")}, args.json)
+    print(f"[export] 已写 {out}（{n} 行，格式 {args.format}）")
+    return 0
+
+
+def cmd_index_status(args) -> int:
+    try:
+        with _open(args) as index:
+            report = index.status(check_sources=not args.no_source_check,
+                                  deep=getattr(args, "deep", False))
+    except IndexNotReady as exc:
+        print(str(exc), file=sys.stderr); return 3
+    _dump(report, args.json, sidecar=_sync(args, "status"))
+    if report["quick_check"] != "ok": return 4
+    return 5 if report["stale"] is True else 0
+
+
+def cmd_find(args) -> int:
+    try:
+        with _open(args) as index:
+            result = index.find(args.path, variants=args.variants, deep=args.deep_variants)
+    except (IndexNotReady, ValueError) as exc:
+        print(str(exc), file=sys.stderr); return 3
+    _dump(result.as_dict(), args.json)
+    return 0 if result.hits else 5
+
+
+def cmd_extract(args) -> int:
+    try:
+        with _open(args) as index:
+            report = index.extract_path(
+                args.path, args.output, container=args.container, row=args.row,
+                variants=args.variants, deep=args.deep_variants,
+                decode=not args.raw, overwrite=args.force)
+    except AmbiguousMatch as exc:
+        print(str(exc), file=sys.stderr); return 6
+    except (IndexNotReady, KeyError, FileNotFoundError, ValueError, RuntimeError) as exc:
+        print(str(exc), file=sys.stderr); return 5
+    _dump(report, args.json)
+    return 0
+
+
+def cmd_verify(args) -> int:
+    # ★ 只断言「语义」：fid 命中 + 路径匹配。
+    #   不断言行号 —— 行号是解析实现的副产品，随容器集变化；
+    #   旧版把 res.npk 的行号当 ground truth 写死，索引从 313 容器重建为
+    #   60 容器后必然位移（而 fid 仍全中），于是每次 verify 都误报 pass=False。
+    #   行号保留在 observed_rows 里作记录，供人核对。
+    expected = [
+        r"common\env_map\qiangpi.cube",
+        r"common\env_map\car_studio01.cube",
+        r"common\env_map\fashion_qiangpi.cube",
+    ]
+    checks = []
+    try:
+        with _open(args) as index:
+            status = index.status(check_sources=not args.no_source_check)
+            for path in expected:
+                fid = f"{path_fid(path):016X}"
+                result = index.find(path)
+                good = [h for h in result.hits
+                        if h.fid_hex == fid and (h.matched_path or "") == path]
+                checks.append({"path": path, "expected_fid": fid,
+                               "pass": bool(good),
+                               "observed_rows": [h.row for h in good],
+                               "hits": [h.as_dict() for h in result.hits]})
+    except IndexNotReady as exc:
+        print(str(exc), file=sys.stderr); return 3
+    report = {"pass": status["quick_check"] == "ok" and all(x["pass"] for x in checks),
+              "status": status, "checks": checks,
+              "note": "三条 ground truth 只验证路径键/索引链；不替代资产语义验收。"}
+    _dump(report, args.json, sidecar=_sync(args, "verify"))
+    return 0 if report["pass"] else 4
+
+
+def cmd_glb(args) -> int:
+    """一个或多个 .mesh → 单个 GLB（世界坐标拼接 + 自检报告）。
+
+    实现全部在 toolkit_core.la_glb（本函数只做参数转交，避免"CLI 里再抄一套逻辑"）。
+    局部导入：numpy/PIL 由 la_glb 内部惰性加载，index/find/extract/verify 的依赖面不变。
+    """
+    try:
+        from toolkit_core import la_glb
+    except ImportError as exc:                      # 模块缺失/坏掉时明确报错，不静默
+        print("glb 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    code, _report = la_glb.run(args.meshes, mat=args.mat, tex=args.tex, out=args.out,
+                               force=args.force, json_path=args.json)
+    return int(code)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ② 图文音频渲染线：把散在 02_图文音频渲染/ 的能力接进统一 CLI
+#   · CLI 只做参数转交，实现留在原模块（避免"CLI 里再抄一套逻辑"）
+#   · 惰性导入：不碰 numpy/PIL 的命令不受影响
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _line2_dir() -> Path:
+    """②线脚本目录（皮肤链与渲染）。"""
+    return PROJECT_ROOT / "01_工具" / "工具库" / "02_图文音频渲染" / "皮肤链与渲染"
+
+
+def _load_line2(module_name: str):
+    """惰性导入 ②线模块（它们是散脚本、非包，只能按路径进 sys.path）。"""
+    d = str(_line2_dir())
+    if d not in sys.path:
+        sys.path.insert(0, d)
+    import importlib
+    return importlib.import_module(module_name)
+
+
+def _collect_inputs(targets) -> list:
+    """把「文件 / 目录 / glob」统一收成文件列表。"""
+    import glob as _glob
+    out = []
+    for t in targets:
+        p = Path(t)
+        if p.is_dir():
+            out += sorted(q for q in p.rglob("*") if q.is_file())
+        elif any(ch in str(t) for ch in "*?["):
+            out += sorted(Path(q) for q in _glob.glob(str(t), recursive=True) if Path(q).is_file())
+        elif p.is_file():
+            out.append(p)
+    return out
+
+
+def cmd_tex(args) -> int:
+    """[②-2] 贴图 → PNG。只走 dds_rgba_canonical 规范入口（R↔B 唯一修正点）。"""
+    exts = {("." + e.lower().lstrip(".")) for e in args.ext}
+    files = [p for p in _collect_inputs(args.target) if p.suffix.lower() in exts]
+    if not files:
+        print("tex：没找到输入（%s）。给文件、目录或 glob。" % "/".join(sorted(exts)),
+              file=sys.stderr)
+        return 2
+    try:
+        CAN = _load_line2("dds_rgba_canonical")
+        import numpy as np
+        from PIL import Image
+    except Exception as exc:
+        print("tex 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+
+    outdir = Path(args.out) if args.out else (PROJECT_ROOT / "03_执行" / "90_临时" / "tex_out")
+    outdir.mkdir(parents=True, exist_ok=True)
+    rows, ok, fail = [], 0, 0
+    for src in files:
+        dst = outdir / (src.stem + ".png")
+        if dst.exists() and not args.force:
+            rows.append({"src": str(src), "png": str(dst), "skipped": "已存在（--force 覆盖）"})
+            continue
+        try:
+            if src.suffix.lower() == ".ktx":
+                ktx = _load_line2("ktx_to_png")
+                fn = getattr(ktx, "ktx_to_png", None) or getattr(ktx, "convert", None)
+                if fn is None:
+                    raise RuntimeError("ktx_to_png 模块没有可用的转换函数")
+                fn(str(src), str(dst))
+                rows.append({"src": str(src), "png": str(dst), "fmt": "KTX"})
+            else:
+                u8, prov = CAN.decode_dds_rgba_u8(str(src), verify_oiio=not args.no_verify)
+                Image.fromarray(u8, "RGBA").save(dst)
+                rows.append({"src": str(src), "png": str(dst), "fmt": prov.get("fmt"),
+                             "size": [prov.get("width"), prov.get("height")],
+                             "swizzle": prov.get("applied_swizzle"),
+                             "pixel_sha256": prov.get("canonical_pixel_sha256")})
+            ok += 1
+        except Exception as exc:
+            fail += 1
+            rows.append({"src": str(src), "error": "%s: %s" % (type(exc).__name__, exc)})
+
+    report = {"kind": "tex", "segment": "②-2", "out": str(outdir),
+              "total": len(files), "ok": ok, "fail": fail, "items": rows}
+    _dump(report, args.json)
+    if not args.quiet:
+        print("tex：%d 张 → %s（成功 %d / 失败 %d）" % (len(files), outdir, ok, fail))
+    return 1 if fail and args.strict else 0
+
+
+def cmd_sheet(args) -> int:
+    """[②-1] 装配帧 .c159 → 材质/部件表（配对规则见 C159_PARAM_PAIRING.md）。"""
+    try:
+        v4 = _load_line2("c159_pair_v4")
+    except Exception as exc:
+        print("sheet 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    files = [p for p in _collect_inputs(args.mtl) if p.suffix.lower() == ".c159"]
+    if not files:
+        print("sheet：没找到 .c159 输入", file=sys.stderr)
+        return 2
+    outdir = Path(args.out) if args.out else (PROJECT_ROOT / "03_执行" / "90_临时" / "sheet_out")
+    outdir.mkdir(parents=True, exist_ok=True)
+    bind = str(args.bind) if args.bind else None
+    rows, ok, fail = [], 0, 0
+    for src in files:
+        try:
+            res = v4.analyze_v4(str(src), bind)
+            dst = outdir / (src.stem + ".sheet.json")
+            dst.write_text(json.dumps(res, ensure_ascii=False, indent=1, default=str),
+                           encoding="utf-8")
+            rows.append({"src": str(src), "out": str(dst),
+                         "keys": sorted(res.keys()) if isinstance(res, dict) else type(res).__name__})
+            ok += 1
+        except Exception as exc:
+            fail += 1
+            rows.append({"src": str(src), "error": "%s: %s" % (type(exc).__name__, exc)})
+    report = {"kind": "sheet", "segment": "②-1", "out": str(outdir),
+              "total": len(files), "ok": ok, "fail": fail, "items": rows}
+    _dump(report, args.json)
+    if not args.quiet:
+        print("sheet：%d 个装配帧 → %s（成功 %d / 失败 %d）" % (len(files), outdir, ok, fail))
+    return 1 if fail and args.strict else 0
+
+
+def cmd_audio(args) -> int:
+    """[②-2] 音效轨道 .sfx → 帧表 JSON（节点树 / 色帧 / 缩放帧 / 绑定贴图）。"""
+    try:
+        st = _load_line2("parse_sfx_tracks")
+    except Exception as exc:
+        print("audio 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    files = [p for p in _collect_inputs(args.src)
+             if p.suffix.lower() in {("." + e.lower().lstrip(".")) for e in args.ext}]
+    if not files:
+        print("audio：没找到 .sfx 输入", file=sys.stderr)
+        return 2
+    outdir = Path(args.out) if args.out else (PROJECT_ROOT / "03_执行" / "90_临时" / "audio_out")
+    outdir.mkdir(parents=True, exist_ok=True)
+    rows, ok, fail = [], 0, 0
+    for src in files:
+        try:
+            dst = outdir / (src.stem + ".tracks.json")
+            st.main(str(src), str(dst))
+            rows.append({"src": str(src), "out": str(dst)})
+            ok += 1
+        except Exception as exc:
+            fail += 1
+            rows.append({"src": str(src), "error": "%s: %s" % (type(exc).__name__, exc)})
+    report = {"kind": "audio", "segment": "②-3", "out": str(outdir),
+              "total": len(files), "ok": ok, "fail": fail, "items": rows}
+    _dump(report, args.json)
+    if not args.quiet:
+        print("audio：%d 个轨道文件 → %s（成功 %d / 失败 %d）" % (len(files), outdir, ok, fail))
+    return 1 if fail and args.strict else 0
+
+
+def cmd_render(args) -> int:
+    """[②-3] 材质分层出图（非交付面 PNG + layers_trace.json）。
+
+    render_material_layers 是位置参数式 main()（mesh tex_dir out_dir + 若干开关），
+    这里只做参数转交，不改它的逻辑。
+    """
+    try:
+        mod = _load_line2("render_material_layers")
+    except Exception as exc:
+        print("render 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    out_dir = Path(args.out) if args.out else (PROJECT_ROOT / "03_执行" / "90_临时" / "render_out")
+    argv = [str(args.mesh), str(args.tex_dir), str(out_dir)]
+    if args.materials:
+        argv += ["--materials", str(args.materials)]
+    if args.polarity:
+        argv += ["--polarity", args.polarity]
+    if args.dual:
+        argv += ["--dual"]
+    if args.dual_sep is not None:
+        argv += ["--dual-sep", str(args.dual_sep)]
+
+    saved = sys.argv
+    sys.argv = ["render_material_layers.py"] + argv
+    try:
+        mod.main()
+    except Exception as exc:
+        print("render 失败：%s: %s" % (type(exc).__name__, exc), file=sys.stderr)
+        return 1
+    finally:
+        sys.argv = saved
+
+    trace = out_dir / "layers_trace.json"
+    report = {"kind": "render", "segment": "②-4", "out": str(out_dir),
+              "mesh": str(args.mesh), "tex_dir": str(args.tex_dir),
+              "materials": str(args.materials) if args.materials else None,
+              "polarity": args.polarity, "dual": bool(args.dual),
+              "trace": str(trace) if trace.exists() else None}
+    _dump(report, args.json)
+    if not args.quiet:
+        print("render：%s → %s" % (args.mesh, out_dir))
+    return 0
+
+
+def cmd_resolver(args) -> int:
+    """[①-1] 资源物理桥定位器（原 resource_resolver._main 的独立入口，收编进来）。
+
+    原实现自带一份 argparse（locate/tree/dump/bridge-gpk），违反「命令定义只有一份」，
+    且不在统一 CLI 里 ⇒ 能力够不着。这里只做参数转交。
+    """
+    try:
+        from toolkit_core.resource_resolver import ResourceResolver
+    except Exception as exc:
+        print("resolver 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    r = ResourceResolver(args.res).build_index()
+    if not args.quiet:
+        print("[索引] %s" % r.stats())
+    if args.resolver_command == "locate":
+        e = r.locate(args.path)
+        _dump(e.__dict__ if e else None, args.json)
+    elif args.resolver_command == "tree":
+        _dump(r.resolve_tree(args.path, args.depth), args.json)
+    elif args.resolver_command == "dump":
+        data = r.read_path(args.path)
+        if data is None:
+            print("路径未定位到：%s" % args.path, file=sys.stderr)
+            return 1
+        out = Path(args.out)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(data)
+        if not args.quiet:
+            print("已保存 %d B -> %s" % (len(data), out))
+        _dump({"path": args.path, "out": str(out), "bytes": len(data)}, args.json)
+    elif args.resolver_command == "bridge-gpk":
+        rep = r.bridge_gpk(args.gpk)
+        _dump(rep, args.json)
+        if not args.quiet:
+            print("%s: %s/%s 覆盖 %.1f%%" % (rep["gpk"], rep["bridged"], rep["entries"],
+                                             rep["coverage"] * 100))
+    return 0
+
+
+def cmd_texscan(args) -> int:
+    """[②-2] 匿名 GPK 纹理颜色筛选 / 未上线候选（原 texture_extractor._main 收编）。"""
+    try:
+        from toolkit_core.texture_extractor import scan_dir
+    except Exception as exc:
+        print("texscan 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    scan_dir(args.unpacked_dir, args.out, args.res, args.color,
+             only_unique=not args.all, min_side=args.min_side, top=args.top)
+    return 0
+
+
+def cmd_delta(args) -> int:
+    """[H-1] 热更增量取证：只比服务端版本清单，不碰任何本地客户端文件。
+
+    默认只比 release(正式服) vs playertest(测试服) —— 这个差就是「测试服提前拿到的内容」。
+    """
+    try:
+        from toolkit_core import patch_delta as PD
+    except Exception as exc:
+        print("delta 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+
+    cache = Path(args.cache) if args.cache else (PROJECT_ROOT / "03_执行" / "10_索引" / "patch_manifests")
+    sub = args.delta_command
+
+    if sub == "fetch":
+        want = args.entry or list(PD.ENTRIES)
+        got = PD.fetch_all(want, cache_dir=cache)
+        rows = []
+        for e, doc in got.items():
+            if "_error" in doc:
+                rows.append({"entry": e, "error": doc["_error"]})
+                continue
+            keys = PD._pick_file_keys(doc)
+            rows.append({"entry": e, "version": doc.get("version"),
+                         "svn_branch": doc.get("svn_branch"),
+                         "revision": doc.get("revision"),
+                         "files_main": keys["main"][0] if keys["main"] else None,
+                         "files_main_n": len(keys["main"][1]) if keys["main"] else 0,
+                         "files_ext": keys["ext"][0] if keys["ext"] else None,
+                         "files_ext_n": len(keys["ext"][1]) if keys["ext"] else 0})
+        rep = {"kind": "delta", "action": "fetch", "cache": str(cache), "entries": rows}
+        _dump(rep, args.json)
+        if not args.quiet:
+            for r in rows:
+                if "error" in r:
+                    print("  ✗ %-20s %s" % (r["entry"], r["error"][:60]))
+                else:
+                    print("  ✓ %-20s %-34s %s(%d) · %s(%d)" % (
+                        r["entry"], r["version"], r["files_main"], r["files_main_n"],
+                        r["files_ext"], r["files_ext_n"]))
+        return 0
+
+    # diff / families 都要两份清单
+    a_name, b_name = (args.pair or list(PD.DEFAULT_PAIR))[:2]
+    docs = {}
+    for name in (a_name, b_name):
+        d = PD.load_cached(cache, name)
+        if d is None:
+            try:
+                print("  本地无缓存，拉取 %s …" % name, file=sys.stderr)
+                d = PD.fetch(name)
+                cache.mkdir(parents=True, exist_ok=True)
+                (cache / ("%s.json" % name)).write_text(
+                    json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+            except Exception as exc:
+                print("delta：拉取 %s 失败：%s: %s" % (name, type(exc).__name__, exc),
+                      file=sys.stderr)
+                return 5
+        docs[name] = d
+
+    try:
+        rep = PD.diff(docs[a_name], docs[b_name], keys=args.keys)
+    except ValueError as exc:
+        print("delta diff 失败：%s" % exc, file=sys.stderr)
+        return 1
+
+    if sub == "families":
+        rep = {"kind": "delta", "action": "families",
+               "a": rep["a"], "b": rep["b"],
+               "added_by_family": rep["added_by_family"],
+               "changed_by_family": rep["changed_by_family"],
+               "totals": rep["totals"]}
+        _dump(rep, args.json)
+        if not args.quiet:
+            print(PD.render({"a": rep["a"], "b": rep["b"], "added": [], "removed": [],
+                             "changed": [], "same": rep["totals"]["same"],
+                             "added_by_family": rep["added_by_family"],
+                             "changed_by_family": rep["changed_by_family"],
+                             "totals": rep["totals"]}))
+        return 0
+
+    _dump(rep, args.json)
+    if not args.quiet:
+        print(PD.render(rep, limit=args.limit))
+    out = args.out
+    if out:
+        Path(out).parent.mkdir(parents=True, exist_ok=True)
+        Path(out).write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
+        if not args.quiet:
+            print("  完整报告 → %s" % out)
+    return 0
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 批量能力（半全量跑出来的 9 条需求的落点）
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _mk_filter(a) -> "object":
+    from toolkit_core.bulk import Filter
+    rr = None
+    if getattr(a, "row", None):
+        lo, _, hi = str(a.row).partition(":")
+        rr = (int(lo), int(hi) if hi else int(lo))
+    return Filter(
+        containers=tuple(a.container or ()),
+        flags=tuple(a.flag or ()),
+        kinds=tuple(a.kind or ()),
+        min_size=a.min_size, max_size=a.max_size,
+        row_range=rr,
+        fids=tuple(a.fid or ()),
+        sample_per_container=a.per_container,
+        percent=a.percent, limit=a.limit,
+    )
+
+
+def _add_filter_args(sp) -> None:
+    sp.add_argument("--container", action="append", help="容器名子串（可多次，任一命中）")
+    sp.add_argument("--flag", action="append", type=int, help="按 flag 筛（0原始/2lz4/12zstd）")
+    sp.add_argument("--kind", action="append", choices=["gpk", "fpk", "npk"])
+    sp.add_argument("--min-size", type=int, help="解压后大小下限（字节）")
+    sp.add_argument("--max-size", type=int, help="解压后大小上限（字节）")
+    sp.add_argument("--row", help="条目号范围，如 1000:2000（单值也可）")
+    sp.add_argument("--fid", action="append", help="指定 16 位 hex fid（可多次）")
+    sp.add_argument("--per-container", type=int, help="每容器最多取 N 条")
+    sp.add_argument("--percent", type=float, help="按百分比均匀取（0-100，可复现）")
+    sp.add_argument("--limit", type=int, help="总条数上限")
+
+
+def cmd_query(args) -> int:
+    """只筛不落盘 —— 先看清样本形状，再决定抽多少（避免「跑一半发现磁盘不够」）。"""
+    from toolkit_core import bulk
+    f = _mk_filter(args)
+    with _open(args) as index:
+        rows = bulk.select(index.conn, f)
+        out = {"filter": f.describe(), "count": len(rows),
+               "bytes_packed": sum(r[4] or 0 for r in rows),
+               "bytes_decoded": sum(r[5] or 0 for r in rows)}
+        if args.by:
+            out["summary"] = bulk.summarize(rows, by=args.by)
+        if args.show:
+            out["head"] = [dict(zip(bulk.COLS, r)) for r in rows[: args.show]]
+    if args.json:
+        _dump(out, args.json)
+    else:
+        print("[query] %s" % out["filter"])
+        print("  条目 %d · packed %.2f GB · decoded %.2f GB"
+              % (out["count"], out["bytes_packed"] / 2**30, out["bytes_decoded"] / 2**30))
+        s = out.get("summary")
+        if s:
+            print("  按 %s 分组：" % s["by"])
+            for k, v in sorted(s["groups"].items(), key=lambda x: -x[1]["count"])[:20]:
+                print("    %-42s %8d 条  %8.1f MB" % (k[-42:], v["count"], v["decoded"] / 2**20))
+        for r in out.get("head", [])[:8]:
+            print("    %-32s row %-8d %10.1f KB flag %s" %
+                  (r["container"][-32:], r["row_index"], (r["decoded"] or 0) / 1024, r["flag"]))
+    return 0
+
+
+def cmd_bulk(args) -> int:
+    """批量提取：断点续跑 + 清单 + 类型识别 + 错误聚合 + 慢条目。"""
+    from toolkit_core import bulk
+    from toolkit_core.unified_index import load_verified_index_module
+    f = _mk_filter(args)
+    UM = load_verified_index_module()
+    out_root = Path(args.out).resolve()
+    from toolkit_core.throttle import LoadPolicy, cpu_count, gpu_percent
+    _pol = LoadPolicy(cpu_limit=args.cpu_limit, gpu_limit=args.gpu_limit, kinds=("decode",))
+    print("[bulk] 资源策略：核数 %d · CPU 上限 %.0f%% ⇒ 并行 %d · GPU 上限 %.0f%%（本任务%s用 GPU）"
+          % (cpu_count(), _pol.cpu_limit, _pol.workers(), _pol.gpu_limit,
+             "会" if _pol.gpu_applicable() else "不"))
+
+    def prog(d):
+        if args.progress == "json":
+            print(json.dumps({"progress": d}, ensure_ascii=False), flush=True)
+        else:
+            print("  %6d/%d  已出 %d 个  %.1f MB  %.0f 条/s  %.1f MB/s"
+                  % (d["done"], d["total"], d["extracted"], d["bytes"] / 2**20,
+                     d["rate_rows_s"], d["rate_MB_s"]), flush=True)
+
+    with _open(args) as index:
+        rep = bulk.bulk_extract(
+            index.conn, Path(args.res_root or DEFAULT_RES_ROOT), f, out_root,
+            unpack=UM.unpack_entry, name_by=args.name_by,
+            resume=args.resume, manifest=Path(args.manifest) if args.manifest else None,
+            progress=(prog if not args.quiet else None),
+            decode=not args.raw, policy=_pol, workers=args.workers)
+
+    d = rep.as_dict()
+    if args.json:
+        _dump(d, args.json)
+    print("[bulk] %s" % f.describe())
+    print("  选中 %d · 提取 %d%s · 输出 %.2f GB"
+          % (rep.selected, rep.extracted,
+             ("（续跑跳过 %d）" % rep.skipped_resume) if rep.skipped_resume else "",
+             rep.bytes_out / 2**30))
+    print("  耗时：选择 %.2fs · 读 %.2fs · 解码 %.2fs · 写 %.2fs · 合计 %.2fs"
+          % (rep.seconds_select, rep.seconds_read, rep.seconds_decode,
+             rep.seconds_write, rep.seconds_total))
+    if rep.signatures:
+        print("  产物类型：")
+        for k, v in sorted(rep.signatures.items(), key=lambda x: -x[1]):
+            print("    %-12s %6d" % (k, v))
+    if rep.errors:
+        print("  ★ 错误（按类别聚合）：")
+        for k, v in sorted(rep.errors.items(), key=lambda x: -x[1]):
+            print("    %-22s %6d" % (k, v))
+            for s in rep.error_samples.get(k, [])[:2]:
+                print("        %s" % s)
+    if rep.slow:
+        print("  ★ 最慢条目：")
+        for s in rep.slow[:5]:
+            print("    %6.3fs  %-34s row %-8d decoded %7.1f MB flag %s"
+                  % (s["seconds"], s["container"][-34:], s["row"],
+                     s["decoded"] / 2**20, s["flag"]))
+    if args.manifest:
+        print("  清单 → %s（%d 条）" % (args.manifest, len(rep.files)))
+    return 0 if not rep.errors else 1
+
+
+def cmd_identify(args) -> int:
+    """产物类型识别：一堆 bytes 里认出纹理/配置/网格/音频。"""
+    from toolkit_core import bulk
+    paths: list[Path] = []
+    for pat in args.target:
+        p = Path(pat)
+        if p.is_dir():
+            paths += sorted(x for x in p.rglob("*") if x.is_file())
+        elif p.is_file():
+            paths.append(p)
+        else:
+            paths += sorted(Path().glob(pat))
+    if args.from_manifest:
+        for ln in Path(args.from_manifest).read_text(encoding="utf-8").splitlines():
+            if ln.strip():
+                paths.append(Path(json.loads(ln)["file"]))
+
+    agg: dict[str, dict] = {}
+    rows = []
+    for p in paths[: args.limit or 10 ** 9]:
+        try:
+            head = p.read_bytes()[:4096]
+        except OSError:
+            continue
+        short, desc = bulk.identify(head)
+        a = agg.setdefault(short, {"n": 0, "bytes": 0, "desc": desc, "eg": []})
+        a["n"] += 1
+        a["bytes"] += p.stat().st_size
+        if len(a["eg"]) < 2:
+            a["eg"].append(p.name)
+        rows.append({"file": str(p), "type": short, "desc": desc})
+    out = {"scanned": len(rows), "types": agg}
+    if args.json:
+        _dump(out, args.json)
+    print("[identify] 扫了 %d 个文件" % len(rows))
+    for k, v in sorted(agg.items(), key=lambda x: -x[1]["n"]):
+        print("  %-10s %6d 个 %10.2f MB   %s" % (k, v["n"], v["bytes"] / 2**20, v["desc"]))
+        for e in v["eg"]:
+            print("        eg. %s" % e)
+    return 0
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 从 run_all.py 收编的兼容命令（命令定义单点化，见 规范/CLI与EXE统一方案.md）
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _toolkit_root() -> Path:
+    """工具库根：向上搜索（判据：含 00_共享核心/工具库 结构），不手算 parents[N]。"""
+    here = Path(__file__).resolve()
+    for up in here.parents:
+        if (up / "00_共享核心").is_dir() and (up / "01_解码定位复原").is_dir():
+            return up
+    raise RuntimeError("找不到工具库根（向上没有同时含 00_共享核心 与 01_解码定位复原 的目录）")
+
+
+def _load_by_path(name: str, rel: str):
+    import importlib.util
+    p = _toolkit_root() / rel
+    spec = importlib.util.spec_from_file_location(name, p)
+    m = importlib.util.module_from_spec(spec)
+    sys.modules[name] = m
+    spec.loader.exec_module(m)
+    return m
+
+
+def cmd_overview(args) -> int:
+    import struct
+    print("== NPK 条目数 ==")
+    R = _toolkit_root()
+    mr = _load_by_path("npkr_ov", "01_解码定位复原/解包与扫描/npk_reader.py")
+    docs, res = Path(r"E:/mrzh/Documents"), Path(r"E:/mrzh/res")
+    missing = []
+    for name in ("script.npk", "script.py3.npk", "script.py314.lc.npk"):
+        p = docs / name
+        if p.exists():
+            with p.open("rb") as f:
+                h = mr.aes_ecb(f.read(32))
+                _r, magic, ver, _to, n = struct.unpack_from("<QIIII", h)
+                print("  %s: %d entries (v%d)" % (name, n, ver) if magic == 0x4B50584E else "  %s: 不可读" % name)
+        else:
+            missing.append(name)
+    for name in ("res.npk", "ui.npk"):
+        p = res / name
+        if not p.exists():
+            p = Path(r"E:/mrzh") / name
+        if p.exists():
+            with p.open("rb") as f:
+                h = mr.aes_ecb(f.read(32))
+                _r, magic, ver, _to, n = struct.unpack_from("<QIIII", h)
+                print("  %s: %d entries (v%d)" % (name, n, ver) if magic == 0x4B50584E else "  %s: 不可读" % name)
+        else:
+            missing.append(name)
+    newp = sorted(res.glob("ui_*.gpk"))
+    if (res / "res.gpk").is_file():
+        newp.append(res / "res.gpk")
+    if newp:
+        print("  新版多包容器（GPK，非 NPK 条目表）：%d 个" % len(newp))
+        for p in newp[:6]:
+            print("    %s  %s B" % (p.name, format(p.stat().st_size, ",")))
+        if len(newp) > 6:
+            print("    … 另 %d 个" % (len(newp) - 6))
+    if missing:
+        print("  ★ 以下旧包名已不存在（新版客户端已改名/拆包），非错误：")
+        print("     " + " / ".join(missing))
+    print("\n== FPK 包分类（前 8MB 扫描）==")
+    _load_by_path("fpk_ov", "01_解码定位复原/容器格式/fpk_toolkit.py").cmd_overview()
+    return 0
+
+
+def cmd_restore(args) -> int:
+    print("== 文件名还原（配置表 → path_id → ui.npk）==")
+    _load_by_path("fr_rs", "01_解码定位复原/名字还原/filename_restore.py").main()
+    return 0
+
+
+def cmd_thfb(args) -> int:
+    print("== THFB 哈希提取 ==")
+    _load_by_path("th_tf", "01_解码定位复原/哈希提取/thfb_toolkit.py").main()
+    return 0
+
+
+def cmd_bridge_audit(args) -> int:
+    print("== 皮肤逻辑路径 → IDX/WPK 物理桥审计 ==")
+    _load_by_path("bridge", "00_共享核心/独立工具/physical_bridge_audit.py").main([])
+    return 0
+
+
+def cmd_bindict_check(args) -> int:
+    print("== BinDict 自检 ==")
+    import runpy
+    base = _toolkit_root() / "01_解码定位复原" / "表解码"
+    for script in ("bindict_attrs_decoder.py", "bindict_kj1_transfer_decoder.py"):
+        p = base / script
+        if p.exists():
+            print("-- %s --" % script)
+            try:
+                runpy.run_path(str(p), run_name="__check__")
+            except Exception as e:
+                print("  ERR %r" % e)
+    return 0
+
+
+def cmd_decode_audit(args) -> int:
+    """解码线体检：每个【容器 × flag】分层抽样，判据不带盲区。
+
+    ★ 关键判据「解码毁内容」：原始载荷认出格式、解码后认不出 ⇒ 致命。
+       这正是 A38（flag 0 把 GPK 明文 AES 毁掉，274,295 条）逃过上一轮测试的原因 ——
+       上一轮只按容器抽样、且长度判据对 flag 0（decoded==packed）完全失效。
+    """
+    from toolkit_core import decode_audit
+    from toolkit_core.throttle import LoadPolicy, cpu_count, gpu_percent
+    from toolkit_core.unified_index import load_verified_index_module
+    UM = load_verified_index_module()
+    pol = LoadPolicy(cpu_limit=args.cpu_limit, gpu_limit=args.gpu_limit, kinds=("decode",))
+    print("[decode-audit] 资源策略：核数 %d · CPU 上限 %.0f%% ⇒ 并行 %d · GPU 上限 %.0f%%（本任务%s用 GPU，%s）"
+          % (cpu_count(), pol.cpu_limit, pol.workers(), pol.gpu_limit,
+             "会" if pol.gpu_applicable() else "不",
+             ("实测 GPU %.0f%%" % gpu_percent()) if gpu_percent() is not None else "GPU 计数不可用"))
+    with _open(args) as index:
+        rep = decode_audit.audit(
+            index.conn, Path(args.res_root or DEFAULT_RES_ROOT), UM.unpack_entry,
+            per_group=args.per_group, full=args.full, policy=pol,
+            progress=(lambda d: print("  …%s" % json.dumps(d, ensure_ascii=False), flush=True)
+                      if args.progress else None))
+    out = rep.as_dict()
+    if args.json:
+        _dump(out, args.json)
+    print("[decode-audit] 抽样 %d 条 · 用时 %.1fs · 覆盖 %d 个(容器×flag)组合"
+          % (rep.sampled, rep.seconds, len(rep.per_container_flag)))
+    print()
+    print("  判据分布：")
+    order = ["无变换直通", "解码有效", "两边都是内容", "中立（无魔数数据块）",
+             "★解码毁内容", "★长度不符", "解码异常", "读取短读"]
+    for k in order:
+        if k in rep.verdicts:
+            print("    %-22s %6d" % (k, rep.verdicts[k]))
+    for k, v in rep.verdicts.items():
+        if k not in order:
+            print("    %-22s %6d" % (k, v))
+    fatal = [b for b in rep.bad if b["verdict"].startswith("★")]
+    print()
+    if fatal:
+        print("  ★★ 致命 %d 例（这就是「有纰漏」的定义）：" % len(fatal))
+        seen = set()
+        for b in fatal[:20]:
+            k = (b.get("container"), b.get("flag"), b["verdict"])
+            if k in seen:
+                continue
+            seen.add(k)
+            print("    %-34s flag %-4s row %-8s %s" % (str(b.get("container"))[-34:],
+                                                       b.get("flag"), b.get("row"), b.get("note", "")[:70]))
+        uniq = len({(b.get("container"), b.get("flag"), b["verdict"]) for b in fatal})
+        print("    … 去重后 %d 个(容器,flag,判据)组合" % uniq)
+    else:
+        print("  ✓ 无致命项（没有「解码毁内容」「长度不符」「异常」）")
+    return 1 if fatal else 0
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ①-4 名字还原（2026-09-27：双 seed murmur3 机制实测成立后落的命令）
+#   旧结论「名字永久不可还原」只算了一条 seed；这里按验证过的三条规矩实现：
+#     ① 包内相对路径原样拼（不剥前缀、不补容器名）
+#     ② 算哈希前 / → \
+#     ③ 先查索引 fid_hex 快路径；索引不在就明确报错，不静默降级
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _names_json(payload: dict, dest) -> None:
+    """--json：裸用打 stdout（机器读）；给了路径则同时落盘（D 契约带）。"""
+    text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    if dest and dest != "-":
+        p = Path(dest).resolve()
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text, encoding="utf-8")
+        print("已写入：%s" % p, file=sys.stderr)
+    print(text, end="")
+
+
+def cmd_names_build(args) -> int:
+    """从文本产物挖路径 → 建/扩字典（默认不覆盖已有输出）。"""
+    from toolkit_core import names as N
+    from toolkit_core.paths import DEFAULT_NAME_SOURCES
+    srcs = [Path(s) for s in (args.source or DEFAULT_NAME_SOURCES)]
+    try:
+        rep = N.build(srcs, args.out, db=args.db, limit=args.limit,
+                      workers=args.workers, force=args.force)
+    except FileExistsError as exc:
+        print("[names build] %s" % exc, file=sys.stderr)
+        return 2
+    except OSError as exc:
+        print("[names build] 写不出字典：%s" % exc, file=sys.stderr)
+        return 6
+
+    if args.json:
+        _names_json(rep, args.json)
+    else:
+        print("[names build] 开采 %d 个源 → 读成 %d 个文件 · 候选 %d 条 · 入库 %d 条"
+              % (len(rep["sources"]), rep["files_read"], rep["candidates"], rep["kept"]))
+        print("  字典 → %s（%s 字节）" % (rep["out"], format(rep.get("out_bytes", 0), ",")))
+        h = rep.get("hits")
+        if h:
+            print("  索引命中 %d/%d（%.1f%%）· 覆盖 %d 个容器"
+                  % (h["hit"], h["total"], 100 * (h["rate"] or 0), len(h["containers"])))
+            for k, v in list(h["containers"].items())[:8]:
+                print("    %-38s %6d 条" % (k[-38:], v))
+        if rep["index_error"]:
+            print("  ★ 索引不可用，未统计命中：%s" % rep["index_error"], file=sys.stderr)
+        for s in rep["missing_sources"]:
+            print("  ★ 开采源不存在：%s" % s, file=sys.stderr)
+        if rep["file_errors"]:
+            print("  ★ %d 个文件读不动：" % len(rep["file_errors"]), file=sys.stderr)
+            for k, v in list(rep["file_errors"].items())[:5]:
+                print("    %s：%s" % (k, v), file=sys.stderr)
+        if not rep["kept"]:
+            print("  ★ 一条路径都没挖到 —— 这个开采源里没有路径文本。", file=sys.stderr)
+    if not rep["kept"] or rep["index_error"]:
+        return 6 if not rep["kept"] else 1
+    return 1 if (rep["missing_sources"] or rep["file_errors"]) else 0
+
+
+def cmd_names_lookup(args) -> int:
+    """★ 核心能力：一个游戏内路径 → 它在哪个包、哪一行。"""
+    from toolkit_core import names as N
+    try:
+        rep = N.lookup(args.path, args.db, limit=args.limit)
+    except N.IndexUnavailable as exc:
+        print("[names lookup] 索引不可用：%s" % exc, file=sys.stderr)
+        return 3
+    except ValueError as exc:
+        print("[names lookup] 用法错：%s" % exc, file=sys.stderr)
+        return 2
+    if args.json:
+        _names_json(rep, args.json)
+        return 0 if rep["found"] else 5
+    print("[names lookup] %s" % rep["input"])
+    print("  fid %s（%s）" % (rep["fid"], "按 16 位 fid 直查" if rep["mode"] == "fid"
+                              else "路径 → murmur3 双 seed"))
+    if rep["found"]:
+        for h in rep["hits"]:
+            print("  → %-34s row %-8d %s flag %s decoded %s"
+                  % (h["container"], h["row_index"], h["kind"], h["flag"],
+                     format(h["decoded"] or 0, ",")))
+        print("  命中 %d 处" % len(rep["hits"]))
+        return 0
+    print("  未命中：索引 %s 条里没有 fid_hex = %s。"
+          % (format(rep["index_rows"], ","), rep["fid"]))
+    print("  如实说：这条路径当前【查不到】—— 要么它不在这个客户端，要么路径写法与包内不一致。")
+    return 5
+
+
+def cmd_names_stats(args) -> int:
+    """字典规模 / 已命中多少条 / 各容器覆盖率排行（命中数现场查索引）。"""
+    from toolkit_core import names as N
+    try:
+        rep = N.stats(args.dict_path, args.db)
+    except N.IndexUnavailable as exc:
+        print("[names stats] 索引不可用：%s" % exc, file=sys.stderr)
+        return 3
+    except (FileNotFoundError, ValueError) as exc:
+        print("[names stats] %s" % exc, file=sys.stderr)
+        return 6
+    if args.json:
+        _names_json(rep, args.json)
+        return 0
+    print("[names stats] 字典 %s" % rep["dict"])
+    print("  规模 %s 条 · 建于 %s · 源 %d 个"
+          % (format(rep["count"], ","), rep["built"], len(rep["sources"])))
+    print("  命中 %s 条 / 未命中 %s 条（%.1f%%）· 覆盖 %d 个容器 · 索引 %s 行"
+          % (format(rep["hit"], ","), format(rep["miss"], ","),
+             100 * (rep["rate"] or 0), rep["containers_covered"],
+             format(rep["index_rows"], ",")))
+    if rep["containers"]:
+        print("  各容器覆盖率排行（字典里有多少条落在该容器）：")
+        for k, v in list(rep["containers"].items())[:12]:
+            print("    %-44s %6d 条" % (k[-44:], v))
+    st = rep["selftest"]
+    print("  哈希自检：%s（%d 项取样）" % ("通过" if st["ok"] else "不通过", st["checked"]))
+    return 0 if st["ok"] else 1
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 带 H · H-2：本地容器快照与终态判定（snapshot）
+#   ★ 治理边界：只允许扫 E:\mrzh（体验服）；正式服 E:\LifeAfter 与其它路径一律拒绝。
+#   ★ 默认【不读正式服】：默认根就是 E:\mrzh，且 _snapshot_guard() 会拒绝一切别处路径。
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _snapshot_guard(root: Path) -> str | None:
+    """只允许 E:\\mrzh 及其子目录；其它路径（含正式服 E:\\LifeAfter）一律拒绝。"""
+    s = str(Path(root).resolve()).replace("/", "\\").rstrip("\\").lower()
+    for base in SNAPSHOT_ALLOWED_ROOTS:
+        if s == base or s.startswith(base + "\\"):
+            return None
+    return ("只允许扫 E:\\mrzh（体验服）。正式服安装目录 E:\\LifeAfter 与其它路径由治理边界禁读；"
+            "要换路径先在 00_治理 侧登记。")
+
+
+def _snapshot_root_of(path: Path) -> str:
+    """只读前 2 KB 取快照的 root（避免为挑基线而整份读 1 MB 的 files 列表）。"""
+    try:
+        head = path.read_text(encoding="utf-8", errors="replace")[:2048]
+    except OSError:
+        return ""
+    m = re.search(r'"root"\s*:\s*"((?:[^"\\]|\\.)*)"', head)
+    if not m:
+        try:
+            return str(json.loads(path.read_text(encoding="utf-8")).get("root") or "")
+        except (OSError, ValueError):
+            return ""
+    return m.group(1).replace("\\\\", "\\")
+
+
+def _snapshot_runs(out_root: Path, *, root: str | None = None) -> list[Path]:
+    """历史快照（out_root/*/source_lock.json），按 mtime 升序。
+
+    ★ root 给定时只保留【同一源根】的快照 —— 否则会把「只扫了某个子目录」的快照
+      当成基线，算出「全部新增」的假结论（--only 与全量扫描的相对路径基准不同）。
+    """
+    base = Path(out_root)
+    if not base.is_dir():
+        return []
+    rows = []
+    for p in base.glob("*/source_lock.json"):
+        try:
+            rows.append((p.stat().st_mtime, str(p), p))
+        except OSError:
+            continue
+    rows.sort()
+    out = [p for _m, _s, p in rows]
+    if root:
+        out = [p for p in out if _snapshot_root_of(p) == root]
+    return out
+
+
+def cmd_snapshot(args) -> int:
+    """[H-2] 本地容器快照：两段式快扫 + 写入窗口守卫 + 与基线比内容。
+
+    分两个动作：
+      scan  廉价 stat 扫 → 只对候选算 sha256（算完回读 stat，一致才算终态）→ 落盘
+      diff  两次快照按内容比，mtime-only 变化单列（永不作为更新证据）
+    """
+    try:
+        from toolkit_core import patch_snapshot as PS
+        from toolkit_core import source_lock as SL
+    except Exception as exc:
+        print("snapshot 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+
+    out_root = Path(args.out) if getattr(args, "out", None) else SNAPSHOT_OUT_ROOT
+    sub = args.snapshot_command
+    # 裸用 --json（打 stdout）时自动静音进度，否则 stdout 会混进进度行
+    quiet = bool(getattr(args, "quiet", False) or args.json == "-")
+
+    if sub == "scan":
+        root = Path(getattr(args, "source_root", None) or DEFAULT_SNAPSHOT_ROOT)
+        if args.only:
+            root = root / args.only
+        bad = _snapshot_guard(root)
+        if bad:
+            print("snapshot scan 拒绝执行：%s" % bad, file=sys.stderr)
+            return 2
+        if not root.is_dir():
+            print("snapshot scan：目录不存在：%s" % root, file=sys.stderr)
+            return 6
+        runs = _snapshot_runs(out_root, root=str(root.resolve()))   # 只认同源根的基线
+
+        suffixes = None
+        if args.suffix:
+            suffixes = [s if s.startswith(".") else "." + s for s in args.suffix]
+
+        baseline: Path | None = None
+        if args.baseline and args.baseline != "auto":
+            baseline = Path(args.baseline)
+            if not baseline.is_file():
+                print("snapshot scan：基线不存在：%s" % baseline, file=sys.stderr)
+                return 6
+        elif args.only:
+            # --only 的相对路径以子目录为基准 ⇒ 与全量基线不可比，故意不自动取基线
+            print("snapshot scan：--only 模式不自动取基线（相对路径基准不同）；"
+                  "要与某次基线比请显式 --baseline。", file=sys.stderr)
+        elif runs and not args.no_baseline:
+            baseline = runs[-1]
+            if not quiet:
+                print("snapshot scan：基线 = 最近一次快照 %s" % baseline)
+
+        res = PS.lock(root, baseline_path=baseline, suffixes=suffixes,
+                      include_all=args.all_files, quiet=quiet,
+                      progress=(None if quiet else
+                                (lambda i, n: print("      …%d/%d" % (i, n), flush=True))))
+        snap, delta = res["snapshot"], res.get("delta") or {}
+        out_dir = out_root / _stamp()
+        paths = PS.write_run(res, out_dir)
+        report = {
+            "kind": "snapshot", "action": "scan", "segment": "H-2",
+            "root": snap["root"], "out": str(out_dir),
+            "files": len(snap["files"]), "unstable": len(snap["unstable"]),
+            "seconds": res["seconds"],
+            "baseline": str(baseline) if baseline else None,
+            "candidates": res.get("candidates"),
+            "suffixes": sorted(suffixes) if suffixes else "默认容器后缀",
+            "delta_totals": {k: len(v) for k, v in delta.items() if isinstance(v, list)},
+            "written": {k: str(v) for k, v in paths.items()},
+            "conclusion_boundary": ("mtime 变化不是内容变化；unstable（写入窗口内 stat 变化）"
+                                    "的文件被排除出内容结论。"),
+        }
+        if args.json:
+            _dump(report, args.json)
+            return 1 if snap["unstable"] else 0
+        print("[snapshot scan] %s → %s" % (snap["root"], out_dir))
+        print("  文件 %d 个 %s · 不稳定 %d 个 · 用时 %.1fs"
+              % (len(snap["files"]),
+                 "（后缀 %s）" % "/".join(sorted(suffixes)) if suffixes else "（默认容器后缀）",
+                 len(snap["unstable"]), res["seconds"]))
+        if delta:
+            t = report["delta_totals"]
+            print("  与基线比（按内容）：新增 %d · 消失 %d · 内容变更 %d · 未变 %d ｜ mtime-only %d"
+                  % (t.get("content_added", 0), t.get("content_removed", 0),
+                     t.get("content_changed", 0), t.get("content_unchanged", 0),
+                     t.get("mtime_only_changed", 0)))
+        else:
+            print("  无基线 ⇒ 本次是全量基线（下次 scan 会自动与它比）")
+        for u in snap["unstable"][:3]:
+            print("  ★ 不稳定：%s（%s）" % (u["relative_path"], u["note"]))
+        print("  落盘：%s" % " · ".join(sorted(p.name for p in paths.values())))
+        return 1 if snap["unstable"] else 0
+
+    # ── diff ──
+    allruns = _snapshot_runs(out_root)
+    c = Path(args.current) if args.current else None
+    if c is None:
+        # auto：挑「最近一次且它有同源根的上一次」的那一份（避免选中孤零零的 --only 快照）
+        for cand in reversed(allruns):
+            w = _snapshot_root_of(cand)
+            if any(_snapshot_root_of(p) == w and p.resolve() != cand.resolve() for p in allruns):
+                c = cand
+                break
+        if c is None and allruns:
+            c = allruns[-1]
+    b = None
+    if args.baseline and args.baseline != "auto":
+        b = Path(args.baseline)
+    elif c is not None:                       # auto：同一源根的上一次
+        want = _snapshot_root_of(c)
+        same = [p for p in allruns
+                if _snapshot_root_of(p) == want and p.resolve() != c.resolve()]
+        b = same[-1] if same else None
+    if b is None or c is None or not Path(b).is_file() or not Path(c).is_file():
+        print("snapshot diff：需要两次【同一源根】的快照（或显式 --baseline/--current）。"
+              "快照根：%s" % out_root, file=sys.stderr)
+        print("  先跑：run_all.py snapshot scan --only <小目录>，再跑一次即有两份。",
+              file=sys.stderr)
+        return 6
+    base, cur = SL.read_snapshot(b), SL.read_snapshot(c)
+    if base.get("root") != cur.get("root"):
+        print("snapshot diff 拒绝比较：两次快照的 root 不同（相对路径基准不同）\n"
+              "  基线 %s ← %s\n  当前 %s ← %s"
+              % (b, base.get("root"), c, cur.get("root")), file=sys.stderr)
+        return 2
+    delta = SL.compare_snapshots(base, cur)
+    lim = max(0, int(args.limit))
+    report = {
+        "kind": "snapshot", "action": "diff", "segment": "H-2",
+        "baseline": str(b), "current": str(c), "root": cur.get("root"),
+        "totals": {k: len(v) for k, v in delta.items()},
+        "content_added": delta["content_added"][:lim],
+        "content_removed": delta["content_removed"][:lim],
+        "content_changed": delta["content_changed"][:lim],
+        "mtime_only_changed": delta["mtime_only_changed"][:lim],
+        "conclusion_boundary": "只有 content_* 是更新证据；mtime_only_changed 只作诊断。",
+    }
+    if args.json:
+        _dump(report, args.json)
+    if args.out:
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.out).write_text(json.dumps(
+            {"baseline": str(b), "current": str(c), "root": cur.get("root"),
+             "totals": report["totals"], "delta": delta},
+            ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if not quiet:
+        print("[snapshot diff] %s → %s" % (b.parent.name, c.parent.name))
+        print("  内容：新增 %d · 消失 %d · 变更 %d · 未变 %d"
+              % (len(delta["content_added"]), len(delta["content_removed"]),
+                 len(delta["content_changed"]), len(delta["content_unchanged"])))
+        print("  mtime-only（诊断，不算更新）：%d" % len(delta["mtime_only_changed"]))
+        for label, key in (("新增", "content_added"), ("消失", "content_removed"),
+                           ("变更", "content_changed")):
+            for p in delta[key][:lim]:
+                print("    %s %s" % (label, p))
+        if args.out:
+            print("  完整报告 → %s" % args.out)
+    return 0
+
+
+def _stamp() -> str:
+    import time
+    return time.strftime("%Y%m%d_%H%M%S")
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 横切：工具 × 段位 映射（map）
+# ═══════════════════════════════════════════════════════════════════════════
+
+def cmd_map(args) -> int:
+    """[横切] 打印「工具 × 段位」映射表（判据与归属在 toolkit_core.tool_seg_map）。"""
+    try:
+        from toolkit_core import tool_seg_map as M
+    except Exception as exc:
+        print("map 子命令不可用：%r" % (exc,), file=sys.stderr)
+        return 5
+    try:
+        root = M.default_toolkit_root()
+    except RuntimeError as exc:
+        print("map：%s" % exc, file=sys.stderr)
+        return 3
+
+    rows = M.collect(root, include_archive=True)
+    by_seg = commands_by_seg()
+    want: list[str] = []
+    for q in (args.seg or ()):
+        hits = M.match_seg(q)
+        if not hits:
+            print("map：--seg %s 不匹配任何段位；可用：%s" % (q, " · ".join(M.SEGMENTS)),
+                  file=sys.stderr)
+            return 2
+        want += [h for h in hits if h not in want]
+    sel = [r for r in rows if r["seg"] in want] if want else rows
+
+    if args.json:
+        _dump({"kind": "map", "segment": "横切", "criterion": M.CRITERION,
+               "totals": M.totals(sel),
+               "segments": [{k: v for k, v in b.items() if k != "items"}
+                            for b in M.summarize(sel) if not want or b["seg"] in want],
+               "cli_by_seg": by_seg,
+               "items": sel}, args.json)
+        return 0
+
+    print(M.render_text(rows, seg_filter=(want or None), show_files=bool(args.files),
+                        by_seg=by_seg, limit=(None if args.limit == 0 else args.limit)))
+    if args.write:
+        paths = M.write_artifacts(rows, root / "docs", by_seg=by_seg)
+        print("已落盘：%s ｜ %s" % (paths["md"], paths["json"]))
+    unknown = [r for r in rows if r["seg"] == "未分类"]
+    if unknown:
+        print("⚠ 有 %d 个文件没有命中任何判据（段位=未分类），需人工定段。" % len(unknown),
+              file=sys.stderr)
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    COMMANDS.clear()          # 每次构建都重建登记表（可重复调用）
+    parser = argparse.ArgumentParser(
+        prog="lifeafter-toolkit",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description="明日之后拆包器统一入口（文件索引优先；源包只读）",
+        epilog="""\
+命令按【三线三带】分组（子命令 help 开头的方括号就是段位，可直接 grep）：
+
+  ── 带H 热更定位带（三条线的入口：先知道「哪里变了」）────────────
+    H-1 版本清单对比    delta fetch · delta diff · delta families
+    H-2 本地冻结与终态   snapshot scan · snapshot diff
+    H-3 包级归因        （当前由 delta families 承担；家族词表待补）
+
+  ── ① 解码定位复原线（源包 → 事实）──────────────────────────
+    ①-0 索引地基        index build · index status · verify · overview
+    ①-1 定位与复原       find · extract · export · restore · thfb · bindict-check
+                        bridge-audit · resolver locate/tree/dump/bridge-gpk
+                        names build/lookup/stats
+    ①-2 批量质检        query · bulk · identify · decode-audit
+
+  ── ② 图文音频渲染线（事实 → 能看能听）─────────────────────
+    ②-1 三维装配        glb · sheet
+    ②-2 媒体定位        tex · audio · texscan scan
+    ②-3 三维出图校准     render
+
+  ── ③ 前端展示交互线（东西 → 人能点的页面）──────────────────
+    ③-1 页面与看板 / ③-2 服务与契约 / ③-3 资产落地与投影
+        ⇒ 工具层暂无命令：前端工具在 04_站点/web/tools/，
+          段位归属见 run_all.py map --json
+
+  ── 带D 数据契约带（横切：接口）───────────────────────────
+      --json 出口与返回码：0 通过 / 1 有错但跑完 / 2 用法错 /
+      3 索引不可用 / 4 自检未过 / 5 未命中 / 6 输入不可用
+
+  ── 带Q 质量·交付·治理带（横切：闸门）─────────────────────
+      00_共享核心/测试（pytest -q ⇒ 105 passed）· 站点 tools/checks.py 判据
+
+  ◆ 横切段的工具不产出业务产物：run_all / exe_cli（入口壳）· 图形界面/app（GUI）
+    · 调度与限流（scheduler / throttle）· 项目根定位（paths）· 测试
+  ◆ 完整「工具 × 段位」映射：run_all.py map
+    （--seg ②-2 只看一段 · --files 连文件清单 · --json 机器读 · --write 落盘 docs/）
+
+路径定位（不再硬编码）：① --root  ② 环境变量 LA_ROOT  ③ exe 同级向上
+                          ④ 源码树向上；找不到就明确报错，不猜。
+""")
+    parser.add_argument("--root", help="项目根（覆盖环境变量与自动探测）")
+    sub = parser.add_subparsers(dest="command", required=True)
+    ex = _sp(sub, "export", help="[①-1] 解析结果 → 表格文件（通用导出器）")
+    ex.add_argument("source", help=".bin 条目载荷，或逻辑路径 / fid（经索引提取）")
+    ex.add_argument("--out", required=True, help="输出文件（扩展名决定格式：csv/json/md）")
+    ex.add_argument("--format", default="csv", choices=["csv", "json", "md"],
+                    help="输出格式（默认 csv）")
+    ex.add_argument("--family", default="auto", choices=["auto", "d6", "kj1", "hd86"],
+                    help="指定表族；默认 auto 逐族试并如实报告各自结果")
+    ex.add_argument("--no-jump", action="store_true", help="不解析 0x27 跳转组（更快）")
+    ex.add_argument("--db", type=Path, default=DEFAULT_DB)
+    ex.add_argument("--res-root", type=Path)
+    ex.add_argument("--json", help="把导出摘要写到该文件")
+    ex.set_defaults(func=cmd_export)
+
+    index = _sp(sub, "index", help="[①-0] 统一文件索引")
+    index_sub = index.add_subparsers(dest="index_command", required=True)
+    _inherit(index_sub, "①-0", "index")     # 子子命令继承段位（它们没有 [段位] 前缀）
+
+    build = _sp(index_sub, "build", help="构建/原子更新 SQLite 索引")
+    build.add_argument("--res-root", type=Path, default=DEFAULT_RES_ROOT)
+    build.add_argument("--fpk-index", type=Path, default=DEFAULT_FPK_INDEX)
+    build.add_argument("--db", type=Path, default=DEFAULT_DB)
+    build.add_argument("--include", nargs="+", choices=("gpk", "fpk", "npk"), default=("gpk", "fpk", "npk"))
+    build.add_argument("--quiet", action="store_true"); build.add_argument("--json")
+    build.add_argument("--no-sidecar", action="store_true",
+                       help="不同步 lifeafter_files_build.json")
+    build.set_defaults(func=cmd_index_build)
+    status = _sp(index_sub, "status", help="检查索引完整性与源包是否变化")
+    status.add_argument("--db", type=Path, default=DEFAULT_DB); status.add_argument("--res-root", type=Path)
+    status.add_argument("--no-source-check", action="store_true"); status.add_argument("--json")
+    status.add_argument("--deep", action="store_true",
+                        help="深层校验：逐容器重算 sha256 与库内比对（要读全部字节，几十秒级）。"
+                             "不加则只比「名字+大小+mtime」指纹，检不出「大小与 mtime 未变但内容变了」")
+    status.add_argument("--no-sidecar", action="store_true",
+                        help="不同步 lifeafter_files_status.json")
+    status.set_defaults(func=cmd_index_status)
+    find = _sp(sub, "find", help="[①-1] 逻辑路径查全部物理候选")
+    find.add_argument("path"); find.add_argument("--db", type=Path, default=DEFAULT_DB)
+    find.add_argument("--res-root", type=Path); find.add_argument("--variants", action="store_true")
+    find.add_argument("--deep-variants", action="store_true"); find.add_argument("--json")
+    find.set_defaults(func=cmd_find)
+    extract = _sp(sub, "extract", help="[①-1] 按索引定点提取一个条目")
+    extract.add_argument("path"); extract.add_argument("output")
+    extract.add_argument("--db", type=Path, default=DEFAULT_DB); extract.add_argument("--res-root", type=Path)
+    extract.add_argument("--container", help="多命中时按容器路径子串筛选")
+    extract.add_argument("--row", type=int, help="多命中时按原始条目号筛选")
+    extract.add_argument("--variants", action="store_true"); extract.add_argument("--deep-variants", action="store_true")
+    extract.add_argument("--raw", action="store_true", help="输出压缩载荷，不解码")
+    extract.add_argument("--force", action="store_true", help="允许覆盖既有输出"); extract.add_argument("--json")
+    extract.set_defaults(func=cmd_extract)
+    verify = _sp(sub, "verify", help="[①-0] SQLite + 三条已知路径端到端自检")
+    verify.add_argument("--db", type=Path, default=DEFAULT_DB); verify.add_argument("--res-root", type=Path)
+    verify.add_argument("--no-source-check", action="store_true"); verify.add_argument("--json")
+    verify.add_argument("--no-sidecar", action="store_true",
+                        help="不同步 lifeafter_files_verify.json")
+    verify.set_defaults(func=cmd_verify)
+    glb = _sp(sub, "glb", help="[②-1] 一个或多个 .mesh → 单 GLB（世界坐标拼接 + 自检报告）")
+    glb.add_argument("meshes", nargs="+", help="输入 .mesh 路径（可多个；顶点已是世界坐标，直接拼接）")
+    glb.add_argument("--mat", type=Path, help=".c159 材质文件（可选，记进 GLB extras/报告）")
+    glb.add_argument("--tex", type=Path, help="贴图目录（可选，按槽位后缀选 a/n/m）")
+    glb.add_argument("--out", type=Path, help="输出 .glb（默认 03_执行\\90_临时\\glb_out\\<首件名>.glb）")
+    glb.add_argument("--force", action="store_true", help="允许覆盖已存在的输出")
+    glb.add_argument("--json", help="自检报告 JSON 输出路径")
+    glb.set_defaults(func=cmd_glb)
+
+    # ── ②线其余段位（原先 57 个脚本只有 glb 一个进了 CLI） ──
+    sh = _sp(sub, "sheet", help="[②-1] 装配帧 .c159 → 材质/部件表（配对规则 C159_PARAM_PAIRING）")
+    sh.add_argument("mtl", nargs="+", help=".c159 文件 / 目录 / glob")
+    sh.add_argument("--bind", type=Path, help="绑定文件（可选）")
+    sh.add_argument("--out", type=Path, help="输出目录（默认 03_执行\\90_临时\\sheet_out）")
+    sh.add_argument("--strict", action="store_true", help="有失败则退出码 1（默认 0）")
+    sh.add_argument("--quiet", action="store_true")
+    sh.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    sh.set_defaults(func=cmd_sheet)
+
+    tx = _sp(sub, "tex", help="[②-2] 贴图 → PNG（只走 dds_rgba_canonical 规范入口）")
+    tx.add_argument("target", nargs="+", help=".dds/.ktx 文件 / 目录 / glob")
+    tx.add_argument("--ext", action="append", default=None,
+                    help="扩展名（可多次；默认 dds,ktx）")
+    tx.add_argument("--out", type=Path, help="输出目录（默认 03_执行\\90_临时\\tex_out）")
+    tx.add_argument("--force", action="store_true", help="允许覆盖已存在的 PNG")
+    tx.add_argument("--no-verify", action="store_true", help="跳过 OIIO 交叉校验（默认校验）")
+    tx.add_argument("--strict", action="store_true", help="有失败则退出码 1（默认 0）")
+    tx.add_argument("--quiet", action="store_true")
+    tx.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    tx.set_defaults(func=cmd_tex)
+    if tx.get_default("ext") is None:      # argparse 的 append 默认 None ⇒ 补默认值
+        tx.set_defaults(ext=["dds", "ktx"])
+
+    au = _sp(sub, "audio", help="[②-2] 音效轨道 .sfx → 帧表 JSON（节点树/色帧/绑定贴图）")
+    au.add_argument("src", nargs="+", help=".sfx 文件 / 目录 / glob")
+    au.add_argument("--ext", action="append", default=None,
+                    help="扩展名（可多次；默认 sfx,xml）。★ 本项目的产物按【检测类型】命名，"
+                         ".sfx 常落成 .text ⇒ 可用 --ext text")
+    au.add_argument("--out", type=Path, help="输出目录（默认 03_执行\\90_临时\\audio_out）")
+    au.add_argument("--strict", action="store_true", help="有失败则退出码 1（默认 0）")
+    au.add_argument("--quiet", action="store_true")
+    au.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    au.set_defaults(func=cmd_audio)
+    if au.get_default("ext") is None:
+        au.set_defaults(ext=["sfx", "xml"])
+
+    rd = _sp(sub, "render", help="[②-3] 材质分层出图（非交付面 PNG + layers_trace.json）")
+    rd.add_argument("mesh", help="输入 .mesh")
+    rd.add_argument("tex_dir", help="贴图目录")
+    rd.add_argument("--out", type=Path, help="输出目录（默认 03_执行\\90_临时\
+ender_out）")
+    rd.add_argument("--materials", type=Path, help=".c159 材质文件（可选）")
+    rd.add_argument("--polarity", choices=["smooth", "steep"], help="法线极性（默认 smooth）")
+    rd.add_argument("--dual", action="store_true", help="双部件并排出图")
+    rd.add_argument("--dual-sep", type=float, help="双部件间距（默认 0.62）")
+    rd.add_argument("--quiet", action="store_true")
+    rd.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    rd.set_defaults(func=cmd_render)
+
+    # ── 收编两个「自带 argparse 的孤立入口」（命令定义单点化）──
+    # ★ 公共选项挂到每个子命令上（用 parents=），否则只能写成 `resolver --quiet locate P`，
+    #   而 `resolver locate P --quiet` 会报 unrecognized arguments。
+    _rv_common = argparse.ArgumentParser(add_help=False)
+    _rv_common.add_argument("--res", default=r"E:\mrzh\res", help="资源根（默认 E:\\mrzh\\res）")
+    _rv_common.add_argument("--quiet", action="store_true")
+    _rv_common.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+
+    rv = _sp(sub, "resolver", help="[①-1] 资源物理桥定位器（原 resource_resolver 独立入口）")
+    rv_sub = rv.add_subparsers(dest="resolver_command", required=True)
+    _inherit(rv_sub, "①-1", "resolver")
+
+    _rvp = _sp(rv_sub, "locate", parents=[_rv_common], help="定位逻辑路径所在包/条目")
+    _rvp.add_argument("path")
+    _rvt = _sp(rv_sub, "tree", parents=[_rv_common], help="递归解析一套资源")
+    _rvt.add_argument("path"); _rvt.add_argument("--depth", type=int, default=3)
+    _rvd = _sp(rv_sub, "dump", parents=[_rv_common], help="解出并保存单个资源")
+    _rvd.add_argument("path"); _rvd.add_argument("out")
+    _rvb = _sp(rv_sub, "bridge-gpk", parents=[_rv_common], help="用 c1c2 给 GPK 匿名条目对接 fid")
+    _rvb.add_argument("gpk")
+    rv.set_defaults(func=cmd_resolver)
+
+    ts = _sp(sub, "texscan", help="[②-2] 匿名 GPK 纹理颜色筛选 / 未上线候选")
+    ts_sub = ts.add_subparsers(dest="texscan_command", required=True)
+    _inherit(ts_sub, "②-2", "texscan")
+
+    _tss = _sp(ts_sub, "scan")
+    _tss.add_argument("unpacked_dir")
+    _tss.add_argument("--out", required=True)
+    _tss.add_argument("--res", default=r"E:\mrzh\res")
+    _tss.add_argument("--color", default="gold")
+    _tss.add_argument("--all", action="store_true", help="不只看独有（默认只看独有）")
+    _tss.add_argument("--min-side", type=int, default=0)
+    _tss.add_argument("--top", type=int, default=60)
+    ts.set_defaults(func=cmd_texscan)
+
+    # ── ①-5 热更增量取证（只比服务端清单，不碰本地客户端目录）──
+    dl = _sp(sub, "delta", help="[H-1] 热更增量取证：release(正式服) vs playertest(测试服) 差在哪")
+    dl_sub = dl.add_subparsers(dest="delta_command", required=True)
+    _inherit(dl_sub, "H-1", "delta")
+
+    _dlf = _sp(dl_sub, "fetch", help="拉取各入口版本清单到本地缓存")
+    _dlf.add_argument("--entry", action="append",
+                      help="只拉指定入口（可多次；默认全部）")
+    _dlf.add_argument("--cache", type=Path, help="缓存目录（默认 03_执行\\10_索引\\patch_manifests）")
+    _dlf.add_argument("--quiet", action="store_true")
+    _dlf.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    _dlf.set_defaults(func=cmd_delta)
+
+    for _name, _help in (("diff", "diff 两份清单：新增/删除/变更的包"),
+                         ("families", "只按家族聚合（哪个族有新东西）")):
+        _p = _sp(dl_sub, _name, help=_help)
+        _p.add_argument("--pair", nargs=2, metavar=("A", "B"),
+                        help="对比哪两份清单（默认 release playertest）")
+        _p.add_argument("--keys", choices=["ext", "main"], default="ext",
+                        help="比哪张表：ext=filesNN_2（以 .npk 包为主，默认）· main=filesNN")
+        _p.add_argument("--limit", type=int, default=30, help="明细最多列几条（默认 30）")
+        _p.add_argument("--cache", type=Path, help="缓存目录（默认 03_执行\\10_索引\\patch_manifests）")
+        _p.add_argument("--out", type=Path, help="完整报告落盘路径")
+        _p.add_argument("--quiet", action="store_true")
+        _p.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+        _p.set_defaults(func=cmd_delta)
+
+    # ── 带 H · H-2 本地容器快照与终态判定（只读 E:\mrzh）──
+    sn = _sp(sub, "snapshot",
+             help="[H-2] 本地容器快照与终态判定（写入窗口守卫；只读 E:\\mrzh）")
+    sn_sub = sn.add_subparsers(dest="snapshot_command", required=True)
+    _inherit(sn_sub, "H-2", "snapshot")
+    _sns = _sp(sn_sub, "scan",
+               help="扫一次并落盘（source_lock.json + CURRENT_STATE.json；有基线再出 patch_delta.json）")
+    _sns.add_argument("--source-root", "--root", dest="source_root",
+                      help="【源】根（默认 E:\\mrzh；只允许 E:\\mrzh 下的路径，正式服一律拒绝）。"
+                           "★ 这是源根，不是项目根 —— 项目根是全局 --root，要写在子命令之前")
+    _sns.add_argument("--only", help="只扫该子目录（小规模实测用；相对路径以它为准，不自动取基线）")
+    _sns.add_argument("--suffix", action="append",
+                      help="只算这些后缀（可多次，如 --suffix .npk；默认 "
+                           ".gpk/.npk/.fpk/.wpk/.idx/.pi/.bin/.nxs）")
+    _sns.add_argument("--all-files", action="store_true",
+                      help="不按后缀过滤、扫全部文件（很慢，慎用）")
+    _sns.add_argument("--baseline",
+                      help="基线 source_lock.json 路径；auto=最近一次（默认 auto；--only 时不自动取）")
+    _sns.add_argument("--no-baseline", action="store_true", help="不比差分，只落快照")
+    _sns.add_argument("--out", type=Path,
+                      help="快照根目录（默认 03_执行\\10_索引\\patch_snapshots\\<时间戳>）")
+    _sns.add_argument("--quiet", action="store_true")
+    _sns.add_argument("--json", nargs="?", const="-",
+                      help="报告 JSON：裸用打 stdout（自动静音进度，保证 stdout 只有 JSON），给路径则落盘")
+    _sns.set_defaults(func=cmd_snapshot)
+
+    _snd = _sp(sn_sub, "diff", help="两次快照按内容比（新增/消失/变更/mtime-only 分开）")
+    _snd.add_argument("--baseline", help="基线快照（默认 auto=倒数第二次）")
+    _snd.add_argument("--current", help="当前快照（默认 auto=最近一次）")
+    _snd.add_argument("--limit", type=int, default=20, help="明细最多列几条（默认 20）")
+    _snd.add_argument("--out", type=Path, help="完整报告落盘路径")
+    _snd.add_argument("--quiet", action="store_true")
+    _snd.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    _snd.set_defaults(func=cmd_snapshot)
+
+    # ── 从 run_all.py 收编的兼容命令（命令定义单点化） ──
+    sp = _sp(sub, "overview", help="[①-0] 全格式概览：NPK 条目数 + FPK 包分类")
+    sp.set_defaults(func=cmd_overview)
+    sp = _sp(sub, "restore", help="[①-1] 文件名还原（配置表 → path_id → ui.npk）")
+    sp.set_defaults(func=cmd_restore)
+    sp = _sp(sub, "thfb", help="[①-1] THFB 哈希提取")
+    sp.set_defaults(func=cmd_thfb)
+    sp = _sp(sub, "bindict-check", help="[①-1] BinDict 自检（AUG attrs + KJ1 转印）")
+    sp.set_defaults(func=cmd_bindict_check)
+    sp = _sp(sub, "bridge-audit", help="[①-1] 皮肤逻辑路径→IDX/WPK 物理桥审计（只读）")
+    sp.set_defaults(func=cmd_bridge_audit)
+
+    # ── 批量能力（2026-09-26 跑 1% 半全量后加的；原先每件事都得手写脚本） ──
+    q = _sp(sub, "query", help="[①-2] 按条件筛条目，只看规模和形状，不落盘")
+    _add_filter_args(q)
+    q.add_argument("--by", choices=["container", "flag", "kind"], help="分组统计")
+    q.add_argument("--show", type=int, default=0, help="额外打印前 N 条明细")
+    q.add_argument("--db", type=Path, default=DEFAULT_DB)
+    q.add_argument("--res-root", type=Path)
+    q.add_argument("--json")
+    q.set_defaults(func=cmd_query)
+
+    b = _sp(sub, "bulk", help="[①-2] 批量提取：断点续跑 + 清单 + 类型识别 + 错误聚合")
+    _add_filter_args(b)
+    b.add_argument("--out", required=True, help="产出根目录")
+    b.add_argument("--name-by", default="row", choices=["row", "fid", "row_fid"],
+                   help="命名策略。★ 游戏内逻辑路径当前拿不到，只能按 条目号/fid")
+    b.add_argument("--resume", action="store_true",
+                   help="断点续跑（状态文件 <out>/.bulk_state.json）")
+    b.add_argument("--manifest", help="清单文件（JSONL：条 → 文件 + 类型 + sha256）")
+    b.add_argument("--progress", nargs="?", const="text", default="text",
+                   choices=["text", "json"],
+                   help="进度输出格式（默认 text；json = 每行一个 JSON，供机器读）。"
+                        "可裸用 --progress")
+    b.add_argument("--quiet", action="store_true")
+    b.add_argument("--workers", type=int, help="显式并行数（不给则按 --cpu-limit 算）")
+    b.add_argument("--cpu-limit", type=float, default=80.0,
+                   help="最多用整机 CPU 的百分之几（默认 80）；本命令为 I/O 受限，主要作用是限流不抢占")
+    b.add_argument("--gpu-limit", type=float, default=80.0,
+                   help="GPU 上限（默认 80）。★ 解码线不碰 GPU ⇒ 本命令下不适用")
+    b.add_argument("--raw", action="store_true", help="落压缩载荷，不解码")
+    b.add_argument("--db", type=Path, default=DEFAULT_DB)
+    b.add_argument("--res-root", type=Path)
+    b.add_argument("--json")
+    b.set_defaults(func=cmd_bulk)
+
+    idf = _sp(sub, "identify", help="[①-2] 产物类型识别（魔数 → 纹理/配置/网格/音频）")
+    idf.add_argument("target", nargs="*", help="文件 / 目录 / glob")
+    idf.add_argument("--from-manifest", help="改从 bulk 的清单里读文件列表")
+    idf.add_argument("--limit", type=int)
+    idf.add_argument("--json")
+    idf.set_defaults(func=cmd_identify)
+
+    da = _sp(sub, "decode-audit",
+                        help="[①-2] 解码线体检：按【容器×flag】分层抽样，判据不带盲区")
+    da.add_argument("--per-group", type=int, default=12,
+                    help="每个(容器,flag)组合抽多少条（--full 时忽略）")
+    da.add_argument("--full", action="store_true",
+                    help="不抽样，逐条全过（2,300,843 条，约十几分钟）——"
+                         "「确保不出纰漏」的唯一硬保证；抽样只能证伪、不能证明")
+    da.add_argument("--res-root", type=Path)
+    da.add_argument("--db", type=Path, default=DEFAULT_DB)
+    da.add_argument("--cpu-limit", type=float, default=80.0,
+                    help="最多用整机 CPU 的百分之几（默认 80）⇒ 并行 worker = 核数×这个比例")
+    da.add_argument("--gpu-limit", type=float, default=80.0,
+                    help="GPU 上限（默认 80）。★ 解码线不碰 GPU ⇒ 本命令下不适用，如实提示")
+    da.add_argument("--progress", action="store_true")
+    da.add_argument("--json")
+    da.set_defaults(func=cmd_decode_audit)
+
+    # ── ①-4 名字还原 ──
+    nm = _sp(sub, "names", help="[①-1] 名字还原：路径 → 容器 + 行号（双 seed murmur3 → 索引 fid_hex）")
+    nm_sub = nm.add_subparsers(dest="names_command", required=True)
+    _inherit(nm_sub, "①-1", "names")
+
+    nb = _sp(nm_sub, "build", help="从文本产物挖路径，建/扩字典（默认不覆盖已有输出）")
+    nb.add_argument("--source", action="append", type=Path,
+                    help="开采源：文本产物文件或目录（可多次；不给则用仓库里现存的路径产物）")
+    nb.add_argument("--out", type=Path, default=DEFAULT_NAMES_DICT,
+                    help="字典输出（默认 03_执行/10_索引/names/names_dict.json）")
+    nb.add_argument("--limit", type=int, help="最多入库多少条路径")
+    nb.add_argument("--workers", type=int, default=4, help="并行读文件数（默认 4）")
+    nb.add_argument("--force", action="store_true", help="允许覆盖既有字典")
+    nb.add_argument("--db", type=Path, default=DEFAULT_DB)
+    nb.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    nb.set_defaults(func=cmd_names_build)
+
+    nl = _sp(nm_sub, "lookup", help="★ 一个游戏内路径 → 它在哪个包、哪一行")
+    nl.add_argument("path", help="包内相对路径（UI 类带 ui/ 前缀，如 ui/all/img.png）；也可给 16 位 fid")
+    nl.add_argument("--db", type=Path, default=DEFAULT_DB)
+    nl.add_argument("--res-root", type=Path)
+    nl.add_argument("--limit", type=int, default=20, help="最多列几处命中（默认 20）")
+    nl.add_argument("--json", nargs="?", const="-", help="JSON：裸用打 stdout，给路径则落盘")
+    nl.set_defaults(func=cmd_names_lookup)
+
+    ns = _sp(nm_sub, "stats", help="字典规模 / 已命中多少条 / 各容器覆盖率排行")
+    ns.add_argument("--dict", dest="dict_path", type=Path, default=DEFAULT_NAMES_DICT)
+    ns.add_argument("--db", type=Path, default=DEFAULT_DB)
+    ns.add_argument("--json", nargs="?", const="-", help="JSON：裸用打 stdout，给路径则落盘")
+    ns.set_defaults(func=cmd_names_stats)
+
+    # ── 横切：工具 × 段位 映射表（三线三带的导航表）──
+    mp = _sp(sub, "map",
+             help="[横切] 工具 × 段位 映射表（--seg ②-2 过滤 · --files 看文件 · --json 机器读）")
+    mp.add_argument("--seg", action="append",
+                    help="只看某些段位（可多次）：②-2 精确 · ② 该线全部 · H 或 带H · "
+                         "带D · 带Q · 横切 · 归档")
+    mp.add_argument("--files", action="store_true", help="连文件清单一起打（默认只打段位汇总）")
+    mp.add_argument("--limit", type=int, default=20,
+                    help="--seg 时每段最多列几个文件（0=全部；默认 20）")
+    mp.add_argument("--write", action="store_true",
+                    help="落盘 工具库/docs/工具段位映射.md 与 工具段位映射.json")
+    mp.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    mp.set_defaults(func=cmd_map)
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    # ★ --root 是全局选项：显式给了就改根（无效时 paths 会直接报错，不回退，见 paths.find_project_root）
+    root = getattr(args, "root", None)
+    if root:
+        from toolkit_core.paths import set_root
+        set_root(root)
+    return int(args.func(args))
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

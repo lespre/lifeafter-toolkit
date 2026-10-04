@@ -1,0 +1,15 @@
+{
+ "claim": "static config ≠ runtime final reward",
+ "status": "unresolved_residual",
+ "evidence_type": "runtime_overlay",
+ "consumer": "OptionalVersionMgrController",
+ "symbols": [
+  "on_replace_child_reward",
+  "child_pool_id_2_item_no",
+  "optional_pool_replace_data",
+  "optional_version_data"
+ ],
+ "module": "com\\huodong\\controller\\OptionalVersionMgrController.py",
+ "snapshot_source": "test-documents-328b8446#2430 (FID 173C6E66B9DBBD59)",
+ "applies_to": "全部 23,567 条静态 reward target"
+}

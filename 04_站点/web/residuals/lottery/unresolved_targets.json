@@ -1,0 +1,1637 @@
+{
+ "domain": "lottery",
+ "kind": "unresolved_targets",
+ "generated": "2026-09-12T18:54:20",
+ "count": 1665,
+ "reason": "该 reward 整数的 namespace 无证据（不在任何已解 namespace 表；非已知 pool_key / fashion 集）",
+ "tried_routes": [
+  "static_reward_raw[0] 对 17 item namespace 逐一 membership",
+  "对 pool_key 集（1,761）对照",
+  "对 fashion 集对照",
+  "ITEM_MASTER_v03_1 查表（仅作为已证 item 的 namespace 查询，不反向制造 join）"
+ ],
+ "rejected_routes": [
+  "整数命中即断言 reward→item",
+  "填 item_master_id",
+  "声称 runtime_final=verified"
+ ],
+ "current_gap": "需要 reward 行自身的 runtime 语义（item vs 子池的类型位）与未解 namespace 的 row key 集",
+ "hard_blocked": false,
+ "sample": [
+  {
+   "pool_key": 390003,
+   "item_no": 0,
+   "static_reward_raw": [
+    92991,
+    1
+   ]
+  },
+  {
+   "pool_key": 390003,
+   "item_no": 1,
+   "static_reward_raw": [
+    92990,
+    1
+   ]
+  },
+  {
+   "pool_key": 390003,
+   "item_no": 2,
+   "static_reward_raw": [
+    92995,
+    1
+   ]
+  },
+  {
+   "pool_key": 390005,
+   "item_no": 0,
+   "static_reward_raw": [
+    93008,
+    1
+   ]
+  },
+  {
+   "pool_key": 390005,
+   "item_no": 1,
+   "static_reward_raw": [
+    93009,
+    1
+   ]
+  },
+  {
+   "pool_key": 390005,
+   "item_no": 2,
+   "static_reward_raw": [
+    93010,
+    1
+   ]
+  },
+  {
+   "pool_key": 390006,
+   "item_no": 0,
+   "static_reward_raw": [
+    93000,
+    1
+   ]
+  },
+  {
+   "pool_key": 390006,
+   "item_no": 1,
+   "static_reward_raw": [
+    93001,
+    1
+   ]
+  },
+  {
+   "pool_key": 390006,
+   "item_no": 2,
+   "static_reward_raw": [
+    93002,
+    1
+   ]
+  },
+  {
+   "pool_key": 390006,
+   "item_no": 4,
+   "static_reward_raw": [
+    93004,
+    1
+   ]
+  },
+  {
+   "pool_key": 390006,
+   "item_no": 5,
+   "static_reward_raw": [
+    93005,
+    1
+   ]
+  },
+  {
+   "pool_key": 390008,
+   "item_no": 0,
+   "static_reward_raw": [
+    103088,
+    1
+   ]
+  },
+  {
+   "pool_key": 390008,
+   "item_no": 1,
+   "static_reward_raw": [
+    103023,
+    1
+   ]
+  },
+  {
+   "pool_key": 390008,
+   "item_no": 2,
+   "static_reward_raw": [
+    103022,
+    1
+   ]
+  },
+  {
+   "pool_key": 390008,
+   "item_no": 3,
+   "static_reward_raw": [
+    103021,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 0,
+   "static_reward_raw": [
+    35114,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 1,
+   "static_reward_raw": [
+    35118,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 2,
+   "static_reward_raw": [
+    35117,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 3,
+   "static_reward_raw": [
+    35112,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 4,
+   "static_reward_raw": [
+    35115,
+    1
+   ]
+  },
+  {
+   "pool_key": 390011,
+   "item_no": 5,
+   "static_reward_raw": [
+    35120,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 0,
+   "static_reward_raw": [
+    35162,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 1,
+   "static_reward_raw": [
+    35166,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 2,
+   "static_reward_raw": [
+    35165,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 3,
+   "static_reward_raw": [
+    35160,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 4,
+   "static_reward_raw": [
+    35163,
+    1
+   ]
+  },
+  {
+   "pool_key": 390012,
+   "item_no": 5,
+   "static_reward_raw": [
+    35168,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 0,
+   "static_reward_raw": [
+    35210,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 1,
+   "static_reward_raw": [
+    35214,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 2,
+   "static_reward_raw": [
+    35213,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 3,
+   "static_reward_raw": [
+    35208,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 4,
+   "static_reward_raw": [
+    35211,
+    1
+   ]
+  },
+  {
+   "pool_key": 390013,
+   "item_no": 5,
+   "static_reward_raw": [
+    35216,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 0,
+   "static_reward_raw": [
+    35258,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 1,
+   "static_reward_raw": [
+    35262,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 2,
+   "static_reward_raw": [
+    35261,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 3,
+   "static_reward_raw": [
+    35256,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 4,
+   "static_reward_raw": [
+    35259,
+    1
+   ]
+  },
+  {
+   "pool_key": 390014,
+   "item_no": 5,
+   "static_reward_raw": [
+    35264,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 0,
+   "static_reward_raw": [
+    35306,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 1,
+   "static_reward_raw": [
+    35310,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 2,
+   "static_reward_raw": [
+    35309,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 3,
+   "static_reward_raw": [
+    35304,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 4,
+   "static_reward_raw": [
+    35307,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 5,
+   "static_reward_raw": [
+    35312,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 6,
+   "static_reward_raw": [
+    35305,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 7,
+   "static_reward_raw": [
+    35311,
+    1
+   ]
+  },
+  {
+   "pool_key": 390015,
+   "item_no": 8,
+   "static_reward_raw": [
+    35303,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 0,
+   "static_reward_raw": [
+    35354,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 1,
+   "static_reward_raw": [
+    35358,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 2,
+   "static_reward_raw": [
+    35357,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 3,
+   "static_reward_raw": [
+    35352,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 4,
+   "static_reward_raw": [
+    35355,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 5,
+   "static_reward_raw": [
+    35360,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 6,
+   "static_reward_raw": [
+    35353,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 7,
+   "static_reward_raw": [
+    35359,
+    1
+   ]
+  },
+  {
+   "pool_key": 390016,
+   "item_no": 8,
+   "static_reward_raw": [
+    35351,
+    1
+   ]
+  },
+  {
+   "pool_key": 390017,
+   "item_no": 9,
+   "static_reward_raw": [
+    93228,
+    1
+   ]
+  },
+  {
+   "pool_key": 390018,
+   "item_no": 0,
+   "static_reward_raw": [
+    93298,
+    1
+   ]
+  },
+  {
+   "pool_key": 390018,
+   "item_no": 6,
+   "static_reward_raw": [
+    93302,
+    1
+   ]
+  },
+  {
+   "pool_key": 390018,
+   "item_no": 7,
+   "static_reward_raw": [
+    93303,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 0,
+   "static_reward_raw": [
+    92670,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 1,
+   "static_reward_raw": [
+    92669,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 2,
+   "static_reward_raw": [
+    92668,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 3,
+   "static_reward_raw": [
+    92667,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 4,
+   "static_reward_raw": [
+    92671,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 5,
+   "static_reward_raw": [
+    92666,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 6,
+   "static_reward_raw": [
+    104586,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 7,
+   "static_reward_raw": [
+    104587,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 8,
+   "static_reward_raw": [
+    104588,
+    1
+   ]
+  },
+  {
+   "pool_key": 390024,
+   "item_no": 9,
+   "static_reward_raw": [
+    104589,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 1,
+   "static_reward_raw": [
+    92673,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 2,
+   "static_reward_raw": [
+    92672,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 3,
+   "static_reward_raw": [
+    92674,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 4,
+   "static_reward_raw": [
+    92675,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 5,
+   "static_reward_raw": [
+    92677,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 6,
+   "static_reward_raw": [
+    92676,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 7,
+   "static_reward_raw": [
+    92681,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 8,
+   "static_reward_raw": [
+    92678,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 9,
+   "static_reward_raw": [
+    92679,
+    1
+   ]
+  },
+  {
+   "pool_key": 390026,
+   "item_no": 10,
+   "static_reward_raw": [
+    92680,
+    1
+   ]
+  },
+  {
+   "pool_key": 390031,
+   "item_no": 9,
+   "static_reward_raw": [
+    93989,
+    1
+   ]
+  },
+  {
+   "pool_key": 390032,
+   "item_no": 13,
+   "static_reward_raw": [
+    240173,
+    1
+   ]
+  },
+  {
+   "pool_key": 390034,
+   "item_no": 0,
+   "static_reward_raw": [
+    93000,
+    1
+   ]
+  },
+  {
+   "pool_key": 390034,
+   "item_no": 1,
+   "static_reward_raw": [
+    93001,
+    1
+   ]
+  },
+  {
+   "pool_key": 390034,
+   "item_no": 2,
+   "static_reward_raw": [
+    93002,
+    1
+   ]
+  },
+  {
+   "pool_key": 390034,
+   "item_no": 4,
+   "static_reward_raw": [
+    93004,
+    1
+   ]
+  },
+  {
+   "pool_key": 390034,
+   "item_no": 5,
+   "static_reward_raw": [
+    93005,
+    1
+   ]
+  },
+  {
+   "pool_key": 390035,
+   "item_no": 7,
+   "static_reward_raw": [
+    240177,
+    1
+   ]
+  },
+  {
+   "pool_key": 390036,
+   "item_no": 9,
+   "static_reward_raw": [
+    240185,
+    1
+   ]
+  },
+  {
+   "pool_key": 390036,
+   "item_no": 10,
+   "static_reward_raw": [
+    240186,
+    1
+   ]
+  },
+  {
+   "pool_key": 390036,
+   "item_no": 11,
+   "static_reward_raw": [
+    240187,
+    1
+   ]
+  },
+  {
+   "pool_key": 390036,
+   "item_no": 12,
+   "static_reward_raw": [
+    240188,
+    1
+   ]
+  },
+  {
+   "pool_key": 390038,
+   "item_no": 16,
+   "static_reward_raw": [
+    240197,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 0,
+   "static_reward_raw": [
+    240204,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 4,
+   "static_reward_raw": [
+    240205,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 10,
+   "static_reward_raw": [
+    240208,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 11,
+   "static_reward_raw": [
+    240206,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 12,
+   "static_reward_raw": [
+    240207,
+    1
+   ]
+  },
+  {
+   "pool_key": 390042,
+   "item_no": 14,
+   "static_reward_raw": [
+    240209,
+    1
+   ]
+  },
+  {
+   "pool_key": 390043,
+   "item_no": 5,
+   "static_reward_raw": [
+    240224,
+    1
+   ]
+  },
+  {
+   "pool_key": 390043,
+   "item_no": 7,
+   "static_reward_raw": [
+    240225,
+    1
+   ]
+  },
+  {
+   "pool_key": 390043,
+   "item_no": 8,
+   "static_reward_raw": [
+    240226,
+    1
+   ]
+  },
+  {
+   "pool_key": 390043,
+   "item_no": 16,
+   "static_reward_raw": [
+    240227,
+    1
+   ]
+  },
+  {
+   "pool_key": 390046,
+   "item_no": 9,
+   "static_reward_raw": [
+    240233,
+    1
+   ]
+  },
+  {
+   "pool_key": 390046,
+   "item_no": 13,
+   "static_reward_raw": [
+    240234,
+    1
+   ]
+  },
+  {
+   "pool_key": 390046,
+   "item_no": 14,
+   "static_reward_raw": [
+    240235,
+    1
+   ]
+  },
+  {
+   "pool_key": 390053,
+   "item_no": 0,
+   "static_reward_raw": [
+    92991,
+    1
+   ]
+  },
+  {
+   "pool_key": 390053,
+   "item_no": 1,
+   "static_reward_raw": [
+    92990,
+    1
+   ]
+  },
+  {
+   "pool_key": 390053,
+   "item_no": 2,
+   "static_reward_raw": [
+    92995,
+    1
+   ]
+  },
+  {
+   "pool_key": 390059,
+   "item_no": 0,
+   "static_reward_raw": [
+    193035,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 0,
+   "static_reward_raw": [
+    93009,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 1,
+   "static_reward_raw": [
+    93010,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 2,
+   "static_reward_raw": [
+    93008,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 3,
+   "static_reward_raw": [
+    93011,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 4,
+   "static_reward_raw": [
+    93012,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 5,
+   "static_reward_raw": [
+    93013,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 8,
+   "static_reward_raw": [
+    93014,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 11,
+   "static_reward_raw": [
+    93015,
+    1
+   ]
+  },
+  {
+   "pool_key": 390060,
+   "item_no": 12,
+   "static_reward_raw": [
+    93016,
+    1
+   ]
+  },
+  {
+   "pool_key": 390079,
+   "item_no": 0,
+   "static_reward_raw": [
+    93298,
+    1
+   ]
+  },
+  {
+   "pool_key": 390079,
+   "item_no": 6,
+   "static_reward_raw": [
+    93302,
+    1
+   ]
+  },
+  {
+   "pool_key": 390079,
+   "item_no": 7,
+   "static_reward_raw": [
+    93303,
+    1
+   ]
+  },
+  {
+   "pool_key": 390084,
+   "item_no": 9,
+   "static_reward_raw": [
+    92671,
+    1
+   ]
+  },
+  {
+   "pool_key": 390084,
+   "item_no": 14,
+   "static_reward_raw": [
+    104896,
+    1
+   ]
+  },
+  {
+   "pool_key": 390084,
+   "item_no": 17,
+   "static_reward_raw": [
+    92626,
+    1
+   ]
+  },
+  {
+   "pool_key": 390085,
+   "item_no": 0,
+   "static_reward_raw": [
+    104150,
+    1
+   ]
+  },
+  {
+   "pool_key": 390085,
+   "item_no": 1,
+   "static_reward_raw": [
+    104154,
+    1
+   ]
+  },
+  {
+   "pool_key": 390085,
+   "item_no": 2,
+   "static_reward_raw": [
+    104148,
+    1
+   ]
+  },
+  {
+   "pool_key": 390085,
+   "item_no": 3,
+   "static_reward_raw": [
+    104152,
+    1
+   ]
+  },
+  {
+   "pool_key": 390086,
+   "item_no": 0,
+   "static_reward_raw": [
+    103018,
+    1
+   ]
+  },
+  {
+   "pool_key": 390086,
+   "item_no": 1,
+   "static_reward_raw": [
+    103021,
+    1
+   ]
+  },
+  {
+   "pool_key": 390086,
+   "item_no": 2,
+   "static_reward_raw": [
+    103024,
+    1
+   ]
+  },
+  {
+   "pool_key": 390086,
+   "item_no": 3,
+   "static_reward_raw": [
+    103027,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 0,
+   "static_reward_raw": [
+    103018,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 1,
+   "static_reward_raw": [
+    103019,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 2,
+   "static_reward_raw": [
+    103020,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 3,
+   "static_reward_raw": [
+    103021,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 4,
+   "static_reward_raw": [
+    103022,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 5,
+   "static_reward_raw": [
+    103023,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 6,
+   "static_reward_raw": [
+    103024,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 7,
+   "static_reward_raw": [
+    103025,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 8,
+   "static_reward_raw": [
+    103026,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 9,
+   "static_reward_raw": [
+    103027,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 10,
+   "static_reward_raw": [
+    103028,
+    1
+   ]
+  },
+  {
+   "pool_key": 390087,
+   "item_no": 11,
+   "static_reward_raw": [
+    103029,
+    1
+   ]
+  },
+  {
+   "pool_key": 390091,
+   "item_no": 9,
+   "static_reward_raw": [
+    240235,
+    1
+   ]
+  },
+  {
+   "pool_key": 390091,
+   "item_no": 16,
+   "static_reward_raw": [
+    240234,
+    1
+   ]
+  },
+  {
+   "pool_key": 390092,
+   "item_no": 9,
+   "static_reward_raw": [
+    240235,
+    1
+   ]
+  },
+  {
+   "pool_key": 390092,
+   "item_no": 16,
+   "static_reward_raw": [
+    240234,
+    1
+   ]
+  },
+  {
+   "pool_key": 390095,
+   "item_no": 1,
+   "static_reward_raw": [
+    95887,
+    1
+   ]
+  },
+  {
+   "pool_key": 390096,
+   "item_no": 1,
+   "static_reward_raw": [
+    95887,
+    1
+   ]
+  },
+  {
+   "pool_key": 390101,
+   "item_no": 2,
+   "static_reward_raw": [
+    240204,
+    1
+   ]
+  },
+  {
+   "pool_key": 390101,
+   "item_no": 4,
+   "static_reward_raw": [
+    240205,
+    1
+   ]
+  },
+  {
+   "pool_key": 390101,
+   "item_no": 12,
+   "static_reward_raw": [
+    240209,
+    1
+   ]
+  },
+  {
+   "pool_key": 390102,
+   "item_no": 2,
+   "static_reward_raw": [
+    240204,
+    1
+   ]
+  },
+  {
+   "pool_key": 390102,
+   "item_no": 4,
+   "static_reward_raw": [
+    240205,
+    1
+   ]
+  },
+  {
+   "pool_key": 390102,
+   "item_no": 12,
+   "static_reward_raw": [
+    240209,
+    1
+   ]
+  },
+  {
+   "pool_key": 390108,
+   "item_no": 5,
+   "static_reward_raw": [
+    240224,
+    1
+   ]
+  },
+  {
+   "pool_key": 390108,
+   "item_no": 7,
+   "static_reward_raw": [
+    240225,
+    1
+   ]
+  },
+  {
+   "pool_key": 390108,
+   "item_no": 8,
+   "static_reward_raw": [
+    240226,
+    1
+   ]
+  },
+  {
+   "pool_key": 390108,
+   "item_no": 13,
+   "static_reward_raw": [
+    240227,
+    1
+   ]
+  },
+  {
+   "pool_key": 390113,
+   "item_no": 12,
+   "static_reward_raw": [
+    95923,
+    1
+   ]
+  },
+  {
+   "pool_key": 390114,
+   "item_no": 12,
+   "static_reward_raw": [
+    95923,
+    1
+   ]
+  },
+  {
+   "pool_key": 390116,
+   "item_no": 6,
+   "static_reward_raw": [
+    240175,
+    1
+   ]
+  },
+  {
+   "pool_key": 390116,
+   "item_no": 7,
+   "static_reward_raw": [
+    240176,
+    1
+   ]
+  },
+  {
+   "pool_key": 390124,
+   "item_no": 15,
+   "static_reward_raw": [
+    240173,
+    1
+   ]
+  },
+  {
+   "pool_key": 390125,
+   "item_no": 0,
+   "static_reward_raw": [
+    93000,
+    1
+   ]
+  },
+  {
+   "pool_key": 390125,
+   "item_no": 1,
+   "static_reward_raw": [
+    93001,
+    1
+   ]
+  },
+  {
+   "pool_key": 390125,
+   "item_no": 2,
+   "static_reward_raw": [
+    93002,
+    1
+   ]
+  },
+  {
+   "pool_key": 390125,
+   "item_no": 4,
+   "static_reward_raw": [
+    93004,
+    1
+   ]
+  },
+  {
+   "pool_key": 390125,
+   "item_no": 5,
+   "static_reward_raw": [
+    93005,
+    1
+   ]
+  },
+  {
+   "pool_key": 390127,
+   "item_no": 0,
+   "static_reward_raw": [
+    35114,
+    1
+   ]
+  },
+  {
+   "pool_key": 390128,
+   "item_no": 0,
+   "static_reward_raw": [
+    35117,
+    1
+   ]
+  },
+  {
+   "pool_key": 390129,
+   "item_no": 0,
+   "static_reward_raw": [
+    35118,
+    1
+   ]
+  },
+  {
+   "pool_key": 390131,
+   "item_no": 0,
+   "static_reward_raw": [
+    35306,
+    1
+   ]
+  },
+  {
+   "pool_key": 390132,
+   "item_no": 0,
+   "static_reward_raw": [
+    35309,
+    1
+   ]
+  },
+  {
+   "pool_key": 390133,
+   "item_no": 0,
+   "static_reward_raw": [
+    35310,
+    1
+   ]
+  },
+  {
+   "pool_key": 390135,
+   "item_no": 0,
+   "static_reward_raw": [
+    35354,
+    1
+   ]
+  },
+  {
+   "pool_key": 390136,
+   "item_no": 0,
+   "static_reward_raw": [
+    35357,
+    1
+   ]
+  },
+  {
+   "pool_key": 390137,
+   "item_no": 0,
+   "static_reward_raw": [
+    35358,
+    1
+   ]
+  },
+  {
+   "pool_key": 390139,
+   "item_no": 0,
+   "static_reward_raw": [
+    35402,
+    1
+   ]
+  },
+  {
+   "pool_key": 390140,
+   "item_no": 0,
+   "static_reward_raw": [
+    35405,
+    1
+   ]
+  },
+  {
+   "pool_key": 390141,
+   "item_no": 0,
+   "static_reward_raw": [
+    35406,
+    1
+   ]
+  },
+  {
+   "pool_key": 390143,
+   "item_no": 0,
+   "static_reward_raw": [
+    35450,
+    1
+   ]
+  },
+  {
+   "pool_key": 390144,
+   "item_no": 0,
+   "static_reward_raw": [
+    35453,
+    1
+   ]
+  },
+  {
+   "pool_key": 390145,
+   "item_no": 0,
+   "static_reward_raw": [
+    35454,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 0,
+   "static_reward_raw": [
+    103239,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 1,
+   "static_reward_raw": [
+    103238,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 2,
+   "static_reward_raw": [
+    103237,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 3,
+   "static_reward_raw": [
+    103077,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 4,
+   "static_reward_raw": [
+    103076,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 5,
+   "static_reward_raw": [
+    103075,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 6,
+   "static_reward_raw": [
+    103080,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 7,
+   "static_reward_raw": [
+    103079,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 8,
+   "static_reward_raw": [
+    103078,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 9,
+   "static_reward_raw": [
+    103203,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 10,
+   "static_reward_raw": [
+    103202,
+    1
+   ]
+  },
+  {
+   "pool_key": 390147,
+   "item_no": 11,
+   "static_reward_raw": [
+    103201,
+    1
+   ]
+  },
+  {
+   "pool_key": 390149,
+   "item_no": 0,
+   "static_reward_raw": [
+    35162,
+    1
+   ]
+  }
+ ],
+ "evidence_ref": [
+  "artifacts/active/lottery/LOTTERY_REWARD_TARGETS_audit.json"
+ ],
+ "upgraded_in_v1_1": 2427,
+ "upgraded_detail": {
+  "recipe": 2385,
+  "reward_pool": 38,
+  "space_data": 4
+ },
+ "bucket_counts": {
+  "unresolved_no_membership": 1635,
+  "ambiguous_recipe+reward_pool": 30,
+  "verified_static_item_target": 0
+ },
+ "note": "1,635 无任何已解 namespace 命中；30 多命中（recipe+reward_pool）保持 ambiguous；不要求归零"
+}

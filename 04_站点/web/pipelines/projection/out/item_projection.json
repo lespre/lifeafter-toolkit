@@ -1,0 +1,20 @@
+{
+ "board": "item_master_active",
+ "domain": "item",
+ "projection_of": "artifacts/active/item/ITEM_MASTER.jsonl",
+ "state_summary": {
+  "rows": 30251,
+  "namespaces": {
+   "belt_chip": 54,
+   "common_item": 29449,
+   "gift_data": 748
+  },
+  "name_status": {
+   "verified": 30251
+  }
+ },
+ "residual": {
+  "unresolved_namespace_ids": 770
+ },
+ "items": null
+}

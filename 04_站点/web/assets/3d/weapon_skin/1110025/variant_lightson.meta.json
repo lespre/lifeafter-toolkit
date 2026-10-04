@@ -1,0 +1,26 @@
+{
+ "label": "lightson",
+ "generated_at": "2026-09-20 13:38:38",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "03e9768e8b97dfb2",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "fa73183d26815230",
+ "patch": {
+  "note": "点亮查看器自带缺省 rig（hemisphere 1.35 / key 2.2 / fill 0.75）——不改任何数值系数，只是把被置 0 的灯恢复成代码缺省",
+  "viewer": {
+   "hemisphere_intensity": 1.35,
+   "key_intensity": 2.2,
+   "fill_intensity": 0.75
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "fill_intensity",
+   "hemisphere_intensity",
+   "key_intensity"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_lightson.json"
+}

@@ -1,0 +1,95 @@
+{
+ "name": "indoor",
+ "logical": "common\\env_map\\indoor.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 11681,
+ "off": 83274376,
+ "comp": 195301,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 11681,
+   "base": 1751823836,
+   "off": 83274376,
+   "comp": 195301,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "known_verified"
+ ],
+ "sha256": "a464190b0febb360bd88f528cf9a30e79eb17ef2539d1c01f95d5f7ff13ae249",
+ "sha16": "a464190b0febb360",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f0_m0.png",
+   "bytes": 17739,
+   "rgba_sha16": "9f055e1fc7d964d2",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f1_m0.png",
+   "bytes": 16460,
+   "rgba_sha16": "2cd062544e0d85e0",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f2_m0.png",
+   "bytes": 22890,
+   "rgba_sha16": "21eebdd4de370126",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f3_m0.png",
+   "bytes": 390,
+   "rgba_sha16": "3d3e2b7e99ddc808",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f4_m0.png",
+   "bytes": 18617,
+   "rgba_sha16": "9b204db6b0a38711",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\indoor\\faces\\indoor_f5_m0.png",
+   "bytes": 16274,
+   "rgba_sha16": "064143907790fe9c",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

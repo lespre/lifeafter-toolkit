@@ -1,0 +1,4642 @@
+{
+ "schema_version": 1,
+ "skin_id": "1110152",
+ "title": "灵态诱导",
+ "poster": "poster.webp",
+ "default_state": "default",
+ "default_camera": "game_reference",
+ "states": [
+  {
+   "id": "default",
+   "label": "灵态诱导",
+   "model": "model.glb",
+   "rotation_note": "按用户目视确认：正面相机需 +180°（绕视线轴）才与卡片同姿势",
+   "material_layers": {
+    "global_rig": {
+     "env_intensity": 1.4,
+     "exposure": 1.75,
+     "tone_mapping": "ACESFilmic",
+     "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+     "emissive_gain": 0.25,
+     "bloom": {
+      "strength": 0.55,
+      "radius": 0.55,
+      "threshold": 0.8,
+      "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+     }
+    }
+   }
+  }
+ ],
+ "camera_presets": [
+  {
+   "label": "game_reference",
+   "position": [
+    -14.6129,
+    -2.2747,
+    -1.2894
+   ],
+   "target": [
+    0.0602,
+    -0.1842,
+    0.0986
+   ],
+   "up": [
+    -0.8246,
+    -0.5572,
+    -0.0982
+   ],
+   "distance": 14.8862,
+   "fov": 34,
+   "fit_span": 0.27,
+   "exact": true,
+   "basis": "用户实调参数（position/target/up/distance 原样保留）；左右转为世界竖直轴纯自转，up 随相机同步旋转以保持画面滚转恒定",
+   "state": "default"
+  },
+  {
+   "id": "front",
+   "label": "正面（默认）",
+   "position": [
+    -9.0,
+    0.0,
+    0.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "q34",
+   "label": "3/4 视角",
+   "position": [
+    -4.5,
+    1.7,
+    5.9
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "side",
+   "label": "侧面",
+   "position": [
+    0.0,
+    0.6,
+    9.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  }
+ ],
+ "background": "#071015",
+ "exposure": 1.0,
+ "fidelity": {
+  "material": "approximate",
+  "sfx": "none"
+ },
+ "effects": {
+  "schema": "lifeafter-weapon-skin-effects/3",
+  "note": "节点/颜色/时序/半径/blend 全部来自源 .sfx（fx_skin_1012_009_idle_01.sfx）；贴图为内容特征候选（非源级）。",
+  "skin": {
+   "primary": "skin_1012_009",
+   "secondary": null,
+   "display_name": "灵态诱导"
+  },
+  "status": "partial",
+  "status_reason": "帧身份：c159 的 FxGroup 子引用（fx_skin_1012_009_idle_part_01/02.sfx）与 GPK 裸 XML 帧 f76037 的 SfxName 完全一致，且类名表 {Sprite,Dummy,ParticleRes,Model} 与其标签分布一致、无 ParticleSystem ⇒ 源级同源（非候选）。贴图：fid 不在 idx_hash、2844 路径变体 0 命中 ⇒ 内容特征候选。",
+  "loop_seconds": 2.0,
+  "assets_base": "",
+  "textures_dir": "sfx/tex/",
+  "color_format": "ColorFrame Value=(A,R,G,B)，alpha 由 SmoothStart/Stop 调制",
+  "blend_mode_map": {
+   "0": "normal",
+   "2": "additive",
+   "5": "additive",
+   "8": "additive",
+   "note": "8/5 的精确语义未直接验证，按加法处理（approximate）"
+  },
+  "attach": {
+   "mode": "binding_fx_idle_01",
+   "anchor": [
+    0.0279,
+    0.7798,
+    -0.0855
+   ],
+   "evidence": "源级：weapon/002729.c159（含 skin_1012_009 与 fx_idle_01）中 fx_idle_01 名后 @1143 的 16 float 列主序仿射，平移量 [0.0279, 0.7798, -0.0855]；FX XML 侧无骨骼挂点（BindBonesHead/SelBindBonesIdx 见逐节点 source_flags）。证据文件：FXSRC_build_1110152.json",
+   "matrix_colmajor": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0279,
+    0.7798,
+    -0.0855,
+    1.0
+   ],
+   "per_node_offset": {
+    "L_空特效": [
+     0.0,
+     0.747057,
+     5.884274
+    ],
+    "M_旋转光环": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "M_旋转光环_1": [
+     0.0,
+     0.0,
+     0.12
+    ],
+    "H_g_枪口glow": [
+     0.0,
+     0.0,
+     0.083499
+    ],
+    "H_ParticleRes": [
+     0.0,
+     0.0,
+     0.103701
+    ],
+    "H_P_枪托": [
+     0.0,
+     0.168903,
+     -0.949324
+    ],
+    "H_P_枪托2": [
+     0.0,
+     0.168903,
+     -2.865263
+    ],
+    "L_空特效_弹夹": [
+     0.0,
+     -0.761159,
+     1.004193
+    ],
+    "M_旋转光环_2": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_m_弹夹圈": [
+     0.0,
+     0.02,
+     0.0
+    ],
+    "H_m_弹夹圈_1": [
+     0.0,
+     -0.466947,
+     0.0
+    ],
+    "H_m_枪托喷出": [
+     0.0,
+     0.149322,
+     -1.890825
+    ],
+    "H_m_枪口圈": [
+     0.0,
+     0.1,
+     -0.05
+    ],
+    "H_m_烟雾": [
+     0.0,
+     0.1,
+     0.0
+    ],
+    "L_m_电路": [
+     0.0,
+     0.1,
+     -0.07
+    ],
+    "H_m_数据流": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "L_m_数据流_扰动": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_流光": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_数据流glow": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "M_m_数据流_3": [
+     0.0,
+     0.1,
+     0.0
+    ],
+    "H_m_数据流glow_1": [
+     0.0,
+     0.08,
+     -0.1
+    ],
+    "M_m_飘带": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_飘带glow": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_飘带_1": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_飘带_3": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_飘带_3_1": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "H_m_飘带glow_1": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "M_m_八卦": [
+     0.0,
+     1.714684,
+     2.25599
+    ],
+    "L_空特效_中心": [
+     0.0,
+     0.616055,
+     1.644598
+    ],
+    "L_空特效_a": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_m_外圈": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_m_圈3": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_空特效_b": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "H_m_圈5": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_空特效_b_1": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "L_m_圈4": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "M_m_扩散": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "M_m_glow": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "M_m_扩散_1": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "H_ParticleRes_1": [
+     0.0,
+     0.787212,
+     6.246251
+    ]
+   },
+   "unresolved": "同 c159 内其它 socket 的 4×4 对齐未逐一锁死（本皮肤只用 fx_idle_01）。"
+  },
+  "texture_binding_status": "candidate_content_feature_not_source",
+  "texture_binding_status_note": "3 张贴图按内容特征从 effect 贴图池（875 dds + _pool_features.json）选取并规范解码为 RGBA PNG；源级精确绑定不可得：fid 不出现在 effect.idx 的 idx_hash；2844 条路径变体 × fid 索引 0 命中；项目 toolkit_core/texture_extractor.py 自述匿名 gpk 无路径 fid。选择依据见 texture_selection。",
+  "texture_selection": {
+   "tex_ring_keji_hgz01_02.tga": {
+    "why": "旋转光环贴图：环状（中心低、环带亮）",
+    "pool_file": "a74377f1fba7defe.dds",
+    "features": {
+     "rings": [
+      0.308,
+      0.635,
+      0.912,
+      0.995
+     ],
+     "edge": 0.0542,
+     "periodic": 0.537,
+     "frac_bright": 0.926,
+     "center": 0.12,
+     "corner": 1.0
+    },
+    "top5": [
+     {
+      "file": "a74377f1fba7defe.dds",
+      "score": 0.6196
+     },
+     {
+      "file": "345dd407ae890e2d.dds",
+      "score": 0.5967
+     },
+     {
+      "file": "b1869c7c9f501014.dds",
+      "score": 0.5748
+     },
+     {
+      "file": "455420644534d2f0.dds",
+      "score": 0.4991
+     },
+     {
+      "file": "8804a8ddebcd6755.dds",
+      "score": 0.4327
+     }
+    ],
+    "png": "a74377f1fba7defe.png"
+   },
+   "heitiane_04_lmq_djs.tga": {
+    "why": "第二旋转光环：环状",
+    "pool_file": "345dd407ae890e2d.dds",
+    "features": {
+     "rings": [
+      0.0,
+      0.392,
+      0.966,
+      1.0
+     ],
+     "edge": 0.0144,
+     "periodic": 0.428,
+     "frac_bright": 0.856,
+     "center": 0.0,
+     "corner": 1.0
+    },
+    "top5": [
+     {
+      "file": "345dd407ae890e2d.dds",
+      "score": 0.5967
+     },
+     {
+      "file": "b1869c7c9f501014.dds",
+      "score": 0.5748
+     },
+     {
+      "file": "455420644534d2f0.dds",
+      "score": 0.4991
+     },
+     {
+      "file": "8804a8ddebcd6755.dds",
+      "score": 0.4327
+     },
+     {
+      "file": "1c7ec069551d9545.dds",
+      "score": 0.4226
+     }
+    ],
+    "png": "345dd407ae890e2d.png"
+   },
+   "glow25.tga": {
+    "why": "枪口辉光：径向渐变、中心亮",
+    "pool_file": "2ea72d9f3d7c3ab2.dds",
+    "features": {
+     "rings": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "edge": 0.0,
+     "periodic": 0.0,
+     "frac_bright": 1.0,
+     "center": 1.0,
+     "corner": 1.0
+    },
+    "top5": [
+     {
+      "file": "2ea72d9f3d7c3ab2.dds",
+      "score": 1.3
+     },
+     {
+      "file": "bf887707a4496fe3.dds",
+      "score": 1.3
+     },
+     {
+      "file": "c63f1436228725ad.dds",
+      "score": 1.3
+     },
+     {
+      "file": "3eb4edfb85276f07.dds",
+      "score": 1.3
+     },
+     {
+      "file": "07ebe6c048506c81.dds",
+      "score": 1.3
+     }
+    ],
+    "png": "2ea72d9f3d7c3ab2.png"
+   }
+  },
+  "frame_identity_evidence": {
+   "source_path_exact": "effect\\fx\\weapon\\skin\\skin_1012_009\\fx_skin_1012_009_idle_01.sfx",
+   "fid": "205B2915C682DB02",
+   "fpk": "048.fpk entry 27222 @155777492 (packed 3726 / raw 33093, zstd)",
+   "sha16": "33469786ecfaaf82",
+   "xml_twin_frame": "effect_01.gpk frame 76037 (size 78114)",
+   "cross_check": "c159 子引用 {idle_part_01, idle_part_02} == f76037 SfxName；类名表 vs 标签分布一致"
+  },
+  "unsupported": [
+   "Model 节点（26 个）：模型特效，网页适配器不渲染",
+   "ParticleRes（4 个）：粒子资源引用，适配器不渲染",
+   "Dummy（6 个）：容器节点"
+  ],
+  "pending": [
+   "贴图=内容特征候选（非源级）",
+   "ParticleSystem 节点：本 fx 无"
+  ],
+  "sfx_source": {
+   "logical_path": "effect\\fx\\weapon\\skin\\skin_1012_009\\fx_skin_1012_009_idle_01.sfx",
+   "sha16": "33469786ecfaaf82",
+   "bytes": 33093,
+   "encoding": "c159-FxGroup(容器内) / 裸GBK XML(GPK同源帧)",
+   "container": "XML FxGroup"
+  },
+  "nodes": [
+   {
+    "name": "L_空特效",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     0.747057,
+     5.884274
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.05
+      ]
+     },
+     {
+      "time": 0.5034,
+      "value": [
+       1.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       1.05
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": true,
+     "track_scale_len": "1.500",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "M_旋转光环",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": 1.0,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\ring\\tex_ring_keji_hgz01_02.tga",
+    "texture_candidate": "a74377f1fba7defe.png",
+    "texture_binding": "candidate_content_feature_not_source",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 0.5,
+      "value": [
+       236.0,
+       23.0,
+       177.0,
+       255.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "candidate",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "source_or_absent",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent"
+    },
+    "renderable_by_adapter": true
+   },
+   {
+    "name": "M_旋转光环_1",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.12
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": 0.82,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\special\\heitiane_04_lmq_djs.tga",
+    "texture_candidate": "345dd407ae890e2d.png",
+    "texture_binding": "candidate_content_feature_not_source",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 0.5,
+      "value": [
+       247.0,
+       0.0,
+       123.0,
+       255.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "candidate",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "source_or_absent",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent"
+    },
+    "renderable_by_adapter": true
+   },
+   {
+    "name": "H_g_枪口glow",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.083499
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": 3.0,
+    "blend_mode": 2,
+    "texture": "effect\\textures\\glow\\glow25.tga",
+    "texture_candidate": "2ea72d9f3d7c3ab2.png",
+    "texture_binding": "candidate_content_feature_not_source",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 1.0,
+      "value": [
+       67.0,
+       30.0,
+       232.0,
+       255.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "candidate",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "source_or_absent",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent"
+    },
+    "renderable_by_adapter": true
+   },
+   {
+    "name": "H_ParticleRes",
+    "tag": "ParticleRes",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.103701
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "H_P_枪托",
+    "tag": "ParticleRes",
+    "pos_offset": [
+     0.0,
+     0.168903,
+     -0.949324
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "H_P_枪托2",
+    "tag": "ParticleRes",
+    "pos_offset": [
+     0.0,
+     0.168903,
+     -2.865263
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "L_空特效_弹夹",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     -0.761159,
+     1.004193
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,-0.411,0.912,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "M_旋转光环_2",
+    "tag": "Sprite",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": 0.8,
+    "blend_mode": 8,
+    "texture": "effect\\textures\\ring\\tex_ring_keji_hgz01_02.tga",
+    "texture_candidate": "a74377f1fba7defe.png",
+    "texture_binding": "candidate_content_feature_not_source",
+    "is_sprite_sheet": true,
+    "color_track": [
+     {
+      "time": 0.5,
+      "value": [
+       236.0,
+       23.0,
+       177.0,
+       255.0
+      ]
+     }
+    ],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     }
+    ],
+    "smooth_stop": [
+     {
+      "time": 0.0,
+      "value": [
+       255.0,
+       255.0,
+       255.0,
+       255.0
+      ]
+     },
+     {
+      "time": 1.0,
+      "value": [
+       255.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "candidate",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "source_or_absent",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent"
+    },
+    "renderable_by_adapter": true
+   },
+   {
+    "name": "L_m_弹夹圈",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.02,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_danxia_quan_hgz01_02.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.020000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_danxia_quan_hgz01_02.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0156,
+        "value": [
+         228.0,
+         0.0,
+         225.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_danxia_quan_hgz01_02.glb",
+      "mesh_fid": "7B78EAE376CD861E",
+      "mesh_frame": 103993,
+      "glb_sha16": "e179719e74295502",
+      "vertices": 264,
+      "faces": 256,
+      "bbox_span": [
+       -1.2838,
+       -0.7466,
+       -1.2838
+      ],
+      "gim_sha16": "16ce960ec4a124f4"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_danxia_quan_hgz01_02.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_弹夹圈_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     -0.466947,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.4
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": false,
+     "track_scale_len": "1.000",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "source: XML TrackScale",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_danxia_lg_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,-0.466947,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_danxia_lg_hgz01_01.glb",
+     "tracks": {
+      "scale_XScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.4
+        ]
+       }
+      ],
+      "scale_YScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "scale_ZScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.4
+        ]
+       }
+      ],
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         5.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0156,
+        "value": [
+         228.0,
+         0.0,
+         225.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_danxia_lg_hgz01_01.glb",
+      "mesh_fid": "001A73CCE774A075",
+      "mesh_frame": 90,
+      "glb_sha16": "86cc3612bb3299ae",
+      "vertices": 58,
+      "faces": 56,
+      "bbox_span": [
+       -0.9007,
+       -1.0933,
+       -0.9007
+      ],
+      "gim_sha16": "8405fc57b4c6ce35"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_danxia_lg_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_枪托喷出",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.149322,
+     -1.890825
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_qt_penqi_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.149322,-1.890825",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_qt_penqi_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         3.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0156,
+        "value": [
+         228.0,
+         0.0,
+         225.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_qt_penqi_hgz01_01.glb",
+      "mesh_fid": "90C12175231EBFFC",
+      "mesh_frame": 121946,
+      "glb_sha16": "f4c56c6c0a6679c2",
+      "vertices": 116,
+      "faces": 112,
+      "bbox_span": [
+       -0.586,
+       -0.586,
+       -2.4729
+      ],
+      "gim_sha16": "2cf0adf648b21253"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_qt_penqi_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_枪口圈",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.05
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_qkqt_quan_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.050000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_qkqt_quan_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0156,
+        "value": [
+         228.0,
+         0.0,
+         225.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_qkqt_quan_hgz01_01.glb",
+      "mesh_fid": "BD6503360DA017F5",
+      "mesh_frame": 159485,
+      "glb_sha16": "0999a7c1b3165a74",
+      "vertices": 408,
+      "faces": 396,
+      "bbox_span": [
+       -1.9122,
+       -2.2031,
+       -9.0763
+      ],
+      "gim_sha16": "cbb422e1c09086e9"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_qkqt_quan_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "H_m_烟雾",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_fw_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_fw_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.25,
+        "value": [
+         225.0,
+         17.0,
+         239.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_fw_hgz01_01.glb",
+      "mesh_fid": "26CF66A7281D5411",
+      "mesh_frame": 32633,
+      "glb_sha16": "9221a24d344d7772",
+      "vertices": 80,
+      "faces": 40,
+      "bbox_span": [
+       -2.272,
+       -4.3143,
+       -8.4073
+      ],
+      "gim_sha16": "6229579ea08b331e"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_fw_hgz01_01.gim",
+      "offset": 175,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "L_m_电路",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.07
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dianlu_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.100000,-0.070000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dianlu_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.125,
+        "value": [
+         202.0,
+         38.0,
+         215.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dianlu_hgz01_01.glb",
+      "mesh_fid": "02E6E992AA584F86",
+      "mesh_frame": 2412,
+      "glb_sha16": "5474129de79bf6dc",
+      "vertices": 32,
+      "faces": 16,
+      "bbox_span": [
+       -1.5993,
+       -0.66,
+       -5.4306
+      ],
+      "gim_sha16": "97b0b2128497ea72"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dianlu_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_数据流",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 2.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_shujuliu_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "2.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_shujuliu_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         15.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         229.0,
+         17.0,
+         239.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 5,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_shujuliu_hgz01_01.glb",
+      "mesh_fid": "493579B8A43337F7",
+      "mesh_frame": 61836,
+      "glb_sha16": "010b1dac85ead5fd",
+      "vertices": 128,
+      "faces": 64,
+      "bbox_span": [
+       -2.9559,
+       -3.2506,
+       -9.4026
+      ],
+      "gim_sha16": "7bdf53b925408ba7"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_shujuliu_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "L_m_数据流_扰动",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 2.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_shujuliu_raodong_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "2.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_shujuliu_raodong_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         15.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         229.0,
+         17.0,
+         239.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 6,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_shujuliu_raodong_hgz01_01.glb",
+      "mesh_fid": "6A8BFAE64ACE1095",
+      "mesh_frame": 89701,
+      "glb_sha16": "18bc75edb04b405f",
+      "vertices": 128,
+      "faces": 64,
+      "bbox_span": [
+       -2.9559,
+       -3.2506,
+       -9.4026
+      ],
+      "gim_sha16": "7bdf53b925408ba7"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_shujuliu_raodong_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_流光",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_liuguang_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_liuguang_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         229.0,
+         17.0,
+         239.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_liuguang_hgz01_01.glb",
+      "mesh_fid": "3640E2638F7E512A",
+      "mesh_frame": 45740,
+      "glb_sha16": "b2cd1c3e88e70a4e",
+      "vertices": 52,
+      "faces": 26,
+      "bbox_span": [
+       -2.6106,
+       -3.5506,
+       -9.8043
+      ],
+      "gim_sha16": "e38c3ac9b425812d"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_liuguang_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "H_m_数据流glow",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_shujuliu_glow_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_shujuliu_glow_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         5.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.125,
+        "value": [
+         213.0,
+         19.0,
+         137.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_shujuliu_glow_hgz01_01.glb",
+      "mesh_fid": "7D84CE4C7A9497A9",
+      "mesh_frame": 105708,
+      "glb_sha16": "4de7051156e20d96",
+      "vertices": 128,
+      "faces": 64,
+      "bbox_span": [
+       -2.9559,
+       -3.2506,
+       -9.4026
+      ],
+      "gim_sha16": "7ed7f33c9a9b0655"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_shujuliu_glow_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "M_m_数据流_3",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_shujuliu_hou_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.100000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_shujuliu_hou_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         8.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         229.0,
+         17.0,
+         239.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_shujuliu_hou_hgz01_01.glb",
+      "mesh_fid": "B32FCCE37B5D4390",
+      "mesh_frame": 151001,
+      "glb_sha16": "ae7c74c4d9cd0aa7",
+      "vertices": 32,
+      "faces": 16,
+      "bbox_span": [
+       -0.3735,
+       -2.4988,
+       -4.2693
+      ],
+      "gim_sha16": "b4741c9a57f04f11"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_shujuliu_hou_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_数据流glow_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.08,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_shujuliu_hou_glow_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.080000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_shujuliu_hou_glow_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.125,
+        "value": [
+         213.0,
+         19.0,
+         137.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_shujuliu_hou_glow_hgz01_01.glb",
+      "mesh_fid": "A0F3E1BC6D881047",
+      "mesh_frame": 135633,
+      "glb_sha16": "36b440b1fc9231b1",
+      "vertices": 32,
+      "faces": 16,
+      "bbox_span": [
+       -0.3735,
+       -2.4988,
+       -4.2693
+      ],
+      "gim_sha16": "68218bd14f2c7e14"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_shujuliu_hou_glow_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "M_m_飘带",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0156,
+        "value": [
+         225.0,
+         77.0,
+         222.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_hgz01_01.glb",
+      "mesh_fid": "F7610B807D4ED5CD",
+      "mesh_frame": 208364,
+      "glb_sha16": "9d642ec06876fc5c",
+      "vertices": 272,
+      "faces": 384,
+      "bbox_span": [
+       -2.9888,
+       -1.5869,
+       -2.3205
+      ],
+      "gim_sha16": "58312b5c57da8387"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "H_m_飘带glow",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_glow_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_glow_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0078,
+        "value": [
+         221.0,
+         7.0,
+         188.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_glow_hgz01_01.glb",
+      "mesh_fid": "560204C94FA97237",
+      "mesh_frame": 72441,
+      "glb_sha16": "ad03452f06113a88",
+      "vertices": 136,
+      "faces": 128,
+      "bbox_span": [
+       -2.9888,
+       -1.5869,
+       -2.3205
+      ],
+      "gim_sha16": "f88e1a92bd52066e"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_glow_hgz01_01.gim",
+      "offset": 175,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "H_m_飘带_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_hgz01_02.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_hgz01_02.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0039,
+        "value": [
+         232.0,
+         122.0,
+         246.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_hgz01_02.glb",
+      "mesh_fid": "CF28B43074D3D014",
+      "mesh_frame": 174229,
+      "glb_sha16": "0fffc396bda7f3c9",
+      "vertices": 140,
+      "faces": 132,
+      "bbox_span": [
+       -2.9669,
+       -1.5869,
+       -2.3683
+      ],
+      "gim_sha16": "c8b029cd5d5c242d"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_hgz01_02.gim",
+      "offset": 175,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "H_m_飘带_3",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_hgz01_03.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_hgz01_03.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         3.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0078,
+        "value": [
+         228.0,
+         255.0,
+         203.0,
+         82.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_hgz01_03.glb",
+      "mesh_fid": "01D710A64F077FD3",
+      "mesh_frame": 1533,
+      "glb_sha16": "95514a073d97e5c6",
+      "vertices": 136,
+      "faces": 129,
+      "bbox_span": [
+       -3.8946,
+       -1.9789,
+       -2.5953
+      ],
+      "gim_sha16": "3f5be34bcca655c2"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_hgz01_03.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e640054616e67656e74456e6162"
+     }
+    }
+   },
+   {
+    "name": "H_m_飘带_3_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=另行 absent",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_hgz01_03_pt.gim",
+     "MtlIdx": [
+      164,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_hgz01_03_pt.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {},
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 1,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_hgz01_03_pt.glb",
+      "mesh_fid": "40773AB5E2ED2CFC",
+      "mesh_frame": 54442,
+      "glb_sha16": "7d4f5798ef261968",
+      "vertices": 136,
+      "faces": 129,
+      "bbox_span": [
+       -3.8946,
+       -1.9789,
+       -2.5953
+      ],
+      "gim_sha16": "e270bef9246ab969"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_hgz01_03_pt.gim",
+      "offset": 134,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e6400a400000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "H_m_飘带glow_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.1,
+     -0.1
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_piaodai_glow_hgz01_02.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.100000,-0.100000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_piaodai_glow_hgz01_02.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.001,
+        "value": [
+         243.0,
+         255.0,
+         199.0,
+         97.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_piaodai_glow_hgz01_02.glb",
+      "mesh_fid": "B1E8DA97519F7E9B",
+      "mesh_frame": 149910,
+      "glb_sha16": "1ea50cd9c93ed33d",
+      "vertices": 136,
+      "faces": 129,
+      "bbox_span": [
+       -3.8946,
+       -1.9789,
+       -2.5953
+      ],
+      "gim_sha16": "62a1071ac6ba42c4"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_piaodai_glow_hgz01_02.gim",
+      "offset": 175,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "M_m_八卦",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     1.714684,
+     2.25599
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_bagua_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,1.714684,2.255990",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_bagua_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0625,
+        "value": [
+         225.0,
+         73.0,
+         182.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_bagua_hgz01_01.glb",
+      "mesh_fid": "AA98966C61D233F6",
+      "mesh_frame": 143655,
+      "glb_sha16": "6397e40b619b3b8e",
+      "vertices": 8,
+      "faces": 4,
+      "bbox_span": [
+       -0.7758,
+       -0.5677,
+       -0.5677
+      ],
+      "gim_sha16": "0b1f3122e7c4d9b4"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_bagua_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "L_空特效_中心",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     0.616055,
+     1.644598
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "L_空特效_a",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "L_m_外圈",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.0
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": false,
+     "track_scale_len": "1.000",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "source: XML TrackScale",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+     "tracks": {
+      "scale_XScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "scale_YScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.4
+        ]
+       }
+      ],
+      "scale_ZScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.4
+        ]
+       }
+      ],
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         3.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0625,
+        "value": [
+         225.0,
+         73.0,
+         182.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 5,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+      "mesh_fid": "9F95CEA5444A6FBA",
+      "mesh_frame": 134473,
+      "glb_sha16": "606472f58737068c",
+      "vertices": 8,
+      "faces": 4,
+      "bbox_span": [
+       -1.1406,
+       -1.5591,
+       -1.5591
+      ],
+      "gim_sha16": "fffdc0897a43e360"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "L_m_圈3",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.15
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": false,
+     "track_scale_len": "1.000",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "source: XML TrackScale",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+     "tracks": {
+      "scale_XScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.15
+        ]
+       }
+      ],
+      "scale_YScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "scale_ZScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         3.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0625,
+        "value": [
+         225.0,
+         73.0,
+         182.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 6,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+      "mesh_fid": "9F95CEA5444A6FBA",
+      "mesh_frame": 134473,
+      "glb_sha16": "606472f58737068c",
+      "vertices": 8,
+      "faces": 4,
+      "bbox_span": [
+       -1.1406,
+       -1.5591,
+       -1.5591
+      ],
+      "gim_sha16": "fffdc0897a43e360"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "L_空特效_b",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "H_m_圈5",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.3
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": false,
+     "track_scale_len": "1.000",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "source: XML TrackScale",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+     "tracks": {
+      "scale_XScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.3
+        ]
+       }
+      ],
+      "scale_YScale": [
+       {
+        "time": 0.0,
+        "value": [
+         0.6
+        ]
+       }
+      ],
+      "scale_ZScale": [
+       {
+        "time": 0.0,
+        "value": [
+         0.6
+        ]
+       }
+      ],
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         2.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0312,
+        "value": [
+         228.0,
+         32.0,
+         180.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 6,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dafazhen_hgz01_01.glb",
+      "mesh_fid": "9F95CEA5444A6FBA",
+      "mesh_frame": 134473,
+      "glb_sha16": "606472f58737068c",
+      "vertices": 8,
+      "faces": 4,
+      "bbox_span": [
+       -1.1406,
+       -1.5591,
+       -1.5591
+      ],
+      "gim_sha16": "fffdc0897a43e360"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dafazhen_hgz01_01.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "L_空特效_b_1",
+    "tag": "Dummy",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 0.5,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   },
+   {
+    "name": "L_m_圈4",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [
+     {
+      "time": 0.0,
+      "value": [
+       1.1
+      ]
+     }
+    ],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {
+     "yz_copy_from_x": false,
+     "track_scale_len": "1.000",
+     "track_scale_cycle": "0"
+    },
+    "fixpoint": null,
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe', 'u_maintex_rotation_Keyframe']",
+     "TrackScale": "source: XML TrackScale",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dafazhen_hgz01_02.gim",
+     "MtlIdx": [
+      149,
+      0,
+      0
+     ],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dafazhen_hgz01_02.glb",
+     "tracks": {
+      "scale_XScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.1
+        ]
+       }
+      ],
+      "scale_YScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "scale_ZScale": [
+       {
+        "time": 0.0,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         3.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0625,
+        "value": [
+         225.0,
+         73.0,
+         182.0,
+         255.0
+        ]
+       }
+      ],
+      "u_maintex_rotation_Keyframe": [
+       {
+        "time": 0.0,
+        "value": [
+         360.0
+        ]
+       },
+       {
+        "time": 5.0,
+        "value": [
+         0.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 5,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dafazhen_hgz01_02.glb",
+      "mesh_fid": "CDFE7207B6E8E80D",
+      "mesh_frame": 173295,
+      "glb_sha16": "9a098fb8c5062222",
+      "vertices": 24,
+      "faces": 12,
+      "bbox_span": [
+       -1.2914,
+       -1.3464,
+       -1.4924
+      ],
+      "gim_sha16": "f2b20c88071e94f2"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dafazhen_hgz01_02.gim",
+      "offset": 119,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e64009500000000000000030001"
+     }
+    }
+   },
+   {
+    "name": "M_m_扩散",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_quan_lg_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_quan_lg_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         5.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0005,
+        "value": [
+         221.0,
+         0.0,
+         208.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_quan_lg_hgz01_01.glb",
+      "mesh_fid": "330E579201E5D121",
+      "mesh_frame": 42981,
+      "glb_sha16": "a51e26d7beb603db",
+      "vertices": 408,
+      "faces": 528,
+      "bbox_span": [
+       -1.9589,
+       -2.5804,
+       -2.5828
+      ],
+      "gim_sha16": "d8338c4bcaab5fc4"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_quan_lg_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "M_m_glow",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=['u_emissive_highlight_intensity_Keyframe', 'u_emissivecolor_Keyframe']",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_dafazhen_glow_hgz01_01.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_dafazhen_glow_hgz01_01.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {
+      "u_emissive_highlight_intensity_Keyframe": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ],
+      "u_emissivecolor_Keyframe": [
+       {
+        "time": 0.0039,
+        "value": [
+         232.0,
+         26.0,
+         155.0,
+         255.0
+        ]
+       }
+      ]
+     },
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 4,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_dafazhen_glow_hgz01_01.glb",
+      "mesh_fid": "F8485ED34FEF84A0",
+      "mesh_frame": 209180,
+      "glb_sha16": "79468f4a20a1a6f6",
+      "vertices": 328,
+      "faces": 320,
+      "bbox_span": [
+       -1.5807,
+       -2.3756,
+       -2.3756
+      ],
+      "gim_sha16": "a6a2d16d15dea801"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_dafazhen_glow_hgz01_01.gim",
+      "offset": 160,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65004f574c416c706861546573744d65726765005072655a416c7068"
+     }
+    }
+   },
+   {
+    "name": "M_m_扩散_1",
+    "tag": "Model",
+    "pos_offset": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": true,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source",
+     "ModelName": "source: XML@ModelName",
+     "PosOffset": "source: XML@PosOffset",
+     "Direction": "absent",
+     "RenderOrder": "source: XML@RenderOrder",
+     "FxStartTime": "source: XML@FxStartTime",
+     "FxLifeSpan": "source: XML@FxLifeSpan",
+     "MtlIdx": "source(best-effort): .gim 中 MtlIdx 邻域整数值，未做结构级确认",
+     "mesh": "source: GIM_manifest(GIM_manifest.json)＋.mesh 同 stem",
+     "ColorFrame": "absent_in_ColorFrame；实际颜色通道=另行 absent",
+     "TrackScale": "absent；实际缩放通道=另行 absent",
+     "uniform_tracks": "source: XML ShaderComponent/u_*_Keyframe（Model 颜色/缩放的真实通道）"
+    },
+    "renderable_by_adapter": false,
+    "model_fields": {
+     "ModelName": "effect\\mesh\\weapon\\skin\\skin_1012_009\\mod_skin_1012_009_zs_quan_lg_hgz01_01_pt.gim",
+     "MtlIdx": [],
+     "PosOffset": "0.000000,0.000000,0.000000",
+     "Direction": null,
+     "DirType": "2",
+     "RenderOrder": "0",
+     "FxStartTime": "0.000",
+     "FxLifeSpan": "1.000",
+     "AnimName": "",
+     "ScaleStyle": null,
+     "mesh": "sfx/model/mod_skin_1012_009_zs_quan_lg_hgz01_01_pt.glb",
+     "tracks": {
+      "ScaleFrame": [
+       {
+        "time": 0.5,
+        "value": [
+         1.0
+        ]
+       }
+      ]
+     },
+     "uniform_tracks": {},
+     "shader_blocks": {
+      "ShaderComponent": 1,
+      "Uniforms": 1,
+      "Variables": 2,
+      "Semantic": 1,
+      "Macros": 1
+     },
+     "mesh_evidence": {
+      "manifest": "GIM_manifest.json",
+      "glb_src": "E:\\la拆包项目\\03_执行\\30_分析\\_gim_out\\mod_skin_1012_009_zs_quan_lg_hgz01_01_pt.glb",
+      "mesh_fid": "65100667988794BE",
+      "mesh_frame": 85095,
+      "glb_sha16": "18cc585b0e9685dd",
+      "vertices": 272,
+      "faces": 264,
+      "bbox_span": [
+       -1.9589,
+       -2.5804,
+       -2.5828
+      ],
+      "gim_sha16": "ce5f7559669d109e"
+     },
+     "MtlIdx_evidence": {
+      "source": "raw/mod_skin_1012_009_zs_quan_lg_hgz01_01_pt.gim",
+      "offset": 134,
+      "method": "bytes_after_MtlIdx_best_effort",
+      "hex": "004e616d65005072655a416c706861426c656e640054616e67656e74456e6162"
+     }
+    }
+   },
+   {
+    "name": "H_ParticleRes_1",
+    "tag": "ParticleRes",
+    "pos_offset": [
+     0.0,
+     0.787212,
+     6.246251
+    ],
+    "start": 0.0,
+    "life": 1.0,
+    "radius": null,
+    "blend_mode": null,
+    "texture": null,
+    "texture_candidate": null,
+    "texture_binding": null,
+    "is_sprite_sheet": false,
+    "color_track": [],
+    "color_track_par": [],
+    "scale_track": [],
+    "smooth_start": [],
+    "smooth_stop": [],
+    "emit": {},
+    "fixpoint": "0.000,0.000,1.000,0.000",
+    "track_structure": "{time, value:[...]} 来自源 .sfx（已交叉验证身份）",
+    "source_flags": {
+     "texture_candidate": "absent",
+     "start": "source_or_absent",
+     "life": "source_or_absent",
+     "radius": "derived",
+     "blend_mode": "source_or_absent",
+     "texture": "source_or_absent",
+     "pos_offset": "source_or_absent",
+     "color_track": "absent_in_source"
+    },
+    "renderable_by_adapter": false
+   }
+  ],
+  "model_field_patch": {
+   "schema_note": "Model 节点补字段：源级=XML；MtlIdx/mesh 在 sfx 中不存在（属 .gim/.mesh 资产侧）",
+   "model_nodes": 26,
+   "patched": 26,
+   "color_scale_channel": "Model 节点的颜色/缩放来自 ShaderComponent 下的 u_*_Keyframe uniform 轨道；27 帧的 ColorFrame 计数为 0 或全白 ⇒ ColorFrame 不是 Model 的颜色通道",
+   "channel_usage": {
+    "uniform_color:emissive": 24,
+    "uniform_color:emissivecolor": 24,
+    "uniform_color:maintex": 1
+   },
+   "mesh_backfill": {
+    "filled": 26,
+    "absent": 0,
+    "source": "03_执行\\30_分析/_gim_out/GIM_manifest*.json",
+    "glb_copied_to": "assets/3d/weapon_skin/1110152/sfx/model/"
+   }
+  }
+ },
+ "hemisphere_intensity": 0.0,
+ "key_intensity": 0.0,
+ "fill_intensity": 0.0,
+ "env_intensity": 1.0,
+ "pose_rule": "用户定稿（2026-09-15）：正面相机 position=[-9,0,0] + rotation_degrees=[180,0,0]",
+ "camera_basis": {
+  "eye": [
+   -1,
+   0,
+   0
+  ],
+  "target": [
+   0,
+   0,
+   0
+  ],
+  "up0": [
+   0,
+   0,
+   1
+  ],
+  "roll_deg": 90,
+  "basis": "源渲染器 rig：eye=-X, up0=+Z, roll=90°（导出器 B=单位阵，故 B*vec=vec）"
+ },
+ "background_image": "../_shared/bg_weapon_skin_ingame.png",
+ "background_source": {
+  "file": "_shared/bg_weapon_skin_ingame.png",
+  "origin": "用户提供的游戏内武器皮肤背景图",
+  "sha16": "e60c1a1d5e16b1b4",
+  "usage": "仅 scene.background（环境仍为明亮中性摄影棚，标 environment_approximate；源 t_custom_ibl 是摄影棚 cube，与场景背景不同）"
+ },
+ "env_from_background": false,
+ "pose_accepted_by": "游戏内参考图（用户提供 8bdf3a6f）",
+ "material_layers": {
+  "status": "source_neutral",
+  "basis": "源 c159 参数（c159_pair.py 槽位引用组解析）+ 绑定 c159 的 MtlIdx 归属",
+  "global_rig": {
+   "env_intensity": 1.0,
+   "exposure": 1.0,
+   "tone_mapping": "NoToneMapping",
+   "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+   "emissive_gain": 0.0,
+   "bloom": {
+    "strength": 0.0,
+    "radius": 0.55,
+    "threshold": 0.8,
+    "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+   }
+  },
+  "material_level_source_factor": "u_cube_brightness（唯一允许的材质级差异来源）",
+  "per_submesh": {},
+  "unoverridden_submeshes": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "notes": [],
+  "not_yet_implemented": [
+   "crystal_bump/reflection/refraction/caustic 采样关系",
+   "crystal IBL cube",
+   "shader DXBC 公式",
+   "Sub0 刀身金色来源（默认参数/IBL/自发光/SFX 追踪中）"
+  ],
+  "crystal_submeshes": [],
+  "weapon_submeshes": [],
+  "other_submeshes": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "counts": {
+   "weapon": 0,
+   "crystal": 0,
+   "other": 7
+  },
+  "classification_basis": "按源 shader 名（crystal/pbr_weapon/pbr_default）判定，不按颜色、不按是否存在参数块"
+ },
+ "_approx_was": {
+  "exposure": 1.75,
+  "env_intensity": 1.4,
+  "hemisphere_intensity": 0.8,
+  "key_intensity": 1.5,
+  "fill_intensity": 0.5,
+  "global_rig": {
+   "exposure": 1.75,
+   "tone_mapping": "ACESFilmic",
+   "env_intensity": 1.4,
+   "emissive_gain": 0.25,
+   "bloom": {
+    "strength": 0.0,
+    "radius": 0.55,
+    "threshold": 0.8,
+    "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+   }
+  }
+ },
+ "_source_neutral_note": "Lead 20260918_212529：用户 2026-09-18 拍板『朝完全按源数据走，去掉这套近似』。游戏静态数据里没有 three 的 exposure/toneMapping/rig 灯概念，故取源中立值。原值完整保存在 `_approx_was`，可一键回退。"
+}

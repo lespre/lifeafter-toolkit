@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>武器皮肤 3D 白模 · 明日之后 Lifeafter Wiki</title>
+<style>
+  :root{--bg:#0e1014;--panel:#14171c;--line:#23272e;--fg:#e8eaf0;--dim:#aab2c0;--acc:#ffb02e;--blue:#8fd3ff}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+            font-family:system-ui,"Microsoft YaHei",sans-serif;
+            -webkit-text-size-adjust:100%}
+  /* 顶部栏 */
+  #top{position:fixed;left:0;right:0;top:0;height:48px;z-index:30;display:flex;align-items:center;gap:10px;
+       padding:0 12px;background:rgba(20,23,28,.94);border-bottom:1px solid var(--line);
+       backdrop-filter:blur(6px);padding-top:env(safe-area-inset-top)}
+  #top a.back{color:var(--blue);text-decoration:none;font-size:13px;white-space:nowrap;
+              border:1px solid var(--line);border-radius:8px;padding:5px 10px;background:#1b1f26}
+  #top a.back:active{background:#232a34}
+  #top h1{margin:0;font-size:14px;font-weight:700;color:var(--fg);white-space:nowrap;
+          overflow:hidden;text-overflow:ellipsis}
+  #burger{margin-left:auto;display:none;border:1px solid var(--line);background:#1b1f26;color:var(--fg);
+          border-radius:8px;padding:5px 10px;font-size:13px;cursor:pointer}
+  /* 布局 */
+  #wrap{position:absolute;left:0;right:0;top:48px;bottom:0;display:flex}
+  #list{width:250px;flex:0 0 250px;overflow-y:auto;background:var(--panel);
+        border-right:1px solid var(--line);padding:6px 8px calc(14px + env(safe-area-inset-bottom))}
+  #list h3{margin:12px 4px 5px;font-size:12px;color:#5f6b7d;font-weight:600;letter-spacing:.4px}
+  #list .it{padding:9px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:var(--dim);line-height:1.35}
+  #list .it:hover{background:#1d2129;color:var(--fg)}
+  #list .it.on{background:#2a3140;color:var(--acc);font-weight:700}
+  #list .it.ext{color:var(--blue);border:1px dashed var(--line);margin-top:4px}
+  #list .it.ext::after{content:" ↗"}
+  #main{flex:1;position:relative;min-width:0}
+  canvas{display:block;width:100%;height:100%;touch-action:none}
+  #hud{position:absolute;left:12px;top:10px;font-size:13px;color:var(--blue);font-weight:700;
+       text-shadow:0 0 6px #000;pointer-events:none;max-width:calc(100% - 24px)}
+  #tip{position:absolute;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));
+       font-size:12px;color:#6b7280;pointer-events:none}
+  #mask{display:none}
+  /* 手机 / 窄屏 */
+  @media (max-width:820px){
+    #burger{display:block}
+    #wrap{display:block}
+    #list{position:fixed;left:0;top:48px;bottom:0;width:82vw;max-width:330px;z-index:25;
+          transform:translateX(-102%);transition:transform .22s ease;box-shadow:6px 0 24px rgba(0,0,0,.5);
+          padding-top:8px}
+    body.nav #list{transform:translateX(0)}
+    body.nav #mask{display:block;position:fixed;left:0;right:0;top:48px;bottom:0;z-index:20;
+                   background:rgba(0,0,0,.45)}
+    #main{position:absolute;left:0;right:0;top:0;bottom:0}
+    #hud{font-size:12px;left:10px;top:8px}
+    #tip{font-size:11px}
+  }
+  @media (max-width:820px) and (orientation:landscape){
+    #list{width:64vw;max-width:300px}
+  }
+</style></head><body>
+<div id="top">
+  <a class="back" href="index.html">← 返回主页</a><a class="back" href="wiki.html">← 返回 Wiki</a>
+  <h1>武器皮肤 3D 白模</h1>
+  <button id="burger" aria-label="展开列表">目录</button>
+</div>
+<div id="wrap">
+  <div id="mask"></div>
+  <div id="list"></div>
+  <div id="main"><canvas id="c"></canvas><div id="hud"></div>
+  <div id="tip">拖拽旋转 · 双指/滚轮缩放 · 右键平移</div></div>
+</div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+
+const GROUPS = [{"g": "冷兵器（32）", "items": [{"f": "1110017/model_white.glb", "label": "一支圣诞树 1110017"}, {"f": "1110010/model_white.glb", "label": "一镰幽梦 1110010"}, {"f": "1110088/model_white.glb", "label": "全糖暴击 1110088"}, {"f": "1110187/model_white.glb", "label": "前方禁行 1110187"}, {"f": "1110147/model_white.glb", "label": "可盐可甜 1110147"}, {"f": "1110139/model_white.glb", "label": "吃喵一爪 1110139"}, {"f": "1110162/model_white.glb", "label": "嗷嗷奶龙 1110162"}, {"f": "1110183/model_white.glb", "label": "战神烈火剑 1110183"}, {"f": "1110020/model_white.glb", "label": "掘墓锹 1110020"}, {"f": "1110184/model_white.glb", "label": "星火永传 1110184"}, {"f": "1110186/model.glb", "label": "星辰刀 1110186"}, {"f": "1110177/model.glb", "label": "极光剑 1110177"}, {"f": "1110197/model_white.glb", "label": "极光盾 1110197"}, {"f": "1110126/model_white.glb", "label": "极狐终结刃 1110126"}, {"f": "1110141/model_white.glb", "label": "沙场点兵 1110141"}, {"f": "1110123/model_white.glb", "label": "泰坦剑 1110123"}, {"f": "1110158/model_white.glb", "label": "特殊关怀 1110158"}, {"f": "1110028/model_white.glb", "label": "玉华碎雪 1110028"}, {"f": "1110021/model_white.glb", "label": "紫焰蛇矛 1110021"}, {"f": "1110170/model_white.glb", "label": "红太狼之怒 1110170"}, {"f": "1110180/model_white.glb", "label": "西瓜脆脆冰 1110180"}, {"f": "1110128/model_white.glb", "label": "诡秘之颅 1110128"}, {"f": "1110115/model_white.glb", "label": "赤月晶魄 1110115"}, {"f": "1110116/model_white.glb", "label": "赤月晶魄 1110116"}, {"f": "1110117/model_white.glb", "label": "赤月晶魄 1110117"}, {"f": "1110007/model_white.glb", "label": "金箍棒 1110007"}, {"f": "1110003/model_white.glb", "label": "鎏金锋刃 1110003"}, {"f": "1110150/model_white.glb", "label": "铃兰之约 1110150"}, {"f": "1110151/model_white.glb", "label": "阿赖耶识 1110151"}, {"f": "1110164/model_white.glb", "label": "霜鳞·皇带 1110164"}, {"f": "1110030/model_white.glb", "label": "黄油裂镐 1110030"}, {"f": "1110058/model_white.glb", "label": "黯夜乐手 1110058"}]}, {"g": "枪械（78）", "items": [{"f": "1110166/model_white.glb", "label": "专业护理 1110166"}, {"f": "1110032/model_white.glb", "label": "九霄狐啸 1110032"}, {"f": "1110168/model_white.glb", "label": "云上铃 1110168"}, {"f": "1110190/model_white.glb", "label": "佳期如梦 1110190"}, {"f": "1110114/model_white.glb", "label": "像素涂鸦 1110114"}, {"f": "1110171/model.glb", "label": "光影咏叹调 1110171"}, {"f": "1110016/model_white.glb", "label": "冬雪绮愿 1110016"}, {"f": "1110018/model_white.glb", "label": "冰城小霸王 1110018"}, {"f": "1110025/model.glb", "label": "冰蕊银华 1110025"}, {"f": "1110009/model_white.glb", "label": "加油！少年 1110009"}, {"f": "1110034/model_white.glb", "label": "千蝶一梦 1110034"}, {"f": "1110156/model_white.glb", "label": "噬极 1110156"}, {"f": "1110165/model.glb", "label": "墨隐麒麟 1110165"}, {"f": "1110157/model_white.glb", "label": "夜明 1110157"}, {"f": "1110145/model.glb", "label": "天马行空 1110145"}, {"f": "1110185/model.glb", "label": "奇迹 1110185"}, {"f": "1110153/model_white.glb", "label": "定格日常 1110153"}, {"f": "1110178/model_white.glb", "label": "帝皇裁决 1110178"}, {"f": "1110013/model_white.glb", "label": "幻影狩蝎 1110013"}, {"f": "1110008/model_white.glb", "label": "庆典绯梦 1110008"}, {"f": "1110087/model_white.glb", "label": "彩虹过载 1110087"}, {"f": "1110179/model_white.glb", "label": "往哪看呢 1110179"}, {"f": "1110090/model_white.glb", "label": "心动狂飙 1110090"}, {"f": "1110119/model_white.glb", "label": "拟化磁星 1110119"}, {"f": "1110120/model_white.glb", "label": "拟化磬翼 1110120"}, {"f": "1110136/model_white.glb", "label": "时光溯流 1110136"}, {"f": "1110176/model_white.glb", "label": "晶棘 1110176"}, {"f": "1110124/model_white.glb", "label": "未来刻印 1110124"}, {"f": "1110121/model_white.glb", "label": "极狐破坏者 1110121"}, {"f": "1110122/model_white.glb", "label": "极限节拍 1110122"}, {"f": "1110036/model_white.glb", "label": "森林之主 1110036"}, {"f": "1110173/model_white.glb", "label": "水晶玫瑰 1110173"}, {"f": "1110174/model_white.glb", "label": "水晶玫瑰 1110174"}, {"f": "1110175/model_white.glb", "label": "水晶玫瑰 1110175"}, {"f": "1110159/model_white.glb", "label": "沙海月鸣 1110159"}, {"f": "1110160/model_white.glb", "label": "沙海月鸣 1110160"}, {"f": "1110031/model_white.glb", "label": "沧鳞破浪 1110031"}, {"f": "1110005/model_white.glb", "label": "深蓝之影 1110005"}, {"f": "1110127/model_white.glb", "label": "湮没星空 1110127"}, {"f": "1110182/model_white.glb", "label": "火刑裁决 1110182"}, {"f": "1110169/model.glb", "label": "灰色协议 1110169"}, {"f": "1110152/model.glb", "label": "灵态诱导 1110152"}, {"f": "1110131/model_white.glb", "label": "炽日耀斑 1110131"}, {"f": "1110132/model_white.glb", "label": "炽日耀斑 1110132"}, {"f": "1110133/model_white.glb", "label": "炽日耀斑 1110133"}, {"f": "1110137/model_white.glb", "label": "焚古龙息 1110137"}, {"f": "1110129/model.glb", "label": "熔炉寒霜 1110129"}, {"f": "1110023/model_white.glb", "label": "玉饮琼花 1110023"}, {"f": "1110118/model_white.glb", "label": "玫焰流华 1110118"}, {"f": "1110163/model_white.glb", "label": "砰砰奶龙 1110163"}, {"f": "1110014/model_white.glb", "label": "碎晶 1110014"}, {"f": "1110135/model_white.glb", "label": "神翼曙光 1110135"}, {"f": "1110026/model_white.glb", "label": "祥鲤 1110026"}, {"f": "1110167/model_white.glb", "label": "粉息鸣弦 1110167"}, {"f": "1110089/model_white.glb", "label": "粒子沙暴 1110089"}, {"f": "1110155/model_white.glb", "label": "绯樱轻扬 1110155"}, {"f": "1110172/model_white.glb", "label": "缄默 1110172"}, {"f": "1110134/model_white.glb", "label": "罚罪审判 1110134"}, {"f": "1110012/model_white.glb", "label": "腾云 1110012"}, {"f": "1110004/model_white.glb", "label": "萌豚霰击 1110004"}, {"f": "1110015/model_white.glb", "label": "蓝火 1110015"}, {"f": "1110022/model_white.glb", "label": "赤蛇御火 1110022"}, {"f": "1110142/model_white.glb", "label": "金乌负日 1110142"}, {"f": "1110143/model_white.glb", "label": "金乌负日 1110143"}, {"f": "1110144/model_white.glb", "label": "金乌负日 1110144"}, {"f": "1110033/model_white.glb", "label": "金芒裁决 1110033"}, {"f": "1110024/model.glb", "label": "金蟒啸焰 1110024"}, {"f": "1110149/model_white.glb", "label": "鎏金淬火 1110149"}, {"f": "1110002/model_white.glb", "label": "鎏金狙魂 1110002"}, {"f": "1110001/model_white.glb", "label": "鎏金锐魄 1110001"}, {"f": "1110011/model_white.glb", "label": "鎏金锐鹰 1110011"}, {"f": "1110140/model_white.glb", "label": "雪吻双星 1110140"}, {"f": "1110138/model_white.glb", "label": "雪夜绮礼 1110138"}, {"f": "1110019/model_white.glb", "label": "霓虹狂想 1110019"}, {"f": "1110035/model_white.glb", "label": "霓虹狂潮 1110035"}, {"f": "1110125/model_white.glb", "label": "霓虹裂空 1110125"}, {"f": "1110148/model_white.glb", "label": "马到福来 1110148"}, {"f": "1110146/model_white.glb", "label": "龙渊永寂 1110146"}]}];
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+renderer.setClearColor(0x0e1014, 1);
+const scene = new THREE.Scene();
+scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x1a1c22, 1.35));
+const k1 = new THREE.DirectionalLight(0xfff2e0, 2.1); k1.position.set(4,7,6); scene.add(k1);
+const k2 = new THREE.DirectionalLight(0x88aaff, 1.15); k2.position.set(-6,3,-5); scene.add(k2);
+const k3 = new THREE.DirectionalLight(0xffc070, 0.7); k3.position.set(-2,-4,4); scene.add(k3);
+const grid = new THREE.GridHelper(24, 24, 0x2a3140, 0x1b1f26); grid.position.y = -1; scene.add(grid);
+
+const cam = new THREE.PerspectiveCamera(30, 1, 0.01, 2000);
+let target = new THREE.Vector3(0,0,0), dist = 30, theta = 0.35, phi = 1.35, cur = null;
+// 视角参数：?view=back|front|left|right（默认 front-ish）
+(function(){
+  const v = new URLSearchParams(location.search).get('view');
+  if (v === 'back'){ theta = Math.PI; phi = 1.35; }
+  else if (v === 'front'){ theta = 0; phi = 1.35; }
+  else if (v === 'left'){ theta = -Math.PI/2; phi = 1.35; }
+  else if (v === 'right'){ theta = Math.PI/2; phi = 1.35; }
+})();
+
+function fit(){
+  const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1;
+  cam.aspect = w / h;
+  cam.position.set(target.x + dist*Math.sin(phi)*Math.sin(theta),
+                   target.y + dist*Math.cos(phi),
+                   target.z + dist*Math.sin(phi)*Math.cos(theta));
+  cam.lookAt(target); cam.updateProjectionMatrix();
+}
+function render(){ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false); fit(); renderer.render(scene, cam); }
+
+function load(name, label){
+  if (cur){ scene.remove(cur); cur = null; }
+  document.getElementById('hud').textContent = label || '';
+  new GLTFLoader().load('./assets/3d/weapon_skin/' + name, (g) => {
+    const o = g.scene; o.rotation.x = Math.PI;
+    o.traverse(n => { if (n.isMesh && n.material){
+      const ms = Array.isArray(n.material)?n.material:[n.material];
+      for (const mm of ms){ mm.side = THREE.DoubleSide;
+        mm.color = new THREE.Color(0xc8ccd4); mm.roughness = 0.72; mm.metalness = 0.06;
+        mm.needsUpdate = true; } } });
+    scene.add(o); o.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(o);
+    const c = box.getCenter(new THREE.Vector3()); o.position.sub(c);
+    const s = box.getSize(new THREE.Vector3());
+    const r = Math.max(s.x,s.y,s.z) * 0.62;
+    target.set(0,0,0);
+    // 竖屏手机留更大边距
+    const portrait = canvas.clientWidth < canvas.clientHeight;
+    dist = r / Math.tan((cam.fov*Math.PI/180)/2) * (portrait ? 1.85 : 1.45);
+    cur = o; render(); window.__loaded = (window.__loaded||0)+1;
+  }, undefined, (e)=>{ window.__err = String(e); });
+}
+
+// 侧栏
+const list = document.getElementById('list');
+const body = document.body;
+let first = null;
+for (const g of GROUPS){
+  const h = document.createElement('h3'); h.textContent = g.g; list.appendChild(h);
+  for (const it of g.items){
+    const d = document.createElement('div'); d.className = 'it'; d.textContent = it.label;
+    if (it.href){
+      d.classList.add('ext');
+      d.onclick = () => { window.location.href = it.href; };
+    } else {
+      d.onclick = () => { [...list.querySelectorAll('.it')].forEach(x=>x.classList.remove('on'));
+                          d.classList.add('on'); load(it.f, it.label);
+                          if (window.innerWidth <= 820) body.classList.remove('nav'); };
+    }
+    list.appendChild(d);
+    if (!first && !it.href) first = {d, it};
+  }
+}
+if (first){ first.d.classList.add('on'); load(first.it.f, first.it.label); }
+
+document.getElementById('burger').onclick = () => body.classList.toggle('nav');
+document.getElementById('mask').onclick = () => body.classList.remove('nav');
+
+// 交互：鼠标 + 触摸
+let drag = false, px = 0, py = 0, btn = 0;
+canvas.addEventListener('mousedown', e => { drag = true; px = e.clientX; py = e.clientY; btn = e.button; });
+window.addEventListener('mouseup', () => drag = false);
+window.addEventListener('mousemove', e => {
+  if (!drag) return;
+  const dx = e.clientX - px, dy = e.clientY - py; px = e.clientX; py = e.clientY;
+  if (btn === 2){ target.x -= dx * dist * 0.0015; target.y += dy * dist * 0.0015; }
+  else { theta -= dx * 0.008; phi = Math.max(0.15, Math.min(3.0, phi - dy * 0.008)); }
+  render();
+});
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+canvas.addEventListener('wheel', e => { e.preventDefault(); dist *= (1 + Math.sign(e.deltaY)*0.1); render(); }, {passive:false});
+
+// 触摸：单指旋转 / 双指缩放
+let tPrev = null, pinch = 0;
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1){ tPrev = {x:e.touches[0].clientX, y:e.touches[0].clientY}; pinch = 0; }
+  else if (e.touches.length === 2){
+    pinch = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                       e.touches[0].clientY - e.touches[1].clientY);
+    tPrev = null;
+  }
+}, {passive:false});
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && tPrev){
+    const dx = e.touches[0].clientX - tPrev.x, dy = e.touches[0].clientY - tPrev.y;
+    tPrev = {x:e.touches[0].clientX, y:e.touches[0].clientY};
+    theta -= dx * 0.010; phi = Math.max(0.15, Math.min(3.0, phi - dy * 0.010));
+    render();
+  } else if (e.touches.length === 2 && pinch){
+    const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                         e.touches[0].clientY - e.touches[1].clientY);
+    if (d > 0){ dist *= pinch / d; pinch = d; render(); }
+  }
+}, {passive:false});
+canvas.addEventListener('touchend', () => { tPrev = null; pinch = 0; });
+
+let rt = null;
+window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+window.addEventListener('orientationchange', () => setTimeout(render, 260));
+render();
+window.addEventListener('load', render);
+</script></body></html>

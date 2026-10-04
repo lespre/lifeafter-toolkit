@@ -1,0 +1,24 @@
+{
+  "schema": "lifeafter-weapon-skin-effects/2",
+  "note": "未证实字段=null；未支持节点显式列 unsupported",
+  "skin": {
+    "primary": "skin_1001_014",
+    "secondary": null,
+    "display_name": "天马行空"
+  },
+  "status": "not_extracted",
+  "status_reason": "本轮范围=3D 模型与材质近似；SFX 未定位解码",
+  "bindings": {
+    "bind_file": "000652.c159"
+  },
+  "nodes": [],
+  "unsupported": [
+    "SFX 节点（未定位）",
+    "音效（未提取）",
+    "拖尾（未定位）"
+  ],
+  "next": [
+    "按 010 路径定位 1001_014 的 .sfx",
+    "解码后按 v2 schema 填 nodes/sockets/关键帧"
+  ]
+}

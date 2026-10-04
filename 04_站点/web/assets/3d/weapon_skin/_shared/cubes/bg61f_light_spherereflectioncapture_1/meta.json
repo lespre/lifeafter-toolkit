@@ -1,0 +1,105 @@
+{
+ "name": "bg61f_light_spherereflectioncapture_1",
+ "logical": "common\\env_map\\bg61f_light_spherereflectioncapture_1.cube",
+ "container": "0045.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0045.gpk",
+ "axis": "gpk",
+ "row": 93760,
+ "off": 10825808,
+ "comp": 303409,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0045.gpk",
+   "row": 93760,
+   "base": 926492532,
+   "off": 10825808,
+   "comp": 303409,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "fpk",
+   "container": "E:\\mrzh\\res\\062.fpk",
+   "row": 757,
+   "base": null,
+   "off": 919331636,
+   "comp": 303409,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "8d0047fb56726870fd376c5ea68802c96f39c47b8a4823e789e990d398521056",
+ "sha16": "8d0047fb56726870",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f0_m0.png",
+   "bytes": 27983,
+   "rgba_sha16": "43ea1902d8c2bd06",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f1_m0.png",
+   "bytes": 26407,
+   "rgba_sha16": "53c4ef61f788f78c",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f2_m0.png",
+   "bytes": 23036,
+   "rgba_sha16": "6b0cfcd8e9ae6274",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f3_m0.png",
+   "bytes": 21724,
+   "rgba_sha16": "cba870a856376623",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f4_m0.png",
+   "bytes": 29991,
+   "rgba_sha16": "b314ec67c6b0a8d8",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61f_light_spherereflectioncapture_1\\faces\\bg61f_light_spherereflectioncapture_1_f5_m0.png",
+   "bytes": 27875,
+   "rgba_sha16": "dfc99f34c9488154",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

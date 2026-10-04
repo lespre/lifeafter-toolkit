@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本轮进展 · LifeAfter 拆包项目</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;
+      --red:#b91c1c;--green:#15803d;--amber:#b45309;--blue:#1d4ed8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);
+     color:var(--fg);font-size:14px;line-height:1.6;padding:20px;max-width:1100px;margin:0 auto}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+        margin-bottom:16px;flex-wrap:wrap}
+h1{font-size:19px} h2{font-size:15px;margin:18px 0 8px}
+.sub{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+      padding:12px 14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.kpi .n{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--muted);font-size:12px;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.ok{color:var(--green)} .warn{color:var(--amber)} .bad{color:var(--red)}
+pre{background:#f4f4f5;border-radius:8px;padding:10px 12px;overflow:auto;font-size:12px;line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+</style>
+</head><body>
+<div class="topbar">
+  <div><h1>本轮进展 <span class="badge" id="ver">—</span></h1>
+    <div class="sub">数据来源：<code>/data/round_progress.json</code>（由 collect 脚本从真实产物读出）·
+      <b>数字非手写</b></div></div>
+  <div class="sub"><a href="index.html">← 主页</a> · <a href="workbench_status.html">Workbench Status</a> ·
+    <a href="wiki.html">Wiki</a></div>
+</div>
+
+<div id="kpis" class="grid"></div>
+
+<h2>一、名字字典与覆盖率</h2>
+<div class="card" id="cov"></div>
+
+<h2>二、热更标准交付结构 <span class="badge">新</span></h2>
+<div class="card">
+  <div class="sub" style="margin-bottom:8px">一次热更 = 一个交付文件夹。对标
+    Intelli-verse-X asset-pipeline-standard / evrFileTools / ree-pak-rs / Source2Viewer /
+    DepotDownloader / Mandible 的约定。</div>
+  <div id="bundle"></div>
+  <pre id="bunreepath"></pre>
+</div>
+
+<h2>三、素材产出</h2>
+<div class="two">
+  <div class="card"><div class="sub">spine 图集切图（单部件小图）</div><div id="sprite"></div></div>
+  <div class="card"><div class="sub">配置表中文文案</div><div id="texts"></div></div>
+</div>
+
+<h2>四、CLI 命令面</h2>
+<div class="card">
+  <div id="tools"></div>
+  <div id="cmdlist" style="margin-top:8px"></div>
+</div>
+
+<h2>五、本轮实测纠正的错误 <span class="badge">重要</span></h2>
+<div class="card">
+  <div class="sub" style="margin-bottom:8px">诚实记录 —— 这些都是先做成结论、后被实测推翻的。</div>
+  <table>
+    <tr><th>#</th><th>当时的结论</th><th>实测真相</th><th>根因</th></tr>
+    <tr><td>1</td><td>配置表<i>加密</i>了</td><td class="ok">没有加密，是 UTF-8 明文</td>
+        <td>用 <code>path_fid</code> 去算 <i>npk</i> 容器的 fid —— 而 npk 的 fid ≠ murmur3(路径)，定位全错、读到别的文件</td></tr>
+    <tr><td>2</td><td>改判成 <i>UTF-16</i> 编码</td><td class="ok">仍是 UTF-8（被「常用字占比」判据钉死：utf-16 解出的汉字常用字占比仅 0.9%、<code>的</code> 出现 0 次）</td>
+        <td>被自己带偏 —— 看见 <code>00 44 00 78</code> 就下结论，没有做可量化验证</td></tr>
+    <tr><td>3</td><td>材质/网格文件反推出 <i>11,802 条新名字</i></td><td class="ok">真新增 0 —— 全部是斜杠方向差异</td>
+        <td>判「是否新增」时拿<b>路径字符串</b>比，而字典存正斜杠、二进制里是反斜杠。<b>应比 fid</b></td></tr>
+    <tr><td>4</td><td>atlas 认领 <i>4,275</i> 条图集本体真名</td><td class="ok">可信 3,204 条</td>
+        <td>没做<b>全局去重</b>：同一尺寸的多个 DDS 被多个 atlas 页撞上，出现「同一 fid 对 3 个不同路径」</td></tr>
+    <tr><td>5</td><td>（更早）产物定位慢</td><td class="ok">病根是逐行 glob</td>
+        <td>23,322 行 × 每次扫 5 万文件目录。<b>基准测试里早测出过，却没回头改脚本</b> ⇒ 统一到 <code>artifact_locator</code></td></tr>
+  </table>
+</div>
+
+<h2>六、进行中 / 待改进</h2>
+<div class="card">
+  <table>
+    <tr><th>项</th><th>状态</th></tr>
+    <tr><td>从零复核全量热更拆包（假设无已知结论）</td><td class="warn">子代理进行中</td></tr>
+    <tr><td>渲染线优化 + 接 CLI</td><td class="bad">上一轮子代理超时中断，待重派</td></tr>
+    <tr><td><code>content_index</code> 多线程写主库有争用</td><td class="warn">首轮 55 行/秒 → 增量 327 行/秒，可改批量插入</td></tr>
+    <tr><td><code>04_图集</code> / <code>05_变更清单</code> 为空占位</td><td class="warn">需接 atlas discover 产出 / <code>--pkg-cache</code></td></tr>
+    <tr><td>sprite 同名覆盖（切出 260,261 / 落盘 <span id="spn">—</span>）</td><td class="warn">要全留需加来源 atlas 短名前缀</td></tr>
+  </table>
+</div>
+
+<div class="sub" style="margin:16px 0 4px" id="foot"></div>
+
+<script>
+const F = (n) => (n==null?'—':Number(n).toLocaleString('en-US'));
+fetch('data/round_progress.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
+  const c=d.coverage||{}, b=d.bundle||{}, s=d.sprite||{}, t=d.tools||{};
+  document.getElementById('ver').textContent = (d.generated||'').slice(0,16);
+  document.getElementById('kpis').innerHTML = [
+    ['覆盖率', (c.coverage_pct!=null? c.coverage_pct.toFixed(2)+'%':'—'), '覆盖 '+F(c.covered_rows)+' / '+F(c.total_rows)+' 行'],
+    ['字典条目', F(c.dict_size), (c.dict_path||'').split(/[\\\\/]/).pop()],
+    ['标准交付条目', F(b.entries), '有名 '+F(b.named)+' ｜ 未落实 '+F(b.unknown)],
+    ['sprite 小图', F(s.files), F(s.dirs)+' 个系列目录'],
+    ['CLI 顶级命令', F(t.top_level), '含 hotfix bundle / tables / atlas'],
+    ['本次热更 diff', F((d.hotfix_diff||{}).files), '文件'],
+  ].map(([l,n,x])=>`<div class="kpi"><div class="n">${n}</div><div class="l">${l}<br>${x||''}</div></div>`).join('');
+
+  document.getElementById('cov').innerHTML =
+    `<table>
+      <tr><th>字典</th><td><code>${(c.dict_path||'').split(/[\\\\/]/).pop()||'—'}</code></td></tr>
+      <tr><th>条目</th><td>${F(c.dict_size)}</td></tr>
+      <tr><th>覆盖</th><td>${F(c.covered_rows)} / ${F(c.total_rows)} =
+        <b>${c.coverage_pct!=null?c.coverage_pct.toFixed(2)+'%':'—'}</b></td></tr>
+     </table>
+     <div class="sub" style="margin-top:6px">数据来源 <code>coverage_latest.json</code>，
+       由 <code>tools/refresh_sidecars.py</code> 刷。</div>`;
+
+  const dirs=b.dirs||{};
+  document.getElementById('bundle').innerHTML =
+    Object.keys(dirs).length? `<table>`+Object.entries(dirs).map(([k,v])=>
+      `<tr><th><code>${k}/</code></th><td>${F(v)} 文件</td></tr>`).join('')+
+      `<tr><th>manifest.json</th><td>唯一真相源（路径/容器/行号/大小/sha256/来源）</td></tr>`+
+      `<tr><th>inventory.json</th><td>按扩展名与顶层目录的数量与体积</td></tr></table>`
+    : '<span class="bad">未找到标准交付目录</span>';
+  document.getElementById('bunreepath').textContent = b.dir || '';
+
+  document.getElementById('sprite').innerHTML =
+    `<div class="n" style="font-size:18px;font-weight:600">${F(s.files)} 张</div>
+     <div class="sub">${F(s.dirs)} 个系列目录 ｜ 临时残留 ${F(s.tmp_leftover)}</div>`;
+
+  const tt=d.text_tables||{};
+  document.getElementById('texts').innerHTML =
+    Object.keys(tt).length? `<table>`+Object.entries(tt).slice(0,8).map(([k,v])=>
+      `<tr><th><code>${k}</code></th><td>${(v/1048576).toFixed(2)} MB</td></tr>`).join('')+`</table>`
+    : '<span class="sub">—</span>';
+
+  document.getElementById('tools').innerHTML =
+    `顶级命令 <b>${F(t.top_level)}</b> 个`;
+  document.getElementById('cmdlist').innerHTML =
+    (t.commands||[]).map(x=>`<code>${x}</code>`).join(' ');
+
+  document.getElementById('spn').textContent = F(s.files);
+  document.getElementById('foot').textContent =
+    '本页由 tools 脚本生成 · 生成时间 ' + (d.generated||'—');
+}).catch(e=>{
+  document.getElementById('kpis').innerHTML =
+    '<div class="card bad">读取 data/round_progress.json 失败：'+e+'</div>';
+});
+</script>
+</body></html>

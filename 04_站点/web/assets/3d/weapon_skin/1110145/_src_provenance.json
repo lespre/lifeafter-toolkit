@@ -1,0 +1,64 @@
+{
+ "014_b_m": {
+  "entry": 667,
+  "flag": 12,
+  "offset": 68315492,
+  "clen": 627220,
+  "w": 1024,
+  "h": 1024,
+  "rgba_sha16": "d5660f4262dd66bf",
+  "rgba_sha256": "d5660f4262dd66bfc3a3d4ac0a728f3f63a531b7248a551d9d45918caf1b1efa"
+ },
+ "014_s_m": {
+  "entry": 668,
+  "flag": 12,
+  "offset": 68942732,
+  "clen": 559844,
+  "w": 1024,
+  "h": 1024,
+  "rgba_sha16": "1ebfa444a9592115",
+  "rgba_sha256": "1ebfa444a95921159ad545a8455b04effb29923bedb8db9c5e41a55c65bff423"
+ },
+ "014_a": {
+  "entry": 669,
+  "flag": 12,
+  "offset": 69502596,
+  "clen": 716637,
+  "w": 1024,
+  "h": 1024,
+  "rgba_sha16": "dfc2c7b1a61753b1",
+  "rgba_sha256": "dfc2c7b1a61753b14049ebded2f43b9935ba175c940203a54c4cb719057ac03d"
+ },
+ "014_n": {
+  "entry": 670,
+  "flag": 12,
+  "offset": 70219256,
+  "clen": 564346,
+  "w": 1024,
+  "h": 1024,
+  "rgba_sha16": "07fbab62fb013564",
+  "rgba_sha256": "07fbab62fb0135648e838ed0b698b452827451b3c307c0e29ce9352e8ba79570"
+ },
+ "014_m": {
+  "entry": 671,
+  "flag": 12,
+  "offset": 70783624,
+  "clen": 32775,
+  "w": 1024,
+  "h": 1024,
+  "rgba_sha16": "635791f5cd09e0c3",
+  "rgba_sha256": "635791f5cd09e0c3bccbad46a8f47b6daf4edf02cce74a15afbdea0a8d8fb05f"
+ },
+ "__cube__": {
+  "logical_path": "common\\env_map\\bg61f_light_spherereflectioncapture_1.cube",
+  "fid": "0BE3271FE6DE42FA",
+  "container": "res\\062.fpk",
+  "index": 757,
+  "offset": 919331636,
+  "flag": 12,
+  "w": 128,
+  "h": 128,
+  "faces": 6,
+  "local_file": "src_cube/bg61f_light_spherereflectioncapture_1.dds"
+ }
+}

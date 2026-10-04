@@ -1,0 +1,185 @@
+# 待修问题清单
+
+建立：2026-09-26 ｜ 来源：现场审计（分析链路表 / 工具归类 / 垃圾审计）+ 用户反馈
+**用法：一条条修，修完把 `[ ]` 改成 `[x]` 并补上日期与验证方式。**
+
+---
+
+## A. 工具 bug（会给出错误结果，比报错更危险）
+- [x] **A1 索引幽灵条目**（2026-09-26 已修）
+  `toolkit_core/unified_index.py` 的 FPK 导入段：物理包解析不到时照样 `yield`，把 2,012,297 条指向不存在容器的条目灌进索引。
+  **修法**：`chosen is None` 时 `skipped += 1; continue`（诊断仍进 `unresolved`）+ 给 `p.stat()` 加 `try/except OSError`。
+  **验证**：改前 124 容器 / 4,313,140 行 → 改后 60 容器 / 2,300,843 行；`[FPK] complete: 0 rows, unresolved names=64`；测试 5F/76P = 基线。
+
+- [x] **A0 `run_all.py glb` 已实现**（2026-09-26 完成）
+  新增 `toolkit_core/la_glb.py`（666 行）+ `toolkit_cli.py` 加 `cmd_glb` + `run_all.py` 派发。
+  **最强验证**：与缺失脚本的历史产出【逐字节等价】—— 1110021 重跑 vs `_gim_out/gb/1110021/1110021.glb`，
+  `position/normal/uv/index bytes` 全 equal，`accessors/bufferViews/samplers` 完全一致。
+  未改动 mesh_parse2 / export_glb / c159_pair / paths.py（mtime 可核）。
+
+- [x] **A13 ★ 索引 sidecar 三个 json 陈旧，且没人负责写**（2026-09-26 已修）
+  `03_执行/10_索引/indexes/` 下 `lifeafter_files_{build,status,verify}.json` 停在 09-21 的旧索引：
+  · `rows 8,160,775`（实际 2,300,843）· `row_totals` 含 `fpk 2,012,297`（实际 fpk 0）
+  · `current_inventory_file_count 313`（实际 60 容器）· `built_at 2026-09-21 13:45:31`（实际 09-26 12:16:18）
+  · `database` 字段还写着**已删除的** `03拆包产物\indexes\...`
+  ⇒ 任何按它判断索引新鲜度的下游都会得出错误结论。
+  **根因**：`toolkit_cli._dump()` 只有显式 `--json` 才落盘，**没有任何脚本负责自动写** ⇒ 索引一重建 sidecar 就陈旧。
+  **修法（两层）**：
+  ① 重生三件：`index status --json` / `verify --json` 重跑；build.json 从 sqlite meta 忠实重建（不重跑 build）。
+  ② 根治：`_dump()` 加默认 sidecar 同步 + 三条命令传目标 + 新增 `--no-sidecar` 开关；写失败只告警不影响退出码。
+  **验证**：不传 `--json` 时 `index status` / `verify` 都输出「已同步：…」；`--no-sidecar` 时 mtime 未变（反向验证）；
+  `verify.json` 的 `database` 已指向新路径、`rows 2,300,843`、`built_at 09-26`；测试 5F/76P = 基线。
+
+- [x] **A14 ★ 行号硬断言（同组值复制在三处）**（2026-09-26 已修）
+  `res.npk` 的 `row 14213 / 12100 / 4620` 被写死当 ground truth，出现在：
+  · `toolkit_cli.py cmd_verify` · `gpk_npk_index.py do_selftest` · `app.py` 索引 smoke
+  容器集从 313 变 60 后行号必然位移（**fid 仍全中、路径全匹配**）⇒ `verify` 每次误报 `pass=False`（退出码 4）。
+  **病根**：把「解析实现的副产品」当语义断言。**一个永远喊狼来了的闸门等于没有闸门。**
+  **修法（统一判据，不分别打补丁）**：判据 = `fid 命中 + 路径匹配`；行号降级为 `observed_rows` / `row_matches` 只作记录。
+  **验证**：`verify.json` `pass=True`，三条 observed_rows 记录为 4519 / 4334 / 4373；测试 5F/76P = 基线。
+
+- [x] **A15 ★ sidecar 自动同步吃掉了 stdout（我引入的回归，已修）**（2026-09-26）
+  A13 的修法（让 `index build/status/verify` 默认同步 sidecar）有个副作用：
+  `_dump()` 在 sidecar 分支里 `return`，**只打印「已同步：…」，不再把 JSON 打到 stdout**。
+  ⇒ 任何解析 stdout 的调用方（脚本 / 主页采集器 / shell 管道）**静默拿到空值**。
+  ⇒ 已复现：主页 `collect_index()` 因此把所有索引指标写成「读取失败」。
+  **病根**：改的是「行为」，没问「谁在依赖这个行为」；而且这类错误**不报错、只是悄悄给错**。
+  **修法**：sidecar 模式**既写文件也 print JSON** → 数据走 stdout、状态消息走 stderr（Unix 惯例）。
+  **验证**：`index status` stdout 可被 `json.loads` 解析（rows=2,300,843 / stale=False / quick_check=ok）；
+  `verify` stdout pass=True / checks=3；sidecar 仍照常同步（消息在 stderr）；测试 5F/76P = 基线。
+  **发现者**：主页子代理（它在采集时发现指标异常，追到根因，而非绕过）。
+
+- [ ] **A9 ★ rebuild_weapon_skin_media.py 当前跑不过去**（前端发布硬门禁，新发现）
+  · `1110115/viewer.json` 声明 `model = skin_2003_013.glb` → 全库 0 命中 ⇒ `FileNotFoundError`
+  · `1110171_cand`：`single.glb` 缺失 + `skin_id` 写成 `"1110171"` 与真目录撞 ⇒ 重复 skin_id
+  ⇒ 实际只能登记 **36** 个（不是 38/39）
+  **修法**：修掉这两个 viewer.json，或在门禁里对「声明存在但文件缺失」给显式警告而非中断。
+
+- [ ] **A10 `前端交付要求.md` 数据更正**
+  「39/39 model 存在」→ 实测 **37/39**（`_template/viewer.json` 也声明了不存在的 dual.glb/single.glb）
+
+- [ ] **A11 `tf/tv < 1.5` 阈值不适合本仓**
+  抽样 `weapon/*.mesh` 前 200：解析成功 188，其中 **184（97.9%）** 触发该报警 ⇒ 失去预警意义。
+  按解析器权威判据 `sizes_ok 且 extra_streams_state=='exact'` 仅 131（69.7%）。
+  **修法**：改用原生判据，或把阈值按本仓分布重标定。
+
+- [ ] **A12 `viewer.js:1540` 硬编码 `src_tex/gpk_1229.png`**（前端 404）
+  该文件只在 `1110171` / `1110171_cand` 存在 ⇒ 其余 36 个皮肤每次载入都 404。
+  **修法**：改为按 manifest 取，或缺失时静默跳过。
+
+- [x] **环境：texture2ddecoder 已装**（2026-09-26）
+  `C:/Users/<user>/py312_env/Scripts/python.exe -m pip install texture2ddecoder` → 1.0.6
+  ⇒ `dds_rgba_canonical` 可导入，DDS 解码链环境就绪（此前所有 DDS 路径都 ImportError）。
+  ⚠ 仅装在 py312_env；hermes venv 若也要用 DDS 需另装。
+
+- [ ] **A2 `build_workcopy_current_package.py` 路径算错** ★影响整条表解码链
+  实测 `parents[2]` = `E:\la拆包项目\04_站点`（注释写的是 `E:\la拆包项目`），于是 OUT 落到不存在的 `04_站点\03_执行\config_work\`。
+  **而链路 C（表解码）的根就建立在这个工作副本上。**
+  位置：`04_站点\web\tools\build_workcopy_current_package.py`
+  **修法**：改用 `toolkit_core.paths.PROJECT_ROOT`，不要手算 `parents[N]`。
+
+- [ ] **A3 `build_wiki_3d_batch.py` 名不副实**
+  docstring 说「典藏皮肤批量出 wiki 3D 预览」，代码只做 probe；依赖的 `20_提取\batch_3d` 不存在 ⇒ 跑不通。
+  位置：`01_工具\工具库\06_皮肤定位链\build_wiki_3d_batch.py`
+
+- [ ] **A4 `s25_build_glb.py` 三处死路径**
+  重构前的 `03拆包产物` / `01拆包器本体` / `08Lifeafter wiki` ⇒ 已失效。
+  位置：`03_执行\30_分析\_target_1110025\_scripts\s25_build_glb.py`
+
+- [ ] **A5 一批入口失效**（逐条核）
+  - `03_WPK_1DPW\README.md` 的入口名与命令均失效
+  - `09_THFB工具\thfb_toolkit.py` 依赖 `E:\mrzh\Documents\multi_cloud1`（不存在）
+  - `05_BinDict解码器\bindict_attribute_data_decoder.py` 输入目录 `E:\mrzh_audit\...` 不存在
+  - `02_资料\源包\post_update_20260924_1610\qj_*.py` 音频脚本双死路径
+
+- [ ] **A6 索引 sidecar 三份 json 的生成脚本找不到**
+  `lifeafter_files_build.json` / `_status.json` / `_verify.json` —— 全项目 grep 无命中；且 `database` 字段仍写重构前路径 `03拆包产物\indexes`。
+
+- [ ] **A7 sqlite `meta.builder` 与 build.json 仍写重构前旧路径**
+  `03拆包产物\indexes\` 与 `01拆包器本体\工具库\06_皮肤定位链\gpk_npk_index.py` ⇒ 会误导后来者。
+
+- [ ] **A8 174 个脚本含硬编码绝对路径（212 条）**
+  其中 `E:\提取成果\*` 系约 60 条、`E:\mrzh_audit\*` 约 10 条是**死路径**（脚本已不能跑）。
+  重点文件：`lifeafter_unpacker_full.py`(14) / `wpk_1dpw_verifier.py`(12) / `app.py`(7) / `wiki_selfcheck.py`(7) / `build_weapon_skin_table.py`(5) / `thfb_toolkit.py`(5)
+
+---
+
+## B. 能力缺口（用户指定最高优先）
+
+- [ ] **B1 ★★★ 链路 B 缺「单皮肤落地器」**
+  `04_站点\web\assets\3d\weapon_skin\` 下有 **115 套资产**，但产出它们的能跑的脚本**找不到**
+  （两个候选都失效：`s25_build_glb.py` 死路径 / `build_wiki_3d_batch.py` 只做 probe）。
+  **后果**：按可重建性定义，这 115 套资产现在是**不可重建**；每次出新件只能从头写脚本（历史上写了 40+ 个 `qj_*.py`）。
+  **修法方向**：把 `c159_pair → mesh_parse2 → export_glb → 落位 assets/3d/weapon_skin/<id>/` 串成一个 `run_all.py glb/pack` 子命令。
+
+- [ ] **B2 链路 C 缺能跑的工作副本生成器**
+  同 A2 —— 表解码链的入口脚本路径算错。
+
+- [ ] **B3 渲染：贴图定位**
+  时装本体贴图名 0 命中（如 `b_f_3717/textures/*.tga`）。
+  已建判据「UV 密度 vs 贴图梯度空间相关」在武器正控 corr=0.1677 有效，**时装上失效**；IoU 无区分力（0.6499 vs 0.6365）。
+  已确认：**客户端内不存在「名字 ↔ 网格/贴图」映射表**。
+  候选方向：装配帧声明 / c159 槽位 / 材质名反查 / 序号连号 / UV 之外的新判据
+
+- [ ] **B4 渲染：上色链**
+  染色链 / 折射链 / 晶体上色 / 源驱动材质。
+  已有 7 份修复记录 + 3 份裁定/口径文档（散在 `03_执行\30_分析` 与 `00_治理\文档`）**待整理成可复用方法**。
+  硬约定：`color_space` 逐槽声明（ab_test=sRGB / linear）；cube 六面 `NoColorSpace`；`t.flipY=false`（写错亮 ~4400×）
+
+- [ ] **B5 2D 立绘 / 展示图定位**
+  新皮肤、新武器皮肤的立绘/展示图没法定位。与 B3 疑为同一病根。
+  旧线索（未通用）：`find_ui_posters.py` / `find_new_ui_posters.py` / `find_poster_in_config.py`
+
+- [ ] **B6 奖池活动映射**
+  `lottery` 链 `reward_to_item_formal_join = unresolved`。
+  铁律：`LOTTERY_POOL` 与 `LOTTERY_REWARD_TARGETS` 永久分层，**禁止合并成「最终奖池表」**；无 level/priority→中文 grade 映射证据时禁止派生。
+  已知：`002962` = 客户端候选池；服务端每期选品 + 下发新品。
+  **要划清**：哪些静态能拿到、哪些只能靠服务端。
+
+---
+
+## C. 数据与环境
+
+- [ ] **C1 「不可重建」清单需要更新**
+  新版客户端已移除：**全部 FPK（64 个）/ 几乎所有 NPK（158→2）/ 33 个 GPK**；`Documents\gres` 从 37 分包合并成 1 个 `0000.gpk`。
+  ⇒ 历史资源的**唯一载体**是 `02_资料\源包\` 的 14 份快照。
+  ⇒ **建议复制一份到外置盘**（52 GB）——E 盘一坏就永远没了。
+
+- [x] **C2 复核索引与登记的字节数缺口**（2026-09-26 已核，结论与原判断不同）
+  原判断：「索引对着一份未登记的热更版本」。
+  **实测结论：索引没问题，错的是登记表。**
+  · 索引 vs 磁盘：**完全一致**
+    `Documents\script.py314.lc.npk` 索引 135,366,528 B / 27,072 行 = 磁盘 135,366,528 B ✓
+    `script.py314.lc.npk` 索引 465,363,048 B / 106,884 行 = 磁盘 465,363,048 B ✓
+  · 索引 vs 登记表：**这里才错**
+    `snapshots.json` 里 `status=active` 的 `test-documents-508bb5bd` = 188,306,920 B / 27,519 行（09-13 热更）
+    而磁盘实际是 135,366,528 B / 27,072 行（09-25 23:28）⇒ 差 52,940,392 B / 少 447 行
+    ⇒ 「active」标签指向一份**已被取代**的版本
+  · 为什么 `stale=false` 检不出来：它只比**清单指纹**（文件清单的哈希），不比单文件 sha256
+    ⇒ 单个包在眼皮底下换了，指纹可以不变
+  · 附带发现：该 active 记录指向的 `02_资料\源包\post_update_20260913_100608\raw_priority\` **已不存在**
+    （14 份热更快照里 13 份是工作记录，已搬走）⇒ 这条记录两头悬空
+  **待定**：是否给 09-25 那份补登记（算 sha256 → 登记为新 active → 旧的转 superseded）。
+  此项动 `registry/snapshots.json`（口径类资产），**需用户批准后才做**。
+
+- [ ] **C3 `snapshots.json` 与真实快照可能不同步**
+  登记册里 23 条快照，本地实际 14 份目录 —— 逐条核对 status。
+
+---
+
+## D. 站点与清理（垃圾审计子代理在跑，回来后并入）
+
+- [ ] **D1** `04_站点\web\` 根目录 40+ 个 `_` 开头实验页（`_fashion5v_*` / `_parts9_*` / `_cmp*` / `_3d_verify*`…）
+- [ ] **D2** 4 个误提交的 Chrome 配置目录：`assets\3d\weapon_skin\1110177\_build_t5\{_profcam,_proferr_lab,_proferr_prod,_gl2prof_*}`
+- [ ] **D3** `assets\3d\` 下实验残留目录：`parts_v6/v8/v9/v13`、`fashion_v3/v5`、`cmp*`、`fas*`、`huanye*`、`hy_*`、`hair_only`、`anchor_try`、`zs_series`（有 manifest 但无页面引用）
+- [ ] **D4** `03_执行\90_临时\` 的「备份_5区重构前」（11,406 文件）—— 工具库本体还在，此备份可能可清
+
+---
+
+## E. 未能确认（审计如实标注，未编）
+
+- [ ] **E1** `04_站点\web\data\id_locator_index.db` 由 `build_id_locator.py` 等多个脚本共写，未逐脚本核其读写列
+- [ ] **E2** `03_执行\30_分析\audio_review\` 下的 `试听.html` / `音效定位链_全景图.html` 找不到生成脚本
+- [ ] **E3** `registry\tables.json` / `namespaces.json` 的字段级职责未逐项核
+- [ ] **E4** `thfb_toolkit.py` 第 2 处输入 `E:\mrzh\Documents\multi_cloud1` 的具体用途未核
+- [ ] **E5** `bindict_attribute_data_decoder.py` 用 runpy 加载的那个文件只核到目录级存在，未核到具体文件名

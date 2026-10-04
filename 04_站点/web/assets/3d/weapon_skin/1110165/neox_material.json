@@ -1,0 +1,586 @@
+{
+ "schema": "neox_material/v2",
+ "skin": "1110165",
+ "source": {
+  "material_c159": "001631.c159",
+  "bind_c159": "001631.c159",
+  "mesh": "001630.mesh",
+  "billboard_block": [
+   1632,
+   1644
+  ],
+  "n_block": 13,
+  "declared_names_union": [
+   "001a",
+   "001m",
+   "001n",
+   "001s_m",
+   "1001a",
+   "1001b_m",
+   "1001m",
+   "1001n",
+   "1001s_m",
+   "2001a",
+   "2001s_m",
+   "3001a",
+   "3001s_m"
+  ],
+  "group_sizes": {
+   "001": 4,
+   "1001": 5,
+   "2001": 2,
+   "3001": 2
+  }
+ },
+ "glb": {
+  "path": "model.glb",
+  "sha256": "0e93eec8e52cf400e01b5b540ee46fd70fac22827876df39cda2ba4bd74c7b41"
+ },
+ "required_by_program_family": {
+  "pbr_weapon": {
+   "required_slots": [
+    "Tex0",
+    "ParamMap",
+    "NormalMap"
+   ]
+  }
+ },
+ "slot_binding_basis": {
+  "A_c159_plaintext_names": "13 条明文文件名（001a/001m/001n/001s_m/1001a/1001b_m/1001m/1001n/1001s_m/2001a/2001s_m/3001a/3001s_m）= 硬证据",
+  "B_count_and_physics": "类↔名配对由计数(a4/m2/n2/s_m4/b_m1)+物理约束(albedo 三通道须有变化、正态图 R,G≈0.5,B≈0.96)唯一锁定",
+  "C_cross_group_declared": "c159 #1619 明文块 2001a[t_basecolor]+001m+2001s_m+001n / 3001a[t_basecolor]+1001m+3001s_m+1001n ⇒ G2/G3 的 ParamMap/NormalMap 为源声明的跨组引用，非顶替",
+  "D_retracted": "旧的『邻域键紧邻=逐条槽直证』已撤回：命中地址恒为块头且实为 u16 0x0101=257 巧合（记录语法 01 00 01 13 05）"
+ },
+ "cube_declared_sets": {
+  "{bg61f}": [
+   "001654.c159",
+   "001657.c159",
+   "001660.c159",
+   "001663.c159"
+  ],
+  "{bonifacio_street,glazed_patio}": [
+   "001619.c159",
+   "001622.c159",
+   "001625.c159",
+   "001628.c159"
+  ],
+  "{bonifacio_street,qiangpi}": [
+   "001631.c159"
+  ]
+ },
+ "cube_unresolved": [
+  "bonifacio_street 源条目 res.npk#8756 未提取 ⇒ missing（未落盘、未顶替）",
+  "per-prim ↔ material_index 归组无直证 ⇒ cube 按皮肤内声明集绑定，未按 prim 逐一断言"
+ ],
+ "missing": [
+  "bonifacio_street.cube（crystal 材质声明）"
+ ],
+ "unresolved": [
+  "#1637=1001b_m 由唯一性排除法绑定(R≡1 唯一/ b_m 仅1个)，非逐条声明",
+  "mesh #1630 的 submesh↔材料名 _0.._3 与组前缀 001/1001/2001/3001 的对应无直证"
+ ],
+ "observed_but_unbound": {
+  "basis": "chain-auditor 2026-09-18（task-16）：逐文件 grep + 槽位引用核对",
+  "rule": "源里已提取但未被任何槽位引用的文件如实登记；不硬绑、不顶替",
+  "files": [
+   {
+    "local_file": "src_tex/165_m.png",
+    "declared_name": "001m",
+    "status": "prose_only_no_slot_binding",
+    "evidence": "全文件 6 处引用全部落在 `naming_conflict` 的散文说明（『原绑 165_m.png 撤回』），**槽位引用 0 处**",
+    "why_not_bound": "naming_conflict.resolution 按运营可用性裁为 ParamMap←165_a.png（165_m.png 会给 metal≡1 / rough≡0.001 全镜面）；该裁决已留档并声明『不是签名口径的胜负』"
+   },
+   {
+    "local_file": "src_tex/165_c_m.png",
+    "declared_name": "001m（c 组）",
+    "status": "zero_references",
+    "evidence": "全文件 0 处引用"
+   },
+   {
+    "local_file": "src_tex/165_d_m.png",
+    "declared_name": "001m（d 组）",
+    "status": "zero_references",
+    "evidence": "全文件 0 处引用"
+   },
+   {
+    "local_file": "src_tex/165_e_m.png",
+    "declared_name": "001m（e 组）",
+    "status": "zero_references",
+    "evidence": "全文件 0 处引用"
+   },
+   {
+    "local_file": "src_tex/param_repack_165.png",
+    "status": "derived_artifact_referenced_in_text_only",
+    "evidence": "仅 `param_repack` 说明文本引用；实际由派生规则生成（derived_from = src_tex/165_a.png）"
+   },
+   {
+    "local_file": "src_tex/rough_repack_165.png",
+    "status": "derived_artifact_referenced_in_text_only",
+    "evidence": "同上"
+   }
+  ]
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "mtl_idx": 0,
+   "material": "skin_1006_011_0",
+   "glb_material": "skin_1006_011_0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "sh=3 皮肤级判定（c159 族含 pbr_weapon）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 0,
+   "group_prefix": "001",
+   "t_custom_ibl": {
+    "local_file": "src_cube/qiangpi.dds",
+    "cube": "qiangpi",
+    "binding_basis": "c159 明文块内的 .cube 声明：{qiangpi}←#1631 的 001/1001 块；{glazed_patio}←#1619/1622/1625/1628 的 2001/3001 块",
+    "faces_glob": "src_cube/faces/qiangpi_f*_m0.png"
+   },
+   "textures": {
+    "Tex0": {
+     "slot": "Tex0",
+     "local_file": "src_tex/165_b_m.png",
+     "entry": 1632,
+     "dds": "001632.dds",
+     "dds_sha16": "1acb0aac6d56985d",
+     "local_sha16": "8801d31e863d6645",
+     "content_class": "color",
+     "GROUP_INDEX": 0,
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "prev_local_file": "src_tex/165_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "8801d31e863d6645"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "d89290e73d550a4d"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "8801d31e863d6645",
+        "basis": "按当前 local_file 重算（口径见 wiki_selfcheck L165-174，摘要长度按字段名）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "8801d31e863d6645",
+        "basis": "按当前 local_file 重算（口径见 wiki_selfcheck L165-174，摘要长度按字段名）"
+       }
+      ],
+      "field": "local_sha16",
+      "now": "8801d31e863d6645",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "bind_fix_20260919": "20260918_234628"
+    },
+    "ParamMap": {
+     "slot": "ParamMap",
+     "local_file": "src_tex/165_a.png",
+     "entry": 1633,
+     "dds": "001633.dds",
+     "dds_sha16": "0ea0892bcaa32b44",
+     "local_sha16": "d89290e73d550a4d",
+     "content_class": "B=1+alpha_varies",
+     "GROUP_INDEX": 0,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "slot": "NormalMap",
+     "local_file": "src_tex/165_n.png",
+     "entry": 1634,
+     "dds": "001634.dds",
+     "dds_sha16": "59b0b69b371e195f",
+     "local_sha16": "ed6092d47213a986",
+     "content_class": "R,G~0.5,B~0.96",
+     "GROUP_INDEX": 0,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "slot": "t_basecolor",
+     "local_file": "src_tex/165_b_m.png",
+     "entry": 1632,
+     "dds": "001632.dds",
+     "dds_sha16": "1acb0aac6d56985d",
+     "local_sha16": "8801d31e863d6645",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 0,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/165_s_m.png",
+     "entry": 1637,
+     "declared_name": "1001b_m",
+     "content_class": "R=1,G,B_vary",
+     "evidence": "R≡1 硬签名 + 槽名 s_m 直配",
+     "binding_basis": "Lead 裁决 2026-09-19（原绑 165_m.png 撤回）",
+     "restriction": "块内仅此 1 张 R≡1 ⇒ 4 组共用，非顶替（同皮肤同块）",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "status": "NAMED_SLOT_DIRECT",
+     "local_file": "src_cube/qiangpi.dds",
+     "binding_basis": "source_block_declaration",
+     "source_of_binding": "#1631 块声明（001/1001 组）",
+     "dds_bytes": 524408,
+     "faces_present": "6/6",
+     "why": "c159 明文块内该组 4 条贴图随同一条 .cube 声明 ⇒ 离该块最近者为该块环境；不按全局顺序取。bg61f 属关卡级共享材质组（撤回），不使用。",
+     "evidence_level": "dual_path_consistent"
+    }
+   }
+  },
+  {
+   "prim": 1,
+   "mtl_idx": 1,
+   "material": "skin_1006_011_1",
+   "glb_material": "skin_1006_011_1",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "sh=3 皮肤级判定（c159 族含 pbr_weapon）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 1,
+   "group_prefix": "1001",
+   "t_custom_ibl": {
+    "local_file": "src_cube/qiangpi.dds",
+    "cube": "qiangpi",
+    "binding_basis": "c159 明文块内的 .cube 声明：{qiangpi}←#1631 的 001/1001 块；{glazed_patio}←#1619/1622/1625/1628 的 2001/3001 块",
+    "faces_glob": "src_cube/faces/qiangpi_f*_m0.png"
+   },
+   "textures": {
+    "Tex0": {
+     "slot": "Tex0",
+     "local_file": "src_tex/165_c_b_m.png",
+     "entry": 1636,
+     "dds": "001636.dds",
+     "dds_sha16": "bfff78e9099ad8a3",
+     "local_sha16": "0859c7d3a72284c7",
+     "content_class": "color",
+     "GROUP_INDEX": 1,
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "prev_local_file": "src_tex/165_c_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "0859c7d3a72284c7"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "0a77bca79ca45c3d"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "0859c7d3a72284c7",
+        "basis": "按当前 local_file 重算（口径见 wiki_selfcheck L165-174，摘要长度按字段名）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "0859c7d3a72284c7",
+        "basis": "按当前 local_file 重算（口径见 wiki_selfcheck L165-174，摘要长度按字段名）"
+       }
+      ],
+      "field": "local_sha16",
+      "now": "0859c7d3a72284c7",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "bind_fix_20260919": "20260918_234628"
+    },
+    "ParamMap": {
+     "slot": "ParamMap",
+     "local_file": "src_tex/165_c_a.png",
+     "entry": 1638,
+     "dds": "001638.dds",
+     "dds_sha16": "a1c9486c73e3d81e",
+     "local_sha16": "0a77bca79ca45c3d",
+     "content_class": "B=1+alpha_varies",
+     "GROUP_INDEX": 1,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "slot": "NormalMap",
+     "local_file": "src_tex/165_c_n.png",
+     "entry": 1639,
+     "dds": "001639.dds",
+     "dds_sha16": "cc902cecf52b3de4",
+     "local_sha16": "7f121e5cb4934bd5",
+     "content_class": "R,G~0.5,B~0.967",
+     "GROUP_INDEX": 1,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "slot": "t_basecolor",
+     "local_file": "src_tex/165_c_b_m.png",
+     "entry": 1636,
+     "dds": "001636.dds",
+     "dds_sha16": "bfff78e9099ad8a3",
+     "local_sha16": "0859c7d3a72284c7",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 1,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/165_s_m.png",
+     "entry": 1637,
+     "declared_name": "1001b_m",
+     "content_class": "R=1,G,B_vary",
+     "evidence": "R≡1 硬签名 + 槽名 s_m 直配",
+     "binding_basis": "Lead 裁决 2026-09-19（原绑 165_m.png 撤回）",
+     "restriction": "块内仅此 1 张 R≡1 ⇒ 4 组共用，非顶替（同皮肤同块）",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "status": "NAMED_SLOT_DIRECT",
+     "local_file": "src_cube/qiangpi.dds",
+     "binding_basis": "source_block_declaration",
+     "source_of_binding": "#1631 块声明（001/1001 组）",
+     "dds_bytes": 524408,
+     "faces_present": "6/6",
+     "why": "c159 明文块内该组 4 条贴图随同一条 .cube 声明 ⇒ 离该块最近者为该块环境；不按全局顺序取。bg61f 属关卡级共享材质组（撤回），不使用。",
+     "evidence_level": "dual_path_consistent"
+    }
+   }
+  },
+  {
+   "prim": 2,
+   "mtl_idx": 2,
+   "material": "skin_1006_011_2",
+   "glb_material": "skin_1006_011_2",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "sh=3 皮肤级判定（c159 族含 pbr_weapon）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 2,
+   "group_prefix": "2001",
+   "t_custom_ibl": {
+    "local_file": "src_cube/glazed_patio.dds",
+    "cube": "glazed_patio",
+    "binding_basis": "c159 明文块内的 .cube 声明：{qiangpi}←#1631 的 001/1001 块；{glazed_patio}←#1619/1622/1625/1628 的 2001/3001 块",
+    "faces_glob": "src_cube/faces/glazed_patio_f*_m0.png"
+   },
+   "textures": {
+    "Tex0": {
+     "slot": "Tex0",
+     "local_file": "src_tex/165_d_b_m.png",
+     "entry": 1641,
+     "dds": "001641.dds",
+     "dds_sha16": "2013bb612eee0794",
+     "local_sha16": "49ec41d2f063f0a7",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 2,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "slot": "ParamMap",
+     "local_file": "src_tex/165_a.png",
+     "entry": 1633,
+     "dds": "001633.dds",
+     "dds_sha16": "0ea0892bcaa32b44",
+     "local_sha16": "d89290e73d550a4d",
+     "content_class": "B=1+alpha_varies",
+     "GROUP_INDEX": 2,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "slot": "NormalMap",
+     "local_file": "src_tex/165_n.png",
+     "entry": 1634,
+     "dds": "001634.dds",
+     "dds_sha16": "59b0b69b371e195f",
+     "local_sha16": "ed6092d47213a986",
+     "content_class": "R,G~0.5,B~0.96",
+     "GROUP_INDEX": 2,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "slot": "t_basecolor",
+     "local_file": "src_tex/165_d_b_m.png",
+     "entry": 1641,
+     "dds": "001641.dds",
+     "dds_sha16": "2013bb612eee0794",
+     "local_sha16": "49ec41d2f063f0a7",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 2,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/165_s_m.png",
+     "entry": 1637,
+     "declared_name": "1001b_m",
+     "content_class": "R=1,G,B_vary",
+     "evidence": "R≡1 硬签名 + 槽名 s_m 直配",
+     "binding_basis": "Lead 裁决 2026-09-19（原绑 165_m.png 撤回）",
+     "restriction": "块内仅此 1 张 R≡1 ⇒ 4 组共用，非顶替（同皮肤同块）",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "status": "NAMED_SLOT_DIRECT",
+     "local_file": "src_cube/glazed_patio.dds",
+     "binding_basis": "source_block_declaration",
+     "source_of_binding": "#1619/1622/1625/1628 块声明（2001/3001 组）",
+     "dds_bytes": 524408,
+     "faces_present": "6/6",
+     "why": "c159 明文块内该组 4 条贴图随同一条 .cube 声明 ⇒ 离该块最近者为该块环境；不按全局顺序取。bg61f 属关卡级共享材质组（撤回），不使用。",
+     "evidence_level": "dual_path_consistent"
+    }
+   }
+  },
+  {
+   "prim": 3,
+   "mtl_idx": 3,
+   "material": "skin_1006_011_3",
+   "glb_material": "skin_1006_011_3",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "sh=3 皮肤级判定（c159 族含 pbr_weapon）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 3,
+   "group_prefix": "3001",
+   "t_custom_ibl": {
+    "local_file": "src_cube/glazed_patio.dds",
+    "cube": "glazed_patio",
+    "binding_basis": "c159 明文块内的 .cube 声明：{qiangpi}←#1631 的 001/1001 块；{glazed_patio}←#1619/1622/1625/1628 的 2001/3001 块",
+    "faces_glob": "src_cube/faces/glazed_patio_f*_m0.png"
+   },
+   "textures": {
+    "Tex0": {
+     "slot": "Tex0",
+     "local_file": "src_tex/165_e_b_m.png",
+     "entry": 1643,
+     "dds": "001643.dds",
+     "dds_sha16": "fe849615d6ee4c54",
+     "local_sha16": "530d39b5fcca8dbb",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 3,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "slot": "ParamMap",
+     "local_file": "src_tex/165_c_a.png",
+     "entry": 1638,
+     "dds": "001638.dds",
+     "dds_sha16": "a1c9486c73e3d81e",
+     "local_sha16": "0a77bca79ca45c3d",
+     "content_class": "B=1+alpha_varies",
+     "GROUP_INDEX": 3,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "NormalMap": {
+     "slot": "NormalMap",
+     "local_file": "src_tex/165_c_n.png",
+     "entry": 1639,
+     "dds": "001639.dds",
+     "dds_sha16": "cc902cecf52b3de4",
+     "local_sha16": "7f121e5cb4934bd5",
+     "content_class": "R,G~0.5,B~0.967",
+     "GROUP_INDEX": 3,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_basecolor": {
+     "slot": "t_basecolor",
+     "local_file": "src_tex/165_e_b_m.png",
+     "entry": 1643,
+     "dds": "001643.dds",
+     "dds_sha16": "fe849615d6ee4c54",
+     "local_sha16": "530d39b5fcca8dbb",
+     "content_class": "warm_grey_B<1_alpha1",
+     "GROUP_INDEX": 3,
+     "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": "src_tex/165_s_m.png",
+     "entry": 1637,
+     "declared_name": "1001b_m",
+     "content_class": "R=1,G,B_vary",
+     "evidence": "R≡1 硬签名 + 槽名 s_m 直配",
+     "binding_basis": "Lead 裁决 2026-09-19（原绑 165_m.png 撤回）",
+     "restriction": "块内仅此 1 张 R≡1 ⇒ 4 组共用，非顶替（同皮肤同块）",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "status": "NAMED_SLOT_DIRECT",
+     "local_file": "src_cube/glazed_patio.dds",
+     "binding_basis": "source_block_declaration",
+     "source_of_binding": "#1619/1622/1625/1628 块声明（2001/3001 组）",
+     "dds_bytes": 524408,
+     "faces_present": "6/6",
+     "why": "c159 明文块内该组 4 条贴图随同一条 .cube 声明 ⇒ 离该块最近者为该块环境；不按全局顺序取。bg61f 属关卡级共享材质组（撤回），不使用。",
+     "evidence_level": "dual_path_consistent"
+    }
+   }
+  }
+ ],
+ "param_repack": {
+  "files": [
+   "src_tex/param_repack_165.png",
+   "src_tex/rough_repack_165.png"
+  ],
+  "derived_from": "src_tex/165_a.png",
+  "rule": "param: R←src.R, B←src.G (three 读 metalnessMap.B) · rough: G←src.R (three 读 roughnessMap.G)",
+  "convention_align": "与 1110024/1110129/1110145/1110152/1110171/1110177 的 param_repack_<3位> 同命名（famOf(Tex0)=165）",
+  "rough_repack_status": "approximate_unresolved",
+  "rough_repack_reason": "审核 P0-2：`gen_param_repack.py` 只生成 param_repack，不生成 rough_repack；而本皮肤的 rough_repack 走 `165_a.R` 分支（非 t_basecolor.a）⇒ 降级为 approximate/unresolved，不得以『否则不好看』为由进入 strict 生产口径"
+ },
+ "naming_conflict": {
+  "dispute": "审计要求 ParamMap←165_m.png、t_surfacemap←165_s_m.png；本 manifest 为 ParamMap←165_a.png、t_surfacemap←165_m.png",
+  "which": "配对分歧，**不是写入 bug**：BINDING_13.json 表内 001m→165_a.png，manifest 逐槽照表写入，二者一致",
+  "evidence_for_table": "c159 明文名计数(a4/m2/n2/s_m4/b_m1)与签名类计数(暖灰4/B≡1+α2/正态2/G≡1∧B≡1 4/R≡1 1)唯一配对；审计口径要求 m=G≡1∧B≡1 ⇒ 需 m 计数=4，但源只声明 2 个 m ⇒ 矛盾",
+  "runtime_consequence": "若按审计口径用 165_m.png：metal≡1、rough≡0.001 ⇒ 全镜面（与 1110145 的 014_m 症状同类）；本口径用 165_a.png：metal/rough 均有梯度",
+  "status": "resolved_by_operational_necessity",
+  "resolution": {
+   "ParamMap": "保持 src_tex/165_a.png（按可用性裁：metal 0.606 / rough 0.406 有梯度；165_m 会给 metal≡1/rough≡0.001 全镜面）",
+   "t_surfacemap": "改为 src_tex/165_s_m.png（R≡1 硬签名 + 槽名直配）",
+   "声明": "此裁决是按运营可用性，不是签名口径的胜负；两侧依据均已留档，签名口径的计数矛盾仍然 unresolved"
+  }
+ },
+ "source_level_facts": {
+  "roughness_from": "源级事实：粗糙度来自 t_basecolor(*a) 的 alpha —— 旁证 1110145 rough_repack_014.G=0.733 == 014_a.png.alpha(0.733)；与 viewer L1050「Roughness = t_basecolor.a」一致"
+ },
+ "evidence_levels": {
+  "reviewed_at": "2026-09-19",
+  "reviewer": "external read-only audit（Lead 采纳）",
+  "slot_binding_method": "ordered-1to1（按 c159 声明序 ↔ 区块内条目顺序）",
+  "slot_binding_evidence_level": "candidate-high",
+  "is_explicit_slot_path_proof": false,
+  "cube_binding": "dual_path_consistent（唯一双路一致的例外）",
+  "conflicts_note": "解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）；**所有 conflict 单独保留、不自动裁决**",
+  "production_rule": "证据等级为 candidate 的槽位不得作为生产绑定；带 production_ok=false 的槽位仅供诊断/对照，验收脚本应据此判 WARN/FAIL",
+  "note": "外部只读审核 2026-09-19（P0-1/P0-2，Lead 采纳）：本 manifest 的 weapon 基底槽位来自 c159 的 **ordered-1to1 顺序映射**，证据等级为 `ordered-1to1 / candidate-high`，**不是显式槽→路径直证**；解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）。cube（t_custom_ibl）是双路一致的例外。所有 conflict 单独保留、不自动裁决。"
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "schema": "workbench-web-client/v1",
+ "generated": "2026-09-13T05:10:00",
+ "_meta": {
+  "purpose": "Web Client 路由与投影定位契约（v1.3）：哪些板块走 API 分页、哪些仍是静态投影、哪些是离线全量导出",
+  "rule": "大数据 Domain 默认 API-first；投影只用于首页/统计/小 Domain/离线导出；API 不可用时禁止静默回退 legacy board"
+ },
+ "view_modes": {
+  "wiki": {
+   "label": "Wiki View",
+   "audience": "普通浏览：名称 / 分类 / 属性 / 奖池内容 / 武器皮肤",
+   "pages": ["wiki.html", "board.html"],
+   "hides": ["snapshot_basis", "provenance", "evidence", "residuals", "binding_status"]
+  },
+  "workbench": {
+   "label": "Workbench View",
+   "audience": "数据审计：snapshot / provenance / evidence / residual / binding / source",
+   "pages": ["workbench.html", "workbench_items.html", "workbench_lottery.html", "workbench_entity.html", "workbench_status.html"],
+   "shares_data_with": "wiki"
+  }
+ },
+ "domains": {
+  "item": {
+   "workbench_page": "workbench_items.html",
+   "wiki_page": "board.html?b=item_master_active",
+   "data_source": "api",
+   "api": "/api/items",
+   "page_size_max": 200,
+   "row_count": 30467,
+   "lightweight_projection": "item_stats"
+  },
+  "lottery": {
+   "workbench_page": "workbench_lottery.html",
+   "wiki_page": "board.html?b=lottery_pool_active",
+   "data_source": "api",
+   "api": ["/api/lottery/pools", "/api/lottery/rewards"],
+   "page_size_max": 200,
+   "row_count": {"pool": 23281, "reward_target": 23567},
+   "lightweight_projection": "lottery_stats"
+  },
+  "weapon_skin": {
+   "workbench_page": "workbench_entity.html?kind=weapon_skin",
+   "wiki_page": "board.html?b=weapon_skin_sfx_text_sources",
+   "data_source": "projection",
+   "row_count": 115,
+   "note": "图鉴唯一入口 = weapon_skin_sfx_text_sources（115，当前包 328b8446 基准，FID 直读）；weapon_skin_active 为内部审计投影，不作为图鉴入口",
+   "internal_projection": "weapon_skin_active"
+  },
+  "fashion": {
+   "workbench_page": "workbench.html",
+   "wiki_page": "board.html?b=fashion_active",
+   "data_source": "projection",
+   "entity_detail": false,
+   "note": "状态型页面，不伪造 entity detail"
+  }
+ },
+ "api_first_boards": {
+  "item_master_active": {"domain": "item", "page": "workbench_items.html", "api": "/api/items", "row_count": 30467},
+  "lottery_pool_active": {"domain": "lottery", "page": "workbench_lottery.html?tab=pools", "api": "/api/lottery/pools", "row_count": 23281},
+  "lottery_rewards_active": {"domain": "lottery", "page": "workbench_lottery.html?tab=rewards", "api": "/api/lottery/rewards", "row_count": 23567}
+ },
+ "lightweight_boards": ["weapon_skin_active", "fashion_active", "item_stats", "lottery_stats"],
+ "offline_full_projection": ["item_master_active", "lottery_pool_active", "lottery_rewards_active"],
+ "entity_kinds": ["item", "weapon_skin", "lottery_pool", "lottery_reward"],
+ "fallback_policy": {
+  "api_unavailable": "明确提示 + 可选离线全量投影（来自 artifacts/active，显式操作）；禁止静默回退 legacy board 或 historical 数据",
+  "legacy_board_usage": "仅小 Domain / 未迁移板块；不参与 Workbench 查询路径"
+ }
+}

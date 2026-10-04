@@ -1,0 +1,854 @@
+{
+ "name": "custom_bright_snow_20260921",
+ "status": "self_authored_approximate",
+ "authority": "user_authorized_manual_20260921",
+ "fidelity": "approximate",
+ "is_game_asset": false,
+ "not_a_game_asset": true,
+ "note": "**自造近似、非游戏资产**：像素基底取自游戏资产 snow 的前五面，**f3(−Y) 面是自造的**（源该面全黑 ⇒ 用 +Y 天花镜像 + 模糊 + 压暗补出）；并逐像素加了**软抬底** a=0.05（反解 RGBM 的 M）。源侧**无选择器** ⇒ 默认改用它属**产品选择**；目的 = **消除武器金属镜面发黑**。不得作为「游戏实际使用该环境」的证据，不得标成 source_verified，不得顶替源资产，也不得计入「源数据驱动」目标。",
+ "derived_from": [
+  {
+   "cube": "snow",
+   "role": "f0/f1/f2/f4/f5 五面像素基底（f3 由 f2 镜像自造）",
+   "cube_sha256": "a974343d3689cc1a729d03edc05c35a9700e19f78cc6a1a7d1ffda117d269a55",
+   "cube_sha16": "a974343d3689cc1a",
+   "container": "0000.gpk",
+   "row": 11915,
+   "off": 133324416,
+   "comp": 235581,
+   "dec": 524408,
+   "logical": "common\\env_map\\snow.cube",
+   "dims": "128x128",
+   "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+   "status": "source_verified",
+   "faces": [
+    {
+     "face": 0,
+     "axis": "+X",
+     "file": "snow_f0_m0.png",
+     "sha256": "88d496966b101abeaff2aa5db2ce857a918819831b36e5ebf8bbd95c3d0500f4",
+     "bytes": 22438,
+     "is_all_black_in_source": false
+    },
+    {
+     "face": 1,
+     "axis": "-X",
+     "file": "snow_f1_m0.png",
+     "sha256": "bb8fbf565620a08afdab4c16ee5ce4e5f0daee292205e2a9fba90ac926f0e27e",
+     "bytes": 20734,
+     "is_all_black_in_source": false
+    },
+    {
+     "face": 2,
+     "axis": "+Y",
+     "file": "snow_f2_m0.png",
+     "sha256": "0df874f659cfd2a56204a73210ccfa832951b614474c17ade4b60d71339f001d",
+     "bytes": 36400,
+     "is_all_black_in_source": false
+    },
+    {
+     "face": 3,
+     "axis": "-Y",
+     "file": "snow_f3_m0.png",
+     "sha256": "a37162d1ad434720de04ea1774d259f618b361ce58b5e20b489d88cfe26ca274",
+     "bytes": 390,
+     "is_all_black_in_source": true
+    },
+    {
+     "face": 4,
+     "axis": "+Z",
+     "file": "snow_f4_m0.png",
+     "sha256": "c27028072de94554b19455be51f669439270877c9b26045e782433c0a5441278",
+     "bytes": 20545,
+     "is_all_black_in_source": false
+    },
+    {
+     "face": 5,
+     "axis": "-Z",
+     "file": "snow_f5_m0.png",
+     "sha256": "c7aa379cca910ae69a572b9e6920df60be28509a4950df6adec09fc06474180b",
+     "bytes": 22489,
+     "is_all_black_in_source": false
+    }
+   ]
+  }
+ ],
+ "cubemap_order": [
+  "+X",
+  "-X",
+  "+Y",
+  "-Y",
+  "+Z",
+  "-Z"
+ ],
+ "face_size": 128,
+ "container": null,
+ "row": null,
+ "sha16": null,
+ "dims": "128x128",
+ "format": "PNG RGBA RGBM(a=multiplier) — 与源 B8G8R8A8_UNORM + asm542-544 解码约定对齐",
+ "resolve": "self_authored",
+ "in_skin": false,
+ "identity_basis": "self_authored_approximate — 无容器/无哈希命中，**不是**源 cube",
+ "selectable": true,
+ "group": "self_authored（自造近似，非游戏资产）",
+ "rgbm_encoding": {
+  "decode_in_viewer": "q_L = pow(rgb * a * 16.0, 2.0)   /* asm 542-544，已由游戏 DXBC 逐指令证实 */",
+  "texture_colorSpace": "NoColorSpace (viewer L2001/L5106/L5223)",
+  "encode": "q = sqrt(L_new) ; s = q/16 ; M = ceil_8bit(max_c s_c) ; rgb_out = s / M",
+  "alpha_is_rgbm_multiplier": true,
+  "ceil_not_round_why": "M 取 ceil 到 8bit 网格 ⇒ M ≥ max_c s_c 恒成立 ⇒ rgb_out ≤ 1 **无需裁剪**，回读误差只剩 rgb_out 的 8bit 量化。",
+  "why_alpha_matters": "源 IBL 分支解码 pow(rgb*a*16,2)，alpha 就是 RGBM 乘子 M。实测 qiangpi alpha≈0.015 ⇒ 解码辐射≈0.05 ⇒ 金属镜面发黑。"
+ },
+ "radiance_calibration": {
+  "is_self_authored": true,
+  "formula": "L_new = sqrt( L_src^2 + a^2 )  逐通道；L_src = (rgb_src * a_src * 16)^2",
+  "GAIN": 1.0,
+  "GAIN_rule": "**恒为 1.0，不加任何增益** —— 对源里已经亮的像素逐值不动。这是对「自造近似」最小侵入的选择，避免\"靠整体变亮换金属\"。",
+  "L_FLOOR_A": 0.0505,
+  "L_FLOOR_A_rule": "a 由硬约束反解：逐面「近黑 L<0.05 占比 == 0」。luma 是各通道的凸组合 ⇒ min_channel(L_new) = a ⇒ a ≥ 0.05 数学上即恒成立。但 RGBM 落 8bit 后回读会略降：实测 a=0.0500 回读 min=0.049917（差 8.3e-5）、a=0.047619 回读 min=0.0476 ⇒ 取 a = 0.0505（回读 min=0.050358 > 0.05，余量 0.72%），刚好覆盖 8bit 量化误差、不浪费能量。",
+  "no_image_domain_gain": "未施加任何图像域增益/对比度/裁剪整形（g 恒 1.0）。唯一的图像域整形是 f3 补面的高斯模糊与均匀压暗。",
+  "forbidden_touched": "未改 exposure / ACES / bloom / 灯 / 环境强度 / lighting_approx 既有值。"
+ },
+ "faces": [
+  {
+   "face": 0,
+   "axis": "+X",
+   "file": "custom_bright_snow_20260921_f0_m0.png",
+   "sha256": "c2a901b5ec2f3b1e2b8d11763ecde74e16bc4d36de8dd1d4c90d3ba17520f7e1",
+   "bytes": 12775,
+   "is_filled_face": false,
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.214427,
+    "p95": 1.586623,
+    "max": 2.644898,
+    "mean": 0.504892
+   },
+   "decoded_L_min": 0.050358,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 22.644,
+   "gt085_pct": 28.6133,
+   "srgb_lum": {
+    "min": 0.249059,
+    "p05": 0.249059,
+    "p50": 0.500511,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.567717
+   },
+   "source": {
+    "cube": "snow",
+    "face": 0,
+    "axis": "+X",
+    "file": "snow_f0_m0.png",
+    "sha256": "88d496966b101abeaff2aa5db2ce857a918819831b36e5ebf8bbd95c3d0500f4",
+    "bytes": 22438,
+    "src_decoded_L": {
+     "min": 0.0,
+     "p05": 0.0,
+     "p50": 0.208626,
+     "p95": 1.585867,
+     "max": 2.644898,
+     "mean": 0.480068
+    },
+    "src_dark_L_lt_0.05_pct": 49.2188,
+    "src_gt1_pct": 22.6501,
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.031373,
+     "max": 0.133333,
+     "mean": 0.038128
+    },
+    "src_is_all_black": false
+   },
+   "fill_provenance": null
+  },
+  {
+   "face": 1,
+   "axis": "-X",
+   "file": "custom_bright_snow_20260921_f1_m0.png",
+   "sha256": "4791cf5b39ad0b5f814c6e43a028c56a60025bd01014b676786d466b9f4642e1",
+   "bytes": 11368,
+   "is_filled_face": false,
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.204069,
+    "p95": 3.712149,
+    "max": 13.666705,
+    "mean": 0.706357
+   },
+   "decoded_L_min": 0.050358,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 17.5964,
+   "gt085_pct": 19.8914,
+   "srgb_lum": {
+    "min": 0.249059,
+    "p05": 0.249059,
+    "p50": 0.489019,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.534871
+   },
+   "source": {
+    "cube": "snow",
+    "face": 1,
+    "axis": "-X",
+    "file": "snow_f1_m0.png",
+    "sha256": "bb8fbf565620a08afdab4c16ee5ce4e5f0daee292205e2a9fba90ac926f0e27e",
+    "bytes": 20734,
+    "src_decoded_L": {
+     "min": 0.0,
+     "p05": 0.0,
+     "p50": 0.198163,
+     "p95": 3.712149,
+     "max": 13.669706,
+     "mean": 0.680919
+    },
+    "src_dark_L_lt_0.05_pct": 49.2188,
+    "src_gt1_pct": 17.5964,
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.031373,
+     "max": 0.243137,
+     "mean": 0.038616
+    },
+    "src_is_all_black": false
+   },
+   "fill_provenance": null
+  },
+  {
+   "face": 2,
+   "axis": "+Y",
+   "file": "custom_bright_snow_20260921_f2_m0.png",
+   "sha256": "08f44d2d9ba05c3d02c1a649fd87ea43312a2b0f18096dd0c1009022f97d7938",
+   "bytes": 25046,
+   "is_filled_face": false,
+   "decoded_L": {
+    "min": 0.15299,
+    "p05": 0.27106,
+    "p50": 0.88904,
+    "p95": 1.895154,
+    "max": 5.236712,
+    "mean": 0.946902
+   },
+   "decoded_L_min": 0.15299,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 39.3005,
+   "gt085_pct": 53.9917,
+   "srgb_lum": {
+    "min": 0.427407,
+    "p05": 0.55655,
+    "p50": 0.926015,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.861918
+   },
+   "source": {
+    "cube": "snow",
+    "face": 2,
+    "axis": "+Y",
+    "file": "snow_f2_m0.png",
+    "sha256": "0df874f659cfd2a56204a73210ccfa832951b614474c17ade4b60d71339f001d",
+    "bytes": 36400,
+    "src_decoded_L": {
+     "min": 0.144707,
+     "p05": 0.266218,
+     "p50": 0.88904,
+     "p95": 1.895154,
+     "max": 5.236712,
+     "mean": 0.945802
+    },
+    "src_dark_L_lt_0.05_pct": 0.0,
+    "src_gt1_pct": 39.2761,
+    "src_alpha": {
+     "min": 0.027451,
+     "p50": 0.078431,
+     "max": 0.156863,
+     "mean": 0.075939
+    },
+    "src_is_all_black": false
+   },
+   "fill_provenance": null
+  },
+  {
+   "face": 3,
+   "axis": "-Y",
+   "file": "custom_bright_snow_20260921_f3_m0.png",
+   "sha256": "da5db3eaea9cad2e2d4b56da10179f93e5d94190d9d3b9e67bd462db4a2d86ff",
+   "bytes": 7345,
+   "is_filled_face": true,
+   "decoded_L": {
+    "min": 0.32508,
+    "p05": 0.404517,
+    "p50": 0.746466,
+    "p95": 1.321094,
+    "max": 1.846259,
+    "mean": 0.805807
+   },
+   "decoded_L_min": 0.32508,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 21.0571,
+   "gt085_pct": 35.8337,
+   "srgb_lum": {
+    "min": 0.604338,
+    "p05": 0.666496,
+    "p50": 0.862946,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.865051
+   },
+   "source": {
+    "cube": "snow",
+    "face": 3,
+    "axis": "-Y",
+    "file": "snow_f3_m0.png",
+    "sha256": "a37162d1ad434720de04ea1774d259f618b361ce58b5e20b489d88cfe26ca274",
+    "bytes": 390,
+    "src_decoded_L": {
+     "min": 0.0,
+     "p05": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "max": 0.0,
+     "mean": 0.0
+    },
+    "src_dark_L_lt_0.05_pct": 100.0,
+    "src_gt1_pct": 0.0,
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.003922,
+     "max": 0.003922,
+     "mean": 0.003922
+    },
+    "src_is_all_black": true
+   },
+   "fill_provenance": {
+    "method": "+Y(f2) 天花面**垂直镜像** → 逐通道高斯模糊 σ=10.0 → 均匀压暗 ×0.85",
+    "mirror_source_face": 2,
+    "mirror_source_axis": "+Y",
+    "mirror_source_sha256": "0df874f659cfd2a56204a73210ccfa832951b614474c17ade4b60d71339f001d",
+    "gaussian_sigma": 10.0,
+    "dim": 0.85,
+    "why": "源 f3(−Y) 在容器里 maxRGB=0 / maxA=1 ⇒ 解码后 100%% 近黑 ⇒ 任何朝下方向采样到纯黑。镜像 +Y 使\"天的底部\"朝下（地面反射天顶的直觉朝向）；模糊抹掉可辨认的具体形状；压暗表示地面反射弱于天顶。**此面是本写手自造的，六面里唯一一面不是源像素。**"
+   }
+  },
+  {
+   "face": 4,
+   "axis": "+Z",
+   "file": "custom_bright_snow_20260921_f4_m0.png",
+   "sha256": "19eb2fbe2519021b5f7d046a3c88633c7a83678b593f79ebb3d4e8251765e929",
+   "bytes": 8813,
+   "is_filled_face": false,
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.256512,
+    "p95": 1.803388,
+    "max": 2.720635,
+    "mean": 0.644772
+   },
+   "decoded_L_min": 0.050358,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 35.7361,
+   "gt085_pct": 40.5396,
+   "srgb_lum": {
+    "min": 0.249059,
+    "p05": 0.249059,
+    "p50": 0.543028,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.604235
+   },
+   "source": {
+    "cube": "snow",
+    "face": 4,
+    "axis": "+Z",
+    "file": "snow_f4_m0.png",
+    "sha256": "c27028072de94554b19455be51f669439270877c9b26045e782433c0a5441278",
+    "bytes": 20545,
+    "src_decoded_L": {
+     "min": 0.0,
+     "p05": 0.0,
+     "p50": 0.251437,
+     "p95": 1.803388,
+     "max": 2.720635,
+     "mean": 0.620276
+    },
+    "src_dark_L_lt_0.05_pct": 49.2188,
+    "src_gt1_pct": 35.7483,
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.035294,
+     "max": 0.129412,
+     "mean": 0.044517
+    },
+    "src_is_all_black": false
+   },
+   "fill_provenance": null
+  },
+  {
+   "face": 5,
+   "axis": "-Z",
+   "file": "custom_bright_snow_20260921_f5_m0.png",
+   "sha256": "640162b44cc33881d80c311089a4eb430451d23e15b1ebec286ac22a3240743f",
+   "bytes": 15769,
+   "is_filled_face": false,
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.206467,
+    "p95": 1.325876,
+    "max": 2.669377,
+    "mean": 0.328542
+   },
+   "decoded_L_min": 0.050358,
+   "dark_L_lt_0.05_pct": 0.0,
+   "gt1_pct": 6.9824,
+   "gt085_pct": 8.783,
+   "srgb_lum": {
+    "min": 0.249059,
+    "p05": 0.249059,
+    "p50": 0.490972,
+    "p95": 0.996162,
+    "max": 1.0,
+    "mean": 0.491476
+   },
+   "source": {
+    "cube": "snow",
+    "face": 5,
+    "axis": "-Z",
+    "file": "snow_f5_m0.png",
+    "sha256": "c7aa379cca910ae69a572b9e6920df60be28509a4950df6adec09fc06474180b",
+    "bytes": 22489,
+    "src_decoded_L": {
+     "min": 0.0,
+     "p05": 0.0,
+     "p50": 0.199735,
+     "p95": 1.325876,
+     "max": 2.669377,
+     "mean": 0.30269
+    },
+    "src_dark_L_lt_0.05_pct": 49.2188,
+    "src_gt1_pct": 6.9824,
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.031373,
+     "max": 0.133333,
+     "mean": 0.029533
+    },
+    "src_is_all_black": false
+   },
+   "fill_provenance": null
+  }
+ ],
+ "rgbm_faces": [
+  {
+   "face": 0,
+   "axis": "+X",
+   "file": "rgbm/custom_bright_snow_20260921_f0_m0.png",
+   "sha256": "5f3fb394dc238cfd0bf8447082d5a933f51daf5e2b81e124ed8cb149ec72f5a0",
+   "bytes": 19768,
+   "rgbm_rgb_byte": {
+    "min": 129,
+    "p50": 228,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.015686,
+    "p05": 0.015686,
+    "p50": 0.031373,
+    "p95": 0.101961,
+    "max": 0.133333,
+    "mean": 0.043826
+   },
+   "alpha_M_byte": {
+    "min": 4,
+    "p05": 4,
+    "p50": 8,
+    "p95": 26,
+    "max": 34
+   },
+   "target_L": {
+    "min": 0.0505,
+    "p05": 0.0505,
+    "p50": 0.214666,
+    "p95": 1.586689,
+    "max": 2.645381,
+    "mean": 0.505366
+   },
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.214427,
+    "p95": 1.586623,
+    "max": 2.644898,
+    "mean": 0.504892
+   },
+   "decode_roundtrip_max_abs_err": 0.01306046,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000209,
+    "p95": 0.002088
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.002811,
+    "p95": 0.003285,
+    "max": 0.004502
+   },
+   "source_face_sha256": "88d496966b101abeaff2aa5db2ce857a918819831b36e5ebf8bbd95c3d0500f4",
+   "is_filled_face": false
+  },
+  {
+   "face": 1,
+   "axis": "-X",
+   "file": "rgbm/custom_bright_snow_20260921_f1_m0.png",
+   "sha256": "8a0d31d8eca7dd684524620d0872158d1257226361348480a039ad5373d1967d",
+   "bytes": 19165,
+   "rgbm_rgb_byte": {
+    "min": 177,
+    "p50": 228,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.015686,
+    "p05": 0.015686,
+    "p50": 0.031373,
+    "p95": 0.133333,
+    "max": 0.247059,
+    "mean": 0.044435
+   },
+   "alpha_M_byte": {
+    "min": 4,
+    "p05": 4,
+    "p50": 8,
+    "p95": 34,
+    "max": 63
+   },
+   "target_L": {
+    "min": 0.0505,
+    "p05": 0.0505,
+    "p50": 0.204557,
+    "p95": 3.712496,
+    "max": 13.669799,
+    "mean": 0.706647
+   },
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.204069,
+    "p95": 3.712149,
+    "max": 13.666705,
+    "mean": 0.706357
+   },
+   "decode_roundtrip_max_abs_err": 0.04567274,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000164,
+    "p95": 0.002157
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.002811,
+    "p95": 0.003198,
+    "max": 0.004273
+   },
+   "source_face_sha256": "bb8fbf565620a08afdab4c16ee5ce4e5f0daee292205e2a9fba90ac926f0e27e",
+   "is_filled_face": false
+  },
+  {
+   "face": 2,
+   "axis": "+Y",
+   "file": "rgbm/custom_bright_snow_20260921_f2_m0.png",
+   "sha256": "0a0ee9e99c4a23d4606cadad8b6850b5d9421ec0b673ea88853f5ba8bda23f0b",
+   "bytes": 35091,
+   "rgbm_rgb_byte": {
+    "min": 129,
+    "p50": 203,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.027451,
+    "p05": 0.039216,
+    "p50": 0.078431,
+    "p95": 0.109804,
+    "max": 0.160784,
+    "mean": 0.076254
+   },
+   "alpha_M_byte": {
+    "min": 7,
+    "p05": 10,
+    "p50": 20,
+    "p95": 28,
+    "max": 41
+   },
+   "target_L": {
+    "min": 0.153363,
+    "p05": 0.271046,
+    "p50": 0.890558,
+    "p95": 1.895871,
+    "max": 5.236956,
+    "mean": 0.947778
+   },
+   "decoded_L": {
+    "min": 0.15299,
+    "p05": 0.27106,
+    "p50": 0.88904,
+    "p95": 1.895154,
+    "max": 5.236712,
+    "mean": 0.946902
+   },
+   "decode_roundtrip_max_abs_err": 0.02132524,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.001136,
+    "p95": 0.002568
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001412,
+    "p95": 0.0032,
+    "max": 0.005349
+   },
+   "source_face_sha256": "0df874f659cfd2a56204a73210ccfa832951b614474c17ade4b60d71339f001d",
+   "is_filled_face": false
+  },
+  {
+   "face": 3,
+   "axis": "-Y",
+   "file": "rgbm/custom_bright_snow_20260921_f3_m0.png",
+   "sha256": "3087e103a3638754c0958c4da6d79a3e5d5e47fb03d57667370e4eb24cbb6309",
+   "bytes": 14022,
+   "rgbm_rgb_byte": {
+    "min": 140,
+    "p50": 198,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.043137,
+    "p05": 0.05098,
+    "p50": 0.07451,
+    "p95": 0.090196,
+    "max": 0.098039,
+    "mean": 0.072315
+   },
+   "alpha_M_byte": {
+    "min": 11,
+    "p05": 13,
+    "p50": 19,
+    "p95": 23,
+    "max": 25
+   },
+   "target_L": {
+    "min": 0.324767,
+    "p05": 0.403996,
+    "p50": 0.745121,
+    "p95": 1.320145,
+    "max": 1.842857,
+    "mean": 0.80578
+   },
+   "decoded_L": {
+    "min": 0.32508,
+    "p05": 0.404517,
+    "p50": 0.746466,
+    "p95": 1.321094,
+    "max": 1.846259,
+    "mean": 0.805807
+   },
+   "decode_roundtrip_max_abs_err": 0.00935535,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.001868,
+    "p95": 0.005184
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.00184,
+    "p95": 0.003842,
+    "max": 0.005171
+   },
+   "source_face_sha256": "a37162d1ad434720de04ea1774d259f618b361ce58b5e20b489d88cfe26ca274",
+   "is_filled_face": true
+  },
+  {
+   "face": 4,
+   "axis": "+Z",
+   "file": "rgbm/custom_bright_snow_20260921_f4_m0.png",
+   "sha256": "6fe6d749e24e22df18c0021283b2864142ffe1085cf4ec4548acbde9fe541663",
+   "bytes": 18234,
+   "rgbm_rgb_byte": {
+    "min": 135,
+    "p50": 228,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.015686,
+    "p05": 0.015686,
+    "p50": 0.035294,
+    "p95": 0.109804,
+    "max": 0.129412,
+    "mean": 0.05024
+   },
+   "alpha_M_byte": {
+    "min": 4,
+    "p05": 4,
+    "p50": 9,
+    "p95": 28,
+    "max": 33
+   },
+   "target_L": {
+    "min": 0.0505,
+    "p05": 0.0505,
+    "p50": 0.256495,
+    "p95": 1.804119,
+    "max": 2.721119,
+    "mean": 0.645286
+   },
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.256512,
+    "p95": 1.803388,
+    "max": 2.720635,
+    "mean": 0.644772
+   },
+   "decode_roundtrip_max_abs_err": 0.01306046,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000326,
+    "p95": 0.002039
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.002709,
+    "p95": 0.003161,
+    "max": 0.004637
+   },
+   "source_face_sha256": "c27028072de94554b19455be51f669439270877c9b26045e782433c0a5441278",
+   "is_filled_face": false
+  },
+  {
+   "face": 5,
+   "axis": "-Z",
+   "file": "rgbm/custom_bright_snow_20260921_f5_m0.png",
+   "sha256": "f9087fa9b928073f9dd7fe60f0c338130bb23eb771c4a9e20a821e2304d32ec6",
+   "bytes": 20317,
+   "rgbm_rgb_byte": {
+    "min": 140,
+    "p50": 228,
+    "max": 255
+   },
+   "alpha_M": {
+    "min": 0.015686,
+    "p05": 0.015686,
+    "p50": 0.031373,
+    "p95": 0.086275,
+    "max": 0.133333,
+    "mean": 0.035309
+   },
+   "alpha_M_byte": {
+    "min": 4,
+    "p05": 4,
+    "p50": 8,
+    "p95": 22,
+    "max": 34
+   },
+   "target_L": {
+    "min": 0.0505,
+    "p05": 0.0505,
+    "p50": 0.20605,
+    "p95": 1.326838,
+    "max": 2.669881,
+    "mean": 0.328768
+   },
+   "decoded_L": {
+    "min": 0.050358,
+    "p05": 0.050358,
+    "p50": 0.206467,
+    "p95": 1.325876,
+    "max": 2.669377,
+    "mean": 0.328542
+   },
+   "decode_roundtrip_max_abs_err": 0.01704266,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000167,
+    "p95": 0.00209
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.002811,
+    "p95": 0.003284,
+    "max": 0.004696
+   },
+   "source_face_sha256": "c7aa379cca910ae69a572b9e6920df60be28509a4950df6adec09fc06474180b",
+   "is_filled_face": false
+  }
+ ],
+ "faces_encoding": "rgbm",
+ "summary": {
+  "decoded_L_p50_per_face": [
+   0.214427,
+   0.204069,
+   0.88904,
+   0.746466,
+   0.256512,
+   0.206467
+  ],
+  "decoded_L_min_per_face": [
+   0.050358,
+   0.050358,
+   0.15299,
+   0.32508,
+   0.050358,
+   0.050358
+  ],
+  "dark_L_lt_0.05_pct_per_face": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gt1_pct_per_face": [
+   22.644,
+   17.5964,
+   39.3005,
+   21.0571,
+   35.7361,
+   6.9824
+  ],
+  "gt1_pct_cube": 23.8861,
+  "decoded_L_mean_cube": 0.656212,
+  "decoded_L_p50_cube": 0.521638,
+  "decoded_L_min_over_all_faces": 0.050358,
+  "dark_L_lt_0.05_pct_worst_face": 0.0,
+  "all_faces_dark_zero": true,
+  "all_faces_min_gt_0.05": true,
+  "gt1_ge_source_snow": true,
+  "source_snow": {
+   "cube_sha256": "a974343d3689cc1a729d03edc05c35a9700e19f78cc6a1a7d1ffda117d269a55",
+   "cube_sha16": "a974343d3689cc1a",
+   "gt1_pct_cube": 20.3756,
+   "decoded_L_mean_cube": 0.504959,
+   "decoded_L_p50_cube": 0.189004,
+   "dark_L_lt_0.05_pct_cube": 49.4792,
+   "f3_all_black": true
+  },
+  "f3_fill": {
+   "method": "+Y mirror → gaussian σ=10.0 → dim ×0.85",
+   "sigma": 10.0,
+   "dim": 0.85,
+   "src_f3_sha256": "a37162d1ad434720de04ea1774d259f618b361ce58b5e20b489d88cfe26ca274",
+   "built_f3_L_min": 0.320769,
+   "built_f3_L_p50": 0.743295,
+   "built_f3_gt1_pct": 20.8374
+  }
+ },
+ "builder_script": "_build_snow_cube.py",
+ "analyzer_scripts": [
+  "_sweep_gain_floor.py",
+  "_sweep_refine.py",
+  "_sweep_minimal.py"
+ ],
+ "limitations": [
+  "**f3(−Y) 面是自造的**（源该面在容器里全黑）⇒ 六面里有一面不是源像素，整体为自造近似。",
+  "软抬底把 L<0.05 的深黑方向抬成**近中性灰**（逐通道取同一底）⇒ 这些方向**丢失细节、趋于消色差**；这是「任何方向都不黑」的必然代价，已如实登记（见 dark_L_lt_0.05_pct_per_face 与逐面 min）。",
+  "本 cube 启用 f3 补面后**整体均值必然高于源 snow**（0.5050 → 0.6562），因为源 snow 的 −Y 面是纯黑(贡献 0)、补面后该面贡献真实辐射。这部分升亮**不是**人为增益，而是\"补全一个全黑面\"的直接后果，已如实登记。",
+  "\"L>1 占比决定金属发黑\" 这条是 GI2 终报给出的**相关性**结论，未做逐反射方向的半球/镜面方向积分证明；本 cube 的达标线按该相关性口径验收。",
+  "面朝向沿用源 cube 的 six-face 顺序（+X,-X,+Y,-Y,+Z,-Z，与 three.js CubeTextureLoader 一致），未与引擎采样基变换重新对齐。",
+  "该 cube **不是**游戏实际使用的环境；只是为消除金属镜面发黑而自造的显示用近似环境。"
+ ]
+}

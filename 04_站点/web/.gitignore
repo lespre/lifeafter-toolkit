@@ -1,0 +1,31 @@
+# 08Lifeafter wiki 忽略规则
+Thumbs.db
+*.tmp
+__pycache__/
+*.pyc
+.git/
+
+# 大体积贴图资产留磁盘、不进 git（由拆包流程生成，可从 03拆包产物 复现）
+assets/textures/
+
+# Workbench 大体积 artifact 留磁盘（MANIFEST.json 锁 sha256；可由 domain builder / data 原件复现）
+artifacts/**/*.jsonl
+data/ITEM_MASTER_v02.jsonl
+data/ITEM_MASTER_v03.jsonl
+data/ITEM_MASTER_v03_1.jsonl
+data/LOTTERY_REWARD_TARGETS_v0.1.jsonl
+data/LOTTERY_POOL_RESOLVED_v01.jsonl
+data/NAME_CHAIN_CANDIDATES.jsonl
+data/ITEM_IDENTITY_CANDIDATES.jsonl
+data/FASHION_IDENTITY_CANDIDATES.jsonl
+data/file_index_entries.jsonl
+data/*.db
+data/boards/common_item_text_sources.json
+data/boards/fashion_identity_unresolved_v01.json
+data/boards/lottery_pool_resolved_v01.json
+
+# Workbench 投影产物（由 python -m pipelines.projection.build_boards 生成；manifest 记录 hash）
+data/workbench_boards/
+.tmp_reg_*.txt
+# 每基准（per-snapshot）表清单：可重建，不入库；哈希与命令记在同名 summary
+data/table_index_entries_*.jsonl

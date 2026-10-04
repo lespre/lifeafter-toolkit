@@ -1,0 +1,95 @@
+{
+ "name": "nielian01",
+ "logical": "common\\env_map\\nielian01.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 10267,
+ "off": 6024792,
+ "comp": 36096,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 10267,
+   "base": 1690788380,
+   "off": 6024792,
+   "comp": 36096,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "a48170773484bbffd478f3264bc086e94216b0f51bc19b995d3d19758fe7c97c",
+ "sha16": "a48170773484bbff",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f0_m0.png",
+   "bytes": 3839,
+   "rgba_sha16": "61fb721a4a21a5e6",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f1_m0.png",
+   "bytes": 4459,
+   "rgba_sha16": "3ae5feac34aacc92",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f2_m0.png",
+   "bytes": 3950,
+   "rgba_sha16": "8e8a668657341f9b",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f3_m0.png",
+   "bytes": 826,
+   "rgba_sha16": "43b8bf41904f20af",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f4_m0.png",
+   "bytes": 4626,
+   "rgba_sha16": "16d6086ee7c6dd93",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\nielian01\\faces\\nielian01_f5_m0.png",
+   "bytes": 393,
+   "rgba_sha16": "f5c3458f640bf863",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

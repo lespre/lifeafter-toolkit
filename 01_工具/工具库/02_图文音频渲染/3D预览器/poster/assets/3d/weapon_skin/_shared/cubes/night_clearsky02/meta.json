@@ -1,0 +1,105 @@
+{
+ "name": "night_clearsky02",
+ "logical": "common\\env_map\\night_clearsky02.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 11525,
+ "off": 54768376,
+ "comp": 168929,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 11525,
+   "base": 1751823836,
+   "off": 54768376,
+   "comp": 168929,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "fpk",
+   "container": "E:\\mrzh\\res\\063.fpk",
+   "row": 9369,
+   "base": null,
+   "off": 865180264,
+   "comp": 168929,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_BFBE907B687BF2E6.bin:paired_rgbm"
+ ],
+ "sha256": "5c02a9bec582d8907280711bc478468f757772e0ee67fc8d646c61ac009bbc22",
+ "sha16": "5c02a9bec582d890",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f0_m0.png",
+   "bytes": 12690,
+   "rgba_sha16": "fd674543eabac5bd",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f1_m0.png",
+   "bytes": 15427,
+   "rgba_sha16": "ab62c4b0fd7796a4",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f2_m0.png",
+   "bytes": 25922,
+   "rgba_sha16": "7bc5f779c3dcd294",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f3_m0.png",
+   "bytes": 393,
+   "rgba_sha16": "0c6fd9eeeb38004c",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f4_m0.png",
+   "bytes": 15072,
+   "rgba_sha16": "dd3d140721ef626d",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\night_clearsky02\\faces\\night_clearsky02_f5_m0.png",
+   "bytes": 15309,
+   "rgba_sha16": "4c1485bfeb9472ce",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

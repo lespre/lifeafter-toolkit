@@ -1,0 +1,64 @@
+.venv/
+__pycache__/
+*.pyc
+
+# ══ 轻量仓库：只留代码 / 页面 / 文档 ══
+# （还原树、源包、虚拟环境、索引库一律不入库 —— 超大或可重建）
+
+# 源与执行产物（45G+ / 数百 GB）—— 只留 README 骨架
+# 注意：用 `dir/*`（不是 `dir/`）才能放行目录里的 README
+02_资料/*
+!02_资料/README.md
+!02_资料/.gitkeep
+02_资料/*/.gitkeep
+
+03_执行/*
+!03_执行/README.md
+!03_执行/.gitkeep
+03_执行/*/.gitkeep
+
+# 治理台账里的大文件（保留小的 md）
+00_治理/**/*.db
+00_治理/**/*.sqlite3
+00_治理/**/*.zip
+00_治理/**/*.png
+00_治理/**/*.jpg
+00_治理/**/*.webp
+# 报告与复盘里有 538M 大件（视频/截图/大图）—— 整目录排除
+00_治理/文档/报告与复盘/
+00_治理/文档/tools/
+00_治理/_archive/
+00_治理/日志/
+
+# 站点里的大素材（3D/贴图/视频）
+04_站点/web/assets/**/*.glb
+04_站点/web/assets/**/*.gltf
+04_站点/web/assets/**/*.bin
+04_站点/web/assets/**/*.dds
+04_站点/web/assets/**/*.tga
+04_站点/web/assets/**/*.png
+04_站点/web/assets/**/*.jpg
+04_站点/web/assets/**/*.mp4
+04_站点/web/assets/**/*.webm
+04_站点/web/assets/**/*.cube
+04_站点/web/assets/**/*.wav
+04_站点/web/assets/**/*.mp3
+
+# 临时 / 日志
+*.log
+*.tmp
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 敏感
+seckeys/
+*.key
+
+# 嵌套仓库备份（1.28G pack）
+**/.git.bak/
+**/.git.bak/
+# 超大站点数据
+04_站点/web/data/
