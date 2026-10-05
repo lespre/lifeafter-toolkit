@@ -1,0 +1,20 @@
+{
+ "claim": "A2F 独立 data body 静态不可定位（硬阻断）",
+ "status": "hard_blocked",
+ "evidence_type": "route_exhaustion",
+ "tried": [
+  "tI path table",
+  "hash 派生 72 组",
+  "BigTableSplit",
+  "x9",
+  "theme",
+  "com.tdata 查表",
+  "file-version registry(native)",
+  "res.Documents IDX",
+  "module payload 结构分类",
+  "条目 c1/c2/尾部16B",
+  "原生符号扫描"
+ ],
+ "reason": "bindict_mmap_enabled=0（磁盘无运行时副本）+ 引擎二进制不可静态获取 + 禁止注入/内存读取/绕反作弊",
+ "ref": "residuals/fashion/binding_residuals.json"
+}

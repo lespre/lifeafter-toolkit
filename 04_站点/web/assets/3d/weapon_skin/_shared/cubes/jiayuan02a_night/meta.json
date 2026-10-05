@@ -1,0 +1,95 @@
+{
+ "name": "jiayuan02a_night",
+ "logical": "common\\env_map\\jiayuan02a_night.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12353,
+ "off": 66406028,
+ "comp": 335495,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12353,
+   "base": 1940537680,
+   "off": 66406028,
+   "comp": 335495,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "350ab923e73cab8b26844ca3cfbfc025444ea471abc5340e499bd28c6d9b3ba4",
+ "sha16": "350ab923e73cab8b",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f0_m0.png",
+   "bytes": 30207,
+   "rgba_sha16": "857f394a60feaca3",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f1_m0.png",
+   "bytes": 29463,
+   "rgba_sha16": "00c5892b4387110d",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f2_m0.png",
+   "bytes": 28457,
+   "rgba_sha16": "99654146bf4a19f1",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f3_m0.png",
+   "bytes": 23450,
+   "rgba_sha16": "8bebaed2b3e34524",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f4_m0.png",
+   "bytes": 34166,
+   "rgba_sha16": "207d4623b9ddf92c",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\jiayuan02a_night\\faces\\jiayuan02a_night_f5_m0.png",
+   "bytes": 31005,
+   "rgba_sha16": "7ddad74cca2c3e80",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

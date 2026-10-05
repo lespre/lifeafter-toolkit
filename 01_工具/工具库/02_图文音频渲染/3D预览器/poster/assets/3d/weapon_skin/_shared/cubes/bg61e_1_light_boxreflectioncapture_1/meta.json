@@ -1,0 +1,125 @@
+{
+ "name": "bg61e_1_light_boxreflectioncapture_1",
+ "logical": "scene\\instance\\bg61e_1_content\\captures\\bg61e_1_light_boxreflectioncapture_1.cube",
+ "container": "scene_02.gpk",
+ "container_full": "E:\\mrzh\\res\\scene_02.gpk",
+ "axis": "gpk",
+ "row": 102970,
+ "off": 1260204268,
+ "comp": 330409,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\mrzh\\res\\scene_02.gpk",
+   "row": 102970,
+   "base": 16,
+   "off": 1260204268,
+   "comp": 330409,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "gpk",
+   "container": "E:\\mrzh\\Documents\\gres\\0010.gpk",
+   "row": 19325,
+   "base": 792396212,
+   "off": 8286464,
+   "comp": 330409,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0020.gpk",
+   "row": 119868,
+   "base": 1847051084,
+   "off": 128018312,
+   "comp": 330409,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "fpk",
+   "container": "E:\\mrzh\\res\\022.fpk",
+   "row": 5706,
+   "base": null,
+   "off": 109215252,
+   "comp": 330409,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "4a4dc4ad3410b25c4e1b9bb6cec84f369c4fa9b7d1ee8c37fa22e2b2c18989f6",
+ "sha16": "4a4dc4ad3410b25c",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f0_m0.png",
+   "bytes": 27316,
+   "rgba_sha16": "4318ed6f4a746c5f",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f1_m0.png",
+   "bytes": 29599,
+   "rgba_sha16": "7de691ae48461a4f",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f2_m0.png",
+   "bytes": 15175,
+   "rgba_sha16": "879fa7d20a5fd3ff",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f3_m0.png",
+   "bytes": 25088,
+   "rgba_sha16": "c279f98517bc51ca",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f4_m0.png",
+   "bytes": 35517,
+   "rgba_sha16": "1d11002fc56eed47",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bg61e_1_light_boxreflectioncapture_1\\faces\\bg61e_1_light_boxreflectioncapture_1_f5_m0.png",
+   "bytes": 33990,
+   "rgba_sha16": "890a97812bc678f2",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

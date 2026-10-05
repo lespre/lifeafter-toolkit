@@ -1,0 +1,75 @@
+{
+  "schema": "lifeafter-kaijia-simple-survival-acceptance-anchor-v1",
+  "scope": {
+    "server_branch": "简单生存服（体验服）",
+    "activity": "铠甲再临",
+    "phase": 2,
+    "usage": "acceptance-only; names do not prove pool_id, slot, selector, or probability"
+  },
+  "requirements": {
+    "exact_pool_membership_required": true,
+    "probability_required_for_every_reward": true,
+    "probability_field": "prob_note",
+    "do_not_backfill_from_anchor": true,
+    "preserve_source_internal_markers": true
+  },
+  "permitted_display_to_internal_markers": [
+    {
+      "display_name": "火刑裁决",
+      "internal_marker": "火刑电光炮",
+      "relation": "user-permitted display/internal marker bridge; keep both labels"
+    },
+    {
+      "display_name": "面饰：刑天面甲",
+      "internal_marker": "刑天口罩",
+      "relation": "user-permitted display/internal marker bridge; keep both labels"
+    }
+  ],
+  "pools": [
+    {
+      "acceptance_label": "秘宝奖励（勇士珍匣子奖池）",
+      "expected_names": [
+        "火刑战驱",
+        "刑天铠甲",
+        "飞影铠甲",
+        "疾影枪",
+        "火刑裁决",
+        "战神烈火剑",
+        "刑天召唤器",
+        "飞影召唤器",
+        "异变核芯-球状闪电",
+        "异变核芯-酸焰激流"
+      ]
+    },
+    {
+      "acceptance_label": "稀有奖励",
+      "expected_names": [
+        "涂装：流光夜枭",
+        "涂装：冲天云枭",
+        "配方：战辅无人机",
+        "涂装：战虎-皎月",
+        "配方：战虎无人机",
+        "秘密花园主题方案礼盒",
+        "面饰：刑天面甲",
+        "面饰：飞影锋眸",
+        "能量电池",
+        "稀有味晶",
+        "异变核芯-球状闪电",
+        "异变核芯-酸焰激流",
+        "1型记忆材料",
+        "重构分子"
+      ]
+    },
+    {
+      "acceptance_label": "普通奖励",
+      "expected_names": [
+        "配方残页",
+        "重构分子",
+        "纳米塑料1",
+        "纳米塑料2",
+        "技能点",
+        "新币"
+      ]
+    }
+  ]
+}

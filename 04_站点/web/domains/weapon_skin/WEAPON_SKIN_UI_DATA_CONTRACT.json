@@ -1,0 +1,72 @@
+{
+ "wiki_view": {
+  "fields": [
+   "name",
+   "name_status",
+   "catalog_level_label",
+   "canonical_level",
+   "weapon_type",
+   "combat_presentation（单一业务区，固定顺序，多源折叠）",
+   "variant（main/timed）",
+   "sale_config（有/无 + 时间窗摘要）",
+   "acquisition（已证路径摘要）"
+  ],
+  "forbidden": [
+   "技术 source/table 名作为栏目",
+   "两个平行特效区块",
+   "未证状态伪装成已证"
+  ]
+ },
+ "workbench_view": {
+  "extra": [
+   "status（各链）",
+   "source_refs",
+   "evidence_refs",
+   "snapshot_basis",
+   "residual",
+   "corroboration_status",
+   "record_class",
+   "lineage refs"
+  ]
+ },
+ "grading": {
+  "level_labels": {
+   "2": "白送",
+   "3": "直售",
+   "4": "紫皮",
+   "5": "典藏",
+   "6": "传世"
+  },
+  "label_provenance": {
+   "2": "user_defined",
+   "3": "user_defined",
+   "4": "user_defined",
+   "5": "official",
+   "6": "official"
+  }
+ },
+ "commerce_display": {
+  "listing": "bounded_unresolved（五层模型）",
+  "sale_configuration": "verified_sale_config_present（18）/ no_verified_sale_source_found_in_current_scanned_sources（108）",
+  "acquisition": "acquisition_paths[]（direct_shop likely 18；其余 unresolved）"
+ },
+ "effect_order": [
+  "命中效果",
+  "击败特效",
+  "伤害跳字",
+  "攻击弹道/挥砍特效",
+  "战斗音效",
+  "攻击准心",
+  "专属战斗动作",
+  "专属待机动作",
+  "特殊交互",
+  "核芯联动",
+  "护臂开合",
+  "其它"
+ ],
+ "notes": [
+  "护臂开合 = 护臂专属特效（独立项）",
+  "切枪动画 = 特殊交互",
+  "pendant/accessory 不进入 Combat Presentation"
+ ]
+}

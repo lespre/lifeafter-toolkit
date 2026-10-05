@@ -1,0 +1,25 @@
+{
+ "src_mesh": "weapon\\skin\\skin_2003_013\\skin_2003_013.mesh",
+ "src_sha16": "f367a45744f51395",
+ "src_row": 3606,
+ "src_variant": "(main)",
+ "geometry_segment_off": 642,
+ "out_mesh": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110115\\skin_2003_013.geometry.mesh",
+ "bytes_in": 382031,
+ "bytes_out": 381403,
+ "bone_count": 5,
+ "skin_id": "1110115",
+ "mode": "stripped_skeleton_header",
+ "cut_at": 642,
+ "header_bytes": 14,
+ "header_layout": {
+  "0x00": "magic 34 80 c8 bb (原样)",
+  "0x04": "u16 version (原样 4)",
+  "0x06": "u16 const (原样 5)",
+  "0x08": "u16 bone_flag = 0 (改写：无骨骼块)",
+  "0x0A": "u32 = 文件长度-16 = 381387 (改写：实测 flag0 口径)",
+  "0x0E": "源文件 offset 642 起原样字节（sub 表正好落在 0x0E，与 mesh_parse2.py:19-27 假设一致）"
+ },
+ "note": "不重排/不改字节/不补位；仅替换 14 字节头。把原 [cut_at:14] 头粘回即可无损还原",
+ "out_sha16": "e0c9b38ed58dc44f"
+}

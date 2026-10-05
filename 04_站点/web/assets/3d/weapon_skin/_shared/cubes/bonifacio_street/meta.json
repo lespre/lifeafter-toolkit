@@ -1,0 +1,95 @@
+{
+ "name": "bonifacio_street",
+ "logical": "common\\env_map\\bonifacio_street.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12264,
+ "off": 38171272,
+ "comp": 308535,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12264,
+   "base": 1940537680,
+   "off": 38171272,
+   "comp": 308535,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "c0554a4fd5de107a82d0d55e87e33049a6b6d1cff092586ee4546a793f0f2e58",
+ "sha16": "c0554a4fd5de107a",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f0_m0.png",
+   "bytes": 24442,
+   "rgba_sha16": "350bf1a27d40b77b",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f1_m0.png",
+   "bytes": 26626,
+   "rgba_sha16": "b63c1739fe8bf5b3",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f2_m0.png",
+   "bytes": 31648,
+   "rgba_sha16": "80760e7b8bb24c65",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f3_m0.png",
+   "bytes": 22924,
+   "rgba_sha16": "dcf8b0cd3f335657",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f4_m0.png",
+   "bytes": 31248,
+   "rgba_sha16": "93591112ff63992f",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_street\\faces\\bonifacio_street_f5_m0.png",
+   "bytes": 30976,
+   "rgba_sha16": "2d0c74158c2baf3c",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

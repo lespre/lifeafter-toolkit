@@ -1,0 +1,241 @@
+{
+ "note": "bounded metric; periodic>50 treated as degenerate and excluded",
+ "candidates": {
+  "lightning07_cs.spr": {
+   "sheet": [
+    512,
+    512
+   ],
+   "frames": 16,
+   "grid_ok": true,
+   "cand_poolA": 120,
+   "cand_poolB": 668,
+   "top5": [
+    {
+     "src": "effect_01.gpk#205896",
+     "file": "cc800e7686280515.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 27.01101,
+     "periodic_bounded": 44.729,
+     "edge": 0.0187,
+     "center": 0.273,
+     "alpha_mean": 14.12
+    },
+    {
+     "src": "effect_01.gpk#209267",
+     "file": "6de02eb8b382ed38.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 26.26184,
+     "periodic_bounded": 43.643,
+     "edge": 0.0146,
+     "center": 0.0,
+     "alpha_mean": 41.03
+    },
+    {
+     "src": "effect_01.gpk#208527",
+     "file": "bfd296ac86302af5.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 25.09188,
+     "periodic_bounded": 41.156,
+     "edge": 0.0042,
+     "center": 0.774,
+     "alpha_mean": 5.05
+    },
+    {
+     "src": "effect_01.gpk#207122",
+     "file": "7671202e9d044368.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 24.72001,
+     "periodic_bounded": 41.039,
+     "edge": 0.0129,
+     "center": 0.0,
+     "alpha_mean": 55.01
+    },
+    {
+     "src": "effect_01.gpk#208450",
+     "file": "72c9f5b098a57dea.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 24.2247,
+     "periodic_bounded": 39.48,
+     "edge": 0.0308,
+     "center": 0.839,
+     "alpha_mean": 59.01
+    }
+   ],
+   "verdict": "MULTI_CANDIDATES_NOT_BOUND"
+  },
+  "lightning_01.spr": {
+   "sheet": [
+    512,
+    512
+   ],
+   "frames": 16,
+   "grid_ok": true,
+   "cand_poolA": 120,
+   "cand_poolB": 668,
+   "top5": [
+    {
+     "src": "effect_01.gpk#205896",
+     "file": "cc800e7686280515.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 27.01101,
+     "periodic_bounded": 44.729,
+     "edge": 0.0187,
+     "center": 0.273,
+     "alpha_mean": 14.12
+    },
+    {
+     "src": "effect_01.gpk#209267",
+     "file": "6de02eb8b382ed38.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 26.26184,
+     "periodic_bounded": 43.643,
+     "edge": 0.0146,
+     "center": 0.0,
+     "alpha_mean": 41.03
+    },
+    {
+     "src": "effect_01.gpk#208527",
+     "file": "bfd296ac86302af5.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 25.09188,
+     "periodic_bounded": 41.156,
+     "edge": 0.0042,
+     "center": 0.774,
+     "alpha_mean": 5.05
+    },
+    {
+     "src": "effect_01.gpk#207122",
+     "file": "7671202e9d044368.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 24.72001,
+     "periodic_bounded": 41.039,
+     "edge": 0.0129,
+     "center": 0.0,
+     "alpha_mean": 55.01
+    },
+    {
+     "src": "effect_01.gpk#208450",
+     "file": "72c9f5b098a57dea.dds",
+     "dims": [
+      512,
+      512
+     ],
+     "score": 24.2247,
+     "periodic_bounded": 39.48,
+     "edge": 0.0308,
+     "center": 0.839,
+     "alpha_mean": 59.01
+    }
+   ],
+   "verdict": "MULTI_CANDIDATES_NOT_BOUND"
+  },
+  "shandian_05_yh_djs.spr": {
+   "sheet": [
+    256,
+    256
+   ],
+   "frames": 4,
+   "grid_ok": true,
+   "cand_poolA": 684,
+   "cand_poolB": 2529,
+   "top5": [
+    {
+     "src": "_sfx_029_pool",
+     "file": "e6c0fc9e4c328495.dds",
+     "dims": [
+      256,
+      256
+     ],
+     "score": 29.68287,
+     "periodic_bounded": 49.307,
+     "edge": 0.0397,
+     "center": 0.03,
+     "alpha_mean": 33.09
+    },
+    {
+     "src": "effect_01.gpk#206871",
+     "file": "948f4a8a2e9fa2c1.dds",
+     "dims": [
+      256,
+      256
+     ],
+     "score": 29.5993,
+     "periodic_bounded": 48.634,
+     "edge": 0.0656,
+     "center": 0.439,
+     "alpha_mean": 93.66
+    },
+    {
+     "src": "effect_01.gpk#206902",
+     "file": "c4df934421f1ac10.dds",
+     "dims": [
+      256,
+      256
+     ],
+     "score": 29.27551,
+     "periodic_bounded": 47.948,
+     "edge": 0.0019,
+     "center": 1.0,
+     "alpha_mean": 3.31
+    },
+    {
+     "src": "_sfx_029_pool",
+     "file": "597e6a4693411b12.dds",
+     "dims": [
+      256,
+      256
+     ],
+     "score": 29.05978,
+     "periodic_bounded": 47.426,
+     "edge": 0.0408,
+     "center": 0.65,
+     "alpha_mean": 157.17
+    },
+    {
+     "src": "_sfx_029_pool",
+     "file": "597e6a4693411b12.dds",
+     "dims": [
+      256,
+      256
+     ],
+     "score": 29.05978,
+     "periodic_bounded": 47.426,
+     "edge": 0.0408,
+     "center": 0.65,
+     "alpha_mean": 157.17
+    }
+   ],
+   "verdict": "MULTI_CANDIDATES_NOT_BOUND"
+  }
+ },
+ "poolA": "03_执行\\30_分析/_sfx_029/texture_pool",
+ "poolB": "effect_01.gpk anonymous DDS (7,488)"
+}

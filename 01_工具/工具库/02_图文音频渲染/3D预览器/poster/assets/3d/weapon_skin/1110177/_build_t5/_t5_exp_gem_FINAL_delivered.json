@@ -1,0 +1,38 @@
+{
+ "tag": "gem_FINAL_delivered",
+ "neox": "{\"report\":{\"applied\":3,\"applied_prims\":[0,1,2],\"failed\":[],\"missing\":[],\"prims\":[{\"prim\":0,\"mtl_idx\":0,\"material\":\"skin_",
+ "chainMats": "\"{\\\"count\\\":3,\\\"mats\\\":[{\\\"name\\\":\\\"skin_2003_029_1\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":1,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":true,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":1,\\\"chainPrim\\\":0,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":true,\\\"hasCrystalInjection\\\":false,\\\"crystalFragSet\\\":false,\\\"crystalFragLen\\\":null,\\\"crystalHasMapAnchor\\\":false,\\\"crystalHasDitherAnchor\\\":false,\\\"crystalMetallicSource\\\":null,\\\"crystalBlock\\\":null},{\\\"name\\\":\\\"skin_2003_029_2\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":0,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":true,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":1,\\\"chainPrim\\\":1,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":true,\\\"hasCrystalInjection\\\":true,\\\"crystalFragSet\\\":true,\\\"crystalFragLen\\\":6108,\\\"crystalHasMapAnchor\\\":true,\\\"crystalHasDitherAnchor\\\":true,\\\"crystalMetallicSource\\\":0.95,\\\"crystalBlock\\\":[1,true,\\\"src_tex/029_b_m.png\\\"]},{\\\"name\\\":\\\"skin_2003_029_3\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":0,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":false,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":0,\\\"chainPrim\\\":2,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":false,\\\"hasCrystalInjection\\\":false,\\\"crystalFragSet\\\":false,\\\"crystalFragLen\\\":null,\\\"crystalHasMapAnchor\\\":false,\\\"crystalHasDitherAnchor\\\":false,\\\"crystalMetallicSource\\\":1,\\\"crystalBlock\\\":[2,true,\\\"src_tex/029_b_m.png\\\"]}]}\"",
+ "crystalOBC": "[1,1]",
+ "useDetail": "",
+ "snapshot_meta": {
+  "w": null,
+  "h": null,
+  "mean": null,
+  "magenta_pct": null,
+  "gray_pct": null,
+  "error": "TypeError: Cannot read properties of undefined (reading 'onBeforeCompile')"
+ },
+ "shot": {
+  "file": "S177_gem_FINAL_delivered.png",
+  "sha16": "32447198f7c418ce",
+  "shape": [
+   740,
+   1190,
+   3
+  ],
+  "bytes": 12022
+ },
+ "metrics": {
+  "mean": [
+   8.1,
+   16.9,
+   22.1
+  ],
+  "blue_frac": 0.0,
+  "warm_frac": 0.0,
+  "red_frac": 0.0,
+  "silver_frac": 0.06,
+  "bright_frac": 0.06
+ },
+ "chainMats2": "\"{\\\"count\\\":3,\\\"mats\\\":[{\\\"name\\\":\\\"skin_2003_029_1\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":1,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":true,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":1,\\\"chainPrim\\\":0,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":true,\\\"hasCrystalInjection\\\":false,\\\"crystalFragSet\\\":false,\\\"crystalFragLen\\\":null,\\\"crystalHasMapAnchor\\\":false,\\\"crystalHasDitherAnchor\\\":false,\\\"crystalMetallicSource\\\":null,\\\"crystalBlock\\\":null},{\\\"name\\\":\\\"skin_2003_029_2\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":0,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":true,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":1,\\\"chainPrim\\\":1,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":true,\\\"hasCrystalInjection\\\":true,\\\"crystalFragSet\\\":true,\\\"crystalFragLen\\\":6108,\\\"crystalHasMapAnchor\\\":true,\\\"crystalHasDitherAnchor\\\":true,\\\"crystalMetallicSource\\\":0.95,\\\"crystalBlock\\\":[1,true,\\\"src_tex/029_b_m.png\\\"]},{\\\"name\\\":\\\"skin_2003_029_3\\\",\\\"type\\\":\\\"MeshStandardMaterial\\\",\\\"visible\\\":true,\\\"matVisible\\\":true,\\\"metalness\\\":0,\\\"roughness\\\":1,\\\"hasMap\\\":true,\\\"hasEnvMap\\\":false,\\\"transparent\\\":false,\\\"opacity\\\":1,\\\"alphaTest\\\":0,\\\"blending\\\":0,\\\"depthTest\\\":true,\\\"opaqueForced\\\":true,\\\"blendDepthState\\\":\\\"incomplete(源 Blend/Depth/折射状态未恢复)\\\",\\\"side\\\":2,\\\"depthWrite\\\":true,\\\"colorHex\\\":\\\"#ffffff\\\",\\\"envMapIntensity\\\":0,\\\"chainPrim\\\":2,\\\"previewMode\\\":null,\\\"hasIblInjection\\\":false,\\\"hasCrystalInjection\\\":false,\\\"crystalFragSet\\\":false,\\\"crystalFragLen\\\":null,\\\"crystalHasMapAnchor\\\":false,\\\"crystalHasDitherAnchor\\\":false,\\\"crystalMetallicSource\\\":1,\\\"crystalBlock\\\":[2,true,\\\"src_tex/029_b_m.png\\\"]}]}\""
+}

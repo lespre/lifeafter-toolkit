@@ -1,0 +1,95 @@
+{
+ "name": "bonifacio_aragon_stairs",
+ "logical": "common\\env_map\\bonifacio_aragon_stairs.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12349,
+ "off": 65066456,
+ "comp": 333496,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12349,
+   "base": 1940537680,
+   "off": 65066456,
+   "comp": 333496,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "7ec0d460d432428bc963500c0e77bdfa7e04837a46227e4210930248c5a6873a",
+ "sha16": "7ec0d460d432428b",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f0_m0.png",
+   "bytes": 30722,
+   "rgba_sha16": "d09658f666ac4003",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f1_m0.png",
+   "bytes": 37568,
+   "rgba_sha16": "6789a1758ad3695c",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f2_m0.png",
+   "bytes": 31415,
+   "rgba_sha16": "51241bd9d29077d6",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f3_m0.png",
+   "bytes": 33225,
+   "rgba_sha16": "840f6de484e7d319",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f4_m0.png",
+   "bytes": 33644,
+   "rgba_sha16": "f08c5015285feaa7",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\bonifacio_aragon_stairs\\faces\\bonifacio_aragon_stairs_f5_m0.png",
+   "bytes": 33575,
+   "rgba_sha16": "04feb625e9a9cf74",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

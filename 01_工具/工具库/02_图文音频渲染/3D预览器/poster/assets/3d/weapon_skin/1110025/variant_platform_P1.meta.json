@@ -1,0 +1,68 @@
+{
+ "label": "platform_P1",
+ "generated_at": "2026-09-20 15:56:46",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "c53819207f18c789",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "86fe0d24374136ee",
+ "patch": {
+  "viewer": {
+   "key_shadow": true,
+   "key_shadow_extent": 20,
+   "key_shadow_map": 2048,
+   "key_shadow_bias": -0.0006,
+   "key_shadow_normal_bias": 0.02,
+   "key_dir": [
+    2.0,
+    -8.0,
+    1.0
+   ],
+   "platform": {
+    "enabled": true,
+    "x": 0.0,
+    "y": 3.0,
+    "z": 0.0,
+    "size": [
+     8.0,
+     3.5
+    ],
+    "thickness": 0.5,
+    "pitch_deg": 8.0,
+    "top_texture": "platform/top_grating.png",
+    "front_texture": "platform/front_edge.png",
+    "repeat_x": 1,
+    "repeat_y": 6.36,
+    "color": 16777215,
+    "front_color": 10860233,
+    "side_color": 4867152,
+    "roughness": 0.82,
+    "metalness": 0.15,
+    "env_intensity": 0.35,
+    "front_roughness": 0.6,
+    "front_metalness": 0.25,
+    "front_env_intensity": 0.35,
+    "shadow_extent": 20,
+    "shadow_map": 2048,
+    "shadow_strength": 1.0,
+    "source": "reference_screenshot_calibrated",
+    "approximate_display_platform": "geometry_from_reference_screenshot",
+    "appearance_source": "platform/top_grating.png + platform/front_edge.png（参考图/背景板真实像素裁剪）"
+   }
+  },
+  "note": "任务一+二 变体 P1：档1（推荐）｜前倾 8°、台面 y=3.0、前缘 z=0.0；key_dir=(2,-8,1)。实测影子最强绝对压暗 0.4452。"
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "key_dir",
+   "key_shadow",
+   "key_shadow_bias",
+   "key_shadow_extent",
+   "key_shadow_map",
+   "key_shadow_normal_bias",
+   "platform"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_platform_P1.json"
+}

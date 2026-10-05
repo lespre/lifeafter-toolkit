@@ -1,0 +1,266 @@
+{
+ "per_suffix": {
+  "kj1": {
+   "name": "简单生存",
+   "evidence": "server_cluster_data: theme=kj1 → theme_name=简单生存",
+   "files": 3353,
+   "containers": [
+    "Documents",
+    "script.py314.lc.npk"
+   ],
+   "sample": [
+    "attribute_data_kj1.py",
+    "buff_data_kj1.py",
+    "common_jump_conf_data_kj1.py"
+   ]
+  },
+  "yk": {
+   "name": "会员专享（月卡服）",
+   "evidence": "server_cluster_data: theme=yk → theme_name=会员专享",
+   "files": 1569,
+   "containers": [
+    "Documents",
+    "script.py314.lc.npk"
+   ],
+   "sample": [
+    "attribute_data_yk.py",
+    "buff_data_yk.py",
+    "common_jump_conf_data_yk.py"
+   ]
+  },
+  "jp": {
+   "name": "日本区",
+   "evidence": "region=jp",
+   "files": 399,
+   "containers": [
+    "Documents",
+    "script.py314.lc.npk"
+   ],
+   "sample": [
+    "ab_test_bulk_buy_v2_data_auto_oversea_data_jp.py",
+    "ab_test_cohabit_schedule_data_auto_oversea_data_jp.py",
+    "ab_test_collect_trace_data_auto_oversea_data_jp.py"
+   ]
+  },
+  "kjjp": {
+   "name": "简单生存·日本",
+   "evidence": "theme=kjjp, region=jp",
+   "files": 1965,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_bulk_buy_v2_data_auto_oversea_data_kjjp.py",
+    "ab_test_cohabit_schedule_data_auto_oversea_data_kjjp.py",
+    "ab_test_collect_trace_data_auto_oversea_data_kjjp.py"
+   ]
+  },
+  "kjna": {
+   "name": "简单生存·北美",
+   "evidence": "theme=kjna, region=na",
+   "files": 1952,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_bulk_buy_v2_data_auto_oversea_data_kjna.py",
+    "ab_test_collect_trace_data_auto_oversea_data_kjna.py",
+    "ab_test_conf_data_auto_oversea_data_kjna.py"
+   ]
+  },
+  "na": {
+   "name": "北美区",
+   "evidence": "region=na",
+   "files": 403,
+   "containers": [
+    "Documents",
+    "script.py314.lc.npk"
+   ],
+   "sample": [
+    "ab_test_bulk_buy_v2_data_auto_oversea_data_na.py",
+    "ab_test_collect_trace_data_auto_oversea_data_na.py",
+    "ab_test_conf_data_auto_oversea_data_na.py"
+   ]
+  },
+  "au": {
+   "name": "澳洲区",
+   "evidence": "region=au",
+   "files": 363,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_au.py",
+    "ab_test_schedule_data_auto_oversea_data_au.py",
+    "action_item_id_data_express_auto_oversea_data_au.py"
+   ]
+  },
+  "eu": {
+   "name": "欧洲区",
+   "evidence": "region=eu",
+   "files": 396,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_eu.py",
+    "all_equips_data_auto_oversea_data_eu.py",
+    "all_huodong_class_data_auto_oversea_data_eu.py"
+   ]
+  },
+  "hmt": {
+   "name": "港澳台区",
+   "evidence": "region=hmt",
+   "files": 367,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_hmt.py",
+    "ab_test_schedule_data_auto_oversea_data_hmt.py",
+    "action_item_id_data_express_auto_oversea_data_hmt.py"
+   ]
+  },
+  "kjhmt": {
+   "name": "简单生存·港澳台",
+   "evidence": "theme=kjhmt, region=hmt",
+   "files": 1947,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_kjhmt.py",
+    "ab_test_schedule_data_auto_oversea_data_kjhmt.py",
+    "accessory_combat_power_conf_data_auto_oversea_data_kjhmt.py"
+   ]
+  },
+  "kjsea": {
+   "name": "简单生存·东南亚",
+   "evidence": "theme=kjsea, region=sea",
+   "files": 1938,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_kjsea.py",
+    "ab_test_schedule_data_auto_oversea_data_kjsea.py",
+    "accessory_combat_power_conf_data_auto_oversea_data_kjsea.py"
+   ]
+  },
+  "kjxq": {
+   "name": "简单生存",
+   "evidence": "table_region_code=kjxq → theme=kj1",
+   "files": 3280,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_kjxq.py",
+    "ab_test_conf_data_auto_oversea_data_kjxq_chs.py",
+    "ab_test_schedule_data_auto_oversea_data_kjxq.py"
+   ]
+  },
+  "kr": {
+   "name": "韩国区",
+   "evidence": "region=kr",
+   "files": 358,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_kr.py",
+    "all_equips_data_auto_oversea_data_kr.py",
+    "anniversary_sign_in_reward_data_auto_oversea_data_kr.py"
+   ]
+  },
+  "sea": {
+   "name": "东南亚区",
+   "evidence": "region=sea",
+   "files": 367,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "ab_test_conf_data_auto_oversea_data_sea.py",
+    "ab_test_schedule_data_auto_oversea_data_sea.py",
+    "action_item_id_data_express_auto_oversea_data_sea.py"
+   ]
+  },
+  "xq": {
+   "name": "未定（★待确认）",
+   "evidence": "用户也不确定",
+   "files": 128,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "action_item_id_data_express_auto_oversea_data_xq.py",
+    "appear_change_color_data_auto_oversea_data_xq.py",
+    "appear_id_2_fashion_id_auto_oversea_data_xq.py"
+   ]
+  },
+  "kj1_kj1": {
+   "name": "简单生存",
+   "evidence": "复合后缀：kj1=简单生存 ; kj1=简单生存",
+   "files": 19,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "advanced_recipe_material_data_auto_oversea_data_kj1_kj1.py",
+    "buff_data_auto_oversea_data_kj1_kj1.py",
+    "common_item_data_auto_oversea_data_kj1_kj1.py"
+   ]
+  },
+  "kjxq_kj1": {
+   "name": "简单生存",
+   "evidence": "复合后缀：kjxq=简单生存 ; kj1=简单生存",
+   "files": 19,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "advanced_recipe_material_data_auto_oversea_data_kjxq_kj1.py",
+    "buff_data_auto_oversea_data_kjxq_kj1.py",
+    "common_item_data_auto_oversea_data_kjxq_kj1.py"
+   ]
+  },
+  "yk_yk": {
+   "name": "会员专享（月卡服）",
+   "evidence": "复合后缀：yk=会员专享（月卡服） ; yk=会员专享（月卡服）",
+   "files": 14,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "all_equips_data_auto_oversea_data_yk_yk.py",
+    "attribute_data_auto_oversea_data_yk_yk.py",
+    "common_item_data_auto_oversea_data_yk_yk.py"
+   ]
+  },
+  "xyd": {
+   "name": "未定（★待确认）",
+   "evidence": "用户也不确定",
+   "files": 126,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "anniversary_voucher_conf_data_auto_oversea_data_xyd.py",
+    "apartment_elevator_conf_data_auto_oversea_data_xyd.py",
+    "apartment_lobby_data_auto_oversea_data_xyd.py"
+   ]
+  },
+  "cn": {
+   "name": "未定（★待确认）",
+   "evidence": "用户也不确定",
+   "files": 1,
+   "containers": [
+    "Documents"
+   ],
+   "sample": [
+    "food_table_socket_data_auto_oversea_data_cn.py"
+   ]
+  }
+ }
+}

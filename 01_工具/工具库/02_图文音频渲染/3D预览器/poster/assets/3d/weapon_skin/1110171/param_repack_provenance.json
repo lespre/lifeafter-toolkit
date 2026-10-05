@@ -1,0 +1,14 @@
+{
+ "010": {
+  "source": "010_m.png",
+  "sha256": "c166fd1ebab6f2b9",
+  "rule": "G←R(roughness) B←G(metalness)；纯通道重排，无颜色运算",
+  "evidence": "channel-repack/technical"
+ },
+ "012": {
+  "source": "012_m.png",
+  "sha256": "a2de61eded6dfb47",
+  "rule": "G←R(roughness) B←G(metalness)；纯通道重排，无颜色运算",
+  "evidence": "channel-repack/technical"
+ }
+}

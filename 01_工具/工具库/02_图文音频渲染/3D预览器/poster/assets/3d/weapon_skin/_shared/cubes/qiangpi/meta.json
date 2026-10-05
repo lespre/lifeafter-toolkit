@@ -1,0 +1,96 @@
+{
+ "name": "qiangpi",
+ "logical": "common\\env_map\\qiangpi.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12388,
+ "off": 77985524,
+ "comp": 348117,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12388,
+   "base": 1940537680,
+   "off": 77985524,
+   "comp": 348117,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm",
+  "known_verified"
+ ],
+ "sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+ "sha16": "173d52990b3ab836",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f0_m0.png",
+   "bytes": 32213,
+   "rgba_sha16": "15beb9663c062eba",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f1_m0.png",
+   "bytes": 28195,
+   "rgba_sha16": "3355f34eeea9035d",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f2_m0.png",
+   "bytes": 32495,
+   "rgba_sha16": "c8bf2d86fb46c1ec",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f3_m0.png",
+   "bytes": 20764,
+   "rgba_sha16": "3b8b49746c36cee1",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f4_m0.png",
+   "bytes": 32369,
+   "rgba_sha16": "b9e1c9b31b2ba422",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\qiangpi\\faces\\qiangpi_f5_m0.png",
+   "bytes": 30113,
+   "rgba_sha16": "275d383cdcd46fc6",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

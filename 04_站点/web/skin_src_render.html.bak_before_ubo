@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1110171 光影咏叹调 · 源材质 + 源 IBL</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#0e1014;overflow:hidden}
+  #cv{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:14px;top:12px;color:#e3e7ee;font:13px/1.55 system-ui,"Microsoft YaHei";
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud">加载中…</div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from './assets/vendor/three/addons/controls/OrbitControls.js';
+
+const q = new URLSearchParams(location.search);
+const SID = q.get('sid') || '1110171';
+const CUBE = q.get('cube') || 'car_studio01';           // 材质声明：t_custom_ibl ← car_studio01 ✓
+const DIR = './assets/3d/weapon_skin/' + SID + '/';
+const hud = document.getElementById('hud');
+window.__loaded = 0; window.__err = '';
+
+const canvas = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, preserveDrawingBuffer:true});
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+// ★ 游戏色调映射 = filmic_tonemapping（不是 ACES ✓ 见 _pipeline_disasm/filmic_tonemapping）
+//   three 里最接近的是 Reinhard/自定义；这里用 ACES 以外的 filmic 近似开关可 ?tm=aces 回退
+renderer.toneMapping = (q.get('tm') === 'aces') ? THREE.ACESFilmicToneMapping
+                                                : THREE.NeutralToneMapping;
+// ★ 曝光：游戏 <exposure> 轨道 12.53h = 10.54145（真值 ✓），但游戏光照到 filmic 前已是 HDR；
+//   本页光照是 three 的量级 ⇒ 用 1.0 保持中性（要调可用 ?exp=）
+renderer.toneMappingExposure = parseFloat(q.get('exp') || '1.0');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(parseInt(q.get('bg') || '0e1014', 16));
+
+// ★ 源 IBL：立方体贴图 → scene.environment（补环境反射，不覆盖材质 ✓）
+const ctl = new THREE.CubeTextureLoader().setPath('');
+const envMap = ctl.load([0,1,2,3,4,5].map(i => DIR + 'src_cube/faces/' + CUBE + '_f' + i + '_m0.png'));
+envMap.colorSpace = THREE.SRGBColorSpace;
+envMap.mapping = THREE.CubeReflectionMapping;
+scene.environment = envMap;                              // ★★ 关键：给所有 PBR 材质补 IBL ✓
+window.__loaded++;
+
+// ★★ 光照：全部换成【游戏天气真值】✓（weather_login56 / weather_ct_pve_city08 的 42 轨道）
+//   12.53h：ambint 1.7449 · dirint 1.5913 · char_g 0.28603 · char_l 0.35 · cube 1.2495 · exposure 10.541
+//   太阳色/方向 ← common_model_show_conf seed2（fwd 0,0.02,-1 · up 0,1,0.02 · FOV 44.3）
+const GT = {
+  atmo_ambint: 1.7449, atmo_dirint: 1.5913, char_g: 0.28603, char_l: 0.35,
+  cube: 1.2495, locallight: 0.0, exposure: 10.54145, compensate: -0.08691,
+  sun_color: 0xffe7b8,   // 由 char_dir_color/diffuse 轨道着色（暖白）
+  hour: 12.53,
+};
+// 环境（IBL 强度 = cube 系数 × ambint 归一）
+if (scene.environment) scene.environmentIntensity = GT.cube;
+// 半球补光 = 环境项（游戏 ambint × char_l 的折算）
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x2a2f38, GT.atmo_ambint * GT.char_l * 0.5));
+// 主平行光 = 太阳（dirint × char_g × 6 ⇒ 与离线渲染器同一公式 ✓）
+const k = new THREE.DirectionalLight(GT.sun_color, GT.atmo_dirint * GT.char_g * 6.0);
+k.position.set(0, 0.02, -1).normalize().multiplyScalar(10); scene.add(k);
+
+// ★ 游戏相机 FOV = 44.3（common_model_show_conf seed2 ✓）；up (0,1,0.02) ✓
+const cam = new THREE.PerspectiveCamera(44.3, 1, 0.01, 5000);
+const controls = new OrbitControls(cam, canvas); controls.enableDamping = true;
+
+// ★ 场景：login56 展示台（地板 200×200 + 背景 780×390 ✓ 拆包真值）
+new GLTFLoader().load(DIR + 'scene/scene_login56.glb', (sg) => {
+  const sc = sg.scene;
+  sc.traverse((o) => {
+    if (o.isMesh) {
+      o.material = new THREE.MeshLambertMaterial({ color: 0x2a2f38, side: THREE.DoubleSide });
+      o.frustumCulled = false;
+    }
+  });
+  scene.add(sc);
+  window.__hasScene = 1;
+}, undefined, (e) => { window.__sceneErr = String(e).slice(0, 120); });
+
+new GLTFLoader().load(DIR + 'model.glb', (g) => {
+  const root = g.scene;
+  // ★ ?base=xxx 换基色贴图（真正生效的版本 ✓ 之前是死代码 ✗ 已修）
+  const base = q.get('base');
+  let baseTex = null;
+  if (base) {
+    baseTex = new THREE.TextureLoader().load(DIR + 'tex/' + base + '.png');
+    baseTex.colorSpace = THREE.SRGBColorSpace;
+    baseTex.flipY = false;                 // GLTF 贴图不翻转 ✓
+    baseTex.wrapS = baseTex.wrapT = THREE.RepeatWrapping;
+    baseTex.needsUpdate = true;
+  }
+  // ★ 不替换材质！只修 colorSpace + 双面 ✓（保留源贴图 ✓）
+  let nTex = 0; const matNames = [];
+  root.traverse(o => {
+    if (o.isMesh && o.material) {
+      const ms = Array.isArray(o.material) ? o.material : [o.material];
+      for (const m of ms) {
+        matNames.push(m.name || '?');
+        if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; nTex++; }
+        if (base && m.map && /base|color|w010/i.test(m.name || '')) { m.map = baseTex; }  // ★ 真换基色贴图 ✓
+        if (m.normalMap) m.normalScale.set(1, 1);
+        m.envMap = envMap;                 // 显式也给材质挂上（双保险 ✓）
+        m.envMapIntensity = parseFloat(q.get('env') || '1.0');
+        m.side = THREE.DoubleSide;
+        m.needsUpdate = true;
+      }
+    }
+  });
+  scene.add(root); root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3());
+  root.position.sub(ctr);
+  const radius = Math.max(size.length() * 0.5, 0.01);
+  cam.near = radius/1000; cam.far = radius*100;
+  controls.minDistance = radius*0.3; controls.maxDistance = radius*8;
+  const yaw = parseFloat(q.get('yaw') || '62') * Math.PI/180;
+  const pitch = parseFloat(q.get('pitch') || '10') * Math.PI/180;
+  const dist = radius * parseFloat(q.get('zoom') || '1.35');
+  cam.position.set(dist*Math.cos(pitch)*Math.sin(yaw), dist*Math.sin(pitch), dist*Math.cos(pitch)*Math.cos(yaw));
+  cam.updateProjectionMatrix(); controls.target.set(0,0,0); controls.update();
+  hud.textContent = SID + ' 光影咏叹调\n'
+    + '顶点 ' + (() => {let n=0; root.traverse(o=>{if(o.isMesh)n+=o.geometry.attributes.position.count}); return n})()
+    + ' · 材质 ' + [...new Set(matNames)].join(', ')
+    + '\n带贴图材质 ' + nTex + ' 个\nIBL cube = ' + CUBE + '（源）'
+    + '\n★ 光照=游戏天气真值(12.53h)  FOV=44.3  色调=filmic近似'
+  document.title = 'READY ' + SID;
+  window.__loaded++;
+}, undefined, (e) => { hud.textContent = 'LOAD ERROR: ' + e; window.__err = String(e); document.title = 'ERR'; });
+
+function resize(){ const w=canvas.clientWidth, h=canvas.clientHeight;
+  if (w && h){ renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); } }
+window.addEventListener('resize', resize); resize();
+(function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene,cam); })();
+</script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+{
+ "schema": "neox_material/v1",
+ "skin": "1110173",
+ "stem": "skin_1012_011",
+ "evidence_levels": {
+  "geometry": "verified(sizes_ok=True, n_extra=0, mesh_parse2 读通)",
+  "texture_pairing": "ordered_1to1_candidate_high",
+  "note": "区块锚点=该皮肤最后一条 material c159+1（已反向校验声明集含本皮肤）；签名冲突⇒槽位一律 unresolved，未顶替"
+ },
+ "backend": {
+  "glb": "skin_1012_011.glb",
+  "mesh": "skin_1012_011.mesh",
+  "glb_sha16": "5f59f4665ec0a498",
+  "vertices": 18328,
+  "faces": 17488
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "shader_kind": "crystal",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（normal→NormalMap，entry #2831），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2831,
+     "content_class": "normal",
+     "candidate_sig": {
+      "mean": [
+       0.5,
+       0.498,
+       0.971
+      ],
+      "cstd": [
+       0.095,
+       0.122,
+       0.069
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（surface_r→t_surfacemap，entry #2829），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2829,
+     "content_class": "surface_r",
+     "candidate_sig": {
+      "mean": [
+       1.0,
+       0.686,
+       0.742
+      ],
+      "cstd": [
+       0.0,
+       0.181,
+       0.259
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind_evidence": "12 个「材料名全含 1012_011 且材料数==prim 数」候选文档序列一致；例 002779.c159(4820B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 1,
+   "shader_kind": "weapon",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（normal→NormalMap，entry #2831），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2831,
+     "content_class": "normal",
+     "candidate_sig": {
+      "mean": [
+       0.5,
+       0.498,
+       0.971
+      ],
+      "cstd": [
+       0.095,
+       0.122,
+       0.069
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（surface_r→t_surfacemap，entry #2829），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2829,
+     "content_class": "surface_r",
+     "candidate_sig": {
+      "mean": [
+       1.0,
+       0.686,
+       0.742
+      ],
+      "cstd": [
+       0.0,
+       0.181,
+       0.259
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind_evidence": "12 个「材料名全含 1012_011 且材料数==prim 数」候选文档序列一致；例 002779.c159(4820B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 2,
+   "shader_kind": "weapon",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（normal→NormalMap，entry #2831），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2831,
+     "content_class": "normal",
+     "candidate_sig": {
+      "mean": [
+       0.5,
+       0.498,
+       0.971
+      ],
+      "cstd": [
+       0.095,
+       0.122,
+       0.069
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "候选已由内容类定证（surface_r→t_surfacemap，entry #2829），但 local_file 未落盘 ⇒ 保持 unresolved",
+     "candidate_entry": 2829,
+     "content_class": "surface_r",
+     "candidate_sig": {
+      "mean": [
+       1.0,
+       0.686,
+       0.742
+      ],
+      "cstd": [
+       0.0,
+       0.181,
+       0.259
+      ],
+      "alpha": 1.0,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "binding_basis": "CONTENT_CLASS_SIGNATURE+SINGLE_GROUP_SHARED",
+     "evidence_level": "statistical_only",
+     "prim_projection_proven": false,
+     "declared_path": null,
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "基色候选 = param 类（entry #2830）；按 Lead 裁决 base_color←color 类，local_file 待落盘 ⇒ unresolved",
+     "content_class": "param",
+     "candidate_entry": 2830,
+     "candidate_sig": {
+      "mean": [
+       0.201,
+       0.482,
+       1.0
+      ],
+      "cstd": [
+       0.165,
+       0.287,
+       0.002
+      ],
+      "alpha": 0.743,
+      "size": [
+       1024,
+       1024
+      ]
+     },
+     "declared_path": null,
+     "base_color_rule": "Lead 2026-09-19 裁决：base_color ← color 类（weapon Tex0 / crystal t_basecolor）；本地文件待落盘",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind_evidence": "12 个「材料名全含 1012_011 且材料数==prim 数」候选文档序列一致；例 002779.c159(4820B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 3,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_subsurface_crystal.fx::TShader",
+   "shader_kind_evidence": "12 个「材料名全含 1012_011 且材料数==prim 数」候选文档序列一致；例 002779.c159(4820B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  }
+ ],
+ "residuals": [
+  "贴图槽位全部 unresolved（区块已定位 #3646 类，但签名配对不唯一）",
+  "shader_kind 未定证（.mtg 声明已读，未绑定到 prim）"
+ ],
+ "declared_slots_union_ref": {
+  "source": "C159_MAP_batch.json",
+  "material_c159": 2824,
+  "family_rows": [
+   2779,
+   2787,
+   2790,
+   2793,
+   2798,
+   2801,
+   2804,
+   2807,
+   2812,
+   2815,
+   2818,
+   2821,
+   2824
+  ],
+  "sha16_at_read": "c68d5ee0e59c2439"
+ }
+}

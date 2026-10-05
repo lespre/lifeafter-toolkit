@@ -1,0 +1,54 @@
+{
+ "source": "RT render (WebGLRenderTarget readback, sRGB-encoded) — 最终默认材质 v2（含 001a 混色）",
+ "viewer_sha": "cefd4d635ff7cb00fb2051601ea934392fc6188fb2709122f9439c700d6097d4",
+ "material_fidelity": "reference_approximate",
+ "environment_approximate": true,
+ "pose": "game_reference",
+ "debug_ui": false,
+ "approximate_palette": {
+  "schema": "approximate_palette/v2",
+  "mask_source": "Tex0/001b_m（仅分区 mask，不作 albedo）",
+  "source_color_input": {
+   "pbr_weapon": "001a",
+   "pbr_crystal": "001a"
+  },
+  "palette": {
+   "gold": [
+    255,
+    199,
+    96
+   ],
+   "silver": [
+    240,
+    244,
+    250
+   ],
+   "violet": [
+    168,
+    132,
+    255
+   ],
+   "crev": 0.34,
+   "base_in_silver": 0.4,
+   "base_in_violet": 0.45
+  },
+  "mix": {
+   "silver": "palette.silver ← 001a(提亮) 0.40",
+   "violet": "palette.violet ← 001a(提亮) 0.45",
+   "gold": "palette.gold（001b_m 金区，源贴图不作 albedo）"
+  },
+  "coverage": {
+   "010": {
+    "gold": 50.8,
+    "silver": 13.5,
+    "violet": 5.3
+   },
+   "012": {
+    "gold": 41.9,
+    "silver": 3.3,
+    "violet": 9.9
+   }
+  },
+  "note": "颜色=approximate_palette 离线合成；非源公式、非源贴图直用；分区混合，非整把统一乘色"
+ }
+}

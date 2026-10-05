@@ -1,0 +1,302 @@
+{
+ "003991": {
+  "mean": [
+   113,
+   104,
+   89
+  ],
+  "std": [
+   56,
+   51,
+   39
+  ],
+  "blue_dom": 0.0,
+  "gray": 71.6,
+  "grad": 12.0,
+  "alpha_std": 25.9,
+  "alpha_mean": 252.3,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "bf64c8927194c3272f33e10a93d69183c897f4d89c7b56c5fe6e3f1c6802278f",
+  "canonical_pixel_sha256": "2ed989702408eafcd626642307e3982b9355ca87319dec652e7604bb5732b737",
+  "ground_truth_1110171": null
+ },
+ "003992": {
+  "mean": [
+   121,
+   176,
+   256
+  ],
+  "std": [
+   42,
+   91,
+   1
+  ],
+  "blue_dom": 39.5,
+  "gray": 0.0,
+  "grad": 3.53,
+  "alpha_std": 58.7,
+  "alpha_mean": 194.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "bb1ca012668e0a4e6e3476025373a72ba2f3b88d6ce371ebccf6a69fc3f8d1f5",
+  "canonical_pixel_sha256": "e85482160718d1a748cbf524b89f3935094cedca834e298b5c8fe8a356440fd5",
+  "ground_truth_1110171": null
+ },
+ "003993": {
+  "mean": [
+   128,
+   127,
+   249
+  ],
+  "std": [
+   24,
+   30,
+   17
+  ],
+  "blue_dom": 94.0,
+  "gray": 0.0,
+  "grad": 3.39,
+  "alpha_std": 0.1,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "6624d310579bf778df3897c4656b85ecd533e804362bcef30a5b7d21aec2d616",
+  "canonical_pixel_sha256": "52519138924a7aa65b30376e5f7bcc5a23e4250aec392f49321b4f17e107d444",
+  "ground_truth_1110171": null
+ },
+ "004009": {
+  "mean": [
+   211,
+   179,
+   141
+  ],
+  "std": [
+   52,
+   60,
+   75
+  ],
+  "blue_dom": 0.1,
+  "gray": 36.2,
+  "grad": 7.68,
+  "alpha_std": 55.3,
+  "alpha_mean": 84.3,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "5202ae9eaa1f5df0f63c58352aebd9fa2845c78b13881503be7eb603812475f8",
+  "canonical_pixel_sha256": "800e1a8d931dbbf0578e9e124e0762c806b68cb881ba7b662363b9b7a4eb9be5",
+  "ground_truth_1110171": null
+ },
+ "004010": {
+  "mean": [
+   255,
+   173,
+   173
+  ],
+  "std": [
+   6,
+   50,
+   50
+  ],
+  "blue_dom": 0.0,
+  "gray": 2.6,
+  "grad": 4.53,
+  "alpha_std": 0.1,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "e5195abf06a27bb769473804168cfd809f4e1486a96890f02a8f585df1fc7bc3",
+  "canonical_pixel_sha256": "3094f0d074274f4a5bb1a2a4cd59d0aa72573a3fdc35cdcab2bd41dffd7bb426",
+  "ground_truth_1110171": null
+ },
+ "004011": {
+  "mean": [
+   84,
+   197,
+   256
+  ],
+  "std": [
+   55,
+   71,
+   1
+  ],
+  "blue_dom": 32.5,
+  "gray": 0.0,
+  "grad": 4.52,
+  "alpha_std": 37.8,
+  "alpha_mean": 216.7,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "64bb8ce2d34bba43d5fd5d8ea557233f790714248aef5516e239f19286c43516",
+  "canonical_pixel_sha256": "a7c79a49a3b78166e5ff8d3c778733173bb4049f831c09d6adc4b357c347f563",
+  "ground_truth_1110171": null
+ },
+ "004012": {
+  "mean": [
+   127,
+   127,
+   250
+  ],
+  "std": [
+   26,
+   27,
+   16
+  ],
+  "blue_dom": 95.3,
+  "gray": 0.0,
+  "grad": 3.83,
+  "alpha_std": 0.1,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "1fd5b66c9c4acd2952b5402eab8f79836c46caa620b00a09cf49eacf28eb7da2",
+  "canonical_pixel_sha256": "42905cc152a38384c67ece0146eb72092dd99a70cf45fe8ab89722b2d2742b61",
+  "ground_truth_1110171": null
+ },
+ "004013": {
+  "mean": [
+   32,
+   256,
+   256
+  ],
+  "std": [
+   60,
+   1,
+   1
+  ],
+  "blue_dom": 0.0,
+  "gray": 0.0,
+  "grad": 1.06,
+  "alpha_std": 0.0,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "7467bf0230b52608fd6744fed53114598df75c2f9fbaa323e11122401cf956c7",
+  "canonical_pixel_sha256": "2fe04a0269a79ecfebba2e1f8beb6712e4b0a808ec6f43d4443b86669f4f555a",
+  "ground_truth_1110171": null
+ },
+ "001224": {
+  "mean": [
+   120,
+   106,
+   80
+  ],
+  "std": [
+   72,
+   63,
+   43
+  ],
+  "blue_dom": 3.4,
+  "gray": 11.6,
+  "grad": 10.91,
+  "alpha_std": 0.5,
+  "alpha_mean": 254.7,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "d6ce11ff18a39cfdfc315a11bc592b6eb720195332f07ddb80f1e455c29614c9",
+  "canonical_pixel_sha256": "3b32b0dee410645fd00eb3fb269d896e2e8945aa2ef110d1a6db10aae429f99b",
+  "ground_truth_1110171": "010_b_m"
+ },
+ "001226": {
+  "mean": [
+   85,
+   143,
+   256
+  ],
+  "std": [
+   49,
+   97,
+   1
+  ],
+  "blue_dom": 63.4,
+  "gray": 0.0,
+  "grad": 3.83,
+  "alpha_std": 75.0,
+  "alpha_mean": 186.6,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "06147325fd5df9130ede919c200034cdfeb2c87672a912581c52ddc261d82587",
+  "canonical_pixel_sha256": "98295067ec4e29976be86dc4e86f7cdbdfb1f9ec2e39656effc814508c2d94ea",
+  "ground_truth_1110171": "010_a"
+ },
+ "001227": {
+  "mean": [
+   127,
+   128,
+   252
+  ],
+  "std": [
+   16,
+   26,
+   12
+  ],
+  "blue_dom": 96.3,
+  "gray": 0.0,
+  "grad": 4.82,
+  "alpha_std": 0.1,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "e82173dcdb4bc8163704da9e2c7c3cc72e0cd3f7af4c473052368e07a52c0124",
+  "canonical_pixel_sha256": "283b2171e5e51788461c357e8d329fec071ddd9af6c3f9956437af0c57e30b9e",
+  "ground_truth_1110171": "010_n"
+ },
+ "001228": {
+  "mean": [
+   16,
+   256,
+   256
+  ],
+  "std": [
+   37,
+   1,
+   1
+  ],
+  "blue_dom": 0.0,
+  "gray": 0.0,
+  "grad": 0.72,
+  "alpha_std": 0.0,
+  "alpha_mean": 255.0,
+  "fmt": "bc7",
+  "wh": [
+   1024,
+   1024
+  ],
+  "dds_sha256": "502ff0d661d44bdc7a86fe7da8cd3e15896186d21d7558d06eb84ab1231e5e85",
+  "canonical_pixel_sha256": "f835a4cdee6f15a026f22338b84baf1c9a67054508f262c0a5d1fbcc76cf2e8c",
+  "ground_truth_1110171": "010_m"
+ }
+}

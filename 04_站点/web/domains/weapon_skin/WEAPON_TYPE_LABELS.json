@@ -1,0 +1,17 @@
+{
+ "product": "WEAPON_TYPE_LABELS",
+ "role": "presentation_only（只做中文标签，不做身份/绑定结论）",
+ "provenance": "derived from legacy board data/boards/weapon_skin_sfx_text_sources.json#weapon_type_label（标签文本）",
+ "labels": {
+  "1": "突击步枪",
+  "5": "狙击枪",
+  "50": "冷兵器",
+  "4": "霰弹枪",
+  "6": "手枪",
+  "7": "榴弹炮",
+  "20": "喷火器",
+  "3": "弓箭",
+  "8": "电磁机枪",
+  "51": "护臂/盾"
+ }
+}

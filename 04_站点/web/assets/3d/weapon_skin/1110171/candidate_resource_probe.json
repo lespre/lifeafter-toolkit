@@ -1,0 +1,32 @@
+{
+ "mode": "candidate_resource_probe",
+ "production_use": false,
+ "prompt_render": false,
+ "note": "候选条目按内容形态筛选；逻辑路径与槽位无结构直证，禁止进入 source_strict",
+ "candidates": [
+  {
+   "gpk": "res/weapon.gpk",
+   "entry": 1229,
+   "local": "src_tex/gpk_1229.png",
+   "slot_candidate": "DetailMap",
+   "level": "content-match/candidate",
+   "pixel_sha16": "90643e12b192f4d0"
+  },
+  {
+   "gpk": "res/weapon.gpk",
+   "entry": 1230,
+   "local": "src_tex/gpk_1230.png",
+   "slot_candidate": "t_refraction_tex",
+   "level": "content-match/candidate",
+   "pixel_sha16": "3908b164767f3db7"
+  },
+  {
+   "gpk": "res/weapon.gpk",
+   "entry": 1276,
+   "local": "src_tex/gpk_1276.png",
+   "slot_candidate": "t_caustic_tex",
+   "level": "content-match/candidate",
+   "pixel_sha16": "4104ec4f8d8f1be9"
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+[
+ {
+  "url": "http://127.0.0.1:8765/board.html?b=weapon_skin_sfx_text_sources&view=wiki&sort=id&dir=desc&lab=1",
+  "tag": "lab",
+  "hook": "object",
+  "neox": "EXC Uncaught",
+  "slots": "EXC Uncaught",
+  "gl": "{\"fails\":0,\"linkFails\":0,\"useInvalid\":0,\"first\":null}",
+  "screenshot": {
+   "error": "canvas not found",
+   "box": null
+  }
+ },
+ {
+  "url": "http://127.0.0.1:8765/board.html?b=weapon_skin_sfx_text_sources&view=wiki&sort=id&dir=desc",
+  "tag": "prod",
+  "hook": "object",
+  "neox": "{\"report\":{\"applied\":3,\"applied_prims\":[0,1,2],\"failed\":[],\"missing\":[],\"prims\":[{\"prim\":0,\"mtl_idx\":0,\"material\":\"skin_2003_029_0\",\"shader\":\"shader\\\\pbr_default.fx::TShader\",\"pass_hint\":null,\"color_slot\":\"Tex0\",\"slots\":{\"Tex0\":{\"file\":\"src_tex/029_a.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001a.tga\",\"color_space\":\"ab_test\"},\"t_basecolor\":{\"file\":\"src_tex/029_a.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001a.tga\",\"color_space\":\"ab_test\"},\"ParamMap\":{\"file\":\"src_tex/029_m.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001m.tga\",\"color_space\":\"linear\"},\"NormalMap\":{\"file\":\"src_tex/029_n.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001n.tga\",\"color_space\":\"linear\"},\"t_custom_ibl\":{\"file\":\"src_cube/qiangpi.dds\",\"logical\":\"common\\\\env_map\\\\qiangpi.cube\",\"color_space\":\"linear\"},\"t_surfacemap\":{\"file\":\"src_tex/029_s_m.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001s_m.tga\",\"color_space\":\"linear\"}},\"sha256\":{\"Tex0\":\"0082f6ec8caa7dcadea410e0bf28dede\",\"t_basecolor\":\"0082f6ec8caa7dcadea410e0bf28dede\",\"ParamMap\":\"882664c3bab76ee7f0abc9da28ec4d17\",\"NormalMap\":\"47529aaf1f527ba9179b3c41cf4f1fd2\",\"t_custom_ibl\":\"173d52990b3ab8364a43ac6367c362d6\",\"t_surfacemap\":\"61277c05cc19fd788a7e0dee1e6eb169\"},\"missing_required\":[],\"unresolved_slots\":[],\"old_material\":{\"type\":\"MeshBasicMaterial\",\"had_map\":true,\"had_metalnessMap\":false,\"map_uuid\":\"a846a2eb-4fcb-4e01-a0e5-baaa4b2d57e1\"},\"neox_replaced\":true,\"status\":\"applied\",\"runtime_refs\":{\"map\":true,\"normalMap\":true,\"metalnessMap\":true}},{\"prim\":1,\"mtl_idx\":1,\"material\":\"skin_2003_029_1\",\"shader\":\"shader\\\\pbr_crystal.fx::TShader\",\"pass_hint\":null,\"color_slot\":\"t_basecolor\",\"slots\":{\"Tex0\":{\"file\":\"src_tex/029_b_m.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001b_m.tga\",\"color_space\":\"linear\"},\"t_basecolor\":{\"file\":\"src_tex/029_a.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001a.tga\",\"color_space\":\"ab_test\"},\"NormalMap\":{\"file\":\"src_tex/029_n.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001n.tga\",\"color_space\":\"linear\"},\"t_custom_ibl\":{\"file\":\"src_cube/car_studio01.dds\",\"logical\":\"common\\\\env_map\\\\car_studio01.cube\",\"color_space\":\"linear\"},\"DetailMap\":{\"file\":null,\"logical\":\"common\\\\textures\\\\crystal_bump_n02.tga\",\"color_space\":\"linear\"},\"t_caustic_tex\":{\"file\":null,\"logical\":\"weapon\\\\skin\\\\skin_1012_013\\\\testures\\\\crystal_caustic_uvva002.tga\",\"color_space\":\"linear\"},\"t_reflection_tex\":{\"file\":null,\"logical\":\"common\\\\textures\\\\crystal_reflection_uvva.tga\",\"color_space\":\"linear\"}},\"sha256\":{\"Tex0\":\"6349a3f2f761f83f9ff460253babb986\",\"t_basecolor\":\"0082f6ec8caa7dcadea410e0bf28dede\",\"NormalMap\":\"47529aaf1f527ba9179b3c41cf4f1fd2\",\"t_custom_ibl\":\"bea649d8525cdc3ecb77b1fbb0e388d8\"},\"missing_required\":[],\"unresolved_slots\":[\"DetailMap\",\"t_caustic_tex\",\"t_reflection_tex\"],\"old_material\":{\"type\":\"MeshBasicMaterial\",\"had_map\":true,\"had_metalnessMap\":false,\"map_uuid\":\"6619cfe0-5c41-4dd7-a125-b43396648506\"},\"neox_replaced\":true,\"status\":\"applied\",\"runtime_refs\":{\"map\":true,\"normalMap\":true,\"metalnessMap\":false}},{\"prim\":2,\"mtl_idx\":2,\"material\":\"skin_2003_029_2\",\"shader\":\"shader\\\\pbr_crystal.fx::TShader\",\"pass_hint\":null,\"color_slot\":\"t_basecolor\",\"slots\":{\"Tex0\":{\"file\":\"src_tex/029_b_m.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001b_m.tga\",\"color_space\":\"linear\"},\"t_basecolor\":{\"file\":\"src_tex/029_a.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001a.tga\",\"color_space\":\"ab_test\"},\"NormalMap\":{\"file\":\"src_tex/029_n.png\",\"logical\":\"weapon\\\\skin\\\\skin_2003_029\\\\textures\\\\skin_2003_029001n.tga\",\"color_space\":\"linear\"},\"t_custom_ibl\":{\"file\":null,\"logical\":\"common\\\\env_map\\\\fashion_qiangpi.cube\",\"color_space\":\"linear\"},\"DetailMap\":{\"file\":null,\"logical\":\"common\\\\textures\\\\crystal_bump_n_uvva.tga\",\"color_space\":\"linear\"},\"t_caustic_tex\":{\"file\":null,\"logical\":\"common\\\\textures\\\\crystal_caustic_uvva.tga\",\"color_space\":\"linear\"},\"t_reflection_tex\":{\"file\":null,\"logical\":\"common\\\\textures\\\\crystal_reflection_uvva.tga\",\"color_space\":\"linear\"},\"t_refraction_tex\":{\"file\":null,\"logical\":\"common\\\\textures\\\\refraction_envmap_3.tga\",\"color_space\":\"linear\"}},\"sha256\":{\"Tex0\":\"6349a3f2f761f83f9ff460253babb986\",\"t_basecolor\":\"0082f6ec8caa7dcadea410e0bf28dede\",\"NormalMap\":\"47529aaf1f527ba9179b3c41cf4f1fd2\"},\"missing_required\":[],\"unresolved_slots\":[\"t_custom_ibl\",\"DetailMap\",\"t_caustic_tex\",\"t_reflection_tex\",\"t_refraction_tex\"],\"old_material\":{\"type\":\"MeshBasicMaterial\",\"had_map\":true,\"had_metalnessMap\":false,\"map_uuid\":\"e6e40164-2b2d-49c7-b69d-0dd7db9b8c25\"},\"neox_replaced\":true,\"status\":\"applied\",\"runtime_refs\":{\"map\":true,\"normalMap\":true,\"metalnessMap\":false}}],\"base\":\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110177/\",\"meshes\":3,\"prims_total\":3,\"manifest_sha\":null,\"glb_sha\":\"e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2\",\"parser_sha\":null},\"baseColorSRGB\":false,\"manifest\":{}}",
+  "slots": "EXC Uncaught",
+  "gl": "{\"fails\":0,\"linkFails\":0,\"useInvalid\":0,\"first\":null}",
+  "screenshot": {
+   "file": "T5_1110177_prod.png",
+   "sha16": "28c785f428f9ca83",
+   "box": {
+    "x": 100,
+    "y": 97,
+    "w": 1178,
+    "h": 718
+   },
+   "bytes": 727275
+  }
+ }
+]

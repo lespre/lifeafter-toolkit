@@ -1,0 +1,37 @@
+{
+ "generated": "2026-09-13T05:06:59",
+ "domains": {
+  "item": {
+   "unresolved_namespace_ids": 554,
+   "hard_blocked": false
+  },
+  "fashion": {
+   "binding_residuals": 5,
+   "hard_blocked": true
+  },
+  "weapon_skin": {
+   "unresolved_ids": 2,
+   "hard_blocked": false,
+   "listing_status_evidence": {
+    "count": 115,
+    "supported_today": [
+     "unresolved"
+    ],
+    "reason": "同快照无 sale/shop/exchange 上架证据",
+    "file": "residuals/weapon_skin/listing_status.json"
+   }
+  },
+  "lottery": {
+   "unresolved_targets": 1665,
+   "runtime_final_overlay": 23567,
+   "hard_blocked": false
+  }
+ },
+ "rule": "unresolved 是正式数据层；禁止被 active pipeline 静默吞掉",
+ "v11_note": "170 表 namespace row key 集补齐后重分类；unresolved 保留",
+ "infrastructure_residuals": {
+  "current_snapshot_chs_binding": "unresolved（current 无 CHS 路径声明、无 canonical CHS FID）",
+  "inventory_entry_basis": "test-documents-ba8a239a（entry 不可跨 snapshot 使用）"
+ },
+ "wording": "基础设施阻断 ≠ residual 的唯一根因；重新分类后仍保留 unresolved"
+}

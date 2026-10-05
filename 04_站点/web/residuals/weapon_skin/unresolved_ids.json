@@ -1,0 +1,33 @@
+{
+ "domain": "weapon_skin",
+ "kind": "unresolved_ids",
+ "generated": "2026-09-12T18:54:20",
+ "ids": [
+  {
+   "item_id": 1110185,
+   "runtime_row_binding": "no_main_row",
+   "name": "unresolved",
+   "business_identity": "unresolved",
+   "quality": "收窄到 5/6",
+   "static_name_attainable": false
+  },
+  {
+   "item_id": 1110186,
+   "runtime_row_binding": "no_main_row",
+   "name": "unresolved",
+   "business_identity": "unresolved",
+   "quality": "收窄到 5/6",
+   "static_name_attainable": false
+  }
+ ],
+ "opcode_residuals": [
+  "operand-level call binding = unresolved",
+  "numeric item_type constant = unresolved"
+ ],
+ "hard_blocked": false,
+ "evidence_ref": [
+  "artifacts/active/weapon_skin/audit.json"
+ ],
+ "fixed_wording": "仅行为资源：无 weapon_skin_data 主行、无 common_item 道具行 ⇒ 正式名静态不可得（非缺工）",
+ "display_rule": "卡名固定「未命名皮肤 · ID <id>」；原因见 fixed_wording，不改 name_status"
+}

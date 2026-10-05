@@ -1,0 +1,28 @@
+{
+ "label": "lightshadow",
+ "generated_at": "2026-09-20 13:38:39",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "03e9768e8b97dfb2",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "4fd20332642c00bd",
+ "patch": {
+  "note": "同上 + key_shadow 开启（方向光 + 只显示阴影的地板）",
+  "viewer": {
+   "hemisphere_intensity": 1.35,
+   "key_intensity": 2.2,
+   "fill_intensity": 0.75,
+   "key_shadow": true
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "fill_intensity",
+   "hemisphere_intensity",
+   "key_intensity",
+   "key_shadow"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_lightshadow.json"
+}

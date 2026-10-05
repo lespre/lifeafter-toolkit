@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日之后 · Lifeafter Wiki</title>
+<script src="data/manifest.js"></script>
+<script src="data/publication_policy.js"></script>
+<script src="data/wiki_taxonomy.js"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--border2:#d4d4d8;--hover:#f4f4f5;--red:#b91c1c;--redbg:#fef2f2;--redbd:#fecaca;--amber:#92400e;--amberbg:#fffbeb;--amberbd:#fde68a;--radius:10px;--shadow:0 1px 2px rgba(0,0,0,.04),0 1px 3px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(250,250,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:14px 24px}
+.topin,.wrap{max-width:1200px;margin:0 auto}.title-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+h1{font-size:20px;font-weight:650;letter-spacing:-.01em}.sub{color:var(--muted);font-size:12.5px;margin-top:4px}
+.tool-link{font-size:12px;color:#3f3f46;text-decoration:none;border:1px solid var(--border2);background:#fff;border-radius:7px;padding:5px 9px}.tool-link:hover{background:var(--hover);color:var(--fg)}
+.wrap{padding:24px 24px 60px}h2{font-size:15px;font-weight:650;margin:26px 0 6px;padding-bottom:6px;border-bottom:1px solid var(--border)}h3.group{font-size:13px;font-weight:650;color:var(--muted);margin:14px 0 8px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}.card.audit{background:#fffdf8;border-color:var(--amberbd)}.card.published{text-decoration:none;color:var(--fg);border-color:#86efac;background:#f0fdf4}.card.published:hover{background:#dcfce7;border-color:#4ade80}.cname{font-size:14px;font-weight:650}.csub{font-size:11.5px;color:var(--muted);line-height:1.5}.badge{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:6px;border:1px solid var(--amberbd);color:var(--amber);background:var(--amberbg);white-space:nowrap;margin-left:6px;vertical-align:1px}
+.gate{margin-top:12px;border:1px dashed var(--border2);border-radius:8px;background:#fff;padding:10px 12px;color:#52525b;font-size:12px}.gate code{font-family:ui-monospace,Consolas,monospace;font-size:11px}.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+/* 阅读优先：中性卡面、清晰焦点、窄屏友好。 */
+:root{--accent:#6d28d9}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+.card.published{background:var(--card);border-color:var(--border);transition:border-color .15s,box-shadow .15s}
+.card.published:hover{background:#faf8ff;border-color:#c4b5fd;box-shadow:0 3px 12px #6d28d912}
+.card.published .cname{line-height:1.65}
+.state-line{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.state-chip{font-size:10px;line-height:1.4;padding:1px 7px;border:1px solid var(--border);border-radius:999px;background:#f4f4f5;color:#52525b}
+.state-chip.verified{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
+.state-chip.unresolved{background:#fffbeb;color:#a16207;border-color:#fde68a}
+.state-chip.quarantined{background:#fef2f2;color:#b91c1c;border-color:#fecaca}
+.state-chip.runtime-final-unknown{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
+a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #a78bfa;outline-offset:3px}
+.home-tools{margin:4px 0 22px}.search-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search-row input{flex:1;min-width:180px;padding:11px 13px;border:1px solid var(--border2);border-radius:9px;font:inherit;background:white}
+.search-row button{padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:white;font:inherit;cursor:pointer}
+.search-status{font-size:12px;color:var(--muted);margin-top:8px}
+.preflight{grid-column:1/-1;background:transparent!important;box-shadow:none;font-size:12px}.preflight summary{cursor:pointer;font-weight:600}.preflight .csub{margin-top:8px}
+.home-empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--border2);border-radius:10px}
+@media(max-width:540px){.topbar{padding:12px 16px}.wrap{padding:18px 16px 40px}.grid{grid-template-columns:1fr}h1{font-size:18px}.title-row{gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card.published{transition:none}}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+details.tech{margin-top:10px;border:1px dashed var(--border);border-radius:8px;background:rgba(0,0,0,.015)}
+details.tech>summary{cursor:pointer;padding:7px 10px;font-size:12px;color:#6b7280;font-weight:600}
+details.tech .csub{padding:0 10px 10px}
+/* ★ 图鉴 = 体系树（折叠式）。口径：干净层级 + 悬停反馈 + 右侧计数，不做重边框 */
+.system-cards{display:flex;flex-direction:column;gap:10px}
+.system-cards details{border:1px solid var(--border);border-radius:var(--radius);background:var(--card);overflow:hidden}
+.system-cards>details.sys-lv1{box-shadow:var(--shadow)}
+.sys-lv1>summary{padding:13px 16px;font-size:15px;font-weight:700;color:#18181b;background:linear-gradient(#fff,#fafafa)}
+.sys-lv1[open]>summary{border-bottom:1px solid var(--border)}
+.sys-lv2,.sys-lv3{border:0!important;border-radius:0!important;background:transparent!important}
+.sys-lv2{border-top:1px solid var(--border)!important}
+.sys-lv2>summary{padding:10px 16px 10px 32px;font-size:13.5px;font-weight:650;color:#3f3f46;background:#fcfcfd}
+.sys-lv3{border-top:1px dashed var(--border)!important}
+.sys-lv3>summary{padding:8px 16px 8px 50px;font-size:12.5px;font-weight:600;color:#52525b}
+@media(max-width:540px){.sys-lv2>summary{padding-left:22px}.sys-lv3>summary{padding-left:32px}}
+summary{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none;user-select:none;transition:background .13s}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";flex:0 0 auto;width:0;height:0;border-left:5px solid #a1a1aa;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .16s}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#f7f5ff}
+summary:hover::before{border-left-color:var(--accent)}
+.sys-t{flex:1 1 auto;min-width:0}
+.sys-n{flex:0 0 auto;font-size:10.5px;font-weight:600;color:#8b8b96;background:#f4f4f5;border:1px solid #e9e9ec;border-radius:999px;padding:1px 9px;white-space:nowrap}
+details[open]>summary>.sys-n{background:#f0edff;border-color:#ddd6fe;color:#6d28d9}
+.sys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px;padding:11px 16px 13px}
+.sys-lv2>.sys-grid{padding-left:32px}
+.sys-lv3>.sys-grid{padding-left:50px}
+@media(max-width:540px){.sys-grid{grid-template-columns:1fr}.sys-lv2>.sys-grid{padding-left:18px}.sys-lv3>.sys-grid{padding-left:26px}}
+.sys-grid .card{padding:10px 12px;gap:3px}
+.sys-grid .cname{font-size:12.5px;font-weight:640}
+.sys-grid .csub{font-size:10.5px}
+.card.note{border-style:solid;border-color:var(--border);background:#fcfcfd;box-shadow:none}
+.card.note .cname{font-weight:600;color:#52525b;font-size:12px}
+.card.placeholder{border-style:dashed;border-color:var(--border2);background:transparent;color:var(--muted);box-shadow:none}
+.card.placeholder .cname{color:#9b9ba5;font-weight:600;font-size:12px}
+.card.deprecated{border-style:dashed;border-color:var(--border2);background:transparent;color:var(--muted);box-shadow:none;cursor:default}
+.card.deprecated .cname{color:#9b9ba5;font-weight:600;font-size:12px}
+.sys-bar{display:flex;justify-content:flex-end;margin:0 0 4px}
+.sys-bar label{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#8b8b96;cursor:pointer;padding:4px 9px;border:1px solid var(--border);border-radius:999px;background:var(--card)}
+.sys-bar label:hover{color:var(--accent);border-color:#c4b5fd}
+.sys-bar input{accent-color:#6d28d9;cursor:pointer}
+.sys-lv4{border-top:1px dotted var(--border)!important}
+.sys-lv4>summary{padding:7px 16px 7px 68px;font-size:12px;font-weight:500;color:#71717a}
+.sys-lv4>.sys-grid{padding-left:68px}
+@media(max-width:540px){.sys-lv4>summary{padding-left:40px}.sys-lv4>.sys-grid{padding-left:40px}}
+.sys-empty{font-size:11.5px;color:var(--muted);padding:6px 2px;grid-column:1/-1}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topin">
+  <div class="title-row"><a class="tool-link" href="index.html">← 返回主页 · 三线状态</a><h1>明日之后 · Lifeafter Wiki</h1></div>
+  <div class="sub" id="gen">读取发布策略中…</div>
+</div></div>
+
+<div class="wrap">
+  <div class="home-tools">
+    <div class="search-row"><input id="homeSearch" type="search" aria-label="搜索板块" placeholder="找板块：武器皮肤、核芯、芯片、奖池…" autocomplete="off"><button id="clearSearch" type="button">清空</button></div>
+    <div id="searchStatus" class="search-status" role="status" aria-live="polite">只搜索板块名称；条目内容请进入板块检索。</div>
+  </div>
+  <div id="homeEmpty" class="home-empty" hidden>没有匹配的板块，试试换个关键词或清空搜索。</div>
+  <h2>图鉴</h2>
+  <div id="systemCards" class="system-cards"></div>
+
+  
+  <details class="tech" id="boundary"><summary>公开规则 · 来源与发布边界</summary>
+    <div class="csub"><p><b>未知或已隔离的板块默认拒绝展示</b>；原始客户端包只读，读取工具只证明条目可解，不代表业务已启用。</p>
+    <p><b>资料可查 ≠ 当前可得或活动开启。</b>服务器分支、快照与证据范围以各板记录为准。</p>
+    <p>公开资料保留行级文字/配置来源；可解、可回放不等于可交易、可领取或业务启用。发布链：源包锁 → NPK entry/file ID → 同包表/CHS → 行键与字段原值 → 名称来源 → selector/reward/item 或 consumer 语义 → 证据等级。未知或隔离 board 一律不发布。</p>
+    <p class="mono">公开门禁：data/publication_policy.json ｜ 数据规范：docs/SCHEMA.md ｜ 流水线：docs/PIPELINE.md ｜ 旧板块审计：03_执行/wiki_position_chain_audit_20260902</p></div>
+  </details>
+</div>
+<script>
+// ★★★ 图鉴 = 体系树（折叠式，2026-09-28）
+//     · 顶层 <details open>，中层/叶子 <details>（点开才展开）⇒ 不用长滚动
+//     · ★ 默认只显示【已发布】的板；已归档/隔离的旧板默认隐藏（避免一堆灰卡搞乱版面），
+//       勾「显示已归档」才展开 —— 数据一个不丢，只是默认不抢视线
+//     · 计数 = 该节点（含子树）实际会显示的已发布板数
+//     · 空叶子写「尚未产出」，不写「—」
+(function(){
+  const T=window.WIKI_TAXONOMY;
+  const host=document.getElementById('systemCards');
+  if(!T||!host) return;
+  const M=window.WIKI_MANIFEST, POL=window.WIKI_PUBLICATION_POLICY;
+  const byId={};
+  if(M&&Array.isArray(M.boards)) for(const b of M.boards) byId[b.board]=b;
+  const pol=(POL&&POL.boards)||{};
+  const CN={hat:'头饰',cloth:'衣服',bag:'背包',pendant:'挂件',suit:'套装',light:'荧光棒'};
+  let showArchived=false;
+
+  // ★ 计数：已发布板算 1；占位节点也算 1（占位本身也是一项内容，否则父级会显示"尚未产出"）
+  function tally(n){
+    let boards=0, ph=0;
+    for(const nm of (n.boards||[])) if(byId[nm]) boards++;
+    if(n.placeholder && !boards) ph++;
+    for(const k of (n.children||[])){const r=tally(k);boards+=r.boards;ph+=r.ph;}
+    return {boards, ph};
+  }
+  function badgeText(n){
+    const r=tally(n);
+    if(r.boards && r.ph) return r.boards+' 块 · '+r.ph+' 项占位';
+    if(r.boards) return r.boards+' 块';
+    if(r.ph) return r.ph+' 项占位';
+    return '尚未产出';
+  }
+  // ★ 卡片标题不带编号 —— 旧 category 尾段（如「（七）武器皮肤」「（八）载具」）是旧体系残留，
+  //   放到新树里会跟新层级打架。改用板名去前缀。
+  // ★ 可见区禁英文工程词（与 board.html 同规则）—— 卡片标题过一遍中文映射
+  const CN_MAP=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时未确认'],
+    [/source-locked static config/g,'静态配置锁定'],[/static config/g,'静态配置'],
+    [/LOTTERY_POOL_RESOLVED/gi,'奖池解析'],[/ITEM_MASTER/gi,'道具总表'],
+    [/all_equips/g,'装备属性表'],[/schema\s*\d+/g,'结构'],[/\bschema\b/g,'结构'],[/chip_type/g,'芯片类型'],[/\bpart\b/g,'部位'],
+    [/\bsource-locked\b/gi,'锁源'],[/\bverified\b/gi,'已核验'],
+    [/\bunresolved\b/gi,'待确认'],[/\bcandidate\b/gi,'候选'],
+    [/\bv0\.\d+/gi,''],[/\s*·\s*$/, '']];
+  function zh(s){
+    let out=String(s??'');
+    for(const [re,rp] of CN_MAP) out=out.replace(re,rp);
+    out=out.replace(/\s*→\s*/g,' 的 ').replace(/\s{2,}/g,' ').replace(/\s*·\s*·\s*/g,' · ').trim();
+    out=out.replace(/^·\s*|\s*·$/g,'').trim();
+    return out;
+  }
+  function cleanTitle(b,nm){
+    let s=(b.name||nm||'').replace(/^当前包\s*·\s*/,'').replace(/^[（(][^）)]*[）)]\s*/,'').trim();
+    return zh(s||nm);
+  }
+  function card(nm,b,arch){
+    const a=document.createElement('a');
+    a.className=arch?'card deprecated':'card published';
+    if(!arch) a.href='board.html?b='+encodeURIComponent(nm);
+    const n=document.createElement('div');n.className='cname';n.textContent=cleanTitle(b,nm);
+    const s=document.createElement('div');s.className='csub';
+    const pt=(b.all_parts&&b.all_parts.length?b.all_parts.map(x=>CN[x]||x).join('/'):'');
+    s.textContent=(b.items!=null?b.items+' 条':'')+(pt?' · '+pt:'')+(arch?' · 已归档，仅存档':'');
+    a.append(n,s);return a;
+  }
+  function ph(note){
+    const d=document.createElement('div');d.className='card placeholder';
+    const n=document.createElement('div');n.className='cname';n.textContent='尚未产出';
+    const s=document.createElement('div');s.className='csub';s.textContent=note||'对应板块还没有产物';
+    d.append(n,s);return d;
+  }
+  // ★ 部位叶子【不再出链接卡】—— 同一块板出 4 个链接就是重复。
+  //   改成纯文字提示：部位筛选在「7、全量总表」里做（那里是真入口）。
+  // ★ 部位名只显示中文（可见区禁英文 part 名）
+  function partCard(node){
+    if(!node.part_match||!byId['fashion_wardrobe']) return null;
+    const d=document.createElement('div');d.className='card note';
+    const zhParts=node.part_match.filter(x=>/[\u4e00-\u9fff]/.test(x));
+    const n=document.createElement('div');n.className='cname';
+    n.textContent='部位：'+((zhParts.length?zhParts:['本部位']).join(' / '));
+    const s=document.createElement('div');s.className='csub';
+    s.textContent='并入「全量总表」（板内可按部位筛），此处不再单开入口';
+    d.append(n,s);return d;
+  }
+
+  function block(node,level){
+    const wrap=document.createElement('details');
+    wrap.className='sys-lv'+level;
+    if(level===1) wrap.open=true;
+    const sum=document.createElement('summary');
+    const title=document.createElement('span');title.className='sys-t';title.textContent=node.name;
+    const cnt=document.createElement('span');cnt.className='sys-n';
+    cnt.textContent=badgeText(node);
+    sum.append(title,cnt);wrap.appendChild(sum);
+
+    const kids=node.children||[];
+    const items=[];
+    for(const nm of (node.boards||[])){
+      if(byId[nm]) items.push([nm,byId[nm],false]);
+      else if(showArchived&&pol[nm]) items.push([nm,{name:nm,items:null,category:pol[nm].category||nm},true]);
+    }
+    const pc=partCard(node);
+    if(items.length||pc||node.placeholder||!kids.length){
+      const grid=document.createElement('div');grid.className='sys-grid';
+      let n=0;
+      for(const [nm,b,arch] of items){grid.appendChild(card(nm,b,arch));n++;}
+      if(pc&&!n){grid.appendChild(pc);n++;}
+      if(!n){ if(node.placeholder) grid.appendChild(ph(node.note));
+              else if(!kids.length) grid.appendChild(ph()); }
+      if(n) wrap.appendChild(grid);
+    }
+    for(const k of kids) wrap.appendChild(block(k,level+1));
+    return wrap;
+  }
+
+  function render(){
+    host.innerHTML='';
+    // 开关条
+    const bar=document.createElement('div');bar.className='sys-bar';
+    const lab=document.createElement('label');
+    const cb=document.createElement('input');cb.type='checkbox';cb.checked=showArchived;
+    const sp=document.createElement('span');
+    sp.textContent='显示已归档 / 隔离的旧板（'+Object.keys(pol).length+' 个）';
+    lab.append(cb,sp);bar.appendChild(lab);host.appendChild(bar);
+    cb.addEventListener('change',()=>{showArchived=cb.checked;render();});
+    // 树
+    const root=document.createElement('div');root.className='system-cards';
+    for(const top of (T['树']||[])) root.appendChild(block(top,1));
+    host.appendChild(root);
+  }
+  render();
+})();
+</script>
+<script>
+// 标题清理：首页卡面不允许裸英文工程词（与 board.html 同规则）
+const TITLE_CN=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时结果未确认'],
+  [/LOTTERY_POOL_RESOLVED/g,'奖池解析'],[/ITEM_MASTER/g,'道具总表'],[/static config/g,'静态配置'],
+  [/\bunresolved\b/g,'待确认'],[/\bverified\b/g,'已核验'],[/\bcandidate\b/g,'候选'],[/\bquarantined\b/g,'已隔离'],
+  [/all_equips/g,'装备属性表'],[/common_item_data_base/g,'道具总表'],[/weapon_skin_data/g,'武器皮肤表'],
+  [/reward_pool_data_base/g,'奖池表'],[/gift_data/g,'礼盒表'],[/huodong_conf/g,'活动配置'],[/item_master/gi,'道具总表'],[/schema\s*(\d+)/g,'结构 $1'],[/\bschema\b/g,'结构']];
+function zhTitle(s){let out=String(s??'');for(const [re,rp] of TITLE_CN)out=out.replace(re,rp);return out;}
+const M=window.WIKI_MANIFEST;
+const P=window.WIKI_PUBLICATION_POLICY;
+const policyCounts={};
+Object.values(P?.boards||{}).forEach(v=>{const k=v.publication_status;policyCounts[k]=(policyCounts[k]||0)+1;});
+const homeCards=[];
+const pub=M&&Array.isArray(M.boards)?M.boards.length:0;
+document.getElementById('gen').textContent=M&&P
+  ? `公开板块 ${pub} · 已隔离旧板块 ${policyCounts.quarantined||0} · 已退休 ${policyCounts.retired||0} · 未发布 ${policyCounts.unpublished||0}`
+  : '目录或发布策略加载失败，请刷新页面；若仍失败，请检查 data 目录文件是否完整。';
+// 中文/阿拉伯序号 → 数值（组内排序用）
+const SEQ_MAP={'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9,'十':10,'十一':11,'十二':12,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7};
+function catSeq(category){
+  const tailSeg=category.split(' / ').pop();     // 尾段可含斜杠（如（三）背包/挂件）
+  const m=tailSeg.match(/[（(]([^（）()]+)[）)]/);
+  if(!m) return [999,category];
+  const inner=m[1].trim();
+  const first=inner.split(/[、,，]/)[0];          // 数字/中文序号取第一个分量
+  const num=SEQ_MAP[first]!==undefined?SEQ_MAP[first]:999;
+  return [num,inner];
+}
+const STATE_ZH={verified:"已核验",unresolved:"待确认",quarantined:"已隔离","static config":"静态配置","runtime final unknown":"运行时结果未确认",candidate:"候选"};
+function renderStateSummary(b){
+  const summary=b.state_summary||{};
+  const order=["verified","unresolved","quarantined","static config","runtime final unknown"];
+  const klass={"static config":"static-config","runtime final unknown":"runtime-final-unknown"};
+  return order.filter(key=>Object.prototype.hasOwnProperty.call(summary,key))
+    .map(key=>`<span class="state-chip ${klass[key]||key}" title="${key}">${STATE_ZH[key]||key} ${summary[key]}</span>`).join("");
+}
+// ★ 旧分组渲染已删（体系树取代；同一批板不再出现两次）
+document.getElementById('homeSearch').focus();});
+filterHome();
+</script>
+</body>
+</html>

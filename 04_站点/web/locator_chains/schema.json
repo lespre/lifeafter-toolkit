@@ -1,0 +1,60 @@
+{
+ "schema": "locator-chain/v1",
+ "generated_by": "locator_chains/schema.json（静态定义；由 tools/build_locator_chains.py 校验并实例化）",
+ "purpose": "把所有 Domain 的定位过程统一成同一条可重复、可审计的链；允许中途断掉，禁止补假关系。",
+ "hops": [
+  {"id": "business_input", "zh": "业务输入", "physical": false, "desc": "调用方给出的业务键（item_id / skin_item_id / appear_id / pool_key+item_no）"},
+  {"id": "runtime_producer", "zh": "Runtime 生产/消费方", "physical": false, "desc": "runtime 代码中产生或消费该键的函数（producer / consumer）"},
+  {"id": "runtime_semantic", "zh": "Runtime 语义", "physical": false, "desc": "游戏代码认为这个键是什么（对象类型/命名空间语义）"},
+  {"id": "namespace", "zh": "Runtime Namespace", "physical": false, "desc": "DataHelpers dispatch 目标模块（common_item / belt_chip / …）"},
+  {"id": "logical_module", "zh": "逻辑模块", "physical": false, "desc": "com\\cdata\\<table>.py 逻辑路径"},
+  {"id": "logical_table", "zh": "逻辑表", "physical": true, "desc": "逻辑表身份（canonical logical_table）"},
+  {"id": "snapshot", "zh": "Snapshot", "physical": true, "desc": "该物理实例所属快照（entry 只在本快照有效）"},
+  {"id": "data_fid", "zh": "Data FID", "physical": true, "desc": "数据体 PayloadRef.file_id"},
+  {"id": "data_entry", "zh": "Data Entry", "physical": true, "desc": "数据体 entry_index（必须带 entry_basis）"},
+  {"id": "chs_fid", "zh": "CHS FID", "physical": true, "desc": "文本池 PayloadRef.file_id"},
+  {"id": "chs_entry", "zh": "CHS Entry", "physical": true, "desc": "文本池 entry_index（必须同 snapshot）"},
+  {"id": "decoded_row", "zh": "Decoded Row", "physical": true, "desc": "解码后的行存在性"},
+  {"id": "structural_key", "zh": "Structural Key", "physical": true, "desc": "row_key / id slot 与业务键的对应"},
+  {"id": "schema", "zh": "Schema", "physical": true, "desc": "schema_ref / 结构编号"},
+  {"id": "field_binding", "zh": "Field Binding", "physical": true, "desc": "字段槽位（name slot / desc slot / marker）"},
+  {"id": "business_identity", "zh": "Business Identity", "physical": false, "desc": "业务身份是否成立（不等于物理绑定）"},
+  {"id": "name_binding", "zh": "Name Binding", "physical": false, "desc": "名称来源与槽位（独立链，不得由 identity 推导）"},
+  {"id": "resolved_entity", "zh": "Resolved Entity", "physical": false, "desc": "可交付实体（含 unresolved / unsafe 结论）"},
+  {"id": "runtime_final", "zh": "Runtime Final", "physical": false, "desc": "运行时最终形态（如 lottery replacement overlay）"}
+ ],
+ "edge_schema": {
+  "required": ["from", "to", "status", "evidence_type", "evidence_ref", "snapshot_id", "source_id", "rule", "residual", "rejected_alternatives"],
+  "from_to": "hop id 对（如 business_input → runtime_producer）",
+  "evidence_type": "runtime_consumer | runtime_dispatch | row_key_membership | payload_ref | decoded_row | chs_slot | name_slot | registry_binding | quarantine_record | negative_evidence | legacy_derived",
+  "evidence_ref": "结构化文件路径（evidence/ · registry/ · artifacts/active/ · residuals/ · analysis/audit/）",
+  "snapshot_id": "物理跳必填；语义/名称跳可为 null",
+  "source_id": "registry/sources.json 的 source_id 或 null",
+  "rule": "该跳成立的判据（人类可读）",
+  "residual": "该跳未决内容（可为 null）",
+  "rejected_alternatives": [{"route": "被否路线", "reason": "否定理由", "evidence_ref": "结构化引用"}]
+ },
+ "status_vocab": ["verified", "likely", "unresolved", "rejected", "unsafe"],
+ "forbidden_status_words": ["ok", "matched", "found", "seems", "candidate but good", "probably", "maybe", "static", "guess"],
+ "completeness_dims": ["runtime_semantic", "namespace", "logical_table", "snapshot_binding", "payload_binding",
+                       "row_binding", "field_binding", "business_identity", "name_binding",
+                       "current_snapshot_binding", "runtime_final"],
+ "chain_kinds": {
+  "semantic": "Runtime 语义链（游戏代码认为它是什么）",
+  "physical": "物理/存储链（它在文件里是哪一行）",
+  "name": "名称链（名字从哪个槽位来）",
+  "runtime_final": "运行时最终形态链"
+ },
+ "hard_rules": [
+  "允许中途断掉：证据不足即停在该跳，禁止绕道 board / candidate set / 整数碰撞 / 派生板补关系",
+  "business(founder) 与 physical 状态永不合并：business_identity=verified 不推出 physical binding verified",
+  "name 独立成链：business identity verified 不代表 name verified",
+  "physical 跳必须绑定 PayloadRef（snapshot_id + entry_basis）",
+  "BA8A（inventory 基准）结论不得冒充 current",
+  "board 不得作为 table/namespace/identity/name 来源；只能标 legacy-derived evidence dependency",
+  "391KB 交接日志只是历史记录，正式链只能引用结构化证据",
+  "rejected 路线不得重新进入 active chain",
+  "lottery：只有 target_type=item 才允许进入 item namespace 链；整数恰好在 ITEM_MASTER 不构成 join"
+ ],
+ "legacy_dependency_markers": ["data/boards", "data\\\\boards", "06（agent写）拆包器进展与交接日志", "391KB"]
+}

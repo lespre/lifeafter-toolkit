@@ -1,0 +1,215 @@
+{
+ "schema": "neox_material/v1",
+ "skin": "1110146",
+ "stem": "skin_1002_007",
+ "evidence_levels": {
+  "geometry": "verified(sizes_ok=True, n_extra=0, mesh_parse2 读通)",
+  "texture_pairing": "ordered_1to1_candidate_high",
+  "note": "区块锚点=该皮肤最后一条 material c159+1（已反向校验声明集含本皮肤）；签名冲突⇒槽位一律 unresolved，未顶替"
+ },
+ "backend": {
+  "glb": "skin_1002_007.glb",
+  "mesh": "skin_1002_007.mesh",
+  "glb_sha16": "49ac7e47e437ab53",
+  "vertices": 16396,
+  "faces": 15993
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_clear_coat.fx::TShader",
+   "shader_kind_evidence": "3 个「材料名全含 1002_007 且材料数==prim 数」候选文档序列一致；例 000876.c159(4314B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 1,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_clear_coat.fx::TShader",
+   "shader_kind_evidence": "3 个「材料名全含 1002_007 且材料数==prim 数」候选文档序列一致；例 000876.c159(4314B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 2,
+   "shader_kind": "crystal",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind_evidence": "3 个「材料名全含 1002_007 且材料数==prim 数」候选文档序列一致；例 000876.c159(4314B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  },
+  {
+   "prim": 3,
+   "shader_kind": "crystal",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "本轮无内容类候选（见 unresolved_slots）⇒ unresolved",
+     "round3_rule": "ParamMap←*_m(surface_gb 实测类) / NormalMap←*_n / t_surfacemap←*_s_m / base←color；一律不绑 local_file"
+    }
+   },
+   "shader": "shader\\pbr_crystal.fx::TShader",
+   "shader_kind_evidence": "3 个「材料名全含 1002_007 且材料数==prim 数」候选文档序列一致；例 000876.c159(4314B)",
+   "shader_kind_source": "SHADERKIND_batch.json.manifest_patch（evidence-verifier task-18；freeze-auditor 2026-09-19 按 Lead 选项① 落盘）"
+  }
+ ],
+ "residuals": [
+  "贴图槽位全部 unresolved（区块已定位 #3646 类，但签名配对不唯一）",
+  "shader_kind 未定证（.mtg 声明已读，未绑定到 prim）"
+ ],
+ "declared_slots_union_ref": {
+  "source": "C159_MAP_batch.json",
+  "material_c159": 882,
+  "family_rows": [
+   870,
+   873,
+   876,
+   879,
+   882
+  ],
+  "sha16_at_read": "c68d5ee0e59c2439"
+ }
+}

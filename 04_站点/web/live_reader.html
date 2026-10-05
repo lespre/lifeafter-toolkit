@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>现场读取 NPK · Lifeafter Wiki</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--border2:#d4d4d8;--hover:#f4f4f5;--radius:10px;--green:#166534;--greenbg:#f0fdf4;--greenbd:#bbf7d0;--amber:#92400e;--amberbg:#fffbeb;--amberbd:#fde68a;--red:#b91c1c;--redbg:#fef2f2;--redbd:#fecaca}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(250,250,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:14px 24px}.topin,.wrap{max-width:1120px;margin:0 auto}.crumb{font-size:12px;margin-bottom:7px}.crumb a{color:var(--muted);text-decoration:none}.crumb a:hover{color:var(--fg)}h1{font-size:20px;font-weight:650;letter-spacing:-.01em}.sub{font-size:12.5px;color:var(--muted);margin-top:4px}.wrap{padding:22px 24px 60px}.notice{background:var(--amberbg);border:1px solid var(--amberbd);color:var(--amber);border-radius:9px;padding:11px 14px;font-size:12.5px;margin-bottom:15px}.state{border:1px solid var(--border);background:var(--card);border-radius:var(--radius);padding:14px;margin-bottom:15px;box-shadow:0 1px 2px rgba(0,0,0,.04)}.state.ok{border-color:var(--greenbd);background:var(--greenbg)}.state.bad{border-color:var(--redbd);background:var(--redbg)}.state h2{font-size:14px;margin-bottom:6px}.kv{display:grid;grid-template-columns:110px 1fr;gap:5px 12px;font-size:12.5px}.k{color:var(--muted)}.v{word-break:break-all}.mono{font-family:ui-monospace,Consolas,monospace;font-size:11.5px}h2.section{font-size:15px;font-weight:650;margin:23px 0 9px;padding-bottom:7px;border-bottom:1px solid var(--border)}.controls{display:grid;grid-template-columns:1fr auto auto auto;gap:9px;align-items:center;margin-bottom:12px}input,select,button{font:inherit;color:var(--fg);background:#fff;border:1px solid var(--border2);border-radius:8px;padding:8px 11px;outline:none}input:focus,select:focus{border-color:#18181b}button{cursor:pointer}button:hover{background:var(--hover)}button:disabled{cursor:not-allowed;opacity:.5}.count{font-size:12px;color:var(--muted);white-space:nowrap}.table{border:1px solid var(--border);border-radius:var(--radius);background:var(--card);overflow:hidden}.row{width:100%;display:grid;grid-template-columns:60px minmax(130px,1fr) 85px 80px 70px;gap:10px;text-align:left;border:0;border-radius:0;border-bottom:1px solid var(--border);padding:10px 12px;font-size:12px}.row:last-child{border-bottom:0}.row:hover{background:var(--hover)}.empty{padding:35px;text-align:center;color:var(--muted)}.detail{margin-top:14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);padding:14px}.detail h3{font-size:14px;margin-bottom:10px}.preview{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;line-height:1.55;white-space:pre-wrap;word-break:break-word;background:#18181b;color:#e4e4e7;border-radius:7px;padding:11px;max-height:300px;overflow:auto;margin-top:10px}.hidden{display:none}@media(max-width:680px){.topbar{padding:12px 16px}.wrap{padding:16px}.controls{grid-template-columns:1fr 1fr}.controls input{grid-column:1/-1}.row{grid-template-columns:45px 1fr 60px;gap:7px}.row .optional{display:none}.kv{grid-template-columns:90px 1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topin">
+  <div class="crumb"><a href="wiki.html">← 返回 Wiki 总入口</a></div>
+  <h1>本地只读 NPK 检查器</h1>
+  <div class="sub">按条目现场解密/解压并生成摘要，不创建全量 entries 文件夹</div>
+</div></div>
+<div class="wrap">
+  <div class="notice"><b>证据边界：</b>包内存在不等于活动已开启、奖池已切换或奖励可领取。此页只证明当前已登记源包中的条目物理存在与静态解码状态。</div>
+  <div class="state" id="state"><h2>正在连接本地 Wiki 服务…</h2><div class="sub">请通过 <code>http://127.0.0.1:8765/</code> 打开；<code>file://</code> 页面不能读取本地 NPK。</div></div>
+
+  <section id="reader" class="hidden">
+    <h2 class="section">已登记源</h2>
+    <div class="kv" id="sourceMeta"></div>
+
+    <h2 class="section">条目索引</h2>
+    <div class="controls">
+      <input id="query" placeholder="按 entry 序号或 file_id（支持前缀）检索">
+      <select id="pageSize"><option value="20">20 条/页</option><option value="50" selected>50 条/页</option><option value="100">100 条/页</option></select>
+      <button id="prev">上一页</button><button id="next">下一页</button>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="table" id="rows"><div class="empty">等待读取索引…</div></div>
+
+    <div class="detail hidden" id="detail">
+      <h3>单条现场摘要</h3>
+      <div class="kv" id="detailMeta"></div>
+      <pre class="preview" id="preview"></pre>
+    </div>
+  </section>
+</div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const state=document.getElementById('state'), reader=document.getElementById('reader'), rows=document.getElementById('rows');
+let source=null, offset=0, total=0;
+function api(path){return fetch(path,{cache:'no-store'}).then(async r=>{const body=await r.json();if(!r.ok)throw new Error(body.error?.message||('HTTP '+r.status));return body;});}
+function field(k,v,mono=false){return `<div class="k">${esc(k)}</div><div class="v ${mono?'mono':''}">${esc(v)}</div>`;}
+function showError(message){state.className='state bad';state.innerHTML='<h2>本地服务不可用</h2><div class="sub">'+esc(message)+'</div>';reader.classList.add('hidden');}
+function renderSource(info){const lock=info.source_lock_state==='verified';state.className='state '+(lock?'ok':'bad');state.innerHTML=`<h2>${lock?'源锁已核验':'源锁不匹配，已禁止读取'}</h2><div class="sub">${lock?'本服务只绑定 127.0.0.1；读取仅在内存内完成。':'请先用新热更包完成审计，再更新登记源锁。'}</div>`;const m=document.getElementById('sourceMeta');m.innerHTML=[field('名称',info.label),field('服务器',info.server_branch),field('源锁 SHA-256',info.package_sha256,true),field('文件大小',info.bytes+' B'),field('条目数',info.entry_count),field('索引存储',info.index_storage),field('写入策略',info.source_write_policy)].join('');if(lock)reader.classList.remove('hidden');}
+function pageUrl(){const size=Number(document.getElementById('pageSize').value);const q=document.getElementById('query').value.trim();return `/api/sources/${encodeURIComponent(source.source_id)}/entries?offset=${offset}&limit=${size}${q?'&q='+encodeURIComponent(q):''}`;}
+function renderRows(data){total=data.total;const size=Number(document.getElementById('pageSize').value);document.getElementById('count').textContent=`匹配 ${total} 条 · 当前 ${Math.min(offset+1,total||0)}–${Math.min(offset+data.entries.length,total)} · 单击一行查看现场摘要`;
+document.getElementById('prev').disabled=offset<=0;document.getElementById('next').disabled=offset+size>=total;if(!data.entries.length){rows.innerHTML='<div class="empty">无匹配条目</div>';return;}rows.innerHTML=data.entries.map(e=>`<button class="row" data-index="${e.entry_index}"><span>${e.entry_index}</span><span class="mono">${e.file_id}</span><span>${e.packed_size} B</span><span class="optional">flag ${e.flag}</span><span class="optional">${e.declared_size} B</span></button>`).join('');rows.querySelectorAll('[data-index]').forEach(button=>button.addEventListener('click',()=>loadSummary(Number(button.dataset.index))));}
+function loadPage(){if(!source)return;rows.innerHTML='<div class="empty">正在读取索引页…</div>';api(pageUrl()).then(renderRows).catch(showError);}
+function loadSummary(index){const detail=document.getElementById('detail');detail.classList.remove('hidden');document.getElementById('detailMeta').innerHTML='<div class="sub">正在现场解码 entry '+index+'…</div>';document.getElementById('preview').textContent='';api(`/api/sources/${encodeURIComponent(source.source_id)}/entries/${index}/summary`).then(data=>{const e=data.entry;document.getElementById('detailMeta').innerHTML=[field('entry / file_id',e.entry_index+' / '+e.file_id,true),field('解码大小',data.decoded_bytes+' B'),field('解码 SHA-256',data.decoded_sha256,true),field('载荷类型',data.payload_kind),field('直接路径',data.logical_path_direct||'未恢复'),field('证据等级',data.evidence_level),field('解释边界',data.interpretation_boundary)].join('');document.getElementById('preview').textContent=data.utf8_preview||'（该条目没有可安全展示的 UTF-8 文本摘要）';}).catch(error=>{document.getElementById('detailMeta').innerHTML='<div class="sub">读取失败：'+esc(error.message)+'</div>';});}
+function init(){if(location.protocol==='file:'){showError('当前是 file:// 打开。请先启动 tools/wiki_server.py，再通过 localhost 访问。');return;}api('/api/sources').then(data=>{if(!data.sources?.length)throw new Error('没有登记可读源');source=data.sources[0];renderSource(source);if(source.source_lock_state==='verified')loadPage();}).catch(error=>showError(error.message));}
+document.getElementById('query').addEventListener('change',()=>{offset=0;loadPage();});document.getElementById('pageSize').addEventListener('change',()=>{offset=0;loadPage();});document.getElementById('prev').addEventListener('click',()=>{offset=Math.max(0,offset-Number(document.getElementById('pageSize').value));loadPage();});document.getElementById('next').addEventListener('click',()=>{offset+=Number(document.getElementById('pageSize').value);loadPage();});init();
+</script>
+</body>
+</html>

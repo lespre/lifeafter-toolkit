@@ -1,0 +1,105 @@
+{
+ "name": "login40",
+ "logical": "common\\env_map\\login40.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12421,
+ "off": 89682472,
+ "comp": 365982,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12421,
+   "base": 1940537680,
+   "off": 89682472,
+   "comp": 365982,
+   "dec": 524408,
+   "flag": 12
+  },
+  {
+   "axis": "fpk",
+   "container": "E:\\mrzh\\res\\063.fpk",
+   "row": 10058,
+   "base": null,
+   "off": 40518316,
+   "comp": 365982,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "known_verified"
+ ],
+ "sha256": "ebf972c599b9956fd424af4a6774826321272c8e81651191adc02f430ac11833",
+ "sha16": "ebf972c599b9956f",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f0_m0.png",
+   "bytes": 39598,
+   "rgba_sha16": "18fef3dedf9d2d6a",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f1_m0.png",
+   "bytes": 30264,
+   "rgba_sha16": "c5a4c40e777ac8e4",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f2_m0.png",
+   "bytes": 39596,
+   "rgba_sha16": "023535c6f9e49775",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f3_m0.png",
+   "bytes": 27143,
+   "rgba_sha16": "8314ebdd14782c99",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f4_m0.png",
+   "bytes": 39973,
+   "rgba_sha16": "5a5b88ca2d533695",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\login40\\faces\\login40_f5_m0.png",
+   "bytes": 39692,
+   "rgba_sha16": "a47c4aeba04cf3f9",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

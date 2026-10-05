@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>炽翼使徒 · 换贴图试验</title>
+<style>
+  :root{--bg:#0e1014;--panel:#14171c;--line:#23272e;--fg:#e8eaf0;--dim:#aab2c0;--acc:#ffb02e;--blue:#8fd3ff}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+            font-family:system-ui,"Microsoft YaHei",sans-serif}
+  #top{height:46px;display:flex;align-items:center;gap:10px;padding:0 12px;background:rgba(20,23,28,.95);
+       border-bottom:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+  #top b{color:var(--acc)}
+  #wrap{position:absolute;left:0;right:0;top:46px;bottom:0;display:flex}
+  #side{width:270px;flex:0 0 270px;overflow-y:auto;background:var(--panel);border-right:1px solid var(--line)}
+  #side .grp{padding:8px 10px 4px;font-size:11px;color:#5f6b7d;font-weight:600;letter-spacing:.4px}
+  #side .it{display:flex;align-items:center;gap:8px;padding:5px 10px;cursor:pointer;font-size:12px;color:var(--dim)}
+  #side .it:hover{background:#1d2129;color:var(--fg)}
+  #side .it.on{background:#2a3140;color:var(--acc);font-weight:700}
+  #side .it img{width:40px;height:40px;object-fit:cover;border-radius:4px;background:#0b0d11;
+                border:1px solid var(--line);flex:0 0 40px}
+  #main{flex:1;position:relative;min-width:0}
+  canvas{display:block;width:100%;height:100%;touch-action:none}
+  #hud{position:absolute;left:12px;top:10px;font-size:13px;color:var(--blue);font-weight:700;
+       text-shadow:0 0 6px #000;pointer-events:none}
+  #tip{position:absolute;right:12px;bottom:10px;font-size:12px;color:#6b7280;pointer-events:none}
+</style></head><body>
+<div id="top">
+  <span>炽翼使徒·头饰（男 v19854） · <b>换贴图试验</b></span>
+  <span style="color:#6b7280">左栏点贴图 = 换；?t=序号 直链；?base=m|f 换模型</span>
+</div>
+<div id="wrap">
+  <div id="side"></div>
+  <div id="main"><canvas id="c"></canvas><div id="hud"></div>
+  <div id="tip">拖拽旋转 · 滚轮缩放</div></div>
+</div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+
+const q = new URLSearchParams(location.search);
+const WHICH = q.get('base') === 'f' ? 'character_b_f_3722_h_f_3722_1_high.glb'
+                                    : 'character_b_m_3722_h_m_3722_1_high.glb';
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+renderer.setClearColor(0x0e1014, 1);
+const scene = new THREE.Scene();
+scene.add(new THREE.HemisphereLight(0xffffff, 0x202028, 1.6));
+const k1 = new THREE.DirectionalLight(0xfff2e0, 2.2); k1.position.set(4,7,6); scene.add(k1);
+const k2 = new THREE.DirectionalLight(0x88aaff, 1.0); k2.position.set(-6,3,-5); scene.add(k2);
+const k3 = new THREE.DirectionalLight(0xffc070, 0.6); k3.position.set(-2,-4,4); scene.add(k3);
+
+const cam = new THREE.PerspectiveCamera(32, 1, 0.01, 4000);
+let theta = 0.35, phi = 1.35, dist = 30, cur = null;
+const target = new THREE.Vector3(0,0,0);
+function fit(){
+  cam.aspect = (canvas.clientWidth||1)/(canvas.clientHeight||1);
+  cam.position.set(target.x + dist*Math.sin(phi)*Math.sin(theta),
+                   target.y + dist*Math.cos(phi),
+                   target.z + dist*Math.sin(phi)*Math.cos(theta));
+  cam.lookAt(target); cam.updateProjectionMatrix();
+}
+function render(){ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false); fit(); renderer.render(scene, cam); }
+
+const texLoader = new THREE.TextureLoader();
+function applyTex(o, url){
+  if (!url){ return; }
+  texLoader.load(url, (t) => {
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.flipY = false;          // GLB 的 UV 约定
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    o.traverse(n => { if (n.isMesh && n.material){
+      const ms = Array.isArray(n.material)?n.material:[n.material];
+      for (const mm of ms){ mm.map = t; mm.color = new THREE.Color(0xffffff);
+        mm.needsUpdate = true; } } });
+    render();
+  });
+}
+function loadMesh(cb){
+  new GLTFLoader().load('./assets/3d/zs3d/' + WHICH, (g) => {
+    const o = g.scene; o.rotation.x = Math.PI;
+    o.traverse(n => { if (n.isMesh && n.material){
+      const ms = Array.isArray(n.material)?n.material:[n.material];
+      for (const mm of ms){ mm.side = THREE.DoubleSide;
+        mm.color = new THREE.Color(0xc8ccd4); mm.roughness = 0.75; mm.metalness = 0.05;
+        mm.needsUpdate = true; } } });
+    scene.add(o); o.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(o);
+    const c = box.getCenter(new THREE.Vector3()); o.position.sub(c);
+    const s = box.getSize(new THREE.Vector3());
+    const r = Math.max(s.x,s.y,s.z) * 0.62;
+    const portrait = canvas.clientWidth < canvas.clientHeight;
+    dist = r / Math.tan((cam.fov*Math.PI/180)/2) * (portrait ? 1.85 : 1.45);
+    cur = o; render(); window.__loaded = 1;
+    cb && cb(o);
+  }, undefined, (e)=>{ window.__err = String(e); });
+}
+
+// 贴图列表
+const side = document.getElementById('side');
+let MESH = null;
+fetch('./assets/3d/zs3d/tex/_index.json').then(r => r.json()).then(list => {
+  const h = document.createElement('div'); h.className = 'grp';
+  h.textContent = '候选贴图 ' + list.length + ' 张（点 = 换）';
+  side.appendChild(h);
+  list.forEach((it, i) => {
+    const d = document.createElement('div'); d.className = 'it';
+    d.innerHTML = '<img src="./assets/3d/zs3d/tex/' + it.file + '" loading="lazy">' +
+                  '<span>' + it.file.replace('character_', '#').replace('.png','') +
+                  '<br><span style="color:#5f6b7d">' + it.wh[0] + 'x' + it.wh[1] +
+                  ' · sat ' + it.sat + '</span></span>';
+    d.onclick = () => {
+      [...side.querySelectorAll('.it')].forEach(x=>x.classList.remove('on'));
+      d.classList.add('on');
+      document.getElementById('hud').textContent = it.file;
+      if (MESH) applyTex(MESH, './assets/3d/zs3d/tex/' + it.file);
+    };
+    side.appendChild(d);
+  });
+  const t = parseInt(q.get('t') || '-1', 10);
+  if (t >= 0 && t < list.length) side.querySelectorAll('.it')[t].click();
+}).catch(e => { window.__texerr = String(e); });
+
+loadMesh(o => { MESH = o; });
+
+// 交互
+let drag=false, px=0, py=0;
+canvas.addEventListener('mousedown', e => { drag=true; px=e.clientX; py=e.clientY; });
+window.addEventListener('mouseup', () => drag=false);
+window.addEventListener('mousemove', e => {
+  if(!drag) return;
+  theta -= (e.clientX-px)*0.008; phi = Math.max(0.15, Math.min(3.0, phi-(e.clientY-py)*0.008));
+  px=e.clientX; py=e.clientY; render();
+});
+canvas.addEventListener('wheel', e => { e.preventDefault(); dist *= (1+Math.sign(e.deltaY)*0.1); render(); }, {passive:false});
+let tp=null;
+canvas.addEventListener('touchstart', e => { if(e.touches.length===1) tp={x:e.touches[0].clientX,y:e.touches[0].clientY}; }, {passive:false});
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if(e.touches.length===1 && tp){
+    theta -= (e.touches[0].clientX-tp.x)*0.01;
+    phi = Math.max(0.15, Math.min(3.0, phi-(e.touches[0].clientY-tp.y)*0.01));
+    tp={x:e.touches[0].clientX,y:e.touches[0].clientY}; render();
+  }
+}, {passive:false});
+canvas.addEventListener('touchend', () => tp=null);
+window.addEventListener('resize', render);
+render();
+</script></body></html>

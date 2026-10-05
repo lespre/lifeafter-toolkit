@@ -1,0 +1,848 @@
+{
+ "schema": "neox_material/v2",
+ "skin": "1110129",
+ "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+ "source": {
+  "bind_c159": "000332.c159",
+  "bind_c159_sha256": "d82149587ea3d597",
+  "material_c159": "000334.c159",
+  "mesh": "000385.mesh (LOD0, 456756B)",
+  "mesh_sha256": "31aa4563a498609a",
+  "note": "000332/000385 为 weapon.gpk 条目号"
+ },
+ "glb": {
+  "path": "model.glb",
+  "sha256": "431d9fc00a8f0531613b09a8ddc239369cb82bddefffe4090342f4e245a973f5"
+ },
+ "geometry_glb_sha256": "431d9fc00a8f0531613b09a8ddc239369cb82bddefffe4090342f4e245a973f5",
+ "parser_sha256": null,
+ "required_by_program_family": {
+  "pbr_weapon (weapon 分支)": {
+   "required_slots": [
+    "Tex0",
+    "ParamMap",
+    "NormalMap"
+   ]
+  }
+ },
+ "slot_binding_basis": {
+  "rule_R": "DDS 区块起点 = 该皮肤最后一条 material c159 + 1（五样本 5/5，已升为 rule）：c159#392 → #393",
+  "rule_H": "区块按 submesh 分组，组内序 [暖色, B≡1, NORMAL, PARAM]；组数 5 = bind #332 材料数 5（G0-G3 四位全对齐）",
+  "unresolved": "H 逐位：pos3=NORMAL(pos4=PARAM) 高信；pos2=B≡1 中高；**pos1 不可判**（b_m/s_m）。G4 仅 3 条且组内序与 G0-G3 不同（H 破在 G4 第2位），已改用内容绑定并逐格标注。"
+ },
+ "observed_but_unbound": {
+  "declared_paths_count": 19,
+  "note": "声明 19 条路径（a/m/n/s_m × 若干组）；实测区块 19 条，数目吻合，但无 s_m 族对应位"
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "mtl_idx": 0,
+   "material": "skin_1001_008_0",
+   "chain_material_raw": "skin_1001_008_0",
+   "glb_material": "s0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级判定：c159 仅声明 shader\\pbr_weapon.fx::TShader（唯一族）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 0,
+   "group_size": 4,
+   "attribution": "H：区块按 submesh 分组，组数 5 = bind c159 #332 材料名 _0.._4 = 5 ⇒ 一块=一材料=一 submesh",
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/008_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": 1,
+     "block_entry": "weapon.gpk#393",
+     "rgba_sha16": "cb71efe43c1e2d5a",
+     "family_feature_mean_rgb": [
+      0.288,
+      0.332,
+      0.404
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组0第1位",
+     "confidence": "candidate",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "prev_local_file": "src_tex/008_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "cb71efe43c1e2d5a"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "26dcbbc365ac5d51"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "cb71efe43c1e2d5a",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "cb71efe43c1e2d5a",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       }
+      ],
+      "field": "rgba_sha16",
+      "now": "cb71efe43c1e2d5a",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 26dcbbc365ac5d51 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/008_b_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": 2,
+     "block_entry": "weapon.gpk#394",
+     "rgba_sha16": "cb71efe43c1e2d5a",
+     "family_feature_mean_rgb": [
+      0.644,
+      0.54,
+      0.999
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组0第2位",
+     "confidence": "medium-high",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "evidence_level": "content_class_signature",
+     "prev_local_file": "src_tex/008_a.png",
+     "content_class": "color",
+     "changed_by": "Lead 20260919",
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 26dcbbc365ac5d51 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/008_n.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": 3,
+     "block_entry": "weapon.gpk#395",
+     "rgba_sha16": "842e67928bc159ed",
+     "family_feature_mean_rgb": [
+      0.504,
+      0.498,
+      0.942
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组0第3位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "族特征硬：R,G≈0.5 / B≈0.96",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/008_m.png",
+     "GROUP_INDEX": 0,
+     "POS_IN_GROUP": 4,
+     "block_entry": "weapon.gpk#396",
+     "rgba_sha16": "dbc3cc99bc7e6676",
+     "family_feature_mean_rgb": [
+      0.145,
+      1.0,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组0第4位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "G≡1 且 B≡1；viewer 经 src_tex/param_repack_008.png 消费",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": null,
+     "state": "missing",
+     "confidence": "missing",
+     "binding_basis": "UNRESOLVED",
+     "why_not_direct": "区块 4 位分别呈 b_m/a/n/m 族特征，无 s_m 族（R≡1 或 R 恒定）条目；声明集虽含 _s_m 路径但无对应位",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "cube": "qiangpi",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "faces_present": "6/6",
+     "binding_basis": "source_block_declaration",
+     "restore_note": "2026-09-19 误删后恢复：我上一轮的存在性检查把 src_cube 文件名拿去 src_tex 里查 ⇒ 误判悬空并删除；本次恢复原绑定（prim0-4 各 1 条）",
+     "faces_glob_note": "原值 'src_cube/faces/qiangpi_f*_m0.png' 含 shell 通配 `*`（会 404），改为既定占位符写法",
+     "evidence_level": "dual_path_consistent"
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "t_custom_ibl",
+     "was_local_file": "src_cube/qiangpi.dds",
+     "reason": "文件不存在（源无该槽）⇒ 删除绑定并标 missing，不留 404"
+    }
+   ]
+  },
+  {
+   "prim": 1,
+   "mtl_idx": 1,
+   "material": "skin_1001_008_1",
+   "chain_material_raw": "skin_1001_008_1",
+   "glb_material": "s0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级判定：c159 仅声明 shader\\pbr_weapon.fx::TShader（唯一族）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 1,
+   "group_size": 4,
+   "attribution": "H：区块按 submesh 分组，组数 5 = bind c159 #332 材料名 _0.._4 = 5 ⇒ 一块=一材料=一 submesh",
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/008_c_b_m.png",
+     "GROUP_INDEX": 1,
+     "POS_IN_GROUP": 1,
+     "block_entry": "weapon.gpk#397",
+     "rgba_sha16": "5ed2e63e57e0b145",
+     "family_feature_mean_rgb": [
+      0.317,
+      0.29,
+      0.269
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组1第1位",
+     "confidence": "candidate",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "prev_local_file": "src_tex/008_c_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "5ed2e63e57e0b145"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "ed715951bb3411c5"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "5ed2e63e57e0b145",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "5ed2e63e57e0b145",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       }
+      ],
+      "field": "rgba_sha16",
+      "now": "5ed2e63e57e0b145",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_c_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 ed715951bb3411c5 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/008_c_b_m.png",
+     "GROUP_INDEX": 1,
+     "POS_IN_GROUP": 2,
+     "block_entry": "weapon.gpk#398",
+     "rgba_sha16": "5ed2e63e57e0b145",
+     "family_feature_mean_rgb": [
+      0.718,
+      0.398,
+      0.999
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组1第2位",
+     "confidence": "medium-high",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "evidence_level": "content_class_signature",
+     "prev_local_file": "src_tex/008_c_a.png",
+     "content_class": "color",
+     "changed_by": "Lead 20260919",
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_c_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 ed715951bb3411c5 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/008_c_n.png",
+     "GROUP_INDEX": 1,
+     "POS_IN_GROUP": 3,
+     "block_entry": "weapon.gpk#399",
+     "rgba_sha16": "973254f3919170cb",
+     "family_feature_mean_rgb": [
+      0.495,
+      0.493,
+      0.959
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组1第3位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "族特征硬：R,G≈0.5 / B≈0.96",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/008_c_m.png",
+     "GROUP_INDEX": 1,
+     "POS_IN_GROUP": 4,
+     "block_entry": "weapon.gpk#400",
+     "rgba_sha16": "74dcd8743c16efb0",
+     "family_feature_mean_rgb": [
+      0.006,
+      1.0,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组1第4位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "G≡1 且 B≡1；viewer 经 src_tex/param_repack_008.png 消费",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": null,
+     "state": "missing",
+     "confidence": "missing",
+     "binding_basis": "UNRESOLVED",
+     "why_not_direct": "区块 4 位分别呈 b_m/a/n/m 族特征，无 s_m 族（R≡1 或 R 恒定）条目；声明集虽含 _s_m 路径但无对应位",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "cube": "qiangpi",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "faces_present": "6/6",
+     "binding_basis": "source_block_declaration",
+     "restore_note": "2026-09-19 误删后恢复：我上一轮的存在性检查把 src_cube 文件名拿去 src_tex 里查 ⇒ 误判悬空并删除；本次恢复原绑定（prim0-4 各 1 条）",
+     "faces_glob_note": "原值 'src_cube/faces/qiangpi_f*_m0.png' 含 shell 通配 `*`（会 404），改为既定占位符写法",
+     "evidence_level": "dual_path_consistent"
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "t_custom_ibl",
+     "was_local_file": "src_cube/qiangpi.dds",
+     "reason": "文件不存在（源无该槽）⇒ 删除绑定并标 missing，不留 404"
+    }
+   ]
+  },
+  {
+   "prim": 2,
+   "mtl_idx": 2,
+   "material": "skin_1001_008_2",
+   "chain_material_raw": "skin_1001_008_2",
+   "glb_material": "s0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级判定：c159 仅声明 shader\\pbr_weapon.fx::TShader（唯一族）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 2,
+   "group_size": 4,
+   "attribution": "H：区块按 submesh 分组，组数 5 = bind c159 #332 材料名 _0.._4 = 5 ⇒ 一块=一材料=一 submesh",
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/008_d_b_m.png",
+     "GROUP_INDEX": 2,
+     "POS_IN_GROUP": 1,
+     "block_entry": "weapon.gpk#401",
+     "rgba_sha16": "7e59975ed90b02f3",
+     "family_feature_mean_rgb": [
+      0.293,
+      0.283,
+      0.275
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组2第1位",
+     "confidence": "candidate",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "prev_local_file": "src_tex/008_d_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "7e59975ed90b02f3"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "705f78002077baf2"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "7e59975ed90b02f3",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "7e59975ed90b02f3",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       }
+      ],
+      "field": "rgba_sha16",
+      "now": "7e59975ed90b02f3",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_d_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 705f78002077baf2 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/008_d_b_m.png",
+     "GROUP_INDEX": 2,
+     "POS_IN_GROUP": 2,
+     "block_entry": "weapon.gpk#402",
+     "rgba_sha16": "7e59975ed90b02f3",
+     "family_feature_mean_rgb": [
+      0.738,
+      0.378,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组2第2位",
+     "confidence": "medium-high",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "evidence_level": "content_class_signature",
+     "prev_local_file": "src_tex/008_d_a.png",
+     "content_class": "color",
+     "changed_by": "Lead 20260919",
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_d_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 705f78002077baf2 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/008_d_n.png",
+     "GROUP_INDEX": 2,
+     "POS_IN_GROUP": 3,
+     "block_entry": "weapon.gpk#403",
+     "rgba_sha16": "1099d5e95e941802",
+     "family_feature_mean_rgb": [
+      0.501,
+      0.501,
+      0.967
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组2第3位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "族特征硬：R,G≈0.5 / B≈0.96",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/008_d_m.png",
+     "GROUP_INDEX": 2,
+     "POS_IN_GROUP": 4,
+     "block_entry": "weapon.gpk#404",
+     "rgba_sha16": "9cd0339f9ae55b21",
+     "family_feature_mean_rgb": [
+      0.004,
+      1.0,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组2第4位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "G≡1 且 B≡1；viewer 经 src_tex/param_repack_008.png 消费",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": null,
+     "state": "missing",
+     "confidence": "missing",
+     "binding_basis": "UNRESOLVED",
+     "why_not_direct": "区块 4 位分别呈 b_m/a/n/m 族特征，无 s_m 族（R≡1 或 R 恒定）条目；声明集虽含 _s_m 路径但无对应位",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "cube": "qiangpi",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "faces_present": "6/6",
+     "binding_basis": "source_block_declaration",
+     "restore_note": "2026-09-19 误删后恢复：我上一轮的存在性检查把 src_cube 文件名拿去 src_tex 里查 ⇒ 误判悬空并删除；本次恢复原绑定（prim0-4 各 1 条）",
+     "faces_glob_note": "原值 'src_cube/faces/qiangpi_f*_m0.png' 含 shell 通配 `*`（会 404），改为既定占位符写法",
+     "evidence_level": "dual_path_consistent"
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "t_custom_ibl",
+     "was_local_file": "src_cube/qiangpi.dds",
+     "reason": "文件不存在（源无该槽）⇒ 删除绑定并标 missing，不留 404"
+    }
+   ]
+  },
+  {
+   "prim": 3,
+   "mtl_idx": 3,
+   "material": "skin_1001_008_3",
+   "chain_material_raw": "skin_1001_008_3",
+   "glb_material": "s0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级判定：c159 仅声明 shader\\pbr_weapon.fx::TShader（唯一族）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 3,
+   "group_size": 4,
+   "attribution": "H：区块按 submesh 分组，组数 5 = bind c159 #332 材料名 _0.._4 = 5 ⇒ 一块=一材料=一 submesh",
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/008_e_b_m.png",
+     "GROUP_INDEX": 3,
+     "POS_IN_GROUP": 1,
+     "block_entry": "weapon.gpk#405",
+     "rgba_sha16": "7ad43fdcef72512d",
+     "family_feature_mean_rgb": [
+      0.33,
+      0.349,
+      0.417
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组3第1位",
+     "confidence": "candidate",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "prev_local_file": "src_tex/008_e_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "7ad43fdcef72512d"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "50ce753ccc7f0d83"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "7ad43fdcef72512d",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "7ad43fdcef72512d",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       }
+      ],
+      "field": "rgba_sha16",
+      "now": "7ad43fdcef72512d",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_e_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 50ce753ccc7f0d83 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "t_basecolor": {
+     "logical_path": null,
+     "slot": "t_basecolor",
+     "local_file": "src_tex/008_e_b_m.png",
+     "GROUP_INDEX": 3,
+     "POS_IN_GROUP": 2,
+     "block_entry": "weapon.gpk#406",
+     "rgba_sha16": "7ad43fdcef72512d",
+     "family_feature_mean_rgb": [
+      0.51,
+      0.315,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组3第2位",
+     "confidence": "medium-high",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "evidence_level": "content_class_signature",
+     "prev_local_file": "src_tex/008_e_a.png",
+     "content_class": "color",
+     "changed_by": "Lead 20260919",
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_e_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 50ce753ccc7f0d83 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/008_e_n.png",
+     "GROUP_INDEX": 3,
+     "POS_IN_GROUP": 3,
+     "block_entry": "weapon.gpk#407",
+     "rgba_sha16": "f3107bcac74e1355",
+     "family_feature_mean_rgb": [
+      0.498,
+      0.488,
+      0.963
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组3第3位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "族特征硬：R,G≈0.5 / B≈0.96",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/008_e_m.png",
+     "GROUP_INDEX": 3,
+     "POS_IN_GROUP": 4,
+     "block_entry": "weapon.gpk#408",
+     "rgba_sha16": "3c3891cf63889aff",
+     "family_feature_mean_rgb": [
+      0.162,
+      1.0,
+      1.0
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组3第4位",
+     "confidence": "high",
+     "binding_basis": "CONTENT_SIGNATURE",
+     "why_not_direct": "G≡1 且 B≡1；viewer 经 src_tex/param_repack_008.png 消费",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": null,
+     "state": "missing",
+     "confidence": "missing",
+     "binding_basis": "UNRESOLVED",
+     "why_not_direct": "区块 4 位分别呈 b_m/a/n/m 族特征，无 s_m 族（R≡1 或 R 恒定）条目；声明集虽含 _s_m 路径但无对应位",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "cube": "qiangpi",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "faces_present": "6/6",
+     "binding_basis": "source_block_declaration",
+     "restore_note": "2026-09-19 误删后恢复：我上一轮的存在性检查把 src_cube 文件名拿去 src_tex 里查 ⇒ 误判悬空并删除；本次恢复原绑定（prim0-4 各 1 条）",
+     "faces_glob_note": "原值 'src_cube/faces/qiangpi_f*_m0.png' 含 shell 通配 `*`（会 404），改为既定占位符写法",
+     "evidence_level": "dual_path_consistent"
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "t_custom_ibl",
+     "was_local_file": "src_cube/qiangpi.dds",
+     "reason": "文件不存在（源无该槽）⇒ 删除绑定并标 missing，不留 404"
+    }
+   ]
+  },
+  {
+   "prim": 4,
+   "mtl_idx": 4,
+   "material": "skin_1001_008_4",
+   "chain_material_raw": "skin_1001_008_4",
+   "glb_material": "s0",
+   "shader": "shader\\pbr_weapon.fx::TShader",
+   "shader_kind": "weapon",
+   "shader_kind_basis": "皮肤级判定：c159 仅声明 shader\\pbr_weapon.fx::TShader（唯一族）⇒ viewer weapon 分支；非 submesh 级直证",
+   "GROUP_INDEX": 4,
+   "group_size": 3,
+   "attribution": "H：区块按 submesh 分组，组数 5 = bind c159 #332 材料名 _0.._4 = 5 ⇒ 一块=一材料=一 submesh",
+   "textures": {
+    "Tex0": {
+     "logical_path": null,
+     "slot": "Tex0",
+     "local_file": "src_tex/008_f_b_m.png",
+     "GROUP_INDEX": 4,
+     "POS_IN_GROUP": 1,
+     "block_entry": "weapon.gpk#409",
+     "rgba_sha16": "d6c67d17b124e2b8",
+     "family_feature_mean_rgb": [
+      0.433,
+      0.394,
+      0.393
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组4第1位",
+     "confidence": "candidate",
+     "binding_basis": "CONTENT_CLASS_SIGNATURE",
+     "why_not_direct": "源文件名历史 mis-naming；按解码后内容类定槽（见 contact_sheets + LEAD_texclass.json）",
+     "prev_local_file": "src_tex/008_f_a.png",
+     "ab_test_20260918": "两组渲染（task-15，固定布局 1178×718，组内两轮逐像素一致）：A=`Tex0←*_a` 相对 B=`*_b_m` Δp50 全部 |Δ|≤1.1（6 个为 0.0）、Δp95 均值 +5.4；源级相符度 A=24/26、B=0/26。证据 `03_执行\\30_分析/_target_1110171/AB_两组结果与绑定差异_20260918.md`",
+     "user_decision": "2026-09-18 用户拍板：换成 A 版（与游戏原文件一致）",
+     "changed_by": "Lead 20260919",
+     "evidence_level": "content_class_signature",
+     "content_class": "color",
+     "sha16_provenance_20260919": {
+      "chain": [
+       {
+        "step": 0,
+        "what": "原记录（陈旧）：指向更早的 `*_b_m` 绑定",
+        "value": "d6c67d17b124e2b8"
+       },
+       {
+        "step": 1,
+        "what": "Q1 拍板：`Tex0` 由 `*_b_m` 换 `*_a`；Lead 2026-09-18 回填该步 sha",
+        "value": "522ccc4ff51a4fa6"
+       },
+       {
+        "step": 2,
+        "what": "内容类修正：基色槽由 `*_a` 改回 `*_b_m`（color 类，candidate-high）",
+        "value": "d6c67d17b124e2b8",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       },
+       {
+        "step": 3,
+        "what": "本次按当前 `local_file` 重算（裁决：以绑定为准）",
+        "value": "d6c67d17b124e2b8",
+        "basis": "解码 raw RGBA sha256[:16]（口径见 wiki_selfcheck L170）"
+       }
+      ],
+      "field": "rgba_sha16",
+      "now": "d6c67d17b124e2b8",
+      "why": "绑定为源数据主字段，sha 为派生字段；两次改绑叠加导致旧戳失真（toolchain-auditor task-38 抓到 14 条 FAIL）",
+      "basis": "rgba_sha16=解码 raw RGBA sha256/16；local_sha16/sha16/png_sha16=文件字节；dds_sha16=DDS 字节"
+     },
+     "rgba_basis_20260919": "Lead 20260919：按当前 local_file `src_tex/008_f_b_m.png` 解码 raw RGBA 重算（sha256[:16]）；旧值 522ccc4ff51a4fa6 属更早绑定",
+     "rgba_fixed_20260919": "20260918_234234"
+    },
+    "ParamMap": {
+     "logical_path": null,
+     "slot": "ParamMap",
+     "local_file": "src_tex/008_f_m.png",
+     "GROUP_INDEX": 4,
+     "POS_IN_GROUP": 2,
+     "block_entry": "weapon.gpk#410",
+     "px16": "522ccc4ff51a4fa6",
+     "family_feature_mean_rgb": [
+      0.646,
+      1.0,
+      1.0
+     ],
+     "extracted_from": "weapon.gpk#410 off=42100848 comp=49027 decomp=349700 flag=12(deflate)",
+     "local_bytes": 53145,
+     "dds_sha256": "cae0f52bf1da25679cf4273961a82ec315215eb0f432b8143c9f54f674e90ee6",
+     "local_sha256": "4338d03349b4932eca9d255003cc9cad19bc8b8bccd8ff5db95c98885c3cc50c",
+     "content_class": "PARAM 类：g255=b255=0.9957、G_uniq=4、梯度 564、PNG 0.20 B/px",
+     "evidence": "三重判据（chain-auditor task-24）：① 区块定界 = 最后一个 material c159(#392)+1 → 下一条 c159(#412) ⇒ #393-411 共 19 位；② material c159 000334.c159 五组 EOB 声明 = G0-G3 各 {a,m,s_m,n}、G4 {4001a,4001m,4001n} ⇒ 19 声明 ↔ 19 位一一对应，G4 内 4001a→#409、**4001m→#410**、4001n→#411；③ 内容签名：#410 落 _m 簇（4 个 _a 位为 G_uniq=256、梯度 1088-2309、PNG 1.20-1.46 B/px；4 个 _m 位为 g255≈1.0、G_uniq 1-2）",
+     "binding_basis": "c159 EOB 声明集 + 区块定界 + 内容签名（非按名匹配；weapon.gpk 匿名无名字表，按名 MISS 不作缺席证据）",
+     "confidence": "high",
+     "naming_note": "该位在既有提取里被误命名为 src_tex/008_f_a.png（manifest 中 0 次引用）；src_tex/008_f_m.png 与它**字节完全相同**，来自同皮肤/同区块/同组 #410 ⇒ 属源级位绑定，不是替代",
+     "residual": "alpha 与 4 个同类 _m 不同（a0=0.807、a_mean 0.073，同类 α≡1）。RGB 类判据不受影响；本皮肤 param_repack_008.png 只做 R→G 重排、alpha 留 1 ⇒ 该差异当前不进渲染。若将来消费 ParamMap.alpha 需先复核。",
+     "added_by": "Lead 2026-09-18，依据 chain-auditor task-24（PARAMMAP129_block.json）",
+     "evidence_level": "ordered_1to1_candidate_high",
+     "dds": "000410.dds"
+    },
+    "NormalMap": {
+     "logical_path": null,
+     "slot": "NormalMap",
+     "local_file": "src_tex/008_f_n.png",
+     "GROUP_INDEX": 4,
+     "POS_IN_GROUP": 3,
+     "block_entry": "weapon.gpk#411",
+     "rgba_sha16": "6a89ea172df83643",
+     "family_feature_mean_rgb": [
+      0.447,
+      0.506,
+      0.87
+     ],
+     "evidence": "4元组周期 [暖色, B≡1, NORMAL, PARAM]，组4第3位",
+     "confidence": "candidate",
+     "binding_basis": "candidate",
+     "why_not_direct": "B=0.870 落在严格 NORMAL 带（0.93<B<0.99）之外，未放宽阈值去认",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_surfacemap": {
+     "slot": "t_surfacemap",
+     "local_file": null,
+     "state": "missing",
+     "confidence": "missing",
+     "binding_basis": "UNRESOLVED",
+     "why_not_direct": "区块 4 位分别呈 b_m/a/n/m 族特征，无 s_m 族（R≡1 或 R 恒定）条目；声明集虽含 _s_m 路径但无对应位",
+     "evidence_level": "ordered_1to1_candidate_high"
+    },
+    "t_custom_ibl": {
+     "slot": "t_custom_ibl",
+     "local_file": "src_cube/qiangpi.dds",
+     "cube": "qiangpi",
+     "faces_glob": "src_cube/faces/qiangpi_f{0..5}_m0.png",
+     "faces_present": "6/6",
+     "binding_basis": "source_block_declaration",
+     "restore_note": "2026-09-19 误删后恢复：我上一轮的存在性检查把 src_cube 文件名拿去 src_tex 里查 ⇒ 误判悬空并删除；本次恢复原绑定（prim0-4 各 1 条）",
+     "faces_glob_note": "原值 'src_cube/faces/qiangpi_f*_m0.png' 含 shell 通配 `*`（会 404），改为既定占位符写法",
+     "evidence_level": "dual_path_consistent"
+    }
+   },
+   "missing_required": [],
+   "missing": [
+    {
+     "slot": "t_custom_ibl",
+     "was_local_file": "src_cube/qiangpi.dds",
+     "reason": "源声明集 G4 只含 {4001a, 4001m, 4001n} 三位，**无 cube 槽** ⇒ 「不绑定该槽」是源级正确结果（区块 #393-411 内亦无 cube 位）；原措辞「文件不存在（源无该槽）」对 ParamMap 是错的，已随本次修正一并改写"
+    }
+   ],
+   "material_label_note": "manifest 标签为 skin_1001_008_4，但绑定 c159 #332 的材料名为 _0/_1/_2/_4/_5（无 _3）⇒ prim4 的源材料名应为 skin_1001_008_5；prim3 标签同疑。**未擅自改名**（属需用户确认的元数据修正），仅登记来源与证据。"
+  }
+ ],
+ "missing": [
+  {
+   "prim": 4,
+   "slot": "ParamMap",
+   "was_local_file": "src_tex/008_f_m.png",
+   "reason": "悬空引用已删除"
+  }
+ ],
+ "evidence_levels": {
+  "reviewed_at": "2026-09-19",
+  "reviewer": "external read-only audit（Lead 采纳）",
+  "slot_binding_method": "ordered-1to1（按 c159 声明序 ↔ 区块内条目顺序）",
+  "slot_binding_evidence_level": "candidate-high",
+  "is_explicit_slot_path_proof": false,
+  "cube_binding": "dual_path_consistent（唯一双路一致的例外）",
+  "conflicts_note": "解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）；**所有 conflict 单独保留、不自动裁决**",
+  "production_rule": "证据等级为 candidate 的槽位不得作为生产绑定；带 production_ok=false 的槽位仅供诊断/对照，验收脚本应据此判 WARN/FAIL",
+  "note": "外部只读审核 2026-09-19（P0-1/P0-2，Lead 采纳）：本 manifest 的 weapon 基底槽位来自 c159 的 **ordered-1to1 顺序映射**，证据等级为 `ordered-1to1 / candidate-high`，**不是显式槽→路径直证**；解析器实跑存在 conflict（1110171 dual 48 行 dual=18/conflict=8；single 20 行 dual=8/conflict=3）。cube（t_custom_ibl）是双路一致的例外。所有 conflict 单独保留、不自动裁决。"
+ }
+}

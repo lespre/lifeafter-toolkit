@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1110171 光影咏叹调 · 源材质 + 源 IBL</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#0e1014;overflow:hidden}
+  #cv{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:14px;top:12px;color:#e3e7ee;font:13px/1.55 system-ui,"Microsoft YaHei";
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud">加载中…</div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from './assets/vendor/three/addons/controls/OrbitControls.js';
+
+const q = new URLSearchParams(location.search);
+const SID = q.get('sid') || '1110171';
+const CUBE = q.get('cube') || 'car_studio01';           // 材质声明：t_custom_ibl ← car_studio01 ✓
+const DIR = './assets/3d/weapon_skin/' + SID + '/';
+const hud = document.getElementById('hud');
+window.__loaded = 0; window.__err = '';
+
+const canvas = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, preserveDrawingBuffer:true});
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = parseFloat(q.get('exp') || '1.0');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(parseInt(q.get('bg') || '0e1014', 16));
+
+// ★ 源 IBL：立方体贴图 → scene.environment（补环境反射，不覆盖材质 ✓）
+const ctl = new THREE.CubeTextureLoader().setPath('');
+const envMap = ctl.load([0,1,2,3,4,5].map(i => DIR + 'src_cube/faces/' + CUBE + '_f' + i + '_m0.png'));
+envMap.colorSpace = THREE.SRGBColorSpace;
+envMap.mapping = THREE.CubeReflectionMapping;
+scene.environment = envMap;                              // ★★ 关键：给所有 PBR 材质补 IBL ✓
+window.__loaded++;
+
+// 三点补光（看清 + 晶体高光 ✓，不改材质参数）
+scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+const k = new THREE.DirectionalLight(0xfff2e2, 1.5); k.position.set(-3.0,-2.4,4.0); scene.add(k);
+const f = new THREE.DirectionalLight(0xcfe0ff, 0.7); f.position.set(3.0,1.4,2.2);  scene.add(f);
+const r = new THREE.DirectionalLight(0xffe0c8, 0.5); r.position.set(0.5,3.0,-2.4); scene.add(r);
+
+const cam = new THREE.PerspectiveCamera(30, 1, 0.01, 5000);
+const controls = new OrbitControls(cam, canvas); controls.enableDamping = true;
+
+// ★ 场景：login56 展示台（地板 200×200 + 背景 780×390 ✓ 拆包真值）
+new GLTFLoader().load(DIR + 'scene/scene_login56.glb', (sg) => {
+  const sc = sg.scene;
+  sc.traverse((o) => {
+    if (o.isMesh) {
+      o.material = new THREE.MeshLambertMaterial({ color: 0x2a2f38, side: THREE.DoubleSide });
+      o.frustumCulled = false;
+    }
+  });
+  scene.add(sc);
+  window.__hasScene = 1;
+}, undefined, (e) => { window.__sceneErr = String(e).slice(0, 120); });
+
+new GLTFLoader().load(DIR + 'model.glb', (g) => {
+  const root = g.scene;
+  // ★ 可选：换基色贴图（?base=b_m 用 b_m.png 覆盖 baseColorTexture ✓ 只改颜色 ✓ 不动其它）
+  const base = q.get('base');
+  if (base) {
+    const t = new THREE.TextureLoader().load(DIR + 'tex/' + base + '.png');
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.flipY = false;                       // GLTF 贴图不翻转 ✓
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  }
+  // ★ 不替换材质！只修 colorSpace + 双面 ✓（保留源贴图 ✓）
+  let nTex = 0; const matNames = [];
+  root.traverse(o => {
+    if (o.isMesh && o.material) {
+      const ms = Array.isArray(o.material) ? o.material : [o.material];
+      for (const m of ms) {
+        matNames.push(m.name || '?');
+        if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; nTex++; }
+        if (base && m.map) { m.map.image = null; }     // 占位：见下方用 map 替换
+        if (m.normalMap) m.normalScale.set(1, 1);
+        m.envMap = envMap;                 // 显式也给材质挂上（双保险 ✓）
+        m.envMapIntensity = parseFloat(q.get('env') || '1.0');
+        m.side = THREE.DoubleSide;
+        m.needsUpdate = true;
+      }
+    }
+  });
+  scene.add(root); root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3());
+  root.position.sub(ctr);
+  const radius = Math.max(size.length() * 0.5, 0.01);
+  cam.near = radius/1000; cam.far = radius*100;
+  controls.minDistance = radius*0.3; controls.maxDistance = radius*8;
+  const yaw = parseFloat(q.get('yaw') || '62') * Math.PI/180;
+  const pitch = parseFloat(q.get('pitch') || '10') * Math.PI/180;
+  const dist = radius * parseFloat(q.get('zoom') || '1.35');
+  cam.position.set(dist*Math.cos(pitch)*Math.sin(yaw), dist*Math.sin(pitch), dist*Math.cos(pitch)*Math.cos(yaw));
+  cam.updateProjectionMatrix(); controls.target.set(0,0,0); controls.update();
+  hud.textContent = SID + ' 光影咏叹调\n'
+    + '顶点 ' + (() => {let n=0; root.traverse(o=>{if(o.isMesh)n+=o.geometry.attributes.position.count}); return n})()
+    + ' · 材质 ' + [...new Set(matNames)].join(', ')
+    + '\n带贴图材质 ' + nTex + ' 个\nIBL cube = ' + CUBE + '（源）';
+  document.title = 'READY ' + SID;
+  window.__loaded++;
+}, undefined, (e) => { hud.textContent = 'LOAD ERROR: ' + e; window.__err = String(e); document.title = 'ERR'; });
+
+function resize(){ const w=canvas.clientWidth, h=canvas.clientHeight;
+  if (w && h){ renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); } }
+window.addEventListener('resize', resize); resize();
+(function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene,cam); })();
+</script>
+</body>
+</html>

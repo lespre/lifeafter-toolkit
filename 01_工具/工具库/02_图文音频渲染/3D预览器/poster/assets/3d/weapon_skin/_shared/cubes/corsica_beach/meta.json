@@ -1,0 +1,95 @@
+{
+ "name": "corsica_beach",
+ "logical": "common\\env_map\\corsica_beach.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12427,
+ "off": 91895592,
+ "comp": 371106,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12427,
+   "base": 1940537680,
+   "off": 91895592,
+   "comp": 371106,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "env_table:PROBE_CUBE_mod_D9AC3FDF0378051F.bin:paired_rgbm"
+ ],
+ "sha256": "f4e0e2f15b8e2eeca1a19b244781c1ee6e2a6ac0f1dec920dd07ae39d50ba628",
+ "sha16": "f4e0e2f15b8e2eec",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f0_m0.png",
+   "bytes": 37241,
+   "rgba_sha16": "cafbb25aef4a74e5",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f1_m0.png",
+   "bytes": 39618,
+   "rgba_sha16": "41ddfcda9bc60663",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f2_m0.png",
+   "bytes": 27691,
+   "rgba_sha16": "f571221d61b20574",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f3_m0.png",
+   "bytes": 38079,
+   "rgba_sha16": "7d25ebafc8c333a9",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f4_m0.png",
+   "bytes": 37315,
+   "rgba_sha16": "c3732095321fd3b4",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\corsica_beach\\faces\\corsica_beach_f5_m0.png",
+   "bytes": 37147,
+   "rgba_sha16": "442942980f6adfb5",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

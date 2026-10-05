@@ -1,0 +1,44 @@
+{
+ "chain_id": "weapon_skin.golden",
+ "domain": "weapon_skin",
+ "title": "武器皮肤（Golden Reference Chain）",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_module",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "decoded_row",
+  "structural_key",
+  "schema",
+  "field_binding",
+  "business_identity",
+  "name_binding",
+  "resolved_entity"
+ ],
+ "evidence_refs": [
+  "artifacts/active/weapon_skin/RULES.json",
+  "evidence/weapon_skin/three_bindings.json",
+  "artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl",
+  "artifacts/active/weapon_skin/STATUS_VOCAB.json"
+ ],
+ "residuals": [
+  "payload 已登记 registry（BA8A data 11817 / CHS 21177）",
+  "canonical 126 行 vs v0.1 115 行：intersection 111 / canonical-only 15 / board-only 4（1110184、1110185、1110186、1110190）",
+  "canonical 4 行无 common_item 名称行 ⇒ name_status=unresolved（11100061、11101341、11101681、11101831）",
+  "grade 为 board 派生 ⇒ deprecated；canonical 只有 level/priority，映射无证据",
+  "listing_status 仅支持 unresolved（同快照无 sale/shop/exchange 证据）",
+  "timed relation 本阶段不重调查 ⇒ runtime_final unresolved"
+ ],
+ "rejected_routes": [
+  {
+   "route": "SFX 名 / all_equips name / huodong_conf name 作为正式皮肤名",
+   "reason": "非名称来源",
+   "evidence_ref": "artifacts/active/weapon_skin/RULES.json"
+  }
+ ],
+ "instances_file": "locator_chains/weapon_skin/instances.jsonl"
+}

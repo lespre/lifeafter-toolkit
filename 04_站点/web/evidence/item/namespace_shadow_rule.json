@@ -1,0 +1,8 @@
+{
+ "claim": "raw_presence ≠ business namespace（54 chip 案例）",
+ "status": "verified",
+ "evidence_type": "negative_control",
+ "detail": "330/331 段 chip id 在 common_item raw 表有行，但业务 namespace = belt_chip（BELT_CHIP_DATA 消费链）",
+ "residual": "dispatch 优先级 opcode-level unresolved",
+ "applies_to": "artifacts/active/item/ITEM_MASTER.jsonl 的 raw_presence 字段"
+}

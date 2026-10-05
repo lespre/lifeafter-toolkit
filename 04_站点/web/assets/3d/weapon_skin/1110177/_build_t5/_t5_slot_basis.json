@@ -1,0 +1,6 @@
+{
+ "A_c159_path_blocks": "c159(003996.c159) 每材质路径块直读（c159_029_pair.json L649-765）",
+ "B_cluster_order": "同集群贴图组顺序 b_m,s_m,a,n,m —— 由 1110171 两个组 ground truth（gpk_raw_8u32.json label）实证",
+ "C_content_signature": "004011/004012/004013 内容签名与 1110171 的 a/n/m ground truth 逐项同族（_t5_decode_stats.json）",
+ "unresolved": "未取得「逻辑名 → GPK 条目 idx」的名称级直证（weapon.gpk 条目字段不含路径哈希，见 _known_loop/gpk_namehash_vs_pathid.json）；因此 029 的 5 张贴图到槽位的归属为 candidate-high（A+B+C 三重印证），非 name-level 直证。"
+}

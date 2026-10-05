@@ -1,0 +1,12 @@
+{
+ "claim": "item_id → runtime namespace 由 DataHelpers.get_item_data / get_item_type 的 dispatch 决定",
+ "status": "verified",
+ "evidence_type": "runtime_code_dispatch",
+ "producer": "DataHelpers.get_item_data",
+ "consumer": "BagCompBase（bag space/count/stack）",
+ "module": "com\\utils\\DataHelpers.py",
+ "function": "get_item_data / get_item_type",
+ "snapshot_source": "test-documents-ba8a239a#20487 (FID BE842BC2295D957F)",
+ "residual": "numeric item_type constant / dispatch 顺序 = opcode-level unresolved",
+ "namespaces_ref": "registry/namespaces.json"
+}

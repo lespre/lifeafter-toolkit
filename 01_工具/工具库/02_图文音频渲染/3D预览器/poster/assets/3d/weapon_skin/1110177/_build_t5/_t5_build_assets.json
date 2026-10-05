@@ -1,0 +1,149 @@
+{
+ "skin_id": "1110177",
+ "assets": {
+  "src_tex": {
+   "029_a.png": {
+    "src_dds": "004011.dds",
+    "sha256": "0082f6ec8caa7dcadea410e0bf28dededee89bbf761301caee5ffded9963f109",
+    "w": 1024,
+    "h": 1024,
+    "dds_sha256": "64bb8ce2d34bba43d5fd5d8ea557233f790714248aef5516e239f19286c43516",
+    "canonical_pixel_sha256": "a7c79a49a3b78166e5ff8d3c778733173bb4049f831c09d6adc4b357c347f563",
+    "decoder": "texture2ddecoder",
+    "swizzle": "BGRA->RGBA",
+    "fmt": "bc7"
+   },
+   "029_m.png": {
+    "src_dds": "004013.dds",
+    "sha256": "882664c3bab76ee7f0abc9da28ec4d17bf6ab08e61d18864c356d7ebd80672ae",
+    "w": 1024,
+    "h": 1024,
+    "dds_sha256": "7467bf0230b52608fd6744fed53114598df75c2f9fbaa323e11122401cf956c7",
+    "canonical_pixel_sha256": "2fe04a0269a79ecfebba2e1f8beb6712e4b0a808ec6f43d4443b86669f4f555a",
+    "decoder": "texture2ddecoder",
+    "swizzle": "BGRA->RGBA",
+    "fmt": "bc7"
+   },
+   "029_n.png": {
+    "src_dds": "004012.dds",
+    "sha256": "47529aaf1f527ba9179b3c41cf4f1fd2efdec65c1af237d652c39b6938d36d62",
+    "w": 1024,
+    "h": 1024,
+    "dds_sha256": "1fd5b66c9c4acd2952b5402eab8f79836c46caa620b00a09cf49eacf28eb7da2",
+    "canonical_pixel_sha256": "42905cc152a38384c67ece0146eb72092dd99a70cf45fe8ab89722b2d2742b61",
+    "decoder": "texture2ddecoder",
+    "swizzle": "BGRA->RGBA",
+    "fmt": "bc7"
+   },
+   "029_b_m.png": {
+    "src_dds": "004009.dds",
+    "sha256": "6349a3f2f761f83f9ff460253babb9864fee333f2e3f324a6a9ed44ec974e226",
+    "w": 1024,
+    "h": 1024,
+    "dds_sha256": "5202ae9eaa1f5df0f63c58352aebd9fa2845c78b13881503be7eb603812475f8",
+    "canonical_pixel_sha256": "800e1a8d931dbbf0578e9e124e0762c806b68cb881ba7b662363b9b7a4eb9be5",
+    "decoder": "texture2ddecoder",
+    "swizzle": "BGRA->RGBA",
+    "fmt": "bc7"
+   },
+   "029_s_m.png": {
+    "src_dds": "004010.dds",
+    "sha256": "61277c05cc19fd788a7e0dee1e6eb169575ba4e7eaa0f8253e02c256d6a2917f",
+    "w": 1024,
+    "h": 1024,
+    "dds_sha256": "e5195abf06a27bb769473804168cfd809f4e1486a96890f02a8f585df1fc7bc3",
+    "canonical_pixel_sha256": "3094f0d074274f4a5bb1a2a4cd59d0aa72573a3fdc35cdcab2bd41dffd7bb426",
+    "decoder": "texture2ddecoder",
+    "swizzle": "BGRA->RGBA",
+    "fmt": "bc7"
+   },
+   "param_repack_029.png": {
+    "rule": "R<-m.R, G<-m.R(roughness), B<-m.G(metalness), A<-255",
+    "derived_from": "029_m.png",
+    "sha256": "2bf480b2e0125039b6212ff3ffb70e2613c5619291f273ba9e5839d8ed637f83"
+   },
+   "rough_repack_029.png": {
+    "rule": "G<-a.A(Roughness=Ta), R/B/A<-255",
+    "derived_from": "029_a.png",
+    "sha256": "afea376dbbb85d58e2b4e22cbdda90e3168ef98c6b3659e3db394af2e85243b2"
+   }
+  },
+  "src_cube": {
+   "qiangpi": {
+    "dds": "qiangpi.dds",
+    "dds_sha256": "173d52990b3ab8364a43ac6367c362d63b21bdaf8b8dc1b2a760ec5c13aee609",
+    "faces_sha256": [
+     "a0c22bd85f5880a4ea56fab7ed24a6f568eca7eb728f37753718cc8e17da239a",
+     "f0bb15596214b294d047a4c7c8ec0ca53afbbad72d81d6bcc2c058c7cff7cac9",
+     "9dbabac4432087a2660f7ce4f00557559d7b1c1018ab8e5c0ea3edccd2d485b9",
+     "65b91c4cc26ee24362ec04f34b1bca10c2a8da545e24b347d960e6c9885b7191",
+     "4c9831ff28ab3a59fb9b65d26ed0c557d144a8a38a284238974d2d930b590f68",
+     "d6874d4a9116a225f7d54b05baa323e865cea5c7510c1fcd21e70e576e2eb3fc"
+    ],
+    "logical": "common\\env_map\\qiangpi.cube",
+    "evidence": "common\\env_map\\qiangpi.cube（与 1110171 同逻辑路径的同一 cube）；六面像素与 1110171 既有面逐字节一致（_t5_rule_check.json）"
+   },
+   "car_studio01": {
+    "dds": "car_studio01.dds",
+    "dds_sha256": "bea649d8525cdc3ecb77b1fbb0e388d85632645732fd00ad99f0010fa857e83d",
+    "faces_sha256": [
+     "1d67b6bd6b31b7000e46f6a04865cc82ce12562ea91e70a38602a0c24fca5fe6",
+     "3b0e686a910733b9e8c33f49c00f038e784e40ad2a46f5d7193ebe1ce3e134c4",
+     "385b2b6633f406756b6af8a2aae5336c3d3571246b55d1e8cd331006cb10c02a",
+     "a7cbda275db55f0e2e74ab87f67fc0e38f225f3512a4f2343565fa42e99d2c36",
+     "0f0cc9cb98627b1cf8984c77b157d1cbdf73c004f2b9a3a92672537c78e62d4b",
+     "a9377c0aecc56d6f177d8561d7d1e21de7472277a608a98206d934538d538058"
+    ],
+    "logical": "common\\env_map\\car_studio01.cube",
+    "evidence": "common\\env_map\\car_studio01.cube（与 1110171 同逻辑路径的同一 cube）；六面像素与 1110171 既有面逐字节一致（_t5_rule_check.json）"
+   },
+   "fashion_qiangpi": {
+    "state": "missing",
+    "logical": "common\\env_map\\fashion_qiangpi.cube",
+    "reason": "本地未定位该 cube 的解包条目；禁止用 qiangpi/car_studio01 顶替 → prim2 的 t_custom_ibl 记 missing（fail-closed，envMapIntensity=0）"
+   }
+  },
+  "dual.glb": {
+   "file": "dual.glb",
+   "sha256": "e5c160d4d53879993b654571f156d43f0fba2c9066d743d4ba9c209c5901b1c2",
+   "size": 4080352,
+   "vertices": 7943,
+   "faces": 7422,
+   "prims_meta": [
+    {
+     "submesh": 0,
+     "vrange": [
+      0,
+      3310
+     ],
+     "faces": 4038,
+     "material": "skin_2003_029_blade"
+    },
+    {
+     "submesh": 1,
+     "vrange": [
+      3310,
+      7542
+     ],
+     "faces": 3208,
+     "material": "skin_2003_029_crystal"
+    },
+    {
+     "submesh": 2,
+     "vrange": [
+      7542,
+      7943
+     ],
+     "faces": 176,
+     "material": "skin_2003_029_crystal"
+    }
+   ],
+   "builder": "export_glb.py（POSITION/NORMAL/TEXCOORD_0 与源 .mesh 一致，未导出 TANGENT）",
+   "mesh": "003995.mesh",
+   "mesh_sha16": "faff017dde8bb1e9",
+   "submap": "0->blade, 1,2->crystal（显式指定，非按名相似推断）"
+  }
+ },
+ "slots": {},
+ "leftovers": []
+}

@@ -1,0 +1,14 @@
+{
+ "claim": "runtime 区分 child pool 与 item 的判据",
+ "status": "verified",
+ "evidence_type": "runtime_code_branch",
+ "consumer": "RewardPoolComp",
+ "symbols": [
+  "get_reward / get_reward_by_random: reward / replace_child_reward_by_random / reward_dct",
+  "try_init_pool_weight: G_POOL_NO_ITEM_NO_TUPLE / REWARD_POOL_DATA.data.get / init_weight / isinstance(tuple|int)"
+ ],
+ "module": "com\\components\\avatar\\RewardPoolComp.py",
+ "snapshot_source": "test-documents-328b8446#17084 (FID 9E87D78784DC59B6)",
+ "criterion": "tuple(pool_no,item_no) → child pool 递归；标量 → item 走 17 namespace dispatch",
+ "residual": "runtime_final overlay 未解析"
+}

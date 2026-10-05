@@ -1,0 +1,40 @@
+★ common_model_show_conf.py ｜ 104,818 B ｜ 解析终点 104818 ✓ 与文件长度逐字节吻合
+  顶层 code：name='<module>'  qualname=?  firstlineno=1
+  文件名：'com\\cdata\\common_model_show_conf.py'
+  code 对象 1 个 ｜ 引用表 24 项 ｜ 结构告警 0 条 ｜ 引用类型失配 0 条
+
+── 函数清单（code objects） ──
+  #    名称 (qualname)                              code 容器起止         co_code(payload)    长度B     行号    参数   名字/常量
+  0    <module> [模块体]                             21..256           26..256             230      1     0    13/6
+  （code 容器 = <73 + 5×u32 + tag + u32 len> 整体；co_code(payload) = 真正的字节码区间，即容器起点+5；名字/常量 = co_names/co_consts 条目数）
+
+── [0] <module> ｜ co_code 26..256（230 B）｜ firstlineno=1 ｜ stacksize=5 ｜ flags=0x0 ──
+   文件：'com\\cdata\\common_model_show_conf.py'
+   ── co_names（13）—— 索引 → 实际值 ──
+     [  0] 'bindict'
+     [  1] 'data'
+     [  2] 'set_adaptive_cache_strategy'
+     [  3] 'STRATEGY_MISS_RATE'
+     [  4] 'com.lang.TableImportHelper'
+     [  5] 'lang'
+     [  6] 'TableImportHelper'
+     [  7] 'TIH'
+     [  8] 'fix_translate_data'
+     [  9] '__name__'
+     [ 10] 'Exception'
+     [ 11] 'e'
+     [ 12] 'print'
+   ── co_consts（6）—— 索引 → 实际值 ──
+     [  0] 0
+     [  1] None
+     [  2] <bytes 104101 B>
+     [  3] <标记 0x7a>
+     [  4] 'FIX Translate Error'
+     [  5] ((10, <标记 0x3e:1024>), (<ref#2 'FIX Translate Error'?>, <标记 0x3e:2048>), (<ref#2 'FIX Translate Error'?>, <标记 0x3e:4096>))
+   ── co_varnames/localsplusnames（0，kinds 0 字节）──
+   ── ★ LOAD_CONST ↔ STORE_ATTR/STORE_NAME 字段赋值（声明块模式 2 条 ／ 宽松模式共 5 条）──
+     [声明块] 'e'                              = None                                           (STORE @206)
+     [声明块] 'e'                              = None                                           (STORE @216)
+     [宽松*]  'bindict'                        = None                                           (STORE @8)
+     [宽松*]  'data'                           = <bytes 104101 B>                               (STORE @44)
+     [宽松*]  'TIH'                            = None                                           (STORE @122)

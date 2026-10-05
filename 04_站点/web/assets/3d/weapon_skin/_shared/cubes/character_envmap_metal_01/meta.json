@@ -1,0 +1,95 @@
+{
+ "name": "character_envmap_metal_01",
+ "logical": "common\\env_map\\character_envmap_metal_01.cube",
+ "container": "0000.gpk",
+ "container_full": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+ "axis": "gpk",
+ "row": 12460,
+ "off": 104367132,
+ "comp": 404739,
+ "dec": 524408,
+ "flag": 12,
+ "all_hits": [
+  {
+   "axis": "gpk",
+   "container": "E:\\LifeAfter\\Documents\\gres\\0000.gpk",
+   "row": 12460,
+   "base": 1940537680,
+   "off": 104367132,
+   "comp": 404739,
+   "dec": 524408,
+   "flag": 12
+  }
+ ],
+ "provenance": [
+  "known_verified"
+ ],
+ "sha256": "6edc35915695df34d3a47ec8faf2ab32ad477408616924a437e5bdf1da9395b0",
+ "sha16": "6edc35915695df34",
+ "payload_bytes": 524408,
+ "dds": {
+  "w": 128,
+  "h": 128,
+  "mips": 8,
+  "caps2": 65024,
+  "is_cubemap": true,
+  "fourcc": 0,
+  "bits": 32,
+  "chain_per_face": 87380,
+  "expected": 524408,
+  "actual": 524408,
+  "six_face_exact": true
+ },
+ "w": 128,
+ "h": 128,
+ "mips": 8,
+ "dims": "128x128",
+ "format": "B8G8R8A8_UNORM cubemap mips=8 caps2=0xFE00",
+ "six_faces_distinct": true,
+ "faces": [
+  {
+   "face": 0,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f0_m0.png",
+   "bytes": 34234,
+   "rgba_sha16": "0c67f975384a52ea",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 1,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f1_m0.png",
+   "bytes": 32800,
+   "rgba_sha16": "1b3f369882fe1bc3",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 2,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f2_m0.png",
+   "bytes": 39677,
+   "rgba_sha16": "4dd4bc32e244d886",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 3,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f3_m0.png",
+   "bytes": 32419,
+   "rgba_sha16": "76c7f1f081046013",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 4,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f4_m0.png",
+   "bytes": 37033,
+   "rgba_sha16": "45b5f89d74b7e5b5",
+   "byte_exact_vs_dds": true
+  },
+  {
+   "face": 5,
+   "png": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\_shared\\cubes\\character_envmap_metal_01\\faces\\character_envmap_metal_01_f5_m0.png",
+   "bytes": 33530,
+   "rgba_sha16": "446c8ba3bde2129e",
+   "byte_exact_vs_dds": true
+  }
+ ],
+ "n_faces": 6,
+ "status": "source_verified"
+}

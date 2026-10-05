@@ -1,0 +1,217 @@
+# -*- coding: utf-8 -*-
+"""mesh_parse2.py — .mesh v4 通用解析器（变长子网格 + 额外流自动识别）
+布局: header + [subs: (vc u32, fc u32, flag u16) ×N] + term u16 + tv u32 + tf u32 + bbox 6f +
+      pos(tv*6) + nrm(tv*6) + pad(2) + idx(tf*6) + uv(tv*4) + [extra streams(tv*4 each)] + trailer(16)
+- N 子网格数量由 [term==1, tv==Σvc, tf==Σfc] 三重校验自动定位；
+- extra streams 由尺寸算术确定数量（**floor**，2026-09-18 修正见下）；>0 时最后一个 extra 暂按 u8×4 顶点色解析（010 实证）；
+- flag 位: 0x101/0x102 见注（低位=UV 层数提示, 0x100=含 color 流提示）。
+★ 2026-09-18 修正（additive，保守）：附加流数量改用 floor；带骨骼块变体实测 24/24 `extra_bytes` 不整除 tv*4
+  （UV 流之后另有一块不被本布局记账的数据），原 `round()` 会多算一条流并越界读顶点色。
+  现 meta 新增 `trailing_bytes` / `extra_streams_state`(exact|trailing_unaccounted|file_shorter_than_layout) /
+  `vcol_read`；越界时**不静默截断**（vcol=None，状态可判定），`sizes_ok` 语义不变。
+  ⇒ **通过判据请用 `sizes_ok=True`（且 extra_streams_state=='exact'），不要只看"没抛异常"。**
+输出: P(3D), uv(Nx2), idx(Fx3), meta{subs,flags,tv,tf,bbox,n_extra,vcol,sub_offsets,trailing_bytes,
+      extra_streams_state,vcol_read,layout_variant,...}
+★ 2026-09-27 修正（additive，带骨骼块的 .mesh 现在能解出几何了；两个独立原因）:
+  ① 骨名块起点只找 b'biped '（带尾空格）⇒ 首个骨名恰好就叫 `biped`（无后缀，槽内 \x00 结尾）时
+     会落到**第 2 个**骨名上，n_bones 条校验走到最后一个槽位（bone_camera/空槽）必然失败
+     ⇒ 抛 bone_block_layout_unrecognized。修：候选 key 加 b'biped\x00'（取最早命中）。
+  ② 骨块之后找 sub 表的窗口只有 8192 B，而实测骨名块尾 → sub 表间隔 ≈ 92 B/骨
+     （90 骨 ⇒ 2982 → 11277，间隔 8295 B）⇒ 窗口刚好差一点，永远找不到。
+     修：窗口放宽到文件尾，并追加「流布局必须放得进文件」的判据（挡随机 u16 假阳）。
+  ③ 新增 `_scan_sub_table_anywhere()` 全文件兜底（term==1 + tv==Σvc + tf==Σfc + 布局可容纳），
+     覆盖骨名非 biped 系 / 无 bflag 标记等情形。meta.layout_variant 记录走了哪条路。
+  实测：斩神 11/11 原本报错的带骨骼网格全部解出，且每个文件**恰好只有 1 个**候选通过该判据；
+         对照组 h_m_3716_1（原本就成功）经新路径得到完全相同的 tv/tf/subs 与顶点数据。
+"""
+import struct
+import numpy as np
+
+# ★ 2026-09-27 新增（供带骨骼块变体与兜底扫描共用；不改任何既有成功路径）：
+def _sub_table_fits(d, off, tv, tf):
+    """该 sub 表声明的流布局能否完整放进文件。
+    账目：pos(tv*6) + nrm(tv*6) + pad(2) + idx(tf*6) + uv(tv*4)，再加 bbox(24)。
+    ⇒ 用来挡「把随机 u16 当 vc/fc 读」的假阳（那种候选的 tv 动辄 65536/131072 级，
+      布局远超文件长度）。实测 11/11 带骨块网格 ⇒ 每个文件恰好只有 1 个候选通过。"""
+    need = tv * 6 + tv * 6 + 2 + tf * 6 + tv * 4
+    return (off + 10 + 24) + need <= len(d)
+
+
+def _scan_sub_table_anywhere(d, lo=0x12):
+    """★ 2026-09-27 新增兜底：从 lo 扫到文件尾，找合法 sub 表。
+    判据 = term==1 AND tv==Σvc AND tf==Σfc AND _sub_table_fits(...)（三重校验 + 布局可容纳）。
+    什么时候用：骨块识别失败（骨名非 biped 系）/ 骨块后搜索窗不够 / 无 bflag 标记。
+    返回与既有路径相同的 best=(k, term_off, subs, tv, tf)；找不到返回 None。"""
+    n = len(d)
+    for cand in range(lo, n - 34):
+        if d[cand] != 1 or d[cand + 1] != 0:
+            continue
+        tv, tf = struct.unpack_from('<II', d, cand + 2)
+        if tv == 0 or tf == 0 or tv * 16 > n:      # 下界：pos+nrm+uv ≥ tv*16
+            continue
+        for k2 in range(1, 33):
+            b2 = cand - 10 * k2
+            if b2 < 0:
+                break
+            subs2 = [struct.unpack_from('<IIH', d, b2 + 10 * i) for i in range(k2)]
+            if sum(s[0] for s in subs2) == tv and sum(s[1] for s in subs2) == tf:
+                if _sub_table_fits(d, b2, tv, tf):
+                    return (k2, cand, subs2, tv, tf)
+    return None
+
+
+def parse_mesh2(path, load_vcol=True):
+    d = open(path, 'rb').read()
+    assert d[:4] == b'\x34\x80\xc8\xbb', 'magic mismatch'
+    ver = struct.unpack_from('<H', d, 4)[0]
+    # 1) 定位 sub 表: 假设 0x0E 起每 10B 一项, 试探 k=1..10, 用 (term==1, tv==Σvc, tf==Σfc) 校验
+    best = None
+    variant = None       # ★ 2026-09-27：记录命中路径，仅供报告/诊断（不参与判定）
+    for k in range(1, 11):
+        off = 0x0E + 10 * k
+        if off + 2 + 8 + 24 > len(d): break
+        term = struct.unpack_from('<H', d, off)[0]
+        tv, tf = struct.unpack_from('<II', d, off + 2)
+        if term != 1 or tv == 0 or tf == 0: continue
+        subs = [struct.unpack_from('<IIH', d, 0x0E + 10 * i) for i in range(k)]
+        if sum(s[0] for s in subs) == tv and sum(s[1] for s in subs) == tf:
+            best = (k, off, subs, tv, tf); variant = 'sub_table_0x0e'; break
+    bone_block = None
+    if best is None:
+        # ★ 新增分支（2026-09-18，只加分支、不动上方成功路径）：带骨骼块的 .mesh 变体。
+        # 判据（字段级，7/7 精确 + 对照组 6/6 无假阳）：u16@8 低字 == 1 ⇒ 含 bone 块，
+        # 高字 n_bones == 量到的骨名条数。成功样本该低字恒为 0 且无骨名。
+        # 骨名定长 32B 步进；**块尾对齐偏移未定，故不假设偏移，改为向后搜索 sub 表**。
+        bflag, n_bones = struct.unpack_from('<HH', d, 8)
+        if bflag == 1 and n_bones >= 1:
+            def _find_bone_start():
+                st = -1
+                # ★ 2026-09-27 修正：加入 b'biped\x00'。斩神这批网格的**首个骨名恰好就叫
+                #   `biped`（无后缀，槽内以 \x00 结束）**，只找 b'biped '（带尾空格）会落到
+                #   第 2 个骨名上（102 → 134），校验一路走到最后一个槽位（bone_camera / 空槽）
+                #   必然失败 ⇒ 骨块被误判为「不认识的布局」并抛错。
+                for key in (b'biped ', b'biped_', b'biped\x00'):
+                    j = d.find(key, 0, min(4096, len(d)))
+                    if j >= 0 and (st < 0 or j < st): st = j
+                if st > 0 and d[st - 1:st] == b'-': st -= 1
+                return st
+            st = _find_bone_start()
+            if st >= 0:
+                ok = True
+                for i in range(n_bones):
+                    p = st + 32 * i
+                    if d[p:p + 5] != b'biped' and d[p:p + 6] != b'-biped':
+                        ok = False; break
+                bone_block = st if ok else None
+            # ★ 2026-09-27：骨块识别失败**不再直接抛错** —— 上方只认 biped 系骨名，
+            #   非人形骨名（背包/道具等）会全程 MISS。改为落到文件尾的全文件扫兜底。
+            if bone_block is not None:
+                # 从骨块之后向后搜索 (term==1, tv==Σvc, tf==Σfc)，k 上限 64
+                # ★ 2026-09-27：搜索窗从 end+8192 放宽到文件尾。实测骨名块之后还有约 92 B/骨
+                #   的骨数据块：90 骨 ⇒ 骨名块尾 2982、sub 表在 11277，间隔 8295 B > 8192
+                #   ⇒ 原窗口刚好差一点，带骨骼网格 100% 找不到 sub 表。
+                end = bone_block + 32 * n_bones
+                for cand in range(end, len(d) - 34):
+                    if struct.unpack_from('<H', d, cand)[0] != 1: continue
+                    tv2, tf2 = struct.unpack_from('<II', d, cand + 2)
+                    if tv2 == 0 or tf2 == 0: continue
+                    for k2 in range(1, 65):
+                        b2 = cand - 10 * k2
+                        if b2 < 0: break
+                        subs2 = [struct.unpack_from('<IIH', d, b2 + 10 * i) for i in range(k2)]
+                        if sum(s[0] for s in subs2) == tv2 and sum(s[1] for s in subs2) == tf2:
+                            # ★ 追加「流布局放得进文件」，挡随机 u16 假阳（既有成功样本照样通过）
+                            if _sub_table_fits(d, b2, tv2, tf2):
+                                best = (k2, cand, subs2, tv2, tf2)
+                                variant = 'bone_block_forward_scan'; break
+                    if best is not None: break
+    if best is None:
+        # ★ 2026-09-27 兜底：全文件扫 sub 表（骨块识别失败 / 无 bflag 标记 / 骨块后窗口不够）
+        best = _scan_sub_table_anywhere(d)
+        if best is not None:
+            variant = 'full_file_scan'
+    if best is None:
+        bflag0, n_bones0 = struct.unpack_from('<HH', d, 8)
+        if bflag0 == 1 and n_bones0 >= 1:
+            # 保持原异常契约：带骨骼块变体全扫仍失败时抛这个
+            raise ValueError('bone_block_layout_unrecognized')
+        raise ValueError('无法定位 sub 表 (term/tv/tf 校验失败)')
+    k, off, subs, tv, tf = best
+    bbox = struct.unpack_from('<6f', d, off + 10)
+    dataoff = off + 10 + 24
+    pos_off = dataoff
+    nrm_off = pos_off + tv * 6
+    idx_off = nrm_off + tv * 6 + 2
+    uv_off = idx_off + tf * 6
+    after_uv = uv_off + tv * 4
+    extra_bytes = len(d) - (after_uv + 16)
+    # ★ 修正 2026-09-18（additive + 保守）：
+    #   附加流数量必须用 **floor**。带骨骼块的 .mesh 变体在 UV 流之后还有一块不被本布局记账的数据
+    #   （实测 24/24 extra_bytes 不整除 tv*4，比值 1.75/2.75/3.75/4.75…），原 round() 会**多算一条流**，
+    #   导致下面读 vertex color 越过 EOF（ValueError: buffer is smaller than requested size）。
+    #   现在：n_extra=floor（不虚报）；未记账尾部显式登记 trailing_bytes +
+    #   extra_streams_state = exact | trailing_unaccounted | file_shorter_than_layout；
+    #   sizes_ok 仍只在"整除"时为 True ⇒ 语义保持可判定，不静默截断、不伪造流。
+    if tv and extra_bytes > 0:
+        n_extra = int(extra_bytes // (tv * 4))
+    else:
+        n_extra = 0
+    ok_sizes = (extra_bytes == n_extra * tv * 4)
+    trailing_bytes = extra_bytes - n_extra * tv * 4
+    if extra_bytes < 0:
+        extra_streams_state = 'file_shorter_than_layout'
+    elif ok_sizes:
+        extra_streams_state = 'exact'
+    elif extra_bytes > 0:
+        extra_streams_state = 'trailing_unaccounted'
+    else:
+        extra_streams_state = 'none'
+    bmin = np.array(bbox[:3], np.float32); bmax = np.array(bbox[3:], np.float32)
+    pos_raw = np.frombuffer(d, dtype='<u2', count=tv * 3, offset=pos_off).reshape(-1, 3)
+    f = (pos_raw.astype(np.float32) + 0.5) / 65536.0
+    P = bmin + f * (bmax - bmin)
+    idx = np.frombuffer(d, dtype='<u2', count=tf * 3, offset=idx_off).reshape(-1, 3).astype(np.int64)
+    uv = np.frombuffer(d, dtype='<f2', count=tv * 2, offset=uv_off).reshape(-1, 2).astype(np.float32)
+    extras = []
+    for i in range(n_extra):
+        o = after_uv + i * tv * 4
+        extras.append(o)
+    vcol = None
+    vcol_read = None
+    if n_extra >= 1 and load_vcol:
+        co = extras[-1]
+        if extra_streams_state != 'exact':
+            # 保守：布局未完全记账（尾部有未解释数据）时**不猜**哪条流是顶点色 —— 不读、置 None
+            vcol_read = dict(offset=co, count=tv * 4, state='skipped_layout_not_exact',
+                             extra_streams_state=extra_streams_state, trailing_bytes=trailing_bytes)
+        elif co + tv * 4 <= len(d):
+            # 越界保护：不静默截断、不用短读凑数；能读才读
+            vcol = np.frombuffer(d, dtype=np.uint8, count=tv * 4, offset=co).reshape(-1, 4).astype(np.float32) / 255.0
+            vcol_read = dict(offset=co, count=tv * 4, state='read')
+        else:
+            vcol_read = dict(offset=co, count=tv * 4, eof=len(d), state='skipped_would_exceed_eof')
+    o = 0; sub_offsets = []
+    for vc, fc, u in subs:
+        sub_offsets.append((o, o + vc)); o += vc
+    meta = dict(ver=ver, subs=subs, flags=[u for _, _, u in subs], tv=tv, tf=tf,
+                bbox=(bmin, bmax), dataoff=dataoff, n_extra=n_extra, extra_offsets=extras,
+                extra_bytes=extra_bytes, sizes_ok=ok_sizes, vcol=vcol, sub_offsets=sub_offsets,
+                # ★ 新增（additive）：未记账尾部与顶点色读取状态，供调用方判定
+                trailing_bytes=trailing_bytes, extra_streams_state=extra_streams_state,
+                vcol_read=vcol_read,
+                # ★ 2026-09-27 新增：命中的定位路径（sub_table_0x0e | bone_block_forward_scan | full_file_scan）
+                layout_variant=variant)
+    return P, uv, idx, meta
+
+if __name__ == '__main__':
+    import sys, os
+    for p in sys.argv[1:]:
+        try:
+            P, uv, idx, meta = parse_mesh2(p)
+            print('%s: v=%d f=%d subs=%d flags=%s extra=%d ok=%s state=%s trailing=%s bbox_span=(%.2f,%.2f,%.2f)' % (
+                os.path.basename(p), meta['tv'], meta['tf'], len(meta['subs']),
+                [hex(u) for u in meta['flags']], meta['n_extra'], meta['sizes_ok'],
+                meta['extra_streams_state'], meta['trailing_bytes'],
+                *(meta['bbox'][1] - meta['bbox'][0])))
+        except Exception as e:
+            print(os.path.basename(p), 'ERR:', e)

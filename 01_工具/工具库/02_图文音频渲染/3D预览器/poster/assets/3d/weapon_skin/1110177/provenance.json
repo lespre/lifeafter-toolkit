@@ -1,0 +1,99 @@
+{
+ "deliverable": "极光剑 (skin_2003_029) 3D 预览",
+ "built_at": "2026-09-15",
+ "stage": "Stage3 · 3D 预览（材质近似 / 无 SFX）",
+ "wiki": {
+  "skin_id": "1110177",
+  "path": "assets/3d/weapon_skin/1110177"
+ },
+ "construction": {
+  "mesh": "003995.mesh",
+  "mesh_sha16": "faff017dde8bb1e9",
+  "vertices": 7943,
+  "faces": 7422,
+  "submeshes": 3,
+  "material_slots": {
+   "0": "skin_2003_029_blade (4011/4012/4013)",
+   "1": "skin_2003_029_crystal (4009)",
+   "2": "skin_2003_029_crystal (4009)"
+  },
+  "material_bank": "003996.c159",
+  "note": "源网格/源贴图直出；子网格→材质由 --submap 显式指定（非按名称相似推断）"
+ },
+ "textures": {
+  "canonical": "全部经 dds_rgba_canonical（BGRA→规范 RGBA）解码",
+  "blade": {
+   "a": "004011.dds",
+   "n": "004012.dds",
+   "m": "004013.dds"
+  },
+  "crystal": {
+   "a": "004009.dds"
+  },
+  "note": "4012 法线通道=(R,G)；4013 仅 B 通道变化，语义未定，未接入"
+ },
+ "glb": {
+  "file": "model.glb",
+  "size": 3269104,
+  "exporter": "export_glb.py（零依赖；POSITION/NORMAL/TEXCOORD_0 与源网格逐字节一致）",
+  "channel_note": "glTF metallicRoughness G=粗糙度/B=金属度；源 ParamMap R=粗糙度/G=金属度，写入 extras，数值未改",
+  "center_note": "按包围盒中心平移到原点"
+ },
+ "poster": {
+  "renderer": "render_experimental_dxbc_pbr.py",
+  "eye": [
+   -1,
+   0,
+   0
+  ],
+  "roll": 90,
+  "size": [
+   2260,
+   1150
+  ],
+  "source": "poster_render/Composite_noSFX.png",
+  "integrity": true,
+  "pose_preset": {
+   "label": "game_reference",
+   "position": [
+    28.9503,
+    0.0172,
+    1.5139
+   ],
+   "target": [
+    0.0602,
+    -0.1842,
+    0.0986
+   ],
+   "up": [
+    0.8839,
+    0.3556,
+    0.3037
+   ],
+   "distance": 28.9254,
+   "roll_deg": -36.67,
+   "fov": 34,
+   "fit_span": 0.27,
+   "source": "用户实调参数（查看器参数面板复制）"
+  },
+  "pose_note": "姿态对齐游戏内展示（剑尖朝右下、轴≈37°）；左右旋转轴待用户从三轴对照图中指认"
+ },
+ "approximations": [
+  "刃口菲涅尔/定向光泽系数=人工近似（待 c159 数值配对后替换）",
+  "观察灯光与 IBL=渲染器/查看器固定值（非源环境 cube）",
+  "晶体子网格材质槽位=沿用既有 029 provenance 假设（sub1/sub2=4009）"
+ ],
+ "unresolved": [
+  "精确环境 cube 物理条目未映射",
+  "4013 第三通道语义未定",
+  "029 SFX 未定位解码",
+  "c159 名称-数值配对未完成"
+ ],
+ "material_mapping": {
+  "rule": "按源 c159 材质表顺序定位（非按颜色）",
+  "basis": "003996.c159: material0 shader=pbr_default(4011/4012/4013) ; material1/2 shader=pbr_crystal(4009)【复核 2026-09-18：003996.c159 全文不含 pbr_weapon.fx；逐材料序=[pbr_default,pbr_crystal,pbr_crystal] ⇒ material0 确为 pbr_default，引用『weapon 基底模板 Tex0←*_a』时不得外推至本皮肤】",
+  "unresolved": "已于 2026-09-18 取得直证，原文见 003997.c159（606 B，子网格↔材质绑定）：MtlIdx 字段名在名字表 @129，逐 Sub 呈 3 条 —— @342 `06 02 00 00 00` MtlIdx=0 → Name@348 `mmskin_2003_029_0`；@457 `06 02 01 00 00` MtlIdx=1 → Name@463 `mmskin_2003_029_1`；@578 `06 02 02 00 00` MtlIdx=2 → Name@584 `mmskin_2003_029_2`。⇒ Sub0/Sub1/Sub2 → material 索引 0/1/2（材料文档 003996.c159 的材料名依次为 skim_2003_029_0/1/2）。注意：material0 的 shader 是 pbr_default（非 pbr_weapon），故不适用 pbr_weapon 的基底模板论据；Sub↔prim 的具体映射仍属 GLB/mesh 侧，未在本直证范围内。",
+  "note": "Sub0→material0 已由 003997.c159 的 MtlIdx 直证（非位置对应）；4011 是源刀身基色（003996.c159 本文件读出：Tex0←skin_2003_029001a.tga），金色需从 shader/IBL/自发光/SFX 找，不换贴图"
+ },
+ "material_layers_status": "approximate"
+}

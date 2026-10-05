@@ -1,0 +1,24 @@
+{
+ "sets": {
+  "skin_2003_029_blade": {
+   "a": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_a.png",
+   "n": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_n.png",
+   "m": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_m.png",
+   "s_m": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_s_m.png",
+   "sources": {
+    "a": "004011.dds",
+    "n": "004012.dds",
+    "m": "004013.dds",
+    "s_m": "004010.dds"
+   }
+  },
+  "skin_2003_029_crystal": {
+   "a": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_b_m.png",
+   "n": "E:\\la拆包项目\\04_站点\\web\\assets\\3d\\weapon_skin\\1110177\\src_tex\\029_n.png",
+   "sources": {
+    "a": "004009.dds",
+    "n": "004012.dds"
+   }
+  }
+ }
+}

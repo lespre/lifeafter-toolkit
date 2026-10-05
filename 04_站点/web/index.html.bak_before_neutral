@@ -1,0 +1,882 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LifeAfter 拆包项目 · 三线状态</title>
+<style>
+  :root{
+    --bg:#05070c; --bg2:#080c14; --panel:#0b1220; --line:#1c2c44;
+    --fg:#dcebff; --dim:#7d93b0; --dim2:#5b7392;
+    --cyan:#22e0ff; --mag:#ff2e97; --violet:#9d7bff;
+    --ok:#8dff5a; --warn:#ffc02e; --miss:#ff4d6d;
+    /* 引用了已闭环编号的「缺什么」条目：整条压暗 + 右侧备注。
+       不删条目 —— 保留可见性才能看出散文与清单的漂移。 */
+    .no li.refstale{color:#8a94a6;text-decoration:line-through;text-decoration-color:rgba(255,192,46,.5)}
+    .no li.refstale .refnote{display:block;margin-top:2px;font-size:11px;line-height:1.5;
+      color:var(--warn);text-decoration:none;opacity:.95}
+    --mono:ui-monospace,SFMono-Regular,Consolas,"Cascadia Mono","Microsoft YaHei",monospace;
+    /* 技术详情面板专用：中文字形由等宽中文字体提供，且【排在】无中文字形的
+       Consolas / Cascadia Mono 之前；本机没装 Sarasa Mono SC / Noto Sans Mono CJK SC
+       时按回落到 Consolas(西文) + Microsoft YaHei(中文) 渲染，与原观感一致。 */
+    --mono-cjk:"Sarasa Mono SC","Noto Sans Mono CJK SC",Consolas,"Cascadia Mono",
+      "Microsoft YaHei","Microsoft YaHei UI","PingFang SC",monospace;
+    --safe-t:env(safe-area-inset-top); --safe-b:env(safe-area-inset-bottom);
+    --top-h:48px;
+    /* 紧凑尺度：随视口高度缩放，保证桌面一屏装完 */
+    --g:clamp(4px,0.9vh,12px);
+    --py:clamp(4px,0.95vh,11px);
+    --fs-id:clamp(9.5px,1.15vh,12.5px);
+    --fs-nm:clamp(11.5px,1.5vh,17px);
+    --fs-sm:clamp(10px,1.45vh,14.5px);
+    --fs-lg:clamp(11px,1.3vh,14.5px);
+    /* 段块宽度上限：超宽屏也绝不拉伸抽满整宽 */
+    --chw:clamp(152px,14.5vw,232px);
+    --bw:clamp(126px,10.5vw,190px);
+    --leftw:clamp(238px,21vw,312px);
+    /* 箭头占位；段块按 4 列栅格定宽，三线跨行同宽对齐 */
+    --arw:clamp(13px,1.9vw,32px);
+    --slot:min(var(--chw), calc((100% - 3 * var(--arw)) / 4));
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    font-family:system-ui,"Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;
+    -webkit-text-size-adjust:100%}
+  body{overflow-x:hidden}
+  body.popon{overflow:hidden}
+  /* 背景：网格 + 双色光晕 + 扫描线 */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 12% -8%,rgba(34,224,255,.16),transparent 60%),
+      radial-gradient(760px 460px at 92% 4%,rgba(255,46,151,.13),transparent 62%),
+      radial-gradient(700px 500px at 50% 108%,rgba(157,123,255,.12),transparent 60%),
+      repeating-linear-gradient(0deg,rgba(34,224,255,.055) 0 1px,transparent 1px 44px),
+      repeating-linear-gradient(90deg,rgba(34,224,255,.055) 0 1px,transparent 1px 44px),
+      linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:repeating-linear-gradient(180deg,rgba(0,0,0,.20) 0 1px,transparent 1px 3px);
+    opacity:.5;animation:scan 7s linear infinite}
+  @keyframes scan{from{transform:translateY(0)}to{transform:translateY(3px)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- 顶栏：站名 + 门户入口（横贯整宽） ---------- */
+  #top{position:fixed;left:0;right:0;top:0;min-height:var(--top-h);z-index:60;
+    display:flex;align-items:center;gap:clamp(8px,1vw,16px);
+    padding:0 clamp(10px,1vw,16px);padding-top:var(--safe-t);
+    background:rgba(6,10,18,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(34,224,255,.35);
+    box-shadow:0 0 24px rgba(34,224,255,.16),inset 0 -1px 0 rgba(34,224,255,.18)}
+  #top .brand{display:flex;align-items:center;gap:8px;min-width:0;flex:0 0 auto}
+  #top .logo{width:20px;height:20px;flex:0 0 20px;position:relative}
+  #top .logo i{position:absolute;inset:0;border:1px solid var(--cyan);border-radius:4px;
+    box-shadow:0 0 10px rgba(34,224,255,.6),inset 0 0 8px rgba(34,224,255,.28)}
+  #top .logo i:nth-child(2){inset:4px;border-color:var(--mag);box-shadow:0 0 8px rgba(255,46,151,.6)}
+  #top h1{margin:0;font-size:13px;font-weight:800;letter-spacing:.4px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;
+    background:linear-gradient(92deg,var(--cyan),#ffffff 45%,var(--mag));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  #top h1 .short{display:none}
+  /* 门户入口：横排、不换行（不撑高顶栏），过窄时可横向滑动 */
+  #portalNav{display:flex;flex-wrap:nowrap;align-items:center;gap:clamp(5px,0.55vw,9px);
+    min-width:0;flex:1 1 auto;overflow-x:auto;overflow-y:hidden;
+    scrollbar-width:none;-ms-overflow-style:none}
+  #portalNav::-webkit-scrollbar{display:none}
+  .plink{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--fg);
+    font-size:var(--fs-lg);border:1px solid var(--line);border-radius:999px;white-space:nowrap;
+    padding:clamp(3px,0.7vh,7px) clamp(8px,0.9vw,13px);background:rgba(11,18,32,.82);
+    transition:transform .14s,border-color .14s,box-shadow .14s,color .14s;flex:0 0 auto}
+  .plink:hover{border-color:rgba(34,224,255,.65);color:var(--cyan);transform:translateY(-1px);
+    box-shadow:0 0 16px rgba(34,224,255,.25)}
+  #top .topR{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+  #top .tstamp{font-family:var(--mono);font-size:11px;color:var(--dim2);white-space:nowrap}
+  /* 「↻ 刷新」：强制跳过 15 秒缓存立即重取（与 tstamp 同高，不撑高顶栏） */
+  #top .rfbtn{font-family:var(--mono);font-size:11px;line-height:1;color:var(--cyan);
+    background:rgba(34,224,255,.08);border:1px solid rgba(34,224,255,.42);border-radius:7px;
+    padding:4px 7px;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+  #top .rfbtn:hover{background:rgba(34,224,255,.18)}
+  #top .rfbtn[disabled]{opacity:.45;cursor:progress}
+  #burger{margin-left:auto;display:none;border:1px solid rgba(34,224,255,.5);background:rgba(11,18,32,.9);
+    color:var(--cyan);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+  #mask{display:none}
+
+  /* ---------- 抽屉（手机） ---------- */
+  #drawer{position:fixed;left:0;top:var(--top-h);bottom:0;width:86vw;max-width:340px;z-index:55;
+    background:linear-gradient(180deg,#070c16,#0a1120);border-right:1px solid rgba(34,224,255,.35);
+    box-shadow:8px 0 30px rgba(0,0,0,.7);transform:translateX(-104%);transition:transform .24s ease;
+    overflow-y:auto;padding:14px 12px calc(20px + var(--safe-b))}
+  body.nav #drawer{transform:translateX(0)}
+  #drawer h4{margin:14px 4px 8px;font-size:11px;letter-spacing:1.4px;color:var(--dim2)}
+  #drawer h4:first-child{margin-top:2px}
+  #drawer a{display:block;text-decoration:none;color:var(--fg);font-size:13.5px;padding:10px 12px;
+    border:1px solid var(--line);border-radius:8px;margin-bottom:7px;background:rgba(14,23,40,.75)}
+  #drawer a:active{border-color:var(--cyan);color:var(--cyan)}
+  .dkv{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:5px 4px;
+    border-bottom:1px dashed rgba(28,44,68,.8)}
+  .dkv span{color:var(--dim)} .dkv b{font-family:var(--mono);color:#fff}
+
+  /* ---------- 主区：左信息块 + 右三线三带 ---------- */
+  /* align-content:center → 左块与右区作为一整块在视口内垂直居中；
+     高视口下留白落在整块外，而不是让卡片内部空掉或把左块拉成一张长条 */
+  main{position:relative;z-index:2;max-width:1560px;margin:0 auto;
+    min-height:100vh;display:grid;grid-template-columns:var(--leftw) minmax(0,1fr);
+    align-items:stretch;align-content:center;gap:clamp(7px,0.9vh,13px);
+    padding:calc(var(--top-h) + var(--safe-t) + var(--g)) clamp(10px,1vw,16px) calc(var(--g) + var(--safe-b))}
+
+  /* 左信息块：固定宽度，不随屏幕拉伸；两块指标吃到剩余高度，行高自然撑开 */
+  #left{display:flex;flex-direction:column;gap:var(--g);
+    min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;
+    padding:clamp(10px,1.5vh,18px) clamp(10px,0.9vw,16px);
+    background:linear-gradient(180deg,rgba(11,18,32,.94),rgba(7,11,20,.9));
+    box-shadow:inset 0 1px 0 rgba(34,224,255,.1)}
+  #left .ltop,#left .health{flex:0 0 auto}
+  #left .lsec{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
+  #left .lsec h4{flex:0 0 auto}
+  .ltop{min-width:0}
+  .leyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2.4px;color:var(--dim2);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bigtitle{margin:clamp(3px,0.7vh,8px) 0 0;font-weight:900;letter-spacing:.5px;
+    font-size:clamp(21px,3.5vh,33px);line-height:1.14;
+    background:linear-gradient(96deg,var(--cyan),#ffffff 46%,var(--mag));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .lsub{margin-top:clamp(3px,0.7vh,7px);font-size:var(--fs-lg);color:var(--dim)}
+  .lsec{min-width:0}
+  .lsec h4{margin:0 0 clamp(2px,0.5vh,6px);font-size:10px;letter-spacing:1.6px;
+    color:var(--dim2);font-weight:600}
+  .kv{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    padding:clamp(2px,0.45vh,5px) 0;font-size:var(--fs-lg);
+    border-bottom:1px dashed rgba(28,44,68,.75)}
+  .kv:last-child{border-bottom:0;padding-bottom:0}
+  .kv span{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .kv b{font-family:var(--mono);font-size:clamp(12px,1.45vh,15px);color:#fff;font-weight:700;
+    font-variant-numeric:tabular-nums;white-space:nowrap;flex:0 0 auto}
+  .kv b.g{color:#ffd8a8}
+  .kv.svrow{align-items:center}
+  .kv.svrow b{font-size:clamp(11px,1.35vh,14px);text-align:right;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .kv.svrow .svtime{font-family:var(--mono);font-style:normal;font-size:10px;color:var(--dim);flex:0 0 auto;margin-left:6px}
+  .svhint{font-size:9px;letter-spacing:0;color:var(--dim);font-weight:400;text-transform:none}
+  .health{display:flex;align-items:center;gap:10px;border-radius:12px;min-width:0;
+    padding:clamp(6px,1.1vh,11px) clamp(8px,0.7vw,12px);border:1px solid var(--line)}
+  .health.ok{border-color:rgba(141,255,90,.5);background:linear-gradient(90deg,rgba(141,255,90,.15),rgba(141,255,90,.02))}
+  .health.warn{border-color:rgba(255,192,46,.55);background:linear-gradient(90deg,rgba(255,192,46,.15),rgba(255,192,46,.02))}
+  .health.miss{border-color:rgba(255,77,109,.6);background:linear-gradient(90deg,rgba(255,77,109,.17),rgba(255,77,109,.02))}
+  .lamp{width:13px;height:13px;border-radius:50%;flex:0 0 13px}
+  .health.ok .lamp{background:var(--ok);box-shadow:0 0 14px var(--ok),0 0 0 4px rgba(141,255,90,.16)}
+  .health.warn .lamp{background:var(--warn);box-shadow:0 0 14px var(--warn),0 0 0 4px rgba(255,192,46,.16)}
+  .health.miss .lamp{background:var(--miss);box-shadow:0 0 14px var(--miss),0 0 0 4px rgba(255,77,109,.18)}
+  .hbody{min-width:0}
+  .hbody b{font-size:clamp(12.5px,1.65vh,16px);font-weight:800;white-space:nowrap}
+  .health.ok .hbody b{color:var(--ok)} .health.warn .hbody b{color:var(--warn)} .health.miss .hbody b{color:var(--miss)}
+  .hcks{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:3px}
+  .hck{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--dim);
+    font-family:var(--mono);white-space:nowrap}
+  .hck.warn{color:#ffd98a} .hck.miss{color:#ffb3bf}
+
+  /* 右主区：三线 + 两带（行高有上限，富余高度变成上下留白，不摊进卡片里） */
+  #flow{display:flex;flex-direction:column;justify-content:center;gap:clamp(6px,1.1vh,14px);
+    min-width:0;overflow:hidden;min-height:min(80vh,780px)}
+
+  .lane{flex:1 1 0;min-height:0;max-height:min(210px,24vh);position:relative;overflow:hidden;
+    display:flex;align-items:stretch;gap:clamp(6px,0.8vw,14px);
+    border:1px solid var(--line);border-radius:12px;padding:var(--py) clamp(8px,0.9vw,14px);
+    background:linear-gradient(180deg,rgba(11,18,32,.9),rgba(7,11,20,.86))}
+  .lane::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:2px;border-radius:2px;
+    background:repeating-linear-gradient(180deg,var(--cyan) 0 12px,rgba(34,224,255,.05) 12px 26px);
+    box-shadow:0 0 12px rgba(34,224,255,.5);animation:rail 1.3s linear infinite}
+  @keyframes rail{to{background-position:0 26px}}
+  .llabel{flex:0 0 clamp(122px,11.5vw,180px);min-width:0;display:flex;flex-direction:column;
+    justify-content:center;gap:clamp(2px,0.5vh,5px);padding-left:9px}
+  .row1{display:flex;align-items:center;gap:6px;min-width:0}
+  .mk{font-family:var(--mono);font-size:clamp(13px,1.7vh,16px);font-weight:800;color:var(--cyan);
+    border:1px solid rgba(34,224,255,.5);border-radius:7px;width:clamp(22px,2.8vh,27px);height:clamp(22px,2.8vh,27px);
+    display:grid;place-items:center;background:rgba(34,224,255,.08);flex:0 0 auto}
+  .mk.v{color:var(--violet);border-color:rgba(157,123,255,.6);background:rgba(157,123,255,.1)}
+  .nm{font-size:var(--fs-nm);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .llabel .lsub{font-size:10px;color:var(--dim2);line-height:1.45;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .lstat{display:flex;gap:5px;flex-wrap:wrap;align-items:center;flex:0 0 auto;
+    padding-left:6px;border-left:1px dashed rgba(34,224,255,.28)}
+  .lstat .s{font-size:10.5px;font-family:var(--mono);opacity:.92;white-space:nowrap}
+  .lstat .s.ok{color:var(--ok)} .lstat .s.warn{color:var(--warn)} .lstat .s.miss{color:var(--miss)}
+  /* 段链：按 4 列栅格定宽（--slot），不伸不抽满；lane 2 恰满，lane 1/3 第 4 格留白 */
+  .chain{flex:1 1 0;display:flex;align-items:stretch;gap:0;min-width:0;overflow:hidden}
+  .chip{flex:0 1 var(--slot);max-width:var(--chw);min-width:0;appearance:none;font:inherit;
+    text-align:left;cursor:pointer;color:var(--fg);overflow:hidden;
+    display:flex;flex-direction:column;gap:clamp(2px,0.45vh,5px);
+    padding:var(--py) calc(var(--py) + 3px);
+    border:1px solid var(--line);border-left-width:3px;border-radius:10px;
+    background:linear-gradient(180deg,rgba(14,23,40,.92),rgba(8,13,24,.92));
+    transition:transform .14s,border-color .14s,box-shadow .14s}
+  .chip.ok{border-left-color:var(--ok)} .chip.warn{border-left-color:var(--warn)} .chip.miss{border-left-color:var(--miss)}
+  .chip:hover,.chip:focus-visible{border-color:rgba(34,224,255,.65);box-shadow:0 0 18px rgba(34,224,255,.2);
+    transform:translateY(-1px);outline:none}
+  .crow{display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0}
+  .cid{font-family:var(--mono);font-size:var(--fs-id);color:var(--cyan);letter-spacing:.6px}
+  .cst{font-size:var(--fs-sm);color:var(--dim);white-space:nowrap}
+  .chip.ok .cst{color:var(--ok)} .chip.warn .cst{color:var(--warn)} .chip.miss .cst{color:var(--miss)}
+  .cname{font-size:var(--fs-nm);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cline{flex:1 1 auto;font-size:var(--fs-sm);line-height:1.5;color:var(--dim);min-height:0;
+    display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .cfoot{flex:0 0 auto;font-family:var(--mono);font-size:10px;color:var(--dim2);
+    border-top:1px dashed rgba(28,44,68,.9);padding-top:clamp(2px,0.4vh,4px)}
+  .arw{position:relative;flex:0 0 var(--arw);height:2px;align-self:center;margin:0 1px;
+    border-radius:2px;background:linear-gradient(90deg,rgba(34,224,255,.12),rgba(34,224,255,.75))}
+  .arw::after{content:"";position:absolute;right:-1px;top:-3.5px;width:7px;height:7px;
+    border-right:2px solid var(--cyan);border-top:2px solid var(--cyan);transform:rotate(45deg);opacity:.9}
+  .arw::before{content:"";position:absolute;top:-1px;width:4px;height:4px;border-radius:50%;
+    background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:dot 1.5s linear infinite}
+  @keyframes dot{from{left:0;opacity:0}20%{opacity:1}90%{opacity:1}to{left:100%;opacity:0}}
+  .arw.sm{flex:0 0 clamp(9px,1.2vw,18px)}
+  /* 段链内尾部的虚线填充：把「第 4 格留白」画成导轨，宽度不摊给卡片 */
+  .rail{flex:1 1 auto;min-width:0;align-self:center;height:0;
+    border-top:1px dashed rgba(34,224,255,.22)}
+
+  /* 两条横切带 */
+  .row-band{width:100%;appearance:none;font:inherit;text-align:left;cursor:pointer;color:var(--fg);
+    display:flex;align-items:center;gap:clamp(6px,0.8vw,14px);flex:0 0 auto;
+    border:1px dashed rgba(157,123,255,.55);border-radius:12px;
+    padding:var(--py) clamp(8px,0.9vw,14px);
+    background:linear-gradient(90deg,rgba(157,123,255,.10),rgba(34,224,255,.06),rgba(255,46,151,.08));
+    position:relative;overflow:hidden;transition:box-shadow .14s,border-color .14s}
+  .row-band::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:repeating-linear-gradient(90deg,var(--violet) 0 10px,transparent 10px 20px);
+    background-size:20px 1px;animation:flow 1.4s linear infinite;opacity:.85}
+  @keyframes flow{to{background-position:20px 0}}
+  .row-band:hover,.row-band:focus-visible{border-color:rgba(157,123,255,.9);
+    box-shadow:0 0 22px rgba(157,123,255,.22);outline:none}
+  .blabel{flex:0 0 clamp(132px,11.5vw,180px);min-width:0;display:flex;flex-direction:column;gap:2px;
+    border-right:1px dashed rgba(157,123,255,.4);padding-right:10px}
+  .blabel .nm{font-size:clamp(11.5px,1.4vh,14px)}
+  .role{font-size:10.5px;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* 带内闸门：与段块同一套 4 列栅格，跨行同宽对齐 */
+  .bgates{flex:1 1 0;display:flex;align-items:stretch;gap:0;min-width:0;overflow:hidden}
+  .gate,.floww{flex:0 1 var(--slot);max-width:var(--slot);min-width:0;display:flex;align-items:center;
+    gap:6px;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;
+    padding:calc(var(--py) - 2px) calc(var(--py) + 1px);background:rgba(8,13,24,.7)}
+  .gate.warn{border-color:rgba(255,192,46,.42)} .gate.miss{border-color:rgba(255,77,109,.5)}
+  .gate b,.gate .gname{font-size:var(--fs-sm);font-weight:700;white-space:nowrap}
+  .gate b{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--cyan)}
+  .gate .gname{overflow:hidden;text-overflow:ellipsis}
+  .gate .gs{font-size:10px;white-space:nowrap;margin-left:auto}
+  .gate.warn .gs{color:var(--warn)} .gate.miss .gs{color:var(--miss)}
+  .floww{font-size:var(--fs-sm);justify-content:center;color:#cfe6ff}
+  .bst,.bhint{font-size:var(--fs-sm);white-space:nowrap;flex:0 0 auto}
+  .bst{color:var(--warn)} .bhint{font-family:var(--mono);color:var(--dim2)}
+
+  .dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:0 0 auto}
+  .dot.ok{background:var(--ok);box-shadow:0 0 7px var(--ok)}
+  .dot.warn{background:var(--warn);box-shadow:0 0 7px var(--warn)}
+  .dot.miss{background:var(--miss);box-shadow:0 0 7px var(--miss)}
+
+  /* ---------- 技术详情：右侧滑出抽屉（body 级固定层） ----------
+     ⚠ 祖先陷阱：任何带 transform / filter / backdrop-filter / will-change 的祖先
+     都会成为 position:fixed 后代的包含块。顶栏 #top 有 backdrop-filter:blur(10px)，
+     所以放在 #top 里的 fixed 元素会相对「48px 高的顶栏」而不是视口定位（曾经把面板
+     顶到视口上方 523px）。#techDrawer 是 body 的直接子元素，祖先链干净，
+     以后要是有新的浮层，一律挂在 body 级，别塞进顶栏。 */
+  .tech-btn{cursor:pointer;list-style:none;color:var(--cyan);border:1px solid rgba(34,224,255,.4);
+    border-radius:999px;padding:3px 10px;font:inherit;font-size:11.5px;background:rgba(11,18,32,.8);
+    white-space:nowrap;flex:0 0 auto}
+  .tech-btn:hover{background:rgba(34,224,255,.16);box-shadow:0 0 14px rgba(34,224,255,.25)}
+  .tech-btn::before{content:"▸ ";font-size:10px}
+  body.techon .tech-btn::before{content:"▾ "}
+  #techDrawer{position:fixed;inset:0;z-index:110;visibility:hidden;pointer-events:none}
+  #techDrawer.show{visibility:visible;pointer-events:auto}
+  .tech-mask{position:absolute;inset:0;background:rgba(2,5,10,.6);opacity:0;cursor:pointer;
+    transition:opacity .22s ease}
+  #techDrawer.show .tech-mask{opacity:1}
+  /* 面板：独立浮层，不参与主布局 ⇒ 展开不改变主内容区高度 */
+  .tech-panel{position:absolute;top:calc(var(--top-h) + 10px);right:12px;
+    bottom:calc(12px + var(--safe-b));width:min(620px,94vw);
+    display:flex;flex-direction:column;min-height:0;
+    border:1px solid rgba(34,224,255,.45);border-radius:14px;
+    background:linear-gradient(180deg,#0b1220,#070b14);
+    box-shadow:-18px 0 60px rgba(0,0,0,.78),0 0 30px rgba(34,224,255,.12);
+    transform:translateX(calc(100% + 24px));transition:transform .26s ease}
+  #techDrawer.show .tech-panel{transform:none}
+  .tech-top{display:flex;align-items:center;gap:10px;flex:0 0 auto;padding:9px 12px;
+    border-bottom:1px solid var(--line);background:rgba(9,14,26,.92);border-radius:14px 14px 0 0}
+  .tech-title{font-size:13px;font-weight:800;color:var(--fg);white-space:nowrap}
+  .tech-hint{font-family:var(--mono-cjk);font-size:11px;color:var(--dim2);min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tech-x{margin-left:auto;appearance:none;cursor:pointer;color:var(--fg);font:inherit;font-size:13px;
+    border:1px solid rgba(34,224,255,.5);background:rgba(12,20,36,.95);border-radius:9px;
+    padding:7px 13px;min-height:34px;flex:0 0 auto}
+  .tech-x:hover{color:var(--cyan);box-shadow:0 0 14px rgba(34,224,255,.3)}
+  /* 面板内部可滚动（技术详情约 20 行，比一屏高） */
+  .tech-body{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;
+    padding:10px 13px calc(12px + var(--safe-b))}
+  .tech-body pre{font-family:var(--mono-cjk);font-size:11.5px;line-height:1.7;color:#9fd8ff;
+    white-space:pre-wrap;word-break:break-all;margin:0}
+  .fail{border:1px solid rgba(255,77,109,.6);background:rgba(255,77,109,.12);color:#ffd7de;
+    border-radius:999px;padding:3px 10px;font:inherit;font-size:11.5px;cursor:pointer;white-space:nowrap}
+
+  /* ---------- 弹层（详情不进主布局） ---------- */
+  #pop{position:fixed;inset:0;z-index:120;display:none}
+  #pop.show{display:flex;align-items:center;justify-content:center;padding:16px}
+  .pop-mask{position:absolute;inset:0;background:rgba(2,5,10,.74);backdrop-filter:blur(3px);cursor:pointer}
+  .pop-box{position:relative;z-index:1;width:min(960px,96vw);max-height:min(80vh,780px);overflow:auto;
+    border:1px solid rgba(34,224,255,.5);border-radius:14px;background:linear-gradient(180deg,#0b1220,#070b14);
+    box-shadow:0 24px 70px rgba(0,0,0,.85)}
+  .pop-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:10px 14px;background:rgba(9,14,26,.985);border-bottom:1px solid var(--line)}
+  .ptag{font-family:var(--mono);font-size:11.5px;color:var(--cyan);border:1px solid rgba(34,224,255,.45);
+    border-radius:7px;padding:2px 8px;background:rgba(34,224,255,.08)}
+  .pname{font-size:16px;font-weight:800}
+  .pst{font-size:11.5px;border-radius:999px;padding:2px 10px;border:1px solid var(--line)}
+  .pst.ok{color:var(--ok);border-color:rgba(141,255,90,.45);background:rgba(141,255,90,.08)}
+  .pst.warn{color:var(--warn);border-color:rgba(255,192,46,.45);background:rgba(255,192,46,.08)}
+  .pst.miss{color:var(--miss);border-color:rgba(255,77,109,.45);background:rgba(255,77,109,.08)}
+  #popX{margin-left:auto;appearance:none;cursor:pointer;color:var(--fg);font:inherit;font-size:13px;
+    border:1px solid rgba(34,224,255,.5);background:rgba(12,20,36,.95);border-radius:9px;
+    padding:8px 14px;min-height:36px}
+  #popX:hover{color:var(--cyan);box-shadow:0 0 14px rgba(34,224,255,.3)}
+  .popBody{padding:10px 14px 14px}
+  .popline{margin:0 0 10px;font-size:13px;color:var(--dim);line-height:1.65}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cols.one{grid-template-columns:1fr}
+  .col h4{margin:0 0 6px;font-size:12.5px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .col ul{margin:0;padding-left:18px;font-size:13px;line-height:1.72}
+  .col ul.yes li::marker{color:var(--ok)}
+  .col ul.no li::marker{color:var(--miss)}
+  .col ul.no{color:#ffd3db}
+  .gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:0 0 12px}
+  .gates .gate{display:block;flex:none;max-width:none;border-radius:10px;padding:10px 12px;background:rgba(8,13,24,.8)}
+  .gno{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.6px}
+  .gates .gname{display:block;font-size:14px;font-weight:700;margin:4px 0 3px}
+  .gline{font-size:12.5px;color:var(--dim);line-height:1.6}
+  .gates .gate.warn{border-color:rgba(255,192,46,.45)} .gates .gate.miss{border-color:rgba(255,77,109,.5)}
+
+  /* ---------- 窄屏：≤1180 收起时间戳 ---------- */
+  @media (max-width:1180px){ #top .tstamp{display:none} }
+
+  /* ---------- 手机 / 小平板：左块改上下堆叠 ---------- */
+  @media (max-width:820px){
+    :root{--top-h:46px}
+    #burger{display:block}
+    #top h1 .full{display:none} #top h1 .short{display:inline}
+    #portalNav{display:none}
+    body.nav #mask{display:block;position:fixed;left:0;right:0;top:var(--top-h);bottom:0;z-index:50;
+      background:rgba(2,5,10,.55);backdrop-filter:blur(2px)}
+    main{min-height:0;grid-template-columns:minmax(0,1fr);padding-left:10px;padding-right:10px}
+    #left{gap:10px}
+    .bigtitle{font-size:clamp(24px,6.4vw,34px)}
+    #left .lsec{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+    #left .lsec h4{grid-column:1/-1}
+    .lane{flex:none;max-height:none;flex-direction:column;align-items:stretch;gap:7px;padding:9px 10px}
+    .llabel{flex:none;flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap;
+      border-right:0;border-bottom:1px dashed var(--line);padding:0 0 7px}
+    .llabel .lsub{display:none}
+    .chain{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:none;max-width:none;overflow:visible}
+    .chip{max-width:none;flex:none;padding:9px 10px}
+    .arw,.arw.sm{display:none}
+    .rail,.lstat{display:none}
+    .row-band{flex-direction:column;align-items:stretch;gap:7px;padding:9px 10px}
+    .blabel{flex:none;border-right:0;border-bottom:1px dashed rgba(157,123,255,.4);padding:0 0 7px}
+    .bgates{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:none;max-width:none;overflow:visible}
+    .gate,.floww{max-width:none}
+    .bst,.bhint{display:none}
+    #flow{justify-content:flex-start;min-height:0}
+    #pop.show{align-items:flex-end;padding:0}
+    .cols{grid-template-columns:1fr}
+    .pop-box{width:100%;max-width:100%;max-height:86vh;border-radius:14px 14px 0 0}
+    .popBody{padding-bottom:calc(16px + var(--safe-b))}
+    .tech-panel{left:8px;right:8px;width:auto;top:calc(var(--top-h) + 8px);bottom:calc(8px + var(--safe-b))}
+  }
+  @media (max-width:400px){
+    .chain{grid-template-columns:1fr}
+    .bgates{grid-template-columns:1fr}
+    #left .lsec{grid-template-columns:1fr}
+  }
+</style></head><body>
+<div id="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"><i></i><i></i></span>
+    <h1><span class="full">LifeAfter 拆包项目 · 三线三带状态</span><span class="short">拆包状态</span></h1>
+  </div>
+  <nav id="portalNav" aria-label="子界面入口">
+<a class="plink" href="wiki.html" title="图鉴首页 · ✅ 健康"><span class="dot ok"></span>图鉴首页</a>
+<a class="plink" href="zhanshen.html" title="斩神系列专题 · ✅ 健康"><span class="dot ok"></span>斩神系列专题</a>
+<a class="plink" href="board.html" title="板块浏览 · ✅ 健康"><span class="dot ok"></span>板块浏览</a>
+<a class="plink" href="skin3d.html" title="外观三维预览 · ✅ 健康"><span class="dot ok"></span>外观三维预览</a>
+<a class="plink" href="weapon_models.html" title="武器模型 · ✅ 健康"><span class="dot ok"></span>武器模型</a>
+<a class="plink" href="workbench_status.html" title="工作台状态 · ⚠️ 半吊子"><span class="dot warn"></span>工作台状态</a>
+<a class="plink" href="进展.html" title="本轮进展 · ✅ 健康"><span class="dot ok"></span>本轮进展</a>
+  </nav>
+  <div class="topR">
+    <span class="tstamp" data-k="stamp">数据采集于 17:57:01（用时 3.6 秒）· 每 15 秒自动刷新</span>
+    <button type="button" id="rfbtn" class="rfbtn" title="立即重新采集（跳过 15 秒缓存）" aria-label="立即刷新数据">↻ 刷新</button>
+    
+    <button type="button" class="tech-btn" id="techBtn" aria-haspopup="dialog" aria-controls="techDrawer" aria-expanded="false">技术详情</button>
+    <button id="burger" aria-label="打开菜单" aria-expanded="false">菜单</button>
+  </div>
+</div>
+<div id="drawer" aria-label="站点导航">
+  <h4>子界面</h4>
+<a href="wiki.html">图鉴首页</a>
+<a href="zhanshen.html">斩神系列专题</a>
+<a href="board.html">板块浏览</a>
+<a href="skin3d.html">外观三维预览</a>
+<a href="weapon_models.html">武器模型</a>
+<a href="workbench_status.html">工作台状态</a>
+<a href="进展.html">本轮进展</a>
+  <h4>跳转生产线 / 横切带</h4>
+<a href="#line-①">① 解码定位复原线</a><a href="#line-②">② 图文音频渲染线</a><a href="#line-③">③ 前端展示交互线</a><a href="#band-H">H 热更定位带</a><a href="#band-D">D 数据契约带</a><a href="#band-Q">Q 质量·交付·治理带</a>
+<h4>项目信息</h4><div class="dkv"><span>索引行数</span><b data-k="rows">2,300,843</b></div><div class="dkv"><span>工具 / 统一入口</span><b data-k="d_tools_entries">399 / 79</b></div><div class="dkv"><span>待修 / 已修</span><b data-k="d_backlog">20 / 45</b></div><div class="dkv"><span>交付</span><b data-k="size_deliver">599 MB</b></div><div class="dkv"><span>源包</span><b data-k="d_source">31.4 GB</b></div><div class="dkv"><span>审阅区</span><b data-k="size_review">1.8 GB</b></div><div class="dkv"><span>垃圾（待清理）</span><b data-k="size_clean">8.7 GB</b></div><div class="dkv"><span>项目健康</span><b data-k="d_health">注意</b></div>
+</div>
+<div id="mask"></div>
+
+<main>
+
+  <aside id="left" aria-label="项目信息">
+    <div class="ltop">
+      <div class="leyebrow">LIFEAFTER · 拆包工程</div>
+      <h1 class="bigtitle">LifeAfter<br>拆包项目</h1>
+      <div class="lsub">三线三带 · 拆包状态总览</div>
+    </div>
+    <div class="lsec">
+      <h4>实时指标</h4>
+      <div class="kv"><span>索引行数</span><b class="" data-k="rows">2,300,843</b></div><div class="kv"><span>工具</span><b class="" data-k="tools">399</b></div><div class="kv"><span>统一入口</span><b class="" data-k="entries">79</b></div><div class="kv"><span>待修</span><b class="g" data-k="backlog_open">20</b></div><div class="kv"><span>已修</span><b class="" data-k="backlog_done">45</b></div><div class="kv"><span>站点页面</span><b class="" data-k="pages">14</b></div><div class="kv"><span>皮肤资产</span><b class="" data-k="skin_assets">115</b></div>
+    </div>
+    <div class="lsec">
+      <h4>各区体积</h4>
+      <div class="kv"><span>交付</span><b class="" data-k="size_deliver">599 MB</b></div><div class="kv"><span>源包</span><b class="" data-k="size_source">31.4 GB · 368 文件</b></div><div class="kv"><span>审阅区</span><b class="" data-k="size_review">1.8 GB</b></div><div class="kv"><span>垃圾（待清理）</span><b class="g" data-k="size_clean">8.7 GB</b></div>
+    </div>
+    <div class="lsec">
+      <h4>服务器版本 <span class="svhint" title="版本号来自网易版本清单；时刻为服务器 HTTP 时间">2026-09-27 04:23:33</span></h4>
+      <div class="kv svrow"><span>正式服</span><b title="20260915_220933_release_newpc">09-15 22:09 release</b><i class="svtime" data-sv="release">04:22:25</i></div><div class="kv svrow"><span>测试服</span><b title="20260923_164313_playertest_newpc">09-23 16:43 test</b><i class="svtime" data-sv="playertest">04:22:25</i></div><div class="kv svrow"><span>未来测试服</span><b title="20260807_101927_futuretest_newpc">08-07 10:19 futuretest</b><i class="svtime" data-sv="futuretest">04:22:26</i></div><div class="kv svrow"><span>比赛服</span><b title="20260910_205104_playertest_bisai_newpc">09-10 20:51 test_bisai</b><i class="svtime" data-sv="bisai">04:22:26</i></div><div class="kv svrow"><span>KOL服</span><b title="20260731_120713_playertest_kol_zy_newpc">07-31 12:07 test_kol_zy</b><i class="svtime" data-sv="kol_zy">04:22:27</i></div>
+    </div>
+    <div class="health warn" id="health">
+      <span class="lamp" aria-hidden="true"></span>
+      <div class="hbody">
+        <b id="healthLabel">项目健康：注意</b>
+        <div class="hcks" id="healthCks"><span class="hck ok"><span class="dot ok"></span>索引校验 通过</span><span class="hck ok"><span class="dot ok"></span>数据新鲜 无过期</span><span class="hck ok"><span class="dot ok"></span>失败容器 0 个</span><span class="hck warn"><span class="dot warn"></span>待修问题 20 条未闭环</span><span class="hck ok"><span class="dot ok"></span>台账引用 全部有效</span></div>
+      </div>
+    </div>
+  </aside>
+  <section id="flow" aria-label="三线三带">
+
+  <button type="button" class="row-band warn" id="band-H" data-pop="带H"
+          data-id="H" data-name="热更定位带" data-st="⚠️ 半吊子"
+          data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么">
+    <span class="blabel">
+      <span class="row1"><span class="mk v">H</span><span class="nm">热更定位带</span></span>
+      <span class="role">先看「哪里变了」，再把变了的东西找出来定位</span>
+    </span>
+    <span class="bgates"><span class="floww">清单</span><span class="arw sm" aria-hidden="true"></span><span class="floww">下载</span><span class="arw sm" aria-hidden="true"></span><span class="floww">解包定位</span><span class="arw sm" aria-hidden="true"></span><span class="floww">官方元数据</span><span class="arw sm" aria-hidden="true"></span><span class="floww">fid 级 diff</span><span class="arw sm" aria-hidden="true"></span><span class="floww">标准交付</span><span class="rail" aria-hidden="true"></span></span>
+    <span class="bst">⚠️ 半吊子</span>
+    <span class="bhint">缺 4 条</span>
+  </button>
+
+  <section class="lane" id="line-①">
+    <div class="llabel">
+      <span class="row1"><span class="mk">①</span><span class="nm">解码定位复原线</span></span>
+      <span class="lsub">从物理包到场内事实 —— 文件在哪、这一行是什么</span>
+    </div>
+    <div class="chain"><button type="button" class="chip ok" data-pop="①-0" data-id="①-0" data-name="索引地基" data-st="✅ 健康" data-klass="ok" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">①-0</span><span class="cst">✅ 健康</span></span><span class="cname">索引地基</span><span class="cline">全客户端资源进一张可查的表 —— 2,300,843 条记录 / 60 个容器（GPK 2,166,887 · NPK 133,956）</span><span class="cfoot">缺 0 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip warn" data-pop="①-1" data-id="①-1" data-name="定位与复原" data-st="⚠️ 半吊子" data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">①-1</span><span class="cst">⚠️ 半吊子</span></span><span class="cname">定位与复原</span><span class="cline">三个方向已成：路径↔行（含名字还原）、行→内容（载荷解析）、fid↔容器行；第四个「行→原引用路径」还在办（见缺项）</span><span class="cfoot">缺 2 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip ok" data-pop="①-2" data-id="①-2" data-name="批量质检" data-st="✅ 健康" data-klass="ok" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">①-2</span><span class="cst">✅ 健康</span></span><span class="cname">批量质检</span><span class="cline">放在链的最后 —— 批量筛、批量落盘、类型识别、解码体检：单条能解不等于批量都对</span><span class="cfoot">缺 0 条</span></button><span class="rail" aria-hidden="true"></span></div>
+    <span class="lstat"><span class="s ok">✅ 2</span><span class="s warn">⚠️ 1</span><span class="s miss">✗ 0</span></span>
+  </section>
+  <section class="lane" id="line-②">
+    <div class="llabel">
+      <span class="row1"><span class="mk">②</span><span class="nm">图文音频渲染线</span></span>
+      <span class="lsub">把资源找出来、变成能看能听的东西（贴图与音频是现成成品，做的是定位不是复原）</span>
+    </div>
+    <div class="chain"><button type="button" class="chip miss" data-pop="②-0" data-id="②-1" data-name="三维装配" data-st="✗ 缺" data-klass="miss" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">②-1</span><span class="cst">✗ 缺</span></span><span class="cname">三维装配</span><span class="cline">单件链路跑通：装配帧 → 网格 → 模型文件，导出带世界坐标拼接与自检报告；成批出件与落地器还没做（见缺项）</span><span class="cfoot">缺 2 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip warn" data-pop="②-1" data-id="②-2" data-name="媒体定位" data-st="⚠️ 半吊子" data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">②-2</span><span class="cst">⚠️ 半吊子</span></span><span class="cname">媒体定位</span><span class="cline">贴图与音频本来就是成品，这一段做的是【定位】—— 找出它是哪一张图 / 哪一段音频、在哪里</span><span class="cfoot">缺 5 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip warn" data-pop="②-2" data-id="②-3" data-name="三维出图校准" data-st="⚠️ 半吊子" data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">②-3</span><span class="cst">⚠️ 半吊子</span></span><span class="cname">三维出图校准</span><span class="cline">三维渲染图是从装配帧 + 贴图现场算出来的，只有它需要单独校准；配色方法还没统一（见缺项）</span><span class="cfoot">缺 2 条</span></button><span class="rail" aria-hidden="true"></span></div>
+    <span class="lstat"><span class="s ok">✅ 0</span><span class="s warn">⚠️ 2</span><span class="s miss">✗ 1</span></span>
+  </section>
+  <section class="lane" id="line-③">
+    <div class="llabel">
+      <span class="row1"><span class="mk">③</span><span class="nm">前端展示交互线</span></span>
+      <span class="lsub">数据怎么变页面、页面怎么发给别人看</span>
+    </div>
+    <div class="chain"><button type="button" class="chip warn" data-pop="③-0" data-id="③-1" data-name="页面与看板" data-st="⚠️ 半吊子" data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">③-1</span><span class="cst">⚠️ 半吊子</span></span><span class="cname">页面与看板</span><span class="cline">页面在线运行：图鉴首页、板块页、条目检索、三维预览</span><span class="cfoot">缺 3 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip warn" data-pop="③-1" data-id="③-2" data-name="服务与契约" data-st="⚠️ 半吊子" data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">③-2</span><span class="cst">⚠️ 半吊子</span></span><span class="cname">服务与契约</span><span class="cline">本地服务的取数模块改了不用重启；接口层与一条命令流水线见缺项</span><span class="cfoot">缺 2 条</span></button><span class="arw" aria-hidden="true"></span><button type="button" class="chip miss" data-pop="③-2" data-id="③-3" data-name="资产落地与投影" data-st="✗ 缺" data-klass="miss" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么"><span class="crow"><span class="cid">③-3</span><span class="cst">✗ 缺</span></span><span class="cname">资产落地与投影</span><span class="cline">皮肤资产落位与投影 —— 落到哪、怎么重建</span><span class="cfoot">缺 1 条</span></button><span class="rail" aria-hidden="true"></span></div>
+    <span class="lstat"><span class="s ok">✅ 0</span><span class="s warn">⚠️ 2</span><span class="s miss">✗ 1</span></span>
+  </section>
+
+  <button type="button" class="row-band warn" id="band-D" data-pop="带D"
+          data-id="D" data-name="数据契约带" data-st="⚠️ 半吊子"
+          data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么">
+    <span class="blabel">
+      <span class="row1"><span class="mk v">D</span><span class="nm">数据契约带</span></span>
+      <span class="role">三条线唯一共用的接口</span>
+    </span>
+    <span class="bgates"><span class="floww">字段规则</span><span class="arw sm" aria-hidden="true"></span><span class="floww">板数据契约</span><span class="arw sm" aria-hidden="true"></span><span class="floww">发布契约</span><span class="rail" aria-hidden="true"></span></span>
+    <span class="bst">⚠️ 半吊子</span>
+    <span class="bhint">缺 3 条</span>
+  </button>
+  <button type="button" class="row-band warn" id="band-Q" data-pop="带Q"
+          data-id="Q" data-name="质量·交付·治理带" data-st="⚠️ 半吊子"
+          data-klass="warn" aria-haspopup="dialog" title="点开看：现在有什么 / 缺什么">
+    <span class="blabel">
+      <span class="row1"><span class="mk v">Q</span><span class="nm">质量·交付·治理带</span></span>
+      <span class="role">三道闸门</span>
+    </span>
+    <span class="bgates"><span class="gate warn"><b>闸门一</b><span class="gname">发布门禁</span><span class="gs">⚠️ 半吊子</span></span><span class="gate warn"><b>闸门二</b><span class="gname">数据契约校验</span><span class="gs">⚠️ 半吊子</span></span><span class="gate miss"><b>闸门三</b><span class="gname">交付打包</span><span class="gs">✗ 缺</span></span><span class="rail" aria-hidden="true"></span></span>
+    <span class="bst">⚠️ 半吊子</span>
+    <span class="bhint">缺 4 条</span>
+  </button>
+  </section>
+</main>
+
+<div id="pop" role="dialog" aria-modal="true" aria-label="段详情">
+  <div class="pop-mask" id="popMask"></div>
+  <div class="pop-box">
+    <div class="pop-top">
+      <span class="ptag" id="popTag"></span>
+      <span class="pname" id="popName"></span>
+      <span class="pst" id="popSt"></span>
+      <button type="button" id="popX" aria-label="关闭详情">✕ 关闭</button>
+    </div>
+    <div class="popBody" id="popBody"></div>
+  </div>
+</div>
+
+<div id="techDrawer" aria-hidden="true">
+  <div class="tech-mask" id="techMask"></div>
+  <aside class="tech-panel" id="techPanel" role="dialog" aria-modal="true" aria-label="技术详情">
+    <div class="tech-top">
+      <span class="tech-title">技术详情</span>
+      <span class="tech-hint">Esc / 点面板外 / 点「✕ 关闭」都能收起</span>
+      <button type="button" class="tech-x" id="techX" aria-label="关闭技术详情">✕ 关闭</button>
+    </div>
+    <div class="tech-body" id="techBody">
+      <pre>索引库路径      : <span data-k="t_db">E:\la拆包项目\03_执行\10_索引\indexes\lifeafter_files.sqlite3</span>
+索引状态来源    : <span data-k="t_index_from">统一入口 index status</span>
+索引行数        : <span data-k="rows">2,300,843</span>
+库完整性校验    : <span data-k="t_quick">通过</span>
+数据是否过期    : <span data-k="t_stale">否</span>
+建库时间        : <span data-k="t_built">2026-09-26 16:23:39</span>
+容器登记数      : <span data-k="t_inv">60</span>
+分段行数        : <span data-k="t_split">图形包 2,166,887 / 资源包 0 / 数据包 133,956</span>
+失败容器        : <span data-k="t_fc">0</span>
+登记结构版本    : <span data-k="t_schema">2</span>
+库存指纹        : <span data-k="t_fingerprint">6e606c317f42c7b26d7dd1911c75bab1…</span>
+工具数          : <span data-k="tools">399</span>（01_工具/工具库/*.py）
+统一入口子命令  : <span data-k="t_entries">export / index / index build / index status / find / extract / verify / glb / sheet / tex / audio / render / resolver / resolver locate / resolver tree / resolver dump / resolver bridge-gpk / texscan / texscan scan / declared / delta / delta fetch / delta diff / delta families / delta pkg / delta overlay / hotfix / hotfix all / hotfix report / hotfix bundle / hotfix rows / content / content build / content lookup / content stats / loose / loose scan / loose match / snapshot / snapshot scan / snapshot diff / overview / restore / thfb / bindict-check / bridge-audit / query / bulk / identify / decode-audit / names / names build / names lookup / names stats / map / shader / shader list / shader info / shader export / tables / tables list / tables find / tables chs / tables refimg / atlas / atlas list / atlas discover / atlas export / locate / fiddiff / ovl / ovl entries / ovl unpack / materialize / lottery / lottery list / lottery find / lottery show / lottery delta</span>
+待修清单        : <span data-k="t_backlog">未修 20 / 已修 45</span>
+站点页面(去实验页): <span data-k="pages">14</span>
+皮肤资产目录    : <span data-k="skin_assets">115</span> 套 · <span data-k="t_skin_root">E:\la拆包项目\04_站点\web\assets\3d\weapon_skin</span>
+交付区体积      : <span data-k="size_deliver">599 MB</span>（02_资料/交付）
+源包区体积      : <span data-k="size_source">31.4 GB · 368 文件</span>（02_资料/源包）
+审阅区体积      : <span data-k="size_review">1.8 GB</span>（03_执行/96_审阅区）
+待清理区体积    : <span data-k="size_clean">8.7 GB</span>（03_执行/95_待清理，即垃圾）
+项目健康        : <span data-k="t_health">注意（索引校验通过；数据新鲜无过期；失败容器0 个；待修问题20 条未闭环；台账引用全部有效）</span>
+生成时间        : <span data-k="t_gen">2026-09-28 17:57</span>
+数据来源        : 统一入口 index status ｜ 01_工具/工具库/*.py 计数 ｜ 统一入口 --help 子命令
+                  00_治理/台账/待修问题清单.md ｜ 04_站点/web/*.html ｜ assets/3d/weapon_skin/*
+                  02_资料/交付、02_资料/源包、03_执行/96_审阅区、03_执行/95_待清理 的目录体积
+生成脚本        : 04_站点/web/tools/gen_home.py（只读采集；重跑即刷新本页）
+实时数据        : 页面打开后会向 /api/home/snapshot 取数（15 秒一次，页面切到后台自动暂停）；
+                  拿不到就保留本页生成时写死的静态值，右上角「↻ 刷新」可强制立即重取</pre>
+    </div>
+  </aside>
+</div>
+
+<template id="p①-0"><p class="popline">全客户端资源进一张可查的表 —— 2,300,843 条记录 / 60 个容器（GPK 2,166,887 · NPK 133,956）</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>【规模】2,300,843 条记录 / 60 个容器 —— GPK 2,166,887 · FPK 0 · NPK 133,956</li><li>【字段】fid · 容器 · 类型 · 条目号 · 载荷偏移 · 压缩后 · 解压后 · 压缩方式 · 来源</li><li>【查法】逻辑路径 / 条目号 / fid / 容器 / 大小 / 压缩方式 / 条目号范围</li><li>索引健康可一条命令查询 —— run_all.py index status；当前 quick_check=ok · 过期=False</li><li>统一入口提供索引重建子命令 —— run_all.py 提供 index build</li><li>索引过期判定比到了单文件哈希（不只是清单指纹） —— containers 表有哈希列（sha256）且 60 行有值</li><li>数据包段有登记 —— 数据包登记 133,956 行</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"></ul></div></div></template>
+<template id="p①-1"><p class="popline">三个方向已成：路径↔行（含名字还原）、行→内容（载荷解析）、fid↔容器行；第四个「行→原引用路径」还在办（见缺项）</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>【字段】路径 → murmur3 双 seed → 64 位 fid → 索引 fid_hex 列</li><li>【查法】逻辑路径 / 条目号 / fid / 容器 / 大小 / 条目号范围 · 名字可查（names lookup）也可扩（names build）</li><li>【查法】行 → **原引用路径**：从 atlas 声明的图名 / 配置表引用 / UI 布局帧 / `.bin`·`.c159` 内嵌引用串里，回填这一行被引用时的原始路径</li><li>路径→fid 只有一处实现，各调用方都委托它 —— 5 个调用方都委托唯一实现</li><li>五个路径→fid 实现逐个对照基准，全部一致 —— 5 个实现全部与基准一致；murmur3 算法 30 次取样全同（慢判据，读缓存）</li><li>逻辑路径 → 文件号 → 数据行的查询链实跑可用 —— 实跑 find 退出码 0（慢判据，读缓存）</li><li>名字哈希算法自检通过（空串采样 + 三条已核对路径） —— murmur3 双 seed 自检 4 项全对（含 / 与 \ 等价）</li><li>给一条游戏内路径，能实跑到容器 + 行号 —— img_jiaocheng162_s.jpg → res\ui_01.gpk row 71678 ✓ · ar_laiwenshi_dimian.sfx → res\effect_01.gpk row 8311 ✓</li><li>名字字典非空（可查规模） —— 字典 1,061,631 条路径（names_dict_v13.json）｜ 覆盖 1,035,316 / 2,300,843 行 = 45.00%</li><li>索引的 fid_hex 列可直查（含索引） —— entries.fid_hex 可查（idx_entries_fid 走索引）；探针 13248644DF9CD05B → res\ui_01.gpk row 71678</li><li>名字还原与路径编号编码有统一校验入口 —— toolkit_core/path_fid.cross_check()：各实现逐个对照基准</li><li>两条链有统一的命中率口径 —— 统一口径：resolve 在语料上非 None 的比例（path_fid.hit_rate）</li><li>名字查询表与编号定位表都已建立 —— NAME_LOCATOR.db✓ · id_locator_index.db✓</li><li>结构表族可查单行字段 —— 统一入口提供 bindict-check（结构表族自检）</li><li>纹理载荷可定点取出并解码 —— 实跑 extract 退出码 0，产出 524408 B（慢判据，读缓存）</li><li>解析器带原生判据自检（尺寸与附加流状态） —— 解析器有尺寸/附加流自检</li><li>有「解析结果 → 表格文件」的通用导出器 —— 统一入口提供 export（支持 csv / json / md，输入可为 .bin 或 fid）</li><li>统一入口提供「奖池解析」子命令 —— lottery（list/find/show/delta）｜ 数据源 LOTTERY_POOL_RESOLVED_v01.jsonl（111 MB）</li><li>有「行 → 原引用路径」索引（统一入口） —— 行→引用 575 条 ｜ 来源 表引用 / 界面引用</li><li>有行级热更 diff（哪一行新增/移除/改了） —— hotfix rows（两个 script 包逐行比）｜ 契约测试 有 ｜ 产物目录 1 个</li><li>【规模】奖池解析：池 1,762 个（pool_key 390000–391793）｜平均 13.6 格/池｜最大 53 格</li><li>【实测】`lottery show 390530` → 「樱灵狐梦」24 格逐格详情；`lottery delta` 三条判据并出</li><li>【实测】「行 → 原引用路径」索引：三来源合并（表引用 / UI 布局帧 / atlas 声明），</li><li>【字段】字典 1,061,631 条，覆盖 45.00% 的行；四个路径族对照全过（ui/spine_new 400/400 · weapon/skin 200/200）</li><li>【实测】配置表 `007767` → 70 行（表族 d6）· `002949` → 1863 行（表族 hd86）</li><li>【实测】纹理 `textures.gpk` → 1,398,276 B 的 DDS · 音频 `sound.gpk` 抽 60 条 → 全部 RIFF/WAVE</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>【规模】未命名的仍是多数（1,265,527 行 = 55.0%）—— 但这不是「字典太小」，</li><li>【规模】原引用路径索引只回填 575 行 —— 瓶颈在【源数据】不在入口：</li></ul></div></div></template>
+<template id="p①-2"><p class="popline">放在链的最后 —— 批量筛、批量落盘、类型识别、解码体检：单条能解不等于批量都对</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>能按条件筛条目（容器 / 大小 / flag / 编号范围） —— 统一入口提供 query：只筛不落盘，先看规模与形状</li><li>能批量提取（含断点续跑与产物清单） —— 统一入口提供 bulk：断点续跑 + 清单(sha256) + 错误按类聚合</li><li>能识别产物类型（魔数 → 纹理/模型/音频…） —— 统一入口提供 identify；格式注册表 22 种</li><li>有解码线体检（逐条验解码正确性，可全量） —— 统一入口提供 decode-audit：按容器×flag 分层，--full 可逐条全过</li><li>格式魔数已集中成一份注册表（不再散在各脚本） —— toolkit_core/bulk.py 的 MAGIC 集中登记 22 种格式</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"></ul></div></div></template>
+<template id="p②-0"><p class="popline">单件链路跑通：装配帧 → 网格 → 模型文件，导出带世界坐标拼接与自检报告；成批出件与落地器还没做（见缺项）</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>统一入口提供「部件 → 模型文件」子命令 —— 统一入口提供 glb（部件级 .mesh → 单 GLB，含自检）</li><li>统一入口提供「装配帧 → 部件/材质表」子命令 —— 统一入口提供 sheet（.c159 装配帧 → 材质/部件表）</li><li>模型导出带世界坐标拼接与自检报告 —— 导出链有世界坐标/bbox 自检</li><li>重跑产物与历史产出逐字节等价 —— 有逐字节等价的核验记录</li><li>专题页在消费模型文件 —— 斩神专题目录有 21 个模型文件</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>有批量打包与图集能力 —— 一次只出一件，没有成批出件能力</li><li>★★★ 链路 B 缺「单皮肤落地器」</li></ul></div></div></template>
+<template id="p②-1"><p class="popline">贴图与音频本来就是成品，这一段做的是【定位】—— 找出它是哪一张图 / 哪一段音频、在哪里</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>常规贴图与立方体贴图解码链可用 —— texture_extractor 模块在</li><li>统一入口提供「贴图 → PNG」子命令（走规范入口） —— 统一入口提供 tex（DDS/KTX → PNG，只走 dds_rgba_canonical）</li><li>统一入口提供「音效轨道 → 帧表」子命令 —— 统一入口提供 audio（.sfx → 帧表 JSON）</li><li>音频相关脚本当前跑得通 —— 源包目录已无残留音频脚本</li><li>分析区有音频试听/链路页 —— audio_review 有 2 个页面</li><li>存在「名字 ↔ 网格/贴图」映射表 —— 名字 → 容器+行+fid，共 1,730,640 条（名字到落点.tsv + 图_名字到落点.tsv + 网格_名字到落点.tsv）</li><li>【规模】名字 → 容器+行+fid：86.5 万条（图 6.8 万 / 网格 79.7 万），来自字典 ∩ 索引</li><li>【实测】ui 族 png 抽检 100% 命中（res\ui_01~05.gpk）；`.tga` / `.gim` 各族抽样亦 100%</li><li>站点有页面消费音频 —— 1 个页面真引用音频：board.html</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>渲染：贴图定位</li><li>2D 立绘 / 展示图定位</li><li>03_执行\30_分析\audio_review\ 下的 试听.html / 音效定位链_全景图.html 找不到生成脚本</li><li>字典里有 30,917 个 png 名字【本地不存在】—— 不是「查不到」，是资源没随包下发</li><li>按名撞库 0 命中只能推「名字未知」，不能推「资源缺失」—— 要下缺失结论须换位置/内容判据</li></ul></div></div></template>
+<template id="p②-2"><p class="popline">三维渲染图是从装配帧 + 贴图现场算出来的，只有它需要单独校准；配色方法还没统一（见缺项）</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>统一入口提供「材质分层出图」子命令 —— 统一入口提供 render（8 层图 + layers_trace.json）</li><li>渲染脚本不再自带过时解析器副本 —— 解析器已统一到 la_glb.parse_part（无本地副本）</li><li>色彩三项硬约定已写进规范 —— 前端交付要求.md 命中 3/3：color_space, NoColorSpace, flipY</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>上色四链已整理成可复用方法 —— 染色/折射/晶体/源驱动四条上色路径散在记录里，未成规范</li><li>渲染：上色链</li></ul></div></div></template>
+<template id="p③-0"><p class="popline">页面在线运行：图鉴首页、板块页、条目检索、三维预览</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>图鉴首页 + 板块页 + 条目检索都在 —— 图鉴页在，站点共 16 个 html</li><li>站点全部离线可用，不依赖外部资源库 —— 全部离线可用，无外部引用</li><li>有体系卡（按用户定稿的分类树呈现，含占位） —— 体系卡 3 顶层 · 10 中层 · 20 叶子</li><li>【规模】体系卡：3 顶层（时装类 / 战力类 / 活动类）+ 其他；14 个中层节点 · 28 个叶子</li><li>【实测】已挂板卡 15 ｜ 占位卡 6（荧光棒/拟态类=用户口径不想管；转盘/满减直购/芯片保底自选=尚未产出）</li><li>【实测】旧分组（零/一/二/三/四）原样保留在下方「图鉴」区 —— 不破坏原结构</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>站点根目录没有实验页/备份散落 —— 站点根目录有 2 个实验页/备份文件，待清理</li><li>资产目录下无残留实验目录 —— 1 个残留目录：zs_series</li><li>工作台四域看板（物品/武器皮肤/时装/奖池） —— 命中 2/4 域：物品、奖池</li></ul></div></div></template>
+<template id="p③-1"><p class="popline">本地服务的取数模块改了不用重启；接口层与一条命令流水线见缺项</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>改取数模块无需重启服务即生效 —— 端点带 mtime 重载守卫</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>接口层有实现 —— 接口层目录是空的，没有任何实现</li><li>有「采集 → 生成 → 服务」一条命令的流水线 —— 没有把「数据采集 → 页面生成 → 服务端点」串成一条可复跑的流水线</li></ul></div></div></template>
+<template id="p③-2"><p class="popline">皮肤资产落位与投影 —— 落到哪、怎么重建</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>武器皮肤资产已落位 —— 已落位 115 套</li><li>落位根目录：E:\la拆包项目\04_站点\web\assets\3d\weapon_skin</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>★★★ 链路 B 缺「单皮肤落地器」</li></ul></div></div></template>
+<template id="p带H"><p class="popline">上游比服务端版本清单（不必读客户端就知道「哪个包变了」），下游读客户端把变了的包解出来定位 —— 出口是 fid 级变更清单 + 标准五目录交付。★ 边界是「只读不写客户端」，不是「不读客户端」</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>统一入口提供「热更增量取证」子命令 —— 统一入口提供 delta（fetch/diff/families）</li><li>默认只比 release（正式服）vs playertest（测试服）—— 这个差正是要找的「提前内容」</li><li>包名规律已解出：&lt;家族&gt;.layers.&lt;层起&gt;.&lt;层止&gt;.npk；含 30 个 ui 家族名（shizhuang_icon / spine_new / …）</li><li>清单键名漂移已动态识别（release=files57 · bisai=files56 · futuretest=files55）</li><li>六步已成一条命令：清单 → 下载 → 解包定位 → 官方元数据 → fid 级 diff → 标准交付（`hotfix all` / `hotfix bundle`）</li><li>官方 `pkg_N.pi` 清单给【fid 级】新增/移除（`delta pkg diff`）；还能反查某 fid 属于哪个官方包（`delta pkg owner`，H-3）</li><li>overlay 包可逐条解出（`ovl entries` / `ovl unpack`）—— 【内容变更】那条路</li><li>文字表变更走【两条判据合取】：`pkg_N.pi` 物理布局 diff ∪ overlay 清单（只用前者会漏光）</li><li>交付物按五类落盘：还原树 / 文字表 / 媒体文件 / 脚本与其他 / 变更清单（`hotfix bundle`）</li><li>本地冻结与终态已成命令（`snapshot scan` / `snapshot diff`，含写入窗口守卫）</li><li>【实测】09-15→09-23 新增 19 · 变更 722 · 删除 0 包</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>客户端状态文件与官方清单的【集合差】未成流程：两边各有十几万独有项，原因未定则</li><li>包级归因仍靠人看：说得出「哪个包变了」，说不出「为什么变」（未固化成判据）</li><li>换源（正式服 / 测试服）只做到 `delta pkg owner`，未接入主流程</li><li>中间产物堆积未成流程：`30_分析` 下已有 19 个「热更*」目录，无清理与归档规则</li></ul></div></div></template>
+<template id="p带D"><p class="popline">三条线唯一共用的接口 —— 解码线的产出，经过这里才变成展示线能吃的形状</p><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>字段规则、板数据契约、发布契约三份约束文件已存在</li><li>发布策略可对板块逐条判定公开 / 隔离 / 退休</li><li>条目与皮肤的定位契约已固化进构建流程</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>没人对这条带负责：口径散在构建脚本里</li><li>编号定位索引库被多个脚本共写，读写列未逐脚本核过（待修 E1）</li><li>注册表的字段级职责未逐项核（待修 E3）</li></ul></div></div></template>
+<template id="p带Q"><p class="popline">三道闸门 —— 任何一条线要交付，都得从这里过</p><div class="gates"><div class="gate warn"><div class="gno">闸门一 · ⚠️ 半吊子</div><div class="gname">发布门禁</div><div class="gline">板数据契约 + 前端发布硬门禁（★ rebuild_weapon_skin_media.py 当前跑不过去）</div></div><div class="gate warn"><div class="gno">闸门二 · ⚠️ 半吊子</div><div class="gname">数据契约校验</div><div class="gline">字段级职责与共写关系未逐项核（04_站点\web\data\id_locator_index.db 由 build_id_locator.py 等多个脚本共写，未逐脚本核其读写列）</div></div><div class="gate miss"><div class="gno">闸门三 · ✗ 缺</div><div class="gname">交付打包</div><div class="gline">源包快照是历史唯一载体，尚无外置备份与打包流程（「不可重建」清单需要更新）</div></div></div><div class="cols"><div class="col"><h4><span class="dot ok"></span>现在有什么</h4><ul class="yes"><li>【规模】待修清单 20 条，一条条修、修完补日期与验证方式</li><li>发布策略可自动隔离旧板块</li><li>治理文档已分层（治理 / 文档 / 审阅区）</li></ul></div><div class="col"><h4><span class="dot miss"></span>缺什么</h4><ul class="no"><li>交付打包完全空白：没有离线包、没有快照外置备份</li><li>不可重建清单需要按新客户端重写（待修 C1）</li><li>文档与真实状态不一致（待修 A10：文档写 39，实测 37）</li><li>垃圾清理四项未动（待修 D1-D4）</li></ul></div></div></template>
+
+<script>
+(function(){
+  "use strict";
+  try{
+    var body=document.body, burger=document.getElementById('burger'),
+        mask=document.getElementById('mask'), drawer=document.getElementById('drawer'),
+        pop=document.getElementById('pop'), popBody=document.getElementById('popBody'),
+        popX=document.getElementById('popX');
+    function closeNav(){ body.classList.remove('nav'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener('click',function(){
+      var on=body.classList.toggle('nav');
+      burger.setAttribute('aria-expanded', on?'true':'false');
+    });
+    mask.addEventListener('click',closeNav);
+    Array.prototype.forEach.call(drawer.querySelectorAll('a'),function(a){
+      a.addEventListener('click',function(){ if(window.innerWidth<=820) closeNav(); });
+    });
+    function closePop(){
+      pop.classList.remove('show'); body.classList.remove('popon');
+      popBody.innerHTML=''; pop.setAttribute('aria-hidden','true');
+    }
+    var openKey=null;  // 当前打开的段键；轮询重建模板后用它把弹层内容一起刷新
+    function openPop(key,el){
+      var t=document.getElementById('p'+key); if(!t) return;
+      openKey=key;
+      popBody.innerHTML='';
+      popBody.appendChild(t.content.cloneNode(true));
+      document.getElementById('popTag').textContent=el.getAttribute('data-id')||'';
+      document.getElementById('popName').textContent=el.getAttribute('data-name')||'';
+      var st=document.getElementById('popSt');
+      st.textContent=el.getAttribute('data-st')||'';
+      st.className='pst '+(el.getAttribute('data-klass')||'');
+      pop.classList.add('show'); body.classList.add('popon');
+      pop.setAttribute('aria-hidden','false');
+      try{ popX.focus(); }catch(e){}
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pop]'),function(el){
+      el.addEventListener('click',function(e){
+        e.preventDefault();
+        openPop(el.getAttribute('data-pop'),el);
+      });
+    });
+    popX.addEventListener('click',closePop);
+    document.getElementById('popMask').addEventListener('click',closePop);
+
+    /* 技术详情：右侧滑出抽屉（body 级 #techDrawer）
+       关闭方式三种：右上角「✕ 关闭」/ 点面板外的遮罩 / Esc。
+       面板挂在 body 级、不是 #top 的后代 —— 祖先链上没有 backdrop-filter，
+       所以 fixed/absolute 定位相对视口解析（旧版放在顶栏里，被顶到视口上方 523px）。 */
+    var techDrawer=document.getElementById('techDrawer'),
+        techBtn=document.getElementById('techBtn'),
+        techX=document.getElementById('techX'),
+        techMask=document.getElementById('techMask');
+    function techOpen(){ return !!techDrawer && techDrawer.classList.contains('show'); }
+    function openTech(){
+      if(!techDrawer) return;
+      techDrawer.classList.add('show');
+      techDrawer.setAttribute('aria-hidden','false');
+      if(techBtn) techBtn.setAttribute('aria-expanded','true');
+      body.classList.add('techon');
+    }
+    function closeTech(){
+      if(!techDrawer) return;
+      techDrawer.classList.remove('show');
+      techDrawer.setAttribute('aria-hidden','true');
+      if(techBtn) techBtn.setAttribute('aria-expanded','false');
+      body.classList.remove('techon');
+    }
+    if(techBtn){
+      techBtn.addEventListener('click',function(e){
+        e.preventDefault();
+        if(techOpen()) closeTech(); else openTech();
+      });
+    }
+    if(techX) techX.addEventListener('click',closeTech);
+    if(techMask) techMask.addEventListener('click',closeTech);
+    window.__tech={isOpen:techOpen,open:openTech,close:closeTech};
+
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){
+        if(techOpen()) closeTech();
+        else if(pop.classList.contains('show')) closePop();
+        else closeNav();
+      }
+    });
+
+    /* ==================== 主页实时更新 ====================
+       每 15 秒拉一次 /api/home/snapshot（服务端复用 gen_home.collect() 取数，带 15 秒缓存与并发锁）。
+       拿到 → 就地更新页面数字与顶部时间；拿不到 → 原样保留生成时写死的静态值（离线 / 服务没起也能看）。
+       页面切到后台自动暂停轮询，切回来立刻刷新一次并恢复；「↻ 刷新」= 跳过缓存强制重取。 */
+    var HOME_POLL_MS=15000;
+    var stampEl=document.querySelector('#top .tstamp');
+    var staticStamp=stampEl?stampEl.textContent:"";
+    var rfBtn=document.getElementById('rfbtn');
+    var pollTimer=null,inFlight=false;
+    function pad2(n){ return (n<10?"0":"")+n; }
+    function numTxt(v){ if(v===null||v===undefined) return "读取失败";
+      return String(v).replace(/\B(?=(\d{3})+(?!\d))/g,","); }
+    function roundHalfEven(x,d){ var m=Math.pow(10,d),v=x*m,f=Math.floor(v),r=v-f;
+      if(r>0.5||(r===0.5&&(f%2===1))) f+=1; return f/m; }
+    function humanTxt(n){ if(n===null||n===undefined) return "读取失败";
+      if(n>=1073741824) return roundHalfEven(n/1073741824,1).toFixed(1)+" GB";
+      if(n>=1048576) return roundHalfEven(n/1048576,0).toFixed(0)+" MB";
+      return n+" B"; }
+    function txt(v){ return (v===null||v===undefined||v==="")?"读取失败":String(v); }
+    var keySeen=0,keyChanged=0;
+    function setKey(k,v){ var els=document.querySelectorAll('[data-k="'+k+'"]'),n=0; keySeen+=els.length;
+      for(var i=0;i<els.length;i++){ if(els[i].textContent!==v){ els[i].textContent=v; n++; } }
+      keyChanged+=n; return n; }
+    function healthOf(d){
+      var bl=d.backlog||{},c=[],idxOk=(d.quick==="ok");
+      c.push(["索引校验",idxOk?"通过":"未通过",idxOk?"ok":"miss"]);
+      if(d.stale===false) c.push(["数据新鲜","无过期","ok"]);
+      else if(d.stale===true) c.push(["数据新鲜","存在过期项","warn"]);
+      else c.push(["数据新鲜","读取失败","miss"]);
+      var fc=d.failed_containers;
+      if(fc===null||fc===undefined) c.push(["失败容器","读取失败","miss"]);
+      else c.push(["失败容器",fc+" 个",fc===0?"ok":"warn"]);
+      var op=bl.open;
+      if(op===null||op===undefined) c.push(["待修问题","读取失败","miss"]);
+      else c.push(["待修问题",op+" 条未闭环",op===0?"ok":"warn"]);
+      var order={ok:0,warn:1,miss:2},worst="ok";
+      for(var i=0;i<c.length;i++){ if(order[c[i][2]]>order[worst]) worst=c[i][2]; }
+      return {worst:worst,label:{ok:"良好",warn:"注意",miss:"异常"}[worst],checks:c};
+    }
+    function escHtml(s){
+      return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+        return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});
+    }
+    var ST_MAP={ok:["\u2705","\u5065\u5eb7","ok"],warn:["\u26a0\ufe0f","\u534a\u540a\u5b50","warn"],miss:["\u2717","\u7f3a","miss"]};
+    // 三线十段的内容现在来自台账（服务端每次采集现场求值），轮询必须把它一起刷上去，
+    // 否则「改台账 / 勾清单」得重新生成 index.html 才看得见 —— 那就不是实时了。
+    function applyLanes(lanes){
+      lanes=lanes||{}; var n=0,open=openKey;
+      for(var id in lanes){
+        var r=lanes[id]||{}, tpl=document.getElementById("p"+id);
+        if(tpl&&tpl.content){
+          var yes=tpl.content.querySelector("ul.yes"), no=tpl.content.querySelector("ul.no");
+          if(yes) yes.innerHTML=(r.has||[]).map(function(x){return "<li>"+escHtml(x)+"</li>";}).join("");
+          if(no) no.innerHTML=(r.miss||[]).map(function(x){return "<li>"+escHtml(x)+"</li>";}).join("");
+        }
+        var chip=document.querySelector('.chip[data-pop="'+id+'"]');
+        if(chip){
+          var m=ST_MAP[r.st||"ok"]||ST_MAP.ok;
+          chip.className="chip "+m[2];
+          chip.setAttribute("data-klass",m[2]);
+          chip.setAttribute("data-st",m[0]+" "+m[1]);
+          var cs=chip.querySelector(".cst"); if(cs) cs.textContent=m[0]+" "+m[1];
+          var cf=chip.querySelector(".cfoot"); if(cf) cf.textContent="\u7f3a "+((r.miss||[]).length)+" \u6761";
+        }
+        // 带（H/D/Q）：内容与状态同样来路，状态徽记与「缺 N 条」也要跟着刷。
+        // ★ 带的元素是 button.row-band（不是 .chip），上面那个分支选不到它 —— 少这一支，
+        //   D/Q 的缺项数在页面上会一直停在生成时的值，看着像台账没生效。
+        var band=document.querySelector('.row-band[data-pop="'+id+'"]');
+        if(band){
+          var mb=ST_MAP[r.st||"warn"]||ST_MAP.warn;
+          band.className="row-band "+mb[2];
+          band.setAttribute("data-klass",mb[2]);
+          band.setAttribute("data-st",mb[0]+" "+mb[1]);
+          var bs=band.querySelector(".bst"); if(bs) bs.textContent=mb[0]+" "+mb[1];
+          var bh=band.querySelector(".bhint"); if(bh) bh.textContent="\u7f3a "+((r.miss||[]).length)+" \u6761";
+        }
+        n++;
+      }
+      // 弹层正开着 ⇒ 用重建后的模板再克隆一次，内容跟着走
+      if(open && document.getElementById("p"+open) && pop.classList.contains("show")){
+        // 触发器既可能是段块（.chip）也可能是带（.row-band）⇒ 按 data-pop 通用取
+        var el=document.querySelector('[data-pop="'+open+'"]');
+        if(el) openPop(open,el);
+      }
+      return n;
+    }
+    function applyHome(d,meta){
+      d=d||{}; var bl=d.backlog||{},hit=0; keySeen=0; keyChanged=0;
+      // 段内容跟着一起刷（来自 d.lanes，服务端现场解台账）
+      if(typeof applyLanes==="function"){ try{ applyLanes(d.lanes); }catch(e){} }
+      var en=(d.entries&&d.entries.length)?String(d.entries.length):"读取失败";
+      var pn=(d.pages&&d.pages.length)?String(d.pages.length):"读取失败";
+      hit+=setKey("rows",numTxt(d.rows));
+      hit+=setKey("tools",numTxt(d.tools));
+      hit+=setKey("entries",en);
+      hit+=setKey("backlog_open",txt(bl.open));
+      hit+=setKey("backlog_done",txt(bl.done));
+      hit+=setKey("pages",pn);
+      hit+=setKey("skin_assets",numTxt(d.skin_assets));
+      hit+=setKey("size_deliver",humanTxt(d.size_deliver));
+      hit+=setKey("size_source",(d.files_source===null||d.files_source===undefined)
+        ?humanTxt(d.size_source):humanTxt(d.size_source)+" · "+numTxt(d.files_source)+" 文件");
+      hit+=setKey("size_review",humanTxt(d.size_review));
+      hit+=setKey("size_clean",humanTxt(d.size_clean));
+      hit+=setKey("d_tools_entries",numTxt(d.tools)+" / "+en);
+      hit+=setKey("d_backlog",txt(bl.open)+" / "+txt(bl.done));
+      hit+=setKey("d_source",humanTxt(d.size_source));
+      hit+=setKey("t_db",txt(d.db));
+      hit+=setKey("t_index_from",txt(d.index_from));
+      hit+=setKey("t_quick",d.quick==="ok"?"通过":"未通过");
+      hit+=setKey("t_stale",d.stale===false?"否":(d.stale===true?"是":"读取失败"));
+      hit+=setKey("t_built",txt(d.built_at));
+      hit+=setKey("t_inv",txt(d.inventory_files));
+      hit+=setKey("t_split","图形包 "+numTxt(d.row_gpk)+" / 资源包 "+numTxt(d.row_fpk)+" / 数据包 "+numTxt(d.row_npk));
+      hit+=setKey("t_fc",txt(d.failed_containers));
+      hit+=setKey("t_schema",txt(d.schema_version));
+      hit+=setKey("t_fingerprint",d.fingerprint?String(d.fingerprint).slice(0,32)+"…":"读取失败");
+      hit+=setKey("t_entries",(d.entries&&d.entries.length)?d.entries.join(" / "):"读取失败");
+      hit+=setKey("t_backlog","未修 "+txt(bl.open)+" / 已修 "+txt(bl.done));
+      hit+=setKey("t_skin_root",txt(d.skin_root));
+      var h=healthOf(d);
+      hit+=setKey("t_health",h.label+"（"+h.checks.map(function(x){return x[0]+x[1];}).join("；")+"）");
+      hit+=setKey("d_health",h.label);
+      var hw=document.getElementById("health");
+      if(hw){
+        hw.className="health "+h.worst;
+        var hl=document.getElementById("healthLabel");
+        if(hl) hl.textContent="项目健康："+h.label;
+        var hc=document.getElementById("healthCks");
+        if(hc){ hc.innerHTML=h.checks.map(function(x){
+          return '<span class="hck '+x[2]+'"><span class="dot '+x[2]+'"></span>'+x[0]+' '+x[1]+'</span>'; }).join(""); hit+=1; }
+      }
+      hit+=setKey("t_gen",(meta&&meta.collected_at?meta.collected_at:"读取失败")+"（实时采集）");
+      var sec=(meta&&typeof meta.collect_seconds==="number")?meta.collect_seconds.toFixed(1):"—";
+      var cacheTxt=(meta&&meta.cache&&meta.cache.hit&&meta.cache.age_seconds>=1)
+        ?" · 缓存 "+Math.round(meta.cache.age_seconds)+" 秒前":"";
+      var now=new Date();
+      var when=(meta&&meta.collected_at&&meta.collected_at.length>=19)
+        ?meta.collected_at.slice(11):(pad2(now.getHours())+":"+pad2(now.getMinutes())+":"+pad2(now.getSeconds()));
+      hit+=setKey("stamp","数据采集于 "+when+"（用时 "+sec+" 秒"+cacheTxt+"）· 每 15 秒自动刷新");
+      return {changed:keyChanged,seen:keySeen};
+    }
+    function homeStatic(reason){
+      if(stampEl) stampEl.textContent=(staticStamp||"数据采集于 —")+" · 实时刷新不可用："+reason;
+      window.__homeLive={mode:"static",reason:reason,stamp:stampEl?stampEl.textContent:""};
+    }
+    function loadHome(force){
+      if(inFlight||!window.fetch) return;
+      inFlight=true;
+      fetch("/api/home/snapshot"+(force?"?force=1":""),{cache:"no-store"})
+        .then(function(r){ if(!r.ok) throw new Error("接口返回 "+r.status); return r.json(); })
+        .then(function(j){
+          if(!j||!j.data||!j.data.backlog) throw new Error("响应缺少 data 字段");
+          var applied=applyHome(j.data,{collected_at:j.collected_at,collect_seconds:j.collect_seconds,cache:j.cache});
+          window.__homeLive={mode:"live",collected_at:j.collected_at,collect_seconds:j.collect_seconds,
+            cache_hit:!!(j.cache&&j.cache.hit),nodes_changed:applied.changed,nodes_seen:applied.seen,
+            unreadable_fields:((j.failed_items||{}).unreadable_fields)||[],
+            values:{rows:j.data.rows,pages:(j.data.pages||[]).length,backlog_open:(j.data.backlog||{}).open,
+                    size_clean:j.data.size_clean,skin_assets:j.data.skin_assets},
+            stamp:stampEl?stampEl.textContent:""};
+        })
+        .catch(function(e){ homeStatic(String(e&&e.message?e.message:e)); })
+        .then(function(){ inFlight=false; });
+    }
+    function stopPoll(){ if(pollTimer){ clearInterval(pollTimer); pollTimer=null; } }
+    function startPoll(){ stopPoll(); if(!document.hidden) pollTimer=setInterval(function(){ loadHome(false); },HOME_POLL_MS); }
+    if(rfBtn){
+      rfBtn.addEventListener('click',function(){
+        rfBtn.disabled=true;
+        loadHome(true);
+        setTimeout(function(){ rfBtn.disabled=false; },1500);
+      });
+    }
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden) stopPoll(); else { loadHome(true); startPoll(); }
+    });
+    loadHome(false);
+    startPoll();
+
+    // 自检钩子（与站点其他页面一致）
+    window.__loaded=(window.__loaded||0)+1;
+    window.addEventListener('error',function(e){ window.__err=String(e.message||e); });
+  }catch(e){ window.__err=String(e); }
+})();
+/* ★ 服务器时间实时刷新：从 /api/server_time 拉各服 HTTP Date（20s 缓存） */
+(function(){
+  var cells = document.querySelectorAll('.svtime[data-sv]');
+  if (!cells.length) return;
+  function tick(){
+    fetch('/api/server_time', {cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
+      var by = {};
+      (d.servers||[]).forEach(function(s){ by[s.key] = s; });
+      cells.forEach(function(el){
+        var s = by[el.getAttribute('data-sv')];
+        if (!s) return;
+        if (s.ok && s.local) {
+          var t = s.local.slice(11, 19);
+          var d2 = s.delta_seconds;
+          el.textContent = t + (d2 ? (d2 > 0 ? ' +'+d2+'s' : ' '+d2+'s') : '');
+          el.title = '服务器(HTTP Date)：' + s.utc + ' UTC\\n本地对比：' + (d2===0 ? '一致' : (d2>0?'快 '+d2+' 秒':'慢 '+(0-d2)+' 秒'));
+          el.style.color = (d2 === 0) ? '' : '#ffd8a8';
+        } else if (s.error) {
+          el.textContent = '抓取失败';
+          el.title = s.error;
+        }
+      });
+    }).catch(function(){});
+  }
+  tick();
+  setInterval(tick, 15000);
+})();
+</script>
+</body></html>

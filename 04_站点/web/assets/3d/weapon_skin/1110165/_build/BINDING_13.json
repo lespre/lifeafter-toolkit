@@ -1,0 +1,205 @@
+{
+ "skin": "skin_1006_011",
+ "skin_id": 1110165,
+ "block": [
+  1632,
+  1644
+ ],
+ "n": 13,
+ "declared_names_union": [
+  "001a",
+  "001m",
+  "001n",
+  "001s_m",
+  "1001a",
+  "1001b_m",
+  "1001m",
+  "1001n",
+  "1001s_m",
+  "2001a",
+  "2001s_m",
+  "3001a",
+  "3001s_m"
+ ],
+ "group_sizes": {
+  "001": 4,
+  "1001": 5,
+  "2001": 2,
+  "3001": 2
+ },
+ "rows": [
+  {
+   "entry": 1632,
+   "declared_name": "001a",
+   "slot": "t_basecolor/Tex0",
+   "group": 0,
+   "dds": "001632.dds",
+   "dds_sha16": "1acb0aac6d56985d",
+   "local_file": "src_tex/165_b_m.png",
+   "local_sha16": "8801d31e863d6645",
+   "content_class": "warm_grey_B<1_alpha1",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1633,
+   "declared_name": "001m",
+   "slot": "ParamMap",
+   "group": 0,
+   "dds": "001633.dds",
+   "dds_sha16": "0ea0892bcaa32b44",
+   "local_file": "src_tex/165_a.png",
+   "local_sha16": "d89290e73d550a4d",
+   "content_class": "B=1+alpha_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1634,
+   "declared_name": "001n",
+   "slot": "NormalMap",
+   "group": 0,
+   "dds": "001634.dds",
+   "dds_sha16": "59b0b69b371e195f",
+   "local_file": "src_tex/165_n.png",
+   "local_sha16": "ed6092d47213a986",
+   "content_class": "R,G~0.5,B~0.96",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1635,
+   "declared_name": "001s_m",
+   "slot": "t_surfacemap",
+   "group": 0,
+   "dds": "001635.dds",
+   "dds_sha16": "9887f49d7e32ad89",
+   "local_file": "src_tex/165_m.png",
+   "local_sha16": "78e980093b459ef0",
+   "content_class": "G=1,B=1,R_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1636,
+   "declared_name": "1001a",
+   "slot": "t_basecolor/Tex0",
+   "group": 1,
+   "dds": "001636.dds",
+   "dds_sha16": "bfff78e9099ad8a3",
+   "local_file": "src_tex/165_c_b_m.png",
+   "local_sha16": "0859c7d3a72284c7",
+   "content_class": "warm_grey_B<1_alpha1",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1637,
+   "declared_name": "1001b_m",
+   "slot": "t_surfacemap(b_m族)",
+   "group": 1,
+   "dds": "001637.dds",
+   "dds_sha16": "e2654a4d6792a555",
+   "local_file": "src_tex/165_s_m.png",
+   "local_sha16": "6ac8cef7bc8f9db6",
+   "content_class": "R=1,G,B_vary",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1638,
+   "declared_name": "1001m",
+   "slot": "ParamMap",
+   "group": 1,
+   "dds": "001638.dds",
+   "dds_sha16": "a1c9486c73e3d81e",
+   "local_file": "src_tex/165_c_a.png",
+   "local_sha16": "0a77bca79ca45c3d",
+   "content_class": "B=1+alpha_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1639,
+   "declared_name": "1001n",
+   "slot": "NormalMap",
+   "group": 1,
+   "dds": "001639.dds",
+   "dds_sha16": "cc902cecf52b3de4",
+   "local_file": "src_tex/165_c_n.png",
+   "local_sha16": "7f121e5cb4934bd5",
+   "content_class": "R,G~0.5,B~0.967",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1640,
+   "declared_name": "1001s_m",
+   "slot": "t_surfacemap",
+   "group": 1,
+   "dds": "001640.dds",
+   "dds_sha16": "72817a0addd3bf7d",
+   "local_file": "src_tex/165_c_m.png",
+   "local_sha16": "e188709b3859f961",
+   "content_class": "G=1,B=1,R_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1641,
+   "declared_name": "2001a",
+   "slot": "t_basecolor/Tex0",
+   "group": 2,
+   "dds": "001641.dds",
+   "dds_sha16": "2013bb612eee0794",
+   "local_file": "src_tex/165_d_b_m.png",
+   "local_sha16": "49ec41d2f063f0a7",
+   "content_class": "warm_grey_B<1_alpha1",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1642,
+   "declared_name": "2001s_m",
+   "slot": "t_surfacemap",
+   "group": 2,
+   "dds": "001642.dds",
+   "dds_sha16": "648365097a16b2fc",
+   "local_file": "src_tex/165_d_m.png",
+   "local_sha16": "b82b8b7e8fa88269",
+   "content_class": "G=1,B=1,R_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1643,
+   "declared_name": "3001a",
+   "slot": "t_basecolor/Tex0",
+   "group": 3,
+   "dds": "001643.dds",
+   "dds_sha16": "fe849615d6ee4c54",
+   "local_file": "src_tex/165_e_b_m.png",
+   "local_sha16": "530d39b5fcca8dbb",
+   "content_class": "warm_grey_B<1_alpha1",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  },
+  {
+   "entry": 1644,
+   "declared_name": "3001s_m",
+   "slot": "t_surfacemap",
+   "group": 3,
+   "dds": "001644.dds",
+   "dds_sha16": "6bf3405b6395b5fd",
+   "local_file": "src_tex/165_e_m.png",
+   "local_sha16": "b1f75d0b48eebb5a",
+   "content_class": "G=1,B=1,R_varies",
+   "binding_basis": "c159明文声明名 + 组容量/签名类双计数唯一双射"
+  }
+ ],
+ "cross_group_borrow_declared": {
+  "group=2(2001)": {
+   "ParamMap": "001m(#1633)",
+   "NormalMap": "001n(#1634)",
+   "依据": "c159 #1619 明文块: 2001a[t_basecolor] + 001m + 2001s_m + 001n"
+  },
+  "group=3(3001)": {
+   "ParamMap": "1001m(#1638)",
+   "NormalMap": "1001n(#1639)",
+   "依据": "c159 #1619 明文块: 3001a[t_basecolor] + 1001m + 3001s_m + 1001n"
+  }
+ },
+ "missing": [],
+ "unresolved": [
+  "1637(1001b_m) 由唯一性排除法绑定(R≡1 唯一 / b_m 仅 1 个)，非逐条声明"
+ ],
+ "note": "块内顺序 ≠ 任何声明块顺序；组起点=每组 *a 的位置(0,4,9,11) 与声明块首条 t_basecolor 一致"
+}

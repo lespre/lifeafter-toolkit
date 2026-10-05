@@ -1,0 +1,148 @@
+{
+  "skin_id": "1110171",
+  "name": "光影咏叹调",
+  "resource_dir": "weapon/skin/skin_1003_010 (+ skin_1003_012 另一把枪)",
+  "bind": "001209.c159 (单枪) / 001263.c159 (双枪)",
+  "material": "001223.c159 (单枪) / 001265.c159 (双枪)",
+  "mesh": "001222.mesh (单枪 3 子网格) / 001264.mesh (双枪 7 子网格)",
+  "material_mapping": {
+    "rule": "按源 c159 材质表顺序定位（非按颜色）",
+    "basis": "001223.c159: material0=skin_1003_010_0 shader=pbr_weapon(001a/001m/001n) ; material1/2=skin_1003_010_1/_2 shader=pbr_crystal(001b_m)",
+    "unresolved": "mesh 内无 per-primitive MtlIdx（sub 表 u16 为模型组，010 单枪三个 sub 全同值）；待从绑定 c159 取得 primitive→material 直证",
+    "note": "Sub0→material0 为位置对应（待绑定 c159 的 MtlIdx 直证）；蓝色贴图 001a 是源刀身基色，游戏中的金色需从 shader/IBL/自发光/SFX 找，不换贴图"
+  },
+  "material_layers_status": "approximate",
+  "source_chain": {
+    "bind": "001263.c159 (7 条 SubMesh 记录) / material 001265.c159 (7 材质) / mesh 001264.mesh (7 子网格)",
+    "dual": [
+      {
+        "sub": 0,
+        "mtl_idx": 0,
+        "name": "skin_1003_012_0"
+      },
+      {
+        "sub": 1,
+        "mtl_idx": 1,
+        "name": "skin_1003_012_1"
+      },
+      {
+        "sub": 2,
+        "mtl_idx": 2,
+        "name": "skin_1003_012_2"
+      },
+      {
+        "sub": 3,
+        "mtl_idx": 3,
+        "name": "skin_1003_012_3"
+      },
+      {
+        "sub": 4,
+        "mtl_idx": 4,
+        "name": "skin_1003_010_0"
+      },
+      {
+        "sub": 5,
+        "mtl_idx": 5,
+        "name": "skin_1003_010_1"
+      },
+      {
+        "sub": 6,
+        "mtl_idx": 6,
+        "name": "skin_1003_010_2"
+      }
+    ],
+    "single": "001209.c159 / 001223.c159 / 001222.mesh → Sub0=MtlIdx0 skin_1003_010_0(pbr_weapon+001a)，Sub1/2=MtlIdx1/2 skin_1003_010_1/2(pbr_crystal+001b_m)"
+  },
+  "evidence": "绑定 c159 实测编码 0a 02 <u32 MtlIdx> 0c 01 <材质名>；.mesh 内无 per-primitive MtlIdx（sub 表 u16=模型组）",
+  "retracted": "v2 报告按参考图暖色占比把主体换成金色贴图 → 已回滚；源刀身基色确认为蓝色贴图 001a/4011",
+  "poster": {
+    "generated_by": "tools/export_poster.py (从查看器同一次运行导出)",
+    "generated_at": "2026-09-15 06:17:02",
+    "viewer_version": "1.8.0",
+    "board_url": "http://127.0.0.1:8765/board.html?b=weapon_skin_sfx_text_sources&view=wiki&sort=id&dir=desc",
+    "manifest": "assets/3d/weapon_skin/1110171/viewer.json",
+    "state": "dual",
+    "canvas_px": [
+      2260,
+      1150
+    ],
+    "proj_center": [
+      0.4932567618011179,
+      0.5104402598956613
+    ],
+    "clipped": false,
+    "camera": [
+      -1.665110551963286,
+      1.7116948835656043,
+      14.886199999999999
+    ],
+    "up": [
+      -0.825,
+      -0.557,
+      -0.098
+    ],
+    "roll_deg": null,
+    "pose_preset": {
+      "label": "game_reference",
+      "position": [
+        -14.6129,
+        -2.2747,
+        -1.2894
+      ],
+      "target": [
+        0.0602,
+        -0.1842,
+        0.0986
+      ],
+      "up": [
+        -0.8246,
+        -0.5572,
+        -0.0982
+      ],
+      "distance": 14.8862,
+      "fov": 34,
+      "fit_span": 0.27
+    },
+    "glb_sha16": {
+      "dual": "ea895f79cd73ffb2",
+      "single": "0ac1c59437a4fb48"
+    },
+    "viewer_json_sha16": "f4dbd8c96555a4bd",
+    "poster_sha16": "d559d6e154466d67"
+  },
+  "attribution_history": [
+    {
+      "date": "2026-09-15",
+      "subject": "prim5 (skin_1003_010_1) 参数块归属",
+      "invalidated": {
+        "block": "block4@7262",
+        "group": "group5",
+        "reason": "旧 c159_pair 评分式匹配漏掉 block3@6509，并把 block4 的值串给 prim5（u_crystal_color=[0.0039,0,0.6745] 与 detail_offset=[-1,-0.68] 均来自 block4/prim6）"
+      },
+      "replaced_by": {
+        "block": "block3@6509",
+        "method": "ordered-1to1",
+        "confidence": "candidate-high",
+        "groups": [
+          1028,
+          1048,
+          1108,
+          1168,
+          1224,
+          1244,
+          1304
+        ],
+        "blocks": [
+          3745,
+          4560,
+          5375,
+          6509,
+          7262
+        ],
+        "rule": "有效槽位组=材质名之前的组，按序与全部材质1:1；数值块按序只与晶体材质1:1；任一数量不成立即fail-closed"
+      },
+      "parser": "06_皮肤定位链/c159_pair_v4.py",
+      "regression": "03_执行/c159_pair_v4_regress.json"
+    }
+  ]
+}

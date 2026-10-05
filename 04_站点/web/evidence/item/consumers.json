@@ -1,0 +1,12 @@
+{
+ "claim": "common_item 业务消费方真实存在并使用 item_id 做业务操作",
+ "status": "verified",
+ "evidence_type": "runtime_consumer",
+ "consumer": "com\\components\\avatar\\BagCompBase.py",
+ "symbols": [
+  "BagItems.get_avail_space: Helpers.get_item_data(item_id) -> item_data -> max_stack_count",
+  "BagCompBase.get_item_num(item_id)",
+  "BagCompBase.is_blood_moon_inner/outer_item: COMMON_ITEM_DATA.data.get(self.item_id)"
+ ],
+ "snapshot_source": "test-documents-328b8446#1410 (FID 0D86C2AE10376C4E)"
+}

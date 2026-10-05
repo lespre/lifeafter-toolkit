@@ -1,0 +1,55 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "raw_universe": {
+  "table": "weapon_skin_data",
+  "rows": 126,
+  "structure": {
+   "7_digit_main_block": 111,
+   "8_digit_timed_block": 15
+  }
+ },
+ "sources": [
+  {
+   "source_id": "EquipSkinComp.is_timed_skin_id",
+   "source_class": "runtime_semantic",
+   "role": "timed_identification",
+   "status": "symbol_found_static_probe",
+   "evidence": "analysis/audit/timed_skin_runtime_probe.json（documents-py314-current，entry 14032 / file_id 822E3046861AA53C）",
+   "applicability": "时限皮肤 id 区间判定（区间常数未字节提取 ⇒ residual）"
+  },
+  {
+   "source_id": "EquipSkinComp.get_perm_skin_id",
+   "source_class": "runtime_semantic",
+   "role": "timed_to_permanent",
+   "status": "symbol_found_static_probe",
+   "evidence": "同探针（与 is_timed_skin_id 同模块符号表）",
+   "rule": "permanent_skin_id = timed_id // 10",
+   "constraints": [
+    "末位不承载判断",
+    "%10==1 永久禁用为识别门槛",
+    "仅对区间命中的时限 id 调用"
+   ]
+  },
+  {
+   "source_id": "weapon_skin_data",
+   "source_class": "canonical_raw",
+   "role": "canonical_membership",
+   "rows": 126,
+   "status": "acquired_and_decoded"
+  },
+  {
+   "source_id": "structural_audit:child//10_in_body",
+   "source_class": "structural_rule",
+   "role": "audit_only",
+   "status": "verified_15_of_15",
+   "note": "只用于审计 runtime 结果是否落在 canonical body；不作为识别规则"
+  },
+  {
+   "source_id": "historical:board_115",
+   "source_class": "historical_source",
+   "role": "comparison_only",
+   "status": "historical_only",
+   "note": "旧板把时限变体嵌在父卡内、不进顶层 ⇒ canonical-only 15 全是时限变体"
+  }
+ ]
+}

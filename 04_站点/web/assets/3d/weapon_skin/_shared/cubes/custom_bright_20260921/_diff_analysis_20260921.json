@@ -1,0 +1,105 @@
+{
+ "compare": "qiangpi -> custom_bright_20260921",
+ "frame": [
+  1218,
+  802
+ ],
+ "band_n_px": 190128,
+ "moved_anywhere": {
+  "set": "M = |dL|>0.01 (全帧)",
+  "n_px_band": 27780,
+  "share_of_band_pct": 14.61,
+  "share_of_whole_frame_pct": 2.84,
+  "dL_mean": 0.17294,
+  "dL_p50": 0.09689,
+  "dL_p95": 0.56973,
+  "dL_max": 0.92714,
+  "frac_px_moved_gt_0.01_pct": 100.0,
+  "lum0_p50": 0.6861,
+  "lum1_p50": 0.78
+ },
+ "moved_in_band": {
+  "set": "M = |dL|>0.01 (带内)",
+  "n_px_band": 27780,
+  "share_of_band_pct": 14.61,
+  "share_of_whole_frame_pct": 2.84,
+  "dL_mean": 0.17294,
+  "dL_p50": 0.09689,
+  "dL_p95": 0.56973,
+  "dL_max": 0.92714,
+  "frac_px_moved_gt_0.01_pct": 100.0,
+  "lum0_p50": 0.6861,
+  "lum1_p50": 0.78
+ },
+ "dark_achr_D": {
+  "set": "D = 消色差且暗 (代理分子)",
+  "n_px_band": 162481,
+  "share_of_band_pct": 85.46,
+  "share_of_whole_frame_pct": 16.63,
+  "dL_mean": 0.01837,
+  "dL_p50": 0.0,
+  "dL_p95": 0.0,
+  "dL_max": 0.92714,
+  "frac_px_moved_gt_0.01_pct": 4.42,
+  "lum0_p50": 0.1352,
+  "lum1_p50": 0.1375
+ },
+ "bright_achr_S": {
+  "set": "S = 消色差且亮 (代理分母另一半)",
+  "n_px_band": 27647,
+  "share_of_band_pct": 14.54,
+  "share_of_whole_frame_pct": 2.83,
+  "dL_mean": 0.06666,
+  "dL_p50": 0.04624,
+  "dL_p95": 0.21111,
+  "dL_max": 0.74426,
+  "frac_px_moved_gt_0.01_pct": 74.51,
+  "lum0_p50": 0.7516,
+  "lum1_p50": 0.8074
+ },
+ "reachability": {
+  "D_px_total_whole_frame": 869565,
+  "D_px_total_in_band": 162481,
+  "D_px_moved_by_cube_anywhere": 7180,
+  "D_px_moved_by_cube_and_in_band": 7180,
+  "D_frac_moved_by_cube_pct_whole_frame": 0.826,
+  "D_frac_moved_by_cube_pct_in_band": 4.419,
+  "moved_px_that_are_D_pct": 25.846,
+  "D_dL_mean": 0.00343,
+  "D_lum_change_mean": 0.00343,
+  "S_dL_mean": 0.01718,
+  "S_lum_change_mean": 0.01625,
+  "reading": "D_frac_moved_by_cube_pct_in_band 很小 ⇒ 代理指标的「消色差暗」分子几乎不由 cube 驱动 ⇒ 换 cube **不可能**把它降 30pp（分母是暗背景，不是金属）"
+ },
+ "D_spatial": {
+  "row_density_pct (top->bottom of band)": [
+   97.72,
+   90.74,
+   58.64,
+   83.4,
+   96.99
+  ],
+  "col_density_pct (left->right of band)": [
+   87.36,
+   72.18,
+   81.48,
+   90.01,
+   96.25
+  ],
+  "note": "row/col = 带内 5 等分各自的 D 像素密度（%）；若普遍很高 ⇒ D 是**大面积背景**而非武器轮廓"
+ },
+ "band_row_lum_p50_qiangpi": [
+  0.1453,
+  0.1442,
+  0.1372,
+  0.1299,
+  0.1206
+ ],
+ "band_row_lum_p50_custom": [
+  0.1453,
+  0.1442,
+  0.1473,
+  0.1302,
+  0.1209
+ ]
+}

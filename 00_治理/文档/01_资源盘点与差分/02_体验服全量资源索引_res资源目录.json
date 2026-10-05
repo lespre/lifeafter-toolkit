@@ -1,0 +1,1222 @@
+{
+  "scan_time": "2026-08-29",
+  "resource_dir": "E:\\mrzh\\res",
+  "total_files": 120,
+  "total_size_gb": 132.9,
+  "file_type_stats": {
+    "FPK资源包(未知格式)": {
+      "count": 64,
+      "total_size_mb": 64358.11
+    },
+    "GPK资源包(未知格式)": {
+      "count": 55,
+      "total_size_mb": 68562.82
+    },
+    "NPK资源包": {
+      "count": 1,
+      "total_size_mb": 3173.52
+    }
+  },
+  "files": [
+    {
+      "name": "001.fpk",
+      "size": 1075692372,
+      "size_mb": 1025.86,
+      "extension": ".fpk",
+      "header_hex": "8806dc0bd75a6077503bb0c887928746259c9e8231294893eb938d77d7047ed3",
+      "header_ascii": ".....Z`wP;.....F%...1)H....w..~.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "002.fpk",
+      "size": 772234704,
+      "size_mb": 736.46,
+      "extension": ".fpk",
+      "header_hex": "884911a71d2ccc084e027508fad9f48a9d075660385ce4d78f61b3921313f576",
+      "header_ascii": ".I...,..N.u.......V`8\\...a.....v",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "003.fpk",
+      "size": 1074162100,
+      "size_mb": 1024.4,
+      "extension": ".fpk",
+      "header_hex": "392cd2903bd6512512b17b2b5964651b24027c3139df3fc8f032609d5148b61a",
+      "header_ascii": "9,..;.Q%..{+Yde.$.|19.?..2`.QH..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "004.fpk",
+      "size": 1075865632,
+      "size_mb": 1026.03,
+      "extension": ".fpk",
+      "header_hex": "10e32cb74e30b07ed3f83ff861f0d035c2747d44e6d625cbe09a774f030b8c38",
+      "header_ascii": "..,.N0.~..?.a..5.t}D..%...wO...8",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "005.fpk",
+      "size": 1074607116,
+      "size_mb": 1024.83,
+      "extension": ".fpk",
+      "header_hex": "4854315e881f34c3ac3f15eeba8e066a0321e8290433008c17635e4438b820be",
+      "header_ascii": "HT1^..4..?.....j.!.).3...c^D8. .",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "006.fpk",
+      "size": 1074655856,
+      "size_mb": 1024.87,
+      "extension": ".fpk",
+      "header_hex": "5d3c16c1ac6f81915ced13d7bdc482089b1c280d699d2d3c6ef20af0f0789702",
+      "header_ascii": "]<...o..\\.........(.i.-<n....x..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "007.fpk",
+      "size": 1077149376,
+      "size_mb": 1027.25,
+      "extension": ".fpk",
+      "header_hex": "99adaab202d8187dffaf5ce659bacc5bd5ad2f1f7219552d4bde734bc2aad8ef",
+      "header_ascii": ".......}..\\.Y..[../.r.U-K.sK....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "008.fpk",
+      "size": 1074559372,
+      "size_mb": 1024.78,
+      "extension": ".fpk",
+      "header_hex": "93214749cc2dd523580bdbb69e74b39b0ac20a28005e05eaf0a0be9d08bb1a6d",
+      "header_ascii": ".!GI.-.#X....t.....(.^.........m",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "009.fpk",
+      "size": 1074026568,
+      "size_mb": 1024.27,
+      "extension": ".fpk",
+      "header_hex": "6e1dcaf108bf030b6f3ade0ae69c35a82bbda6f3e17c8d3f957321250555016f",
+      "header_ascii": "n.......o:....5.+....|.?.s!%.U.o",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "010.fpk",
+      "size": 1076068428,
+      "size_mb": 1026.22,
+      "extension": ".fpk",
+      "header_hex": "64010c4198a697f3f366e7cb6e66a216020f53aead6a3d313c851c3502b5f36a",
+      "header_ascii": "d..A.....f..nf....S..j=1<..5...j",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "011.fpk",
+      "size": 1078228996,
+      "size_mb": 1028.28,
+      "extension": ".fpk",
+      "header_hex": "6c5e3361cc5632c6f5dce460dc373bc46dc2f72c5d038281979cd11a3c36f5bb",
+      "header_ascii": "l^3a.V2....`.7;.m..,].......<6..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "012.fpk",
+      "size": 1077851240,
+      "size_mb": 1027.92,
+      "extension": ".fpk",
+      "header_hex": "9e9379282cb53ccfca3ff6bece7248cc4caba2d5527f0b6a716d926111f18aff",
+      "header_ascii": "..y(,.<..?...rH.L...R..jqm.a....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "013.fpk",
+      "size": 1078753980,
+      "size_mb": 1028.78,
+      "extension": ".fpk",
+      "header_hex": "d40302c40357afd21fc62853e2c0d877170caed69b5a31cca558be4e6609f306",
+      "header_ascii": ".....W....(S...w.....Z1..X.Nf...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "014.fpk",
+      "size": 1080114140,
+      "size_mb": 1030.08,
+      "extension": ".fpk",
+      "header_hex": "757e238f559bca6ff180570021b97d49d70b56626340ed8c27038ee4b6acd026",
+      "header_ascii": "u~#.U..o..W.!.}I..Vbc@..'......&",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "015.fpk",
+      "size": 1076508076,
+      "size_mb": 1026.64,
+      "extension": ".fpk",
+      "header_hex": "a537773c437f7c82b279777c1404dcdfeb87677a3b79e40799460418ed9a673b",
+      "header_ascii": ".7w<C.|..yw|......gz;y...F....g;",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "016.fpk",
+      "size": 1076387436,
+      "size_mb": 1026.52,
+      "extension": ".fpk",
+      "header_hex": "86e23c8824efbc9bc4f1f0c67c6548ad67c6582e7279210f4c71a62c930d41a7",
+      "header_ascii": "..<.$.......|eH.g.X.ry!.Lq.,..A.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "017.fpk",
+      "size": 1076697560,
+      "size_mb": 1026.82,
+      "extension": ".fpk",
+      "header_hex": "190a3783baa7c3d93e65b13809814d3a6dbef5ec4a5545f9af7f41c2027215dc",
+      "header_ascii": "..7.....>e.8..M:m...JUE...A..r..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "018.fpk",
+      "size": 1076995676,
+      "size_mb": 1027.1,
+      "extension": ".fpk",
+      "header_hex": "a895eb73b5f94bb8a6fadb3f3e02b437d0b6174c71e67e126e1bb2bd8940616a",
+      "header_ascii": "...s..K....?>..7...Lq.~.n....@aj",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "019.fpk",
+      "size": 1076411060,
+      "size_mb": 1026.55,
+      "extension": ".fpk",
+      "header_hex": "1ca6b0e51ba4a99b6a9fcbfa93fb9b26e40c7ceed7b9535e5ec9002a448fac69",
+      "header_ascii": "........j......&..|...S^^..*D..i",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "020.fpk",
+      "size": 1076689300,
+      "size_mb": 1026.81,
+      "extension": ".fpk",
+      "header_hex": "0385163fbd7c4d9b6ca7197e904210cc14d3b4f29e2d36e419426c55ba6cf8f0",
+      "header_ascii": "...?.|M.l..~.B.......-6..BlU.l..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "021.fpk",
+      "size": 1075483348,
+      "size_mb": 1025.66,
+      "extension": ".fpk",
+      "header_hex": "bc752798cbf5607bbebb4efb0fe5ece4771749670d6ffb4b8483e99bf5057266",
+      "header_ascii": ".u'...`{..N.....w.Ig.o.K......rf",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "022.fpk",
+      "size": 1076814660,
+      "size_mb": 1026.93,
+      "extension": ".fpk",
+      "header_hex": "a396159550f473374d8373e31009eb8faf2df97da82cb452f5b1e27ade419369",
+      "header_ascii": "....P.s7M.s......-.}.,.R...z.A.i",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "023.fpk",
+      "size": 1079306108,
+      "size_mb": 1029.31,
+      "extension": ".fpk",
+      "header_hex": "829a478cffb5108e0a033bfc16eb0e8e80bee510f1d52d598f7bb9e1b7eb5f42",
+      "header_ascii": "..G.......;...........-Y.{...._B",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "024.fpk",
+      "size": 1077047800,
+      "size_mb": 1027.15,
+      "extension": ".fpk",
+      "header_hex": "3c4eeed8e6b2ce7efb87a73ffae165719d0b1aa5636785066e11d4bbd8e54bc7",
+      "header_ascii": "<N.....~...?..eq....cg..n.....K.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "025.fpk",
+      "size": 1074797704,
+      "size_mb": 1025.01,
+      "extension": ".fpk",
+      "header_hex": "a95f48c48a3788b6e8f8b49e96c51c280b05060c23b895592651cd7f63f2dca6",
+      "header_ascii": "._H..7.........(....#..Y&Q..c...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "026.fpk",
+      "size": 1074146996,
+      "size_mb": 1024.39,
+      "extension": ".fpk",
+      "header_hex": "1189ad84187051fa2775162bfc4825d770c23a9d43067ae373598a87310b9370",
+      "header_ascii": ".....pQ.'u.+.H%.p.:.C.z.sY..1..p",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "027.fpk",
+      "size": 1074474408,
+      "size_mb": 1024.7,
+      "extension": ".fpk",
+      "header_hex": "82ae2ef678174b632caf8aa80f1125fd72e045ea453363a34534d2051415fc3b",
+      "header_ascii": "....x.Kc,.....%.r.E.E3c.E4.....;",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "028.fpk",
+      "size": 1075724056,
+      "size_mb": 1025.89,
+      "extension": ".fpk",
+      "header_hex": "710e264e052a6617540bc320e47f80ce2c40b8eef4d78f56edda3a3c6c84bd2e",
+      "header_ascii": "q.&N.*f.T.. ....,@.....V..:<l...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "029.fpk",
+      "size": 1074169740,
+      "size_mb": 1024.41,
+      "extension": ".fpk",
+      "header_hex": "fd19a24c1f2b864ef26d2ad47e9c5c131f093062226e5bbb519988a13525f01f",
+      "header_ascii": "...L.+.N.m*.~.\\...0b\"n[.Q...5%..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "030.fpk",
+      "size": 1076228932,
+      "size_mb": 1026.37,
+      "extension": ".fpk",
+      "header_hex": "8e2d87ed36a86d9a377495e1af64752d05fa64a8b440d73529ecec7f0095a607",
+      "header_ascii": ".-..6.m.7t...du-..d..@.5).......",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "031.fpk",
+      "size": 1074789052,
+      "size_mb": 1025.0,
+      "extension": ".fpk",
+      "header_hex": "243c9783dd116a5d47960b1d1444c6afb98ca5c82b2250183b8eb148482e95d3",
+      "header_ascii": "$<....j]G....D......+\"P.;..HH...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "032.fpk",
+      "size": 1075980764,
+      "size_mb": 1026.14,
+      "extension": ".fpk",
+      "header_hex": "591de4c94abebae211a91c66fb40af9bc4b6ec773e4655ae272227bbae83a56b",
+      "header_ascii": "Y...J......f.@.....w>FU.'\"'....k",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "033.fpk",
+      "size": 1074583996,
+      "size_mb": 1024.8,
+      "extension": ".fpk",
+      "header_hex": "b29e7cc39f3fc8d47246b78f0e830f9d4f7b0f9ae00e53c27ec84680d9e45e3e",
+      "header_ascii": "..|..?..rF......O{....S.~.F...^>",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "034.fpk",
+      "size": 1075770688,
+      "size_mb": 1025.93,
+      "extension": ".fpk",
+      "header_hex": "ef45d7e8a58bcc14684d27fdeb6bffabb0202b8686f1a657e704e7a73a6fb093",
+      "header_ascii": ".E......hM'..k... +....W....:o..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "035.fpk",
+      "size": 1074685384,
+      "size_mb": 1024.9,
+      "extension": ".fpk",
+      "header_hex": "f7ea1a5b7b70764176b6b29608c037419fd9c4545a00a6d64ca7946d672a533a",
+      "header_ascii": "...[{pvAv.....7A...TZ...L..mg*S:",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "036.fpk",
+      "size": 1075795924,
+      "size_mb": 1025.96,
+      "extension": ".fpk",
+      "header_hex": "0a82481f05bc4eb6380a90e284188c8a9a9e88916f6dc8ab57a65c4f85801151",
+      "header_ascii": "..H...N.8...........om..W.\\O...Q",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "037.fpk",
+      "size": 1074204996,
+      "size_mb": 1024.44,
+      "extension": ".fpk",
+      "header_hex": "f45c464552cfbda1e7cbe8b06d8d779f5348ebf2fd75a699d52380e82e3f52cd",
+      "header_ascii": ".\\FER.......m.w.SH...u...#...?R.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "038.fpk",
+      "size": 1074148500,
+      "size_mb": 1024.39,
+      "extension": ".fpk",
+      "header_hex": "fdaa6bc7195867744bbabff37a762f53c8d436ef6e993554514aa1d04c4a086b",
+      "header_ascii": "..k..XgtK...zv/S..6.n.5TQJ..LJ.k",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "039.fpk",
+      "size": 1074956264,
+      "size_mb": 1025.16,
+      "extension": ".fpk",
+      "header_hex": "f9b868d17c0deaf650280a6b477d3775fb13eb951860163992500304459c1ea9",
+      "header_ascii": "..h.|...P(.kG}7u.....`.9.P..E...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "040.fpk",
+      "size": 1075433800,
+      "size_mb": 1025.61,
+      "extension": ".fpk",
+      "header_hex": "6cf33466ac7833ab894c73ab816f7203167b1afccbfe713e8188efd3dc138a42",
+      "header_ascii": "l.4f.x3..Ls..or..{....q>.......B",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "041.fpk",
+      "size": 1074936880,
+      "size_mb": 1025.14,
+      "extension": ".fpk",
+      "header_hex": "da87a3f23bc8574b7dd6cee33572b253a69f4c594a3c55c98bb126861fda931c",
+      "header_ascii": "....;.WK}...5r.S..LYJ<U...&.....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "042.fpk",
+      "size": 1076923516,
+      "size_mb": 1027.03,
+      "extension": ".fpk",
+      "header_hex": "3eef267f68559f781d28df58fae85ca9ed650c3da750eac2367a7cca1289de9c",
+      "header_ascii": ">.&.hU.x.(.X..\\..e.=.P..6z|.....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "043.fpk",
+      "size": 1074751832,
+      "size_mb": 1024.96,
+      "extension": ".fpk",
+      "header_hex": "a3b4c8dfbd089ec92eb5be779abe7f8455a6487a87658dcb869d41872b788ee8",
+      "header_ascii": "...........w....U.Hz.e....A.+x..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "044.fpk",
+      "size": 1075216264,
+      "size_mb": 1025.41,
+      "extension": ".fpk",
+      "header_hex": "cf6ca4293b3d606d0685f7be15a0e62037d361bf49111c5d1c28b1757ffdaa6a",
+      "header_ascii": ".l.);=`m....... 7.a.I..].(.u...j",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "045.fpk",
+      "size": 1074828276,
+      "size_mb": 1025.04,
+      "extension": ".fpk",
+      "header_hex": "7f1ec1063526fde1a0ea6c3a51a8f8f076ac1deafe7f19f92d826389af4ad239",
+      "header_ascii": "....5&....l:Q...v.......-.c..J.9",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "046.fpk",
+      "size": 1075558844,
+      "size_mb": 1025.73,
+      "extension": ".fpk",
+      "header_hex": "a15d3ad792665a258f7c733b876065395e6d8ed3a53b84d52ee2c0358fb72de9",
+      "header_ascii": ".]:..fZ%.|s;.`e9^m...;.....5..-.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "047.fpk",
+      "size": 1078306168,
+      "size_mb": 1028.35,
+      "extension": ".fpk",
+      "header_hex": "723cf2acd9b15db90042e9ae213329eab5620c371361f8e25abcfeac3d56bb9b",
+      "header_ascii": "r<....]..B..!3)..b.7.a..Z...=V..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "048.fpk",
+      "size": 1084109184,
+      "size_mb": 1033.89,
+      "extension": ".fpk",
+      "header_hex": "c4943c9a0b515974e992f43ab27d3f21082c248331a2d193fc314e42734fe4ac",
+      "header_ascii": "..<..QYt...:.}?!.,$.1....1NBsO..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "049.fpk",
+      "size": 1076679648,
+      "size_mb": 1026.8,
+      "extension": ".fpk",
+      "header_hex": "2954ef6da80d8f65d0c47c1df4ada944a1cb77f7247133db31854980685a1839",
+      "header_ascii": ")T.m...e..|....D..w.$q3.1.I.hZ.9",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "050.fpk",
+      "size": 1076136856,
+      "size_mb": 1026.28,
+      "extension": ".fpk",
+      "header_hex": "9c214fd651375d2695de796111d8f320633e00537367b9961886480f8d4eb970",
+      "header_ascii": ".!O.Q7]&..ya... c>.Ssg....H..N.p",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "051.fpk",
+      "size": 1076302008,
+      "size_mb": 1026.44,
+      "extension": ".fpk",
+      "header_hex": "fa5186e78ca4732e82eab28d0d954572cd57bef687bdb0f34ae5f432c8582d2c",
+      "header_ascii": ".Q....s.......Er.W......J..2.X-,",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "052.fpk",
+      "size": 1076081116,
+      "size_mb": 1026.23,
+      "extension": ".fpk",
+      "header_hex": "db991a89875048dbcef0bb5fd12ded9e9cfdce02e03fd1570640e926b38beed4",
+      "header_ascii": ".....PH...._.-.......?.W.@.&....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "053.fpk",
+      "size": 1076582340,
+      "size_mb": 1026.71,
+      "extension": ".fpk",
+      "header_hex": "ec0d802c8266a10ab0cde07268e319a5d761c470ae3ffd1ad78aa0f6b28da021",
+      "header_ascii": "...,.f.....rh....a.p.?.........!",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "054.fpk",
+      "size": 1075520140,
+      "size_mb": 1025.7,
+      "extension": ".fpk",
+      "header_hex": "0462542298ff94d044aa6e25139be373e745fe2c7c766a030e9ad9ca123fd3cf",
+      "header_ascii": ".bT\"....D.n%...s.E.,|vj......?..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "055.fpk",
+      "size": 1076030712,
+      "size_mb": 1026.18,
+      "extension": ".fpk",
+      "header_hex": "655e333321a314a4bb2bf8b94d2261843a19ef2e0ca33884ebc5133be4b1454b",
+      "header_ascii": "e^33!....+..M\"a.:.....8....;..EK",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "056.fpk",
+      "size": 1074682820,
+      "size_mb": 1024.9,
+      "extension": ".fpk",
+      "header_hex": "b19fd6c49f1bef9ee38fa63c632a4002cf8752ae5252c4b9cd2eff7b5d8354fc",
+      "header_ascii": "...........<c*@...R.RR.....{].T.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "057.fpk",
+      "size": 1075747232,
+      "size_mb": 1025.91,
+      "extension": ".fpk",
+      "header_hex": "f8924899448c99b885a24a60a0d511bd8fa41de6603740fd45a3e4ebcaca45a5",
+      "header_ascii": "..H.D.....J`........`7@.E.....E.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "058.fpk",
+      "size": 1075809340,
+      "size_mb": 1025.97,
+      "extension": ".fpk",
+      "header_hex": "bac1c89d71d4be92d5c4d3b14cd2fc0029070ecf15c41ca5e9142f300cc89ad6",
+      "header_ascii": "....q.......L...)........./0....",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "059.fpk",
+      "size": 1074856580,
+      "size_mb": 1025.06,
+      "extension": ".fpk",
+      "header_hex": "a9cc7da469919a30839d2f2126f8639397be9ff8e2e3c6572a7d47b6ad2d87e5",
+      "header_ascii": "..}.i..0../!&.c........W*}G..-..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "060.fpk",
+      "size": 1075082060,
+      "size_mb": 1025.28,
+      "extension": ".fpk",
+      "header_hex": "65442cb064a383fbbe8ce1628966671a8e893caca6c53aed54ef4086738f5ed4",
+      "header_ascii": "eD,.d......b.fg...<...:.T.@.s.^.",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "061.fpk",
+      "size": 1074754284,
+      "size_mb": 1024.97,
+      "extension": ".fpk",
+      "header_hex": "4c6be294db958fc37c5db30933f09b771e48d9b865d6e1ca5eb57e5347a8cdb0",
+      "header_ascii": "Lk......|]..3..w.H..e...^.~SG...",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "062.fpk",
+      "size": 1074948188,
+      "size_mb": 1025.15,
+      "extension": ".fpk",
+      "header_hex": "c04aa7be6589e6523a8d5a75c6608fb08bc9516eb9056378a82bed47d670b5bd",
+      "header_ascii": ".J..e..R:.Zu.`....Qn..cx.+.G.p..",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "063.fpk",
+      "size": 1074423140,
+      "size_mb": 1024.65,
+      "extension": ".fpk",
+      "header_hex": "47e06611d626be89e17559ea31bd0466763098ed68d09263647e25de9a263640",
+      "header_ascii": "G.f..&...uY.1..fv0..h..cd~%..&6@",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "064.fpk",
+      "size": 3895404,
+      "size_mb": 3.71,
+      "extension": ".fpk",
+      "header_hex": "6107529b8c70278ec8cf126333d2521b9a5bd5cae2e9552c952d87f2e6a590e1",
+      "header_ascii": "a.R..p'....c3.R..[....U,.-......",
+      "type": "FPK资源包(未知格式)",
+      "description": "FPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "building_01.gpk",
+      "size": 1381324868,
+      "size_mb": 1317.33,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a504b59e0eb48d3670c6de9b7b4a6ac15fa",
+      "header_ascii": "ZD...Rd...aq .*PKY..H.g.m.......",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "building_02.gpk",
+      "size": 1305642596,
+      "size_mb": 1245.16,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a509d921c6d37f95c624fece440a93753e7",
+      "header_ascii": "ZD...Rd...aq .*P...m7.\\bO..@.7S.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "building_03.gpk",
+      "size": 1402704492,
+      "size_mb": 1337.72,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50802162670a2cb271451c6ec5cb13cd47",
+      "header_ascii": "ZD...Rd...aq .*P.!bg.,.qE.n....G",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "building_04.gpk",
+      "size": 887188860,
+      "size_mb": 846.09,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a508ddb722504c6d9d0742b04da50f9a8c7",
+      "header_ascii": "ZD...Rd...aq .*P..r%....t+..P...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_01.gpk",
+      "size": 1574942896,
+      "size_mb": 1501.98,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50ecca03e29347190752b211a9f0802e60",
+      "header_ascii": "ZD...Rd...aq .*P.....G..R......`",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_02.gpk",
+      "size": 2128015100,
+      "size_mb": 2029.43,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a502282c4b0668c72597c0525faa2240e6f",
+      "header_ascii": "ZD...Rd...aq .*P\"...f.rY|.%..$.o",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_03.gpk",
+      "size": 1956395064,
+      "size_mb": 1865.76,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50c8de6321d0371c01c97290f6216f09b5",
+      "header_ascii": "ZD...Rd...aq .*P..c!.7...r..!o..",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_04.gpk",
+      "size": 1782687580,
+      "size_mb": 1700.1,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50c25cd1c99550ffc008345dc03a0f33f6",
+      "header_ascii": "ZD...Rd...aq .*P.\\...P...4].:.3.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_05.gpk",
+      "size": 1889517172,
+      "size_mb": 1801.98,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a507ed15ae2a24f45ea0f2237348df3bf36",
+      "header_ascii": "ZD...Rd...aq .*P~.Z..OE..\"74...6",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_06.gpk",
+      "size": 1375271636,
+      "size_mb": 1311.56,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5037305a3ba3ace2923309b86fa1e817e9",
+      "header_ascii": "ZD...Rd...aq .*P70Z;....3..o....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_07.gpk",
+      "size": 1562022672,
+      "size_mb": 1489.66,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50dcb971ba0f844b2243dbd5c8fcd1d15e",
+      "header_ascii": "ZD...Rd...aq .*P..q...K\"C......^",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_08.gpk",
+      "size": 1174066312,
+      "size_mb": 1119.68,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50e6b9dd65713057afaf3987937185150d",
+      "header_ascii": "ZD...Rd...aq .*P...eq0W..9..q...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "character_09.gpk",
+      "size": 1230157612,
+      "size_mb": 1173.17,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50ee730a8f5ce2486554d83dc65d147d1e",
+      "header_ascii": "ZD...Rd...aq .*P.s..\\.HeT.=.].}.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "effect_01.gpk",
+      "size": 700157292,
+      "size_mb": 667.72,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50c42a2bdf3d0d2c3d6b59cb41eb6f5133",
+      "header_ascii": "ZD...Rd...aq .*P.*+.=.,=kY.A.oQ3",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "effect_02.gpk",
+      "size": 150980196,
+      "size_mb": 143.99,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5086fabb405e0528fa6dac4ec4597a38a0",
+      "header_ascii": "ZD...Rd...aq .*P...@^.(.m.N.Yz8.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "effect_cache.gpk",
+      "size": 752927516,
+      "size_mb": 718.05,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a504efaba0bbfc5580d1ff6792a13f3ee0b",
+      "header_ascii": "ZD...Rd...aq .*PN.....X...y*....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_01.gpk",
+      "size": 1696417564,
+      "size_mb": 1617.83,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50596d1000fd5c17fc704295ddbf7668c2",
+      "header_ascii": "ZD...Rd...aq .*PYm...\\..pB...vh.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_02.gpk",
+      "size": 1641597588,
+      "size_mb": 1565.55,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a508f9f560778b8b45f8dba1480ab93bcff",
+      "header_ascii": "ZD...Rd...aq .*P..V.x.._........",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_03.gpk",
+      "size": 1270552660,
+      "size_mb": 1211.69,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a501c636d3ca46ab87e2419fcc6b48fe82c",
+      "header_ascii": "ZD...Rd...aq .*P.cm<.j.~$......,",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_04.gpk",
+      "size": 1457732920,
+      "size_mb": 1390.2,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a500c9ba8e214e91fb5dc916e7d89d24f65",
+      "header_ascii": "ZD...Rd...aq .*P..........n}..Oe",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_05.gpk",
+      "size": 1783964736,
+      "size_mb": 1701.32,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a507c451dc6af0b29fe0cfd02dae4e464fb",
+      "header_ascii": "ZD...Rd...aq .*P|E....).......d.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_06.gpk",
+      "size": 1784573060,
+      "size_mb": 1701.9,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50764961e50984fd404f3c2612bb106b9a",
+      "header_ascii": "ZD...Rd...aq .*PvIa....@O<&...k.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_07.gpk",
+      "size": 1547338004,
+      "size_mb": 1475.66,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50eade3c7921ebca0c141ab54927a288e7",
+      "header_ascii": "ZD...Rd...aq .*P..<y!......I'...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_08.gpk",
+      "size": 1619466992,
+      "size_mb": 1544.44,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5009604a7c67aa9ac93f9fdf1d60fc15e6",
+      "header_ascii": "ZD...Rd...aq .*P.`J|g...?...`...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_09.gpk",
+      "size": 1625056964,
+      "size_mb": 1549.78,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50abf1994c4f0efd3505be9e25febe5941",
+      "header_ascii": "ZD...Rd...aq .*P...LO..5...%..YA",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_10.gpk",
+      "size": 1461102456,
+      "size_mb": 1393.42,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5012d5e54d692de6d750baa8679d9b3b24",
+      "header_ascii": "ZD...Rd...aq .*P...Mi-..P..g..;$",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_11.gpk",
+      "size": 895889692,
+      "size_mb": 854.39,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5038012bf8d77cb916a0716bd610427b31",
+      "header_ascii": "ZD...Rd...aq .*P8.+..|...qk..B{1",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_01.gpk",
+      "size": 1612299220,
+      "size_mb": 1537.61,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50273ce94c1159997cfe413b85317d25a5",
+      "header_ascii": "ZD...Rd...aq .*P'<.L.Y.|.A;.1}%.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_02.gpk",
+      "size": 1664670884,
+      "size_mb": 1587.55,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a505831a499205e056578af80dfb4f2c7e8",
+      "header_ascii": "ZD...Rd...aq .*PX1.. ^.ex.......",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_03.gpk",
+      "size": 1600079840,
+      "size_mb": 1525.96,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5065ccb7f774926cbd6d9ff407941a5fec",
+      "header_ascii": "ZD...Rd...aq .*Pe...t.l.m....._.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_04.gpk",
+      "size": 1609537040,
+      "size_mb": 1534.97,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50435984a6400adfbdc59604b53801cf5a",
+      "header_ascii": "ZD...Rd...aq .*PCY..@.......8..Z",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_05.gpk",
+      "size": 1663121884,
+      "size_mb": 1586.08,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a506b426a0369a7776353ea85ed6e70434a",
+      "header_ascii": "ZD...Rd...aq .*PkBj.i.wcS...npCJ",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "model_high_2024_06.gpk",
+      "size": 704754988,
+      "size_mb": 672.11,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a505daecb059edb196647b736436fbfee6a",
+      "header_ascii": "ZD...Rd...aq .*P]......fG.6Co..j",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_01.gpk",
+      "size": 1553251948,
+      "size_mb": 1481.3,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50f5a566de5ed10715ad80455c27a3b52e",
+      "header_ascii": "ZD...Rd...aq .*P..f.^.....E\\'...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_02.gpk",
+      "size": 1597204216,
+      "size_mb": 1523.21,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50d31f0af0b51578ed901b69381490a3a7",
+      "header_ascii": "ZD...Rd...aq .*P......x...i8....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_03.gpk",
+      "size": 1404290908,
+      "size_mb": 1339.24,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5041ae610135e8b0f505472b23298b3406",
+      "header_ascii": "ZD...Rd...aq .*PA.a.5....G+#).4.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_04.gpk",
+      "size": 1496614396,
+      "size_mb": 1427.28,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50684626a7c96d84f6c3fe129e56bea165",
+      "header_ascii": "ZD...Rd...aq .*PhF&..m......V..e",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_05.gpk",
+      "size": 65578888,
+      "size_mb": 62.54,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a500b4d7c8bc33f0b5a0f7dedbf5ad4fa6b",
+      "header_ascii": "ZD...Rd...aq .*P.M|..?.Z.}..Z..k",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_bw_01.gpk",
+      "size": 1713889104,
+      "size_mb": 1634.49,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a504e68637fcb36be4eed8c026ec2ff37e4",
+      "header_ascii": "ZD...Rd...aq .*PNhc..6.N...n..7.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_bw_02.gpk",
+      "size": 1619724820,
+      "size_mb": 1544.69,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50e71449141851d7e26a69c7387fad918f",
+      "header_ascii": "ZD...Rd...aq .*P..I..Q..ji.8....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_bw_03.gpk",
+      "size": 1644606708,
+      "size_mb": 1568.42,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50324312c510a9c4b25b2a77795b8dd299",
+      "header_ascii": "ZD...Rd...aq .*P2C......[*wy[...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_bw_04.gpk",
+      "size": 1714647336,
+      "size_mb": 1635.22,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a5080729587b53590485583a81e7860ed63",
+      "header_ascii": "ZD...Rd...aq .*P.r...5.HU...x`.c",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "scene_bw_05.gpk",
+      "size": 1349652660,
+      "size_mb": 1287.13,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50175d679d17f1edb63e3727b02dc8ae26",
+      "header_ascii": "ZD...Rd...aq .*P.]g.....>7'.-..&",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "sound.gpk",
+      "size": 1226485512,
+      "size_mb": 1169.67,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50a92eabe0e89cb76a3beda14546f07a93",
+      "header_ascii": "ZD...Rd...aq .*P.......j;..EF.z.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "textures.gpk",
+      "size": 432207360,
+      "size_mb": 412.19,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50bcd6b3fe68cdd7672f469364331ee59d",
+      "header_ascii": "ZD...Rd...aq .*P....h..g/F.d3...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "textures_bw.gpk",
+      "size": 579698928,
+      "size_mb": 552.84,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a501aa505b53e5010bc7a5b0c0d4d2dd433",
+      "header_ascii": "ZD...Rd...aq .*P....>P..z[..M-.3",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "ui.npk",
+      "size": 3327682040,
+      "size_mb": 3173.52,
+      "extension": ".npk",
+      "header_hex": "fe0eb04e2e149972c37c644bea50f7154af848a55f6823b0907619b16e8e26f2",
+      "header_ascii": "...N...r.|dK.P..J.H._h#..v..n.&.",
+      "type": "NPK资源包",
+      "description": "NPK格式资源包，c159对象识别"
+    },
+    {
+      "name": "ui_01.gpk",
+      "size": 1386788696,
+      "size_mb": 1322.54,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50cd82123f88f1a6e879d7ae5d7f947cd4",
+      "header_ascii": "ZD...Rd...aq .*P...?....y..]..|.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "ui_02.gpk",
+      "size": 799425184,
+      "size_mb": 762.39,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a505ad55a1f336a0284279e8a24a9a613b1",
+      "header_ascii": "ZD...Rd...aq .*PZ.Z.3j..'..$....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "ui_03.gpk",
+      "size": 696876296,
+      "size_mb": 664.59,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50ffcba414a5f3556f85c6805f51b108ca",
+      "header_ascii": "ZD...Rd...aq .*P......Uo..._Q...",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "ui_04.gpk",
+      "size": 946658000,
+      "size_mb": 902.8,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a505d1fc36cd46c9fc3499208fb0c451570",
+      "header_ascii": "ZD...Rd...aq .*P]..l.l..I....E.p",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "ui_05.gpk",
+      "size": 823930424,
+      "size_mb": 785.76,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50dc8747c904907f06cb36fd8761f635be",
+      "header_ascii": "ZD...Rd...aq .*P..G......6..a.5.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "utility.gpk",
+      "size": 848386532,
+      "size_mb": 809.08,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a502f0a8eb378b9779750557aa73fc052eb",
+      "header_ascii": "ZD...Rd...aq .*P/...x.w.PUz.?.R.",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "utility_scene.gpk",
+      "size": 403361916,
+      "size_mb": 384.68,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a50bb2fea014d41df83e8801958142ad9d3",
+      "header_ascii": "ZD...Rd...aq .*P./..MA.....X.*..",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "video.gpk",
+      "size": 1175457580,
+      "size_mb": 1121.0,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a509bb276901e096c5acebc59650ec1aca2",
+      "header_ascii": "ZD...Rd...aq .*P..v...lZ..Ye....",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    },
+    {
+      "name": "weapon.gpk",
+      "size": 1522433388,
+      "size_mb": 1451.91,
+      "extension": ".gpk",
+      "header_hex": "5a44f4aeec5264ddaeae617120db2a501bda03fb759fb187c01dace1bf9bbe04",
+      "header_ascii": "ZD...Rd...aq .*P....u...........",
+      "type": "GPK资源包(未知格式)",
+      "description": "GPK扩展名，但头部格式未知"
+    }
+  ]
+}
