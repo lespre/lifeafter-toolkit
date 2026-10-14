@@ -201,12 +201,12 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 
 ## 交接包第一次运行：先识别，再拆包
 
-交接包是**代码/文档包**，不携带 `E:\\mrzh`、还原树或大型 SQLite 索引。直接解压后不需要手动设置 `PYTHONPATH`，推荐用统一入口：
+交接包是**代码/文档包**，不携带 `E:\mrzh`、还原树或大型 SQLite 索引。直接解压后不需要手动设置 `PYTHONPATH`，推荐用统一入口：
 
 ```bash
 python 01_工具/run_all.py detect
-python 01_工具/run_all.py estimate full --source-root "E:\\你的游戏目录"
-python 01_工具/run_all.py hotfix plan --client-root "E:\\你的游戏目录"
+python 01_工具/run_all.py estimate full --source-root "E:/你的游戏目录"
+python 01_工具/run_all.py hotfix plan --client-root "E:/你的游戏目录"
 ```
 
 - `detect` 只读扫描显式路径、环境变量和有限深度的常见目录；会区分 PC 测试服、未来测、灰度和正式服。
@@ -286,13 +286,13 @@ toolkit_cli.py shader list|info|export    # [横切] 着色器层：拆 .dxbc / 
 python 01_工具/run_all.py detect
 
 # 全量拆包前先算空间；空间不足退出码 5，不开始拆包
-python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
+python 01_工具/run_all.py estimate full --source-root "E:\mrzh"
 
 # 只读对比 overlay，确认本次热更范围
-python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
+python 01_工具/run_all.py hotfix plan --client-root "E:\mrzh"
 
 # 只下载并解码热更 overlay，不重拆全量包
-python 01_工具/run_all.py hotfix extract --client-root "E:\\mrzh" --out out/hotfix
+python 01_工具/run_all.py hotfix extract --client-root "E:\mrzh" --out out/hotfix
 
 toolkit_cli.py loose scan --out <目录>    # [H-2] 散文件层 .idx/.wpk 解密 → 明文
 toolkit_cli.py loose match --dir <目录>   # [H-2] 内容 MD5 → 容器+行号（不靠名字）

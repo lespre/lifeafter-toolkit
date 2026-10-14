@@ -32,10 +32,10 @@ PC 客户端可能是体验服 ⇒ 名字/fid 可能不同。
 python 01_工具/run_all.py detect
 
 # ② 源包路径不固定时显式指定，并先做空间预检
-python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
+python 01_工具/run_all.py estimate full --source-root "E:\mrzh"
 
 # ③ 有热更时先只读计划，不要直接重拆全量
-python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
+python 01_工具/run_all.py hotfix plan --client-root "E:\mrzh"
 ```
 
 交接包不包含本地源包、还原树和大型索引，所以 `detect` / `estimate` 可以直接跑，但 `verify`、完整索引定位和逻辑路径还原需要先准备对应数据环境。多个客户端候选时必须用 `--client-root`，正式服不能代替 PC 测试服；APK/模拟器资源也不能混入测试服结论。

@@ -15,13 +15,13 @@
 python 01_工具/run_all.py detect
 
 # 源包路径不固定时显式指定，避免误选正式服
-python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
+python 01_工具/run_all.py estimate full --source-root "E:\mrzh"
 
 # 只比较本地 overlay，先看热更范围和所需空间
-python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
+python 01_工具/run_all.py hotfix plan --client-root "E:\mrzh"
 
 # 只下载并解码热更包/帧，不重拆全量包
-python 01_工具/run_all.py hotfix extract --client-root "E:\\mrzh" --out "out\\hotfix"
+python 01_工具/run_all.py hotfix extract --client-root "E:\mrzh" --out "out\\hotfix"
 ```
 
 `detect` 只读扫描并且有限深度/限时；多个候选不会擅自选择。`estimate full` 在真正拆包前检查目标盘剩余空间，返回 5 就是空间不足且未开始写入。`hotfix extract` 的报告会保留客户端状态、CDN 目录、overlay 包、帧文件和空间口径；如果没有完整索引，不会伪造逻辑路径。

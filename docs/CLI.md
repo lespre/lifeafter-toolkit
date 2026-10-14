@@ -17,7 +17,7 @@ python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py <命令> [�
 
 ```bash
 python 01_工具/run_all.py detect
-python 01_工具/run_all.py detect --client-root "E:\\mrzh"
+python 01_工具/run_all.py detect --client-root "E:\mrzh"
 ```
 
 只读检查显式路径、环境变量、常见目录和有限深度候选。输出服别、版本、CDN 包目录、revision 和证据。正式服默认不会被当作体验服源；多个体验服候选时必须显式指定。
@@ -25,8 +25,8 @@ python 01_工具/run_all.py detect --client-root "E:\\mrzh"
 ### `estimate` — 拆包前空间预检 `[Q]`
 
 ```bash
-python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
-python 01_工具/run_all.py estimate hotfix --source-root "E:\\mrzh" --out out/hotfix
+python 01_工具/run_all.py estimate full --source-root "E:\mrzh"
+python 01_工具/run_all.py estimate hotfix --source-root "E:\mrzh" --out out/hotfix
 ```
 
 输出源包、解码产物、索引、临时空间、安全余量和目标盘可用空间。全量扫描有文件数/时间上限，若报告 `scan_complete=false`，结果是保守估算，不应当当成精确值。空间不足退出码为 `5`，命令不启动写入。
@@ -34,8 +34,8 @@ python 01_工具/run_all.py estimate hotfix --source-root "E:\\mrzh" --out out/h
 ### `hotfix plan` / `hotfix extract` — 只拆热更 `[H]`
 
 ```bash
-python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
-python 01_工具/run_all.py hotfix extract --client-root "E:\\mrzh" --out out/hotfix
+python 01_工具/run_all.py hotfix plan --client-root "E:\mrzh"
+python 01_工具/run_all.py hotfix extract --client-root "E:\mrzh" --out out/hotfix
 ```
 
 `plan` 只读客户端 `local_state_314_lc` 的 overlay 清单；`extract` 只下载并解码这些 overlay 包/帧，不重拆全量包。报告保留 CDN 目录、原始包、帧和空间口径。没有完整索引时不伪造逻辑路径；有 `rel/` 与 `pt/` `pkg_N.pi` 缓存时可额外传 `--pkg-cache` 生成 fid diff。
