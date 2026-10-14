@@ -13,6 +13,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+# 允许直接运行本文件；不再强制用户先手动设置 PYTHONPATH。
+# run_all.py 仍是推荐入口，但交接包里的 README 直跑路径也必须可用。
+_CLI_CORE = Path(__file__).resolve().parents[1]
+if str(_CLI_CORE) not in sys.path:
+    sys.path.insert(0, str(_CLI_CORE))
+
 from toolkit_core import hotfix_bundle as HB
 from toolkit_core.paths import (ANALYSIS_ROOT, DEFAULT_NAMES_DICT, DEFAULT_OUTPUT_ROOT,
                                 INDEX_ROOT, PROJECT_ROOT)
@@ -5522,6 +5528,185 @@ def cmd_map(args) -> int:
     return 0
 
 
+def _auto_client_root(explicit: Path | None = None) -> Path | None:
+    from toolkit_core.client_discovery import discover_clients, read_client
+    if explicit:
+        root = explicit.resolve()
+        if not root.is_dir():
+            print("客户端目录不存在：%s" % root, file=sys.stderr)
+            return None
+        info = read_client(root)
+        if not info.get("safe_for_experience_source"):
+            print("拒绝：%s 被识别为%s，不能作为体验服热更源。" % (root, info.get("server_kind")), file=sys.stderr)
+            return None
+        return root
+    found = discover_clients()
+    safe = [x for x in found if x.get("safe_for_experience_source")]
+    return Path(safe[0]["root"]) if len(safe) == 1 else None
+
+
+def cmd_detect(args) -> int:
+    from toolkit_core.client_discovery import discover_clients, read_client
+    found = [read_client(args.client_root)] if args.client_root else discover_clients(
+        roots=args.scan_root, max_dirs=args.max_dirs, timeout=args.timeout)
+    rep = {"kind": "client-discovery", "count": len(found), "clients": found}
+    if args.json is not None:
+        _dump(rep, args.json)
+    else:
+        print("发现客户端 %d 个" % len(found))
+        for x in found:
+            print("  %s" % x["root"])
+            print("    服别=%s · 入口=%s · version=%s" % (x["server_kind"], x["line"], x.get("version") or "未知"))
+            print("    CDN目录=%s · revision=%s · 依据=%s" % (x.get("cdn_dir") or "未知", x.get("revision") or "未知", ", ".join(x.get("evidence", [])) or "无"))
+            if not x.get("safe_for_experience_source"):
+                print("    ⚠ 正式服/非体验服：默认不作为体验服源")
+    return 0 if found else 6
+
+
+def cmd_estimate(args) -> int:
+    from toolkit_core.client_discovery import discover_clients
+    from toolkit_core.storage_estimate import scan_source, estimate_storage, human_bytes
+    root = Path(args.source_root).resolve() if args.source_root else None
+    if root is None:
+        found = [x for x in discover_clients() if x.get("safe_for_experience_source")]
+        if len(found) != 1:
+            print("estimate：自动找到 %d 个体验服候选，无法安全选定；请用 --source-root 指定。" % len(found), file=sys.stderr)
+            return 6
+        root = Path(found[0]["root"])
+    if args.mode == "full":
+        rep = scan_source(root, mode="full")
+    else:
+        from toolkit_core import patch_overlay as PO
+        try:
+            state = PO.read_client_state(root)
+            ol = PO.overlay_list(state)
+        except Exception as exc:
+            print("estimate hotfix：读取热更状态失败：%s: %s" % (type(exc).__name__, exc), file=sys.stderr)
+            return 1
+        bytes_ = sum(p.get("size") or 0 for p in ol["packages"])
+        free = shutil.disk_usage(Path(args.out or root).resolve()).free
+        rep = estimate_storage(source_bytes=0, decoded_bytes=bytes_, index_bytes=128 * 1024**2, temp_bytes=max(64 * 1024**2, bytes_ * 2), free_bytes=free, mode="hotfix")
+        rep.update({"root": str(root), "overlay_package_count": len(ol["packages"]), "overlay_timestamp": ol["timestamp"]})
+    rep["required_human"] = human_bytes(rep["required_bytes"])
+    if args.json is not None:
+        _dump(rep, args.json)
+    else:
+        print("空间预检：%s" % rep["verdict"])
+        print("  源包：%s · 解码：%s · 索引：%s · 临时：%s · 安全余量：%s" % (rep["human"]["source"], rep["human"]["decoded"], rep["human"]["index"], rep["human"]["temp"], rep["human"]["safety"]))
+        print("  预计至少需要：%s · 当前可用：%s" % (rep["human"]["required"], rep["human"]["free"]))
+        if rep.get("decoded_basis"):
+            print("  口径：%s" % rep["decoded_basis"])
+    return 0 if rep["enough"] else 5
+
+
+def cmd_hotfix_plan(args) -> int:
+    from toolkit_core.client_discovery import read_client
+    from toolkit_core import patch_overlay as PO
+    from toolkit_core.hotfix_plan import build_hotfix_plan
+    from toolkit_core.storage_estimate import estimate_storage
+    root = _auto_client_root(args.client_root)
+    if root is None:
+        print("hotfix plan：没有唯一体验服客户端，请用 --client-root 指定。", file=sys.stderr)
+        return 6
+    try:
+        state = PO.read_client_state(root)
+        ol = PO.overlay_list(state)
+        info = read_client(root)
+    except Exception as exc:
+        print("hotfix plan：读取客户端状态失败：%s: %s" % (type(exc).__name__, exc), file=sys.stderr)
+        return 1
+    bytes_ = sum(p.get("size") or 0 for p in ol["packages"])
+    storage = estimate_storage(source_bytes=0, decoded_bytes=bytes_, index_bytes=128 * 1024**2, temp_bytes=max(64 * 1024**2, bytes_ * 2), free_bytes=shutil.disk_usage(Path(args.out).resolve()).free, mode="hotfix")
+    rep = build_hotfix_plan(client_root=root, version={k: info.get(k) for k in ("line", "server_kind", "version", "cdn_dir", "revision", "version_vs_cdn")}, overlay_packages=ol["packages"], storage=storage)
+    rep["overlay_timestamp"] = ol["timestamp"]
+    if args.json is not None:
+        _dump(rep, args.json)
+    else:
+        print("热更计划（只拆热更内容）")
+        print("  客户端：%s · %s · version=%s" % (root, info["server_kind"], info.get("version") or "未知"))
+        print("  CDN目录：%s · overlay=%s · %d 个包" % (info.get("cdn_dir") or "未知", ol["timestamp"], ol["n"]))
+        print("  预计空间：%s · 当前：%s" % (storage["human"]["required"], storage["human"]["free"]))
+        print("  说明：不会重拆全量包；新增/覆盖内容保留 fid、容器和行号证据。")
+    return 0 if storage["enough"] else 5
+
+
+def cmd_hotfix_extract(args) -> int:
+    """只提取客户端 overlay 对应的热更包/帧，不要求先重拆全量树。"""
+    from toolkit_core import patch_overlay as PO
+    from toolkit_core.client_discovery import read_client
+    from toolkit_core.hotfix_plan import build_hotfix_plan
+    from toolkit_core.storage_estimate import estimate_storage
+    root = _auto_client_root(args.client_root)
+    if root is None:
+        print("hotfix extract：没有唯一体验服客户端，请用 --client-root 指定。", file=sys.stderr)
+        return 6
+    out = Path(args.out).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    try:
+        state = PO.read_client_state(root)
+        ol = PO.overlay_list(state)
+        cdn_dir = PO.cdn_dir(state)
+        info = read_client(root)
+    except Exception as exc:
+        print("hotfix extract：读取客户端状态失败：%s: %s" % (type(exc).__name__, exc), file=sys.stderr)
+        return 1
+    names = [p["name"] for p in ol["packages"]]
+    total = sum(p.get("size") or 0 for p in ol["packages"])
+    free = shutil.disk_usage(out).free
+    storage = estimate_storage(source_bytes=0, decoded_bytes=total, index_bytes=128 * 1024**2,
+                               temp_bytes=max(64 * 1024**2, total * 2), free_bytes=free, mode="hotfix")
+    if not storage["enough"]:
+        print("hotfix extract：空间不足，未下载。至少需要 %s，当前 %s。" % (storage["human"]["required"], storage["human"]["free"]), file=sys.stderr)
+        return 5
+    pkg_dir = out / "pkgs"
+    payload_dir = out / "payloads"
+    pkg_dir.mkdir(parents=True, exist_ok=True)
+    payload_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        fetched = PO.fetch(cdn_dir, names, pkg_dir, timeout=args.timeout, quiet=args.quiet)
+    except Exception as exc:
+        print("hotfix extract：下载失败 %s: %s" % (type(exc).__name__, exc), file=sys.stderr)
+        return 1
+    frames = []
+    for pkg in sorted(pkg_dir.glob("*.npk")):
+        try:
+            unpacked = PO.unpack_frames(pkg.read_bytes())
+        except Exception as exc:
+            frames.append({"package": pkg.name, "error": "%s: %s" % (type(exc).__name__, exc)})
+            continue
+        pdir = payload_dir / pkg.stem
+        pdir.mkdir(parents=True, exist_ok=True)
+        for i, piece in enumerate(unpacked.get("pieces", [])):
+            target = pdir / ("frame_%06d.bin" % i)
+            target.write_bytes(piece)
+            frames.append({"package": pkg.name, "frame": i, "file": str(target), "bytes": len(piece)})
+    rep = build_hotfix_plan(client_root=root,
+                            version={k: info.get(k) for k in ("line", "server_kind", "version", "cdn_dir", "revision", "version_vs_cdn")},
+                            overlay_packages=ol["packages"], storage=storage)
+    rep.update({"action": "extract", "cdn_dir": cdn_dir, "fetched": fetched,
+                "pkgs_dir": str(pkg_dir), "payloads_dir": str(payload_dir),
+                "frames": frames})
+    if args.pkg_cache and (Path(args.pkg_cache) / "rel").is_dir() and (Path(args.pkg_cache) / "pt").is_dir():
+        try:
+            from toolkit_core import patch_pkg as PP
+            d = PP.diff(Path(args.pkg_cache) / "rel", Path(args.pkg_cache) / "pt")
+            diff = {"added": d["added"], "removed": d["removed"], "common": d["common"]}
+            (out / "fid_diff.json").write_text(json.dumps(diff, ensure_ascii=False, indent=1), encoding="utf-8")
+            rep["fid_diff"] = {"added": len(d["added"]), "removed": len(d["removed"]), "common": len(d["common"])}
+        except Exception as exc:
+            rep["fid_diff_error"] = "%s: %s" % (type(exc).__name__, exc)
+    report = out / "hotfix_extract_report.json"
+    report.write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
+    if not args.quiet:
+        print("热更只拆完成：%d 个 overlay 包，%d 个解码帧。" % (len(names), len([x for x in frames if "file" in x])))
+        print("  包：%s" % pkg_dir)
+        print("  帧：%s" % payload_dir)
+        print("  报告：%s" % report)
+    return 0
+
+
+
+
 def build_parser() -> argparse.ArgumentParser:
     COMMANDS.clear()          # 每次构建都重建登记表（可重复调用）
     parser = argparse.ArgumentParser(
@@ -5558,7 +5743,7 @@ def build_parser() -> argparse.ArgumentParser:
       3 索引不可用 / 4 自检未过 / 5 未命中 / 6 输入不可用
 
   ── 带Q 质量·交付·治理带（横切：闸门）─────────────────────
-      00_共享核心/测试（pytest -q ⇒ 105 passed）· 站点 tools/checks.py 判据
+      00_共享核心/测试（pytest -q ⇒ 259 passed）· 站点 tools/checks.py 判据
 
   ◆ 横切段的工具不产出业务产物：run_all / exe_cli（入口壳）· 图形界面/app（GUI）
     · 调度与限流（scheduler / throttle）· 项目根定位（paths）· 测试
@@ -5581,6 +5766,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-throttle", dest="no_throttle", action="store_true",
                         help="★ 关掉反馈限流（跑满机器，适合没人用电脑时）")
     sub = parser.add_subparsers(dest="command", required=True)
+
+    detect = _sp(sub, "detect", help="[Q] 只读发现本机客户端、服别和版本")
+    detect.add_argument("--client-root", type=Path, help="显式客户端目录（跳过扫描）")
+    detect.add_argument("--scan-root", type=Path, action="append", help="额外扫描根（可重复）")
+    detect.add_argument("--max-dirs", type=int, default=3000)
+    detect.add_argument("--timeout", type=float, default=5.0)
+    detect.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    detect.set_defaults(func=cmd_detect)
+
+    estimate = _sp(sub, "estimate", help="[Q] 拆包前估算源包、产物、索引、临时和安全余量")
+    estimate.add_argument("mode", choices=["full", "hotfix"])
+    estimate.add_argument("--source-root", type=Path, help="源客户端目录；不填则只自动选择唯一体验服")
+    estimate.add_argument("--out", type=Path, help="热更产物目录/空间所在盘")
+    estimate.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    estimate.set_defaults(func=cmd_estimate)
     ex = _sp(sub, "export", help="[①-1] 解析结果 → 表格文件（通用导出器）")
     ex.add_argument("source", help=".bin 条目载荷，或逻辑路径 / fid（经索引提取）")
     ex.add_argument("--out", required=True, help="输出文件（扩展名决定格式：csv/json/md）")
@@ -5873,6 +6073,26 @@ def build_parser() -> argparse.ArgumentParser:
         _p.add_argument("--quiet", action="store_true")
         _p.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
         _p.set_defaults(func=cmd_hotfix)
+
+    _plan = _sp(hf_sub, "plan", help="只读：自动找体验服客户端，生成 overlay 热更计划和空间提示")
+    _plan.add_argument("--client-root", type=Path, help="客户端根；不填则自动选择唯一体验服")
+    _plan.add_argument("--out", type=Path, default=Path.cwd(), help="空间检查所在目录")
+    _plan.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
+    _plan.set_defaults(func=cmd_hotfix_plan)
+
+    _extract = _sp(hf_sub, "extract", help="自动发现 + 只提取 overlay 热更内容（完整交付需索引）")
+    _extract.add_argument("--out", type=Path, required=True, help="产物与报告目录")
+    _extract.add_argument("--client-root", type=Path, help="客户端根；不填则自动选择唯一体验服")
+    _extract.add_argument("--entry", default="playertest", help="官方清单入口（默认 playertest）")
+    _extract.add_argument("--cache", type=Path, help="清单缓存目录")
+    _extract.add_argument("--pkg-cache", type=Path, help="已有 rel/ 与 pt/ pkg_N.pi 缓存目录")
+    _extract.add_argument("--overlay-only", action="store_true", help="无索引/包缓存时也允许只交付 overlay 帧")
+    _extract.add_argument("--png", action="store_true")
+    _extract.add_argument("--product-root", type=Path)
+    _extract.add_argument("--workers", type=int, default=24)
+    _extract.add_argument("--timeout", type=float, default=300.0)
+    _extract.add_argument("--quiet", action="store_true")
+    _extract.set_defaults(func=cmd_hotfix_extract)
 
     # ★ 标准交付结构：把热更产物铺成规范目录（对标 Intelli-verse-X / evrFileTools / ree-pak-rs）
     hb = _sp(hf_sub, "bundle",

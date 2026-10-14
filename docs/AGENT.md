@@ -25,21 +25,22 @@ PC 客户端可能是体验服 ⇒ 名字/fid 可能不同。
 
 ---
 
-## 1. 开工前必做（3 条，缺一必翻车）
+## 1. 开工前必做（交接包已自带路径引导）
 
 ```bash
-# ① 设 PYTHONPATH —— 不设必报 ModuleNotFoundError: toolkit_core
-export PYTHONPATH="$PWD/01_工具/工具库/00_共享核心"
+# ① 自动发现客户端、服别和版本（只读）
+python 01_工具/run_all.py detect
 
-# ② 自检（索引 + 三条已知路径端到端）
-python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
+# ② 源包路径不固定时显式指定，并先做空间预检
+python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
 
-# ③ 确认服务活着（如果需要页面）
-curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 期望 200
+# ③ 有热更时先只读计划，不要直接重拆全量
+python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
 ```
 
-> **`curl` 给 `000` = 服务死了。** 这会让你以为"改了没生效"，
-> 实际是页面根本没加载。**先探活，再诊断。**
+交接包不包含本地源包、还原树和大型索引，所以 `detect` / `estimate` 可以直接跑，但 `verify`、完整索引定位和逻辑路径还原需要先准备对应数据环境。多个客户端候选时必须用 `--client-root`，正式服不能代替 PC 测试服；APK/模拟器资源也不能混入测试服结论。
+
+> `toolkit_cli.py` 已自动把 `00_共享核心` 加入导入路径，不再要求手动设置 `PYTHONPATH`。
 
 ---
 

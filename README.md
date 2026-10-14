@@ -199,6 +199,26 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 
 ---
 
+## 交接包第一次运行：先识别，再拆包
+
+交接包是**代码/文档包**，不携带 `E:\\mrzh`、还原树或大型 SQLite 索引。直接解压后不需要手动设置 `PYTHONPATH`，推荐用统一入口：
+
+```bash
+python 01_工具/run_all.py detect
+python 01_工具/run_all.py estimate full --source-root "E:\\你的游戏目录"
+python 01_工具/run_all.py hotfix plan --client-root "E:\\你的游戏目录"
+```
+
+- `detect` 只读扫描显式路径、环境变量和有限深度的常见目录；会区分 PC 测试服、未来测、灰度和正式服。
+- 自动选择只接受**唯一的体验服候选**；正式服不会悄悄变成体验服源。多个候选时必须用 `--client-root` 手动指定。
+- 版本输出同时列出客户端 `version`、CDN 包目录和 revision；版本号未切换但 CDN 已有热更时会明确提示。
+- `estimate full` 会在全量拆包前统计源包、解码产物、索引、临时空间和安全余量；空间不足返回退出码 5，未开始写入。
+- `hotfix plan` / `hotfix extract` 优先读客户端 overlay 状态，只下载和提取本次热更包，不重拆全量包。`extract` 产物中的逻辑路径需要完整索引才能继续定位；没有索引时仍保留原始包、解码帧和证据报告。
+
+> 旧命令仍可直接运行：`python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py --help`。它已自带核心路径引导。
+
+---
+
 ## 资源定位四步法
 
 ```text
@@ -262,9 +282,21 @@ toolkit_cli.py shader list|info|export    # [横切] 着色器层：拆 .dxbc / 
 ### 热更与散文件层
 
 ```bash
+# 自动识别客户端/服别/版本（只读，多个候选时用 --client-root）
+python 01_工具/run_all.py detect
+
+# 全量拆包前先算空间；空间不足退出码 5，不开始拆包
+python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
+
+# 只读对比 overlay，确认本次热更范围
+python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
+
+# 只下载并解码热更 overlay，不重拆全量包
+python 01_工具/run_all.py hotfix extract --client-root "E:\\mrzh" --out out/hotfix
+
 toolkit_cli.py loose scan --out <目录>    # [H-2] 散文件层 .idx/.wpk 解密 → 明文
 toolkit_cli.py loose match --dir <目录>   # [H-2] 内容 MD5 → 容器+行号（不靠名字）
-toolkit_cli.py hotfix all|report|bundle|rows|patchlog|apply   # [带H] 热更线总入口
+toolkit_cli.py hotfix all|report|bundle|rows|patchlog|apply   # [带H] 完整环境下的传统热更链
 toolkit_cli.py delta                      # [H-1] 正式服 vs 测试服差在哪
 toolkit_cli.py snapshot                   # [H-2] 本地容器快照与终态判定（只读）
 ```

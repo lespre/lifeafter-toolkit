@@ -2,12 +2,33 @@
 
 面向"我拿到一个需求，该按什么顺序做"。每条都是跑通过的。
 
-> 前置：`export PYTHONPATH="<repo>/01_工具/工具库/00_共享核心"`
-> 命令前缀：`python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py`
+> 交接包已内置核心路径引导，不再要求先设置 `PYTHONPATH`。Windows 建议使用项目专用解释器：
+> `E:/la拆包项目/.venv/Scripts/python.exe`。
+> 命令前缀：`python 01_工具/run_all.py`（也可直接运行 `toolkit_cli.py`）。
 
 ---
 
-## 0. 开工三件事
+## 0. 交接包首次使用
+
+```bash
+# 只读发现客户端；输出正式服/测试服/版本/依据
+python 01_工具/run_all.py detect
+
+# 源包路径不固定时显式指定，避免误选正式服
+python 01_工具/run_all.py estimate full --source-root "E:\\mrzh"
+
+# 只比较本地 overlay，先看热更范围和所需空间
+python 01_工具/run_all.py hotfix plan --client-root "E:\\mrzh"
+
+# 只下载并解码热更包/帧，不重拆全量包
+python 01_工具/run_all.py hotfix extract --client-root "E:\\mrzh" --out "out\\hotfix"
+```
+
+`detect` 只读扫描并且有限深度/限时；多个候选不会擅自选择。`estimate full` 在真正拆包前检查目标盘剩余空间，返回 5 就是空间不足且未开始写入。`hotfix extract` 的报告会保留客户端状态、CDN 目录、overlay 包、帧文件和空间口径；如果没有完整索引，不会伪造逻辑路径。
+
+---
+
+## 1. 开工三件事
 
 ```bash
 # ① 服务/环境自检
