@@ -63,7 +63,7 @@ def build(index_db: Path | str, product_root: Path | str,
           containers: Iterable[str] | None = None, *,
           workers: int | None = None, want_sizes: set[int] | None = None,
           incremental: bool = True, quiet: bool = False,
-          progress_every: int = 20000) -> dict:
+          progress_every: int = 20000, resolver: object | None = None) -> dict:
     """为指定容器建/补内容指纹索引。
 
     incremental=True 时跳过已算过的行（比对 mtime，mtime 没变就不重算）。
@@ -72,6 +72,11 @@ def build(index_db: Path | str, product_root: Path | str,
     workers：★ 不给就走智能调度（`throttle.global_jobs("io")`）——
              按硬件 + 任务类型自动定，换台机器不用改代码。
              这条线是「读文件 + 算 md5」，属 I/O 主导，所以按 "io" 取。
+
+    resolver：★ 2026-10-17 修 —— 行 → 文件 的定位器（默认 `artifact_locator.UnifiedResolver`）。
+      **旧实现只会拼「按行号铺法」的目录 `<product_root>/<容器stem>/<行号>.<ext>`**；
+      载荷删除 / 换到还原树之后那张表是空的 ⇒ 每一行都 `return None` ⇒
+      `indexed: 0`（而 `todo` 是百万级），并且**不报错**（bundle 里表现为「候选哈希 0 个」）。
     """
     index_db = Path(index_db)
     product_root = Path(product_root)
@@ -83,6 +88,17 @@ def build(index_db: Path | str, product_root: Path | str,
             _workers = _TH.global_jobs("io")
         except Exception:
             _workers = 16
+    rs = resolver
+    if rs is None:
+        try:
+            from toolkit_core.artifact_locator import UnifiedResolver
+            # ★ 2026-10-17：树根与映射表用**默认权威值**（`default_tree_root()` /
+            #   `row_path_map_db()`）；`product_root` 只当【初拆载荷回退根】。
+            #   ✗ 别写成 `UnifiedResolver(product_root)` —— 那等于把载荷根当树根，
+            #     默认路径又退化成「只认载荷铺法」（契约测试逮到过）。
+            rs = UnifiedResolver(extract_root=product_root)
+        except Exception:                                        # noqa: BLE001
+            rs = None
     con = _connect(index_db)
 
     src = sqlite3.connect("file:%s?mode=ro" % index_db.as_posix(), uri=True)
@@ -138,6 +154,11 @@ def build(index_db: Path | str, product_root: Path | str,
         c, ri, sz = item
         stem = Path(c.replace("\\", "/")).stem
         fp = _dir(stem).get(ri)
+        if fp is None and rs is not None:
+            try:
+                fp = rs.path(c, ri)          # ★ 树/提取产物双路（旧实现只有前者）
+            except Exception:                                    # noqa: BLE001
+                fp = None
         if fp is None:
             return None
         try:
@@ -172,10 +193,17 @@ def build(index_db: Path | str, product_root: Path | str,
 
     el = time.time() - t0
     rep = {"todo": len(todo), "skipped": skipped, "indexed": hits,
+           "resolver": getattr(rs, "__class__", type(None)).__name__ if rs is not None else None,
            "seconds": round(el, 1), "rows_per_sec": round(len(todo) / max(0.001, el), 1)}
+    # ★ 2026-10-17：0 命中不再静默 —— 这是「定位器不可用/指错根」的硬信号（旧行为坑过一轮）
+    if hits == 0 and todo:
+        rep["warning"] = ("0 命中：行→文件定位器拿不到任何产物（product_root 或 row_path_map 不对）"
+                          "—— 不是「本次没有内容」，修定位器再跑")
     if not quiet:
         print("  [内容索引] 完成：算 %d 行 / 跳过 %d 行，用时 %.1f 秒（%.0f 行/秒）"
               % (hits, skipped, el, rep["rows_per_sec"]))
+        if rep.get("warning"):
+            print("  ⚠ " + rep["warning"])
     con.close()
     return rep
 

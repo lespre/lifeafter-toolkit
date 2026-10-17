@@ -670,7 +670,11 @@ function renderSkinMedia(it,name){
   const fidelity={source_matched:"源材质匹配",source:"源数据",source_candidate:"源数据（候选级）",
                   approximate:"材质近似",unbuilt:"未建（无材质链）"}[material]||material;
   const fidTitle=note?`材质保真度依据：${note}`:(material||"");
+  /* ★ 2026-10-17：这张图可能根本不是海报而是**素材底图**（法线图/掩码/色带/平铺）——
+     按像素内容判过才有的字段；有就明说，别让人把法线图当皮肤预览看。无值不加标签。 */
+  const kindLabel=(record&&record.poster_kind)||"";
   return `<div class="skin-media">${poster?`<img src="${esc(poster)}" alt="${esc(name)}预览" loading="lazy" decoding="async">`:""}`+
+    `${kindLabel?`<span class="skin-media-fidelity" title="按像素内容判定：这是素材底图，不是皮肤海报">素材底图 · ${esc(kindLabel)}</span>`:""}`+
     `${fidelity?`<span class="skin-media-fidelity" title="${esc(fidTitle)}">${esc(fidelity)}</span>`:""}`+
     `${ready?`<span class="skin-media-actions"><button class="skin-media-button" type="button" data-skin-id="${esc(it.skin_id??it.skin_item_id??it.id)}" onclick="openSkin3D(event,this)">3D 预览</button></span>`:""}</div>`;
 }
@@ -747,8 +751,13 @@ function renderSkinCard(it){
      `<b>特效</b>${ef.count} 项${ef.present&&ef.present.length?`（${esc(ef.present.slice(0,3).join("、"))}${ef.present.length>3?"…":""}）`:""}</span>`);
    if(ef&&ef.names&&ef.names.length)facts.push(`<span class="fact" title="特效名来自展示层（legacy 板副本，presentation_only）">`+
      `<b>特效名</b>${esc(ef.names.slice(0,3).join("、"))}${ef.names_total>3?` 等 ${ef.names_total} 个`:""}<i class="pres-mark">历史</i></span>`);}
-  {const ip=it.ip_liaison;   // 没有 IP 就不显示这一项（用户 2026-09-13）
-   if(ip)facts.push(`<span class="fact" title="联动IP（展示层：用户参考目录，presentation_only）"><b>联动IP</b>${esc(ip)}</span>`);}
+  {const ip=it.ip_liaison||it.ip_now;   // 没有 IP 就不显示这一项（用户 2026-09-13）
+   // 来源必须在 title 里说清：用户参考目录 / 官方描述提取 / 配置参数（候选级）
+   const ipSrc=it.ip_liaison?"联动IP（展示层：用户参考目录，presentation_only）"
+     :(it.ip_now_state==="config_param_candidate"
+       ?`联动IP（配置证据：${it.ip_now_evidence||"同快照配置参数"}）`
+       :"联动IP（同快照官方描述提取）");
+   if(ip)facts.push(`<span class="fact" title="${esc(ipSrc)}"><b>联动IP</b>${esc(ip)}</span>`);}
   {const ls=listingOf(it);if(ls)facts.push(`<span class="fact state"><b>上架状态</b>${esc(LISTING_CN[ls]||ls)}</span>`);}
   {const nst=nameStatusOf(it);facts.push(`<span class="fact state"><b>名称</b>${esc(NAME_CN[nst]||nst||"未解析")}</span>`);}
   const detail=renderSkinDetail(it);
@@ -829,10 +838,14 @@ function renderSfxChildren(children){
   if(!Array.isArray(children)||!children.length)return "";
   return `<section class="sfx-children"><div class="sfx-children-title">表现子项（${children.length}）</div>`+
     children.map(child=>{
-      let label=child.display_name||child.sfx_name||"未命名 SFX 配置";
-      const weak=/^(未装配|未命名|占位)/.test(label);
+      /* 本次热更的表现行没有 CHS 文本（child.text_status=no_chs_text）⇒ 标签直接用配置类目中文，
+         不再输出「未命名 SFX 配置」这类占位词（口径：无值项不写占位，也不把类目名当正式名）。 */
+      let label=String(child.display_name||child.sfx_name||"").trim();
+      const catOnly=!label;
+      if(catOnly)label=String(child.sfx_type_label||"").replace(/（\d+）$/,"")||"表现配置";
+      const weak=!catOnly&&/^(未装配|未命名|占位)/.test(label);
       const type=child.sfx_type_label||(`类型 ${child.sfx_type??"未配置"}`);
-      const tip=child.sfx_params?` title="${esc(child.sfx_params)}"`:"";
+      const tip=catOnly?` title="该表现行本次热更无文本名（按配置类目显示）"`:(child.sfx_params?` title="${esc(child.sfx_params)}"`:"");
       const cls=weak?"sfx-child weak":"sfx-child";
       if(weak)label="（"+label+"）";
       return `<div class="${cls}"${tip}><div class="sfx-child-name">${esc(label)}</div><div class="sfx-child-meta">${esc(type)} · 行 ${esc(child.row_key)}</div></div>`;

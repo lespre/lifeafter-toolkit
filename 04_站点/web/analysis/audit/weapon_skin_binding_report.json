@@ -1,0 +1,1098 @@
+{
+ "generated_at": "2026-10-17T00:29:29+08:00",
+ "snapshot_basis": "test-documents-ba8a239a",
+ "1_sfx_function_rows_bound": {
+  "total": 348,
+  "verified": 153
+ },
+ "2_behavior_res_rows_bound": {
+  "total": 80,
+  "verified": 69
+ },
+ "3_effect_show_parsed": 2,
+ "4_effect_show_bound": 56,
+ "5_direct_binding": 125,
+ "6_indirect_binding": {
+  "count": 153,
+  "note": "均为『经 skin_id 型字段 + E2 值域 + E3 共享参数』直达 skin_item_id，无中间函数调用（若有 get_skin_item_id 类中间步骤会在 evidence_refs 记录）"
+ },
+ "7_unresolved_candidate": 198,
+ "8_shared_effect_or_behavior": {
+  "shared_effect_records": 18,
+  "shared_behavior_records": 8,
+  "single_record_multi_skin": 0
+ },
+ "9_bindings_per_effect_type": {
+  "projectile_effect": 93,
+  "slash_effect": 22,
+  "hit_effect": 124,
+  "kill_effect": 56,
+  "other": 12,
+  "combat_sound": 64,
+  "special_interaction": 2
+ },
+ "10_cross_source_verified_effect_types": [
+  {
+   "skin_item_id": 1110004,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110010,
+   "effect_type": "slash_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110010,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110012,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110016,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110016,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110017,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110018,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "slash_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110025,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110025,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110027,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110027,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110028,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110028,
+   "effect_type": "slash_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110034,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110034,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110087,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "slash_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "slash_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110118,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110124,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110124,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110134,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110134,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110135,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110135,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110138,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110140,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110140,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110139,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110141,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110150,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110154,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110154,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110156,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110157,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110162,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110166,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110166,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110167,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110167,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110168,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110168,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110176,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110176,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110179,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110179,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "kill_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110183,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110181,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110181,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110178,
+   "effect_type": "hit_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  },
+  {
+   "skin_item_id": 1110178,
+   "effect_type": "projectile_effect",
+   "sources": [
+    "weapon_skin.behavior_res",
+    "weapon_skin.sfx_function"
+   ]
+  }
+ ],
+ "11_single_source_effect_types": {
+  "single_source_only_types": [
+   "combat_sound",
+   "other",
+   "special_interaction"
+  ],
+  "unbound_types": [
+   "damage_number",
+   "combat_crosshair",
+   "exclusive_combat_animation",
+   "exclusive_idle_animation",
+   "nucleus_linkage"
+  ]
+ },
+ "12_ui_items_previously_duplicated": {
+  "note": "上一阶段已合并「特效详情」+「战斗表现」；本轮不改 UI"
+ },
+ "13_combat_presentation_entity_count": {
+  "entities": 126,
+  "with_verified_effect_source": 94,
+  "note": "不做 entity 合并改写（本轮只建边）"
+ },
+ "14_merge_depends_on_name_equality": false,
+ "15_graph_can_explain_source_to_entity": {
+  "data_layer": true,
+  "how": "WEAPON_SKIN_SOURCE_BINDINGS.jsonl 每行给出 source_id + source_record_key → target_skin_item_id + evidence_refs；可按 (source_id, record_key) 反查实体",
+  "cli": "未接线（api.cli 尚无 weapon_skin_source 指令）——不声称已支持 CLI explain"
+ },
+ "evidence_layers": {
+  "E1_field_semantic": true,
+  "E2_value_space": true,
+  "E3_shared_parameter": true,
+  "E4_explicit_map": false,
+  "E4_note": "skin_2_sfx_function_map / _detail / skin_function_item_id_to_anim_name 仍 decode gap"
+ },
+ "residuals": [
+  "注册行≠UI 当前行（改名/升格旧行并存）"
+ ]
+}

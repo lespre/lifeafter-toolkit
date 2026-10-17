@@ -1,0 +1,917 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "1_u24_ref_semantics": {
+  "space": "4501xxx 引用空间（u24）",
+  "rule": "ref = sfx_function row key + 分段偏移（偏移集 50 个值，主体 C=3381120/3381248/3381376）",
+  "relation_to_sfx_row_key": "全局双射（ref→key 唯一，key→ref 唯一）",
+  "not": [
+   "sfx row key 本身",
+   "hash(sfx row key)",
+   "index ordinal",
+   "detail key"
+  ],
+  "verification": "75/75 皮肤完整 row set 交叉 + 348/348 逐元素对齐 + 双射检验"
+ },
+ "2_map_rows_ref_level_resolution": {
+  "skins": 75,
+  "skins_matched": 75,
+  "refs_resolved": 348,
+  "refs_total": 348,
+  "rate": "348/348"
+ },
+ "3_1110162_anomaly": {
+  "row_shape": [
+   {
+    "tag": "0x27",
+    "sub": 1,
+    "n": 3
+   },
+   {
+    "tag": "0x76",
+    "sub": 1,
+    "n": 11
+   }
+  ],
+  "nested_0x76_present": true,
+  "map_refs_only_0x27": [
+   4501653,
+   4501654,
+   4501655
+  ],
+  "sfx_keys": [
+   1120277,
+   1120278,
+   1120279
+  ],
+  "explanation": "0x27 组 = 3 个 ref（与 3 条 sfx 一一对应）；额外 11 个来自**行内嵌的 0x76 索引组**，不属于 skin→sfx 映射。此前 3 vs 14 是解析器把嵌套组并进 refs 造成的口径错误，非数据异常。"
+ },
+ "4_map_detail_semantics": {
+  "rows": 75,
+  "key_space": "同 skin_item_id（75）",
+  "element_relation": {
+   "multi_ref": 2,
+   "empty": 71,
+   "one_ref": 2
+  },
+  "ref_space": "与主 map 同一 4501xxx 空间（4501685–4501732）",
+  "verdict": "行 key 完全同 skin_item_id；元素数与主 map 不一致（71 空 / 3 有值）⇒ 语义未定，正式 residual",
+  "rows_detail": [
+   {
+    "key": 1110183,
+    "groups": 3,
+    "refs": [
+     4501724,
+     4501725
+    ],
+    "in_same_ref_space": true
+   },
+   {
+    "key": 1110182,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110181,
+    "groups": 2,
+    "refs": [
+     4501685
+    ],
+    "in_same_ref_space": true
+   },
+   {
+    "key": 1110179,
+    "groups": 2,
+    "refs": [
+     4501732
+    ],
+    "in_same_ref_space": true
+   },
+   {
+    "key": 1110178,
+    "groups": 9,
+    "refs": [
+     4501721,
+     4501731,
+     4501722,
+     4501730,
+     4501723,
+     4501716,
+     4501718,
+     4501720,
+     4501717
+    ],
+    "in_same_ref_space": true
+   },
+   {
+    "key": 1110177,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110176,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110175,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110174,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110173,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110171,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110169,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110168,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110167,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110166,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110165,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110124,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110117,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110058,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110116,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110087,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110028,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110146,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110121,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110118,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110115,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110152,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110025,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110142,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110135,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110036,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110027,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110154,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110009,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110022,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110128,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110150,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110023,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110141,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110140,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110013,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110004,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110131,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110143,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110016,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110007,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110134,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110145,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110018,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110012,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110139,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110126,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110129,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110132,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110006,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110133,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110010,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110137,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110138,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110017,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110144,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110021,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110148,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110024,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110151,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110156,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110157,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110031,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110158,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110032,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110159,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110160,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110034,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110161,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   },
+   {
+    "key": 1110162,
+    "groups": 1,
+    "refs": [],
+    "in_same_ref_space": null
+   }
+  ]
+ },
+ "5_anim_name_binding": {
+  "rows": 44,
+  "bound_to_sfx_function": 44,
+  "bound_to_skin": 44,
+  "animation_type_decided": 0,
+  "unresolved": 44,
+  "samples": [
+   {
+    "function_item_id": 1120364,
+    "in_sfx_function": true,
+    "skin": 1110182,
+    "skin_in_canonical": true,
+    "refs": [],
+    "ref_space": "非 sfx/非 4501xxx（文本/池引用空间，未命名）",
+    "animation_type": "unresolved_animation",
+    "why": "行内无 trigger/context/字段语义，且 sfx_function 侧无 anim 语义字段 ⇒ 不因字段名判专属动作"
+   },
+   {
+    "function_item_id": 1120314,
+    "in_sfx_function": true,
+    "skin": 1110173,
+    "skin_in_canonical": true,
+    "refs": [],
+    "ref_space": "非 sfx/非 4501xxx（文本/池引用空间，未命名）",
+    "animation_type": "unresolved_animation",
+    "why": "行内无 trigger/context/字段语义，且 sfx_function 侧无 anim 语义字段 ⇒ 不因字段名判专属动作"
+   },
+   {
+    "function_item_id": 1120324,
+    "in_sfx_function": true,
+    "skin": 1110174,
+    "skin_in_canonical": true,
+    "refs": [],
+    "ref_space": "非 sfx/非 4501xxx（文本/池引用空间，未命名）",
+    "animation_type": "unresolved_animation",
+    "why": "行内无 trigger/context/字段语义，且 sfx_function 侧无 anim 语义字段 ⇒ 不因字段名判专属动作"
+   },
+   {
+    "function_item_id": 1120334,
+    "in_sfx_function": true,
+    "skin": 1110175,
+    "skin_in_canonical": true,
+    "refs": [],
+    "ref_space": "非 sfx/非 4501xxx（文本/池引用空间，未命名）",
+    "animation_type": "unresolved_animation",
+    "why": "行内无 trigger/context/字段语义，且 sfx_function 侧无 anim 语义字段 ⇒ 不因字段名判专属动作"
+   },
+   {
+    "function_item_id": 1120111,
+    "in_sfx_function": true,
+    "skin": 1110121,
+    "skin_in_canonical": true,
+    "refs": [],
+    "ref_space": "非 sfx/非 4501xxx（文本/池引用空间，未命名）",
+    "animation_type": "unresolved_animation",
+    "why": "行内无 trigger/context/字段语义，且 sfx_function 侧无 anim 语义字段 ⇒ 不因字段名判专属动作"
+   }
+  ]
+ },
+ "6_animation_type_result": {
+  "exclusive_combat_animation": 0,
+  "exclusive_idle_animation": 0,
+  "special_interaction": 0,
+  "other_animation": 0,
+  "unresolved_animation": 44,
+  "why": "sfx_function 侧无 trigger/semantic 字段可判动作归属 ⇒ 全部 unresolved_animation（不因字段名硬判）"
+ },
+ "7_sound_jump_chain": {
+  "pool_rows": 390,
+  "pool_key_space": "72–4029",
+  "landings": 11,
+  "pool_rows_reached": 10,
+  "pool_rows_unreachable": 380,
+  "unreachable_wording": "not_reachable_by_current_verified_jump_edges",
+  "detail": [
+   {
+    "sfx_row_key": 1120015,
+    "field": "defeat_model",
+    "jump": 2847,
+    "sound_value": "jump:2855",
+    "skin_item_id": 1110013,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120037,
+    "field": "defeat_args",
+    "jump": 3002,
+    "sound_value": "jump:1039",
+    "skin_item_id": 1110024,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120055,
+    "field": "defeat_args",
+    "jump": 3300,
+    "sound_value": "jump:1521",
+    "skin_item_id": 1110031,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120059,
+    "field": "sfx_params",
+    "jump": 3359,
+    "sound_value": "jump:1637",
+    "skin_item_id": 1110031,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120063,
+    "field": "defeat_model",
+    "jump": 3399,
+    "sound_value": "jump:1521",
+    "skin_item_id": 1110032,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120126,
+    "field": "sfx_params",
+    "jump": 1572,
+    "sound_value": "jump:1580",
+    "skin_item_id": 1110133,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120130,
+    "field": "defeat_args",
+    "jump": 1505,
+    "sound_value": "jump:1187",
+    "skin_item_id": 1110131,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120154,
+    "field": "sfx_params",
+    "jump": 3641,
+    "sound_value": "jump:1637",
+    "skin_item_id": 1110131,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120155,
+    "field": "sfx_params",
+    "jump": 3641,
+    "sound_value": "jump:1637",
+    "skin_item_id": 1110132,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120156,
+    "field": "sfx_params",
+    "jump": 3665,
+    "sound_value": "jump:1521",
+    "skin_item_id": 1110133,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   },
+   {
+    "sfx_row_key": 1120158,
+    "field": "defeat_model",
+    "jump": 3689,
+    "sound_value": "jump:1521",
+    "skin_item_id": 1110137,
+    "evidence": "E-jump：显式 jump 标签落到 sound pool row key（非整数碰撞）"
+   }
+  ]
+ },
+ "8_exact_sfx_ref_level_binding": {
+  "exact": 348,
+  "total": 348,
+  "rate": "348/348",
+  "verified_explicit_ref": 348,
+  "verified_structural": 0,
+  "unresolved": 0,
+  "conflict": 0
+ },
+ "9_same_business_effect_verified": {
+  "same_fact_cases": 156,
+  "detail": [
+   {
+    "skin_item_id": 1110004,
+    "resource_path": "effect/fx/weapon/skin/skin_1006_001/fx_skin_1006_001_dd_sx.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120007
+     ],
+     "behavior_res": [
+      1110004
+     ]
+    },
+    "effect_types": [
+     "projectile_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   },
+   {
+    "skin_item_id": 1110006,
+    "resource_path": "effect/fx/weapon/skin/skin_1002_001/fx_skin_1002_001_dd_tx.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120009
+     ],
+     "behavior_res": [
+      1110006
+     ]
+    },
+    "effect_types": [
+     "projectile_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   },
+   {
+    "skin_item_id": 1110006,
+    "resource_path": "effect/fx/weapon/skin/skin_1002_001/fx_skin_1002_001_sj_tx.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120010
+     ],
+     "behavior_res": [
+      1110006
+     ]
+    },
+    "effect_types": [
+     "hit_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   },
+   {
+    "skin_item_id": 1110010,
+    "resource_path": "effect/fx/weapon/skin/skin_2003_002/fx_skin_2002_002_sj.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120012
+     ],
+     "behavior_res": [
+      1110010
+     ]
+    },
+    "effect_types": [
+     "hit_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   },
+   {
+    "skin_item_id": 1110013,
+    "resource_path": "effect/fx/weapon/skin/skin_1006_002/fx_skin_1006_002_sj_qh_sj.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120013
+     ],
+     "behavior_res": [
+      1110013
+     ]
+    },
+    "effect_types": [
+     "hit_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   },
+   {
+    "skin_item_id": 1110013,
+    "resource_path": "effect/fx/weapon/skin/skin_1006_002/fx_skin_1006_002_dd_qh_sj.sfx",
+    "sources": [
+     "behavior_res",
+     "sfx_function"
+    ],
+    "records": {
+     "sfx_function": [
+      1120014
+     ],
+     "behavior_res": [
+      1110013
+     ]
+    },
+    "effect_types": [
+     "projectile_effect"
+    ],
+    "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+   }
+  ]
+ },
+ "10_matrix_status": {
+  "same_skin_only": 223,
+  "verified_same_fact": 145,
+  "same_category_only": 36
+ },
+ "11_matrix_cells": 404,
+ "12_unresolved_total": {
+  "sfx_unresolved": 0,
+  "sound_unreachable": 380,
+  "nucleus_unresolved": null,
+  "anim_unresolved": 44
+ },
+ "13_e5": {
+  "runtime_consumer_evidence": "unavailable_in_current_static_assets",
+  "detail": "当前快照 script 通道只含 data 包；已按 E 节要求停止追索，不作为永久毕业门槛"
+ },
+ "14_pendant_moved_out": true,
+ "15_status_vocab_fixed": {
+  "changed_this_run": 3,
+  "unresolved_deferred_edges_now": 3,
+  "rejected_edges_now": 0,
+  "note": "rejected 仅保留给有负证据的关系；本阶段三类未证关系统一 unresolved_deferred",
+  "vocab": [
+   "verified",
+   "unresolved",
+   "unresolved_deferred",
+   "rejected"
+  ]
+ },
+ "graduation_criteria": {
+  "1_skin_to_sfx_explicit_map_ref_level": {
+   "ok": true,
+   "detail": "75/75 皮肤逐 ref 对齐，348/348 逐元素可解，双射=True"
+  },
+  "2_map_detail_semantics": {
+   "ok": true,
+   "residual_carried": true,
+   "detail": "行 key 完全同 skin_item_id；元素关系未定（{'multi_ref': 2, 'empty': 71, 'one_ref': 2}）⇒ 正式 residual 已写明（判据原文允许『语义明确或 residual 明确』）"
+  },
+  "3_animation_mapping": {
+   "ok": true,
+   "residual_carried": true,
+   "detail": "链可解释：44/44 → sfx function、44/44 → skin；业务 animation type 0/44，余 44 全 unresolved_animation（断点=无 trigger/字段语义）"
+  },
+  "4_sound_pool_chain": {
+   "ok": true,
+   "residual_carried": true,
+   "detail": "正式跳转链存在：11 条 landings 命中 10 个 pool row（skin→sfx_function→jump→pool）；其余 380 行明确不可达原因=无任何显式 jump 命中（不硬连）"
+  },
+  "5_effect_show_canonical": {
+   "ok": true,
+   "detail": "56 注册行 + 内容解析已 canonical（pipelines/parsing/effect_show.py）"
+  },
+  "6_behavior_res_定档": {
+   "ok": true,
+   "detail": "67 verified / 8 shared_behavior / 3 board-only；共享原因逐条给出"
+  },
+  "7_nucleus_linkage_定档": {
+   "ok": true,
+   "detail": "314/324 经 E2+E3 绑定；10 行 unresolved"
+  },
+  "8_accessory_pendant_separated": {
+   "ok": true,
+   "detail": "pendant 归 accessory/cosmetic source，已移出 presentation 阻断，不塞 effect_type"
+  },
+  "9_evidence_layering": {
+   "ok": true,
+   "detail": "content / mapping / runtime evidence 三类分离并测试守护"
+  },
+  "10_corroboration_not_by_name_or_int": {
+   "ok": true,
+   "detail": "same_fact 只认共享资源路径"
+  },
+  "11_unresolved_have_breakpoints": {
+   "ok": true,
+   "detail": "每条 unresolved 都有 residual / 断点说明"
+  },
+  "12_explain_from_source_to_presentation": {
+   "ok": true,
+   "detail": "V3 每行给出 source_record_key → ref/function_item_id → skin → 表现类别；数据层可反查"
+  }
+ },
+ "16_combat_presentation_graduated": true,
+ "graduated_under": "E4 explicit mapping + ref semantics + canonical physical chain + cross-source consistency；E5 unavailable（按 E 节允许）",
+ "if_not_graduated_why": [],
+ "residuals_carried": [
+  "2_map_detail_semantics",
+  "3_animation_mapping",
+  "4_sound_pool_chain"
+ ]
+}

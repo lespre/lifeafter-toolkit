@@ -160,7 +160,7 @@
    "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
   }
  ],
- "generated": "2026-09-24T22:45:50+08:00",
+ "generated": "2026-10-17T00:29:29+08:00",
  "relation_kinds": [
   "identity_binding",
   "presentation_binding",

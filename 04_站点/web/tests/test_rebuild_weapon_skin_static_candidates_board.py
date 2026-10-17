@@ -42,12 +42,20 @@ class WeaponSkinStaticCandidateBoardTests(unittest.TestCase):
 
     def test_all_existing_static_records_are_browsable_as_unresolved_candidates(self):
         items = self.board["items"]
-        # 玩家视图分组：顶层只放永久记录（139 条静态记录 − 20 条时限记录 = 119）
-        self.assertEqual(len(items), 119)
-        self.assertEqual(len({item["structural_record_key"] for item in items}), 119)
-        self.assertEqual(self.board["stats"]["static_records"], 139)
+        # 玩家视图分组：顶层只放永久记录（138 条静态记录 − 20 条时限记录 = 118）
+        # 10-16：PC 测试服热更覆盖层 4 行（1110188/1110189/1110191/1110192）锁在热更 payload 上、
+        # 无法对冻结体验服快照回放 ⇒ 不进本冻结产物，逐条留档在 meta.excluded_overlay_rows；
+        # 其中 1110192 由「仅行为资源行」升为主表父行（主图鉴板展示），故本板 behavior_only_rows=0。
+        self.assertEqual(len(items), 118)
+        self.assertEqual(len({item["structural_record_key"] for item in items}), 118)
+        self.assertEqual(self.board["stats"]["static_records"], 138)
         self.assertEqual(self.board["stats"]["nested_timed_variant_rows"], 20)
         self.assertEqual(self.board["stats"]["timed_rows_at_top_level"], 0)
+        excluded = self.board["meta"]["excluded_overlay_rows"]
+        self.assertEqual({row["skin_id"] for row in excluded}, {1110188, 1110189, 1110191, 1110192})
+        for row in excluded:
+            self.assertEqual(row["source_id"], "playertest-newpc-hotfix-20261015")
+            self.assertTrue(row["reason"])
         nested = sum(len(i.get("timed_variants") or []) for i in items)
         self.assertEqual(nested, 20)
         for item in items:
@@ -66,15 +74,15 @@ class WeaponSkinStaticCandidateBoardTests(unittest.TestCase):
         self.assertEqual(summary["verified"], 0)
         self.assertEqual(summary["candidate"], sum(i["name_status"] == "candidate" for i in items))
         self.assertEqual(summary["unresolved"], sum(i["name_status"] == "unresolved" for i in items))
-        # 审计 stats = 全部 139 条静态记录口径；玩家视图顶层 = 119
+        # 审计 stats = 全部 138 条静态记录口径；玩家视图顶层 = 118
         self.assertEqual(self.board["stats"]["weapon_skin_data_rows"], 138)
-        self.assertEqual(self.board["stats"]["behavior_only_rows"], 1)
-        self.assertEqual(self.board["stats"]["top_level_records"], 119)
+        self.assertEqual(self.board["stats"]["behavior_only_rows"], 0)
+        self.assertEqual(self.board["stats"]["top_level_records"], 118)
         self.assertEqual(self.board["stats"]["timed_rows_at_top_level"], 0)
-        self.assertEqual(summary["candidate"] + summary["unresolved"], 119,
+        self.assertEqual(summary["candidate"] + summary["unresolved"], 118,
                          "顶层名称统计必须只覆盖永久主记录")
         self.assertEqual(self.board["stats"]["sfx_child_rows"], 362)
-        self.assertEqual(self.board["stats"]["records_with_behavior_resources"], 81)
+        self.assertEqual(self.board["stats"]["records_with_behavior_resources"], 80)
         for item in items:
             self.assertEqual(item["identity_status"], "unresolved")
             self.assertEqual(item["publication_tier"], "static config")
@@ -133,7 +141,7 @@ class WeaponSkinStaticCandidateBoardTests(unittest.TestCase):
             result = self.module.main(["--root", str(ROOT), "--output", str(output)])
             self.assertEqual(result, 0)
             written = json.loads(output.read_text(encoding="utf-8"))
-        self.assertEqual(len(written["items"]), 119)   # 顶层仅永久记录（时限变体归入父卡）
+        self.assertEqual(len(written["items"]), 118)   # 顶层仅永久记录（时限变体归入父卡；热更覆盖行另见 excluded_overlay_rows）
 
     def test_frontend_has_dedicated_candidate_skin_renderer(self):
         html = (ROOT / "board.html").read_text(encoding="utf-8")

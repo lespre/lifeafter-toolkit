@@ -36,12 +36,28 @@ class NameStatusTierTests(unittest.TestCase):
 
     # ── 图鉴板 ──
     def test_catalog_mains_are_verified_without_clearing_names(self):
+        """冻结快照的 current_parent 必须名称齐备；热更覆盖层的主表行按热更事实单独约束。
+
+        覆盖层（PC 测试服热更，provenance.source_id != 冻结源）在本次热更里没有
+        common_item_data_base 道具行 ⇒ 名称只能是 unresolved/candidate，
+        绝不允许为了对齐这条不变量而补一个假名。
+        """
         mains = [i for i in self.catalog["items"] if i.get("catalog_layer") == "current_parent"]
         self.assertTrue(mains)
-        for item in mains:
+        frozen = [i for i in mains if i["provenance"].get("source_id") == "documents-py314-current"]
+        overlay = [i for i in mains if i["provenance"].get("source_id") != "documents-py314-current"]
+        self.assertTrue(frozen, "冻结快照主行不能为空")
+        self.assertTrue(overlay, "热更覆盖层主行应存在（1110188/1110191/1110192）")
+        for item in frozen:
             self.assertEqual(item["name_status"], "verified", item["skin_id"])
             self.assertTrue(item.get("name"), item["skin_id"])          # 名称未被清空
             self.assertEqual(item["official_name_status"], "verified")
+        for item in overlay:
+            self.assertIn(item["name_status"], ("candidate", "unresolved"), item["skin_id"])
+            self.assertNotEqual(item["official_name_status"], "verified", item["skin_id"])
+            self.assertIsNone(item["name"], f"{item['skin_id']} 覆盖行不得写正式名字段")
+            self.assertTrue(item["name_display"], item["skin_id"])
+            self.assertEqual(item["evidence_level"], "structure-only", item["skin_id"])
 
     def test_catalog_variants_are_verified_or_candidate_only(self):
         variants = [v for i in self.catalog["items"] for v in (i.get("variant_items") or [])]
@@ -65,7 +81,10 @@ class NameStatusTierTests(unittest.TestCase):
         variants = [v for i in self.catalog["items"] for v in (i.get("variant_items") or [])]
         mains = self.catalog["items"]
         self.assertEqual(summary["verified"], sum(i["name_status"] == "verified" for i in mains) + sum(v["name_status"] == "verified" for v in variants))
-        self.assertEqual(summary["candidate"], sum(v["name_status"] == "candidate" for v in variants))
+        # candidate 现在既可能出现在时限变体（推导名），也可能出现在热更覆盖层主行（礼包描述旁证名）
+        self.assertEqual(summary["candidate"], sum(i["name_status"] == "candidate" for i in mains) + sum(v["name_status"] == "candidate" for v in variants))
+        overlay_candidates = [i["skin_id"] for i in mains if i["name_status"] == "candidate"]
+        self.assertEqual(overlay_candidates, [1110188], "主行候选名只应来自热更覆盖层（1110188）")
         self.assertEqual(summary["unresolved"], sum(i["name_status"] == "unresolved" for i in mains))
 
     # ── 候选板（P4 静态候选）──

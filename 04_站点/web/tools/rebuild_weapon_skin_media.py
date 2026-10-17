@@ -50,6 +50,16 @@ def build() -> dict:
         record = {"skin_id": skin_id, "preview_3d": preview}
         if poster_path.is_file():
             record["poster"] = f"{rel_dir}/{poster_name}"
+            # ★ 2026-10-17：poster 也可能是**素材底图**（法线图/掩码/色带/平铺）而不是海报 ——
+            #   实测别处把法线图当立绘交出去过。按内容判一次，是材质才写这个字段
+            #   （无值不写，页面也就不会多个空标签）。
+            try:
+                from img_kind import material_label
+                label = material_label(poster_path)
+            except Exception:                                   # noqa: BLE001
+                label = ""
+            if label:
+                record["poster_kind"] = label
         skins[skin_id] = record
     return {
         "schema_version": 1,

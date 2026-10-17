@@ -1,0 +1,23 @@
+{
+ "product": "WEAPON_SKIN_RESOLVED",
+ "version": "v0.2",
+ "built_at": "2026-10-17T00:09:35+08:00",
+ "snapshot_id": "test-documents-ba8a239a",
+ "sources": {
+  "weapon_skin_data": {
+   "data_entry": 11817,
+   "chs_entry": 21177
+  },
+  "common_item_data_base": {
+   "data_entry": 18005,
+   "chs_entry": 23928
+  }
+ },
+ "rows": 126,
+ "legacy_board_read": false,
+ "legacy_board_present_on_disk": false,
+ "builder": "tools/rebuild_weapon_skin_v02.py",
+ "sha256": {
+  "WEAPON_SKIN_RESOLVED.jsonl": "9835577bc24ea6e8fc665354e7dd968703ea7ad6916a2aa5dfe22191da4fe486"
+ }
+}

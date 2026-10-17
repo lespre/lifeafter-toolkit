@@ -506,15 +506,17 @@ class WeaponSkinAggregationAndSortTests(unittest.TestCase):
 
     def test_top_level_counts_exclude_timed_variants(self):
         stats = self.cand["stats"]
-        self.assertEqual(stats["static_records"], 139)
-        self.assertEqual(stats["top_level_records"], 119)
+        # 10-16：PC 测试服热更覆盖层 4 行不进冻结候选板（见 meta.excluded_overlay_rows）⇒
+        # 静态记录 139→138、顶层 119→118（其中 1110192 由仅行为资源行升为主表行，behavior_only_rows 1→0）
+        self.assertEqual(stats["static_records"], 138)
+        self.assertEqual(stats["top_level_records"], 118)
         self.assertEqual(stats["nested_timed_variant_rows"], 20)
         self.assertEqual(stats["timed_rows_at_top_level"], 0)
-        self.assertEqual(len(self.cand["items"]), 119)
+        self.assertEqual(len(self.cand["items"]), 118)
         grouping = self.cand["meta"]["player_view_grouping"]
         self.assertEqual(grouping["top_level"], "permanent_records_only")
         self.assertEqual(grouping["timed_rows_at_top_level"], 0)
-        self.assertEqual(self.drive["cards"], 119)
+        self.assertEqual(self.drive["cards"], 118)
 
     def test_candidate_cards_render_compact_variants_not_subcards(self):
         self.assertEqual(self.drive["variantBlocks"], 20)
@@ -534,13 +536,13 @@ class WeaponSkinAggregationAndSortTests(unittest.TestCase):
     # ── 2. 筛选可用性 ──
     def test_weapon_type_filter_effective(self):
         self.assertGreater(self.drive["typeCount"], 0)
-        self.assertLess(self.drive["typeCount"], 119)
+        self.assertLess(self.drive["typeCount"], 118)
         self.assertGreater(self.drive_cat["typeCount"], 0)
-        self.assertLess(self.drive_cat["typeCount"], 119)
+        self.assertLess(self.drive_cat["typeCount"], 118)
 
     def test_grade_filter_effective(self):
         self.assertGreater(self.drive_cat["gradeCount"], 0)
-        self.assertLess(self.drive_cat["gradeCount"], 119)
+        self.assertLess(self.drive_cat["gradeCount"], 118)
         levels = {i["static_fields"]["level"] for i in self.cand["items"] if i.get("static_fields")}
         self.assertTrue({2, 3, 4, 5, 6} & levels)
 

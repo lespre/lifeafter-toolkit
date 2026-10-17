@@ -49,7 +49,10 @@ MAGIC = ((b"DDS ", ".dds"), (b"\x89PNG", ".png"), (b"\xff\xd8\xff", ".jpg"),
          (b"GIF8", ".gif"), (b"RIFF", ".riff"), (b"FSB5", ".fsb5"),
          (b"OggS", ".ogg"), (b"<?xml", ".xml"), (b"{\x00", ".csb"),
          (b"\x00\x00\x00\x0cftyp", ".mp4"), (b"ftyp", ".mp4"),
-         (b"<FxGroup", ".sfx"), (b"PK\x03\x04", ".zip"), (b"\x1f\x8b", ".gz"))
+         (b"<FxGroup", ".sfx"), (b"PK\x03\x04", ".zip"), (b"\x1f\x8b", ".gz"),
+         # ★ 2026-10-17：着色器两条后端各自有名 —— 别再落成 .bin
+         (b"VKPL", ".vkpl"),                       # Vulkan SPIR-V 容器（见 toolkit_core/vkpl_shader.py）
+         (b"\xcc\xaa\x55\x66", ".ccaa5566"))       # DXBC/D3D 后端
 
 
 def _load(name: str, path: Path):

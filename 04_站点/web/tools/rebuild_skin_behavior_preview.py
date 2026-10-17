@@ -60,7 +60,9 @@ def main(argv: list[str] | None = None) -> int:
     selected: list[dict] = []
     for raw in source["items"]:
         item = copy.deepcopy(raw)
-        if item.get("release_state") == "upcoming":
+        # ①族定义本身要求「已配正式名」：热更覆盖行可能有未来 sale_ts 但本热更无道具行 ⇒ 无正式名，
+        #    不进①族（否则 note 会写成「已配正式名「None」」）。它们留在主图鉴板。
+        if item.get("release_state") == "upcoming" and item.get("name"):
             item["preview_group"] = "upcoming_named"
             item["preview_note"] = (
                 f"包内已配正式名「{item.get('name')}」与上架时间 {item.get('sale_date')}（晚于包快照日），"

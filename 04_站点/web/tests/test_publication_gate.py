@@ -138,7 +138,9 @@ class PublicationGateContract(unittest.TestCase):
         )
         self.assertEqual(
             [board["items"] for board in payload["boards"]],
-            [65, 31112, 36, 5477, 1189, 23567, 77, 6, 47, 196, 119]  # 09-24 武器皮肤图鉴 115→119,   # 隐藏审计板（133/3）不上首页
+            # 09-24 武器皮肤图鉴 115→119；09-28 fashion_wardrobe 转 published（1253）；
+            # 10-16 PC 测试服热更覆盖层并入武器皮肤图鉴 119→122
+            [65, 31112, 1253, 36, 5477, 1189, 23567, 77, 6, 47, 196, 122]
         )
         self.assertNotIn("nucleus", {board["board"] for board in payload["boards"]})
         self.assertNotIn("weapon_skins", {board["board"] for board in payload["boards"]})

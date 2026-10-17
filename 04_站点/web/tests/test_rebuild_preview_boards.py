@@ -43,9 +43,10 @@ class PreviewColumnContracts(unittest.TestCase):
     def test_skin_behavior_preview(self):
         board = run(SKIN_SCRIPT)
         self.assertEqual(len(board["items"]), 6)  # 09-24：皮肤行为预告 4→6
-        # 09-24：5 款新皮肤（全部 upcoming/sale_date 2026-09-29）升入预告层，行为预览仅剩 1110192
+        # 10-16：PC 测试服热更把 1110192 升为主表父行（进主图鉴板 current_parent），
+        # 该位置由本次热更新增的行为资源行 1110189 接替（仍属「仅行为资源」族）。
         self.assertEqual({it["skin_id"] for it in board["items"]},
-                         {1110185, 1110186, 1110187, 1110198, 1110199, 1110192})
+                         {1110185, 1110186, 1110187, 1110198, 1110199, 1110189})
         self.assertTrue(board["meta"]["category"].startswith(PREVIEW_HEAD))
         self.assertIn("（1）武器皮肤", board["meta"]["category"])
         for it in board["items"]:
@@ -55,9 +56,12 @@ class PreviewColumnContracts(unittest.TestCase):
                 self.assertEqual(it["official_name_status"], "verified")
                 self.assertIsNotNone(it.get("sale_date"))
                 self.assertEqual(it["evidence_level"], "current-snapshot-verified")
+                self.assertTrue(it.get("name"), "①族必须已配正式名（无名的 upcoming 行不进该族）")
             else:
                 self.assertEqual(it["preview_group"], "behavior_only_no_name")
-                self.assertEqual(it["version_status"], "仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行")
+                self.assertIn(it["version_status"],
+                              ("仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行",
+                               "PC 测试服热更行为资源行（无主表父行、无道具行）"))
                 self.assertEqual(it["official_name_status"], "no_item_row")
                 self.assertEqual(it["evidence_level"], "structure-only")
         self.assertEqual(load_policy_module().publication_contract_errors(board, strict_v2=True), [])

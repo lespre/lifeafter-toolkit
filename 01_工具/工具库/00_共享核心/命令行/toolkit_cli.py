@@ -1239,6 +1239,28 @@ def _write_fashion_hotfix(td: Path, out: Path, hot: list, args) -> None:
                                    v.get("计数", {}).get("变更", 0))
         for k, v in rep.items() if "计数" in v))
 
+    # ③b ★ 2026-10-17 修（工具短板 4）：结构化文案的**直解回退**。
+    #   背景：`表结构解析_*` 产物只覆盖 180 张旧表 ⇒ 本两批新进的表（fashion_charm_magazine_* 等）
+    #   在里面没有 ⇒ 原来报「变更 0 个表 / 中文 0 条」。这里直接解 pre/post 两个 script 包的
+    #   `_chs` 表，逐行逐字段抽含中文的值 → 与结构化版同一形状（表/字段/行ID/文案）。
+    try:
+        _hot_full = [x for x in hot if x]
+        if pre and post and _hot_full:
+            from toolkit_core import text_table_struct as TTS
+            ent2, meta2 = TTS.load_from_packs(_hot_full, Path(pre), Path(post), names)
+            if ent2:
+                w2 = TTS.write(td, ent2, meta2, bare_strings=u)
+                print("  ✓ 02_文字表（pre/post 包直解回退）：结构化 %d 条 ｜ 表 %d ｜ 去重 %d "
+                      "｜ 裸串命中 %d/%d"
+                      % (w2["n"], w2["n_tables"], w2["n_unique"], w2["hit"], w2["hit"] + w2["miss"]))
+                struct_note = (struct_note + " ｜ " if struct_note else "") + \
+                    ("直解回退 %d 条 / 表 %d" % (w2["n"], w2["n_tables"]))
+            else:
+                print("  ⚠ 直解回退也没抽到文案（pre/post 包里这 %d 张表都解不出）" % len(_hot_full))
+    except Exception as exc:                     # noqa: BLE001
+        print("  ⚠ 02_文字表：直解回退失败（%s: %s），保留原有产物"
+              % (type(exc).__name__, str(exc)[:100]))
+
 
 def cmd_hotfix_bundle(args) -> int:
     """★ 把一次热更的全量产物铺成【标准交付结构】。
@@ -1359,7 +1381,10 @@ def cmd_hotfix_bundle(args) -> int:
 
     # ④ 内容哈希定位（want_sizes 预过滤）
     sizes = {len(x[2]) for x in frames}
-    loc = AL.Locator()
+    # ★ 2026-10-17 修：这里以前是 `AL.Locator()`（只认「按行号铺法」的产物目录），
+    #   载荷删掉 / 换还原树之后它对每一行都返回 None ⇒ 「候选哈希 0 个」+ 全部落「未解格式」。
+    #   和 content_index 同一类退化：凡「行 → 文件」都要走 UnifiedResolver（树优先，提取产物兜底）。
+    loc = AL.UnifiedResolver()
     db = sqlite3.connect("file:%s?mode=ro" % str(DEFAULT_DB).replace("\\", "/"), uri=True)
     # ★ 没有 overlay 帧就直接跳过内容索引（建它是分钟级的白活）
     if not frames:
@@ -1597,7 +1622,19 @@ def cmd_hotfix_rows(args) -> int:
     print()
 
     rep = HR.diff_npk(Path(args.pre), Path(args.post), tables, names,
-                      workdir=out / "_bits", quiet=args.quiet)
+                      workdir=out / "_bits", quiet=args.quiet,
+                      use_cache=not getattr(args, "no_cache", False))
+    # ★ 2026-10-17：只回一小段摘要（880 张表的逐表行会把上下文冲掉）；--verbose 才逐表
+    st = getattr(HR, "LAST_RUN", {}) or {}
+    if st:
+        c = st.get("cache") or {}
+        print("\n★ 本次统计：%d 张表 / %.1f 秒 ｜ 缓存 命中 %d / 未命中 %d（%s，%d 条 / %.1f MB）"
+              % (st.get("tables", len(tables)), st.get("seconds", 0),
+                 c.get("hits", 0), c.get("misses", 0), c.get("path", "-"),
+                 c.get("entries", 0), (c.get("bytes") or 0) / 1048576))
+        slow = st.get("slowest") or []
+        if slow:
+            print("  最慢 5 张：" + " ｜ ".join("%s %.1fs" % (t, s) for s, t in slow))
 
     md = HR.render_md(rep, "行级热更表")
     (out / "行级热更表.md").write_text(md, encoding="utf-8")
@@ -2419,10 +2456,12 @@ def cmd_hotfix_apply(args) -> int:
             names = _json.loads(nd.read_text(encoding="utf-8"))
             print("   字典：%d 条" % len(names))
         _force = bool(getattr(args, "force", False))
+        _dump_lists = bool(getattr(args, "dump_lists", False))
         s2 = RM.merge_script_pack(sp, tree, idx, names, dry_run=dry,
                                   container_dir=cdir,
                                   container=getattr(args, "container", None),
-                                  allow_suspicious=_force)
+                                  allow_suspicious=_force,
+                                  collect_lists=_dump_lists)
         # ★★ 2026-09-30 守卫：拒绝「几乎全在覆盖」的写入。
         #   实测（拿 Documents 热更包的差量块去比已合并的树）：
         #     扫 27,072 · 覆盖 25,511（94%）· 相同 19 · 失败 1,542
@@ -2462,10 +2501,25 @@ def cmd_hotfix_apply(args) -> int:
     # ③ 台账
     led = RM.write_ledger(tree, stats, dry_run=dry, out_dir=out)
     print("★ 台账 → %s" % led)
+    # ★ 2026-10-17：--dump-lists ⇒ 完整清单落盘
+    #   动机：台账只留 15 条样例，而「拒写 961 条到底是哪些」正是要靠这清单才能核（此前只能看到计数）。
+    if any(getattr(s, "collect_lists", False) for s in stats):
+        import time as _time   # ★ 本文件顶层没有 import time（同类坑：PL/AL 也是函数内局部导入）
+        ts_l = _time.strftime("%Y%m%d_%H%M%S")
+        lf = Path(out) / ("apply_lists_%s%s.tsv" % (ts_l, "_dryrun" if dry else ""))
+        lf.parent.mkdir(parents=True, exist_ok=True)
+        with lf.open("w", encoding="utf-8") as fh:
+            fh.write("kind\tpath\n")
+            for s in stats:
+                for kind in ("added", "updated", "suspicious", "failed", "same"):
+                    for rel in (getattr(s, "lists", {}) or {}).get(kind, []):
+                        fh.write("%s\t%s\n" % (kind, rel))
+        print("★ 完整清单 → %s" % lf)
     tot = {k: sum(getattr(s, k) for s in stats)
-           for k in ("scanned", "added", "updated", "same", "failed")}
-    print("★ 合计：扫 %d · 新增 %d · 覆盖 %d · 相同 %d · 失败 %d"
-          % (tot["scanned"], tot["added"], tot["updated"], tot["same"], tot["failed"]))
+           for k in ("scanned", "added", "updated", "same", "failed", "suspicious")}
+    print("★ 合计：扫 %d · 新增 %d · 覆盖 %d · 相同 %d · 失败 %d · 拒写 %d"
+          % (tot["scanned"], tot["added"], tot["updated"], tot["same"], tot["failed"],
+             tot["suspicious"]))
     if dry:
         print()
         print("★ 这是 DRY-RUN，什么都没写。要真写请加 --real。")
@@ -3479,9 +3533,15 @@ def cmd_snapshot(args) -> int:
 
 
 def _artifact_locator():
-    """产物定位器（统一「容器+行号 → 产物路径」，禁再各写 glob）。"""
+    """产物定位器（统一「容器+行号 → 产物路径」，禁再各写 glob）。
+
+    ★ 2026-10-17：改为 `UnifiedResolver`（**树优先**，初拆载荷兜底）。
+      老写法 `AL.Locator()` 只认「按行号铺法」的产物目录 ⇒ 载荷删掉 / 换还原树之后
+      `path()` 恒 None，症状是「树里有、命令说没有」的假阴性（本会话在 bundle 里
+      连踩三处：内容索引、帧哈希比对、交付物化）。
+    """
     from toolkit_core import artifact_locator as AL
-    return AL.Locator()
+    return AL.UnifiedResolver()
 
 
 def _default_product_root():
@@ -4535,7 +4595,9 @@ def _lot_delta(args, pool_jsonl: Path, targets_jsonl: Path, boards: Path) -> int
             tmp = Path(tempfile.mkdtemp(prefix="lot_lot_"))
             unp = CP.overlay_unpack(overlay, tmp, write=False)
             sha = {e["fid"]: (e.get("sha256"), e.get("bytes")) for e in unp["entries"]}
-        loc = AL.Locator(args.product_root if args.product_root else AL.DEFAULT_ROOT)
+        # ★ 2026-10-17：同样改树优先（`AL.Locator` 在树模式下恒 None ⇒ 假阴性）
+        loc = AL.UnifiedResolver(extract_root=args.product_root) if args.product_root \
+            else AL.UnifiedResolver()
         changed, same, nolocal = [], 0, 0
         for f, nm in lot_fids:
             h, n = sha.get(f, (None, None))
@@ -6147,6 +6209,8 @@ def build_parser() -> argparse.ArgumentParser:
     hr.add_argument("--out", type=Path, required=True, help="产物目录")
     hr.add_argument("--html", action="store_true", help="额外出一份 md（默认出 md + json）")
     hr.add_argument("--quiet", action="store_true")
+    hr.add_argument("--no-cache", dest="no_cache", action="store_true",
+                    help="禁用表解码缓存（默认开，缓存在 10_索引/indexes/decode_cache.sqlite3）")
     hr.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
     hr.set_defaults(func=cmd_hotfix_rows)
 
@@ -6187,6 +6251,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="★ 真写（不加此参数只做 dry-run —— 保护唯一权威产物）")
     ha.add_argument("--force", action="store_true",
                     help="★ 跳过「相同 0 但有新增/覆盖」的安全守卫（默认拒绝写入）")
+    ha.add_argument("--dump-lists", dest="dump_lists", action="store_true",
+                    help="★ 把 新增/覆盖/拒写/失败 的【完整清单】落成 tsv（默认台账只留 15 条样例）")
     ha.add_argument("--out", type=Path, help="报告目录（默认 30_分析\\热更就地增补_<时间>）")
     ha.set_defaults(func=cmd_hotfix_apply)
 

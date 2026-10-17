@@ -23,6 +23,7 @@ r"""行级热更 diff —— 把「两个 script 包」逐行比出【新增 / �
 from __future__ import annotations
 
 import json
+import time
 import sys
 from pathlib import Path
 from typing import Any, Iterable
@@ -36,8 +37,12 @@ sys.path.insert(0, str(_CORE))
 sys.path.insert(0, str(_LIB / "01_解码定位复原" / "解包与扫描"))
 
 from toolkit_core import container_probe as CP                     # noqa: E402
-from toolkit_core.table_export import extract_body                 # noqa: E402
+from toolkit_core.table_export import extract_body, export_entry_bytes  # noqa: E402
 from toolkit_core.bindict_table import decode_table_rows           # noqa: E402
+from toolkit_core import decode_cache as DCACHE                    # noqa: E402
+
+#: 最近一次 diff_npk 的统计（秒 / 缓存 / 最慢表），CLI 用它打摘要
+LAST_RUN: dict = {}
 
 
 def is_jump(v: Any) -> bool:
@@ -50,12 +55,21 @@ def is_jump(v: Any) -> bool:
 
 
 def plain_values(row: dict) -> dict:
-    """只留【真值】字段 —— 排除 jump: 引用（行号漂移不算内容变更）。"""
+    """只留【真值】字段 —— 排除 jump: 引用（行号漂移不算内容变更）。
+
+    ★ 2026-10-17 修：调用方可能传进非 dict（解码失败时的 {"__错误__": …} 或字符串），
+      以前直接 `row.get(...)` 会 `AttributeError: 'str' object has no attribute 'get'`。
+      这里一律当空处理，让上层按「该表解不出」报错，而不是把整轮 diff 崩掉。
+    """
+    if not isinstance(row, dict):
+        return {}
     return {k: x for k, x in (row.get("values") or {}).items() if not is_jump(x)}
 
 
 def cell(row: dict, field: str) -> Any:
     """取一行的某字段值（剥掉 `("0x05", 真值)` 的类型壳）。"""
+    if not isinstance(row, dict):
+        return None
     v = (row.get("values") or {}).get(field)
     if isinstance(v, (list, tuple)) and len(v) == 2:
         return v[1]
@@ -94,6 +108,40 @@ def decode_rows(chs_bin: Path, base_bin: Path) -> dict[int, dict]:
     return {r["key"]: r for r in rows}
 
 
+class AnotherFamily(Exception):
+    """载荷是**另一族编码**（marshal 表体 / 非 `x{` 表体），本工具不单独做行级 diff。
+
+    ★ 2026-10-17：`*_kj1.py` / `*_yk.py` 这类变体的载荷以 `0x73`（marshal code object）
+      开头，行数据不在 `x{` 表体里 ⇒ 以前报「解码失败」，其实只是族不同、不是坏。
+      同一逻辑表的主版本（如 `edible_item_data.py`）能正常 diff，差异以它为准。
+    """
+
+
+def decode_rows_plain(base_bin: Path) -> dict[int, dict]:
+    """解**单侧表**（没有 _chs 配对，如数值/配置表）→ {row_key: row}。
+
+    ★ 2026-10-17 补：以前 diff_npk 对非 `xxx_chs.py` 的表直接报
+      「不是 _chs.py 表名，无法配 base」，880 张表里 661 张因此做不了行级 diff。
+      数值表本来就不需要文本池 ⇒ 用 `table_export.export_entry_bytes`（**自动判族**
+      d6/kj1/hd86）解；手挑族会在 `not a supported 0x76 index tail` 上翻车（实测）。
+    """
+    data = base_bin.read_bytes()
+    if data[:1] in (b"\x73", b"\xe3"):
+        raise AnotherFamily("载荷是 marshal 表体（`_kj1`/`_yk` 这类变体）")
+    rep = export_entry_bytes(data)
+    rows = rep.get("rows") or []
+    out = {r["key"]: r for r in rows if isinstance(r, dict) and "key" in r}
+    if not out:
+        # 退路：走 x{ 表体 + 空池（部分族 export 认不出但 decode_table_rows 能认）
+        body, how = extract_body(data)
+        if body is not None:
+            rows2, _unbound = decode_table_rows(body, [])
+            out = {r["key"]: r for r in rows2 if isinstance(r, dict) and "key" in r}
+        elif rep.get("tried"):
+            raise ValueError("无 x{ 表体（%s）" % how)
+    return out
+
+
 def diff_rows(a: dict[int, dict], b: dict[int, dict],
               fields: Iterable[str] | None = None) -> dict:
     """两版行做行级 diff。
@@ -103,6 +151,10 @@ def diff_rows(a: dict[int, dict], b: dict[int, dict],
     fields = list(fields or ["name", "desc", "model_name", "part_type", "part",
                              "model_id", "new_fashion_id_str", "show_name",
                              "man_name", "female_name", "valid_days", "level", "brand_id"])
+    # ★ 2026-10-17：把非 dict 的条目剔掉（解码半途失败可能混进来），并如实报数
+    skipped = sum(1 for r in list(a.values()) + list(b.values()) if not isinstance(r, dict))
+    a = {k: v for k, v in a.items() if isinstance(v, dict)}
+    b = {k: v for k, v in b.items() if isinstance(v, dict)}
     added = [k for k in b if k not in a]
     removed = [k for k in a if k not in b]
     changed = []
@@ -131,6 +183,7 @@ def diff_rows(a: dict[int, dict], b: dict[int, dict],
         "移除": [{"row_key": k, **slim(a[k])} for k in removed],
         "变更": detail,
         "计数": {"新增": len(added), "移除": len(removed), "变更": len(changed)},
+        **({"非行条目已跳过": skipped} if skipped else {}),
     }
 
 
@@ -180,7 +233,7 @@ def extract_tables(npk: Path, names: dict, targets: Iterable[str]) -> dict[str, 
 def diff_npk(pre_npk: Path, post_npk: Path, targets: Iterable[str],
              names: dict, workdir: Path | None = None,
              fields: Iterable[str] | None = None,
-             quiet: bool = False) -> dict:
+             quiet: bool = False, use_cache: bool = True) -> dict:
     """端到端：两个 script 包 → 逐表行级 diff。
 
     需要 表名 → base 表名 的配对：`xxx_chs.py` ↔ `xxx.py`（同目录层级）。
@@ -206,34 +259,109 @@ def diff_npk(pre_npk: Path, post_npk: Path, targets: Iterable[str],
         print("  post 解出 %d 个模块：%s" % (len(post_bits), sorted(post_bits)))
 
     report = {}
+    cache = DCACHE.shared(use_cache)
+    t_all = time.perf_counter()
+    timings: list[tuple[float, str]] = []
     for t in targets:
         key = t.lower()
         base = base_of.get(key)
-        if not base:
-            report[t] = {"错误": "不是 _chs.py 表名，无法配 base"}
-            continue
         res = {}
+        t_tab = time.perf_counter()
+        # ★ 2026-10-17：非 _chs 表（数值/配置表）不再直接判死，走单侧解码。
+        if not base:
+            for tag, bits in (("pre", pre_bits), ("post", post_bits)):
+                blob_ = bits.get(key)
+                if blob_ is None:
+                    res[tag] = None
+                    continue
+                ck = DCACHE.key_of("plain", blob_)
+                got = cache.get(ck)
+                if got is None:
+                    f0 = wd / ("%s__%s.bin" % (tag, key))
+                    f0.write_bytes(blob_)
+                    try:
+                        got = decode_rows_plain(f0)
+                    except AnotherFamily as exc:
+                        res[tag] = {"__另一族__": str(exc)}
+                        continue
+                    except Exception as exc:                      # noqa: BLE001
+                        res[tag] = {"__错误__": "%s: %s" % (type(exc).__name__, exc)}
+                        continue
+                    cache.put(ck, "plain", got)
+                res[tag] = got
+            if not res.get("pre") or not res.get("post"):
+                report[t] = {"错误": "缺 pre 或 post 版本（该表不是本次热更涉及？）"}
+                continue
+            alt = [k for k in ("pre", "post")
+                   if isinstance(res.get(k), dict) and "__另一族__" in res[k]]
+            if alt:
+                report[t] = {"另一族": res[alt[0]]["__另一族__"],
+                             "说明": "不单独做行级 diff；同一逻辑表的主版本已单独统计"}
+                if not quiet:
+                    print("  %-30s – 另一族编码（%s），跳过"
+                          % (t, res[alt[0]]["__另一族__"]), flush=True)
+                continue
+            broke = [k for k in ("pre", "post")
+                     if isinstance(res.get(k), dict) and "__错误__" in res[k]]
+            if broke:
+                report[t] = {"错误": "解码失败（%s）：%s" % ("/".join(broke), res[broke[0]]["__错误__"])}
+                if not quiet:
+                    print("  %-30s ✗ %s" % (t, report[t]["错误"]), flush=True)
+                continue
+            report[t] = diff_rows(res["pre"], res["post"], fields)
+            report[t]["秒"] = round(time.perf_counter() - t_tab, 2)
+            timings.append((report[t]["秒"], t))
+            if not quiet:
+                c = report[t]["计数"]
+                print("  %-30s 新增 %-4d 移除 %-3d 变更 %d（单侧表）%.1fs"
+                      % (t, c["新增"], c["移除"], c["变更"], report[t]["秒"]), flush=True)
+            continue
         for tag, bits in (("pre", pre_bits), ("post", post_bits)):
             cb, bb = bits.get(key), bits.get(base)
             if cb is None or bb is None:
                 res[tag] = None
                 continue
-            f1 = wd / ("%s__%s.bin" % (tag, key))
-            f2 = wd / ("%s__%s.bin" % (tag, base))
-            f1.write_bytes(cb)
-            f2.write_bytes(bb)
-            try:
-                res[tag] = decode_rows(f1, f2)
-            except Exception as exc:                              # noqa: BLE001
-                res[tag] = {"__错误__": "%s: %s" % (type(exc).__name__, exc)}
+            ck = DCACHE.key_of("pair", cb, bb)
+            got = cache.get(ck)
+            if got is None:
+                f1 = wd / ("%s__%s.bin" % (tag, key))
+                f2 = wd / ("%s__%s.bin" % (tag, base))
+                f1.write_bytes(cb)
+                f2.write_bytes(bb)
+                try:
+                    got = decode_rows(f1, f2)
+                except Exception as exc:                          # noqa: BLE001
+                    res[tag] = {"__错误__": "%s: %s" % (type(exc).__name__, exc)}
+                    continue
+                cache.put(ck, "pair", got)
+            res[tag] = got
         if not res.get("pre") or not res.get("post"):
             report[t] = {"错误": "缺 pre 或 post 版本（该表不是本次热更涉及？）"}
             continue
+        # ★ 2026-10-17 修：解码失败时 res[tag] 是 {"__错误__": …}（truthy）⇒ 以前会拿它去
+        #   diff_rows 迭代键名（字符串），抛 AttributeError 把整轮 880 张表的 diff 崩掉。
+        #   现在先认错误，逐表报「解不出」并继续。
+        broke = [k for k in ("pre", "post")
+                 if isinstance(res.get(k), dict) and "__错误__" in res[k]]
+        if broke:
+            report[t] = {"错误": "解码失败（%s）：%s" % ("/".join(broke), res[broke[0]]["__错误__"])}
+            if not quiet:
+                print("  %-30s ✗ %s" % (t, report[t]["错误"]))
+            continue
         report[t] = diff_rows(res["pre"], res["post"], fields)
+        report[t]["秒"] = round(time.perf_counter() - t_tab, 2)
+        timings.append((report[t]["秒"], t))
         if not quiet:
             c = report[t]["计数"]
-            print("  %-30s 新增 %-4d 移除 %-3d 变更 %d"
-                  % (t, c["新增"], c["移除"], c["变更"]))
+            print("  %-30s 新增 %-4d 移除 %-3d 变更 %d  %.1fs"
+                  % (t, c["新增"], c["移除"], c["变更"], report[t]["秒"]), flush=True)
+    LAST_RUN.clear()
+    LAST_RUN.update({
+        "tables": len(targets),
+        "seconds": round(time.perf_counter() - t_all, 1),
+        "slowest": sorted(timings, reverse=True)[:5],
+        "cache": cache.stats(),
+    })
     return report
 
 
@@ -255,6 +383,12 @@ def render_md(report: dict, title: str = "行级热更表") -> str:
         A("")
         if d.get("错误"):
             A("⚠ %s" % d["错误"])
+            A("")
+            continue
+        # ★ 2026-10-17：单侧表分支会产出「另一族编码 / 缺 pre|post」这类**非 diff**条目，
+        #   它们没有 行数/计数 —— 以前这里直接 `d["行数"]` 抛 KeyError，把整轮 bundle 崩掉。
+        if "行数" not in d or "计数" not in d:
+            A("ℹ %s" % (d.get("另一族") or d.get("说明") or "本表未做行级 diff（见 report 里该表字段）"))
             A("")
             continue
         n, c = d["行数"], d["计数"]

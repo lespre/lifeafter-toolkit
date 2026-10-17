@@ -212,8 +212,9 @@ class WikiV01BoardBuildTests(unittest.TestCase):
 
     def test_weapon_skin_static_candidates_are_visible_without_identity_promotion(self):
         board = self.boards["weapon_skin_static_candidates_v01"]
-        # 顶层仅永久记录（139 条静态记录 = 119 顶层 + 20 时限变体归入父卡）
-        self.assertEqual(len(board["items"]), 119)
+        # 顶层仅永久记录（138 条静态记录 = 118 顶层 + 20 时限变体归入父卡）
+        # 10-16：PC 测试服热更覆盖层 4 行不进本冻结产物（见 meta.excluded_overlay_rows），故 119→118。
+        self.assertEqual(len(board["items"]), 118)
         self.assertEqual(board["meta"]["verified_weapon_skin_self_ids"], 0)
         self.assertEqual(board["meta"]["legacy_integer_join_reenabled"], 0)
         self.assertEqual(board["meta"]["percent10_parent_rule_reenabled"], 0)
