@@ -71,3 +71,8 @@ seckeys/
 # Spine 大图集（派生资源，仅保留缩略图）
 04_站点/web/assets/spine/**/*.png
 !04_站点/web/assets/spine/thumbs/*.png
+
+# 不进仓库：派生图片 / 归档 / 交付包
+04_站点/web/assets/spine/thumbs/
+04_站点/web/_备份归档/
+交付/
