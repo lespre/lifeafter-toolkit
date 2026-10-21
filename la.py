@@ -232,6 +232,62 @@ BANNER = """明日之后拆包项目 CLI
 """
 
 
+# ---------------- doctor ----------------
+def _sqlite_meta(db: Path):
+    import sqlite3
+    if not db.is_file():
+        return None, 0, 0
+    try:
+        c = sqlite3.connect("file:%s?mode=ro" % str(db).replace("\\", "/"), uri=True, timeout=5)
+        tabs = [r[0] for r in c.execute("select name from sqlite_master where type='table'")]
+        if "rows" not in tabs:
+            return tabs, 0, 0
+        n = c.execute("select count(*) from rows").fetchone()[0]
+        packs = c.execute("select count(distinct pack) from rows").fetchone()[0]
+        return tabs, n, packs
+    except Exception:
+        return None, 0, 0
+
+
+def cmd_doctor(_a) -> int:
+    ok = True
+    print("== 环境 ==")
+    print("  项目根      %s" % PROJ)
+    print("  Python      %s" % sys.version.split()[0])
+    client = Path(os.environ.get("LA_CLIENT_ROOT") or r"E:/mrzh")
+    mark = "✓" if client.is_dir() else "✗ 未找到（设 LA_CLIENT_ROOT）"
+    print("  客户端根    %s  %s" % (client, mark))
+    if not client.is_dir():
+        ok = False
+
+    print("== 索引 ==")
+    for label, name in (("PE 测试服", "pe_index.sqlite3"), ("PC 客户端", "pc_index.sqlite3")):
+        tabs, n, packs = _sqlite_meta(DET / name)
+        if n:
+            print("  %-9s %s  %s 行 / %s 包" % (label, "✓", format(n, ","), packs))
+        else:
+            print("  %-9s ✗ 不可用（%s）" % (label, "表为空" if tabs is not None else "文件缺失"))
+
+    print("== CLI ==")
+    cases = [
+        ("pe resolve", ["pe", "resolve", "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_01"]),
+        ("pc resolve", ["pc", "resolve", "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_01"]),
+    ]
+    for label, args in cases:
+        r = subprocess.run([PY, "-u", str(PROJ / "la.py")] + args, cwd=str(PROJ),
+                           capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=180)
+        out = r.stdout or ""
+        hit = ("未命中" not in out) and (".gpk" in out or ".npk" in out)
+        print("  %-11s %s" % (label, "✓ 命中" if hit else "· 未命中（PC 索引为空时属预期）"))
+
+    print("== 服务 ==")
+    up = http_ok("http://127.0.0.1:8765/wiki.html")
+    print("  wiki 8765   %s" % ("✓ 200" if up else "· 未运行（la.py web serve 启动）"))
+
+    print("\n结论：%s" % ("可用" if ok else "有阻塞项，见上"))
+    return 0 if ok else 1
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="la.py", description="LifeAfter 拆包项目统一 CLI")
     sub = ap.add_subparsers(dest="cmd")
@@ -265,6 +321,8 @@ def main() -> int:
     npk.add_argument("image", nargs="?")
     npk.add_argument("--id", dest="image_id")
 
+    sub.add_parser("doctor", help="自检：环境/索引/CLI/服务")
+
     wt = sub.add_parser("watch", help="监测")
     wt.add_argument("action", choices=["device", "cdn", "logcat"])
     wt.add_argument("--interval", type=int, default=0)
@@ -276,6 +334,8 @@ def main() -> int:
         return 0
     if a.cmd == "status":
         return cmd_status(a)
+    if a.cmd == "doctor":
+        return cmd_doctor(a)
     if a.cmd == "web":
         return cmd_web(a)
     if a.cmd == "index":

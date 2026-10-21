@@ -154,7 +154,13 @@ python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
 
 # 3) 看全部命令
 python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py --help
+
+# 4) 换设备/新环境先自检（环境 → 索引 → CLI → 服务）
+python la.py doctor
 ```
+
+> **换机器只要设一个变量**：`LA_ROOT` 指项目根、`LA_CLIENT_ROOT` 指客户端根。
+> 不设也能跑 —— 脚本会从自身位置向上找 `00_治理` + `01_工具` 自动定位。
 
 > ⚠️ **不加 `PYTHONPATH` 会报 `ModuleNotFoundError: No module named 'toolkit_core'`** —— 这是最常见的第一个坑。
 

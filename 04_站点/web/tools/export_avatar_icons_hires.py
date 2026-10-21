@@ -14,7 +14,21 @@ import json
 import pathlib
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+def _project_root() -> pathlib.Path:
+    """自动定位项目根：环境变量 LA_ROOT → 向上找 00_治理 与 01_工具。"""
+    import os
+    env = os.environ.get("LA_ROOT")
+    if env:
+        return pathlib.Path(env).expanduser().resolve()
+    here = pathlib.Path(__file__).resolve()
+    for up in here.parents:
+        if (up / "00_治理").is_dir() and (up / "01_工具").is_dir():
+            return up
+    return here.parents[3]
+
+
+
+PROJ = _project_root()
 DET = PROJ / "03_执行/30_分析/热更检测"
 sys.path.insert(0, str(DET))
 import pe_fetch as PE  # noqa: E402
