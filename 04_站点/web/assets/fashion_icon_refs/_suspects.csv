@@ -1,0 +1,27 @@
+﻿item,part,bucket,icon,png,fid,reason,refs,id
+圆圆熊背包,bag,背包,icon_367041,assets/fashion_icon_refs/icon_367041_b.png,C4D85A2B79490005,部位前缀不符（bag 应为 icon_bag_*）,2,wardrobe_0203
+水母啵啵,hat,头饰,icon_366658,assets/fashion_icon_refs/icon_366658_b.png,E413BDDE228BD681,部位前缀不符（hat 应为 icon_h_*）,2,wardrobe_0635
+电玩大咖,cloth/hat,衣服/头饰,icon_366345_1,assets/fashion_icon_refs/icon_366345_1_b.png,464CC231C9AD1364,部位前缀不符（cloth/hat 应为 icon_b_*/icon_cloth_*/icon_h_*）,1,wardrobe_0792
+电玩大咖,cloth/hat,衣服/头饰,icon_366345_2,assets/fashion_icon_refs/icon_366345_2_s.png,0E490A0F81639F14,部位前缀不符（cloth/hat 应为 icon_b_*/icon_cloth_*/icon_h_*）,1,wardrobe_0792
+电玩大咖,cloth/hat,衣服/头饰,icon_366346_1,assets/fashion_icon_refs/icon_366346_1_b.png,C9430BB946729ECC,部位前缀不符（cloth/hat 应为 icon_b_*/icon_cloth_*/icon_h_*）,1,wardrobe_0792
+电玩大咖,cloth/hat,衣服/头饰,icon_366346_2,assets/fashion_icon_refs/icon_366346_2_b.png,945073EFB06EF793,部位前缀不符（cloth/hat 应为 icon_b_*/icon_cloth_*/icon_h_*）,2,wardrobe_0792
+相遇纪念,cloth,衣服,icon_h_f_2002004,assets/fashion_icon_refs/icon_h_f_2002004_b.png,C6F595609AD27B07,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0819
+相遇纪念,cloth,衣服,icon_h_m_2010009,assets/fashion_icon_refs/icon_h_m_2010009_b.png,C4F80C5B0C9F9179,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0819
+草莓奶霜,cloth,衣服,icon_366757_1,assets/fashion_icon_refs/icon_366757_1_s.png,4BD888B7632A061D,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0960
+草莓奶霜,cloth,衣服,icon_366757_2,assets/fashion_icon_refs/icon_366757_2_s.png,56578F600F039AFE,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0960
+草莓奶霜,cloth,衣服,icon_366758_1,assets/fashion_icon_refs/icon_366758_1_b.png,D0F7E8AF80D0126D,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0960
+草莓奶霜,cloth,衣服,icon_366758_2,assets/fashion_icon_refs/icon_366758_2_b.png,913B5B96BEF212EC,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0960
+葡萄气泡,cloth,衣服,icon_366759_1,assets/fashion_icon_refs/icon_366759_1_s.png,4D3AC7EE1D1BDD30,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0989
+葡萄气泡,cloth,衣服,icon_366760_1,assets/fashion_icon_refs/icon_366760_1_s.png,909D011B2142E48A,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_0989
+葡萄气泡,cloth,衣服,icon_366760_2,assets/fashion_icon_refs/icon_366760_2_b.png,026870725DF1A8B9,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,1,wardrobe_0989
+香草回忆,cloth,衣服,icon_366761_1,assets/fashion_icon_refs/icon_366761_1_s.png,18DCA6769438F0F1,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_1214
+香草回忆,cloth,衣服,icon_366762_1,assets/fashion_icon_refs/icon_366762_1_s.png,DD5B17DA1B1B8239,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_1214
+香草回忆,cloth,衣服,icon_366762_2,assets/fashion_icon_refs/icon_366762_2_b.png,77D5B84D5DF0DBEC,部位前缀不符（cloth 应为 icon_b_*/icon_cloth_*）,2,wardrobe_1214
+堂前问鼎,light,光源,icon_light_f_1039001_b,,2F1DF0830D0D0261,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_0214
+堂前问鼎,light,光源,icon_light_m_1039001_b,,E68848180B2BF0D3,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_0214
+堂前问鼎,light,光源,icon_light_f_1039002_b,,3C6BB146713A176C,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_0214
+堂前问鼎,light,光源,icon_light_m_1039002_b,,09B6819639B18581,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_0214
+问鼎星,bag,背包,icon_bag_f_3312001_b,,194FC33A6AA4381A,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_1137
+问鼎星,bag,背包,icon_bag_m_3312001_b,,3275B4619D73C7F6,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_1137
+问鼎星,bag,背包,icon_bag_f_3312002_b,,AE7AAF6110A83BA0,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_1137
+问鼎星,bag,背包,icon_bag_m_3312002_b,,E8CBD029877D0486,标为未下发，但 gpk_loc0 有该 fid（索引/绑定可补）,1,wardrobe_1137

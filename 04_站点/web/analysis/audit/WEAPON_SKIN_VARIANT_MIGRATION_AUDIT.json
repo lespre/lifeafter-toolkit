@@ -1,6 +1,6 @@
 {
  "snapshot_basis": "test-documents-ba8a239a",
- "old_artifact_rows": 119,
+ "old_artifact_rows": 122,
  "canonical_rows": 126,
  "intersection": 111,
  "canonical_only": {
@@ -90,6 +90,36 @@
    "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
   },
   {
+   "skin_item_id": 1110188,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110189,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
    "skin_item_id": 1110190,
    "record_class": "legacy_board_only",
    "status": "legacy_only_with_external_evidence",
@@ -105,6 +135,21 @@
    ],
    "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
    "residual": null
+  },
+  {
+   "skin_item_id": 1110191,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
   },
   {
    "skin_item_id": 1110192,
@@ -174,7 +219,10 @@
   1110185,
   1110186,
   1110187,
+  1110188,
+  1110189,
   1110190,
+  1110191,
   1110192,
   1110198,
   1110199

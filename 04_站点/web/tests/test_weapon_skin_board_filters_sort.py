@@ -404,9 +404,13 @@ class WeaponSkinCardVisualTests(unittest.TestCase):
         self.assertTrue(seen & real, f"至少应出现真实品级：{seen}")
         self.assertTrue(seen - real <= {"品级未确认"},
                         f"非真实品级只能用中性标签「品级未确认」：{seen - real}")
-        # 类名覆盖：真实层级 + unknown 中性
-        for cls in ("t2", "t3", "t4", "t5", "t6", "unknown"):
+        # 类名覆盖：真实层级必须全在；unknown 中性类只在「数据里确实有未配置品级」时才要求
+        # ★ 2026-10-17：1110189（喷火器）按用户口径标为传世后，全板 122 条都有品级 ⇒
+        #   unknown 类自然不再出现；把这条改成条件断言，别让数据变化把测试钉死。
+        for cls in ("t2", "t3", "t4", "t5", "t6"):
             self.assertIn(cls, self.drive["gradeClasses"])
+        if any(not i.get("grade") for i in self.board["items"]):
+            self.assertIn("unknown", self.drive["gradeClasses"])
 
     def test_grade_tiers_come_from_snapshot_values_only(self):
         sys.path.insert(0, str(ROOT / "tools"))

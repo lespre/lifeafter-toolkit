@@ -1,0 +1,4837 @@
+window.WIKI_BOARD_lottery_kaijia_panel_static = {
+  "meta": {
+    "name": "抽奖活动（帝皇一期 · 再临二期） · 双分支定位",
+    "category": "四、奖池 / （一）抽奖、转盘、不放回抽奖",
+    "source_server": "双分支：经典服=super_fashion 主表 key232（与正式服同 FID）；简单生存服=BA8 kj1/kjxq 覆盖 key232",
+    "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+    "generated": "2026-09-11",
+    "evidence": "structure",
+    "notes": "「抽奖、转盘、不放回抽奖」子卡内含活动期子卡：帝皇铠甲（一期，exp 2027-01-17 cohort）→ 铠甲再临（二期 刑天/飞影，exp 2027-01-31 cohort），新活动继续追加为同板 item。每期按服务器分支呈现。帝皇期无用户验收锚点：孤儿候选池不宣称当前发奖池；二期经典服分支：主表 key232（两服同 FID 7E5A5A83B1F07D31）→ lottery 391782，该池 exp 1801353599 本期实例行已列出（菌焰典藏/雨战=经典服独有锚点命中，进化武器判据佐证）。二期简单生存服分支：BA8 专属 kj1/kjxq 覆盖 key232 → lottery 391785/fortune 391786 静态为空，实际发奖组合属运行时；391536/390704 为孤儿候选池（无活动行引用），行级内容与概率真实可读，但不得当作简单服当前奖池。所有 prob 来自 reward_pool_data_base.prob_note 原文，称配置概率。展示名桥仅两条用户许可：火刑裁决/火刑电光炮、面饰：刑天面甲/刑天口罩。",
+    "provenance": {
+      "audit_status": "passed",
+      "source_locks": [
+        {
+          "sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+          "bytes": 188064088,
+          "mtime_ns": 1789049072167514500,
+          "path_hint": "mrzh/Documents/script.py314.lc.npk (simple-survival test snapshot)"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "emperor-classic",
+      "name": "帝皇铠甲（一期） · 经典服分支",
+      "activity": "帝皇铠甲（一期）",
+      "server_branch": "经典服",
+      "branch_source": "super_fashion_lottery_conf_data 主表 key223/224/230（与正式服包同 FID 7E5A5A83B1F07D31=同一文件）",
+      "panel_rows": 0,
+      "rewards": [],
+      "pools": [
+        {
+          "pool_id": 391513,
+          "name": "lottery 池（主表 key223 引用；帝皇期 7 行）",
+          "rows": [
+            {
+              "slot": 0,
+              "name": "涂装：极光护卫",
+              "display_name": "涂装：极光护卫",
+              "source_internal_marker": "涂装：极光护卫",
+              "prob": 0.00197,
+              "prob_note": "0.00197",
+              "config_exp": "2027-01-17",
+              "item_id": 103020,
+              "quantity": 1,
+              "leaf": [
+                103020,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 459157,
+                "pool_slot_encoding": {
+                  "blob_offset": 459198,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=459157",
+                  "pool_id=391513 slot=0",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 1,
+              "name": "涂装:仿生蛛螯典藏版",
+              "display_name": "涂装:仿生蛛螯典藏版",
+              "source_internal_marker": "涂装:仿生蛛螯典藏版",
+              "prob": 0.0018,
+              "prob_note": "0.0018",
+              "config_exp": "2027-01-17",
+              "item_id": 105743,
+              "quantity": 1,
+              "leaf": [
+                105743,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 121064,
+                "pool_slot_encoding": {
+                  "blob_offset": 121106,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=121064",
+                  "pool_id=391513 slot=1",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 2,
+              "name": "配方:医疗无人机",
+              "display_name": "配方:医疗无人机",
+              "source_internal_marker": "配方:医疗无人机",
+              "prob": 0.00577,
+              "prob_note": "0.00577",
+              "config_exp": "2027-01-17",
+              "item_id": 103018,
+              "quantity": 1,
+              "leaf": [
+                103018,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 121144,
+                "pool_slot_encoding": {
+                  "blob_offset": 121179,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=121144",
+                  "pool_id=391513 slot=2",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 3,
+              "name": "涂装:仿生蛛螯雨战版",
+              "display_name": "涂装:仿生蛛螯雨战版",
+              "source_internal_marker": "涂装:仿生蛛螯雨战版",
+              "prob": 0.00206,
+              "prob_note": "0.00206",
+              "config_exp": "2027-01-17",
+              "item_id": 105741,
+              "quantity": 1,
+              "leaf": [
+                105741,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 121218,
+                "pool_slot_encoding": {
+                  "blob_offset": 121258,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=121218",
+                  "pool_id=391513 slot=3",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 5,
+              "name": "典藏涂装：暗夜精灵",
+              "display_name": "典藏涂装：暗夜精灵",
+              "source_internal_marker": "典藏涂装：暗夜精灵",
+              "prob": 0.00157,
+              "prob_note": "0.00157",
+              "config_exp": "2027-01-17",
+              "item_id": 103087,
+              "quantity": 1,
+              "leaf": [
+                103087,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 458765,
+                "pool_slot_encoding": {
+                  "blob_offset": 458811,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=458765",
+                  "pool_id=391513 slot=5",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 6,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.02084,
+              "prob_note": "0.02084",
+              "config_exp": "2027-01-17",
+              "item_id": 391763,
+              "quantity": 1,
+              "leaf": [
+                391763,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 458109,
+                "pool_slot_encoding": {
+                  "blob_offset": 458156,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=458109",
+                  "pool_id=391513 slot=6",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 7,
+              "name": "涂装：银月白鸽",
+              "display_name": "涂装：银月白鸽",
+              "source_internal_marker": "涂装：银月白鸽",
+              "prob": 0.00375,
+              "prob_note": "0.00375",
+              "config_exp": "2027-01-17",
+              "item_id": 103019,
+              "quantity": 1,
+              "leaf": [
+                103019,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d9f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 458327,
+                "pool_slot_encoding": {
+                  "blob_offset": 458368,
+                  "bytes": "270102d9f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=458327",
+                  "pool_id=391513 slot=7",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 391514,
+          "name": "lottery 池（主表 key224 引用；帝皇期 6 行；含帝皇铠甲/铠骑/极光剑/战翼交易盒）",
+          "rows": [
+            {
+              "slot": 1,
+              "name": "帝皇铠骑交易盒",
+              "display_name": "帝皇铠骑交易盒",
+              "source_internal_marker": "帝皇铠骑交易盒",
+              "prob": 0.13333,
+              "prob_note": "0.13333",
+              "config_exp": "2027-01-17",
+              "item_id": 139262,
+              "quantity": 1,
+              "leaf": [
+                139262,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 303216,
+                "pool_slot_encoding": {
+                  "blob_offset": 303272,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=303216",
+                  "pool_id=391514 slot=1",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 10,
+              "name": "异变核芯-电极效应",
+              "display_name": "异变核芯-电极效应",
+              "source_internal_marker": "异变核芯-电极效应",
+              "prob": 0.27331,
+              "prob_note": "0.27331",
+              "config_exp": "2027-01-17",
+              "item_id": 660066,
+              "quantity": 1,
+              "leaf": [
+                660066,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 535452,
+                "pool_slot_encoding": {
+                  "blob_offset": 535484,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=535452",
+                  "pool_id=391514 slot=10",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 12,
+              "name": "极光剑交易盒",
+              "display_name": "极光剑交易盒",
+              "source_internal_marker": "极光剑交易盒",
+              "prob": 0.20833,
+              "prob_note": "0.20833",
+              "config_exp": "2027-01-17",
+              "item_id": 139263,
+              "quantity": 1,
+              "leaf": [
+                139263,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 499270,
+                "pool_slot_encoding": {
+                  "blob_offset": 499325,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=499270",
+                  "pool_id=391514 slot=12",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 13,
+              "name": "异变核芯-凝华效应",
+              "display_name": "异变核芯-凝华效应",
+              "source_internal_marker": "异变核芯-凝华效应",
+              "prob": 0.22776,
+              "prob_note": "0.22776",
+              "config_exp": "2027-01-17",
+              "item_id": 660078,
+              "quantity": 1,
+              "leaf": [
+                660078,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 499131,
+                "pool_slot_encoding": {
+                  "blob_offset": 499163,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=499131",
+                  "pool_id=391514 slot=13",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 14,
+              "name": "帝皇铠甲交易盒",
+              "display_name": "帝皇铠甲交易盒",
+              "source_internal_marker": "帝皇铠甲交易盒",
+              "prob": 0.14815,
+              "prob_note": "0.14815",
+              "config_exp": "2027-01-17",
+              "item_id": 139261,
+              "quantity": 1,
+              "leaf": [
+                139261,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 427864,
+                "pool_slot_encoding": {
+                  "blob_offset": 427933,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=427864",
+                  "pool_id=391514 slot=14",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 15,
+              "name": "帝皇战翼交易盒",
+              "display_name": "帝皇战翼交易盒",
+              "source_internal_marker": "帝皇战翼交易盒",
+              "prob": 0.00911,
+              "prob_note": "0.00911",
+              "config_exp": "2027-01-17",
+              "item_id": 139264,
+              "quantity": 1,
+              "leaf": [
+                139264,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102daf217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 499487,
+                "pool_slot_encoding": {
+                  "blob_offset": 499530,
+                  "bytes": "270102daf217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=499487",
+                  "pool_id=391514 slot=15",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 391762,
+          "name": "lottery 池（主表 key230 引用；帝皇期 18 行；含帝皇裁决/瑞昭交易盒+普通奖励完整结构）",
+          "rows": [
+            {
+              "slot": 6,
+              "name": "配方:仿生蛛螯步枪",
+              "display_name": "配方:仿生蛛螯步枪",
+              "source_internal_marker": "配方:仿生蛛螯步枪",
+              "prob": 0.0125,
+              "prob_note": "0.0125",
+              "config_exp": "2027-01-17",
+              "item_id": 105740,
+              "quantity": 1,
+              "leaf": [
+                105740,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6599,
+                "pool_slot_encoding": {
+                  "blob_offset": 6645,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6599",
+                  "pool_id=391762 slot=6",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 8,
+              "name": "异变核芯-电极效应",
+              "display_name": "异变核芯-电极效应",
+              "source_internal_marker": "异变核芯-电极效应",
+              "prob": 0.00208,
+              "prob_note": "0.00208",
+              "config_exp": "2027-01-17",
+              "item_id": 660066,
+              "quantity": 1,
+              "leaf": [
+                660066,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6555,
+                "pool_slot_encoding": {
+                  "blob_offset": 6599,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6555",
+                  "pool_id=391762 slot=8",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 9,
+              "name": "异变核芯-凝华效应",
+              "display_name": "异变核芯-凝华效应",
+              "source_internal_marker": "异变核芯-凝华效应",
+              "prob": 0.00208,
+              "prob_note": "0.00208",
+              "config_exp": "2027-01-17",
+              "item_id": 660078,
+              "quantity": 1,
+              "leaf": [
+                660078,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6511,
+                "pool_slot_encoding": {
+                  "blob_offset": 6555,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6511",
+                  "pool_id=391762 slot=9",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 10,
+              "name": "银翼号背包礼盒",
+              "display_name": "银翼号背包礼盒",
+              "source_internal_marker": "银翼号背包礼盒",
+              "prob": 0.00417,
+              "prob_note": "0.00417",
+              "config_exp": "2027-01-17",
+              "item_id": 131216,
+              "quantity": 1,
+              "leaf": [
+                131216,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31814,
+                "pool_slot_encoding": {
+                  "blob_offset": 6511,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31814",
+                  "pool_id=391762 slot=10",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 11,
+              "name": "帝皇裁决交易盒",
+              "display_name": "帝皇裁决交易盒",
+              "source_internal_marker": "帝皇裁决交易盒",
+              "prob": 0.0067,
+              "prob_note": "0.0067",
+              "config_exp": "2027-01-17",
+              "item_id": 139265,
+              "quantity": 1,
+              "leaf": [
+                139265,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6422,
+                "pool_slot_encoding": {
+                  "blob_offset": 6470,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6422",
+                  "pool_id=391762 slot=11",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 12,
+              "name": "帝皇瑞昭交易盒",
+              "display_name": "帝皇瑞昭交易盒",
+              "source_internal_marker": "帝皇瑞昭交易盒",
+              "prob": 0.0067,
+              "prob_note": "0.0067",
+              "config_exp": "2027-01-17",
+              "item_id": 139266,
+              "quantity": 1,
+              "leaf": [
+                139266,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6368,
+                "pool_slot_encoding": {
+                  "blob_offset": 6422,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6368",
+                  "pool_id=391762 slot=12",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 13,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.01875,
+              "prob_note": "0.01875",
+              "config_exp": "2027-01-17",
+              "item_id": 139277,
+              "quantity": 1,
+              "leaf": [
+                139277,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 30363,
+                "pool_slot_encoding": {
+                  "blob_offset": 6368,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=30363",
+                  "pool_id=391762 slot=13",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 14,
+              "name": "能量电池",
+              "display_name": "能量电池",
+              "source_internal_marker": "能量电池",
+              "prob": 0.01384,
+              "prob_note": "0.01384",
+              "config_exp": "2027-01-17",
+              "item_id": 151994,
+              "quantity": 10,
+              "leaf": [
+                151994,
+                10
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6275,
+                "pool_slot_encoding": {
+                  "blob_offset": 6322,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6275",
+                  "pool_id=391762 slot=14",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 15,
+              "name": "稀有微晶",
+              "display_name": "稀有微晶",
+              "source_internal_marker": "稀有微晶",
+              "prob": 0.01471,
+              "prob_note": "0.01471",
+              "config_exp": "2027-01-17",
+              "item_id": 151646,
+              "quantity": 100,
+              "leaf": [
+                151646,
+                100
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6231,
+                "pool_slot_encoding": {
+                  "blob_offset": 6275,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6231",
+                  "pool_id=391762 slot=15",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 16,
+              "name": "1型记忆材料",
+              "display_name": "1型记忆材料",
+              "source_internal_marker": "1型记忆材料",
+              "prob": 0.01471,
+              "prob_note": "0.01471",
+              "config_exp": "2027-01-17",
+              "item_id": 151784,
+              "quantity": 5,
+              "leaf": [
+                151784,
+                5
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6192,
+                "pool_slot_encoding": {
+                  "blob_offset": 6231,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6192",
+                  "pool_id=391762 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 17,
+              "name": "稀有微晶",
+              "display_name": "稀有微晶",
+              "source_internal_marker": "稀有微晶",
+              "prob": 0.02586,
+              "prob_note": "0.02586",
+              "config_exp": "2027-01-17",
+              "item_id": 151646,
+              "quantity": 100,
+              "leaf": [
+                151646,
+                100
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6155,
+                "pool_slot_encoding": {
+                  "blob_offset": 6192,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6155",
+                  "pool_id=391762 slot=17",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 18,
+              "name": "1型记忆材料",
+              "display_name": "1型记忆材料",
+              "source_internal_marker": "1型记忆材料",
+              "prob": 0.02586,
+              "prob_note": "0.02586",
+              "config_exp": "2027-01-17",
+              "item_id": 151784,
+              "quantity": 5,
+              "leaf": [
+                151784,
+                5
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6118,
+                "pool_slot_encoding": {
+                  "blob_offset": 6155,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6118",
+                  "pool_id=391762 slot=18",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 19,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.11618,
+              "prob_note": "0.11618",
+              "config_exp": "2027-01-17",
+              "item_id": 150059,
+              "quantity": 20,
+              "leaf": [
+                150059,
+                20
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6079,
+                "pool_slot_encoding": {
+                  "blob_offset": 6118,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6079",
+                  "pool_id=391762 slot=19",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 20,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.11618,
+              "prob_note": "0.11618",
+              "config_exp": "2027-01-17",
+              "item_id": 150059,
+              "quantity": 20,
+              "leaf": [
+                150059,
+                20
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6079,
+                "pool_slot_encoding": {
+                  "blob_offset": 6111,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6079",
+                  "pool_id=391762 slot=20",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 21,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.23235,
+              "prob_note": "0.23235",
+              "config_exp": "2027-01-17",
+              "item_id": 150059,
+              "quantity": 10,
+              "leaf": [
+                150059,
+                10
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6047,
+                "pool_slot_encoding": {
+                  "blob_offset": 6079,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6047",
+                  "pool_id=391762 slot=21",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 22,
+              "name": "纳米塑材自选箱",
+              "display_name": "纳米塑材自选箱",
+              "source_internal_marker": "纳米塑材自选箱",
+              "prob": 0.14522,
+              "prob_note": "0.14522",
+              "config_exp": "2027-01-17",
+              "item_id": 240116,
+              "quantity": 1,
+              "leaf": [
+                240116,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6014,
+                "pool_slot_encoding": {
+                  "blob_offset": 6047,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6014",
+                  "pool_id=391762 slot=22",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 23,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.07435,
+              "prob_note": "0.07435",
+              "config_exp": "2027-01-17",
+              "item_id": 241006,
+              "quantity": 1,
+              "leaf": [
+                241006,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 5982,
+                "pool_slot_encoding": {
+                  "blob_offset": 6014,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=5982",
+                  "pool_id=391762 slot=23",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 24,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.17211,
+              "prob_note": "0.17211",
+              "config_exp": "2027-01-17",
+              "item_id": 241007,
+              "quantity": 1,
+              "leaf": [
+                241007,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d2f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 5950,
+                "pool_slot_encoding": {
+                  "blob_offset": 5982,
+                  "bytes": "270102d2f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=5950",
+                  "pool_id=391762 slot=24",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        }
+      ],
+      "activity_pool_refs": [
+        {
+          "pool_id": 391513,
+          "role": "lottery_id(主表 key223)",
+          "status": "referenced",
+          "note": "帝皇期实例行 exp 2027-01-17；含待取名 leaf 391763（帝皇铠甲本体候选，39xxxx 触发物）"
+        },
+        {
+          "pool_id": 391514,
+          "role": "lottery_id(主表 key224)",
+          "status": "referenced",
+          "note": "帝皇铠甲/铠骑/极光剑/战翼 4 交易盒在此池；主表面板 [106427,105276,241867,131216] 与池内容部分重叠=复用池多活动共享行，档位未逐行对齐"
+        },
+        {
+          "pool_id": 391762,
+          "role": "lottery_id(主表 key230)",
+          "status": "referenced",
+          "note": "fortune_bag_dct jump:342 -> {335:391764}；391764 帝皇期仅 1 行且广播=宸世臻藏（青龙涂装）→ fortune 指向非帝皇内容，语义待续"
+        },
+        {
+          "pool_id": 391764,
+          "role": "fortune_bag_dct(主表 key230)={335:391764}",
+          "status": "unresolved",
+          "note": "指向宸世臻藏青龙池；不是帝皇内容池，勿当帝皇福袋"
+        }
+      ],
+      "evidence": "structure",
+      "evidence_level": "structure-only",
+      "source": "classic branch = main config row chain; no user anchor for phase 1; activation and complete odds are not claimed",
+      "provenance": {
+        "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+        "source_entries": [
+          {
+            "entry_index": 13592,
+            "file_id": "7E5A5A83B1F07D31",
+            "decoded_sha256": "fb03a5e22ec85e42e4ed5ddcccff33b081cd6d8d04265a07205d3b4490d8ce8a",
+            "role": "super_base"
+          },
+          {
+            "entry_index": 8617,
+            "file_id": "512C733C3B263D37",
+            "decoded_sha256": "e2fef4b7cb187584639699ec9c8b7548adf197f35610bc3d2626fff88fb8a6a7",
+            "role": "super_chs"
+          },
+          {
+            "entry_index": 23049,
+            "file_id": "D558884A36C972C5",
+            "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+            "role": "reward_base"
+          },
+          {
+            "entry_index": 11371,
+            "file_id": "69E58821939CB515",
+            "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+            "role": "reward_chs"
+          }
+        ],
+        "table": "super_fashion_lottery_conf_data + reward_pool_data_base",
+        "row_key": "223/224/230",
+        "field_refs": [
+          "super_fashion key223.lottery_id=391513",
+          "super_fashion key224.lottery_id=391514",
+          "super_fashion key230.lottery_id=391762",
+          "reward_pool pools 391513/391514/391762 rows exp=1800143999"
+        ],
+        "name_source": "reward note as source_internal_marker"
+      }
+    },
+    {
+      "id": "emperor-simple",
+      "name": "帝皇铠甲（一期） · 简单生存服分支",
+      "activity": "帝皇铠甲（一期）",
+      "server_branch": "简单生存服",
+      "branch_source": "BA8 专属 kj1/kjxq 覆盖通道 key224/230（正式服包无此变体；key223 无 kj1 行）",
+      "panel_rows": 0,
+      "rewards": [],
+      "pools": [
+        {
+          "pool_id": 391535,
+          "name": "lottery 池（kj1 key224 引用；帝皇期 4 行）",
+          "rows": [
+            {
+              "slot": 2,
+              "name": "帝皇铠甲交易盒",
+              "display_name": "帝皇铠甲交易盒",
+              "source_internal_marker": "帝皇铠甲交易盒",
+              "prob": 0.15686,
+              "prob_note": "0.15686",
+              "config_exp": "2027-01-17",
+              "item_id": 139261,
+              "quantity": 1,
+              "leaf": [
+                139261,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102eff217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 461629,
+                "pool_slot_encoding": {
+                  "blob_offset": 461685,
+                  "bytes": "270102eff217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=461629",
+                  "pool_id=391535 slot=2",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 12,
+              "name": "极光剑交易盒",
+              "display_name": "极光剑交易盒",
+              "source_internal_marker": "极光剑交易盒",
+              "prob": 0.18519,
+              "prob_note": "0.18519",
+              "config_exp": "2027-01-17",
+              "item_id": 139263,
+              "quantity": 1,
+              "leaf": [
+                139263,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102eff217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 543199,
+                "pool_slot_encoding": {
+                  "blob_offset": 543240,
+                  "bytes": "270102eff217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=543199",
+                  "pool_id=391535 slot=12",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 14,
+              "name": "异变核芯-凝华效应",
+              "display_name": "异变核芯-凝华效应",
+              "source_internal_marker": "异变核芯-凝华效应",
+              "prob": 0.23413,
+              "prob_note": "0.23413",
+              "config_exp": "2027-01-17",
+              "item_id": 660078,
+              "quantity": 1,
+              "leaf": [
+                660078,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102eff217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 542620,
+                "pool_slot_encoding": {
+                  "blob_offset": 542652,
+                  "bytes": "270102eff217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=542620",
+                  "pool_id=391535 slot=14",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 15,
+              "name": "异变核芯-电极效应",
+              "display_name": "异变核芯-电极效应",
+              "source_internal_marker": "异变核芯-电极效应",
+              "prob": 0.28096,
+              "prob_note": "0.28096",
+              "config_exp": "2027-01-17",
+              "item_id": 660066,
+              "quantity": 1,
+              "leaf": [
+                660066,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102eff217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 543393,
+                "pool_slot_encoding": {
+                  "blob_offset": 543425,
+                  "bytes": "270102eff217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=543393",
+                  "pool_id=391535 slot=15",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 391767,
+          "name": "lottery 池（kj1 key230 引用；帝皇期 3 行普通奖励）",
+          "rows": [
+            {
+              "slot": 16,
+              "name": "1型记忆材料",
+              "display_name": "1型记忆材料",
+              "source_internal_marker": "1型记忆材料",
+              "prob": 0.02586,
+              "prob_note": "0.02586",
+              "config_exp": "2027-01-17",
+              "item_id": 151784,
+              "quantity": 5,
+              "leaf": [
+                151784,
+                5
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d7f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 5619,
+                "pool_slot_encoding": {
+                  "blob_offset": 5661,
+                  "bytes": "270102d7f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=5619",
+                  "pool_id=391767 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 17,
+              "name": "重构分子",
+              "display_name": "重构分子",
+              "source_internal_marker": "重构分子",
+              "prob": 0.07201,
+              "prob_note": "0.07201",
+              "config_exp": "2027-01-17",
+              "item_id": 151783,
+              "quantity": 50,
+              "leaf": [
+                151783,
+                50
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d7f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6111,
+                "pool_slot_encoding": {
+                  "blob_offset": 5619,
+                  "bytes": "270102d7f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6111",
+                  "pool_id=391767 slot=17",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 18,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.11607,
+              "prob_note": "0.11607",
+              "config_exp": "2027-01-17",
+              "item_id": 150059,
+              "quantity": 20,
+              "leaf": [
+                150059,
+                20
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d7f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 5545,
+                "pool_slot_encoding": {
+                  "blob_offset": 5577,
+                  "bytes": "270102d7f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=5545",
+                  "pool_id=391767 slot=18",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 390699,
+          "name": "孤儿候选池 · 活动引用未闭合（帝皇广播 9 行+同期普通 9 行）",
+          "rows": [
+            {
+              "slot": 4,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.23215,
+              "prob_note": "0.23215",
+              "config_exp": "2027-01-17",
+              "item_id": 150059,
+              "quantity": 10,
+              "leaf": [
+                150059,
+                10
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 32371,
+                "pool_slot_encoding": {
+                  "blob_offset": 32403,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=32371",
+                  "pool_id=390699 slot=4",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 5,
+              "name": "纳米塑材自选箱",
+              "display_name": "纳米塑材自选箱",
+              "source_internal_marker": "纳米塑材自选箱",
+              "prob": 0.14509,
+              "prob_note": "0.14509",
+              "config_exp": "2027-01-17",
+              "item_id": 240116,
+              "quantity": 1,
+              "leaf": [
+                240116,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 32257,
+                "pool_slot_encoding": {
+                  "blob_offset": 32290,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=32257",
+                  "pool_id=390699 slot=5",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 6,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.07429,
+              "prob_note": "0.07429",
+              "config_exp": "2027-01-17",
+              "item_id": 241006,
+              "quantity": 1,
+              "leaf": [
+                241006,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 32170,
+                "pool_slot_encoding": {
+                  "blob_offset": 32202,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=32170",
+                  "pool_id=390699 slot=6",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 7,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.17196,
+              "prob_note": "0.17196",
+              "config_exp": "2027-01-17",
+              "item_id": 241007,
+              "quantity": 1,
+              "leaf": [
+                241007,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 32089,
+                "pool_slot_encoding": {
+                  "blob_offset": 32121,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=32089",
+                  "pool_id=390699 slot=7",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 8,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.02084,
+              "prob_note": "0.02084",
+              "config_exp": "2027-01-17",
+              "item_id": 391768,
+              "quantity": 1,
+              "leaf": [
+                391768,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 313213,
+                "pool_slot_encoding": {
+                  "blob_offset": 313267,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=313213",
+                  "pool_id=390699 slot=8",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 9,
+              "name": "涂装：极光护卫",
+              "display_name": "涂装：极光护卫",
+              "source_internal_marker": "涂装：极光护卫",
+              "prob": 0.00187,
+              "prob_note": "0.00187",
+              "config_exp": "2027-01-17",
+              "item_id": 103020,
+              "quantity": 1,
+              "leaf": [
+                103020,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 365389,
+                "pool_slot_encoding": {
+                  "blob_offset": 365439,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=365389",
+                  "pool_id=390699 slot=9",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 10,
+              "name": "涂装：银月白鸽",
+              "display_name": "涂装：银月白鸽",
+              "source_internal_marker": "涂装：银月白鸽",
+              "prob": 0.00375,
+              "prob_note": "0.00375",
+              "config_exp": "2027-01-17",
+              "item_id": 103019,
+              "quantity": 1,
+              "leaf": [
+                103019,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 336463,
+                "pool_slot_encoding": {
+                  "blob_offset": 336504,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=336463",
+                  "pool_id=390699 slot=10",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 11,
+              "name": "配方:医疗无人机",
+              "display_name": "配方:医疗无人机",
+              "source_internal_marker": "配方:医疗无人机",
+              "prob": 0.00625,
+              "prob_note": "0.00625",
+              "config_exp": "2027-01-17",
+              "item_id": 103018,
+              "quantity": 1,
+              "leaf": [
+                103018,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 312936,
+                "pool_slot_encoding": {
+                  "blob_offset": 312971,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=312936",
+                  "pool_id=390699 slot=11",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 16,
+              "name": "待取名",
+              "display_name": "待取名",
+              "source_internal_marker": "待取名",
+              "prob": 0.00234,
+              "prob_note": "0.00234",
+              "config_exp": "2027-01-17",
+              "item_id": 660078,
+              "quantity": 1,
+              "leaf": [
+                660078,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31894,
+                "pool_slot_encoding": {
+                  "blob_offset": 31931,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31894",
+                  "pool_id=390699 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 18,
+              "name": "帝皇裁决交易盒",
+              "display_name": "帝皇裁决交易盒",
+              "source_internal_marker": "帝皇裁决交易盒",
+              "prob": 0.00625,
+              "prob_note": "0.00625",
+              "config_exp": "2027-01-17",
+              "item_id": 139265,
+              "quantity": 1,
+              "leaf": [
+                139265,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31626,
+                "pool_slot_encoding": {
+                  "blob_offset": 31667,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31626",
+                  "pool_id=390699 slot=18",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 19,
+              "name": "帝皇瑞昭交易盒",
+              "display_name": "帝皇瑞昭交易盒",
+              "source_internal_marker": "帝皇瑞昭交易盒",
+              "prob": 0.00625,
+              "prob_note": "0.00625",
+              "config_exp": "2027-01-17",
+              "item_id": 139266,
+              "quantity": 1,
+              "leaf": [
+                139266,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31448,
+                "pool_slot_encoding": {
+                  "blob_offset": 31489,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31448",
+                  "pool_id=390699 slot=19",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 20,
+              "name": "涂装:苍风",
+              "display_name": "涂装:苍风",
+              "source_internal_marker": "涂装:苍风",
+              "prob": 0.00197,
+              "prob_note": "0.00197",
+              "config_exp": "2027-01-17",
+              "item_id": 103223,
+              "quantity": 1,
+              "leaf": [
+                103223,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 436357,
+                "pool_slot_encoding": {
+                  "blob_offset": 436396,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=436357",
+                  "pool_id=390699 slot=20",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 21,
+              "name": "涂装:青翼",
+              "display_name": "涂装:青翼",
+              "source_internal_marker": "涂装:青翼",
+              "prob": 0.00375,
+              "prob_note": "0.00375",
+              "config_exp": "2027-01-17",
+              "item_id": 103222,
+              "quantity": 1,
+              "leaf": [
+                103222,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31202,
+                "pool_slot_encoding": {
+                  "blob_offset": 31248,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31202",
+                  "pool_id=390699 slot=21",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 22,
+              "name": "配方:盾甲金牛",
+              "display_name": "配方:盾甲金牛",
+              "source_internal_marker": "配方:盾甲金牛",
+              "prob": 0.00625,
+              "prob_note": "0.00625",
+              "config_exp": "2027-01-17",
+              "item_id": 103221,
+              "quantity": 1,
+              "leaf": [
+                103221,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 364980,
+                "pool_slot_encoding": {
+                  "blob_offset": 365015,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=364980",
+                  "pool_id=390699 slot=22",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 23,
+              "name": "异变核芯-电极效应",
+              "display_name": "异变核芯-电极效应",
+              "source_internal_marker": "异变核芯-电极效应",
+              "prob": 0.00234,
+              "prob_note": "0.00234",
+              "config_exp": "2027-01-17",
+              "item_id": 660066,
+              "quantity": 1,
+              "leaf": [
+                660066,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 313857,
+                "pool_slot_encoding": {
+                  "blob_offset": 313895,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=313857",
+                  "pool_id=390699 slot=23",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 29,
+              "name": "能量电池",
+              "display_name": "能量电池",
+              "source_internal_marker": "能量电池",
+              "prob": 0.0225,
+              "prob_note": "0.0225",
+              "config_exp": "2027-01-17",
+              "item_id": 151994,
+              "quantity": 10,
+              "leaf": [
+                151994,
+                10
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 30288,
+                "pool_slot_encoding": {
+                  "blob_offset": 30323,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=30288",
+                  "pool_id=390699 slot=29",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 30,
+              "name": "稀有微晶",
+              "display_name": "稀有微晶",
+              "source_internal_marker": "稀有微晶",
+              "prob": 0.01471,
+              "prob_note": "0.01471",
+              "config_exp": "2027-01-17",
+              "item_id": 151646,
+              "quantity": 100,
+              "leaf": [
+                151646,
+                100
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 30202,
+                "pool_slot_encoding": {
+                  "blob_offset": 30241,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=30202",
+                  "pool_id=390699 slot=30",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 31,
+              "name": "1型记忆材料",
+              "display_name": "1型记忆材料",
+              "source_internal_marker": "1型记忆材料",
+              "prob": 0.01471,
+              "prob_note": "0.01471",
+              "config_exp": "2027-01-17",
+              "item_id": 151784,
+              "quantity": 5,
+              "leaf": [
+                151784,
+                5
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102abec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 30116,
+                "pool_slot_encoding": {
+                  "blob_offset": 30155,
+                  "bytes": "270102abec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=30116",
+                  "pool_id=390699 slot=31",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 390716,
+          "name": "孤儿候选池 · 活动引用未闭合（帝皇铠骑交易盒 1 行）",
+          "rows": [
+            {
+              "slot": 9,
+              "name": "帝皇铠骑交易盒",
+              "display_name": "帝皇铠骑交易盒",
+              "source_internal_marker": "帝皇铠骑交易盒",
+              "prob": 0.14286,
+              "prob_note": "0.14286",
+              "config_exp": "2027-01-17",
+              "item_id": 139262,
+              "quantity": 1,
+              "leaf": [
+                139262,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102bcec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 313220,
+                "pool_slot_encoding": {
+                  "blob_offset": 468578,
+                  "bytes": "270102bcec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=313220",
+                  "pool_id=390716 slot=9",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 391760,
+          "name": "孤儿候选池 · 活动引用未闭合（仿生蛛螯雪地版 1 行）",
+          "rows": [
+            {
+              "slot": 16,
+              "name": "涂装:仿生蛛螯雪地版",
+              "display_name": "涂装:仿生蛛螯雪地版",
+              "source_internal_marker": "涂装:仿生蛛螯雪地版",
+              "prob": 0.00206,
+              "prob_note": "0.00206",
+              "config_exp": "2027-01-17",
+              "item_id": 105742,
+              "quantity": 1,
+              "leaf": [
+                105742,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102d0f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 6645,
+                "pool_slot_encoding": {
+                  "blob_offset": 6708,
+                  "bytes": "270102d0f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=6645",
+                  "pool_id=391760 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 660078,
+          "name": "孤儿候选池 · 活动引用未闭合（银翼号背包礼盒 1 行）",
+          "rows": [
+            {
+              "slot": 1,
+              "name": "银翼号背包礼盒",
+              "display_name": "银翼号背包礼盒",
+              "source_internal_marker": "银翼号背包礼盒",
+              "prob": 0.00417,
+              "prob_note": "0.00417",
+              "config_exp": "2027-01-17",
+              "item_id": 131216,
+              "quantity": 1,
+              "leaf": [
+                131216,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在帝皇铠甲活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102eea428; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 31814,
+                "pool_slot_encoding": {
+                  "blob_offset": 6518,
+                  "bytes": "270102eea428"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=31814",
+                  "pool_id=660078 slot=1",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        }
+      ],
+      "activity_pool_refs": [
+        {
+          "pool_id": 391535,
+          "role": "lottery_id(kj1 key224)",
+          "status": "referenced",
+          "note": "kj1 覆盖 key224；帝皇铠甲/极光剑交易盒+双核芯；kj1 面板 [106426,132121,241787,133298] 与主表面板不同"
+        },
+        {
+          "pool_id": 391767,
+          "role": "lottery_id(kj1 key230)",
+          "status": "referenced",
+          "note": "帝皇期仅普通奖励 3 行（记忆材料/重构分子/配方残页）；slot19 游隼典藏=二期期(1801353599)复用行不展开"
+        },
+        {
+          "pool_id": null,
+          "role": "key223 覆盖",
+          "status": "absent-in-kj1",
+          "note": "kj1 行集无 key223（主表独有行）→ 简单服侧 223 配置缺失"
+        },
+        {
+          "pool_id": 390699,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "帝皇广播 9 行（裁决/瑞昭交易盒+苍风/青翼/盾甲金牛/医疗无人机/极光护卫/白鸽）+无广播普通行；无配置行引用"
+        },
+        {
+          "pool_id": 390716,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "帝皇铠骑交易盒 0.14286"
+        },
+        {
+          "pool_id": 391760,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "仿生蛛螯雪地版 0.00206"
+        },
+        {
+          "pool_id": 660078,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "银翼号背包礼盒 0.00417（660000 核芯段同 ID 空间）"
+        }
+      ],
+      "evidence": "structure",
+      "evidence_level": "structure-only",
+      "source": "simple branch = BA8 kj1 overlay chain; orphan candidate pools are NOT claimed as live simple-server pools",
+      "provenance": {
+        "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+        "source_entries": [
+          {
+            "entry_index": 13545,
+            "file_id": "7DDCFA4A4BF8050C",
+            "decoded_sha256": "6920d9318022d724103bedbc927c2d420ed5ff12758921521b44037295add7a4",
+            "role": "kj1_base"
+          },
+          {
+            "entry_index": 10651,
+            "file_id": "636E4A12A344E22F",
+            "decoded_sha256": "9ce03f3f114a0439e52cb95056e95e3a3cdc0c148c58a1b432c9d0fb4ba56768",
+            "role": "kj1_chs"
+          },
+          {
+            "entry_index": 23049,
+            "file_id": "D558884A36C972C5",
+            "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+            "role": "reward_base"
+          },
+          {
+            "entry_index": 11371,
+            "file_id": "69E58821939CB515",
+            "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+            "role": "reward_chs"
+          }
+        ],
+        "table": "super_fashion_lottery_conf_data_auto_oversea_data_kj1 + reward_pool_data_base",
+        "row_key": "224/230",
+        "field_refs": [
+          "kj1 key224.lottery_id=391535",
+          "kj1 key230.lottery_id=391767",
+          "reward_pool pools 391535/391767/390699/390716/391760/660078 rows exp=1800143999"
+        ],
+        "name_source": "reward note as source_internal_marker"
+      }
+    },
+    {
+      "id": "232-classic",
+      "name": "铠甲再临 · 经典服分支",
+      "activity": "铠甲再临（二期）",
+      "server_branch": "经典服",
+      "branch_source": "super_fashion_lottery_conf_data 主表 key=232（与正式服包同 FID 7E5A5A83B1F07D31=同一文件）",
+      "panel_rows": 10,
+      "rewards": [
+        {
+          "position": 0,
+          "item_id": 194190,
+          "name": "火刑战驱",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 23049,
+                "file_id": "D558884A36C972C5",
+                "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                "role": "reward_base"
+              },
+              {
+                "entry_index": 11371,
+                "file_id": "69E58821939CB515",
+                "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                "role": "reward_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[0]=194190",
+              "reward_pool_data_base phase-2 pool note -> leaf item 194190"
+            ],
+            "name_source": "same-snapshot reward_pool_data_base phase-2 pool row note; leaf item_id matches the panel item id (structural name link; note is the source_internal_marker)"
+          }
+        },
+        {
+          "position": 1,
+          "item_id": 139292,
+          "name": "刑天铠甲",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 21287,
+                "file_id": "C5998AD60B305608",
+                "decoded_sha256": "c13b72409ae408294e0690312bd94869dfee9a828db8722d28864dc53e27cf84",
+                "role": "gift_base"
+              },
+              {
+                "entry_index": 15916,
+                "file_id": "938D86FE498D1B1A",
+                "decoded_sha256": "d175cc2e01817be81d69653673aeddc6016a322f6c0f009f2b3d18e5ac32b66d",
+                "role": "gift_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[1]=139292",
+              "gift_data.key=139292",
+              "gift_data.name"
+            ],
+            "name_source": "same-snapshot gift_data row key=139292, field=name"
+          }
+        },
+        {
+          "position": 2,
+          "item_id": 139293,
+          "name": "飞影铠甲",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 21287,
+                "file_id": "C5998AD60B305608",
+                "decoded_sha256": "c13b72409ae408294e0690312bd94869dfee9a828db8722d28864dc53e27cf84",
+                "role": "gift_base"
+              },
+              {
+                "entry_index": 15916,
+                "file_id": "938D86FE498D1B1A",
+                "decoded_sha256": "d175cc2e01817be81d69653673aeddc6016a322f6c0f009f2b3d18e5ac32b66d",
+                "role": "gift_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[2]=139293",
+              "gift_data.key=139293",
+              "gift_data.name"
+            ],
+            "name_source": "same-snapshot gift_data row key=139293, field=name"
+          }
+        },
+        {
+          "position": 3,
+          "item_id": 1110182,
+          "name": "火刑裁决",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 19394,
+                "file_id": "B42760CCA41DBC25",
+                "decoded_sha256": "a98006a644ae7e98ce09eea0d68e821ca0fa0c02f7cd4efa908aee602bd948f2",
+                "role": "common_item_base"
+              },
+              {
+                "entry_index": 25794,
+                "file_id": "EF3A8474A5E5F7A4",
+                "decoded_sha256": "f10e0a16a7c4295c68d0c5fde26f5510c278cc01d50d71f3deb6478a5a647261",
+                "role": "common_item_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[3]=1110182",
+              "common_item_data_base.key=1110182",
+              "common_item_data_base.name"
+            ],
+            "name_source": "same-snapshot common_item_data_base row key=1110182, field=name"
+          }
+        },
+        {
+          "position": 4,
+          "item_id": 1110183,
+          "name": "战神烈火剑",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 19394,
+                "file_id": "B42760CCA41DBC25",
+                "decoded_sha256": "a98006a644ae7e98ce09eea0d68e821ca0fa0c02f7cd4efa908aee602bd948f2",
+                "role": "common_item_base"
+              },
+              {
+                "entry_index": 25794,
+                "file_id": "EF3A8474A5E5F7A4",
+                "decoded_sha256": "f10e0a16a7c4295c68d0c5fde26f5510c278cc01d50d71f3deb6478a5a647261",
+                "role": "common_item_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[4]=1110183",
+              "common_item_data_base.key=1110183",
+              "common_item_data_base.name"
+            ],
+            "name_source": "same-snapshot common_item_data_base row key=1110183, field=name"
+          }
+        },
+        {
+          "position": 5,
+          "item_id": 1110181,
+          "name": "疾影枪",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 19394,
+                "file_id": "B42760CCA41DBC25",
+                "decoded_sha256": "a98006a644ae7e98ce09eea0d68e821ca0fa0c02f7cd4efa908aee602bd948f2",
+                "role": "common_item_base"
+              },
+              {
+                "entry_index": 25794,
+                "file_id": "EF3A8474A5E5F7A4",
+                "decoded_sha256": "f10e0a16a7c4295c68d0c5fde26f5510c278cc01d50d71f3deb6478a5a647261",
+                "role": "common_item_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[5]=1110181",
+              "common_item_data_base.key=1110181",
+              "common_item_data_base.name"
+            ],
+            "name_source": "same-snapshot common_item_data_base row key=1110181, field=name"
+          }
+        },
+        {
+          "position": 6,
+          "item_id": 633070140,
+          "name": "刑天变身器",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 23049,
+                "file_id": "D558884A36C972C5",
+                "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                "role": "reward_base"
+              },
+              {
+                "entry_index": 11371,
+                "file_id": "69E58821939CB515",
+                "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                "role": "reward_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[6]=633070140",
+              "reward_pool_data_base phase-2 pool note -> leaf item 633070140"
+            ],
+            "name_source": "same-snapshot reward_pool_data_base phase-2 pool row note; leaf item_id matches the panel item id (structural name link; note is the source_internal_marker)"
+          }
+        },
+        {
+          "position": 7,
+          "item_id": 134061,
+          "name": "异变核芯-球状闪电（禁交易）",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 21287,
+                "file_id": "C5998AD60B305608",
+                "decoded_sha256": "c13b72409ae408294e0690312bd94869dfee9a828db8722d28864dc53e27cf84",
+                "role": "gift_base"
+              },
+              {
+                "entry_index": 15916,
+                "file_id": "938D86FE498D1B1A",
+                "decoded_sha256": "d175cc2e01817be81d69653673aeddc6016a322f6c0f009f2b3d18e5ac32b66d",
+                "role": "gift_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[7]=134061",
+              "gift_data.key=134061",
+              "gift_data.name"
+            ],
+            "name_source": "same-snapshot gift_data row key=134061, field=name"
+          }
+        },
+        {
+          "position": 8,
+          "item_id": 633080140,
+          "name": "飞影召唤器",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 13592,
+                "file_id": "7E5A5A83B1F07D31",
+                "decoded_sha256": "fb03a5e22ec85e42e4ed5ddcccff33b081cd6d8d04265a07205d3b4490d8ce8a",
+                "role": "super_base"
+              },
+              {
+                "entry_index": 8617,
+                "file_id": "512C733C3B263D37",
+                "decoded_sha256": "e2fef4b7cb187584639699ec9c8b7548adf197f35610bc3d2626fff88fb8a6a7",
+                "role": "super_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[8]=633080140",
+              "user-confirmed official name (scope=name-only)"
+            ],
+            "name_source": "用户确认的正式上线名称：飞影召唤器；仅闭合面板展示名称，reward_pool pool/slot 仍待原始叶子链闭合"
+          }
+        },
+        {
+          "position": 9,
+          "item_id": 132694,
+          "name": "异变核芯-酸焰激流（禁交易）",
+          "evidence": "structure",
+          "evidence_level": "structure-only",
+          "source": "super_fashion_lottery_conf_data.key=232 panel_show_item_ids; display only; not activation, pool membership, probability, or reward evidence",
+          "provenance": {
+            "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+            "source_entries": [
+              {
+                "entry_index": 21287,
+                "file_id": "C5998AD60B305608",
+                "decoded_sha256": "c13b72409ae408294e0690312bd94869dfee9a828db8722d28864dc53e27cf84",
+                "role": "gift_base"
+              },
+              {
+                "entry_index": 15916,
+                "file_id": "938D86FE498D1B1A",
+                "decoded_sha256": "d175cc2e01817be81d69653673aeddc6016a322f6c0f009f2b3d18e5ac32b66d",
+                "role": "gift_chs"
+              }
+            ],
+            "table": "super_fashion_lottery_conf_data",
+            "row_key": 232,
+            "field_refs": [
+              "super_fashion_lottery_conf_data.key=232",
+              "panel_show_item_ids[9]=132694",
+              "gift_data.key=132694",
+              "gift_data.name"
+            ],
+            "name_source": "same-snapshot gift_data row key=132694, field=name"
+          }
+        }
+      ],
+      "pools": [
+        {
+          "pool_id": 391782,
+          "name": "lottery 主池（被活动行引用；仅列 exp 1801353599 本期实例行，同池其它 exp=历史复用不展开）",
+          "rows": [
+            {
+              "slot": 0,
+              "name": "涂装:菌焰喷火器典藏",
+              "display_name": "涂装:菌焰喷火器典藏",
+              "source_internal_marker": "涂装:菌焰喷火器典藏",
+              "prob": 0.00163,
+              "prob_note": "0.00163",
+              "config_exp": "2027-01-31",
+              "item_id": 104999,
+              "quantity": 1,
+              "leaf": [
+                104999,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102e6f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 3498,
+                "pool_slot_encoding": {
+                  "blob_offset": 3556,
+                  "bytes": "270102e6f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=3498",
+                  "pool_id=391782 slot=0",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 1,
+              "name": "涂装:菌焰喷火器雨战版",
+              "display_name": "涂装:菌焰喷火器雨战版",
+              "source_internal_marker": "涂装:菌焰喷火器雨战版",
+              "prob": 0.00253,
+              "prob_note": "0.00253",
+              "config_exp": "2027-01-31",
+              "item_id": 104997,
+              "quantity": 1,
+              "leaf": [
+                104997,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102e6f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 3433,
+                "pool_slot_encoding": {
+                  "blob_offset": 3498,
+                  "bytes": "270102e6f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=3433",
+                  "pool_id=391782 slot=1",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 3,
+              "name": "新币",
+              "display_name": "新币",
+              "source_internal_marker": "新币",
+              "prob": 0.14528,
+              "prob_note": "0.14528",
+              "config_exp": "2027-01-31",
+              "item_id": 150005,
+              "quantity": 8000,
+              "leaf": [
+                150005,
+                8000
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102e6f417; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 3393,
+                "pool_slot_encoding": {
+                  "blob_offset": 3433,
+                  "bytes": "270102e6f417"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=3393",
+                  "pool_id=391782 slot=3",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        }
+      ],
+      "activity_pool_refs": [
+        {
+          "pool_id": 391782,
+          "role": "lottery_id(主表 key232)=391782",
+          "status": "referenced",
+          "note": "主表 key232 直接引用；菌焰喷火器典藏/雨战版在此池=经典服独有锚点命中（进化武器判据：简单服无进化武器配方）"
+        },
+        {
+          "pool_id": 391783,
+          "role": "fortune_bag_dct [[4, 391783]]",
+          "status": "fortune-bag(非秘宝/非珍匣)",
+          "note": "福袋附加小奖池语义；391783=铃兰福袋系，与秘宝池无关"
+        }
+      ],
+      "evidence": "structure",
+      "evidence_level": "structure-only",
+      "source": "classic branch = main config row chain; activation and complete odds are not claimed",
+      "provenance": {
+        "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+        "source_entries": [
+          {
+            "entry_index": 13592,
+            "file_id": "7E5A5A83B1F07D31",
+            "decoded_sha256": "fb03a5e22ec85e42e4ed5ddcccff33b081cd6d8d04265a07205d3b4490d8ce8a",
+            "role": "super_base"
+          },
+          {
+            "entry_index": 8617,
+            "file_id": "512C733C3B263D37",
+            "decoded_sha256": "e2fef4b7cb187584639699ec9c8b7548adf197f35610bc3d2626fff88fb8a6a7",
+            "role": "super_chs"
+          },
+          {
+            "entry_index": 23049,
+            "file_id": "D558884A36C972C5",
+            "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+            "role": "reward_base"
+          },
+          {
+            "entry_index": 11371,
+            "file_id": "69E58821939CB515",
+            "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+            "role": "reward_chs"
+          }
+        ],
+        "table": "super_fashion_lottery_conf_data + reward_pool_data_base",
+        "row_key": 232,
+        "field_refs": [
+          "super_fashion_lottery_conf_data.key=232.lottery_id=391782",
+          "reward_pool_data_base pool 391782 rows exp=1801353599"
+        ],
+        "name_source": "reward note as source_internal_marker; user-permitted display bridges only"
+      }
+    },
+    {
+      "id": "232-simple",
+      "name": "铠甲再临 · 简单生存服分支",
+      "activity": "铠甲再临（二期）",
+      "server_branch": "简单生存服",
+      "branch_source": "BA8 专属 kj1/kjxq 覆盖通道 key=232（正式服包无此变体）",
+      "panel_rows": 0,
+      "rewards": [],
+      "pools": [
+        {
+          "pool_id": 391536,
+          "name": "候选池 · 活动引用未闭合（稀有+普通向，无菌焰；含珍匣触发 slot2）",
+          "rows": [
+            {
+              "slot": 0,
+              "name": "涂装：冲天云枭",
+              "display_name": "涂装：冲天云枭",
+              "source_internal_marker": "涂装：冲天云枭",
+              "prob": 0.00444,
+              "prob_note": "0.00444",
+              "config_exp": "2027-01-31",
+              "item_id": 103079,
+              "quantity": 1,
+              "leaf": [
+                103079,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 243070,
+                "pool_slot_encoding": {
+                  "blob_offset": 243111,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=243070",
+                  "pool_id=391536 slot=0",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 1,
+              "name": "涂装：流光夜枭",
+              "display_name": "涂装：流光夜枭",
+              "source_internal_marker": "涂装：流光夜枭",
+              "prob": 0.00221,
+              "prob_note": "0.00221",
+              "config_exp": "2027-01-31",
+              "item_id": 103080,
+              "quantity": 1,
+              "leaf": [
+                103080,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 88944,
+                "pool_slot_encoding": {
+                  "blob_offset": 88998,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=88944",
+                  "pool_id=391536 slot=1",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 2,
+              "name": "飞刑福袋奖励",
+              "display_name": "飞刑福袋奖励",
+              "source_internal_marker": "飞刑福袋奖励",
+              "prob": 0.03706,
+              "prob_note": "0.03706",
+              "config_exp": "2027-01-31",
+              "item_id": 391772,
+              "quantity": 1,
+              "leaf": [
+                391772,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 88699,
+                "pool_slot_encoding": {
+                  "blob_offset": 88745,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=88699",
+                  "pool_id=391536 slot=2",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 3,
+              "name": "刑天口罩",
+              "display_name": "面饰：刑天面甲",
+              "source_internal_marker": "刑天口罩",
+              "prob": 0.00969,
+              "prob_note": "0.00969",
+              "config_exp": "2027-01-31",
+              "item_id": 741370120,
+              "quantity": 1,
+              "leaf": [
+                741370120,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 88824,
+                "pool_slot_encoding": {
+                  "blob_offset": 88875,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=88824",
+                  "pool_id=391536 slot=3",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 4,
+              "name": "秘密花园主题方案礼盒",
+              "display_name": "秘密花园主题方案礼盒",
+              "source_internal_marker": "秘密花园主题方案礼盒",
+              "prob": 0.00344,
+              "prob_note": "0.00344",
+              "config_exp": "2027-01-31",
+              "item_id": 134157,
+              "quantity": 1,
+              "leaf": [
+                134157,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 244677,
+                "pool_slot_encoding": {
+                  "blob_offset": 244719,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=244677",
+                  "pool_id=391536 slot=4",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 5,
+              "name": "配方：战虎芯片",
+              "display_name": "配方：战虎芯片",
+              "source_internal_marker": "配方：战虎芯片",
+              "prob": 0.00787,
+              "prob_note": "0.00787",
+              "config_exp": "2027-01-31",
+              "item_id": 103101,
+              "quantity": 1,
+              "leaf": [
+                103101,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 494178,
+                "pool_slot_encoding": {
+                  "blob_offset": 494213,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=494178",
+                  "pool_id=391536 slot=5",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 6,
+              "name": "战虎-皎月",
+              "display_name": "战虎-皎月",
+              "source_internal_marker": "战虎-皎月",
+              "prob": 0.00394,
+              "prob_note": "0.00394",
+              "config_exp": "2027-01-31",
+              "item_id": 103102,
+              "quantity": 1,
+              "leaf": [
+                103102,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 318977,
+                "pool_slot_encoding": {
+                  "blob_offset": 319018,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=318977",
+                  "pool_id=391536 slot=6",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 7,
+              "name": "异变核芯-球状闪电",
+              "display_name": "异变核芯-球状闪电",
+              "source_internal_marker": "异变核芯-球状闪电",
+              "prob": 0.00787,
+              "prob_note": "0.00787",
+              "config_exp": "2027-01-31",
+              "item_id": 660056,
+              "quantity": 1,
+              "leaf": [
+                660056,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 493496,
+                "pool_slot_encoding": {
+                  "blob_offset": 493535,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=493496",
+                  "pool_id=391536 slot=7",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 15,
+              "name": "配方:战辅无人机",
+              "display_name": "配方:战辅无人机",
+              "source_internal_marker": "配方:战辅无人机",
+              "prob": 0.00787,
+              "prob_note": "0.00787",
+              "config_exp": "2027-01-31",
+              "item_id": 103078,
+              "quantity": 1,
+              "leaf": [
+                103078,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 243315,
+                "pool_slot_encoding": {
+                  "blob_offset": 243350,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=243315",
+                  "pool_id=391536 slot=15",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 16,
+              "name": "配方残页",
+              "display_name": "配方残页",
+              "source_internal_marker": "配方残页",
+              "prob": 0.07769,
+              "prob_note": "0.07769",
+              "config_exp": "2027-01-31",
+              "item_id": 150059,
+              "quantity": 15,
+              "leaf": [
+                150059,
+                15
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 129319,
+                "pool_slot_encoding": {
+                  "blob_offset": 129351,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=129319",
+                  "pool_id=391536 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 17,
+              "name": "重构分子",
+              "display_name": "重构分子",
+              "source_internal_marker": "重构分子",
+              "prob": 0.06719,
+              "prob_note": "0.06719",
+              "config_exp": "2027-01-31",
+              "item_id": 151783,
+              "quantity": 50,
+              "leaf": [
+                151783,
+                50
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 88160,
+                "pool_slot_encoding": {
+                  "blob_offset": 88194,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=88160",
+                  "pool_id=391536 slot=17",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 18,
+              "name": "稀有微晶",
+              "display_name": "稀有微晶",
+              "source_internal_marker": "稀有微晶",
+              "prob": 0.02668,
+              "prob_note": "0.02668",
+              "config_exp": "2027-01-31",
+              "item_id": 151646,
+              "quantity": 80,
+              "leaf": [
+                151646,
+                80
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 88017,
+                "pool_slot_encoding": {
+                  "blob_offset": 88054,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=88017",
+                  "pool_id=391536 slot=18",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 19,
+              "name": "新币",
+              "display_name": "新币",
+              "source_internal_marker": "新币",
+              "prob": 0.14567,
+              "prob_note": "0.14567",
+              "config_exp": "2027-01-31",
+              "item_id": 150005,
+              "quantity": 8000,
+              "leaf": [
+                150005,
+                8000
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 128945,
+                "pool_slot_encoding": {
+                  "blob_offset": 128977,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=128945",
+                  "pool_id=391536 slot=19",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 20,
+              "name": "技能点",
+              "display_name": "技能点",
+              "source_internal_marker": "技能点",
+              "prob": 0.09711,
+              "prob_note": "0.09711",
+              "config_exp": "2027-01-31",
+              "item_id": 150068,
+              "quantity": 8000,
+              "leaf": [
+                150068,
+                8000
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 87894,
+                "pool_slot_encoding": {
+                  "blob_offset": 87926,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=87894",
+                  "pool_id=391536 slot=20",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 21,
+              "name": "纳米塑材1",
+              "display_name": "纳米塑材1",
+              "source_internal_marker": "纳米塑材1",
+              "prob": 0.15538,
+              "prob_note": "0.15538",
+              "config_exp": "2027-01-31",
+              "item_id": 150188,
+              "quantity": 15000,
+              "leaf": [
+                150188,
+                15000
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 130035,
+                "pool_slot_encoding": {
+                  "blob_offset": 130067,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=130035",
+                  "pool_id=391536 slot=21",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 22,
+              "name": "纳米塑材2",
+              "display_name": "纳米塑材2",
+              "source_internal_marker": "纳米塑材2",
+              "prob": 0.10655,
+              "prob_note": "0.10655",
+              "config_exp": "2027-01-31",
+              "item_id": 150189,
+              "quantity": 7000,
+              "leaf": [
+                150189,
+                7000
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102f0f217; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 720703,
+                "pool_slot_encoding": {
+                  "blob_offset": 720735,
+                  "bytes": "270102f0f217"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=720703",
+                  "pool_id=391536 slot=22",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        },
+        {
+          "pool_id": 390704,
+          "name": "候选池 · 活动引用未闭合（秘宝向）",
+          "rows": [
+            {
+              "slot": 8,
+              "name": "火刑战驱",
+              "display_name": "火刑战驱",
+              "source_internal_marker": "火刑战驱",
+              "prob": 0.000376506024096,
+              "prob_note": "0.000376506024096",
+              "config_exp": "2298-11-08",
+              "item_id": 194190,
+              "quantity": 1,
+              "leaf": [
+                194190,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 444794,
+                "pool_slot_encoding": {
+                  "blob_offset": 444855,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=444794",
+                  "pool_id=390704 slot=8",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 9,
+              "name": "刑天铠甲",
+              "display_name": "刑天铠甲",
+              "source_internal_marker": "刑天铠甲",
+              "prob": 0.00188253012048,
+              "prob_note": "0.00188253012048",
+              "config_exp": "2298-11-08",
+              "item_id": 139292,
+              "quantity": 1,
+              "leaf": [
+                139292,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 3563,
+                "pool_slot_encoding": {
+                  "blob_offset": 441701,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=3563",
+                  "pool_id=390704 slot=9",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 10,
+              "name": "飞影铠甲",
+              "display_name": "飞影铠甲",
+              "source_internal_marker": "飞影铠甲",
+              "prob": 0.00188253012048,
+              "prob_note": "0.00188253012048",
+              "config_exp": "2298-11-08",
+              "item_id": 139293,
+              "quantity": 1,
+              "leaf": [
+                139293,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 441401,
+                "pool_slot_encoding": {
+                  "blob_offset": 441455,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=441401",
+                  "pool_id=390704 slot=10",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 11,
+              "name": "疾影枪",
+              "display_name": "疾影枪",
+              "source_internal_marker": "疾影枪",
+              "prob": 0.00564759036145,
+              "prob_note": "0.00564759036145",
+              "config_exp": "2298-11-08",
+              "item_id": 1110181,
+              "quantity": 1,
+              "leaf": [
+                1110181,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 441092,
+                "pool_slot_encoding": {
+                  "blob_offset": 441152,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=441092",
+                  "pool_id=390704 slot=11",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 16,
+              "name": "异变核芯-球状闪电",
+              "display_name": "异变核芯-球状闪电",
+              "source_internal_marker": "异变核芯-球状闪电",
+              "prob": 0.376506024096,
+              "prob_note": "0.376506024096",
+              "config_exp": "2298-11-08",
+              "item_id": 134061,
+              "quantity": 1,
+              "leaf": [
+                134061,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 441787,
+                "pool_slot_encoding": {
+                  "blob_offset": 441852,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=441787",
+                  "pool_id=390704 slot=16",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 17,
+              "name": "异变核芯-酸焰激流",
+              "display_name": "异变核芯-酸焰激流",
+              "source_internal_marker": "异变核芯-酸焰激流",
+              "prob": 0.376506024096,
+              "prob_note": "0.376506024096",
+              "config_exp": "2298-11-08",
+              "item_id": 132694,
+              "quantity": 1,
+              "leaf": [
+                132694,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 442726,
+                "pool_slot_encoding": {
+                  "blob_offset": 442763,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=442726",
+                  "pool_id=390704 slot=17",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 20,
+              "name": "火刑电光炮",
+              "display_name": "火刑裁决",
+              "source_internal_marker": "火刑电光炮",
+              "prob": 0.00564759036145,
+              "prob_note": "0.00564759036145",
+              "config_exp": "2298-11-08",
+              "item_id": 1110182,
+              "quantity": 1,
+              "leaf": [
+                1110182,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 442137,
+                "pool_slot_encoding": {
+                  "blob_offset": 442183,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=442137",
+                  "pool_id=390704 slot=20",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 21,
+              "name": "战神烈火剑",
+              "display_name": "战神烈火剑",
+              "source_internal_marker": "战神烈火剑",
+              "prob": 0.00564759036145,
+              "prob_note": "0.00564759036145",
+              "config_exp": "2298-11-08",
+              "item_id": 1110183,
+              "quantity": 1,
+              "leaf": [
+                1110183,
+                1
+              ],
+              "broadcast_content": "恭喜{0}鸿运当头，在铠甲再临活动中获得{1:format_item_name}",
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 445043,
+                "pool_slot_encoding": {
+                  "blob_offset": 445089,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=445043",
+                  "pool_id=390704 slot=21",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            },
+            {
+              "slot": 22,
+              "name": "刑天变身器",
+              "display_name": "刑天变身器",
+              "source_internal_marker": "刑天变身器",
+              "prob": 0.112951807229,
+              "prob_note": "0.112951807229",
+              "config_exp": "2298-11-08",
+              "item_id": 633070140,
+              "quantity": 1,
+              "leaf": [
+                633070140,
+                1
+              ],
+              "broadcast_content": null,
+              "evidence": "structure-only",
+              "source": "reward_pool_data_base same-snapshot row via [pool_id,slot] marker 270102b0ec17; prob_note kept verbatim; not server-side odds",
+              "provenance": {
+                "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+                "source_entries": [
+                  {
+                    "entry_index": 23049,
+                    "file_id": "D558884A36C972C5",
+                    "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+                    "role": "reward_base"
+                  },
+                  {
+                    "entry_index": 11371,
+                    "file_id": "69E58821939CB515",
+                    "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+                    "role": "reward_chs"
+                  }
+                ],
+                "table": "reward_pool_data_base",
+                "row_key": 445372,
+                "pool_slot_encoding": {
+                  "blob_offset": 445418,
+                  "bytes": "270102b0ec17"
+                },
+                "field_refs": [
+                  "reward_pool_data_base.key=445372",
+                  "pool_id=390704 slot=22",
+                  "reward_pool_data_base.note / prob_note / reward"
+                ],
+                "name_source": "reward_pool_data_base.note (source_internal_marker); display bridge only for user-permitted names"
+              }
+            }
+          ]
+        }
+      ],
+      "activity_pool_refs": [
+        {
+          "pool_id": 391785,
+          "role": "lottery_id(kj1/kjxq key232)=391785",
+          "status": "static-empty",
+          "note": "BA8 覆盖通道指向的池静态无铠甲内容（391785=虹神北斗/宸世臻藏等旧复用行）→ 实际发奖组合只能运行时下发"
+        },
+        {
+          "pool_id": 391786,
+          "role": "fortune_bag_dct [[726, 391786]]",
+          "status": "static-empty",
+          "note": "kj1 fortune 指向池静态无铠甲内容（391786=天国家具/纳米旧行）"
+        },
+        {
+          "pool_id": 391536,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "无任何活动配置行引用；与用户简单服锚点稀有+普通对照 16/20 命中，缺：飞影锋眸/能量电池/异变核芯-酸焰激流/1型记忆材料"
+        },
+        {
+          "pool_id": 390704,
+          "role": "reward_pool 孤儿候选",
+          "status": "candidate-only",
+          "note": "无任何活动配置行引用；秘宝锚点 10 项对照 9 项命中；飞影召唤器缺 slot/prob（lottery_big_reward_conf row 20413 仅注册名称）"
+        }
+      ],
+      "evidence": "structure",
+      "evidence_level": "structure-only",
+      "source": "simple branch = BA8 kj1 overlay chain; referenced pools statically empty; candidate pools are NOT claimed as the live simple-server pools",
+      "provenance": {
+        "source_lock_sha256": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+        "source_entries": [
+          {
+            "entry_index": 13545,
+            "file_id": "7DDCFA4A4BF8050C",
+            "decoded_sha256": "6920d9318022d724103bedbc927c2d420ed5ff12758921521b44037295add7a4",
+            "role": "kj1_base"
+          },
+          {
+            "entry_index": 10651,
+            "file_id": "636E4A12A344E22F",
+            "decoded_sha256": "9ce03f3f114a0439e52cb95056e95e3a3cdc0c148c58a1b432c9d0fb4ba56768",
+            "role": "kj1_chs"
+          },
+          {
+            "entry_index": 23049,
+            "file_id": "D558884A36C972C5",
+            "decoded_sha256": "b75a6ec7a726ab9736a4de2b899ee382e7dad19694750d3708ca5bb704b50994",
+            "role": "reward_base"
+          },
+          {
+            "entry_index": 11371,
+            "file_id": "69E58821939CB515",
+            "decoded_sha256": "1d26b423a42d4e2ae6c46736dab8fd418d4325df62ee59f0d9441908167be006",
+            "role": "reward_chs"
+          }
+        ],
+        "table": "super_fashion_lottery_conf_data_auto_oversea_data_kj1 + reward_pool_data_base",
+        "row_key": 232,
+        "field_refs": [
+          "kj1 key232 lottery_id=391785 fortune={726:391786}",
+          "reward_pool_data_base pool 391536 rows exp=1801353599",
+          "reward_pool_data_base pool 390704 rows exp=10377590399"
+        ],
+        "name_source": "reward note as source_internal_marker; user-permitted display bridges only"
+      }
+    }
+  ]
+};

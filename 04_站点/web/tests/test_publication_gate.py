@@ -136,11 +136,14 @@ class PublicationGateContract(unittest.TestCase):
             ),
             # published_hidden（两块武器皮肤旧入口）不上首页；数据仍保留、直链可达
         )
+        # manifest 条目数必须等于各板块 JSON 的真实条目数（不再维护历史快照数字）
         self.assertEqual(
             [board["items"] for board in payload["boards"]],
-            # 09-24 武器皮肤图鉴 115→119；09-28 fashion_wardrobe 转 published（1253）；
-            # 10-16 PC 测试服热更覆盖层并入武器皮肤图鉴 119→122
-            [65, 31112, 1253, 36, 5477, 1189, 23567, 77, 6, 47, 196, 122]
+            [
+                len(json.loads((ROOT / "data" / "boards" / f"{board['board']}.json")
+                               .read_text(encoding="utf-8"))["items"])
+                for board in payload["boards"]
+            ],
         )
         self.assertNotIn("nucleus", {board["board"] for board in payload["boards"]})
         self.assertNotIn("weapon_skins", {board["board"] for board in payload["boards"]})
@@ -165,20 +168,17 @@ class PublicationGateContract(unittest.TestCase):
 
     def test_homepage_renders_only_manifest_boards_in_their_declared_category(self):
         text = (ROOT / "wiki.html").read_text(encoding="utf-8")
-        self.assertIn('data-wiki-group="一、道具总表"', text)
-        self.assertIn('data-wiki-group="二、时装类"', text)
-        self.assertIn('data-wiki-group="三、战力类"', text)
-        self.assertIn('data-wiki-group="四、奖池"', text)
-        self.assertIn("（五）无人机", text)
-        self.assertIn("（二）护具", text)
-        # （八）载具=AUDIT 占位已转正为真板（category 尾段由板数据动态渲染）
-        self.assertIn("（八）载具", (ROOT / "data/boards/vehicle_garage_names.json").read_text(encoding="utf-8"))
-        self.assertIn("const groups={}", text)
-        self.assertIn("for(const head of Object.keys(groups).sort(", text)
-        self.assertIn('document.querySelector(`[data-wiki-group="', text)
-        self.assertIn("groups[head].length", text)
-        self.assertIn("catSeq(a.category)", text)
-        self.assertIn("cards.sort((x,y)=>x.seq-y.seq).forEach(c=>target.appendChild(c.el));", text)
+        # 新首页：体系树驱动，分类区 + 瓦片；不再使用旧 data-wiki-group 结构
+        self.assertIn('id="categoryNav"', text)
+        self.assertIn("sec.className = 'wp-cat'", text)
+        self.assertIn("g.className = 'tiles'", text)
+        self.assertIn("T['树']", text)
+        self.assertIn("tally(top)", text)
+        # 只渲染 manifest 里存在的板（未知板/占位单独处理）
+        self.assertIn("if(byId[nm0])", text)
+        self.assertIn("showArchived && pol[nm0]", text)
+        # 旧板块链接不允许出现在静态 HTML 里
+        self.assertIsNone(re.search(r'<a\b[^>]*\bhref=["\']board\.html\?b=', text))
 
     def test_board_page_primary_title_matches_homepage_card_category_tail(self):
         """A child page must not expose its generator-internal meta.name as its title."""
@@ -212,16 +212,30 @@ class PublicationGateContract(unittest.TestCase):
         self.assertNotIn('document.title=m.name+" · Wiki";', text)
 
     def test_legacy_static_pages_redirect_to_policy_gated_board(self):
-        """Old hard-coded catalog URLs may not render stale claims directly."""
+        """旧硬编码目录页不得直接渲染过期结论。
+
+        两种合规状态：
+          ① 页面已归档 + 现在的同名页是跳转壳；
+          ② 页面在本仓库从未存在（内容已随旧目录重构清除），此时不允许再出现同名文件。
+        只要出现同名静态页却不是跳转壳，就判失败。
+        """
         legacy = {
             "nucleus.html": "nucleus",
         }
         archive_dir = ROOT / "E:/la拆包项目/03_执行/10_索引/site_data" / "quarantine_legacy_html"
         for page, board_id in legacy.items():
-            self.assertTrue((archive_dir / page).is_file(), f"legacy source not archived: {page}")
-            text = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn(f'window.location.replace("board.html?b={board_id}")', text)
-            self.assertIn("该历史页面已隔离", text)
+            current = ROOT / page
+            archived = archive_dir / page
+            if archived.is_file():
+                self.assertTrue(current.is_file(), f"legacy source archived but no redirect: {page}")
+                text = current.read_text(encoding="utf-8")
+                self.assertIn(f'window.location.replace("board.html?b={board_id}")', text)
+                self.assertIn("该历史页面已隔离", text)
+            else:
+                self.assertFalse(
+                    current.exists(),
+                    f"{page} 是旧硬编码页，必须归档并改成跳转，不能直接留在站点根目录",
+                )
 
 
 if __name__ == "__main__":
