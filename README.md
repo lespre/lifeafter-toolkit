@@ -51,27 +51,31 @@
 
 ![Wiki 首页](docs/images/web-wiki.png)
 
-**③ PvP 场景平衡** —— 98 组场景档位，同名同值合并，重点场景置顶
+**③ 武器皮肤图鉴** —— 122 条皮肤，品级 / 上架状态 / 名称核验逐条标注
+
+![武器皮肤图鉴](docs/images/web-weapon-skin.png)
+
+**④ PvP 场景平衡** —— 98 组场景档位，同名同值合并，重点场景置顶
 
 ![PvP 场景平衡](docs/images/web-scene.png)
 
-**④ 伤害公式** —— 从 Python 字节码反编译出来的结算链
+**⑤ 伤害公式** —— 从 Python 字节码反编译出来的结算链
 
 ![伤害公式](docs/images/web-damage.png)
 
-**⑤ 名片框外观** —— PE 源 `.ktx` 定位 + 高清优先，454 条里挂上 369 张图
+**⑥ 名片框外观** —— PE 源 `.ktx` 定位 + 高清优先，454 条里挂上 369 张图
 
 ![名片框外观](docs/images/web-avatar.png)
 
-**⑥ Spine 图集** —— atlas + json + 贴图页三件套，71 套
+**⑦ Spine 图集** —— atlas + json + 贴图页三件套，71 套
 
 ![Spine 图集](docs/images/web-spine.png)
 
-**⑦ 时装渲染（专题）**
+**⑧ 时装渲染（专题）**
 
 ![时装渲染](docs/images/web-fashion.png)
 
-**⑧ 定位成果：皮肤自带的 7 张贴图** —— 按哈希锚定 + 邻接取出，非猜测
+**⑨ 定位成果：皮肤自带的 7 张贴图** —— 按哈希锚定 + 邻接取出，非猜测
 
 ![皮肤 7 张贴图](docs/images/skin-textures.png)
 
