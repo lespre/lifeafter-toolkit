@@ -62,3 +62,12 @@ seckeys/
 **/.git.bak/
 # 超大站点数据
 04_站点/web/data/
+
+# 截图与临时产物（不入库）
+04_站点/web/shot_*.png
+04_站点/web/*.bak_*
+04_站点/web/**/*.bak_*
+
+# Spine 大图集（派生资源，仅保留缩略图）
+04_站点/web/assets/spine/**/*.png
+!04_站点/web/assets/spine/thumbs/*.png

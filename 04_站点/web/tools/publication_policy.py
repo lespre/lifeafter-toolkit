@@ -37,6 +37,17 @@ def _nonblank(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _is_decoded_table_row(row_provenance: dict[str, Any]) -> bool:
+    """表行来源：直接解出来的 cdata 行，不存在「npk 条目 file_id」这一层。
+
+    这类行必须给出 table + row_key + field_refs 与源包 sha，但 entry_index/file_id
+    天然为空，契约按来源类型分别要求，不用占位值伪造。
+    """
+    chain = row_provenance.get("locator_chain") or {}
+    steps = chain.get("steps") or []
+    return any(isinstance(s, dict) and s.get("kind") == "decoded-table-row" for s in steps)
+
+
 def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = False) -> list[str]:
     """Return deterministic contract errors for a board proposed for publication.
 
@@ -183,7 +194,7 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
                         step_fields = step.get("field_refs")
                         if not isinstance(step_fields, list) or not step_fields or not all(_nonblank(v) for v in step_fields):
                             errors.append(step_prefix + ".field_refs")
-                        if not frozen_v3:
+                        if not frozen_v3 and not _is_decoded_table_row(row_provenance):
                             source_entry_ids = step.get("source_entry_ids")
                             if not isinstance(source_entry_ids, list) or not source_entry_ids or not all(
                                 isinstance(fid, str) and _FILE_ID_RE.fullmatch(fid) for fid in source_entry_ids
@@ -199,10 +210,11 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
                 package_sha = upstream.get("package_sha256")
                 if not isinstance(package_sha, str) or not _SHA256_RE.fullmatch(package_sha):
                     errors.append(prefix + ".provenance.upstream.package_sha256")
-                if not isinstance(upstream.get("entry_index"), int) or upstream["entry_index"] < 0:
-                    errors.append(prefix + ".provenance.upstream.entry_index")
-                if not isinstance(upstream.get("file_id"), str) or not _FILE_ID_RE.fullmatch(upstream["file_id"]):
-                    errors.append(prefix + ".provenance.upstream.file_id")
+                if not _is_decoded_table_row(row_provenance):
+                    if not isinstance(upstream.get("entry_index"), int) or upstream["entry_index"] < 0:
+                        errors.append(prefix + ".provenance.upstream.entry_index")
+                    if not isinstance(upstream.get("file_id"), str) or not _FILE_ID_RE.fullmatch(upstream["file_id"]):
+                        errors.append(prefix + ".provenance.upstream.file_id")
             tags = item.get("status_tags")
             allowed_tags = {"verified", "unresolved", "quarantined", "static config", "runtime final unknown"}
             if not isinstance(tags, list) or not tags or any(tag not in allowed_tags for tag in tags):

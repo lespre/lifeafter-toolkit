@@ -3123,19 +3123,125 @@ def cmd_bridge_audit(args) -> int:
     return 0
 
 
+def _bindict_row_selfcheck(stem: str, cdata: Path, lenient: bool) -> dict:
+    """单表行解码自检（严格 / 宽松各解一遍，两侧数字都摆出来）。
+
+    判据（与 03_执行/30_分析/伤害系统逆向/scene_attribution/walk.py 一致）：
+    行的 ``id`` 字段必须等于索引 key —— 这是"值流对齐"的唯一自证。
+    """
+    from toolkit_core import bindict_table as BT
+    from toolkit_core import table_export as TE
+
+    name = stem if stem.endswith(".py") else stem + ".py"
+    base = Path(cdata) / name
+    if not base.is_file():
+        alt = Path(cdata) / "oversea" / name      # com/cdata/oversea 下的服型变体表
+        if alt.is_file():
+            base = alt
+    out: dict = {"table": name, "path": str(base)}
+    if not base.is_file():
+        out["error"] = "表文件不存在"
+        return out
+    body, how = TE.extract_body(base.read_bytes())
+    if body is None:
+        out["error"] = how
+        return out
+    pool = []
+    chs = base.with_name(base.stem + "_chs.py")
+    if chs.is_file():
+        raw = chs.read_bytes()
+        chs_body, _ = TE.extract_body(raw)
+        for blob in ([chs_body] if chs_body else []) + [raw]:
+            pool = TE.chs_pool_of(blob)
+            if pool:
+                break
+    out["body"] = how
+    out["pool_size"] = len(pool)
+
+    strict_rows, strict_unb = BT.decode_table_rows(body, pool)
+    rows, unbound = BT.decode_table_rows(body, pool, lenient=lenient)
+    out.update({
+        "rows_strict": len(strict_rows), "unbound_strict": len(strict_unb),
+        "rows": len(rows), "unbound": len(unbound),
+        "recovered": sum(1 for r in rows if r.get("lenient_recovered")),
+    })
+    reasons: dict[str, int] = {}
+    for r in rows:
+        if r.get("lenient_recovered"):
+            reasons[r["lenient_recovered"]] = reasons.get(r["lenient_recovered"], 0) + 1
+    out["recovered_reasons"] = reasons
+    tails = [r.get("__tail__") for r in rows if r.get("__tail__")]
+    out["tail_blocks"] = sum(len(t.get("blocks") or []) for t in tails)
+    out["tail_complete"] = sum(1 for t in tails if t.get("complete"))
+    id_rows = [r for r in rows if "id" in (r.get("values") or {})]
+    bad = [r["key"] for r in id_rows if r["values"]["id"][1] != r["key"]]
+    out["id_checked"] = len(id_rows)
+    out["id_mismatch"] = len(bad)
+    out["id_mismatch_sample"] = bad[:5]
+    out["name_nonempty"] = sum(
+        1 for r in rows if str((r.get("values") or {}).get("name", (None, ""))[1] or "").strip())
+    return out
+
+
 def cmd_bindict_check(args) -> int:
-    print("== BinDict 自检 ==")
-    import runpy
-    base = _toolkit_root() / "01_解码定位复原" / "表解码"
-    for script in ("bindict_attrs_decoder.py", "bindict_kj1_transfer_decoder.py"):
-        p = base / script
-        if p.exists():
-            print("-- %s --" % script)
-            try:
-                runpy.run_path(str(p), run_name="__check__")
-            except Exception as e:
-                print("  ERR %r" % e)
-    return 0
+    """[①-1] BinDict 自检。
+
+    两种用法：
+      · 不带 ``--table`` / ``--lenient``：跑原有的 AUG attrs + KJ1 转印两个自检脚本（行为不变）。
+      · 带 ``--table``（可多给）或 ``--lenient``：改跑【行解码自检】—— 对每张表严格/宽松各解
+        一遍，给出行数、回收行数、``id == key`` 例外数、``name`` 非空行数。
+        ``--lenient`` 打开宽松解码（默认关，严格模式与历史输出一致）。
+    """
+    tables = list(getattr(args, "table", None) or [])
+    if not tables and not getattr(args, "lenient", False):
+        print("== BinDict 自检 ==")
+        import runpy
+        base = _toolkit_root() / "01_解码定位复原" / "表解码"
+        for script in ("bindict_attrs_decoder.py", "bindict_kj1_transfer_decoder.py"):
+            p = base / script
+            if p.exists():
+                print("-- %s --" % script)
+                try:
+                    runpy.run_path(str(p), run_name="__check__")
+                except Exception as e:
+                    print("  ERR %r" % e)
+        return 0
+
+    from toolkit_core import paths as P
+    cdata = Path(args.cdata) if getattr(args, "cdata", None) else P.cdata_dir()
+    tables = tables or ["space_data"]
+    print("== BinDict 行解码自检（%s）==" % ("宽松 lenient" if args.lenient else "严格 strict"))
+    print("   cdata: %s" % cdata)
+    reps = []
+    bad_tables = 0
+    for stem in tables:
+        rep = _bindict_row_selfcheck(stem, cdata, args.lenient)
+        reps.append(rep)
+        if rep.get("error"):
+            bad_tables += 1
+            print("   ✗ %-44s %s" % (rep["table"], rep["error"]))
+            continue
+        id_note = ("id≠key %d/%d" % (rep["id_mismatch"], rep["id_checked"])
+                   if rep["id_checked"] else "无 id 字段")
+        if args.lenient:
+            print("   ✓ %-44s 严格 %4d 行/丢 %3d ｜ 宽松 %4d 行/丢 %3d ｜ 回收 %3d ｜ %s ｜ name 非空 %d"
+                  % (rep["table"], rep["rows_strict"], rep["unbound_strict"],
+                     rep["rows"], rep["unbound"], rep["recovered"],
+                     id_note, rep["name_nonempty"]))
+        else:
+            print("   ✓ %-44s 严格 %4d 行/丢 %3d ｜ %s ｜ name 非空 %d"
+                  % (rep["table"], rep["rows_strict"], rep["unbound_strict"],
+                     id_note, rep["name_nonempty"]))
+        if rep["recovered"]:
+            print("      回收原因 %s ｜ 行尾块 %d 个（整段解出 %d 行）"
+                  % (rep["recovered_reasons"], rep["tail_blocks"], rep["tail_complete"]))
+        if not args.lenient and rep["unbound_strict"]:
+            print("      ↑ 这 %d 行在严格模式下被整行丢弃；加 --lenient 可回收（字段保留 + 行尾进 __tail__）"
+                  % rep["unbound_strict"])
+    if args.json is not None:
+        _dump({"mode": "lenient" if args.lenient else "strict", "cdata": str(cdata),
+               "tables": reps}, args.json)
+    return 5 if bad_tables else 0
 
 
 def cmd_decode_audit(args) -> int:
@@ -6394,7 +6500,20 @@ def build_parser() -> argparse.ArgumentParser:
     sp.set_defaults(func=cmd_restore)
     sp = _sp(sub, "thfb", help="[①-1] THFB 哈希提取")
     sp.set_defaults(func=cmd_thfb)
-    sp = _sp(sub, "bindict-check", help="[①-1] BinDict 自检（AUG attrs + KJ1 转印）")
+    sp = _sp(sub, "bindict-check",
+             help="[①-1] BinDict 自检（AUG attrs + KJ1 转印）；给 --table 改跑行解码自检")
+    sp.add_argument("--lenient", action="store_true",
+                    help="宽松解码（默认关，严格模式与历史输出逐字节一致）。开启后："
+                         "行尾是混排列表、0x27 组被截断、值流越界、缺行边界的行不再【整行丢弃】，"
+                         "已解出的字段原样保留在 values 里，行尾未解析的列表尽量解进 __tail__"
+                         "（解不动的部分挂 leftover_hex），并标 lenient_recovered=<原因>。"
+                         "不给 --table 时默认自检 space_data（实测 972→1249 行，277 行回收）")
+    sp.add_argument("--table", action="append", metavar="STEM",
+                    help="要自检的表名（不带 .py，可重复给）。给了就走行解码自检，"
+                         "不给 --lenient 时只报严格模式数字")
+    sp.add_argument("--cdata", type=Path,
+                    help="com/cdata 目录（默认取 toolkit_core.paths.cdata_dir()，即还原树 Documents 层）")
+    sp.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
     sp.set_defaults(func=cmd_bindict_check)
     sp = _sp(sub, "bridge-audit", help="[①-1] 皮肤逻辑路径→IDX/WPK 物理桥审计（只读）")
     sp.set_defaults(func=cmd_bridge_audit)

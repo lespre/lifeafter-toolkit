@@ -139,6 +139,9 @@ def main() -> int:
         "window.WIKI_MANIFEST = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",
     )
+    # 同步一份纯 JSON：审计脚本、服务端与外部工具读它，避免只有 .js 造成口径分叉
+    (OUT_FILE.parent / "manifest.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     POLICY_JS_FILE.write_text(
         "window.WIKI_PUBLICATION_POLICY = " + json.dumps(policy, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",

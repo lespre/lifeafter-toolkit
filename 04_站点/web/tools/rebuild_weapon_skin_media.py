@@ -61,6 +61,17 @@ def build() -> dict:
             if label:
                 record["poster_kind"] = label
         skins[skin_id] = record
+    # ★ 2026-10-17：用户提供的官方图放在 assets/skin_posters/<skin_id>.png ——
+    #   重建时一并挂上，否则每次重建都会把海报冲掉（attach_skin_posters.py 同一口径）。
+    posters_dir = ROOT / "assets/skin_posters"
+    if posters_dir.is_dir():
+        for png in sorted(posters_dir.glob("*.png")):
+            sid = png.stem
+            rec = skins.setdefault(sid, {"skin_id": sid})
+            rec["poster"] = {"src": f"assets/skin_posters/{png.name}"}
+            rec["poster_source"] = "user_supplied"
+            rec["poster_note"] = "用户提供，官方皮肤 2D 图（白底 UI 图标）"
+            rec.pop("poster_kind", None)
     return {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
