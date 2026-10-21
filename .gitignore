@@ -61,7 +61,7 @@ seckeys/
 **/.git.bak/
 **/.git.bak/
 # 超大站点数据
-04_站点/web/data/
+04_站点/web/data/*
 
 # 截图与临时产物（不入库）
 04_站点/web/shot_*.png
@@ -79,3 +79,12 @@ seckeys/
 
 # 3D 预览器渲染资源（可从客户端重建）
 01_工具/工具库/02_图文音频渲染/3D预览器/poster/assets/
+
+# wiki 框架：配置与清单入库，板块数据（boards/）仍不入库
+!04_站点/web/data/wiki_taxonomy.json
+!04_站点/web/data/wiki_taxonomy.js
+!04_站点/web/data/publication_policy.json
+!04_站点/web/data/publication_policy.js
+!04_站点/web/data/manifest.js
+!04_站点/web/data/table_index.json
+!04_站点/web/data/README.md
