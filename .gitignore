@@ -88,3 +88,7 @@ seckeys/
 !04_站点/web/data/manifest.js
 !04_站点/web/data/table_index.json
 !04_站点/web/data/README.md
+
+# 皮肤音效（派生产物，可由客户端重建）
+04_站点/web/assets/audio/**/*.wav
+04_站点/web/assets/audio/**/*.fsb
