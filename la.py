@@ -28,6 +28,7 @@ TOOLS = WEB / "tools"
 DET = PROJ / "03_执行" / "30_分析" / "热更检测"
 PY = sys.executable
 INDEX_CLI = PROJ / "01_工具" / "工具库" / "00_共享核心" / "命令行" / "pe全量索引.py"
+FETCH = PROJ / "01_工具" / "工具库" / "01_解码定位复原" / "图集与取图"
 
 
 def run(name: str, args: list[str], *, cwd: Path = WEB, quiet: bool = False) -> int:
@@ -189,14 +190,14 @@ def cmd_pc(a) -> int:
 
 # ---------------- pe fetch ----------------
 def cmd_pe(a) -> int:
-    args = [DET / "pe_fetch.py", a.action]
+    args = [FETCH / "pe_fetch.py", a.action]
     if a.action == "resolve" and a.path:
         args.append(a.path)
     if a.action == "export" and a.path and a.out:
         args += [a.path, a.out]
     if a.action == "best" and a.path:
         import sys as _s
-        _s.path.insert(0, str(DET))
+        _s.path.insert(0, str(FETCH))
         import pe_fetch_hires as H
         H.describe(a.path)
         return 0
