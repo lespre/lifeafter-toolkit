@@ -63,11 +63,12 @@ class TimedVariantUiTests(unittest.TestCase):
             self.assertEqual(v["variant_relation_state"], "verified_runtime_rule")
 
     def test_player_board_has_no_top_level_variant_entries(self):
-        """玩家图鉴板：时限变体不占顶层条目（119 条全为主卡/行为预告）。"""
+        """玩家图鉴板：时限变体不占顶层条目（122 条 = 121 主卡 + 1 行为资源预告）。"""
         board = _load_js_object(PLAYER_BOARD)
         top_variants = [it for it in board["items"] if it.get("variant_type") == "timed" or it.get("permanent_skin_id")]
         self.assertEqual(top_variants, [])
-        self.assertEqual(len(board["items"]), 119)
+        # 10-16：PC 测试服热更覆盖层并入 4 条（1110188/1110189/1110191/1110192）⇒ 119→122
+        self.assertEqual(len(board["items"]), 122)
         nested = sum(len(it.get("variant_items") or []) for it in board["items"])
         self.assertEqual(nested, 20)
 

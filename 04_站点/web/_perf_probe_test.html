@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>
+<pre id="probe">pending</pre>
+<iframe id="fr" src="board.html?b=weapon_skin_sfx_text_sources" style="width:1400px;height:900px"></iframe>
+<script>
+const out={};const fr=document.getElementById("fr");
+fr.onload=()=>{setTimeout(()=>{
+ const d=fr.contentDocument;
+ const cards=[...d.querySelectorAll(".skin-card")];
+ out.cards=cards.length;
+ const blocks=d.querySelectorAll("details.perf");
+ out.perf_blocks=blocks.length;
+ out.legacy_panel_nodes=d.querySelectorAll("details.perf .combat-panel").length;
+ out.legacy_ct_rows=d.querySelectorAll("details.perf .ct-row").length;
+ out.fx_chips=d.querySelectorAll("details.perf .fx-chip").length;
+ let all="";blocks.forEach(b=>{all+=b.textContent;});
+ out.anchor_leak=/\(15\)|\(16\)/.test(all);
+ const counts=[],rowsOut=[];
+ [...blocks].slice(0,8).forEach(b=>{
+   const sum=b.querySelector("summary");
+   const lis=[...b.querySelectorAll("li.perf-row")];
+   if(sum)counts.push([(sum.textContent.match(/(\d+)\s*项/)||[])[1],lis.length]);
+   const g=(li,s)=>{const e=li.querySelector(s);return e?e.textContent.trim():"";};
+   rowsOut.push(lis.map(li=>g(li,".perf-cat")+"|"+g(li,".perf-name")+"|"+g(li,".perf-src")));
+ });
+ out.counts=counts;out.blocks=rowsOut;
+ document.getElementById("probe").textContent="PROBE "+JSON.stringify(out);
+},2500);};
+</script></body></html>

@@ -35,6 +35,18 @@
   #tip{position:absolute;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));
        font-size:12px;color:#6b7280;pointer-events:none}
   #mask{display:none}
+  #clue{position:absolute;right:14px;top:14px;width:min(380px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;z-index:12;padding:14px 16px;background:rgba(20,23,28,.95);border:1px solid #354052;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.38);backdrop-filter:blur(8px)}
+  #clue[hidden]{display:none}
+  #clue .clue-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  #clue .clue-title{font-size:15px;font-weight:750;color:var(--fg);line-height:1.35}
+  #clue .clue-close{margin-left:auto;border:1px solid var(--line);border-radius:7px;background:#1b1f26;color:var(--dim);font-size:18px;line-height:1;padding:3px 8px;cursor:pointer}
+  #clue .clue-status{display:inline-block;margin-bottom:10px;padding:3px 7px;border-radius:5px;background:#26384b;color:var(--blue);font-size:11px;font-weight:700}
+  #clue dl{display:grid;grid-template-columns:76px 1fr;gap:7px 10px;margin:0;font-size:12px;line-height:1.45}
+  #clue dt{color:#7f8da3}
+  #clue dd{margin:0;color:var(--fg);overflow-wrap:anywhere}
+  #clue .clue-note{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);color:var(--dim);font-size:11px;line-height:1.55}
+  #clue audio{width:100%;height:32px;margin-top:8px}
+  #clue .mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#d6deeb}
   /* 手机 / 窄屏 */
   @media (max-width:820px){
     #burger{display:block}
@@ -61,14 +73,69 @@
 <div id="wrap">
   <div id="mask"></div>
   <div id="list"></div>
-  <div id="main"><canvas id="c"></canvas><div id="hud"></div>
+  <div id="main"><canvas id="c"></canvas><div id="hud"></div><aside id="clue" hidden><div class="clue-head"><div id="clue-title" class="clue-title"></div><button id="clue-close" class="clue-close" aria-label="关闭线索">×</button></div><div id="clue-status" class="clue-status"></div><div id="clue-body"></div></aside>
   <div id="tip">拖拽旋转 · 双指/滚轮缩放 · 右键平移</div></div>
 </div>
 <script type="module">
 import * as THREE from './assets/vendor/three/three.module.min.js';
 import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
 
-const GROUPS = [{"g": "冷兵器（32）", "items": [{"f": "1110017/model_white.glb", "label": "一支圣诞树 1110017"}, {"f": "1110010/model_white.glb", "label": "一镰幽梦 1110010"}, {"f": "1110088/model_white.glb", "label": "全糖暴击 1110088"}, {"f": "1110187/model_white.glb", "label": "前方禁行 1110187"}, {"f": "1110147/model_white.glb", "label": "可盐可甜 1110147"}, {"f": "1110139/model_white.glb", "label": "吃喵一爪 1110139"}, {"f": "1110162/model_white.glb", "label": "嗷嗷奶龙 1110162"}, {"f": "1110183/model_white.glb", "label": "战神烈火剑 1110183"}, {"f": "1110020/model_white.glb", "label": "掘墓锹 1110020"}, {"f": "1110184/model_white.glb", "label": "星火永传 1110184"}, {"f": "1110186/model.glb", "label": "星辰刀 1110186"}, {"f": "1110177/model.glb", "label": "极光剑 1110177"}, {"f": "1110197/model_white.glb", "label": "极光盾 1110197"}, {"f": "1110126/model_white.glb", "label": "极狐终结刃 1110126"}, {"f": "1110141/model_white.glb", "label": "沙场点兵 1110141"}, {"f": "1110123/model_white.glb", "label": "泰坦剑 1110123"}, {"f": "1110158/model_white.glb", "label": "特殊关怀 1110158"}, {"f": "1110028/model_white.glb", "label": "玉华碎雪 1110028"}, {"f": "1110021/model_white.glb", "label": "紫焰蛇矛 1110021"}, {"f": "1110170/model_white.glb", "label": "红太狼之怒 1110170"}, {"f": "1110180/model_white.glb", "label": "西瓜脆脆冰 1110180"}, {"f": "1110128/model_white.glb", "label": "诡秘之颅 1110128"}, {"f": "1110115/model_white.glb", "label": "赤月晶魄 1110115"}, {"f": "1110116/model_white.glb", "label": "赤月晶魄 1110116"}, {"f": "1110117/model_white.glb", "label": "赤月晶魄 1110117"}, {"f": "1110007/model_white.glb", "label": "金箍棒 1110007"}, {"f": "1110003/model_white.glb", "label": "鎏金锋刃 1110003"}, {"f": "1110150/model_white.glb", "label": "铃兰之约 1110150"}, {"f": "1110151/model_white.glb", "label": "阿赖耶识 1110151"}, {"f": "1110164/model_white.glb", "label": "霜鳞·皇带 1110164"}, {"f": "1110030/model_white.glb", "label": "黄油裂镐 1110030"}, {"f": "1110058/model_white.glb", "label": "黯夜乐手 1110058"}]}, {"g": "枪械（78）", "items": [{"f": "1110166/model_white.glb", "label": "专业护理 1110166"}, {"f": "1110032/model_white.glb", "label": "九霄狐啸 1110032"}, {"f": "1110168/model_white.glb", "label": "云上铃 1110168"}, {"f": "1110190/model_white.glb", "label": "佳期如梦 1110190"}, {"f": "1110114/model_white.glb", "label": "像素涂鸦 1110114"}, {"f": "1110171/model.glb", "label": "光影咏叹调 1110171"}, {"f": "1110016/model_white.glb", "label": "冬雪绮愿 1110016"}, {"f": "1110018/model_white.glb", "label": "冰城小霸王 1110018"}, {"f": "1110025/model.glb", "label": "冰蕊银华 1110025"}, {"f": "1110009/model_white.glb", "label": "加油！少年 1110009"}, {"f": "1110034/model_white.glb", "label": "千蝶一梦 1110034"}, {"f": "1110156/model_white.glb", "label": "噬极 1110156"}, {"f": "1110165/model.glb", "label": "墨隐麒麟 1110165"}, {"f": "1110157/model_white.glb", "label": "夜明 1110157"}, {"f": "1110145/model.glb", "label": "天马行空 1110145"}, {"f": "1110185/model.glb", "label": "奇迹 1110185"}, {"f": "1110153/model_white.glb", "label": "定格日常 1110153"}, {"f": "1110178/model_white.glb", "label": "帝皇裁决 1110178"}, {"f": "1110013/model_white.glb", "label": "幻影狩蝎 1110013"}, {"f": "1110008/model_white.glb", "label": "庆典绯梦 1110008"}, {"f": "1110087/model_white.glb", "label": "彩虹过载 1110087"}, {"f": "1110179/model_white.glb", "label": "往哪看呢 1110179"}, {"f": "1110090/model_white.glb", "label": "心动狂飙 1110090"}, {"f": "1110119/model_white.glb", "label": "拟化磁星 1110119"}, {"f": "1110120/model_white.glb", "label": "拟化磬翼 1110120"}, {"f": "1110136/model_white.glb", "label": "时光溯流 1110136"}, {"f": "1110176/model_white.glb", "label": "晶棘 1110176"}, {"f": "1110124/model_white.glb", "label": "未来刻印 1110124"}, {"f": "1110121/model_white.glb", "label": "极狐破坏者 1110121"}, {"f": "1110122/model_white.glb", "label": "极限节拍 1110122"}, {"f": "1110036/model_white.glb", "label": "森林之主 1110036"}, {"f": "1110173/model_white.glb", "label": "水晶玫瑰 1110173"}, {"f": "1110174/model_white.glb", "label": "水晶玫瑰 1110174"}, {"f": "1110175/model_white.glb", "label": "水晶玫瑰 1110175"}, {"f": "1110159/model_white.glb", "label": "沙海月鸣 1110159"}, {"f": "1110160/model_white.glb", "label": "沙海月鸣 1110160"}, {"f": "1110031/model_white.glb", "label": "沧鳞破浪 1110031"}, {"f": "1110005/model_white.glb", "label": "深蓝之影 1110005"}, {"f": "1110127/model_white.glb", "label": "湮没星空 1110127"}, {"f": "1110182/model_white.glb", "label": "火刑裁决 1110182"}, {"f": "1110169/model.glb", "label": "灰色协议 1110169"}, {"f": "1110152/model.glb", "label": "灵态诱导 1110152"}, {"f": "1110131/model_white.glb", "label": "炽日耀斑 1110131"}, {"f": "1110132/model_white.glb", "label": "炽日耀斑 1110132"}, {"f": "1110133/model_white.glb", "label": "炽日耀斑 1110133"}, {"f": "1110137/model_white.glb", "label": "焚古龙息 1110137"}, {"f": "1110129/model.glb", "label": "熔炉寒霜 1110129"}, {"f": "1110023/model_white.glb", "label": "玉饮琼花 1110023"}, {"f": "1110118/model_white.glb", "label": "玫焰流华 1110118"}, {"f": "1110163/model_white.glb", "label": "砰砰奶龙 1110163"}, {"f": "1110014/model_white.glb", "label": "碎晶 1110014"}, {"f": "1110135/model_white.glb", "label": "神翼曙光 1110135"}, {"f": "1110026/model_white.glb", "label": "祥鲤 1110026"}, {"f": "1110167/model_white.glb", "label": "粉息鸣弦 1110167"}, {"f": "1110089/model_white.glb", "label": "粒子沙暴 1110089"}, {"f": "1110155/model_white.glb", "label": "绯樱轻扬 1110155"}, {"f": "1110172/model_white.glb", "label": "缄默 1110172"}, {"f": "1110134/model_white.glb", "label": "罚罪审判 1110134"}, {"f": "1110012/model_white.glb", "label": "腾云 1110012"}, {"f": "1110004/model_white.glb", "label": "萌豚霰击 1110004"}, {"f": "1110015/model_white.glb", "label": "蓝火 1110015"}, {"f": "1110022/model_white.glb", "label": "赤蛇御火 1110022"}, {"f": "1110142/model_white.glb", "label": "金乌负日 1110142"}, {"f": "1110143/model_white.glb", "label": "金乌负日 1110143"}, {"f": "1110144/model_white.glb", "label": "金乌负日 1110144"}, {"f": "1110033/model_white.glb", "label": "金芒裁决 1110033"}, {"f": "1110024/model.glb", "label": "金蟒啸焰 1110024"}, {"f": "1110149/model_white.glb", "label": "鎏金淬火 1110149"}, {"f": "1110002/model_white.glb", "label": "鎏金狙魂 1110002"}, {"f": "1110001/model_white.glb", "label": "鎏金锐魄 1110001"}, {"f": "1110011/model_white.glb", "label": "鎏金锐鹰 1110011"}, {"f": "1110140/model_white.glb", "label": "雪吻双星 1110140"}, {"f": "1110138/model_white.glb", "label": "雪夜绮礼 1110138"}, {"f": "1110019/model_white.glb", "label": "霓虹狂想 1110019"}, {"f": "1110035/model_white.glb", "label": "霓虹狂潮 1110035"}, {"f": "1110125/model_white.glb", "label": "霓虹裂空 1110125"}, {"f": "1110148/model_white.glb", "label": "马到福来 1110148"}, {"f": "1110146/model_white.glb", "label": "龙渊永寂 1110146"}]}];
+const GROUPS = [{"g":"本次热更 · 武器皮肤线索（4）","items":[{"f":"1110188_A_SOUL_1001_017.glb","clueId":"1110188","label":"星魂追光（名称候选）· A-SOUL突击步枪 1110188"},{"clueId":"1110191","label":"1110191 · 手枪（主表线索）"},{"clueId":"1110192","label":"1110192 · 电磁机枪（主表线索）"},{"clueId":"1110189","label":"1110189 · 行为资源候选（不计入主表新增）"}]},{"g":"冷兵器（32）","items":[{"f":"1110017/model_white.glb","label":"一支圣诞树 1110017"},{"f":"1110010/model_white.glb","label":"一镰幽梦 1110010"},{"f":"1110088/model_white.glb","label":"全糖暴击 1110088"},{"f":"1110187/model_white.glb","label":"前方禁行 1110187"},{"f":"1110147/model_white.glb","label":"可盐可甜 1110147"},{"f":"1110139/model_white.glb","label":"吃喵一爪 1110139"},{"f":"1110162/model_white.glb","label":"嗷嗷奶龙 1110162"},{"f":"1110183/model_white.glb","label":"战神烈火剑 1110183"},{"f":"1110020/model_white.glb","label":"掘墓锹 1110020"},{"f":"1110184/model_white.glb","label":"星火永传 1110184"},{"f":"1110186/model.glb","label":"星辰刀 1110186"},{"f":"1110177/model.glb","label":"极光剑 1110177"},{"f":"1110197/model_white.glb","label":"极光盾 1110197"},{"f":"1110126/model_white.glb","label":"极狐终结刃 1110126"},{"f":"1110141/model_white.glb","label":"沙场点兵 1110141"},{"f":"1110123/model_white.glb","label":"泰坦剑 1110123"},{"f":"1110158/model_white.glb","label":"特殊关怀 1110158"},{"f":"1110028/model_white.glb","label":"玉华碎雪 1110028"},{"f":"1110021/model_white.glb","label":"紫焰蛇矛 1110021"},{"f":"1110170/model_white.glb","label":"红太狼之怒 1110170"},{"f":"1110180/model_white.glb","label":"西瓜脆脆冰 1110180"},{"f":"1110128/model_white.glb","label":"诡秘之颅 1110128"},{"f":"1110115/model_white.glb","label":"赤月晶魄 1110115"},{"f":"1110116/model_white.glb","label":"赤月晶魄 1110116"},{"f":"1110117/model_white.glb","label":"赤月晶魄 1110117"},{"f":"1110007/model_white.glb","label":"金箍棒 1110007"},{"f":"1110003/model_white.glb","label":"鎏金锋刃 1110003"},{"f":"1110150/model_white.glb","label":"铃兰之约 1110150"},{"f":"1110151/model_white.glb","label":"阿赖耶识 1110151"},{"f":"1110164/model_white.glb","label":"霜鳞·皇带 1110164"},{"f":"1110030/model_white.glb","label":"黄油裂镐 1110030"},{"f":"1110058/model_white.glb","label":"黯夜乐手 1110058"}]},{"g":"枪械（78）","items":[{"f":"1110166/model_white.glb","label":"专业护理 1110166"},{"f":"1110032/model_white.glb","label":"九霄狐啸 1110032"},{"f":"1110168/model_white.glb","label":"云上铃 1110168"},{"f":"1110190/model_white.glb","label":"佳期如梦 1110190"},{"f":"1110114/model_white.glb","label":"像素涂鸦 1110114"},{"f":"1110171/model.glb","label":"光影咏叹调 1110171"},{"f":"1110016/model_white.glb","label":"冬雪绮愿 1110016"},{"f":"1110018/model_white.glb","label":"冰城小霸王 1110018"},{"f":"1110025/model.glb","label":"冰蕊银华 1110025"},{"f":"1110009/model_white.glb","label":"加油！少年 1110009"},{"f":"1110034/model_white.glb","label":"千蝶一梦 1110034"},{"f":"1110156/model_white.glb","label":"噬极 1110156"},{"f":"1110165/model.glb","label":"墨隐麒麟 1110165"},{"f":"1110157/model_white.glb","label":"夜明 1110157"},{"f":"1110145/model.glb","label":"天马行空 1110145"},{"f":"1110185/model.glb","label":"奇迹 1110185"},{"f":"1110153/model_white.glb","label":"定格日常 1110153"},{"f":"1110178/model_white.glb","label":"帝皇裁决 1110178"},{"f":"1110013/model_white.glb","label":"幻影狩蝎 1110013"},{"f":"1110008/model_white.glb","label":"庆典绯梦 1110008"},{"f":"1110087/model_white.glb","label":"彩虹过载 1110087"},{"f":"1110179/model_white.glb","label":"往哪看呢 1110179"},{"f":"1110090/model_white.glb","label":"心动狂飙 1110090"},{"f":"1110119/model_white.glb","label":"拟化磁星 1110119"},{"f":"1110120/model_white.glb","label":"拟化磬翼 1110120"},{"f":"1110136/model_white.glb","label":"时光溯流 1110136"},{"f":"1110176/model_white.glb","label":"晶棘 1110176"},{"f":"1110124/model_white.glb","label":"未来刻印 1110124"},{"f":"1110121/model_white.glb","label":"极狐破坏者 1110121"},{"f":"1110122/model_white.glb","label":"极限节拍 1110122"},{"f":"1110036/model_white.glb","label":"森林之主 1110036"},{"f":"1110173/model_white.glb","label":"水晶玫瑰 1110173"},{"f":"1110174/model_white.glb","label":"水晶玫瑰 1110174"},{"f":"1110175/model_white.glb","label":"水晶玫瑰 1110175"},{"f":"1110159/model_white.glb","label":"沙海月鸣 1110159"},{"f":"1110160/model_white.glb","label":"沙海月鸣 1110160"},{"f":"1110031/model_white.glb","label":"沧鳞破浪 1110031"},{"f":"1110005/model_white.glb","label":"深蓝之影 1110005"},{"f":"1110127/model_white.glb","label":"湮没星空 1110127"},{"f":"1110182/model_white.glb","label":"火刑裁决 1110182"},{"f":"1110169/model.glb","label":"灰色协议 1110169"},{"f":"1110152/model.glb","label":"灵态诱导 1110152"},{"f":"1110131/model_white.glb","label":"炽日耀斑 1110131"},{"f":"1110132/model_white.glb","label":"炽日耀斑 1110132"},{"f":"1110133/model_white.glb","label":"炽日耀斑 1110133"},{"f":"1110137/model_white.glb","label":"焚古龙息 1110137"},{"f":"1110129/model.glb","label":"熔炉寒霜 1110129"},{"f":"1110023/model_white.glb","label":"玉饮琼花 1110023"},{"f":"1110118/model_white.glb","label":"玫焰流华 1110118"},{"f":"1110163/model_white.glb","label":"砰砰奶龙 1110163"},{"f":"1110014/model_white.glb","label":"碎晶 1110014"},{"f":"1110135/model_white.glb","label":"神翼曙光 1110135"},{"f":"1110026/model_white.glb","label":"祥鲤 1110026"},{"f":"1110167/model_white.glb","label":"粉息鸣弦 1110167"},{"f":"1110089/model_white.glb","label":"粒子沙暴 1110089"},{"f":"1110155/model_white.glb","label":"绯樱轻扬 1110155"},{"f":"1110172/model_white.glb","label":"缄默 1110172"},{"f":"1110134/model_white.glb","label":"罚罪审判 1110134"},{"f":"1110012/model_white.glb","label":"腾云 1110012"},{"f":"1110004/model_white.glb","label":"萌豚霰击 1110004"},{"f":"1110015/model_white.glb","label":"蓝火 1110015"},{"f":"1110022/model_white.glb","label":"赤蛇御火 1110022"},{"f":"1110142/model_white.glb","label":"金乌负日 1110142"},{"f":"1110143/model_white.glb","label":"金乌负日 1110143"},{"f":"1110144/model_white.glb","label":"金乌负日 1110144"},{"f":"1110033/model_white.glb","label":"金芒裁决 1110033"},{"f":"1110024/model.glb","label":"金蟒啸焰 1110024"},{"f":"1110149/model_white.glb","label":"鎏金淬火 1110149"},{"f":"1110002/model_white.glb","label":"鎏金狙魂 1110002"},{"f":"1110001/model_white.glb","label":"鎏金锐魄 1110001"},{"f":"1110011/model_white.glb","label":"鎏金锐鹰 1110011"},{"f":"1110140/model_white.glb","label":"雪吻双星 1110140"},{"f":"1110138/model_white.glb","label":"雪夜绮礼 1110138"},{"f":"1110019/model_white.glb","label":"霓虹狂想 1110019"},{"f":"1110035/model_white.glb","label":"霓虹狂潮 1110035"},{"f":"1110125/model_white.glb","label":"霓虹裂空 1110125"},{"f":"1110148/model_white.glb","label":"马到福来 1110148"},{"f":"1110146/model_white.glb","label":"龙渊永寂 1110146"}]}];
+const HOTFIX_CLUES = {
+  "1110188": {
+    title: "1110188 · 星魂追光（名称候选）",
+    status: "主表新增 · 模型与当前热更音频实体已定位",
+    rows: [
+      ["联动", "A-SOUL"],
+      ["武器", "突击步枪 · weapon_type=1"],
+      ["品级", "5 · 主表直接确认"],
+      ["模型声明", "skin_1001_017.gim"],
+      ["名称状态", "星魂追光 · 高可信候选，正式名称链仍未闭合"],
+      ["特殊交互", "1120382 · 参数含 ASoul；不等同于核芯联动"],
+      ["音频实体", "g66_weapon / 202609_asoul · FEV + FSB5 + WAV"],
+      ["绑定状态", "音频内容已复原；皮肤到事件的静态绑定为高可信候选"],
+    ],
+    note: "几何区显示当前测试服恢复的白模。试听文件来自本次热更银行中的 5 个开火样本。",
+    audio: "./assets/audio/weapon_skin/asoul_202609/asoul_gun_fire_preview.wav",
+  },
+  "1110191": {
+    title: "1110191 · 手枪",
+    status: "主表新增 · 当前展示为配置线索",
+    rows: [
+      ["武器", "手枪 · weapon_type=6"],
+      ["品级", "2 · 主表直接确认"],
+      ["模型声明", "skin_1003_013.gim"],
+      ["名称状态", "中文名称尚未由同包物品行闭合"],
+      ["实体状态", "当前 PC 测试服索引中未闭合模型实体"],
+    ],
+    note: "页面只发布本次热更主表已确认的字段，不把相邻表现资源套到这条皮肤上。",
+  },
+  "1110192": {
+    title: "1110192 · 电磁机枪",
+    status: "主表新增 · 当前展示为配置线索",
+    rows: [
+      ["武器", "电磁机枪 · weapon_type=8"],
+      ["品级", "4 · 主表直接确认"],
+      ["模型声明", "skin_1008_007.gim"],
+      ["名称状态", "中文名称尚未由同包物品行闭合"],
+      ["行为资源", "开火、命中、真实弹道、特殊弹道、轨迹路径"],
+      ["实体状态", "当前 PC 测试服索引中未闭合模型实体"],
+    ],
+    note: "其中轨迹路径出现旧资源指向，页面按字段保留，不把它升级成 1110192 的专属表现。",
+  },
+  "1110189": {
+    title: "1110189 · 行为资源候选",
+    status: "行为候选 · 不计入主表新增",
+    rows: [
+      ["资源路径", "skin_1013_010"],
+      ["类型判断", "可能为喷火器 · family-inferred"],
+      ["主表身份", "当前没有对应主表行"],
+      ["名称与模型", "尚未形成同包身份链"],
+      ["音频核对", "当前目标容器逐条解包：zero hit"],
+    ],
+    note: "这是新增行为资源线索，不作为正式武器皮肤实体；旧 weapon_1013_10 资源没有并入。",
+  },
+};
 
 const canvas = document.getElementById('c');
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
@@ -102,8 +169,25 @@ function fit(){
 }
 function render(){ renderer.setSize(canvas.clientWidth, canvas.clientHeight, false); fit(); renderer.render(scene, cam); }
 
+const cluePanel = document.getElementById('clue');
+const clueTitle = document.getElementById('clue-title');
+const clueStatus = document.getElementById('clue-status');
+const clueBody = document.getElementById('clue-body');
+const esc = (value) => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function showClue(item){
+  const clue = item && item.clueId ? HOTFIX_CLUES[item.clueId] : null;
+  if (!clue){ cluePanel.hidden = true; return; }
+  clueTitle.textContent = clue.title;
+  clueStatus.textContent = clue.status;
+  clueBody.innerHTML = '<dl>' + clue.rows.map(([k,v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(v).replace(/(skin_[0-9_]+\\.gim|g66_weapon|202609_asoul|1110[0-9]+)/g, '<span class="mono">$1</span>') + '</dd>').join('') + '</dl>' +
+    '<p class="clue-note">' + esc(clue.note) + '</p>' + (clue.audio ? '<audio controls preload="none" src="' + esc(clue.audio) + '"></audio>' : '');
+  cluePanel.hidden = false;
+}
+function clearModel(){ if (cur){ scene.remove(cur); cur = null; } }
+cluePanel.querySelector('#clue-close').onclick = () => { cluePanel.hidden = true; };
+
 function load(name, label){
-  if (cur){ scene.remove(cur); cur = null; }
+  clearModel();
   document.getElementById('hud').textContent = label || '';
   new GLTFLoader().load('./assets/3d/weapon_skin/' + name, (g) => {
     const o = g.scene; o.rotation.x = Math.PI;
@@ -138,14 +222,15 @@ for (const g of GROUPS){
       d.onclick = () => { window.location.href = it.href; };
     } else {
       d.onclick = () => { [...list.querySelectorAll('.it')].forEach(x=>x.classList.remove('on'));
-                          d.classList.add('on'); load(it.f, it.label);
+                          d.classList.add('on'); showClue(it);
+                          if (it.f) load(it.f, it.label); else { clearModel(); document.getElementById('hud').textContent = it.label; }
                           if (window.innerWidth <= 820) body.classList.remove('nav'); };
     }
     list.appendChild(d);
     if (!first && !it.href) first = {d, it};
   }
 }
-if (first){ first.d.classList.add('on'); load(first.it.f, first.it.label); }
+if (first){ first.d.classList.add('on'); showClue(first.it); load(first.it.f, first.it.label); }
 
 document.getElementById('burger').onclick = () => body.classList.toggle('nav');
 document.getElementById('mask').onclick = () => body.classList.remove('nav');

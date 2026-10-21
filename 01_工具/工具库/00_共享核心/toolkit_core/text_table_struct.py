@@ -283,6 +283,88 @@ def load(hot_tables: Sequence[str], *, analysis_root=None, struct_src=None,
 # ══════════════════════════════════════════════════════════════════
 TSV_NAME = "变更文案_结构化.tsv"
 IDX_NAME = "变更文案_结构化_索引.json"
+
+
+def load_from_packs(hot_tables: Sequence[str], pre_pack, post_pack, names: dict,
+                    *, prefer: str = "post") -> Tuple[List[dict], dict]:
+    r"""★ 2026-10-17 补：**直接解 pre/post 两个 script 包**抽结构化文案。
+
+    为什么需要它：`load()` 依赖 `表结构解析_*` 产物（180 张旧表），本次热更新进的表
+    （如 `fashion_charm_magazine_*` 一族）在里面没有 ⇒ 变更表 0 / 文案 0 条。
+    本函数对**任意** `_chs.py` 表：解出该表行（带字符串池）→ 逐行逐字段取含中文的值，
+    给出与 `load()` 完全相同的条目形状（表 / 字段 / 行ID / 文案 / 位置 / 来源）。
+
+    返回 `(entries, meta)`；解不出的表进 `meta["无结构产物表"]`（不抛异常）。
+    """
+    from toolkit_core import hotfix_rows as HR      # 延迟导入：避免与交付链互相 import
+    import tempfile
+
+    hot = [t for t in (hot_tables or []) if t]
+    entries: List[dict] = []
+    per_table: "OrderedDict[str, dict]" = OrderedDict()
+    no_struct: List[str] = []
+    tmp = Path(tempfile.mkdtemp(prefix="tts_packs_"))
+
+    pre_pack, post_pack = Path(pre_pack), Path(post_pack)
+    packs = {"pre": pre_pack, "post": post_pack}
+    bits_cache: Dict[str, dict] = {}
+    for tag, p in packs.items():
+        if not p.is_file():
+            continue
+        try:
+            bits_cache[tag] = HR.extract_tables(p, names, {short_name(t) for t in hot} |
+                                                {short_name(t)[:-len("_chs.py")] + ".py"
+                                                 for t in hot if short_name(t).endswith("_chs.py")})
+        except Exception:                                        # noqa: BLE001
+            bits_cache[tag] = {}
+
+    for full in hot:
+        short = short_name(full)
+        base = short[:-len("_chs.py")] + ".py" if short.endswith("_chs.py") else None
+        rows = None
+        src_tag = ""
+        for tag in (prefer, "pre" if prefer == "post" else "post"):
+            bits = bits_cache.get(tag) or {}
+            if short not in bits:
+                continue
+            try:
+                f1 = tmp / ("%s__%s.bin" % (tag, short))
+                f1.write_bytes(bits[short])
+                if base and base in bits:
+                    f2 = tmp / ("%s__%s.bin" % (tag, base))
+                    f2.write_bytes(bits[base])
+                    rows = HR.decode_rows(f1, f2)
+                else:
+                    rows = HR.decode_rows_plain(f1)
+                src_tag = tag
+                break
+            except Exception:                                    # noqa: BLE001
+                rows = None
+        if not rows:
+            no_struct.append(full)
+            continue
+        n = 0
+        for key, row in rows.items():
+            if not isinstance(row, dict):
+                continue
+            for field, val in (row.get("values") or {}).items():
+                v = val[1] if isinstance(val, (list, tuple)) and len(val) == 2 else val
+                if has_cjk(v):
+                    entries.append({"表": full, "表文件": short, "字段": field, "行ID": key,
+                                    "文案": v, "位置": "本表行值",
+                                    "来源": "pre/post 包直解:%s:%s" % (src_tag, short)})
+                    n += 1
+        per_table[short] = {"来源": "pre/post 包直解（%s）" % src_tag, "条数": n,
+                            "行数": len(rows), "字段数": None}
+
+    meta = {
+        "来源根": "pre/post script 包直解（表结构解析产物未覆盖的表）",
+        "已覆盖表数": len(per_table),
+        "无结构产物表": no_struct,
+        "每表": dict(per_table),
+        "来源分布": {"pre/post 包直解": len(per_table)} if per_table else {},
+    }
+    return entries, meta
 TSV_HEADER = ("表名", "字段名", "行ID", "文案")
 
 

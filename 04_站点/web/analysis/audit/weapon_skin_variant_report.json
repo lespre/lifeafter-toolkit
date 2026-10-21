@@ -1,0 +1,342 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "1_main_skin": 111,
+ "2_timed_variant": 15,
+ "3_other_variant": 0,
+ "4_auxiliary": 0,
+ "5_unresolved": 0,
+ "6_runtime_timed_rule": {
+  "rule": "① is_timed_skin_id(k) 区间命中 → ② get_perm_skin_id(k) = k // 10",
+  "evidence": [
+   {
+    "source_id": "EquipSkinComp.is_timed_skin_id",
+    "source_class": "runtime_semantic",
+    "role": "timed_identification",
+    "status": "symbol_found_static_probe",
+    "evidence": "analysis/audit/timed_skin_runtime_probe.json（documents-py314-current，entry 14032 / file_id 822E3046861AA53C）",
+    "applicability": "时限皮肤 id 区间判定（区间常数未字节提取 ⇒ residual）"
+   },
+   {
+    "source_id": "EquipSkinComp.get_perm_skin_id",
+    "source_class": "runtime_semantic",
+    "role": "timed_to_permanent",
+    "status": "symbol_found_static_probe",
+    "evidence": "同探针（与 is_timed_skin_id 同模块符号表）",
+    "rule": "permanent_skin_id = timed_id // 10",
+    "constraints": [
+     "末位不承载判断",
+     "%10==1 永久禁用为识别门槛",
+     "仅对区间命中的时限 id 调用"
+    ]
+   }
+  ],
+  "constraints": [
+   "末位不承载判断",
+   "%10==1 禁用",
+   "仅时限块内调用"
+  ],
+  "residual": "区间常数未从字节提取（本阶段以 8 位块 + 父键存在逐条审计）"
+ },
+ "7_timed_relations_verified": 30,
+ "7_timed_pair_count": 15,
+ "8_canonical_only_15": {
+  "ids": [
+   11100061,
+   11100231,
+   11100271,
+   11100281,
+   11100901,
+   11101141,
+   11101341,
+   11101451,
+   11101681,
+   11101691,
+   11101701,
+   11101771,
+   11101781,
+   11101811,
+   11101831
+  ],
+  "final_class": "全部 = timed_variant（8 位时限块，父键均在 canonical）",
+  "verification": "15/15 父键存在 + 15/15 level 与父一致"
+ },
+ "9_old_only_4": [
+  {
+   "skin_item_id": 1110184,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_with_external_evidence",
+   "external_evidence": [
+    "behavior_res 行键存在（同快照行为资源）"
+   ],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": null
+  },
+  {
+   "skin_item_id": 1110185,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110186,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_with_external_evidence",
+   "external_evidence": [
+    "behavior_res 行键存在（同快照行为资源）"
+   ],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": null
+  },
+  {
+   "skin_item_id": 1110187,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110188,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110189,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110190,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_with_external_evidence",
+   "external_evidence": [
+    "behavior_res 行键存在（同快照行为资源）"
+   ],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": null
+  },
+  {
+   "skin_item_id": 1110191,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110192,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110198,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  },
+  {
+   "skin_item_id": 1110199,
+   "record_class": "legacy_board_only",
+   "status": "legacy_only_unconfirmed",
+   "external_evidence": [],
+   "checked": [
+    "canonical weapon_skin_data body",
+    "behavior_res 行键",
+    "sfx_function.skin_id",
+    "effect_show 注册",
+    "nucleus_conf"
+   ],
+   "note": "不在 canonical body ≠ 一定不存在过；历史证据保留，不删除",
+   "residual": "未在现有来源中发现任何外部证据 ⇒ 待证"
+  }
+ ],
+ "10_name_relation": {
+  "independent_name_chain": 15
+ },
+ "10_name_relation_detail": [
+  {
+   "skin_item_id": 11100061,
+   "name": "傲隼睨视（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11100231,
+   "name": "玉饮琼花（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11100271,
+   "name": "猫猫出击（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11100281,
+   "name": "玉华碎雪（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11100901,
+   "name": "心动狂飙（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101141,
+   "name": "像素涂鸦（30天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101341,
+   "name": "罚罪审判（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101451,
+   "name": "天马行空（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101681,
+   "name": "云上铃（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101691,
+   "name": "灰色协议（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101701,
+   "name": "红太狼之怒（14天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101771,
+   "name": "极光剑（7天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101781,
+   "name": "帝皇裁决（7天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101811,
+   "name": "疾影枪（7天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  },
+  {
+   "skin_item_id": 11101831,
+   "name": "战神烈火剑（7天）",
+   "relation": "independent_name_chain（子行自己的 common_item row → CHS）"
+  }
+ ],
+ "11_level_relation": {
+  "same_level": 15
+ },
+ "12_presentation_relation": {
+  "no_independent_source": 15
+ },
+ "13_silent_inheritance": false,
+ "14_migration_audit_done": true,
+ "15_explain_wired": "weapon_skin kind 已接入 locator_chains.explain（python -m api.cli explain weapon_skin <id>）",
+ "16_variant_can_graduate": true,
+ "16_conditions": {
+  "1_canonical_126_全分类": true,
+  "2_timed_runtime_rule_纳管": true,
+  "3_main_timed_relation_显式": true,
+  "4_canonical_only_15_有去向": true,
+  "5_old_only_4_定档": false,
+  "6_parent_child_不靠整数相似": true,
+  "7_name_relation_有证据": true,
+  "8_level_relation_有审计": true,
+  "9_presentation_relation_有审计": true,
+  "10_无静默复制": true,
+  "11_migration_audit_完成": true,
+  "12_explain_可追": true,
+  "13_unresolved_有断点": true,
+  "14_数量_reconcile": true
+ }
+}

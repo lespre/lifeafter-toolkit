@@ -156,6 +156,27 @@ def normalize(data: bytes, ext: str = "") -> Normalized:
             note="编译后的着色器字节码（GPU 程序），无路径信息、不做文件名复原",
         )
 
+    # ── 3b. VKPL：Vulkan SPIR-V 着色器容器（2026-10-17 定证）→ 明确标注，不叫 bin ──
+    if data[:4] == b"VKPL":
+        n_mod, ver = None, None
+        if len(data) >= 12:
+            ver, n_mod = struct.unpack_from("<II", data, 4)
+        mods = []
+        try:
+            from . import vkpl_shader as _VK
+            info = _VK.parse(data)
+            mods = [{"stage": m["stage"], "size": m["size"]} for m in info.get("modules", [])]
+        except Exception:                                        # noqa: BLE001
+            pass
+        return Normalized(
+            kind="shader",
+            ext=ext or ".vkpl",
+            meta={"magic": "VKPL", "version": ver, "modules": len(mods) or n_mod,
+                  "stages": [m["stage"] for m in mods], "bytes": len(data),
+                  "container": "Vulkan SPIR-V 着色器容器（模块头 0x07230203）"},
+            note="Vulkan 后端着色器容器（非贴图）；阶段由 OpEntryPoint 执行模型判定",
+        )
+
     # ── 4. .octl / .cvis：有魔数、无引用表 → 报结构，等结构逆向 ──
     if data[:4] == b"OCTL":
         return Normalized(kind="container", ext=ext or ".octl",

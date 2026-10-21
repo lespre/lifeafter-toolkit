@@ -25,7 +25,9 @@
 <link rel="stylesheet" href="assets/weapon_skin_viewer.css?v=neox4">
 <script defer src="assets/weapon_skin_viewer.js?v=34983ec79804"></script>
 <script defer src="assets/weapon_skin_sfx_adapter.js?v=32d4c81fae01"></script>
-<link rel="stylesheet" href="board_shadcn.css?v=20260913-v03">
+<link rel="stylesheet" href="board_shadcn.css?v=20261018-density1">
+<link rel="stylesheet" href="assets/board_theme_aftermath.css?v=20261018a">
+<link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
 <style>
 /* 品级多选下拉（2026-09-19）：作用域严格限定在 #fGrade，且全部加 !important。
    目的：防止其它样式表里针对 label / input / .controls>* 的通用规则把面板撑宽、
@@ -57,17 +59,125 @@
 .skin-skel .skel-link.primary{color:#1d4ed8;border-color:#bfdbfe;background:#eff6ff;font-weight:600}
 .skin-skel .skel-warn{font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fde68a;
   border-radius:6px;padding:1px 6px;white-space:nowrap}
+/* 3D 预览入口（2026-10-18）：只在展开后的详情区出现；卡面只放 2D 海报 */
+.skin-preview3d{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:2px 0 2px}
+.skin-preview3d .skin-preview3d-note{font-size:12px;color:#71717a}
+.skin-media-button{font:inherit;font-size:12.5px;font-weight:600;color:#1d4ed8;background:#eff6ff;
+  border:1px solid #bfdbfe;border-radius:8px;padding:4px 12px;cursor:pointer;white-space:nowrap}
+.skin-media-button:hover{background:#dbeafe}
+.skin-media-fidelity{display:inline-block;font-size:11.5px;color:#52525b;background:#f4f4f5;
+  border:1px solid #e4e4e7;border-radius:6px;padding:1px 6px;white-space:nowrap}
+.skin-media{margin:6px 0 2px}
+.skin-media img{display:block;max-width:100%;height:auto;border-radius:8px}
+/* ── 时装模式（board id = fashion_wardrobe）：只作用于 body.fashion-mode，武器皮肤板完全不受影响 ── */
+body.fashion-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.fashion-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.fashion-mode .i{padding:12px 12px 10px}
+.fr-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fr-grp{display:inline-flex;align-items:center;gap:4px;padding:3px 6px 3px 8px;background:#fff;
+  border:1px solid #e4e4e7;border-radius:9px}
+.fr-grp>em{font-style:normal;font-size:11.5px;color:#8a8a96;margin-right:2px;white-space:nowrap}
+.fr-chip{font:inherit;font-size:12px;line-height:1.5;color:#3f3f46;background:#fff;border:1px solid #e4e4e7;
+  border-radius:7px;padding:2px 8px;cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s}
+.fr-chip:hover{background:#f4f4f5}
+.fr-chip[aria-pressed="true"]{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe;font-weight:600}
+.fr-chip .n{font-size:10.5px;color:#a1a1aa;margin-left:3px;font-weight:400}
+.fr-chip[aria-pressed="true"] .n{color:#60a5fa}
+/* 图轨：最多 4 张，2:1 缩略图 */
+.fr-rail{display:flex;gap:5px;align-items:stretch;margin:0 0 9px;height:98px}
+.fr-rail figure{margin:0;flex:1 1 0;min-width:0;height:100%;background:#f7f7f9;border:1px solid #f0f0f2;
+  border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fr-rail figure img{width:100%;height:100%;object-fit:contain;display:block}
+.fr-rail figure.ph img{opacity:.5;filter:grayscale(1)}
+.fr-more{align-self:center;flex:0 0 auto;font-size:11.5px;color:#52525b;background:#f4f4f5;border:1px solid #e4e4e7;
+  border-radius:7px;padding:2px 7px;white-space:nowrap}
+.fr-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.fr-name{font-size:14.5px;font-weight:650;letter-spacing:-.01em;line-height:1.35;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fr-sub{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap}
+.fr-part{font-size:11.5px;color:#3f3f46;background:#f4f4f5;border:1px solid #e4e4e7;border-radius:6px;padding:0 6px}
+.fr-part.b-hat{color:#7c3aed;background:#f5f3ff;border-color:#ddd6fe}
+.fr-part.b-cloth{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.fr-part.b-bag{color:#0f766e;background:#f0fdfa;border-color:#99f6e4}
+.fr-part.b-suit{color:#b45309;background:#fffbeb;border-color:#fde68a}
+.fr-part.b-light{color:#a21caf;background:#fdf4ff;border-color:#f5d0fe}
+.fr-part.b-face{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.fr-part.b-hair{color:#a16207;background:#fefce8;border-color:#fef08a}
+.fr-part.b-pendant{color:#166534;background:#f0fdf4;border-color:#bbf7d0}
+.fr-part.b-proj{color:#0e7490;background:#ecfeff;border-color:#a5f3fc}
+.fr-model{font-size:11.5px;color:#71717a;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.fr-grade{flex:0 0 auto;font-size:11px;font-weight:650;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;
+  border-radius:6px;padding:1px 7px;white-space:nowrap}
+.fr-charm{font-size:11.5px;color:#a16207;background:#fefce8;border:1px solid #fde68a;border-radius:6px;
+  padding:0 6px;white-space:nowrap}
+.fr-charm.na{color:#a1a1aa;background:#f4f4f5;border-color:#e4e4e7}
+#frSort,#vSort{font-size:12px;padding:5px 9px}
+.fr-dur{font-size:11px;color:#8a8a96}
+.fr-dur.timed{color:#b45309}
+body.fashion-mode .i details.tech{margin:9px 0 0}
+body.fashion-mode .i details.tech summary{font-size:12px}
+.fr-kv{display:grid;grid-template-columns:78px 1fr;gap:3px 10px;font-size:12px;padding:2px 2px 6px}
+.fr-kv .k{color:#8a8a96}
+.fr-kv .v{color:#3f3f46;word-break:break-word}
+.fr-kv .v.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all}
+.fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
+/* ── 载具模式（board id = vehicle_full）：复用 fr-* 图轨/灯箱，仅补类型色与「类型图」标记 ── */
+body.vehicle-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.vehicle-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.vehicle-mode .i{padding:12px 12px 10px}
+body.vehicle-mode .i details.tech{margin:9px 0 0}
+body.vehicle-mode .i details.tech summary{font-size:12px}
+.fr-part.b-veh{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.fr-tagtype{font-size:10.5px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;
+  border-radius:6px;padding:0 6px;white-space:nowrap}
+/* 只有「类型图」的卡：类型按钮图标是白色线稿，浅底几乎看不见 → 垫深色块，同时一眼区分 */
+body.vehicle-mode .vcard.typeonly .fr-rail figure{background:#2a2d33;border-color:#3a3d44}
+body.vehicle-mode .vcard.typeonly .fr-rail figure img{opacity:.95}
+@media (max-width:640px){body.vehicle-mode .grid{grid-template-columns:minmax(0,1fr)}}
+/* ── 战术芯片模式（board id = tactical_chip_full，2026-10-18 新增）：复用 fr-* 图轨/灯箱，只加品质色档 ── */
+body.chip-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.chip-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.chip-mode .i{padding:12px 12px 10px;min-width:0}
+body.chip-mode .i details.tech{margin:9px 0 0}
+body.chip-mode .i details.tech summary{font-size:12px}
+.fr-part.b-chip{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.fr-quality{font-size:11px;font-weight:600;border-radius:6px;padding:0 7px;line-height:19px;white-space:nowrap;
+  background:none;border:1px solid transparent}
+.fr-quality.q1{color:#1d4ed8}.fr-quality.q2{color:#8a70ff}.fr-quality.q3{color:#b8860b}
+/* 品级徽章只有特级/高级有底色（与武器皮肤板同一套视觉纪律） */
+.fr-quality.q3{background:linear-gradient(180deg,#f7e3ac,#d9b24c);color:#4a3405;border-color:#b8912f;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.fr-quality.q2{background:#f3efff;border-color:#cdbfff}
+body.chip-mode .chip-card.q1{border-left:3px solid #1d4ed8}
+body.chip-mode .chip-card.q2{border-left:3px solid #8a70ff}
+body.chip-mode .chip-card.q3{border-left:3px solid #d9b24c}
+.chip-rt .hl{color:#0f766e;font-weight:600}
+.chip-lv{width:100%;border-collapse:collapse;font-size:11.5px;margin:4px 0 0}
+.chip-lv th,.chip-lv td{border-top:1px solid #ececf0;padding:3px 4px;text-align:left;vertical-align:top}
+.chip-lv th{color:#8a8a96;font-weight:600;white-space:nowrap}
+.chip-lv td.num{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap}
+@media (max-width:640px){body.chip-mode .grid{grid-template-columns:minmax(0,1fr)}}
+#grid.period-grid{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))!important}
+#grid.period-grid .pcard{width:100%;max-width:none}
+.pchip-cand{display:inline-block;margin-left:4px;padding:0 4px;border-radius:3px;font-size:10px;line-height:14px;color:#e2c48c;background:rgba(217,164,65,.14);border:1px solid rgba(217,164,65,.4)}
+.fr-desc{margin:6px 0 2px;font-size:12px;line-height:1.55;color:#a9b8c2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+body.core-mode .i-media{display:flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:space-between!important;gap:10px;width:100%!important;box-sizing:border-box}
+body.core-mode .i-media .mi{flex:0 0 auto!important;align-items:center}
+body.core-mode .i-media .mi:last-of-type{margin-left:auto}
+body.core-mode .i-media .mi img{width:auto;height:84px;max-width:100%}
+body.core-mode .i-media figure{margin:0;flex:0 0 auto;max-width:48%}
+body.core-mode .i-media img{max-height:96px;width:auto;max-width:100%;object-fit:contain}
+body.core-mode .i-media figcaption{display:none}
 </style>
 </head>
 <body>
 <div class="topbar"><div class="topin">
-  <div class="crumb"><a href="index.html">← 返回主页</a>　<a href="wiki.html">← 返回 Wiki 总入口</a>　<a href="skeletons.html">骨骼库（典藏+传世 37 个 id）</a></div>
+  <div class="crumb"><a class="backwiki" href="wiki.html">← 返回 Wiki 首页</a><a href="index.html">三线状态</a><a href="skeletons.html">骨骼库</a></div>
   <h1 id="title">加载中…</h1>
   <div class="meta-line" id="metaline"></div>
   <div class="pills" id="pills"></div>
 </div></div>
 <div class="wrap">
-  <div class="notes" id="notes" style="display:none"></div>
   <div class="controls">
     <input id="q" type="search" aria-label="搜索板内条目" placeholder="搜索名称 / ID / 任意字段…" autocomplete="off">
     <select id="fEv">
@@ -76,6 +186,7 @@
       <option value="verified">业务链已核验</option>
       <option value="candidate">候选待验证</option>
     </select>
+    <span id="fFashionWrap" style="display:none"></span>
     <select id="fRelease" style="display:none"><option value="">全部上架状态</option></select>
     <select id="fNameSt" style="display:none"><option value="">全部名称状态</option></select>
     <div id="fGrade" style="display:none;position:relative">
@@ -96,13 +207,16 @@
       <option value="id">排序：皮肤ID</option>
     </select>
     <button id="fDir" type="button" class="dir-btn" style="display:none" title="切换排列方向（↑/↓）" aria-label="切换排列方向">↓ 降序</button>
+    <button id="fDensity" type="button" class="density-btn" aria-pressed="false"
+      title="卡片密度：舒适＝大图 4 列／紧凑＝小图 5 列（选择会记住）">密度：舒适</button>
     <span class="count" id="count" role="status" aria-live="polite"></span>
   </div>
+  <div class="notes" id="notes" style="display:none"></div>
   <div class="grid" id="grid"></div>
 </div>
 <script>
 // 通用板块渲染：board.html?b=<board文件名>，动态加载 data/boards/<b>.js
-const FIELD_CN={weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_state:"版本状态",
+const FIELD_CN={bundle:"内含",counterpart:"对应单品",star_entries:"升星解锁",weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_state:"版本状态",
   store_zhencang:"当期商店 · 臻藏（宸晶臻石）",store_xishi:"当期商店 · 稀世（稀世之证）",
   store_zhencang_source:"臻藏清单来源",store_xishi_source:"稀世清单来源",
   model_path:"模型路径",located:"物理定位",pkg:"所在包",entry:"条目",cc:"c1c2指纹",
@@ -168,7 +282,7 @@ const FIELD_CN={weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_
   ui_short_name_es_key:"UI 短名键",ui_combat_short_names:"战斗短名候选",
   ui_short_name_candidates:"UI 短名候选",listing_status:"上架状态（canonical）",listing_status_label:"上架状态",
   listing_evidence:"上架状态证据",sale_ts_role:"上架时间戳（非上架状态）",name_status_label:"名称状态"};
-const FIXED=new Set(["id","name","evidence","source","evidence_level","provenance","text_provenance","sfx_items","timed_variants","timed_variant_count","weapon_type_inference","name_resolution","reference_fields","behavior_resources","field_provenance","variant_items","display_name","stats","variants","all_row_keys","schema_refs","text_provenance_note","weapon_type_label","weapon_type_code","rewards","pools","activity_pool_refs","status_tags","search_text"]);
+const FIXED=new Set(["id","name","evidence","source","evidence_level","provenance","text_provenance","sfx_items","timed_variants","timed_variant_count","weapon_type_inference","name_resolution","reference_fields","behavior_resources","field_provenance","variant_items","display_name","stats","variants","all_row_keys","schema_refs","text_provenance_note","weapon_type_label","weapon_type_code","rewards","pools","activity_pool_refs","status_tags","search_text","_media"]);
 const HUGE_TABLE_MIN=15000;
 function buildHugeIndex(d){
   // 大表（如全道具总表 35986 行）：预构建轻量检索串，避免每次按键 JSON.stringify 全表。
@@ -226,15 +340,6 @@ function richText(s){
 }
 function isRichText(v){return typeof v==="string"&&/#[A-Za-z]/.test(v)&&v.length<8000;}
 function getParam(k){return new URLSearchParams(location.search).get(k);}
-// ── 构建标记（缓存识别；独立挂在 body 顶部，不会被其它渲染覆盖）──
-(function wbStamp(){try{
-  const bar=document.createElement("div");
-  bar.id="wbBuildStamp";
-  bar.style.cssText="font:12px/1.5 -apple-system,'Segoe UI','Microsoft YaHei',sans-serif;color:#71717a;padding:4px 12px;background:#fffbe6;border-bottom:1px solid #fde68a";
-  bar.textContent="board.html build v1.3.2 / 2026-09-13 —— 若这里显示的日期不是今天，说明浏览器用了缓存旧页，请 Ctrl+F5 强刷";
-  document.body.insertBefore(bar, document.body.firstChild);
-  document.title="board.html build v1.3.2 · "+document.title;
-}catch(e){}})();
 const initialQuery=getParam("q")||"";
 const partFilter=(getParam("part")||"").split(",").map(s=>s.trim()).filter(Boolean);
 // 必须与 wiki.html 卡面规则一致：卡名仅显示分类尾段，不泄露生成器内部板名。
@@ -357,15 +462,66 @@ VALUE_CN.listing_status=LISTING_CN;
 VALUE_CN.release_state=LISTING_CN;
 VALUE_CN.name_status=NAME_CN;
 // canonical 优先，legacy 别名兜底（读值，不做判断）
-function listingOf(it){const v=it.listing_status;   // canonical 优先
+// ★ 2026-10-18（用户口径）：上架状态改为**按 sale_ts 实时算**，静态 release_state 只作无时间戳时的回落，
+//   否则皮肤到点上架了页面还写着「预告 · 未到上架日」。
+function listingOf(it){
+  const ts=Number((it&&it.sale_ts)||0);
+  if(ts>0)return ts<=Date.now()/1000?"on_sale":"upcoming";
+  const v=it&&it.listing_status;   // canonical 优先
   if(v!==undefined&&v!==null&&v!=="")return v;
-  const r=pick(it,"release_state");                 // legacy 板字段兜底（保留数据源）
+  const r=it&&it.release_state;                 // legacy 板字段兜底（保留数据源）
   return (r===undefined||r===null)?"":r;}
+/* 距上架倒计时（只对未到点的有意义；已上架返回空串） */
+function saleCountdownCN(it){
+  const ts=Number((it&&it.sale_ts)||0);
+  if(!(ts>0))return "";
+  const sec=ts-Date.now()/1000;
+  if(!(sec>0))return "";
+  const d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60);
+  if(d>0)return `${d} 天 ${h} 小时后上架`;
+  if(h>0)return `${h} 小时 ${m} 分后上架`;
+  return `${Math.max(1,m)} 分钟后上架`;
+}
 function nameStatusOf(it){const v=it.name_status;if(v)return v;
   return it.candidate_name?"candidate":(it.name?"verified":"unresolved");}
 function listingSupported(){
   const v=(DATA&&DATA.meta&&DATA.meta.status_vocab&&DATA.meta.status_vocab.listing_status)||null;
   return v&&Array.isArray(v.supported_today)?v:null;}
+/* ── 2026-10-18 上架状态配色（用户口径）：已上架=绿、预告=橙，其余中性 ──
+   class 由状态值安全化得到（只留 [A-Za-z0-9_-]），值本身不改、只是显示层上色。 */
+function lsClass(v){
+  const k=String(v==null?"":v).replace(/[^A-Za-z0-9_-]/g,"");
+  return k?"ls-"+k:"ls-none";}
+function lsLabel(v){return LISTING_CN[v]||(String(v||"")===""?"（无字段）":String(v));}
+/* 顶部统计里的「上架状态 已上架 116 / 预告 3」——与卡面共用 ls-* 配色 */
+function listingStatHTML(items){
+  const acc={};
+  for(const it of items){const k=listingOf(it)||"";acc[k]=(acc[k]||0)+1;}
+  const vs=listingSupported();
+  return Object.entries(acc).map(([k,v])=>
+      `<span class="ls-chip ${lsClass(k)}" title="${esc(lsLabel(k))}">${esc(lsLabel(k))} ${v}</span>`).join(" / ")+
+    (vs?`（canonical 支持类别：${vs.supported_today.map(x=>esc(lsLabel(x))).join("、")}）`:"");
+}
+/* ── 2026-10-18 卡片密度（紧凑/舒适）：只切 body class，不重绘、不改数据 ── */
+const DENSITY_KEY="board_density";
+function densityStored(){
+  try{return localStorage.getItem(DENSITY_KEY)==="compact"?"compact":"comfortable";}
+  catch(e){return "comfortable";}}
+function applyDensity(v,persist){
+  const compact=v==="compact";
+  try{
+    const cl=document.body&&document.body.classList;
+    if(cl){if(compact){cl.add&&cl.add("density-compact");}else{cl.remove&&cl.remove("density-compact");}}
+  }catch(e){}
+  const btn=document.getElementById("fDensity");
+  if(btn){
+    btn.textContent=compact?"密度：紧凑":"密度：舒适";
+    btn.setAttribute("aria-pressed",String(compact));
+    if(btn.dataset)btn.dataset.density=compact?"compact":"comfortable";
+    btn.title=compact?"卡片密度：紧凑（小图 5 列）— 点击切回舒适":"卡片密度：舒适（大图 4 列）— 点击切紧凑";
+  }
+  if(persist){try{localStorage.setItem(DENSITY_KEY,compact?"compact":"comfortable");}catch(e){}}
+}
 // 工程字段：不进卡面，统一折叠进「技术详情 / 数据来源 / 审计信息」
 const TECH_KEYS=new Set(["provenance","text_provenance","field_provenance","name_resolution","source","source_entries",
   "locator_chain","upstream","source_lock_sha256","source_file_id","source_id","source_path","source_sha256",
@@ -416,6 +572,8 @@ const TITLE_CN=[[/identity unresolved/g,"身份待确认"],[/runtime final unkno
   [/reward_pool_data_base/g,"奖池表"],[/gift_data/g,"礼盒表"],[/huodong_conf/g,"活动配置"],[/item_master/gi,"道具总表"],[/schema\s*(\d+)/g,"结构 $1"],[/\bschema\b/g,"结构"]];
 function zhTitle(s){let out=String(s??"");for(const [re,rp] of TITLE_CN)out=out.replace(re,rp);return out;}
 function fmtVal(k,v){
+  if(k==="bundle"&&Array.isArray(v))return v.map(b=>`${b.name}×${b.count}`).join("、");
+  if(k==="star_entries"&&Array.isArray(v))return v.map(s=>`${s.star}星：${s.text}`).join("  ｜  ");
   if(k==="version_status"&&VERSION_STATUS_CN[v])return VERSION_STATUS_CN[v];
   if(v===true)return "是";if(v===false)return "否";
   if(typeof v==="string"){
@@ -656,23 +814,46 @@ function skinMediaRecord(it){
   return null;
 }
 function mediaPosterSrc(record){const poster=record&&record.poster;return typeof poster==="string"?poster:(poster&&poster.src)||"";}
+/* 3D 渲染截图不是 2D 海报：media 里这 7 条（1110152/1110165/1110169/1110171/1110177/1110185/1110186）
+   的 poster 指向 assets/3d/.../poster.webp 且无 poster_source —— 属 3D 管线产物，
+   卡面不得拿它顶 2D 图（用户 2026-10-18 口径）。 */
+function mediaPosterIsRender(record){
+  const src=mediaPosterSrc(record);
+  if(!src)return false;
+  const poster=record&&record.poster;
+  if(poster&&typeof poster==="object"&&poster.is_render)return true;
+  return src.indexOf("assets/3d/")>=0||/^\/?3d\//.test(src);
+}
+function media2DPosterSrc(record){return mediaPosterIsRender(record)?"":mediaPosterSrc(record);}
 function mediaPreviewReady(record){
   const preview=record&&record.preview_3d;
   return !!(preview&&preview.status==="ready"&&(preview.manifest||preview.model||(preview.states&&Object.keys(preview.states).length)));
 }
+/* 2026-10-18（用户口径）：卡面只放 2D 海报。3D 入口/材质保真徽标一律进「展开后」详情区，
+   卡面无 2D 图就整块不渲染 —— 不拿 3D 渲染图顶卡面。 */
 function renderSkinMedia(it,name){
   const record=skinMediaRecord(it);if(!record)return "";
-  const poster=mediaPosterSrc(record),ready=mediaPreviewReady(record);
-  if(!poster&&!ready)return "";
+  const poster=media2DPosterSrc(record);
+  if(!poster)return "";
+  /* ★ 2026-10-17：这张图可能根本不是海报而是**素材底图**（法线图/掩码/色带/平铺）——
+     按像素内容判过才有的字段；有就明说，别让人把法线图当皮肤预览看。无值不加标签。 */
+  const kindLabel=(record&&record.poster_kind)||"";
+  return `<div class="skin-media"><img src="${esc(poster)}" alt="${esc(name)}预览" loading="lazy" decoding="async">`+
+    `${kindLabel?`<span class="skin-media-fidelity" title="按像素内容判定：这是素材底图，不是皮肤海报">素材底图 · ${esc(kindLabel)}</span>`:""}</div>`;
+}
+/* 3D 预览按钮：只出现在展开后的详情区（卡面不出现）。取值口径与卡面一致：mediaPreviewReady。 */
+function renderSkinPreview3D(it){
+  const record=skinMediaRecord(it);
+  if(!record||!mediaPreviewReady(record))return "";
   const material=(record.preview_3d&&record.preview_3d.material_fidelity)||"";
   const note=(record.preview_3d&&record.preview_3d.fidelity_note)||"";
   /* 2026-09-19：取值口径统一为有定义的四个（+ 兼容旧值）；徽标 hover 显示该条的依据与未决项 */
   const fidelity={source_matched:"源材质匹配",source:"源数据",source_candidate:"源数据（候选级）",
                   approximate:"材质近似",unbuilt:"未建（无材质链）"}[material]||material;
   const fidTitle=note?`材质保真度依据：${note}`:(material||"");
-  return `<div class="skin-media">${poster?`<img src="${esc(poster)}" alt="${esc(name)}预览" loading="lazy" decoding="async">`:""}`+
+  return `<div class="skin-preview3d"><button class="skin-media-button" type="button" data-skin-id="${esc(it.skin_id??it.skin_item_id??it.id)}" onclick="openSkin3D(event,this)">3D 预览</button>`+
     `${fidelity?`<span class="skin-media-fidelity" title="${esc(fidTitle)}">${esc(fidelity)}</span>`:""}`+
-    `${ready?`<span class="skin-media-actions"><button class="skin-media-button" type="button" data-skin-id="${esc(it.skin_id??it.skin_item_id??it.id)}" onclick="openSkin3D(event,this)">3D 预览</button></span>`:""}</div>`;
+    `<span class="skin-preview3d-note">按源模型与材质实时绘制，与卡面 2D 图来源不同。</span></div>`;
 }
 function openSkin3D(event,button){
   event.preventDefault();event.stopPropagation();
@@ -747,9 +928,14 @@ function renderSkinCard(it){
      `<b>特效</b>${ef.count} 项${ef.present&&ef.present.length?`（${esc(ef.present.slice(0,3).join("、"))}${ef.present.length>3?"…":""}）`:""}</span>`);
    if(ef&&ef.names&&ef.names.length)facts.push(`<span class="fact" title="特效名来自展示层（legacy 板副本，presentation_only）">`+
      `<b>特效名</b>${esc(ef.names.slice(0,3).join("、"))}${ef.names_total>3?` 等 ${ef.names_total} 个`:""}<i class="pres-mark">历史</i></span>`);}
-  {const ip=it.ip_liaison;   // 没有 IP 就不显示这一项（用户 2026-09-13）
-   if(ip)facts.push(`<span class="fact" title="联动IP（展示层：用户参考目录，presentation_only）"><b>联动IP</b>${esc(ip)}</span>`);}
-  {const ls=listingOf(it);if(ls)facts.push(`<span class="fact state"><b>上架状态</b>${esc(LISTING_CN[ls]||ls)}</span>`);}
+  {const ip=it.ip_liaison||it.ip_now;   // 没有 IP 就不显示这一项（用户 2026-09-13）
+   // 来源必须在 title 里说清：用户参考目录 / 官方描述提取 / 配置参数（候选级）
+   const ipSrc=it.ip_liaison?"联动IP（展示层：用户参考目录，presentation_only）"
+     :(it.ip_now_state==="config_param_candidate"
+       ?`联动IP（配置证据：${it.ip_now_evidence||"同快照配置参数"}）`
+       :"联动IP（同快照官方描述提取）");
+   if(ip)facts.push(`<span class="fact" title="${esc(ipSrc)}"><b>联动IP</b>${esc(ip)}</span>`);}
+  {const ls=listingOf(it);if(ls)facts.push(`<span class="fact state ${lsClass(ls)}"><b>上架状态</b>${esc(LISTING_CN[ls]||ls)}</span>`);}
   {const nst=nameStatusOf(it);facts.push(`<span class="fact state"><b>名称</b>${esc(NAME_CN[nst]||nst||"未解析")}</span>`);}
   const detail=renderSkinDetail(it);
   const qNow=String((DATA&&DATA._query)||"");
@@ -760,7 +946,7 @@ function renderSkinCard(it){
         <span class="skin-tag grade-badge ${tier.cls}" title="level=${esc(it.level!=null?it.level:"未配置")}">${esc(tier.label)}</span>
         <span class="skin-name">${esc(name)}</span>
         <span class="skin-head-right">
-          <span class="skin-sale" title="sale_ts／sale_date（时间戳，非上架状态）">上架 ${esc(it.sale_date||"未知")}</span>
+          <span class="skin-sale" title="sale_ts／sale_date（时间戳，非上架状态）">上架 ${esc(it.sale_date||"未知")}${(()=>{const c=saleCountdownCN(it);return c?`（${esc(c)}）`:"";})()}</span>
           <span class="skin-id" title="skin_item_id">皮肤ID ${esc(it.skin_id??it.id)}</span>
         </span>
       </div>
@@ -782,6 +968,9 @@ function onSkinKey(event,head){
 function renderSkinDetail(it){
   // 展开顺序（用户 2026-09-11）：官方描述 → 时限变体 → 表现详情 → 历史参考 → 技术详情
   const parts=[];
+  /* 2026-10-18：3D 预览入口只在展开后出现（卡面只放 2D 海报）。 */
+  const preview3d=renderSkinPreview3D(it);
+  if(preview3d)parts.push(`<h4>模型预览</h4>${preview3d}`);
   if(it.official_desc)parts.push(`<h4>官方描述</h4><div class="skin-desc">${isRichText(it.official_desc)?richText(it.official_desc):esc(it.official_desc)}${it.official_desc_source?'<i class="pres-mark">历史目录</i>':""}</div>`);
   // 历史参考信息：只输出**有值**的行；全部为空 ⇒ 整块不渲染（不写「—」占位）
   {
@@ -829,10 +1018,14 @@ function renderSfxChildren(children){
   if(!Array.isArray(children)||!children.length)return "";
   return `<section class="sfx-children"><div class="sfx-children-title">表现子项（${children.length}）</div>`+
     children.map(child=>{
-      let label=child.display_name||child.sfx_name||"未命名 SFX 配置";
-      const weak=/^(未装配|未命名|占位)/.test(label);
+      /* 本次热更的表现行没有 CHS 文本（child.text_status=no_chs_text）⇒ 标签直接用配置类目中文，
+         不再输出「未命名 SFX 配置」这类占位词（口径：无值项不写占位，也不把类目名当正式名）。 */
+      let label=String(child.display_name||child.sfx_name||"").trim();
+      const catOnly=!label;
+      if(catOnly)label=String(child.sfx_type_label||"").replace(/（\d+）$/,"")||"表现配置";
+      const weak=!catOnly&&/^(未装配|未命名|占位)/.test(label);
       const type=child.sfx_type_label||(`类型 ${child.sfx_type??"未配置"}`);
-      const tip=child.sfx_params?` title="${esc(child.sfx_params)}"`:"";
+      const tip=catOnly?` title="该表现行本次热更无文本名（按配置类目显示）"`:(child.sfx_params?` title="${esc(child.sfx_params)}"`:"");
       const cls=weak?"sfx-child weak":"sfx-child";
       if(weak)label="（"+label+"）";
       return `<div class="${cls}"${tip}><div class="sfx-child-name">${esc(label)}</div><div class="sfx-child-meta">${esc(type)} · 行 ${esc(child.row_key)}</div></div>`;
@@ -1056,6 +1249,18 @@ function readGradeChecked(){
   return GRADE_SELECTED;
 }
 function fillFilterSelects(items){
+  // ★ 时装板走自己的筛选模组（frBuildFilters）：这里直接隐藏武器/皮肤系列的筛选与排序控件，
+  //   否则「level」字段会让 skinLike 判真，凭空长出 品级/武器种类/上架状态 这些无意义下拉。
+  if(FASHION_BOARD||VEHICLE_BOARD||CHIP_BOARD){
+    ["fGrade","fType","fIp","fRelease","fNameSt","fOrder","fDir"].forEach(id=>{
+      const el=document.getElementById(id);if(el)el.style.display="none";
+    });
+    const sh=document.getElementById("sortHint");if(sh)sh.style.display="none";
+    const lh=document.getElementById("listingHint");if(lh)lh.style.display="none";
+    const wrap=document.getElementById("fCustomWrap");if(wrap)wrap.innerHTML="";
+    if(DATA)DATA._custFilters=[];
+    return;
+  }
   // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
   const cfg=DATA.meta&&Array.isArray(DATA.meta.filters)?DATA.meta.filters:null;
   const oSel=document.getElementById("fOrder");
@@ -1090,7 +1295,11 @@ function fillFilterSelects(items){
       items.forEach(it=>{const v=it[f.key];if(v!=null&&String(v)!=="")set.add(String(v));});
       if(!set.size)return;
       const sel=document.createElement("select");
-      fillOptions(sel,[...set].sort(),"全部"+zhText(FIELD_CN[f.key]||f.label||f.key),f.key);
+      const vals=[...set].sort();
+      if(f.key==="month")vals.reverse();
+      fillOptions(sel,vals,"全部"+zhText(FIELD_CN[f.key]||f.label||f.key),f.key);
+      const dv=(DATA.meta.filter_defaults||{})[f.key];
+      if(dv!=null&&[...sel.options].some(o=>o.value===dv))sel.value=dv;
       sel.setAttribute("aria-label",zhText(FIELD_CN[f.key]||f.label||f.key));
       sel.onchange=render;
       wrap.appendChild(sel);
@@ -1177,13 +1386,677 @@ function renderItemCard(it){
   const rows=Object.entries(it)
     .filter(([k,v])=>!FIXED.has(k)&&v!==null&&v!=="")
     .map(([k,v])=>`<div class="k">${esc(FIELD_CN[k]||k)}</div><div class="v">${esc(fmtVal(k,v))}</div>`);
-  return `<div class="i"><div class="i-head">
+  const media=renderItemMedia(it._media);
+  return `<div class="i">${media}<div class="i-head">
     <div><div class="i-name">${esc(it.name||it.display_name||it.id)}</div>
     <div class="i-id" title="id">道具ID ${esc(it.item_id??it.id)}</div></div>
     <span class="head-tags"><span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${renderStateTags(it.status_tags)}</span></div>
     <div class="kv">${rows.join("")}</div>
     ${renderTechSection([["provenance",it.provenance],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}</div>`;
 }
+/* 时装图标（游戏内真实引用）：最多显示 6 张，其余计数；无资源时用客户端占位图 */
+function renderItemMedia(m){
+  if(!m)return "";
+  const imgs=(m.images||[]).slice(0,6).map(x=>
+    `<figure class="mi"><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"><figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`).join("");
+  const ph=m.placeholder?`<figure class="mi ph"><img src="${esc(m.placeholder)}" alt="客户端占位图" loading="lazy"><figcaption>占位</figcaption></figure>`:"";
+  const more=(m.images||[]).length>6?`<span class="mi-more">+${m.images.length-6}</span>`:"";
+  return `<div class="i-media">${imgs}${ph}${more}</div>`;
+}
+/* ════════════════════ 时装模式（仅 board id = fashion_wardrobe）════════════════════
+   用户 2026-10-18 口径：
+     · 卡面只留「顶部图轨（≤4 张，多的 +N）+ 名字 + 部位 + model_id」
+     · 其余字段（描述/品级/魅力/期限/变体名/图标绑定/行键/溯源）全部折进
+       「技术详情 / 数据来源 / 审计信息」折叠区
+     · 筛选：部位（多选）/ 期限 / 图示 / 性别，与既有搜索 + 证据等级并行
+     · 筛选后顶部统计（#count 与 #pills）跟着变
+   ★ 类名全部 fr-* 前缀 / 选择器全部挂在 body.fashion-mode 下 —— 武器皮肤板零影响。
+   ★ 只用板上已有字段（part_bucket / has_permanent / icon_state / gender 由刷新脚本写入），
+     不做任何推断：整套/光源没有图标命名约定就不按前缀判。 */
+const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
+const FR_BUCKETS=["头饰","衣服","背包","整套","光源","面饰","发饰","挂饰","投影","其他"];
+const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
+const FR={parts:new Set(),duration:"",img:"",gender:"",sort:""};
+/* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
+(function(){
+  try{
+    const u=new URLSearchParams(location.search);
+    (u.get("frpart")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>FR.parts.add(p));
+    FR.duration=u.get("frdur")||"";
+    FR.img=u.get("frimg")||"";
+    FR.gender=u.get("frgender")||"";
+    FR.sort=u.get("frsort")||"";
+  }catch(e){}
+})();
+function frSyncUrl(){
+  try{
+    const u=new URLSearchParams(location.search);
+    const put=(k,v)=>{if(v)u.set(k,v);else u.delete(k);};
+    put("frpart",[...FR.parts].join(","));
+    put("frdur",FR.duration);put("frimg",FR.img);put("frgender",FR.gender);put("frsort",FR.sort);
+    history.replaceState(null,"",location.pathname+"?"+u.toString());
+  }catch(e){}
+}
+/* 排序（先筛后排）：四个选项
+   model_desc = 编号(model_id) 大→小【默认】｜ model_asc 小→大
+   charm_desc = 魅力值 高→低      ｜ charm_asc 低→高
+   缺失值（无 model / 无魅力）一律排最后；同值时按名字稳定排序 */
+function frSortList(list){
+  const mode=FR.sort||"model_desc";
+  const isCharm=mode.indexOf("charm")===0;
+  const asc=/_asc$/.test(mode);
+  const val=it=>{
+    let v;
+    if(isCharm){v=it.charm_value;if(v==null||v===0)return null;}
+    else{v=(it.model_id!=null?it.model_id:((it.model_ids||[])[0]));if(v==null||v==="")return null;}
+    const n=Number(v);return isNaN(n)?null:n;
+  };
+  const arr=[...list];
+  arr.sort((A,B)=>{
+    const a=val(A),b=val(B);
+    if(a==null&&b==null)return String(A.name||"").localeCompare(String(B.name||""),"zh-CN");
+    if(a==null)return 1;
+    if(b==null)return -1;
+    if(a!==b)return asc?a-b:b-a;
+    return String(A.name||"").localeCompare(String(B.name||""),"zh-CN");
+  });
+  return arr;
+}
+function frBuckets(it){
+  const b=it&&it.part_bucket;
+  if(Array.isArray(b)&&b.length)return b;
+  return ["其他"];
+}
+function frGenders(it){return it&&it.gender?String(it.gender).split("/"):[];}
+function frPass(it){
+  if(FR.parts.size){
+    const bs=frBuckets(it);let ok=false;
+    FR.parts.forEach(p=>{if(bs.indexOf(p)>=0)ok=true;});
+    if(!ok)return false;
+  }
+  if(FR.duration==="永久"&&it.has_permanent!==true)return false;
+  if(FR.duration==="限时"&&it.has_permanent!==false)return false;
+  if(FR.duration==="未知"&&it.has_permanent!=null)return false;
+  if(FR.img==="有图"&&it.icon_state!=="有图")return false;
+  if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
+  if(FR.gender&&frGenders(it).indexOf(FR.gender)<0)return false;
+  return true;
+}
+/* 图轨：≤4 张真实图标；无图时落客户端占位图（placeholder 是对象，取 .png） */
+function frRail(it){
+  const m=it._media||{},imgs=Array.isArray(m.images)?m.images:[];
+  if(!imgs.length){
+    const ph=typeof m.placeholder==="string"?m.placeholder:(m.placeholder&&m.placeholder.png);
+    return ph
+      ? `<div class="fr-rail"><figure class="ph" title="客户端占位图（图标资源未随客户端下发）"><img src="${esc(ph)}" alt="占位" loading="lazy"></figure></div>`
+      : `<div class="fr-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
+  }
+  const show=imgs.slice(0,4).map((x,i)=>
+    `<figure class="fr-zoom" data-idx="${i}" title="点击看大图 · ${esc((x.base||"")+(x.suffix||""))}"><img src="${esc(x.png)}" alt="${esc(x.base||"")}" loading="lazy"></figure>`).join("");
+  const more=imgs.length>4?`<button type="button" class="fr-more fr-zoom" data-idx="4" title="该件共 ${imgs.length} 张图标，点击展开">+${imgs.length-4}</button>`:"";
+  return `<div class="fr-rail">${show}${more}</div>`;
+}
+/* ── 大图查看器（灯箱）：点缩略图或 +N 打开，可左右翻、Esc 关 ── */
+const FR_IMGS=Object.create(null);
+function frOpen(id,idx){
+  const list=FR_IMGS[id]||[];
+  if(!list.length)return;
+  let box=document.getElementById("frBox");
+  if(!box){
+    box=document.createElement("div");
+    box.id="frBox";box.className="fr-box";
+    box.innerHTML=`<div class="fr-box-body"><img alt=""><div class="fr-box-bar"><button type="button" data-act="prev">‹</button><span class="fr-box-idx"></span><button type="button" data-act="next">›</button><button type="button" data-act="close">关闭</button></div></div>`;
+    box.addEventListener("click",e=>{
+      const t=e.target;
+      if(t===box||t.dataset.act==="close"){frClose();return;}
+      const act=t.dataset.act;
+      if(act==="prev"||act==="next"){
+        const cur=parseInt(box.dataset.i||"0",10);
+        const n=(FR_IMGS[box.dataset.id]||[]).length;
+        const ni=(cur+(act==="next"?1:-1)+n)%n;
+        frShow(box.dataset.id,ni);
+      }
+    });
+    document.body.appendChild(box);
+    document.addEventListener("keydown",e=>{
+      if(!document.getElementById("frBox"))return;
+      if(e.key==="Escape")frClose();
+      else if(e.key==="ArrowLeft"||e.key==="ArrowRight"){
+        const evt=new MouseEvent("click",{bubbles:true});
+        const sel=e.key==="ArrowLeft"?'[data-act="prev"]':'[data-act="next"]';
+        const btn=document.querySelector(sel);
+        if(btn)btn.dispatchEvent(evt);
+      }
+    });
+  }
+  box.dataset.id=id;box.style.display="flex";
+  frShow(id,idx);
+}
+function frShow(id,i){
+  const box=document.getElementById("frBox");if(!box)return;
+  const list=FR_IMGS[id]||[];if(!list.length)return;
+  const n=list.length;i=(i+n)%n;
+  box.dataset.i=String(i);
+  box.querySelector("img").src=list[i];
+  box.querySelector(".fr-box-idx").textContent=(i+1)+" / "+n;
+}
+function frClose(){
+  const box=document.getElementById("frBox");
+  if(box){box.style.display="none";box.querySelector("img").src="";}
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest?e.target.closest(".fr-zoom"):null;
+  if(!t)return;
+  const card=t.closest(".fcard");
+  const id=card&&card.dataset.frid;
+  if(!id)return;
+  e.preventDefault();e.stopPropagation();
+  frOpen(id,parseInt(t.dataset.idx||"0",10));
+},true);
+/* 卡面 = 图轨 + 名字 + 部位 + model_id（别的全部进折叠区） */
+function frCard(it){
+  const bk=frBuckets(it),bkCn=bk.join(" / ");
+  const partCn=(it.all_parts&&it.all_parts.length?it.all_parts.map(p=>COMMON_PART_CN[p]||p).join(" / "):(COMMON_PART_CN[it.part]||it.part||""));
+  const mid=(it.model_id!=null)?it.model_id:((it.model_ids&&it.model_ids[0])!=null?it.model_ids[0]:null);
+  const durCn=it.duration_state==="unknown"?"期限未知":(it.duration_state==="timed"?"限时":(it.duration_state==="mixed"?"永久+限时":"永久"));
+  const durDays=(it.durations||[]).length?`（${it.durations.join("/")}天）`:"";
+  const cls=FR_BUCKET_CLS[bk[0]]||"other";
+  const pairs=[];
+  if(it.desc)pairs.push(["描述",zhText(it.desc)]);
+  if(it.desc_note&&!it.desc)pairs.push(["描述说明",it.desc_note]);
+  if(it.grade_level!=null)pairs.push(["品级",(it.grade_levels&&it.grade_levels.length>1?it.grade_levels.join("/")+"（取最高）":"品级 "+it.grade_level)]);
+  if(it.charm_value!=null)pairs.push(["魅力值",String(it.charm_value)]);
+  pairs.push(["期限",durCn+durDays]);
+  if((it.time_limited_variants||[]).length)pairs.push(["时限档",it.time_limited_variants.map(d=>d+"天").join(" / ")]);
+  pairs.push(["性别",(it.gender||"图标未标性别")]);
+  pairs.push(["图标",`${it.icon_state||"未知"}${it.icon_count!=null?` · ${it.icon_count} 张`:""}`]);
+  if((it.name_variants||[]).length>1)pairs.push(["表内变体名",it.name_variants.join("、")]);
+  const bools=[];
+  if(it.fashion_preview)bools.push("可预览");
+  if(it.show_no_have)bools.push("未拥有也展示");
+  if(it.hide_in_bag)bools.push("背包内隐藏");
+  if(bools.length)pairs.push(["展示开关",bools.join(" / ")]);
+  if((it.model_ids||[]).length>1)pairs.push(["全部模型ID",it.model_ids.join(" / ")]);
+  pairs.push(["行键",(it.row_keys||[]).join(", ")]);
+  if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
+  const p=it.provenance||{};
+  if(p.source_id)pairs.push(["来源标识",p.source_id]);
+  if(p.table)pairs.push(["定位表",p.table]);
+  if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
+  if(p.upstream&&p.upstream.entry_index!=null)pairs.push(["上游条目号",String(p.upstream.entry_index)]);
+  if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
+  pairs.push(["证据等级",(EV_CN[it.evidence]||it.evidence||"")+(it.evidence_level?" · "+(VALUE_CN.evidence_level[it.evidence_level]||it.evidence_level):"")]);
+  if((it.status_tags||[]).length)pairs.push(["状态标签",it.status_tags.map(t=>STATE_CN[t]||t).join(" / ")]);
+  const imgLines=((it._media&&it._media.images)||[]).map(x=>`${x.base}${x.suffix||""}${x.pack?"  ← "+x.pack+(x.row!=null?" row "+x.row:""):""}`);
+  if(imgLines.length)pairs.push(["图标绑定",imgLines.join("\n")]);
+  if(it._media&&it._media.placeholder&&it._media.placeholder.source)pairs.push(["占位图来源",it._media.placeholder.source+(it._media.placeholder.reason?`（${it._media.placeholder.reason}）`:"")]);
+  const kv=pairs.map(([k,v])=>{
+    const mono=/(行键|定位表|来源标识|图标绑定|占位图来源|源快照摘要|上游条目号)/.test(k);
+    return `<div class="k">${esc(k)}</div><div class="v${mono?" mono":""}">${v===null||v===undefined?"":esc(String(v))}</div>`;
+  }).join("");
+  FR_IMGS[it.id]=Array.isArray((it._media||{}).images)?it._media.images.map(x=>x.png):[];
+  return `<div class="i fcard" data-frid="${esc(it.id)}">
+    ${frRail(it)}
+    <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div>${
+      it.grade_level!=null?`<span class="fr-grade" title="品级：fashion_data.level（表里只有数值档，无官方名）">品级 ${esc(it.grade_level)}</span>`:""}</div>
+    <div class="fr-sub">
+      <span class="fr-part b-${cls}" title="表的 part_type：${esc(it.part||"（表里无该字段）")}">${esc(partCn||"部位未标注")}</span>
+      <span class="fr-charm${it.charm_value?"":" na"}" title="魅力值：fashion_data.charm_value">${it.charm_value?"魅力 "+esc(it.charm_value):"魅力 —"}</span>
+      ${mid!=null?`<span class="fr-model" title="model_id（表的字段）">model ${esc(mid)}</span>`:`<span class="fr-model">model —</span>`}
+      <span class="fr-dur${it.duration_state==="timed"?" timed":""}">${esc(durCn)}</span>
+    </div>
+    <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>
+  </div>`;
+}
+const COMMON_PART_CN={hat:"头饰",cloth:"衣服",bag:"背包",suit:"整套",light:"光源"};
+/* 筛选控件：部位多选 + 期限/图示/性别单选；计数按全量板算（不随其它筛选浮动，避免误读） */
+function frBuildFilters(items){
+  const wrap=document.getElementById("fFashionWrap");
+  if(!wrap)return;
+  const cnt={parts:{},duration:{},img:{},gender:{}};
+  for(const b of FR_BUCKETS)cnt.parts[b]=0;
+  for(const it of items){
+    frBuckets(it).forEach(b=>{if(cnt.parts[b]!=null)cnt.parts[b]++;});
+    const dv=(it.has_permanent===true)?"永久":((it.has_permanent===false)?"限时":"未知");
+    cnt.duration[dv]=(cnt.duration[dv]||0)+1;
+    cnt.img[it.icon_state||"未知"]=(cnt.img[it.icon_state||"未知"]||0)+1;
+    frGenders(it).forEach(g=>{cnt.gender[g]=(cnt.gender[g]||0)+1;});
+  }
+  const chip=(label,on,n,fn)=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="fr-chip";b.textContent=label;
+    b.setAttribute("aria-pressed",String(on));
+    if(n!=null){const s=document.createElement("span");s.className="n";s.textContent=String(n);b.appendChild(s);}
+    b.addEventListener("click",fn);
+    return b;
+  };
+  const redraw=()=>{frSyncUrl();wrap.innerHTML="";frBuildFilters(items);};
+  const grp=(title,chips)=>{
+    const g=document.createElement("span");g.className="fr-grp";
+    const em=document.createElement("em");em.textContent=title;g.appendChild(em);
+    chips.forEach(c=>g.appendChild(c));return g;
+  };
+  const box=document.createElement("div");box.className="fr-filters";
+  // 部位（多选；一个都不勾 = 全部）
+  const pc=[chip("全部",FR.parts.size===0,null,()=>{FR.parts.clear();redraw();frRender();})];
+  FR_BUCKETS.forEach(b=>{
+    if(!cnt.parts[b]&&!FR.parts.has(b))return;   // 该部位在本板无条目就不摆空筛选项（深链带上的仍保留，便于取消）
+    pc.push(chip(b,FR.parts.has(b),cnt.parts[b]||0,()=>{
+      if(FR.parts.has(b))FR.parts.delete(b);else FR.parts.add(b);
+      redraw();frRender();
+    }));
+  });
+  box.appendChild(grp("部位",pc));
+  const one=(title,key,opts,cur)=>{
+    const cs=opts.map(([label,n])=>chip(label,cur===label,n,()=>{FR[key]=(FR[key]===label)?"":label;redraw();frRender();}));
+    return grp(title,cs);
+  };
+  const durOpts=[["全部",items.length],["永久",cnt.duration["永久"]||0],["限时",cnt.duration["限时"]||0]];
+  if(cnt.duration["未知"])durOpts.push(["未知",cnt.duration["未知"]]);
+  box.appendChild(one("期限","duration",durOpts,FR.duration));
+  box.appendChild(one("图示","img",[["全部",items.length],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
+  box.appendChild(one("性别","gender",[["全部",items.length],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0]],FR.gender));
+  // 排序（先筛后排）：默认 = 板上原序；魅力值升降序时缺失值固定排最后
+  const sortSel=document.createElement("select");
+  sortSel.id="frSort";
+  sortSel.setAttribute("aria-label","排序依据");
+  sortSel.title="排序：默认按板上原序（归一名字序）；魅力值排序与上面的筛选叠加（先筛后排），无魅力值的固定排最后";
+  [["model_desc","编号 ↓ 大→小（默认）"],["model_asc","编号 ↑ 小→大"],["charm_desc","魅力值 ↓ 高→低"],["charm_asc","魅力值 ↑ 低→高"]]
+    .forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;sortSel.appendChild(o);});
+  sortSel.value=FR.sort||"model_desc";
+  sortSel.addEventListener("change",()=>{FR.sort=sortSel.value;frSyncUrl();frRender();});
+  box.appendChild(sortSel);
+  wrap.appendChild(box);
+  wrap.style.display="";
+}
+/* 时装板顶部统计（随筛选变）：只重画 #pills 里时装自己的三行，不动通用 pill */
+function frPills(items){
+  const el=document.getElementById("pills");
+  if(!el)return;
+  const acc={};let perm=0,timed=0,img=0,unk=0;
+  for(const it of items){
+    frBuckets(it).forEach(b=>{acc[b]=(acc[b]||0)+1;});
+    if(it.has_permanent===true)perm++;else if(it.has_permanent===false)timed++;else unk++;
+    if(it.icon_state==="有图")img++;
+  }
+  el.innerHTML=`<span class="pill">筛选后 <b>${items.length}</b> / ${DATA?DATA.items.length:"?"} 件</span>`+
+    FR_BUCKETS.filter(b=>acc[b]).map(b=>`<span class="pill">${esc(b)} <b>${acc[b]}</b></span>`).join("")+
+    `<span class="pill">有图 <b>${img}</b></span>`+
+    `<span class="pill">含永久款 <b>${perm}</b></span>`+
+    `<span class="pill">仅限时 <b>${timed}</b></span>`+
+    (unk?`<span class="pill">期限未知 <b>${unk}</b></span>`:"");
+}
+function frRender(){
+  // 让既有 render() 走时装分支：这里只做一次轻量 repaint（不改任何通用状态）
+  render();
+}
+
+/* ════════════════════ 载具模式（仅 board id = vehicle_full）════════════════════
+   用户 2026-10-18 口径（与 fashion_wardrobe 同一套卡面纪律）：
+     · 卡面只留「顶部图轨（≤4 张，多的 +N）+ 名字 + 分类 + 编号」
+     · 其余字段（描述/品牌/主题/数值/获取方式/图标绑定/溯源）全部折进技术详情折叠区
+     · 排序：编号 ↓ 大→小（默认）/ 编号 ↑ 小→大，缺失值排最后
+     · 图轨复用时装那套灯箱（.fr-rail/.fr-zoom/.fr-box + FR_IMGS），一套交互两板共用
+   ★ 类名全部 v*，图轨/灯箱复用 fr-*；样式挂 body.vehicle-mode —— 时装板与武器皮肤板零影响。 */
+const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
+const V={cls:new Set(),img:"",sort:""};
+(function(){
+  try{
+    const u=new URLSearchParams(location.search);
+    (u.get("vcls")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>V.cls.add(p));
+    V.img=u.get("vimg")||"";
+    V.sort=u.get("vsort")||"";
+  }catch(e){}
+})();
+function vSyncUrl(){
+  try{
+    const u=new URLSearchParams(location.search);
+    const put=(k,v)=>{if(v)u.set(k,v);else u.delete(k);};
+    put("vcls",[...V.cls].join(","));put("vimg",V.img);put("vsort",V.sort);
+    history.replaceState(null,"",location.pathname+"?"+u.toString());
+  }catch(e){}
+}
+/* 排序：编号(vehicle_id) 优先，缺失值固定排最后，同号按名字 */
+function vSortList(list){
+  const asc=/_asc$/.test(V.sort||"id_desc");
+  const num=it=>{const v=it.vehicle_id;if(v==null||v==="")return null;const n=Number(v);return isNaN(n)?null:n;};
+  const arr=[...list];
+  arr.sort((A,B)=>{
+    const a=num(A),b=num(B);
+    if(a==null&&b==null)return String(A.name||"").localeCompare(String(B.name||""),"zh-CN");
+    if(a==null)return 1;
+    if(b==null)return -1;
+    if(a!==b)return asc?a-b:b-a;
+    return String(A.name||"").localeCompare(String(B.name||""),"zh-CN");
+  });
+  return arr;
+}
+function vPass(it){
+  if(V.cls.size&&!V.cls.has(it.vehicle_class||"（未标注）"))return false;
+  if(V.img&&it.icon_state!==V.img)return false;
+  return true;
+}
+/* 卡面 = 图轨 + 名字 + 分类 + 编号（载具表没有品级字段 → 不摆空位） */
+function vCard(it){
+  const clsCn=it.vehicle_class||"（未标注）";
+  const pairs=[];
+  if(it.desc)pairs.push(["描述",zhText(it.desc)]);
+  pairs.push(["载具类型",clsCn+(it.vehicle_class_token?"（ui_vehicle_icon 后缀 "+it.vehicle_class_token+"：表里无中文类型字段，token 直译）":"")]);
+  if(it.brand_name)pairs.push(["品牌系列",it.brand_name]);
+  if(it.theme)pairs.push(["主题标记",it.theme]);
+  if(it.sort_in_garage!=null)pairs.push(["排序号 sort_in_garage",String(it.sort_in_garage)]);
+  if(it.vehicle_level!=null)pairs.push(["载具等级 vehicle_level",String(it.vehicle_level)]);
+  if(it.vehicle_equip_type!=null)pairs.push(["装备类型码 vehicle_equip_type",String(it.vehicle_equip_type)]);
+  const num=(k,v)=>{if(v!=null)pairs.push([k,String(v)]);};
+  num("生命 ui_health",it.ui_health);num("加速 ui_acc",it.ui_acc);num("速度 ui_speed",it.ui_speed);
+  num("氮气加速加成",it.ui_nitrogen_acc_addition);num("氮气速度加成",it.ui_nitrogen_speed_addition);
+  num("水域加速加成",it.ui_acc_water_add);num("水域速度加成",it.ui_speed_water_add);
+  pairs.push(["可获取 player_available",it.player_available===true?"是":(it.player_available===false?"否":"表里未标注")]);
+  if(it.available_ts!=null)pairs.push(["上架时间 available_ts",String(it.available_ts)]);
+  if(it.hide_when_not_own!=null)pairs.push(["未拥有时隐藏",it.hide_when_not_own?"是":"否"]);
+  if(it.jump_text)pairs.push(["获取途径文案",zhText(it.jump_text)]);
+  if(it.vehicle_garage_tags)pairs.push(["车库标签",String(it.vehicle_garage_tags)]);
+  if(it.special_function!=null)pairs.push(["special_function",String(it.special_function)]);
+  if(it.garage_scale!=null)pairs.push(["车库缩放 garage_scale",String(it.garage_scale)]);
+  if(it.regions)pairs.push(["可用区域 regions",String(it.regions)]);
+  if(it.garage_idle_anim)pairs.push(["车库待机动画",String(it.garage_idle_anim)]);
+  if(it.garage_role_anim)pairs.push(["车库角色动画",String(it.garage_role_anim)]);
+  pairs.push(["坐姿 / 玩家位模型","表内 jump 组 kind=0x5，解码器不支持 → 未解出，留空不猜"]);
+  pairs.push(["图标状态",(it.icon_state||"")+" · "+(it.icon_count||0)+" 张"]);
+  pairs.push(["图标核验","只导出 gpk_loc0 逐图命中的图；本卡 "+(it.icon_verified_by_gpk_loc0?"全部命中":"存在未命中")]);
+  const imgLines=((it._media&&it._media.images)||[]).map(x=>{
+    const kind=x.kind==="类型"?"[类型] ":"[专属] ";
+    return kind+x.base+(x.suffix?" · "+x.suffix:"")+(x.pack?"  ← "+x.pack+(x.row!=null?" row "+x.row:""):"")+(x.fid?" fid "+x.fid:"");
+  });
+  if(imgLines.length)pairs.push(["图标绑定",imgLines.join("\n")]);
+  const md=(it._media&&it._media.note)||"";
+  if(md)pairs.push(["配图说明",md]);
+  pairs.push(["载具 ID（行键）",String(it.vehicle_id)]);
+  if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
+  pairs.push(["解码路径",it.decode_path==="permissive"
+    ?"行尾内联变体宽容重放（列表字段仍空）":"严格 D6 行解码"]);
+  const p=it.provenance||{};
+  if(p.table)pairs.push(["定位表",p.table]);
+  if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  if(p.name_source)pairs.push(["名称出处",p.name_source]);
+  if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
+  if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
+  pairs.push(["证据等级",(EV_CN[it.evidence]||it.evidence||"")+(it.evidence_level?" · "+(VALUE_CN.evidence_level[it.evidence_level]||it.evidence_level):"")]);
+  if((it.status_tags||[]).length)pairs.push(["状态标签",it.status_tags.map(t=>STATE_CN[t]||t).join(" / ")]);
+  const kv=pairs.map(([k,v])=>{
+    const mono=/(行键|定位表|来源表|图标绑定|源快照摘要|名称出处)/.test(k);
+    return `<div class="k">${esc(k)}</div><div class="v${mono?" mono":""}">${v===null||v===undefined?"":esc(String(v))}</div>`;
+  }).join("");
+  FR_IMGS[it.id]=Array.isArray((it._media||{}).images)?it._media.images.map(x=>x.png):[];
+  const typeTag=it.icon_state==="专属图"?"":`<span class="fr-tagtype" title="表里 ui_vehicle_icon 指向的「载具类型」按钮图标，不是这辆车的专属立绘">类型图</span>`;
+  const cardCls = it.icon_state === "专属图" ? "vcard" : "vcard typeonly";
+  return `<div class="i fcard ${cardCls}" data-frid="${esc(it.id)}">
+    ${frRail(it)}
+    <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div></div>
+    <div class="fr-sub">
+      <span class="fr-part b-veh" title="类型来自 ui_vehicle_icon 文件名后缀 token（表里没有中文类型字段）">${esc(clsCn)}</span>
+      <span class="fr-model" title="载具 ID / 行键">编号 ${esc(it.vehicle_id)}</span>
+      ${typeTag}
+    </div>
+    <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>
+  </div>`;
+}
+function vCountBy(items,key){
+  const acc={};
+  for(const it of items){const k=it[key]||"（未标注）";acc[k]=(acc[k]||0)+1;}
+  return acc;
+}
+function vPills(items){
+  const el=document.getElementById("pills");
+  if(!el)return;
+  const total=DATA?DATA.items.length:items.length;
+  const own=items.filter(it=>it.icon_state==="专属图").length;
+  const typ=items.filter(it=>it.icon_state==="仅类型图").length;
+  el.innerHTML=`<span class="pill">筛选后 <b>${items.length}</b> / ${total} 辆</span>`+
+    `<span class="pill">专属图 <b>${own}</b></span>`+
+    `<span class="pill">仅类型图 <b>${typ}</b></span>`;
+}
+function vBuildFilters(items){
+  const wrap=document.getElementById("fFashionWrap");
+  if(!wrap)return;
+  const clsCnt=vCountBy(items,"vehicle_class");
+  const imgCnt=vCountBy(items,"icon_state");
+  const chip=(label,on,n,fn)=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="fr-chip";b.textContent=label;
+    b.setAttribute("aria-pressed",String(on));
+    if(n!=null){const s=document.createElement("span");s.className="n";s.textContent=String(n);b.appendChild(s);}
+    b.addEventListener("click",fn);
+    return b;
+  };
+  const redraw=()=>{vSyncUrl();wrap.innerHTML="";vBuildFilters(items);};
+  const grp=(title,chips)=>{
+    const g=document.createElement("span");g.className="fr-grp";
+    const em=document.createElement("em");em.textContent=title;g.appendChild(em);
+    chips.forEach(c=>g.appendChild(c));return g;
+  };
+  const box=document.createElement("div");box.className="fr-filters";
+  const cls=[chip("全部",V.cls.size===0,null,()=>{V.cls.clear();redraw();render();})];
+  Object.keys(clsCnt).sort((a,b)=>clsCnt[b]-clsCnt[a]).forEach(k=>{
+    if(!clsCnt[k]&&!V.cls.has(k))return;
+    cls.push(chip(k,V.cls.has(k),clsCnt[k],()=>{
+      if(V.cls.has(k))V.cls.delete(k);else V.cls.add(k);
+      redraw();render();
+    }));
+  });
+  box.appendChild(grp("类型",cls));
+  const one=(title,key,opts,cur)=>{
+    const cs=opts.map(([label,n])=>chip(label,cur===label,n,()=>{V[key]=(V[key]===label)?"":label;redraw();render();}));
+    return grp(title,cs);
+  };
+  box.appendChild(one("图示","img",[["全部",items.length],["专属图",imgCnt["专属图"]||0],["仅类型图",imgCnt["仅类型图"]||0]],V.img));
+  const sortSel=document.createElement("select");
+  sortSel.id="vSort";
+  sortSel.setAttribute("aria-label","排序依据");
+  sortSel.title="排序：编号 = 载具 ID（行键）；缺失值固定排最后，同号按名字";
+  [["id_desc","编号 ↓ 大→小（默认）"],["id_asc","编号 ↑ 小→大"]]
+    .forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;sortSel.appendChild(o);});
+  sortSel.value=V.sort||"id_desc";
+  sortSel.addEventListener("change",()=>{V.sort=sortSel.value;vSyncUrl();render();});
+  box.appendChild(sortSel);
+  wrap.appendChild(box);
+  wrap.style.display="";
+}
+
+/* ════════════════════ 战术芯片模式（仅 board id = tactical_chip_full）════════════════════
+   2026-10-18 新增，与载具/时装同一套卡面纪律：
+     · 卡面只留「图轨（_b 大图 + _s 小图，≤4 张）+ 名字 + 品质色档 + 类型 + 编号」
+     · 满级属性 / 12 档数值表 / 道具行 / 奖池 / 图标绑定 / 溯源全部折进卡内「技术详情」
+     · 排序：编号 ↓（默认，编号=道具行 id，无道具行用 chip_type 行键）/ 编号 ↑，缺失值排最后
+     · 筛选：类型（进攻/防御）、品质（基础/高级/特级）、图标（有图/仅小图）、投放（奖池/仅道具行/无道具行）
+   ★ 类名全部 chip-* / c* —— 图轨与灯箱复用 fr-*，样式挂 body.chip-mode，其它板零影响。 */
+const CHIP_BOARD=(function(){try{return (getParam("b")||"")==="tactical_chip_full";}catch(e){return false;}})();
+const CQ={fam:new Set(),q:new Set(),img:"",rel:"",sort:""};
+(function(){
+  try{
+    const u=new URLSearchParams(location.search);
+    (u.get("cfam")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>CQ.fam.add(p));
+    (u.get("cq")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>CQ.q.add(p));
+    CQ.img=u.get("cimg")||"";CQ.rel=u.get("crel")||"";CQ.sort=u.get("csort")||"";
+  }catch(e){}
+})();
+function cSyncUrl(){
+  try{
+    const u=new URLSearchParams(location.search);
+    const put=(k,v)=>{if(v)u.set(k,v);else u.delete(k);};
+    put("cfam",[...CQ.fam].join(","));put("cq",[...CQ.q].join(","));
+    put("cimg",CQ.img);put("crel",CQ.rel);put("csort",CQ.sort);
+    history.replaceState(null,"",location.pathname+"?"+u.toString());
+  }catch(e){}
+}
+/* 芯片富文本：本表 desc 的高亮 token 是「裸 #f」（无参数，无括号；1908 处 #f / 1884 处 #n，
+   没有 #f(N) 形式），与通用 richText 的 #f(N)/#f+数字 分支不兼容（会把数值首位吃掉），
+   因此芯片卡走这套独立渲染，不改通用 richText。 */
+function cRich(s){
+  let t=esc(String(s??""));
+  t=t.replace(/#c([0-9a-fA-F]{6})/g,'</span><span class="rt" style="color:#$1">')
+     .replace(/#f/g,'</span><span class="rt hl">')
+     .replace(/#n/g,'</span><span class="rt">')
+     .replace(/#r/g,"<br>");
+  return `<span class="rt chip-rt">${t}</span>`;
+}
+function cNum(v){
+  if(v===null||v===undefined||v==="")return "";
+  if(typeof v==="number")return String(v);
+  return String(v);
+}
+function cNo(it){return it.item_id!=null?it.item_id:it.chip_type_id;}
+function cSortList(list){
+  const asc=/_asc$/.test(CQ.sort||"no_desc");
+  const arr=[...list];
+  arr.sort((A,B)=>{
+    const a=cNo(A),b=cNo(B);
+    const am=A.item_id!=null,bm=B.item_id!=null;
+    if(am!==bm)return am?-1:1;                 // 有道具行的在前，无道具行固定排最后
+    if(a!==b)return asc?a-b:b-a;
+    return String(A.name||"").localeCompare(String(B.name||""),"zh-CN");
+  });
+  return arr;
+}
+function cPass(it){
+  if(CQ.fam.size&&!CQ.fam.has(it.family||"未标注"))return false;
+  if(CQ.q.size&&!CQ.q.has(String(it.quality)))return false;
+  if(CQ.img==="有图"&&!(it.icon_count>0))return false;
+  if(CQ.img==="仅小图"&&!it.only_small)return false;
+  if(CQ.rel&&it.release_state!==CQ.rel)return false;
+  return true;
+}
+function cLevelTable(it){
+  const rows=(it.levels||[]).map(lv=>{
+    const sim=Object.entries(lv.sim||{}).map(([k,v])=>`${k}=${v}`).join(" · ");
+    const dec=(lv.decompose||[]).map(([i,n])=>`${i}×${n}`).join(" ");
+    const tip=[lv.params&&lv.params.length?("参数 "+lv.params.join(" / ")):"", sim?("UI "+sim):"", dec?("拆解 "+dec):""].filter(Boolean).join("｜");
+    return `<tr title="${esc(tip)}">
+      <td class="lv-tier">${lv.level==null?"—":lv.level}</td>
+      <td class="lv-prof">${lv.proficiency_point==null?"—":lv.proficiency_point}</td>
+      <td class="lv-desc">${cRich(lv.desc||"")}</td></tr>`;
+  }).join("");
+  return `<table class="chip-lv"><thead><tr><th>档</th><th>熟练度</th><th>属性</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+/* 卡面 = 图轨 + 名字 + 品质色档 + 类型 + 编号 */
+function cCard(it){
+  const q=it.quality||1;
+  const pairs=[];
+  pairs.push(["满级属性",cRich(it.desc||"（无描述）")]);
+  pairs.push(["属性描述出处","belt_chip_data.base_desc（{N} 按 base_params 参数组按下标代入；差 3 枚参数个数与占位不符，保留原文）"]);
+  pairs.push(["类型","%s（chip_type 行键首位 1=进攻 / 2=防御）".replace("%s",it.family||"未标注")]);
+  pairs.push(["品质",`${it.quality_label||"未标注"}（chip_quality ${it.quality}）`]);
+  pairs.push(["品质档名出处",it.quality_source||"—"]);
+  pairs.push(["chip_type 行键",String(it.chip_type_id)]);
+  if(it.item_id!=null)pairs.push(["道具行 id",String(it.item_id)]);
+  else pairs.push(["道具行 id","无（common_item 330/331 段无同名图标行 → 静态配置名，id 静态不可得）"]);
+  if(it.effect_label)pairs.push(["effect_label",it.effect_label]);
+  if(it.effect_label_cd!=null)pairs.push(["effect_label_cd",String(it.effect_label_cd)]);
+  if(it.max_chip_level!=null)pairs.push(["max_chip_level",String(it.max_chip_level)]);
+  if(it.crystallite_count!=null)pairs.push(["晶石数 crystallite_count",String(it.crystallite_count)]);
+  if(it.level_count)pairs.push(["档位数",String(it.level_count)]);
+  pairs.push(["投放状态",it.release_state||"—"]);
+  pairs.push(["奖池 pool_id",(it.pool_ids||[]).length?it.pool_ids.join("、"):"当前奖池未投放"]);
+  pairs.push(["图标状态",`${it.icon_state} · ${it.icon_count} 张`]);
+  pairs.push(["图标核验","只导出 gpk_loc0 逐图命中的图；本卡 "+(it.icon_verified_by_gpk_loc0?"全部命中":"存在未命中")]);
+  const imgLines=((it._media&&it._media.images)||[]).map(x=>
+    `${x.suffix==="b"?"[大图] ":"[小图] "}${x.base}${x.pack?`  ← ${x.pack} row ${x.row}`:""}${x.fid?` fid ${x.fid}`:""}`);
+  if(imgLines.length)pairs.push(["图标绑定",imgLines.join("\n")]);
+  const miss=((it.icon_missing)||[]).filter(m=>m&&m.reason);
+  if(miss.length)pairs.push(["未下发图",miss.map(m=>`${m.base}_${m.suffix}：${m.reason}`).join("\n")]);
+  if(it.item_name)pairs.push(["道具行名称",`${it.item_name}${it.item_link?"（"+it.item_link+"）":""}`]);
+  const p=it.provenance||{};
+  if(p.table)pairs.push(["定位表",p.table]);
+  if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
+  if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  if(p.name_source)pairs.push(["名称出处",p.name_source]);
+  if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
+  if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
+  pairs.push(["行键 row_keys",(it.row_keys||[]).join(", ")]);
+  const kv=pairs.map(([k,v])=>{
+    const mono=/(行键|定位表|来源表|图标绑定|源快照摘要|名称出处|未下发图)/.test(k);
+    return `<div class="k">${esc(k)}</div><div class="v${mono?" mono":""}">${/(满级属性|属性描述出处)/.test(k)?v:esc(String(v))}</div>`;
+  }).join("");
+  FR_IMGS[it.id]=Array.isArray((it._media||{}).images)?it._media.images.map(x=>x.png):[];
+  const onlySmall=it.icon_count===1&&((it._media||{}).images||[])[0]&&((it._media||{}).images||[])[0].suffix==="s";
+  return `<div class="i fcard chip-card q${q}" data-frid="${esc(it.id)}">
+    ${frRail(it)}
+    <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div></div>
+    <div class="fr-sub">
+      <span class="fr-quality q${q}" title="品质档 chip_quality=${esc(String(q))}">${esc(it.quality_label||("品质"+q))}</span>
+      <span class="fr-part b-chip">${esc(it.family||"未标注")}</span>
+      <span class="fr-model" title="${esc(it.display_no_source||"编号")}">编号 ${esc(String(cNo(it)))}</span>
+      ${it.max_chip_level?`<span class="fr-tagtype" title="芯片最高等级">最高 Lv${esc(String(it.max_chip_level))}</span>`:""}
+      ${it.only_small?'<span class="fr-tagtype" title="该芯片 _b 大图 fid 未命中 gpk_loc0，仅小图可用">仅小图</span>':""}
+    </div>
+    ${it.effect_desc?`<div class="fr-desc" title="首档效果（熟练度 ${esc(String(it.effect_level||""))}）">${esc(it.effect_desc)}</div>`:""}
+    <details class="tech"><summary>12 档数值</summary>
+      ${cLevelTable(it)}
+      <details class="sub-tech"><summary>技术详情 / 数据来源 / 审计信息</summary>
+        <div class="fr-kv">${kv}</div>
+      </details>
+    </details>
+  </div>`;
+}
+function cCountBy(items,fn){
+  const acc={};
+  for(const it of items){const k=fn(it)||"（未标注）";acc[k]=(acc[k]||0)+1;}
+  return acc;
+}
+function cPills(items){
+  const el=document.getElementById("pills");
+  if(!el)return;
+  const total=DATA?DATA.items.length:items.length;
+  el.innerHTML=`<span class="pill">筛选后 <b>${items.length}</b> / ${total} 枚</span>`+
+    `<span class="pill">有图 <b>${items.filter(it=>it.icon_count>0).length}</b></span>`+
+    `<span class="pill">仅小图 <b>${items.filter(it=>it.only_small).length}</b></span>`+
+    `<span class="pill">在奖池 <b>${items.filter(it=>it.in_pool).length}</b></span>`;
+}
+function cBuildFilters(items){
+  const wrap=document.getElementById("fFashionWrap");
+  if(!wrap)return;
+  const famCnt=cCountBy(items,it=>it.family);
+  const qCnt=cCountBy(items,it=>String(it.quality));
+  const relCnt=cCountBy(items,it=>it.release_state);
+  const chip=(label,on,n,fn)=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="fr-chip";b.textContent=label;
+    b.setAttribute("aria-pressed",String(on));
+    if(n!=null){const s=document.createElement("span");s.className="n";s.textContent=String(n);b.appendChild(s);}
+    b.addEventListener("click",fn);
+    return b;
+  };
+  const redraw=()=>{cSyncUrl();wrap.innerHTML="";cBuildFilters(items);};
+  const grp=(title,chips)=>{const g=document.createElement("span");g.className="fr-grp";
+    const em=document.createElement("em");em.textContent=title;g.appendChild(em);
+    chips.forEach(c=>g.appendChild(c));return g;};
+  const box=document.createElement("div");box.className="fr-filters";
+  const fams=[chip("全部",CQ.fam.size===0,null,()=>{CQ.fam.clear();redraw();render();})]
+    .concat(Object.keys(famCnt).sort((a,b)=>famCnt[b]-famCnt[a]).map(k=>chip(k,CQ.fam.has(k),famCnt[k],()=>{
+      if(CQ.fam.has(k))CQ.fam.delete(k);else CQ.fam.add(k);redraw();render();})));
+  box.appendChild(grp("类型",fams));
+  const qlabel={"1":"基础芯片","2":"高级芯片","3":"特级芯片"};
+  const qs=Object.keys(qCnt).sort().map(k=>chip(qlabel[k]||("品质"+k),CQ.q.has(k),qCnt[k],()=>{
+    if(CQ.q.has(k))CQ.q.delete(k);else CQ.q.add(k);redraw();render();}));
+  box.appendChild(grp("品质",qs));
+  box.appendChild(grp("图标",["有图","仅小图"].map(l=>chip(l,CQ.img===l,
+    l==="有图"?items.filter(it=>it.icon_count>0).length:items.filter(it=>it.only_small).length,
+    ()=>{CQ.img=(CQ.img===l)?"":l;redraw();render();}))));
+  box.appendChild(grp("投放",Object.keys(relCnt).map(k=>chip(k,CQ.rel===k,relCnt[k],()=>{
+    CQ.rel=(CQ.rel===k)?"":k;redraw();render();}))));
+  const sortSel=document.createElement("select");
+  sortSel.id="cSort";sortSel.setAttribute("aria-label","排序依据");
+  sortSel.title="排序：编号 = 道具行 id（无道具行用 chip_type 行键）；无道具行固定排最后";
+  [["no_desc","编号 ↓ 大→小（默认）"],["no_asc","编号 ↑ 小→大"]]
+    .forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;sortSel.appendChild(o);});
+  sortSel.value=CQ.sort||"no_desc";
+  sortSel.addEventListener("change",()=>{CQ.sort=sortSel.value;cSyncUrl();render();});
+  box.appendChild(sortSel);
+  wrap.appendChild(box);
+  wrap.style.display="";
+}
+
 const HUGE_STEP=500;
 let hugeScrollBound=false;
 let hugeLoading=false;
@@ -1289,6 +2162,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   }
   const items=DATA.items.filter(it=>{
     if(fe&&it.evidence!==fe)return false;
+    if(FASHION_BOARD&&!frPass(it))return false;
+    if(VEHICLE_BOARD&&!vPass(it))return false;
+    if(CHIP_BOARD&&!cPass(it))return false;
     if(partFilter.length&&!partFilter.includes(String(it.part??"")))return false;
     if(Array.isArray(DATA._custFilters)){
       for(const cf of DATA._custFilters){
@@ -1335,12 +2211,39 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     return acc;
   })();
   const timedVariantsShown=items.reduce((sum,it)=>sum+((Array.isArray(it.timed_variants)?it.timed_variants.length:0)),0);
-  document.getElementById("count").textContent=candidateSkinBoard
+  const countEl=document.getElementById("count");
+  const countHtml=FASHION_BOARD
+    ? `显示 ${items.length} / ${DATA.items.length} 件 · 多图(>4) ${items.filter(it=>((it._media&&it._media.images)||[]).length>4).length} 件 · 仅占位 ${items.filter(it=>it.icon_state==="含占位").length} 件`
+    : (VEHICLE_BOARD
+      ? `显示 ${items.length} / ${DATA.items.length} 辆 · 专属图 ${items.filter(it=>it.icon_state==="专属图").length} 辆 · 仅类型图 ${items.filter(it=>it.icon_state==="仅类型图").length} 辆 · 图 ${items.reduce((s,it)=>s+(it.icon_count||0),0)} 张（gpk_loc0 逐图核验）`
+      : (CHIP_BOARD
+        ? `显示 ${items.length} / ${DATA.items.length} 枚芯片 · 有图 ${items.filter(it=>it.icon_count>0).length} 枚（仅小图 ${items.filter(it=>it.only_small).length}）· 图 ${items.reduce((s,it)=>s+(it.icon_count||0),0)} 张（gpk_loc0 逐图核验）· 在奖池 ${items.filter(it=>it.in_pool).length} 枚`
+        : null));
+  countEl.innerHTML=countHtml!=null?countHtml:candidateSkinBoard
     ? `显示 ${items.length} / ${DATA.items.length} 条静态候选（顶层仅永久记录；${timedVariantsShown} 个时限变体并入主卡、不计款） · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · ${sfxInView} 个表现子项`
     : (skinBoard||hasSfxChildren)
-    ? `显示 ${items.length} / ${DATA.items.length} 款皮肤 · ${currentParents} 主皮肤 · 时限变体 ${variantCount}（并入主卡，不单独计款） · ${behaviorPreviews} 行为预告 · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · 上架状态 ${(()=>{const acc={};for(const it of items){const k=listingOf(it)||"（无字段）";acc[k]=(acc[k]||0)+1;}const vs=listingSupported();return Object.entries(acc).map(([k,v])=>`${LISTING_CN[k]||k} ${v}`).join(" / ")+(vs?`（canonical 支持类别：${vs.supported_today.map(x=>LISTING_CN[x]||x).join("、")}）`:"");})()}`
+    ? `显示 ${items.length} / ${DATA.items.length} 款皮肤 · ${currentParents} 主皮肤 · 时限变体 ${variantCount}（并入主卡，不单独计款） · ${behaviorPreviews} 行为预告 · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · 上架状态 ${listingStatHTML(items)}`
     : `显示 ${items.length} / ${DATA.items.length} 条`;
+  if(FASHION_BOARD)frPills(items);
+  if(VEHICLE_BOARD)vPills(items);
+  if(CHIP_BOARD)cPills(items);
   if(!items.length){g.innerHTML='<div class="empty">无匹配条目</div>';return;}
+  if(CHIP_BOARD){
+    // 芯片板：卡面 = 图轨/名字/品质色档/类型/编号；12 档数值等折进卡内折叠区；默认编号 ↓
+    g.innerHTML=cSortList(items).map(cCard).join("");
+    return;
+  }
+  if(VEHICLE_BOARD){
+    // 载具板：卡面只留 图轨/名字/分类/编号；其余在卡内折叠区；默认编号 ↓
+    g.innerHTML=vSortList(items).map(vCard).join("");
+    return;
+  }
+  if(FASHION_BOARD){
+    // 时装板：卡面只留 图轨/名字/部位/品级/魅力值/model_id（其余字段在卡内折叠区）
+    // 顺序 = 先按筛选结果，再按排序控件（默认保留板上原序 = 归一名字序）
+    g.innerHTML=frSortList(items).map(frCard).join("");
+    return;
+  }
   if(skinBoard){
     // 排序（默认 = 上架时间 ↓：新在前，预告排最前；同日按皮肤 ID ↓）
     const st=sortState();
@@ -1364,6 +2267,17 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     g.innerHTML=items.map(renderCandidateSkinCard).join("");
     return;
   }
+  if(String(DATA.meta&&DATA.meta.card_mode)==="group"){
+    g.classList.remove("period-grid");
+    g.innerHTML=renderGroupMode(items);
+    return;
+  }
+  if(String(DATA.meta&&DATA.meta.card_mode)==="period"){
+    g.classList.add("period-grid");
+    g.innerHTML=renderPeriodMode(items);
+    return;
+  }
+  g.classList.remove("period-grid");
   const orderBy=document.getElementById("fOrder").value;
   const timeOrder=items.some(it=>it.period_date)&&(orderBy==="new"||orderBy==="old")&&!items.some(it=>it.sort_660);
   const nucleusOrder=!timeOrder&&items.some(it=>it.sort_660)&&orderBy!=="";
@@ -1378,6 +2292,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     : items;
   g.innerHTML=list.map(it=>{
     const nucleusMode=!!it.rank_star_segments;
+    const rosterMode=!nucleusMode&&!!(DATA.meta&&DATA.meta.card_mode==="roster");
     const sumKeys=nucleusMode?new Set(["item_id","grade_clean","skill_icon","skill_desc","weapon_type_display","weapon_type_label","weapon_type_code"]):new Set();
     const allPairs=Object.entries(it).filter(([k])=>!FIXED.has(k)&&!sumKeys.has(k)&&it[k]!==null&&it[k]!=="");
     const techPairs=allPairs.filter(([k])=>TECH_KEYS.has(k));
@@ -1425,23 +2340,231 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
       if(it.skill_icon)sum.push(`<div class="k">技能图标</div><div class="v mono">${esc(it.skill_icon)}</div>`);
       if(it.skill_desc)sum.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
+      if(it.rank_star_segments&&typeof it.rank_star_segments==="object"){const segs=Object.keys(it.rank_star_segments).sort((a,b)=>Number(a)-Number(b)).map(s=>`<div class="star"><b>${esc(s)}星</b><div class="star-txt">${richText(zhText(String(it.rank_star_segments[s])))}</div></div>`).join("");sum.push(`<div class="k">升星解锁</div><div class="v stars">${segs}</div>`);}
       bodyHtml=`<div class="kv">${sum.join("")}<div class="i-more" hidden>${rows}</div></div>`+
         `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
         `${techSection}`;
+    }else if(rosterMode){
+      /* 名册类板（meta.card_mode="roster"）：卡面只留 图轨(≤4 张) + 名字 + 编号(head) +
+         meta.card_summary 声明的字段；其余字段、礼包逐条说明、溯源全部折进点开的详情区 */
+      const sum=[];
+      (Array.isArray(DATA.meta.card_summary)?DATA.meta.card_summary:[]).forEach(p=>{
+        const k=p[0],label=p[1],v=it[k];if(v==null||v==="")return;
+        sum.push(`<div class="k">${esc(label)}</div><div class="v${String(k).indexOf("desc")>=0?" nucleus-desc":""}">${richText(String(v))}</div>`);
+      });
+      if(Array.isArray(it.gift_ids)&&it.gift_ids.length)sum.push(`<div class="k">礼包</div><div class="v mono">${esc(it.gift_ids.join("、"))}</div>`);
+      const gRows=(Array.isArray(it.gift_items)?it.gift_items:[]).map(g=>
+        `<div class="k">礼包 ${esc(g.gift_id)}</div><div class="v">${richText(String(g.desc||""))}</div>`).join("");
+      /* 字段中文名：板自带 meta.field_labels 优先，其次全局 FIELD_CN；都不命中才显示原始 key */
+      const labels=DATA.meta.field_labels||{};
+      const labelOf=k=>labels[k]||FIELD_CN[k]||k;
+      const rRows=extra.filter(p=>p[0]!=="gift_items"&&!(Array.isArray(p[1])&&!p[1].length)).map(([k,v])=>
+        `<div class="k">${esc(labelOf(k))}</div><div class="v${(k==="skill_desc"||k==="rank_segments")?" nucleus-desc":""}">${esc(fmtVal(k,v))}</div>`).join("");
+      bodyHtml=`<div class="kv">${sum.join("")}</div>`+
+        `<div class="i-detail" hidden><div class="kv">${rRows}${gRows}</div></div>`;
     }else{
       bodyHtml=`<div class="kv">${rows}</div>${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}${techSection}`;
     }
-    return `<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}">
-      <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
+    const hasMedia = !!(it._media && (((it._media.images||[]).length) || it._media.placeholder));
+    const NO_MEDIA=!!(DATA.meta&&DATA.meta.hide_media);
+    const mediaBlock = rosterMode ? (hasMedia ? renderItemMedia(it._media) : (NO_MEDIA?"":`<div class="i-media empty"><span>无图</span></div>`)) : renderItemMedia(it._media);
+    return `<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}${rosterMode?" roster":""}">
+      ${mediaBlock}
+      <div class="i-head${nucleusMode||lotteryMode||rosterMode?" toggle":""}"${nucleusMode||lotteryMode||rosterMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
         <div><div class="i-name">${esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
         ${referenceTitle(it.reference_fields)}
-        <div class="i-id" title="id">${nucleusMode?`道具ID ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div></div>
+        <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div></div>
         <span class="head-tags"><span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${renderStateTags(it.status_tags)}</span>
       </div>
       ${bodyHtml}
     </div>`;
   }).join("");
 }
+
+/* ════════════════ 期次容器卡（card_mode="period"）════════════════
+   一张卡 = 一个期次；卡内按奖池分组列成员，成员只给「图标 + 名字 + 槽位」，成员不单独成卡。*/
+window.PF=window.PF||{status:"all",family:"all",kind:"all",limit:40,only:"1",closed:{}};
+function pSet(k,v){window.PF[k]=v; if(k!=="limit")window.PF.limit=40; render();}
+function pToggleFam(f){PF.closed=PF.closed||{};PF.closed[f]=!PF.closed[f];render();}
+function pToggleCard(head){
+  const card=head.closest(".pcard");
+  const body=card.querySelector(".pcard-body");
+  if(!body)return;
+  const open=body.hidden;
+  body.hidden=!open;
+  card.classList.toggle("open",open);
+}
+function pMore(){window.PF.limit=(window.PF.limit||24)+24; render();}
+function periodStatus(p){
+  const t=new Date(); const s=p.start?new Date(p.start+"T00:00:00"):null;
+  const e=p.end?new Date(p.end+"T23:59:59"):null;
+  if(s&&t<s)return {k:"upcoming",txt:"即将开始"};
+  if(e&&t>e)return {k:"ended",txt:"已结束"};
+  return {k:"on",txt:"当期"};
+}
+function renderPeriodMode(list){
+  if(DATA.meta._pfInit!==1){
+    const qps=getParam("ps"),qpf=getParam("pf"),qpk=getParam("pk");
+    if(qps)PF.status=qps; if(qpf)PF.family=qpf; if(qpk)PF.kind=qpk;
+    DATA.meta._pfInit=1;
+  }
+  const periods=(DATA.periods||[]).slice();
+  const byPeriod={};
+  list.forEach(it=>{(byPeriod[it.period_id]=byPeriod[it.period_id]||[]).push(it);});
+  const cleanLabel=s=>String(s||"").replace(/（活动名未在活动表内）/g,"").trim();
+  const rank=p=>{const k=periodStatus(p).k;return k==="on"?0:(k==="upcoming"?1:2);};
+  const famOrder=[...new Set(periods.map(p=>p.family).filter(Boolean))];
+  periods.sort((a,b)=>{
+    const fa=famOrder.indexOf(a.family), fb=famOrder.indexOf(b.family);
+    if(fa!==fb)return fa-fb;
+    const ra=rank(a),rb=rank(b);
+    if(ra!==rb)return ra-rb;
+    if(ra===1)return String(a.start||"").localeCompare(String(b.start||""));
+    return String(b.start||"").localeCompare(String(a.start||""));
+  });
+
+  const fams=[...new Set(periods.map(p=>p.family).filter(Boolean))];
+  const kinds=[...new Set(list.map(i=>i.kind).filter(Boolean))];
+  const stCount={on:0,upcoming:0,ended:0};
+  periods.forEach(p=>{if((byPeriod[p.period_id]||[]).length)stCount[periodStatus(p).k]++;});
+  const chip=(label,n,active,fn)=>`<button class="pf-chip${active?" on":""}" onclick="${fn}">${label}${n!=null?` <b>${n}</b>`:""}</button>`;
+  const bar=`<div class="pf-bar">
+    <span class="pf-label">展示</span>
+    ${chip("只看有内容",null,PF.only==="1","pSet('only','1')")}
+    ${chip("全部期次",null,PF.only==="0","pSet('only','0')")}
+    <span class="pf-sep"></span>
+    <span class="pf-label">状态</span>
+    ${chip("全部",null,PF.status==="all","pSet('status','all')")}
+    ${chip("当期",stCount.on,PF.status==="on","pSet('status','on')")}
+    ${chip("即将开始",stCount.upcoming,PF.status==="upcoming","pSet('status','upcoming')")}
+    ${chip("已结束",stCount.ended,PF.status==="ended","pSet('status','ended')")}
+  </div>
+  <div class="pf-bar">
+    <span class="pf-label">家族</span>
+    ${chip("全部",null,PF.family==="all","pSet('family','all')")}
+    ${fams.map(f=>chip(esc(f),periods.filter(p=>p.family===f).length,PF.family===f,`pSet('family','${esc(f).replace(/'/g,"\'")}')`)).join("")}
+  </div>
+  <div class="pf-bar">
+    <span class="pf-label">奖励类型</span>
+    ${chip("全部",null,PF.kind==="all","pSet('kind','all')")}
+    ${kinds.map(k=>chip(esc(k),list.filter(i=>i.kind===k).length,PF.kind===k,`pSet('kind','${esc(k).replace(/'/g,"\'")}')`)).join("")}
+  </div>`;
+
+  let shown=0, total=0, lastFam=null;
+  const cards=[];
+  for(const p of periods){
+    let mem=byPeriod[p.period_id]||[];
+    if(!mem.length)continue;
+    const st=periodStatus(p);
+    if(PF.status!=="all"&&st.k!==PF.status)continue;
+    if(PF.family!=="all"&&p.family!==PF.family)continue;
+    if(PF.kind!=="all"){mem=mem.filter(x=>x.kind===PF.kind); if(!mem.length)continue;}
+    if(PF.only==="1" && !mem.length)continue;
+    total++;
+    if(shown>=(PF.limit||24))continue;
+    shown++;
+    const pools=new Map();
+    mem.forEach(it=>{
+      const k=it.pool_uid||it.pool_id||it.pool_label||"—";
+      if(!pools.has(k))pools.set(k,{label:it.pool_label||k,items:[]});
+      pools.get(k).items.push(it);
+    });
+    const poolHtml=[...pools.values()].map(pl=>{
+      pl.items.sort((a,b)=>(a.slot??999)-(b.slot??999));
+      const chips=pl.items.map(it=>{
+        const md=it._media||{}, im=(md.images||[])[0];
+        const hasImg=!!(im&&im.png);
+        return `<div class="pchip${hasImg?"":" noimg"}" title="${esc(it.name||"")}${it.alias?`（内部名：${esc(it.alias)}）`:""}">
+          ${hasImg?`<div class="pchip-img"><img src="${esc(im.png)}" alt="" loading="lazy"></div>`:""}
+          <div class="pchip-name">${esc(it.name||it.id)}${it.evidence==="candidate"?'<span class="pchip-cand">候选</span>':""}</div>
+          <div class="pchip-meta">${esc(it.kind||"")}${it.slot!=null?` · 槽位 ${esc(String(it.slot))}`:""}</div>
+        </div>`;
+      }).join("");
+      return `<div class="ppool">
+        <div class="ppool-head"><span class="ppool-name">${esc(pl.label)}</span><span class="ppool-n">${pl.items.length} 件</span></div>
+        <div class="ppool-items">${chips}</div>
+      </div>`;
+    }).join("");
+    const labelClean=cleanLabel(p.label)||cleanLabel(p.activity_name)||p.period_id;
+    const imgs=mem.map(x=>{const a=((x._media||{}).images)||[];return a.length&&a[0]&&a[0].png?a[0].png:null;}).filter(Boolean);
+    const withImg=imgs.length;
+    const cover=imgs.slice(0,4).map(s=>`<img src="${esc(s)}" alt="" loading="lazy">`).join("");
+    const famName=p.family||"—";
+    if(PF.family==="all" && lastFam!==famName){
+      lastFam=famName;
+      const famTotal=periods.filter(x=>x.family===famName&&(byPeriod[x.period_id]||[]).length).length;
+      const closed=(PF.closed||{})[famName];
+      cards.push(`<div class="pfam-head${closed?" closed":""}" onclick="pToggleFam('${esc(famName).replace(/'/g,"\'")}')">
+        <span class="pfam-name">${esc(famName)}</span><span class="pfam-n">${famTotal} 期</span>
+        <span class="pfam-arrow">${closed?"▸":"▾"}</span></div>`);
+      if(closed){continue;}
+    }
+    if(PF.family==="all" && (PF.closed||{})[famName]) continue;
+    cards.push(`<div class="pcard ${st.k}">
+      <div class="pcard-head" onclick="pToggleCard(this)" role="button" tabindex="0">
+        <div class="pcard-title">
+          <span class="pcard-name">${esc(labelClean)}</span>
+          <span class="pstate ${st.k}">${st.txt}</span>
+          <span class="pfam">${esc(p.family||"")}</span>
+        </div>
+        ${cover?`<div class="pcard-cover">${cover}</div>`:""}
+        <div class="pcard-date">${esc(p.start||"")}${p.end?" → "+esc(p.end):""} · ${p.pool_count||1} 池 · 共 ${mem.length} 件 · 有图 ${withImg}${p.pool_size?` · 池内 ${p.pool_size} 件（服务端下发）`:""}</div>
+      </div>
+      <div class="pcard-body" hidden>${poolHtml}</div>
+    </div>`);
+  }
+  const more=(shown<total)?`<div style="text-align:center;margin:6px 0 24px"><button class="pf-chip on" onclick="pMore()">加载更多（已显示 ${shown}/${total}）</button></div>`:"";
+  return bar+(cards.length?cards.join("")+more:'<div class="empty">当前筛选下没有期次</div>');
+}
+
+
+/* ════════════════ 类型容器卡（card_mode="group"）════════════════
+   一张卡 = 一个类型；卡内成员只给「图标 + 名字 + 品级 + 评分基数」，成员不单独成卡。*/
+window.PG=window.PG||{grade:"all",limit:60};
+function pgSet(k,v){window.PG[k]=v;render();}
+function renderGroupMode(list){
+  const field=(DATA.meta&&DATA.meta.group_field)||"kind";
+  const label=(DATA.meta&&DATA.meta.group_label)||"类型";
+  const groups=new Map();
+  list.forEach(it=>{
+    const k=it[field]||"—";
+    if(!groups.has(k))groups.set(k,[]);
+    groups.get(k).push(it);
+  });
+  const grades=[...new Set(list.map(i=>i.grade).filter(Boolean))];
+  const chip=(label_,n,active,fn2)=>`<button class="pf-chip${active?" on":""}" onclick="${fn2}">${label_}${n!=null?` <b>${n}</b>`:""}</button>`;
+  const bar=`<div class="pf-bar">
+    <span class="pf-label">品级</span>
+    ${chip("全部",null,PG.grade==="all","pgSet('grade','all')")}
+    ${grades.map(g=>chip(esc(g),list.filter(i=>i.grade===g).length,PG.grade===g,`pgSet('grade','${esc(g).replace(/'/g,"\'")}')`)).join("")}
+  </div>`;
+  const cards=[];
+  const names=[...groups.keys()].sort((a,b)=>groups.get(b).length-groups.get(a).length);
+  for(const k of names){
+    let mem=groups.get(k)||[];
+    if(PG.grade!=="all")mem=mem.filter(i=>i.grade===PG.grade);
+    if(!mem.length)continue;
+    mem.sort((a,b)=>(b.power||0)-(a.power||0)||String(a.name).localeCompare(String(b.name)));
+    const chips=mem.map(it=>{
+      const md=it._media||{}, im=(md.images||[])[0];
+      const img=im&&im.png?`<img src="${esc(im.png)}" alt="" loading="lazy">`:`<span class="pp-noimg">无图</span>`;
+      return `<div class="pchip" title="${esc(it.name||"")}">
+        <div class="pchip-img">${img}</div>
+        <div class="pchip-name">${esc(it.name||it.id)}</div>
+        <div class="pchip-meta">${esc(it.grade||"")}${it.power!=null?` · ${esc(String(it.power))}`:""}</div>
+      </div>`;
+    }).join("");
+    cards.push(`<div class="pcard">
+      <div class="pcard-head">
+        <div class="pcard-title"><span class="pcard-name">${esc(k)}</span><span class="pfam">${mem.length} 台</span></div>
+        <div class="pcard-date">按评分基数排序</div>
+      </div>
+      <div class="pcard-body"><div class="ppool-items">${chips}</div></div>
+    </div>`);
+  }
+  return bar+(cards.length?cards.join(""):'<div class="empty">当前筛选下没有成员</div>');
+}
+
 function onDetailKey(event,head){
   if(event.key==="Enter"||event.key===" "){event.preventDefault();toggleDetail(head);}
 }
@@ -1473,6 +2596,22 @@ else if(!wbProjectionIds().has(b) && (!policyEntry || !["published","published_h
 else loadBoard(b,d=>{
   DATA=d;document.getElementById("q").value=initialQuery;const m=d.meta;
   if(b==="weapon_skin_sfx_text_sources"||b==="weapon_skin_static_candidates_v01"||b==="weapon_skin_active")document.body.classList.add("skin-mode");
+  if(b==="mutation_core_full")document.body.classList.add("core-mode");
+  if(VEHICLE_BOARD){
+    document.body.classList.add("vehicle-mode");
+    const vq=document.getElementById("q");
+    if(vq)vq.placeholder="搜索：载具名 / 编号 / 品牌 / 类型 / 描述…";
+  }
+  if(FASHION_BOARD){
+    document.body.classList.add("fashion-mode");
+    const qi=document.getElementById("q");
+    if(qi)qi.placeholder="搜索：时装名 / model_id / 描述 / 行键…";
+  }
+  if(CHIP_BOARD){
+    document.body.classList.add("chip-mode");
+    const cq=document.getElementById("q");
+    if(cq)cq.placeholder="搜索：芯片名 / 编号 / 类型 / 品质 / 属性文本…";
+  }
   const title=boardCardTitle(m);
   document.title=title+" · Wiki";
   document.getElementById("title").textContent=title;
@@ -1485,7 +2624,7 @@ else loadBoard(b,d=>{
     Object.entries(cnt).map(([k,v])=>`<span class="pill">${EV_CN[k]} <b>${v}</b></span>`).join("")+
     Object.entries(m.state_summary||{}).map(([k,v])=>`<span class="pill state-pill ${STATE_CLASS[k]||"unresolved"}">${esc(STATE_CN[k]||k)} <b>${v}</b></span>`).join("")+
     Object.entries(m.name_status_summary||{}).map(([k,v])=>`<span class="pill name-pill" title="name_status=${esc(k)}">名称${esc(VALUE_CN.name_status[k]||k)} <b>${v}</b></span>`).join("");
-  if(m.notes){
+  if(m.notes&&!m.notes_hidden){
     const n=document.getElementById("notes");n.style.display="block";
     n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv"><div class="k">板块说明</div><div class="v">${esc(m.notes)}</div></div></details>`;
   }
@@ -1541,10 +2680,57 @@ else loadBoard(b,d=>{
       });
     }
   }
+  {
+    // 卡片密度：舒适（默认，图区 150px / 1440 宽 4 列）↔ 紧凑（图区 100px / 5 列）；只切 body class，不重绘
+    const dBtn=document.getElementById("fDensity");
+    if(dBtn&&!(dBtn.dataset&&dBtn.dataset.bound)){
+      if(dBtn.dataset)dBtn.dataset.bound="1";
+      applyDensity(densityStored(),false);   // 恢复上次选择（localStorage），不改数据
+      dBtn.addEventListener("click",()=>{
+        const next=(dBtn.dataset&&dBtn.dataset.density)==="compact"?"comfortable":"compact";
+        applyDensity(next,true);
+      });
+      // 密度只对皮肤图鉴（.skin-card）有意义：其它板不显示这个按钮
+      const cl=document.body&&document.body.classList;
+      if(cl&&cl.contains&&!cl.contains("skin-mode"))dBtn.style.display="none";
+    }
+  }
   if((d.items||[]).length>=HUGE_TABLE_MIN)buildHugeIndex(d);
   fillFilterSelects(d.items);
+  if(FASHION_BOARD)frBuildFilters(d.items);
+  if(VEHICLE_BOARD)vBuildFilters(d.items);
+  if(CHIP_BOARD)cBuildFilters(d.items);
   render();
+  /* ★ 2026-10-18：上架状态实时刷新 —— 每 30 秒检查一次，有皮肤跨过 sale_ts 就重绘，
+     不跨就不动（避免每分钟整页重排、丢展开状态）。 */
+  (function(){
+    let sig=null;
+    const snap=()=>(DATA&&DATA.items||[]).map(it=>listingOf(it)).join(",");
+    setInterval(()=>{
+      if(!DATA||!DATA.items||!DATA.items.length)return;
+      const s=snap();
+      if(sig===null){sig=s;return;}
+      if(s!==sig){sig=s;try{render();}catch(err){/* 保持页面可用，不因刷新失败白屏 */}}
+    },30000);
+  })();
 });
+</script>
+<script>
+(function(){
+  if(!document || !document.documentElement || !document.documentElement.style) return;
+  var bar = document.querySelector ? document.querySelector('.topbar') : null;
+  if(!bar) return;
+  function sync(){ try{ document.documentElement.style.setProperty('--top-h', bar.offsetHeight + 'px'); }catch(e){} }
+  sync();
+  if(window && window.addEventListener){
+    window.addEventListener('resize', sync);
+    window.addEventListener('scroll', function(){
+      try{ document.body.classList.toggle('scrolled', (window.scrollY||0) > 40); }catch(e){}
+      sync();
+    }, {passive:true});
+  }
+  if(window && window.ResizeObserver){ try{ new ResizeObserver(sync).observe(bar); }catch(e){} }
+})();
 </script>
 </body>
 </html>

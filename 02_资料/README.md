@@ -28,6 +28,17 @@
     └── ...
 ```
 
+## 参考资料（外部来源，非拆包）
+
+```text
+02_资料/参考资料/藏宝阁_CBG/        藏宝阁（CBG）交易站前端配置 = 外部参照源
+  raw/  json/  _manifest.json  README.md
+  抓取/规范化/自检：01_工具/工具库/01_解码定位复原/客户端逆向/cbg_reference.py
+  · 用途：官方口径物品名/品级/图标、属性显示定义(attribute_data)、图鉴分母、合服映射、挂售规则
+  · 边界：不含战斗数值；不进 41_还原树（那是拆包产物）；须标 source=cbg，不标 verified
+  · 互证：weapon_skin_data 与 10_索引/items/common_item_names.json 名字 138/138 逐字一致
+```
+
 ---
 
 ## 铁律

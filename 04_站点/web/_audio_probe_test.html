@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>
+<pre id="probe">pending</pre>
+<iframe id="fr" src="board.html?b=weapon_skin_sfx_text_sources" style="width:1400px;height:900px"></iframe>
+<script>
+const out={};const fr=document.getElementById("fr");
+fr.onload=()=>{setTimeout(()=>{
+ const d=fr.contentDocument;
+ out.cards=d.querySelectorAll(".skin-card").length;
+ const blocks=[...d.querySelectorAll("details.audio")];
+ out.audio_blocks=blocks.length;
+ out.summaries=blocks.map(b=>{const s=b.querySelector("summary");return s?s.textContent.trim():"";});
+ out.rows=blocks.map(b=>b.querySelectorAll("li.audio-row").length);
+ out.audio_elems=d.querySelectorAll("details.audio audio").length;
+ out.dirs=blocks.map(b=>[...b.querySelectorAll("audio")].map(a=>(a.getAttribute("src")||"").split("/")[3])[0]||"");
+ document.getElementById("probe").textContent="PROBE "+JSON.stringify(out);
+},4000);};
+</script></body></html>

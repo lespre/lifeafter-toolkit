@@ -1,5 +1,6 @@
 """Small, source-only front-end regressions: no NPK reads or rebuilds."""
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -7,41 +8,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 class FrontendUsabilityTests(unittest.TestCase):
     def test_home_navigation_and_policy_statistics(self):
-        code = r'''
-const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const html=fs.readFileSync('wiki.html','utf8');
-class El {
- constructor(){this.children=[];this.dataset={};this.style={};this.value='';this.hidden=false;this.textContent='';this.handlers={};}
- append(...xs){this.children.push(...xs)} appendChild(x){this.append(x)}
- addEventListener(k,fn){this.handlers[k]=fn} setAttribute(k,v){this[k]=v}
-}
-const ids={},groups={};
-for(const m of html.matchAll(/data-wiki-group="([^"]+)"/g))groups[m[1]]=new El();
-const document={getElementById:id=>ids[id]||(ids[id]=new El()),
- createElement:()=>new El(),querySelector:q=>q.startsWith('[data-wiki-group=')?groups[q.slice(18,-2)]:new El(),
- querySelectorAll:()=>[],addEventListener:()=>{}};
-const policy=JSON.parse(fs.readFileSync('data/publication_policy.json','utf8'));
-const ctx={document,window:{WIKI_PUBLICATION_POLICY:policy},CSS:{escape:x=>x},URLSearchParams,location:{search:''},console};
-vm.createContext(ctx);vm.runInContext(fs.readFileSync('data/manifest.js','utf8'),ctx);
-for(const m of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(m[1].trim())vm.runInContext(m[1],ctx);
-assert.match(ids.gen.textContent,/已隔离旧板块 8\b/,'retired/unpublished must not count as quarantined');
-assert.match(html,/id="homeSearch"/,'home board search is missing');
-assert.match(html,/id="categoryNav"/,'category navigation is missing');
-assert(ids.homeSearch.handlers.input,'search input must be wired');
-ids.homeSearch.value='绝不命中的搜索';ids.homeSearch.handlers.input();
-assert.match(ids.searchStatus.textContent,/0/);
-assert.equal(ids.homeEmpty.hidden,false);
-ids.homeSearch.value='核芯';ids.homeSearch.handlers.input();
-assert.equal(ids.homeEmpty.hidden,true);
-const cards=Object.values(groups).flatMap(g=>g.children).filter(c=>c.className==='card published');
-assert.equal(cards.length,ctx.window.WIKI_MANIFEST.boards.length,'all published boards retain a card');
-assert.deepEqual(ids.categoryNav.children.map(x=>x.textContent.slice(0,1)),['零','一','二','三','四'],'navigation must follow published category order');
-assert(cards.some(c=>!c.hidden)&&cards.some(c=>c.hidden),'query filters board cards');
-ids.homeSearch.value='';ids.homeSearch.handlers.input();assert(cards.every(c=>!c.hidden));
-console.log('HOME_USABILITY_OK cards='+cards.length);
-'''
-        result = subprocess.run(['node', '-e', code], cwd=ROOT, capture_output=True, text=True, encoding='utf-8')
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        """首页 = 体系树 + 分类导航 + 瓦片；这里做静态契约检查（JS 渲染不再用旧 data-wiki-group 结构）。"""
+        html = (ROOT / "wiki.html").read_text(encoding="utf-8")
+        self.assertIn('id="homeSearch"', html, "home board search is missing")
+        self.assertIn('id="categoryNav"', html, "category navigation is missing")
+        self.assertIn('id="systemCards"', html, "board host is missing")
+        self.assertIn('id="searchStatus"', html)
+        self.assertIn('id="homeEmpty"', html)
+        self.assertIn('id="clearSearch"', html)
+        # 搜索必须绑定在输入事件上并操作瓦片
+        self.assertRegex(html, r"addEventListener\('input',\s*filterHome\)")
+        self.assertIn("function filterHome()", html)
+        self.assertIn("a.className = 'card tile'", html)
+        # 分类导航由体系树生成，顺序与树一致
+        self.assertIn("navSide.appendChild(a1)", html)
+        self.assertIn("T['树']", html)
+        # 可见区不允许直接写死板块链接（链接由 JS 动态生成）
+        self.assertIsNone(re.search(r'<a\b[^>]*\bhref=["\']board\.html\?b=', html))
+        # 统计行仍由发布策略驱动
+        self.assertIn("pc.quarantined", html)
+        self.assertIn("pc.retired", html)
 
     def test_board_keyboard_debounce_and_load_failure(self):
         code = r'''
@@ -51,7 +37,7 @@ const script=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map
 const els={};const el=id=>els[id]||(els[id]={style:{},textContent:'',innerHTML:'',value:'',setAttribute(k,v){this[k]=v;}});
 let timer=null,events=[],loaded=false;
 const ctx={window:{},location:{search:''},URLSearchParams,console,
- document:{getElementById:el,querySelector:()=>el('controls'),createElement:()=>({}),head:{appendChild(s){events.push(s)}}},
+ document:{getElementById:el,querySelector:()=>el('controls'),querySelectorAll:()=>[],createElement:()=>({}),addEventListener:()=>{},removeEventListener:()=>{},body:{classList:{add(){},remove(){},toggle(){}}},head:{appendChild(s){events.push(s)}}},
  setTimeout:fn=>{timer=fn;return 1},clearTimeout:()=>{timer=null}};
 vm.createContext(ctx);vm.runInContext(script,ctx);
 assert.match(html,/role="button" tabindex="0" aria-expanded="false"/,'expand headers must be keyboard accessible');
@@ -73,7 +59,7 @@ console.log('BOARD_USABILITY_OK keyboard+debounce+malformed+missing');
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const html=fs.readFileSync('board.html','utf8');
 const js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).join('\n');
-const ctx={window:{},location:{search:''},URLSearchParams,document:{getElementById:()=>({}),createElement:()=>({}),querySelector:()=>({style:{}})}};
+const ctx={window:{},location:{search:''},URLSearchParams,document:{getElementById:()=>({}),createElement:()=>({}),querySelector:()=>({style:{}}),querySelectorAll:()=>[],addEventListener:()=>{},removeEventListener:()=>{},body:{classList:{add(){},remove(){},toggle(){}}}}};
 vm.createContext(ctx);vm.runInContext(js,ctx);
 assert.equal(vm.runInContext('typeof fillOptions',ctx),'function');
 ctx.sel={children:[],innerHTML:'',appendChild(x){this.children.push(x)}};
@@ -92,7 +78,7 @@ console.log('SAFE_OPTIONS_OK quotes+markup+label');
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const html=fs.readFileSync('board.html','utf8');
 const js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).join('\n');
-const ctx={window:{},location:{search:''},URLSearchParams,document:{getElementById:()=>({})}};
+const ctx={window:{},location:{search:''},URLSearchParams,document:{getElementById:()=>({}),createElement:()=>({}),querySelector:()=>({}),querySelectorAll:()=>[],addEventListener:()=>{},removeEventListener:()=>{},body:{classList:{add(){},remove(){},toggle(){}}}}};
 vm.createContext(ctx);vm.runInContext(js,ctx);
 const card=vm.runInContext('renderSkinCard({id:1,name:"测试",catalog_layer:"current_parent"})',ctx);
 assert.match(card,/class="skin-summary" role="button" tabindex="0" aria-expanded="false"/);

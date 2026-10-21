@@ -1,0 +1,6981 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "status_vocab": [
+  "verified_same_fact",
+  "same_category_only",
+  "same_skin_only",
+  "unresolved"
+ ],
+ "rule": "同皮肤 + 同 effect_type ≠ 同一效果；只有共享资源路径（非名称/非整数）才算 same_fact",
+ "same_fact_evidence": [
+  {
+   "skin_item_id": 1110004,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_001/fx_skin_1006_001_dd_sx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120007
+    ],
+    "behavior_res": [
+     1110004
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110006,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_001/fx_skin_1002_001_dd_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120009
+    ],
+    "behavior_res": [
+     1110006
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110006,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_001/fx_skin_1002_001_sj_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120010
+    ],
+    "behavior_res": [
+     1110006
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110010,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_002/fx_skin_2002_002_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120012
+    ],
+    "behavior_res": [
+     1110010
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110013,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_002/fx_skin_1006_002_sj_qh_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120013
+    ],
+    "behavior_res": [
+     1110013
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110013,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_002/fx_skin_1006_002_dd_qh_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120014
+    ],
+    "behavior_res": [
+     1110013
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110013,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_002/fx_skin_1006_002_jisha_sj_hb.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120015
+    ],
+    "behavior_res": [
+     1110013
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110012,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_001/fx_skin_1013_001_hit_ranshao_hgz02.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120019
+    ],
+    "behavior_res": [
+     1110012
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110016,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_002/fx_skin_1003_002_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120020
+    ],
+    "behavior_res": [
+     1110016
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110016,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_002/fx_skin_1003_002_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120021
+    ],
+    "behavior_res": [
+     1110016
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110017,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_008/fx_skin_2003_008_dg_sd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120022
+    ],
+    "behavior_res": [
+     1110017
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110017,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_008/fx_skin_2003_008_sj_sd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120023
+    ],
+    "behavior_res": [
+     1110017
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110018,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_002/fx_skin_1013_002_hit_bx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120024
+    ],
+    "behavior_res": [
+     1110018
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110021,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_005/fx_skin_2003_005_sj_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120025
+    ],
+    "behavior_res": [
+     1110021
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110021,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_005/fx_skin_2003_005_bp_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120026
+    ],
+    "behavior_res": [
+     1110021
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110025,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_003/fx_skin_1006_003_flying_sj_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120029
+    ],
+    "behavior_res": [
+     1110025
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110025,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_003/fx_skin_1006_003_hit_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120030
+    ],
+    "behavior_res": [
+     1110025
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110023,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_003/fx_skin_1001_003_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120033
+    ],
+    "behavior_res": [
+     1110023
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110023,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_003/fx_skin_1001_003_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120034
+    ],
+    "behavior_res": [
+     1110023
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110024,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_004/fx_skin_1006_004_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120035
+    ],
+    "behavior_res": [
+     1110024
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110024,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_004/fx_skin_1006_004_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120036
+    ],
+    "behavior_res": [
+     1110024
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110024,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_004/fx_skin_1006_004_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120037
+    ],
+    "behavior_res": [
+     1110024
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110022,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_002/fx_skin_1007_002_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120041
+    ],
+    "behavior_res": [
+     1110022
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110022,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_002/fx_skin_1007_002_mingzhong_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120042
+    ],
+    "behavior_res": [
+     1110022
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110022,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_002/fx_skin_1007_002_jisha_01_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120043
+    ],
+    "behavior_res": [
+     1110022
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110022,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_002/fx_skin_1007_002_xuli_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120048
+    ],
+    "behavior_res": [
+     1110022
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110027,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_004/fx_skin_1003_004_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120050
+    ],
+    "behavior_res": [
+     1110027
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110027,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_004/fx_skin_1003_004_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120051
+    ],
+    "behavior_res": [
+     1110027
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110028,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_007/fx_skin_2003_007_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120052
+    ],
+    "behavior_res": [
+     1110028
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110028,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_007/fx_skin_2003_007_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120053
+    ],
+    "behavior_res": [
+     1110028
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110031,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_004/fx_skin_1001_004_hit_sx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120054
+    ],
+    "behavior_res": [
+     1110031
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110031,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_004/fx_skin_1001_004_bp_01_sx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120055
+    ],
+    "behavior_res": [
+     1110031
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110031,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_004/fx_skin_1001_004_dd_03.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120057
+    ],
+    "behavior_res": [
+     1110031
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110032,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_003/fx_skin_1013_003_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120062
+    ],
+    "behavior_res": [
+     1110032
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110032,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_003/fx_skin_1013_003_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120063
+    ],
+    "behavior_res": [
+     1110032
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110034,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_004/fx_skin_1002_004_sj_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120068
+    ],
+    "behavior_res": [
+     1110034
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110034,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_004/fx_skin_1002_004_dd_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120069
+    ],
+    "behavior_res": [
+     1110034
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110036,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_004/fx_skin_1007_004_mingzhong_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120070
+    ],
+    "behavior_res": [
+     1110036
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110036,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_004/fx_skin_1007_004_jibai_03.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120071
+    ],
+    "behavior_res": [
+     1110036
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110036,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_004/fx_skin_1007_004_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120073
+    ],
+    "behavior_res": [
+     1110036
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110036,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_004/fx_skin_1007_004_xuli_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120076
+    ],
+    "behavior_res": [
+     1110036
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110087,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_003/fx_skin_1012_003_baozha_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120080
+    ],
+    "behavior_res": [
+     1110087
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110087,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_003/fx_skin_1012_003_flying_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120081
+    ],
+    "behavior_res": [
+     1110087
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110115,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_013/fx_skin_2003_013_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120091
+    ],
+    "behavior_res": [
+     1110115
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110116,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_013/fx_skin_2003_013_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120092
+    ],
+    "behavior_res": [
+     1110116
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110117,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_018/fx_skin_2003_018_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120093
+    ],
+    "behavior_res": [
+     1110117
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110118,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_004/fx_skin_1012_004_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120103
+    ],
+    "behavior_res": [
+     1110118
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110118,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_004/fx_skin_1012_004_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120104
+    ],
+    "behavior_res": [
+     1110118
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110124,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_005/fx_skin_1002_005_dd_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120105
+    ],
+    "behavior_res": [
+     1110124
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110124,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_005/fx_skin_1002_005_sj_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120106
+    ],
+    "behavior_res": [
+     1110124
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110128,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_019/fx_skin_2003_019_daoguang_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120112
+    ],
+    "behavior_res": [
+     1110128
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110128,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_019/fx_skin_2003_019_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120113
+    ],
+    "behavior_res": [
+     1110128
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110129,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_008/fx_skin_1001_008_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120114
+    ],
+    "behavior_res": [
+     1110129
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110134,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_006/fx_skin_1007_006_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120115
+    ],
+    "behavior_res": [
+     1110134
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110134,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_006/fx_skin_1007_006_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120116
+    ],
+    "behavior_res": [
+     1110134
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110131,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_008/fx_skin_1006_008_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120130
+    ],
+    "behavior_res": [
+     1110131
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110133,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_010/fx_skin_1006_010_jibai.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120132
+    ],
+    "behavior_res": [
+     1110133
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110131,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_008/fx_skin_1006_008_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120133
+    ],
+    "behavior_res": [
+     1110131
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110133,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_010/fx_skin_1006_010_dd_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120135
+    ],
+    "behavior_res": [
+     1110133
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110131,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_008/fx_skin_1006_008_shouji_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120136
+    ],
+    "behavior_res": [
+     1110131
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110133,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_010/fx_skin_1006_010_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120138
+    ],
+    "behavior_res": [
+     1110133
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110135,
+   "resource_path": "effect/fx/weapon/skin/skin_1008_004/fx_skin_1008_004_dd01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120141
+    ],
+    "behavior_res": [
+     1110135
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110135,
+   "resource_path": "effect/fx/weapon/skin/skin_1008_004/fx_skin_1008_004_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120142
+    ],
+    "behavior_res": [
+     1110135
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110128,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_019/fx_skin_2003_019_sj_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120146
+    ],
+    "behavior_res": [
+     1110128
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110129,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_008/fx_skin_1001_008_hit_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120147
+    ],
+    "behavior_res": [
+     1110129
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110137,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_007/fx_skin_1013_007_hit_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120157
+    ],
+    "behavior_res": [
+     1110137
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110137,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_007/fx_skin_1013_007_bp_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120158
+    ],
+    "behavior_res": [
+     1110137
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110138,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_007/fx_skin_1012_007_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120161
+    ],
+    "behavior_res": [
+     1110138
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110138,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_007/fx_skin_1012_007_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120163
+    ],
+    "behavior_res": [
+     1110138
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110140,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_008/fx_skin_1003_008_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120165
+    ],
+    "behavior_res": [
+     1110140
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110140,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_008/fx_skin_1003_008_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120166
+    ],
+    "behavior_res": [
+     1110140
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110139,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_021/fx_skin_2003_021_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120167
+    ],
+    "behavior_res": [
+     1110139
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110139,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_021/fx_skin_2003_021_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120168
+    ],
+    "behavior_res": [
+     1110139
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110141,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_020/fx_skin_2003_020_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120169,
+     1120199
+    ],
+    "behavior_res": [
+     1110141
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110141,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_020/fx_skin_2003_020_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120170,
+     1120198
+    ],
+    "behavior_res": [
+     1110141
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110142,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120171
+    ],
+    "behavior_res": [
+     1110142
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110143,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120172
+    ],
+    "behavior_res": [
+     1110143
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110144,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_009/fx_skin_1007_009_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120173
+    ],
+    "behavior_res": [
+     1110144
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110142,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_bq_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120174
+    ],
+    "behavior_res": [
+     1110142
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110143,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_bq_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120175
+    ],
+    "behavior_res": [
+     1110143
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110142,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120180
+    ],
+    "behavior_res": [
+     1110142
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110143,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120181
+    ],
+    "behavior_res": [
+     1110143
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110144,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_009/fx_skin_1007_009_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120182
+    ],
+    "behavior_res": [
+     1110144
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110142,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_xuli_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120189
+    ],
+    "behavior_res": [
+     1110142
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110143,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_007/fx_skin_1007_007_xuli_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120190
+    ],
+    "behavior_res": [
+     1110143
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110144,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_009/fx_skin_1007_009_xuli01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120191
+    ],
+    "behavior_res": [
+     1110144
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110145,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_014/fx_skin_1001_014_dd_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120201
+    ],
+    "behavior_res": [
+     1110145
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110145,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_014/fx_skin_1001_014_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120202
+    ],
+    "behavior_res": [
+     1110145
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110145,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_014/fx_skin_1001_014_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120203
+    ],
+    "behavior_res": [
+     1110145
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110146,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_sj_bx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120207
+    ],
+    "behavior_res": [
+     1110146
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110146,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_bp_01_bx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120208
+    ],
+    "behavior_res": [
+     1110146
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110146,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_dd_lx_bx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120210
+    ],
+    "behavior_res": [
+     1110146
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110150,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_024/fx_skin_2003_024_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120217
+    ],
+    "behavior_res": [
+     1110150
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110150,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_024/fx_skin_2003_024_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120218
+    ],
+    "behavior_res": [
+     1110150
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110012,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_001/fx_skin_1013_001_muzzleflash_hgz02.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120219
+    ],
+    "behavior_res": [
+     1110012
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110152,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_009/fx_skin_1012_009_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120221
+    ],
+    "behavior_res": [
+     1110152
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110152,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_009/fx_skin_1012_009_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120222
+    ],
+    "behavior_res": [
+     1110152
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110152,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_009/fx_skin_1012_009_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120223
+    ],
+    "behavior_res": [
+     1110152
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110151,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_022/fx_skin_2003_022_dg1.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120224
+    ],
+    "behavior_res": [
+     1110151
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110151,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_022/fx_skin_2003_022_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120225
+    ],
+    "behavior_res": [
+     1110151
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110151,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_022/fx_skin_2003_022_bp_01_hx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120226
+    ],
+    "behavior_res": [
+     1110151
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110154,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_012/fx_skin_1006_012_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120227
+    ],
+    "behavior_res": [
+     1110154
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110154,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_012/fx_skin_1006_012_dd01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120228
+    ],
+    "behavior_res": [
+     1110154
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110156,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_009/fx_skin_1013_009_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120241
+    ],
+    "behavior_res": [
+     1110156
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110157,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_010/fx_skin_1012_010_mz.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120242
+    ],
+    "behavior_res": [
+     1110157
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110157,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_010/fx_skin_1012_010_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120243
+    ],
+    "behavior_res": [
+     1110157
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110156,
+   "resource_path": "effect/fx/weapon/skin/skin_1013_009/fx_skin_1013_009_kh.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120244
+    ],
+    "behavior_res": [
+     1110156
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110159,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_bingxing_sj_xc.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120245
+    ],
+    "behavior_res": [
+     1110159
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110160,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_bingxing_sj_xc.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120246
+    ],
+    "behavior_res": [
+     1110160
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110161,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_013/fx_skin_1001_013_sj_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120247
+    ],
+    "behavior_res": [
+     1110161
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110159,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120248
+    ],
+    "behavior_res": [
+     1110159
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110160,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120249
+    ],
+    "behavior_res": [
+     1110160
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110161,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_013/fx_skin_1001_013_bp_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120250
+    ],
+    "behavior_res": [
+     1110161
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110159,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120254
+    ],
+    "behavior_res": [
+     1110159
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110160,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_011/fx_skin_1001_011_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120255
+    ],
+    "behavior_res": [
+     1110160
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110161,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_013/fx_skin_1001_013_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120256
+    ],
+    "behavior_res": [
+     1110161
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110162,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_027/fx_skin_2003_027_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120277
+    ],
+    "behavior_res": [
+     1110162
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110162,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_027/fx_skin_2003_027_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120278
+    ],
+    "behavior_res": [
+     1110162
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110165,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_011/fx_skin_1006_011_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120280
+    ],
+    "behavior_res": [
+     1110165
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110165,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_011/fx_skin_1006_011_04_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120281
+    ],
+    "behavior_res": [
+     1110165
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110165,
+   "resource_path": "effect/fx/weapon/skin/skin_1006_011/fx_skin_1006_011_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120282
+    ],
+    "behavior_res": [
+     1110165
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110166,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_010/fx_skin_1002_010_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120286
+    ],
+    "behavior_res": [
+     1110166
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110166,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_010/fx_skin_1002_010_sj_tx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120287
+    ],
+    "behavior_res": [
+     1110166
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110167,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_010/fx_skin_1007_010_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120288
+    ],
+    "behavior_res": [
+     1110167
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110167,
+   "resource_path": "effect/fx/weapon/skin/skin_1007_010/fx_skin_1007_010_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120289
+    ],
+    "behavior_res": [
+     1110167
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110169,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120290
+    ],
+    "behavior_res": [
+     1110169
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110169,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120291
+    ],
+    "behavior_res": [
+     1110169
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110169,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120292
+    ],
+    "behavior_res": [
+     1110169
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110168,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_015/fx_skin_1001_015_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120296
+    ],
+    "behavior_res": [
+     1110168
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110168,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_015/fx_skin_1001_015_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120297
+    ],
+    "behavior_res": [
+     1110168
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110171,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_010/fx_skin_1003_010_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120303
+    ],
+    "behavior_res": [
+     1110171
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110171,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_010/fx_skin_1003_010_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120304
+    ],
+    "behavior_res": [
+     1110171
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110171,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_010/fx_skin_1003_010_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120305
+    ],
+    "behavior_res": [
+     1110171
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110176,
+   "resource_path": "effect/fx/weapon/skin/skin_1008_006/fx_skin_1008_006_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120306
+    ],
+    "behavior_res": [
+     1110176
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110176,
+   "resource_path": "effect/fx/weapon/skin/skin_1008_006/fx_skin_1008_006_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120307
+    ],
+    "behavior_res": [
+     1110176
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110179,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_012/fx_skin_1002_012_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120308
+    ],
+    "behavior_res": [
+     1110179
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110179,
+   "resource_path": "effect/fx/weapon/skin/skin_1002_012/fx_skin_1002_012_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120309
+    ],
+    "behavior_res": [
+     1110179
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110173,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_hit_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120310
+    ],
+    "behavior_res": [
+     1110173,
+     1110173
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110173,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_jisha_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120311
+    ],
+    "behavior_res": [
+     1110173
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110173,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120313
+    ],
+    "behavior_res": [
+     1110173
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110174,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_hit_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120320
+    ],
+    "behavior_res": [
+     1110174,
+     1110174
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110174,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_jisha_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120321
+    ],
+    "behavior_res": [
+     1110174
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110174,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_011/fx_skin_1012_011_dd_01.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120323
+    ],
+    "behavior_res": [
+     1110174
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110175,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_013/fx_skin_1012_013_mz.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120330
+    ],
+    "behavior_res": [
+     1110175,
+     1110175
+    ]
+   },
+   "effect_types": [
+    "hit_effect",
+    "other"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110175,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_013/fx_skin_1012_013_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120331
+    ],
+    "behavior_res": [
+     1110175
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110175,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_013/fx_skin_1012_013_dd.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120333
+    ],
+    "behavior_res": [
+     1110175
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110177,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_029/fx_skin_2003_029_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120340
+    ],
+    "behavior_res": [
+     1110177
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110177,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_029/fx_skin_2003_029_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120341
+    ],
+    "behavior_res": [
+     1110177
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110177,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_029/fx_skin_2003_029_jisha.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120342
+    ],
+    "behavior_res": [
+     1110177
+    ]
+   },
+   "effect_types": [
+    "kill_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110182,
+   "resource_path": "effect/fx/weapon/skin/skin_1012_014/fx_skin_1012_014_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120349
+    ],
+    "behavior_res": [
+     1110182
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110183,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_030/fx_skin_2003_030_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120350
+    ],
+    "behavior_res": [
+     1110183
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110181,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_011/fx_skin_1003_011_dd_lx_bx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120351
+    ],
+    "behavior_res": [
+     1110181
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110181,
+   "resource_path": "effect/fx/weapon/skin/skin_1003_011/fx_skin_1003_011_sj.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120352
+    ],
+    "behavior_res": [
+     1110181
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110183,
+   "resource_path": "effect/fx/weapon/skin/skin_2003_030/fx_skin_2003_030_dg.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120353
+    ],
+    "behavior_res": [
+     1110183
+    ]
+   },
+   "effect_types": [
+    "combat_sound",
+    "slash_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110178,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_016/fx_skin_1001_016_hit.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120356
+    ],
+    "behavior_res": [
+     1110178
+    ]
+   },
+   "effect_types": [
+    "hit_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  },
+  {
+   "skin_item_id": 1110178,
+   "resource_path": "effect/fx/weapon/skin/skin_1001_016/fx_skin_1001_016_dd_lx.sfx",
+   "sources": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "records": {
+    "sfx_function": [
+     1120357
+    ],
+    "behavior_res": [
+     1110178
+    ]
+   },
+   "effect_types": [
+    "projectile_effect"
+   ],
+   "basis": "同一资源路径字符串（非名称、非整数碰撞）"
+  }
+ ],
+ "rows": [
+  {
+   "skin_item_id": 1110004,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110004,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110004,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110006,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110006,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110006,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110007,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110007,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110009,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110010,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110010,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110010,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110012,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110012,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110012,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110013,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110016,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110016,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110016,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110017,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110017,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110017,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110018,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110018,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110021,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "other",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110022,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110023,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110024,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110025,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110025,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110025,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110027,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110027,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110027,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110028,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110028,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110028,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110031,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110032,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110034,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110034,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110034,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110035,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "other",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110036,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110058,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110058,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110087,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110087,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110087,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110087,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110090,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110090,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110090,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110115,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110116,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110117,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110118,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110118,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110118,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110118,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110121,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110122,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110122,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110122,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110124,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110124,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110124,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110126,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110126,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110127,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110127,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110128,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110129,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110130,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110130,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110130,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110131,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110132,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110133,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110134,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110134,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110134,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110135,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110135,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110135,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110137,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110138,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110138,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110138,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110138,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110139,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110139,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110139,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110140,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110140,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110140,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110141,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110141,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110141,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "other",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110142,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "other",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110143,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "other",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110144,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110145,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110146,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110148,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110150,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110150,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110150,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110151,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110152,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110154,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110154,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110154,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110156,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110156,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110156,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110157,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110157,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110157,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110157,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110158,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110159,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110160,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110161,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110162,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110162,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110162,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110165,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110166,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110166,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110166,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110167,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110167,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110167,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110168,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110168,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110168,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110169,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110171,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110173,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110174,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "combat_crosshair",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110175,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110176,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110176,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110176,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "damage_number",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "exclusive_combat_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "exclusive_idle_animation",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "kill_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "nucleus_linkage",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110177,
+   "effect_type": "special_interaction",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110178,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110178,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110178,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110179,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110179,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110179,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110181,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110181,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110181,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "other",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110182,
+   "effect_type": "projectile_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "same_category_only"
+  },
+  {
+   "skin_item_id": 1110183,
+   "effect_type": "combat_sound",
+   "source_refs": [
+    "behavior_res"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  },
+  {
+   "skin_item_id": 1110183,
+   "effect_type": "hit_effect",
+   "source_refs": [
+    "behavior_res",
+    "sfx_function"
+   ],
+   "independent_source_count": 2,
+   "corroboration_status": "verified_same_fact"
+  },
+  {
+   "skin_item_id": 1110183,
+   "effect_type": "slash_effect",
+   "source_refs": [
+    "sfx_function"
+   ],
+   "independent_source_count": 1,
+   "corroboration_status": "same_skin_only"
+  }
+ ]
+}

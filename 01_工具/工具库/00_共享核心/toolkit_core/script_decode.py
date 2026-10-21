@@ -197,7 +197,7 @@ STR_TAGS = (0xD3, 0xF3, 0xDA, 0xFA, 0x79, 0x53, 0xF9)
 BYTES_TAGS = (0x7B, 0xFB)
 TUPLE_TAGS = (0x2E, 0xAE)
 CODE_TAG = 0x73
-KNOWN_TAGS = {0x73, 0x2E, 0x78, 0x7B, 0x79, 0x53, 0xD3, 0x5A, 0x7A, 0xBE, 0x3C, 0x22, 0x12, 0x3E}
+KNOWN_TAGS = {0x73, 0x2E, 0x78, 0x7B, 0x79, 0x53, 0xD3, 0x5A, 0x7A, 0xBE, 0x3C, 0x22, 0x12, 0x3E, 0x30, 0x10, 0x7A, 0x3F, 0x04, 0x08, 0x28}
 
 NAME_OPS_SHIFTED = {"LOAD_ATTR", "LOAD_GLOBAL", "LOAD_METHOD", "STORE_ATTR"}
 NAME_OPS_PLAIN = {"LOAD_NAME", "STORE_NAME", "DELETE_NAME", "IMPORT_NAME", "IMPORT_FROM",
@@ -510,12 +510,39 @@ class NeoXReader:
                 return Value('int', struct.unpack_from('<i', b, off + 1)[0], off, 5)
             return Value('mark7a', None, off, 1)
         if t == 0x3C:
-            return Value('int', b[off + 1], off, 2)
+            # ★ 2026-10-21 修正：0x3C 是「1 字节无载荷常量」（实测 @38085：3c 后面直接跟
+            #   下一个值的 d3 标签）。早期按 u8/u16 读会多吞 1~2 字节，导致后续整表错位，
+            #   表现为「未知 marshal 标签 0x68('h')」这种落在字符串中间的报错。
+            return Value('int', 0, off, 1)
         if t == 0x3E:
             return Value('tag3e', struct.unpack_from('<I', b, off + 1)[0], off, 5)
         if t == 0x22:
             if off + 9 > self.hi:
                 raise NeoxDecodeError('f64 越界 @%d' % off)
+            return Value('float', struct.unpack_from('<d', b, off + 1)[0], off, 9)
+        if t in (0x04, 0x08):
+            # ★ 0x04/0x08 + 1 字节值（实测 04 00 d3 … / 08 00 2e …）
+            return Value('int', b[off + 1], off, 2)
+        if t == 0x28:
+            # ★ 0x28 = 长字符串（u32 长度 + UTF-8 字节）。
+            #   实测 28 26 00 00 00 + 38 字节「老版计算结果: …」；28 2f… + 47 字节分隔线。
+            ln = struct.unpack_from('<I', b, off + 1)[0]
+            st = off + 5
+            if st + ln > self.hi:
+                raise NeoxDecodeError('长串(0x28) 越界 @%d len=%d' % (off, ln))
+            return self._reg(Value('str', b[st:st + ln].decode('utf-8', 'replace'), off, 5 + ln))
+        if t == 0x3F:
+            # ★ 2026-10-21：0x3F + 8 字节小端 int64（实测 3f 03 00.. = 3）
+            if off + 9 > self.hi:
+                raise NeoxDecodeError('i64(0x3f) 越界 @%d' % off)
+            return Value('int', struct.unpack_from('<q', b, off + 1)[0], off, 9)
+        if t == 0x10:
+            # ★ 2026-10-21：0x10 + 1 字节小整数（实测 10 08 → 8）
+            return Value('int', b[off + 1], off, 2)
+        if t == 0x30:
+            # ★ 2026-10-21：0x30/0xB0 后跟 8 字节 IEEE754 double（实测 00..f0 3f = 1.0）
+            if off + 9 > self.hi:
+                raise NeoxDecodeError('f64(0x30) 越界 @%d' % off)
             return Value('float', struct.unpack_from('<d', b, off + 1)[0], off, 9)
         if t == 0x12:
             if off + 5 > self.hi:
@@ -554,7 +581,7 @@ class NeoXReader:
     # ── code object ──
     def parse_code(self, off: int, depth: int = 0, parent: CodeObj | None = None):
         b = self.b
-        if off + 21 > self.hi or b[off] != CODE_TAG:
+        if off + 21 > self.hi or (b[off] & 0x7F) != CODE_TAG:
             raise NeoxDecodeError('@%d 不是 code 对象（0x%02x）'
                                   % (off, b[off] if off < self.hi else -1))
         arg, pos, kw, stk, flg = struct.unpack_from('<IIIII', b, off + 1)
@@ -582,20 +609,50 @@ class NeoXReader:
                 msg = '%s 表位置解析成 %s' % (key, anom)
                 c.anomalies.append(msg)
                 self.anomalies.append('code@%d %s' % (off, msg))
-        v, end = self._blob_lenient(end)      # localspluskinds（也见过 5a 引用）
-        c.localspluskinds = v
-        for key in ('filename', 'name', 'qualname'):
+        # ★ 2026-10-21：部分函数的表序是 consts → localsplusnames → names（和常规相反）。
+        #   判据：第二张表项数明显少于第三张，且第三张全是字符串。
+        def _strs(t):
+            return sum(1 for x in (t or []) if isinstance(x.v, str))
+        if len(c.names or []) < len(c.localsplusnames or []) and _strs(c.localsplusnames) >= max(3, len(c.localsplusnames or []) - 1):
+            c.names, c.localsplusnames = c.localsplusnames, c.names
+            c.anomalies.append("表序为 consts→locals→names，已交换")
+
+        # ★ 2026-10-21：大函数变体 —— co_consts 的 count 多算 1，最后一项其实是
+        #   co_names（全是字符串的嵌套元组），导致 consts / names / localsplusnames 整体错位一格。
+        #   判据：consts 末项是「元素全为字符串且长度 > 10」的嵌套元组。
+        if c.consts and c.consts[-1].kind == "tuple" and isinstance(c.consts[-1].v, list):
+            last = c.consts[-1].v
+            if len(last) > 10 and all(isinstance(x.v, str) for x in last):
+                c.localsplusnames = c.names
+                c.names = last
+                c.consts = c.consts[:-1]
+                c.anomalies.append("co_consts 末项实为 co_names，已重新对位")
+
+        # ── 尾部字段：按标签推进（方言两种排布都收）──
+        # 标准：kinds(7b|5a) → filename → name → qualname → firstlineno(裸 u32) → linetable → exceptiontable
+        # 变体：filename → name → qualname → 0x5B+u32 → linetable → exceptiontable（无 kinds / 无裸 lineno）
+        c.localspluskinds = Value('bytes', b'', end, 0)
+        if end < self.hi and (b[end] in BYTES_TAGS or b[end] == 0x5A):
             v, end = self._blob_lenient(end)
-            if v.kind == 'ref':
-                c.anomalies.append('%s 是引用 #%s（解析结果类型不符/未解析，已按未解析显示）'
-                                   % (key, v.idx))
-            setattr(c, key, v)
+            c.localspluskinds = v
+        for key in ('filename', 'name', 'qualname'):
+            if end < self.hi and (b[end] == 0xD3 or b[end] == 0x5A):
+                v, end = self._blob_lenient(end)
+                if v.kind == 'ref':
+                    c.anomalies.append('%s 是引用 #%s（解析结果类型不符/未解析，已按未解析显示）'
+                                       % (key, v.idx))
+                setattr(c, key, v)
+            else:
+                setattr(c, key, Value('str', '', end, 0))
         if end + 4 > self.hi:
             raise NeoxDecodeError('@%d 缺 co_firstlineno' % off)
         c.firstlineno = struct.unpack_from('<I', b, end)[0]
         end += 4
         for key in ('linetable', 'exceptiontable'):
-            v, end = self._blob_lenient(end)   # 也常是 5a 引用（同一张表复用）
+            if end < self.hi and (b[end] in BYTES_TAGS or b[end] == 0x5A):
+                v, end = self._blob_lenient(end)
+            else:
+                v = Value('bytes', b'', end, 0)
             setattr(c, key, v)
         c.end = end
         c.complete = True
@@ -605,6 +662,16 @@ class NeoXReader:
         return c, end
 
     def read_top(self):
+        # ★ 2026-10-21：部分模块以「u32 长度 + 模块名」开头（com.formula.HurtCalc），
+        #   code 对象从其后开始，且 tag 可能是 0xF3（= 0x73 | 0x80 引用位）。
+        if self.hi and (self.b[0] & 0x7F) != CODE_TAG:
+            for i in range(0, min(self.hi - 26, 96)):
+                if (self.b[i] & 0x7F) != CODE_TAG:
+                    continue
+                arg, pos, kw, stk, flg = struct.unpack_from('<IIIII', self.b, i + 1)
+                if arg <= 255 and pos <= 255 and kw <= 255 and stk <= 0xFFFF:
+                    return self.parse_code(i, 0, None)
+            raise NeoxDecodeError('文件头没有 code 对象（首字节 0x%02x）' % self.b[0])
         return self.parse_code(0, 0, None)
 
 

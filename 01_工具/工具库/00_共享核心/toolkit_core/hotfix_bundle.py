@@ -61,7 +61,7 @@ TOP_DIRS = (D_TEXT, D_MEDIA, D_OTHER, D_DELTA)
 
 # 03_媒体文件 下的分类
 M_IMG = "图片"
-M_IMG_R = "能看的图"                # 立绘大图 / 界面图 / UI图标 / 文字图
+M_IMG_R = "能看的图"                # 大图素材 / 界面图 / UI图标 / 文字图
 M_IMG_M = "看不懂的"                # 方块贴图图集 / 场景地表 / 特效图 / 角色 / 建筑 / …
 M_VIDEO = "视频"
 M_AUDIO = "音频"
@@ -105,7 +105,9 @@ SUB_TEXT = "文本"
 # ══════════════════════════════════════════════════════════════════
 
 # 03 下的子类
-R_BIG = "立绘大图"
+# ★ 2026-10-17：原名「立绘大图」是**断言式**的（实测这批 overlay 里根本没有立绘，
+#   大尺寸的一律是界面素材/图集）⇒ 改中性名。桶名不该替内容下结论。
+R_BIG = "大图素材"
 R_UI = "界面图"
 R_ICON = "UI图标"
 R_TXT = "文字图"
@@ -164,6 +166,14 @@ MAGIC_CLASS = (
     #    ★ 别写成 b"ccaa5566"（那是 8 字节 ASCII）—— 魔数只有 4 字节。
     #    全库 122,459 个 = effect_cache.gpk 97,590 + gres\0000.gpk 24,869。
     (b"\xcc\xaa\x55\x66", "shader"),
+    # ★★ 定证 2026-10-17（本机抽样 60/60 逐条自检通过）：`VKPL` = **Vulkan SPIR-V 着色器容器**，
+    #    与上面 `.ccaa5566`(DXBC/D3D) 是同一件事的两条后端。结构：
+    #      magic(4)='VKPL' + u32 版本(=1) + u32 条目数 + 12B 保留(0) … 头共 0x20
+    #      之后 条目×N = [u32 尺寸][SPIR-V 模块]，模块头恒为 0x07230203。
+    #    条目数 1~2（典型 = 顶点/片元对）。字符串全是 `GLSL.std.450` / `NeoxUBOLocal` /
+    #    `u_ambient` 这类 SPIR-V opcode + uniform 名。
+    #    ⇒ 归「着色器」，**不是**图/模型；PC 测试服走 Vulkan 后端时下发它。
+    (b"VKPL", "shader"),
 )
 
 
@@ -178,7 +188,26 @@ def magic_class(blk: bytes) -> str:
     return ""
 
 
-def classify_image(name: str | None, dims: tuple | None) -> tuple:
+#: 内容判据查出的材质类 → 中文子类（一律进「看不懂的」）
+MATERIAL_SUB = {"normal": "法线图", "mask": "掩码与灰度", "ramp": "色带与渐变", "atlas": "平铺图集"}
+
+
+def _content_kind(p) -> str | None:
+    """按**像素内容**判材质类（法线/掩码/色带/平铺）—— 只对「疑似能看」的图做，省时间。
+
+    ★ 2026-10-17：形状+尺寸+彩度+alpha 四条启发式都被实测证伪（彩色平铺图集彩度 190+、
+      DXT5 的 alpha 铺满整张材质图）⇒「人眼能看懂」不由启发式断言；这里只做**否定式**判定：
+      能判出「是材质」就打回「看不懂的」，判不出就留给人工/视觉模型。
+    """
+    try:
+        from toolkit_core import img_classify as IC
+        return IC.classify_file(p).get("kind")
+    except Exception:                                            # noqa: BLE001
+        return None
+
+
+def classify_image(name: str | None, dims: tuple | None,
+                   content_kind: str | None = None) -> tuple:
     """图片分类：→ (二级, 子类)。非图返回 (None, None)。
 
     二级取值：M_IMG_R（能看的图）/ M_IMG_M（看不懂的）。
@@ -210,17 +239,23 @@ def classify_image(name: str | None, dims: tuple | None) -> tuple:
             return M_IMG_R, R_ICON
 
     # ② 无名 / 无特征 → 形状尺寸
+    out = (None, None)
     if dims:
         w, h = dims
         if w == h and POW2(w):
-            return M_IMG_M, "方块贴图图集"
-        m = min(w, h)
-        if m >= 256:
-            return M_IMG_R, R_BIG
-        if m >= 64:
-            return M_IMG_R, R_UI
-        return M_IMG_R, R_ICON
-    return None, None
+            out = (M_IMG_M, "方块贴图图集")
+        else:
+            m = min(w, h)
+            if m >= 256:
+                out = (M_IMG_R, R_BIG)
+            elif m >= 64:
+                out = (M_IMG_R, R_UI)
+            else:
+                out = (M_IMG_R, R_ICON)
+    # ★ 内容复核：形状说「能看懂」但像素说「是材质」⇒ 以内容为准，打回「看不懂的」。
+    if out[0] == M_IMG_R and content_kind in MATERIAL_SUB:
+        return M_IMG_M, MATERIAL_SUB[content_kind]
+    return out
 
 
 def image_dims(p) -> tuple | None:
@@ -325,7 +360,11 @@ class Bundle:
             if str(self.tool_root) not in sys.path:
                 sys.path.insert(0, str(self.tool_root))
             from toolkit_core import artifact_locator as AL
-            self._loc = AL.Locator()
+            # ★ 2026-10-17 修：以前是 `AL.Locator()`（只认「按行号铺法」的产物目录），
+            #   载荷删掉 / 换还原树之后 `path()` 恒 None ⇒ manifest 里 91,049 条
+            #   「新增行 | 产物缺失」，`02_媒体文件` 恒 0（分类靠读源文件）。
+            #   → 一律走 UnifiedResolver（树优先，初拆载荷兜底）。
+            self._loc = AL.UnifiedResolver()
         return self._loc
 
     # ── 登记一条产物 ────────────────────────────────────────
@@ -449,7 +488,10 @@ class Bundle:
                     "%s_%08d%s" % (Path(str(r["container"]).replace(chr(92), "/")).stem,
                                    r["row"], src.suffix))
             cls = EXT_CLASS.get(r["ext"], "")
-            if not cls and not r["named"]:
+            if not cls:
+                # ★ 2026-10-17 修：以前只在「无名」时才嗅魔数 ⇒ 扩展名是 `.bin` 的**具名帧**
+                #   被 ext 直接判进「未解格式」（实测抽 400 个：311 是 `DDS `、83 是 DXBC）
+                #   ⇒ `02_媒体文件` 恒 0、`着色器` 恒 0。ext 不在表里就该看内容，与有没有名字无关。
                 try:
                     cls = magic_class(src.read_bytes()[:16])
                 except OSError:
@@ -460,6 +502,10 @@ class Bundle:
             if cls == "image" or (not cls and r["named"] and r["ext"] in IMG_EXTS):
                 dims = image_dims(src)
                 lv2, sub_dir = classify_image(r["name"], dims)
+                # ★ 2026-10-17：形状说「能看懂」的，再过一道**像素内容**复核
+                #   （材质类打回「看不懂的」）。只对疑似能看的做，省时间。
+                if lv2 == M_IMG_R:
+                    lv2, sub_dir = classify_image(r["name"], dims, _content_kind(src))
                 if lv2 is None:
                     # 是图但读不出尺寸（损坏/非常见头）→ 如实标注，不进「能看的图」
                     self.unknown.append({
@@ -607,7 +653,7 @@ class Bundle:
             "| `pkgs/` | 原始下发包（保留以便复现） |",
             "| `%s/` | 文字表单独汇总（索引 / 文案去重 / 按表 TSV / 分类） |" % D_TEXT,
             "| `%s/` | ★ **所有图 / 视频 / 音频**，子路径再分类 |" % D_MEDIA,
-            "|     `%s/%s/%s/` | ★ **人眼能看懂**：立绘大图 / 界面图 / UI图标 / 文字图 |"
+            "|     `%s/%s/%s/` | ★ **人眼能看懂**：大图素材 / 界面图 / UI图标 / 文字图 |"
             % (D_MEDIA, M_IMG, M_IMG_R),
             "|     `%s/%s/%s/` | ★ **看不懂的素材底图**：方块图集 / 场景地表 / 特效 / 角色 / 建筑 / 道具 |"
             % (D_MEDIA, M_IMG, M_IMG_M),

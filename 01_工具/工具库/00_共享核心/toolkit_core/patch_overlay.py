@@ -186,6 +186,11 @@ def _get(url: str, *, timeout: float = 300.0) -> bytes:
         return resp.read()
 
 
+def safe_destination_name(name: str) -> str:
+    """把 CDN 的逻辑子路径压成唯一文件名，避免不同目录同 basename 互相覆盖。"""
+    return re.sub(r"[\\\\/]+", "__", str(name)).lstrip("._")
+
+
 def fetch(cdn_dir_name: str, names: Iterable[str], out_dir: Path | str | None = None,
           *, timeout: float = 300.0, quiet: bool = False) -> dict:
     """下载 overlay 包。已存在且大小吻合的跳过（幂等）。"""
@@ -195,7 +200,7 @@ def fetch(cdn_dir_name: str, names: Iterable[str], out_dir: Path | str | None = 
     got, failed, total = [], [], 0
     for nm in names:
         url = "%s/%s/%s" % (BASE_CDN, cdn_dir_name, nm)
-        dest = (out / Path(nm).name) if out else None
+        dest = (out / safe_destination_name(nm)) if out else None
         if dest and dest.is_file() and dest.stat().st_size > 0:
             sz = dest.stat().st_size
             total += sz

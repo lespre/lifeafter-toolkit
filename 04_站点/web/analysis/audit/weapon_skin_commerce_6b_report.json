@@ -1,0 +1,103 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "client_channel": "client_channel=test",
+ "1_store_gate_semantics": {
+  "disabled": "unresolved（字段存在 151 行；无 consumer/谓词证据 ⇒ 不当作 active 判定）",
+  "start_ts": "verified_as_data（18/18 皮肤行存在，日粒度）；作为可用性谓词 unresolved",
+  "end_ts": "verified_as_data（6/18 有值）；语义（下架时间）unresolved",
+  "tab/category": "verified_as_data（level1/2_tab_type 18/18）",
+  "total_limit": "verified_as_data（18/18）",
+  "key_id": "verified_as_data（18/18，= store 行键 50001 等）",
+  "lifecycle": "unresolved（无生命周期字段语义证据）"
+ },
+ "2_listing_model": [
+  "configured",
+  "active",
+  "visible",
+  "purchasable",
+  "listed"
+ ],
+ "3_verified_active": 0,
+ "4_verified_visible": 0,
+ "5_verified_purchasable": 0,
+ "6_listing_unresolved": 126,
+ "7_store_price_jump_resolved": false,
+ "7_residual": "read_jump_group 在 x{ body / raw payload 两种基址下均未解出价格组 ⇒ 目标表未定位",
+ "8_sale18_price": {
+  "rows": 19,
+  "price_value_status": "jump_ref_unresolved",
+  "currency_namespace": "unresolved（money_id 仅 357/1222 行有值，18 条皮肤行无 money_id）",
+  "amount": "unresolved",
+  "multi_currency": "unresolved",
+  "package_price": "unresolved"
+ },
+ "9_gift_jump_resolved": "mechanism_resolved（read_jump_group 可用）；target namespace = 物品/奖励 id 空间",
+ "10_gift_skins_linked": 0,
+ "11_exchange_elements": {
+  "rows": 70,
+  "elements": 770,
+  "distinct": 376,
+  "verdict": "小序号，目标 namespace 未识别 ⇒ unresolved",
+  "upgraded_to_no_skin_target": false
+ },
+ "12_exchange_skins_linked": 0,
+ "13_lottery_acquisition": 0,
+ "14_activity_acquisition": 0,
+ "15_timed15": {
+  "rows": 15,
+  "independent_paths": 0,
+  "grant_hypothesis_unproven": true,
+  "verdict": "无独立 commerce/grant 证据；不从时长名称推获取方式"
+ },
+ "16_path_counts": {
+  "direct_shop": 19,
+  "unresolved": 107
+ },
+ "16_path_status": {
+  "likely": 19,
+  "unresolved": 107
+ },
+ "17_multi_path_skins": 0,
+ "18_old_only_4": {
+  "ids": [
+   1110184,
+   1110185,
+   1110186,
+   1110190
+  ],
+  "new_commerce_evidence": false,
+  "note": "仍保持 legacy 隔离；任何新证据只改 legacy commerce evidence，不回填 canonical"
+ },
+ "19_unresolved_sources": [
+  "runtime_store_consumer（物理不可得）",
+  "store price jump 目标表",
+  "exchange 元素 namespace",
+  "gift reward → 皮肤身份链",
+  "lottery 子池/replacement 路径",
+  "activity reward 引用",
+  "timed grant 路径"
+ ],
+ "20_listing_bounded_graduated": true,
+ "20_why": "边界证明完整：configured=verified（18）/ 其余层 unresolved 且断点明确；缺 consumer 属静态资产限制",
+ "21_acquisition_graduated": true,
+ "21_why": "多路径模型落地、无整数碰撞 join、每条路径 status/evidence/断点齐备；证据边界清楚（不追求 126 条全有 acquisition）",
+ "22_commerce_graduated": true,
+ "22_scope": "Sale=frozen；Listing=graduated_with_bounded_unresolved；Acquisition=graduated（多路径 + bounded unresolved）",
+ "22_graduation_checklist": {
+  "1_sale_frozen": true,
+  "2_listing_semantic_boundary": true,
+  "3_store_gate_证明多少算多少": true,
+  "4_price_jump_或_residual": true,
+  "5_gift_chain_或断点": true,
+  "6_exchange_残差明确": true,
+  "7_lottery_target_gate": true,
+  "8_activity_candidate_统一规则": true,
+  "9_timed_独立审计": true,
+  "10_acquisition_多路径": true,
+  "11_无整数碰撞_join": true,
+  "12_snapshot_history_不混": true,
+  "13_explain_可追": true,
+  "14_unresolved_有断点": true,
+  "15_pipeline_可复算": true
+ }
+}

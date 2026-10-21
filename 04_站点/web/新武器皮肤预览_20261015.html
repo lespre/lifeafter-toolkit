@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-10-15 新武器皮肤预览</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1117;--card:#151b24;--line:#293241;--text:#e6edf3;--muted:#9da8b5;--violet:#a78bfa;--green:#6ee7b7;--amber:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#1b2332 0,#0d1117 40%,#090c11 100%);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Microsoft YaHei",sans-serif}
+main{max-width:1440px;margin:0 auto;padding:28px 32px 42px}.eyebrow{color:var(--violet);font-size:12px;letter-spacing:.14em;text-transform:uppercase}.head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}.head h1{margin:5px 0 0;font-size:30px;line-height:1.2}.head p{margin:7px 0 0;color:var(--muted)}.basis{color:var(--muted);font-size:12px;text-align:right}.grid{display:grid;grid-template-columns:minmax(520px,1.25fr) minmax(420px,1fr);gap:20px}.card{background:color-mix(in srgb,var(--card) 94%,transparent);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px #0005;overflow:hidden}.viewer{min-height:650px;position:relative}.viewer canvas{display:block;width:100%;height:650px}.viewer .label{position:absolute;left:18px;top:16px;background:#0b1018cc;border:1px solid #374151;border-radius:999px;padding:5px 10px;font-size:12px}.viewer .status{position:absolute;right:18px;top:16px;color:var(--green);font-size:12px}.caption{padding:14px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}.caption strong{font-size:18px}.caption span{color:var(--muted);font-size:12px}.info{padding:20px}.info h2{font-size:17px;margin:0 0 14px}.skin{border-top:1px solid var(--line);padding:16px 0}.skin:first-of-type{border-top:0;padding-top:0}.skin h3{margin:0 0 7px;font-size:18px;display:flex;justify-content:space-between;gap:12px}.tag{font-size:11px;border-radius:999px;padding:3px 8px;white-space:nowrap;border:1px solid #3b4658;color:var(--muted);font-weight:500}.tag.ok{border-color:#176b53;color:var(--green)}.tag.cfg{border-color:#735b1c;color:var(--amber)}dl{display:grid;grid-template-columns:92px 1fr;gap:4px 12px;margin:0;font-size:13px}dt{color:var(--muted)}dd{margin:0;color:#d7dee7;word-break:break-word}.evidence{margin-top:8px;padding:9px 11px;border-left:3px solid #6d5bd0;background:#111827;color:#bbc5d3;font-size:12px}.evidence b{color:#e8eaf0}.foot{margin-top:20px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:#c4b5fd}
+@media(max-width:900px){main{padding:20px 15px}.head{display:block}.basis{text-align:left;margin-top:10px}.grid{grid-template-columns:1fr}.viewer,.viewer canvas{min-height:520px;height:520px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <div><div class="eyebrow">PC 测试服 · 2026-10-15</div><h1>本次真正新增的武器皮肤</h1><p>三方差分确认的 3 个主体：A-SOUL 突击步枪、手枪、电磁机枪。</p></div>
+    <div class="basis">来源：weapon_skin_data / behavior_res / sfx_function<br>模型展示按当前客户端资源索引实测</div>
+  </div>
+  <section class="grid">
+    <div class="card viewer"><div class="label">1110188 · 几何预览</div><div class="status" id="status">加载中…</div><canvas id="c"></canvas><div class="caption"><strong>A-SOUL · 突击步枪</strong><span class="mono">skin_1001_017</span></div></div>
+    <div class="card info">
+      <h2>三条新增皮肤配置</h2>
+      <article class="skin"><h3>1110188 <span class="tag ok">模型已命中</span></h3><dl><dt>名称线索</dt><dd>A-SOUL（SFX 记录：ASoul）</dd><dt>武器</dt><dd>突击步枪 · weapon_type=1</dd><dt>品级</dt><dd>5 · 典藏/联动档</dd><dt>模型</dt><dd class="mono">skin_1001_017.gim</dd><dt>表现</dt><dd>命中、击败、伤害跳字、准心、战斗音效、切枪、ASoul 特殊交互</dd></dl><div class="evidence"><b>行为资源：</b>fire / hit / trajectory / defeat 四条链齐全；<b>ASoul</b> 直接出现在特殊交互资源。</div></article>
+      <article class="skin"><h3>1110191 <span class="tag cfg">配置已出</span></h3><dl><dt>名称</dt><dd>当前中文名未闭合</dd><dt>武器</dt><dd>手枪 · weapon_type=6</dd><dt>品级</dt><dd>2 · 由主表 level 直接确认</dd><dt>模型</dt><dd class="mono">skin_1003_013.gim</dd><dt>资源状态</dt><dd>当前 PC 客户端索引未命中该模型实体</dd></dl><div class="evidence"><b>判定依据：</b>主表 model_path + weapon_type + level；没有把相邻 SFX 名硬套到它身上。</div></article>
+      <article class="skin"><h3>1110192 <span class="tag cfg">配置已出</span></h3><dl><dt>名称</dt><dd>当前中文名未闭合</dd><dt>武器</dt><dd>电磁机枪 · weapon_type=8</dd><dt>品级</dt><dd>4 · 由主表 level 直接确认</dd><dt>模型</dt><dd class="mono">skin_1008_007.gim</dd><dt>表现</dt><dd>开火、命中、真实弹道、特殊弹道、轨迹资源</dd><dt>资源状态</dt><dd>当前 PC 客户端索引未命中该模型实体</dd></dl><div class="evidence"><b>行为资源：</b>多条 <span class="mono">skin_1008_007</span> 路径与主表模型词干一致；其中一条轨迹路径误指向旧弓皮肤，按字段逐条保留，不混绑。</div></article>
+      <div class="foot">灰模只展示已命中的 1110188 几何，不用别的皮肤贴图冒充颜色。1110191、1110192 已还原到配置层，等模型实体进入客户端后再接完整外观。</div>
+    </div>
+  </section>
+</main>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import {GLTFLoader} from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+window.__loaded=0;window.__err='';
+const canvas=document.querySelector('#c'), status=document.querySelector('#status');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x0b1018,1);
+const scene=new THREE.Scene();scene.fog=new THREE.Fog(0x0b1018,8,22);
+const camera=new THREE.PerspectiveCamera(34,1,.05,100);camera.position.set(17,5,1.2);camera.lookAt(0,0,0);
+scene.add(new THREE.HemisphereLight(0xb9c7ff,0x111827,2.2));const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(4,7,6);scene.add(key);const rim=new THREE.DirectionalLight(0x7c5cff,2.4);rim.position.set(-5,2,-4);scene.add(rim);
+const floor=new THREE.Mesh(new THREE.CircleGeometry(6,64),new THREE.MeshBasicMaterial({color:0x131a25,transparent:true,opacity:.82}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.7;scene.add(floor);
+let obj=null, ang=0;
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};addEventListener('resize',resize);resize();
+new GLTFLoader().load('./assets/3d/weapon_skin/1110188_A_SOUL_1001_017.glb',g=>{obj=g.scene;obj.traverse(o=>{if(o.isMesh){o.material=new THREE.MeshStandardMaterial({color:0xcbd5e1,metalness:.38,roughness:.34,emissive:0x27345f,emissiveIntensity:.52});o.castShadow=true;o.receiveShadow=true}});const box=new THREE.Box3().setFromObject(obj),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());obj.position.sub(center);obj.position.y=-.15;scene.add(obj);camera.position.set(17,5,1.2);camera.lookAt(0,0,0);status.textContent='几何已加载 · 灰模';window.__loaded=1},undefined,e=>{window.__err=String(e);status.textContent='加载失败'});
+function tick(){requestAnimationFrame(tick);if(obj){ang+=.003;obj.rotation.y=ang}renderer.render(scene,camera)}tick();
+</script>
+</body>
+</html>

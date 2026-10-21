@@ -25,6 +25,10 @@ SOURCE_REL = Path("data/boards/weapon_skin_sfx_text_sources.json")
 OUTPUT_REL = Path("data/boards/weapon_skin_static_candidates_v01.json")
 PACKAGE_SHA = "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f"
 SOURCE_ID = "weapon-skin-historical-board-static-adapter"
+# 本板是【冻结体验服快照】的静态候选投影：只有源板里锁在冻结快照上的行才可回放。
+# PC 测试服热更覆盖层（provenance.source_id != FROZEN_BOARD_SOURCE_ID）的行不进本板，
+# 改由 meta.excluded_overlay_rows 逐条留档（不静默丢），主图鉴板仍照常展示它们。
+FROZEN_BOARD_SOURCE_ID = "documents-py314-current"
 SAFE_STATIC_FIELDS = (
     "model_path", "level", "grade", "sale_ts", "weapon_type",
     "weapon_type_label", "weapon_type_state", "version_status", "sfx_consensus_state",
@@ -152,13 +156,20 @@ def _ui_candidates(source: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
-def _flatten(source_board: dict[str, Any]) -> list[tuple[dict[str, Any], str]]:
-    flattened: list[tuple[dict[str, Any], str]] = []
+def _flatten(source_board: dict[str, Any]) -> list[tuple[dict[str, Any], str, str | None]]:
+    """展开成 (记录, 层级, 生效来源 id)。
+
+    嵌套时限变体自身没有 provenance.source_id ⇒ 继承父行的来源 id（否则会被来源过滤误杀，
+    2026-10-16 实测踩过：一次性丢掉全部 20 条时限变体）。
+    """
+    flattened: list[tuple[dict[str, Any], str, str | None]] = []
     for item in source_board.get("items") or []:
         layer = str(item.get("catalog_layer") or "current_parent")
-        flattened.append((item, layer))
+        parent_source = (item.get("provenance") or {}).get("source_id")
+        flattened.append((item, layer, parent_source))
         for nested in item.get("variant_items") or []:
-            flattened.append((nested, "legacy_nested_record"))
+            nested_source = (nested.get("provenance") or {}).get("source_id") or parent_source
+            flattened.append((nested, "legacy_nested_record", nested_source))
     return flattened
 
 
@@ -349,8 +360,15 @@ def build_board(root: Path = ROOT) -> dict[str, Any]:
     source_path = root / SOURCE_REL
     source_board = _load_json(source_path)
     board_lock = _source_lock(source_path, root)
-    flattened = _flatten(source_board)
-    records = [_record(source, layer, board_lock) for source, layer in flattened]
+    all_rows = _flatten(source_board)
+    flattened = [row for row in all_rows if row[2] == FROZEN_BOARD_SOURCE_ID]
+    excluded_overlay_rows = [
+        {"skin_id": row[0].get("skin_id"), "source_id": row[2],
+         "reason": "锁在 PC 测试服热更 payload 上，无法对冻结体验服快照回放 ⇒ 不进本冻结产物（主图鉴板仍展示）"}
+        for row in all_rows
+        if row[2] != FROZEN_BOARD_SOURCE_ID
+    ]
+    records = [_record(source, layer, board_lock) for source, layer, _source in flattened]
     # 顶层只放永久主记录：时限记录按 permanent_skin_id 归入父卡（玩家视图），审计字段保留在父卡内。
     items, nested_timed_rows = _group_timed_records(records)
     keys = [item["structural_record_key"] for item in items]
@@ -404,7 +422,10 @@ def build_board(root: Path = ROOT) -> dict[str, Any]:
                 "玩家视图分组：顶层只展示永久主记录（+行为资源预告），时限记录（variant_type=timed，"
                 "permanent_skin_id=时限ID//10）归入父卡 timed_variants 紧凑列表，不单独成卡、不参与顶层计数与排序；"
                 "时限记录自身的静态与审计字段完整保留在 timed_variants[].record 内，技术板仍可逐条追溯。"
+                "覆盖层边界：本板只投影锁在冻结体验服快照上的行；PC 测试服热更覆盖行"
+                "（见 excluded_overlay_rows）不在本板内，它们在主图鉴板 weapon_skin_sfx_text_sources 展示。"
             ),
+            "excluded_overlay_rows": excluded_overlay_rows,
             "player_view_grouping": {
                 "group_by": "permanent_skin_id",
                 "top_level": "permanent_records_only",

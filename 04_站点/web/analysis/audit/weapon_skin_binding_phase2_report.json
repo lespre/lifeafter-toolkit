@@ -1,0 +1,287 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "1_mapping_tables_parsed": {
+  "skin_2_sfx_function_map": {
+   "status": "parsed",
+   "table": "skin_2_sfx_function_map",
+   "entry": 25444,
+   "rows": 75,
+   "key_min": 1110004,
+   "key_max": 1110183,
+   "refs_total": 359,
+   "refs_per_row_set": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    14
+   ],
+   "nodes": 75,
+   "snapshot": "test-documents-ba8a239a"
+  },
+  "skin_2_sfx_function_map_detail": {
+   "status": "parsed",
+   "table": "skin_2_sfx_function_map_detail",
+   "entry": 18793,
+   "rows": 75,
+   "key_min": 1110004,
+   "key_max": 1110183,
+   "refs_total": 13,
+   "refs_per_row_set": [
+    0,
+    1,
+    2,
+    9
+   ],
+   "nodes": 75,
+   "snapshot": "test-documents-ba8a239a"
+  },
+  "skin_function_item_id_to_anim_name": {
+   "status": "parsed",
+   "table": "skin_function_item_id_to_anim_name",
+   "entry": 884,
+   "rows": 44,
+   "key_min": 1120018,
+   "key_max": 1120364,
+   "refs_total": 12,
+   "refs_per_row_set": [
+    0,
+    12
+   ],
+   "nodes": 44,
+   "snapshot": "test-documents-ba8a239a"
+  }
+ },
+ "2_mapping_real_structure": {
+  "common": "公共头 263B + 'x{' frame；索引层标准（节点表 (hash,off) + 行表 parse_index），行内容为引用图而非行式字段",
+  "skin_2_sfx_function_map": "row_key = skin_item_id（75 行，1110004–1110183）；节点 hash 与 weapon_skin_data 完全同源；行 ref 数 = 该皮肤 sfx_function 行数（74/75 一致）⇒ skin → N×sfx_function 一对多",
+  "skin_2_sfx_function_map_detail": "同 75 行 key 空间，配套参数（每皮肤组数 0–9），与主 map 配套：skin → map → detail → function/params",
+  "skin_function_item_id_to_anim_name": "row_key ∈ sfx_function row key 空间（1120018–1120364），44 行 ⊂ 348；经 sfx_function.skin_id 落到皮肤",
+  "cardinality": {
+   "map_rows": 75,
+   "map_vs_sfx_count_match": 74,
+   "anomaly": [
+    1110162
+   ]
+  }
+ },
+ "3_runtime_consumer": {
+  "found": false,
+  "detail": "本快照未定位到直接消费三张 mapping 表的 runtime 模块（script 通道只含 data 包）；E5 本阶段 0 条。索引同源（hash(skin_id) 与 weapon_skin_data 节点一致）是结构层证据，不冒称 E5"
+ },
+ "4_sfx_unresolved_remaining": {
+  "phase1_unresolved_candidate": 195,
+  "after_phase2": {
+   "verified_explicit_mapping": 345,
+   "verified_indirect_mapping": 2,
+   "still_unresolved": 1,
+   "rejected": 0
+  },
+  "note": "E4（map 行 ref 数一致）把未证行按皮肤整体升级；未升级者仅 E1+E2"
+ },
+ "5_e4_e5_verified": {
+  "E4_verified_bindings": 624,
+  "E4_E5_verified_bindings": 0,
+  "E5_bindings": 0
+ },
+ "6_effect_show": {
+  "parsed_rows": 2,
+  "content_rows": 59,
+  "registry_rows": 56,
+  "verified_bindings": 86,
+  "status": "parsed",
+  "reason": null,
+  "raw_shape": [
+   "dict:1110184,1110182,1110179",
+   "[1110184, 1110182, 1110179, 1110178, 111"
+  ],
+  "corroboration": "与 sfx_function 只做到 same_skin / same_category；未证 same business presentation ⇒ 不 merge"
+ },
+ "7_behavior_res_shared": {
+  "shared_rows": [
+   1110007,
+   1110035,
+   1110116,
+   1110132,
+   1110143,
+   1110160,
+   1110174,
+   1110197
+  ],
+  "explanation": "这些行的主键是 canonical 皮肤，但行内资源路径词干指向**另一个**皮肤或缺失 ⇒ 被记为共享行为资源（unresolved），不给 verified"
+ },
+ "8_sound_pendant_nucleus": {
+  "weapon_skin.sound": {
+   "table": "weapon_skin_sound_data_for_query",
+   "row_count": 390,
+   "counts": {
+    "unresolved": 390
+   },
+   "skin_fields_seen": {},
+   "role": "sound",
+   "effect_type_hint": "combat_sound"
+  },
+  "weapon_skin.pendant": {
+   "table": "weapon_skin_pendant_data",
+   "row_count": 17,
+   "counts": {
+    "unresolved": 17
+   },
+   "skin_fields_seen": {},
+   "role": "pendant",
+   "effect_type_hint": null
+  },
+  "weapon_skin.nucleus_conf": {
+   "table": "weapon_skin_replace_nucleus_conf",
+   "row_count": 324,
+   "counts": {
+    "verified": 314,
+    "unresolved": 10
+   },
+   "skin_fields_seen": {},
+   "role": "nucleus",
+   "effect_type_hint": "nucleus_linkage"
+  }
+ },
+ "9_relation_kinds": {
+  "identity_binding": 203,
+  "presentation_binding": 1239,
+  "corroboration_binding": 0
+ },
+ "10_matrix": {
+  "cells": 413,
+  "cross_source_verified": 168,
+  "single_source": 245
+ },
+ "11_source_classes": {
+  "content_source_rows": 1248,
+  "mapping_source_rows": 194,
+  "mapping_source_counted_as_independent": false
+ },
+ "12_independent_source_per_type": {
+  "combat_crosshair": {
+   "1": 29
+  },
+  "combat_sound": {
+   "1": 46,
+   "2": 31
+  },
+  "damage_number": {
+   "1": 35
+  },
+  "exclusive_combat_animation": {
+   "1": 18
+  },
+  "exclusive_idle_animation": {
+   "1": 17
+  },
+  "hit_effect": {
+   "1": 18,
+   "2": 55
+  },
+  "kill_effect": {
+   "1": 6,
+   "2": 28
+  },
+  "nucleus_linkage": {
+   "1": 29,
+   "2": 6
+  },
+  "other": {
+   "1": 13
+  },
+  "projectile_effect": {
+   "1": 12,
+   "2": 43
+  },
+  "slash_effect": {
+   "1": 12,
+   "2": 5
+  },
+  "special_interaction": {
+   "1": 10
+  }
+ },
+ "13_cross_source_types": {
+  "two_or_more": [
+   "combat_sound",
+   "hit_effect",
+   "kill_effect",
+   "nucleus_linkage",
+   "projectile_effect",
+   "slash_effect"
+  ],
+  "three_or_more": []
+ },
+ "14_single_source_types": [
+  "combat_crosshair",
+  "damage_number",
+  "exclusive_combat_animation",
+  "exclusive_idle_animation",
+  "other",
+  "special_interaction"
+ ],
+ "14_note": "另有同时存在单源与跨源 cell 的类型：combat_sound, hit_effect, kill_effect, nucleus_linkage, projectile_effect, slash_effect",
+ "15_no_verified_source_types": [],
+ "16_source_vs_mapping_separated": true,
+ "17_open_edges": [
+  {
+   "from": "skin_item_id",
+   "to": "timed_skin_id → permanent_skin_id",
+   "relation": "variant/timed",
+   "status": "unresolved",
+   "why": "timed relation 本阶段不重调查；变体行在 canonical body 中为独立行"
+  },
+  {
+   "from": "skin_item_id",
+   "to": "sale/shop/acquisition config",
+   "relation": "listing/acquisition",
+   "status": "unresolved",
+   "why": "未发现引用 skin_item_id 的 sale/shop/acquisition 消费者或配置 ⇒ listing_status 只能 unresolved"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:weapon_kind.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:coldarm_type.skin_item",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  },
+  {
+   "from": "source:weapon_skin.main",
+   "to": "source:skin.replace_anims",
+   "relation": "候选（本阶段未解）",
+   "status": "rejected",
+   "why": "payload 可读但 decoder 出 0 行 ⇒ 本轮无法证明连边（不是'不存在'，是'暂无证据'）；按纪律记 rejected-for-this-phase 而非 verified"
+  }
+ ],
+ "18_presentation_system_graduated": false,
+ "18_why": "explicit map/detail 的 **逐 ref 语义**与 anim_name 文本未落；E5 runtime consumer 未定位；sound/pendant/nucleus 多数仍 unresolved；因此表现系统尚不可单独宣布毕业",
+ "counts": {
+  "bindings_total": 1442,
+  "sfx": {
+   "verified": 347,
+   "unresolved": 1
+  },
+  "behavior_res": {
+   "verified": 69,
+   "shared_behavior": 8,
+   "unresolved": 3
+  },
+  "effect_show": {
+   "verified": 56,
+   "unresolved": 3
+  }
+ }
+}

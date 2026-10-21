@@ -1,0 +1,68 @@
+{
+ "generated_at": "2026-10-19T00:48:23+08:00",
+ "grade_status": "unresolved",
+ "1_grade_counts_provisional": {
+  "chuan_shi": 0,
+  "dian_cang": 0,
+  "zi_pi": 0,
+  "other": 126,
+  "unresolved": 0
+ },
+ "1_note": "等级计数以 legacy_grade_label 为临时基准（canonical 映射未闭环）",
+ "5_completeness_rate_by_tier_provisional": {},
+ "6_effect_type_coverage": {
+  "hit_effect": 65,
+  "kill_effect": 33,
+  "damage_number": 35,
+  "projectile_effect": 60,
+  "slash_effect": 32,
+  "combat_sound": 71,
+  "combat_crosshair": 29,
+  "exclusive_combat_animation": 21,
+  "exclusive_idle_animation": 16,
+  "special_interaction": 10,
+  "nucleus_linkage": 46,
+  "other": 29,
+  "unresolved": 0
+ },
+ "7_top_missing_provisional": [],
+ "8_source_unresolved_not_missing": [
+  "weapon_skin.effect_show",
+  "weapon_skin.coldarm_knife_light",
+  "weapon_skin.accessory_items",
+  "weapon_kind.skin_item",
+  "coldarm_type.skin_item",
+  "skin.replace_anims",
+  "shop.common_exchange"
+ ],
+ "9_exception": {
+  "1110023": {
+   "name": "玉饮琼花",
+   "grade": "zi_pi",
+   "kind": [
+    "grade_exception",
+    "presentation_exception"
+   ],
+   "note": "紫皮规则的明确例外：实际拥有超出紫皮标配的表现项；不得因此修改全体紫皮规则"
+  }
+ },
+ "10_duplicate_ui_sections": {
+  "before": [
+   "特效详情",
+   "战斗表现"
+  ],
+  "after": [
+   "特效与战斗表现（单一栏目）"
+  ],
+  "status": "merged（技术详情保留为折叠区，不是业务栏目）"
+ },
+ "11_multi_source_effect_lineage": {
+  "supported": true,
+  "how": "effect_type 唯一 + source_refs 多源；UI 只显示一次；lineage 落在 effects[type].source_refs"
+ },
+ "12_ui_classification_from_table_name": {
+  "count": 0,
+  "rule": "UI 分类只来自 field semantic → effect_type，禁止用 source/table 名当栏目"
+ },
+ "effect_completeness_rows": 126
+}

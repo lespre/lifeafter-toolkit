@@ -130,17 +130,25 @@ class MergeStats:
     parallel_workers: int = 0    # ★ 实际用的解码并行度（0 = 串行）
     removed_candidates: List[str] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
+    # ★ 2026-10-17 修：此前只留 15 条样例，「拒写 961 条到底是哪些」在台账里查不到。
+    #   collect_lists=True 时把每一类的**完整清单**收在这里，由调用方落成 tsv。
+    collect_lists: bool = False
+    lists: Dict[str, List[str]] = field(default_factory=lambda: {
+        "added": [], "updated": [], "same": [], "failed": [], "suspicious": []})
     samples: Dict[str, List[str]] = field(default_factory=lambda: {
         "added": [], "updated": [], "same": [], "failed": [], "suspicious": []})
 
     def note(self, kind: str, rel: str, keep: int = 15) -> None:
         if len(self.samples.get(kind, [])) < keep:
             self.samples.setdefault(kind, []).append(rel)
+        if self.collect_lists:
+            self.lists.setdefault(kind, []).append(rel)
 
     def as_dict(self) -> dict:
         d = {"source": self.source, "layer": self.layer, "scanned": self.scanned,
              "added": self.added, "updated": self.updated, "same": self.same,
-             "failed": self.failed, "named": self.named, "unnamed": self.unnamed,
+             "failed": self.failed, "suspicious": self.suspicious,
+             "named": self.named, "unnamed": self.unnamed,
              "removed_candidates": self.removed_candidates[:200],
              "samples": self.samples}
         if self.errors:
@@ -243,6 +251,7 @@ def merge_script_pack(pack: Path, tree_root: Path, index_db: Path,
                       container: Optional[str] = None,
                       only_named: bool = False,
                       allow_suspicious: bool = False,
+                      collect_lists: bool = False,
                       workers: Optional[int] = None) -> MergeStats:
     """② 脚本层：把一个 .npk 的条目按 fid→路径 合并进 tree_root。
 
@@ -254,6 +263,7 @@ def merge_script_pack(pack: Path, tree_root: Path, index_db: Path,
          抛 `unable to open database file` 崩栈 —— 调用方看不出是配置问题。
     """
     st = MergeStats(source=str(pack), layer="脚本层")
+    st.collect_lists = bool(collect_lists)
     pack = Path(pack)
     if not pack.is_file():
         st.errors.append("包不存在：%s" % pack)

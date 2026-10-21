@@ -53,13 +53,13 @@ def validate_acceptance(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root)
     data = root / "data"
 
-    item_audit = _load_json("E:/la拆包项目/03_执行/10_索引/site_data" / "audit" / "item_master_v01_audit.json")
+    item_audit = _load_json(Path("E:/la拆包项目/03_执行/10_索引/site_data") / Path("audit") / "item_master_v01_audit.json")
     fashion_audit = _load_json(data / "fashion_identity_audit.json")
-    lottery_audit = _load_json("E:/la拆包项目/03_执行/10_索引/site_data" / "audit" / "lottery_pool_resolved_v01_audit.json")
+    lottery_audit = _load_json(Path("E:/la拆包项目/03_执行/10_索引/site_data") / Path("audit") / "lottery_pool_resolved_v01_audit.json")
 
     item_rows = 0
     item_ids: set[int] = set()
-    with ("E:/la拆包项目/03_执行/10_索引/site_data" / "ITEM_MASTER_v01.jsonl").open(encoding="utf-8") as handle:
+    with (Path("E:/la拆包项目/03_执行/10_索引/site_data") / "ITEM_MASTER_v01.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
@@ -79,7 +79,7 @@ def validate_acceptance(root: Path = ROOT) -> dict[str, Any]:
     channel_merges = 0
     runtime_final_false_claims = 0
     manifest: dict[str, Any] | None = None
-    with ("E:/la拆包项目/03_执行/10_索引/site_data" / "LOTTERY_POOL_RESOLVED_v01.jsonl").open(encoding="utf-8") as handle:
+    with (Path("E:/la拆包项目/03_执行/10_索引/site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
@@ -299,7 +299,7 @@ def _v3_provenance(
 
 
 def _item_master_board(root: Path) -> dict[str, Any]:
-    path = root / "E:/la拆包项目/03_执行/10_索引/site_data" / "ITEM_MASTER_v01.jsonl"
+    path = root / Path("E:/la拆包项目/03_执行/10_索引/site_data") / "ITEM_MASTER_v01.jsonl"
     lock = _source_lock(path, "ITEM_MASTER_v01", root)
     items: list[dict[str, Any]] = []
     with path.open(encoding="utf-8") as handle:
@@ -358,8 +358,8 @@ def _item_master_board(root: Path) -> dict[str, Any]:
 
 
 def _fashion_board(root: Path) -> dict[str, Any]:
-    path = root / "E:/la拆包项目/03_执行/10_索引/site_data" / "FASHION_IDENTITY_CANDIDATES.jsonl"
-    audit = _load_json(root / "data" / "fashion_identity_audit.json")
+    path = root / Path("E:/la拆包项目/03_执行/10_索引/site_data") / "FASHION_IDENTITY_CANDIDATES.jsonl"
+    audit = _load_json(root / Path("data") / "fashion_identity_audit.json")
     lock = _source_lock(path, "FASHION_IDENTITY_CANDIDATES", root)
     groups: OrderedDict[tuple[Any, ...], dict[str, Any]] = OrderedDict()
     with path.open(encoding="utf-8") as handle:
@@ -395,7 +395,7 @@ def _fashion_board(root: Path) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
     for group in groups.values():
         row = group["base"]
-        table_short = row["table"].replace("\\", "/").rsplit("/", 1)[-1]
+        table_short = row["table"].replace("\\Path(", ") / Path(").rsplit(") / ", 1)[-1]
         upstream = {
             "package_sha256": row["package_sha256"],
             "entry_index": row["entry"],
@@ -454,7 +454,10 @@ def _fashion_board(root: Path) -> dict[str, Any]:
 
 
 def _weapon_skin_board(root: Path) -> dict[str, Any]:
-    entries_root = root.parent / "03_执行" / "config_work" / "script_py314_docs_BA8A239A" / "entries"
+    _proj = Path("E:/la拆包项目")
+    entries_root = _proj / "03_执行" / "30_分析" / "config_work" / "script_py314_docs_BA8A239A" / "entries"
+    if not entries_root.is_dir():
+        entries_root = _proj / "03_执行" / "config_work" / "script_py314_docs_BA8A239A" / "entries"
     sources = [
         ("p4c-equip-skin-shell", entries_root / "013001.bin", 13001, "822E3046861AA53C"),
         ("p4c-equip-skin-functions", entries_root / "015678.bin", 15678, "9CF387E2D156513B"),
@@ -516,7 +519,7 @@ def _weapon_skin_board(root: Path) -> dict[str, Any]:
 
 
 def _lottery_board(root: Path) -> dict[str, Any]:
-    path = root / "E:/la拆包项目/03_执行/10_索引/site_data" / "LOTTERY_POOL_RESOLVED_v01.jsonl"
+    path = root / Path("E:/la拆包项目/03_执行/10_索引/site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl"
     lock = _source_lock(path, "LOTTERY_POOL_RESOLVED_v01", root)
     items: list[dict[str, Any]] = []
     manifest: dict[str, Any] | None = None
@@ -613,7 +616,7 @@ def _write_json(path: Path, value: Any) -> None:
 def build_boards(root: Path = ROOT, out_dir: Path | None = None) -> dict[str, Any]:
     """Generate the five v0.1 boards from frozen artifacts only."""
     root = Path(root)
-    out_dir = Path(out_dir) if out_dir is not None else root / "data" / "boards"
+    out_dir = Path(out_dir) if out_dir is not None else root / Path("data") / "boards"
     acceptance = validate_acceptance(root)
     if acceptance["result"] != "pass":
         raise RuntimeError("Wiki v0.1 hard-gate acceptance failed")
@@ -738,7 +741,7 @@ def rewrite_publication_policy(policy: dict[str, Any]) -> dict[str, Any]:
 
 
 def apply_publication_policy(root: Path = ROOT) -> dict[str, Any]:
-    policy_path = Path(root) / "data" / "publication_policy.json"
+    policy_path = Path(root) / Path("data") / "publication_policy.json"
     policy = _load_json(policy_path)
     rebuilt = rewrite_publication_policy(policy)
     _write_json(policy_path, rebuilt)
@@ -747,6 +750,6 @@ def apply_publication_policy(root: Path = ROOT) -> dict[str, Any]:
 
 if __name__ == "__main__":
     result = build_boards(ROOT)
-    _write_json(ROOT / "E:/la拆包项目/03_执行/10_索引/site_data" / "audit" / "wiki_v01_acceptance.json", result)
+    _write_json(ROOT / Path("E:/la拆包项目/03_执行/10_索引/site_data") / Path("audit") / "wiki_v01_acceptance.json", result)
     apply_publication_policy(ROOT)
     print(json.dumps(result, ensure_ascii=False, indent=2))

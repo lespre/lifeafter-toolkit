@@ -404,9 +404,13 @@ class WeaponSkinCardVisualTests(unittest.TestCase):
         self.assertTrue(seen & real, f"至少应出现真实品级：{seen}")
         self.assertTrue(seen - real <= {"品级未确认"},
                         f"非真实品级只能用中性标签「品级未确认」：{seen - real}")
-        # 类名覆盖：真实层级 + unknown 中性
-        for cls in ("t2", "t3", "t4", "t5", "t6", "unknown"):
+        # 类名覆盖：真实层级必须全在；unknown 中性类只在「数据里确实有未配置品级」时才要求
+        # ★ 2026-10-17：1110189（喷火器）按用户口径标为传世后，全板 122 条都有品级 ⇒
+        #   unknown 类自然不再出现；把这条改成条件断言，别让数据变化把测试钉死。
+        for cls in ("t2", "t3", "t4", "t5", "t6"):
             self.assertIn(cls, self.drive["gradeClasses"])
+        if any(not i.get("grade") for i in self.board["items"]):
+            self.assertIn("unknown", self.drive["gradeClasses"])
 
     def test_grade_tiers_come_from_snapshot_values_only(self):
         sys.path.insert(0, str(ROOT / "tools"))
@@ -506,15 +510,17 @@ class WeaponSkinAggregationAndSortTests(unittest.TestCase):
 
     def test_top_level_counts_exclude_timed_variants(self):
         stats = self.cand["stats"]
-        self.assertEqual(stats["static_records"], 139)
-        self.assertEqual(stats["top_level_records"], 119)
+        # 10-16：PC 测试服热更覆盖层 4 行不进冻结候选板（见 meta.excluded_overlay_rows）⇒
+        # 静态记录 139→138、顶层 119→118（其中 1110192 由仅行为资源行升为主表行，behavior_only_rows 1→0）
+        self.assertEqual(stats["static_records"], 138)
+        self.assertEqual(stats["top_level_records"], 118)
         self.assertEqual(stats["nested_timed_variant_rows"], 20)
         self.assertEqual(stats["timed_rows_at_top_level"], 0)
-        self.assertEqual(len(self.cand["items"]), 119)
+        self.assertEqual(len(self.cand["items"]), 118)
         grouping = self.cand["meta"]["player_view_grouping"]
         self.assertEqual(grouping["top_level"], "permanent_records_only")
         self.assertEqual(grouping["timed_rows_at_top_level"], 0)
-        self.assertEqual(self.drive["cards"], 119)
+        self.assertEqual(self.drive["cards"], 118)
 
     def test_candidate_cards_render_compact_variants_not_subcards(self):
         self.assertEqual(self.drive["variantBlocks"], 20)
@@ -534,13 +540,13 @@ class WeaponSkinAggregationAndSortTests(unittest.TestCase):
     # ── 2. 筛选可用性 ──
     def test_weapon_type_filter_effective(self):
         self.assertGreater(self.drive["typeCount"], 0)
-        self.assertLess(self.drive["typeCount"], 119)
+        self.assertLess(self.drive["typeCount"], 118)
         self.assertGreater(self.drive_cat["typeCount"], 0)
-        self.assertLess(self.drive_cat["typeCount"], 119)
+        self.assertLess(self.drive_cat["typeCount"], 118)
 
     def test_grade_filter_effective(self):
         self.assertGreater(self.drive_cat["gradeCount"], 0)
-        self.assertLess(self.drive_cat["gradeCount"], 119)
+        self.assertLess(self.drive_cat["gradeCount"], 118)
         levels = {i["static_fields"]["level"] for i in self.cand["items"] if i.get("static_fields")}
         self.assertTrue({2, 3, 4, 5, 6} & levels)
 

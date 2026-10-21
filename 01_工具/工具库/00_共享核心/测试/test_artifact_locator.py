@@ -157,6 +157,12 @@ def test_真实全部容器在树里都能解析():
         conts = [c for (c,) in db.execute("SELECT DISTINCT container FROM entries")]
     finally:
         db.close()
+    # ★ 2026-10-17：索引改成从【客户端根】重建后，`E:\mrzh\.dlstorage\downloading\*\...`
+    #   这类**下载缓存的临时容器**也进了 entries —— 它们按设计不进还原树，
+    #   不该被这条契约要求「必须解析得到」。按前缀豁免并说明，不放松其它容器。
+    def _in_tree_scope(c: str) -> bool:
+        return not str(c).replace("/", "\\").lower().startswith(".dlstorage\\")
+    conts = [c for c in conts if _in_tree_scope(c)]
     empty, broken = [], []
     for c in conts:
         rows = tr.rows(c)

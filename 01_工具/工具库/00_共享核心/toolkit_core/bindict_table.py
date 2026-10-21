@@ -129,8 +129,10 @@ def parse_index(blob: bytes) -> list[tuple[int, int]]:
     # ★ 2026-10-01 补：第三字节除了 0x0b 还有 0x01 变体（实测 trade_preorder_config_data
     #   的索引尾是 76 05 01 0N —— 单行全局配置表，字段 max_preorder_count /
     #   max_preorder_player / preorder_protect_time 与 _chs 池逐一对上，故并列支持）。
-    if tail[:3] not in (b"\x76\x01\x0b", b"\x76\x0b\x0b", b"\x76\x05\x0b",
-                        b"\x76\x01\x01", b"\x76\x0b\x01", b"\x76\x05\x01"):
+    # ★ 2026-10-21：放宽为「0x76 开头」即可 —— 第三字节还有 0x22 等变体
+    #   （实测 equip_combat_power_conf_data 索引尾 = 76 05 22 01）。
+    #   后续候选校验（节点偏移必须落在 blob 内）会挡住误判。
+    if not (len(tail) >= 4 and tail[0] == 0x76):
         # fallback（2026-09-06 optional_hd_exchange_shop_data 002962 实例）：de 前缀缺失表
         # ——表头 count 非 de（如 002962 blob[0:4]=32 行数），0x76 索引尾挂在 blob 末尾。
         # 原路径必然 ValueError=只新增成功可能，零回归；取最靠尾的合法索引头。
@@ -253,11 +255,83 @@ def _collect_schemas(blob: bytes, index_rows: list[tuple[int, int]]) -> set[int]
     return schemas
 
 
+def _lenient_boundary(index_rows: list[tuple[int, int]], start: int, de: int) -> int | None:
+    """宽松行边界：取索引里比 ``start`` 大的最近一个行起点。
+
+    只用于 ``lenient=True`` 且严格边界判定失败（``row_end`` 里没有这个起点，
+    即该行起点没被认成"合法行头"）的行。严格路径永远不调用它 ⇒ 默认输出不变。
+    """
+    candidates = [s for _k, s in index_rows if s > start]
+    return min(candidates) if candidates else de
+
+
+def _parse_tail_lists(blob: bytes, pos: int, end: int, pool: list[str]) -> tuple[list[dict[str, Any]], int]:
+    """把行尾未解析的混排列表尽量解成结构化块，返回 (blocks, 停下的偏移)。
+
+    实测的两种块（space_data 275 行混排尾部全部按此消解，无例外形态）：
+      · ``07 <uleb count> count x (类型字节, 值)``  —— 异构列表（类型逐元素自带）
+      · ``27 <类型字节> <uleb count> count x 值``   —— 同构列表（类型在头上）
+    两者可任意串接（实测同一行尾里出现 07/27 交替，最多 9 块）。
+
+    解析只按"块"逐个推进，遇到不认识的字节就停下并把剩余字节交回调用方
+    （调用方写进 ``__tail__.leftover_hex``），绝不猜长度、绝不跳过。
+    """
+    blocks: list[dict[str, Any]] = []
+    p = pos
+    while p < end:
+        marker = blob[p]
+        try:
+            if marker == 0x07:
+                count, p = uleb(blob, p + 1, end)
+                values = []
+                for _ in range(count):
+                    if p >= end:
+                        raise ValueError("truncated 0x07 element")
+                    type_byte = blob[p]
+                    value, p = _decode_value(blob, p + 1, type_byte, pool)
+                    values.append((f"0x{type_byte:02x}", value))
+                blocks.append({"shape": "0x07", "count": count, "values": values})
+                continue
+            if marker == 0x27:
+                if p + 1 >= end:
+                    raise ValueError("truncated 0x27 header")
+                type_byte = blob[p + 1]
+                count, p = uleb(blob, p + 2, end)
+                values = []
+                for _ in range(count):
+                    value, p = _decode_value(blob, p, type_byte, pool)
+                    values.append((f"0x{type_byte:02x}", value))
+                blocks.append({"shape": "0x27", "type": f"0x{type_byte:02x}",
+                               "count": count, "values": values})
+                continue
+        except (IndexError, ValueError):
+            break
+        break
+    return blocks, p
+
+
+def _tail_info(blob: bytes, pos: int, end: int, pool: list[str], reason: str) -> dict[str, Any]:
+    """行尾证据块：已解析块 + 解析到的字节数 + 未解析出的原字节（hex）。"""
+    blocks, stopped = _parse_tail_lists(blob, pos, end, pool)
+    total = max(0, end - pos)
+    info: dict[str, Any] = {
+        "reason": reason,
+        "blocks": blocks,
+        "parsed_bytes": stopped - pos,
+        "total_bytes": total,
+        "complete": stopped == end,
+    }
+    if stopped < end:
+        info["leftover_hex"] = blob[stopped:end].hex()
+    return info
+
+
 def decode_table_rows(
     base_body: bytes,
     pool: list[str],
     index_rows: list[tuple[int, int]] | None = None,
     resolve_jumps: bool = False,
+    lenient: bool = False,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Decode every D6/C6/96 row of a base table.
 
@@ -265,9 +339,19 @@ def decode_table_rows(
     lists have been resolved to ``(key, row_start)`` pairs.  When omitted,
     the ordinary 0x76 index is parsed from the table blob.
 
+    ``lenient``（默认 False）: 严格模式把"值流没走完 / 行尾是混排列表 / 0x27 组
+    被截断 / 缺行边界 / 值流越界"的行**整行丢弃**（进 unbound）。宽松模式改为
+    **保留这一行**：已经解出来的字段原样留在 ``values`` 里，行尾未解析的列表
+    尽力解成 ``__tail__.blocks``（解不动就挂 ``leftover_hex``），并打上
+    ``lenient_recovered = <原因>`` 标记，便于下游区分"原样解出"和"回收行"。
+
+    ★ 默认路径（``lenient=False``）与历史输出逐字节一致：所有丢弃点构造的
+      unbound 记录、以及正常行的字段顺序都没动，宽松分支只是并列的一条路。
+
     Returns (rows, unbound). Each row includes decoded scalar ``values`` and
     bounded inline ``0x27`` groups when present.
     """
+
     count, reserved = struct.unpack_from("<II", base_body, 0)
     if reserved != 0:
         raise ValueError("base reserved != 0")
@@ -337,8 +421,17 @@ def decode_table_rows(
                     break
                 pairs.append((k_val, v_val))
             if truncated:
-                unbound.append({"key": key, "start": start, "marker": "0x36",
-                                "error": "mapping truncated", "pairs_so_far": len(pairs)})
+                if lenient:
+                    rows.append({"key": key, "start": start, "marker": "0x36",
+                                 "kt": f"0x{kt:02x}", "vt": f"0x{vt:02x}",
+                                 "values": {}, "inline_groups": [],
+                                 "tail": "lenient:0x36 map truncated",
+                                 "lenient_recovered": "0x36 map truncated",
+                                 "lenient_note": "0x36 映射在 %d/%d 对处截断" % (len(pairs), pair_count),
+                                 "pairs": pairs})
+                else:
+                    unbound.append({"key": key, "start": start, "marker": "0x36",
+                                    "error": "mapping truncated", "pairs_so_far": len(pairs)})
                 continue
             rows.append({"key": key, "start": start, "marker": "0x36",
                          "kt": f"0x{kt:02x}", "vt": f"0x{vt:02x}",
@@ -363,6 +456,8 @@ def decode_table_rows(
                 continue
             bitmap = blob[bitmap_ref:bitmap_ref + bitmap_size]
         nxt = row_end.get(start)
+        if nxt is None and lenient:
+            nxt = _lenient_boundary(index_rows, start, de)
         if nxt is None or nxt <= pos:
             unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref, "error": "no row boundary"})
             continue
@@ -383,18 +478,34 @@ def decode_table_rows(
                 break
             values[name] = (f"0x{type_byte:02x}", value)
         if overrun:
-            unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
-                            "error": "overrun", "consumed": q, "nxt": nxt})
+            if lenient:
+                rows.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                             "bitmap": bitmap.hex(), "values": values, "inline_groups": [],
+                             "tail": "lenient:overrun", "lenient_recovered": "overrun",
+                             "lenient_note": "值流在字段 %s 处越界（%d > %d），其后字段未解"
+                                             % (name, q, nxt)})
+            else:
+                unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                                "error": "overrun", "consumed": q, "nxt": nxt})
             continue
         if q < nxt and blob[q:q + 1] not in (b"\x27", b"\x36"):
-            unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
-                            "error": "inline list variant", "gap": blob[q:nxt][:16].hex(), "gap_len": nxt - q})
+            if lenient:
+                rows.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                             "bitmap": bitmap.hex(), "values": values, "inline_groups": [],
+                             "tail": "lenient:inline list variant",
+                             "lenient_recovered": "inline list variant",
+                             "__tail__": _tail_info(blob, q, nxt, pool, "inline list variant")})
+            else:
+                unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                                "error": "inline list variant", "gap": blob[q:nxt][:16].hex(), "gap_len": nxt - q})
             continue
         # 0x27 同构序列：27 + element_type + uleb(count) + count×元素。
         # reward_pool 的 kind=1 且 count=2 即 (item_id, quantity)。
         inline_groups = []
         group_error = None
+        group_start = q
         while q < nxt and blob[q:q + 1] == b"\x27":
+            group_start = q
             try:
                 kind = blob[q + 1]
                 elem_count, q = uleb(blob, q + 2, nxt)
@@ -407,8 +518,15 @@ def decode_table_rows(
                 group_error = "truncated 0x27 group"
                 break
         if group_error:
-            unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
-                            "error": group_error})
+            if lenient:
+                rows.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                             "bitmap": bitmap.hex(), "values": values,
+                             "inline_groups": inline_groups, "tail": "lenient:" + group_error,
+                             "lenient_recovered": group_error,
+                             "__tail__": _tail_info(blob, group_start, nxt, pool, group_error)})
+            else:
+                unbound.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                                "error": group_error})
             continue
         # 行尾 0x36 映射（36 + key类型 + value类型 + uleb对数 + pairs）——先保留 framing。
         tail_note = ""

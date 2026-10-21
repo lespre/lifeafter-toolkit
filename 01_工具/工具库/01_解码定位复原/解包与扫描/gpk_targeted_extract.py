@@ -17,7 +17,7 @@ import la_unpack_core as core
 
 KEY = bytes.fromhex('606308D8A32C782013D26C2F226F686D')
 GPK_DIR = Path(r'E:/mrzh')
-OUT_ROOT = Path(r'E:/la拆包项目/03_执行\\90_临时/_gpk_extract')   # 改写到项目产物目录（不越写盘红线）
+OUT_ROOT = Path(r"E:/la拆包项目/03_执行/90_临时/_gpk_extract")   # 只写项目产物目录
 
 # 自动识别CPU，智能调度
 CPU_COUNT = cpu_count() or 8
@@ -212,6 +212,9 @@ def main():
     
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
     out_dir = OUT_ROOT / gpk_name.replace('.gpk', '')
+    _od = str(out_dir).replace(chr(92), '/').lower()
+    if _od.startswith('e:/mrzh'):
+        raise SystemExit('拒绝写入源包目录: ' + str(out_dir))
     out_dir.mkdir(parents=True, exist_ok=True)
     
     print('=' * 80)
