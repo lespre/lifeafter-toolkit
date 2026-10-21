@@ -175,33 +175,32 @@ def cmd_npk(a) -> int:
 
 
 # ---------------- pc fetch ----------------
-def cmd_pc(a) -> int:
-    if a.action == "check":
-        return run("PC 取图覆盖统计", [DET / "pc_fetch.py"])
-    if a.action == "resolve" and a.path:
-        code = (
-            "import sys,pathlib;sys.path.insert(0,%r);"
-            "import pc_fetch as P;ex,bn=P.load();b,s=(%r,'');r=P.resolve(b,s,ex,bn);print(r or '未命中')"
-            % (str(DET), a.path))
-        return run("PC 解析单个路径", ["-c", code])
-    print("未知 pc 动作")
-    return 2
-
-
-# ---------------- pe fetch ----------------
 def cmd_pe(a) -> int:
-    args = [FETCH / "pe_fetch.py", a.action]
+    if a.action == "check":
+        return run("PE 覆盖统计", [FETCH / "pe_fetch.py"])
     if a.action == "resolve" and a.path:
-        args.append(a.path)
+        return run("PE resolve", [FETCH / "pe_fetch.py", "resolve", a.path])
     if a.action == "export" and a.path and a.out:
-        args += [a.path, a.out]
+        return run("PE export", [FETCH / "pe_fetch.py", "export", a.path, a.out])
     if a.action == "best" and a.path:
-        import sys as _s
-        _s.path.insert(0, str(FETCH))
+        if str(FETCH) not in sys.path:
+            sys.path.insert(0, str(FETCH))
         import pe_fetch_hires as H
         H.describe(a.path)
         return 0
-    return run("PE %s" % a.action, args)
+    print("未知 pe 动作")
+    return 2
+
+
+def cmd_pc(a) -> int:
+    if a.action == "check":
+        return run("PC 取图覆盖统计", [FETCH / "pc_fetch.py"])
+    if a.action == "resolve" and a.path:
+        return run("PC 解析单个路径", [FETCH / "pc_fetch.py", "resolve", a.path])
+    if a.action == "export" and a.path and a.out:
+        return run("PC 导出", [FETCH / "pc_fetch.py", "export", a.path, a.out])
+    print("未知 pc 动作")
+    return 2
 
 
 # ---------------- watch ----------------
@@ -314,8 +313,9 @@ def main() -> int:
     pe.add_argument("-o", "--out")
 
     pc = sub.add_parser("pc", help="PC 客户端取图")
-    pc.add_argument("action", choices=["check", "resolve"])
+    pc.add_argument("action", choices=["check", "resolve", "export"])
     pc.add_argument("path", nargs="?")
+    pc.add_argument("-o", "--out")
 
     npk = sub.add_parser("npk", help="item_icon npk 图标库")
     npk.add_argument("action", choices=["export", "query"])
