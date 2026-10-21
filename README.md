@@ -43,7 +43,7 @@
 
 ## 效果预览
 
-**① 项目总览页** —— 三线三带结构一张图看全（源包 → 索引 → 定位 → 还原 → 呈现）
+**① 项目总览页（三线三带）** —— 一条线看全：索引 → 定位 → 还原 → 呈现
 
 ![项目总览页](docs/images/web-home.png)
 
@@ -51,24 +51,48 @@
 
 ![Wiki 首页](docs/images/web-wiki.png)
 
-**③ 时装渲染（专题）** —— 从容器定位到模型/贴图，再按产物渲染
+**③ PvP 场景平衡** —— 98 组场景档位，同名同值合并，重点场景置顶
+
+![PvP 场景平衡](docs/images/web-scene.png)
+
+**④ 伤害公式** —— 从 Python 字节码反编译出来的结算链
+
+![伤害公式](docs/images/web-damage.png)
+
+**⑤ 名片框外观** —— PE 源 `.ktx` 定位 + 高清优先，454 条里挂上 369 张图
+
+![名片框外观](docs/images/web-avatar.png)
+
+**⑥ Spine 图集** —— atlas + json + 贴图页三件套，71 套
+
+![Spine 图集](docs/images/web-spine.png)
+
+**⑦ 时装渲染（专题）**
 
 ![时装渲染](docs/images/web-fashion.png)
 
-**④ 定位成果：皮肤自带的 7 张贴图** —— 从容器里按哈希锚定 + 邻接取出，非猜测
+**⑧ 定位成果：皮肤自带的 7 张贴图** —— 按哈希锚定 + 邻接取出，非猜测
 
 ![皮肤 7 张贴图](docs/images/skin-textures.png)
 
-**⑤ 判身份不靠肉眼，靠数学** —— 通道恒定性 + 相关度自动判定类型
-
-![通道统计判身份](docs/images/channel-ident.png)
-
-**⑥ 渲染链** —— 材质分层 → 成品
-
-![渲染链出图](docs/images/render-chain.png)
-
 > ⚠️ 以上均为**工具产出**；仓库不含游戏原始资源与还原树。
 > 图里出现的具体皮肤 / 活动仅作**技术演示**。
+
+---
+
+## 最近打通的能力
+
+| 能力 | 做法 | 结果 |
+|---|---|---|
+| **2D 图定位** | 逻辑路径 → PE `.ktx` / `.dds` / `.png` / `.bc7` 全档枚举 | 名片框 454 条可定位 450 条 |
+| **高清优先** | 命名档位（`_b` > 标准 > `_s` > `_low`）+ 像素尺寸，短边 <96px 判低清跳过 | 导出 369 张，低清与重复自动剔除 |
+| **Spine 三件套** | atlas 头部读页名 → PE 取贴图页 → 与 json 同目录落地 | 71 套（2.1.27 × 54 / 3.8.99 × 17） |
+| **活动表定位** | `activity_master` → 奖池 → 展示奖励 三层链 | 886 条活动，进行中 51 |
+| **伤害系统** | 解 py314 字节码 → 反编译 `hurt_calc` | 公式、部位、暴击、压缩、护盾全链 |
+| **场景平衡** | `special_hurt_params_data` × `space_data` | 98 组（PvP 31）；经典服 693 组 |
+
+> **一个必须记住的坑**：`.png` 未命中 ≠ 资源缺失。
+> UI 图标在 PE 里落的是 `.ktx`，换扩展名再查一次才有结果。
 
 ---
 
@@ -168,6 +192,7 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 | **`0 命中` 先怀疑代码** | 函数用错（gres 用 `parse_gpk`）、偏移错、路径写法错 —— 90% 是代码问题 |
 | **引用逐字读** | 一个字符不同 ⇒ `murmur3` fid 全变 ⇒ 必然 0 命中 |
 | **哈希自证** | 拿**已知命名文件**算 fid 必须命中；不中 = 方法错，不是数据没有 |
+| **`.png` 未命中先换扩展名** | UI 图标在 PE 是 `.ktx`、PC 是 `.bc7`；只查 `.png` 会把“存在”判成“不存在” |
 | **源包只读 / 服别不混 / 不编数据** | 安全底线 + PC 与 APK 可能不同服 ⇒ 结论必须标服别 |
 
 > 详细版（含 8 个高频坑与对策）见 **[docs/AGENT.md](docs/AGENT.md)**。
@@ -307,6 +332,11 @@ toolkit_cli.py snapshot                   # [H-2] 本地容器快照与终态判
 toolkit_cli.py tables list|find|chs|refimg|copies   # 配置表层
 toolkit_cli.py lottery list|find|show|delta        # 奖池层
 toolkit_cli.py atlas list|discover|export          # spine 图集层
+
+# 2D 图定位（高清优先）
+python la.py pe best <逻辑路径>        # 列出全部候选，选最高清那个
+python la.py pe export <逻辑路径> out.png
+python 01_工具/工具库/01_解码定位复原/解包与扫描/spine_export.py --filter <关键词>
 toolkit_cli.py servers                             # 服型后缀总表
 ```
 
