@@ -13,7 +13,7 @@ if old.exists():
 TREE = [
     {
         "id": "preview",
-        "name": "置顶 · 预告专栏（角色时装、武器皮肤、活动奖池）",
+        "name": "置顶、预告专栏",
         "boards": ["upcoming_auto"],
         "children": [],
     },
