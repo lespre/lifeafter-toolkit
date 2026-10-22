@@ -2799,10 +2799,13 @@ else loadBoard(b,d=>{
     if(cq)cq.placeholder="搜索：芯片名 / 编号 / 类型 / 品质 / 属性文本…";
   }
   const title=boardCardTitle(m);
+  var _ml=document.getElementById("metaline"); if(_ml) _ml.title="源包摘要＝该板块生成时所用客户端快照的摘要（不同板块快照可能不同）";
   document.title=title+" · Wiki";
   document.getElementById("title").textContent=title;
   document.getElementById("metaline").textContent=
-    `来源：${zhTitle(m.source_server)} · 生成 ${m.generated} · 源包摘要 ${String(m.package_sha).slice(0,16)}… · 条目等级 ${EV_CN[m.evidence]||m.evidence}`;
+    `来源：${m.source_label||zhTitle(m.source_server)||'未记录'} · 生成 ${String(m.generated||'未记录').slice(0,10)} · 源包摘要 ${
+      m.package_sha ? String(m.package_sha).slice(0,16)+'…' : '未记录'
+    } · 条目等级 ${EV_CN[m.evidence]||m.evidence||'未标注'}`;
   const cnt={};d.items.forEach(i=>cnt[i.evidence]=(cnt[i.evidence]||0)+1);
   document.getElementById("pills").innerHTML=
     `<span class="pill">条目 <b>${d.items.length}</b></span>`+

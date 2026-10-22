@@ -482,7 +482,7 @@ window.WIKI_MANIFEST = {
       "category": "四、综合资料 / （六）实体技能",
       "board": "skill_catalog",
       "items": 6191,
-      "generated": "",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
@@ -605,7 +605,7 @@ window.WIKI_MANIFEST = {
       "category": "四、综合资料 / （三）称号",
       "board": "title_catalog",
       "items": 1539,
-      "generated": "",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
