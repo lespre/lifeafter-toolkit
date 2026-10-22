@@ -465,6 +465,11 @@ const initialQuery=getParam("q")||"";
 const partFilter=(getParam("part")||"").split(",").map(s=>s.trim()).filter(Boolean);
 // 必须与 wiki.html 卡面规则一致：卡名仅显示分类尾段，不泄露生成器内部板名。
 function boardCardTitle(meta){
+  try{
+    const bid=(new URLSearchParams(location.search)).get("b")||"";
+    const t=(window.__BOARD_TITLES||{})[bid];
+    if(t) return t;
+  }catch(e){}
   const category=String(meta?.category??"").trim();
   const tail=category.split(" / ").pop().trim();
   return zhTitle(tail||String(meta?.name??"未命名板块").trim());
@@ -2923,6 +2928,20 @@ else loadBoard(b,d=>{
     reference:'<img class="gi" src="assets/item_icons/icon_10004_b.png" alt="">'
   };
   var cur=new URLSearchParams(location.search).get('b')||'';
+  var TITLES={};
+  function cleanNm(x){
+    return String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+      .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
+  }
+  (T['树']||[]).forEach(function(top){
+    (top.children||[]).forEach(function(leaf){
+      var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+      ids.forEach(function(id){
+        TITLES[id]=(ids.length===1) ? leaf.name : cleanNm(byId[id].name||id);
+      });
+    });
+  });
+  window.__BOARD_TITLES=TITLES;
   var nav=document.getElementById('siteNav');
   var html='<div class="hd"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></div>';
   (T['树']||[]).forEach(function(top){
