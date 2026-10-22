@@ -50,6 +50,8 @@ for p in board_files:
 
     no_prov, bad_prov = [], []
     for it in items:
+        if "table-absent" in (it.get("status_tags") or []):
+            continue          # 已标注「当前表无同名行」的例外，不算缺口
         prov = it.get("provenance")
         if not prov:
             no_prov.append(str(it.get("id")))
