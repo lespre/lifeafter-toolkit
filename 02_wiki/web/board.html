@@ -2295,7 +2295,26 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     hugeDraw(true);
     return;
   }
+  // 预告专栏：按当天日期实时剔除已到期的条目（不依赖重建板）
+  const TODAY0=new Date(); TODAY0.setHours(0,0,0,0);
+  const upExpired=it=>{
+    const s=String(it.expect_date||'');
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(s))return false;
+    const d=new Date(s+'T00:00:00');
+    return !isNaN(d) && d<=TODAY0;
+  };
+  const upcomingBoard=(b==='upcoming_auto');
+  if(upcomingBoard){
+    const gone=DATA.items.filter(upExpired).length;
+    const pill=document.createElement('span');
+    pill.className='pill';
+    pill.textContent='已到期自动剔除 '+gone;
+    pill.title='按当天日期实时判断：上架日 ≤ 今天 的条目不再列入预告';
+    const pills=document.getElementById('pills');
+    if(pills && !pills.querySelector('.up-gone')){ pill.classList.add('up-gone'); pills.appendChild(pill); }
+  }
   const items=DATA.items.filter(it=>{
+    if(upcomingBoard && upExpired(it))return false;
     if(fe&&it.evidence!==fe)return false;
     if(FASHION_BOARD&&!frPass(it))return false;
     if(VEHICLE_BOARD&&!vPass(it))return false;
