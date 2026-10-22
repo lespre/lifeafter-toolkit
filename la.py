@@ -411,6 +411,69 @@ def cmd_tables(a) -> int:
     return 2
 
 
+def _idx_con(layer: str = "PE"):
+    import sqlite3
+    db = (DET / "pe_index.sqlite3") if layer == "PE" else (DET / "pc_index.sqlite3")
+    if not db.is_file():
+        return None
+    return sqlite3.connect("file:%s?mode=ro" % str(db).replace("\\", "/"), uri=True)
+
+
+def cmd_info(a) -> int:
+    """容器信息：行数 / flag 分布 / 名字覆盖 / 样例。"""
+    con = _idx_con(getattr(a, "layer", "PE"))
+    if con is None:
+        print("索引不存在，先跑 la.py index build")
+        return 2
+    pack = a.pack
+    rows = con.execute("select count(*) from rows where pack=?", (pack,)).fetchone()[0]
+    if not rows:
+        print("包里没有条目：", pack)
+        return 1
+    flags = con.execute("select flag,count(*) from rows where pack=? group by flag order by 2 desc limit 5",
+                        (pack,)).fetchall()
+    named = con.execute("select count(*) from rows where pack=? and name is not null and name<>''",
+                        (pack,)).fetchone()[0]
+    sample = con.execute("select row,name,decoded from rows where pack=? limit 3", (pack,)).fetchall()
+    print("容器      %s" % pack)
+    print("条目      %s" % format(rows, ","))
+    print("有名字    %s（%.1f%%）" % (format(named, ","), named * 100.0 / rows))
+    print("flag 分布 %s" % ", ".join("%s×%s" % (f, n) for f, n in flags))
+    for r, nm, dec in sample:
+        print("  行 %-8s %-60s %s 字节" % (r, (nm or "(无名)")[:60], dec))
+    return 0
+
+
+def cmd_list(a) -> int:
+    """列出容器条目，支持 --filter 通配 / --limit / --json。"""
+    import fnmatch
+    import json as _json
+    con = _idx_con(getattr(a, "layer", "PE"))
+    if con is None:
+        print("索引不存在")
+        return 2
+    q = "select row,fid,name,decoded,flag from rows where pack=?"
+    args = [a.pack]
+    if a.filter:
+        q += " and name like ?"
+        args.append("%" + a.filter.replace("*", "%") + "%")
+    q += " order by row limit ?"
+    args.append(a.limit)
+    out = []
+    for row, fid, name, dec, flag in con.execute(q, args):
+        if a.filter and not fnmatch.fnmatch(name or "", a.filter):
+            continue
+        out.append({"row": row, "fid": fid, "name": name, "decoded": dec, "flag": flag})
+    if a.json:
+        Path(a.json).write_text(_json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+        print("写出 %s（%d 条）" % (a.json, len(out)))
+        return 0
+    for o in out:
+        print("%-8s %-58s %s" % (o["row"], (o["name"] or "(无名)")[:58], o["decoded"]))
+    print("共 %d 条" % len(out))
+    return 0
+
+
 def cmd_img(a) -> int:
     """2D 图：best 看候选，export 导出（PE → PC 兜底）。"""
     path = a.path
@@ -466,6 +529,17 @@ def main() -> int:
     tb.add_argument("action", choices=["list", "show", "export"])
     tb.add_argument("name", nargs="?")
 
+    inf = sub.add_parser("info", help="容器信息：条目数/flag/名字覆盖/样例")
+    inf.add_argument("pack")
+    inf.add_argument("--layer", choices=["PE", "PC"], default="PE")
+
+    ls = sub.add_parser("list", help="列出容器条目（--filter 通配 / --limit / --json）")
+    ls.add_argument("pack")
+    ls.add_argument("--filter")
+    ls.add_argument("--limit", type=int, default=50)
+    ls.add_argument("--json")
+    ls.add_argument("--layer", choices=["PE", "PC"], default="PE")
+
     im = sub.add_parser("img", help="2D 图：best 看候选 / export 导出（PE→PC）")
     im.add_argument("action", choices=["best", "export"])
     im.add_argument("path")
@@ -515,6 +589,10 @@ def main() -> int:
         return cmd_locate(a)
     if a.cmd == "tables":
         return cmd_tables(a)
+    if a.cmd == "info":
+        return cmd_info(a)
+    if a.cmd == "list":
+        return cmd_list(a)
     if a.cmd == "img":
         return cmd_img(a)
     if a.cmd == "board":
