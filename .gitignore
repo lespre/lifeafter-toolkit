@@ -109,3 +109,6 @@ seckeys/
 00_规范与工具/环境/python/
 00_规范与工具/环境/everything/
 00_规范与工具/环境/*.zip
+
+# 站点运行配置（不是数据，必须随代码走）
+!02_wiki/web/data/live_sources.json
