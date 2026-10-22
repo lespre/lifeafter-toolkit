@@ -351,7 +351,7 @@ body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-or
 </div>
 <script>
 // 通用板块渲染：board.html?b=<board文件名>，动态加载 data/boards/<b>.js
-const FIELD_CN={bundle:"内含",counterpart:"对应单品",star_entries:"升星解锁",weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_state:"版本状态",
+const FIELD_CN={charm_value:"魅力值",charm_source:"魅力值来源",weapon_type_code:"武器类型码",bundle:"内含",counterpart:"对应单品",star_entries:"升星解锁",weapon_type:"武器类型",grade:"品级",ip:"联动IP",version_state:"版本状态",
   store_zhencang:"当期商店 · 臻藏（宸晶臻石）",store_xishi:"当期商店 · 稀世（稀世之证）",
   store_zhencang_source:"臻藏清单来源",store_xishi_source:"稀世清单来源",
   model_path:"模型路径",located:"物理定位",pkg:"所在包",entry:"条目",cc:"c1c2指纹",
@@ -1469,13 +1469,13 @@ function fillFilterSelects(items){
     // 默认「皮肤 ID ↓」（顶层只有永久主记录；时限变体并入主卡、不参与顶层排列）。
     document.getElementById("sortHint").textContent="排列依据：无可靠图鉴顺序字段 → 默认皮肤 ID ↓（顶层仅永久主记录；时限变体并入主卡、不参与排列）";
     document.getElementById("sortHint").style.display="";
-    oSel.innerHTML=`<option value="id" selected>排列依据：皮肤 ID</option><option value="sale">排列依据：上架时间</option>`;
+    oSel.innerHTML=`<option value="id" selected>排列依据：皮肤 ID</option><option value="sale">排列依据：上架时间</option><option value="charm">排列依据：魅力值</option>`;
     oSel.selectedIndex=0;
     const dirEl=document.getElementById("fDir");
     if(dirEl&&!dirEl.dataset.dir){dirEl.dataset.dir="desc";dirEl.textContent="↓ 降序";}
     if(dirEl)dirEl.style.display="";
   } else {
-    oSel.innerHTML=`<option value="gallery">排序：游戏图鉴序列</option><option value="id">排序：皮肤ID</option>`;
+    oSel.innerHTML=`<option value="gallery">排序：游戏图鉴序列</option><option value="id">排序：皮肤ID</option><option value="charm">排序：魅力值</option>`;
   }
   // 五路独立筛选（真实枚举生成，可任意组合；与排序互不干扰）
   const grades=new Set(),types=new Set(),ips=new Set(),rels=new Set(),nsts=new Set();
@@ -2454,7 +2454,17 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   const orderBy=document.getElementById("fOrder").value;
   const timeOrder=items.some(it=>it.period_date)&&(orderBy==="new"||orderBy==="old")&&!items.some(it=>it.sort_660);
   const nucleusOrder=!timeOrder&&items.some(it=>it.sort_660)&&orderBy!=="";
-  const list=timeOrder
+  const charmOrder=(orderBy==='charm') && items.some(it=>it.charm_value!=null);
+  const list=charmOrder
+    ? [...items].sort((a,b)=>{
+        const x=a.charm_value, y=b.charm_value;
+        if(x==null&&y==null) return 0;
+        if(x==null) return 1;
+        if(y==null) return -1;
+        const dir=(document.getElementById('fDir')||{}).dataset?.dir||'desc';
+        return dir==='asc' ? x-y : y-x;
+      })
+    : timeOrder
     ? [...items].sort((a,b)=>orderBy==="old"
         ? String(a.period_date).localeCompare(String(b.period_date))
         : String(b.period_date).localeCompare(String(a.period_date)))
