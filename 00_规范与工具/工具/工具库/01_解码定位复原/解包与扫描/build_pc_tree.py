@@ -101,9 +101,17 @@ def run_pack(pack: str) -> tuple[str, int, int, int, float]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pack")
+    ap.add_argument("--out", help="输出根目录（默认 41_还原树/pc_20261020）")
+    ap.add_argument("--root", action="append", help="客户端根目录，可多次传（默认 E:/mrzh 系列）")
     ap.add_argument("--probe", type=int)
     ap.add_argument("--workers", type=int, default=3)
     a = ap.parse_args()
+
+    global TREE, PACK_ROOTS
+    if a.out:
+        TREE = Path(a.out)
+    if a.root:
+        PACK_ROOTS = [Path(x) for x in a.root]
 
     con = sqlite3.connect("file:%s?mode=ro" % PC_IDX.as_posix(), uri=True)
     packs = [r[0] for r in con.execute("select distinct pack from rows order by pack")]
