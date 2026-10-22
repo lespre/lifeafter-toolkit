@@ -346,6 +346,60 @@ def _toolkit(args: list[str], label: str) -> int:
     return run(label, [TOOLKIT] + args)
 
 
+
+
+# ---------------- profile 配置档案 ----------------
+
+def _load_profiles():
+    import yaml
+    f = PROJ / "profiles.yml"
+    if not f.is_file():
+        return {}, None
+    data = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    return data.get("profiles") or {}, data.get("default")
+
+
+def apply_profile(name: str | None) -> str | None:
+    """切换档案：改 DET（索引目录）与 TREE（还原树）两个全局。"""
+    global DET, TREE
+    profiles, default = _load_profiles()
+    if not profiles:
+        return None
+    key = name or default
+    cfg = profiles.get(key)
+    if not cfg:
+        print("未知档案：%s（可用：%s）" % (key, ", ".join(profiles)))
+        return None
+    if cfg.get("index_dir"):
+        DET = PROJ / cfg["index_dir"]
+    if cfg.get("tree"):
+        TREE = PROJ / cfg["tree"]
+    return key
+
+
+def cmd_profile(a) -> int:
+    profiles, default = _load_profiles()
+    if not profiles:
+        print("没有 profiles.yml，先建一个")
+        return 2
+    if a.action == "list":
+        for k, v in profiles.items():
+            mark = "*" if k == default else " "
+            print("%s %-20s %s" % (mark, k, v.get("label", "")))
+            print("   树  %s" % v.get("tree", "-"))
+            print("   索引 %s" % v.get("index_dir", "-"))
+        return 0
+    if a.action == "show":
+        key = a.name or default
+        cfg = profiles.get(key)
+        if not cfg:
+            print("未知档案：", key)
+            return 1
+        import yaml
+        print(yaml.safe_dump(cfg, allow_unicode=True, sort_keys=False))
+        return 0
+    return 0
+
 def cmd_find(a) -> int:
     """索引定位：逻辑路径 → (层, 包, 行, 大小)。PE 优先，PC 兜底。"""
     sys.path.insert(0, str(FETCH))
@@ -510,6 +564,12 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="la", description="明日之后拆包项目 CLI")
     sub = ap.add_subparsers(dest="cmd")
 
+    ap.add_argument("--profile", help="配置档案名（见 la.py profile list）")
+
+    pr = sub.add_parser("profile", help="配置档案：list / show <名>")
+    pr.add_argument("action", nargs="?", choices=["list", "show"], default="list")
+    pr.add_argument("name", nargs="?")
+
     sub.add_parser("doctor", help="环境自检：根/索引/CLI/服务")
     sub.add_parser("status", help="服务与数据概览")
 
@@ -573,6 +633,9 @@ def main() -> int:
     tp.add_argument("rest", nargs=argparse.REMAINDER)
 
     a = ap.parse_args()
+    _pname = apply_profile(getattr(a, "profile", None))
+    if _pname and getattr(a, "cmd", None) not in (None, "profile"):
+        print("▸ 档案 %s" % _pname)
     if not a.cmd:
         print(BANNER)
         ap.print_help()
@@ -589,6 +652,8 @@ def main() -> int:
         return cmd_locate(a)
     if a.cmd == "tables":
         return cmd_tables(a)
+    if a.cmd == "profile":
+        return cmd_profile(a)
     if a.cmd == "info":
         return cmd_info(a)
     if a.cmd == "list":
