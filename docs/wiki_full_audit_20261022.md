@@ -40,8 +40,8 @@ manifest    计数全部一致
 |---|---|---|
 | vehicle_catalog | 125 | `vehicle_basic_conf` 索引头是 `0x56` 变体（非 0x76），现有解码器不认 |
 | nucleus | 108 | 来源是根包 `nucleus_hd_conf_data`（conf_id 维度），该表不在 PE cdata 目录，无法逐条比对 |
-| fashion_face | 180 | 来源是面饰专池（BA entry010816/009169）的名字池，无行键 |
-| fashion_kaijia | 9 | 同上（主外观表 + 面饰池混合） |
+| fashion_face | 180 | 来源是面饰专池（BA entry010816/009169）的名字池；实测 fashion_data 11,036 行按名字匹配 0 命中，池在 npk 条目里而不在 cdata |
+| fashion_kaijia | 9 | model_id(32710 等) 在 fashion_data 全表 0 命中，来源是 BA entry022570/020834 |
 
 这 5 个板块的条目目前只有 `source` 文本描述，没有可机读定位链。
 正确做法不是填假 provenance，而是：
