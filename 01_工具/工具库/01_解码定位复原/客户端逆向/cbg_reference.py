@@ -15,7 +15,7 @@ r"""藏宝阁（CBG）前端配置 · 外部参照源的抓取 / 规范化 / 质
 
 落点
 ----
-02_资料/参考资料/藏宝阁_CBG/
+02_数据/参考资料/藏宝阁_CBG/
   raw/<文件名>              上游原始字节（校验基准，只读）
   json/<顶层键>.json        规范化后一键一文件
   json/_index.json          键 → 条目数 / 字节数 / sha256
@@ -56,7 +56,7 @@ try:
 except Exception:                                         # pragma: no cover
     PROJECT_ROOT = Path(__file__).resolve().parents[4]
 
-REF_ROOT = PROJECT_ROOT / "02_资料" / "参考资料" / "藏宝阁_CBG"
+REF_ROOT = PROJECT_ROOT / "02_数据" / "参考资料" / "藏宝阁_CBG"
 RAW_DIR = REF_ROOT / "raw"
 JSON_DIR = REF_ROOT / "json"
 MANIFEST = REF_ROOT / "_manifest.json"
@@ -108,7 +108,7 @@ def cmd_fetch(_args) -> int:
         "not": "不是拆包数据；不含战斗数值；品级仅为交易站展示档位",
         "entry": "https://mrzh.cbg.163.com/",
         "loaded_by": "dist/main.js 的 gameConfigFirst 守卫（$.getScript）",
-        "landed": "02_资料/参考资料/藏宝阁_CBG（外部参照不进 41_还原树）",
+        "landed": "02_数据/参考资料/藏宝阁_CBG（外部参照不进 41_还原树）",
     })
     man.setdefault("files", {})
     ok = 0

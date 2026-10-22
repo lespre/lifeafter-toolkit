@@ -348,7 +348,7 @@ def _audio(p, data):
 @quick("audio_scripts_alive", "音频相关脚本当前跑得通")
 def _audio_scripts(p, data):
     """源头：源包目录下是否还有音频脚本（A5 的 qj_*.py 双死路径那条）。"""
-    src = PROJECT / "02_资料" / "源包"
+    src = PROJECT / "02_数据" / "源包"
     n = _count(src, "qj_*.py", recursive=True) if src.is_dir() else -1
     if n < 0:
         return False, "源包目录不存在"

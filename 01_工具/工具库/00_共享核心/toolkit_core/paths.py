@@ -120,7 +120,7 @@ TEMP_ROOT = (PROJECT_ROOT / "03_执行" / "90_临时")
 PENDING_DELETE_ROOT = (PROJECT_ROOT / "03_执行" / "95_待清理")
 REVIEW_ROOT = (PROJECT_ROOT / "03_执行" / "96_审阅区")
 SITE_ROOT = (PROJECT_ROOT / "04_站点")
-SOURCE_PKG_ROOT = (PROJECT_ROOT / "02_资料" / "源包")
+SOURCE_PKG_ROOT = (PROJECT_ROOT / "02_数据" / "源包")
 GOVERNANCE_ROOT = (PROJECT_ROOT / "00_治理")
 
 
@@ -223,7 +223,7 @@ def set_root(path: Path | str) -> Path:
     PENDING_DELETE_ROOT = (p / "03_执行" / "95_待清理")
     REVIEW_ROOT = (p / "03_执行" / "96_审阅区")
     SITE_ROOT = (p / "04_站点")
-    SOURCE_PKG_ROOT = (p / "02_资料" / "源包")
+    SOURCE_PKG_ROOT = (p / "02_数据" / "源包")
     GOVERNANCE_ROOT = (p / "00_治理")
     DEFAULT_NAME_SOURCES = (
         p / "03_执行" / "30_分析" / "_target_1110025" / "public_refs" / "FileNames.list",

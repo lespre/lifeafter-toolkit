@@ -7,10 +7,10 @@ __pycache__/
 
 # 源与执行产物（45G+ / 数百 GB）—— 只留 README 骨架
 # 注意：用 `dir/*`（不是 `dir/`）才能放行目录里的 README
-02_资料/*
-!02_资料/README.md
-!02_资料/.gitkeep
-02_资料/*/.gitkeep
+02_数据/*
+!02_数据/README.md
+!02_数据/.gitkeep
+02_数据/*/.gitkeep
 
 03_执行/*
 !03_执行/README.md

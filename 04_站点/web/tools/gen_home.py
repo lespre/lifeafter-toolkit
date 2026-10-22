@@ -752,9 +752,9 @@ def collect():
         **collect_names_summary(),
         **collect_delta_summary(),
         # 各区体积（全部现读）
-        "size_deliver": dir_size(PROJECT / "02_资料" / "交付"),
-        "size_source": dir_size(PROJECT / "02_资料" / "源包"),
-        "files_source": count_files(PROJECT / "02_资料" / "源包"),
+        "size_deliver": dir_size(PROJECT / "02_数据" / "交付"),
+        "size_source": dir_size(PROJECT / "02_数据" / "源包"),
+        "files_source": count_files(PROJECT / "02_数据" / "源包"),
         "size_review": dir_size(PROJECT / "03_执行" / "96_审阅区"),
         "size_clean": dir_size(PROJECT / "03_执行" / "95_待清理"),
         "skin_root": str(WEB / "assets" / "3d" / "weapon_skin"),
@@ -1263,15 +1263,15 @@ def build(d, collect_seconds=None):
 待修清单        : <span data-k="t_backlog">未修 {esc(str(bl['open']))} / 已修 {esc(str(bl['done']))}</span>
 站点页面(去实验页): <span data-k="pages">{pages_n}</span>
 皮肤资产目录    : <span data-k="skin_assets">{esc(num(d['skin_assets']))}</span> 套 · <span data-k="t_skin_root">{esc(d['skin_root'])}</span>
-交付区体积      : <span data-k="size_deliver">{esc(human(d['size_deliver']))}</span>（02_资料/交付）
-源包区体积      : <span data-k="size_source">{esc(human(d['size_source']))} · {esc(str(d['files_source']))} 文件</span>（02_资料/源包）
+交付区体积      : <span data-k="size_deliver">{esc(human(d['size_deliver']))}</span>（02_数据/交付）
+源包区体积      : <span data-k="size_source">{esc(human(d['size_source']))} · {esc(str(d['files_source']))} 文件</span>（02_数据/源包）
 审阅区体积      : <span data-k="size_review">{esc(human(d['size_review']))}</span>（03_执行/96_审阅区）
 待清理区体积    : <span data-k="size_clean">{esc(human(d['size_clean']))}</span>（03_执行/95_待清理，即垃圾）
 项目健康        : <span data-k="t_health">{esc(htxt)}（{'；'.join(f'{n}{v}' for n, v, _ in checks)}）</span>
 生成时间        : <span data-k="t_gen">{esc(d['generated_at'])}</span>
 数据来源        : 统一入口 index status ｜ 01_工具/工具库/*.py 计数 ｜ 统一入口 --help 子命令
                   00_治理/台账/待修问题清单.md ｜ 04_站点/web/*.html ｜ assets/3d/weapon_skin/*
-                  02_资料/交付、02_资料/源包、03_执行/96_审阅区、03_执行/95_待清理 的目录体积
+                  02_数据/交付、02_数据/源包、03_执行/96_审阅区、03_执行/95_待清理 的目录体积
 生成脚本        : 04_站点/web/tools/gen_home.py（只读采集；重跑即刷新本页）
 实时数据        : 页面打开后会向 /api/home/snapshot 取数（15 秒一次，页面切到后台自动暂停）；
                   拿不到就保留本页生成时写死的静态值，右上角「↻ 刷新」可强制立即重取</pre>

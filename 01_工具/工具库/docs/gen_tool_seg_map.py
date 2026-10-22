@@ -9,7 +9,7 @@ r"""生成「工具 × 段位」映射表（.md + .json）。
   产物下一站：下游解析器 → ① ｜ 人眼耳朵 → ② ｜ 浏览器 → ③
   上游导航 → 带H ｜ 接口口径 → 带D ｜ 闸门结论 → 带Q ｜ 不产业务产物 → 横切
 
-用法：python 01_工具/工具库/docs/gen_tool_seg_map.py [--quiet]
+用法：python 01_工具/工具库/00_治理/手册/gen_tool_seg_map.py [--quiet]
 """
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ for _stream in ("stdout", "stderr"):
     except (AttributeError, OSError):
         pass
 
-HERE = Path(__file__).resolve()                 # <工具库>/docs/gen_tool_seg_map.py
+HERE = Path(__file__).resolve()                 # <工具库>/00_治理/手册/gen_tool_seg_map.py
 TK = HERE.parent.parent                         # <工具库>
 CORE = TK / "00_共享核心"
 

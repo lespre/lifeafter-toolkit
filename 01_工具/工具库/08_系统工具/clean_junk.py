@@ -2,7 +2,7 @@
 """清理项目垃圾：备份文件、探针截图、缓存、构建残留日志。
 
 只扫 00_治理 / 01_工具 / 04_站点 / docs / 根目录，
-不动 02_资料（源包）、03_执行（还原树与索引）、交付（成品）。
+不动 02_数据（源包）、03_执行（还原树与索引）、交付（成品）。
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import shutil
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
 SCOPE = ["00_治理", "01_工具", "04_站点", "docs"]
-EXCLUDE_PARTS = {"02_资料", "03_执行", "交付", ".git", ".venv", "41_还原树"}
+EXCLUDE_PARTS = {"02_数据", "03_执行", "交付", ".git", ".venv", "41_还原树"}
 
 FILE_PATTERNS = ["*.bak", "*.bak_*", "*.bak.*", "probe*.png", "shot_*.png",
                  "*.building", "*_probe_test.html", "*.pyc", "*.pyo"]

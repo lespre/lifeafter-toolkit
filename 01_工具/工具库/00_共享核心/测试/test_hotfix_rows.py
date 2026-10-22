@@ -123,8 +123,8 @@ def test_render_md_错误表不炸():
 
 
 # ── ⑥ 真实产物契约（有 pre/post 包时才跑）─────────────────
-PRE = PROJ / "02_资料/源包/pre_update_20260924_1600/raw/script.py314.lc.npk"
-POST = PROJ / "02_资料/源包/post_update_20260924_1610/raw/script.py314.lc.npk"
+PRE = PROJ / "02_数据/源包/pre_update_20260924_1600/raw/script.py314.lc.npk"
+POST = PROJ / "02_数据/源包/post_update_20260924_1610/raw/script.py314.lc.npk"
 
 
 @pytest.mark.skipif(not (PRE.is_file() and POST.is_file()),

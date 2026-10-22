@@ -10,7 +10,7 @@
   node 处 = (uleb key, uleb record_offset)
 
 结构性事实：vehicle_basic_conf 的 81 个 node 全部可解，key 82/79/74/73/71…
-但 record_offset 指向的区域尚未被证明是行起点（见 docs/vehicle_basic_conf_0x56.md）。
+但 record_offset 指向的区域尚未被证明是行起点（见 00_治理/手册/vehicle_basic_conf_0x56.md）。
 """
 from __future__ import annotations
 

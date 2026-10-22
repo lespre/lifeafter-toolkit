@@ -84,7 +84,7 @@
 
 ### 3.1b 白模链 —— **100 个 `model_white.glb` 的真实来源**
 
-两个脚本：`02_资料/源包/post_update_20260924_1610/skin3d_pipeline.py`（v1，353 行）与 `skin3d_batch.py`（v0，288 行）。
+两个脚本：`02_数据/源包/post_update_20260924_1610/skin3d_pipeline.py`（v1，353 行）与 `skin3d_batch.py`（v0，288 行）。
 链路（pipeline 头注 L5-11）：
 ```
 ① skin_id → model_path     读 web/data/boards/weapon_skin_sfx_text_sources.json
@@ -175,11 +175,11 @@ mesh sub 表 → submesh → index_range / faces              [high]
 
 **没有一份可机填的模板，只有一份"事实上的参照系" = `1110024/viewer.json`。**
 * `_template/viewer.json` **不是模板**：它内容是 **1110171 的旧版**（`skin_id:"1110171"`、`states:[dual,single]`），mtime 2026-09-14 20:38（最早的 viewer.json）⇒ 它是历史遗留。
-* 真正的复用证据是 `1110025/_scripts/s25_write_viewer.py`（深拷贝 1110024）与 `02_资料/源包/post_update_20260924_1610/zm_bg.py`（"照 1110024 口径"补背景）、`zn_cam.py`（对照 1110024 的 `game_reference` 是"用户实调值"）。
+* 真正的复用证据是 `1110025/_scripts/s25_write_viewer.py`（深拷贝 1110024）与 `02_数据/源包/post_update_20260924_1610/zm_bg.py`（"照 1110024 口径"补背景）、`zn_cam.py`（对照 1110024 的 `game_reference` 是"用户实调值"）。
 * **`pose_rule` / `camera_basis` / `rotation_note` 确实是人工目视定案的**：
   * `1110024/viewer.json`：`pose_rule = "用户定稿（2026-09-15）：正面相机 position=[-9,0,0] + rotation_degrees=[180,0,0]"`；`states[0].rotation_note = "按用户目视确认：正面相机需 +180°（绕视线轴）才与卡片同姿势"`；`camera_presets[0].basis = "用户实调参数（position/target/up/distance 原样保留）；左右转为世界竖直轴纯自转，up 随相机同步旋转以保持画面滚转恒定"`；`pose_accepted_by="游戏内参考图（用户提供 8bdf3a6f）"`。
   * `1110024/viewer.json` 的 `camera_basis.basis = "源渲染器 rig：eye=-X, up0=+Z, roll=90°（导出器 B=单位阵，故 B*vec=vec）"` ⇒ 数值可算，但 **"和卡片同姿势"这个判据只能人眼看**。
-  * `1110186/1110185` 的 `pose_rule` 被 `zn_cam.py` 写成 **"未定稿：本皮肤无游戏内参考图，朝向 = GLB 原始导出（--center，未旋转）；未做用户目视姿势确认"**（`02_资料/源包/post_update_20260924_1610/zn_cam.py` L44）。
+  * `1110186/1110185` 的 `pose_rule` 被 `zn_cam.py` 写成 **"未定稿：本皮肤无游戏内参考图，朝向 = GLB 原始导出（--center，未旋转）；未做用户目视姿势确认"**（`02_数据/源包/post_update_20260924_1610/zn_cam.py` L44）。
   * 而 `1110025` 的 `pose_rule` 是"项目统一展示 rig（6 款同组值）；1110024 的…**未在 1110025 上复核**"（`s25_write_viewer.py` L30-31）。
 
 ### 3.7 poster.webp
@@ -205,7 +205,7 @@ cd 04_站点\web　&&　python tools/rebuild_weapon_skin_media.py
 ```
 证据：`04_站点/web/tools/rebuild_weapon_skin_media.py` L16-68。
 `preview_3d.status` 恒为 `ready`，另带 `material_fidelity`/`sfx_fidelity`（取自 `viewer.json.fidelity`，默认 `approximate`/`none`）。
-另有后处理脚本 `02_资料/源包/post_update_20260924_1610/zl_ready.py`：把 `material_fidelity` 改成 `source_candidate` 并把长文证据写进 `fidelity_note`。
+另有后处理脚本 `02_数据/源包/post_update_20260924_1610/zl_ready.py`：把 `material_fidelity` 改成 `source_candidate` 并把长文证据写进 `fidelity_note`。
 
 ### 3.10 1110185 / 1110186（最近一次完整实操，最有参考价值）
 
@@ -215,7 +215,7 @@ cd 04_站点\web　&&　python tools/rebuild_weapon_skin_media.py
 → `zl_ready.py`（改 `weapon_skin_media.json` 状态 + `fidelity_note`）
 → `zm_bg.py`（补 `background_image`/`background_source`/`env_from_background`）
 → `zn_cam.py`（补 `camera_presets`/`default_camera`/`camera_basis`）。
-全部在 `02_资料/源包/post_update_20260924_1610/`，**路径同为重构前（`08Lifeafter wiki` / `03拆包产物`）⇒ 现已失效**。
+全部在 `02_数据/源包/post_update_20260924_1610/`，**路径同为重构前（`08Lifeafter wiki` / `03拆包产物`）⇒ 现已失效**。
 
 ---
 
@@ -322,12 +322,12 @@ cd 04_站点\web　&&　python tools/rebuild_weapon_skin_media.py
 
 **找过的地方（逐条）**
 1. `01_工具/工具库/06_皮肤定位链/`（全目录 + `_PRUNED_LAB_SCRIPTS_20260921.txt` 339 行 + `README_新增工具.md` + `使用说明.md`）
-2. `02_资料/源包/post_update_20260924_1610/`（约 600 个脚本：`skin3d_pipeline.py` `skin3d_batch.py` `qiji_build.py` `zf_wiki3d.py` `zg_tex2.py` `zi_xc_batch.py` `zj_build_mat.py` `zl_ready.py` `zm_bg.py` `zn_cam.py` `zo_isolate.py` `zp_paramrepack.py` …）
+2. `02_数据/源包/post_update_20260924_1610/`（约 600 个脚本：`skin3d_pipeline.py` `skin3d_batch.py` `qiji_build.py` `zf_wiki3d.py` `zg_tex2.py` `zi_xc_batch.py` `zj_build_mat.py` `zl_ready.py` `zm_bg.py` `zn_cam.py` `zo_isolate.py` `zp_paramrepack.py` …）
 3. `03_执行/30_分析/_target_1110025/_scripts/`（`s25_audit` `s25_blockrule` `s25_build_glb` `s25_build_tex` `s25_cmp1124` `s25_ddsfeat` `s25_gen_repack` `s25_inventory` `s25_write_manifest` `s25_write_viewer`）＋ `_target_1110025/` 顶层 462 项
 4. `03_执行/30_分析/_target_1110171/`（`NAMES_*` `GLB171_export.py` `fidelity/FID_build.py` `AB_*` …）
 5. `03_执行/90_临时/`（`脚本/` `旧临时存放/` `备份_5区重构前/` `备份_工具库_改路径前/` `_freeze_v1.2/`）
 6. `04_站点/web/`（`tools/` 全部 ~150 个 py、`analysis/audit/`、`assets/3d/weapon_skin/*/_build*`、`assets/3d/weapon_skin/_shared/cubes/*/`、`board.html`、`assets/weapon_skin_viewer.js`）
-7. `02_资料/交付/`（`交付_1110171_源驱动_20260916/neox_l1c.py` `neox_l2.py` `neox_l3coord.py` `neox_l3diag.py` `neox_srcchain.py`）
+7. `02_数据/交付/`（`交付_1110171_源驱动_20260916/neox_l1c.py` `neox_l2.py` `neox_l3coord.py` `neox_l3diag.py` `neox_srcchain.py`）
 8. 全局检索（`search_files` + `grep -rl`）：`viewer.json` / `neox_material` / `pose_accepted_by` / `camera_basis` / `rotation_note` / `单件` / `source_neutral` / `ordered_1to1_candidate_high` / `evidence_levels` / `1110115` / `1110116` / `1110121` / `1110159` / `1110173` / `1110175` —— **除 viewer.json/neox_material.json 自身外 0 个"生成者"命中**
 9. 非 git 仓库（`git log` → `fatal: not a git repository`）⇒ **无版本历史可回溯**
 

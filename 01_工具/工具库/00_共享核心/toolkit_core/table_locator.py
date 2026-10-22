@@ -242,7 +242,7 @@ def _container_file(container: str) -> Optional[Path]:
     cands: List[Path] = []
     if "Documents" in container:
         src = _paths().SOURCE_ROOT if hasattr(_paths(), "SOURCE_ROOT") else \
-            (_paths().PROJECT_ROOT / "02_资料" / "源包")
+            (_paths().PROJECT_ROOT / "02_数据" / "源包")
         if Path(src).is_dir():
             cands += sorted(Path(src).glob("post_update_*/raw/" + name), reverse=True)
         cands.append(Path(r"E:\mrzh\Documents") / name)

@@ -1179,7 +1179,7 @@ def _fill_text_tables(b, out: Path, added_f: set, dict_path, args) -> None:
 
     # ③ ★ 时装热更表（用户口径：文字表产物固定带一份）
     #    走行级 diff —— 两个 script 包逐行比，只比真值字段。
-    #    pre/post 包：优先用 --pre-pkg/--post-pkg，否则自动在 02_资料/源包/ 下找。
+    #    pre/post 包：优先用 --pre-pkg/--post-pkg，否则自动在 02_数据/源包/ 下找。
     _write_fashion_hotfix(td, out, hot, args)
 
 
@@ -1194,7 +1194,7 @@ def _find_pkg_pair(args) -> tuple:
     post = getattr(args, "post_pkg", None)
     if pre and post:
         return Path(pre), Path(post)
-    root = Path(r"E:/la拆包项目/02_资料/源包")
+    root = Path(r"E:/la拆包项目/02_数据/源包")
     if not root.is_dir():
         return None, None
     pres = sorted(root.glob("pre_update_*/raw/script*.npk"))
@@ -1221,7 +1221,7 @@ def _write_fashion_hotfix(td: Path, out: Path, hot: list, args) -> None:
         (td / "时装热更表.md").write_text(
             "# 时装 · 本次热更表\n\n"
             "⚠ **未采集**：找不到热更前后的 script 包。\n\n"
-            "给出 `--pre-pkg` / `--post-pkg`，或把它们放进 `02_资料/源包/`\n"
+            "给出 `--pre-pkg` / `--post-pkg`，或把它们放进 `02_数据/源包/`\n"
             "（`pre_update_*/raw/script*.npk` 与 `post_update_*/raw/script*.npk`）。\n",
             encoding="utf-8")
         print("  ⚠ 时装热更表：未采集（缺 pre/post script 包）")
@@ -5916,7 +5916,7 @@ def build_parser() -> argparse.ArgumentParser:
   ◆ 横切段的工具不产出业务产物：run_all / exe_cli（入口壳）· 图形界面/app（GUI）
     · 调度与限流（scheduler / throttle）· 项目根定位（paths）· 测试
   ◆ 完整「工具 × 段位」映射：run_all.py map
-    （--seg ②-2 只看一段 · --files 连文件清单 · --json 机器读 · --write 落盘 docs/）
+    （--seg ②-2 只看一段 · --files 连文件清单 · --json 机器读 · --write 落盘 00_治理/手册/）
 
 路径定位（不再硬编码）：① --root  ② 环境变量 LA_ROOT  ③ exe 同级向上
                           ④ 源码树向上；找不到就明确报错，不猜。
@@ -6289,7 +6289,7 @@ def build_parser() -> argparse.ArgumentParser:
                          "带成【表名+字段名+行ID】的结构化版；拿不到就回退裸串版")
     hb.add_argument("--pre-pkg", dest="pre_pkg", type=Path,
                     help="★ 热更【前】的整包 script.npk —— 给行级 diff 用"
-                         "（默认自动找 02_资料/源包/pre_update_*/raw/）")
+                         "（默认自动找 02_数据/源包/pre_update_*/raw/）")
     hb.add_argument("--post-pkg", dest="post_pkg", type=Path,
                     help="★ 热更【后】的整包 script.npk（默认自动找 post_update_*/raw/）")
     hb.add_argument("--workers", type=int, default=24)
@@ -6301,7 +6301,7 @@ def build_parser() -> argparse.ArgumentParser:
     hr = _sp(hf_sub, "rows",
              help="★ 行级热更 diff：两个 script 包逐行比，出【新增/移除/真内容变更】")
     hr.add_argument("--pre", type=Path, required=True,
-                    help="热更【前】的整包 script.npk（如 02_资料/源包/pre_update_*/raw/script.py314.lc.npk）")
+                    help="热更【前】的整包 script.npk（如 02_数据/源包/pre_update_*/raw/script.py314.lc.npk）")
     hr.add_argument("--post", type=Path, required=True,
                     help="热更【后】的整包 script.npk")
     hr.add_argument("--tables", nargs="*",
@@ -6665,7 +6665,7 @@ def build_parser() -> argparse.ArgumentParser:
     mp.add_argument("--limit", type=int, default=20,
                     help="--seg 时每段最多列几个文件（0=全部；默认 20）")
     mp.add_argument("--write", action="store_true",
-                    help="落盘 工具库/docs/工具段位映射.md 与 工具段位映射.json")
+                    help="落盘 工具库/00_治理/手册/工具段位映射.md 与 工具段位映射.json")
     mp.add_argument("--json", nargs="?", const="-", help="报告 JSON：裸用打 stdout，给路径则落盘")
     mp.set_defaults(func=cmd_map)
 

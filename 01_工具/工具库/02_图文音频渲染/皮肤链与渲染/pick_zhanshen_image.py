@@ -1,4 +1,4 @@
-"""斩神专题截图 → docs/images/web-zhanshen.png；删 web-lottery.png"""
+"""斩神专题截图 → 00_治理/手册/images/web-zhanshen.png；删 web-lottery.png"""
 from pathlib import Path
 
 from PIL import Image

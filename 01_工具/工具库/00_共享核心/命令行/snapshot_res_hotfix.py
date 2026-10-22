@@ -20,7 +20,7 @@ import time
 from pathlib import Path
 
 SRC = Path(r"E:\mrzh\Documents")
-DST = Path(r"E:\la拆包项目\02_资料\源包\post_update_20260929_2031_res\raw")
+DST = Path(r"E:\la拆包项目\02_数据\源包\post_update_20260929_2031_res\raw")
 MANIFEST = DST.parent / "SHA256.json"
 SINCE = "2026-09-29 18:00"
 

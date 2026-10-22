@@ -34,7 +34,7 @@ sys.path.insert(0, str(ROOT  / "00_共享核心"))
 
 MANIFEST = Path(r"E:/la拆包项目/03_执行/30_分析/config_work/"
                 r"script_py314_docs_56def41376ed/manifest.json")
-SRC_ROOT = Path(r"E:/la拆包项目/02_资料/源包/热更历史容器_20260829-20260916")
+SRC_ROOT = Path(r"E:/la拆包项目/02_数据/源包/热更历史容器_20260829-20260916")
 # ★ 原先写 parents[4] / "00_共享核心" / "tests" / ... —— 那是 la拆包项目 下并不存在的路径；
 #   而且守卫 `if not str(OUT).startswith("E:")` 恒为假（路径确实以 E: 开头），兜底永远走不到。
 #   直接用上面已经算好的 ROOT（= 工具库），不手算 parents[N]。

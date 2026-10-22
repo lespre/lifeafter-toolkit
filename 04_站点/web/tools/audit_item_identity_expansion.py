@@ -451,7 +451,7 @@ def _scan_anchor_candidates(candidate_to_schema: dict[int, int]) -> dict[str, An
         "search_roots": [
             "E:/la拆包项目/03_执行/10_索引/site_data/external_refs/**/*.json",
             "data/boards/*.json",
-            "docs/**/*.md",
+            "00_治理/手册/**/*.md",
         ],
         "json_files_parsed": parsed_json_files,
         "json_parse_failures": len(parse_failures),

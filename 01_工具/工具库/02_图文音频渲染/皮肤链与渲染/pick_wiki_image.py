@@ -1,4 +1,4 @@
-"""wiki / lottery 截图 → docs/images/（压缩 ✓）并删除弃用的 web-home"""
+"""wiki / lottery 截图 → 00_治理/手册/images/（压缩 ✓）并删除弃用的 web-home"""
 from pathlib import Path
 
 from PIL import Image

@@ -1,4 +1,4 @@
-"""选图 + 压缩 ⇒ docs/images/（网页友好 ✓ 每张 <500KB ✓）"""
+"""选图 + 压缩 ⇒ 00_治理/手册/images/（网页友好 ✓ 每张 <500KB ✓）"""
 from pathlib import Path
 
 from PIL import Image
@@ -41,4 +41,4 @@ for src, dst, maxw, desc in PICK:
 print()
 print('  ➜ %s  （共 %d 张）' % (DST, len(made)))
 for d, sz, kb, desc in made:
-    print('     ![%s](docs/images/%s)' % (desc, d))
+    print('     ![%s](00_治理/手册/images/%s)' % (desc, d))

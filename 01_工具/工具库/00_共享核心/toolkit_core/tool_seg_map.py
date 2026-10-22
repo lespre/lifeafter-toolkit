@@ -19,7 +19,7 @@ r"""tool_seg_map.py — 「工具 × 段位」映射（三线三带）。
 ★ 目录 ≠ 段位：功能域（目录）与工作流段位是正交两根轴，本模块专门把
   「不一致」标出来（`dir_mismatch`）—— 那正是不按段位重排目录的理由。
 
-用户：CLI `run_all.py map`（打印）· docs/gen_tool_seg_map.py（落盘 .md/.json）
+用户：CLI `run_all.py map`（打印）· 00_治理/手册/gen_tool_seg_map.py（落盘 .md/.json）
 """
 from __future__ import annotations
 
@@ -551,7 +551,7 @@ def render_text(rows: list[dict[str, Any]], *, seg_filter: Iterable[str] | None 
 
 
 def render_md(rows: list[dict[str, Any]], *, by_seg: dict[str, list[str]] | None = None,
-              generated_by: str = "docs/gen_tool_seg_map.py") -> str:
+              generated_by: str = "00_治理/手册/gen_tool_seg_map.py") -> str:
     t = totals(rows)
     L: list[str] = []
     L.append("# 工具 × 段位 映射（三线三带）")

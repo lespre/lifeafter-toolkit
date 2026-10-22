@@ -84,7 +84,7 @@ class Tree:
 
     def _source_lock(self) -> dict:
         """源锁：取客户端 npk 的 sha/bytes/mtime（拿不到就用树的位置兜底）。"""
-        for cand in (ROOT / "02_资料/源包/script.py314.lc.npk",
+        for cand in (ROOT / "02_数据/源包/script.py314.lc.npk",
                      pathlib.Path(r"E:/mrzh/Documents/script.py314.lc.npk")):
             if cand.is_file():
                 st = cand.stat()

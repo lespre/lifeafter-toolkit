@@ -6,7 +6,7 @@
 **不修改游戏客户端**，不做动态注入。
 
 > **[⬇️ 下载最新版（Agent 接手包）](https://github.com/lespre/lifeafter-toolkit/releases/latest)**
-> —— 一个包就能交接：解压 → 读 `docs/AGENT.md` → 跑 `verify` 即可开工。
+> —— 一个包就能交接：解压 → 读 `00_治理/手册/AGENT.md` → 跑 `verify` 即可开工。
 
 ## 主要功能：定位与渲染
 
@@ -31,7 +31,7 @@
 · 只要手上是【测试服客户端 + 对应热更源】，就能：
     · 定位正式服还没有的资源
     · 做【正式服 vs 测试服】的 fid 级 diff ⇒ 提前知道这期上什么
-· 判据与切服方法见 docs/CDN-AND-VERSION.md
+· 判据与切服方法见 00_治理/手册/CDN-AND-VERSION.md
 · ⚠️ 服别不能混：APK/模拟器 = 正式服；PC 客户端可能是体验服 ⇒ 名字/fid 可能不同
 ```
 
@@ -45,39 +45,39 @@
 
 **① 项目总览页（三线三带）** —— 一条线看全：索引 → 定位 → 还原 → 呈现
 
-![项目总览页](docs/images/web-home.png)
+![项目总览页](00_治理/手册/images/web-home.png)
 
 **② 图鉴站（Wiki）首页** —— 定位成果的可视化出口
 
-![Wiki 首页](docs/images/web-wiki.png)
+![Wiki 首页](00_治理/手册/images/web-wiki.png)
 
 **③ 武器皮肤图鉴** —— 122 条皮肤，品级 / 上架状态 / 名称核验逐条标注
 
-![武器皮肤图鉴](docs/images/web-weapon-skin.png)
+![武器皮肤图鉴](00_治理/手册/images/web-weapon-skin.png)
 
 **④ PvP 场景平衡** —— 98 组场景档位，同名同值合并，重点场景置顶
 
-![PvP 场景平衡](docs/images/web-scene.png)
+![PvP 场景平衡](00_治理/手册/images/web-scene.png)
 
 **⑤ 伤害公式** —— 从 Python 字节码反编译出来的结算链
 
-![伤害公式](docs/images/web-damage.png)
+![伤害公式](00_治理/手册/images/web-damage.png)
 
 **⑥ 名片框外观** —— PE 源 `.ktx` 定位 + 高清优先，454 条里挂上 369 张图
 
-![名片框外观](docs/images/web-avatar.png)
+![名片框外观](00_治理/手册/images/web-avatar.png)
 
 **⑦ Spine 图集** —— atlas + json + 贴图页三件套，71 套
 
-![Spine 图集](docs/images/web-spine.png)
+![Spine 图集](00_治理/手册/images/web-spine.png)
 
 **⑧ 时装渲染（专题）**
 
-![时装渲染](docs/images/web-fashion.png)
+![时装渲染](00_治理/手册/images/web-fashion.png)
 
 **⑨ 定位成果：皮肤自带的 7 张贴图** —— 按哈希锚定 + 邻接取出，非猜测
 
-![皮肤 7 张贴图](docs/images/skin-textures.png)
+![皮肤 7 张贴图](00_治理/手册/images/skin-textures.png)
 
 > ⚠️ 以上均为**工具产出**；仓库不含游戏原始资源与还原树。
 > 图里出现的具体皮肤 / 活动仅作**技术演示**。
@@ -118,11 +118,11 @@
 - [常见坑](#常见坑)
 
 **配套文档**：
-[`docs/CLI.md`](docs/CLI.md) CLI 逐条手册 ·
-[`docs/USAGE.md`](docs/USAGE.md) 实战工作流 ·
-[`docs/AGENT.md`](docs/AGENT.md) **Agent 冷启动手册** ·
-[`docs/CDN-AND-VERSION.md`](docs/CDN-AND-VERSION.md) **CDN 与版本体系（含切服）** ·
-[`docs/APK-UNPACK.md`](docs/APK-UNPACK.md) **APK 拆包思路**
+[`00_治理/手册/CLI.md`](00_治理/手册/CLI.md) CLI 逐条手册 ·
+[`00_治理/手册/USAGE.md`](00_治理/手册/USAGE.md) 实战工作流 ·
+[`00_治理/手册/AGENT.md`](00_治理/手册/AGENT.md) **Agent 冷启动手册** ·
+[`00_治理/手册/CDN-AND-VERSION.md`](00_治理/手册/CDN-AND-VERSION.md) **CDN 与版本体系（含切服）** ·
+[`00_治理/手册/APK-UNPACK.md`](00_治理/手册/APK-UNPACK.md) **APK 拆包思路**
 
 ---
 
@@ -135,7 +135,7 @@
 | **04_站点** | 可视化页面（wiki / 3D 预览 / 看板） |
 
 **不在仓库里**（体积大 / 可重建）：
-`02_资料`（源包 45G）· `03_执行`（还原树 / 索引库）· `.venv` · 文档大件。
+`02_数据`（源包 45G）· `03_执行`（还原树 / 索引库）· `.venv` · 文档大件。
 
 > 还原树、索引库、源包都可以由本仓库的脚本**从原始客户端重建**，
 > 因此不入库；仓库只保留**代码 + 页面 + 文档**。
@@ -176,14 +176,14 @@ python la.py doctor
 
 ```text
 README.md        ← 全貌 + 两类条目 + 资源定位四步法
-docs/CLI.md      ← 42 个命令，别自己造轮子
-docs/USAGE.md    ← 实战工作流 + 验收纪律
-docs/AGENT.md    ← Agent 冷启动手册（30 秒了解 / 开工三件事 / 8 个坑 / 硬规则）
+00_治理/手册/CLI.md      ← 42 个命令，别自己造轮子
+00_治理/手册/USAGE.md    ← 实战工作流 + 验收纪律
+00_治理/手册/AGENT.md    ← Agent 冷启动手册（30 秒了解 / 开工三件事 / 8 个坑 / 硬规则）
 ```
 
 然后一句开场：
 
-> 设好 `PYTHONPATH`，跑 `verify`，读 `README.md` + `docs/CLI.md`。
+> 设好 `PYTHONPATH`，跑 `verify`，读 `README.md` + `00_治理/手册/CLI.md`。
 > **`0 命中` 先查代码后疑数据**；**引用逐字读**；**哈希自证**；
 > **源包只读、服别不混、不编数据**。
 
@@ -205,7 +205,7 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 | **`.png` 未命中先换扩展名** | UI 图标在 PE 是 `.ktx`、PC 是 `.bc7`；只查 `.png` 会把“存在”判成“不存在” |
 | **源包只读 / 服别不混 / 不编数据** | 安全底线 + PC 与 APK 可能不同服 ⇒ 结论必须标服别 |
 
-> 详细版（含 8 个高频坑与对策）见 **[docs/AGENT.md](docs/AGENT.md)**。
+> 详细版（含 8 个高频坑与对策）见 **[00_治理/手册/AGENT.md](00_治理/手册/AGENT.md)**。
 
 ---
 
@@ -286,7 +286,7 @@ python .../resolve_asset.py --semantic "<png目录>"
 
 ## CLI 命令总览
 
-完整参数见 **[docs/CLI.md](docs/CLI.md)**。这里按用途速查：
+完整参数见 **[00_治理/手册/CLI.md](00_治理/手册/CLI.md)**。这里按用途速查：
 
 ### 索引与定位
 
@@ -411,7 +411,7 @@ python 01_工具/工具库/02_图文音频渲染/皮肤链与渲染/serve_web.py
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────┐
-│  源包（只读）        E:\mrzh  …  02_资料/源包/                       │
+│  源包（只读）        E:\mrzh  …  02_数据/源包/                       │
 │  gpk(HPGF) · npk(NXPK) · fpk · 散文件层(idx/wpk) · APK · 热更包      │
 └───────────────────────────────┬─────────────────────────────────────┘
                                 │  toolkit_cli index build
@@ -486,7 +486,7 @@ la拆包项目/
 │       └── 06_引擎逆向/          引擎侧取证
 ├── 04_站点/
 │   └── web/                     预览页（skin_preview_v2 / skin_src_render / board / index）
-├── 02_资料/                     ✗ 不入库（源包 45G）
+├── 02_数据/                     ✗ 不入库（源包 45G）
 └── 03_执行/                     ✗ 不入库（还原树 / 索引库）
 ```
 

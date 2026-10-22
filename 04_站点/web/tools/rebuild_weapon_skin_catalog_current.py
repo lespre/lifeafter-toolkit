@@ -49,7 +49,7 @@ CURRENT_SOURCE_ID = "documents-py314-current"
 #   但本文件锁定的是「8-27 对照基线」——语义要求那份基线【不变】。
 #   ⇒ 指向我们保存的【历史快照】而不是客户端现场（快照与锁定的
 #     sha256/bytes/mtime_ns 三者完全一致，已实测；所以下面三个锁一个都不动）。
-ROOT_BASELINE_PATH = Path(r"E:\la拆包项目\02_资料\源包\热更历史容器_20260829-20260916\pre_update_20260831_182129\raw_priority\script.py314.lc.npk")
+ROOT_BASELINE_PATH = Path(r"E:\la拆包项目\02_数据\源包\热更历史容器_20260829-20260916\pre_update_20260831_182129\raw_priority\script.py314.lc.npk")
 ROOT_BASELINE_SHA256 = "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7"
 ROOT_BASELINE_BYTES = 455_619_092
 ROOT_BASELINE_MTIME_NS = 1_787_829_591_216_349_300

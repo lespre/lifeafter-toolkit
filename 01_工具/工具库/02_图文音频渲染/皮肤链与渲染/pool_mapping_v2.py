@@ -193,10 +193,10 @@ def dump(name: str, ent: str, aliases: tuple = ()):
 
 
 if __name__ == "__main__":
-    ENT = (r"E:\la拆包项目\02_资料\\源包\post_update_20260924_1610"
+    ENT = (r"E:\la拆包项目\02_数据\\源包\post_update_20260924_1610"
            r"\analysis\script_workcopy_cb85b4d1ed44\entries")
     res = dump("幻夜神谕", ENT, aliases=("神谕童话",))
-    OUT = Path(r"E:\la拆包项目\02_资料\\源包\post_update_20260924_1610\analysis\huanye")
+    OUT = Path(r"E:\la拆包项目\02_数据\\源包\post_update_20260924_1610\analysis\huanye")
     OUT.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(OUT / "mapping_v2_huanye.json", "w", encoding="utf-8"),
               ensure_ascii=False, indent=1, default=str)

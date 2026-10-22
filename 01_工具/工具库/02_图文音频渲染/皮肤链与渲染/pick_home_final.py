@@ -1,4 +1,4 @@
-"""最终：首页截图压缩 → docs/images/web-home.png（首图 ✓）"""
+"""最终：首页截图压缩 → 00_治理/手册/images/web-home.png（首图 ✓）"""
 from pathlib import Path
 
 from PIL import Image
