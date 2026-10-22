@@ -93,3 +93,10 @@ seckeys/
 # 皮肤音效（派生产物，可由客户端重建）
 04_站点/web/assets/audio/**/*.wav
 04_站点/web/assets/audio/**/*.fsb
+
+# 站点派生资源与预览拷贝
+04_站点/web/assets/spine_live/
+04_站点/web/assets/spine/
+04_站点/web/assets/audio/
+04_站点/web/_备份归档/
+04_站点/web/_cache_*
