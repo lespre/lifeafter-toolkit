@@ -2349,7 +2349,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       /* 简略卡面：只留 品级 / 星上限 / 武器类型；特技、升星段、溯源全部折进点开的详情 */
       const sum=[];
       if(it.grade_clean)sum.push(`<div class="k">品级</div><div class="v">${esc(it.grade_clean)}</div>`);
-      if(it.max_star)sum.push(`<div class="k">星上限</div><div class="v">${esc(it.max_star)}</div>`);
+      sum.push(`<div class="k">星上限</div><div class="v">${it.max_star==null?"待定":esc(it.max_star)}</div>`);
       if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
       const det=[];
       if(it.skill_desc)det.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);

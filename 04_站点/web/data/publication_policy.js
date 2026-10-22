@@ -197,6 +197,12 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "三、活动类 / （四）PvP 场景平衡",
       "reason": "场景加成上下限：special_hurt_params_data(kj1) × space_data。按场景名合并，PvP 优先。",
       "items": 63
+    },
+    "kill_broadcast": {
+      "publication_status": "published",
+      "category": "三、活动类 / （五）击败播报",
+      "reason": "播报文案 34 条（error_code_data 含「击败」）+ 击败特效 35 条（weapon_skin_sfx_function_data sfx_type=4）；播放器在 UI 代码里，无独立外观表。",
+      "items": 69
     }
   }
 };

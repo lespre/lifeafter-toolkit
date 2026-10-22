@@ -169,6 +169,14 @@
       }
      ],
      "boards": []
+    },
+    {
+     "id": "event.kill_broadcast",
+     "name": "（五）击败播报",
+     "boards": [
+      "kill_broadcast"
+     ],
+     "children": []
     }
    ],
    "boards": []
