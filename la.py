@@ -339,83 +339,201 @@ def cmd_doctor(_a) -> int:
     return 0 if ok else 1
 
 
+TOOLKIT = PROJ / "01_工具/工具库/00_共享核心/命令行/toolkit_cli.py"
+
+
+def _toolkit(args: list[str], label: str) -> int:
+    return run(label, [TOOLKIT] + args)
+
+
+def cmd_find(a) -> int:
+    """索引定位：逻辑路径 → (层, 包, 行, 大小)。PE 优先，PC 兜底。"""
+    sys.path.insert(0, str(FETCH))
+    sys.path.insert(0, str(PROJ / "01_工具/工具库/00_共享核心"))
+    import sqlite3
+    from toolkit_core.path_fid import fid_of
+
+    stem = a.path
+    for ext in (".ktx", ".dds", ".png", ".bc7", ".jpg"):
+        if stem.lower().endswith(ext):
+            stem = stem[: -len(ext)]
+            break
+    variants = [stem + e for e in (".ktx", ".dds", ".png", ".bc7")]
+    if stem.endswith("_b"):
+        variants += [stem[:-2] + "_s" + e for e in (".ktx", ".dds", ".png", ".bc7")]
+    elif stem.endswith("_s"):
+        variants += [stem[:-2] + "_b" + e for e in (".ktx", ".dds", ".png", ".bc7")]
+
+    dbs = [("PE", DET / "pe_index.sqlite3"), ("PC", DET / "pc_index.sqlite3")]
+    found = []
+    for layer, db in dbs:
+        if not db.is_file():
+            continue
+        con = sqlite3.connect("file:%s?mode=ro" % str(db).replace("\\", "/"), uri=True)
+        for v in variants:
+            fid = "%016X" % (fid_of(v) & 0xFFFFFFFFFFFFFFFF)
+            r = con.execute("select pack,row,decoded,flag from rows where fid=? limit 1",
+                            (fid,)).fetchone()
+            if r:
+                found.append({"layer": layer, "path": v, "pack": r[0], "row": r[1],
+                              "decoded": r[2], "flag": r[3]})
+                break
+    if not found:
+        print("未命中：%s" % a.path)
+        print("提示：先 la.py img best 看候选，或换扩展名（.ktx/.bc7）再试")
+        return 1
+    for f in found:
+        print("[%s] %s → %s #%s（%s 字节, flag=%s）"
+              % (f["layer"], f["path"], f["pack"], f["row"],
+                 f["decoded"], f["flag"]))
+    return 0
+
+
+def cmd_locate(a) -> int:
+    args = ["locate"]
+    if a.container:
+        args.append(a.container)
+    if a.row is not None:
+        args.append(str(a.row))
+    if a.fid:
+        args += ["--fid", a.fid]
+    return _toolkit(args, "取行")
+
+
+def cmd_tables(a) -> int:
+    if a.action == "list":
+        return _toolkit(["tables", "list"], "配置表清单")
+    if a.action == "show" and a.name:
+        return _toolkit(["tables", "find", a.name], "查表：%s" % a.name)
+    if a.action == "export" and a.name:
+        return _toolkit(["tables", "find", a.name], "导出表：%s" % a.name)
+    print("用法：la.py tables list | show <表名> | export <表名>")
+    return 2
+
+
+def cmd_img(a) -> int:
+    """2D 图：best 看候选，export 导出（PE → PC 兜底）。"""
+    path = a.path
+    if not path:
+        print("用法：la.py img best|export <逻辑路径> [-o 输出.png]")
+        return 2
+    sys.path.insert(0, str(FETCH))
+    if a.action == "best":
+        import pe_fetch_hires as H
+        H.describe(path)
+        return 0
+    out = Path(a.out or (path.rsplit("/", 1)[-1] + ".png"))
+    import pe_fetch as PE
+    import pc_fetch as PC
+    if PE.export(path, out):
+        print("PE 命中 →", out)
+        return 0
+    if PC.export(path, out):
+        print("PC 命中 →", out)
+        return 0
+    print("两侧都未命中：", path)
+    return 1
+
+
+def cmd_spine(a) -> int:
+    script = ROOT / "01_工具/工具库/01_解码定位复原/解包与扫描/spine_export.py"
+    args = [script, "--filter", a.filter or ""]
+    if a.out:
+        args += ["--out", a.out]
+    return run("Spine 三件套导出", args)
+
+
 def main() -> int:
-    ap = argparse.ArgumentParser(prog="la.py", description="LifeAfter 拆包项目统一 CLI")
+    ap = argparse.ArgumentParser(prog="la", description="明日之后拆包项目 CLI")
     sub = ap.add_subparsers(dest="cmd")
 
-    sub.add_parser("status", help="服务 / 数据 / 索引 概览")
+    sub.add_parser("doctor", help="环境自检：根/索引/CLI/服务")
+    sub.add_parser("status", help="服务与数据概览")
 
-    w = sub.add_parser("web", help="站点数据与页面")
-    w.add_argument("action", choices=["refresh", "build", "check", "serve", "shot", "tidy"])
-    w.add_argument("--port", type=int, default=8765)
-    w.add_argument("url", nargs="?")
-    w.add_argument("out", nargs="?")
-    w.add_argument("--width", type=int, default=1440)
-    w.add_argument("--height", type=int, default=900)
-    w.add_argument("--js", default="")
-    w.add_argument("--all-tests", action="store_true", help="web check 跑全部测试（默认只跑核心契约）")
+    ix = sub.add_parser("index", help="索引：build / status")
+    ix.add_argument("action", choices=["build", "status", "all"])
 
-    i = sub.add_parser("index", help="PE 索引")
-    i.add_argument("action", choices=["all", "pull", "build", "names"])
+    fi = sub.add_parser("find", help="索引定位：逻辑路径 → 包/行")
+    fi.add_argument("path")
+    fi.add_argument("--json")
 
-    pe = sub.add_parser("pe", help="PE 测试服取图")
-    pe.add_argument("action", choices=["check", "resolve", "export", "best"])
-    pe.add_argument("path", nargs="?")
-    pe.add_argument("-o", "--out")
+    lo = sub.add_parser("locate", help="取行：容器+行 或 --fid")
+    lo.add_argument("container", nargs="?")
+    lo.add_argument("row", nargs="?", type=int)
+    lo.add_argument("--fid")
 
-    pc = sub.add_parser("pc", help="PC 客户端取图")
-    pc.add_argument("action", choices=["check", "resolve", "export"])
-    pc.add_argument("path", nargs="?")
-    pc.add_argument("-o", "--out")
+    tb = sub.add_parser("tables", help="配置表：list / show / export")
+    tb.add_argument("action", choices=["list", "show", "export"])
+    tb.add_argument("name", nargs="?")
 
-    npk = sub.add_parser("npk", help="item_icon npk 图标库")
-    npk.add_argument("action", choices=["export", "query"])
-    npk.add_argument("image", nargs="?")
-    npk.add_argument("--id", dest="image_id")
+    im = sub.add_parser("img", help="2D 图：best 看候选 / export 导出（PE→PC）")
+    im.add_argument("action", choices=["best", "export"])
+    im.add_argument("path")
+    im.add_argument("-o", "--out")
 
-    tp = sub.add_parser("tool", help="透传到 toolkit_cli（tables/lottery/atlas/locate 等）")
-    tp.add_argument("rest", nargs=argparse.REMAINDER)
-
-    bd = sub.add_parser("board", help="板块工具：check 校验 / run 跑构建脚本")
+    bd = sub.add_parser("board", help="板块：check / run")
     bd.add_argument("action", choices=["check", "run"])
     bd.add_argument("target", nargs="?")
 
-    sub.add_parser("doctor", help="自检：环境/索引/CLI/服务")
+    wb = sub.add_parser("web", help="站点：build / serve / shot / refresh")
+    wb.add_argument("action", choices=["build", "serve", "shot", "refresh", "check"])
+    wb.add_argument("args", nargs=argparse.REMAINDER)
 
-    wt = sub.add_parser("watch", help="监测")
+    hf = sub.add_parser("hotfix", help="热更：plan / apply")
+    hf.add_argument("action", choices=["plan", "apply", "report"])
+
+    sp = sub.add_parser("spine", help="Spine 三件套导出")
+    sp.add_argument("--filter", default="")
+    sp.add_argument("--out")
+
+    nk = sub.add_parser("npk", help="item_icon 图标库")
+    nk.add_argument("action", choices=["export", "query"])
+    nk.add_argument("image", nargs="?")
+    nk.add_argument("--id", dest="image_id")
+
+    wt = sub.add_parser("watch", help="监测：device / cdn / logcat")
     wt.add_argument("action", choices=["device", "cdn", "logcat"])
     wt.add_argument("--interval", type=int, default=0)
+
+    tp = sub.add_parser("tool", help="透传 toolkit_cli（逃生舱）")
+    tp.add_argument("rest", nargs=argparse.REMAINDER)
 
     a = ap.parse_args()
     if not a.cmd:
         print(BANNER)
         ap.print_help()
         return 0
-    if a.cmd == "status":
-        return cmd_status(a)
-    if a.cmd == "tool":
-        import subprocess as _sp
-        env = dict(os.environ)
-        env["PYTHONPATH"] = str(PROJ / "01_工具/工具库/00_共享核心")
-        return _sp.call([PY, "-u", str(PROJ / "01_工具/工具库/00_共享核心/命令行/toolkit_cli.py")] + a.rest, env=env)
-    if a.cmd == "board":
-        return cmd_board(a)
     if a.cmd == "doctor":
         return cmd_doctor(a)
-    if a.cmd == "web":
-        return cmd_web(a)
+    if a.cmd == "status":
+        return cmd_status(a)
     if a.cmd == "index":
         return cmd_index(a)
-    if a.cmd == "pe":
-        return cmd_pe(a)
-    if a.cmd == "pc":
-        return cmd_pc(a)
+    if a.cmd == "find":
+        return cmd_find(a)
+    if a.cmd == "locate":
+        return cmd_locate(a)
+    if a.cmd == "tables":
+        return cmd_tables(a)
+    if a.cmd == "img":
+        return cmd_img(a)
+    if a.cmd == "board":
+        return cmd_board(a)
+    if a.cmd == "web":
+        return cmd_web(a)
+    if a.cmd == "hotfix":
+        a.action = a.action
+        return _toolkit(["hotfix", a.action], "热更 %s" % a.action)
+    if a.cmd == "spine":
+        return cmd_spine(a)
     if a.cmd == "npk":
         return cmd_npk(a)
     if a.cmd == "watch":
         if a.interval == 0:
             a.interval = 20 if a.action == "device" else 300
         return cmd_watch(a)
+    if a.cmd == "tool":
+        return _toolkit(a.rest, "toolkit")
     return 2
 
 
