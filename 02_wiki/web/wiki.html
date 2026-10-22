@@ -356,8 +356,17 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   var TITLES = {};
   (function(){
     function cleanNm(x){
-      return String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
-        .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
+      var t=String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+        .replace(/\([^)]*\)/g,'').split('·')[0]
+        .replace(/全量|图鉴|说明文字|名称/g,'').replace(/总表|表$/,'').trim();
+      if(/当期&历史|历史每期/.test(t)) t='奖池';
+      if(/^活动$/.test(t)) t='活动';
+      t=t.replace(/[与及和、]+$/,'');
+      return t;
+    }
+    function numOf(leaf){
+      var m=String(leaf.name||'').match(/^（[^）]*）/);
+      return m?m[0]:'';
     }
     (T['树']||[]).forEach(function(top){
       (top.boards||[]).forEach(function(id){
@@ -366,7 +375,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       (top.children||[]).forEach(function(leaf){
         var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
         ids.forEach(function(id){
-          TITLES[id]=(ids.length===1)?leaf.name:cleanNm(byId[id].name||id);
+          TITLES[id]=(ids.length===1)?leaf.name:(numOf(leaf)+cleanNm(byId[id].name||id));
         });
       });
     });
