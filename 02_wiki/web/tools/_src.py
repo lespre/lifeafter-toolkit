@@ -12,7 +12,11 @@ from __future__ import annotations
 import pathlib
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
-ROOTS = [
+import os
+
+# LA_CDATA_ROOT 可显式指定表根（例如只带 PC 客户端时指向 Documents 树）
+_ENV_ROOT = os.environ.get("LA_CDATA_ROOT")
+ROOTS = ([pathlib.Path(_ENV_ROOT)] if _ENV_ROOT else []) + [
     PROJ / "01_索引与产物/41_还原树/pe_20261020/com/cdata",
     PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata",
 ]
