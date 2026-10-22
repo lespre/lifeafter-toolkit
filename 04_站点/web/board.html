@@ -1308,7 +1308,15 @@ function fillFilterSelects(items){
       items.forEach(it=>{const v=it[f.key];if(v!=null&&String(v)!=="")set.add(String(v));});
       if(!set.size)return;
       const sel=document.createElement("select");
-      const vals=[...set].sort();
+      const GRADE_ORDER=["极品","高级","中级","基础"];
+      let vals=[...set].sort();
+      if(f.key==="grade_name"||f.key==="grade_clean"||f.key==="grade_label"){
+        vals=vals.sort((a,b)=>{
+          const ia=GRADE_ORDER.findIndex(g=>String(a).includes(g));
+          const ib=GRADE_ORDER.findIndex(g=>String(b).includes(g));
+          return (ia<0?99:ia)-(ib<0?99:ib);
+        });
+      }
       if(f.key==="month")vals.reverse();
       fillOptions(sel,vals,"全部"+zhText(FIELD_CN[f.key]||f.label||f.key),f.key);
       const dv=(DATA.meta.filter_defaults||{})[f.key];

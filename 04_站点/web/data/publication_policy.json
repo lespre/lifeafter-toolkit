@@ -203,6 +203,12 @@
    "category": "三、活动类 / （五）击败播报",
    "reason": "播报文案 34 条（error_code_data 含「击败」）+ 击败特效 35 条（weapon_skin_sfx_function_data sfx_type=4）；播放器在 UI 代码里，无独立外观表。",
    "items": 69
+  },
+  "core_skill_12star": {
+   "publication_status": "published",
+   "category": "二、战力类 / （零）核芯类 / 12 星特技",
+   "reason": "极品（金/12星）核芯 50 条的完整特技与描述；升星段仅 5 星档有文本。",
+   "items": 50
   }
  }
 }
