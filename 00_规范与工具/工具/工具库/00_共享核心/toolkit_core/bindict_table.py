@@ -17,6 +17,14 @@ from toolkit_core.bindict_rows import SCALAR_BOOL, SCALAR_CHS, SCALAR_F32, SCALA
 ROW_MARKERS = (0x96, 0xD6, 0xC6)
 MAPPING_MARKER = 0x36
 
+# ★ 2026-10-23：索引尾按【首字节】分派。
+#   0x76 → 本文原有的桶索引（多行 D6/C6/96 行表）
+#   0x56 → 单行哈希键字段字典族，交给 toolkit_core.bindict_56（实测 6 张表）
+#   其它首字节（0x66 / 0x46 / …）**不进分派**，照旧走 0x76 分支 → 原有的
+#   `not a supported 0x76 index tail` 报错，行为逐字不变。
+INDEX_TAIL_76 = 0x76
+INDEX_TAIL_56 = 0x56
+
 
 def parse_chs_pool(body: bytes) -> list[str]:
     """Parse a CHS body: [count][reserved][ends...][utf-8 strings]."""
@@ -117,15 +125,97 @@ def resolve_jump_group(blob: bytes, target: int) -> list[int] | None:
     return None
 
 
+def index_tail_family(blob: bytes) -> int | None:
+    """blob 尾部索引尾的**首字节**（``de`` 处）；取不到返回 None。
+
+    只做定位，不做族校验 —— 要判断是不是真 0x56 请用 :func:`is_56_tail`。
+    绝不抛异常（坏 blob 只是返回 None）。
+    """
+    try:
+        de = struct.unpack_from("<I", blob, 0)[0]
+    except struct.error:
+        return None
+    if not (0 < de < len(blob)):
+        return None
+    return blob[de]
+
+
+def is_56_tail(blob: bytes, de: int | None = None) -> bool:
+    """严格校验「这个 blob 的尾确实是 0x56 族索引尾」。
+
+    光看首字节不够：de 前缀缺失的表（optional_hd_exchange_shop_data 那类）
+    blob[0:4] 是行数，随手落在数据区里，首字节可能是任何值。所以要求全套：
+    ``56 05 <u8 n>`` + n 条 8B 记录全在尾内 + 每条记录偏移都落在 blob 内。
+
+    ★ 2026-10-23 实测：921 张 _chs 配对表里满足此校验的只有 6 张，且这 6 张
+      在改动前**全部报错**（`not a supported 0x76 index tail`）
+      ⇒ 通过本校验走 0x56 分支，不可能吃掉任何原本能解的表。
+    """
+    if de is None:
+        try:
+            de = struct.unpack_from("<I", blob, 0)[0]
+        except struct.error:
+            return False
+    if not (4 <= de < len(blob)):
+        return False
+    tail = blob[de:]
+    if len(tail) < 4 or tail[0] != INDEX_TAIL_56 or tail[1] != 0x05:
+        return False
+    nrec = tail[2]
+    if nrec == 0 or 3 + 8 * nrec > len(tail):
+        return False
+    for i in range(nrec):
+        off = struct.unpack_from("<I", tail, 3 + 8 * i + 4)[0]
+        if not (de <= off < len(blob)):
+            return False
+    return True
+
+
+def read_56_records(blob: bytes, de: int | None = None) -> tuple[int, int, list[tuple[int, int]]]:
+    """读 0x56 记录表 → ``(de, nrec, [(hash, triple_offset)])``。
+
+    ``offset`` 是 blob 内偏移，指向该字段的 ``[uleb field_idx][u8 type][value]``
+    三元组；记录按存储顺序（hash 升序）返回。
+    """
+    if de is None:
+        try:
+            de = struct.unpack_from("<I", blob, 0)[0]
+        except struct.error:
+            raise ValueError("blob too short for a 0x56 index tail") from None
+    if not is_56_tail(blob, de):
+        head = blob[de:de + 4].hex() if 0 <= de < len(blob) else "?"
+        raise ValueError(f"not a valid 0x56 index tail: {head}")
+    tail = blob[de:]
+    nrec = tail[2]
+    records = [struct.unpack_from("<II", tail, 3 + 8 * i) for i in range(nrec)]
+    return de, nrec, records
+
+
+def parse_index_56(blob: bytes) -> list[tuple[int, int]]:
+    """0x56 族的"索引" → ``[(hash, triple_offset)]``（按 hash 升序）。
+
+    与 0x76 的 ``[(key, value_start)]`` 同形：键 → blob 内偏移。
+    字段名/值解码见 :func:`decode_table_rows_56`（复用 bindict_56 的三元组/组读取）。
+    """
+    _de, _nrec, records = read_56_records(blob)
+    return sorted(records)
+
+
 def parse_index(blob: bytes) -> list[tuple[int, int]]:
     """Parse the 0x76 index tail. Returns [(key, value_start)] sorted by key.
 
     Node offset encoding is table-dependent: some tables store the bucket
     offset verbatim (weapon_skin_data), others store it ``<<8`` (box_data).
     Both styles are detected by range-checking against the blob.
+
+    ★ 2026-10-23：索引尾按**首字节**分派 —— 0x56 族（单行哈希键字段字典）
+      直接交给 :func:`parse_index_56`（结构同 bindict_56 的记录表）；
+      0x76 及其它首字节照走下面的原逻辑，逐字不变。
     """
     de = struct.unpack_from("<I", blob, 0)[0]
     tail = blob[de:]
+    if is_56_tail(blob, de):
+        return parse_index_56(blob)
     # ★ 2026-10-01 补：第三字节除了 0x0b 还有 0x01 变体（实测 trade_preorder_config_data
     #   的索引尾是 76 05 01 0N —— 单行全局配置表，字段 max_preorder_count /
     #   max_preorder_player / preorder_protect_time 与 _chs 池逐一对上，故并列支持）。
@@ -326,6 +416,58 @@ def _tail_info(blob: bytes, pos: int, end: int, pool: list[str], reason: str) ->
     return info
 
 
+def decode_table_rows_56(base_body: bytes, pool: list[str]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """解 0x56 族表体（单行哈希键字段字典）→ ``([row], [])``。
+
+    复用 ``toolkit_core.bindict_56`` 的结构识别与三元组/组读取
+    （detect / read_triple / read_groups），**不改动** bindict_56 本身。
+    返回的行与 :func:`decode_table_rows` 同形，便于下游按 ``row["values"]`` 取值：
+
+        {"key": None, "start": <row_area>, "marker": "0x56", "family": "0x56",
+         "values": {字段名: 值}, "field_count": n, "nrec": n, "detail": [...]}
+
+    单行表没有行键（8B 记录是**字段名 hash**，不是行键）⇒ ``key`` 为 None。
+    """
+    from toolkit_core import bindict_56 as B56
+
+    meta = B56.detect(base_body)
+    blob = meta["blob"]
+    pos = meta["row_area"]
+    triples: list[tuple[int, int, Any]] = []
+    while pos < len(blob):
+        idx, tag, value, pos = B56.read_triple(blob, pos, len(blob))
+        triples.append((idx, tag, value))
+
+    values: dict[str, Any] = {}
+    detail: list[dict[str, Any]] = []
+    for idx, tag, raw in triples:
+        name = pool[idx] if 0 <= idx < len(pool) else f"<field_{idx}>"
+        out: Any = raw
+        if tag == 0x05 and pool:
+            out = pool[raw] if 0 <= raw < len(pool) else f"<chs_oob:{raw}>"
+        if tag == 0x0B:
+            group, at = B56.read_groups(blob, raw)
+            if group:
+                out = {"jump": raw, "at": at, "values": group}
+        values[name] = out
+        detail.append({"idx": idx, "name": name, "tag": f"0x{tag:02x}", "raw": raw, "value": out})
+
+    row = {
+        "key": None,
+        "start": meta["row_area"],
+        "marker": "0x56",
+        "family": "0x56",
+        "de": meta["de"],
+        "field_count": meta["field_count"],
+        "nrec": meta["nrec"],
+        "values": values,
+        "detail": detail,
+        "hash_records": [struct.unpack_from("<II", meta["tail"], 3 + 8 * i)
+                         for i in range(meta["nrec"])],
+    }
+    return [row], []
+
+
 def decode_table_rows(
     base_body: bytes,
     pool: list[str],
@@ -357,6 +499,10 @@ def decode_table_rows(
         raise ValueError("base reserved != 0")
     table_end = 8 + 4 * count
     blob = base_body[table_end:]
+    # ★ 2026-10-23：索引尾分派 —— 0x56 族整表交给 decode_table_rows_56（bindict_56）。
+    #   只在 is_56_tail 严格成立时分流；0x76 等其它族照旧走下面原逻辑。
+    if index_rows is None and is_56_tail(blob):
+        return decode_table_rows_56(base_body, pool)
     if index_rows is None:
         index_rows = parse_index(blob)
     known_schemas = _collect_schemas(blob, index_rows)
