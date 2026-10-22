@@ -32,18 +32,22 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "名片框外观总表",
+      "name": "头像 / 头像框 / 名片框",
       "category": "四、资料层（道具总表 / 文本来源） / （四）名片框外观",
       "board": "avatar_catalog",
-      "items": 454,
-      "generated": "",
-      "source_server": "简单生存服（体验服 Documents 快照）",
+      "items": 673,
+      "generated": "2026-10-22",
+      "source_server": "简单生存服（PE 测试服 pe_20261020）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 454
+        "structure": 673
       },
       "state_summary": {
-        "条目": 454
+        "头像框": 252,
+        "头像": 204,
+        "名片框": 217,
+        "有图": 633,
+        "缺图": 40
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -51,7 +55,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 454
+          "replayed-structural": 673
         }
       }
     },
@@ -76,6 +80,32 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 18232
+        }
+      }
+    },
+    {
+      "name": "12 星全量特技表（极品核芯）",
+      "category": "二、战力类 / （零）核芯类 / 12 星特技",
+      "board": "core_skill_12star",
+      "items": 50,
+      "generated": "2026-10-22",
+      "source_server": "经典服口径（极品 = 金，12 星）",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "evidence": {
+        "structure": 50
+      },
+      "state_summary": {
+        "极品核芯": 50,
+        "有特技": 47,
+        "有升星段": 47
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 50
         }
       }
     },
@@ -318,6 +348,31 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "击败播报（文案 + 击败特效）",
+      "category": "三、活动类 / （五）击败播报",
+      "board": "kill_broadcast",
+      "items": 38,
+      "generated": "2026-10-22",
+      "source_server": "简单生存服（PE pe_20261020）",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "evidence": {
+        "structure": 38
+      },
+      "state_summary": {
+        "播报文案": 3,
+        "击败特效": 35
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 38
+        }
+      }
+    },
+    {
       "name": "当期&历史每期抽奖奖池（按活动表重建）",
       "category": "三、活动类 / （一）限时主题类 / 1、当期&历史每期抽奖奖池",
       "board": "lottery_periods",
@@ -348,18 +403,22 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "异变核芯 · 全量表（本体 660xxx + 礼包关联）",
+      "name": "异变核芯 · 全量表",
       "category": "二、战力类 / （零）核芯类",
       "board": "mutation_core_full",
       "items": 132,
       "generated": "2026-10-17T20:50:51Z",
-      "source_server": "简单生存服",
+      "source_server": "经典服口径（极品 12 / 高级 9 / 中级 5 / 基础不可升）",
       "package_sha": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
       "evidence": {
         "structure": 132
       },
       "state_summary": {
-        "static config": 132
+        "核芯": 132,
+        "极品": 50,
+        "高级": 63,
+        "中级": 11,
+        "基础": 8
       },
       "name_status_summary": {},
       "provenance_status": {
