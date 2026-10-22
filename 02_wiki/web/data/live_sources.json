@@ -1,0 +1,334 @@
+{
+ "schema_version": 3,
+ "description": "LifeAfter Wiki local read-only source registry. Source packages are never written by this Wiki; current data, full-package fallbacks, and historical snapshots stay explicitly separate.",
+ "complement_contract": {
+  "mode": "dual-client-dual-server",
+  "research_priority": "test-client-first",
+  "required_source_ids": [
+   "documents-py314-current"
+  ],
+  "field_join_policy": "no-cross-source-field-join",
+  "comparison_use": "The formal client is a supplement and cross-check. It may prove presence/difference within its own snapshot, never fill a primary-source field.",
+  "current_source_rule": "Current conclusions begin from the Documents current snapshot of the declared client/server branch. A fallback package is a separately labelled snapshot, not a silent extension of the current package."
+ },
+ "source_sets": [
+  {
+   "set_id": "simple-survival-test-client",
+   "client_root": "E:\\mrzh",
+   "client_role": "test-primary",
+   "server_branch": "简单生存服",
+   "active_documents_source_id": "documents-py314-current",
+   "full_baseline_source_id": "mrzh-root-py314-full",
+   "historical_snapshot_source_ids": [
+    "mrzh-documents-py3-legacy",
+    "mrzh-documents-script-legacy",
+    "mrzh-root-script-legacy"
+   ],
+   "selection_rule": "First inspect the active Documents package. If a table family is physically absent, a named full baseline may be inspected as a separate fallback snapshot; do not merge its fields into the current snapshot."
+  },
+  {
+   "set_id": "classic-formal-client",
+   "client_root": "E:\\LifeAfter",
+   "client_role": "production-comparison",
+   "server_branch": "经典服",
+   "active_documents_source_id": null,
+   "full_baseline_source_id": "lifeafter-root-py314-full",
+   "historical_snapshot_source_ids": [
+    "lifeafter-documents-py3-legacy",
+    "lifeafter-documents-script-legacy",
+    "lifeafter-root-py3-legacy",
+    "lifeafter-root-script-legacy"
+   ],
+   "selection_rule": "Use as a formal-server comparison within the same evidence scope. Full and historical packages remain separate locked snapshots; no cross-snapshot field completion is allowed.",
+   "boundary_note": "正式服 Documents 源已按「禁碰 E:\\LifeAfter」的边界规则移除；本组仅保留只读元数据（reader_enabled=false），不参与读取。"
+  }
+ ],
+ "table_family_resolution": {
+  "status": "components-located-loader-replay-pending",
+  "scope": "one locked package + one client/server branch + one identified table family",
+  "candidate_family": "BA8 common_item_data (base/inc components located in the locked test Documents package; loader semantics and row composition are still pending)",
+  "formula": "base ∪ inc − del",
+  "input_roles": [
+   "base",
+   "inc",
+   "del"
+  ],
+  "observed_components": {
+   "documents-py314-current": {
+    "evidence_scope": "BA8 extracted workcopy, named-family scan; static component discovery only",
+    "scan_command": "python tools/scan_table_family.py common_item --json",
+    "base": {
+     "logical_path": "common_item_data_base.py",
+     "entry_index": 18005,
+     "file_id": "B42760CCA41DBC25",
+     "decoded_sha256": "79e25ffd2e4ab34e48717505018fa3ab6438bc637a35fa484aba2a5686208895"
+    },
+    "base_chs": {
+     "logical_path": "common_item_data_base_chs.py",
+     "entry_index": 23928,
+     "file_id": "EF3A8474A5E5F7A4",
+     "decoded_sha256": "3be82c3b4089494b0c167a021d24d4f1e58dd7bf18f3bb95b74fbac6ea45bb26"
+    },
+    "inc": {
+     "logical_path": "common_item_data_inc.py",
+     "entry_index": 5292,
+     "file_id": "363827281579481B",
+     "decoded_sha256": "2c8864b07b4e65c7fe2c8260d4e7304b0cc7f07fa39e9892af28b0b6072e44e2"
+    },
+    "inc_chs": {
+     "logical_path": "common_item_data_inc_chs.py",
+     "entry_index": 2592,
+     "file_id": "1A81E67098A6E8D9",
+     "decoded_sha256": "d4f14141ebba7e16778e86708441e9f669c4ee2e7907230314f677e3e0714861"
+    },
+    "del": {
+     "state": "located-static-loader-replay-pending",
+     "logical_path": "common_item_data_del.py",
+     "entry_index": 16447,
+     "file_id": "A44D99E0490CA9BF",
+     "decoded_sha256": "fe1ef916bbe917900d54da70a756397ff4c8983a03d65a8bb61788ec183a9653",
+     "static_wrapper_evidence": {
+      "entry_index": 1765,
+      "file_id": "1232F498D07A0EBB",
+      "decoded_sha256": "af4d91fec923b7aeaec4e6151b4d863991881686f396baa0ba6ae89d41325d51",
+      "observed_symbols": [
+       "MergedTableData",
+       "common_item_data_base",
+       "common_item_data_inc",
+       "common_item_data_del",
+       "SplitTableData",
+       "com\\cdata\\common_item_data.py"
+      ]
+     },
+     "boundary": "The del module and a same-snapshot wrapper that co-references base/inc/del are statically located. Loader control flow, key extraction, operation order, and runtime selection still require replay."
+    },
+    "inc_decode_state": {
+     "state": "35-of-37-index-rows-decoded-2-unresolved",
+     "decoded_rows": 35,
+     "unresolved_keys": [
+      1224504,
+      1345059
+     ],
+     "unresolved_reasons": [
+      "1224504: attached 0x86 detail overruns the row boundary by one byte",
+      "1345059: uncalibrated 0x0c extension area after the 0x96 row"
+     ],
+     "note": "0x86 attached detail rows (schema 170) close exactly at the row boundary for 10 previously-unbound rows; 2 rows stay unbound without guessing."
+    },
+    "static_family_audit": {
+     "command": "python tools/audit_common_item_family.py",
+     "report": "data/audit/common_item_family_composition_audit.json",
+     "universe": {
+      "base_keys": 36038,
+      "inc_keys": 35,
+      "both": 27,
+      "only_base": 36011,
+      "only_inc": 8
+     },
+     "overlap_name_state": {
+      "same": 4,
+      "different": 23,
+      "base_missing_name": 0,
+      "inc_missing_name": 0
+     },
+     "key_semantics_warning": "23 of 27 overlapping keys carry different item names in inc vs base (e.g. key 1224479: base=1型倒三角墙, inc=3型倒三角墙). Overlap therefore does NOT prove the same item is being modified; the inc row key may be a slot/index rather than item_id. No loader-order or row-identity claim is made from these set facts.",
+     "del_module": {
+      "state": "payload-shape-unresolved",
+      "note": "deleted keys are a custom-marshal set constant; no key is applied."
+     }
+    }
+   }
+  },
+  "same_package_only": true,
+  "cross_package_merge_forbidden": true,
+  "increment_collision_rule": "A same-key increment may replace a base row only after the row identity and loader semantics are replayed from that package; otherwise mark unresolved-composition.",
+  "deletion_rule": "A deletion record removes only the replay-identified key from the same package composition; it never deletes a row from another client, server branch, or snapshot.",
+  "full_package_fallback_rule": "A full baseline can be selected only when the active package lacks the target family or an explicitly verified loader chooses it. The fallback output retains its own source lock and never supplies missing current-snapshot fields.",
+  "row_origin_states": [
+   "base",
+   "increment",
+   "base-overridden-by-increment",
+   "deleted-by-hotfix",
+   "unresolved-composition"
+  ],
+  "minimum_replay_evidence": [
+   "each base/inc/del entry file_id and decoded_sha256",
+   "same-package CHS/schema pairing where text is shown",
+   "row-key set before and after composition",
+   "loader or consumer evidence for the table-family composition rule",
+   "record-level origin state and deletion decision"
+  ]
+ },
+ "sources": [
+  {
+   "source_id": "documents-py314-current",
+   "label": "简单生存服·测试服 Documents 当前脚本包（06b33611，2026-09-29 20:31 热更）",
+   "kind": "script_npk",
+   "source_kind": "current-documents-hotfix",
+   "variant_id": "experience-py314-current",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "简单生存服",
+   "snapshot_role": "current-documents-hotfix",
+   "reader_enabled": true,
+   "path": "E:\\mrzh\\Documents\\script.py314.lc.npk",
+   "expected_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+   "expected_bytes": 135531128,
+   "expected_mtime_ns": 1790685070535917800,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "mrzh-root-py314-full",
+   "label": "简单生存服·测试服根目录 py314 全量基线包（8514c5ad，2026-09-25 23:19）",
+   "kind": "script_npk",
+   "source_kind": "full-client-baseline",
+   "variant_id": "experience-py314-root-baseline",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "简单生存服",
+   "snapshot_role": "client-full-baseline",
+   "reader_enabled": false,
+   "path": "E:\\mrzh\\script.py314.lc.npk",
+   "expected_sha256": "8514c5add38d6e3e26c96bba049d1bdd0d0691f73df9a1181a258fb9686e81c7",
+   "expected_bytes": 465363048,
+   "expected_mtime_ns": 1790349575285709500,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "mrzh-documents-py3-legacy",
+   "label": "简单生存服·测试服 Documents py3 历史脚本快照",
+   "kind": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "variant_id": "experience-py3-documents-legacy",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "简单生存服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\mrzh\\Documents\\script.py3.npk",
+   "expected_sha256": "8618ca1d8e2b29539cd13b1bc4b32aee9a44260761526298f7d41dc249f872b6",
+   "expected_bytes": 473764988,
+   "expected_mtime_ns": 1784746822404735800,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "mrzh-documents-script-legacy",
+   "label": "简单生存服·测试服 Documents legacy script 快照",
+   "kind": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "variant_id": "experience-script-documents-legacy",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "简单生存服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\mrzh\\Documents\\script.npk",
+   "expected_sha256": "c230d49114f01e88107a0e1613273177ea85573bc8f48ca9c383162bf4e4982c",
+   "expected_bytes": 340643664,
+   "expected_mtime_ns": 1782230566156216300,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "mrzh-root-script-legacy",
+   "label": "简单生存服·测试服根目录 legacy script 快照",
+   "kind": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "variant_id": "experience-script-root-legacy",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "简单生存服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\mrzh\\script.npk",
+   "expected_sha256": "43023f17c12823866e9d2203a5a9c96ead5925b39c4b243b0560a000261635a1",
+   "expected_bytes": 229084544,
+   "expected_mtime_ns": 1733835139867883200,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "lifeafter-root-py314-full",
+   "label": "经典服·正式服根目录 py314 全量基线包",
+   "kind": "script_npk",
+   "source_kind": "full-client-baseline",
+   "variant_id": "official-classic-py314-root-baseline",
+   "client_role": "production-comparison",
+   "server_role": "official-classic",
+   "server_branch": "经典服",
+   "snapshot_role": "client-full-baseline",
+   "reader_enabled": false,
+   "path": "E:\\LifeAfter\\script.py314.lc.npk",
+   "expected_sha256": "683098c34851f77676eb8b6a6710a6e7b2e11e3b952958e3af1837419d8c627e",
+   "expected_bytes": 400155696,
+   "expected_mtime_ns": 1773725103118735200,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "lifeafter-documents-py3-legacy",
+   "label": "经典服·正式服 Documents py3 历史脚本快照",
+   "kind": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "variant_id": "official-classic-py3-documents-legacy",
+   "client_role": "production-comparison",
+   "server_role": "official-classic",
+   "server_branch": "经典服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\LifeAfter\\Documents\\script.py3.npk",
+   "expected_sha256": "c3e6d347e3b85af6ac2ce07d59fe94eb34c3b452c0c45b12eb2a697d1c5b80d7",
+   "expected_bytes": 349857404,
+   "expected_mtime_ns": 1785249838291013300,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "lifeafter-documents-script-legacy",
+   "label": "经典服·正式服 Documents legacy script 快照",
+   "kind": "script_npk",
+   "source_kind": "historical-documents-snapshot",
+   "variant_id": "official-classic-script-documents-legacy",
+   "client_role": "production-comparison",
+   "server_role": "official-classic",
+   "server_branch": "经典服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\LifeAfter\\Documents\\script.npk",
+   "expected_sha256": "afa7d6e84be7213bacaa7aebf764bb25718c2fb112d67d79c7f2df8f1baf3756",
+   "expected_bytes": 332566292,
+   "expected_mtime_ns": 1782411101047412400,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "lifeafter-root-py3-legacy",
+   "label": "经典服·正式服根目录 py3 历史脚本快照",
+   "kind": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "variant_id": "official-classic-py3-root-legacy",
+   "client_role": "production-comparison",
+   "server_role": "official-classic",
+   "server_branch": "经典服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\LifeAfter\\script.py3.npk",
+   "expected_sha256": "6329fa77cce9c8d54c16de411672caecbeff07bdb3d83a48d3ff175626cf2350",
+   "expected_bytes": 365064336,
+   "expected_mtime_ns": 1773725103118735200,
+   "source_write_policy": "read_only"
+  },
+  {
+   "source_id": "lifeafter-root-script-legacy",
+   "label": "经典服·正式服根目录 legacy script 快照",
+   "kind": "script_npk",
+   "source_kind": "historical-root-snapshot",
+   "variant_id": "official-classic-script-root-legacy",
+   "client_role": "production-comparison",
+   "server_role": "official-classic",
+   "server_branch": "经典服",
+   "snapshot_role": "historical-fallback",
+   "reader_enabled": false,
+   "path": "E:\\LifeAfter\\script.npk",
+   "expected_sha256": "8e6cd795897be4f95609e80f854847b56ba757e8bd4e20f54ca376f616435368",
+   "expected_bytes": 1441472,
+   "expected_mtime_ns": 1621590458000000000,
+   "source_write_policy": "read_only"
+  }
+ ]
+}
