@@ -30,10 +30,6 @@ window.WIKI_PUBLICATION_POLICY = {
       "reason": "当前 Documents BA8 包的 gift_data base/CHS 同快照行级文字表。每条名称与说明均保留 row key、字段 CHS 槽位、文本值 CHS 槽位与 decoded payload SHA；仅为文本来源，不表示礼盒可得、可开启、奖励、价格、货币、限购或活动启用。",
       "category": "一、道具总表 / （二）礼盒"
     },
-    "nucleus": {
-      "publication_status": "quarantined",
-      "reason": "混用根包、旧 Documents 快照与既有 CSV；把深蚀追猎写为当前主线，与用户实机凝滞侵袭冲突；没有当前期 selector/reward/item 同快照闭环。"
-    },
     "nucleus_cards_classic": {
       "publication_status": "published_hidden",
       "category": "三、战力类 / （三）核芯",
@@ -111,7 +107,7 @@ window.WIKI_PUBLICATION_POLICY = {
       "publication_status": "published",
       "category": "二、战力类 /（一）异变核芯",
       "items": 132,
-      "reason": "异变核芯全量表：common_item 660000 段 132 行（82 个唯一核芯名）逐行 name/desc/icon 槽位回放，按名字精确关联 gift_data 的「（禁交易）」礼包行 99 个与核芯卡 skill_icon；全部 107 张图逐张过 pe_file_index/gpk_loc0 精确命中后从 pe_packs 解码（命中率 1.0）。品级取自 desc 原文前缀，不做推断。只证静态表内容与资源存在，不证当前可得/可购买。"
+      "reason": "核芯唯一总表：common_item 660000 段 132 行 + nucleus_build_data(kj1) 76 枚按名合并；星上限按经典服 12 星展示；卡面简略、详情展开。"
     },
     "server_types": {
       "publication_status": "published",

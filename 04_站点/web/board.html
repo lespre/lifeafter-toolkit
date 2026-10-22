@@ -168,6 +168,7 @@ body.core-mode .i-media .mi img{width:auto;height:84px;max-width:100%}
 body.core-mode .i-media figure{margin:0;flex:0 0 auto;max-width:48%}
 body.core-mode .i-media img{max-height:96px;width:auto;max-width:100%;object-fit:contain}
 body.core-mode .i-media figcaption{display:none}
+.stars-inline{color:#d9a441;letter-spacing:1px;font-size:11px}
 </style>
 </head>
 <body>
@@ -2335,15 +2336,18 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
         `${techSection}</div>`;
     }else if(nucleusMode){
+      /* 简略卡面：只留 品级 / 星上限 / 武器类型；特技、升星段、溯源全部折进点开的详情 */
       const sum=[];
       if(it.grade_clean)sum.push(`<div class="k">品级</div><div class="v">${esc(it.grade_clean)}</div>`);
+      if(it.star_text)sum.push(`<div class="k">星上限</div><div class="v stars-inline">${esc(it.star_text)}</div>`);
+      else if(it.max_star)sum.push(`<div class="k">星上限</div><div class="v">${esc(it.max_star)} 星</div>`);
       if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
-      if(it.skill_icon)sum.push(`<div class="k">技能图标</div><div class="v mono">${esc(it.skill_icon)}</div>`);
-      if(it.skill_desc)sum.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
-      if(it.rank_star_segments&&typeof it.rank_star_segments==="object"){const segs=Object.keys(it.rank_star_segments).sort((a,b)=>Number(a)-Number(b)).map(s=>`<div class="star"><b>${esc(s)}星</b><div class="star-txt">${richText(zhText(String(it.rank_star_segments[s])))}</div></div>`).join("");sum.push(`<div class="k">升星解锁</div><div class="v stars">${segs}</div>`);}
-      bodyHtml=`<div class="kv">${sum.join("")}<div class="i-more" hidden>${rows}</div></div>`+
+      const det=[];
+      if(it.skill_desc)det.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
+      if(it.rank_star_segments&&typeof it.rank_star_segments==="object"){const segs=Object.keys(it.rank_star_segments).sort((a,b)=>Number(a)-Number(b)).map(s=>`<div class="star"><b>${esc(s)}星</b><div class="star-txt">${richText(zhText(String(it.rank_star_segments[s])))}</div></div>`).join("");det.push(`<div class="k">升星解锁</div><div class="v stars">${segs}</div>`);}
+      bodyHtml=`<div class="kv">${sum.join("")}<div class="i-detail" hidden><div class="kv">${det.join("")}${rows}</div>`+
         `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
-        `${techSection}`;
+        `${techSection}</div></div>`;
     }else if(rosterMode){
       /* 名册类板（meta.card_mode="roster"）：卡面只留 图轨(≤4 张) + 名字 + 编号(head) +
          meta.card_summary 声明的字段；其余字段、礼包逐条说明、溯源全部折进点开的详情区 */
