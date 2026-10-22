@@ -209,6 +209,28 @@ body{padding-left:212px}
   border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #siteNav a.sub:hover{color:#fff;background:#151b24}
 #siteNav a.sub.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+
+/* shadcn 风格层级 */
+#siteNav{background:#0b0f14;border-right:1px solid #1a222c;padding:10px 8px}
+#siteNav .hd{font-size:10px;letter-spacing:.18em;color:#5f6d7e;text-transform:uppercase;padding:6px 8px 10px}
+#siteNav .grp{display:flex;align-items:center;gap:8px;padding:8px 8px 6px;margin-top:10px;
+  color:#8b98a8;font-size:11.5px;letter-spacing:.08em;font-weight:600}
+#siteNav .grp svg{width:14px;height:14px;opacity:.7;flex:0 0 auto}
+#siteNav a.leafrow{position:relative;display:block;margin:1px 0;padding:6px 8px 6px 26px;
+  border-radius:6px;font-size:12.2px;color:#9aa7b6;border-left:0}
+#siteNav a.leafrow::before{content:"";position:absolute;left:13px;top:50%;width:4px;height:4px;
+  margin-top:-2px;border-radius:50%;background:#3a4756}
+#siteNav a.leafrow:hover{background:#131a23;color:#e8ecf2}
+#siteNav a.leafrow:hover::before{background:#5b6b7d}
+#siteNav a.leafrow.on{background:rgba(192,57,43,.14);color:#fff}
+#siteNav a.leafrow.on::before{background:#e05542;box-shadow:0 0 0 3px rgba(224,85,66,.18)}
+#siteNav .leafhd{padding:7px 8px 4px 26px;font-size:11.2px;color:#7f8d9e;letter-spacing:.04em}
+#siteNav a.sub{margin:0 0 0 18px;padding:5px 8px 5px 14px;border-radius:6px;font-size:11.6px;color:#8391a2;
+  border-left:1px solid #1e2732}
+#siteNav a.sub:hover{background:#131a23;color:#e8ecf2;border-left-color:#33404f}
+#siteNav a.sub.on{background:rgba(192,57,43,.12);color:#fff;border-left-color:#c0392b}
+
+#siteNav .grp .gi{width:22px;height:22px;object-fit:contain;border-radius:3px;opacity:1;flex:0 0 auto;filter:saturate(1.1) brightness(1.05)}
 </style>
 </head>
 <body>
@@ -2808,11 +2830,19 @@ else loadBoard(b,d=>{
       .replace(/总表$/,'')
       .trim();
   }
+
+  var ICON = {
+    preview: '<img class="gi" src="assets/skin_posters/1110012.png" alt="">',
+    fashion: '<img class="gi" src="assets/fashion_icon_refs/icon_40095_b.png" alt="">',
+    combat:  '<img class="gi" src="assets/core_icons/item_icon_jin_bing_b.png" alt="">',
+    activity:'<img class="gi" src="assets/lottery_icons/102602.png" alt="">',
+    reference:'<img class="gi" src="assets/item_icons/icon_10004_b.png" alt="">'
+  };
   var cur=new URLSearchParams(location.search).get('b')||'';
   var nav=document.getElementById('siteNav');
   var html='<div class="hd">资料分类</div>';
   (T['树']||[]).forEach(function(top){
-    html += '<div class="grp">'+top.name+'</div>';
+    html += '<div class="grp">'+ICON[top.id] + '<span>' + top.name + '</span></div>';
     var rows=[];
     (top.boards||[]).forEach(function(id){
       if(!byId[id]) return;
@@ -2832,6 +2862,32 @@ else loadBoard(b,d=>{
     });
   });
   nav.innerHTML=html;
+})();
+</script>
+
+<script>
+/* 板级「技术详情 / 数据来源 / 审计信息」统一挪到页面顶部（筛选栏上方）折叠 */
+(function(){
+  function move(){
+    var wrap=document.querySelector('.wrap'), ctl=document.querySelector('.controls'),
+        notes=document.getElementById('notes'), g=document.getElementById('grid');
+    if(!wrap||!ctl) return;
+    // 板级「技术详情 / 数据来源 / 审计信息」在 #notes 里 → 提到筛选栏上方
+    if(notes && notes.parentNode===wrap && notes.nextElementSibling!==ctl){
+      notes.style.margin='0 0 10px';
+      wrap.insertBefore(notes, ctl);
+    }
+    if(g) Array.prototype.forEach.call(g.children, function(el){
+      if(el.tagName==='DETAILS' && el.classList.contains('tech') && !el.dataset.moved){
+        el.dataset.moved='1'; el.style.margin='0 0 10px'; wrap.insertBefore(el, ctl);
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    move();
+    var g=document.getElementById('grid');
+    if(g) new MutationObserver(move).observe(g,{childList:true});
+  });
 })();
 </script>
 </body>
