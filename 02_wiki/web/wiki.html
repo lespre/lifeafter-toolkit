@@ -311,7 +311,13 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
     [/item_master/i,     'assets/item_icons/icon_10004_b.png'],
     [/gift_data/i,       'assets/item_icons/icon_1110002_b.png'],
     [/nucleus_entry/i,   'assets/core_icons/item_icon_jin_bing_b.png'],
-    [/shop_static/i,     'assets/item_icons/icon_1110003_b.png']
+    [/shop_static/i,     'assets/item_icons/icon_1110003_b.png'],
+    [/avatar/i,          'assets/avatar_icons/af_410001.png'],
+    [/kill_broadcast/i,  'assets/item_icons/icon_1110002_b.png'],
+    [/edible|recipe/i,   'assets/recipe_icons/icon_125058_b.png'],
+    [/upcoming/i,        'assets/skin_posters/1110012.png'],
+    [/talent|title|buff|entity|skill|illustration|server_types|text_notice|desc|activity|scene_balance/i,
+                         'assets/item_icons/icon_10004_b.png']
   ];
   function thumbOf(id){
     for(var i=0;i<THUMBS.length;i++) if(THUMBS[i][0].test(id)) return THUMBS[i][1];
