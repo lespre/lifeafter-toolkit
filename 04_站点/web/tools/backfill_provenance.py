@@ -114,3 +114,29 @@ for it in d["items"]:
         n += 1
 save("text_notice_catalog", d)
 print("text_notice_catalog 补 row_key", n)
+
+
+# ---- 4) shop_static_candidates（行级=商店行，slot 细化在 items 自身字段） ----
+import struct as _struct
+from toolkit_core.bindict_table import decode_table_rows as _dtr  # noqa: E402
+
+_b = body(CDATA / "common_exchange_shop_data.py")
+_shop_rows, _ = _dtr(_b, [], lenient=True)
+shop_keys = {str(r.get("key")) for r in _shop_rows}
+print("common_exchange_shop_data 解出", len(shop_keys), "个商店 key")
+
+d = json.loads((BOARDS / "shop_static_candidates.json").read_text(encoding="utf-8"))
+n = ok = 0
+for it in d["items"]:
+    n += 1
+    key = str(it.get("shop_key"))
+    if key not in shop_keys:
+        continue
+    it.setdefault("evidence_level", "static/candidate")
+    it.setdefault("status_tags", ["static config"])
+    it["provenance"] = prov("common_exchange_shop_data", key,
+                            ["slot_key", "mapping_row", "pair_index"],
+                            name_source="unresolved")
+    ok += 1
+save("shop_static_candidates", d)
+print("shop_static_candidates 回填 %d / %d" % (ok, n))

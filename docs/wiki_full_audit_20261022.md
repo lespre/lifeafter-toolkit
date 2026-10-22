@@ -20,7 +20,7 @@ manifest 计数是否与板块一致
 条目        163,530
 manifest    计数全部一致
 媒体缺失    0
-问题板块    8 → 已修 3，剩余 5
+问题板块    8 → 已修 4，剩余 4
 ```
 
 ## 已修（逐条对表核验后才补，不编）
@@ -30,6 +30,7 @@ manifest    计数全部一致
 | nucleus_entry_slots | 87 | 解码 `nucleus_entry_data`，entry_id 逐条比对 | 87/87 命中 |
 | nucleus_item_catalog | 130 | item_id 对 `common_item_data`（经 item_master_full） | 130/130 命中 |
 | text_notice_catalog | 1 | 补 `row_key` | 已补 |
+| shop_static_candidates | 1,757 | 解码 `common_exchange_shop_data`（76 个商店 key），item.shop_key 逐条比对 | 1,757/1,757 命中 |
 
 回填内容包含真实表名、row_key、字段清单与定位链，`source_lock_sha256` 取自当前包锁。
 
@@ -37,9 +38,8 @@ manifest    计数全部一致
 
 | 板块 | 条数 | 为什么现在补不了 |
 |---|---|---|
-| shop_static_candidates | 1,757 | `common_exchange_shop_data` 解析不出可用 key（0 条） |
-| vehicle_catalog | 125 | `vehicle_basic_conf` 解码失败：`not a supported 0x76 index tail: 56055163` |
-| nucleus | 108 | 只有 32 条 item_id 能在 item_master 里对上；其余是按 conf 维度组织的条目，缺行级键 |
+| vehicle_catalog | 125 | `vehicle_basic_conf` 索引头是 `0x56` 变体（非 0x76），现有解码器不认 |
+| nucleus | 108 | 来源是根包 `nucleus_hd_conf_data`（conf_id 维度），该表不在 PE cdata 目录，无法逐条比对 |
 | fashion_face | 180 | 来源是面饰专池（BA entry010816/009169）的名字池，无行键 |
 | fashion_kaijia | 9 | 同上（主外观表 + 面饰池混合） |
 
