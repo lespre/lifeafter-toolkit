@@ -366,10 +366,9 @@ function wbProjectionIds(){
   return new Set(((m&&m.projections)||[]).map(p=>p.projection_id));
 }
 // v1.3：大数据 Domain 默认 API-first（不加载几十 MB board.js）；离线全量必须显式 ?offline=1
-const WB_API_FIRST={item_master_active:"workbench_items.html",lottery_pool_active:"workbench_lottery.html?tab=pools",
-  lottery_rewards_active:"workbench_lottery.html?tab=rewards"};
+const WB_API_FIRST={item_master_active:"",lottery_pool_active:"",lottery_rewards_active:""};
 const WB_OFFLINE_LABEL="offline_full_projection（artifacts/active 派生，数十 MB）";
-const WB_VIEW=(getParam("view")==="workbench")?"workbench":"wiki";
+const WB_VIEW="wiki";  // Workbench 界面已下线（2026-10-22），只保留 Wiki View
 function boardTitle(b){
   const m=window.WIKI_WORKBENCH_MANIFEST;
   const hit=((m&&m.projections)||[]).find(p=>p.projection_id===b);
@@ -383,9 +382,8 @@ function wbApiFirstNotice(b){
   document.getElementById("title").textContent=boardTitle(b);
   document.querySelector(".controls").style.display="none";
   const n=document.getElementById("notes");n.style.display="block";
-  n.innerHTML="此板块已改为 <b>API 分页浏览</b>（单页 ≤ 200 行，不再首屏加载全量投影）。"
-   +"<div style=\"margin-top:6px\"><a href=\""+page+"\">→ 打开 Workbench API 页面</a>　"
-   +"<a href=\"?b="+encodeURIComponent(b)+"&offline=1\">→ 显式加载离线全量投影</a>"
+  n.innerHTML="此板块数据量较大（单页 ≤ 200 行），默认不做全量加载。"
+   +"<div style=\"margin-top:6px\"><a href=\"?b="+encodeURIComponent(b)+"&offline=1\">→ 显式加载离线全量投影</a>"
    +" <span class=\"sub\">("+WB_OFFLINE_LABEL+")</span></div>";
   document.getElementById("grid").innerHTML='<div class="empty">未加载数据：大数据板块默认走 API，不做静默回退。</div>';
 }
@@ -567,7 +565,7 @@ function renderTechSection(pairs){
   if(WB_VIEW!=="workbench"){
     return '<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="sub">'
       +'Wiki View：技术字段（溯源 / 快照基准 / 证据）已隐藏；'
-      +'<a href="?b="+encodeURIComponent(getParam("b")||"")+"&view=workbench">切换到 Workbench View</a> 查看。</div></details>';
+      +'已隐藏。</div></details>';
   }
   const rows=(pairs||[]).filter(([k,v])=>v!==null&&v!==undefined&&v!=="");
   if(!rows.length)return "";
@@ -813,7 +811,7 @@ function renderSkinAudio(it){
 function renderPerfDetail(it){
   const items=combatItems(it);
   if(!items.length)return "";
-  const wb=(WB_VIEW==="workbench")?`<div class="fx-wbmark">level=${esc(it.canonical_level??it.level??"unresolved")}（${esc(it.catalog_level_label||"未配置")}）｜completeness=${esc(it.completeness_status||"unresolved")}</div>`:"";
+  const wb="";
   return `<details class="perf"><summary>特效与战斗表现 ${items.length} 项</summary>`+renderCombatUnified(it)+wb+
     `<div class="perf-note">条目按固定业务顺序展示（命中效果/击败特效/伤害跳字/攻击弹道·挥砍/战斗音效/攻击准心/特殊交互/核芯联动/专属战斗动作/专属待机动作/其它）；文本来自 UI 面板名、同快照配置名或行为资源字段，不是皮肤正式名称。</div></details>`;
 }

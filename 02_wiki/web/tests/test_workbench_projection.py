@@ -63,21 +63,18 @@ class WorkbenchProjection(unittest.TestCase):
         data = json.loads((BOARDS / "fashion_active.json").read_text(encoding="utf-8"))
         self.assertLess(len(data["items"]), 50)  # 状态型投影，非 31,112 候选目录
 
-    def test_wiki_and_board_wired_to_workbench(self):
-        wiki = (ROOT / "wiki.html").read_text(encoding="utf-8")
+    def test_workbench_ui_removed(self):
+        """2026-10-22 起 Workbench 界面下线：四个页面不再存在，board 里也不许再留入口。"""
+        for page in ("workbench.html", "workbench_items.html",
+                     "workbench_lottery.html", "workbench_status.html"):
+            self.assertFalse((ROOT / page).exists(), page)
         board = (ROOT / "board.html").read_text(encoding="utf-8")
-        # Wiki 首页：Workbench Domains 区块 + 状态数据源
-        self.assertIn('id="wbDomains"', wiki)
-        self.assertIn("data/workbench_status.js", wiki)
-        self.assertIn("WIKI_WORKBENCH_STATUS", wiki)
-        self.assertIn("BOARD_PAGE", wiki)  # 运行时拼接，保持旧首页“无静态直链”约束
-        # board.html：数据入口可按 projection 切换，且渲染逻辑未被替换
+        for gone in ("workbench_items.html", "workbench_lottery.html",
+                     "workbench_status.html", "切换到 Workbench View"):
+            self.assertNotIn(gone, board)
+        # 数据侧仍保留：projection 与图标化看板继续由 board.html 消费
         self.assertIn("data/workbench_manifest.js", board)
-        self.assertIn("wbProjectionIds()", board)
         self.assertIn("data/workbench_boards/${b}.js", board)
-        # 旧渲染器仍保留（未重设计）：富文本 + 筛选 + 皮肤/奖池模式
-        for marker in ("richText", "scheduleSearch", 'weapon_skin_sfx_text_sources'):
-            self.assertIn(marker, board)
 
     def test_board_ids_resolve_through_manifest(self):
         ids = set(self.by_id)
