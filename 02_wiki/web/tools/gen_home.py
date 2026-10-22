@@ -606,8 +606,8 @@ def dir_size(path: Path, budget=90.0):
     total = 0
     stack = [path]
     if not path.exists():
-        FAILS.append(f"体积统计失败 {path}：目录不存在")
-        return None
+        # 目录没有就是 0：待清理区只在有垃圾时才存在，不能因此把健康判成异常
+        return 0 if path.name == "95_待清理" else None
     if is_bulk(path):                     # 守卫①：起点就在大件目录里 ⇒ 不扫
         return None
     try:
@@ -957,12 +957,9 @@ BANDS = [
 # 子界面入口（门户）—— 顶栏横排；手机上收进抽屉
 PORTALS = [
     ("图鉴首页", "wiki.html", "ok"),
-    ("斩神系列专题", "zhanshen.html", "ok"),
     ("板块浏览", "board.html", "ok"),
     ("外观三维预览", "skin3d.html", "ok"),
     ("武器模型", "weapon_models.html", "ok"),
-    ("工作台状态", "workbench_status.html", "warn"),
-    ("本轮进展", "进展.html", "ok"),
 ]
 
 
