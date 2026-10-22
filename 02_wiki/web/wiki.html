@@ -212,17 +212,44 @@ h3.sub::before{content:"";width:3px;height:11px;background:var(--red)}
                      ((top.children||[]).reduce(function(a,c){return a+(c.boards||[]).length;},0) + (top.boards||[]).length) + ' 块</span>';
       sec.appendChild(h2);
 
-      (top.boards||[]).forEach(function(id){
-        var g = document.createElement('div'); g.className='grid';
-        g.innerHTML = boardCard(id); sec.appendChild(g);
+      var all = [];
+      (top.boards||[]).forEach(function(id){ if(byId[id]) all.push({id:id, leaf:0, name:'置顶'}); });
+      (top.children||[]).forEach(function(leaf, li){
+        (leaf.boards||[]).forEach(function(id){ if(byId[id]) all.push({id:id, leaf:li+1, name:leaf.name}); });
       });
-      (top.children||[]).forEach(function(leaf){ sec.appendChild(leafBlock(leaf, top.name)); });
+      if(!all.length){ sec.appendChild(Object.assign(document.createElement('p'),{className:'empty',textContent:'该分类暂无板块'})); }
+      else {
+        var chips = document.createElement('div');
+        chips.className = 'chips';
+        chips.innerHTML = '<span class="chip on" data-f="0">全部 ' + fmt(all.length) + ' 块</span>' +
+          (top.children||[]).map(function(leaf, li){
+            return '<span class="chip" data-f="' + (li+1) + '">' + leaf.name + '</span>';
+          }).join('');
+        sec.appendChild(chips);
+        var grid = document.createElement('div');
+        grid.className = 'grid';
+        grid.innerHTML = all.map(function(x){
+          var card = boardCard(x.id);
+          return card.replace('<a class="card"', '<a data-leaf="' + x.leaf + '" class="card"');
+        }).join('');
+        sec.appendChild(grid);
+        chips.addEventListener('click', function(e){
+          var c = e.target.closest('.chip'); if(!c) return;
+          chips.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('on'); });
+          c.classList.add('on');
+          var f = c.getAttribute('data-f');
+          grid.querySelectorAll('.card').forEach(function(card){
+            card.style.display = (f === '0' || card.getAttribute('data-leaf') === f) ? '' : 'none';
+          });
+        });
+        sec.__chips = chips;
+      }
       main.appendChild(sec);
 
       sideHtml += '<a href="#sec-' + ti + '"' + (ti===0?' class="on"':'') + '>' + (num ? num + '、' : '') + label +
                   '<i>' + ((top.children||[]).length + (top.boards||[]).length) + '</i></a>';
       (top.children||[]).forEach(function(leaf, li){
-        sideHtml += '<a class="child" href="#leaf-' + encodeURIComponent(top.name + leaf.name) + '">' +
+        sideHtml += '<a class="child" href="#sec-' + ti + '" data-leafchip="' + li + '">' +
                     leaf.name + '<i>' + ((leaf.boards||[]).length) + '</i></a>';
       });
     });
