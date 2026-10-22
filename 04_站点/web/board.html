@@ -169,6 +169,16 @@ body.core-mode .i-media figure{margin:0;flex:0 0 auto;max-width:48%}
 body.core-mode .i-media img{max-height:96px;width:auto;max-width:100%;object-fit:contain}
 body.core-mode .i-media figcaption{display:none}
 .stars-inline{color:#d9a441;letter-spacing:1px;font-size:11px}
+
+/* 核芯详情区排版：键列固定宽，值列允许换行但不乱断 */
+.i-detail{display:block;width:100%;box-sizing:border-box;grid-column:1/-1}
+.i-detail>.kv{display:grid;width:100%;box-sizing:border-box;grid-template-columns:86px minmax(120px,1fr);gap:6px 12px;align-items:start}
+.i-detail>.kv>.k{white-space:nowrap;color:#8c7d70;font-size:12px;line-height:1.5}
+.i-detail>.kv>.v{min-width:0;word-break:normal;overflow-wrap:anywhere;line-height:1.6}
+.i-detail>.kv>.v.stars{display:flex;flex-direction:column;gap:6px}
+.i-detail>.kv>.v.stars .star{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:start}
+.i-detail>.kv>.v.stars .star b{color:#d9a441;font-weight:600;font-size:12px}
+.i-detail>.kv>.v.stars .star-txt{min-width:0}
 </style>
 </head>
 <body>
@@ -2339,8 +2349,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       /* 简略卡面：只留 品级 / 星上限 / 武器类型；特技、升星段、溯源全部折进点开的详情 */
       const sum=[];
       if(it.grade_clean)sum.push(`<div class="k">品级</div><div class="v">${esc(it.grade_clean)}</div>`);
-      if(it.star_text)sum.push(`<div class="k">星上限</div><div class="v stars-inline">${esc(it.star_text)}</div>`);
-      else if(it.max_star)sum.push(`<div class="k">星上限</div><div class="v">${esc(it.max_star)} 星</div>`);
+      if(it.max_star)sum.push(`<div class="k">星上限</div><div class="v">${esc(it.max_star)}</div>`);
       if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
       const det=[];
       if(it.skill_desc)det.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
