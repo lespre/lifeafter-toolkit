@@ -179,6 +179,8 @@ body.core-mode .i-media figcaption{display:none}
 .i-detail>.kv>.v.stars .star{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:start}
 .i-detail>.kv>.v.stars .star b{color:#d9a441;font-weight:600;font-size:12px}
 .i-detail>.kv>.v.stars .star-txt{min-width:0}
+.grade-pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;border:1px solid currentColor}
+.g-蓝{color:#5aa9e6}.g-紫{color:#b07ce8}.g-金{color:#d9a441}
 </style>
 </head>
 <body>
@@ -2348,7 +2350,11 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     }else if(nucleusMode){
       /* 简略卡面：只留 品级 / 星上限 / 武器类型；特技、升星段、溯源全部折进点开的详情 */
       const sum=[];
-      if(it.grade_clean)sum.push(`<div class="k">品级</div><div class="v">${esc(it.grade_clean)}</div>`);
+      if(it.grade_clean||it.grade_label){
+        const gl=it.grade_label||it.grade_clean;
+        const gc=it.grade_color?` g-${esc(it.grade_color)}`:"";
+        sum.push(`<div class="k">品级</div><div class="v"><span class="grade-pill${gc}">${esc(gl)}</span></div>`);
+      }
       sum.push(`<div class="k">星上限</div><div class="v">${it.max_star==null?"待定":esc(it.max_star)}</div>`);
       if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
       const det=[];

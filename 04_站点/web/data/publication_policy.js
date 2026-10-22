@@ -107,7 +107,7 @@ window.WIKI_PUBLICATION_POLICY = {
       "publication_status": "published",
       "category": "二、战力类 /（一）异变核芯",
       "items": 132,
-      "reason": "核芯唯一总表：common_item 660000 段 132 行 + nucleus_build_data(kj1) 76 枚按名合并；星上限按经典服 12 星展示；卡面简略、详情展开。"
+      "reason": "核芯唯一总表：common_item 660xxx 段 132 行。经典服口径：品级色 蓝5星 / 紫9星 / 金12星；简单生存统一 5 星。卡面简略、详情展开。"
     },
     "server_types": {
       "publication_status": "published",
