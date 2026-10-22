@@ -489,23 +489,19 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
         if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
         else if(showArchived && pol[nm0]) topList.push([nm0, {name:nm0}, true, '']);
       }
-      if(topList.length) sec.appendChild(tilesFor(topList));
 
+      // 整个大类合成一个网格：叶子不再各占一行
+      var allList = topList.slice();
       for(var ci=0; ci<(top.children||[]).length; ci++){
         var ch = top.children[ci];
-        var subList = [];
         for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
           var nm2 = ch.boards[bi2];
-          if(byId[nm2]) subList.push([nm2, byId[nm2], false, '']);
-          else if(showArchived && pol[nm2]) subList.push([nm2, {name:nm2}, true, ch.name]);
+          if(byId[nm2]) allList.push([nm2, byId[nm2], false, '']);
+          else if(showArchived && pol[nm2]) allList.push([nm2, {name:nm2}, true, ch.name]);
         }
-        for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], ch.name, subList);
-        var h3 = document.createElement('h3');
-        h3.className = 'sub-h';
-        h3.textContent = ch.name;
-        sec.appendChild(h3);
-        sec.appendChild(tilesFor(subList.length ? subList : [[null, null, false, '']]));
+        for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], '', allList);
       }
+      if(allList.length){ sec.appendChild(tilesFor(allList)); }
       if(!(top.children||[]).length && !topList.length && top.placeholder){
         sec.appendChild(tilesFor([[null, null, false, '']]));
       }
