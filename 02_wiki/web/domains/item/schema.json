@@ -1,0 +1,8 @@
+{
+ "domain": "item",
+ "artifact": "artifacts/active/item/ITEM_MASTER.jsonl",
+ "unique_key": ["item_namespace", "item_id"],
+ "fields": ["item_id","item_namespace","runtime_module","raw_table","raw_row_key","row_key_equals_id","business_identity",
+            "identity_state","identity_evidence","name","name_status","raw_presence","provenance","structural","residuals"],
+ "global_id_uniqueness": "已审计未预设（当前全局唯一）"
+}

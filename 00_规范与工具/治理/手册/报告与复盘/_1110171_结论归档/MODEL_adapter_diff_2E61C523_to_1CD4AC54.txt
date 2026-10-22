@@ -1,0 +1,44 @@
+--- mine_2E61C523
++++ now_1CD4AC54
+@@ -49,6 +49,11 @@
+      仅 blending 选型（additive vs normal）无源字段 ⇒ 按三档实拍 A/B 选 additive，并在素材里标 approximate。 */
+   var MODEL_BLEND = 'additive'; // 'normal' | 'additive'（源里 Model 无 blend_mode ⇒ 实拍选定，标 approximate）
+   var MODEL_BLEND_K = null;     // null = 源级；显式数字 = 只为 A/B 对照的近似系数
++  /* ★ 枚举值表禁令（2026-09-18，chain-auditor；裁决③）：TransparentMode/RenderBias/DirType/BlendMode 的
++     name↔int 值表在已扫范围内**不存在**（详见 modelBranchBasis.enumValueTable 与
++     `03拆包产物\_target_1110171\FXENUM_probe_report.json`）
++     ⇒ 本模块对它们的任何映射只能是 **approximate（观测分布，非值表）**；
++     ★ **禁止用观测分布反推枚举名**（观测分布只能证明"哪些整数出现过"，不能证明"哪个整数叫什么"）。 */
+   var LIVE_RECS = null;         // attach 期间登记的 model rec（供运行时开关/材质切换）
+   var LIVE_LOAD = null;         // ★ attach 时暴露的 loadModel，使 models(true) 能**当场加载**（不必重建查看器）
+   var LIVE_APPLY = null;        // ★ attach 时暴露的 applyModelMaterial。模块层 modelMaterial() 原先直接调用 attach 内的局部
+@@ -667,13 +672,27 @@
+           }),
+           textureUnresolved: modelRecs.filter(function (r) { return r.hasTex0; })
+             .map(function (r) { return { node: r.name, texture_source: (r.srcBridge || {}).tex0, status: r.state }; }),
++          /* ★ 枚举值表探测结论（NOT_FOUND，2026-09-18，chain-auditor；证据 _target_1110171\FXENUM_probe_report.json）
++             ★ 明文禁令：**禁止用观测分布反推枚举名** —— 观测分布只能证明"哪些整数取值出现过"，
++               不能证明"哪个整数叫什么"；本项保持 unresolved，默认仍关、仍 fail-closed。 */
+           modelBranchBasis: {
+             'color/emissive': 'source: u_emissivecolor (A,R,G,B)；emissive=rgb，color 置黑以消除 GLB 白色基色（"白块"来源之一）',
+             'intensity': 'emissiveIntensity=1（中性恒等）；源 u_emissive_highlight_intensity 的语义=高光项，作全局强度未证 ⇒ 不乘、原值在 modelTable',
+             'opacity': 'source: u_emissivecolor[0]/255 × u_overall_opacity（源值>1 属增强，clamp 到 1；源公式未取到 ⇒ residual）',
+-            'blending': "approximate: TransparentMode '0'→NormalBlending / '2'→AdditiveBlending（映射语义未在源中验证；值为源属性原值）",
++            'blending': "approximate: TransparentMode '0'→NormalBlending / '2'→AdditiveBlending（映射语义未在源中验证；值为源属性原值；证据与禁令见 enumValueTable）",
+             'depth': 'approximate: u_depth_bias→polygonOffset(units=源值)；尺度语义未证 ⇒ 原值在 modelTable',
+-            'bridge': 'SRC_BRIDGE_1110152（逐节点源值 + xml_line）；运行时字段优先'
++            'bridge': 'SRC_BRIDGE_1110152（逐节点源值 + xml_line）；运行时字段优先',
++            /* ★ 值表探测结论（NOT_FOUND）：已扫范围内不存在 name↔int 值表 ⇒ 现有映射一律标 approximate */
++            enumValueTable: 'NOT_FOUND: 枚举值表在已扫范围内不存在'
++              + '（① 10 个皮肤 .sfx（XML-like 文本）10/10 命中这 4 个属性名，但取值全是数值字符串、非数值取值 0 个；'
++              + '② uber_fx_common.nfx2 里 TransparentMode/RenderBias/DirType/BlendMode 各 0 次，其 enum 只有宏名族 INSTANCE_TYPE_*/NEOX_DEBUG_*；'
++              + '③ 客户端 bin 1,017 文件 / 4.26 GB 全扫（含 lifeafter.exe×4，无 >400MB 跳过），409 命中全在第三方库'
++              + '（libcef/Chromium/Skia/Qt/ffmpeg），游戏自有模块 0 命中；④ task-30 既有台账：shader 0 / 50MB 脚本配置数据 0）'
++              + ' ⇒ 当前映射是 approximate（观测分布，非值表）。全量观测分布（10 个皮肤 .sfx）：'
++              + 'TransparentMode {0:213, 2:31, 5:29}；RenderBias {2:114, 0:67, 1:60, 3:35, 4:30, -1:21, 5:6, -2:6, 6:2}；'
++              + 'DirType {2:280, 0:55, 7:4, 1:2}；BlendMode {2:32, 8:27, 0:9}；TrackType {0:316, 4:84, 3:14, 1:4}。'
++              + '★ 禁令：禁止用观测分布反推枚举名（观测分布不能证明整数↔名字）。'
++              + '★ 值表真值来源只剩引擎侧定义/静态逆向，不在本任务口径内 ⇒ 保持 unresolved。',
+           },
+           modelsOnAtAttach: MODELS_ON, modelsForce: MODELS_FORCE, modelBlend: MODEL_BLEND, modelBlendK: MODEL_BLEND_K,
+           /* ★ 材质来源标注：哪几项源级 / 哪几项近似 */

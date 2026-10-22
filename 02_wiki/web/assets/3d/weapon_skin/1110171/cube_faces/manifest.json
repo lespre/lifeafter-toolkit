@@ -1,0 +1,72 @@
+{
+ "qiangpi": {
+  "faces": [
+   {
+    "face": 0,
+    "file": "qiangpi_f0.png",
+    "sha": "8051a03b68ec"
+   },
+   {
+    "face": 1,
+    "file": "qiangpi_f1.png",
+    "sha": "4b73f310b673"
+   },
+   {
+    "face": 2,
+    "file": "qiangpi_f2.png",
+    "sha": "59d4ac59f48d"
+   },
+   {
+    "face": 3,
+    "file": "qiangpi_f3.png",
+    "sha": "2b690d436cf2"
+   },
+   {
+    "face": 4,
+    "file": "qiangpi_f4.png",
+    "sha": "33bf77041c98"
+   },
+   {
+    "face": 5,
+    "file": "qiangpi_f5.png",
+    "sha": "c0a2ba7d1a99"
+   }
+  ],
+  "dds_sha": "173d52990b3ab836"
+ },
+ "car_studio01": {
+  "faces": [
+   {
+    "face": 0,
+    "file": "car_studio01_f0.png",
+    "sha": "4118477fbc7e"
+   },
+   {
+    "face": 1,
+    "file": "car_studio01_f1.png",
+    "sha": "f7e981aa6824"
+   },
+   {
+    "face": 2,
+    "file": "car_studio01_f2.png",
+    "sha": "7cbb9ce23bd8"
+   },
+   {
+    "face": 3,
+    "file": "car_studio01_f3.png",
+    "sha": "fe120f3d18bb"
+   },
+   {
+    "face": 4,
+    "file": "car_studio01_f4.png",
+    "sha": "f84a07bf4d61"
+   },
+   {
+    "face": 5,
+    "file": "car_studio01_f5.png",
+    "sha": "6a488ecaeb03"
+   }
+  ],
+  "dds_sha": "bea649d8525cdc3e"
+ }
+}

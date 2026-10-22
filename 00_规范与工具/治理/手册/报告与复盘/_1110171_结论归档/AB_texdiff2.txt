@@ -1,0 +1,70 @@
+1110024 024_a.png -> 024_b_m.png
+   same-index fit: {"R": {"slope": -0.6614, "intercept": 190.62, "r2": 0.3599}, "G": {"slope": 0.4642, "intercept": 33.3, "r2": 0.3042}, "B": {"slope": 0.3471, "intercept": -4.79, "r2": 0.0}, "A": {"slope": -0.0001, "intercept": 254.93, "r2": 0.0013}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.3599, "pair": "R->R", "slope": -0.6614, "intercept": 190.62}, {"r2": 0.2943, "pair": "R->G", "slope": -0.5431, "intercept": 164.75}]}, {"a_chan": "G", "top": [{"r2": 0.3921, "pair": "G->R", "slope": 0.5804, "intercept": 28.18}, {"r2": 0.3042, "pair": "G->G", "slope": 0.4642, "intercept": 33.3}]}, {"a_chan": "B", "top": [{"r2": 0.0002, "pair": "B->A", "slope": 0.00
+   alpha: {"a_alpha_mean": 153.86, "b_alpha_mean": 254.91, "corr": 0.9996, "eq_within2_pct": 2.77, "a_B_mean": 254.88, "b_A_mean": 254.91, "b_A_equals_a_B_pct": 98.36}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110129 008_a.png -> 008_b_m.png
+   same-index fit: {"R": {"slope": -0.0119, "intercept": 75.5, "r2": 0.0005}, "G": {"slope": 0.0824, "intercept": 73.41, "r2": 0.0847}, "B": {"slope": -1.2117, "intercept": 411.88, "r2": 0.0003}, "A": {"slope": -0.0001, "intercept": 254.96, "r2": 0.0005}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.1288, "pair": "R->B", "slope": -0.3261, "intercept": 156.63}, {"r2": 0.0699, "pair": "R->G", "slope": -0.1353, "intercept": 106.98}]}, {"a_chan": "G", "top": [{"r2": 0.1999, "pair": "G->B", "slope": 0.2249, "intercept": 72.1}, {"r2": 0.0847, "pair": "G->G", "slope": 0.0824, "intercept": 73.41}]}, {"a_chan": "B", "top": [{"r2": 0.0011, "pair": "B->R", "slope": 1.42
+   alpha: {"a_alpha_mean": 173.3, "b_alpha_mean": 254.95, "corr": 0.9839, "eq_within2_pct": 11.6, "a_B_mean": 254.84, "b_A_mean": 254.95, "b_A_equals_a_B_pct": 97.57}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110129 008_c_a.png -> 008_c_b_m.png
+   same-index fit: {"R": {"slope": -0.143, "intercept": 106.95, "r2": 0.0745}, "G": {"slope": -0.0279, "intercept": 76.74, "r2": 0.0126}, "B": {"slope": -0.3045, "intercept": 146.15, "r2": 0.0}, "A": {"slope": -0.0002, "intercept": 254.97, "r2": 0.0029}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.1702, "pair": "R->B", "slope": -0.2291, "intercept": 110.47}, {"r2": 0.1183, "pair": "R->G", "slope": -0.1768, "intercept": 106.27}]}, {"a_chan": "G", "top": [{"r2": 0.0126, "pair": "G->G", "slope": -0.0279, "intercept": 76.74}, {"r2": 0.0104, "pair": "G->B", "slope": -0.0274, "intercept": 71.31}]}, {"a_chan": "B", "top": [{"r2": 0.0001, "pair": "B->A", "slope": 0
+   alpha: {"a_alpha_mean": 143.88, "b_alpha_mean": 254.95, "corr": 0.9988, "eq_within2_pct": 3.29, "a_B_mean": 254.87, "b_A_mean": 254.95, "b_A_equals_a_B_pct": 98.09}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110129 008_d_a.png -> 008_d_b_m.png
+   same-index fit: {"R": {"slope": -0.2539, "intercept": 122.36, "r2": 0.093}, "G": {"slope": 0.0582, "intercept": 66.54, "r2": 0.0259}, "B": {"slope": 1.3233, "intercept": -267.24, "r2": 0.0002}, "A": {"slope": -0.0361, "intercept": 247.73, "r2": 0.0019}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.093, "pair": "R->R", "slope": -0.2539, "intercept": 122.36}, {"r2": 0.0458, "pair": "R->G", "slope": -0.1688, "intercept": 103.91}]}, {"a_chan": "G", "top": [{"r2": 0.0575, "pair": "G->R", "slope": 0.0916, "intercept": 65.76}, {"r2": 0.049, "pair": "G->A", "slope": 0.1226, "intercept": 229.67}]}, {"a_chan": "B", "top": [{"r2": 0.0005, "pair": "B->A", "slope": 2.78
+   alpha: {"a_alpha_mean": 173.02, "b_alpha_mean": 241.49, "corr": 0.9979, "eq_within2_pct": 1.84, "a_B_mean": 254.89, "b_A_mean": 241.49, "b_A_equals_a_B_pct": 93.28}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110129 008_e_a.png -> 008_e_b_m.png
+   same-index fit: {"R": {"slope": -0.081, "intercept": 94.64, "r2": 0.0143}, "G": {"slope": -0.0768, "intercept": 95.17, "r2": 0.0546}, "B": {"slope": -7.7911, "intercept": 2092.72, "r2": 0.0018}, "A": {"slope": -0.0002, "intercept": 255.0, "r2": 0.0026}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.2918, "pair": "R->B", "slope": -0.6794, "intercept": 194.74}, {"r2": 0.1537, "pair": "R->G", "slope": -0.2831, "intercept": 125.84}]}, {"a_chan": "G", "top": [{"r2": 0.1572, "pair": "G->R", "slope": -0.1224, "intercept": 93.92}, {"r2": 0.0546, "pair": "G->G", "slope": -0.0768, "intercept": 95.17}]}, {"a_chan": "B", "top": [{"r2": 0.0055, "pair": "B->R", "slope": 7
+   alpha: {"a_alpha_mean": 215.94, "b_alpha_mean": 254.97, "corr": 0.9758, "eq_within2_pct": 50.94, "a_B_mean": 254.96, "b_A_mean": 254.97, "b_A_equals_a_B_pct": 99.69}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110129 008_f_a.png -> 008_f_b_m.png
+   same-index fit: {"R": {"slope": -0.0899, "intercept": 125.25, "r2": 0.1497}, "G": {"slope": 3.146, "intercept": -701.79, "r2": 0.0002}, "B": {"slope": 3.8867, "intercept": -890.78, "r2": 0.0003}, "A": {"slope": -0.0001, "intercept": 255.0, "r2": 0.0047}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.3494, "pair": "R->B", "slope": -0.1558, "intercept": 125.98}, {"r2": 0.2099, "pair": "R->G", "slope": -0.1147, "intercept": 119.29}]}, {"a_chan": "G", "top": [{"r2": 0.0007, "pair": "G->A", "slope": 0.0222, "intercept": 249.34}, {"r2": 0.0003, "pair": "G->B", "slope": 3.8867, "intercept": -890.78}]}, {"a_chan": "B", "top": [{"r2": 0.0007, "pair": "B->A", "slope": 
+   alpha: {"a_alpha_mean": 18.55, "b_alpha_mean": 255.0, "corr": 1.0, "eq_within2_pct": 1.61, "a_B_mean": 255.0, "b_A_mean": 255.0, "b_A_equals_a_B_pct": 100.0}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110145 014_a.png -> 014_b_m.png
+   same-index fit: {"R": {"slope": -0.2691, "intercept": 175.29, "r2": 0.0548}, "G": {"slope": 0.0923, "intercept": 120.9, "r2": 0.0641}, "B": {"slope": 5.9736, "intercept": -1382.03, "r2": 0.0025}, "A": {"slope": 0.0044, "intercept": 10.99, "r2": 0.0001}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.3588, "pair": "R->G", "slope": -0.5709, "intercept": 203.77}, {"r2": 0.28, "pair": "R->B", "slope": -0.5475, "intercept": 209.77}]}, {"a_chan": "G", "top": [{"r2": 0.3256, "pair": "G->R", "slope": 0.251, "intercept": 111.81}, {"r2": 0.0641, "pair": "G->G", "slope": 0.0923, "intercept": 120.9}]}, {"a_chan": "B", "top": [{"r2": 0.0025, "pair": "B->B", "slope": 5.973
+   alpha: {"a_alpha_mean": 186.97, "b_alpha_mean": 11.82, "corr": NaN, "eq_within2_pct": 3.03, "a_B_mean": 254.91, "b_A_mean": 11.82, "b_A_equals_a_B_pct": 0.0}
+   gamma: {"B=A^g": null, "A=B^g": 1.381}
+1110152 009_a.png -> 009_b_m.png
+   same-index fit: {"R": {"slope": -0.3943, "intercept": 152.19, "r2": 0.0413}, "G": {"slope": 0.1889, "intercept": 80.83, "r2": 0.0453}, "B": {"slope": 3.9378, "intercept": -908.57, "r2": 0.0012}, "A": {"slope": -0.0002, "intercept": 254.94, "r2": 0.0023}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.1159, "pair": "R->B", "slope": -0.5788, "intercept": 152.08}, {"r2": 0.0959, "pair": "R->G", "slope": -0.5373, "intercept": 163.19}]}, {"a_chan": "G", "top": [{"r2": 0.1294, "pair": "G->R", "slope": 0.3567, "intercept": 57.73}, {"r2": 0.0453, "pair": "G->G", "slope": 0.1889, "intercept": 80.83}]}, {"a_chan": "B", "top": [{"r2": 0.0073, "pair": "B->R", "slope": 11.
+   alpha: {"a_alpha_mean": 151.52, "b_alpha_mean": 254.91, "corr": 0.3745, "eq_within2_pct": 12.91, "a_B_mean": 254.88, "b_A_mean": 254.91, "b_A_equals_a_B_pct": 98.53}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110152 009_c_a.png -> 009_c_b_m.png
+   same-index fit: {"R": {"slope": -0.2291, "intercept": 148.69, "r2": 0.0159}, "G": {"slope": 0.0407, "intercept": 106.59, "r2": 0.0022}, "B": {"slope": 0.2941, "intercept": 17.6, "r2": 0.0}, "A": {"slope": -0.0021, "intercept": 254.69, "r2": 0.001}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.2412, "pair": "R->B", "slope": -0.8255, "intercept": 171.02}, {"r2": 0.1583, "pair": "R->G", "slope": -0.6868, "intercept": 179.1}]}, {"a_chan": "G", "top": [{"r2": 0.1428, "pair": "G->R", "slope": 0.3483, "intercept": 64.92}, {"r2": 0.1001, "pair": "G->A", "slope": 0.0285, "intercept": 249.28}]}, {"a_chan": "B", "top": [{"r2": 0.005, "pair": "B->R", "slope": 7.54
+   alpha: {"a_alpha_mean": 159.69, "b_alpha_mean": 254.36, "corr": NaN, "eq_within2_pct": 15.8, "a_B_mean": 254.88, "b_A_mean": 254.36, "b_A_equals_a_B_pct": 97.07}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110165 165_a.png -> 165_b_m.png
+   same-index fit: {"R": {"slope": -0.7548, "intercept": 194.41, "r2": 0.5155}, "G": {"slope": 0.5385, "intercept": 28.31, "r2": 0.426}, "B": {"slope": 1.7173, "intercept": -334.02, "r2": 0.0001}, "A": {"slope": -0.0001, "intercept": 254.96, "r2": 0.0017}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.5155, "pair": "R->R", "slope": -0.7548, "intercept": 194.41}, {"r2": 0.4839, "pair": "R->G", "slope": -0.7106, "intercept": 185.17}]}, {"a_chan": "G", "top": [{"r2": 0.4476, "pair": "G->R", "slope": 0.5679, "intercept": 28.44}, {"r2": 0.426, "pair": "G->G", "slope": 0.5385, "intercept": 28.31}]}, {"a_chan": "B", "top": [{"r2": 0.0002, "pair": "B->G", "slope": 1.98
+   alpha: {"a_alpha_mean": 158.33, "b_alpha_mean": 254.94, "corr": 0.7991, "eq_within2_pct": 23.47, "a_B_mean": 254.91, "b_A_mean": 254.94, "b_A_equals_a_B_pct": 99.21}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110165 165_c_a.png -> 165_c_b_m.png
+   same-index fit: {"R": {"slope": -0.8793, "intercept": 185.38, "r2": 0.3756}, "G": {"slope": 0.6095, "intercept": 7.17, "r2": 0.5829}, "B": {"slope": 3.5273, "intercept": -811.43, "r2": 0.0007}, "A": {"slope": -0.0021, "intercept": 254.99, "r2": 0.0005}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.4066, "pair": "R->G", "slope": -0.8505, "intercept": 177.26}, {"r2": 0.3756, "pair": "R->R", "slope": -0.8793, "intercept": 185.38}]}, {"a_chan": "G", "top": [{"r2": 0.5845, "pair": "G->R", "slope": 0.6565, "intercept": 5.71}, {"r2": 0.5829, "pair": "G->G", "slope": 0.6095, "intercept": 7.17}]}, {"a_chan": "B", "top": [{"r2": 0.0007, "pair": "B->B", "slope": 3.527
+   alpha: {"a_alpha_mean": 162.65, "b_alpha_mean": 254.64, "corr": 1.0, "eq_within2_pct": 20.56, "a_B_mean": 254.9, "b_A_mean": 254.64, "b_A_equals_a_B_pct": 98.67}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110171 012_a.png -> 012_b_m.png
+   same-index fit: {"R": {"slope": -0.1728, "intercept": 105.06, "r2": 0.0453}, "G": {"slope": 0.2452, "intercept": 34.96, "r2": 0.1816}, "B": {"slope": -5.1936, "intercept": 1388.94, "r2": 0.0032}, "A": {"slope": -0.0001, "intercept": 254.94, "r2": 0.0006}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.4073, "pair": "R->B", "slope": -0.4017, "intercept": 100.47}, {"r2": 0.0453, "pair": "R->R", "slope": -0.1728, "intercept": 105.06}]}, {"a_chan": "G", "top": [{"r2": 0.3109, "pair": "G->B", "slope": 0.2647, "intercept": 25.87}, {"r2": 0.1874, "pair": "G->R", "slope": 0.2652, "intercept": 50.47}]}, {"a_chan": "B", "top": [{"r2": 0.0032, "pair": "B->B", "slope": -5.
+   alpha: {"a_alpha_mean": 162.46, "b_alpha_mean": 254.93, "corr": 0.533, "eq_within2_pct": 21.35, "a_B_mean": 254.88, "b_A_mean": 254.93, "b_A_equals_a_B_pct": 98.71}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110171 010_a.png -> 010_b_m.png
+   same-index fit: {"R": {"slope": -0.5406, "intercept": 166.24, "r2": 0.1362}, "G": {"slope": 0.3375, "intercept": 57.42, "r2": 0.2667}, "B": {"slope": 3.3543, "intercept": -774.88, "r2": 0.001}, "A": {"slope": 0.0005, "intercept": 254.63, "r2": 0.0057}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.3908, "pair": "R->B", "slope": -0.5439, "intercept": 126.45}, {"r2": 0.1956, "pair": "R->G", "slope": -0.5648, "intercept": 153.59}]}, {"a_chan": "G", "top": [{"r2": 0.2765, "pair": "G->R", "slope": 0.3941, "intercept": 64.04}, {"r2": 0.2667, "pair": "G->G", "slope": 0.3375, "intercept": 57.42}]}, {"a_chan": "B", "top": [{"r2": 0.001, "pair": "B->B", "slope": 3.35
+   alpha: {"a_alpha_mean": 186.65, "b_alpha_mean": 254.71, "corr": 0.894, "eq_within2_pct": 29.11, "a_B_mean": 254.92, "b_A_mean": 254.71, "b_A_equals_a_B_pct": 99.14}
+   gamma: {"B=A^g": null, "A=B^g": null}
+1110177 029_a.png -> 029_b_m.png
+   same-index fit: {"R": {"slope": -0.1588, "intercept": 223.98, "r2": 0.0287}, "G": {"slope": 0.0898, "intercept": 160.65, "r2": 0.0111}, "B": {"slope": -9.9554, "intercept": 2678.26, "r2": 0.002}, "A": {"slope": 0.3074, "intercept": 17.66, "r2": 0.0441}}
+   best cross pair per A-chan: [{"a_chan": "R", "top": [{"r2": 0.9984, "pair": "R->A", "slope": 0.9989, "intercept": 0.09}, {"r2": 0.2608, "pair": "R->B", "slope": -0.6899, "intercept": 198.77}]}, {"a_chan": "G", "top": [{"r2": 0.459, "pair": "G->A", "slope": 0.5288, "intercept": -19.85}, {"r2": 0.079, "pair": "G->B", "slope": -0.2964, "intercept": 198.99}]}, {"a_chan": "B", "top": [{"r2": 0.002, "pair": "B->B", "slope": -9.955
+   alpha: {"a_alpha_mean": 216.68, "b_alpha_mean": 84.27, "corr": 0.9953, "eq_within2_pct": 0.28, "a_B_mean": 254.9, "b_A_mean": 84.27, "b_A_equals_a_B_pct": 0.0}
+   gamma: {"B=A^g": null, "A=B^g": null}

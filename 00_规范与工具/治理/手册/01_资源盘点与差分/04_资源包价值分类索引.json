@@ -1,0 +1,1578 @@
+{
+  "scan_time": "2026-08-29 15:25:10",
+  "threshold_date": "2026-07-29",
+  "total_packages": 120,
+  "high_value_count": 39,
+  "mid_value_count": 81,
+  "low_value_count": 0,
+  "packages": [
+    {
+      "name": "001.fpk",
+      "extension": ".fpk",
+      "size": 1075692372,
+      "size_mb": 1025.86,
+      "mtime": "2026-04-26 14:11:41",
+      "is_recent": false,
+      "entry_count": 40604,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "002.fpk",
+      "extension": ".fpk",
+      "size": 772234704,
+      "size_mb": 736.46,
+      "mtime": "2026-04-26 14:38:54",
+      "is_recent": false,
+      "entry_count": 23040,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "003.fpk",
+      "extension": ".fpk",
+      "size": 1074162100,
+      "size_mb": 1024.4,
+      "mtime": "2026-04-26 14:40:37",
+      "is_recent": false,
+      "entry_count": 7957,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "004.fpk",
+      "extension": ".fpk",
+      "size": 1075865632,
+      "size_mb": 1026.03,
+      "mtime": "2026-04-26 14:41:01",
+      "is_recent": false,
+      "entry_count": 33686,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "005.fpk",
+      "extension": ".fpk",
+      "size": 1074607116,
+      "size_mb": 1024.83,
+      "mtime": "2026-04-26 14:41:22",
+      "is_recent": false,
+      "entry_count": 16538,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "006.fpk",
+      "extension": ".fpk",
+      "size": 1074655856,
+      "size_mb": 1024.87,
+      "mtime": "2026-04-26 14:41:49",
+      "is_recent": false,
+      "entry_count": 11865,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "007.fpk",
+      "extension": ".fpk",
+      "size": 1077149376,
+      "size_mb": 1027.25,
+      "mtime": "2026-04-26 14:42:00",
+      "is_recent": false,
+      "entry_count": 69405,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "008.fpk",
+      "extension": ".fpk",
+      "size": 1074559372,
+      "size_mb": 1024.78,
+      "mtime": "2026-04-26 14:42:16",
+      "is_recent": false,
+      "entry_count": 16750,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "009.fpk",
+      "extension": ".fpk",
+      "size": 1074026568,
+      "size_mb": 1024.27,
+      "mtime": "2026-04-26 14:42:47",
+      "is_recent": false,
+      "entry_count": 1430,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "010.fpk",
+      "extension": ".fpk",
+      "size": 1076068428,
+      "size_mb": 1026.22,
+      "mtime": "2026-04-26 14:43:14",
+      "is_recent": false,
+      "entry_count": 48443,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "011.fpk",
+      "extension": ".fpk",
+      "size": 1078228996,
+      "size_mb": 1028.28,
+      "mtime": "2026-04-26 14:43:27",
+      "is_recent": false,
+      "entry_count": 38575,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "012.fpk",
+      "extension": ".fpk",
+      "size": 1077851240,
+      "size_mb": 1027.92,
+      "mtime": "2026-04-26 14:43:58",
+      "is_recent": false,
+      "entry_count": 85612,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "013.fpk",
+      "extension": ".fpk",
+      "size": 1078753980,
+      "size_mb": 1028.78,
+      "mtime": "2026-04-26 14:44:17",
+      "is_recent": false,
+      "entry_count": 103031,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "014.fpk",
+      "extension": ".fpk",
+      "size": 1080114140,
+      "size_mb": 1030.08,
+      "mtime": "2026-04-26 14:44:37",
+      "is_recent": false,
+      "entry_count": 94601,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "015.fpk",
+      "extension": ".fpk",
+      "size": 1076508076,
+      "size_mb": 1026.64,
+      "mtime": "2026-04-26 14:45:10",
+      "is_recent": false,
+      "entry_count": 45178,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "016.fpk",
+      "extension": ".fpk",
+      "size": 1076387436,
+      "size_mb": 1026.52,
+      "mtime": "2026-04-26 14:45:13",
+      "is_recent": false,
+      "entry_count": 53511,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "017.fpk",
+      "extension": ".fpk",
+      "size": 1076697560,
+      "size_mb": 1026.82,
+      "mtime": "2026-04-26 14:45:42",
+      "is_recent": false,
+      "entry_count": 57888,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "018.fpk",
+      "extension": ".fpk",
+      "size": 1076995676,
+      "size_mb": 1027.1,
+      "mtime": "2026-04-26 14:46:10",
+      "is_recent": false,
+      "entry_count": 30798,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "019.fpk",
+      "extension": ".fpk",
+      "size": 1076411060,
+      "size_mb": 1026.55,
+      "mtime": "2026-04-26 14:46:34",
+      "is_recent": false,
+      "entry_count": 55479,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "020.fpk",
+      "extension": ".fpk",
+      "size": 1076689300,
+      "size_mb": 1026.81,
+      "mtime": "2026-04-26 14:46:53",
+      "is_recent": false,
+      "entry_count": 60831,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "021.fpk",
+      "extension": ".fpk",
+      "size": 1075483348,
+      "size_mb": 1025.66,
+      "mtime": "2026-04-26 14:47:11",
+      "is_recent": false,
+      "entry_count": 35959,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "022.fpk",
+      "extension": ".fpk",
+      "size": 1076814660,
+      "size_mb": 1026.93,
+      "mtime": "2026-04-26 14:47:42",
+      "is_recent": false,
+      "entry_count": 62641,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "023.fpk",
+      "extension": ".fpk",
+      "size": 1079306108,
+      "size_mb": 1029.31,
+      "mtime": "2026-04-26 14:48:06",
+      "is_recent": false,
+      "entry_count": 85620,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "024.fpk",
+      "extension": ".fpk",
+      "size": 1077047800,
+      "size_mb": 1027.15,
+      "mtime": "2026-04-26 14:48:29",
+      "is_recent": false,
+      "entry_count": 4540,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "025.fpk",
+      "extension": ".fpk",
+      "size": 1074797704,
+      "size_mb": 1025.01,
+      "mtime": "2026-04-26 14:48:45",
+      "is_recent": false,
+      "entry_count": 4991,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "026.fpk",
+      "extension": ".fpk",
+      "size": 1074146996,
+      "size_mb": 1024.39,
+      "mtime": "2026-04-26 14:48:58",
+      "is_recent": false,
+      "entry_count": 7616,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "027.fpk",
+      "extension": ".fpk",
+      "size": 1074474408,
+      "size_mb": 1024.7,
+      "mtime": "2026-04-26 14:49:28",
+      "is_recent": false,
+      "entry_count": 12704,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "028.fpk",
+      "extension": ".fpk",
+      "size": 1075724056,
+      "size_mb": 1025.89,
+      "mtime": "2026-04-26 14:49:43",
+      "is_recent": false,
+      "entry_count": 14916,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "029.fpk",
+      "extension": ".fpk",
+      "size": 1074169740,
+      "size_mb": 1024.41,
+      "mtime": "2026-04-26 14:50:27",
+      "is_recent": false,
+      "entry_count": 629,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "030.fpk",
+      "extension": ".fpk",
+      "size": 1076228932,
+      "size_mb": 1026.37,
+      "mtime": "2026-04-26 14:50:29",
+      "is_recent": false,
+      "entry_count": 3290,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "031.fpk",
+      "extension": ".fpk",
+      "size": 1074789052,
+      "size_mb": 1025.0,
+      "mtime": "2026-04-26 14:50:55",
+      "is_recent": false,
+      "entry_count": 5883,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "032.fpk",
+      "extension": ".fpk",
+      "size": 1075980764,
+      "size_mb": 1026.14,
+      "mtime": "2026-04-26 14:51:18",
+      "is_recent": false,
+      "entry_count": 6657,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "033.fpk",
+      "extension": ".fpk",
+      "size": 1074583996,
+      "size_mb": 1024.8,
+      "mtime": "2026-04-26 14:51:42",
+      "is_recent": false,
+      "entry_count": 9008,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "034.fpk",
+      "extension": ".fpk",
+      "size": 1075770688,
+      "size_mb": 1025.93,
+      "mtime": "2026-04-26 14:52:03",
+      "is_recent": false,
+      "entry_count": 12067,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "035.fpk",
+      "extension": ".fpk",
+      "size": 1074685384,
+      "size_mb": 1024.9,
+      "mtime": "2026-04-26 14:52:04",
+      "is_recent": false,
+      "entry_count": 6885,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "036.fpk",
+      "extension": ".fpk",
+      "size": 1075795924,
+      "size_mb": 1025.96,
+      "mtime": "2026-04-26 14:52:27",
+      "is_recent": false,
+      "entry_count": 9928,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "037.fpk",
+      "extension": ".fpk",
+      "size": 1074204996,
+      "size_mb": 1024.44,
+      "mtime": "2026-04-26 14:52:48",
+      "is_recent": false,
+      "entry_count": 6763,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "038.fpk",
+      "extension": ".fpk",
+      "size": 1074148500,
+      "size_mb": 1024.39,
+      "mtime": "2026-04-26 14:53:17",
+      "is_recent": false,
+      "entry_count": 8293,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "039.fpk",
+      "extension": ".fpk",
+      "size": 1074956264,
+      "size_mb": 1025.16,
+      "mtime": "2026-04-26 14:53:38",
+      "is_recent": false,
+      "entry_count": 8306,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "040.fpk",
+      "extension": ".fpk",
+      "size": 1075433800,
+      "size_mb": 1025.61,
+      "mtime": "2026-04-26 14:53:39",
+      "is_recent": false,
+      "entry_count": 7573,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "041.fpk",
+      "extension": ".fpk",
+      "size": 1074936880,
+      "size_mb": 1025.14,
+      "mtime": "2026-04-26 14:54:06",
+      "is_recent": false,
+      "entry_count": 8268,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "042.fpk",
+      "extension": ".fpk",
+      "size": 1076923516,
+      "size_mb": 1027.03,
+      "mtime": "2026-04-26 14:54:28",
+      "is_recent": false,
+      "entry_count": 15534,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "043.fpk",
+      "extension": ".fpk",
+      "size": 1074751832,
+      "size_mb": 1024.96,
+      "mtime": "2026-04-26 14:54:49",
+      "is_recent": false,
+      "entry_count": 12539,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "044.fpk",
+      "extension": ".fpk",
+      "size": 1075216264,
+      "size_mb": 1025.41,
+      "mtime": "2026-04-26 14:55:09",
+      "is_recent": false,
+      "entry_count": 13488,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "045.fpk",
+      "extension": ".fpk",
+      "size": 1074828276,
+      "size_mb": 1025.04,
+      "mtime": "2026-04-26 14:55:26",
+      "is_recent": false,
+      "entry_count": 12120,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "046.fpk",
+      "extension": ".fpk",
+      "size": 1075558844,
+      "size_mb": 1025.73,
+      "mtime": "2026-04-26 14:55:56",
+      "is_recent": false,
+      "entry_count": 16223,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "047.fpk",
+      "extension": ".fpk",
+      "size": 1078306168,
+      "size_mb": 1028.35,
+      "mtime": "2026-04-26 14:56:23",
+      "is_recent": false,
+      "entry_count": 94980,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "048.fpk",
+      "extension": ".fpk",
+      "size": 1084109184,
+      "size_mb": 1033.89,
+      "mtime": "2026-04-26 14:56:41",
+      "is_recent": false,
+      "entry_count": 215598,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "049.fpk",
+      "extension": ".fpk",
+      "size": 1076679648,
+      "size_mb": 1026.8,
+      "mtime": "2026-04-26 14:57:08",
+      "is_recent": false,
+      "entry_count": 31824,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "050.fpk",
+      "extension": ".fpk",
+      "size": 1076136856,
+      "size_mb": 1026.28,
+      "mtime": "2026-04-26 14:57:21",
+      "is_recent": false,
+      "entry_count": 29819,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "051.fpk",
+      "extension": ".fpk",
+      "size": 1076302008,
+      "size_mb": 1026.44,
+      "mtime": "2026-04-26 14:57:46",
+      "is_recent": false,
+      "entry_count": 30359,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "052.fpk",
+      "extension": ".fpk",
+      "size": 1076081116,
+      "size_mb": 1026.23,
+      "mtime": "2026-04-26 14:58:19",
+      "is_recent": false,
+      "entry_count": 47444,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "053.fpk",
+      "extension": ".fpk",
+      "size": 1076582340,
+      "size_mb": 1026.71,
+      "mtime": "2026-04-26 14:58:43",
+      "is_recent": false,
+      "entry_count": 59170,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "054.fpk",
+      "extension": ".fpk",
+      "size": 1075520140,
+      "size_mb": 1025.7,
+      "mtime": "2026-04-26 14:59:12",
+      "is_recent": false,
+      "entry_count": 37007,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "055.fpk",
+      "extension": ".fpk",
+      "size": 1076030712,
+      "size_mb": 1026.18,
+      "mtime": "2026-04-26 14:59:12",
+      "is_recent": false,
+      "entry_count": 19682,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "056.fpk",
+      "extension": ".fpk",
+      "size": 1074682820,
+      "size_mb": 1024.9,
+      "mtime": "2026-04-26 14:59:43",
+      "is_recent": false,
+      "entry_count": 11616,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "057.fpk",
+      "extension": ".fpk",
+      "size": 1075747232,
+      "size_mb": 1025.91,
+      "mtime": "2026-04-26 15:00:08",
+      "is_recent": false,
+      "entry_count": 34316,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "058.fpk",
+      "extension": ".fpk",
+      "size": 1075809340,
+      "size_mb": 1025.97,
+      "mtime": "2026-04-26 15:00:21",
+      "is_recent": false,
+      "entry_count": 33686,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "059.fpk",
+      "extension": ".fpk",
+      "size": 1074856580,
+      "size_mb": 1025.06,
+      "mtime": "2026-04-26 15:00:40",
+      "is_recent": false,
+      "entry_count": 21126,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "060.fpk",
+      "extension": ".fpk",
+      "size": 1075082060,
+      "size_mb": 1025.28,
+      "mtime": "2026-04-26 15:01:05",
+      "is_recent": false,
+      "entry_count": 19922,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "061.fpk",
+      "extension": ".fpk",
+      "size": 1074754284,
+      "size_mb": 1024.97,
+      "mtime": "2026-04-26 15:01:30",
+      "is_recent": false,
+      "entry_count": 9127,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "062.fpk",
+      "extension": ".fpk",
+      "size": 1074948188,
+      "size_mb": 1025.15,
+      "mtime": "2026-04-26 15:01:56",
+      "is_recent": false,
+      "entry_count": 16386,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "063.fpk",
+      "extension": ".fpk",
+      "size": 1074423140,
+      "size_mb": 1024.65,
+      "mtime": "2026-04-26 15:02:07",
+      "is_recent": false,
+      "entry_count": 12318,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "064.fpk",
+      "extension": ".fpk",
+      "size": 3895404,
+      "size_mb": 3.71,
+      "mtime": "2026-04-26 15:02:07",
+      "is_recent": false,
+      "entry_count": 254,
+      "value_level": "中价值",
+      "value_reason": [],
+      "is_exclusive_fpk": true
+    },
+    {
+      "name": "building_01.gpk",
+      "extension": ".gpk",
+      "size": 1381324868,
+      "size_mb": 1317.33,
+      "mtime": "2026-08-27 19:15:02",
+      "is_recent": true,
+      "entry_count": 32325,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: building_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "building_02.gpk",
+      "extension": ".gpk",
+      "size": 1305642596,
+      "size_mb": 1245.16,
+      "mtime": "2026-08-27 19:22:33",
+      "is_recent": true,
+      "entry_count": 1810,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: building_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "building_03.gpk",
+      "extension": ".gpk",
+      "size": 1402704492,
+      "size_mb": 1337.72,
+      "mtime": "2026-08-27 19:11:26",
+      "is_recent": true,
+      "entry_count": 33455,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: building_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "building_04.gpk",
+      "extension": ".gpk",
+      "size": 887188860,
+      "size_mb": 846.09,
+      "mtime": "2026-08-27 19:17:18",
+      "is_recent": true,
+      "entry_count": 16062,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: building_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_01.gpk",
+      "extension": ".gpk",
+      "size": 1574942896,
+      "size_mb": 1501.98,
+      "mtime": "2026-08-27 19:01:55",
+      "is_recent": true,
+      "entry_count": 47390,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_02.gpk",
+      "extension": ".gpk",
+      "size": 2128015100,
+      "size_mb": 2029.43,
+      "mtime": "2026-08-27 18:51:53",
+      "is_recent": true,
+      "entry_count": 22914,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_03.gpk",
+      "extension": ".gpk",
+      "size": 1956395064,
+      "size_mb": 1865.76,
+      "mtime": "2026-08-27 18:54:31",
+      "is_recent": true,
+      "entry_count": 21246,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_04.gpk",
+      "extension": ".gpk",
+      "size": 1782687580,
+      "size_mb": 1700.1,
+      "mtime": "2026-08-27 19:00:13",
+      "is_recent": true,
+      "entry_count": 58704,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_05.gpk",
+      "extension": ".gpk",
+      "size": 1889517172,
+      "size_mb": 1801.98,
+      "mtime": "2026-08-27 18:53:08",
+      "is_recent": true,
+      "entry_count": 77827,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_06.gpk",
+      "extension": ".gpk",
+      "size": 1375271636,
+      "size_mb": 1311.56,
+      "mtime": "2026-08-27 19:15:10",
+      "is_recent": true,
+      "entry_count": 21160,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_07.gpk",
+      "extension": ".gpk",
+      "size": 1562022672,
+      "size_mb": 1489.66,
+      "mtime": "2026-08-27 19:08:02",
+      "is_recent": true,
+      "entry_count": 39991,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_08.gpk",
+      "extension": ".gpk",
+      "size": 1174066312,
+      "size_mb": 1119.68,
+      "mtime": "2026-08-27 19:17:46",
+      "is_recent": true,
+      "entry_count": 41655,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "character_09.gpk",
+      "extension": ".gpk",
+      "size": 1230157612,
+      "size_mb": 1173.17,
+      "mtime": "2026-08-27 19:16:50",
+      "is_recent": true,
+      "entry_count": 22902,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "effect_01.gpk",
+      "extension": ".gpk",
+      "size": 700157292,
+      "size_mb": 667.72,
+      "mtime": "2026-08-27 19:23:53",
+      "is_recent": true,
+      "entry_count": 212152,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "effect_02.gpk",
+      "extension": ".gpk",
+      "size": 150980196,
+      "size_mb": 143.99,
+      "mtime": "2026-08-27 19:24:08",
+      "is_recent": true,
+      "entry_count": 3049,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "effect_cache.gpk",
+      "extension": ".gpk",
+      "size": 752927516,
+      "size_mb": 718.05,
+      "mtime": "2026-08-27 19:20:37",
+      "is_recent": true,
+      "entry_count": 99801,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_01.gpk",
+      "extension": ".gpk",
+      "size": 1696417564,
+      "size_mb": 1617.83,
+      "mtime": "2026-08-27 18:54:02",
+      "is_recent": true,
+      "entry_count": 22611,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_02.gpk",
+      "extension": ".gpk",
+      "size": 1641597588,
+      "size_mb": 1565.55,
+      "mtime": "2026-08-27 18:59:11",
+      "is_recent": true,
+      "entry_count": 17488,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_03.gpk",
+      "extension": ".gpk",
+      "size": 1270552660,
+      "size_mb": 1211.69,
+      "mtime": "2026-08-27 19:13:46",
+      "is_recent": true,
+      "entry_count": 18895,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_04.gpk",
+      "extension": ".gpk",
+      "size": 1457732920,
+      "size_mb": 1390.2,
+      "mtime": "2026-08-27 19:06:13",
+      "is_recent": true,
+      "entry_count": 9890,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_05.gpk",
+      "extension": ".gpk",
+      "size": 1783964736,
+      "size_mb": 1701.32,
+      "mtime": "2026-08-27 18:56:37",
+      "is_recent": true,
+      "entry_count": 17737,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_06.gpk",
+      "extension": ".gpk",
+      "size": 1784573060,
+      "size_mb": 1701.9,
+      "mtime": "2026-08-27 19:03:24",
+      "is_recent": true,
+      "entry_count": 15275,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_07.gpk",
+      "extension": ".gpk",
+      "size": 1547338004,
+      "size_mb": 1475.66,
+      "mtime": "2026-08-27 19:12:34",
+      "is_recent": true,
+      "entry_count": 11281,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_08.gpk",
+      "extension": ".gpk",
+      "size": 1619466992,
+      "size_mb": 1544.44,
+      "mtime": "2026-08-27 19:00:25",
+      "is_recent": true,
+      "entry_count": 11932,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_09.gpk",
+      "extension": ".gpk",
+      "size": 1625056964,
+      "size_mb": 1549.78,
+      "mtime": "2026-08-27 19:01:15",
+      "is_recent": true,
+      "entry_count": 17582,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_10.gpk",
+      "extension": ".gpk",
+      "size": 1461102456,
+      "size_mb": 1393.42,
+      "mtime": "2026-08-27 19:23:12",
+      "is_recent": true,
+      "entry_count": 16396,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_11.gpk",
+      "extension": ".gpk",
+      "size": 895889692,
+      "size_mb": 854.39,
+      "mtime": "2026-08-27 19:23:51",
+      "is_recent": true,
+      "entry_count": 7966,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_01.gpk",
+      "extension": ".gpk",
+      "size": 1612299220,
+      "size_mb": 1537.61,
+      "mtime": "2026-08-27 19:04:55",
+      "is_recent": true,
+      "entry_count": 10012,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_02.gpk",
+      "extension": ".gpk",
+      "size": 1664670884,
+      "size_mb": 1587.55,
+      "mtime": "2026-08-27 18:51:01",
+      "is_recent": true,
+      "entry_count": 1058,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_03.gpk",
+      "extension": ".gpk",
+      "size": 1600079840,
+      "size_mb": 1525.96,
+      "mtime": "2026-08-27 19:10:55",
+      "is_recent": true,
+      "entry_count": 16127,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_04.gpk",
+      "extension": ".gpk",
+      "size": 1609537040,
+      "size_mb": 1534.97,
+      "mtime": "2026-08-27 19:04:09",
+      "is_recent": true,
+      "entry_count": 22142,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_05.gpk",
+      "extension": ".gpk",
+      "size": 1663121884,
+      "size_mb": 1586.08,
+      "mtime": "2026-08-27 19:02:04",
+      "is_recent": true,
+      "entry_count": 12046,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "model_high_2024_06.gpk",
+      "extension": ".gpk",
+      "size": 704754988,
+      "size_mb": 672.11,
+      "mtime": "2026-08-27 19:20:19",
+      "is_recent": true,
+      "entry_count": 3449,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_01.gpk",
+      "extension": ".gpk",
+      "size": 1553251948,
+      "size_mb": 1481.3,
+      "mtime": "2026-08-27 19:05:27",
+      "is_recent": true,
+      "entry_count": 84295,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_02.gpk",
+      "extension": ".gpk",
+      "size": 1597204216,
+      "size_mb": 1523.21,
+      "mtime": "2026-08-27 19:09:50",
+      "is_recent": true,
+      "entry_count": 110664,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_03.gpk",
+      "extension": ".gpk",
+      "size": 1404290908,
+      "size_mb": 1339.24,
+      "mtime": "2026-08-27 19:12:27",
+      "is_recent": true,
+      "entry_count": 79144,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_04.gpk",
+      "extension": ".gpk",
+      "size": 1496614396,
+      "size_mb": 1427.28,
+      "mtime": "2026-08-27 19:10:55",
+      "is_recent": true,
+      "entry_count": 70841,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_05.gpk",
+      "extension": ".gpk",
+      "size": 65578888,
+      "size_mb": 62.54,
+      "mtime": "2026-08-27 19:24:10",
+      "is_recent": true,
+      "entry_count": 2759,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_bw_01.gpk",
+      "extension": ".gpk",
+      "size": 1713889104,
+      "size_mb": 1634.49,
+      "mtime": "2026-08-27 18:55:51",
+      "is_recent": true,
+      "entry_count": 147403,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_bw_02.gpk",
+      "extension": ".gpk",
+      "size": 1619724820,
+      "size_mb": 1544.69,
+      "mtime": "2026-08-27 19:00:16",
+      "is_recent": true,
+      "entry_count": 135552,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_bw_03.gpk",
+      "extension": ".gpk",
+      "size": 1644606708,
+      "size_mb": 1568.42,
+      "mtime": "2026-08-27 18:57:41",
+      "is_recent": true,
+      "entry_count": 51043,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_bw_04.gpk",
+      "extension": ".gpk",
+      "size": 1714647336,
+      "size_mb": 1635.22,
+      "mtime": "2026-08-27 18:52:20",
+      "is_recent": true,
+      "entry_count": 92261,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "scene_bw_05.gpk",
+      "extension": ".gpk",
+      "size": 1349652660,
+      "size_mb": 1287.13,
+      "mtime": "2026-08-27 19:12:35",
+      "is_recent": true,
+      "entry_count": 92934,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: scene_",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "sound.gpk",
+      "extension": ".gpk",
+      "size": 1226485512,
+      "size_mb": 1169.67,
+      "mtime": "2026-08-27 19:16:02",
+      "is_recent": true,
+      "entry_count": 1436,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "textures.gpk",
+      "extension": ".gpk",
+      "size": 432207360,
+      "size_mb": 412.19,
+      "mtime": "2026-08-27 19:21:47",
+      "is_recent": true,
+      "entry_count": 564,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "textures_bw.gpk",
+      "extension": ".gpk",
+      "size": 579698928,
+      "size_mb": 552.84,
+      "mtime": "2026-08-27 19:18:57",
+      "is_recent": true,
+      "entry_count": 614,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: textures_bw",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui.npk",
+      "extension": ".npk",
+      "size": 3327682040,
+      "size_mb": 3173.52,
+      "mtime": "2024-12-10 20:51:03",
+      "is_recent": false,
+      "entry_count": null,
+      "value_level": "中价值",
+      "value_reason": [
+        "核心资源包"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui_01.gpk",
+      "extension": ".gpk",
+      "size": 1386788696,
+      "size_mb": 1322.54,
+      "mtime": "2026-08-27 19:13:06",
+      "is_recent": true,
+      "entry_count": 79769,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui_02.gpk",
+      "extension": ".gpk",
+      "size": 799425184,
+      "size_mb": 762.39,
+      "mtime": "2026-08-27 19:21:06",
+      "is_recent": true,
+      "entry_count": 7764,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui_03.gpk",
+      "extension": ".gpk",
+      "size": 696876296,
+      "size_mb": 664.59,
+      "mtime": "2026-08-27 19:23:38",
+      "is_recent": true,
+      "entry_count": 4922,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui_04.gpk",
+      "extension": ".gpk",
+      "size": 946658000,
+      "size_mb": 902.8,
+      "mtime": "2026-08-27 19:16:44",
+      "is_recent": true,
+      "entry_count": 30003,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "ui_05.gpk",
+      "extension": ".gpk",
+      "size": 823930424,
+      "size_mb": 785.76,
+      "mtime": "2026-08-27 19:17:40",
+      "is_recent": true,
+      "entry_count": 25583,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "utility.gpk",
+      "extension": ".gpk",
+      "size": 848386532,
+      "size_mb": 809.08,
+      "mtime": "2026-08-27 19:18:31",
+      "is_recent": true,
+      "entry_count": 21426,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "utility_scene.gpk",
+      "extension": ".gpk",
+      "size": 403361916,
+      "size_mb": 384.68,
+      "mtime": "2026-08-27 19:20:17",
+      "is_recent": true,
+      "entry_count": 8097,
+      "value_level": "中价值",
+      "value_reason": [
+        "包含关键词: utility_scene",
+        "近一个月更新，提升为中价值"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "video.gpk",
+      "extension": ".gpk",
+      "size": 1175457580,
+      "size_mb": 1121.0,
+      "mtime": "2026-08-27 19:21:16",
+      "is_recent": true,
+      "entry_count": 306,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    },
+    {
+      "name": "weapon.gpk",
+      "extension": ".gpk",
+      "size": 1522433388,
+      "size_mb": 1451.91,
+      "mtime": "2026-08-27 19:06:00",
+      "is_recent": true,
+      "entry_count": 51665,
+      "value_level": "高价值",
+      "value_reason": [
+        "近一个月更新"
+      ],
+      "is_exclusive_fpk": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "lifeafter-weapon-skin-effects/2",
+  "note": "所有节点/文件须来自绑定文件实证；未证实字段=null；未支持节点显式列 unsupported",
+  "skin": {
+    "primary": "skin_1002_009",
+    "secondary": null,
+    "display_name": "灰色协议"
+  },
+  "status": "not_extracted",
+  "status_reason": "本轮范围=3D 模型与材质近似；SFX 绑定/资源未定位解码（不得以占位资源冒充）",
+  "bindings": {
+    "bind_file": "000911.c159"
+  },
+  "nodes": [],
+  "unsupported": [
+    "SFX 节点（未定位）",
+    "音效（未提取）",
+    "拖尾（未定位）"
+  ],
+  "next": [
+    "按 010 路径定位 1002_009 的 .sfx（effect_01.gpk 内容实证扫描）",
+    "解码后按 v2 schema 填 nodes/sockets/关键帧"
+  ]
+}

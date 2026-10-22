@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "skin_id": "1110171",
+  "title": "光影咏叹调",
+  "poster": "poster.webp",
+  "default_state": "dual",
+  "default_camera": "screenshot",
+  "states": [
+    {
+      "id": "dual",
+      "label": "双枪形态",
+      "model": "dual.glb"
+    },
+    {
+      "id": "single",
+      "label": "单枪形态",
+      "model": "single.glb"
+    }
+  ],
+  "camera_presets": [
+    {
+      "id": "screenshot",
+      "label": "截图视角",
+      "position": [2.4, 1.1, 3.2],
+      "target": [0, 0, 0],
+      "fov": 34
+    }
+  ],
+  "background": "#071015",
+  "exposure": 1.0,
+  "fidelity": {
+    "material": "approximate",
+    "sfx": "none"
+  },
+  "effects": {
+    "status": "none"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "lifeafter-test-fixture-v1",
+  "why": "原夹具目录 entries/ 已被清理，只剩清单；本夹具按清单元数据从源包重建并逐字节核验",
+  "source": {
+    "path": "E:\\mrzh\\Documents\\script.py314.lc.npk",
+    "size": 269020184,
+    "sha256": "56def41376ed2e71f1901756cde1984a53e6a6b863767e982ffd1eac601bb224",
+    "rebuilt_from": "E:\\la拆包项目\\02_资料\\源包\\热更历史容器_20260829-20260916\\pre_update_20260831_182129\\raw_priority\\Documents\\script.py314.lc.npk"
+  },
+  "entries": {
+    "002949.bin": {
+      "index": 2949,
+      "file_id": "1E888FAB015CA82D",
+      "archive_offset": 212723384,
+      "packed_size": 30896,
+      "flag": 0,
+      "output_size": 81534,
+      "output_sha256": "f2573710d7def28335fe96351bd48668cd1c729ea94ff2a8847315252d032880"
+    },
+    "007767.bin": {
+      "index": 7767,
+      "file_id": "4FCC4065681956B9",
+      "archive_offset": 207247672,
+      "packed_size": 37136,
+      "flag": 0,
+      "output_size": 88658,
+      "output_sha256": "a35d586296ba18d417101db6d136aac3a222c575226db09ede88d292326f084c"
+    }
+  },
+  "verified": true
+}

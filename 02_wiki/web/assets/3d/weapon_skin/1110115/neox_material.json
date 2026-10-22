@@ -1,0 +1,93 @@
+{
+ "schema": "neox_material/v1",
+ "skin": "1110115",
+ "stem": "skin_2003_013",
+ "shader": "shader\\pbr_weapon.fx",
+ "slots": {
+  "t_basecolor": {
+   "local_file": "",
+   "logical_path": "weapon\\skin\\skin_2003_013\\textures\\skin_2003_013_1001a.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  },
+  "ParamMap": {
+   "local_file": "",
+   "logical_path": "weapon\\skin\\skin_2003_013\\textures\\skin_2003_013_1001m.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  },
+  "t_surfacemap": {
+   "local_file": "",
+   "logical_path": "weapon\\skin\\skin_2003_013\\textures\\skin_2003_013001s_m.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  },
+  "NormalMap": {
+   "local_file": "",
+   "logical_path": "weapon\\skin\\skin_2003_013\\textures\\skin_2003_013_1001n.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  },
+  "m": {
+   "local_file": "",
+   "logical_path": "common\\textures\\crystal_reflection_uvva.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  },
+  "Tex0": {
+   "local_file": "",
+   "logical_path": "weapon\\skin\\skin_2003_013\\textures\\skin_2003_013001b_m.tga",
+   "status": "missing",
+   "source": {
+    "container": null,
+    "row": null,
+    "o": null,
+    "comp": null,
+    "dec": null,
+    "flag": null,
+    "sha16": null
+   }
+  }
+ },
+ "note": "源 c159(.mtg) 声明路径直取；缺失保持 missing，未顶替"
+}

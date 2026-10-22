@@ -1,0 +1,242 @@
+#### 1110024 src_cube 内容：
+   src_cube\faces\gdansk_shipyard_buildings_f0_m0.png     38164 B  sha16=0e77ad1e968bd1ef
+   src_cube\faces\gdansk_shipyard_buildings_f1_m0.png     39982 B  sha16=5025c7c668f53189
+   src_cube\faces\gdansk_shipyard_buildings_f2_m0.png     36062 B  sha16=f705bbef937f4e21
+   src_cube\faces\gdansk_shipyard_buildings_f3_m0.png     32555 B  sha16=24ad11d0640f50da
+   src_cube\faces\gdansk_shipyard_buildings_f4_m0.png     31480 B  sha16=c9fa11658ebc3d26
+   src_cube\faces\gdansk_shipyard_buildings_f5_m0.png     37635 B  sha16=cfb4668566a6d00d
+   src_cube\faces\indoor_f0_m0.png                    17739 B  sha16=4fa21056199dfb46
+   src_cube\faces\indoor_f1_m0.png                    25136 B  sha16=11a54a0961f02950
+   src_cube\faces\indoor_f2_m0.png                    18801 B  sha16=fca45afaec163299
+   src_cube\faces\indoor_f3_m0.png                    23271 B  sha16=93830a3236432cc3
+   src_cube\faces\indoor_f4_m0.png                      392 B  sha16=7d105582cc618c74
+   src_cube\faces\indoor_f5_m0.png                    20831 B  sha16=27ad0d25ea058adb
+   src_cube\gdansk_shipyard_buildings.dds            524408 B  sha16=3c838953a5db91c1
+   src_cube\indoor.dds                               524408 B  sha16=a464190b0febb360
+#### DDS indoor.dds → {"bytes": 524408, "w": 128, "h": 128, "depth": 1, "mips": 8, "pf_flags": "0x20", "fourcc": "A", "rgbbits": 0, "caps": "0x401008", "caps2": "0xfe00", "cubemap_caps2_flag": true, "faces_present": [0, 1, 2, 3, 4, 5], "header_hex_snippet": "DDS "}
+#### DDS gdansk_shipyard_buildings.dds → {"bytes": 524408, "w": 128, "h": 128, "depth": 1, "mips": 8, "pf_flags": "0x20", "fourcc": "A", "rgbbits": 0, "caps": "0x401008", "caps2": "0xfe00", "cubemap_caps2_flag": true, "faces_present": [0, 1, 2, 3, 4, 5], "header_hex_snippet": "DDS "}
+#### faces/indoor_* → complete=True distinct=False
+   f0 exists=True {"size": [128, 128], "sha16": "4fa21056199dfb46", "mean_rgb": [112.5, 112.4, 119.4]}
+   f1 exists=True {"size": [128, 128], "sha16": "11a54a0961f02950", "mean_rgb": [138.2, 143.3, 160.1]}
+   f2 exists=True {"size": [128, 128], "sha16": "fca45afaec163299", "mean_rgb": [102.9, 104.0, 114.1]}
+   f3 exists=True {"size": [128, 128], "sha16": "93830a3236432cc3", "mean_rgb": [202.7, 194.4, 202.3]}
+   f4 exists=True {"size": [128, 128], "sha16": "7d105582cc618c74", "mean_rgb": [0.0, 0.0, 0.0]}
+   f5 exists=True {"size": [128, 128], "sha16": "27ad0d25ea058adb", "mean_rgb": [110.0, 111.7, 120.7]}
+   pair f0-f1 identical=7.41% mean|Δ|=91.65
+   pair f0-f2 identical=0.00% mean|Δ|=166.68
+   pair f0-f3 identical=0.01% mean|Δ|=107.36
+   pair f0-f4 identical=37.38% mean|Δ|=114.74
+   pair f0-f5 identical=5.40% mean|Δ|=140.16
+   pair f1-f2 identical=0.00% mean|Δ|=112.24
+   pair f1-f3 identical=0.01% mean|Δ|=69.80
+   pair f1-f4 identical=7.40% mean|Δ|=147.20
+   pair f1-f5 identical=5.39% mean|Δ|=62.83
+   pair f2-f3 identical=0.00% mean|Δ|=107.20
+   pair f2-f4 identical=34.99% mean|Δ|=106.99
+   pair f2-f5 identical=19.89% mean|Δ|=69.62
+   pair f3-f4 identical=0.00% mean|Δ|=199.83
+   pair f3-f5 identical=0.01% mean|Δ|=100.34
+   pair f4-f5 identical=25.27% mean|Δ|=114.12
+#### faces/gdansk_shipyard_buildings_* → complete=True distinct=True
+   f0 exists=True {"size": [128, 128], "sha16": "0e77ad1e968bd1ef", "mean_rgb": [215.5, 207.9, 187.0]}
+   f1 exists=True {"size": [128, 128], "sha16": "5025c7c668f53189", "mean_rgb": [211.6, 208.1, 199.1]}
+   f2 exists=True {"size": [128, 128], "sha16": "f705bbef937f4e21", "mean_rgb": [228.8, 221.3, 213.0]}
+   f3 exists=True {"size": [128, 128], "sha16": "24ad11d0640f50da", "mean_rgb": [176.8, 212.4, 241.1]}
+   f4 exists=True {"size": [128, 128], "sha16": "c9fa11658ebc3d26", "mean_rgb": [238.6, 210.8, 184.6]}
+   f5 exists=True {"size": [128, 128], "sha16": "cfb4668566a6d00d", "mean_rgb": [208.7, 203.6, 179.9]}
+   pair f0-f1 identical=0.00% mean|Δ|=36.98
+   pair f0-f2 identical=0.00% mean|Δ|=35.30
+   pair f0-f3 identical=0.00% mean|Δ|=46.01
+   pair f0-f4 identical=0.04% mean|Δ|=26.48
+   pair f0-f5 identical=0.00% mean|Δ|=39.69
+   pair f1-f2 identical=0.01% mean|Δ|=35.38
+   pair f1-f3 identical=0.00% mean|Δ|=44.77
+   pair f1-f4 identical=0.00% mean|Δ|=29.54
+   pair f1-f5 identical=0.02% mean|Δ|=32.94
+   pair f2-f3 identical=0.01% mean|Δ|=40.20
+   pair f2-f4 identical=0.01% mean|Δ|=23.64
+   pair f2-f5 identical=0.01% mean|Δ|=38.06
+   pair f3-f4 identical=0.00% mean|Δ|=50.01
+   pair f3-f5 identical=0.00% mean|Δ|=49.07
+   pair f4-f5 identical=0.00% mean|Δ|=31.24
+#### manifest 1110024 t_custom_ibl：
+   prim0  weapon   local=src_cube/gdansk_shipyard_buildings.dds     glob=src_cube/faces/gdansk_shipyard_buildings_f{i}_m0.png logical=common\env_map\gdansk_shipyard_buildings.cube
+   prim1  weapon   local=src_cube/gdansk_shipyard_buildings.dds     glob=src_cube/faces/gdansk_shipyard_buildings_f{i}_m0.png logical=common\env_map\gdansk_shipyard_buildings.cube
+   prim2  weapon   local=src_cube/gdansk_shipyard_buildings.dds     glob=src_cube/faces/gdansk_shipyard_buildings_f{i}_m0.png logical=common\env_map\gdansk_shipyard_buildings.cube
+   prim3  weapon   local=src_cube/gdansk_shipyard_buildings.dds     glob=src_cube/faces/gdansk_shipyard_buildings_f{i}_m0.png logical=common\env_map\gdansk_shipyard_buildings.cube
+   prim4  weapon   local=src_cube/gdansk_shipyard_buildings.dds     glob=src_cube/faces/gdansk_shipyard_buildings_f{i}_m0.png logical=common\env_map\gdansk_shipyard_buildings.cube
+#### manifest 1110129 t_custom_ibl：
+   prim0  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=None
+   prim1  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=None
+   prim2  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=None
+   prim3  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=None
+   prim4  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=None
+#### manifest 1110145 t_custom_ibl：
+   prim0  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim1  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim2  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim3  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim4  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim5  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+   prim6  weapon   local=src_cube/bg61f_light_spherereflectioncapture_1.dds glob=None                                     logical=common\env_map\bg61f_light_spherereflectioncapture_1.cube
+#### manifest 1110152 t_custom_ibl：
+   prim0  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{i}_m0.png       logical=common\env_map\qiangpi.cube
+   prim1  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{i}_m0.png       logical=common\env_map\qiangpi.cube
+#### manifest 1110165 t_custom_ibl：
+   prim0  weapon   local=src_cube/qiangpi.dds                       glob=None                                     logical=None
+   prim1  weapon   local=src_cube/qiangpi.dds                       glob=None                                     logical=None
+   prim2  weapon   local=src_cube/glazed_patio.dds                  glob=None                                     logical=None
+   prim3  weapon   local=src_cube/glazed_patio.dds                  glob=None                                     logical=None
+#### manifest 1110171 t_custom_ibl：
+   prim0  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=common\env_map\qiangpi.cube
+   prim1  crystal  local=src_cube/car_studio01.dds                  glob=src_cube/faces/car_studio01_f{0..5}_m0.png logical=common\env_map\car_studio01.cube
+   prim2  crystal  local=src_cube/fashion_qiangpi.dds               glob=src_cube/faces/fashion_qiangpi_f{0..5}_m0.png logical=common\env_map\fashion_qiangpi.cube
+   prim3  crystal  local=src_cube/car_studio01.dds                  glob=src_cube/faces/car_studio01_f{0..5}_m0.png logical=common\env_map\car_studio01.cube
+   prim4  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=common\env_map\qiangpi.cube
+   prim5  crystal  local=src_cube/car_studio01.dds                  glob=src_cube/faces/car_studio01_f{0..5}_m0.png logical=common\env_map\car_studio01.cube
+   prim6  crystal  local=src_cube/car_studio01.dds                  glob=src_cube/faces/car_studio01_f{0..5}_m0.png logical=common\env_map\car_studio01.cube
+#### manifest 1110177 t_custom_ibl：
+   prim0  weapon   local=src_cube/qiangpi.dds                       glob=src_cube/faces/qiangpi_f{0..5}_m0.png    logical=common\env_map\qiangpi.cube
+   prim1  crystal  local=src_cube/car_studio01.dds                  glob=src_cube/faces/car_studio01_f{0..5}_m0.png logical=common\env_map\car_studio01.cube
+   prim2  crystal  local=src_cube/fashion_qiangpi.dds               glob=None                                     logical=None
+#### c159 1110177 (003996.c159) rows=19
+   blk0  Tex0             ref=skin_2003_029001a.tga                          off=1966 dual=False order_only=False
+   blk0  ParamMap         ref=skin_2003_029001m.tga                          off=2028 dual=False order_only=False
+   blk0  NormalMap        ref=skin_2003_029001n.tga                          off=2090 dual=False order_only=False
+   blk0  t_custom_ibl     ref=qiangpi.cube                                   off=2152 dual=True order_only=False
+   blk1  Tex0             ref=skin_2003_029001b_m.tga                        off=2628 dual=False order_only=False
+   blk1  t_basecolor      ref=skin_2003_029001a.tga                          off=2692 dual=False order_only=False
+   blk1  NormalMap        ref=skin_2003_029001n.tga                          off=2754 dual=False order_only=False
+   blk1  DetailMap        ref=crystal_bump_n02.tga                           off=2816 dual=True order_only=False
+   blk1  t_caustic_tex    ref=crystal_caustic_uvva002.tga                    off=2858 dual=True order_only=False
+   blk1  t_custom_ibl     ref=car_studio01.cube                              off=2926 dual=True order_only=False
+   blk1  t_reflection_tex ref=crystal_reflection_uvva.tga                    off=2964 dual=True order_only=False
+   blk2  Tex0             ref=skin_2003_029001b_m.tga                        off=3447 dual=False order_only=False
+   blk2  t_basecolor      ref=skin_2003_029001a.tga                          off=3511 dual=False order_only=False
+   blk2  NormalMap        ref=skin_2003_029001n.tga                          off=3573 dual=False order_only=False
+   blk2  DetailMap        ref=crystal_bump_n_uvva.tga                        off=3635 dual=True order_only=False
+   blk2  t_caustic_tex    ref=crystal_caustic_uvva.tga                       off=3680 dual=True order_only=False
+   blk2  t_custom_ibl     ref=fashion_qiangpi.cube                           off=3726 dual=True order_only=False
+   blk2  t_reflection_tex ref=crystal_reflection_uvva.tga                    off=3767 dual=True order_only=False
+   blk2  t_refraction_tex ref=refraction_envmap_3.tga                        off=3816 dual=True order_only=False
+   ⇒ t_basecolor 声明条数 = 2 [(1, 'skin_2003_029001a.tga'), (2, 'skin_2003_029001a.tga')]
+#### c159 1110171_dual (001265.c159) rows=48
+   blk0  Tex0             ref=skin_1003_012001a.tga                          off=3248 dual=False order_only=False
+   blk0  ParamMap         ref=skin_1003_012001m.tga                          off=3310 dual=False order_only=False
+   blk0  t_surfacemap     ref=skin_1003_012001s_m.tga                        off=3372 dual=False order_only=False
+   blk0  NormalMap        ref=skin_1003_012001n.tga                          off=3436 dual=False order_only=False
+   blk0  t_custom_ibl     ref=qiangpi.cube                                   off=3498 dual=True order_only=False
+   blk1  Tex0             ref=skin_1003_012001b_m.tga                        off=3935 dual=False order_only=False
+   blk1  t_basecolor      ref=skin_1003_012001a.tga                          off=3999 dual=False order_only=False
+   blk1  NormalMap        ref=skin_1003_012001n.tga                          off=4061 dual=False order_only=False
+   blk1  DetailMap        ref=crystal_bump_n_uvva.tga                        off=4123 dual=True order_only=False
+   blk1  t_caustic_tex    ref=crystal_reflection_uvva.tga                    off=4168 dual=False order_only=True
+   blk1  t_custom_ibl     ref=car_studio01.cube                              off=4217 dual=True order_only=False
+   blk1  t_reflection_tex ref=crystal_caustic_uvva.tga                       off=4255 dual=False order_only=True
+   blk1  t_refraction_tex ref=refraction_envmap_3.tga                        off=4301 dual=True order_only=False
+   blk2  Tex0             ref=skin_1003_012001b_m.tga                        off=4750 dual=False order_only=False
+   blk2  t_basecolor      ref=skin_1003_012001a.tga                          off=4814 dual=False order_only=False
+   blk2  NormalMap        ref=skin_1003_012001n.tga                          off=4876 dual=False order_only=False
+   blk2  DetailMap        ref=crystal_bump_n_uvva.tga                        off=4938 dual=True order_only=False
+   blk2  t_caustic_tex    ref=crystal_reflection_uvva.tga                    off=4983 dual=False order_only=True
+   blk2  t_custom_ibl     ref=car_studio01.cube                              off=5032 dual=True order_only=False
+   blk2  t_reflection_tex ref=crystal_caustic_uvva.tga                       off=5070 dual=False order_only=True
+   blk2  t_refraction_tex ref=refraction_envmap_3.tga                        off=5116 dual=True order_only=False
+   blk3  Tex0             ref=skin_1003_012001b_m.tga                        off=5556 dual=False order_only=False
+   blk3  t_basecolor      ref=skin_1003_012001a.tga                          off=5620 dual=False order_only=False
+   blk3  NormalMap        ref=skin_1003_012001n.tga                          off=5682 dual=False order_only=False
+   blk3  DetailMap        ref=crystal_bump_n_uvva.tga                        off=5744 dual=True order_only=False
+   blk3  t_custom_ibl     ref=car_studio01.cube                              off=5789 dual=True order_only=False
+   blk3  t_reflection_tex ref=crystal_caustic_uvva.tga                       off=5827 dual=False order_only=True
+   blk3  t_refraction_tex ref=refraction_envmap_3.tga                        off=5873 dual=True order_only=False
+   blk4  Tex0             ref=skin_1003_010001a.tga                          off=6012 dual=False order_only=False
+   blk4  ParamMap         ref=skin_1003_010001m.tga                          off=6074 dual=False order_only=False
+   blk4  t_surfacemap     ref=skin_1003_010001s_m.tga                        off=6136 dual=False order_only=False
+   blk4  NormalMap        ref=skin_1003_010001n.tga                          off=6200 dual=False order_only=False
+   blk4  t_custom_ibl     ref=qiangpi.cube                                   off=6262 dual=True order_only=False
+   blk5  Tex0             ref=skin_1003_010001b_m.tga                        off=6699 dual=False order_only=False
+   blk5  t_basecolor      ref=skin_1003_010001a.tga                          off=6763 dual=False order_only=False
+   blk5  NormalMap        ref=skin_1003_010001n.tga                          off=6825 dual=False order_only=False
+   blk5  DetailMap        ref=crystal_bump_n_uvva.tga                        off=6887 dual=True order_only=False
+   blk5  t_caustic_tex    ref=crystal_reflection_uvva.tga                    off=6932 dual=False order_only=True
+   blk5  t_custom_ibl     ref=car_studio01.cube                              off=6981 dual=True order_only=False
+   blk5  t_reflection_tex ref=crystal_caustic_uvva.tga                       off=7019 dual=False order_only=True
+   blk5  t_refraction_tex ref=refraction_envmap_3.tga                        off=7065 dual=True order_only=False
+   blk6  Tex0             ref=skin_1003_010001b_m.tga                        off=7461 dual=False order_only=False
+   blk6  NormalMap        ref=skin_1003_010001n.tga                          off=7525 dual=False order_only=False
+   blk6  DetailMap        ref=crystal_bump_n_uvva.tga                        off=7587 dual=True order_only=False
+   blk6  t_caustic_tex    ref=crystal_caustic.tga                            off=7632 dual=True order_only=False
+   blk6  t_custom_ibl     ref=car_studio01.cube                              off=7720 dual=True order_only=False
+   blk6  t_reflection_tex ref=crystal_caustic_uvva.tga                       off=7758 dual=False order_only=True
+   blk6  t_refraction_tex ref=refraction_envmap_3.tga                        off=7804 dual=True order_only=False
+   ⇒ t_basecolor 声明条数 = 4 [(1, 'skin_1003_012001a.tga'), (2, 'skin_1003_012001a.tga'), (3, 'skin_1003_012001a.tga'), (5, 'skin_1003_010001a.tga')]
+#### c159 1110145 (000654.c159) rows=26
+   blk0  Tex0             ref=skin_1001_014001a.tga                          off=3340 dual=False order_only=False
+   blk0  ParamMap         ref=skin_1001_014001m.tga                          off=3402 dual=False order_only=False
+   blk0  t_surfacemap     ref=skin_1001_014001s_m.tga                        off=3464 dual=False order_only=False
+   blk0  NormalMap        ref=skin_1001_014001n.tga                          off=3528 dual=False order_only=False
+   blk0  DetailMap        ref=fabrics_felt_dn.tga                            off=3590 dual=False order_only=False
+   blk1  Tex0             ref=skin_1001_014001b_m.tga                        off=3981 dual=False order_only=False
+   blk1  t_basecolor      ref=skin_1001_014001a.tga                          off=4045 dual=False order_only=False
+   blk1  NormalMap        ref=skin_1001_014001n.tga                          off=4107 dual=False order_only=False
+   blk1  DetailMap        ref=crystal_bump_n02.tga                           off=4169 dual=True order_only=False
+   blk1  t_caustic_tex    ref=caustic3.tga                                   off=4211 dual=True order_only=False
+   blk1  t_reflection_tex ref=crystal_caustic_02_a.tga                       off=4245 dual=False order_only=True
+   blk1  t_refraction_tex ref=refraction_envmap_6.tga                        off=4291 dual=True order_only=False
+   blk2  Tex0             ref=skin_1001_014001a.tga                          off=4393 dual=False order_only=False
+   blk2  NormalMap        ref=skin_1001_014001n.tga                          off=4455 dual=False order_only=False
+   blk2  ParamMap         ref=skin_1001_014001m.tga                          off=4517 dual=False order_only=False
+   blk2  t_custom_ibl     ref=bg61f_light_spherereflectioncapture_1.cube     off=4579 dual=False order_only=True
+   blk3  Tex0             ref=skin_1001_014001a.tga                          off=4723 dual=False order_only=False
+   blk3  ParamMap         ref=skin_1001_014001m.tga                          off=4785 dual=False order_only=False
+   blk3  t_surfacemap     ref=skin_1001_014001s_m.tga                        off=4847 dual=False order_only=False
+   blk3  NormalMap        ref=skin_1001_014001n.tga                          off=4911 dual=False order_only=False
+   blk4  Tex0             ref=skin_1001_014_1001a.tga                        off=4982 dual=False order_only=False
+   blk4  NormalMap        ref=skin_1001_014_1001m.tga                        off=5046 dual=False order_only=False
+   blk4  DetailMap        ref=skin_1001_014_1001n.tga                        off=5110 dual=False order_only=False
+   blk4  t_caustic_tex    ref=skin_1001_014_1001a.tga                        off=5192 dual=False order_only=False
+   blk4  t_reflection_tex ref=skin_1001_014_1001n.tga                        off=5256 dual=False order_only=False
+   blk4  t_refraction_tex ref=skin_1001_014_1001m.tga                        off=5320 dual=False order_only=False
+   ⇒ t_basecolor 声明条数 = 1 [(1, 'skin_1001_014001a.tga')]
+#### c159 1110024 (001386.c159) rows=24
+   blk0  Tex0             ref=skin_1006_004001a.tga                          off=2588 dual=False order_only=False
+   blk0  ParamMap         ref=skin_1006_004001m.tga                          off=2650 dual=False order_only=False
+   blk0  t_surfacemap     ref=skin_1006_004001s_m.tga                        off=2712 dual=False order_only=False
+   blk0  NormalMap        ref=skin_1006_004001n.tga                          off=2776 dual=False order_only=False
+   blk0  t_custom_ibl     ref=indoor.cube                                    off=2838 dual=True order_only=False
+   blk1  Tex0             ref=skin_1006_004001s_m.tga                        off=3239 dual=False order_only=False
+   blk1  t_basecolor      ref=skin_1006_004001a.tga                          off=3303 dual=False order_only=False
+   blk1  NormalMap        ref=skin_1006_004001n.tga                          off=3365 dual=False order_only=False
+   blk1  t_caustic_tex    ref=gem_fire.tga                                   off=3427 dual=False order_only=False
+   blk1  t_reflection_tex ref=gem_fire.tga                                   off=3461 dual=False order_only=False
+   blk1  t_refraction_tex ref=lampskin.tga                                   off=3495 dual=False order_only=False
+   blk2  Tex0             ref=skin_1006_004001a.tga                          off=3621 dual=False order_only=False
+   blk2  ParamMap         ref=skin_1006_004001m.tga                          off=3683 dual=False order_only=False
+   blk2  t_surfacemap     ref=skin_1006_004001s_m.tga                        off=3745 dual=False order_only=False
+   blk2  NormalMap        ref=skin_1006_004001n.tga                          off=3809 dual=False order_only=False
+   blk3  Tex0             ref=skin_1006_004_1001a.tga                        off=3963 dual=False order_only=False
+   blk3  ParamMap         ref=skin_1006_004_1001m.tga                        off=4027 dual=False order_only=False
+   blk3  t_surfacemap     ref=skin_1006_004_1001s_m.tga                      off=4091 dual=False order_only=False
+   blk3  NormalMap        ref=skin_1006_004_1001n.tga                        off=4157 dual=False order_only=False
+   blk4  Tex0             ref=skin_1006_004_1001a.tga                        off=4404 dual=False order_only=False
+   blk4  ParamMap         ref=skin_1006_004_1001m.tga                        off=4468 dual=False order_only=False
+   blk4  t_surfacemap     ref=skin_1006_004_1001s_m.tga                      off=4532 dual=False order_only=False
+   blk4  NormalMap        ref=skin_1006_004_1001n.tga                        off=4598 dual=False order_only=False
+   blk4  t_custom_ibl     ref=indoor.cube                                    off=4662 dual=True order_only=False
+   ⇒ t_basecolor 声明条数 = 1 [(1, 'skin_1006_004001a.tga')]
+#### c159 原始文件字节命中：
+   001386.c159 → {"path": "E:\\la拆包项目\\03拆包产物\\weapon\\001386.c159", "bytes": 4705}
+      indoor.cube            count=2   offsets=[2858, 4682]
+      t_basecolor            count=1   offsets=[251]
+   000654.c159 → {"path": "E:\\la拆包项目\\03拆包产物\\weapon\\000654.c159", "bytes": 5916}
+      014001a                count=4   offsets=[3390, 4095, 4443, 4773]
+      014001b_m              count=2   offsets=[4031, 5663]
+      t_basecolor            count=1   offsets=[269]
+   003996.c159 → {"path": "E:\\la拆包项目\\03拆包产物\\weapon\\003996.c159", "bytes": 3872}
+      t_basecolor            count=1   offsets=[246]
+      029001a                count=3   offsets=[2016, 2742, 3561]
+      029001b_m              count=2   offsets=[2678, 3497]
+   001265.c159 → {"path": "E:\\la拆包项目\\03拆包产物\\weapon\\001265.c159", "bytes": 7860}
+      t_basecolor            count=1   offsets=[290]
+      skin_1003_010001a      count=2   offsets=[6052, 6803]
+      skin_1003_012001a      count=4   offsets=[3288, 4039, 4854, 5660]

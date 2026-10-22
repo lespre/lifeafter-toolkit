@@ -1,0 +1,40 @@
+{
+ "label": "shadow_f24",
+ "generated_at": "2026-09-20 14:29:09",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "e0d1efdaf02f4af7",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "8c5ce4da2a1c7254",
+ "patch": {
+  "note": "任务一：key_shadow 变体 f24 —— key_dir=[3,-4,-1]（屏幕上方=世界-Y、屏幕右=世界-Z，实测），floor_y=2.4，opacity=0.42，extent=12",
+  "viewer": {
+   "key_shadow": true,
+   "key_dir": [
+    3,
+    -4,
+    -1
+   ],
+   "key_shadow_floor_y": 2.4,
+   "key_shadow_opacity": 0.42,
+   "key_shadow_extent": 12,
+   "key_shadow_map": 2048,
+   "key_shadow_bias": -0.0006,
+   "key_shadow_normal_bias": 0.02
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "key_dir",
+   "key_shadow",
+   "key_shadow_bias",
+   "key_shadow_extent",
+   "key_shadow_floor_y",
+   "key_shadow_map",
+   "key_shadow_normal_bias",
+   "key_shadow_opacity"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_shadow_f24.json"
+}

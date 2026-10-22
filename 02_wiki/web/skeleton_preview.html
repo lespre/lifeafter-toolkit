@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>骨骼 / 挂点 层级预览 — Wiki</title>
+<style>
+  :root{--bg:#0b0f14;--panel:#121a22;--line:#22303c;--fg:#dfe8f0;--dim:#93a4b3;--acc:#39c2ff;--warn:#ffcc66;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
+    font:13px/1.45 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;}
+  #banner{background:#1d2b1d;border-bottom:1px solid #2f4a2f;color:#c9f0c9;
+    padding:8px 12px;font-size:13px;position:sticky;top:0;z-index:9;}
+  #banner b{color:#ffe08a;}
+  #app{display:flex;height:calc(100% - 40px);min-height:0;}
+  #list{width:308px;min-width:308px;overflow:auto;background:var(--panel);border-right:1px solid var(--line);}
+  .grp{position:sticky;top:0;background:#0e151c;padding:7px 10px;font-weight:600;color:var(--acc);
+    border-bottom:1px solid var(--line);z-index:2;}
+  .grp .cnt{color:var(--dim);font-weight:400;}
+  .it{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;cursor:pointer;border-bottom:1px solid #17212b;}
+  .it:hover{background:#17222c;}
+  .it.on{background:#1d3a4d;outline:1px solid #2b6c8f;}
+  .it .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .it .bc{color:var(--dim);white-space:nowrap;}
+  .it.mount .bc{color:var(--warn);}
+  main{position:relative;flex:1;min-width:0;display:flex;}
+  #stage{position:relative;flex:1;min-width:0;}
+  #cv{display:block;width:100%;height:100%;}
+  #hud{position:absolute;left:10px;top:10px;background:rgba(10,16,22,.82);border:1px solid var(--line);
+    border-radius:6px;padding:6px 9px;font-size:12px;color:var(--dim);pointer-events:none;max-width:70%;}
+  #hud b{color:var(--fg);font-weight:600;}
+  #err{position:absolute;left:10px;bottom:10px;right:10px;background:#3a1414;border:1px solid #7a2b2b;
+    color:#ffd7d7;padding:6px 9px;border-radius:6px;font-size:12px;display:none;white-space:pre-wrap;}
+  #side{width:352px;min-width:352px;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:10px 12px;}
+  #side h2{margin:0 0 2px;font-size:15px;}
+  #side .sub{color:var(--dim);font-size:12px;margin-bottom:8px;}
+  .kv{color:var(--dim);font-size:12px;margin:3px 0;word-break:break-all;}
+  .kv b{color:var(--fg);font-weight:600;}
+  .ok{color:#8ee08e;} .bad{color:#ff9b9b;} .ur{color:var(--warn);}
+  .sock{border-top:1px solid #1b2732;padding:4px 0;font-size:12px;}
+  .sock .snm{color:var(--fg);}
+  .sock .sm{color:var(--dim);}
+  .none{color:var(--warn);}
+  #notes{margin-top:10px;border-top:1px solid #1b2732;padding-top:8px;font-size:12px;color:var(--dim);}
+  #notes ul{margin:4px 0 0 16px;padding:0;}
+  #ctrls{position:absolute;right:10px;top:10px;background:rgba(10,16,22,.82);border:1px solid var(--line);
+    border-radius:6px;padding:6px 9px;font-size:12px;}
+  #ctrls label{cursor:pointer;user-select:none;}
+  #ctrls button{background:#1b2836;color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:2px 7px;cursor:pointer;}
+  .legend{position:absolute;left:10px;bottom:10px;background:rgba(10,16,22,.82);border:1px solid var(--line);
+    border-radius:6px;padding:6px 9px;font-size:12px;color:var(--dim);}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:4px;border-radius:2px;vertical-align:-1px;}
+</style>
+</head>
+<body>
+<div id="banner">⚠ <b>层级/结构预览 —— 逐骨 TRS 未定证，位置为自动布局，非游戏内真实姿态</b>（源侧与 GLB 均无 TRS：<code>gltf.extras.transforms = not_emitted_unresolved</code>）</div>
+<div id="dl" style="display:none;padding:6px 12px;font-size:12px;"></div>
+<div id="app">
+  <aside id="list"></aside>
+  <main>
+    <div id="stage">
+      <canvas id="cv"></canvas>
+      <div id="hud">加载中…</div>
+      <div id="ctrls"><label><input type="checkbox" id="lb"> 显示骨名</label> &nbsp;<button id="rst">重置视角</button></div>
+      <div class="legend" id="lg"></div>
+      <div id="err"></div>
+    </div>
+    <div id="side">
+      <h2 id="title">—</h2>
+      <div class="sub" id="sub"></div>
+      <div id="meta"></div>
+      <div id="socks"></div>
+      <div id="notes"></div>
+    </div>
+  </main>
+</div>
+<script src="assets/skel_preview/skel_data.js"></script>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+
+/* ============ 错误收集（页面自证：console/onerror 都要能被外部读到） ============ */
+window.__errs = [];
+function errm(msg){
+  var s = String(msg && msg.stack || msg);
+  window.__errs.push(s);
+  var e = document.getElementById('err');
+  e.style.display = 'block';
+  e.textContent = '页面错误（未吞掉）：\n' + window.__errs.join('\n');
+  console.error('[skel_preview]', s);
+}
+window.addEventListener('error', function(ev){ errm(ev.message + ' @' + ev.filename + ':' + ev.lineno); });
+window.addEventListener('unhandledrejection', function(ev){ errm('unhandledrejection: ' + (ev.reason && ev.reason.message || ev.reason)); });
+
+const D = window.SKEL_DATA;
+if (!D || !D.rows) { errm('SKEL_DATA 未加载（assets/skel_preview/skel_data.js）'); }
+
+/* ============ 左侧列表 ============ */
+const listEl = document.getElementById('list');
+const items = {};
+const groups = new Map();
+D.rows.forEach(function(r){
+  const g = r.level_name || ('level ' + r.level);
+  if (!groups.has(g)) groups.set(g, []);
+  groups.get(g).push(r);
+});
+groups.forEach(function(rs, gname){
+  const h = document.createElement('div');
+  h.className = 'grp';
+  h.innerHTML = '';
+  h.textContent = gname + '  ';
+  const c = document.createElement('span'); c.className = 'cnt';
+  c.textContent = '（' + rs.length + '）';
+  h.appendChild(c); listEl.appendChild(h);
+  rs.forEach(function(r){
+    const d = document.createElement('div');
+    d.className = 'it' + (r.has_skeleton ? '' : ' mount');
+    d.title = r.id + ' ' + (r.name || '') + ' · ' + (r.has_skeleton ? (r.bone_count + ' 骨') : '源侧无骨架') + ' · ' + r.status;
+    const a = document.createElement('span'); a.className = 'nm';
+    a.textContent = r.id + ' ' + (r.name || '(无名)');
+    const b = document.createElement('span'); b.className = 'bc';
+    b.textContent = r.has_skeleton ? ((r.bone_count != null ? r.bone_count : '?') + ' 骨') : '无骨架';
+    d.appendChild(a); d.appendChild(b);
+    d.addEventListener('click', function(){ select(r.id); });
+    items[r.id] = d; listEl.appendChild(d);
+  });
+});
+
+/* ============ 3D 基础 ============ */
+const cv = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({canvas: cv, antialias: true});
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0f14);
+const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 5000);
+const rootGroup = new THREE.Group(); scene.add(rootGroup);
+const contentGroup = new THREE.Group(); rootGroup.add(contentGroup);   /* 相机 fit 只看内容，不看网格 */
+scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+const grid = new THREE.GridHelper(20, 20, 0x1e2b36, 0x161f28); grid.position.y = -0.001; rootGroup.add(grid);
+scene.add(new THREE.AxesHelper(1.2));
+
+/* 简易 orbit：拖拽旋转 + 滚轮缩放（不引外部 CDN/控件） */
+const view = {yaw: 0.7, pitch: 0.5, dist: 14, target: new THREE.Vector3(0,0,0)};
+function applyCam(){
+  const p = Math.max(0.05, Math.min(Math.PI/2 - 0.02, view.pitch));
+  camera.position.set(
+    view.target.x + view.dist * Math.cos(p) * Math.sin(view.yaw),
+    view.target.y + view.dist * Math.sin(p),
+    view.target.z + view.dist * Math.cos(p) * Math.cos(view.yaw));
+  camera.lookAt(view.target);
+}
+let dragging = false, lx = 0, ly = 0;
+cv.addEventListener('pointerdown', function(e){ dragging = true; lx = e.clientX; ly = e.clientY; try{cv.setPointerCapture(e.pointerId);}catch(_){} });
+cv.addEventListener('pointerup', function(){ dragging = false; });
+cv.addEventListener('pointermove', function(e){
+  if (!dragging) return;
+  view.yaw -= (e.clientX - lx) * 0.01; view.pitch += (e.clientY - ly) * 0.01;
+  lx = e.clientX; ly = e.clientY; applyCam();
+});
+cv.addEventListener('wheel', function(e){ e.preventDefault(); view.dist *= (e.deltaY > 0 ? 1.12 : 0.89); applyCam(); }, {passive: false});
+function resize(){
+  const w = cv.clientWidth || 800, h = cv.clientHeight || 600;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(cv); resize();
+
+/* ============ 材质/几何（共用，省内存） ============ */
+const geoSphere = new THREE.SphereGeometry(1, 12, 10);
+const matBone = new THREE.MeshBasicMaterial({color: 0x7fd3ff});
+const matRoot = new THREE.MeshBasicMaterial({color: 0xffd166});
+const matLine = new THREE.LineBasicMaterial({color: 0x3f8fb5});
+const matAxis = [new THREE.LineBasicMaterial({color: 0xff5a5a}), new THREE.LineBasicMaterial({color: 0x6ee06e}), new THREE.LineBasicMaterial({color: 0x6aa8ff})];
+
+function clearGroup(){
+  while (contentGroup.children.length) {
+    const c = contentGroup.children.pop();
+    c.traverse && c.traverse(function(o){ if (o.geometry && o.geometry !== geoSphere) o.geometry.dispose(); });
+  }
+  grid.scale.setScalar(1); grid.position.y = -0.001;
+}
+
+/* 自动树形布局：根在原点，按深度向外/向下铺开；角度按**叶子数**分配（子树均分），半径∝√深度（压缩深链）
+   ⇒ 纯自动布局，**非真实姿态**（无 TRS） */
+function autoLayout(roots, children){
+  const n = children.length;
+  const leaves = new Array(n).fill(0);
+  function countLeaves(i){
+    const ch = children[i] || [];
+    if (!ch.length) { leaves[i] = 1; return 1; }
+    let s = 0;
+    for (let k = 0; k < ch.length; k++) s += countLeaves(ch[k]);
+    leaves[i] = s;
+    return s;
+  }
+  for (let k = 0; k < roots.length; k++) countLeaves(roots[k]);
+  const pos = [];
+  function place(i, depth, a0, a1){
+    const a = (a0 + a1) / 2, r = 1.45 * Math.sqrt(depth);
+    pos[i] = new THREE.Vector3(Math.cos(a) * r, -0.62 * Math.sqrt(depth), Math.sin(a) * r);
+    const ch = children[i] || [];
+    const span = a1 - a0, tot = leaves[i] || 1;
+    let acc = a0;
+    for (let k = 0; k < ch.length; k++) {
+      const w = span * (leaves[ch[k]] || 1) / tot;
+      place(ch[k], depth + 1, acc, acc + w);
+      acc += w;
+    }
+  }
+  const total = roots.length || 1;
+  for (let k = 0; k < roots.length; k++) place(roots[k], 0, k * Math.PI * 2 / total, (k + 1) * Math.PI * 2 / total);
+  return pos;
+}
+
+function makeLabel(text, size){
+  const pad = 4, f = 26;
+  const c = document.createElement('canvas'), x = c.getContext('2d');
+  x.font = f + 'px "Microsoft YaHei",monospace';
+  const w = Math.ceil(x.measureText(text).width) + pad * 2, h = f + pad * 2;
+  c.width = w; c.height = h;
+  const g = c.getContext('2d');
+  g.font = f + 'px "Microsoft YaHei",monospace';
+  g.fillStyle = 'rgba(6,12,18,.72)'; g.fillRect(0, 0, w, h);
+  g.fillStyle = '#cfe6f5'; g.textBaseline = 'middle'; g.fillText(text, pad, h / 2);
+  const t = new THREE.CanvasTexture(c);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({map: t, depthTest: false, transparent: true}));
+  s.scale.set(size * w / h, size, 1);
+  return s;
+}
+
+/* GLB：只读 JSON chunk 取 nodes/children/extras（GLB 内无 TRS） */
+async function loadGLBjson(url){
+  const res = await fetch(url, {cache: 'no-store'});
+  if (!res.ok) throw new Error('GLB HTTP ' + res.status + ' ' + url);
+  const buf = await res.arrayBuffer();
+  const dv = new DataView(buf);
+  if (dv.getUint32(0, true) !== 0x46546C67) throw new Error('GLB magic 不是 glTF: ' + url);
+  const total = dv.getUint32(8, true);
+  let off = 12, json = null;
+  while (off + 8 <= Math.min(total, buf.byteLength)) {
+    const clen = dv.getUint32(off, true), ctype = dv.getUint32(off + 4, true);
+    if (ctype === 0x4E4F534A) json = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, off + 8, clen)));
+    off += 8 + clen;
+  }
+  if (!json) throw new Error('GLB 无 JSON chunk: ' + url);
+  return json;
+}
+
+/* 坐标架：矩阵按**行主序**数值直绘（语义未验证 ⇒ 只画数值，不解释单位/朝向） */
+function frameFromMatrix(rowMajor, len, colorMode){
+  const g = new THREE.Group();
+  const v = [[len,0,0],[0,len,0],[0,0,len]];
+  const m = new THREE.Matrix4().set(
+    rowMajor[0][0], rowMajor[0][1], rowMajor[0][2], rowMajor[0][3],
+    rowMajor[1][0], rowMajor[1][1], rowMajor[1][2], rowMajor[1][3],
+    rowMajor[2][0], rowMajor[2][1], rowMajor[2][2], rowMajor[2][3],
+    rowMajor[3][0], rowMajor[3][1], rowMajor[3][2], rowMajor[3][3]);
+  for (let i = 0; i < 3; i++) {
+    const geo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), new THREE.Vector3(v[i][0], v[i][1], v[i][2])]);
+    g.add(new THREE.Line(geo, colorMode === 'socket' ? matAxis[i].clone() : matAxis[i]));
+  }
+  const box = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(len*0.5, len*0.5, len*0.5)),
+              new THREE.LineBasicMaterial({color: colorMode === 'socket' ? 0xffa552 : 0x9fd9ff}));
+  box.position.set(len*0.25, len*0.25, len*0.25); g.add(box);
+  g.applyMatrix4(m);
+  return g;
+}
+
+/* ============ 选择/渲染一个皮肤 ============ */
+let seq = 0, builtSeq = 0, cur = null, labels = [], curRootsUsed = null;
+const lbEl = document.getElementById('lb');
+lbEl.addEventListener('change', function(){ labels.forEach(function(s){ s.visible = lbEl.checked; }); });
+
+async function select(id){
+  const r = D.rows.find(function(x){ return x.id === id; });
+  if (!r) { errm('未知 id: ' + id); return; }
+  const my = ++seq;
+  cur = r;
+  Object.keys(items).forEach(function(k){ items[k].classList.toggle('on', k === id); });
+  document.getElementById('title').textContent = r.id + ' ' + (r.name || '(无名)');
+  document.getElementById('sub').textContent = (r.level_name || '') + ' · ' +
+    (r.has_skeleton ? ('有骨架 · ' + r.bone_count + ' 骨') : '源侧无骨架（挂点复原）') + ' · status=' + r.status;
+  clearGroup(); labels = [];
+  const hud = document.getElementById('hud'); hud.textContent = '加载中…';
+  document.getElementById('err').style.display = window.__errs.length ? 'block' : 'none';
+
+  if (r.has_skeleton) {
+    const url = r.glb;
+    let json;
+    try { json = await loadGLBjson(url); }
+    catch (e) {
+      errm('GLB 加载/解析失败：' + e.message);
+      if (r.hierarchy && r.hierarchy.names) { json = null; } else { builtSeq = my; return; }
+    }
+    if (my !== seq) return;                      /* 期间切走了 */
+    let names, children, roots, srcTag;
+    if (json) {
+      names = (json.nodes || []).map(function(n, i){ return n.name || ('node' + i); });
+      children = (json.nodes || []).map(function(n){ return n.children || []; });
+      roots = ((json.scenes || [{}])[0] || {}).nodes || [];
+      srcTag = 'GLB(' + url + ')';
+    } else {
+      names = r.hierarchy.names; children = r.hierarchy.children || []; roots = r.hierarchy.roots || [0];
+      srcTag = 'skeleton.json（GLB 未用）';
+    }
+    const pos = autoLayout(roots, children);
+    curRootsUsed = roots.slice();
+    let nNodes = 0, nLines = 0;
+    for (let i = 0; i < names.length; i++) {
+      const p = pos[i] || new THREE.Vector3();
+      const isRoot = roots.indexOf(i) >= 0;
+      const s = new THREE.Mesh(geoSphere, isRoot ? matRoot : matBone);
+      s.position.copy(p); s.scale.setScalar(isRoot ? 0.17 : 0.11);
+      contentGroup.add(s); nNodes++;
+      if (lbEl.checked) { const L = makeLabel(names[i], 0.42); L.position.copy(p).add(new THREE.Vector3(0, 0.22, 0)); contentGroup.add(L); labels.push(L); }
+      (children[i] || []).forEach(function(c){
+        if (pos[c]) {
+          const g = new THREE.BufferGeometry().setFromPoints([p, pos[c]]);
+          contentGroup.add(new THREE.Line(g, matLine)); nLines++;
+        }
+      });
+    }
+    /* 相机 fit（只看内容） */
+    const box = new THREE.Box3().setFromObject(contentGroup);
+    const sph = box.getBoundingSphere(new THREE.Sphere());
+    view.target.copy(sph.center); view.dist = Math.max(4, sph.radius * 2.9); view.yaw = 0.7; view.pitch = 0.45;
+    grid.scale.setScalar(Math.max(0.05, sph.radius / 5)); grid.position.y = (sph.center.y - sph.radius);
+    applyCam();
+
+    /* 诚实标注 */
+    const chk = r.check || {};
+    const sumTxt = (chk.sum_ok === true)
+      ? ('Σchildren+roots == bone_count：' + chk.sum_children_plus_roots + ' == ' + chk.bone_count_json + ' <span class="ok">✓</span>')
+      : ((chk.sum_ok === false) ? ('Σchildren+roots == bone_count：<span class="bad">✗（' + chk.sum_children_plus_roots + ' vs ' + chk.bone_count_json + '）</span>')
+                                : 'Σchildren+roots == bone_count：<span class="ur">unresolved（skeleton.json 无 self_check 段）</span>');
+    const viol = chk.parent_lt_self_violations || [];
+    const violTxt = (chk.parent_lt_self_violations === undefined || chk.parent_lt_self_violations === null)
+      ? '<span class="ur">unresolved</span>'
+      : (viol.length ? ('<span class="bad">' + viol.length + ' 处</span>（例：bone ' + viol[0].bone + ' → parent ' + viol[0].parent + '）') : '0 <span class="ok">✓</span>');
+    document.getElementById('meta').innerHTML =
+      '<div class="kv">来源：<b>res\\weapon.gpk#' + (r.mesh && r.mesh.row != null ? r.mesh.row : '?') + '</b>' +
+      (r.mesh ? '（' + (r.mesh.variant || '') + '，' + r.mesh.bytes + ' B）' : '') + '</div>' +
+      '<div class="kv">mesh sha16：<b>' + (r.mesh ? r.mesh.sha16 : '?') + '</b></div>' +
+      '<div class="kv">gim 行：' + (r.gim_row != null ? ('res\\weapon.gpk#' + r.gim_row) : 'unresolved') + '</div>' +
+      '<div class="kv">' + sumTxt + '</div>' +
+      '<div class="kv">parent&lt;self 违规：' + violTxt + '（cycle=' + (chk.cycle_state || 'unresolved') + '，可达=' + (chk.all_nodes_reached_from_roots === true ? '是' : String(chk.all_nodes_reached_from_roots)) + '）</div>' +
+      '<div class="kv">节点来源：' + srcTag + '</div>' +
+      '<div class="kv">骨架 JSON：' + (r.skeleton_json || '?') + '（sha16 ' + (r.skeleton_json_sha16 || '?') + '，含逐骨 92 B 原始字节，字段语义 unresolved）</div>';
+    document.getElementById('socks').innerHTML = '';
+    document.getElementById('notes').innerHTML =
+      '<div class="ur">unresolved：逐骨 TRS / 姿态 / 骨骼长度 —— 源侧与 GLB 都没有（' +
+      ((r.glb_check && r.glb_check.json_nodes != null) ? ('GLB json_nodes=' + r.glb_check.json_nodes + '，extras.transforms=not_emitted_unresolved') : 'extras.transforms=not_emitted_unresolved') +
+      '）⇒ 本页只画层级与自动布局，不画真实姿态。</div>';
+    document.getElementById('lg').innerHTML =
+      '<i style="background:#ffd166"></i>根骨 &nbsp;<i style="background:#7fd3ff"></i>骨骼 &nbsp;<i style="background:#3f8fb5"></i>父子连线（自动布局）';
+    hud.innerHTML = '<b>' + r.id + '</b> · 有骨架 · roots=' + roots.length + '（' + JSON.stringify(roots) + '）· 骨数=' + names.length +
+      ' · 画出 节点 <b>' + nNodes + '</b> / 连线 <b>' + nLines + '</b> · 自动布局';
+    builtSeq = my;
+  } else {
+    const m = r.mount || {};
+    curRootsUsed = null;
+    let frames = 0, socksNone = 0;
+    if (m.matrix_to_bone) {
+      const g = frameFromMatrix(m.matrix_to_bone, 1.6, 'main');
+      g.name = 'frame:MatrixToBone';
+      contentGroup.add(g); frames++;
+    } else { errm(r.id + '：mount.json 的 MatrixToBone 不可解码 ⇒ 不画（unresolved）'); }
+    (m.sockets || []).forEach(function(s){
+      if (s.matrix) { const g = frameFromMatrix(s.matrix, 0.8, 'socket'); g.name = 'frame:socket:' + (s.name || s.index); contentGroup.add(g); frames++; }
+    });
+    const box = new THREE.Box3().setFromObject(contentGroup);
+    const sph = box.getBoundingSphere(new THREE.Sphere());
+    view.target.copy(sph.center); view.dist = Math.max(4, sph.radius * 2.9); view.yaw = 0.7; view.pitch = 0.45;
+    grid.scale.setScalar(Math.max(0.05, sph.radius / 5)); grid.position.y = (sph.center.y - sph.radius);
+    applyCam();
+
+    const sock = m.sockets || [];
+    socksNone = sock.filter(function(s){ return !s.matrix; }).length;
+    document.getElementById('meta').innerHTML =
+      '<div class="kv">来源：<b>' + (m.mesh_row != null ? ('res\\weapon.gpk#' + m.mesh_row) : ('gim_row=' + (r.gim_row != null ? r.gim_row : 'null') + '（unresolved）')) + '</b></div>' +
+      '<div class="kv">mesh sha16：<b>' + (m.mesh_sha16 || (r.mesh ? r.mesh.sha16 : '?')) + '</b></div>' +
+      '<div class="kv">gim：' + (r.gim_path || '?') + '（' + (m.gim_bytes || '?') + ' B，sha16 ' + (m.gim_sha16 || '?') + '）</div>' +
+      '<div class="kv">挂点记录：socket 声明 ' + (m.socket_count || 0) + ' 个；MatrixToBone 记录 ' + (m.records_all != null ? m.records_all : '?') + ' 条（非 socket ' + (m.records_non_socket != null ? m.records_non_socket : '?') + '）</div>' +
+      '<div class="kv">已画坐标架：<b>' + frames + '</b>（主矩阵 1 + 有矩阵 socket ' + (m.sockets_with_matrix || 0) + '）</div>';
+    document.getElementById('socks').innerHTML = '<div style="margin-top:8px;color:#dfe8f0">sockets（' + sock.length + '）</div>' +
+      sock.map(function(s){
+        const mm = s.matrix ? '<span class="ok">有 4×4（已画坐标架）</span>' : '<span class="none">None（不画零矩阵）</span>';
+        return '<div class="sock"><span class="snm">#' + s.index + ' ' + (s.name || '(未命名)') + '</span> <span class="sm">must_show=' + s.must_show + ' · ' + mm + '</span></div>';
+      }).join('');
+    document.getElementById('notes').innerHTML =
+      '<div class="ur">源侧无骨架：已导出挂点复原（MatrixToBone + Socket*）</div>' +
+      '<div class="kv" style="margin-top:6px">unresolved（mount.json 自述，' + ((m.unresolved || []).length) + ' 条）：</div>' +
+      '<ul>' + (m.unresolved || []).map(function(u){ return '<li>' + u + '</li>'; }).join('') + '</ul>';
+    document.getElementById('lg').innerHTML =
+      '<i style="background:#9fd9ff"></i>MatrixToBone 坐标架 &nbsp;<i style="background:#ffa552"></i>socket 坐标架 &nbsp;<i style="background:#ff5a5a"></i>X <i style="background:#6ee06e"></i>Y <i style="background:#6aa8ff"></i>Z';
+    hud.innerHTML = '<b>' + r.id + '</b> · 源侧无骨架 · 坐标架 <b>' + frames + '</b>（socket ' + sock.length + ' 个，其中无矩阵 ' + socksNone + ' 个未画）· 自动布局（按矩阵数值直绘，语义 unresolved）';
+    builtSeq = my;
+  }
+}
+
+/* ============ 外部读数（验收用） ============ */
+window.__skelSelect = async function(id){ await select(id); return window.__skelProbe(); };
+window.__skelProbe = function(){
+  let frames = 0, nodes = 0, lines = 0;
+  contentGroup.traverse(function(o){
+    if (o.name && o.name.indexOf('frame:') === 0) frames++;
+    if (o.isMesh && o.geometry === geoSphere) nodes++;
+    if (o.isLine && o.geometry && o.geometry.attributes && o.geometry.attributes.position &&
+        o.geometry.attributes.position.count === 2 && o.name !== 'axes') lines++;
+  });
+  return {id: cur && cur.id, kind: cur ? (cur.has_skeleton ? 'skeleton' : 'mount') : null,
+    status: cur && cur.status, bone_count: cur && cur.bone_count,
+    roots: cur && cur.has_skeleton && cur.hierarchy ? (cur.hierarchy.roots || null) : null,
+    roots_used: curRootsUsed,
+    nodes: nodes, lines: lines, frames: frames,
+    sockets: cur && cur.mount ? (cur.mount.socket_count || 0) : 0,
+    sockets_none: cur && cur.mount ? (cur.mount.sockets || []).filter(function(s){ return !s.matrix; }).length : 0,
+    labels_on: lbEl.checked, cam_dist: +view.dist.toFixed(3), cam_pos: camera.position.toArray().map(function(v){ return +v.toFixed(3); }),
+    canvas: [cv.width, cv.height], errors: window.__errs.slice()};
+};
+window.__skelReady = function(){ return builtSeq !== 0; };
+
+/* 首屏：?id=<skin_id> 深链（board 卡面「3D 层级预览 / 3D 挂点预览」用）；无效 id 给可见提示且不崩 */
+applyCam();
+var firstSk = (D.rows.find(function(r){ return r.has_skeleton; }) || D.rows[0]);
+var qid = null;
+try { qid = new URLSearchParams(location.search).get('id'); } catch (e) { qid = null; }
+window.__skelDeepLink = {requested: qid, hit: null, reason: null, resolved: null, url: location.href};
+function dlNote(html, tone){
+  var el = document.getElementById('dl');
+  el.style.display = 'block';
+  el.style.background = (tone === 'warn') ? '#3a2f14' : '#14283a';
+  el.style.borderBottom = '1px solid ' + ((tone === 'warn') ? '#7a642b' : '#2b5a7a');
+  el.style.color = (tone === 'warn') ? '#ffe6b0' : '#cfe6f5';
+  el.innerHTML = html;
+}
+if (qid) {
+  var want = String(qid).trim();
+  var hit = D.rows.find(function(r){ return String(r.id) === want; });
+  if (hit) {
+    window.__skelDeepLink.hit = hit.id;
+    window.__skelDeepLink.resolved = 'hit';
+    dlNote('深链 <code>?id=' + want + '</code> → 已选中 <b>' + hit.id + ' ' + (hit.name || '') + '</b>（' + (hit.has_skeleton ? ('有骨架 ' + hit.bone_count + ' 骨') : '源侧无骨架 · 挂点复原') + '）；相机已重置。', 'info');
+    select(hit.id);
+  } else {
+    window.__skelDeepLink.reason = 'unknown_id';
+    window.__skelDeepLink.resolved = 'fallback';
+    dlNote('⚠ 未知 id：<code>' + want + '</code> —— 本页共 <b>' + D.rows.length + '</b> 个 id（见左列 L5/L6 分组）。已回落到默认选中 <b>' + firstSk.id + ' ' + (firstSk.name || '') + '</b>。', 'warn');
+    select(firstSk.id);
+  }
+} else {
+  window.__skelDeepLink.resolved = 'default';
+  select(firstSk.id);
+}
+window.__skelProbe0 = window.__skelProbe;
+window.__skelProbe = function(){ var o = window.__skelProbe0(); o.deep_link = window.__skelDeepLink; return o; };
+window.__skelSetId = function(id){ history.replaceState(null, '', location.pathname + '?id=' + encodeURIComponent(id)); return window.__skelSelect(id); };
+function loop(){ renderer.render(scene, camera); requestAnimationFrame(loop); }
+loop();
+</script>
+</body>
+</html>

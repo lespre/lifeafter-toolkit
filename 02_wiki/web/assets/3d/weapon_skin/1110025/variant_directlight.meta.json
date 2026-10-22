@@ -1,0 +1,30 @@
+{
+ "label": "directlight",
+ "generated_at": "2026-09-20 14:29:09",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "e0d1efdaf02f4af7",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "b774b135d0736d9e",
+ "patch": {
+  "note": "任务二：只开直接光通道（direct_light），不动曝光/ACES/bloom/env_intensity；方向标 approximate_direction_from_reference_screenshot",
+  "viewer": {
+   "direct_light": true,
+   "direct_light_intensity": 2.2,
+   "key_dir": [
+    3,
+    -4,
+    -1
+   ]
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "direct_light",
+   "direct_light_intensity",
+   "key_dir"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_directlight.json"
+}

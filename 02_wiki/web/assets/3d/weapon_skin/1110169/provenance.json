@@ -1,0 +1,94 @@
+{
+  "deliverable": "灰色协议 (skin_1002_009) 3D 预览",
+  "built_at": "2026-09-15",
+  "stage": "Stage3 · 3D 预览（材质近似 / 无 SFX）",
+  "wiki": {
+    "skin_id": "1110169",
+    "path": "assets/3d/weapon_skin/1110169"
+  },
+  "construction": {
+    "mesh": "000912.mesh",
+    "mesh_sha16": "d461ea6d0e17abc9",
+    "vertices": 11849,
+    "faces": 10893,
+    "submeshes": 2,
+    "mesh_family": {
+      "000912": "LOD0(本包使用)",
+      "000915": "LOD1",
+      "000918": "LOD2",
+      "000921": "LOD3",
+      "000924": "LOD0 副本"
+    },
+    "mesh_evidence": "网格族经绑定文件 000911.c159 的子网格包围盒匹配确认（center/half 与 Sub0/Sub1 一致），非按编号相邻认领",
+    "material_bank": "000913.c159（shader=shader\\pbr_weapon.fx::TShader；材料 skin_1002_009_mat / skin_1002_009_1_mat）",
+    "material_slots": {
+      "0": "skin_1002_009_main (a=000907 n=000909 m=000908 s_m=000910)",
+      "1": "skin_1002_009_part (a=000926 n=000928 m=000927 s_m=000929)"
+    },
+    "material_note": "子网格→材质按 c159 材料顺序 + Sub0/Sub1 显式指定（--submap）"
+  },
+  "textures": {
+    "canonical": "全部经 dds_rgba_canonical（BGRA→规范 RGBA）+ export_tex_png.py 导出，OIIO ok=True md=0.0",
+    "role_classification": "物理文件按内容特征分类（非名称映射）: base=灰基色(R≈G≈B≈0.37-0.43) / normal=(R,G≈0.47-0.50, B≈0.96-0.99, 高频) / param=(B≡1.0) / s_m=纯色掩码(G或B单通道)",
+    "logical_paths_from_c159": {
+      "mat0": [
+        "weapon\\skin\\skin_1002_009\\textures\\skin_1002_009_1001a.tga",
+        "..._1001m.tga",
+        "..._3001s_m.tga",
+        "..._1001n.tga"
+      ],
+      "mat1": [
+        "weapon\\skin\\skin_1002_009\\textures\\skin_1002_009001a.tga",
+        "..._001m.tga",
+        "..._2001s_m.tga",
+        "..._001n.tga"
+      ],
+      "ibl": "common\\env_map\\glazed_patio.cube（自定义 IBL）"
+    },
+    "params_from_c159": {
+      "u_emissive_color_saturation": [
+        1.0,
+        0.1529,
+        0.0627
+      ],
+      "u_emissive_strength": 12.9,
+      "u_glow": 1,
+      "u_glow_speed": 0.6,
+      "u_cube_brightness": 0.35
+    },
+    "note": "逻辑路径(名称)已实证；名称→物理条目的精确映射仍未破解（见 unresolved），本包用内容特征分类并经渲染目验（先验反一次：法线误当基色 → 修正后为深灰涂装+暗红磨损，符合灰色协议设定）"
+  },
+  "glb": {
+    "file": "model.glb",
+    "size": 5845260,
+    "exporter": "export_glb.py（零依赖；POSITION/NORMAL/TEXCOORD_0 与源网格逐字节一致）",
+    "channel_note": "glTF metallicRoughness G=粗糙度/B=金属度；源 ParamMap 为 R/G 语义，写入 extras，数值未改",
+    "center_note": "按包围盒中心平移到原点"
+  },
+  "poster": {
+    "renderer": "render_experimental_dxbc_pbr.py",
+    "eye": [
+      -1,
+      0,
+      0
+    ],
+    "roll": 90,
+    "size": [
+      2260,
+      1150
+    ],
+    "integrity": true,
+    "source": "poster_render/Composite_noSFX.png"
+  },
+  "approximations": [
+    "观察灯光与 IBL=渲染器/查看器固定值（非源 glazed_patio.cube）",
+    "emissive/glow/cube_brightness 等 c159 参数未接入渲染器",
+    "刃口菲涅尔=人工近似"
+  ],
+  "unresolved": [
+    "贴图 名称→物理条目 精确映射（本轮用内容特征分类，非名称映射）",
+    "glazed_patio.cube 物理条目未映射",
+    "SFX 未提取",
+    "c159 名称-数值配对未完成"
+  ]
+}

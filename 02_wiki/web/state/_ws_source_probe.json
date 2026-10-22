@@ -1,0 +1,250 @@
+[
+ {
+  "table": "weapon_skin_data",
+  "status": "ok",
+  "data_entry": 11817,
+  "chs_entry": 21177,
+  "family": "weapon_skin_data",
+  "reason": null,
+  "rows": 126,
+  "keys": 126,
+  "key_min": 1110001,
+  "key_max": 11101831,
+  "fields": [
+   "sale_ts",
+   "yk_accessory_model_line_id",
+   "camera_conf_id",
+   "camera_conf_id_2",
+   "charm_value",
+   "jump_param",
+   "level",
+   "model_extra_position_offset",
+   "model_extra_scale"
+  ]
+ },
+ {
+  "table": "weapon_skin_effect_show_data",
+  "status": "ok",
+  "data_entry": 3671,
+  "chs_entry": 19852,
+  "family": "weapon_skin_effect_show_data",
+  "reason": null,
+  "rows": 0,
+  "keys": 0,
+  "key_min": null,
+  "key_max": null,
+  "fields": []
+ },
+ {
+  "table": "weapon_skin_sfx_function_data",
+  "status": "ok",
+  "data_entry": 18238,
+  "chs_entry": 9096,
+  "family": "weapon_skin_sfx_function_data",
+  "reason": null,
+  "rows": 348,
+  "keys": 348,
+  "key_min": 1120007,
+  "key_max": 1120364,
+  "fields": [
+   "sfx_params",
+   "level",
+   "sfx_type",
+   "skin_id"
+  ]
+ },
+ {
+  "table": "weapon_skin_behavior_res_data",
+  "status": "ok",
+  "data_entry": 15939,
+  "chs_entry": 22997,
+  "family": "weapon_skin_behavior_res_data",
+  "reason": null,
+  "rows": 78,
+  "keys": 78,
+  "key_min": 1110004,
+  "key_max": 1110197,
+  "fields": [
+   "fire_sfx_path",
+   "trajectory_path_real",
+   "trajectory_sfx_path",
+   "trajectory_sfx_path_nor"
+  ]
+ },
+ {
+  "table": "weapon_skin_accessory_items",
+  "status": "no_canonical_entry",
+  "data_entry": null,
+  "chs_entry": null,
+  "family": "weapon_skin_accessory_items",
+  "reason": "payload resolution: no_canonical_entry"
+ },
+ {
+  "table": "weapon_skin_pendant_data",
+  "status": "ok",
+  "data_entry": 17596,
+  "chs_entry": 24549,
+  "family": "weapon_skin_pendant_data",
+  "reason": null,
+  "rows": 17,
+  "keys": 17,
+  "key_min": 1140001,
+  "key_max": 1140017,
+  "fields": [
+   "jump_param",
+   "level",
+   "model_paths",
+   "model_sockets",
+   "order",
+   "order_group",
+   "slots",
+   "soft_bone_ids"
+  ]
+ },
+ {
+  "table": "weapon_skin_replace_nucleus_conf",
+  "status": "ok",
+  "data_entry": 17724,
+  "chs_entry": 20148,
+  "family": "weapon_skin_replace_nucleus_conf",
+  "reason": null,
+  "rows": 324,
+  "keys": 324,
+  "key_min": 1,
+  "key_max": 324,
+  "fields": [
+   "buff_id",
+   "is_custom_param",
+   "nucleus_id",
+   "param_name",
+   "param_val"
+  ]
+ },
+ {
+  "table": "weapon_skin_coldarm_atk_anim_stage_data",
+  "status": "chs_not_found",
+  "data_entry": 17341,
+  "chs_entry": null,
+  "family": "weapon_skin_coldarm_atk_anim_stage_data",
+  "reason": "未找到配对 CHS 条目 | chs payload: no_canonical_entry"
+ },
+ {
+  "table": "weapon_skin_coldarm_knife_light_data",
+  "status": "ok",
+  "data_entry": 12674,
+  "chs_entry": 17419,
+  "family": "weapon_skin_coldarm_knife_light_data",
+  "reason": null,
+  "rows": 0,
+  "keys": 0,
+  "key_min": null,
+  "key_max": null,
+  "fields": []
+ },
+ {
+  "table": "weapon_skin_sound_data_for_query",
+  "status": "ok",
+  "data_entry": 18978,
+  "chs_entry": 14371,
+  "family": "weapon_skin_sound_data_for_query",
+  "reason": null,
+  "rows": 383,
+  "keys": 383,
+  "key_min": 72,
+  "key_max": 4029,
+  "fields": [
+   "sound"
+  ]
+ },
+ {
+  "table": "weapon_kind_to_skin_item_data",
+  "status": "no_canonical_entry",
+  "data_entry": null,
+  "chs_entry": null,
+  "family": "weapon_kind_to_skin_item_data",
+  "reason": "payload resolution: no_canonical_entry"
+ },
+ {
+  "table": "coldarm_type_to_skin_item_data",
+  "status": "no_canonical_entry",
+  "data_entry": null,
+  "chs_entry": null,
+  "family": "coldarm_type_to_skin_item_data",
+  "reason": "payload resolution: no_canonical_entry"
+ },
+ {
+  "table": "skin_replace_anims_dict",
+  "status": "no_canonical_entry",
+  "data_entry": null,
+  "chs_entry": null,
+  "family": "skin_replace_anims_dict",
+  "reason": "payload resolution: no_canonical_entry"
+ },
+ {
+  "table": "skin_simple_anim_data",
+  "status": "chs_not_found",
+  "data_entry": 20038,
+  "chs_entry": null,
+  "family": "skin_simple_anim_data",
+  "reason": "未找到配对 CHS 条目 | chs payload: no_canonical_entry"
+ },
+ {
+  "table": "common_item_data_base",
+  "status": "ok",
+  "data_entry": 18005,
+  "chs_entry": 23928,
+  "family": "common_item_data",
+  "reason": null,
+  "rows": 36038,
+  "keys": 36038,
+  "key_min": 7000,
+  "key_max": 91222291,
+  "fields": [
+   "from_map",
+   "hide_obtain_popup",
+   "item_value",
+   "source",
+   "yh_value",
+   "desc",
+   "icon",
+   "id",
+   "level"
+  ]
+ },
+ {
+  "table": "store_v2_data",
+  "status": "ok",
+  "data_entry": 24576,
+  "chs_entry": 18705,
+  "family": "store_v2_data",
+  "reason": null,
+  "rows": 1222,
+  "keys": 1222,
+  "key_min": 1000,
+  "key_max": 70097,
+  "fields": [
+   "fashion_type",
+   "is_present",
+   "level1_tab_type",
+   "level2_tab_type",
+   "money_count",
+   "money_id",
+   "real_cost",
+   "use_voucher_ids",
+   "item_id"
+  ]
+ },
+ {
+  "table": "common_exchange_shop_data",
+  "status": "ok",
+  "data_entry": 7804,
+  "chs_entry": 7697,
+  "family": "common_exchange_shop_data",
+  "reason": null,
+  "rows": 0,
+  "keys": 0,
+  "key_min": null,
+  "key_max": null,
+  "fields": []
+ }
+]

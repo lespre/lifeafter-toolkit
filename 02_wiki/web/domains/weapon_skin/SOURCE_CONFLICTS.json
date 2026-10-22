@@ -1,0 +1,68 @@
+{
+ "schema": "weapon-skin-source-conflicts/v1",
+ "generated_from": [
+  "test-documents-ba8a239a",
+  "v0.2",
+  "v0.1",
+  "legacy board"
+ ],
+ "conflicts": [
+  {
+   "entity": "*",
+   "field": "entity_count",
+   "source_a": "weapon_skin_data@BA8A = 126 行",
+   "source_b": "WEAPON_SKIN_RESOLVED_v0.1/legacy board = 115 行",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "residuals/weapon_skin/canonical_vs_v01_diff.json"
+   ],
+   "resolution_status": "open（intersection 111 / canonical-only 15 / board-only 4：1110184、1110185、1110186、1110190）",
+   "note": "以 canonical 为主体；board-only 保留在 diff 与链级样本，不塞回 canonical"
+  },
+  {
+   "entity": "1110185/1110186",
+   "field": "existence",
+   "source_a": "legacy board/artifact 有行",
+   "source_b": "weapon_skin_data@BA8A 无行",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "residuals/weapon_skin/canonical_vs_v01_diff.json",
+    "locator_chains/weapon_skin/instances.jsonl"
+   ],
+   "resolution_status": "open（负证据：canonical body 无此行；name_status 保持 unresolved）"
+  },
+  {
+   "entity": "*",
+   "field": "grade",
+   "source_a": "legacy board 中文标签（3直售级/5典藏级…）",
+   "source_b": "canonical level/priority（3/4/5/6 + priority）",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "artifacts/active/weapon_skin/RULES.json"
+   ],
+   "resolution_status": "resolved_as_deprecated（grade=deprecated_board_derived；无映射证据，禁止派生）"
+  },
+  {
+   "entity": "*",
+   "field": "name_source",
+   "source_a": "canonical common_item_data_base.name（122 行可回放）",
+   "source_b": "legacy board 名称（v0.1 时代 runtime UI 快照）",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "residuals/weapon_skin/canonical_vs_v01_diff.json"
+   ],
+   "resolution_status": "cross_validated（命中行 111/111 一致；差异只在 canonical-only 与 board-only）"
+  },
+  {
+   "entity": "*",
+   "field": "effect_names",
+   "source_a": "legacy board sfx_items.display_name（展示层）",
+   "source_b": "canonical weapon_skin_sfx_function_data / effect_show_data（未解）",
+   "snapshot": "test-documents-ba8a239a",
+   "evidence_ref": [
+    "domains/weapon_skin/SOURCE_REGISTRY.json"
+   ],
+   "resolution_status": "open（canonical 特效名解析未建立 ⇒ 卡片特效名标「历史展示」）"
+  }
+ ]
+}

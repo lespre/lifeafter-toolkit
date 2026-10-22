@@ -1,0 +1,44 @@
+{
+ "test": "斜坡法线正负光验证",
+ "formula": "n = normalize(T*x + B*y + N); NM=(R*2-1, G*2-1) 不翻转G",
+ "source": "shader 02ac9f54 VS/PS 反汇编 (v0=POSITION v1=NORMAL v2=UV v3=TANGENT; w=(|T|^2>1.5)?+1:-1)",
+ "panels": "左上=左光 右上=右光 (nx 斜坡) / 左下=下光 右下=上光 (ny 斜坡)",
+ "results": {
+  "shader_single_sided": {
+   "nx_light_left": {
+    "left": 0.6945,
+    "right": 0.0306,
+    "top": 0.3625,
+    "bottom": 0.3625
+   },
+   "nx_light_right": {
+    "left": 0.0306,
+    "right": 0.6945,
+    "top": 0.3625,
+    "bottom": 0.3625
+   },
+   "nx_expect": "左光→左半亮(right<left); 右光→右半亮(left<right)",
+   "nx_pass": true,
+   "ny_light_down": {
+    "left": 0.3625,
+    "right": 0.3625,
+    "top": 0.0306,
+    "bottom": 0.6945
+   },
+   "ny_light_up": {
+    "left": 0.3625,
+    "right": 0.3625,
+    "top": 0.6945,
+    "bottom": 0.0306
+   },
+   "ny_expect": "光在下方(y+)→下半亮; 光在上方(y-)→上半亮",
+   "ny_pass": true
+  },
+  "renderer_two_sided": {
+   "note": "render_neox_mesh 用 |N·L| (双侧): 纯轴 ±光互换时响应完全对称(翻转不可证); 带 z 分量时 |−x+cz| ≠ |x+cz|, 略有差异. 属已知近似, 记录在案",
+   "max_abs_diff_light_swap_with_z": 0.48481,
+   "max_abs_diff_light_swap_pure_axis": 0.0
+  },
+  "all_pass": true
+ }
+}

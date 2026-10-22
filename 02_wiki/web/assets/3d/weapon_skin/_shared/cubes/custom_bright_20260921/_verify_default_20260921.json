@@ -1,0 +1,42 @@
+{
+ "expect": {
+  "cube": "custom_bright_20260921",
+  "sha16_of_that_cube_tier": "655aa3ca3023571f",
+  "sha16_of_old_default": "a1cf4661a7e2dbe6"
+ },
+ "cubeDirProbe": "{\"custom_bright_20260921\":{\"base\":\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/faces/\",\"faces_glob\":\"src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f{i}_m0.png\",\"urls\":[\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f0_m0.png\",\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f1_m0.png\",\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f2_m0.png\",\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f3_m0.png\",\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f4_m0.png\",\"http://127.0.0.1:8765/assets/3d/weapon_skin/1110025/src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f5_m0.png\"],\"unique\":6}}",
+ "picker_state": "{\"selected\":\"custom_bright_snow_20260921\",\"default\":\"qiangpi\",\"is_default\":false,\"status\":\"self_authored_approximate\",\"container\":null,\"row\":null,\"sha16\":null,\"dims\":\"128x128\",\"format\":\"PNG RGBA RGBM(a=multiplier) — 与源 B8G8R8A8_UNORM + asm542-544 解码约定对齐\",\"n_faces\":6,\"resolve\":\"self_authored\",\"faces_loaded\":0,\"options_total\":59,\"options_selectable\":32,\"options_in_dropdown\":36,\"options_optgroups\":[\"源已验证（source_verified）\",\"自造·近似（非游戏资产）\"],\"options_selectable_with_self\":35,\"options_hidden_nonusable\":24,\"options_disabled\":0,\"self_authored\":[\"custom_studio_20260920\",\"custom_bright_20260921\",\"custom_bright_snow_20260921\"],\"is_game_asset\":false,\"source_selector\":\"none\",\"product_default\":\"custom_bright_snow_20260921\",\"product_default_authority\":\"product_choice_20260921\",\"product_default_fidelity\":\"not_source_determined\",\"product_default_applied\":\"custom_bright_snow_20260921\",\"product_default_declined\":false,\"note\":\"源数据里没有选择器决定预览用哪一套 cube；本选择器是取证/对比工具，不代表游戏的选择。\",\"counts\":{\"candidates\":56,\"located\":49,\"source_verified\":32,\"partial\":17,\"unresolved\":7}}",
+ "neox_raw": "{\"report\":{\"applied\":5,\"applied_prims\":[0,1,2,3,4],\"failed\":[],\"missing\":[],\"prims\":[{\"prim\":0,\"mtl_idx\":0,\"material\":\"skin_1006_003_0\",\"shader\":\"shader\\\\pbr_weapon.fx::TShader\",\"shader_declared_by_material_c159\":\"shader\\\\pbr_weapon.fx::TShader\",\"eff_shader\":\"shader\\\\pbr_weapon.fx::TShader\",\"eff_shader_source\":\"manifest.shader\",\"manifest_shader_kind\":\"weapon\",\"is_weapon\":true,\"kind_mismatch\":null,\"source_common_slots\":{},\"source_slot_conflicts\":[],\"source_unresolved_slots\":[],\"pass_hint\":null,\"color_slot\":\"Tex0\",\"slots\":{\"Tex0\":{\"file\":\"src_tex/025_b_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"t_basecolor\":{\"file\":\"src_tex/025_b_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"ParamMap\":{\"file\":\"src_tex/025_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"NormalMap\":{\"file\":\"src_tex/025_n.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"t_surfacemap\":{\"file\":\"src_tex/025_s_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"t_custom_ibl\":{\"file\":\"src_cube/custom_bright_20260921.dds\",\"logical\":\"common\\\\env_map\\\\qiangpi.cube\",\"color_space\":\"linear\",\"from_source_common\":false}},\"sha256\":{\"Tex0\":\"cdc31982ee95358322b4e76293428843\",\"t_basecolor\":\"cdc31982ee95358322b4e76293428843\",\"ParamMap\":\"54006e04cb36817bdadd1f3643ad5624\",\"NormalMap\":\"d5dd2e2ce7f56a56c987f074ce75a36d\",\"t_surfacemap\":\"4d57e5b00e73d684179db7e9054766f0\",\"t_custom_ibl\":\"860b53ed6ea6a0cf602fae632cfcd28d\"},\"missing_required\":[],\"unresolved_slots\":[],\"old_material\":{\"type\":\"MeshStandardMaterial\",\"had_map\":true,\"had_metalnessMap\":true,\"map_uuid\":\"d618836c-c43a-4955-a4a0-9404169acb4c\"},\"neox_replaced\":true,\"status\":\"applied\",\"env_mode\":\"source_ibl\",\"ibl_faces\":6,\"cube_dir_err\":null,\"ibl_missing_source\":false,\"family\":\"pbr_weapon\",\"family_source\":\"shader\",\"required_slots\":[\"Tex0\",\"ParamMap\",\"NormalMap\",\"t_surfacemap\",\"t_custom_ibl\"],\"runtime_missing\":[],\"declared_unlocated\":[],\"albedo_slot\":\"Tex0\",\"whitelist_no_base\":false,\"shader_kind\":\"weapon\",\"env_warn\":null,\"pending_hidden\":false,\"runtime_refs\":{\"map\":true,\"normalMap\":true,\"metalnessMap\":true}},{\"prim\":1,\"mtl_idx\":1,\"material\":\"skin_1006_003_1\",\"shader\":null,\"shader_declared_by_material_c159\":\"shader\\\\pbr_crystal.fx::TShader\",\"eff_shader\":\"shader\\\\pbr_crystal.fx::TShader\",\"eff_shader_source\":\"manifest.shader_declared_by_material_c159\",\"manifest_shader_kind\":\"crystal\",\"is_weapon\":false,\"kind_mismatch\":null,\"source_common_slots\":{\"NormalMap\":{\"file\":\"src_tex/common/crystal_bump_n03.png\",\"level\":\"source_verified\",\"declared_stem\":\"crystal_bump_n03\",\"origin\":\"manifest(local_file)+source_declared_agrees\"},\"t_caustic_tex\":{\"file\":\"src_tex/common/caustic3.png\",\"level\":\"source_verified\",\"declared_stem\":\"caustic3\",\"origin\":\"manifest(local_file)+source_declared_agrees\"},\"t_refraction_tex\":{\"file\":\"src_tex/common/refraction_envmap_1.png\",\"level\":\"source_verified\",\"declared_stem\":\"refraction_envmap_1\",\"origin\":\"manifest(local_file)+source_declared_agrees\"}},\"source_slot_conflicts\":[],\"source_unresolved_slots\":[],\"pass_hint\":null,\"color_slot\":\"t_basecolor\",\"slots\":{\"Tex0\":{\"file\":\"src_tex/025_b_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"t_basecolor\":{\"file\":\"src_tex/025_b_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"ParamMap\":{\"file\":\"src_tex/025_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"NormalMap\":{\"file\":\"src_tex/common/crystal_bump_n03.png\",\"logical\":\"common\\\\textures\\\\crystal_bump_n03.tga\",\"color_space\":\"linear\",\"from_source_common\":true},\"t_surfacemap\":{\"file\":\"src_tex/025_s_m.png\",\"logical\":null,\"color_space\":\"linear\",\"from_source_common\":false},\"t_custom_ibl\":{\"file\":\"src_cube/custom_bright_20260921.dds\",\"logical\":\"common\\\\env_map\\\\qiangpi.cube\",\"color_space\":\"linear\",\"from_source_common\":false},\"t_caustic_tex\":{\"file\":\"src_tex/common/caustic3.png\",\"logical\":\"common\\\\textures\\\\caustic3.tga\",\"color_space\":\"linear\"",
+ "default_after": {
+  "sha16": "3b05236eb8642502",
+  "subject_px": 34755,
+  "subject_p50": 0.7883,
+  "subject_p95": 0.9163,
+  "gt085_pct": 21.9,
+  "bg_p50": 0.1021,
+  "metalreg_px": 190128,
+  "metalreg_share_pct": 100.0,
+  "dark_px": 155373,
+  "dark_share_pct": 81.72,
+  "metalreg_p50": 0.1414,
+  "metalreg_p95": 0.8385,
+  "metalreg_gt085_pct": 4.0,
+  "dark_lum_mean": 0.1398
+ },
+ "verdict": {
+  "C1_iblname_is_custom": true,
+  "C1_urls_n": 6,
+  "C1_urls_all_target_cube": true,
+  "C1_urls_six_distinct": true,
+  "C1_faces_glob_recorded": "src_cube/../../_shared/cubes/custom_bright_20260921/rgbm/custom_bright_20260921_f{i}_m0.png",
+  "C2_neox_ibl_faces": null,
+  "C2_env_mode": null,
+  "C2_all_green": null,
+  "C3_selector_not_participating": "custom_bright_snow_20260921",
+  "C3_source_selector": "none",
+  "C4_default_sha16": "3b05236eb8642502",
+  "C4_equals_cubeAB_custom_tier": false,
+  "C4_differs_from_old_default": true,
+  "DEFAULT_SWITCH_OK": false
+ }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skin_id": "1110185",
+  "title": "奇迹",
+  "poster": "poster.webp",
+  "default_state": "default",
+  "states": [
+    {
+      "id": "default",
+      "label": "奇迹",
+      "model": "model.glb",
+      "geometry_source": "0058.gpk 条目 row 64686（LOD0，= 帧 386）· 7612 顶点 / 9204 面 / 8 submesh",
+      "rotation_note": "无游戏内参照图；朝向 = GLB 原始导出朝向（--center，未加任何旋转）。**未做用户目视姿势确认。**",
+      "material_note": "弓身贴图曾以低饱和+UV一致性认领补丁 bd14（强推断非证明）；本 viewer 为**白模**，故**不设 material_layers**：fail-closed。"
+    }
+  ],
+  "background": "#071015",
+  "exposure": 1.0,
+  "fidelity": {
+    "material": "approximate",
+    "sfx": "none"
+  },
+  "background_image": "../_shared/bg_weapon_skin_ingame.png",
+  "background_source": {
+    "file": "_shared/bg_weapon_skin_ingame.png",
+    "origin": "用户提供的游戏内武器皮肤背景图（与 1110024/1110025/1110129 等同源）",
+    "sha16": "e60c1a1d5e16b1b4"
+  },
+  "env_from_background": false,
+  "hemisphere_intensity": 0.0,
+  "key_intensity": 0.0,
+  "fill_intensity": 0.0,
+  "env_intensity": 1.0,
+  "pose_rule": "**未定稿**：本皮肤无游戏内参考图，朝向 = GLB 原始导出（--center，未旋转）；未做用户目视姿势确认",
+  "camera_presets": [
+    {
+      "id": "side_authored",
+      "label": "侧视（作者设定）",
+      "position": [
+        1.0,
+        0.16,
+        0.22
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "fov": 34,
+      "fit_span": 0.66,
+      "exact": false,
+      "basis": "★ 无游戏内参照图、未经用户目视确认；方向按长轴选取，距离由查看器自解。"
+    }
+  ],
+  "default_camera": "side_authored",
+  "camera_basis": "无源相机数据；预设为作者按网格包围盒设定，**未经用户目视确认**。（对照：1110024 的 game_reference 是用户实调值，本皮肤没有等价值。）",
+  "cube_default_selection": "qiangpi"
+}

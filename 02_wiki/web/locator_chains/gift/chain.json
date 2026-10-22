@@ -1,0 +1,39 @@
+{
+ "chain_id": "gift.gift_data",
+ "domain": "gift",
+ "title": "gift_data namespace 标准化",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_module",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "chs_entry",
+  "decoded_row",
+  "structural_key",
+  "schema",
+  "business_identity",
+  "name_binding",
+  "resolved_entity"
+ ],
+ "evidence_refs": [
+  "evidence/item/consumers.json",
+  "evidence/item/namespace_membership_upgrade.json",
+  "artifacts/active/item/ITEM_MASTER.jsonl"
+ ],
+ "residuals": [
+  "748 gift_data rows：名称来源分散（部分取 CHS 槽位，部分行未记录槽位）",
+  "raw_presence 显示 common_item_data_base=false（礼物不是 common_item 行）"
+ ],
+ "rejected_routes": [
+  {
+   "route": "用整数碰撞把 gift id 归到 common_item",
+   "reason": "runtime dispatch 指向 gift_data",
+   "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+  }
+ ],
+ "instances_file": "locator_chains/gift/instances.jsonl"
+}

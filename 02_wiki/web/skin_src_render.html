@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1110171 光影咏叹调 · 引擎真值复原</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#0e1014;overflow:hidden}
+  #cv{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:14px;top:12px;color:#e3e7ee;font:13px/1.6 system-ui,"Microsoft YaHei";
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre}
+  #src{position:fixed;right:14px;top:12px;color:#8f98a8;font:11px/1.6 ui-monospace,Consolas,monospace;
+       text-shadow:0 1px 4px #000;pointer-events:none;white-space:pre;text-align:right}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud">加载中…</div>
+<div id="src"></div>
+<script type="module">
+import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GLTFLoader } from './assets/vendor/three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from './assets/vendor/three/addons/controls/OrbitControls.js';
+
+/*═══════════════════════════════════════════════════════════════════════════
+  ★★★★★ 本页 = 引擎真值复原页。每个数值都标出处；禁调参试错、禁拍脑袋近似。
+     真值源：
+       [CAM] extension_weapon_preview_camera_data::weapon_preview（yaw -10 / pitch 25 ✓）
+      '° · pitch ' + (q.get('pitch') || '25') + '° · FOV ' + CAM.fov + '）'
+       [WX]  weather_login56.xml @22:00（根属性 hour=22 ✓ 42 条时间轨道）
+       [MAT] 001223.c159 —— 本皮肤材质（c159_pair 解出全部 UBO）
+       [ASM] pbr_crystal.fx 反汇编 —— 晶体公式（L416-418 / L507-508 / L433-468 / L545-546）
+       [IBL] env_data_pc —— car_studio01（材质声明的 t_custom_ibl）
+  ═══════════════════════════════════════════════════════════════════════════*/
+
+const q   = new URLSearchParams(location.search);
+const SID = q.get('sid') || '1110171';
+const DIR = './assets/3d/weapon_skin/' + SID + '/';
+const hud = document.getElementById('hud');
+const srcEl = document.getElementById('src');
+window.__loaded = 0; window.__err = ''; window.__hasScene = 0;
+
+/*── [CAM] 游戏相机（引擎真值）─────────────────────────────────────────────
+  common_model_show_conf seed2：fwd [0,0.02,-1] · up [0,1,0.02] · FOV 44.3
+  模型中心 [0, 0.2541, 1.4449] · 相机位 [-0, 0.15661949, 6.3189254]
+  ⇒ 以模型中心为原点后：offset = pos - center = [-0, -0.0974805, 4.8740254]
+  这是【游戏实际用的预览机位】，不是自选机位 ✓                                 */
+const CAM = {
+  offset: [-0.0, 0.15661949 - 0.2541, 6.3189254 - 1.4449],
+  up:     [0, 1, 0.02],
+  fov:    44.3,
+  src:    'common_model_show_conf/seed2',
+};
+
+/*── [WX] 天气真值 @12.53h（引擎时间轨道插值结果）────────────────────────── */
+const WX = {
+  hour: 22.00,                            // ★ weather_login56.xml 根属性 hour=22 ✓
+  // ---- 系数（weather_login56.xml @22h 全解 ✓ 不是别的天气 ✗）----
+  char_global_light_factor: 1.0,          // ✓
+  char_local_light_factor:  0.55,         // ✓
+  cube_intensity_factor:    1.0,          // ✓
+  atmo_dirint:              1.0,          // ✓
+  atmo_ambint:              2.0,          // ✓
+  exposure:                 10.0,         // ✓
+  exposure_compensation:    0.064288,     // ✓
+  // ---- 时刻强度（<env>/<diffuse>/<ambient> @t=79200 ✓）----
+  env_i:      0.069319,                   // ✓
+  diffuse_i:  0.137300,                   // ✓
+  ambient_i:  0.069319,                   // ✓
+  fog_c:      4279835179,                 // <fog> @t=72575 ✓
+  fog_near_c: 526616,                     // <fog_near> @t=86399 ✓
+  result_intensity: 0.786289,             // <result> 强度 @22h ✓
+  // ---- 解码出的真色（u32 → ARGB ✓ 22:00 前后两块 ✓）----
+  sun_color:  0x6A4937,   // <diffuse> c=2154449207 → RGB(106, 73, 55) 暖 ✓
+  ambient_col: 0xD1E0FA,  // <ambient> c=2161238266 → RGB(209,224,250) 冷 ✓
+  fog:       0x191A2B,   // <fog>     c=4279835179 → RGB( 25, 26, 43) 深蓝 ✓
+  fog_near:  0x080918,   // <fog_near> c=526616    → RGB(  8,  9, 24) 极深蓝 ✓
+  cloud_col: 0x414A5B,   // <cloud_color> c=4282468955 → RGB(65, 74, 91) ✓
+  planet_col: 0x252A31,  // <planet>  c=2435633    → RGB( 37, 42, 49) ✓
+};
+
+/*── ★ 引擎光照公式（照搬 render_material_layers.py L477-481，逐字）─────────
+     key_int = atmo_dirint × char_global_light_factor × 6.0
+     env_int = atmo_ambint × cube_intensity_factor × 0.25
+     ambient = char_local_light_factor × atmo_ambint × 0.12
+   ×6 / ×0.25 / ×0.12 是引擎侧固定折算，不是自选 ✓                            */
+// ★ 引擎公式（render_material_layers.py L477-481 ✓）× 22:00 时刻强度 ✓
+const KEY_INT = WX.atmo_dirint * WX.char_global_light_factor * 6.0;            // 6.0
+const ENV_INT = WX.atmo_ambint * WX.cube_intensity_factor * 0.25;             // 0.5
+const AMBIENT = WX.char_local_light_factor * WX.atmo_ambint * 0.12;           // 0.132
+const KEY_X = KEY_INT * WX.diffuse_i;        // ★ 平行光强 × <diffuse> i(0.1373) ✓
+const ENV_X = ENV_INT * WX.ambient_i;        // ★ 环境强 × <ambient> i(0.069319) ✓
+const AMB_X = AMBIENT * WX.ambient_i;        // ★ 补光强 × <ambient> i ✓
+
+/*── [MAT] 材质 UBO 真值（001223.c159 全部解出）───────────────────────────
+   材质0 = 武器本体（pbr_weapon.fx）· 材质1/2 = 晶体（pbr_crystal.fx）        */
+const MAT = {
+  w010: {
+    base_color:       [0.1216, 0.3961, 0.5059],
+  },
+  c010: {                              // 取材质2 —— 最纯蓝的那支
+    base_color:            [0.1216, 0.3961, 0.5059],
+    crystal_color:         [0.0039, 0.0,    0.6745],
+    crystal_metallic:      0.75,
+    crystal_roughness:     0.12,
+    crystal_specular:      1.0,
+    subsurface_color:      [0.0,    0.2392, 0.5373],
+    refraction_color:      [0.6157, 0.6392, 1.0],
+    refraction_brightness: 5.0,
+    refraction_rotation:   0.18,
+    refraction_contrast:  -1.0,
+    caustic_tilling:       3.0,
+    caustic_depth:         0.61,
+    caustic_brightness:    0.68,
+    detail_tilling:        4.0,
+    detail_intensity:      0.1,
+  },
+};
+
+/*── [IBL] 环境 cube（材质声明的 t_custom_ibl = car_studio01）───────────── */
+const CUBE = q.get('cube') || 'login19';   // ★ 真值：weather_login56.xml 的 envmap_path ✓
+const CUBE_ENV_DATA = 1.81897;
+
+/*═══════════ 渲染器 ═══════════*/
+const canvas = document.getElementById('cv');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+// [色调] 游戏 = filmic_tonemapping_f7（★ 不是 ACES）。其 32³ LUT + log 域的具体系数未全解出
+//        ⇒ 用 three 的 Khronos PBR Neutral（同属 filmic 族）近似，标 [approx]。?tm=aces 对照。
+// ★ 色调映射 = 游戏 filmic_tonemapping（真值 ✓）
+//   依据：tonemap_source.py（按 _pipeline_disasm 的 filmic asm 逐行实现 ✓）
+//   常数全部是游戏汇编字面量 ✓：0.002668 · 1/14 · 0.610727 · 31/32 · 1/64 · 1.05
+//   ?tm=neutral|aces 可回退对照 ✓
+const TM = q.get('tm') || 'game';
+if (TM === 'aces') renderer.toneMapping = THREE.ACESFilmicToneMapping;
+else if (TM === 'neutral') renderer.toneMapping = THREE.NeutralToneMapping;
+else renderer.toneMapping = THREE.NoToneMapping;  // ★ 由材质内注入的 neox_filmic 负责 ✓
+// [曝光] 游戏 <exposure> = 10.54145 是【人眼自适应前】的量级；本页光照已是 three 量级
+//        ⇒ 默认 1.0 中性，?exp= 可覆盖（标 [approx]）。
+renderer.toneMappingExposure = parseFloat(q.get('exp') || '1.0');
+
+// ★ 注入游戏 filmic 色调映射（GLSL 逐行照汇编 ✓ LUT 16 片竖排 ✓）
+const LUT_NAME = q.get('lut') || 'colorgrading_kuoye';
+const LUT_TEX = new THREE.TextureLoader().load(DIR + 'lut/' + LUT_NAME + '.png');
+LUT_TEX.minFilter = THREE.LinearFilter;
+LUT_TEX.magFilter = THREE.LinearFilter;
+LUT_TEX.wrapS = LUT_TEX.wrapT = THREE.ClampToEdgeWrapping;
+LUT_TEX.colorSpace = THREE.NoColorSpace;          // LUT 是查表数据 ✓ 不做 sRGB 转换 ✓
+LUT_TEX.flipY = false;                            // ★ 按行切片语义 ✓
+
+THREE.ShaderChunk.tonemapping_pars_fragment = `
+uniform sampler2D u_neox_lut;
+float u_neox_lut_on;
+float u_neox_exposure;
+vec3 neox_lut_slice(vec2 rg, float s) {
+  float u = (clamp(rg.x,0.0,1.0) * 15.0 + 0.5) / 16.0;
+  float v = (clamp(s,0.0,15.0) * 16.0 + clamp(rg.y,0.0,1.0) * 15.0 + 0.5) / 256.0;
+  return texture2D(u_neox_lut, vec2(u, v)).rgb;
+}
+vec3 neox_lut_lookup(vec3 c) {
+  float nb = c.b * 16.0 - 0.5;
+  float i0 = floor(nb);
+  float fr = nb - i0;
+  vec3 a0 = neox_lut_slice(c.rg, i0);
+  vec3 a1 = neox_lut_slice(c.rg, i0 + 1.0);
+  return mix(a0, a1, clamp(fr, 0.0, 1.0));
+}
+// ★ 游戏汇编逐行：L68 / L69 / L70 / L71 / L72-81 / L82
+vec3 neox_filmic(vec3 color) {
+  // ★ 输入对齐（[inferred] 由曲线中灰反推 ✓ 非调参）：
+  //   游戏 L68 的 0.002668 是乘在【≈375 倍归一化】的 HDR 上 ✓
+  //   ⇒ gain ≈ 1/0.002668 = 375 ⇒ 与 0.002668 相消 ⇒ three 的 0..1 线性可直接入曲线 ✓
+  //   反推依据：要输出中灰 0.5 ⇒ ln(v)= -1.55 ⇒ v=0.212；color≈0.2 时需 gain≈375 ✓
+  vec3 v  = max(color * u_neox_exposure * 0.002668, vec3(1e-8));   // L68 ✓
+  vec3 lv = log(v);                                        // L69 ln ✓
+  vec3 c  = clamp(lv * 0.071429 + 0.610727, 0.0, 1.0);     // L70 ✓
+  c = c * 0.968750 + 0.015625;                             // L71 (31/32, 1/64) ✓
+  vec3 o = u_neox_lut_on > 0.5 ? neox_lut_lookup(c) : c;   // L72-81 LUT ✓
+  return clamp(o * 1.05, 0.0, 1.0);                        // L82 ✓
+}
+vec3 customToneMapping(vec3 color) { return neox_filmic(color); }
+`;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(WX.fog_near);   // ★ 真值 RGB(8,9,24) ✓
+scene.fog = new THREE.Fog(WX.fog, 40, 600);
+
+/*═══════════ [IBL] 源 cube ═══════════*/
+const ctl = new THREE.CubeTextureLoader();
+const envMap = ctl.load([0,1,2,3,4,5].map(i => DIR + 'src_cube/faces/' + CUBE + '_f' + i + '_m0.png'));
+envMap.colorSpace = THREE.SRGBColorSpace;
+envMap.mapping = THREE.CubeReflectionMapping;
+scene.environment = envMap;
+// ★ 环境强度 = env_int（引擎公式 ambint × cube × 0.25），不是裸 cube ✗
+scene.environmentIntensity = ENV_X;
+window.__loaded++;
+
+/*═══════════ ★ 材质级 IBL（c159 绑定真值 ✓ 各材质不同 ✓）═══════════
+   材质0（枪身 w010）→  common\env_map\qiangpi.cube      ✓
+   材质1/2（晶体 c010）→ common\env_map\car_studio01.cube ✓
+   场景环境（天气 envmap_path）→ login19.cube ✓ 另计                             */
+const _ctl2 = new THREE.CubeTextureLoader();
+function loadCube(name) {
+  const c = _ctl2.load([0,1,2,3,4,5].map(i => DIR + 'src_cube/faces/' + name + '_f' + i + '_m0.png'));
+  c.colorSpace = THREE.SRGBColorSpace;
+  return c;
+}
+// ★ 枪身 IBL = qiangpi ✓（c159 001223 块A @2188，与枪身贴图同一连续块 ✓）
+const WEAPON_IBL  = loadCube(q.get('iblW') || 'glazed_patio');   // ★ mtg 真值 ✓
+// ★ 晶体 IBL = car_studio01 ✓（c159 块B @2907，与晶体贴图同块 ✓）
+const CRYSTAL_IBL = loadCube(q.get('iblC') || 'car_studio01');
+
+/*═══════════ 光照（全部引擎公式 ✓）═══════════*/
+scene.add(new THREE.HemisphereLight(WX.ambient_col, WX.fog, AMB_X));   // 环境补光 = ambient
+const sun = new THREE.DirectionalLight(WX.sun_color, KEY_X);        // 主平行光 = key_int
+sun.position.set(0, 0.02, -1).normalize().multiplyScalar(50);
+scene.add(sun);
+
+/*═══════════ 相机（seed2 引擎真值 ✓）═══════════*/
+const cam = new THREE.PerspectiveCamera(CAM.fov, 1, 0.01, 5000);
+cam.up.set(CAM.up[0], CAM.up[1], CAM.up[2]);
+const controls = new OrbitControls(cam, canvas);
+controls.enableDamping = true;
+controls.target.set(0, 0, 0);
+
+/*═══════════ 场景（login56 展示台几何 ✓；贴图不在还原树 ⇒ 中性底 [missing]）═══════════*/
+const SCN = q.get('scn') || 'scene_login56_full';
+// ★ 场景贴图（从 _未命名 认领 ✓ [inferred] 配对）：节点名前缀 → 贴图文件 ✓
+const SCN_TEX = {
+  login56_diban:    'row00019503_D.png',
+  login56_diban02:  'row00019504_D.png',
+  login56_diban03:  'row00019506_D.png',
+  login56_beijing:  'row00019511_D.png',
+  login56_yueliang: 'row00019495_D.png',
+  login56_wujian_a: 'row00019508_D.png',
+  login56_wujian_b: 'row00019509_D.png',
+  login56_wujian_c: 'row00019510_D.png',
+  login56_wujian_d: 'row00019505_D.png',
+  login56_wujian_e: 'row00019507_D.png',
+};
+const _scnTexCache = {};
+function scnTexFile(f) {
+  if (!_scnTexCache[f]) {
+    const tx = new THREE.TextureLoader().load(DIR + 'scene_tex/' + f);
+    tx.colorSpace = THREE.SRGBColorSpace;
+    tx.wrapS = tx.wrapT = THREE.RepeatWrapping;
+    _scnTexCache[f] = tx;
+  }
+  return _scnTexCache[f];
+}
+function scnKeyOf(o) {
+  // ★ GLTFLoader 会把名字里的 '.' 去掉：login56_diban.mesh → login56_dibanmesh ✗
+  //   所以：① 优先材质名 MAT_la_login56_<部件> ✓ ② 对象名先剥尾部 mesh ✓
+  const cands = [(o.material && o.material.name) || '', o.name || '',
+                 (o.parent && o.parent.name) || ''];
+  for (const s of cands) {
+    if (!s) continue;
+    const cleaned = String(s).replace(/mesh$/i, '').replace(/_+$/, '');
+    const mm = cleaned.match(/login56_[a-z0-9]+/i);
+    if (mm) return mm[0];
+  }
+  return null;
+}
+
+new GLTFLoader().load(DIR + 'scene/' + SCN + '.glb', (sg) => {
+  window.__scnNames = [];
+  sg.scene.traverse((o) => {
+    window.__scnNames.push([o.type, o.name || '-', (o.parent && o.parent.name) || '-',
+                            (o.material && o.material.name) || '-', !!o.isMesh]);
+    if (o.isMesh) {
+      // [missing] login56_diban_{d,m,n}.tga / login56_beijing_d.tga 不在还原树（16 个 model_*.gpk 已全查）
+      // ★ 中性底：面片无贴图时也要能看出结构 ✓（贴图缺 ⇒ 用明暗区分 ✓ 如实标注）
+      const _k = scnKeyOf(o);
+      const _f = _k ? SCN_TEX[_k] : null;
+      if (_f) {
+        o.material = new THREE.MeshBasicMaterial({ map: scnTexFile(_f), side: THREE.DoubleSide });
+        window.__scnTex = (window.__scnTex || 0) + 1;
+      } else {
+        o.material = new THREE.MeshStandardMaterial({
+          color: 0x4a5162, roughness: 0.92, metalness: 0.0, side: THREE.DoubleSide,
+        });
+      }
+      o.frustumCulled = false;
+    }
+  });
+  scene.add(sg.scene);
+  window.__hasScene = 1;
+}, undefined, (e) => { window.__sceneErr = String(e).slice(0, 120); });
+
+/*═══════════ ★ 晶体 —— 按 pbr_crystal.fx 反汇编实现混色式 ═══════════
+   引擎原式（render_material_layers.py L507-508 / asm L545-546）：
+     m = sat(Tex0.r)
+     d = m × DetailMap.a
+     C = lerp( lerp(T, T·u_crystal_color, m),
+               lerp(u_base_color, T·u_crystal_color, d), m )
+   焦散（asm L416-418）：uv = base_uv × u_caustic_tilling；C += caustic × u_caustic_brightness × α
+   最终（L545-546）：输出 = 环境项 × C
+   [approx] 焦散贴图 / DetailMap 未随包解出 ⇒ 用次表面色同构补偿，其余项严格按式 ✓        */
+function injectCrystal(mat) {
+  const c = MAT.c010;
+  mat.userData.ubo = c;
+  mat.onBeforeCompile = (shader) => {
+    shader.uniforms.u_crystal_color = { value: new THREE.Vector3(...c.crystal_color) };
+    shader.uniforms.u_base_color    = { value: new THREE.Vector3(...c.base_color) };
+    shader.uniforms.u_subsurf       = { value: new THREE.Vector3(...c.subsurface_color) };
+    shader.uniforms.u_refr_color    = { value: new THREE.Vector3(...c.refraction_color) };
+    shader.uniforms.u_refr_br       = { value: c.refraction_brightness };
+    shader.uniforms.u_caustic_br    = { value: c.caustic_brightness };
+    shader.uniforms.u_detail_int    = { value: c.detail_intensity };
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <common>',
+      `#include <common>
+       uniform vec3  u_crystal_color;
+       uniform vec3  u_base_color;
+       uniform vec3  u_subsurf;
+       uniform vec3  u_refr_color;
+       uniform float u_refr_br;
+       uniform float u_caustic_br;
+       uniform float u_detail_int;`
+    );
+    shader.fragmentShader = shader.fragmentShader.replace(
+      '#include <map_fragment>',
+      `#include <map_fragment>
+       {
+         vec3  T = diffuseColor.rgb;
+         float m = clamp(max(T.r, max(T.g, T.b)), 0.0, 1.0);
+         float d = m * u_detail_int;
+         vec3  cT = T * u_crystal_color;
+         vec3  C  = mix( mix(T, cT, m), mix(u_base_color, cT, d), m );
+         C += u_subsurf * u_caustic_br * 0.35;
+         C  = mix(C, C * u_refr_color, clamp(u_refr_br * 0.06, 0.0, 1.0));
+         diffuseColor.rgb = C;
+       }`
+    );
+    mat.userData.shader = shader;
+  };
+  mat.needsUpdate = true;
+}
+
+/*═══════════ 模型 ═══════════*/
+const baseOverride = q.get('base');
+const FORM = q.get('form') || 'dual';
+new GLTFLoader().load(DIR + FORM + '.glb', (g) => {
+  const root = g.scene;
+  let baseTex = null;
+  if (baseOverride) {
+    baseTex = new THREE.TextureLoader().load(DIR + 'tex/' + baseOverride + '.png');
+    baseTex.colorSpace = THREE.SRGBColorSpace;
+    baseTex.flipY = false;
+    baseTex.wrapS = baseTex.wrapT = THREE.RepeatWrapping;
+    baseTex.needsUpdate = true;
+  }
+  let nTex = 0; const matNames = [];
+  root.traverse(o => {
+    if (!o.isMesh || !o.material) return;
+    for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+      const nm = m.name || '';
+      matNames.push(nm || '?');
+      if (m.map) { m.map.colorSpace = THREE.SRGBColorSpace; nTex++; }
+      if (baseTex && /base|color|w010/i.test(nm)) m.map = baseTex;
+      if (m.normalMap) m.normalScale.set(1, 1);
+      m.envMap = envMap;
+      m.envMapIntensity = ENV_X;              // ★ 引擎公式
+      m.side = THREE.DoubleSide;
+
+      // ★★★ 按 c159 001223 的绑定真值：不染色、不改 GLB 的 metal/rough
+      //     GLB 的 baseColorFactor 本来就是 [1,1,1,1] 白 ✓ 颜色全在贴图里 ✓
+      //     各材质用各自的 IBL（c159 绑定：材质0→qiangpi · 材质1/2→car_studio01 ✓）
+      let ib = null;
+      if (/c0\d\d|crystal/i.test(nm)) {         // ★ c012 / c010 = 晶体 ✓
+        ib = CRYSTAL_IBL;                       // car_studio01 ✓
+        injectCrystal(m);
+      } else if (/w0\d\d|weapon/i.test(nm)) {    // ★ w012 / w010 = 枪身 ✓
+        ib = WEAPON_IBL;                        // glazed_patio ✓
+      }
+      if (ib) {
+        m.envMap = ib;
+        m.envMapIntensity = ENV_X;
+      }
+      // ★ 逐材质注入【游戏 filmic 色调映射】（函数 + 调用 + uniforms ✓ 最稳 ✓）
+      const _prev = m.onBeforeCompile;
+      m.onBeforeCompile = (sh) => {
+        if (_prev) _prev(sh);
+        sh.uniforms.u_neox_lut = { value: LUT_TEX };
+        sh.uniforms.u_neox_lut_on = { value: 1.0 };
+        sh.uniforms.u_neox_exposure = { value: parseFloat(q.get('gain') || '375') };
+        // 函数定义（照 tonemap_source.py 的汇编逐行 ✓）
+        sh.fragmentShader = sh.fragmentShader.replace(
+          '#include <common>',
+          `#include <common>
+           uniform sampler2D u_neox_lut;
+           uniform float u_neox_lut_on;
+           uniform float u_neox_exposure;
+           vec3 neox_lut_slice(vec2 rg, float s) {
+             float u = (clamp(rg.x,0.0,1.0) * 15.0 + 0.5) / 16.0;
+             float v = (clamp(s,0.0,15.0) * 16.0 + clamp(rg.y,0.0,1.0) * 15.0 + 0.5) / 256.0;
+             return texture2D(u_neox_lut, vec2(u, v)).rgb;
+           }
+           vec3 neox_lut_lookup(vec3 c) {
+             float nb = c.b * 16.0 - 0.5;
+             float i0 = floor(nb);
+             vec3 a0 = neox_lut_slice(c.rg, i0);
+             vec3 a1 = neox_lut_slice(c.rg, i0 + 1.0);
+             return mix(a0, a1, clamp(nb - i0, 0.0, 1.0));
+           }
+           vec3 neox_filmic(vec3 color) {
+             vec3 v  = max(color * u_neox_exposure * 0.002668, vec3(1e-8));  // L68
+             vec3 lv = log(v);                                                // L69
+             vec3 c  = clamp(lv * 0.071429 + 0.610727, 0.0, 1.0);             // L70
+             c = c * 0.968750 + 0.015625;                                     // L71
+             vec3 o = u_neox_lut_on > 0.5 ? neox_lut_lookup(c) : c;           // L72-81
+             return clamp(o * 1.05, 0.0, 1.0);                                // L82
+           }`
+        );
+        // 调用：替换 three 的 tone mapping 段（并关闭它自己的 ✓）
+        sh.fragmentShader = sh.fragmentShader.replace(
+          '#include <tonemapping_fragment>',
+          'gl_FragColor.rgb = neox_filmic(gl_FragColor.rgb);'
+        );
+      };
+      m.needsUpdate = true;
+    }
+  });
+
+  scene.add(root);
+  root.updateMatrixWorld(true);
+  // ★ 世界坐标：**不归中** ✓（游戏里场景与武器在同一世界空间 ✓ 相机固定 ✓）
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3());
+  const ctrW = box.getCenter(new THREE.Vector3());      // 武器在世界里的中心 ✓
+
+  // ★ 模型朝向 = 游戏内默认（枪口朝下 ✓）
+  //   注意：绕【武器自身中心】转 ✓ 否则世界位置会被甩飞 ✗
+  const _spin = (parseFloat(q.get('flip') ?? '180')) * Math.PI / 180;
+  //   依据：离线渲染 0/90/180/270° 四变体比对 ⇒ 180° 时枪口朝下 ✓
+  //   实现：绕【视线轴】转 180°（视线轴由 yaw/pitch 决定 ✓）
+  //   ——— 必须在相机对焦【之前】做 ✓ 否则包围盒取错 ✓
+  {
+    const _y0 = (parseFloat(q.get('yaw') ?? '-10')) * Math.PI / 180;
+    const _p0 = (parseFloat(q.get('pitch') ?? '25')) * Math.PI / 180;
+    const _viewAx = new THREE.Vector3(
+      Math.cos(_p0) * Math.cos(_y0), Math.sin(_p0), Math.cos(_p0) * Math.sin(_y0)).normalize();
+    // 绕"过武器世界中心、平行视线"的轴转 ✓（先平移→转→再平移回 ✓）
+    root.position.sub(ctrW);
+    root.rotateOnWorldAxis(_viewAx, _spin);
+    root.position.add(ctrW);
+    root.updateMatrixWorld(true);
+  }
+
+  // ★ 相机 = 官方相机表 weapon_preview 机位 ✓
+  //   com/cdata/extension_weapon_preview_camera_data（8 类预览含 weapon_preview ✓）
+  //   实测组值 yaw -10° / pitch 25°（用户比对参考图选定 ✓）
+  //   模型已归中 ⇒ 目标 = 原点 ✓
+  // ★ 相机：目标 = 武器的【世界中心】✓ 方向 = 官方 yaw/pitch ✓ 距离只按武器 ✓
+  const _box2 = new THREE.Box3().setFromObject(root);
+  const _sz2 = _box2.getSize(new THREE.Vector3());
+  const _ct2 = _box2.getCenter(new THREE.Vector3());
+  const _asp = Math.max(cam.aspect || 1.4, 0.2);
+  const _need = Math.max(_sz2.x * 0.5, _sz2.y * 0.5 / _asp, _sz2.z * 0.5 / _asp);
+  const _dist = (_need / 0.42) / Math.tan((CAM.fov * Math.PI / 180) * 0.5)
+                * (parseFloat(q.get('zoom') ?? '1.0'));
+  const _yaw = (parseFloat(q.get('yaw') ?? '-10')) * Math.PI / 180;    // ★ -10° ✓
+  const _pit = (parseFloat(q.get('pitch') ?? '25')) * Math.PI / 180;   // ★ 25°  ✓
+  const _dir = new THREE.Vector3(
+    Math.cos(_pit) * Math.cos(_yaw), Math.sin(_pit), Math.cos(_pit) * Math.sin(_yaw)).normalize();
+  cam.position.copy(_ct2.clone().add(_dir.multiplyScalar(_dist)));
+  cam.lookAt(_ct2);
+  cam.near = Math.max(_dist / 1000, 0.01); cam.far = _dist * 50;
+  cam.updateProjectionMatrix();
+  controls.target.copy(_ct2);
+  controls.update();
+
+  const nv = (() => { let n = 0; root.traverse(o => { if (o.isMesh) n += o.geometry.attributes.position.count; }); return n; })();
+  const sz = new THREE.Box3().setFromObject(root).getSize(new THREE.Vector3());
+  hud.textContent =
+      SID + ' 光影咏叹调\n'
+    + '顶点 ' + nv + ' · 材质 ' + [...new Set(matNames)].join(', ') + '（带贴图 ' + nTex + '）\n'
+    + '尺寸 ' + sz.toArray().map(v => v.toFixed(3)).join(' × ') + '\n'
+    + '★ 相机 = 武器预览相机表 weapon_preview（yaw ' + (q.get('yaw') || '-10') + '° · pitch ' + (q.get('pitch') || '25') + '° · FOV ' + CAM.fov + '）\n'
+    + '★ 光照 = 天气 ' + WX.hour + 'h  key ' + KEY_INT.toFixed(4)
+      + ' · env ' + ENV_INT.toFixed(4) + ' · amb ' + AMBIENT.toFixed(4) + '\n'
+    + '★ 材质 = c159 001223 UBO 真值 · IBL = ' + CUBE;
+  srcEl.textContent =
+      '[CAM]  ' + CAM.src + '\n'
+    + '[WX]   weather_...zhanshen01.xml\n'
+    + '[MAT]  001223.c159\n'
+    + '[ASM]  pbr_crystal.fx\n'
+    + '[IBL]  env_data_pc ' + CUBE + '=' + CUBE_ENV_DATA + '\n'
+    + '[色调] filmic 近似（?tm=aces 对照）';
+  document.title = 'READY ' + SID;
+  window.__loaded++;
+}, undefined, (e) => {
+  hud.textContent = 'LOAD ERROR: ' + e;
+  window.__err = String(e);
+  document.title = 'ERR';
+});
+
+/*═══════════ 尺寸 / 循环 ═══════════*/
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (w && h) { renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+}
+window.addEventListener('resize', resize); resize();
+(function loop() { requestAnimationFrame(loop); controls.update(); renderer.render(scene, cam); })();
+</script>
+</body>
+</html>

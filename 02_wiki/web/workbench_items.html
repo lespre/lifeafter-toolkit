@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物品浏览 · Workbench View</title>
+<script src="assets/workbench_client.js?v=v13"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--red:#b91c1c;--green:#15803d;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;padding:20px}
+a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+h1{font-size:18px} h2{font-size:15px;margin:14px 0 8px}
+.sub,.wb-note{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input,select,button{font:inherit;padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:#fff}
+button{cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+tbody tr{cursor:pointer} tbody tr:hover{background:#f4f4f5}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.wb-badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.wb-badge.ok{color:var(--green);border-color:#bbf7d0} .wb-badge.warn{color:var(--amber);border-color:#fde68a}
+.wb-page-info{color:var(--muted);font-size:12px;padding:0 8px}
+.wb-pager{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.wb-snapshotbox{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 10px;margin:8px 0}
+.wb-sec{margin:10px 0} .wb-sec-h{font-weight:600;margin-bottom:4px}
+.wb-kv th{width:38%;color:var(--muted);font-weight:500}
+.wb-pre{background:#f8f8f8;border:1px solid var(--border);border-radius:6px;padding:6px 8px;overflow:auto;max-height:280px;font-size:12px}
+.wb-notice{padding:8px 10px;border-radius:8px;border:1px solid var(--border)} .wb-notice.bad{border-color:#fecaca;background:#fef2f2}
+.wb-claim{border-top:1px dashed var(--border);padding:6px 0}
+details summary{cursor:pointer;color:#1d4ed8;font-size:13px}
+.split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:12px}
+@media(max-width:1000px){.split{grid-template-columns:1fr}}
+.wb-kind{background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;padding:0 6px;font-size:12px}
+</style>
+</head><body>
+<div class="card">
+  <h1>物品浏览 <span class="wb-badge">Workbench View</span></h1>
+  <div class="sub">数据源：<code>Workbench API /api/items</code>（分页，单页 ≤ 200）。本页<b>不加载</b> 35MB 的 <code>item_master_active.js</code>。
+  普通浏览请用 <a href="board.html?b=item_master_active&amp;view=wiki">Wiki View</a>。</div>
+</div>
+
+<div class="card">
+  <div class="filters">
+    <input id="q" type="search" placeholder="搜索：名称 或 item_id" autocomplete="off" style="min-width:220px">
+    <select id="namespace"><option value="">全部 namespace</option></select>
+    <select id="name_status"><option value="">全部名称状态</option></select>
+    <select id="identity_status"><option value="">全部身份状态</option></select>
+    <select id="sort">
+      <option value="item_id">排序：item_id</option><option value="name">排序：名称</option>
+      <option value="item_namespace">排序：namespace</option><option value="name_status">排序：名称状态</option>
+    </select>
+    <label class="sub"><input type="checkbox" id="desc"> 倒序</label>
+    <select id="page_size"><option>50</option><option>100</option><option>200</option></select>
+    <button id="go">查询</button><button id="reset">重置</button>
+  </div>
+  <div class="sub" id="status" style="margin-top:6px">就绪（API-first）</div>
+</div>
+
+<div class="split">
+  <div class="card">
+    <div id="list"></div>
+    <div class="wb-pager" id="pager"></div>
+  </div>
+  <div class="card" id="detail"><div class="sub">点击左侧任意一行查看统一 Entity Detail（Identity / Data / Source / Evidence / Provenance / Residuals / Media）。</div></div>
+</div>
+<script>
+(function(){
+  const S={q:"",namespace:"",name_status:"",identity_status:"",sort:"item_id",desc:false,page:1,page_size:50};
+  const $=id=>document.getElementById(id);
+  const list=$("list"), pager=$("pager"), detail=$("detail"), status=$("status");
+  const url=new URLSearchParams(location.search);
+  if(url.get("q")) S.q=url.get("q");
+  if(url.get("namespace")) S.namespace=url.get("namespace");
+  if(url.get("view")) WB.setMode(url.get("view"));
+
+  function fillSelect(id,values,labelKey){
+    const sel=$(id), cur=sel.value;
+    sel.innerHTML=Object.entries(values).map(([k,v])=>`<option value="${WB.esc(k)}">${WB.esc(WB.zh(k))}（${v}）</option>`).join("");
+    if(cur) sel.value=cur;
+  }
+
+  async function load(){
+    status.textContent="查询中…";
+    try{
+      const data=await WB.api("/api/items",{q:S.q,namespace:S.namespace,name_status:S.name_status,
+        identity_status:S.identity_status,sort:S.sort,desc:S.desc?1:undefined,page:S.page,page_size:S.page_size});
+      if(!S._facets){ S._facets=true;
+        fillSelect("namespace",(data.facets||{}).namespaces||{});
+        fillSelect("name_status",(data.facets||{}).name_status||{});
+        fillSelect("identity_status",(data.facets||{}).identity_status||{});
+        $("namespace").value=S.namespace; $("name_status").value=S.name_status; $("identity_status").value=S.identity_status;
+      }
+      $("namespace").value=S.namespace; $("name_status").value=S.name_status; $("identity_status").value=S.identity_status;
+      renderRows(data.items||[]);
+      WB.renderPager(pager,data,p=>{S.page=p;load();});
+      status.innerHTML="API 在线 · 本页 "+ (data.items||[]).length +" 行 / 共 "+data.total.toLocaleString()+
+        " 行 · page_size 上限 "+data.page_size_max+" · 数据源 <code>"+WB.esc(data.source_artifact)+"</code>";
+      status.className="sub";
+    }catch(err){ WB.error(status,err); renderRows([]); pager.innerHTML=""; }
+  }
+
+  function renderRows(items){
+    if(!items.length){ list.innerHTML='<div class="sub">无匹配行（空结果，不是回退数据）。</div>'; return; }
+    const head='<table><thead><tr><th>item_id</th><th>名称</th><th>namespace</th><th>身份状态</th><th>名称状态</th><th>快照基准</th><th>详情</th></tr></thead><tbody>';
+    const rows=items.map(it=>`<tr data-id="${it.item_id}">
+      <td><code>${it.item_id}</code></td>
+      <td>${WB.esc(it.name||"—")}</td>
+      <td>${WB.esc(WB.zh(it.item_namespace))}</td>
+      <td>${WB.badge(WB.zh(it.identity_status),String(it.identity_status).indexOf("verified")===0?"ok":"warn")}</td>
+      <td>${WB.badge(WB.zh(it.name_status),it.name_status==="verified"?"ok":"warn")}</td>
+      <td class="sub">${WB.esc(it.snapshot_basis_explicit?"BA8A（显式标注）":"推导")}</td>
+      <td><a href="workbench_entity.html?kind=item&amp;id=${it.item_id}">entity →</a></td></tr>`).join("");
+    list.innerHTML=head+rows+"</tbody></table>";
+    list.querySelectorAll("tbody tr").forEach(tr=>tr.addEventListener("click",e=>{
+      if(e.target.tagName==="A") return; showDetail(tr.dataset.id);
+    }));
+  }
+
+  async function showDetail(id){
+    detail.innerHTML='<div class="sub">加载实体详情…</div>';
+    try{ const d=await WB.api("/api/entity",{kind:"item",id:id}); detail.innerHTML=WB.renderEntity(d); }
+    catch(err){ WB.error(detail,err); }
+  }
+
+  $("go").addEventListener("click",()=>{
+    S.q=$("q").value.trim(); S.namespace=$("namespace").value; S.name_status=$("name_status").value;
+    S.identity_status=$("identity_status").value; S.sort=$("sort").value; S.desc=$("desc").checked;
+    S.page_size=parseInt($("page_size").value,10)||50; S.page=1; load();
+  });
+  $("reset").addEventListener("click",()=>{
+    Object.assign(S,{q:"",namespace:"",name_status:"",identity_status:"",sort:"item_id",desc:false,page:1});
+    $("q").value=""; $("desc").checked=false; $("sort").value="item_id"; load();
+  });
+  ["q"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")$("go").click();}));
+
+  $("q").value=S.q;
+  load();
+})();
+</script>
+</body></html>

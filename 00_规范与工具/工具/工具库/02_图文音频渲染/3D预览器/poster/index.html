@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武器皮肤 3D 预览器 · 工具箱版</title>
+<link rel="stylesheet" href="assets/weapon_skin_viewer.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0f1216;color:#e6e9ee;font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;padding:18px}
+  h1{font-size:16px;margin-bottom:4px}
+  p.tip{color:#8b94a3;font-size:12px;margin-bottom:14px}
+  #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+  .card{background:#161b22;border:1px solid #232a34;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;height:110px;object-fit:cover;background:#0b0e12}
+  .card .noimg{height:110px;display:flex;align-items:center;justify-content:center;color:#566070;font-size:12px;background:#0b0e12}
+  .card .meta{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;font-size:12px;color:#9aa4b2}
+  .card .ok{color:#4ade80}
+  .card button{margin:0 10px 10px;padding:7px;border:0;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;font-size:12px}
+  .card button:disabled{background:#232a34;color:#5b6472;cursor:not-allowed}
+</style>
+<script src="data/media/weapon_skin_media.js"></script>
+<script src="data/media/weapon_skin_skeleton.js"></script>
+<script src="data/media/weapon_skin_cubes.js"></script>
+<script src="data/media/weapon_skin_cubes_custom.js"></script>
+<script defer src="assets/weapon_skin_viewer.js"></script>
+<script defer src="assets/weapon_skin_sfx_adapter.js"></script>
+</head>
+<body>
+<h1>武器皮肤 3D 预览器（工具箱版）</h1>
+<p class="tip">与 Wiki 海报点开后的预览器同源；数据经 junction 直连看板数据目录（零拷贝）。支持 ?open=1110025 直达。</p>
+<div id="grid"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  var bank=(window.WEAPON_SKIN_MEDIA||{}).skins||{};
+  var grid=document.getElementById("grid");
+  Object.keys(bank).sort().forEach(function(id){
+    var rec=bank[id];
+    var poster=typeof rec.poster==="string"?rec.poster:(rec.poster&&rec.poster.src)||"";
+    var ready=!!(rec.preview_3d&&rec.preview_3d.status==="ready");
+    var card=document.createElement("div");card.className="card";
+    card.innerHTML=(poster?'<img src="'+poster+'" loading="lazy" decoding="async">':'<div class="noimg">无海报</div>')
+      +'<div class="meta"><b>'+id+'</b>'+(ready?'<span class="ok">3D 就绪</span>':'<span>无 3D</span>')+'</div>';
+    var btn=document.createElement("button");btn.textContent="查看 3D 预览";btn.disabled=!ready;
+    btn.onclick=function(){ if(window.WikiWeaponViewer) window.WikiWeaponViewer.open(rec,{title:id}); };
+    card.appendChild(btn);grid.appendChild(card);
+  });
+  var q=new URLSearchParams(location.search).get("open");
+  if(q&&bank[q]&&window.WikiWeaponViewer){ setTimeout(function(){ window.WikiWeaponViewer.open(bank[q],{title:q}); },500); }
+});
+</script>
+</body>
+</html>

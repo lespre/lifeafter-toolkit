@@ -1,0 +1,97 @@
+{
+ "cube": "custom_bright_20260921",
+ "note": "diagnostic only; 交付档 k=1（不调用 __cubeBrightApprox）",
+ "rows": [
+  {
+   "k": 1.0,
+   "sha16": "8af39788d6d64f32",
+   "subject_px": 34752,
+   "subject_p50": 0.7792,
+   "subject_p95": 0.9126,
+   "gt085_pct": 20.47,
+   "bg_p50": 0.1021,
+   "metalreg_px": 190128,
+   "metalreg_share_pct": 100.0,
+   "dark_px": 155376,
+   "dark_share_pct": 81.72,
+   "metalreg_p50": 0.1414,
+   "metalreg_p95": 0.8339,
+   "metalreg_gt085_pct": 3.74,
+   "dark_lum_mean": 0.1398
+  },
+  {
+   "k": 5.0,
+   "sha16": "a75f145dda3b6777",
+   "subject_px": 34827,
+   "subject_p50": 0.9043,
+   "subject_p95": 0.9759,
+   "gt085_pct": 68.21,
+   "bg_p50": 0.1021,
+   "metalreg_px": 190128,
+   "metalreg_share_pct": 100.0,
+   "dark_px": 155301,
+   "dark_share_pct": 81.68,
+   "metalreg_p50": 0.1414,
+   "metalreg_p95": 0.9303,
+   "metalreg_gt085_pct": 12.49,
+   "dark_lum_mean": 0.1398
+  },
+  {
+   "k": 20.0,
+   "sha16": "85d83ac454604fdf",
+   "subject_px": 34827,
+   "subject_p50": 0.9756,
+   "subject_p95": 1.0,
+   "gt085_pct": 83.77,
+   "bg_p50": 0.1021,
+   "metalreg_px": 190128,
+   "metalreg_share_pct": 100.0,
+   "dark_px": 155301,
+   "dark_share_pct": 81.68,
+   "metalreg_p50": 0.1414,
+   "metalreg_p95": 0.9843,
+   "metalreg_gt085_pct": 15.34,
+   "dark_lum_mean": 0.1398
+  },
+  {
+   "k": 60.0,
+   "sha16": "c77d31ca56f150c9",
+   "subject_px": 34827,
+   "subject_p50": 0.9961,
+   "subject_p95": 1.0,
+   "gt085_pct": 90.44,
+   "bg_p50": 0.1021,
+   "metalreg_px": 190128,
+   "metalreg_share_pct": 100.0,
+   "dark_px": 155301,
+   "dark_share_pct": 81.68,
+   "metalreg_p50": 0.1414,
+   "metalreg_p95": 1.0,
+   "metalreg_gt085_pct": 16.57,
+   "dark_lum_mean": 0.1398
+  }
+ ],
+ "verdict": {
+  "dark_pct_by_k": [
+   81.72,
+   81.68,
+   81.68,
+   81.68
+  ],
+  "dark_pct_span_k1_to_kmax_pp": 0.04,
+  "env_drives_dark_pct": false,
+  "MRp50_by_k": [
+   0.1414,
+   0.1414,
+   0.1414,
+   0.1414
+  ],
+  "subject_p50_by_k": [
+   0.7792,
+   0.9043,
+   0.9756,
+   0.9961
+  ],
+  "reading": "span 很小 ⇒ 那批暗像素**不由环境驱动** ⇒ 「dark% 降 30pp」无法靠换 cube 达成"
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "schema_version": 1,
+ "skin_id": "1110115",
+ "title": "skin_2003_013 (1110115)",
+ "default_state": "single",
+ "states": [
+  {
+   "id": "single",
+   "label": "单件",
+   "model": "skin_2003_013.glb",
+   "material_layers": {
+    "status": "source_neutral"
+   }
+  }
+ ],
+ "fidelity": {
+  "material": "source_matched",
+  "sfx": "none"
+ },
+ "material_layers": {
+  "status": "source_neutral",
+  "global_rig": {
+   "env_intensity": 1.0,
+   "exposure": 1.0,
+   "tone_mapping": "NoToneMapping",
+   "emissive_gain": 0.0,
+   "lights": 0.0
+  }
+ },
+ "source_chain": {
+  "bind": "skin_2003_013.gim",
+  "material": "skin_2003_013.mtg",
+  "mesh": "skin_2003_013.mesh"
+ },
+ "note": "rig = 源中立值（与已建 7 皮肤口径一致）"
+}

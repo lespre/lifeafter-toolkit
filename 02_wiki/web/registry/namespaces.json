@@ -1,0 +1,361 @@
+{
+ "_meta": {
+  "schema_version": 1,
+  "generated": "2026-09-12T18:53:39",
+  "generator": "workbench phase1",
+  "source_of_truth": "DataHelpers.get_item_data dispatch 表（从 payload 提取，非表名猜测）"
+ },
+ "item_namespaces": [
+  {
+   "namespace": "common_item",
+   "runtime_module": "com.cdata.common_item_data",
+   "dispatch_constant": "COMMON_ITEMS / COMMON_ITEM_DATA",
+   "state": "verified_in_use",
+   "residual": "numeric item_type constant / dispatch 顺序 = opcode-level unresolved",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data",
+    "consumer": "BagCompBase（bag/count/stack）",
+    "module": "com\\components\\avatar\\BagCompBase.py",
+    "FID": "0D86C2AE10376C4E"
+   }
+  },
+  {
+   "namespace": "fashion",
+   "runtime_module": "com.cdata.fashion_data",
+   "dispatch_constant": "FASHION / FASHION_DATA",
+   "state": "runtime_semantic_verified__raw_row_binding_unresolved",
+   "residual": "A2F data body 不可定位（native 边界）；三 namespace 禁止混用",
+   "dispatch_evidence": {
+    "consumer": "FashionPage.get_fashion_data / PanelFashionPreview.init_role"
+   }
+  },
+  {
+   "namespace": "gift",
+   "runtime_module": "com.cdata.gift_data",
+   "dispatch_constant": "GIFT / GIFT_DATA",
+   "state": "verified_structure",
+   "residual": "gift 行集来自 board（structure 层）；gift board 快照 328b8446 与 reward 源 BA8A 不一致",
+   "dispatch_evidence": {
+    "base_entry": 21287,
+    "FID": "C5998AD60B305608",
+    "consumer": "HuodongHelpers.get_real_need_item_ids"
+   }
+  },
+  {
+   "namespace": "belt_chip",
+   "runtime_module": "com.cdata.belt_chip_data",
+   "dispatch_constant": "BELT_CHIP_DATA",
+   "state": "runtime_consumer_verified__raw_key_unresolved",
+   "residual": "belt_chip_data 原始 row key 集未解出；common_item ∩ belt_chip 双列 id 的 dispatch 优先级 unresolved",
+   "dispatch_evidence": {
+    "consumer": "ArtifactHelpers.get_match_conf_raw_data（BELT_CHIP_DATA.data.get）",
+    "consumer2": "DroneHelpers chip_item_id 缓存",
+    "consumer3": "GmCmd_lcw.show_drone_slot"
+   }
+  },
+  {
+   "namespace": "all_equips",
+   "runtime_module": "com.cdata.all_equips_data",
+   "dispatch_constant": "ALL_EQUIPS",
+   "state": "structural_ok__name_slots_unsafe",
+   "residual": "name/desc/icon 文本槽跨记录错位 → 禁用于命名；structural row key 可用",
+   "dispatch_evidence": {
+    "note": "weapon_attrs_schema_static board 用 structural 关系；名称为 name-slot/desc-first-map 分层"
+   }
+  },
+  {
+   "namespace": "reward_pool",
+   "runtime_module": "com.cdata.reward_pool_data",
+   "dispatch_constant": "RANDOM_TIEM_REWARD_DATA",
+   "state": "runtime_consumer_verified",
+   "residual": "data body 未直接解出（entry 21380 通用解码不通）；池结构由 LOTTERY_POOL_RESOLVED_v0.1 提供",
+   "dispatch_evidence": {
+    "producer": "RewardPoolComp",
+    "module": "com\\components\\avatar\\RewardPoolComp.py",
+    "FID": "9E87D78784DC59B6",
+    "note": "REWARD_POOL_DATA.data.get(pool_no,item_no) / G_POOL_NO_ITEM_NO_TUPLE"
+   }
+  },
+  {
+   "namespace": "bullets",
+   "runtime_module": "com.cdata.bullets_data",
+   "dispatch_constant": "BULLET",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "edible_item",
+   "runtime_module": "com.cdata.edible_item_data",
+   "dispatch_constant": "EDIBLE_ITEM",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "recipe",
+   "runtime_module": "com.cdata.recipe",
+   "dispatch_constant": "RECIPE",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "advanced_recipe_material",
+   "runtime_module": "com.cdata.advanced_recipe_material_data",
+   "dispatch_constant": "ADVANCED_RECIPE_MATERIAL_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "advanced_recipe",
+   "runtime_module": "com.cdata.advanced_recipe_data",
+   "dispatch_constant": "ADVANCED_RECIPE_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "player_module_appear",
+   "runtime_module": "com.cdata.player_module_appear_data",
+   "dispatch_constant": "MODULE_APPEAR_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "chat_bubble",
+   "runtime_module": "com.cdata.chat_bubble_data",
+   "dispatch_constant": "CHAT_BUBBLE_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "spray_paint",
+   "runtime_module": "com.cdata.spray_paint_data",
+   "dispatch_constant": "SPRAY_PAINT_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "plants_seed",
+   "runtime_module": "com.cdata.plants_seed_data",
+   "dispatch_constant": "PLANTS_SEED",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "trade_items",
+   "runtime_module": "com.cdata.trade_items",
+   "dispatch_constant": "TRADE_ITEMS",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "space_data",
+   "runtime_module": "com.cdata.space_data",
+   "dispatch_constant": "SPACE_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "race_ctrl",
+   "runtime_module": "com.cdata.race_ctrl_data",
+   "dispatch_constant": "RACE_CTRL_DATA",
+   "state": "dispatch_observed__row_key_set_unresolved",
+   "residual": "data body 未解出；无 membership 证据",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  }
+ ],
+ "entity_namespaces": [
+  {
+   "namespace": "player",
+   "runtime_module": "com.cdata.primary_player_conf",
+   "dispatch_constant": "PLAYER",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "building",
+   "runtime_module": "com.cdata.building_base_data",
+   "dispatch_constant": "BUILDING",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "resource",
+   "runtime_module": "com.cdata.resources_data",
+   "dispatch_constant": "RESOURCE",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "loot",
+   "runtime_module": "com.cdata.loot_data",
+   "dispatch_constant": "LOOT",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "monster",
+   "runtime_module": "com.cdata.simple_monster_data",
+   "dispatch_constant": "MONSTER_DATA",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "box",
+   "runtime_module": "com.cdata.box_data",
+   "dispatch_constant": "BOX",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "npc",
+   "runtime_module": "com.cdata.npc_data",
+   "dispatch_constant": "NPC",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "common_entity",
+   "runtime_module": "com.cdata.common_entity_data",
+   "dispatch_constant": "COMMON_ENTITY",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  },
+  {
+   "namespace": "blast_entity",
+   "runtime_module": "com.cdata.blast_entity_data",
+   "dispatch_constant": "BLAST_ENTITY",
+   "state": "non_item_namespace",
+   "residual": "不得混入 item namespace",
+   "dispatch_evidence": {
+    "producer": "DataHelpers.get_item_data / get_item_type",
+    "module": "com\\utils\\DataHelpers.py",
+    "FID": "BE842BC2295D957F",
+    "entry_snapshot": "test-documents-ba8a239a#20487"
+   }
+  }
+ ],
+ "hard_rules": [
+  "raw_presence ≠ business namespace",
+  "item_namespace 只能由 runtime dispatch / consumer 链决定",
+  "整数碰撞 / 同名 / 唯一性 / 表名相似 不构成 namespace 证据",
+  "entity namespace 与 item namespace 分治，禁止混装"
+ ]
+}

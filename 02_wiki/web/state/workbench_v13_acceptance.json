@@ -1,0 +1,77 @@
+{
+ "product": "Workbench v1.3",
+ "kind": "acceptance",
+ "generated": "2026-09-13T05:22:26",
+ "regression": {
+  "at": "2026-09-13T05:22:26",
+  "commit": "edbae62",
+  "base": "workbench v1.3 (api-first paginated web client)",
+  "total_tests": 430,
+  "passed": 430,
+  "failures": 0,
+  "errors": 0,
+  "expected_failures": 1,
+  "exit_code": 0,
+  "status": "OK",
+  "tests": 430,
+  "result": "OK",
+  "command": "python -m unittest discover -s tests -q"
+ },
+ "acceptance_checks": {
+  "1 /api/items 默认分页": {
+   "pass": true,
+   "detail": "total=30467 page_size=50 rows=50 22200B"
+  },
+  "2 /api/lottery/pools 默认分页": {
+   "pass": true,
+   "detail": "total=24041 page_size=50 rows=50 22634B"
+  },
+  "3 /api/lottery/rewards 默认分页": {
+   "pass": true,
+   "detail": "total=23567 page_size=50 rows=50 34703B"
+  },
+  "4 page_size 上限 200": {
+   "pass": true,
+   "detail": "items→200 clamped=True；pools→200"
+  },
+  "5 item 首屏不加载 35MB": {
+   "pass": true,
+   "detail": "首屏 22,200B vs 离线全量 35,748,342B（1610×）"
+  },
+  "6 lottery 首屏不加载全量": {
+   "pass": true,
+   "detail": "首屏 22,634B / 34,703B vs 离线全量 37,880,356B"
+  },
+  "7 BA8A snapshot basis 可见": {
+   "pass": true,
+   "detail": "basis=BA8A（inventory 索引基准）"
+  },
+  "8 current binding 不冒充 verified": {
+   "pass": true,
+   "detail": "status=not_tracked"
+  },
+  "9 API 不可用不回退 historical": {
+   "pass": true,
+   "detail": "gate 在 script 之前；提示明确不回退 legacy/historical"
+  },
+  "10 legacy boards 不参与 Workbench 查询": {
+   "pass": false,
+   "detail": "命中文件=['services\\\\store.py', 'pipelines\\\\projection\\\\build_boards.py']"
+  },
+  "11 POST = 405": {
+   "pass": true,
+   "detail": "实际 405"
+  },
+  "12 Node 语法全通过": {
+   "pass": true,
+   "detail": "9 个脚本块，失败 0"
+  },
+  "legacy_boards_check": {
+   "legacy_read_lines": [],
+   "guard_lines": 3,
+   "explicit_export_write_lines": 1,
+   "runtime_legacy_hits": []
+  }
+ },
+ "frozen": true
+}

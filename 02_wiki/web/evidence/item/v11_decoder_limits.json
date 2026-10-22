@@ -1,0 +1,8 @@
+{
+ "claim": "inventory entry 索引空间与当前热更包不一致",
+ "status": "known_limitation",
+ "evidence_type": "cross_snapshot_probe",
+ "detail": "reward_pool entry 21380：BA8A packed 643,616B / 当前包同名 entry 4,192B",
+ "impact": "按 entry 读当前包会取到无关 payload",
+ "fix_next": "v1.2：locator 改为按 FID 定位（复用 _read_by_fid 已证路径）"
+}

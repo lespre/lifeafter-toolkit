@@ -1,0 +1,799 @@
+{
+ "name": "custom_bright_20260921",
+ "status": "self_authored_approximate",
+ "authority": "user_authorized_manual_20260921",
+ "fidelity": "approximate",
+ "not_a_game_asset": true,
+ "is_game_asset": false,
+ "note": "**自造近似、非游戏资产**：像素基底取自游戏资产 gdansk_shipyard_buildings02 的六面，但**辐射标定（增益 K + 抬底 L_FLOOR + RGBM alpha 反解）是本写手自造的**，源侧没有任何选择器/字段要求这样做。目的 = 消除金属镜面方向的**纯黑**。不得作为「游戏实际使用该环境」的证据，不得计入「源数据驱动」目标。",
+ "derived_from": [
+  {
+   "cube": "gdansk_shipyard_buildings02",
+   "role": "六面像素基底（**唯一**像素来源；未混任何其它 cube）",
+   "cube_sha256": "d28948b4cffe512ae170fa142cb28e3e556967466ea25700bf117d1b236571e3",
+   "cube_sha16": "d28948b4cffe512a",
+   "container": "0000.gpk",
+   "row": 11706,
+   "dims": "128x128",
+   "mips": 8,
+   "format": "B8G8R8A8_UNORM cubemap",
+   "faces": [
+    {
+     "face": 0,
+     "axis": "+X",
+     "file": "gdansk_shipyard_buildings02_f0_m0.png",
+     "sha256": "7b82819e724ad5417fe02be34cba16d93416907d9ae9fa58c4e3a853d40ca465",
+     "bytes": 22864
+    },
+    {
+     "face": 1,
+     "axis": "-X",
+     "file": "gdansk_shipyard_buildings02_f1_m0.png",
+     "sha256": "148ba40aa8bb9cca09806016911fa99072cccd7f4fdc41095b4c1f29b3fc76fe",
+     "bytes": 21085
+    },
+    {
+     "face": 2,
+     "axis": "+Y",
+     "file": "gdansk_shipyard_buildings02_f2_m0.png",
+     "sha256": "dfa4a8bc35952b9acb072f23c4c4715e5e357c30778b79ae3cfa615d44665264",
+     "bytes": 32345
+    },
+    {
+     "face": 3,
+     "axis": "-Y",
+     "file": "gdansk_shipyard_buildings02_f3_m0.png",
+     "sha256": "9828cd2ed58d889b1be1b74bd2d2460a1750de25784bf30f77e3c431df9e3920",
+     "bytes": 393
+    },
+    {
+     "face": 4,
+     "axis": "+Z",
+     "file": "gdansk_shipyard_buildings02_f4_m0.png",
+     "sha256": "9c94dbff535c0446f14e2570853e72900964ae6b13779f99d7f158c42cf3720d",
+     "bytes": 22596
+    },
+    {
+     "face": 5,
+     "axis": "-Z",
+     "file": "gdansk_shipyard_buildings02_f5_m0.png",
+     "sha256": "f8c3080987ec88e41b6c952be770fb8c67ee10d55dec813f2fae774eed82b180",
+     "bytes": 20052
+    }
+   ]
+  }
+ ],
+ "cubemap_order": [
+  "+X",
+  "-X",
+  "+Y",
+  "-Y",
+  "+Z",
+  "-Z"
+ ],
+ "face_size": 128,
+ "container": null,
+ "row": null,
+ "sha16": null,
+ "dims": "128x128",
+ "format": "PNG RGBA RGBM(a=multiplier) — 与源 B8G8R8A8_UNORM + asm542-544 解码约定对齐",
+ "resolve": "self_authored",
+ "in_skin": false,
+ "identity_basis": "self_authored_approximate — 无容器/无哈希命中，**不是**源 cube",
+ "selectable": true,
+ "group": "self_authored（自造近似，非游戏资产）",
+ "rgbm_encoding": {
+  "decode_in_viewer": "q_L = pow(rgb * a * 16.0, 2.0)   /* asm 542-544 */",
+  "texture_colorSpace": "NoColorSpace (viewer L1799/L2021)",
+  "encode": "q = sqrt(L_new) ; s = q/16 ; M = ceil_8bit(max_c s_c) ; rgb_out = s / M",
+  "alpha_is_rgbm_multiplier": true,
+  "ceil_not_round_why": "M 取 ceil 到 8bit 网格 ⇒ M ≥ max_c s_c 恒成立 ⇒ rgb_out ≤ 1 **无需裁剪**，回读误差只剩 rgb_out 的 8bit 量化（见各面 decode_roundtrip_max_abs_err，~1e-3 量级）。",
+  "why_alpha_matters": "源 IBL 分支解码 pow(rgb*a*16,2)，alpha 就是 RGBM 乘子 M。实测 qiangpi alpha≈0.015 ⇒ 解码辐射≈0.05 ⇒ 金属镜面发黑。"
+ },
+ "radiance_calibration": {
+  "is_self_authored": true,
+  "formula": "L_new = sqrt( (K * L_src)^2 + L_FLOOR^2 )   逐通道；L_src = (rgb_src * a_src * 16)^2",
+  "K": 0.57525,
+  "K_rule": "取满足「六面解码 p50 全部 ≤ 0.45」的**最大** K —— 即在规格给定区间内把有效辐射顶到最高。二分反解，约束单调。",
+  "L_FLOOR": 0.12,
+  "L_FLOOR_rule": "软抬底（quadrature）：保证 L_new ≥ 0.12 对**每一像素**成立 ⇒ 任何方向都不黑。",
+  "target_band_p50": [
+   0.25,
+   0.45
+  ],
+  "floor_dominated_px_pct_per_face": [
+   43.469,
+   31.598,
+   15.002,
+   0.0,
+   42.261,
+   33.02
+  ],
+  "no_image_domain_gain": "未施加任何图像域增益/对比度/模糊/裁剪整形；也未混其它 cube （实测 gdansk 六面均无大面积近黑 ⇒ 规格允许的「补面」不需要）。",
+  "forbidden_touched": "未改 exposure / ACES / bloom / 灯 / 环境强度 / lighting_approx 既有值。"
+ },
+ "faces": [
+  {
+   "face": 0,
+   "axis": "+X",
+   "file": "custom_bright_20260921_f0_m0.png",
+   "sha256": "6d86aaf1895cc98eee538984f0876ec8ad209187d5a3d47556016c7335610ff0",
+   "bytes": 6641,
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.30651,
+    "p95": 0.308967,
+    "max": 0.479662,
+    "mean": 0.228336
+   },
+   "srgb_lum": {
+    "min": 0.381118,
+    "p05": 0.381513,
+    "p50": 0.587383,
+    "p95": 0.591218,
+    "max": 0.678276,
+    "mean": 0.50079
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  },
+  {
+   "face": 1,
+   "axis": "-X",
+   "file": "custom_bright_20260921_f1_m0.png",
+   "sha256": "6f2377972648ab351820122d5eeccbfaf594e8e91f8df970c9acd18e41f3082f",
+   "bytes": 7659,
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.308967,
+    "p95": 0.871628,
+    "max": 2.524115,
+    "mean": 0.32475
+   },
+   "srgb_lum": {
+    "min": 0.381096,
+    "p05": 0.381422,
+    "p50": 0.591218,
+    "p95": 0.936127,
+    "max": 1.0,
+    "mean": 0.564137
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  },
+  {
+   "face": 2,
+   "axis": "+Y",
+   "file": "custom_bright_20260921_f2_m0.png",
+   "sha256": "5c12f55c69ef10a1b01e5121cbfdbcd1d6a6595c2ad339e2f3f0f283f70c33ac",
+   "bytes": 14238,
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12731,
+    "p50": 0.449767,
+    "p95": 3.685153,
+    "max": 129.386645,
+    "mean": 1.606748
+   },
+   "srgb_lum": {
+    "min": 0.381919,
+    "p05": 0.394275,
+    "p50": 0.666615,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 0.727918
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  },
+  {
+   "face": 3,
+   "axis": "-Y",
+   "file": "custom_bright_20260921_f3_m0.png",
+   "sha256": "283aeccedfadb7c769ec8514efbe32563c81b6bce27aca5f30bc0053f729f59c",
+   "bytes": 254,
+   "decoded_L": {
+    "min": 0.308967,
+    "p05": 0.308967,
+    "p50": 0.308967,
+    "p95": 0.308967,
+    "max": 0.308967,
+    "mean": 0.308967
+   },
+   "srgb_lum": {
+    "min": 0.591218,
+    "p05": 0.591218,
+    "p50": 0.591218,
+    "p95": 0.591218,
+    "max": 0.591218,
+    "mean": 0.591218
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  },
+  {
+   "face": 4,
+   "axis": "+Z",
+   "file": "custom_bright_20260921_f4_m0.png",
+   "sha256": "7128755e815a58418a260258c64561df344982b9a706bbca524b76b1c52f6c53",
+   "bytes": 5651,
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.308967,
+    "p95": 0.649743,
+    "max": 24.378156,
+    "mean": 0.29972
+   },
+   "srgb_lum": {
+    "min": 0.381093,
+    "p05": 0.381279,
+    "p50": 0.591218,
+    "p95": 0.825199,
+    "max": 1.0,
+    "mean": 0.522436
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  },
+  {
+   "face": 5,
+   "axis": "-Z",
+   "file": "custom_bright_20260921_f5_m0.png",
+   "sha256": "cc67e9362e193920335263bb99f0b2b119354c3917397434e43719ffd23fd1a0",
+   "bytes": 7422,
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.120712,
+    "p50": 0.308967,
+    "p95": 0.386822,
+    "max": 0.609207,
+    "mean": 0.256124
+   },
+   "srgb_lum": {
+    "min": 0.38117,
+    "p05": 0.382121,
+    "p50": 0.591218,
+    "p95": 0.613976,
+    "max": 0.802915,
+    "mean": 0.524422
+   },
+   "near_black_L_lt_0.05_pct": 0.0,
+   "near_black_srgb_lum_lt_0.05_pct": 0.0
+  }
+ ],
+ "rgbm_faces": [
+  {
+   "file": "rgbm/custom_bright_20260921_f0_m0.png",
+   "axis": "+X",
+   "sha256": "f34ca3cb3a9e49f33dd06370e232a8b18bd257d1eabac772e0536ae5f0a83899",
+   "bytes": 10882,
+   "alpha_M": {
+    "min": 0.023529,
+    "p05": 0.023529,
+    "p50": 0.035294,
+    "p95": 0.035294,
+    "max": 0.054902,
+    "mean": 0.030795
+   },
+   "alpha_M_byte": {
+    "min": 6,
+    "p50": 9,
+    "max": 14
+   },
+   "target_L": {
+    "min": 0.120015,
+    "p05": 0.120254,
+    "p50": 0.306199,
+    "p95": 0.308392,
+    "max": 0.47982,
+    "mean": 0.228056
+   },
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.30651,
+    "p95": 0.308967,
+    "max": 0.479662,
+    "mean": 0.228336
+   },
+   "decode_roundtrip_max_abs_err": 0.00285478,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000542,
+    "p95": 0.000574,
+    "max": 0.00285478
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001863,
+    "p95": 0.002435,
+    "max": 0.004519
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 43.469,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 0,
+    "axis": "+X",
+    "file": "gdansk_shipyard_buildings02_f0_m0.png",
+    "sha256": "7b82819e724ad5417fe02be34cba16d93416907d9ae9fa58c4e3a853d40ca465",
+    "src_decoded_L": {
+     "min": 0.003214,
+     "p05": 0.013137,
+     "p50": 0.489709,
+     "p95": 0.493851,
+     "max": 0.800914,
+     "mean": 0.300625
+    },
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.047059,
+     "max": 0.070588,
+     "mean": 0.03446
+    },
+    "src_rgb_lum": {
+     "min": 0.47018,
+     "p05": 0.691228,
+     "p50": 0.929412,
+     "p95": 0.933333,
+     "max": 0.998317,
+     "mean": 0.864909
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 2.8503
+   }
+  },
+  {
+   "file": "rgbm/custom_bright_20260921_f1_m0.png",
+   "axis": "-X",
+   "sha256": "4836558badcc2eb991bcb26482639ca585a5038875c482e0d6884b34ba714e63",
+   "bytes": 10895,
+   "alpha_M": {
+    "min": 0.023529,
+    "p05": 0.023529,
+    "p50": 0.035294,
+    "p95": 0.062745,
+    "max": 0.105882,
+    "mean": 0.03585
+   },
+   "alpha_M_byte": {
+    "min": 6,
+    "p50": 9,
+    "max": 27
+   },
+   "target_L": {
+    "min": 0.120003,
+    "p05": 0.120233,
+    "p50": 0.308392,
+    "p95": 0.872081,
+    "max": 2.525037,
+    "mean": 0.324484
+   },
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.308967,
+    "p95": 0.871628,
+    "max": 2.524115,
+    "mean": 0.32475
+   },
+   "decode_roundtrip_max_abs_err": 0.00855191,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000574,
+    "p95": 0.00175,
+    "max": 0.00855191
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001863,
+    "p95": 0.002465,
+    "max": 0.004388
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 31.598,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 1,
+    "axis": "-X",
+    "file": "gdansk_shipyard_buildings02_f1_m0.png",
+    "sha256": "148ba40aa8bb9cca09806016911fa99072cccd7f4fdc41095b4c1f29b3fc76fe",
+    "src_decoded_L": {
+     "min": 0.001448,
+     "p05": 0.012911,
+     "p50": 0.493851,
+     "p95": 1.501515,
+     "max": 4.384478,
+     "mean": 0.482867
+    },
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.047059,
+     "max": 0.137255,
+     "mean": 0.041955
+    },
+    "src_rgb_lum": {
+     "min": 0.463832,
+     "p05": 0.665915,
+     "p50": 0.933333,
+     "p95": 0.946867,
+     "max": 0.999434,
+     "mean": 0.868954
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 1.9592
+   }
+  },
+  {
+   "file": "rgbm/custom_bright_20260921_f2_m0.png",
+   "axis": "+Y",
+   "sha256": "1759b3116866edfdf7fdae0a6e62526e821f9fd5bada372b19f3b1431dfc9c84",
+   "bytes": 28733,
+   "alpha_M": {
+    "min": 0.023529,
+    "p05": 0.023529,
+    "p50": 0.05098,
+    "p95": 0.121569,
+    "max": 0.713725,
+    "mean": 0.065861
+   },
+   "alpha_M_byte": {
+    "min": 6,
+    "p50": 13,
+    "max": 182
+   },
+   "target_L": {
+    "min": 0.120382,
+    "p05": 0.127211,
+    "p50": 0.450003,
+    "p95": 3.680768,
+    "max": 129.363638,
+    "mean": 1.606275
+   },
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12731,
+    "p50": 0.449767,
+    "p95": 3.685153,
+    "max": 129.386645,
+    "mean": 1.606748
+   },
+   "decode_roundtrip_max_abs_err": 0.43282283,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000979,
+    "p95": 0.008474,
+    "max": 0.43282283
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001119,
+    "p95": 0.003425,
+    "max": 0.004605
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 15.002,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 2,
+    "axis": "+Y",
+    "file": "gdansk_shipyard_buildings02_f2_m0.png",
+    "sha256": "dfa4a8bc35952b9acb072f23c4c4715e5e357c30778b79ae3cfa615d44665264",
+    "src_decoded_L": {
+     "min": 0.015954,
+     "p05": 0.071067,
+     "p50": 0.748505,
+     "p95": 6.395152,
+     "max": 224.882368,
+     "mean": 2.748902
+    },
+    "src_alpha": {
+     "min": 0.011765,
+     "p50": 0.066667,
+     "max": 0.937255,
+     "mean": 0.084272
+    },
+    "src_rgb_lum": {
+     "min": 0.634373,
+     "p05": 0.691848,
+     "p50": 0.813546,
+     "p95": 0.989386,
+     "max": 1.0,
+     "mean": 0.834572
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 0.0
+   }
+  },
+  {
+   "file": "rgbm/custom_bright_20260921_f3_m0.png",
+   "axis": "-Y",
+   "sha256": "c279eaa54eb8c2b8ffce4d8d89408433dab9ad90f78708aeb9e11e144187480e",
+   "bytes": 298,
+   "alpha_M": {
+    "min": 0.035294,
+    "p05": 0.035294,
+    "p50": 0.035294,
+    "p95": 0.035294,
+    "max": 0.035294,
+    "mean": 0.035294
+   },
+   "alpha_M_byte": {
+    "min": 9,
+    "p50": 9,
+    "max": 9
+   },
+   "target_L": {
+    "min": 0.308392,
+    "p05": 0.308392,
+    "p50": 0.308392,
+    "p95": 0.308392,
+    "max": 0.308392,
+    "mean": 0.308392
+   },
+   "decoded_L": {
+    "min": 0.308967,
+    "p05": 0.308967,
+    "p50": 0.308967,
+    "p95": 0.308967,
+    "max": 0.308967,
+    "mean": 0.308967
+   },
+   "decode_roundtrip_max_abs_err": 0.0005745,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000574,
+    "p95": 0.000574,
+    "max": 0.0005745
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001863,
+    "p95": 0.001863,
+    "max": 0.001863
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 0.0,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 3,
+    "axis": "-Y",
+    "file": "gdansk_shipyard_buildings02_f3_m0.png",
+    "sha256": "9828cd2ed58d889b1be1b74bd2d2460a1750de25784bf30f77e3c431df9e3920",
+    "src_decoded_L": {
+     "min": 0.493851,
+     "p05": 0.493851,
+     "p50": 0.493851,
+     "p95": 0.493851,
+     "max": 0.493851,
+     "mean": 0.493851
+    },
+    "src_alpha": {
+     "min": 0.047059,
+     "p50": 0.047059,
+     "max": 0.047059,
+     "mean": 0.047059
+    },
+    "src_rgb_lum": {
+     "min": 0.933333,
+     "p05": 0.933333,
+     "p50": 0.933333,
+     "p95": 0.933333,
+     "max": 0.933333,
+     "mean": 0.933333
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 0.0
+   }
+  },
+  {
+   "file": "rgbm/custom_bright_20260921_f4_m0.png",
+   "axis": "+Z",
+   "sha256": "e9b2f7cb8dd50b98bb910cde1d7786fa8097478c7e9a926be21227fa2fd002f4",
+   "bytes": 8909,
+   "alpha_M": {
+    "min": 0.023529,
+    "p05": 0.023529,
+    "p50": 0.035294,
+    "p95": 0.054902,
+    "max": 0.309804,
+    "mean": 0.032897
+   },
+   "alpha_M_byte": {
+    "min": 6,
+    "p50": 9,
+    "max": 79
+   },
+   "target_L": {
+    "min": 0.120001,
+    "p05": 0.12013,
+    "p50": 0.308392,
+    "p95": 0.649235,
+    "max": 24.303861,
+    "mean": 0.299413
+   },
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.12037,
+    "p50": 0.308967,
+    "p95": 0.649743,
+    "max": 24.378156,
+    "mean": 0.29972
+   },
+   "decode_roundtrip_max_abs_err": 0.0742952,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000574,
+    "p95": 0.000852,
+    "max": 0.0742952
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001863,
+    "p95": 0.002683,
+    "max": 0.004186
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 42.261,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 4,
+    "axis": "+Z",
+    "file": "gdansk_shipyard_buildings02_f4_m0.png",
+    "sha256": "9c94dbff535c0446f14e2570853e72900964ae6b13779f99d7f158c42cf3720d",
+    "src_decoded_L": {
+     "min": 0.000758,
+     "p05": 0.00964,
+     "p50": 0.493851,
+     "p95": 1.109065,
+     "max": 42.248701,
+     "mean": 0.423627
+    },
+    "src_alpha": {
+     "min": 0.003922,
+     "p50": 0.047059,
+     "max": 0.407843,
+     "mean": 0.036176
+    },
+    "src_rgb_lum": {
+     "min": 0.424398,
+     "p05": 0.657365,
+     "p50": 0.933333,
+     "p95": 0.941561,
+     "max": 1.0,
+     "mean": 0.870669
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 5.3833
+   }
+  },
+  {
+   "file": "rgbm/custom_bright_20260921_f5_m0.png",
+   "axis": "-Z",
+   "sha256": "16d9d9b3656c53dfd535475647fbe414ea66e317783cc9f7a41f30e09d355708",
+   "bytes": 10871,
+   "alpha_M": {
+    "min": 0.023529,
+    "p05": 0.023529,
+    "p50": 0.035294,
+    "p95": 0.05098,
+    "max": 0.058824,
+    "mean": 0.033725
+   },
+   "alpha_M_byte": {
+    "min": 6,
+    "p50": 9,
+    "max": 15
+   },
+   "target_L": {
+    "min": 0.12003,
+    "p05": 0.120542,
+    "p50": 0.308392,
+    "p95": 0.386402,
+    "max": 0.609595,
+    "mean": 0.255835
+   },
+   "decoded_L": {
+    "min": 0.12037,
+    "p05": 0.120712,
+    "p50": 0.308967,
+    "p95": 0.386822,
+    "max": 0.609207,
+    "mean": 0.256124
+   },
+   "decode_roundtrip_max_abs_err": 0.00300646,
+   "decode_roundtrip_abs_err": {
+    "p50": 0.000574,
+    "p95": 0.001099,
+    "max": 0.00300646
+   },
+   "decode_roundtrip_rel_err": {
+    "p50": 0.001863,
+    "p95": 0.002448,
+    "max": 0.004454
+   },
+   "roundtrip_note": "max_abs_err 出现在源里极亮的灯/太阳像素上（源 L 最大到 224.9）；该处**相对**误差依然很小，故同时报 p50/p95/max 的绝对与相对误差。",
+   "floor_dominated_px_pct": 33.02,
+   "source": {
+    "cube": "gdansk_shipyard_buildings02",
+    "face": 5,
+    "axis": "-Z",
+    "file": "gdansk_shipyard_buildings02_f5_m0.png",
+    "sha256": "f8c3080987ec88e41b6c952be770fb8c67ee10d55dec813f2fae774eed82b180",
+    "src_decoded_L": {
+     "min": 0.004058,
+     "p05": 0.018573,
+     "p50": 0.493851,
+     "p95": 0.63028,
+     "max": 1.038963,
+     "mean": 0.361005
+    },
+    "src_alpha": {
+     "min": 0.007843,
+     "p50": 0.047059,
+     "max": 0.07451,
+     "mean": 0.039799
+    },
+    "src_rgb_lum": {
+     "min": 0.526449,
+     "p05": 0.686809,
+     "p50": 0.926324,
+     "p95": 0.933333,
+     "max": 0.997195,
+     "mean": 0.848071
+    },
+    "src_near_black_luma_lt_0.05_pct": 0.0,
+    "src_dark_L_lt_0.01_pct": 0.6042
+   }
+  }
+ ],
+ "faces_encoding": "rgbm",
+ "summary": {
+  "decoded_L_p50_per_face": [
+   0.30651,
+   0.308967,
+   0.449767,
+   0.308967,
+   0.308967,
+   0.308967
+  ],
+  "decoded_L_min_per_face": [
+   0.12037,
+   0.12037,
+   0.12037,
+   0.308967,
+   0.12037,
+   0.12037
+  ],
+  "decoded_L_p50_min_face": 0.30651,
+  "decoded_L_p50_max_face": 0.449767,
+  "decoded_L_min_over_all": 0.12037,
+  "src_decoded_L_p50_per_face": [
+   0.489709,
+   0.493851,
+   0.748505,
+   0.493851,
+   0.493851,
+   0.493851
+  ],
+  "K_applied_to_source_p50_ratio": 0.4095,
+  "band_p50": [
+   0.25,
+   0.45
+  ],
+  "all_faces_p50_in_band": true,
+  "all_pixels_at_or_above_floor": true,
+  "near_black_px_pct_all_faces": 0.0,
+  "source_near_black_luma_pct_all_faces": 0.0,
+  "source_dark_L_lt_0.01_pct_per_face": [
+   2.8503,
+   1.9592,
+   0.0,
+   0.0,
+   5.3833,
+   0.6042
+  ]
+ },
+ "builder_script": "_build_bright_cube.py",
+ "analyzer_script": "_analyze_source.py",
+ "limitations": [
+  "像素基底是**游戏资产**，但**辐射标定（K / 抬底 / alpha）是自造的** ⇒ 整体为自造近似，非源环境。",
+  "平滑抬底把 L<0.12 的深黑方向抬成**近中性灰**（逐通道取同一底）⇒ 这些方向**丢失细节、趋于消色差**；这是「任何方向都不黑」的必然代价，已如实登记（见 floor_dominated_px_pct_per_face）。",
+  "源 +Y 面解码辐射最大到 224.9（源里有极亮的灯/太阳像素）；本 cube 保留之（经 K 衰减），故仍是高动态范围环境，不是「均匀灰箱」。",
+  "面朝向沿用源 cube 的 six-face 顺序（+X,-X,+Y,-Y,+Z,-Z，与 three.js CubeTextureLoader 一致），未与引擎采样基变换重新对齐。",
+  "该 cube **不是**游戏实际使用的环境；只是为消除金属镜面纯黑而自造的显示用近似环境。"
+ ]
+}

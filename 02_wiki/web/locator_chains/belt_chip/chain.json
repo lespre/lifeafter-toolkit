@@ -1,0 +1,42 @@
+{
+ "chain_id": "belt_chip.conflict",
+ "domain": "belt_chip",
+ "title": "冲突链模板（business verified / physical 断链）",
+ "hops": [
+  "business_input",
+  "runtime_producer",
+  "runtime_semantic",
+  "namespace",
+  "logical_module",
+  "logical_table",
+  "snapshot",
+  "data_entry",
+  "decoded_row",
+  "structural_key",
+  "business_identity",
+  "name_binding",
+  "resolved_entity"
+ ],
+ "evidence_refs": [
+  "registry/namespaces.json",
+  "artifacts/active/item/ITEM_MASTER.jsonl",
+  "analysis/audit/v11_namespace_keys.json"
+ ],
+ "residuals": [
+  "54 chip item id 不在 belt_chip raw key 集（671 条）⇒ structural binding unresolved",
+  "common_item ∩ belt_chip 双列已并入 belt_chip（实现重复，非业务双身份）"
+ ],
+ "rejected_routes": [
+  {
+   "route": "改回 common_item 以消除冲突",
+   "reason": "runtime dispatch 明确指向 belt_chip",
+   "evidence_ref": "artifacts/active/item/ITEM_MASTER.jsonl"
+  },
+  {
+   "route": "用 671 row key 反推 chip id",
+   "reason": "整数碰撞不是映射证据",
+   "evidence_ref": "analysis/audit/v11_namespace_keys.json"
+  }
+ ],
+ "instances_file": "locator_chains/belt_chip/instances.jsonl"
+}

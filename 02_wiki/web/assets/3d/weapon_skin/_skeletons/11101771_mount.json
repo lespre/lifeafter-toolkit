@@ -1,0 +1,647 @@
+{
+ "skin_id": "11101771",
+ "gim_path": "weapon\\skin\\skin_2003_029\\skin_2003_029.gim",
+ "gim_row": null,
+ "gim_bytes": 1604,
+ "gim_sha16": "623ca98b87bcdb30",
+ "mesh_path": "weapon\\skin\\skin_2003_029\\skin_2003_029.mesh",
+ "mesh_row": 3995,
+ "mesh_variant": "(main)",
+ "gim_type_pool": [
+  "BoundObject",
+  "Lod1",
+  "Lod2",
+  "Lod3",
+  "Lod4",
+  "Lods",
+  "NeoX",
+  "Object",
+  "Openworld",
+  "Socket_0",
+  "Socket_1",
+  "Socket_2",
+  "Socket_3",
+  "Socket_4",
+  "Sockets",
+  "Sub0",
+  "Sub1",
+  "Sub2",
+  "SubMesh"
+ ],
+ "gim_property_pool": [
+  "AnimAccumEnable",
+  "BindType",
+  "BoundingCenter",
+  "BoundingHalf",
+  "BoundingInfo",
+  "CompatibleMask",
+  "Dist",
+  "MatrixToBone",
+  "MeshSortMethod",
+  "ModelSceneFlag",
+  "MtlIdx",
+  "MustShow",
+  "Name",
+  "Path",
+  "ReplaceLodLevel",
+  "TangentEnable",
+  "Version"
+ ],
+ "gim_value_region_off": 342,
+ "matrix_to_bone_field_index": 7,
+ "matrix_to_bone": {
+  "offset": 996,
+  "bytes": 70,
+  "count": 16,
+  "values_if_decodable": [
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    -0.25,
+    5.204999923706055,
+    1.0
+   ]
+  ],
+  "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+  "affine_row3_0001": false,
+  "affine_col3_0001": true,
+  "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 5c 8f a6 40 00 00 80 3f",
+  "float_off": 1002,
+  "classification": "non_socket_record_primary_candidate",
+  "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+  "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+ },
+ "matrix_to_bone_records_all": [
+  {
+   "off": 996,
+   "bytes": 70,
+   "count": 16,
+   "float_off": 1002,
+   "row_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.25,
+     5.204999923706055,
+     1.0
+    ]
+   ],
+   "col_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -0.25
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     5.204999923706055
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "affine_row3_0001": false,
+   "affine_col3_0001": true,
+   "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 5c 8f a6 40 00 00 80 3f",
+   "socket_segment_index": null,
+   "in_socket_segment": false
+  },
+  {
+   "off": 1094,
+   "bytes": 70,
+   "count": 16,
+   "float_off": 1100,
+   "row_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.25,
+     12.199999809265137,
+     1.0
+    ]
+   ],
+   "col_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -0.25
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     12.199999809265137
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "affine_row3_0001": false,
+   "affine_col3_0001": true,
+   "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 33 33 43 41 00 00 80 3f",
+   "socket_segment_index": 0,
+   "in_socket_segment": true
+  },
+  {
+   "off": 1195,
+   "bytes": 70,
+   "count": 16,
+   "float_off": 1201,
+   "row_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.25,
+     12.199999809265137,
+     1.0
+    ]
+   ],
+   "col_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -0.25
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     12.199999809265137
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "affine_row3_0001": false,
+   "affine_col3_0001": true,
+   "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 33 33 43 41 00 00 80 3f",
+   "socket_segment_index": 1,
+   "in_socket_segment": true
+  },
+  {
+   "off": 1299,
+   "bytes": 70,
+   "count": 16,
+   "float_off": 1305,
+   "row_major": [
+    [
+     -0.9991999864578247,
+     0.040300000458955765,
+     -0.0035000001080334187,
+     0.0
+    ],
+    [
+     0.04019999876618385,
+     0.9991999864578247,
+     0.004800000227987766,
+     0.0
+    ],
+    [
+     0.003800000064074993,
+     0.004600000102072954,
+     -1.000100016593933,
+     0.0
+    ],
+    [
+     0.25,
+     -0.25,
+     -1.399999976158142,
+     1.0
+    ]
+   ],
+   "col_major": [
+    [
+     -0.9991999864578247,
+     0.04019999876618385,
+     0.003800000064074993,
+     0.25
+    ],
+    [
+     0.040300000458955765,
+     0.9991999864578247,
+     0.004600000102072954,
+     -0.25
+    ],
+    [
+     -0.0035000001080334187,
+     0.004800000227987766,
+     -1.000100016593933,
+     -1.399999976158142
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "affine_row3_0001": false,
+   "affine_col3_0001": true,
+   "raw_hex": "07 06 10 00 00 00 92 cb 7f bf 9d 11 25 3d 42 60 65 bb 00 00 00 00 c1 a8 24 3d 92 cb 7f 3f 52 49 9d 3b 00 00 00 00 6c 09 79 3b 99 bb 96 3b 47 03 80 bf 00 00 00 00 00 00 80 3e 00 00 80 be 33 33 b3 bf 00 00 80 3f",
+   "socket_segment_index": 2,
+   "in_socket_segment": true
+  },
+  {
+   "off": 1399,
+   "bytes": 70,
+   "count": 16,
+   "float_off": 1405,
+   "row_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.20000000298023224,
+     0.0,
+     1.0
+    ]
+   ],
+   "col_major": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -0.20000000298023224
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "affine_row3_0001": false,
+   "affine_col3_0001": true,
+   "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 cd cc 4c be 00 00 00 00 00 00 80 3f",
+   "socket_segment_index": 3,
+   "in_socket_segment": true
+  }
+ ],
+ "matrix_to_bone_record_count": 5,
+ "matrix_to_bone_records_non_socket": 1,
+ "socket_type_declarations": [
+  "Socket_0",
+  "Socket_1",
+  "Socket_2",
+  "Socket_3",
+  "Socket_4"
+ ],
+ "socket_type_declaration_count": 5,
+ "sockets": [
+  {
+   "index": 0,
+   "must_show": "false",
+   "must_show_off": 1066,
+   "name": "rotation",
+   "name_off": 1074,
+   "name_role": "socket_name(段首 Name 记录)",
+   "matrix_to_bone": {
+    "offset": 1094,
+    "bytes": 70,
+    "count": 16,
+    "values_if_decodable": [
+     [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      -0.25,
+      12.199999809265137,
+      1.0
+     ]
+    ],
+    "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+    "affine_row3_0001": false,
+    "affine_col3_0001": true,
+    "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 33 33 43 41 00 00 80 3f",
+    "float_off": 1100
+   },
+   "bound_objects_named_in_record": [],
+   "path_fields_in_record": [],
+   "bound_objects_binding_basis": "同段内 Name/Path 记录；从属关系未定证（假设A：属于本例插槽对象；假设B：属于 Sockets 容器，仅因流序落在最后一段）"
+  },
+  {
+   "index": 1,
+   "must_show": "false",
+   "must_show_off": 1164,
+   "name": "muzzle_fire",
+   "name_off": 1172,
+   "name_role": "socket_name(段首 Name 记录)",
+   "matrix_to_bone": {
+    "offset": 1195,
+    "bytes": 70,
+    "count": 16,
+    "values_if_decodable": [
+     [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      -0.25,
+      12.199999809265137,
+      1.0
+     ]
+    ],
+    "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+    "affine_row3_0001": false,
+    "affine_col3_0001": true,
+    "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 33 33 43 41 00 00 80 3f",
+    "float_off": 1201
+   },
+   "bound_objects_named_in_record": [],
+   "path_fields_in_record": [],
+   "bound_objects_binding_basis": "同段内 Name/Path 记录；从属关系未定证（假设A：属于本例插槽对象；假设B：属于 Sockets 容器，仅因流序落在最后一段）"
+  },
+  {
+   "index": 2,
+   "must_show": "false",
+   "must_show_off": 1265,
+   "name": "muzzle_fire_02",
+   "name_off": 1273,
+   "name_role": "socket_name(段首 Name 记录)",
+   "matrix_to_bone": {
+    "offset": 1299,
+    "bytes": 70,
+    "count": 16,
+    "values_if_decodable": [
+     [
+      -0.9991999864578247,
+      0.040300000458955765,
+      -0.0035000001080334187,
+      0.0
+     ],
+     [
+      0.04019999876618385,
+      0.9991999864578247,
+      0.004800000227987766,
+      0.0
+     ],
+     [
+      0.003800000064074993,
+      0.004600000102072954,
+      -1.000100016593933,
+      0.0
+     ],
+     [
+      0.25,
+      -0.25,
+      -1.399999976158142,
+      1.0
+     ]
+    ],
+    "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+    "affine_row3_0001": false,
+    "affine_col3_0001": true,
+    "raw_hex": "07 06 10 00 00 00 92 cb 7f bf 9d 11 25 3d 42 60 65 bb 00 00 00 00 c1 a8 24 3d 92 cb 7f 3f 52 49 9d 3b 00 00 00 00 6c 09 79 3b 99 bb 96 3b 47 03 80 bf 00 00 00 00 00 00 80 3e 00 00 80 be 33 33 b3 bf 00 00 80 3f",
+    "float_off": 1305
+   },
+   "bound_objects_named_in_record": [],
+   "path_fields_in_record": [],
+   "bound_objects_binding_basis": "同段内 Name/Path 记录；从属关系未定证（假设A：属于本例插槽对象；假设B：属于 Sockets 容器，仅因流序落在最后一段）"
+  },
+  {
+   "index": 3,
+   "must_show": "false",
+   "must_show_off": 1369,
+   "name": "pifuguashi",
+   "name_off": 1377,
+   "name_role": "socket_name(段首 Name 记录)",
+   "matrix_to_bone": {
+    "offset": 1399,
+    "bytes": 70,
+    "count": 16,
+    "values_if_decodable": [
+     [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+     ],
+     [
+      0.0,
+      -0.20000000298023224,
+      0.0,
+      1.0
+     ]
+    ],
+    "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+    "affine_row3_0001": false,
+    "affine_col3_0001": true,
+    "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 cd cc 4c be 00 00 00 00 00 00 80 3f",
+    "float_off": 1405
+   },
+   "bound_objects_named_in_record": [],
+   "path_fields_in_record": [],
+   "bound_objects_binding_basis": "同段内 Name/Path 记录；从属关系未定证（假设A：属于本例插槽对象；假设B：属于 Sockets 容器，仅因流序落在最后一段）"
+  },
+  {
+   "index": 4,
+   "must_show": "true",
+   "must_show_off": 1469,
+   "name": "fx01",
+   "name_off": 1476,
+   "name_role": "socket_name(段首 Name 记录)",
+   "matrix_to_bone": null,
+   "bound_objects_named_in_record": [
+    "utility\\utility_1740\\utility_1740.gim",
+    "effect\\fx\\weapon\\skin\\skin_2003_029\\fx_skin_2003_029_idle_02.sfx"
+   ],
+   "path_fields_in_record": [],
+   "bound_objects_binding_basis": "同段内 Name/Path 记录；从属关系未定证（假设A：属于本例插槽对象；假设B：属于 Sockets 容器，仅因流序落在最后一段）"
+  }
+ ],
+ "socket_count_from_records": 5,
+ "record_grammar_evidence": {
+  "record_head": "<u8 字段号><u8 类型>",
+  "type_table": "01=string(NUL 结尾) / 02=i32 / 03=u32 / 05=f32 / 06=u32 count+N*float32（项目既有 c159_parser.py:7-8,51-57 实测口径）",
+  "matrix_record": "字段号=7(=MatrixToBone 在属性名池下标) 类型 06 count=16 → 16*float32",
+  "socket_marker": "0b 01 true|false 00（MustShow 字段，字段号 11）后接 0c 01 <名字> 00（Name 字段，字段号 12）"
+ },
+ "cross_check": {
+  "roster_model_extra_scale": 1.27,
+  "primary_matrix_diag_xyz": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "diag_matches_roster_scale": false,
+  "note": "对角 ≠ model_extra_scale 时不据此推断任何语义（本项仅作交叉核对）"
+ },
+ "unresolved": [
+  "MatrixToBone 记录与对象的归属（模型根/容器/子网格/插槽）未定证；仅按插槽段精确包含判定插槽记录",
+  "16 float 的行/列主序未定证（默认按 row-major 展示；affine_row3_0001 / affine_col3_0001 两个判据都给出）",
+  "绑定对象（.sfx/.gim/utility 路径）与插槽的从属关系未定证（记录顺序推断，假设 A/B 见 sockets[].bound_objects_binding_basis）",
+  "插槽绑定目标是否即运行时挂接对象未定证",
+  "pifuguashi/muzzle_fire_02 等部分插槽无 MatrixToBone 记录（取 None，不填零矩阵）"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "claim": "216 个原 unresolved item id 由 namespace 表 raw row key 命中升级",
+ "status": "verified",
+ "evidence_type": "runtime_namespace_membership",
+ "producer": "pipelines/locator/resolve_table.py + pipelines/parsing/decoder.py",
+ "detail": {
+  "recipe": 206,
+  "reward_pool": 9,
+  "space_data": 1
+ },
+ "basis": "row key 命中该 namespace 表（BA8A 工作副本，inventory 索引空间一致）",
+ "residual": [
+  "dispatch 顺序 opcode-level unresolved",
+  "5 个 id 多 namespace 命中（recipe+reward_pool）保持 unresolved"
+ ]
+}

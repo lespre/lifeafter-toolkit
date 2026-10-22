@@ -1,0 +1,28 @@
+{
+ "label": "lightx10",
+ "generated_at": "2026-09-20 13:40:37",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "03e9768e8b97dfb2",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "0118c7fa3dc3f710",
+ "patch": {
+  "note": "判别实验：灯强度 ×10（hemisphere 13.5 / key 22 / fill 7.5）。若画面仍无变化 ⇒ 链材质不接受方向光",
+  "viewer": {
+   "hemisphere_intensity": 13.5,
+   "key_intensity": 22.0,
+   "fill_intensity": 7.5,
+   "key_shadow": true
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "fill_intensity",
+   "hemisphere_intensity",
+   "key_intensity",
+   "key_shadow"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_lightx10.json"
+}

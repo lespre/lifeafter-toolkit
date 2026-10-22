@@ -1,0 +1,385 @@
+{
+  "index_name": "铠甲勇士相关文件索引",
+  "created_time": "2026-08-29 16:04:35",
+  "source_packages": {
+    "ui_01.gpk": {
+      "path": "E:\\mrzh\\res\\ui_01.gpk",
+      "size_mb": 1322.54,
+      "entry_count": 79769,
+      "unpack_dir": "E:\\提取成果\\拆包产物\\ui_01",
+      "description": "UI界面资源包，包含活动界面、抽奖界面、称号、收藏图鉴、典藏时装等"
+    },
+    "weapon.gpk": {
+      "path": "E:\\mrzh\\res\\weapon.gpk",
+      "size_mb": 1451.91,
+      "entry_count": 51665,
+      "unpack_dir": "E:\\提取成果\\拆包产物\\weapon",
+      "description": "武器资源包，包含武器模型、武器皮肤、武器纹理等"
+    }
+  },
+  "key_files": {
+    "ui_01.gpk": [
+      {
+        "file": "004527.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian",
+          "dihuang",
+          "kaijiayongshi",
+          "armor"
+        ],
+        "content": "活动UI总览，包含帝皇铠甲文字标题、铠甲勇士Logo、刑天花脸图标（可能是非人哉联动，需排除）、铠甲图标",
+        "importance": "高"
+      },
+      {
+        "file": "015275.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi"
+        ],
+        "content": "称号图集01，chenghao_kaijiayongshi_01.png（1024×1024），铠甲勇士称号",
+        "related_dds": "015274.dds",
+        "importance": "高"
+      },
+      {
+        "file": "015277.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi"
+        ],
+        "content": "称号图集02，chenghao_kaijiayongshi_02.png（1024×1024），铠甲勇士称号（微信分享版）",
+        "related_dds": "015276.dds",
+        "importance": "高"
+      },
+      {
+        "file": "016422.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi"
+        ],
+        "content": "称号面板，chenghao/miwuhaiyu/chenghao_kaijiayongshi_01.plist，迷雾海域铠甲勇士称号",
+        "importance": "中"
+      },
+      {
+        "file": "016423.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi"
+        ],
+        "content": "称号面板，chenghao/miwuhaiyu/chenghao_kaijiayongshi_02.plist，迷雾海域铠甲勇士称号",
+        "importance": "中"
+      },
+      {
+        "file": "016949.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士联动活动入口，kaijialiandong/kjysmh/btn_chakan_nor.png，铠甲勇士Logo",
+        "importance": "高"
+      },
+      {
+        "file": "017028.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi"
+        ],
+        "content": "铠甲勇士福袋，kaijiayongshi/fudai/img_ts_lz.png",
+        "importance": "中"
+      },
+      {
+        "file": "017029.bin",
+        "size": 0,
+        "keywords": [
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖保底，pnl_baodi_kjys>shizhuang_choujiang_mix_baodi_tishi_v6",
+        "importance": "高"
+      },
+      {
+        "file": "023666.bin",
+        "size": 488646,
+        "keywords": [
+          "dihuang",
+          "kaijiayongshi",
+          "kjys",
+          "jiguang",
+          "shoucangtujian",
+          "diancangshizhuang"
+        ],
+        "content": "Spine动画资源索引，包含：帝皇铠甲收藏图鉴（背景/领取/标题）、铠甲勇士典藏时装（福袋/幻彩系列/载具/女性时装/道具1-4，共38个文件）、极光环境（极光剑特效？）",
+        "importance": "极高",
+        "detailed_content": {
+          "帝皇铠甲收藏图鉴": [
+            "ui/spine_new/shoucangtujian/dihuangkaijia/dihuangkaijia_bg.atlas/json",
+            "ui/spine_new/shoucangtujian/dihuangkaijia/dihuangkaijia_lingqu.atlas/json",
+            "ui/spine_new/shoucangtujian/dihuangkaijia/dihuangkaijia_title.atlas/json"
+          ],
+          "铠甲勇士典藏时装": [
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/fudai.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/fudai_big.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_bide.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_box.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_btn_1.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_btn_2.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_car.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_female.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_item_1.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_item_2.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_item_3.atlas/json",
+            "ui/spine_new/diancangshizhuang/kaijiayongshi/huancai_kjys_item_4.atlas/json"
+          ],
+          "极光环境": [
+            "ui/spine_new/jiajuchoujiang/jiguanghuanjing/jiguanghuanjing_kaiping.atlas/json"
+          ]
+        }
+      },
+      {
+        "file": "026475.bin",
+        "size": 0,
+        "keywords": [
+          "dihuang",
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖界面，txt_dihuangkaijia.png（帝皇铠甲文字），kaijiayongshi/choujiang/btn_diancangbiao_nor.png（典藏标），huancai_diancang_choujiang_kjys_item_4（幻彩典藏抽奖道具4）",
+        "importance": "高"
+      },
+      {
+        "file": "026476.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖奖励，img_kjysjl_02.png（铠甲勇士奖励图片2）",
+        "importance": "高"
+      },
+      {
+        "file": "026477.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖奖励，img_kjysjl_05.png（铠甲勇士奖励图片5）",
+        "importance": "高"
+      },
+      {
+        "file": "026478.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖奖励，img_kjysjl_01.png（铠甲勇士奖励图片1）",
+        "importance": "高"
+      },
+      {
+        "file": "026479.bin",
+        "size": 0,
+        "keywords": [
+          "kaijia",
+          "kaijiayongshi",
+          "kjys"
+        ],
+        "content": "铠甲勇士抽奖奖励，img_kjysjl_03.png（铠甲勇士奖励图片3）",
+        "importance": "高"
+      },
+      {
+        "file": "068961.bin",
+        "size": 27000,
+        "keywords": [
+          "帝皇"
+        ],
+        "content": "帝皇侠剧情文本，包含\"曰诏帝皇，命承天奉\"等",
+        "importance": "中"
+      },
+      {
+        "file": "068962.bin",
+        "size": 0,
+        "keywords": [
+          "帝皇"
+        ],
+        "content": "帝皇侠剧情文本，包含\"曰诏帝皇，命承天奉\"等",
+        "importance": "中"
+      },
+      {
+        "file": "018340.bin",
+        "size": 92000,
+        "keywords": [
+          "武器皮肤"
+        ],
+        "content": "武器皮肤UI配置",
+        "importance": "中"
+      },
+      {
+        "file": "018352.bin",
+        "size": 324000,
+        "keywords": [
+          "武器皮肤"
+        ],
+        "content": "武器皮肤UI配置",
+        "importance": "中"
+      },
+      {
+        "file": "018356.bin",
+        "size": 0,
+        "keywords": [
+          "武器皮肤"
+        ],
+        "content": "武器皮肤UI配置",
+        "importance": "中"
+      }
+    ],
+    "weapon.gpk": [
+      {
+        "file": "054634.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian"
+        ],
+        "content": "刑天相关（武器包）",
+        "importance": "中"
+      },
+      {
+        "file": "054635.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian"
+        ],
+        "content": "刑天相关（武器包）",
+        "importance": "中"
+      },
+      {
+        "file": "054638.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian"
+        ],
+        "content": "刑天相关（武器包）",
+        "importance": "中"
+      },
+      {
+        "file": "054640.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian"
+        ],
+        "content": "刑天相关（武器包）",
+        "importance": "中"
+      },
+      {
+        "file": "054642.bin",
+        "size": 0,
+        "keywords": [
+          "xingtian"
+        ],
+        "content": "刑天相关（武器包）",
+        "importance": "中"
+      },
+      {
+        "file": "054656.bin",
+        "size": 0,
+        "keywords": [
+          "zhanshen"
+        ],
+        "content": "战神相关（武器包，可能是战神烈火剑）",
+        "importance": "高"
+      },
+      {
+        "file": "056357.bin",
+        "size": 0,
+        "keywords": [
+          "zhanshen"
+        ],
+        "content": "战神相关（武器包，可能是战神烈火剑）",
+        "importance": "高"
+      },
+      {
+        "file": "054665.bin",
+        "size": 0,
+        "keywords": [
+          "dihuang"
+        ],
+        "content": "帝皇相关（武器包，可能是帝皇裁决/帝皇侠）",
+        "importance": "高"
+      },
+      {
+        "file": "054667.bin",
+        "size": 0,
+        "keywords": [
+          "dihuang"
+        ],
+        "content": "帝皇相关（武器包，可能是帝皇裁决/帝皇侠）",
+        "importance": "高"
+      },
+      {
+        "file": "054669.bin",
+        "size": 0,
+        "keywords": [
+          "dihuang"
+        ],
+        "content": "帝皇相关（武器包，可能是帝皇裁决/帝皇侠）",
+        "importance": "高"
+      },
+      {
+        "file": "072117.bin",
+        "size": 0,
+        "keywords": [
+          "dihuang"
+        ],
+        "content": "帝皇相关",
+        "importance": "中"
+      },
+      {
+        "file": "072345.bin",
+        "size": 0,
+        "keywords": [
+          "caijue"
+        ],
+        "content": "裁决相关（可能是帝皇裁决）",
+        "importance": "高"
+      }
+    ]
+  },
+  "summary": {
+    "total_key_files": 42,
+    "ui_01_files": 28,
+    "weapon_files": 14,
+    "highest_importance": [
+      "023666.bin",
+      "004527.bin",
+      "016949.bin",
+      "017029.bin",
+      "026475.bin",
+      "026476-026479.bin"
+    ],
+    "confirmed_content": [
+      "帝皇铠甲收藏图鉴（3组Spine动画）",
+      "铠甲勇士典藏时装（38个文件，含福袋/幻彩系列/载具/女性时装/道具1-4）",
+      "铠甲勇士称号（2个1024×1024图集）",
+      "铠甲勇士抽奖界面和奖励图片（5张kjysjl）",
+      "帝皇侠剧情文本",
+      "武器皮肤UI配置",
+      "刑天/战神/帝皇相关武器文件（weapon.gpk）"
+    ],
+    "pending_analysis": [
+      "找到Spine动画对应的实际纹理文件（.dds/.png）",
+      "把纹理转成PNG供查看",
+      "深入分析weapon.gpk中的刑天/战神/帝皇武器文件",
+      "确认幻彩铠甲勇士道具1-4对应的武器皮肤（极光剑/帝皇裁决/战神烈火剑/疾影枪？）"
+    ]
+  }
+}

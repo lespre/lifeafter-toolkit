@@ -1,0 +1,577 @@
+{
+ "note": "只读分析；源资产未被修改。decode = pow(rgb*a*16,2) per asm 542-544.",
+ "gdansk_shipyard_buildings02": {
+  "cube": "gdansk_shipyard_buildings02",
+  "faces": [
+   {
+    "face": 0,
+    "axis": "+X",
+    "file": "gdansk_shipyard_buildings02_f0_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 22864,
+    "sha256": "7b82819e724ad5417fe02be34cba16d93416907d9ae9fa58c4e3a853d40ca465",
+    "rgb_lum": {
+     "min": 0.47018,
+     "p05": 0.69123,
+     "p50": 0.92941,
+     "p95": 0.93333,
+     "max": 0.99832,
+     "mean": 0.86491
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.36078,
+     "p05": 0.52157,
+     "p50": 0.92549,
+     "p95": 0.93333,
+     "max": 0.99216,
+     "mean": 0.80504
+    },
+    "alpha": {
+     "min": 0.00392,
+     "p05": 0.01176,
+     "p50": 0.04706,
+     "p95": 0.04706,
+     "max": 0.07059,
+     "mean": 0.03446
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.00321,
+     "p05": 0.01314,
+     "p50": 0.48971,
+     "p95": 0.49385,
+     "max": 0.80091,
+     "mean": 0.30062
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 2.85
+   },
+   {
+    "face": 1,
+    "axis": "-X",
+    "file": "gdansk_shipyard_buildings02_f1_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 21085,
+    "sha256": "148ba40aa8bb9cca09806016911fa99072cccd7f4fdc41095b4c1f29b3fc76fe",
+    "rgb_lum": {
+     "min": 0.46383,
+     "p05": 0.66592,
+     "p50": 0.93333,
+     "p95": 0.94687,
+     "max": 0.99943,
+     "mean": 0.86895
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.41176,
+     "p05": 0.5451,
+     "p50": 0.92941,
+     "p95": 0.93333,
+     "max": 0.99608,
+     "mean": 0.82955
+    },
+    "alpha": {
+     "min": 0.00392,
+     "p05": 0.00784,
+     "p50": 0.04706,
+     "p95": 0.08235,
+     "max": 0.13725,
+     "mean": 0.04196
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.00145,
+     "p05": 0.01291,
+     "p50": 0.49385,
+     "p95": 1.50152,
+     "max": 4.38448,
+     "mean": 0.48287
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 1.959
+   },
+   {
+    "face": 2,
+    "axis": "+Y",
+    "file": "gdansk_shipyard_buildings02_f2_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 32345,
+    "sha256": "dfa4a8bc35952b9acb072f23c4c4715e5e357c30778b79ae3cfa615d44665264",
+    "rgb_lum": {
+     "min": 0.63437,
+     "p05": 0.69185,
+     "p50": 0.81355,
+     "p95": 0.98939,
+     "max": 1.0,
+     "mean": 0.83457
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.36863,
+     "p05": 0.5098,
+     "p50": 0.66667,
+     "p95": 0.98039,
+     "max": 1.0,
+     "mean": 0.72332
+    },
+    "alpha": {
+     "min": 0.01176,
+     "p05": 0.01961,
+     "p50": 0.06667,
+     "p95": 0.16078,
+     "max": 0.93725,
+     "mean": 0.08427
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.01595,
+     "p05": 0.07107,
+     "p50": 0.7485,
+     "p95": 6.39515,
+     "max": 224.88237,
+     "mean": 2.7489
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 3,
+    "axis": "-Y",
+    "file": "gdansk_shipyard_buildings02_f3_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 393,
+    "sha256": "9828cd2ed58d889b1be1b74bd2d2460a1750de25784bf30f77e3c431df9e3920",
+    "rgb_lum": {
+     "min": 0.93333,
+     "p05": 0.93333,
+     "p50": 0.93333,
+     "p95": 0.93333,
+     "max": 0.93333,
+     "mean": 0.93333
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.93333,
+     "p05": 0.93333,
+     "p50": 0.93333,
+     "p95": 0.93333,
+     "max": 0.93333,
+     "mean": 0.93333
+    },
+    "alpha": {
+     "min": 0.04706,
+     "p05": 0.04706,
+     "p50": 0.04706,
+     "p95": 0.04706,
+     "max": 0.04706,
+     "mean": 0.04706
+    },
+    "alpha_is_constant": true,
+    "decoded_L": {
+     "min": 0.49385,
+     "p05": 0.49385,
+     "p50": 0.49385,
+     "p95": 0.49385,
+     "max": 0.49385,
+     "mean": 0.49385
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 4,
+    "axis": "+Z",
+    "file": "gdansk_shipyard_buildings02_f4_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 22596,
+    "sha256": "9c94dbff535c0446f14e2570853e72900964ae6b13779f99d7f158c42cf3720d",
+    "rgb_lum": {
+     "min": 0.4244,
+     "p05": 0.65736,
+     "p50": 0.93333,
+     "p95": 0.94156,
+     "max": 1.0,
+     "mean": 0.87067
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.35686,
+     "p05": 0.62353,
+     "p50": 0.92941,
+     "p95": 0.93333,
+     "max": 1.0,
+     "mean": 0.85011
+    },
+    "alpha": {
+     "min": 0.00392,
+     "p05": 0.00784,
+     "p50": 0.04706,
+     "p95": 0.07059,
+     "max": 0.40784,
+     "mean": 0.03618
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.00076,
+     "p05": 0.00964,
+     "p50": 0.49385,
+     "p95": 1.10907,
+     "max": 42.2487,
+     "mean": 0.42363
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 5.383
+   },
+   {
+    "face": 5,
+    "axis": "-Z",
+    "file": "gdansk_shipyard_buildings02_f5_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 20052,
+    "sha256": "f8c3080987ec88e41b6c952be770fb8c67ee10d55dec813f2fae774eed82b180",
+    "rgb_lum": {
+     "min": 0.52645,
+     "p05": 0.68681,
+     "p50": 0.92632,
+     "p95": 0.93333,
+     "max": 0.9972,
+     "mean": 0.84807
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.23529,
+     "p05": 0.43922,
+     "p50": 0.92157,
+     "p95": 0.93333,
+     "max": 0.99608,
+     "mean": 0.74885
+    },
+    "alpha": {
+     "min": 0.00784,
+     "p05": 0.01176,
+     "p50": 0.04706,
+     "p95": 0.06667,
+     "max": 0.07451,
+     "mean": 0.0398
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.00406,
+     "p05": 0.01857,
+     "p50": 0.49385,
+     "p95": 0.63028,
+     "max": 1.03896,
+     "mean": 0.361
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.604
+   }
+  ]
+ },
+ "over_the_clouds": {
+  "cube": "over_the_clouds",
+  "faces": [
+   {
+    "face": 0,
+    "axis": "+X",
+    "file": "over_the_clouds_f0_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 19741,
+    "sha256": "ce5464a05d1426be0c85e5749460ced36147b3a94fa1532d82e24d07cd121f7d",
+    "rgb_lum": {
+     "min": 0.58531,
+     "p05": 0.64109,
+     "p50": 0.80225,
+     "p95": 0.9141,
+     "max": 0.96847,
+     "mean": 0.78548
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.45098,
+     "p05": 0.50588,
+     "p50": 0.7098,
+     "p95": 0.85098,
+     "max": 0.92157,
+     "mean": 0.68379
+    },
+    "alpha": {
+     "min": 0.01961,
+     "p05": 0.02353,
+     "p50": 0.03529,
+     "p95": 0.04706,
+     "max": 0.0549,
+     "mean": 0.03343
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.05664,
+     "p05": 0.06993,
+     "p50": 0.20051,
+     "p95": 0.44083,
+     "max": 0.61908,
+     "mean": 0.21287
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 1,
+    "axis": "-X",
+    "file": "over_the_clouds_f1_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 20913,
+    "sha256": "2cce2dedf6a7dfecae6f43c46ae24efae42c2ca0a85b29b1eec0d82d116ba62d",
+    "rgb_lum": {
+     "min": 0.58083,
+     "p05": 0.63715,
+     "p50": 0.80099,
+     "p95": 0.91617,
+     "max": 0.9952,
+     "mean": 0.78813
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.44314,
+     "p05": 0.49412,
+     "p50": 0.69804,
+     "p95": 0.8549,
+     "max": 0.96078,
+     "mean": 0.68585
+    },
+    "alpha": {
+     "min": 0.01961,
+     "p05": 0.01961,
+     "p50": 0.03137,
+     "p95": 0.04314,
+     "max": 0.0549,
+     "mean": 0.03247
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.04888,
+     "p05": 0.05708,
+     "p50": 0.20211,
+     "p95": 0.3955,
+     "max": 0.66387,
+     "mean": 0.20097
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 2,
+    "axis": "+Y",
+    "file": "over_the_clouds_f2_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 10543,
+    "sha256": "e1168b43b7b5b0db3ac910670c51d98fa50b02ba71176ec8019d50bced0c706c",
+    "rgb_lum": {
+     "min": 0.5811,
+     "p05": 0.58979,
+     "p50": 0.71016,
+     "p95": 0.80119,
+     "max": 0.83726,
+     "mean": 0.70048
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.44706,
+     "p05": 0.4549,
+     "p50": 0.60784,
+     "p95": 0.69412,
+     "max": 0.74902,
+     "mean": 0.58572
+    },
+    "alpha": {
+     "min": 0.01961,
+     "p05": 0.01961,
+     "p50": 0.01961,
+     "p95": 0.02353,
+     "max": 0.02745,
+     "mean": 0.02157
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.04049,
+     "p05": 0.04198,
+     "p50": 0.06759,
+     "p95": 0.1011,
+     "max": 0.14172,
+     "mean": 0.06795
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 3,
+    "axis": "-Y",
+    "file": "over_the_clouds_f3_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 26839,
+    "sha256": "53ca54416bd65b84bc8a0de65f58ffaf06af371339336f447fc5fcf79687e244",
+    "rgb_lum": {
+     "min": 0.73951,
+     "p05": 0.7879,
+     "p50": 0.85646,
+     "p95": 0.92454,
+     "max": 0.98075,
+     "mean": 0.85723
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.63529,
+     "p05": 0.70588,
+     "p50": 0.78824,
+     "p95": 0.87059,
+     "max": 0.94902,
+     "mean": 0.78811
+    },
+    "alpha": {
+     "min": 0.02353,
+     "p05": 0.02745,
+     "p50": 0.03137,
+     "p95": 0.03922,
+     "max": 0.04314,
+     "mean": 0.03239
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.11179,
+     "p05": 0.13768,
+     "p50": 0.19903,
+     "p95": 0.29128,
+     "max": 0.39786,
+     "mean": 0.20563
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 4,
+    "axis": "+Z",
+    "file": "over_the_clouds_f4_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 24354,
+    "sha256": "583ffa240f3e99e7269854be55a5d950e55a205ee2786a16af89cc4cd240cd3e",
+    "rgb_lum": {
+     "min": 0.68213,
+     "p05": 0.74044,
+     "p50": 0.88554,
+     "p95": 0.96736,
+     "max": 0.9969,
+     "mean": 0.87157
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.56863,
+     "p05": 0.62745,
+     "p50": 0.81961,
+     "p95": 0.92157,
+     "max": 0.98039,
+     "mean": 0.79591
+    },
+    "alpha": {
+     "min": 0.02353,
+     "p05": 0.02745,
+     "p50": 0.04314,
+     "p95": 0.06275,
+     "max": 1.0,
+     "mean": 0.04447
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.09305,
+     "p05": 0.12031,
+     "p50": 0.35966,
+     "p95": 0.89619,
+     "max": 243.59993,
+     "mean": 0.67156
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   },
+   {
+    "face": 5,
+    "axis": "-Z",
+    "file": "over_the_clouds_f5_m0.png",
+    "png_mode": "RGBA",
+    "size": [
+     128,
+     128
+    ],
+    "bytes": 19869,
+    "sha256": "58791d5db85d9e636b8d12585188ae3e26a15314e6947ce7c730a6e383763a47",
+    "rgb_lum": {
+     "min": 0.57356,
+     "p05": 0.60355,
+     "p50": 0.74808,
+     "p95": 0.86831,
+     "max": 0.99495,
+     "mean": 0.7353
+    },
+    "rgb_min_channel_p50": {
+     "min": 0.43529,
+     "p05": 0.45882,
+     "p50": 0.62353,
+     "p95": 0.78824,
+     "max": 0.97647,
+     "mean": 0.61429
+    },
+    "alpha": {
+     "min": 0.01961,
+     "p05": 0.01961,
+     "p50": 0.02745,
+     "p95": 0.03922,
+     "max": 0.04706,
+     "mean": 0.02854
+    },
+    "alpha_is_constant": false,
+    "decoded_L": {
+     "min": 0.04437,
+     "p05": 0.04811,
+     "p50": 0.14063,
+     "p95": 0.27879,
+     "max": 0.48577,
+     "mean": 0.1396
+    },
+    "dark_luma_lt_0.05_pct": 0.0,
+    "dark_L_lt_0.01_pct": 0.0
+   }
+  ]
+ }
+}

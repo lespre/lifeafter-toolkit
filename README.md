@@ -6,7 +6,7 @@
 **不修改游戏客户端**，不做动态注入。
 
 > **[⬇️ 下载最新版（Agent 接手包）](https://github.com/lespre/lifeafter-toolkit/releases/latest)**
-> —— 一个包就能交接：解压 → 读 `00_治理/手册/AGENT.md` → 跑 `verify` 即可开工。
+> —— 一个包就能交接：解压 → 读 `00_规范与工具/治理/手册/AGENT.md` → 跑 `verify` 即可开工。
 
 ## 主要功能：定位与渲染
 
@@ -31,7 +31,7 @@
 · 只要手上是【测试服客户端 + 对应热更源】，就能：
     · 定位正式服还没有的资源
     · 做【正式服 vs 测试服】的 fid 级 diff ⇒ 提前知道这期上什么
-· 判据与切服方法见 00_治理/手册/CDN-AND-VERSION.md
+· 判据与切服方法见 00_规范与工具/治理/手册/CDN-AND-VERSION.md
 · ⚠️ 服别不能混：APK/模拟器 = 正式服；PC 客户端可能是体验服 ⇒ 名字/fid 可能不同
 ```
 
@@ -45,39 +45,39 @@
 
 **① 项目总览页（三线三带）** —— 一条线看全：索引 → 定位 → 还原 → 呈现
 
-![项目总览页](00_治理/手册/images/web-home.png)
+![项目总览页](00_规范与工具/治理/手册/images/web-home.png)
 
 **② 图鉴站（Wiki）首页** —— 定位成果的可视化出口
 
-![Wiki 首页](00_治理/手册/images/web-wiki.png)
+![Wiki 首页](00_规范与工具/治理/手册/images/web-wiki.png)
 
 **③ 武器皮肤图鉴** —— 122 条皮肤，品级 / 上架状态 / 名称核验逐条标注
 
-![武器皮肤图鉴](00_治理/手册/images/web-weapon-skin.png)
+![武器皮肤图鉴](00_规范与工具/治理/手册/images/web-weapon-skin.png)
 
 **④ PvP 场景平衡** —— 98 组场景档位，同名同值合并，重点场景置顶
 
-![PvP 场景平衡](00_治理/手册/images/web-scene.png)
+![PvP 场景平衡](00_规范与工具/治理/手册/images/web-scene.png)
 
 **⑤ 伤害公式** —— 从 Python 字节码反编译出来的结算链
 
-![伤害公式](00_治理/手册/images/web-damage.png)
+![伤害公式](00_规范与工具/治理/手册/images/web-damage.png)
 
 **⑥ 名片框外观** —— PE 源 `.ktx` 定位 + 高清优先，454 条里挂上 369 张图
 
-![名片框外观](00_治理/手册/images/web-avatar.png)
+![名片框外观](00_规范与工具/治理/手册/images/web-avatar.png)
 
 **⑦ Spine 图集** —— atlas + json + 贴图页三件套，71 套
 
-![Spine 图集](00_治理/手册/images/web-spine.png)
+![Spine 图集](00_规范与工具/治理/手册/images/web-spine.png)
 
 **⑧ 时装渲染（专题）**
 
-![时装渲染](00_治理/手册/images/web-fashion.png)
+![时装渲染](00_规范与工具/治理/手册/images/web-fashion.png)
 
 **⑨ 定位成果：皮肤自带的 7 张贴图** —— 按哈希锚定 + 邻接取出，非猜测
 
-![皮肤 7 张贴图](00_治理/手册/images/skin-textures.png)
+![皮肤 7 张贴图](00_规范与工具/治理/手册/images/skin-textures.png)
 
 > ⚠️ 以上均为**工具产出**；仓库不含游戏原始资源与还原树。
 > 图里出现的具体皮肤 / 活动仅作**技术演示**。
@@ -118,24 +118,25 @@
 - [常见坑](#常见坑)
 
 **配套文档**：
-[`00_治理/手册/CLI.md`](00_治理/手册/CLI.md) CLI 逐条手册 ·
-[`00_治理/手册/USAGE.md`](00_治理/手册/USAGE.md) 实战工作流 ·
-[`00_治理/手册/AGENT.md`](00_治理/手册/AGENT.md) **Agent 冷启动手册** ·
-[`00_治理/手册/CDN-AND-VERSION.md`](00_治理/手册/CDN-AND-VERSION.md) **CDN 与版本体系（含切服）** ·
-[`00_治理/手册/APK-UNPACK.md`](00_治理/手册/APK-UNPACK.md) **APK 拆包思路**
+[`00_规范与工具/治理/手册/CLI.md`](00_规范与工具/治理/手册/CLI.md) CLI 逐条手册 ·
+[`00_规范与工具/治理/手册/USAGE.md`](00_规范与工具/治理/手册/USAGE.md) 实战工作流 ·
+[`00_规范与工具/治理/手册/AGENT.md`](00_规范与工具/治理/手册/AGENT.md) **Agent 冷启动手册** ·
+[`00_规范与工具/治理/手册/CDN-AND-VERSION.md`](00_规范与工具/治理/手册/CDN-AND-VERSION.md) **CDN 与版本体系（含切服）** ·
+[`00_规范与工具/治理/手册/APK-UNPACK.md`](00_规范与工具/治理/手册/APK-UNPACK.md) **APK 拆包思路**
 
 ---
 
 ## 这个仓库是什么
 
-| 层 | 内容 |
-|---|---|
-| **00_治理** | 台账 / 规范 / 索引（唯一权威描述来源） |
-| **01_工具** | 全部工具链：解码定位复原 · 图文音频渲染 · 共享核心 |
-| **04_站点** | 可视化页面（wiki / 3D 预览 / 看板） |
+整个项目只有三个大文件夹：
 
-**不在仓库里**（体积大 / 可重建）：
-`02_数据`（源包 45G）· `03_执行`（还原树 / 索引库）· `.venv` · 文档大件。
+| 文件夹 | 放什么 |
+|---|---|
+| **00_规范与工具** | `治理/` 台账·规范·手册·索引 · `工具/` 全部工具链（共享核心 / 解码定位复原 / 图文音频渲染 / 热更） |
+| **01_索引与产物** | `10_索引` · `30_分析` · `41_还原树`（PE / PC 全量树）· `源包` · `交付` · 临时区 |
+| **02_wiki** | 可视化站点（wiki / 3D 预览 / 看板 / 数据板块） |
+
+**不在仓库里**（体积大 / 可重建）：`01_索引与产物/*`（源包 45G + 还原树 + 索引库）· `.venv` · 站点大素材。
 
 > 还原树、索引库、源包都可以由本仓库的脚本**从原始客户端重建**，
 > 因此不入库；仓库只保留**代码 + 页面 + 文档**。
@@ -147,24 +148,24 @@
 ```bash
 # 0) 依赖
 python -m venv .venv
-.venv/Scripts/pip install -r 01_工具/requirements.lock.txt
+.venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
 
 # 1) 每次开工必做：把共享核心放进 PYTHONPATH
-export PYTHONPATH="$PWD/01_工具/工具库/00_共享核心"     # Linux/macOS
-set PYTHONPATH=%CD%\01_工具\工具库\00_共享核心          # Windows cmd
+export PYTHONPATH="$PWD/00_规范与工具/工具/工具库/00_共享核心"     # Linux/macOS
+set PYTHONPATH=%CD%\00_规范与工具/工具\工具库\00_共享核心          # Windows cmd
 
 # 2) 自检（索引 + 三条已知路径端到端）
-python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
+python 00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
 
 # 3) 看全部命令
-python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py --help
+python 00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py --help
 
 # 4) 换设备/新环境先自检（环境 → 索引 → CLI → 服务）
 python la.py doctor
 ```
 
 > **换机器只要设一个变量**：`LA_ROOT` 指项目根、`LA_CLIENT_ROOT` 指客户端根。
-> 不设也能跑 —— 脚本会从自身位置向上找 `00_治理` + `01_工具` 自动定位。
+> 不设也能跑 —— 脚本会从自身位置向上找 `00_规范与工具/治理` + `00_规范与工具/工具` 自动定位。
 
 > ⚠️ **不加 `PYTHONPATH` 会报 `ModuleNotFoundError: No module named 'toolkit_core'`** —— 这是最常见的第一个坑。
 
@@ -176,22 +177,22 @@ python la.py doctor
 
 ```text
 README.md        ← 全貌 + 两类条目 + 资源定位四步法
-00_治理/手册/CLI.md      ← 42 个命令，别自己造轮子
-00_治理/手册/USAGE.md    ← 实战工作流 + 验收纪律
-00_治理/手册/AGENT.md    ← Agent 冷启动手册（30 秒了解 / 开工三件事 / 8 个坑 / 硬规则）
+00_规范与工具/治理/手册/CLI.md      ← 42 个命令，别自己造轮子
+00_规范与工具/治理/手册/USAGE.md    ← 实战工作流 + 验收纪律
+00_规范与工具/治理/手册/AGENT.md    ← Agent 冷启动手册（30 秒了解 / 开工三件事 / 8 个坑 / 硬规则）
 ```
 
 然后一句开场：
 
-> 设好 `PYTHONPATH`，跑 `verify`，读 `README.md` + `00_治理/手册/CLI.md`。
+> 设好 `PYTHONPATH`，跑 `verify`，读 `README.md` + `00_规范与工具/治理/手册/CLI.md`。
 > **`0 命中` 先查代码后疑数据**；**引用逐字读**；**哈希自证**；
 > **源包只读、服别不混、不编数据**。
 
 ### Agent 开工三件事（缺一必翻车）
 
 ```bash
-export PYTHONPATH="$PWD/01_工具/工具库/00_共享核心"      # 不设必报 toolkit_core
-python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
+export PYTHONPATH="$PWD/00_规范与工具/工具/工具库/00_共享核心"      # 不设必报 toolkit_core
+python 00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py verify
 curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务死了
 ```
 
@@ -205,7 +206,7 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 | **`.png` 未命中先换扩展名** | UI 图标在 PE 是 `.ktx`、PC 是 `.bc7`；只查 `.png` 会把“存在”判成“不存在” |
 | **源包只读 / 服别不混 / 不编数据** | 安全底线 + PC 与 APK 可能不同服 ⇒ 结论必须标服别 |
 
-> 详细版（含 8 个高频坑与对策）见 **[00_治理/手册/AGENT.md](00_治理/手册/AGENT.md)**。
+> 详细版（含 8 个高频坑与对策）见 **[00_规范与工具/治理/手册/AGENT.md](00_规范与工具/治理/手册/AGENT.md)**。
 
 ---
 
@@ -239,9 +240,9 @@ curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8770/   # 000 = 服务
 交接包是**代码/文档包**，不携带 `E:\mrzh`、还原树或大型 SQLite 索引。直接解压后不需要手动设置 `PYTHONPATH`，推荐用统一入口：
 
 ```bash
-python 01_工具/run_all.py detect
-python 01_工具/run_all.py estimate full --source-root "E:/你的游戏目录"
-python 01_工具/run_all.py hotfix plan --client-root "E:/你的游戏目录"
+python 00_规范与工具/工具/run_all.py detect
+python 00_规范与工具/工具/run_all.py estimate full --source-root "E:/你的游戏目录"
+python 00_规范与工具/工具/run_all.py hotfix plan --client-root "E:/你的游戏目录"
 ```
 
 - `detect` 只读扫描显式路径、环境变量和有限深度的常见目录；会区分 PC 测试服、未来测、灰度和正式服。
@@ -250,7 +251,7 @@ python 01_工具/run_all.py hotfix plan --client-root "E:/你的游戏目录"
 - `estimate full` 会在全量拆包前统计源包、解码产物、索引、临时空间和安全余量；空间不足返回退出码 5，未开始写入。
 - `hotfix plan` / `hotfix extract` 优先读客户端 overlay 状态，只下载和提取本次热更包，不重拆全量包。`extract` 产物中的逻辑路径需要完整索引才能继续定位；没有索引时仍保留原始包、解码帧和证据报告。
 
-> 旧命令仍可直接运行：`python 01_工具/工具库/00_共享核心/命令行/toolkit_cli.py --help`。它已自带核心路径引导。
+> 旧命令仍可直接运行：`python 00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py --help`。它已自带核心路径引导。
 
 ---
 
@@ -269,7 +270,7 @@ python 01_工具/run_all.py hotfix plan --client-root "E:/你的游戏目录"
 
 ```bash
 # 从引用文件解出它要的资源并定位
-python 01_工具/工具库/02_图文音频渲染/皮肤链与渲染/resolve_asset.py \
+python 00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染/resolve_asset.py \
   --ref "<某个.mtg或.c159>" --container 'res\weapon.gpk'
 
 # 按名字找文件
@@ -286,7 +287,7 @@ python .../resolve_asset.py --semantic "<png目录>"
 
 ## CLI 命令总览
 
-完整参数见 **[00_治理/手册/CLI.md](00_治理/手册/CLI.md)**。这里按用途速查：
+完整参数见 **[00_规范与工具/治理/手册/CLI.md](00_规范与工具/治理/手册/CLI.md)**。这里按用途速查：
 
 ### 索引与定位
 
@@ -318,16 +319,16 @@ toolkit_cli.py shader list|info|export    # [横切] 着色器层：拆 .dxbc / 
 
 ```bash
 # 自动识别客户端/服别/版本（只读，多个候选时用 --client-root）
-python 01_工具/run_all.py detect
+python 00_规范与工具/工具/run_all.py detect
 
 # 全量拆包前先算空间；空间不足退出码 5，不开始拆包
-python 01_工具/run_all.py estimate full --source-root "E:\mrzh"
+python 00_规范与工具/工具/run_all.py estimate full --source-root "E:\mrzh"
 
 # 只读对比 overlay，确认本次热更范围
-python 01_工具/run_all.py hotfix plan --client-root "E:\mrzh"
+python 00_规范与工具/工具/run_all.py hotfix plan --client-root "E:\mrzh"
 
 # 只下载并解码热更 overlay，不重拆全量包
-python 01_工具/run_all.py hotfix extract --client-root "E:\mrzh" --out out/hotfix
+python 00_规范与工具/工具/run_all.py hotfix extract --client-root "E:\mrzh" --out out/hotfix
 
 toolkit_cli.py loose scan --out <目录>    # [H-2] 散文件层 .idx/.wpk 解密 → 明文
 toolkit_cli.py loose match --dir <目录>   # [H-2] 内容 MD5 → 容器+行号（不靠名字）
@@ -346,7 +347,7 @@ toolkit_cli.py atlas list|discover|export          # spine 图集层
 # 2D 图定位（高清优先）
 python la.py pe best <逻辑路径>        # 列出全部候选，选最高清那个
 python la.py pe export <逻辑路径> out.png
-python 01_工具/工具库/01_解码定位复原/解包与扫描/spine_export.py --filter <关键词>
+python 00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描/spine_export.py --filter <关键词>
 toolkit_cli.py servers                             # 服型后缀总表
 ```
 
@@ -401,8 +402,8 @@ toolkit_cli.py tex out/ --out png/      # 贴图 → PNG
 ### C. 出可视化页面
 
 ```bash
-python 01_工具/工具库/02_图文音频渲染/皮肤链与渲染/serve_web.py 8770
-# 浏览器打开 04_站点/web/ 下的页面
+python 00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染/serve_web.py 8770
+# 浏览器打开 02_wiki/web/ 下的页面
 ```
 
 ---
@@ -411,25 +412,25 @@ python 01_工具/工具库/02_图文音频渲染/皮肤链与渲染/serve_web.py
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────┐
-│  源包（只读）        E:\mrzh  …  02_数据/源包/                       │
+│  源包（只读）        E:\mrzh  …  01_索引与产物/源包/                       │
 │  gpk(HPGF) · npk(NXPK) · fpk · 散文件层(idx/wpk) · APK · 热更包      │
 └───────────────────────────────┬─────────────────────────────────────┘
                                 │  toolkit_cli index build
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│  03_执行/10_索引     容器条目表 · 行→路径映射 · 名字字典 · 热更快照    │
+│  01_索引与产物/10_索引     容器条目表 · 行→路径映射 · 名字字典 · 热更快照    │
 │                      ★ 一切查询的底座（不入库，可重建）               │
 └───────────────────────────────┬─────────────────────────────────────┘
                                 │  names / locate / find / resolve_asset
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│  03_执行/41_还原树   ★★★ 唯一权威资源树（层级对标真实客户端路径）      │
+│  01_索引与产物/41_还原树   ★★★ 唯一权威资源树（层级对标真实客户端路径）      │
 │                      <容器>/<路径>  +  <容器>/_未命名/<行号>          │
 └───────┬─────────────────────────────────────┬───────────────────────┘
         │  tex / glb / sheet / render / audio  │  materialize / bulk
         ▼                                     ▼
 ┌──────────────────────────────┐   ┌──────────────────────────────────┐
-│  03_执行/20_提取 · 30_分析    │   │  04_站点/web  可视化              │
+│  01_索引与产物/20_提取 · 30_分析    │   │  02_wiki/web  可视化              │
 │  PNG · GLB · 表 · 帧 JSON     │   │  wiki · 3D 预览 · 看板            │
 └──────────────────────────────┘   └──────────────────────────────────┘
 
@@ -472,12 +473,12 @@ python 01_工具/工具库/02_图文音频渲染/皮肤链与渲染/serve_web.py
 
 ```text
 la拆包项目/
-├── 00_治理/                     文档中心
+├── 00_规范与工具/治理/                     文档中心
 │   ├── 索引.md                  项目权威索引
 │   ├── 手册/                    AGENT · CLI · USAGE · CDN · 各专题报告
 │   ├── 规范/ · 台账/ · 日志/
 │   └── 参考资料/                藏宝阁 CBG 参照
-├── 01_工具/                     工具链
+├── 00_规范与工具/工具/                     工具链
 │   ├── run_all.py               总入口
 │   ├── requirements.lock.txt
 │   └── 工具库/
@@ -486,9 +487,9 @@ la拆包项目/
 │       ├── 02_图文音频渲染/      皮肤链 · 3D 预览 · 纹理音频
 │       ├── 04_热更定位/          热更链 · 切服与 CDN
 │       └── 08_系统工具/          清理 · 自检
-├── 02_数据/                     ✗ 不入库（源包 15G · 交付）
-├── 03_执行/                     ✗ 不入库（还原树 / 索引库 / 分析产物）
-└── 04_站点/web/                 Wiki 实现（页面 · 板块数据 · 工具）
+├── 01_索引与产物/                     ✗ 不入库（源包 15G · 交付）
+├── 01_索引与产物/                     ✗ 不入库（还原树 / 索引库 / 分析产物）
+└── 02_wiki/web/                 Wiki 实现（页面 · 板块数据 · 工具）
 ```
 
 ---
@@ -498,7 +499,7 @@ la拆包项目/
 - **Python 3.12**（`.venv`）
 - Windows（源包路径默认 `E:\mrzh`）
 - 可选：`astcenc`（KTX/ASTC 解码）· `OIIO`（贴图交叉校验）
-- 依赖清单：`01_工具/requirements.lock.txt`
+- 依赖清单：`00_规范与工具/工具/requirements.lock.txt`
 
 ---
 

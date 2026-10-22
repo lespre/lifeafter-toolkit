@@ -1,0 +1,16 @@
+{
+ "board": "lottery_active",
+ "domain": "lottery",
+ "projection_of": [
+  "artifacts/active/lottery/LOTTERY_POOL.jsonl",
+  "artifacts/active/lottery/LOTTERY_REWARD_TARGETS.jsonl"
+ ],
+ "reward_target_type": {
+  "item": 19365,
+  "unresolved": 4092,
+  "item_fashion_candidate": 67,
+  "child_pool": 43
+ },
+ "runtime_final": "unresolved_replacement_overlay",
+ "items": null
+}

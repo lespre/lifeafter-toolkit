@@ -23,12 +23,12 @@ import urllib.request
 from pathlib import Path
 
 PROJ = Path(__file__).resolve().parent
-WEB = PROJ / "04_站点" / "web"
+WEB = PROJ / "02_wiki" / "web"
 TOOLS = WEB / "tools"
-DET = PROJ / "03_执行" / "30_分析" / "热更检测"
+DET = PROJ / "01_索引与产物" / "30_分析" / "热更检测"
 PY = sys.executable
-INDEX_CLI = PROJ / "01_工具" / "工具库" / "00_共享核心" / "命令行" / "pe全量索引.py"
-FETCH = PROJ / "01_工具" / "工具库" / "01_解码定位复原" / "图集与取图"
+INDEX_CLI = PROJ / "00_规范与工具/工具" / "工具库" / "00_共享核心" / "命令行" / "pe全量索引.py"
+FETCH = PROJ / "00_规范与工具/工具" / "工具库" / "01_解码定位复原" / "图集与取图"
 
 
 def run(name: str, args: list[str], *, cwd: Path = WEB, quiet: bool = False) -> int:
@@ -195,7 +195,7 @@ def cmd_pe(a) -> int:
 # ---------------- board ----------------
 def cmd_board(a) -> int:
     """板块工具：check 校验 / run 跑构建脚本。"""
-    sys.path.insert(0, str(PROJ / "01_工具/工具库/00_共享核心"))
+    sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
     sys.path.insert(0, str(WEB / "tools"))
     if a.action == "check" and a.target:
         import json as _json
@@ -339,7 +339,7 @@ def cmd_doctor(_a) -> int:
     return 0 if ok else 1
 
 
-TOOLKIT = PROJ / "01_工具/工具库/00_共享核心/命令行/toolkit_cli.py"
+TOOLKIT = PROJ / "00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py"
 
 
 def _toolkit(args: list[str], label: str) -> int:
@@ -403,7 +403,7 @@ def cmd_profile(a) -> int:
 def cmd_find(a) -> int:
     """索引定位：逻辑路径 → (层, 包, 行, 大小)。PE 优先，PC 兜底。"""
     sys.path.insert(0, str(FETCH))
-    sys.path.insert(0, str(PROJ / "01_工具/工具库/00_共享核心"))
+    sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
     import sqlite3
     from toolkit_core.path_fid import fid_of
 
@@ -553,7 +553,7 @@ def cmd_img(a) -> int:
 
 
 def cmd_spine(a) -> int:
-    script = ROOT / "01_工具/工具库/01_解码定位复原/解包与扫描/spine_export.py"
+    script = ROOT / "00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描/spine_export.py"
     args = [script, "--filter", a.filter or ""]
     if a.out:
         args += ["--out", a.out]
@@ -609,9 +609,15 @@ def main() -> int:
     bd.add_argument("action", choices=["check", "run"])
     bd.add_argument("target", nargs="?")
 
-    wb = sub.add_parser("web", help="站点：build / serve / shot / refresh")
-    wb.add_argument("action", choices=["build", "serve", "shot", "refresh", "check"])
-    wb.add_argument("args", nargs=argparse.REMAINDER)
+    wb = sub.add_parser("web", help="站点：build / serve / shot / refresh / check / tidy")
+    wb.add_argument("action", choices=["build", "serve", "shot", "refresh", "check", "tidy"])
+    wb.add_argument("url", nargs="?")
+    wb.add_argument("out", nargs="?")
+    wb.add_argument("--port", type=int, default=8765)
+    wb.add_argument("--width", type=int, default=1400)
+    wb.add_argument("--height", type=int, default=900)
+    wb.add_argument("--js")
+    wb.add_argument("--all-tests", dest="all_tests", action="store_true")
 
     hf = sub.add_parser("hotfix", help="热更：plan / apply")
     hf.add_argument("action", choices=["plan", "apply", "report"])

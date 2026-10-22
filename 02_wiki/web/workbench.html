@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeAfter Local Data Workbench</title>
+<script src="assets/workbench_client.js?v=v13"></script>
+<script src="data/workbench_status.js?v=wb1"></script>
+<style>
+:root{--bg:#fafafa;--card:#fff;--fg:#0a0a0a;--muted:#71717a;--border:#e4e4e7;--red:#b91c1c;--green:#15803d;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;padding:20px}
+a{color:#1d4ed8;text-decoration:none} a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+h1{font-size:18px} h2{font-size:15px;margin:16px 0 8px}
+.sub,.wb-note{color:var(--muted);font-size:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+code{font-size:12px;background:#f4f4f5;padding:1px 4px;border-radius:4px}
+.badge{font-size:11px;padding:1px 6px;border-radius:8px;border:1px solid var(--border);color:var(--muted)}
+.ok{color:var(--green)} .warn{color:var(--amber)} .bad{color:var(--red)}
+.dcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+</style>
+</head><body>
+<div class="topbar">
+  <div><h1>LifeAfter Local Data Workbench <span class="badge" id="ver">v1.3</span></h1>
+  <div class="sub">数据核心；Wiki 只是它的一个客户端。<code>artifacts/active → domain service → API / projection → web</code></div></div>
+  <div class="sub"><a href="workbench_status.html">Workbench Status</a> · <a href="workbench_items.html">物品（API）</a> ·
+    <a href="workbench_lottery.html">奖池（API）</a> · <a href="wiki.html">Wiki View</a> · <a href="live_reader.html">NPK 现场读取</a></div>
+</div>
+
+<div class="card"><h2>Domains</h2><div id="dom" class="grid"></div>
+  <div class="sub" id="domsrc">数据源：/api/coverage（registry + artifacts/active + residuals + state）</div></div>
+
+<div class="card"><h2>查询入口</h2>
+<table>
+<tr><th>方式</th><th>说明</th></tr>
+<tr><td>API（默认路径）</td><td><code>/api/items?page=1&amp;page_size=50</code> · <code>/api/lottery/rewards?unresolved_only=1</code> · <code>/api/entity?kind=item&amp;id=150005</code> · <code>/api/coverage</code></td></tr>
+<tr><td>CLI（无需 Wiki）</td><td><code>python -m api.cli items --page-size 20 --namespace belt_chip</code> · <code>entity item 150005</code> · <code>coverage</code></td></tr>
+<tr><td>Projection</td><td>小 Domain / 统计 / 离线：<code>data/workbench_boards/item_stats.js</code> 等；<b>offline_full_projection</b>（item / lottery 全量）不作为默认 Web 路径</td></tr>
+</table></div>
+
+<div class="card" id="apibox"><h2>API 探测</h2><div class="sub" id="apistate">未探测</div></div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const H={item:'物品',weapon_skin:'武器皮肤',fashion:'时装',lottery:'奖池'};
+  const WB_PAGE={item:'workbench_items.html',weapon_skin:'workbench_entity.html?kind=weapon_skin',fashion:'fashion_active',lottery:'workbench_lottery.html'};
+
+  async function fromApi(){
+    const c=await WB.api("/api/coverage");
+    $("ver").textContent=c.workbench_version||"v1.3";
+    const dom={};
+    // Domain 卡片：active rows / verified / unresolved / artifact / snapshot 基准 / last build
+    const arts=c.active_artifacts||[];
+    const pick=re=>arts.find(a=>re.test(a.artifact));
+    const reg=(c.regression||{});
+    const unresolved=c.unresolved_counts||{};
+    const un=(dom_,key)=>{const f=(unresolved[dom_]||{})[key];return f?f.count:0;};
+    dom.item={rows:(pick(/item\/ITEM_MASTER/)||{}).rows, verified:(pick(/item\/ITEM_MASTER/)||{}).rows, unresolved:un('item','unresolved_namespace_ids'),
+      artifact:(pick(/item\/ITEM_MASTER/)||{}).artifact, sha:((pick(/item\/ITEM_MASTER/)||{}).sha256||'').slice(0,12),
+      snapshot:(c.snapshots||[]).find(s=>s.snapshot_id===c.inventory_basis_snapshot)||{}, build:(pick(/item\/ITEM_MASTER/)||{}).mtime, link:'workbench_items.html'};
+    dom.weapon_skin={rows:(pick(/weapon_skin/)||{}).rows, verified:(pick(/weapon_skin/)||{}).rows, unresolved:un('weapon_skin','unresolved_ids'),
+      artifact:(pick(/weapon_skin/)||{}).artifact, sha:((pick(/weapon_skin/)||{}).sha256||'').slice(0,12), snapshot:null,
+      build:(pick(/weapon_skin/)||{}).mtime, link:'workbench_entity.html?kind=weapon_skin&id=1110001'};
+    dom.fashion={status:'语义 verified / 物理绑定 unresolved', unresolved:0, artifact:(pick(/fashion/)||{}).artifact,
+      sha:((pick(/fashion/)||{}).sha256||'').slice(0,12), snapshot:null, build:(pick(/fashion/)||{}).mtime, link:'board.html?b=fashion_active&view=wiki'};
+    const pool=(pick(/LOTTERY_POOL/)||{});
+    dom.lottery={rows:pool.rows, unresolved:un('lottery','unresolved_targets'), artifact:pool.artifact, sha:(pool.sha256||'').slice(0,12),
+      snapshot:null, build:pool.mtime, link:'workbench_lottery.html'};
+    render(dom,{basis:(c.snapshots||[]).find(s=>s.snapshot_id===c.inventory_basis_snapshot),
+                cur:(c.snapshots||[]).find(s=>s.snapshot_id===c.active_current_snapshot), reg:reg,
+                binding:c.physical_binding_coverage||{}});
+    $("domsrc").innerHTML="数据源：/api/coverage（registry + artifacts/active + residuals + state）· 生成于 "+WB.esc(c.generated)+
+      " · 物理绑定（两快照合计）：ok "+WB.esc((c.physical_binding_coverage||{}).ok)+" / 未解析 "+WB.esc((c.physical_binding_coverage||{}).not_ok);
+    return true;
+  }
+
+  function render(dom,ctx){
+    $("dom").innerHTML=Object.keys(H).map(k=>{
+      const d=dom[k]||{};
+      const rows=[["active rows",d.rows!=null?Number(d.rows).toLocaleString():"—"],
+        ["verified / unresolved",k==='fashion'?WB.esc(d.status||"—"):(d.verified!=null?Number(d.verified).toLocaleString()+" / "+Number(d.unresolved||0).toLocaleString():"— / "+Number(d.unresolved||0).toLocaleString())],
+        ["active artifact",d.artifact?("<code>"+WB.esc(d.artifact.split('/').slice(-1)[0])+"</code>"):"—"],
+        ["artifact sha",d.sha?WB.esc(d.sha)+"…":"—"],
+        ["snapshot basis",d.snapshot?WB.esc(d.snapshot.snapshot_id):(k==='fashion'?"—":"—")],
+        ["last build",d.build?WB.esc(d.build):"—"]];
+      return '<div class="dcard"><div><b>'+H[k]+'</b> <span class="badge">'+k+'</span>'+
+        (k==='item'?' <span class="badge warn">API 分页</span>':'')+(k==='lottery'?' <span class="badge warn">API 分页</span>':'')+'</div>'+
+        '<table>'+rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('')+'</table>'+
+        '<div style="margin-top:6px"><a href="'+WB.esc(d.link||"#")+'">进入 →</a></div></div>';
+    }).join('')+
+    '<div class="dcard"><div><b>快照与绑定</b></div><table>'+
+      '<tr><th>inventory 基准</th><td><code>'+WB.esc((ctx.basis||{}).snapshot_id||"—")+'</code></td></tr>'+
+      '<tr><th>current 热更</th><td><code>'+WB.esc((ctx.cur||{}).snapshot_id||"—")+'</code> <span class="badge warn">物理绑定 unresolved 见 Status</span></td></tr>'+
+      '<tr><th>物理绑定覆盖</th><td>ok '+WB.esc(ctx.binding.ok)+" / 未解析 "+WB.esc(ctx.binding.not_ok)+"（"+WB.esc(ctx.binding.total)+" 条逻辑表×快照）</td></tr>"+
+      '<tr><th>最近回归</th><td>'+(ctx.reg&&ctx.reg.tests?WB.esc(ctx.reg.tests)+" 项 · "+WB.esc(ctx.reg.result):"未记录")+'</td></tr>'+
+    '</table><div class="sub">口径：snapshot entry-space mismatch 是主要基础设施阻断；修复后重新分类，不预设 residual 清零。</div></div>';
+  }
+
+  function fromStatic(reason){
+    const S=window.WIKI_WORKBENCH_STATUS||{}; const D=(S.status&&S.status.domains)||{};
+    $("dom").innerHTML=Object.keys(H).map(k=>`<div class="dcard"><b>${H[k]}</b> <span class="badge">${k}</span>
+      <table><tr><th>静态摘要</th><td class="sub">${WB.esc(JSON.stringify(D[k]||{}).slice(0,220))}</td></tr></table></div>`).join("");
+    $("domsrc").innerHTML='<span class="warn">API 不可用：以下为 <code>data/workbench_status.js</code> 静态快照（构建时数据，可能过期）。'+
+      "未回退到 legacy board / historical 数据。启动 <code>python -m api.server</code> 查看实时状态。</span>";
+  }
+
+  fetch("/api/health").then(r=>r.json()).then(j=>{
+    $("apistate").innerHTML='<span class="ok">API 在线</span> '+WB.esc(JSON.stringify(j));
+  }).catch(()=>{
+    $("apistate").innerHTML='<span class="warn">API 未启动</span>：启动 <code>python -m api.server --port 8770</code> 后可用 API 分页与实体详情。';
+  });
+  fromApi().catch(err=>{ fromStatic(err.message); });
+})();
+</script>
+</body></html>

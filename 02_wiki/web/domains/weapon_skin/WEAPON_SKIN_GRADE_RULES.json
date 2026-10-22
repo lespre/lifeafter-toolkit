@@ -1,0 +1,79 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "level_axis": {
+  "canonical_field": "level",
+  "domain": [
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "is_single_axis": true,
+  "level_axis_status": "verified_structural",
+  "runtime_semantic_status": "likely",
+  "evidence": [
+   "charm_value 阶梯（L4=300 / L5=1000 / L6=1000–2500）",
+   "功能门控：play_anim_moudle / switch_weapon 仅 level≥5 非空"
+  ],
+  "boundary_note": "数据分布与字段关联**不是** runtime consumer 证据；未找到直接读 level 的 consumer ⇒ runtime_semantic_status=likely"
+ },
+ "catalog_level_labels": {
+  "2": {
+   "catalog_level_label": "白送",
+   "label_id": "bai_song",
+   "label_provenance": "user_defined"
+  },
+  "3": {
+   "catalog_level_label": "直售",
+   "label_id": "zhi_shou",
+   "label_provenance": "user_defined"
+  },
+  "4": {
+   "catalog_level_label": "紫皮",
+   "label_id": "zi_pi",
+   "label_provenance": "user_defined"
+  },
+  "5": {
+   "catalog_level_label": "典藏",
+   "label_id": "dian_cang",
+   "label_provenance": "official"
+  },
+  "6": {
+   "catalog_level_label": "传世",
+   "label_id": "chuan_shi",
+   "label_provenance": "official"
+  }
+ },
+ "label_status": {
+  "rule": "user_defined（2/3/4）｜official_user_confirmed（5/6）",
+  "detail": {
+   "白送": "user_defined",
+   "直售": "user_defined",
+   "紫皮": "user_defined",
+   "典藏": "official_user_confirmed",
+   "传世": "official_user_confirmed"
+  },
+  "client_official_mapping_source_found": false,
+  "forbidden": "不得把这些中文名当获取方式结论；不得据此产生 acquisition assignment"
+ },
+ "priority": {
+  "not_determining_catalog_label": "verified",
+  "priority_status": "likely",
+  "evidence": "各档内 priority 全谱分布（无单值）⇒ priority 不决定 label；字段名+分布支持展示/排序优先级但无 consumer"
+ },
+ "removed_claims": [
+  "level 2/3 = acquisition dimension（撤销）",
+  "37 rows = not_grade_tier（撤销）",
+  "giveaway / direct_sale 作为 acquisition assignment（撤销）"
+ ],
+ "exception_rule": {
+  "玉饮琼花": {
+   "canonical_level": 4,
+   "catalog_level_label": "紫皮",
+   "label_provenance": "user_defined",
+   "presentation_exception": true
+  },
+  "note": "不覆盖 level；仅额外表现按 exception 收录"
+ }
+}

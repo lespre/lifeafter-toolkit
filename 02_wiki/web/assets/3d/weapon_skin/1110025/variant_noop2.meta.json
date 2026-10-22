@@ -1,0 +1,17 @@
+{
+ "label": "noop2",
+ "generated_at": "2026-09-20 13:35:23",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "03e9768e8b97dfb2",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "0a36652d58865c05",
+ "patch": {
+  "note": "负控2：与 noop 同内容，用于标定两次加载的重复性噪声底"
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_noop2.json"
+}

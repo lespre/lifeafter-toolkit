@@ -1,0 +1,523 @@
+{
+  "schema": "neox_material/v2",
+  "skin": "1110185",
+  "display_name": "奇迹",
+  "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+  "source": {
+    "material_c159": "0058.gpk 条目 帧 429/430/431/432/433/434/435（Material_0..7）",
+    "material_c159_declares": {
+      "t_basecolor": "skin_1007_011001a.tga（另见 001b_m / 001c / 001s_m）",
+      "ParamMap": "skin_1007_011001m.tga",
+      "NormalMap": "skin_1007_011001n.tga",
+      "t_caustic_tex": "(焦散)",
+      "t_reflection_tex": "(反射)",
+      "t_refraction_tex": "(折射)",
+      "t_distort1/2": "(扭曲)",
+      "t_mask1/2/3": "(遮罩)",
+      "t_surfacemap": "(表面)",
+      "t_custom_ibl": "common\\env_map\\qiangpi.cube"
+    },
+    "container": "E:\\mrzh\\Documents\\gres\\0058.gpk",
+    "note": "槽位名与 cube 名均来自 c159 原文；基色贴图按 UV 线框叠加 + 最低饱和双判据认领。"
+  },
+  "glb": "model.glb",
+  "geometry_glb_sha256": "b26f121c8cff7f9b",
+  "slot_binding_basis": "c159 声明槽名 + UV 线框叠加认领基色",
+  "product_default_environment_cube": "qiangpi",
+  "cube_source": {
+    "name": "qiangpi",
+    "status": "source_verified",
+    "resolve": "shared",
+    "note": "wiki cube 清册；六面在 _shared/cubes/qiangpi/faces/"
+  },
+  "primitives": [
+    {
+      "prim": 0,
+      "mtl_idx": 0,
+      "material": "skin_1007_011a_0",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 1,
+      "mtl_idx": 1,
+      "material": "skin_1007_011a_1",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 2,
+      "mtl_idx": 2,
+      "material": "skin_1007_011a_2",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 3,
+      "mtl_idx": 3,
+      "material": "skin_1007_011a_3",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 4,
+      "mtl_idx": 4,
+      "material": "skin_1007_011a_4",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 5,
+      "mtl_idx": 5,
+      "material": "skin_1007_011a_5",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 6,
+      "mtl_idx": 6,
+      "material": "skin_1007_011a_6",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    },
+    {
+      "prim": 7,
+      "mtl_idx": 7,
+      "material": "skin_1007_011a_7",
+      "glb_material": "skin_1007_011a",
+      "shader": "shader\\pbr_crystal.fx::TShader",
+      "shader_kind": "crystal",
+      "shader_kind_basis": "c159(帧429-435) 声明 t_caustic_tex / t_reflection_tex / t_refraction_tex / t_distort* ⇒ 晶体系；**逐 prim 归属未定证**（8 个 Material_0..7 未逐条绑定到 submesh），此处统一按 crystal 出链。",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\qiangpi.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/qiangpi.dds",
+          "block_entry": "wiki cube 清册",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        },
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\\textures\\skin_1007_011001a.tga",
+          "slot": "Tex0",
+          "local_file": "src_tex/011_a.png",
+          "source_block_entry": "slay_gods_patch i=92 (49121b72c100)",
+          "rgba_sha16": "90d9e44afd58bc3d",
+          "dims": "1024x1024",
+          "binding_basis": "UV_WIREFRAME_OVERLAY + LOW_SATURATION",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "源名 skin_1007_011001a.tga 在 313 容器 × 12 变体 fid 反查 0 命中 ⇒ 名字不可解析"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_1007_011\\skin_1007_011a\textures\\skin_1007_011001n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/011_n.png",
+          "source_block_entry": "slay_gods_patch i=42 (2497fb665485)",
+          "rgba_sha16": "b857ccbac0f5de41",
+          "dims": "512x512",
+          "binding_basis": "UV_WIREFRAME_OVERLAY",
+          "confidence": "low",
+          "evidence_level": "uv_consistency_candidate_low",
+          "why_not_direct": "源名不可解析；13 张法线候选中 UV 线框最贴合者（次优 i=80/i=90），**未达高置信**"
+        }
+      },
+      "missing_required": []
+    }
+  ],
+  "evidence_levels": {
+    "geometry": "source_verified",
+    "slot_names": "source_verified",
+    "ibl_cube": "source_verified",
+    "basecolor": "uv_consistency_candidate_medium",
+    "normal_parammap": "not_found_in_this_patchset"
+  },
+  "render_note": "基色 = UV 线框贴合 + 全库最低饱和（sat 0.053）双判据认领；NormalMap / ParamMap 在本批热更补丁中未找到 ⇒ 留空（fail-closed，不用别的图顶替）。照明 = 源 IBL cube（qiangpi，c159 声明）。逐 prim 的 crystal 归属未定证。"
+}

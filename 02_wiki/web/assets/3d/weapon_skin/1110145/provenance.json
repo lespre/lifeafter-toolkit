@@ -1,0 +1,75 @@
+{
+  "deliverable": "天马行空 (skin_1001_014) 3D 预览",
+  "built_at": "2026-09-15",
+  "stage": "Stage3 · 3D 预览（材质近似 / 无 SFX）",
+  "wiki": {
+    "skin_id": "1110145",
+    "path": "assets/3d/weapon_skin/1110145"
+  },
+  "construction": {
+    "mesh": "000653.mesh",
+    "mesh_sha16": "da706f0ec22b68e6",
+    "vertices": 17099,
+    "faces": 16816,
+    "submeshes": 7,
+    "mesh_evidence": "绑定文件 000652.c159 的第一组包围盒 center(0,0.66,1.65)/half(1.13,1.47,4.91) 与 000653.mesh 实测 center(0,0.661,1.647)/half(1.13,1.468,4.911) 完全一致（硬证据，非编号相邻）",
+    "lod_family": [
+      "000653(LOD0,本包)",
+      "000656",
+      "000659",
+      "000662"
+    ],
+    "material_bank": "000654.c159（shader: pbr_default / pbr_crystal / pbr_clear_coat / pbr_transparent）",
+    "material_note": "GLB 本轮用单材质（主件贴图组）；晶体/清漆等分材质未单独识别 → 见 unresolved"
+  },
+  "textures": {
+    "canonical": "全部经 dds_rgba_canonical + export_tex_png.py（OIIO ok=True md=0.0）",
+    "physical_slots": {
+      "a": "000667.dds",
+      "m": "000668.dds",
+      "s_m": "000669.dds",
+      "n": "000670.dds",
+      "b_m": "000671.dds"
+    },
+    "logical_names": [
+      "skin_1001_014001a.tga",
+      "skin_1001_014001m.tga",
+      "skin_1001_014001s_m.tga",
+      "skin_1001_014001n.tga",
+      "skin_1001_014001b_m.tga"
+    ],
+    "evidence": "① 材质 c159 实证该皮肤自有 5 张贴图（a/m/s_m/n/b_m）；② 物理 5 连组 000667-671 与之对应（顺序 a,m,s_m,n,b_m）；③ 渲染色测：000667 当基色=正常金属涂装（深蓝紫+金铜/米黄/银灰，含天马马头/翼片造型）；对照组（668 高饱和=像通道图、672 灰阶=像遮罩）均排除",
+    "ibl": "common\\env_map\\bg61f_light_spherereflectioncapture_1.cube（未映射物理条目）"
+  },
+  "glb": {
+    "file": "model.glb",
+    "size": 3059436,
+    "exporter": "export_glb.py（零依赖；POSITION/NORMAL/TEXCOORD_0 与源网格逐字节一致）",
+    "center_note": "按包围盒中心平移到原点"
+  },
+  "poster": {
+    "renderer": "render_experimental_dxbc_pbr.py",
+    "eye": [
+      -1,
+      0,
+      0
+    ],
+    "roll": 90,
+    "size": [
+      2260,
+      1150
+    ],
+    "integrity": true
+  },
+  "approximations": [
+    "观察灯光与 IBL=渲染器/查看器固定值（非源 cube）",
+    "单材质近似（晶体/清漆分材质未接）",
+    "刃口菲涅尔=人工近似"
+  ],
+  "unresolved": [
+    "贴图 名称→物理条目 的机器可查映射（本轮=内容特征 + 物理顺序 + 渲染目验三重判定）",
+    "多材质（pbr_crystal/clear_coat/transparent）未拆分",
+    "bg61f...cube 物理条目未映射",
+    "SFX 未提取"
+  ]
+}

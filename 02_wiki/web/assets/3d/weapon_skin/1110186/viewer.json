@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "skin_id": "1110186",
+  "title": "星辰刀",
+  "poster": "poster.webp",
+  "default_state": "default",
+  "states": [
+    {
+      "id": "default",
+      "label": "星辰刀",
+      "model": "model.glb",
+      "geometry_source": "0058.gpk 条目 row 64706（LOD0）· 422 顶点 / 481 面 / 1 submesh",
+      "rotation_note": "无游戏内参照图；朝向 = GLB 原始导出（--center，未旋转）。未做用户目视姿势确认。"
+    }
+  ],
+  "background": "#071015",
+  "exposure": 1.0,
+  "fidelity": {
+    "material": "source_candidate",
+    "sfx": "none"
+  },
+  "cube_default_selection": "character_envmap_metal_01",
+  "hemisphere_intensity": 0.0,
+  "key_intensity": 0.0,
+  "fill_intensity": 0.0,
+  "env_intensity": 1.0,
+  "background_image": "../_shared/bg_weapon_skin_ingame.png",
+  "background_source": {
+    "file": "_shared/bg_weapon_skin_ingame.png",
+    "origin": "用户提供的游戏内武器皮肤背景图（与 1110024/1110025/1110129 等同源）",
+    "sha16": "e60c1a1d5e16b1b4"
+  },
+  "env_from_background": false,
+  "pose_rule": "**未定稿**：本皮肤无游戏内参考图，朝向 = GLB 原始导出（--center，未旋转）；未做用户目视姿势确认",
+  "camera_presets": [
+    {
+      "id": "side_authored",
+      "label": "侧视（作者设定）",
+      "position": [
+        1.0,
+        0.16,
+        0.22
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "fov": 34,
+      "fit_span": 0.62,
+      "exact": false,
+      "basis": "★ 本皮肤**无游戏内参照图、未做用户目视确认**。方向按「长轴=Z、半长 6.86」选取，距离由查看器 fitDistanceToFocus 按 fit_span 自动求解（非手填）。参照口径：与 _xingchen_preview.html 的 yaw=75°/pitch=10° 取景一致。"
+    },
+    {
+      "id": "top",
+      "label": "俯视",
+      "position": [
+        0.05,
+        1.0,
+        0.08
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fov": 34,
+      "fit_span": 0.66,
+      "exact": false,
+      "basis": "作者设定，未经用户确认。"
+    }
+  ],
+  "default_camera": "side_authored",
+  "camera_basis": "无源相机数据；预设为作者按网格包围盒设定，**未经用户目视确认**。（对照：1110024 的 game_reference 是用户实调值，本皮肤没有等价值。）"
+}

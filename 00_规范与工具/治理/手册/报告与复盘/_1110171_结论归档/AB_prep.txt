@@ -1,0 +1,170 @@
+#### 1110024  manifest sha16=78bbc8fc2f49ae5d
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis={"rule_R": "DDS 区块起点 = 最后一条 material c159 + 1：c159#1392 → #1393", "block_structure": "区块 8 条 = **2 组 × 4**（G0 1024² #1393-1396 / G1 512² #1397-1400），每组内容签名均为 `[b_m, a, n, m]` —— 与 008/152 的组内序一致，且四位**全部可按内容签名定名**", "unresolved": "① 骨料名 **5** 但区块只有 **2 组** ⇒ 本例中「组数=材料数」**不成立**，两组更可能是 **1024²/512² 两个 
+  prim0  skin_1006_004_0    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/024_b_m.png  A=src_tex/024_a.png(A_on_disk=True)
+        src_slot=None logical=None evidence=
+        why_not_direct=本族（skin_1006_004）声明无 `_b_m`；pos1 在 b_m/s_m 间不可判，仅按组内序 H 位置绑定、非内容签名直证。
+        sha16 cur=c98422dad01c0fe2 (1621201B)  A=7f03f8c8d009639a (1723988B)
+  prim1  skin_1006_004_1    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/024_b_m.png  A=src_tex/024_a.png(A_on_disk=True)
+        src_slot=None logical=None evidence=
+        why_not_direct=本族（skin_1006_004）声明无 `_b_m`；pos1 在 b_m/s_m 间不可判，仅按组内序 H 位置绑定、非内容签名直证。
+        sha16 cur=c98422dad01c0fe2 (1621201B)  A=7f03f8c8d009639a (1723988B)
+  prim2  skin_1006_004_2    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/024_b_m.png  A=src_tex/024_a.png(A_on_disk=True)
+        src_slot=None logical=None evidence=
+        why_not_direct=本族（skin_1006_004）声明无 `_b_m`；pos1 在 b_m/s_m 间不可判，仅按组内序 H 位置绑定、非内容签名直证。
+        sha16 cur=c98422dad01c0fe2 (1621201B)  A=7f03f8c8d009639a (1723988B)
+  prim3  skin_1006_004_3    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/024_b_m.png  A=src_tex/024_a.png(A_on_disk=True)
+        src_slot=None logical=None evidence=
+        why_not_direct=本族（skin_1006_004）声明无 `_b_m`；pos1 在 b_m/s_m 间不可判，仅按组内序 H 位置绑定、非内容签名直证。
+        sha16 cur=c98422dad01c0fe2 (1621201B)  A=7f03f8c8d009639a (1723988B)
+  prim4  skin_1006_004_4    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/024_b_m.png  A=src_tex/024_a.png(A_on_disk=True)
+        src_slot=None logical=None evidence=
+        why_not_direct=本族（skin_1006_004）声明无 `_b_m`；pos1 在 b_m/s_m 间不可判，仅按组内序 H 位置绑定、非内容签名直证。
+        sha16 cur=c98422dad01c0fe2 (1621201B)  A=7f03f8c8d009639a (1723988B)
+#### 1110129  manifest sha16=9596bd860124bbb7
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis={"rule_R": "DDS 区块起点 = 该皮肤最后一条 material c159 + 1（五样本 5/5，已升为 rule）：c159#392 → #393", "rule_H": "区块按 submesh 分组，组内序 [暖色, B≡1, NORMAL, PARAM]；组数 5 = bind #332 材料数 5（G0-G3 四位全对齐）", "unresolved": "H 逐位：pos3=NORMAL(pos4=PARAM) 高信；pos2=B≡1 中高；**pos1 不可判**（b_m/s_m）。G4 仅 3 条且组内序与 G0-G3 不同（H 破在 G4 第2位），已改用内容
+  prim0  skin_1001_008_0    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/008_b_m.png  A=src_tex/008_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=4元组周期 [暖色, B≡1, NORMAL, PARAM]，组0第1位
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且未在本块找到 R≡1 的 s_m）
+        sha16 cur=0f93b7948571f6c9 (1264314B)  A=b3f82249f64a7a33 (1536052B)
+  prim1  skin_1001_008_1    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/008_c_b_m.png  A=src_tex/008_c_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=4元组周期 [暖色, B≡1, NORMAL, PARAM]，组1第1位
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且未在本块找到 R≡1 的 s_m）
+        sha16 cur=70e4de565cbaeb8a (1223212B)  A=c232fd2aa20527f1 (1414471B)
+  prim2  skin_1001_008_2    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/008_d_b_m.png  A=src_tex/008_d_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=4元组周期 [暖色, B≡1, NORMAL, PARAM]，组2第1位
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且未在本块找到 R≡1 的 s_m）
+        sha16 cur=9f4cac6256e09893 (1332340B)  A=7107460fcdeb3b8a (1449039B)
+  prim3  skin_1001_008_3    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/008_e_b_m.png  A=src_tex/008_e_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=4元组周期 [暖色, B≡1, NORMAL, PARAM]，组3第1位
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且未在本块找到 R≡1 的 s_m）
+        sha16 cur=58badcda7b8e6eb5 (912668B)  A=e7ace4ebfb21d4b8 (1255116B)
+  prim4  skin_1001_008_4    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/008_f_b_m.png  A=src_tex/008_f_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=4元组周期 [暖色, B≡1, NORMAL, PARAM]，组4第1位
+        why_not_direct=组4仅 3 条且组内序与 G0-G3 不同（H 在此破），按内容绑定
+        sha16 cur=5d9c872381b3f1a0 (57915B)  A=4338d03349b4932e (53145B)
+#### 1110145  manifest sha16=f1534af80f906a5a
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis={"A_c159_path_blocks": "c159 000654（及 657/660/663/666，同级 5916B 副本）内嵌明文依赖路径直读：皮肤自有 8 条 + 源 IBL cube 1 条；按文件名后缀 a / b_m / m / n / s_m 定槽（**按名字绑定，不按块内顺序**）。不采用旧 provenance.json 的 000667-671 顺序映射（与内容签名冲突，见 D）。", "B_canonical_cluster_order": "该资产族物理 5 连组顺序由 1110171 两组**像素级直证**（ΔRGBA=0.0000）确定 = [b_m, s_m
+  prim0  skin_1001_014_0    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim1  skin_1001_014_1    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim2  skin_1001_014_2    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim3  skin_1001_014_3    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim4  skin_1001_014_4    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim5  skin_1001_014_5    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+  prim6  skin_1001_014_6    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/014_b_m.png  A=src_tex/014_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1001_014\textures\skin_1001_014001b_m.tga evidence=c159 000654 路径块 001b_m.tga；物理位置=1110171 b_m 位（1224/1271）
+        why_not_direct=
+        sha16 cur=bcfa541e2e2bd841 (1073820B)  A=d5964ac91d0e3cc1 (1092684B)
+#### 1110152  manifest sha16=389222638317e2ff
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis={"rule_R": "DDS 区块起点 = 最后一条 material c159 + 1：c159#2740 → #2741（rule 级）", "rule_H": "组内序 [暖色, B≡1, NORMAL, 控制图]；2 组 × 4 = 8 = 声明路径数；另有 256² 第3组（3 条，#2749-2751）**不属任何材料组**（材料仅 2）⇒ 未绑定", "unresolved": "pos1 不可判；pos4 为控制图且族特征与 008/1110171 的 ParamMap 不同 ⇒ ParamMap 仅 candidate"}
+  prim0  skin_1012_009_0    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/009_b_m.png  A=src_tex/009_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且本块无 R≡1 的 s_m 条目）
+        sha16 cur=b087bb70d0967c3f (1348854B)  A=632ddb54d19ead68 (1332299B)
+  prim1  skin_1012_009_1    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/009_c_b_m.png  A=src_tex/009_c_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=pos1 在 b_m/s_m 间不可判（本族声明无 _b_m，且本块无 R≡1 的 s_m 条目）
+        sha16 cur=969bc4bb812074fd (1219543B)  A=c08f9a64e78773a7 (1195300B)
+#### 1110165  manifest sha16=dac2d8a7f1052e54
+   block_rule=null | slot_binding_basis={"A_c159_plaintext_names": "13 条明文文件名（001a/001m/001n/001s_m/1001a/1001b_m/1001m/1001n/1001s_m/2001a/2001s_m/3001a/3001s_m）= 硬证据", "B_count_and_physics": "类↔名配对由计数(a4/m2/n2/s_m4/b_m1)+物理约束(albedo 三通道须有变化、正态图 R,G≈0.5,B≈0.96)唯一锁定", "C_cross_group_declared": "c159 #1619 明文块 2001a[t_basecolor]+001m+2001s
+  prim0  skin_1006_011_0    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/165_b_m.png  A=src_tex/165_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=
+        sha16 cur=8801d31e863d6645 (1230569B)  A=d89290e73d550a4d (1485875B)
+  prim1  skin_1006_011_1    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/165_c_b_m.png  A=src_tex/165_c_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=
+        sha16 cur=0859c7d3a72284c7 (1160660B)  A=0a77bca79ca45c3d (1445118B)
+  prim2  skin_1006_011_2    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/165_d_b_m.png  A=src_tex/165_d_a.png(A_on_disk=False)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=
+        sha16 cur=49ec41d2f063f0a7 (1268038B)  A=None (NoneB)
+  prim3  skin_1006_011_3    pbr_weapon.fx::TShader kind=weapon  Tex0=src_tex/165_e_b_m.png  A=src_tex/165_e_a.png(A_on_disk=False)
+        src_slot=Tex0 logical=None evidence=
+        why_not_direct=
+        sha16 cur=530d39b5fcca8dbb (1508777B)  A=None (NoneB)
+#### 1110171  manifest sha16=28bd1b324b7580b2
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis=null
+  prim0  skin_1003_012_0    None                   kind=weapon  Tex0=src_tex/012_b_m.png  A=src_tex/012_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_012\textures\skin_1003_012001b_m.tga evidence=constraint-1to1 + empirical-color-test
+        why_not_direct=
+        sha16 cur=fddc36be831b17f1 (1330629B)  A=9c703956ac3dacf6 (1375219B)
+  prim1  skin_1003_012_1    None                   kind=crystal Tex0=src_tex/012_b_m.png  A=src_tex/012_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_012\textures\skin_1003_012001b_m.tga evidence=constraint-1to1
+        why_not_direct=
+        sha16 cur=fddc36be831b17f1 (1330629B)  A=9c703956ac3dacf6 (1375219B)
+  prim2  skin_1003_012_2    None                   kind=crystal Tex0=src_tex/012_b_m.png  A=src_tex/012_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_012\textures\skin_1003_012001b_m.tga evidence=constraint-1to1
+        why_not_direct=
+        sha16 cur=fddc36be831b17f1 (1330629B)  A=9c703956ac3dacf6 (1375219B)
+  prim3  skin_1003_012_3    None                   kind=crystal Tex0=src_tex/012_b_m.png  A=src_tex/012_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_012\textures\skin_1003_012001b_m.tga evidence=constraint-1to1
+        why_not_direct=
+        sha16 cur=fddc36be831b17f1 (1330629B)  A=9c703956ac3dacf6 (1375219B)
+  prim4  skin_1003_010_0    None                   kind=weapon  Tex0=src_tex/010_b_m.png  A=src_tex/010_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_010\textures\skin_1003_010001b_m.tga evidence=constraint-1to1 + empirical-color-test
+        why_not_direct=
+        sha16 cur=6e1684657f4954e5 (1597023B)  A=12abe6f0b22682c1 (1283755B)
+  prim5  skin_1003_010_1    None                   kind=crystal Tex0=src_tex/010_b_m.png  A=src_tex/010_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_010\textures\skin_1003_010001b_m.tga evidence=constraint-1to1
+        why_not_direct=
+        sha16 cur=6e1684657f4954e5 (1597023B)  A=12abe6f0b22682c1 (1283755B)
+  prim6  skin_1003_010_2    None                   kind=crystal Tex0=src_tex/010_b_m.png  A=src_tex/010_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_1003_010\textures\skin_1003_010001b_m.tga evidence=constraint-1to1
+        why_not_direct=
+        sha16 cur=6e1684657f4954e5 (1597023B)  A=12abe6f0b22682c1 (1283755B)
+#### 1110177  manifest sha16=ee9d109e51f097e8
+   block_rule="01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB" | slot_binding_basis={"A_c159_path_blocks": "c159(003996.c159) 每材质路径块直读（c159_029_pair.json L649-765）", "B_cluster_order": "同集群贴图组顺序 b_m,s_m,a,n,m —— 由 1110171 两个组 ground truth（gpk_raw_8u32.json label）实证", "C_content_signature": "004011/004012/004013 内容签名与 1110171 的 a/n/m ground truth 逐项同族（_t5_decode_stats.json）", "unres
+  prim0  skin_2003_029_0    pbr_default.fx::TShader kind=weapon  Tex0=src_tex/029_b_m.png  A=src_tex/029_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_2003_029\textures\skin_2003_029001a.tga evidence=c159 该材质基色路径 029001a.tga
+        why_not_direct=
+        sha16 cur=6349a3f2f761f83f (1026884B)  A=0082f6ec8caa7dca (993440B)
+  prim1  skin_2003_029_1    pbr_crystal.fx::TShader kind=crystal Tex0=src_tex/029_b_m.png  A=src_tex/029_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga evidence=c159 该材质首路径 029001b_m.tga（掩码）
+        why_not_direct=
+        sha16 cur=6349a3f2f761f83f (1026884B)  A=0082f6ec8caa7dca (993440B)
+  prim2  skin_2003_029_2    pbr_crystal.fx::TShader kind=crystal Tex0=src_tex/029_b_m.png  A=src_tex/029_a.png(A_on_disk=True)
+        src_slot=Tex0 logical=weapon\skin\skin_2003_029\textures\skin_2003_029001b_m.tga evidence=c159 该材质首路径 029001b_m.tga（掩码）
+        why_not_direct=
+        sha16 cur=6349a3f2f761f83f (1026884B)  A=0082f6ec8caa7dca (993440B)
+#### c159 artifacts:
+   FILE 11285 E:\la拆包项目\03拆包产物\_target_1110171\C159PARSE_find_groups修复与Tex0判定_20260918.md
+   FILE 66923 E:\la拆包项目\03拆包产物\_target_1110171\C159PARSE_skins.json
+   FILE 73142 E:\la拆包项目\03拆包产物\_target_1110171\C159PARSE_skins_fixed.json
+   FILE 11621 E:\la拆包项目\03拆包产物\_target_1110171\C159PARSE_逐槽直证_20260918.md
+   FILE 4959 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_probe.json
+   FILE 9532 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_probe.log
+   FILE 2178 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_probe.py
+   FILE 1836 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_strings.json
+   FILE 4772 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_strings.log
+   FILE 1930 E:\la拆包项目\03拆包产物\_target_1110171\FXFX_c159_strings.py
+   FILE 16822 E:\la拆包项目\03拆包产物\_target_1110171\FXSRC_c159_matrix.json
+   FILE 15346 E:\la拆包项目\03拆包产物\_target_1110171\FXSRC_c159_matrix.log
+   FILE 3534 E:\la拆包项目\03拆包产物\_target_1110171\FXSRC_c159_matrix.py
+   FILE 15978 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\c159_pair.py
+   FILE 15228 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\c159_pair.py.bak_20260918_023638
+   FILE 19371 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\c159_pair_v4.py
+   FILE 9323 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\C159_PARAM_PAIRING.md
+   FILE 4044 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\c159_parser.py
+   FILE 9826 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\c159_slot_parser.py
+   FILE 1066 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\scan_c159_skin_map.py
+   FILE 3796 E:\la拆包项目\01拆包器本体\工具库\06_皮肤定位链\test_c159_parser.py
+   FILE 7732 E:\la拆包项目\03拆包产物\c159_pair_v4_001265.json
+   FILE 20062 E:\la拆包项目\03拆包产物\c159_pair_v4_regress.json

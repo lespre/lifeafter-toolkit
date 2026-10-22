@@ -1,0 +1,1293 @@
+(function(){
+  "use strict";
+
+  const scriptUrl=(document.currentScript&&document.currentScript.src)||location.href;
+  const assetBase=new URL(".",scriptUrl);
+  const runtimeUrls={
+    three:new URL("vendor/three/three.module.min.js",assetBase).href,
+    loader:new URL("vendor/three/addons/loaders/GLTFLoader.js",assetBase).href,
+    controls:new URL("vendor/three/addons/controls/OrbitControls.js",assetBase).href,
+    trackball:new URL("vendor/three/addons/controls/TrackballControls.js",assetBase).href,
+  };
+  const state={
+    shell:null,dialog:null,stage:null,poster:null,loading:null,status:null,title:null,subtitle:null,
+    stateSelect:null,cameraSelect:null,sfxButton:null,fidelity:null,fullscreen:null,
+    runtimePromise:null,THREE:null,GLTFLoader:null,OrbitControls:null,
+    renderer:null,scene:null,camera:null,controls:null,root:null,mixer:null,clock:null,
+    resizeObserver:null,frame:0,generation:0,record:null,config:null,manifestUrl:null,
+    states:[],cameras:[],effectsAdapter:null,effectsHandle:null,lastFocus:null,bodyOverflow:"",
+  };
+
+  const esc=s=>String(s==null?"":s).replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const isObject=v=>v&&typeof v==="object"&&!Array.isArray(v);
+
+  function fidelityLabel(value){
+    const labels={source_matched:"源材质匹配",source:"源数据",approximate:"材质近似",none:"无 SFX",partial:"部分 SFX",matched:"SFX 已匹配"};
+    return labels[String(value||"")]||String(value||"");
+  }
+
+  function ensureShell(){
+    if(state.shell)return;
+    const root=document.createElement("div");
+    root.className="wv-root";root.id="weaponSkinViewer";root.hidden=true;
+    root.innerHTML=`<button class="wv-backdrop" type="button" tabindex="-1" aria-label="关闭 3D 预览"></button>
+      <section class="wv-dialog" role="dialog" aria-modal="true" aria-labelledby="wvTitle" aria-describedby="wvSubtitle">
+        <header class="wv-head"><div class="wv-title-wrap"><div class="wv-title" id="wvTitle">3D 预览</div><div class="wv-subtitle" id="wvSubtitle"></div></div><button class="wv-close" type="button" aria-label="关闭 3D 预览">×</button></header>
+        <div class="wv-stage"><img class="wv-poster" alt=""><div class="wv-canvas" aria-label="可旋转缩放的武器三维模型"></div><pre class="wv-params" aria-live="off"></pre><button class="wv-copy-params" type="button" title="复制当前相机参数（含模型朝向，可直接发给 AI 复现）">复制参数</button><button class="wv-apply-params" type="button" title="粘贴参数 JSON 以还原视角（与「复制参数」配套）">应用参数</button><div class="wv-loading" role="status" aria-live="polite">准备加载 3D 模型…</div><div class="wv-status" aria-live="polite"></div></div>
+        <footer class="wv-tools">
+          <label class="wv-state-wrap">形态<select class="wv-state-select" aria-label="选择武器形态"></select></label>
+          <label class="wv-camera-wrap">视角<select class="wv-camera-select" aria-label="选择展示视角"></select></label>
+          <button class="wv-reset" type="button">复位视角</button>
+          <label class="wv-toggle" title="默认关闭：不允许上下（俯仰）旋转；左右旋转不受影响"><input type="checkbox" class="wv-pitch-toggle">上下</label>
+          <label class="wv-toggle" title="默认关闭：不允许缩放（滚轮/双指）"><input type="checkbox" class="wv-zoom-toggle">缩放</label>
+          <select class="wv-rotaxis" title="左右拖动的旋转轴（可切换，默认世界 Y 轴）">
+            <option value="worldY">左右转：世界Y</option>
+            <option value="modelY">左右转：模型Y</option>
+            <option value="view">左右转：画面内</option>
+            <option value="native">左右转：原生</option>
+          </select>
+          <button class="wv-rot-h" type="button" title="左右旋转 180°（快捷键 H）">H180</button>
+          <button class="wv-rot-v" type="button" title="上下旋转 180°（快捷键 V）">V180</button>
+          <button class="wv-sfx" type="button" disabled aria-pressed="false">SFX 未提供</button>
+          <button class="wv-ibl" type="button" aria-pressed="false" title="IBL 缩放 = 自定义 IBL 的曝光倍数（源 = cb1[239].x u_env_day2night_exposure）。该源常量**尚未取到** ⇒ 默认 0.25 是从 lab_src.html 拷来的值、**无源依据**。此按钮仅供**显示对照**（0.25 ↔ 1.0），不作为源级结论，也不改变默认值。">IBL 缩放 0.25（无源依据）</button>
+          <span class="wv-spacer"></span><span class="wv-fidelity"></span>
+          <button class="wv-fullscreen" type="button">全屏</button>
+        </footer>
+      </section>`;
+    document.body.appendChild(root);
+    state.shell=root;state.dialog=root.querySelector(".wv-dialog");state.stage=root.querySelector(".wv-stage");
+    state.poster=root.querySelector(".wv-poster");state.params=root.querySelector(".wv-params");state.copyBtn=root.querySelector(".wv-copy-params");state.applyBtn=root.querySelector(".wv-apply-params");state.loading=root.querySelector(".wv-loading");state.status=root.querySelector(".wv-status");
+    state.title=root.querySelector(".wv-title");state.subtitle=root.querySelector(".wv-subtitle");
+    state.stateSelect=root.querySelector(".wv-state-select");state.cameraSelect=root.querySelector(".wv-camera-select");
+    state.sfxButton=root.querySelector(".wv-sfx");state.fidelity=root.querySelector(".wv-fidelity");state.fullscreen=root.querySelector(".wv-fullscreen");
+    /* ★ 新增（2026-09-18，用户请求）：把 IBL 缩放做成**页面上可见的开关**（默认仍 0.25 不动）。
+       理由：源真值 cb1[239].x(u_env_day2night_exposure) 未取到 ⇒ 改默认即 fitted（用户禁令）。
+       故此按钮只做**显示对照**，UI 上明确标注「无源依据」，不写进任何源级结论。 */
+    state.iblButton=root.querySelector(".wv-ibl");
+    state.iblLabelBase="IBL 缩放 ";
+    if(state.iblButton)state.iblButton.addEventListener("click",function(){
+      try{
+        var cur=(state.iblScale===undefined?1.0:Number(state.iblScale));   /* ★ task-45：默认与渲染主路径统一为 1.0（撤销无源依据常量），按钮组 1.0↔0.25 切换保持不变 */
+        var next=(Math.abs(cur-1.0)<1e-6)?0.25:1.0;
+        if(window.WikiWeaponViewer&&typeof window.WikiWeaponViewer.__iblParams==="function")
+          window.WikiWeaponViewer.__iblParams({scale:next});
+        else state.iblScale=next;
+        state.iblButton.setAttribute("aria-pressed",String(next===1.0));
+        state.iblButton.textContent=state.iblLabelBase+next.toFixed(2)+(next===0.25?"（无源依据）":"（无源依据·显示对照）");
+        if(state.status)state.status.textContent="IBL 缩放 = "+next.toFixed(2)+"（无源依据的显示调节；默认 0.25 未改）";
+      }catch(e){}
+    });
+    /* ★ 新增（2026-09-18，lead 批准）：三个**默认关**的诊断开关，用于分离基础层过曝三因。
+       一律 UI 标注「诊断用·非源级」，默认 = 原值/原图/ACES ⇒ **不改变任何现有行为**。
+         ① __diagLight(on)：hemi/key/fill 强度整体归 0（还原时按备份恢复）
+         ② __diagAlb(on)  ：晶体 map 临时换 1×1 中性灰（只改运行时纹理，不碰磁盘/资产/manifest；
+                            保留 USE_MAP 定义 ⇒ `vMapUv` 与晶体注入不受影响）
+         ③ __diagTone(on) ：ACES ↔ NoToneMapping（只切 tone mapping，不动 exposure） */
+    (function(){
+      var bar=state.sfxButton&&state.sfxButton.parentElement; if(!bar)return;
+      var mk=function(label,title){ var b=document.createElement("button"); b.type="button";
+        b.textContent=label; b.title=title; b.setAttribute("aria-pressed","false"); bar.appendChild(b); return b; };
+      var dL=document.createElement("span"); dL.className="wv-dgl"; dL.textContent="直接光 ×1.00（诊断用·非源值）";
+      dL.title="诊断：hemi/key/fill 强度按倍率等比缩放，分离直接光贡献。默认 ×1.00 = 源值，仅诊断。"; bar.appendChild(dL);
+      var _LKS=[];
+      [1,0.75,0.5,0.25,0].forEach(function(kv){ var b=document.createElement("button"); b.type="button";
+        b.className="wv-dg"; b.dataset.k=String(kv); b.textContent="×"+kv.toFixed(2);
+        b.setAttribute("aria-pressed", kv===1?"true":"false");
+        b.addEventListener("click",function(){ window.__diagLight(kv); }); bar.appendChild(b); _LKS.push(b); });
+      var dA=mk("albedo 原图（诊断用·非源级）","诊断：晶体 map 临时换 1×1 中性灰（只改运行时，不改磁盘），分离暖 albedo 贡献。默认=原图。");
+      var dT=mk("tonemap ACES（诊断用·非源级）","诊断：ACES ↔ NoToneMapping，只切 tone mapping、不动 exposure。默认=ACES。");
+      var _L=null, _A=[], _T=null;
+      window.__diagLight=function(k){ try{ var s=state.scene; if(!s)return 'no scene';
+        if(typeof k==='boolean')k=k?0:1; if(k===undefined||k===null)k=1;
+        k=Number(k); if(!isFinite(k))k=1; k=Math.max(0,Math.min(1,k));
+        if(!_L){ _L=[]; s.traverse(function(o){ if(o.isLight)_L.push({o:o,i:o.intensity}); }); }
+        _L.forEach(function(x){ x.o.intensity=x.i*k; });
+        dL.textContent="直接光 ×"+k.toFixed(2)+"（诊断用·非源值）";
+        _LKS.forEach(function(b){ b.setAttribute("aria-pressed", Math.abs(Number(b.dataset.k)-k)<1e-6?"true":"false"); });
+        try{_forceRender();}catch(e){} return JSON.stringify({lights:_L?_L.length:0,k:k}); }catch(e){ return 'ERR '+e; } };
+      window.__diagAlb=function(on){ try{ var T=state.THREE; if(!T||!state.scene)return 'no scene';
+        if(!state.__grayTex){ state.__grayTex=new T.DataTexture(new Uint8Array([128,128,128,255]),1,1); state.__grayTex.needsUpdate=true; }
+        var n=0; state.scene.traverse(function(o){ if(!o.isMesh)return; var m=o.material; if(Array.isArray(m))m=m[0];
+          if(!m||!m.userData||!m.userData.chain||m.userData.chain.kind!=='crystal')return;
+          if(on){ if(!m.userData.__savedMap){ m.userData.__savedMap=m.map; _A.push(m); } m.map=state.__grayTex; }
+          else if(m.userData.__savedMap){ m.map=m.userData.__savedMap; delete m.userData.__savedMap; }
+          m.needsUpdate=true; n++; });
+        dA.textContent="albedo "+(on?"中性灰":"原图")+"（诊断用·非源级）"; dA.setAttribute("aria-pressed",String(!!on));
+        try{_forceRender();}catch(e){} return JSON.stringify({mats:n,on:!!on}); }catch(e){ return 'ERR '+e; } };
+      window.__diagTone=function(on){ try{ var r=state.renderer; if(!r)return 'no renderer';
+        if(on){ if(_T===null)_T=r.toneMapping; r.toneMapping=state.THREE.NoToneMapping; }
+        else if(_T!==null){ r.toneMapping=_T; }
+        dT.textContent="tonemap "+((_T!==null)?"NoToneMapping":"ACES")+"（诊断用·非源级）"; dT.setAttribute("aria-pressed",String(!!on));
+        try{_forceRender();}catch(e){} return JSON.stringify({toneMapping:r.toneMapping}); }catch(e){ return 'ERR '+e; } };
+      dL.addEventListener("click",function(){}); /* dL 现为倍率读数标签，缩放改由 ×1.00/×0.75/×0.50/×0.25/×0 按钮组驱动 */
+      dA.addEventListener("click",function(){ window.__diagAlb(dA.getAttribute("aria-pressed")!=="true"); });
+      dT.addEventListener("click",function(){ window.__diagTone(dT.getAttribute("aria-pressed")!=="true"); });
+    })();
+    root.querySelector(".wv-backdrop").addEventListener("click",close);
+    root.querySelector(".wv-close").addEventListener("click",close);
+    root.querySelector(".wv-reset").addEventListener("click",()=>{rebuildControls();applyCamera(selectedCamera(),true);});
+    state.pitchToggle=root.querySelector(".wv-pitch-toggle");state.zoomToggle=root.querySelector(".wv-zoom-toggle");
+    state.pitchToggle.addEventListener("change",()=>{state.allowPitch=state.pitchToggle.checked;state.pinnedPolar=null;state.pinnedUp=null;state.pinnedUp0=null;state.baseAz=null;state.pinnedUp0=null;state.baseAz=null;
+      if(state.status)state.status.textContent=state.allowPitch?"上下旋转：已允许":"上下旋转：已锁定（可左右旋转）";});
+    state.zoomToggle.addEventListener("change",()=>{state.allowZoom=state.zoomToggle.checked;
+      if(state.controls)state.controls.noZoom=!state.allowZoom;
+      if(state.status)state.status.textContent=state.allowZoom?"缩放：已允许":"缩放：已锁定";});
+    // 左右拖动旋转轴：可在面板切换（默认世界 Y 轴=过模型中心），用户可自选，不由代码猜
+    state.rotMode="worldY";
+    (function(){var sel=root.querySelector(".wv-rotaxis");if(!sel)return;
+      state.rotMode=sel.value||"worldY";
+      sel.addEventListener("change",function(){state.rotMode=sel.value;
+        if(state.controls)state.controls.noRotate=(sel.value==="native");
+        if(state.status)state.status.textContent="左右旋转轴："+({worldY:"世界 Y 轴（过模型中心）",modelY:"模型自身 Y 轴",view:"画面平面内",native:"原生自由"})[sel.value];});
+    })();
+    root.querySelector(".wv-rot-h").addEventListener("click",()=>rotate180("h"));
+    root.querySelector(".wv-rot-v").addEventListener("click",()=>rotate180("v"));
+    state.stateSelect.addEventListener("change",()=>loadSelectedState());
+    state.cameraSelect.addEventListener("change",()=>applyCamera(selectedCamera(),true));
+    state.sfxButton.addEventListener("click",toggleEffects);
+    state.fullscreen.addEventListener("click",toggleFullscreen);
+    if(state.copyBtn)state.copyBtn.addEventListener("click",()=>{
+      const txt=paramsText(true);
+      const done=()=>{state.copyBtn.textContent="已复制";setTimeout(()=>{state.copyBtn.textContent="复制参数";},1500);};
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));
+      else fallbackCopy(txt,done);
+    });
+    /* ★ 新增（2026-09-17）：应用参数 —— 与「复制参数」配套，使复制/粘贴闭环。
+       还原 target / position(按 distance 归一) / up / fov / span / 形态 / 模型朝向(model_rot)。
+       模型朝向按 quat → yaw_deg → euler_deg 优先级取（quat 最准确）。
+       注意：本查看器的拖动是转**模型**（applyOrbit），相机全程不动，故必须一并还原 model_rot，
+       否则「粘贴参数」只会回到初始姿态。 */
+    /* 导出放到文件后段（window.WikiWeaponViewer 创建之后）——此处过早赋值会因对象不存在而抛异常。 */
+    if(state.applyBtn)state.applyBtn.addEventListener("click",()=>{
+      const raw=window.prompt('粘贴参数 JSON（会立即应用到当前视角）：');
+      if(raw===null)return;
+      if(typeof window.__applyParamsJSON!=='function'){ if(state.status)state.status.textContent='应用参数未就绪'; return; }
+      const r=window.__applyParamsJSON(raw);
+      state.applyBtn.textContent=r.ok?'已应用':'应用失败';
+      if(!r.ok&&state.status)state.status.textContent='参数应用失败：'+(r.err||'');
+      setTimeout(()=>{ state.applyBtn.textContent='应用参数'; },1800);
+    });
+    root.addEventListener("keydown",onDialogKey);
+    document.addEventListener("keydown",event=>{
+      if(state.shell.hidden)return;
+      const tag=(event.target&&event.target.tagName||"").toLowerCase();
+      if(tag==="input"||tag==="select"||tag==="textarea")return;
+      const k=String(event.key||"").toLowerCase();
+      if(k==="h"){event.preventDefault();rotate180("h");}
+      else if(k==="v"){event.preventDefault();rotate180("v");}
+    });
+    document.addEventListener("fullscreenchange",()=>{if(state.fullscreen)state.fullscreen.textContent=document.fullscreenElement?"退出全屏":"全屏";});
+  }
+
+  function setLoading(message,error){
+    if(!state.loading)return;
+    state.loading.textContent=message||"";
+    state.loading.hidden=!message;
+    state.loading.dataset.error=error?"1":"0";
+  }
+
+  function showPoster(src,alt){
+    if(!state.poster)return;
+    if(src){state.poster.src=src;state.poster.alt=alt||"武器预览海报";state.poster.hidden=false;}
+    else{state.poster.removeAttribute("src");state.poster.alt="";state.poster.hidden=true;}
+  }
+
+  function normalizeCollection(value,fallbackLabel){
+    if(Array.isArray(value))return value.filter(isObject);
+    if(isObject(value))return Object.entries(value).map(([id,v])=>({id,label:(v&&v.label)||fallbackLabel||id,...(isObject(v)?v:{model:v})}));
+    return [];
+  }
+
+  function absoluteUrl(path,base){
+    if(!path)return "";
+    try{return new URL(String(path),base||location.href).href;}catch(_){return String(path);}
+  }
+
+  async function resolveConfig(record){
+    const inline=isObject(record.preview_3d)?record.preview_3d:{};
+    let config={...inline},base=location.href;
+    if(inline.manifest){
+      const manifestUrl=absoluteUrl(inline.manifest,location.href);
+      const response=await fetch(manifestUrl,{cache:"no-store"});
+      if(!response.ok)throw new Error(`3D 清单读取失败（HTTP ${response.status}）`);
+      const manifest=await response.json();
+      if(!isObject(manifest))throw new Error("3D 清单格式无效");
+      state.manifestUrl=manifestUrl;base=manifestUrl;
+      config={...inline,...manifest,manifest:inline.manifest};
+    }else state.manifestUrl=null;
+    let states=normalizeCollection(config.states,"默认");
+    if(!states.length&&config.model)states=[{id:"default",label:"默认",model:config.model,scene:config.scene}];
+    if(!states.length)throw new Error("3D 清单没有可加载的模型形态");
+    states=states.map((item,index)=>({...item,id:String(item.id||`state-${index+1}`),label:item.label||item.name||`形态 ${index+1}`,model:absoluteUrl(item.model,base)}));
+    if(states.some(item=>!item.model))throw new Error("3D 形态缺少 model 路径");
+    const cameras=normalizeCollection(config.camera_presets||config.cameras,"视角").map((item,index)=>({...item,id:String(item.id||`camera-${index+1}`),label:item.label||item.name||`视角 ${index+1}`}));
+    return {...config,_base:base,_states:states,_cameras:cameras};
+  }
+
+  function fillSelect(select,items,selected){
+    select.innerHTML=items.map(item=>`<option value="${esc(item.id)}">${esc(item.label)}</option>`).join("");
+    if(selected&&items.some(item=>item.id===String(selected)))select.value=String(selected);
+    select.parentElement.hidden=items.length<2;
+  }
+
+  async function ensureRuntime(){
+    if(!state.runtimePromise){
+      state.runtimePromise=Promise.all([import(runtimeUrls.three),import(runtimeUrls.loader),import(runtimeUrls.controls),import(runtimeUrls.trackball)])
+        .then(([THREE,loader,controls,trackball])=>({THREE,GLTFLoader:loader.GLTFLoader,OrbitControls:controls.OrbitControls,TrackballControls:trackball.TrackballControls}));
+    }
+    const rt=await state.runtimePromise;
+    state.THREE=rt.THREE;state.GLTFLoader=rt.GLTFLoader;state.OrbitControls=rt.OrbitControls;state.TrackballControls=rt.TrackballControls;
+    return rt;
+  }
+
+  function configureScene(){
+    disposeScene();
+    const THREE=state.THREE,config=state.config||{};
+    state.scene=new THREE.Scene();
+    state.scene.background=new THREE.Color(config.background||"#071015");
+    state.camera=new THREE.PerspectiveCamera(Number(config.fov)||36,1,.01,10000);
+    state.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:"high-performance"});
+    state.renderer.outputColorSpace=THREE.SRGBColorSpace;
+    /* ★ 改动（2026-09-18，task-29）：toneMapping 改为**配置驱动**（默认 ACESFilmic = 原写死值）；
+       exposure 的默认显式化且 **0 合法**（原 `Number(config.exposure)||1` 会把 0 吃掉）。 */
+    state.renderer.toneMapping=toneMapOf(THREE,config);
+    state.renderer.toneMappingExposure=numCfg(config.exposure,1);
+    state.renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    state.renderer.domElement.setAttribute("aria-label","可旋转缩放的武器三维模型");
+    const canvasHost=state.shell.querySelector(".wv-canvas");canvasHost.replaceChildren(state.renderer.domElement);
+    /* ★ 同上：三盏 rig 灯的强度同样走 numCfg（默认 1.35/2.2/0.75 = 原写死值，0 合法）。 */
+    const hemi=new THREE.HemisphereLight(config.sky_color||0xffffff,config.ground_color||0xffffff,numCfg(config.hemisphere_intensity,1.35));
+    /* ★★ Lead 20260920（task-11，任务一+任务二）：**可选 rig 灯**（两个开关都缺省 ⇒ 与改动前逐字相同）。
+       `rigOn` = `config.key_shadow`（任务一：要投阴影就必须有一盏**可见**的投影灯）
+               或 `config.direct_light`（任务二：恢复 three 标准直接光项）。
+       为什么"可见"是硬前提：three 的 `projectObject()` 对 `object.visible===false` **直接 return**
+         ⇒ 该灯既不进 `currentRenderState.pushLight`（⇒ `NUM_DIR_LIGHTS=0`，直接光项在编译期被整段删掉），
+            也不进 `pushShadow`（⇒ 阴影贴图根本不渲染）。见本文件 CLEAR_ALWAYS 块内的修复注释。
+       `config.key_dir` = 主光**位置方向**（"光从哪来"），**仅在 rigOn 时读取**；
+         rigOn=false ⇒ 仍是写死的 (3,4,5)，默认帧逐字节不变。
+       证据等级：方向的**具体数值**为 `approximate_direction_from_reference_screenshot`
+         （参考图 `REF_game_1110025.png` 是 732×273 裁剪，无法反解真实光源）；
+         但"屏幕 ↔ 世界轴"的映射是**实测**的（`__expAxes([0,0,0])` 截图 +
+         `__state().proj` 与手算逐位一致；见 SHADOW_TUNE_20260920.md §1）。 */
+    const rigOn=!!(config.key_shadow||config.direct_light);
+    const keyDir=(rigOn&&Array.isArray(config.key_dir)&&config.key_dir.length>=3)?config.key_dir.map(Number):[3,4,5];
+    /* 任务二：直接光通道。`direct_light_intensity` 优先于 `key_intensity`（本皮肤 viewer.json 把
+       key/fill/hemisphere 全设 0，故直接光必须有自己的强度字段，否则开关开了也是黑）。
+       只动**直接光**这一个通道：不改曝光 / toneMapping / bloom / env_intensity。 */
+    const keyInt=config.direct_light?(numCfg(config.direct_light_intensity,numCfg(config.key_intensity,2.2))):numCfg(config.key_intensity,2.2);
+    const key=new THREE.DirectionalLight(config.key_color||0xffffff,keyInt);
+    key.position.set(keyDir[0],keyDir[1],keyDir[2]);
+    const fill=new THREE.DirectionalLight(config.fill_color||0xffffff,numCfg(config.fill_intensity,.75));fill.position.set(-4,1,-3);
+    state.scene.add(hemi,key,fill);
+    state.__rigOn=rigOn;
+    state.__keyDir=keyDir.slice();
+    /* ★★ Lead 20260920：**可选**打光/阴影通道（配置驱动，默认关 ⇒ 既有皮肤逐字节不变）。
+       背景（用户实拍对比）：游戏内皮肤预览里武器会在场景上投下**随朝向变化**的影子；而本查看器
+       此前三盏 rig 灯强度被置 0（`numCfg(0,d)` 会让 0 合法透传 ⇒ 灯全灭，只剩 IBL），并且
+       **全文没有 shadowMap / castShadow / receiveShadow** ⇒ 是**结构性缺失**，不是调参问题
+       （证据：`numCfg` 定义 + 三灯强度字段 + 全文关键字计数 0）。
+       本块只在 `config.key_shadow` 为真时执行：
+         · renderer.shadowMap + key.castShadow（正交阴影相机，范围/偏移可配）
+         · 一块**只显示阴影**的 `ShadowMaterial` 地板（不引入可见地面几何，不遮挡背景图）
+         · 模型 mesh 的 castShadow 由 tick 懒标记（模型可被重建，故按 root 记一次）
+       关闭时整块不执行 ⇒ 默认态与改动前一致（验收负控要求逐字节相同）。 */
+    state.keyShadow=!!config.key_shadow;
+    if(state.keyShadow){
+      state.renderer.shadowMap.enabled=true;
+      state.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+      /* ★★ Lead 20260920：`key.castShadow` 只有在 **key.visible=true** 时才真的产出 shadow map
+         （three 的 projectObject 对不可见灯直接 return）—— 这就是 `state.__rigOn` 同时被
+         `key_shadow` 点亮的理由，见 CLEAR_ALWAYS 块内的修复注释。 */
+      key.castShadow=true;
+      /* ★ 调参后的缺省（task-11 任务一）：extent 9→12（实测阴影足迹在光空间横向达 ±10.0，
+         9 会把两端切掉）；floor_y −6→+2.4（原 −6 是 PMREM 环境地板的 y，在屏幕上跑到模型**上方**，
+         永远接不到投影；+2.4 才把地板平面投在背景板栅格地面上，见 SHADOW_TUNE_20260920.md §1）。
+         注意：这两个缺省**只在 key_shadow 为真时生效** ⇒ 缺省帧逐字节不变。 */
+      const ext=numCfg(config.key_shadow_extent,12);
+      const ms=numCfg(config.key_shadow_map,2048);
+      key.shadow.mapSize.set(ms,ms);
+      const sc=key.shadow.camera;
+      sc.left=-ext; sc.right=ext; sc.top=ext; sc.bottom=-ext;
+      sc.near=numCfg(config.key_shadow_near,.5); sc.far=numCfg(config.key_shadow_far,40);
+      sc.updateProjectionMatrix();
+      key.shadow.bias=numCfg(config.key_shadow_bias,-0.0006);
+      key.shadow.normalBias=numCfg(config.key_shadow_normal_bias,.02);
+      const floor=new THREE.Mesh(new THREE.PlaneGeometry(ext*6,ext*6),
+        new THREE.ShadowMaterial({opacity:numCfg(config.key_shadow_opacity,.42)}));
+      floor.rotation.x=-Math.PI/2;
+      floor.position.y=numCfg(config.key_shadow_floor_y,2.4);
+      floor.receiveShadow=true; floor.name='__shadowFloor';
+      state.shadowFloor=floor;
+      state.scene.add(floor);
+    }
+    /* ★★ Lead 20260920（task：展示平台 + 阴影定标）：**可选**「展示平台」= 一块**有厚度、带前缘直角**的台面。
+       用户原话（看游戏内整屏截图，圈出地板前缘拐角）："类似桌子拐角处" —— 即游戏里地面是一块**有厚度、
+       有前缘直角的台面**；要求 wiki 预览里也有这块台面，且武器要把影子投在上面。
+       证据：`REF_SHADOW_TARGETS_20260920.md`（同房间 NCC 0.9117、地板带、影子 −0.1527@x=591）+
+       `platform_analysis/`（本代理重测：台面顶边 / 前缘逐列 / 拐角红圈 / 格栅周期 / 纹理来源像素）。
+
+       设计口径（与旧 `key_shadow` 的 ShadowMaterial 地板**互补，不冲突**）：
+         · `config.platform.enabled` 默认 **false** ⇒ 整块不执行，默认帧与改动前逐字节一致（负控）。
+         · 台面用**真实像素**做纹理（来自参考图/背景板裁剪，见 `1110025\platform\README.txt`），
+           不手绘；若只用近似颜色，`color_from_reference_screenshot` 标为近似。
+         · **拐角**由几何天然给出：台面（水平面）+ 前缘面（竖直面）在 z_front 处相交，
+           左右两侧再补两块竖侧面 ⇒ 前缘是一条**直角棱**，随相机转动始终是直角（不是画上去的）。
+         · 台面 `receiveShadow=true` 且 `castShadow=true`（能接影、也能对下方投影）。
+         · 阴影：本块**不重复造投影灯**。若 `key_shadow` 未开，则本块自己把 `renderer.shadowMap` +
+           `key.castShadow`（那盏 rig key 灯）打开，并允许 `platform.shadow_*` 覆盖原 `key_shadow_*`
+           缺省 ⇒ 单独开 `platform` 也能有影可看。
+         · 反向开关 `config.platform_keep_key_shadow_floor=false`：平台开启时**移除**旧的
+           `ShadowMaterial` 地板（否则同平面两块阴影面会**双重压暗**）。 */
+    state.platformOn=!(!config.platform||config.platform.enabled!==true);
+    if(state.platformOn){
+      const p=(config.platform&&typeof config.platform==='object')?config.platform:{};
+      const pnum=(v,d)=>numCfg(v,d);
+      const psize=Array.isArray(p.size)&&p.size.length>=2?p.size:[16,10];
+      const px0=pnum(p.x,0);
+      const pz0=pnum(p.z,0);
+      const py0=pnum(p.y,1);
+      const pth=Math.max(1e-3,pnum(p.thickness,.5));
+      const pdx0=psize[0]*pnum(p.repeat_x,1);
+      const pdz0=psize[1]*pnum(p.repeat_y,1);
+      const T=new THREE.TextureLoader();
+      const baseT=state.manifestUrl||location.href;
+      const load=(rel,wrap)=>{
+        if(!rel) return Promise.resolve(null);
+        const u=new URL(rel,baseT).href;
+        return new Promise(res=>T.load(u,t=>{
+          t.colorSpace=THREE.SRGBColorSpace;
+          t.wrapS=t.wrapT=THREE.RepeatWrapping;
+          t.anisotropy=(state.renderer&&state.renderer.capabilities)?state.renderer.capabilities.getMaxAnisotropy():1;
+          t.repeat.set(wrap[0],wrap[1]);
+          res(t);
+        },undefined,()=>res(null)));
+      };
+      /* 旧地板与平台同平面会双重压暗 ⇒ 平台开启时按开关移除（默认移除）。 */
+      if(state.shadowFloor&&config.platform_keep_key_shadow_floor!==true){
+        state.scene.remove(state.shadowFloor);
+        if(state.shadowFloor.geometry)state.shadowFloor.geometry.dispose();
+        if(state.shadowFloor.material)state.shadowFloor.material.dispose();
+        state.shadowFloor=null;
+      }
+      if(!config.key_shadow){
+        state.renderer.shadowMap.enabled=true;
+        if(state.renderer.shadowMap.type===undefined||!config.key_shadow)
+          state.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+        const pExt=pnum(p.shadow_extent,numCfg(config.key_shadow_extent,12));
+        key.castShadow=true;
+        const pms=pnum(p.shadow_map,numCfg(config.key_shadow_map,2048));
+        key.shadow.mapSize.set(pms,pms);
+        const psc=key.shadow.camera;
+        psc.left=-pExt; psc.right=pExt; psc.top=pExt; psc.bottom=-pExt;
+        psc.near=pnum(p.shadow_near,numCfg(config.key_shadow_near,.5));
+        psc.far=pnum(p.shadow_far,numCfg(config.key_shadow_far,40));
+        psc.updateProjectionMatrix();
+        key.shadow.bias=pnum(p.shadow_bias,numCfg(config.key_shadow_bias,-0.0006));
+        key.shadow.normalBias=pnum(p.shadow_normal_bias,numCfg(config.key_shadow_normal_bias,.02));
+      }
+      const grp=new THREE.Group(); grp.name='__platform';
+      /* ★ pitch_deg：台面绕世界 X 轴的**前倾角**。为什么需要：本查看器 game_reference 相机
+         几乎**水平**（相机 y=-2.09、视线 y 分量 +0.14、up=(-0.83,-0.56,-0.10)），水平面在屏幕上
+         几乎是**一条线**（实测 y=3 时可见深度仅 1.14 单位 → 屏幕上 ~6px），照不出"台面"。
+         前倾 60° 后水平面才有可见面积，且**前缘仍是一条直线棱**（面积足够、直角仍在）。 */
+      const pitch=(pnum(p.pitch_deg,0))*Math.PI/180;
+      const topMat=new THREE.MeshStandardMaterial({color:new THREE.Color(p.color||0xffffff),
+        roughness:pnum(p.roughness,.82),metalness:pnum(p.metalness,.15),
+        side:THREE.DoubleSide,envMapIntensity:pnum(p.env_intensity,.35)});
+      const frontMat=new THREE.MeshStandardMaterial({color:new THREE.Color(p.front_color||0x8f9a92),
+        roughness:pnum(p.front_roughness,.6),metalness:pnum(p.front_metalness,.25),
+        side:THREE.DoubleSide,envMapIntensity:pnum(p.front_env_intensity,.35)});
+      const sideMat=new THREE.MeshStandardMaterial({color:new THREE.Color(p.side_color||0x4a5450),
+        roughness:pnum(p.side_roughness,.75),metalness:pnum(p.side_metalness,.2),
+        side:THREE.DoubleSide,envMapIntensity:pnum(p.side_env_intensity,.3)});
+      Promise.all([
+        load(p.top_texture,(pdx0||1,pdz0||1)),
+        load(p.front_texture,(pnum(p.repeat_x,1)||1,1))
+      ]).then(function(texs){
+        if(!state.scene) return;
+        if(texs[0]) topMat.map=texs[0];
+        if(texs[1]) frontMat.map=texs[1];
+        topMat.needsUpdate=true; frontMat.needsUpdate=true;
+        const top=new THREE.Mesh(new THREE.PlaneGeometry(psize[0],psize[1]),topMat);
+        top.rotation.x=-Math.PI/2+pitch;
+        /* 前倾后，台面中心位置按"前缘不动、面往后上方抬"来摆：
+           前缘（局部 -Y 端）在 z=z0 处保持不动 ⇒ 中心沿法线退回 depth/2。 */
+        const hd=psize[1]/2;
+        top.position.set(px0, py0+Math.sin(pitch)*hd, pz0-Math.cos(pitch)*hd);
+        top.receiveShadow=true; top.castShadow=true; top.name='__platformTop';
+        const front=new THREE.Mesh(new THREE.PlaneGeometry(psize[0],pth),frontMat);
+        front.position.set(px0,py0-pth/2,pz0);
+        front.receiveShadow=true; front.castShadow=true; front.name='__platformFront';
+        const sideL=new THREE.Mesh(new THREE.PlaneGeometry(psize[1],pth),sideMat);
+        sideL.rotation.y=-Math.PI/2;
+        sideL.position.set(px0-psize[0]/2,py0-pth/2,pz0-hd);
+        const sideR=sideL.clone(); sideR.position.x=px0+psize[0]/2;
+        [sideL,sideR].forEach(function(s){s.receiveShadow=true;s.castShadow=true;});
+        sideL.name='__platformSideL'; sideR.name='__platformSideR';
+        grp.add(top,front,sideL,sideR);
+        if(state.scene){state.scene.add(grp);state.platformGroup=grp;}
+      })['catch'](function(){});
+    }
+    // 程序化摄影棚环境(IBL)：金属材质(metallic=1)在无环境贴图时会渲染成近黑，
+    // 用 PMREM 从简易自发光面片生成环境贴图（纯 core three，无外部依赖）。
+    try{
+      const pmrem=new THREE.PMREMGenerator(state.renderer);
+      pmrem.compileEquirectangularShader();
+      const envScene=new THREE.Scene();
+      const mkplane=(color,intensity,w,h,pos,rot)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(color).multiplyScalar(intensity),side:THREE.DoubleSide}));m.position.set(...pos);if(rot)m.rotation.set(...rot);envScene.add(m);};
+      mkplane(config.sky_color||0xdbeafe,1.2,12,12,[0,6,0],[-Math.PI/2,0,0]);
+      mkplane(0xffffff,1.5,8,8,[-7,2,4],[0,Math.PI/2,0]);
+      mkplane(0x8bbcff,0.9,8,8,[7,1,-3],[0,-Math.PI/2,0]);
+      mkplane(config.ground_color||0x172033,0.18,14,14,[0,-6,0],[Math.PI/2,0,0]);
+      state.scene.environment=pmrem.fromScene(envScene,Number(config.env_blur)||0.04).texture;
+    // 源环境：若提供游戏内皮肤背景图（config.background_image），则用它做背景 + 由它生成环境（PMREM），
+    // 替代程序化摄影棚 rig —— 枪身金属与晶体的反射来源正是这张图所代表的场景。
+    const bgImage=config.background_image||(config.background&&/\.(png|jpe?g|webp)$/i.test(String(config.background))?config.background:null);
+    if(bgImage){
+      const url=new URL(bgImage,state.manifestUrl||location.href).href;
+      new state.THREE.TextureLoader().load(url,tex=>{
+        // ★ 背景=固定背板：必须用默认 UVMapping（屏幕空间铺满，不随相机旋转）。
+        //   若设成 EquirectangularReflectionMapping，three 会按天空盒渲染 → 转武器时背景跟着转（已修）。
+        tex.colorSpace=state.THREE.SRGBColorSpace;
+        tex.wrapS=tex.wrapT=state.THREE.ClampToEdgeWrapping;
+        if(state.scene){state.scene.background=tex;}
+        // ★ 环境与背景分离：源证据里材质引用的 t_custom_ibl 是明亮摄影棚 cube（qiangpi/car_studio01），
+        //   与场景背景图不是同一件事。因此默认只把这张图当背景；
+        //   仅当 env_from_background=true 才由它生成环境（会显著压暗，仅用于对照实验）。
+        if(config.env_from_background===true){
+          const bgScene=new state.THREE.Scene();
+          const sph=new state.THREE.Mesh(new state.THREE.SphereGeometry(50,48,24),
+            new state.THREE.MeshBasicMaterial({map:tex,side:state.THREE.BackSide}));
+          bgScene.add(sph);
+          // ★ P0-4：截图 ≠ 等距环境图 ≠ cubemap —— 只作 background，禁止生成 scene.environment
+          if(state.scene){state.scene.background=tex;}
+          // scene.environment 保持上面已建好的中性 PMREM（源 cube 找到后再替换）
+          }
+        state.bgImageApplied=url.split('/').pop();
+      });
+    }
+      state.scene.environmentIntensity=numCfg(config.env_intensity,1.0);   /* ★ task-29：默认显式化，0 合法 */
+      pmrem.dispose();
+    }catch(_){}
+    // 用 TrackballControls（球面自由旋转）而不是 OrbitControls：
+    // Orbit 锁定"上方向"，转到极点会锁死（竖拖到顶就停住）；Trackball 无上方向约束，
+    // 横竖都能 360° 无限继续转（用户要求）。禁止平移，只保留旋转+缩放。
+    state.controls=new state.TrackballControls(state.camera,state.renderer.domElement);
+    state.rotMode=state.rotMode||"worldY";
+    state.controls.noPan=true;
+    state.controls.noRotate=((state.rotMode||'worldY')!=='native');   // ★ 默认 worldY → 旋转由 applyOrbit 接管，上下锁死    // ★ 旋转由 applyOrbit 接管（Trackball 自由球旋转会让画面歪/绕圈）
+    state.controls.noZoom=!state.allowZoom;      // ★ 开关默认关闭=不允许缩放
+    state.controls.noPan=true;
+    state.controls.staticMoving=true;            // ★ 关掉阻尼余速：否则松手后惯性继续转，锁会被拉扯出上下晃
+    state.controls.dynamicDampingFactor=0.0;
+    state.controls.rotateSpeed=Number(state.config&&state.config.rotate_speed)||3.0;
+    state.controls.rotateSpeed=2.4;
+    state.controls.zoomSpeed=1.1;
+    state.controls.staticMoving=false;
+    state.controls.dynamicDampingFactor=0.12;
+    state.renderer.domElement.addEventListener("dblclick",()=>applyCamera(selectedCamera(),true));
+    state.controls.addEventListener("change",function(){renderOnce();scheduleParams();});   /* ★ 修复（2026-09-17）：原仅 renderOnce —— 转动/缩放时画面重绘但**右下角参数面板从不刷新**，一直显示旧值。updateParams() 早已定义却从未接到事件上。现按 rAF 节流刷新。 */
+    state.clock=new THREE.Clock();
+    state.resizeObserver=new ResizeObserver(resize);
+    state.resizeObserver.observe(state.stage);
+    resize();startLoop();
+  }
+
+  function resize(){
+    if(!state.renderer||!state.camera||!state.stage)return;
+    const width=Math.max(1,state.stage.clientWidth),height=Math.max(1,state.stage.clientHeight);
+    state.renderer.setSize(width,height,false);state.camera.aspect=width/height;state.camera.updateProjectionMatrix();
+    if(state.controls&&state.controls.handleResize)state.controls.handleResize();
+    renderOnce();
+  }
+
+  function startLoop(){
+    bindOrbitPointer(state.renderer&&state.renderer.domElement);
+    cancelAnimationFrame(state.frame);
+    const tick=()=>{
+      if(!state.renderer)return;
+      state.frame=requestAnimationFrame(tick);
+      if(state.mixer&&state.clock)state.mixer.update(Math.min(state.clock.getDelta(),.05));
+      pinPitch();   // 上下旋转锁（默认锁定）：update 前钉一次，避免控制器的内部状态累积俯仰
+      if(state.controls)state.controls.update();
+      pinPitch();   // update 后再钉一次，保证渲染出的就是锁定角度（只锁俯仰，左右不受影响）
+      /* ★ Lead 20260920：key_shadow 开启时，给**当前模型**的 mesh 标 castShadow（按 root 记一次，
+         模型被重建时会重新标记）。仅作用于 state.root（武器本体），不碰特效层精灵。 */
+      if((state.keyShadow||state.platformOn)&&state.root&&state.__keyShadowMarkedFor!==state.root){
+        state.__keyShadowMarkedFor=state.root;
+        state.root.traverse(function(o){ if(o.isMesh)o.castShadow=true; });
+      }
+      renderFrame();
+      updateParams();
+    };
+    tick();
+  }
+
+  // 全局后处理（bloom）：源管线有 HDR 辉光，参考图亮部显著高于当前渲染 → 属全局 rig，非逐皮肤上色。
+  // 参数来自 viewer.json material_layers.global_rig.bloom；strength=0 → 不建 composer（行为与之前完全一致）。
+  // ── 源颜色混合调试（pbr_crystal，prim5）：C = lerp(lerp(T,T*uc,m), lerp(ub,T*uc,d), m)
+  //   T = t_basecolor 采样, m = saturate(Tex0.r), d = m * DetailMap.a
+  //   说明：DetailMap(crystal_bump_n_uvva) 资源未定位 → d 不可用，显式报错，不用常数权重冒充 ✗
+  const CRYSTAL_C_SRC = {
+    basecolor: 'assets/3d/weapon_skin/1110171/src_tex/t_basecolor_010.png',
+    tex0:      'assets/3d/weapon_skin/1110171/src_tex/tex0_010.png',
+    detail:    null,                       // ← 唯一资源阻碍：common\textures\crystal_bump_n_uvva.tga 未定位
+    detailOffset: null,                    // ★ block3 无 u_detail_offset_x/y 覆写 → 引擎默认未决（不补值 ✗）
+    detailTiling: [4.0, 4.0]               // block3 的 u_detail_tilling=4（源值）
+  };
+  async function crystalCDebug(on){
+    const T=state.THREE;
+    if(!T||!state.root) return {error:'no root'};
+    const rep = state.__crystalC||{};
+    if(on===false){ if(rep.restore) {rep.restore(); state.__crystalC=null;} if(state.root)applyMaterialLayers(state.root); renderOnce(); return {mode:'off'}; }
+    if(!rep.loaded){
+      const L=u=>new Promise((res,rej)=>{new T.TextureLoader().load(u,x=>{x.colorSpace=T.SRGBColorSpace;x.wrapS=x.wrapT=T.RepeatWrapping;res(x);},undefined,()=>rej(new Error('纹理加载失败: '+u)));});
+      const out={};
+      try{ out.basecolor=await L(CRYSTAL_C_SRC.basecolor); }catch(e){ out.basecolor=null; }
+      try{ out.tex0=await L(CRYSTAL_C_SRC.tex0); }catch(e){ out.tex0=null; }
+      out.detail=null; out.missing=[];
+      if(!out.basecolor) out.missing.push('t_basecolor');
+      if(!out.tex0) out.missing.push('Tex0');
+      if(!CRYSTAL_C_SRC.detail) out.missing.push('DetailMap(crystal_bump_n_uvva) 资源未定位 → d 不可用');
+      rep.loaded=out; state.__crystalC=rep;
+    }
+    const S=rep.loaded, ml=(selectedState()||{}).material_layers||{};
+    const crystalList=[5];   // ★ 调试只作用 prim5（用户的 prim5 参数/纹理不得套到其他晶体）
+    const ub=(ml.per_submesh&&ml.per_submesh['5']&&ml.per_submesh['5'].u_base_color)||[0.1216,0.3961,0.5059];
+    const uc=(ml.per_submesh&&ml.per_submesh['5']&&ml.per_submesh['5'].u_crystal_color)||[0,0,1];
+    const saved=[];
+    let idx=-1;
+    state.root.traverse(function(o){
+      if(!o.isMesh)return; idx++;
+      if(!crystalList.includes(idx))return;
+      saved.push([o,o.material]);
+      const m=new T.MeshBasicMaterial({map:S.basecolor,toneMapped:true,side:o.material&&o.material.side!==undefined?o.material.side:0});
+      m.userData.__crystalC=true;
+      m.onBeforeCompile=function(sh){
+          sh.uniforms.uTex0={value:S.tex0};
+          sh.uniforms.uUB={value:new T.Vector3(ub[0],ub[1],ub[2])};
+          sh.uniforms.uUC={value:new T.Vector3(uc[0],uc[1],uc[2])};
+          sh.uniforms.uDetailMap={value:S.detail||null};
+          sh.uniforms.uHasDetail={value:S.detail?1:0};
+          sh.uniforms.uMissing={value:(S.detail||state.__crystalCAssumeA1)?0:1};
+          sh.uniforms.uAssumeA1={value:state.__crystalCAssumeA1?1:0};
+          sh.uniforms.fDetailOffset={value:(CRYSTAL_C_SRC.detailOffset?new T.Vector2(CRYSTAL_C_SRC.detailOffset[0],CRYSTAL_C_SRC.detailOffset[1]):new T.Vector2(0,0))};
+          sh.uniforms.fDetailTiling={value:new T.Vector2((CRYSTAL_C_SRC.detailTiling&&CRYSTAL_C_SRC.detailTiling[0])||1.0,(CRYSTAL_C_SRC.detailTiling&&CRYSTAL_C_SRC.detailTiling[1])||1.0)};
+        sh.uniforms.uUC={value:new T.Vector3(uc[0],uc[1],uc[2])}; sh.uniforms.uHasDetail={value:S.detail?1:0};
+        sh.fragmentShader=sh.fragmentShader
+          .replace('#include <common>','#include <common>\nuniform sampler2D uTex0;uniform sampler2D uDetailMap;uniform vec3 uUB;uniform vec3 uUC;uniform float uHasDetail;uniform float uMissing;uniform float uAssumeA1;uniform vec2 fDetailOffset;uniform vec2 fDetailTiling;')
+          .replace('#include <map_fragment>', [
+            'vec3 T_=texture2D(map,vMapUv).rgb;',
+            'float m_=clamp(texture2D(uTex0,vMapUv).r,0.0,1.0);',
+            'float d_=0.0;',
+            'if(uAssumeA1>0.5){',
+            '  d_=clamp(m_,0.0,1.0);              // 诊断：假设 DetailMap.a=1 ⇒ d=m（真参与计算）',
+            '}else if(uHasDetail>0.5){',
+            '  vec2 duv=(vMapUv+fDetailOffset)*fDetailTiling;',
+            '  vec4 D=texture2D(uDetailMap,duv);',
+            '  d_=clamp(m_*D.a,0.0,1.0);',
+            '}',
+            '// DetailMap 缺失时 d 不可用 → 由 uMissing 控制显示为"输入缺失"标记色（不冒充源结果）',
+            'if(uMissing>0.5){ gl_FragColor=vec4(1.0,0.0,1.0,1.0); return; }',
+            'vec3 A_=mix(T_,T_*uUC,m_);',
+            'vec3 B_=mix(uUB,T_*uUC,d_);',
+            'vec3 C_=mix(A_,B_,m_);',
+            'diffuseColor.rgb*=C_;'].join('\n'));
+        m.userData.__shader=sh;
+      };
+      o.material=m; o.visible=true;
+    });
+    rep.restore=function(){ saved.forEach(function(pr){pr[0].material=pr[1];}); };
+    rep.savedRefs=saved.map(function(pr){return pr[0];});
+    rep.inspect=function(){ // 取实际编译用的片段着色器源码与 uniform 值
+      const o=rep.savedRefs[0]; const sh=o&&o.material&&o.material.userData&&o.material.userData.__shader;
+      if(!sh) return null;
+      const frag=sh.fragmentShader||'';
+      const hit=frag.split('\n').filter(function(l){return /uAssumeA1|uHasDetail|uMissing|d_=|C_=|diffuseColor\.rgb\*=/.test(l);});
+      const u=sh.uniforms||{};
+      return {fragLines:hit, uniformValues:{uAssumeA1:u.uAssumeA1&&u.uAssumeA1.value, uMissing:u.uMissing&&u.uMissing.value,
+              uHasDetail:u.uHasDetail&&u.uHasDetail.value, uDetailMap:!!(u.uDetailMap&&u.uDetailMap.value),
+              fDetailOffset:u.fDetailOffset&&u.fDetailOffset.value, fDetailTiling:u.fDetailTiling&&u.fDetailTiling.value,
+              uUB:u.uUB&&u.uUB.value, uUC:u.uUC&&u.uUC.value},
+              programKey:(o.material&&o.material.customProgramCacheKey)?o.material.customProgramCacheKey():null,
+              hasMap:!!(o.material&&o.material.map)};
+    };
+    renderOnce();
+    return {mode:(state.__crystalCAssumeA1?'C_assumeDetailA1':'C'), missing:S.missing,
+            detailMapUsed:!!S.detail, assumeA1:!!state.__crystalCAssumeA1, u_base_color:ub, u_crystal_color:uc,
+            detailOffset:CRYSTAL_C_SRC.detailOffset, detailTiling:CRYSTAL_C_SRC.detailTiling,
+            meshes:(function(){let a=[],i=-1;state.root.traverse(function(o){if(o.isMesh){i++;if(crystalList.includes(i))a.push({i:i,mat:o.material.type,hasMap:!!o.material.map});}});return a;})()};
+  }
+
+  async function ensureComposer(){
+    try{
+      const rig=((selectedState()||{}).material_layers||(state.config||{}).material_layers||{}).global_rig||{};
+      const bl=rig.bloom||{};
+      if(state.noPost)return;   // 诊断期固定关闭后处理（用户 §三/§四：A/B 两组都关 bloom）
+      const strength=Number(bl.strength); if(!Number.isFinite(strength)||strength<=0)return;
+      if(state.composer)return;
+      const b=new URL("./vendor/three/addons/",assetBase).href;
+      const [EC,RP,UBP,OP]=await Promise.all([
+        import(b+"postprocessing/EffectComposer.js"),import(b+"postprocessing/RenderPass.js"),
+        import(b+"postprocessing/UnrealBloomPass.js"),import(b+"postprocessing/OutputPass.js")]);
+      const T=state.THREE,sz=new T.Vector2();state.renderer.getSize(sz);
+      const c=new EC.EffectComposer(state.renderer);
+      c.addPass(new RP.RenderPass(state.scene,state.camera));
+      const bp=new UBP.UnrealBloomPass(new T.Vector2(sz.x,sz.y),
+        strength,Number.isFinite(Number(bl.radius))?Number(bl.radius):0.5,
+        Number.isFinite(Number(bl.threshold))?Number(bl.threshold):0.85);
+      c.addPass(bp); c.addPass(new OP.OutputPass());
+      state.composer=c;state.bloomPass=bp;
+      if(state.status)state.status.textContent="全局后处理：bloom 已启用";
+    }catch(e){}
+  }
+  function renderFrame(){
+    /* ★ 修复（2026-09-18，对抗复核 ①）：**整个函数体**（含 pinPitch / scheduleParams / 前置 guard）
+       都在 try 内 —— 渲染或前置逻辑抛错时绝不静默变黑屏：
+       写 state.__renderErr / window.__renderErr 并照常返回，下一帧继续。
+       补充说明（实测）：tick 在调用 renderFrame **之前**就已 re-arm requestAnimationFrame(L274)，
+       故 rAF 本身不会因抛错而断；真正的风险是 (a) updateParams 被跳过、(b) 异常穿出到
+       renderOnce()/promise 链（调用方无 .catch）。本改动同时覆盖这两条。 */
+    try{
+      /* ★ 新增（2026-09-18，shader-auditor，task-40）：IBL 就绪门的**推迟重绑**（每帧最多触发一次）。
+         cube 六面未就绪时不绑（避免空 cube 全黑）；六面到齐后由加载回调置 __iblRebindPending，
+         在这里重建一次材质把 cube 挂上。守卫：仅在源链已建好（state.neoxReport 存在）、无重绑在飞、
+         且重建次数 ≤3 时才执行，避免循环/抖动；失败只记录，不抛。 */
+      /* ★★ (B)+(C) 收敛式重做（2026-09-19，shader-auditor，task-49；备份 wsv_bak_task49e_20260918_234852.js = 641DDC2CBA6FFEC4）。
+         旧实现的两个缺陷：① `__iblRebindPending=false` 是**一次性**的 —— 若那一次重建早于某些 prim 材质建立、
+         或被守卫跳过，就**永久不再重试**（实测导致 prim0/prim4 永久 `missing_source_ibl`，我已回退）；
+         ② 重建完成后**不检查结果**，无从判断收敛。
+         现改为**收敛式**：每次重建 resolve 后**实测**场景里还有多少 prim 没拿到 IBL（envMap/uCustomIbl 二者皆无为缺），
+         仍有缺且计数 < 上限 ⇒ **继续保持 pending 重试**；达到上限仍缺 ⇒ 置**明确可判**的
+         `state.__iblRetryExhausted=true`（不再静默，见 __texReady()/__acceptanceReport() 暴露的 retry_* 字段）。
+         **上限 `IBL_RETRY_CAP=6`**（写入报告）；计数 `__iblRetryCount` 每次尝试递增。 */
+      if(state.__iblRebindPending && state.root && state.neoxReport && !state.__iblRebuilding){
+        state.__iblRebindPending=false;
+        state.__iblRetryCount=(state.__iblRetryCount||0)+1;
+        state.__iblRebindTries=state.__iblRetryCount;
+        var IBL_RETRY_CAP=6;
+        if(state.__iblRetryCount<=IBL_RETRY_CAP){
+          state.__iblRebuilding=true;
+          var missingIbl=function(){
+            try{
+              var n=0;
+              state.scene.traverse(function(o){ if(!o.isMesh) return; var m=o.material; if(Array.isArray(m)) m=m[0];
+                if(!m||!m.userData||!m.userData.chain) return;
+                var u=(m.userData.__sh&&m.userData.__sh.uniforms)||{};
+                var has=!!m.envMap||!!(u.uCustomIbl&&u.uCustomIbl.value);
+                if(!has) n++; });
+              return n;
+            }catch(e){ return 0; }
+          };
+          try{
+            applyNeoxManifest(state.root).then(function(r){
+              state.neoxReport=r; state.__iblRebuilding=false;
+              try{ if(state.__glowSet&&state.__glowOn!==false) state.__glowSet(true); }catch(e){}
+              var left=missingIbl();
+              state.__iblRetryLastMissing=left;
+              /* ★ 新增（2026-09-19，task-49 裁决 (ii) 附加 1/2）：**收敛即恢复窗口期隐藏的 prim**
+                 （`__pendingHidden` 标记）；**达上限（exhausted）也必须恢复可见** ⇒ 绝不永久消失。 */
+              if(left===0 || state.__iblRetryExhausted || state.__iblRetryCount>=IBL_RETRY_CAP){
+                try{ state.scene.traverse(function(o){ if(o.isMesh&&o.userData&&o.userData.__pendingHidden){
+                  o.visible=true; o.userData.__pendingHidden=false; } }); }catch(e){}
+              }
+              if(left>0 && state.__iblRetryCount<IBL_RETRY_CAP){ state.__iblRebindPending=true; }   /* 未收敛 ⇒ 继续重试 */
+              else if(left>0){ state.__iblRetryExhausted=true; }                                    /* 达上限仍缺 ⇒ 明确可判 */
+              else { state.__iblRetryExhausted=false; }
+              try{_forceRender();}catch(e){}
+            })['catch'](function(e){ state.__iblRebuilding=false;
+              state.__iblRebindErr=String((e&&e.message)||e);
+              if(state.__iblRetryCount<IBL_RETRY_CAP) state.__iblRebindPending=true; else state.__iblRetryExhausted=true; });
+          }catch(e){ state.__iblRebuilding=false; state.__iblRebindErr=String((e&&e.message)||e);
+            if(state.__iblRetryCount<IBL_RETRY_CAP) state.__iblRebindPending=true; else state.__iblRetryExhausted=true; }
+        } else { state.__iblRetryExhausted=true; }
+      }
+      pinPitch();
+      /* ★ 修复（2026-09-17，第 2 版）：参数面板刷新必须挂在**渲染函数本身**上。
+         第 1 版挂在 renderOnce 上无效 —— 转动的真实路径是
+         `requestAnimationFrame(tick) → renderFrame()`，绕过了 renderOnce。
+         此处每次渲染都调用（含 RAF 循环），靠 updateParams 的「值不变则不写 DOM」自去重。 */
+      try{ scheduleParams(); }catch(e){}
+      if(!(state.renderer&&state.scene&&state.camera))return;
+      if(state.composer){try{state.composer.render();return;}catch(e){ /* 不回退销毁 */ }}
+      state.renderer.render(state.scene,state.camera);
+      state.__renderErr=null;
+    }catch(e){
+      var _m='[renderFrame] '+String((e&&e.message)||e)+(e&&e.stack?(' @ '+String(e.stack).split('\n')[1]||''):'');
+      state.__renderErr=_m; window.__renderErr=_m;
+      state.__renderErrCount=(state.__renderErrCount||0)+1;
+      if(state.__renderErrCount<=3){ try{ console.error(_m); }catch(_){ } }
+    }
+  }
+  function renderOnce(){renderFrame();}
+  function selectedState(){return state.states.find(item=>item.id===state.stateSelect.value)||state.states[0];}
+  function selectedCamera(){return state.cameras.find(item=>item.id===state.cameraSelect.value)||state.cameras[0]||null;}
+
+  function applyTransform(root,item){
+    if(!root||!item)return;
+    if(Array.isArray(item.scale))root.scale.fromArray(item.scale);
+    else if(Number.isFinite(Number(item.scale)))root.scale.setScalar(Number(item.scale));
+    if(Array.isArray(item.position))root.position.fromArray(item.position);
+    if(Array.isArray(item.rotation_degrees))root.rotation.set(...item.rotation_degrees.map(value=>state.THREE.MathUtils.degToRad(Number(value))));
+    else if(Array.isArray(item.rotation))root.rotation.set(...item.rotation.map(Number));
+  }
+
+  function fitObject(root){
+    const THREE=state.THREE;
+    const box=new THREE.Box3().setFromObject(root);
+    if(box.isEmpty())return;
+    const center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
+    const radius=Math.max(size.length()*.5,.01);
+    root.position.sub(center);
+    state.controls.target.set(0,0,0);
+    state.camera.near=Math.max(radius/1000,.001);state.camera.far=Math.max(radius*100,100);state.camera.updateProjectionMatrix();
+    state.camera.position.set(radius*1.55,radius*.85,radius*1.9);
+    state.controls.minDistance=radius*.25;state.controls.maxDistance=radius*8;
+    state.controls.update();
+  }
+
+  function modelFocus(){
+    if(!state.root||!state.THREE)return null;
+    const box=new state.THREE.Box3().setFromObject(state.root);
+    if(box.isEmpty())return null;
+    const center=box.getCenter(new state.THREE.Vector3()),size=box.getSize(new state.THREE.Vector3());
+    return {center:center,radius:Math.max(size.length()*.5,.01)};
+  }
+
+  // 模型在画布中的投影框（NDC → [0,1]，原点左上）
+  function projectedSpan(){
+    const cam=state.camera,root=state.root,THREE=state.THREE;
+    if(!cam||!root||!THREE)return null;
+    const box=new THREE.Box3().setFromObject(root);
+    if(box.isEmpty())return null;
+    const v=new THREE.Vector3(),mn=box.min,mx=box.max;
+    let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+    for(let i=0;i<8;i++){
+      v.set(i&1?mx.x:mn.x,i&2?mx.y:mn.y,i&4?mx.z:mn.z).project(cam);
+      const sx=v.x*.5+.5,sy=1-(v.y*.5+.5);
+      x0=Math.min(x0,sx);x1=Math.max(x1,sx);y0=Math.min(y0,sy);y1=Math.max(y1,sy);
+    }
+    return {x0:x0,x1:x1,y0:y0,y1:y1,sx:x1-x0,sy:y1-y0};
+  }
+
+  // 迭代求"刚好装下"的相机距离：目标=包围盒中心，模型占画布 targetSpan
+  function fitDistanceToFocus(focus,dir,targetSpan){
+    const cam=state.camera;
+    const vfov=cam.fov*Math.PI/180,hfov=2*Math.atan(Math.tan(vfov/2)*Math.max(cam.aspect,1e-3));
+    let d=Math.max(focus.radius/Math.sin(vfov/2),focus.radius/Math.sin(hfov/2))*1.02;
+    if(!Number.isFinite(d)||d<=0)d=focus.radius*2.5;
+    for(let i=0;i<5;i++){
+      cam.position.copy(focus.center).addScaledVector(dir,d);
+      cam.lookAt(focus.center);cam.updateMatrixWorld(true);
+      const p=projectedSpan();
+      if(!p)break;
+      const s=Math.max(p.sx,p.sy);
+      if(!Number.isFinite(s)||s<=1e-6)break;
+      const k=s/targetSpan;
+      if(Math.abs(1-k)<0.004)break;
+      d*=k;
+    }
+    return d;
+  }
+
+  // 单步：把相机距离调到"投影跨度 = targetSpan"
+  function fitSpanStep(focus,dir,targetSpan){
+    const cam=state.camera;
+    const p=projectedSpan();
+    if(!p)return;
+    const s=Math.max(p.sx,p.sy);
+    if(!Number.isFinite(s)||s<=1e-6)return;
+    const k=s/targetSpan;
+    if(Math.abs(1-k)<0.004)return;
+    const d=cam.position.distanceTo(state.controls.target)*k;
+    cam.position.copy(state.controls.target).addScaledVector(dir,d);
+    cam.lookAt(state.controls.target);cam.updateMatrixWorld(true);
+  }
+
+  // 单步：把投影重心从画布中心偏移处拉回中心（透视下投影框并不对称）
+  function recenterStep(){
+    const cam=state.camera,THREE=state.THREE;
+    const p=projectedSpan();
+    if(!p||!THREE)return;
+    const cx=(p.x0+p.x1)/2,cy=(p.y0+p.y1)/2;
+    const dx=0.5-cx,dy=0.5-cy;
+    if(Math.abs(dx)<0.002&&Math.abs(dy)<0.002)return;
+    const d=cam.position.distanceTo(state.controls.target);
+    const vfov=cam.fov*Math.PI/180,hfov=2*Math.atan(Math.tan(vfov/2)*Math.max(cam.aspect,1e-3));
+    const right=new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld,0);
+    const up=new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld,1);
+    const off=new THREE.Vector3()
+      .addScaledVector(right,-dx*2*d*Math.tan(hfov/2))
+      .addScaledVector(up,dy*2*d*Math.tan(vfov/2));
+    state.controls.target.add(off);cam.position.add(off);
+    cam.lookAt(state.controls.target);cam.updateMatrixWorld(true);
+  }
+
+  // 清控制器残留状态。★ 关键：本查看器用的是 TrackballControls（不是 Orbit），
+  //   Trackball 的旋转余量存在 _movePrev/_moveCurr 里；只清 Orbit 的 _sphericalDelta 是无效的。
+  function clearControlInertia(){
+    clearTrackballState();
+  }
+  function clearTrackballState(){
+    const c=state.controls;
+    if(!c)return;
+    try{
+      // TrackballControls 内部状态：把"上一个/当前"指针位置对齐 → 不再产生旋转增量
+      if(c._movePrev&&c._moveCurr){c._movePrev.copy(c._moveCurr);}
+      if(c._zoomStart&&c._zoomEnd){c._zoomEnd.copy(c._zoomStart);}
+      if(c._panStart&&c._panEnd){c._panEnd.copy(c._panStart);}
+      if(typeof c._zoomChanged!=="undefined")c._zoomChanged=false;
+      if(typeof c._wheelDelta==="number")c._wheelDelta=0;
+      if(typeof c._lastAngle==="number")c._lastAngle=0;
+      // Orbit（若将来切换控制器）的字段一并清，避免双份残留
+      const sd=c._sphericalDelta;
+      if(sd){if("theta" in sd||"phi" in sd){sd.theta=0;sd.phi=0;}else if(sd.set)sd.set(0,0);}
+      if(c._panOffset&&c._panOffset.set)c._panOffset.set(0,0,0);
+      if(typeof c._scale==="number")c._scale=1;
+    }catch(error){}
+  }
+  // 硬复位：销毁并重建控制器（清除一切内部残留；用于"复位视角/切换形态/应用预设"）
+  function rebuildControls(){
+    if(!state.camera||!state.renderer)return;
+    try{if(state.controls&&state.controls.dispose)state.controls.dispose();}catch(error){}
+    const C=state.TrackballControls||(state.THREE&&state.THREE.TrackballControls);
+    if(!C)return;
+    state.controls=new C(state.camera,state.renderer.domElement);
+    state.controls.noPan=true;
+    state.controls.noRotate=((state.rotMode||'worldY')!=='native');
+    state.controls.noZoom=!state.allowZoom;
+    state.controls.rotateSpeed=Number(state.config&&state.config.rotate_speed)||3.0;
+    state.controls.zoomSpeed=1.2;
+    state.controls.staticMoving=true;      // 无阻尼 → 不会有余速把复位带偏
+    state.controls.dynamicDampingFactor=0.2;
+  }
+
+  // 相机基换算（源渲染器约定 → three 约定）：不旋转模型，只转换完整相机基
+  //   f = normalize(target-eye); u = normalize(up0 - dot(up0,f)*f); u_roll = rotateAroundAxis(u, f, roll)
+  // 查看器自动适配距离时保留方向：position = modelCenter - normalize(f)*fittedDistance; up = u_roll; lookAt(modelCenter)
+  function cameraBasisFrom(cfg){
+    const THREE=state.THREE,cb=cfg&&cfg.camera_basis;
+    if(!THREE||!cb||!Array.isArray(cb.eye)||!Array.isArray(cb.target))return null;
+    const eye=new THREE.Vector3().fromArray(cb.eye.map(Number));
+    const tgt=new THREE.Vector3().fromArray(cb.target.map(Number));
+    const up0=new THREE.Vector3().fromArray((cb.up0||[0,0,1]).map(Number));
+    const f=new THREE.Vector3().subVectors(tgt,eye);
+    if(f.lengthSq()<1e-12)return null;
+    f.normalize();
+    const u=up0.clone().addScaledVector(f,-up0.dot(f));
+    if(u.lengthSq()<1e-12)u.set(0,1,0);else u.normalize();
+    const roll=(Number(cb.roll_deg)||0)*Math.PI/180;
+    const uRoll=roll?u.clone().applyAxisAngle(f,roll).normalize():u.clone();
+    return {dir:eye.clone().sub(tgt).normalize(),up:uRoll,f:f.clone()};
+  }
+
+  function applyCamera(preset,announce){
+    if(!state.camera||!state.controls)return;
+    // ── 按口径：① 先暂停俯仰锁并清除旧基准 ② 清控制器残留 ③ 设相机（方向+target+up/滚转）
+    state.__rotating=true;                 // 暂停俯仰/滚转锁（避免它和我们争相机）
+    state.pinnedPolar=null;state.pinnedUp=null;
+    clearTrackballState();
+    if(preset&&Number.isFinite(Number(preset.fit_span)))state.fitSpan=Number(preset.fit_span);
+    if(preset&&Number(preset.fov))state.camera.fov=Number(preset.fov);
+    state.camera.updateProjectionMatrix();
+    const THREE=state.THREE;
+    const focus=modelFocus();
+    const dir=new THREE.Vector3();
+    if(preset&&Array.isArray(preset.position))dir.fromArray(preset.position.map(Number));
+    if(dir.lengthSq()<1e-9)dir.set(1,.6,1);
+    dir.normalize();
+    // 方向与滚转：预设显式 up 优先 → 源相机基 → 皮肤默认 up；三者都没有才保持现值
+    const cb=cameraBasisFrom(state.config);
+    if(cb&&cb.dir&&!(preset&&preset.no_basis))dir.copy(cb.dir);   // __setCam/对齐预设可旁路 camera_basis
+    const upFromPreset=(preset&&Array.isArray(preset.up))?new THREE.Vector3().fromArray(preset.up.map(Number)):null;
+    const upBasis=(cb&&cb.up)?cb.up.clone():null;
+    const upDefault=(preset&&Array.isArray(preset.up0))?new THREE.Vector3().fromArray(preset.up0.map(Number)):null;
+    const upChosen=upFromPreset||upBasis||upDefault;
+    if(upChosen&&upChosen.lengthSq()>1e-9)state.camera.up.copy(upChosen.normalize());
+    // ★ 精确复现模式：预设同时给了 target 与 distance 时，按"位置=target+方向×距离"原样还原，
+    //   不做自动取景（否则用户调好的 xyz/距离会被取景改掉）
+    const tgt=(preset&&Array.isArray(preset.target))?new THREE.Vector3().fromArray(preset.target.map(Number)):null;
+    const distFix=(preset&&Number.isFinite(Number(preset.distance)))?Number(preset.distance):null;
+    if(tgt&&distFix){
+      // 方向必须取 preset.position - preset.target（不能用相机当前位置，那时相机还是初始状态）
+      const d2=new THREE.Vector3();
+      if(preset&&Array.isArray(preset.position))d2.fromArray(preset.position.map(Number)).sub(tgt);
+      if(d2.lengthSq()<1e-12)d2.copy(dir);
+      d2.normalize();
+      // ★ 轨道中心=模型几何中心（加载时就吸附）：否则首次拖动会"跳"一下，且绕注视点转会让模型画圈
+      const fc=(typeof modelFocus==='function')?modelFocus():null;
+      const ctr2=(fc&&fc.center)?fc.center.clone():tgt;
+      state.controls.target.copy(ctr2);
+      state.camera.position.copy(ctr2).addScaledVector(d2,distFix);
+      state.camera.lookAt(ctr2);
+      state.camera.near=Math.max(distFix/500,.001);state.camera.far=Math.max(distFix*40,focus?focus.radius*100:1000);
+      state.controls.minDistance=Math.max((focus?focus.radius*.2:.01),.01);
+      state.controls.maxDistance=Math.max(distFix*6,(focus?focus.radius*12:10));
+      state.camera.updateProjectionMatrix();
+      clearTrackballState();state.controls.update();clearTrackballState();state.controls.update();
+      const nb0=new THREE.Vector3().subVectors(state.camera.position,state.controls.target).normalize();
+      state.pinnedUp0=state.camera.up.clone();
+      state.baseAz=Math.atan2(nb0.x,nb0.z);
+      state.pinnedPolar=Math.acos(Math.max(-1,Math.min(1,nb0.clone().normalize().y)));
+      state.__rotating=false;renderOnce();
+      if(announce&&state.status)state.status.textContent=preset?`视角：${preset.label||""}`:"视角已复位";
+      return;
+    }
+    if(focus){
+      state.controls.target.copy(focus.center);
+      state.camera.aspect=(state.camera.aspect>0?state.camera.aspect:1.78);
+      const dist=(preset&&Number(preset.distance))||fitDistanceToFocus(focus,dir,state.fitSpan);
+      state.camera.position.copy(focus.center).addScaledVector(dir,dist);
+      // ★ 取景只允许"沿既定方向改距离 + 平移居中"：方向与滚转在整个收敛过程中保持不变
+      const dirKeep=dir.clone(), upKeep=state.camera.up.clone();
+      for(let i=0;i<3;i++){fitSpanStep(focus,dirKeep,state.fitSpan);recenterStep();}
+      fitSpanStep(focus,dirKeep,state.fitSpan);
+      // 收敛后再断言一次：方向/滚转未被取景改动（若被改动则按既定值恢复）
+      const dNow=new THREE.Vector3().subVectors(state.camera.position,state.controls.target).normalize();
+      if(dNow.dot(dirKeep)<0.9999){state.camera.position.copy(state.controls.target).addScaledVector(dirKeep,state.camera.position.distanceTo(state.controls.target));}
+      state.camera.up.copy(upKeep);
+      state.controls.minDistance=Math.max(focus.radius*.3,.01);state.controls.maxDistance=Math.max(dist*4,focus.radius*8);
+      state.camera.near=Math.max(dist/500,.001);state.camera.far=Math.max(dist*20,focus.radius*100);
+    }else{
+      if(preset&&Array.isArray(preset.position))state.camera.position.fromArray(preset.position.map(Number));
+      if(preset&&Array.isArray(preset.target))state.controls.target.fromArray(preset.target.map(Number));
+    }
+    state.camera.lookAt(state.controls.target);
+    state.camera.updateProjectionMatrix();
+    clearTrackballState();
+    state.controls.update();               // 让控制器与相机一致
+    clearTrackballState();                 // 稳定后再清一次残留
+    state.controls.update();
+    // ── 相机已稳定：记录新基准（俯仰角按世界 +Y 定义，滚转记录 up），再解除暂停
+    const nb=new THREE.Vector3().subVectors(state.camera.position,state.controls.target);
+    if(nb.lengthSq()>1e-12){
+      state.pinnedUp0=state.camera.up.clone();
+      state.baseAz=Math.atan2(nb.x,nb.z);
+      state.pinnedPolar=Math.acos(Math.max(-1,Math.min(1,nb.clone().normalize().y)));
+    }
+    state.__rotating=false;
+    renderOnce();
+    if(announce&&state.status)state.status.textContent=preset?`视角：${preset.label||""}`:"视角已复位";
+  }
+
+  function disposeMaterial(material){
+    if(!material)return;
+    for(const value of Object.values(material)){if(value&&value.isTexture)value.dispose();}
+    if(material.dispose)material.dispose();
+  }
+
+  function disposeObject(root){
+    if(!root)return;
+    root.traverse(obj=>{if(obj.geometry&&obj.geometry.dispose)obj.geometry.dispose();if(Array.isArray(obj.material))obj.material.forEach(disposeMaterial);else disposeMaterial(obj.material);});
+    if(root.parent)root.parent.remove(root);
+  }
+
+  function disposeEffects(){
+    if(state.effectsHandle&&typeof state.effectsHandle.dispose==="function")state.effectsHandle.dispose();
+    state.effectsHandle=null;
+    if(state.sfxButton){state.sfxButton.setAttribute("aria-pressed","false");state.sfxButton.textContent="SFX 关闭";}
+  }
+
+  function disposeScene(){
+    cancelAnimationFrame(state.frame);state.frame=0;disposeEffects();
+    if(state.resizeObserver)state.resizeObserver.disconnect();state.resizeObserver=null;
+    if(state.mixer){state.mixer.stopAllAction();state.mixer=null;}
+    if(state.root)disposeObject(state.root);state.root=null;
+    if(state.controls)state.controls.dispose();state.controls=null;
+    if(state.renderer){state.renderer.dispose();if(state.renderer.forceContextLoss)state.renderer.forceContextLoss();state.renderer.domElement.remove();}
+    state.renderer=null;state.scene=null;state.camera=null;state.clock=null;
+  }
+
+  async function attachEffects(){
+    const effects=state.config&&state.config.effects;
+    if(!effects||effects.status==="none")return;
+    if(!state.effectsAdapter||typeof state.effectsAdapter.attach!=="function")return;
+    disposeEffects();
+    /* ★ 新增（2026-09-20，lead，只读）：rig / 阴影 / 直接光通道的**运行时读数**。
+   根因是灯 `visible=false`（three 直接跳过），而既有探针都不报灯的可见性 ⇒ 只能靠像素差猜。
+   本探针只读，不触发重编译、不改任何默认值。 */
+window.__rigState=function(){
+  try{
+    const cfg=state.config||{};
+    const L=[];
+    if(state.scene) state.scene.traverse(function(o){ if(o.isLight) L.push({type:o.type,visible:!!o.visible,
+      intensity:o.intensity,pos:o.position.toArray(),castShadow:!!o.castShadow}); });
+    let cast=0,recv=0,meshes=0;
+    if(state.root) state.root.traverse(function(o){ if(o.isMesh){meshes++; if(o.castShadow)cast++; if(o.receiveShadow)recv++;} });
+    const f=state.shadowFloor;
+    const pg=state.platformGroup;
+    let platInfo=null;
+    if(pg){
+      const top=pg.getObjectByName('__platformTop'),fr=pg.getObjectByName('__platformFront');
+      platInfo={children:pg.children.length,
+        top:(top?{pos:top.position.toArray(),size:[top.geometry.parameters.width,top.geometry.parameters.height],
+                  receive:!!top.receiveShadow,cast:!!top.castShadow,mat:top.material.type,
+                  hasMap:!!(top.material&&top.material.map)}:null),
+        front:(fr?{pos:fr.position.toArray(),size:[fr.geometry.parameters.width,fr.geometry.parameters.height],
+                   receive:!!fr.receiveShadow,cast:!!fr.castShadow,
+                   hasMap:!!(fr.material&&fr.material.map)}:null)};
+      try{const b=new state.THREE.Box3().setFromObject(pg);
+        platInfo.bbox={min:b.min.toArray(),max:b.max.toArray()};}catch(e){}
+    }
+    return JSON.stringify({rigOn:!!state.__rigOn,keyDir:state.__keyDir||null,
+      platformOn:!!state.platformOn,
+      config:{key_shadow:cfg.key_shadow,key_dir:cfg.key_dir,direct_light:cfg.direct_light,
+              direct_light_intensity:cfg.direct_light_intensity,key_intensity:cfg.key_intensity,
+              key_shadow_floor_y:cfg.key_shadow_floor_y,key_shadow_opacity:cfg.key_shadow_opacity,
+              key_shadow_extent:cfg.key_shadow_extent,platform:cfg.platform||null},
+      lights:L, shadowMapEnabled:!!(state.renderer&&state.renderer.shadowMap.enabled),
+      rootMeshes:meshes, rootCastShadow:cast, rootReceiveShadow:recv,
+      shadowFloor:(f?{y:f.position.y,opacity:f.material.opacity,visible:!!f.visible,size:f.geometry.parameters.width}:null),
+      platform:platInfo,
+      toneMapping:(state.renderer?state.renderer.toneMapping:null),
+      exposure:(state.renderer?state.renderer.toneMappingExposure:null),
+      envIntensity:(state.scene?state.scene.environmentIntensity:null)});
+  }catch(e){ return 'ERR '+((e&&e.message)||e); }
+};
+/* ★ 新增（2026-09-18，只读）：回读编译后片元源码，用于核实注入**是否真的落到了材质上**。
+   此前只有"画面改变了"这类间接证据，不足以判定 replace() 是否静默失效。 */
+window.__fragMarkers=function(){
+  var out=[];
+  try{
+    state.scene.traverse(function(o){
+      if(!o.isMesh) return;
+      var mm=o.material; if(Array.isArray(mm)) mm=mm[0];
+      if(!mm||!mm.userData||!mm.userData.chain) return;
+      var f=mm.userData.__frag||'';
+      out.push({
+        prim:mm.userData.chain.prim, kind:mm.userData.chain.kind, len:f.length,
+        has_q_envW:/q_envW/.test(f),                    /* 源环境权重（本轮新增） */
+        has_q_F0:/q_F0/.test(f),
+        has_079956:/0\.079956/.test(f),                 /* F0 常数补丁 */
+        has_getIBLRadiance_override:/q_Rr\s*=/.test(f),
+        has_singleScattering:/radiance \* singleScattering/.test(f),   /* 旧权重是否还在 */
+        has_uIblStrength:/uIblStrength/.test(f)
+      });
+    });
+  }catch(e){ out.push({err:String((e&&e.message)||e)}); }
+  return JSON.stringify(out);
+};
+/* ★ 新增（2026-09-20，lead，只读）：回读**编译后片元源码原文**（`__fragMarkers` 只给布尔，查不到"为什么直接光为 0"）。
+   用途：定位「三盏 DirectionalLight/HemisphereLight ×10 而武器像素零变化」的机制（直接光项是否还在源码里）。
+   纯读取，不触发重编译、不改任何材质/默认值。 */
+window.__fragSrc=function(prim){
+  try{
+    var hit=null;
+    state.scene.traverse(function(o){
+      if(hit||!o.isMesh) return;
+      var mm=o.material; if(Array.isArray(mm)) mm=mm[0];
+      if(!mm||!mm.userData) return;
+      var p=(mm.userData.chain&&mm.userData.chain.prim!==undefined)?mm.userData.chain.prim:null;
+      if(prim===undefined||prim===null||p===prim) hit={prim:p,frag:(mm.userData.__frag||''),sh:!!mm.userData.__sh};
+    });
+    if(!hit) return null;
+    return {prim:hit.prim,len:hit.frag.length,hasShaderObject:hit.sh,
+      markers:{numDirLights:(hit.frag.match(/NUM_DIR_LIGHTS/g)||[]).length,
+               directionalLights:(hit.frag.match(/directionalLights/g)||[]).length,
+               reDirectPhysical:(hit.frag.match(/RE_Direct_Physical/g)||[]).length,
+               directDiffuse:(hit.frag.match(/reflectedLight\.directDiffuse/g)||[]).length,
+               directSpecular:(hit.frag.match(/reflectedLight\.directSpecular/g)||[]).length,
+               dotNL:(hit.frag.match(/dotNL/g)||[]).length,
+               getDirectionalLightInfo:(hit.frag.match(/getDirectionalLightInfo/g)||[]).length,
+               lightsFragmentBegin:(hit.frag.match(/lights_fragment_begin/g)||[]).length,
+               reflectedLight_total:(hit.frag.match(/reflectedLight/g)||[]).length},
+      frag:hit.frag};
+  }catch(e){ return {err:String((e&&e.message)||e)}; }
+};
+/* ★★ 已废弃（2026-09-18，审查助手指出的一致性问题）：
+   旧 `__setWeaponPatch(on)` 写 `state.__weaponPatch`，但 v5 的**实际判定与 cacheKey 已全部改读 URL**
+   `?weaponPatch=` —— 它已成为**死开关**，会再次制造假 A/B。
+   现改为明确失效并报错，**绝不可被验收脚本使用**。
+   本轮冷启动回归**只能**用两份全新页面 URL：`?weaponPatch=0` 与 `?weaponPatch=1`。 */
+window.WikiWeaponViewer.__setWeaponPatch=function(){
+  return JSON.stringify({
+    error:'DEPRECATED_DEAD_SWITCH',
+    deprecated:true,
+    why:'v5 已改为冷启动 URL 开关；这个方法写的 state.__weaponPatch 已不被任何代码读取。',
+    use_instead:'全新页面加 URL 参数：&weaponPatch=0 或 &weaponPatch=1（必须冷启动，不能运行时切换）',
+    forbidden_in_acceptance:true
+  });
+};
+window.WikiWeaponViewer.__applyParams=function(o){
+  return (typeof window.__applyParamsJSON==='function')
+    ? window.__applyParamsJSON(o)
+    : {ok:false, err:'applyParamsJSON 尚未就绪（查看器未初始化？）'};
+};
+/* ★ 修复（2026-09-17，T3）：原写 `window.WikiWeaponViewer.__hidePanels=window.__hidePanels;`，
+   但 `window.__hidePanels` 在本行之后才定义 → 恒 undefined（过早赋值，静默失败）。
+   改为运行时转发，无论先后都能取到。 */
+window.WikiWeaponViewer.__hidePanels=function(h){ 
+  return (typeof window.__hidePanels==='function') ? window.__hidePanels(h)
+    : JSON.stringify({err:'__hidePanels 尚未定义'});
+};
+window.__hidePanels=function(hide){
+  /* 显式、命名清楚的"隐藏面板"接口（仅供无 UI 截图/度量使用，默认不隐藏）。 */
+  try{
+    var r=document.getElementById('weaponSkinViewer')||document, hit=[];
+    ['.wv-params','.wv-tools'].forEach(function(sel){
+      var el=(r&&r.querySelector)?r.querySelector(sel):null;
+      if(el){ el.style.display=(hide===false?'':'none'); hit.push(sel); }
+    });
+    return JSON.stringify({hidden:hide!==false, touched:hit});
+  }catch(e){ return 'ERR '+String((e&&e.message)||e); }
+};
+
+window.WikiWeaponViewer.snapshot=function(){
+  const T=state.THREE, r=state.renderer;
+  if(!T||!r||!state.scene||!state.camera) return null;
+  const w=r.domElement.width||1178, h=r.domElement.height||640;
+  let rt=null, buf=null;
+  try{
+    rt=new T.WebGLRenderTarget(w,h,{format:T.RGBAFormat,type:T.UnsignedByteType,depthBuffer:true});
+    const oldT=r.getRenderTarget(); r.setRenderTarget(rt); r.clear();
+    state.scene.updateMatrixWorld(true); state.camera.updateMatrixWorld(true);
+    r.render(state.scene,state.camera);
+    buf=new Uint8Array(w*h*4); r.readRenderTargetPixels(rt,0,0,w,h,buf);
+    r.setRenderTarget(oldT);
+  }catch(e){ try{ r.setRenderTarget(null); }catch(_){} return {error:String(e)}; }
+  finally{ if(rt) rt.dispose(); }
+  const cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+  const ctx=cv.getContext('2d'); const img=ctx.createImageData(w,h);
+  let R=0,G=0,B=0,mag=0,gr=0; const n=w*h;
+  for(let y=0;y<h;y++){ const sy=h-1-y;
+    for(let x=0;x<w;x++){ const si=(sy*w+x)*4, di=(y*w+x)*4;
+      const rr=buf[si],gg=buf[si+1],bb=buf[si+2];
+      const enc=v=>{ const t=v/255.0; const u=t<=0.0031308?12.92*t:1.055*Math.pow(t,1/2.4)-0.055; return Math.max(0,Math.min(255,Math.round(u*255))); };
+      const er=enc(rr), eg=enc(gg), eb=enc(bb);
+      img.data[di]=er; img.data[di+1]=eg; img.data[di+2]=eb; img.data[di+3]=255;
+      R+=er;G+=eg;B+=eb;
+      if(rr>190&&bb>190&&gg<90) mag++;
+      if(Math.abs(rr-gg)<8&&Math.abs(gg-bb)<8) gr++; } }
+  ctx.putImageData(img,0,0);
+  return {png:cv.toDataURL('image/png'), w:w, h:h,
+          mean:[+(R/n).toFixed(1),+(G/n).toFixed(1),+(B/n).toFixed(1)],
+          magenta_pct:+(100*mag/n).toFixed(2), gray_pct:+(100*gr/n).toFixed(1)};
+};
+window.WikiWeaponViewer.canvasShot=function(n){ for(let i=0;i<((n||2));i++) _forceRender(); return state.__lastShot||null; };
+window.WikiWeaponViewer.canvasPixels=function(){ const _r=state.renderer; if(!_r) return null;
+  const gl=_r.getContext(); const w=_r.domElement.width,h=_r.domElement.height;
+  const buf=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,buf);
+  let r=0,g=0,b2=0,mag=0,gr=0,n=w*h;
+  for(let i=0;i<n;i++){const R=buf[i*4],G=buf[i*4+1],B=buf[i*4+2]; r+=R;g+=G;b2+=B;
+    if(R>200&&B>200&&G<80) mag++; if(Math.abs(R-G)<6&&Math.abs(G-B)<6) gr++; }
+  return {w:w,h:h,mean:[+(r/n).toFixed(1),+(g/n).toFixed(1),+(b2/n).toFixed(1)],
+          magenta_pct:+(100*mag/n).toFixed(2), gray_pct:+(100*gr/n).toFixed(1)}; };
+window.WikiWeaponViewer.neoxState=function(){
+  const out={mode:(state.neoxView||'default'),fidelity:(state.neoxFidelity||'reference_approximate'),
+             canvas:(state.renderer&&state.renderer.domElement)?[state.renderer.domElement.width,state.renderer.domElement.height]:null,
+             viewer_sha:window.__VIEWER_SHA||null, manifest_sha:(state.neoxReport&&state.neoxReport.manifest_sha)||null,
+             materials:[]};
+  if(state.root) state.root.traverse(o=>{ if(o.isMesh&&o.material){
+    const u=o.material.uniforms?Object.fromEntries(Object.entries(o.material.uniforms).map(([k,v])=>[k,Array.isArray(v.value)?v.value:(v.value&&v.value.isTexture?('tex:'+v.value.uuid.slice(0,8)):v.value)])):null;
+    const _im=o.material.map&&o.material.map.image;
+    out.materials.push({map_src:(_im&&(_im.src||_im.currentSrc))||null,
+                        map_loaded:(o.material.map&&o.material.map.image)?(o.material.map.image.width||0):0,
+                        normal_map_src:(o.material.normalMap&&o.material.normalMap.image&&(o.material.normalMap.image.src||''))||null,
+                        uuid:String(o.material.uuid).slice(0,12), type:o.material.type, name:o.material.name||null,
+                        view:(o.material.userData.neox&&o.material.userData.neox.view)||null,
+                        fidelity:(o.material.userData.neox&&o.material.userData.neox.material_fidelity)||null,
+                        uniforms:u}); } });
+  return out; };
+/* L1 ladder diagnostic: additive only; no scene.environment/PMREM is used here. */
+function __ladderMeshes(){
+  const out=[]; const B0=state.__l0Base||{};
+  if(!state.__ladderBaseMats)state.__ladderBaseMats={};
+  if(!state.scene)return out;
+  state.scene.traverse(function(o){
+    if(!o.isMesh)return;
+    const key=String(o.uuid), cm=o.material||{}, cud=cm.userData||{};
+    const bm=state.__ladderBaseMats[key]||cm, bud=(bm&&bm.userData)||{};
+    if(!(cud.neox||cud.chain||bud.neox||bud.chain||B0[key]||state.__ladderBaseMats[key]))return;
+    if(!state.__ladderBaseMats[key])state.__ladderBaseMats[key]=cm;
+    const base=state.__ladderBaseMats[key], ud=(base&&base.userData)||{}, ch=ud.chain||cud.chain||{};
+    out.push({o:o,key:key,base:base,kind:ch.kind||((ud.neox&&ud.neox.shader==='weapon')?'weapon':null)||'unknown',prim:ch.prim});
+  });
+  return out;
+}
+function __ladderPrepare(){
+  if(state.renderer)state.renderer.debug.checkShaderErrors=true;
+  if(state.scene){state.scene.environment=null;state.scene.environmentIntensity=0;}
+  return __ladderMeshes();
+}
+function __ladderCompileDiagnostics(){
+  const r=state.renderer,gl=r&&r.getContext&&r.getContext();
+  const out={checkShaderErrors:!!(r&&r.debug&&r.debug.checkShaderErrors),extension_shader_texture_lod:false,programs:[]};
+  if(!gl)return out;
+  try{out.extension_shader_texture_lod=!!gl.getExtension('EXT_shader_texture_lod');}catch(e){out.extension_shader_texture_lod=false;}
+  const ps=(r.info&&r.info.programs)||[]; out.program_count=ps.length;
+  out.programs=ps.map(function(p,i){
+    const q={index:i,cacheKey:p&&p.cacheKey||null,vertex_compile:null,fragment_compile:null,program_link:null,vertex_info_log:'',fragment_info_log:'',program_info_log:''};
+    try{const vs=p&&p.vertexShader;q.vertex_compile=vs?!!gl.getShaderParameter(vs,gl.COMPILE_STATUS):null;q.vertex_info_log=vs?(gl.getShaderInfoLog(vs)||''):'';}catch(e){q.vertex_error=String(e&&e.message||e);}
+    try{const fs=p&&p.fragmentShader;q.fragment_compile=fs?!!gl.getShaderParameter(fs,gl.COMPILE_STATUS):null;q.fragment_info_log=fs?(gl.getShaderInfoLog(fs)||''):'';}catch(e){q.fragment_error=String(e&&e.message||e);}
+    try{const pr=p&&p.program;q.program_link=pr?!!gl.getProgramParameter(pr,gl.LINK_STATUS):null;q.program_info_log=pr?(gl.getProgramInfoLog(pr)||''):'';}catch(e){q.program_error=String(e&&e.message||e);}
+    return q;
+  });
+  return out;
+}
+function __ladderShaderEvidence(items,level){
+  const hit=items.find(function(x){return x.o&&x.o.material&&x.o.material.userData&&x.o.material.userData.__ladderShader;});
+  const m=hit&&hit.o.material,sh=m&&m.userData&&m.userData.__ladderShader,frag=sh&&String(sh.fragmentShader||'')||'';
+  const lines=frag.split('\n').filter(function(s){return s.indexOf('uDiagColor')>=0||s.indexOf('uDiagTex')>=0||s.indexOf('uCustomIbl')>=0||s.indexOf('texture2D(')>=0||s.indexOf('textureCube(')>=0||s.indexOf('textureCubeLodEXT')>=0||s.indexOf('gl_FragColor')>=0;});
+  return {level:level,vertex_snippet:sh&&String(sh.vertexShader||'').split('\n').slice(0,12).join('\n')||null,frag_snippet:lines.slice(-24).join('\n')||null,material_uuid:m?String(m.uuid):null};
+}
+function __ladderResult(items,level,mode,extra){
+  const r={level:level,mode:mode,items:items.map(function(x){return {key:x.key,kind:x.kind,prim:x.prim,visible:!!x.o.visible,material_type:x.o.material&&x.o.material.type||null};}),programs:(state.renderer&&state.renderer.info&&state.renderer.info.programs)?state.renderer.info.programs.length:null,compile:__ladderCompileDiagnostics(),shader:__ladderShaderEvidence(items,level),scene_environment:state.scene&&state.scene.environment?'SET':'null'};
+  if(extra)Object.assign(r,extra); return r;
+}
+window.WikiWeaponViewer.__ladderL1=function(spec){
+  spec=spec||{}; const mode=String(spec.mode||'off'),T=state.THREE;
+  try{
+    if(!T||!state.scene||!state.renderer)return {level:'L1',mode:mode,error:'ERR no THREE/scene/renderer'};
+    const items=__ladderPrepare(); if(!items.length)return {level:'L1',mode:mode,error:'ERR no ladder meshes'};
+    if(!state.__ladderL1Mats)state.__ladderL1Mats={}; state.__ladderL1Mode=mode;
+    const color=mode==='green'?new T.Color(0x00ff00):new T.Color(0xff0000);
+    items.forEach(function(x){
+      x.o.material=x.base;
+      if(mode!=='red'&&mode!=='green')return;
+      if(x.kind!=='weapon')return;
+      let m=state.__ladderL1Mats[x.key];
+      if(!m){
+        m=new T.MeshBasicMaterial({color:0xffffff,toneMapped:false,fog:false,side:(x.base&&x.base.side!==undefined)?x.base.side:T.FrontSide});
+        m.userData.__ladderLevel='L1';m.userData.__ladderKind=x.kind;m.userData.__ladderMode='off';m.userData.__ladderColor=color.clone();
+        m.onBeforeCompile=function(sh){
+          sh.uniforms.uDiagColor={value:m.userData.__ladderColor.clone()};
+          /* ★ 修复（2026-09-17，viewer-auditor P0-1）：原缺此声明，导致 GLSL
+             `'uDiagColor' : undeclared identifier` → program 不链接 → **该诊断材质完全不绘制**，
+             而 __ladderResult 仍谎报 weapon_injected:N。与正确的 __l1 路径对齐。 */
+          sh.fragmentShader='uniform vec3 uDiagColor;\n'+sh.fragmentShader;
+          sh.fragmentShader=sh.fragmentShader.replace('#include <dithering_fragment>','gl_FragColor = vec4(uDiagColor, 1.0);');
+          m.userData.__ladderShader=sh;
+        };
+        m.customProgramCacheKey=function(){return 'L1_uDiagColor_'+x.kind+'_'+String(m.userData.__ladderMode||'off');};
+        state.__ladderL1Mats[x.key]=m;
+      }
+      m.userData.__ladderMode=mode;m.userData.__ladderColor.copy(color);
+      if(m.userData.__ladderShader&&m.userData.__ladderShader.uniforms.uDiagColor)m.userData.__ladderShader.uniforms.uDiagColor.value.copy(color);
+      m.needsUpdate=true; /* same material red↔green requires a program invalidation */
+      x.o.material=m;
+    });
+    _forceRender();_forceRender();
+    const hit=items.filter(function(x){return mode!=='off'&&x.kind==='weapon';});
+    return __ladderResult(items,'L1',mode,{uniform:'uDiagColor',color:(mode==='green'?'green':mode==='red'?'red':'baseline'),weapon_injected:hit.length,needsUpdate_set:(mode==='red'||mode==='green')});
+  }catch(e){return {level:'L1',mode:mode,error:'ERR '+String(e&&e.message||e),compile:__ladderCompileDiagnostics()};}
+};
+window.WikiWeaponViewer.__ladderCompile=function(){return __ladderCompileDiagnostics();};
+
+function _forceRender(){
+  const _r=state.renderer;
+  try{ if(_r&&_r.domElement&&_r.domElement.toDataURL){ state.__lastShot=_r.domElement.toDataURL('image/png'); } }catch(e){}
+  const T=state.THREE; const r=state.renderer;
+  if(!r||!state.scene||!state.camera) return false;
+  try{ if(r.setSize) r.setSize(r.domElement.clientWidth||r.domElement.width, r.domElement.clientHeight||r.domElement.height, false); }catch(e){}
+  state.scene.updateMatrixWorld(true); state.camera.updateMatrixWorld(true);
+  if(state.controls&&state.controls.update) state.controls.update();
+  if(state.composer){ try{ state.composer.render(); return true; }catch(e){} }
+  r.render(state.scene,state.camera);
+  try{ state.__lastShot=r.domElement.toDataURL('image/png'); }catch(e){}
+  return true; }
+function _reapplyNeox(){ if(!state.root) return false;
+  const r=applyNeoxManifest(state.root);
+  if(r&&r.then) return r.then(x=>{ _forceRender(); _forceRender(); return x; });
+  _forceRender(); _forceRender(); return true; }
+;
+})();

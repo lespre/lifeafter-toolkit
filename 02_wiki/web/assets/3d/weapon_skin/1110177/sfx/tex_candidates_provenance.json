@@ -1,0 +1,1464 @@
+{
+ "alpha_01_tp52_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_alpha_mask_tp60_04.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_alpha_tp104_04.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_crack_02_yx_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_crack_tp71_05.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "dian_12.tga": {
+  "dds": "7240b8319d081a0f.dds",
+  "png": "dian_12__7240b831.png",
+  "size": [
+   256,
+   256
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "0ad2b59689d3dc63",
+  "evidence": "同名复用 1110171 provenance（7240b8319d081a0f.dds）+ 内容 sha16 在 029 池中复核一致",
+  "confidence": "medium",
+  "mode": "a_same_name_reuse",
+  "bound": true,
+  "candidates": []
+ },
+ "glow01_yc.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "glow25.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "glow_01.tga": {
+  "dds": "13211b0279d2a247.dds",
+  "png": "glow_01__13211b02.png",
+  "size": [
+   256,
+   256
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "970f205bd999cc48",
+  "evidence": "同名复用 1110171 provenance（13211b0279d2a247.dds）+ 内容 sha16 在 029 池中复核一致",
+  "confidence": "medium",
+  "mode": "a_same_name_reuse",
+  "bound": true,
+  "candidates": []
+ },
+ "glow_04_tp29.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "glow_14_cs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "glow_16_yh_djs.tga": {
+  "dds": "7ce99117a10f5163.dds",
+  "png": "glow_16_yh_djs__7ce99117.png",
+  "size": [
+   256,
+   256
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "48aa47856e40b02d",
+  "evidence": "同名复用 1110171 provenance（7ce99117a10f5163.dds）+ 内容 sha16 在 029 池中复核一致",
+  "confidence": "medium",
+  "mode": "a_same_name_reuse",
+  "bound": true,
+  "candidates": []
+ },
+ "tex_glow_01_cs_tp60_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_glow_guangci_tp78_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_glow_qirishijie_guangyun_hgz03_03.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_glow_ray_x10_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 trail 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "a9aa4caf1f52a374.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 5508.969,
+    "center": 0.583,
+    "edge": 0.025,
+    "periodic": 6885.774
+   },
+   {
+    "file": "662b911ee5599742.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 839.831,
+    "center": 0.749,
+    "edge": 0.0351,
+    "periodic": 1049.227
+   },
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 784.7024,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   }
+  ]
+ },
+ "tex_glow_tp07_05.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_glow_tp61_02.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_glow_x04_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "xing_01_yh_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "lighting_01_rzx_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "lightning07_cs.spr": {
+  "dds": "a8764b3acfeaff93.dds",
+  "png": "lightning07_cs__a8764b3a.png",
+  "size": [
+   256,
+   256
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "bf0b4ecdf7930330",
+  "evidence": "同名复用 1110171 provenance（a8764b3acfeaff93.dds）+ 内容 sha16 在 029 池中复核一致；⚠ 证据冲突：.spr 描述表 512x512 而复用候选 [256, 256]",
+  "confidence": "low",
+  "mode": "a_same_name_reuse_with_conflict",
+  "bound": true,
+  "candidates": [
+   {
+    "file": "662b911ee5599742.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 1049.227,
+    "edge": 0.0351
+   },
+   {
+    "file": "530c0563893d314a.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 212.155,
+    "edge": 0.0186
+   },
+   {
+    "file": "fc42678611eef492.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 201.007,
+    "edge": 0.0215
+   }
+  ]
+ },
+ "lightning_01.spr": {
+  "dds": "662b911ee5599742.dds",
+  "png": "lightning_01__662b911e.png",
+  "size": [
+   512,
+   512
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "083aa9047952c3fc",
+  "evidence": ".spr 描述：表 512x512 / 16 帧 / 帧矩形 [0, 0, 128, 128] ⇒ 池中 dims 完全吻合 3 条，按图集形态分排序取 top3；**多个候选并列，未强行唯一化**",
+  "confidence": "low",
+  "mode": "b_spr_fingerprint",
+  "bound": true,
+  "candidates": [
+   {
+    "file": "662b911ee5599742.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 1049.227,
+    "edge": 0.0351
+   },
+   {
+    "file": "530c0563893d314a.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 212.155,
+    "edge": 0.0186
+   },
+   {
+    "file": "fc42678611eef492.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "periodic": 201.007,
+    "edge": 0.0215
+   }
+  ]
+ },
+ "lightning_01_ycy_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 streak 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "a9aa4caf1f52a374.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 8263.187,
+    "center": 0.583,
+    "edge": 0.025,
+    "periodic": 6885.774
+   },
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1176.7226,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1172.1204,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   }
+  ]
+ },
+ "shandian_05_yh_djs.spr": {
+  "dds": "a9aa4caf1f52a374.dds",
+  "png": "shandian_05_yh_djs__a9aa4caf.png",
+  "size": [
+   256,
+   256
+  ],
+  "decoder": "texture2ddecoder",
+  "sha16": "666f0e2e04e1f63e",
+  "evidence": ".spr 描述：表 256x256 / 4 帧 / 帧矩形 [0, 0, 63, 255] ⇒ 池中 dims 完全吻合 3 条，按图集形态分排序取 top3；**多个候选并列，未强行唯一化**",
+  "confidence": "low",
+  "mode": "b_spr_fingerprint",
+  "bound": true,
+  "candidates": [
+   {
+    "file": "a9aa4caf1f52a374.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "periodic": 6885.774,
+    "edge": 0.025
+   },
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "periodic": 980.377,
+    "edge": 0.003
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "periodic": 976.562,
+    "edge": 0.002
+   }
+  ]
+ },
+ "tex_lightning_shandian_tp52.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 streak 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1176.7226,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1172.1204,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   },
+   {
+    "file": "e13a7261b63e70b0.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 876.3791,
+    "center": 0.513,
+    "edge": 0.0239,
+    "periodic": 730.125
+   }
+  ]
+ },
+ "guangshu01_cjf_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 trail 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 784.7024,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 781.6156,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   },
+   {
+    "file": "e13a7261b63e70b0.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 584.4078,
+    "center": 0.513,
+    "edge": 0.0239,
+    "periodic": 730.125
+   }
+  ]
+ },
+ "keji_02_wh_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_trail_huo_01_zhf_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 trail 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 784.7024,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 781.6156,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   },
+   {
+    "file": "e13a7261b63e70b0.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 584.4078,
+    "center": 0.513,
+    "edge": 0.0239,
+    "periodic": 730.125
+   }
+  ]
+ },
+ "tex_trail_x07_01.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 trail 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 784.7024,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 781.6156,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   },
+   {
+    "file": "e13a7261b63e70b0.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 584.4078,
+    "center": 0.513,
+    "edge": 0.0239,
+    "periodic": 730.125
+   }
+  ]
+ },
+ "trail_11_lmq_djs.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 trail 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "87db036f3691b91a.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 784.7024,
+    "center": 0.668,
+    "edge": 0.003,
+    "periodic": 980.377
+   },
+   {
+    "file": "876f247ca3e5c581.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 781.6156,
+    "center": 0.61,
+    "edge": 0.002,
+    "periodic": 976.562
+   },
+   {
+    "file": "e13a7261b63e70b0.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 584.4078,
+    "center": 0.513,
+    "edge": 0.0239,
+    "periodic": 730.125
+   }
+  ]
+ },
+ "noise_04_tp05.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "tex_noise_y.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ },
+ "v_veins_tp116_08.tga": {
+  "dds": null,
+  "png": null,
+  "size": null,
+  "decoder": "texture2ddecoder",
+  "sha16": null,
+  "evidence": "无同名锚点/无 .spr 锚点 ⇒ 按族类 glow 的内容特征排序取 top3（**只登记候选、不绑定**）",
+  "confidence": "low",
+  "mode": "c_content_feature",
+  "bound": false,
+  "candidates": [
+   {
+    "file": "2ea72d9f3d7c3ab2.dds",
+    "dims": [
+     512,
+     512
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "bf887707a4496fe3.dds",
+    "dims": [
+     256,
+     256
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 0.0
+   },
+   {
+    "file": "c63f1436228725ad.dds",
+    "dims": [
+     128,
+     128
+    ],
+    "score": 1.3,
+    "center": 1.0,
+    "edge": 0.0,
+    "periodic": 3.276
+   }
+  ]
+ }
+}

@@ -7,42 +7,42 @@ __pycache__/
 
 # 源与执行产物（45G+ / 数百 GB）—— 只留 README 骨架
 # 注意：用 `dir/*`（不是 `dir/`）才能放行目录里的 README
-02_数据/*
-!02_数据/README.md
-!02_数据/.gitkeep
-02_数据/*/.gitkeep
+01_索引与产物/*
+!01_索引与产物/README.md
+!01_索引与产物/.gitkeep
+01_索引与产物/*/.gitkeep
 
-03_执行/*
-!03_执行/README.md
-!03_执行/.gitkeep
-03_执行/*/.gitkeep
+01_索引与产物/*
+!01_索引与产物/README.md
+!01_索引与产物/.gitkeep
+01_索引与产物/*/.gitkeep
 
 # 治理台账里的大文件（保留小的 md）
-00_治理/**/*.db
-00_治理/**/*.sqlite3
-00_治理/**/*.zip
-00_治理/**/*.png
-00_治理/**/*.jpg
-00_治理/**/*.webp
+00_规范与工具/治理/**/*.db
+00_规范与工具/治理/**/*.sqlite3
+00_规范与工具/治理/**/*.zip
+00_规范与工具/治理/**/*.png
+00_规范与工具/治理/**/*.jpg
+00_规范与工具/治理/**/*.webp
 # 报告与复盘里有 538M 大件（视频/截图/大图）—— 整目录排除
-00_治理/文档/报告与复盘/
-00_治理/文档/tools/
-00_治理/_archive/
-00_治理/日志/
+00_规范与工具/治理/文档/报告与复盘/
+00_规范与工具/治理/文档/tools/
+00_规范与工具/治理/_archive/
+00_规范与工具/治理/日志/
 
 # 站点里的大素材（3D/贴图/视频）
-04_站点/web/assets/**/*.glb
-04_站点/web/assets/**/*.gltf
-04_站点/web/assets/**/*.bin
-04_站点/web/assets/**/*.dds
-04_站点/web/assets/**/*.tga
-04_站点/web/assets/**/*.png
-04_站点/web/assets/**/*.jpg
-04_站点/web/assets/**/*.mp4
-04_站点/web/assets/**/*.webm
-04_站点/web/assets/**/*.cube
-04_站点/web/assets/**/*.wav
-04_站点/web/assets/**/*.mp3
+02_wiki/web/assets/**/*.glb
+02_wiki/web/assets/**/*.gltf
+02_wiki/web/assets/**/*.bin
+02_wiki/web/assets/**/*.dds
+02_wiki/web/assets/**/*.tga
+02_wiki/web/assets/**/*.png
+02_wiki/web/assets/**/*.jpg
+02_wiki/web/assets/**/*.mp4
+02_wiki/web/assets/**/*.webm
+02_wiki/web/assets/**/*.cube
+02_wiki/web/assets/**/*.wav
+02_wiki/web/assets/**/*.mp3
 
 # 临时 / 日志
 *.log
@@ -61,46 +61,46 @@ seckeys/
 **/.git.bak/
 **/.git.bak/
 # 超大站点数据
-04_站点/web/data/*
+02_wiki/web/data/*
 
 # 截图与临时产物（不入库）
-04_站点/web/shot_*.png
-04_站点/web/*.bak_*
-04_站点/web/**/*.bak_*
+02_wiki/web/shot_*.png
+02_wiki/web/*.bak_*
+02_wiki/web/**/*.bak_*
 
 # Spine 大图集（派生资源，仅保留缩略图）
-04_站点/web/assets/spine/**/*.png
-!04_站点/web/assets/spine/thumbs/*.png
+02_wiki/web/assets/spine/**/*.png
+!02_wiki/web/assets/spine/thumbs/*.png
 
 # 不进仓库：派生图片 / 归档 / 交付包
-04_站点/web/assets/spine/thumbs/
-04_站点/web/_备份归档/
+02_wiki/web/assets/spine/thumbs/
+02_wiki/web/_备份归档/
 交付/
 
 # 3D 预览器渲染资源（可从客户端重建）
-01_工具/工具库/02_图文音频渲染/3D预览器/poster/assets/
+00_规范与工具/工具/工具库/02_图文音频渲染/3D预览器/poster/assets/
 
 # wiki 框架：配置与清单入库，板块数据（boards/）仍不入库
-!04_站点/web/data/wiki_taxonomy.json
-!04_站点/web/data/wiki_taxonomy.js
-!04_站点/web/data/publication_policy.json
-!04_站点/web/data/publication_policy.js
-!04_站点/web/data/manifest.js
-!04_站点/web/data/table_index.json
-!04_站点/web/data/README.md
-!04_站点/web/data/core_star_caps.json
+!02_wiki/web/data/wiki_taxonomy.json
+!02_wiki/web/data/wiki_taxonomy.js
+!02_wiki/web/data/publication_policy.json
+!02_wiki/web/data/publication_policy.js
+!02_wiki/web/data/manifest.js
+!02_wiki/web/data/table_index.json
+!02_wiki/web/data/README.md
+!02_wiki/web/data/core_star_caps.json
 
 # 皮肤音效（派生产物，可由客户端重建）
-04_站点/web/assets/audio/**/*.wav
-04_站点/web/assets/audio/**/*.fsb
+02_wiki/web/assets/audio/**/*.wav
+02_wiki/web/assets/audio/**/*.fsb
 
 # 站点派生资源与预览拷贝
-04_站点/web/assets/spine_live/
-04_站点/web/assets/spine/
-04_站点/web/assets/audio/
-04_站点/web/_备份归档/
-04_站点/web/_cache_*
+02_wiki/web/assets/spine_live/
+02_wiki/web/assets/spine/
+02_wiki/web/assets/audio/
+02_wiki/web/_备份归档/
+02_wiki/web/_cache_*
 
 # README 预览图（GitHub 上需要显示）
-!00_治理/手册/images/
-!00_治理/手册/images/*.png
+!00_规范与工具/治理/手册/images/
+!00_规范与工具/治理/手册/images/*.png

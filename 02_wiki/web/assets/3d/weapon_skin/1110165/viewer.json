@@ -1,0 +1,217 @@
+{
+ "schema_version": 1,
+ "skin_id": "1110165",
+ "title": "墨隐麒麟",
+ "poster": null,
+ "default_state": "default",
+ "default_camera": "game_reference",
+ "states": [
+  {
+   "id": "default",
+   "label": "墨隐麒麟",
+   "model": "model.glb",
+   "rotation_note": "按用户目视确认：正面相机需 +180°（绕视线轴）才与卡片同姿势",
+   "material_layers": {
+    "global_rig": {
+     "env_intensity": 1.4,
+     "exposure": 1.75,
+     "tone_mapping": "ACESFilmic",
+     "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+     "emissive_gain": 0.25,
+     "bloom": {
+      "strength": 0.55,
+      "radius": 0.55,
+      "threshold": 0.8,
+      "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+     }
+    }
+   }
+  }
+ ],
+ "camera_presets": [
+  {
+   "label": "game_reference",
+   "position": [
+    -14.6129,
+    -2.2747,
+    -1.2894
+   ],
+   "target": [
+    0.0602,
+    -0.1842,
+    0.0986
+   ],
+   "up": [
+    -0.8246,
+    -0.5572,
+    -0.0982
+   ],
+   "distance": 14.8862,
+   "fov": 34,
+   "fit_span": 0.27,
+   "exact": true,
+   "basis": "用户实调参数（position/target/up/distance 原样保留）；左右转为世界竖直轴纯自转，up 随相机同步旋转以保持画面滚转恒定",
+   "state": "default"
+  },
+  {
+   "id": "front",
+   "label": "正面（默认）",
+   "position": [
+    -9.0,
+    0.0,
+    0.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "q34",
+   "label": "3/4 视角",
+   "position": [
+    -4.5,
+    1.7,
+    5.9
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  },
+  {
+   "id": "side",
+   "label": "侧面",
+   "position": [
+    0.0,
+    0.6,
+    9.0
+   ],
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "fov": 34
+  }
+ ],
+ "background": "#071015",
+ "exposure": 1.0,
+ "fidelity": {
+  "material": "approximate",
+  "sfx": "none"
+ },
+ "effects": {
+  "status": "none"
+ },
+ "hemisphere_intensity": 0.0,
+ "key_intensity": 0.0,
+ "fill_intensity": 0.0,
+ "env_intensity": 1.0,
+ "pose_rule": "用户定稿（2026-09-15）：正面相机 position=[-9,0,0] + rotation_degrees=[180,0,0]",
+ "camera_basis": {
+  "eye": [
+   -1,
+   0,
+   0
+  ],
+  "target": [
+   0,
+   0,
+   0
+  ],
+  "up0": [
+   0,
+   0,
+   1
+  ],
+  "roll_deg": 90,
+  "basis": "源渲染器 rig：eye=-X, up0=+Z, roll=90°（导出器 B=单位阵，故 B*vec=vec）"
+ },
+ "background_image": "../_shared/bg_weapon_skin_ingame.png",
+ "background_source": {
+  "file": "_shared/bg_weapon_skin_ingame.png",
+  "origin": "用户提供的游戏内武器皮肤背景图",
+  "sha16": "e60c1a1d5e16b1b4",
+  "usage": "仅 scene.background（环境仍为明亮中性摄影棚，标 environment_approximate；源 t_custom_ibl 是摄影棚 cube，与场景背景不同）"
+ },
+ "env_from_background": false,
+ "pose_accepted_by": "游戏内参考图（用户提供 8bdf3a6f）",
+ "material_layers": {
+  "status": "source_neutral",
+  "basis": "源 c159 参数（c159_pair.py 槽位引用组解析）+ 绑定 c159 的 MtlIdx 归属",
+  "global_rig": {
+   "env_intensity": 1.0,
+   "exposure": 1.0,
+   "tone_mapping": "NoToneMapping",
+   "note": "全局展示 rig 统一（四款同组值）；emissive_gain=源基色贴图作为自发光贴图的全局增益（近似源 SV_Target0，标 approximate）",
+   "emissive_gain": 0.0,
+   "bloom": {
+    "strength": 0.0,
+    "radius": 0.55,
+    "threshold": 0.8,
+    "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+   }
+  },
+  "material_level_source_factor": "u_cube_brightness（唯一允许的材质级差异来源）",
+  "per_submesh": {},
+  "unoverridden_submeshes": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "notes": [],
+  "not_yet_implemented": [
+   "crystal_bump/reflection/refraction/caustic 采样关系",
+   "crystal IBL cube",
+   "shader DXBC 公式",
+   "Sub0 刀身金色来源（默认参数/IBL/自发光/SFX 追踪中）"
+  ],
+  "crystal_submeshes": [],
+  "weapon_submeshes": [],
+  "other_submeshes": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "counts": {
+   "weapon": 0,
+   "crystal": 0,
+   "other": 7
+  },
+  "classification_basis": "按源 shader 名（crystal/pbr_weapon/pbr_default）判定，不按颜色、不按是否存在参数块"
+ },
+ "poster_note": "poster.webp 未生成（wiki 注册后方可截 canvas）⇒ 先置 null 防 404；生成后回填 'poster.webp'",
+ "_approx_was": {
+  "exposure": 1.75,
+  "env_intensity": 1.4,
+  "hemisphere_intensity": 0.8,
+  "key_intensity": 1.5,
+  "fill_intensity": 0.5,
+  "global_rig": {
+   "exposure": 1.75,
+   "tone_mapping": "ACESFilmic",
+   "env_intensity": 1.4,
+   "emissive_gain": 0.25,
+   "bloom": {
+    "strength": 0.0,
+    "radius": 0.55,
+    "threshold": 0.8,
+    "note": "全局后处理（源管线有 u_hdr_luminance+辉光）；四款同组值，非逐皮肤标定；strength=0 即关闭"
+   }
+  }
+ },
+ "_source_neutral_note": "Lead 20260918_212529：用户 2026-09-18 拍板『朝完全按源数据走，去掉这套近似』。游戏静态数据里没有 three 的 exposure/toneMapping/rig 灯概念，故取源中立值。原值完整保存在 `_approx_was`，可一键回退。"
+}

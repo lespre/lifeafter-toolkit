@@ -1,0 +1,71 @@
+{
+ "status": "invalidated_for_production",
+ "reason": "人工配色/分区阈值/参考拟合 → 正式链禁止读取",
+ "files": [
+  {
+   "file": "approx_albedo_010.png",
+   "moved_to": "approx_albedo_010.invalidated.png",
+   "sha256": "5ac5c913a92c8b2c"
+  },
+  {
+   "file": "approx_albedo_012.png",
+   "moved_to": "approx_albedo_012.invalidated.png",
+   "sha256": "80786344fe51b12d"
+  },
+  {
+   "file": "chain_albedo_prim0.png",
+   "moved_to": "chain_albedo_prim0.invalidated.png",
+   "sha256": "9c703956ac3dacf6"
+  },
+  {
+   "file": "chain_albedo_prim1.png",
+   "moved_to": "chain_albedo_prim1.invalidated.png",
+   "sha256": "89a0285934336c7d"
+  },
+  {
+   "file": "chain_albedo_prim2.png",
+   "moved_to": "chain_albedo_prim2.invalidated.png",
+   "sha256": "3681e76aba4fe618"
+  },
+  {
+   "file": "chain_albedo_prim3.png",
+   "moved_to": "chain_albedo_prim3.invalidated.png",
+   "sha256": "446f1eede054d201"
+  },
+  {
+   "file": "chain_albedo_prim4.png",
+   "moved_to": "chain_albedo_prim4.invalidated.png",
+   "sha256": "12abe6f0b22682c1"
+  },
+  {
+   "file": "chain_albedo_prim5.png",
+   "moved_to": "chain_albedo_prim5.invalidated.png",
+   "sha256": "0f7713ad759288e2"
+  },
+  {
+   "file": "chain_albedo_prim6.png",
+   "moved_to": "chain_albedo_prim6.invalidated.png",
+   "sha256": "b59bbbc87c819fde"
+  },
+  {
+   "file": "chain_orm_010.png",
+   "moved_to": "chain_orm_010.invalidated.png",
+   "sha256": "d2a7a79e7919420a"
+  },
+  {
+   "file": "chain_orm_012.png",
+   "moved_to": "chain_orm_012.invalidated.png",
+   "sha256": "20fe2bf6719b40cc"
+  },
+  {
+   "file": "chain_rough_010.png",
+   "moved_to": "chain_rough_010.invalidated.png",
+   "sha256": "4d40ad3aaf7807b4"
+  },
+  {
+   "file": "chain_rough_012.png",
+   "moved_to": "chain_rough_012.invalidated.png",
+   "sha256": "aec0a593e2073cc8"
+  }
+ ]
+}

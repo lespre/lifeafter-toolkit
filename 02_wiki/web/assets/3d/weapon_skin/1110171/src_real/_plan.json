@@ -1,0 +1,18 @@
+{
+  "skin_rows": {
+    "1238": "skin_1003_010001a.tga(基色)",
+    "1239": "skin_1003_010001m.tga(参数)",
+    "1241": "skin_1003_010001n.tga(法线)",
+    "1243": "skin_1003_010001s_m.tga(表面)",
+    "1240": "细节法线",
+    "1244": "细节法线",
+    "1242": "单通道(蒙版/发光)"
+  },
+  "common": {
+    "res.gpk:4400": "glazed_patio.cube",
+    "res.gpk:4334": "car_studio01.cube",
+    "res.gpk:8525": "crystal_bump_n_uvva.tga",
+    "res.gpk:8553": "crystal_reflection_uvva.tga",
+    "res.gpk:8538": "crystal_caustic_uvva.tga"
+  }
+}

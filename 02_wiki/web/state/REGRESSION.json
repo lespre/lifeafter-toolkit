@@ -1,0 +1,15 @@
+{
+ "at": "2026-09-13T10:39:00",
+ "commit": "586ff5c",
+ "base": "workbench v1.3 (api-first paginated web client)",
+ "total_tests": 583,
+ "passed": 583,
+ "failures": 0,
+ "errors": 0,
+ "expected_failures": 1,
+ "exit_code": 0,
+ "status": "OK",
+ "tests": 583,
+ "result": "OK",
+ "command": "python -m unittest discover -s tests -q"
+}

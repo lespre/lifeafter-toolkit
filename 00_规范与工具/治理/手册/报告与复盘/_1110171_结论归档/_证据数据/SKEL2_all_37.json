@@ -1,0 +1,3757 @@
+{
+ "schema": "SKEL2_all_37/v1",
+ "generated_by": "chain-auditor task-36 (只读源包 + 只写 _gim_out/skel 与 _target_1110171/SKEL2_*)",
+ "roster_source": "E:\\la拆包项目\\03拆包产物\\_target_1110171\\ROSTER_g5_g6.json",
+ "ids": 37,
+ "distinct_models": 34,
+ "g5_rows": 22,
+ "g6_rows": 15,
+ "with_skeleton": 24,
+ "without_skeleton": 13,
+ "fail_classes": {
+  "no_weapon_skeleton__gim_binding_only": 13
+ },
+ "evidence_chain": {
+  "mesh_locator": "res\\weapon.gpk 条目表（32B/行，u32_6/u32_7 = murmur3(path,0x66666666/0x77777777)，反斜杠 latin1）",
+  "mesh_path_convention": "weapon\\skin\\<fam>\\<stem>.mesh（变体 _lod01.. _lod03/_preview/_shadow/_1/_2/_3）",
+  "skeleton_block": ".mesh v4：0x08 bone_flag / 0x0A bone_count / 0x0D.. 父索引区(0xFF=无父) / 0x0C+n 起骨名(32B 步长, 实测21/21) / 逐骨 92B / 尾部 u32 / sub 表三重校验",
+  "非骨架四重证据": "① 全部 mesh 变体 bone_flag=0 ② 全文 biped 串计数=0 ③ gim 有 MatrixToBone+Socket_* 但无 CutBones（21/21 vs 0/13）④ 64 扩展探针（.skeleton/.skel/.bone/.bones/.rig/.bind/.bnd/.anim × 8 变体）0 命中"
+ },
+ "character_rig_clue": {
+  "candidate_containers": [
+   "character_01.gpk",
+   "character_02.gpk",
+   "character_03.gpk",
+   "character_04.gpk",
+   "character_05.gpk",
+   "character_06.gpk",
+   "character_07.gpk",
+   "character_08.gpk",
+   "character_09.gpk",
+   "effect_01.gpk",
+   "effect_02.gpk",
+   "effect_cache.gpk",
+   "model_01.gpk",
+   "model_02.gpk",
+   "model_03.gpk",
+   "model_04.gpk",
+   "model_05.gpk",
+   "model_06.gpk",
+   "model_07.gpk",
+   "model_08.gpk",
+   "model_09.gpk",
+   "model_10.gpk",
+   "model_11.gpk",
+   "model_high_2024_01.gpk",
+   "model_high_2024_02.gpk",
+   "model_high_2024_03.gpk",
+   "model_high_2024_04.gpk",
+   "model_high_2024_05.gpk",
+   "model_high_2024_06.gpk",
+   "utility.gpk",
+   "utility_scene.gpk"
+  ],
+  "container_rows": {
+   "character_01.gpk": 47390,
+   "character_02.gpk": 22914,
+   "character_03.gpk": 21246,
+   "character_04.gpk": 58704,
+   "character_05.gpk": 77827,
+   "character_06.gpk": 21160,
+   "character_07.gpk": 39991,
+   "character_08.gpk": 41655,
+   "character_09.gpk": 22902,
+   "effect_01.gpk": 212152,
+   "effect_02.gpk": 3049,
+   "effect_cache.gpk": 99801,
+   "model_01.gpk": 22611,
+   "model_02.gpk": 17488,
+   "model_03.gpk": 18895,
+   "model_04.gpk": 9890,
+   "model_05.gpk": 17737,
+   "model_06.gpk": 15275,
+   "model_07.gpk": 11281,
+   "model_08.gpk": 11932,
+   "model_09.gpk": 17582,
+   "model_10.gpk": 16396,
+   "model_11.gpk": 7966,
+   "model_high_2024_01.gpk": 10012,
+   "model_high_2024_02.gpk": 1058,
+   "model_high_2024_03.gpk": 16127,
+   "model_high_2024_04.gpk": 22142,
+   "model_high_2024_05.gpk": 12046,
+   "model_high_2024_06.gpk": 3449,
+   "utility.gpk": 21426,
+   "utility_scene.gpk": 8097
+  },
+  "judgement": "13/13 无骨架 id 的 gim 只用 MatrixToBone + Socket_* 把网格挂到角色/插槽；武器侧 .mesh 里没有任何骨名（biped 串=0），因此这些模型的骨骼不在武器包内，需在角色侧资产里找（候选：res\\character_01..09.gpk，本次仅统计可表寻址行数，未做路径探针）",
+  "unresolved": [
+   "角色骨架路径命名约定未定证（故未对 character_*.gpk 做路径探针）",
+   "Documents\\gres 下 35 个容器头格式未解（非 HPGF/FPGH），存在未覆盖面"
+  ]
+ },
+ "rows": [
+  {
+   "id": "1110013",
+   "中文名": "幻影狩蝎",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1006_002\\skin_1006_002.gim",
+   "gim_row": 1308,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1310,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_002\\skin_1006_002.mesh",
+    "bytes": 466480,
+    "sha16": "463d990b1043789e"
+   },
+   "bone_count": 14,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110013_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110013_skeleton.glb",
+    "glb_bytes": 6152,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped_bone00",
+     "    |-- biped_bone01",
+     "    |-- biped_bone02",
+     "    |-- biped_bone03",
+     "    |-- biped_bone04",
+     "    |-- biped_bone05",
+     "    |-- biped_bone06",
+     "    |-- biped_bone07",
+     "    |-- biped_bone08",
+     "    |-- biped_bone09",
+     "    |-- biped_bone10",
+     "    |-- biped_bone11",
+     "    `-- biped_bone12"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 14,
+     "bone_count": 14,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 466480,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 14,
+     "parent_area": {
+      "off": 13,
+      "bytes": 13,
+      "end_exclusive": 26,
+      "hex": "00 01 01 01 01 01 01 01 01 01 01 01 01"
+     },
+     "name_block_off": 26,
+     "name_stride": 32,
+     "names_end": 474,
+     "per_bone_block_off": 475,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1763,
+     "trailer_u32_off": 1763,
+     "sub_table_off": 1767,
+     "term_off": 1817,
+     "sub_k": 5,
+     "sub_tv": 11670,
+     "sub_tf": 9346,
+     "geometry_segment_off": 1767,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1767",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110021",
+   "中文名": "紫焰蛇矛",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_2003_005\\skin_2003_005.gim",
+   "gim_row": 3400,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3406,
+    "variant": "_1",
+    "path": "weapon\\skin\\skin_2003_005\\skin_2003_005_1.mesh",
+    "bytes": 175348,
+    "sha16": "3cb5404a3db81b26"
+   },
+   "bone_count": 18,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110021_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110021_skeleton.glb",
+    "glb_bytes": 7852,
+    "glb_header_ok": true,
+    "roots": [
+     0,
+     17
+    ],
+    "ascii_first_3_levels": [
+     "biped bone00",
+     "|-- biped bone01",
+     "|   `-- biped bone11",
+     "|-- biped bone03",
+     "|   `-- biped bone04",
+     "|-- biped bone06",
+     "|   `-- biped bone07",
+     "`-- biped bone08",
+     "    `-- biped bone09",
+     "biped root"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 18,
+     "bone_count": 18,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 175348,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 18,
+     "parent_area": {
+      "off": 13,
+      "bytes": 17,
+      "end_exclusive": 30,
+      "hex": "00 00 02 03 00 05 00 07 08 01 0a 0b 0c 0d 0e 0f ff"
+     },
+     "name_block_off": 30,
+     "name_stride": 32,
+     "names_end": 606,
+     "per_bone_block_off": 607,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 2263,
+     "trailer_u32_off": 2263,
+     "sub_table_off": 2267,
+     "term_off": 2307,
+     "sub_k": 4,
+     "sub_tv": 5760,
+     "sub_tf": 2880,
+     "geometry_segment_off": 2267,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 2267",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110022",
+   "中文名": "赤蛇御火",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1007_002\\skin_1007_002.gim",
+   "gim_row": 1714,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1715,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1007_002\\skin_1007_002.mesh",
+    "bytes": 214070,
+    "sha16": "161d6789016c0075"
+   },
+   "bone_count": 13,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110022_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110022_skeleton.glb",
+    "glb_bytes": 5792,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone07",
+     "    `-- biped bone09"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 13,
+     "bone_count": 13,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 214070,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 13,
+     "parent_area": {
+      "off": 13,
+      "bytes": 12,
+      "end_exclusive": 25,
+      "hex": "00 01 01 01 03 01 02 01 02 03 02 03"
+     },
+     "name_block_off": 25,
+     "name_stride": 32,
+     "names_end": 441,
+     "per_bone_block_off": 442,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1638,
+     "trailer_u32_off": 1638,
+     "sub_table_off": 1642,
+     "term_off": 1652,
+     "sub_k": 1,
+     "sub_tv": 6473,
+     "sub_tf": 6257,
+     "geometry_segment_off": 1642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110024",
+   "中文名": "金蟒啸焰",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1006_004\\skin_1006_004.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1373,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_004\\skin_1006_004.mesh",
+    "bytes": 348984,
+    "sha16": "bfb54bcad3ad7588"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110024_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "pifuguashi",
+     "rotation",
+     "fx01",
+     "bag",
+     "hongwai",
+     "sound",
+     "muzzle_fire",
+     "muzzle_fire_02"
+    ],
+    "matrix_to_bone": {
+     "offset": 1341,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -0.9998999834060669,
+       0.0,
+       0.012500000186264515,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       -0.012500000186264515,
+       0.0,
+       -0.9998999834060669,
+       0.0
+      ],
+      [
+       -0.09000000357627869,
+       0.46000000834465027,
+       5.0,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 72 f9 7f bf 00 00 00 00 cd cc 4c 3c 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 cd cc 4c bc 00 00 00 00 72 f9 7f bf 00 00 00 00 ec 51 b8 bd 1f 85 eb 3e 00 00 a0 40 00 00 80 3f",
+     "float_off": 1347,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ],
+     [
+      "_shadow",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets",
+      "SimpleMeshPathForRenderShadow"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110031",
+   "中文名": "沧鳞破浪",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1001_004\\skin_1001_004.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 249,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_004\\skin_1001_004.mesh",
+    "bytes": 407962,
+    "sha16": "24f799d569e82d48"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110031_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "pifuguashi",
+     "fx_zishen",
+     "rotation",
+     "bag",
+     "hongwai",
+     "sound",
+     "muzzle_fire",
+     "muzzle_fire_02"
+    ],
+    "matrix_to_bone": {
+     "offset": 778,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -0.9998999834060669,
+       0.0,
+       0.012500000186264515,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       -0.012500000186264515,
+       0.0,
+       -0.9998999834060669,
+       0.0
+      ],
+      [
+       -0.06270000338554382,
+       0.10670000314712524,
+       3.9038000106811523,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 72 f9 7f bf 00 00 00 00 cd cc 4c 3c 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 cd cc 4c bc 00 00 00 00 72 f9 7f bf 00 00 00 00 dc 68 80 bd 88 85 da 3d dc d7 79 40 00 00 80 3f",
+     "float_off": 784,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ],
+     [
+      "_shadow",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets",
+      "SimpleMeshPathForRenderShadow"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110032",
+   "中文名": "九霄狐啸",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1013_003\\skin_1013_003.gim",
+   "gim_row": 3060,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3066,
+    "variant": "_1",
+    "path": "weapon\\skin\\skin_1013_003\\skin_1013_003_1.mesh",
+    "bytes": 74598,
+    "sha16": "b0c3cbb27cba5e3c"
+   },
+   "bone_count": 52,
+   "是否无骨架": false,
+   "status": "ok_with_selfcheck_warning",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110032_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110032_skeleton.glb",
+    "glb_bytes": 21396,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone03",
+     "    |-- biped bone07",
+     "    |-- biped bone53",
+     "    |-- biped bone54",
+     "    |-- biped bone55",
+     "    |-- biped bone56",
+     "    |-- biped bone57",
+     "    |-- biped bone58",
+     "    `-- biped bone59"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 52,
+     "bone_count": 52,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": [
+      {
+       "bone": 2,
+       "parent": 3
+      },
+      {
+       "bone": 4,
+       "parent": 5
+      },
+      {
+       "bone": 5,
+       "parent": 6
+      },
+      {
+       "bone": 7,
+       "parent": 10
+      },
+      {
+       "bone": 8,
+       "parent": 14
+      },
+      {
+       "bone": 9,
+       "parent": 15
+      },
+      {
+       "bone": 10,
+       "parent": 16
+      },
+      {
+       "bone": 11,
+       "parent": 17
+      },
+      {
+       "bone": 12,
+       "parent": 18
+      },
+      {
+       "bone": 13,
+       "parent": 19
+      },
+      {
+       "bone": 14,
+       "parent": 22
+      },
+      {
+       "bone": 15,
+       "parent": 20
+      },
+      {
+       "bone": 16,
+       "parent": 23
+      },
+      {
+       "bone": 17,
+       "parent": 24
+      },
+      {
+       "bone": 18,
+       "parent": 25
+      },
+      {
+       "bone": 19,
+       "parent": 26
+      },
+      {
+       "bone": 20,
+       "parent": 28
+      },
+      {
+       "bone": 21,
+       "parent": 29
+      },
+      {
+       "bone": 22,
+       "parent": 27
+      },
+      {
+       "bone": 23,
+       "parent": 30
+      },
+      {
+       "bone": 24,
+       "parent": 31
+      },
+      {
+       "bone": 25,
+       "parent": 32
+      },
+      {
+       "bone": 26,
+       "parent": 33
+      },
+      {
+       "bone": 27,
+       "parent": 35
+      },
+      {
+       "bone": 28,
+       "parent": 36
+      },
+      {
+       "bone": 29,
+       "parent": 34
+      },
+      {
+       "bone": 30,
+       "parent": 37
+      },
+      {
+       "bone": 31,
+       "parent": 38
+      },
+      {
+       "bone": 32,
+       "parent": 39
+      },
+      {
+       "bone": 33,
+       "parent": 40
+      },
+      {
+       "bone": 34,
+       "parent": 41
+      },
+      {
+       "bone": 35,
+       "parent": 42
+      },
+      {
+       "bone": 36,
+       "parent": 43
+      },
+      {
+       "bone": 37,
+       "parent": 44
+      },
+      {
+       "bone": 38,
+       "parent": 45
+      },
+      {
+       "bone": 39,
+       "parent": 46
+      },
+      {
+       "bone": 40,
+       "parent": 47
+      },
+      {
+       "bone": 41,
+       "parent": 50
+      },
+      {
+       "bone": 42,
+       "parent": 48
+      },
+      {
+       "bone": 43,
+       "parent": 49
+      },
+      {
+       "bone": 44,
+       "parent": 51
+      }
+     ]
+    },
+    "layout": {
+     "mesh_bytes": 74598,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 52,
+     "parent_area": {
+      "off": 13,
+      "bytes": 51,
+      "end_exclusive": 64,
+      "hex": "00 03 01 05 06 01 0a 0e 0f 10 11 12 13 16 14 17 18 19 1a 1c 1d 1b 1e 1f 20 21 23 24 22 25 26 27 28 29 2a 2b 2c 2d 2e 2f 32 30 31 33 01 01 01 01 01 01 01"
+     },
+     "name_block_off": 64,
+     "name_stride": 32,
+     "names_end": 1728,
+     "per_bone_block_off": 1729,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 6513,
+     "trailer_u32_off": 6513,
+     "sub_table_off": 6517,
+     "term_off": 6527,
+     "sub_k": 1,
+     "sub_tv": 1616,
+     "sub_tf": 1867,
+     "geometry_segment_off": 6517,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 6517",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110036",
+   "中文名": "森林之主",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1007_004\\skin_1007_004.gim",
+   "gim_row": 1812,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1813,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1007_004\\skin_1007_004.mesh",
+    "bytes": 319019,
+    "sha16": "2e1db4fbe4ae852d"
+   },
+   "bone_count": 13,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110036_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110036_skeleton.glb",
+    "glb_bytes": 5792,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone07",
+     "    `-- biped bone09"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 13,
+     "bone_count": 13,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 319019,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 13,
+     "parent_area": {
+      "off": 13,
+      "bytes": 12,
+      "end_exclusive": 25,
+      "hex": "00 01 01 01 03 01 02 01 02 03 02 03"
+     },
+     "name_block_off": 25,
+     "name_stride": 32,
+     "names_end": 441,
+     "per_bone_block_off": 442,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1638,
+     "trailer_u32_off": 1638,
+     "sub_table_off": 1642,
+     "term_off": 1682,
+     "sub_k": 4,
+     "sub_tv": 8870,
+     "sub_tf": 10451,
+     "geometry_segment_off": 1642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110121",
+   "中文名": "极狐破坏者",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1003_005\\skin_1003_005.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1121,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1003_005\\skin_1003_005.mesh",
+    "bytes": 107864,
+    "sha16": "175ed620b49bd606"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110121_mount.json",
+    "socket_count": 7,
+    "socket_names": [
+     "bag",
+     "hongwai",
+     "sound",
+     "muzzle_fire",
+     "rotation",
+     "pifuguashi",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 1105,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.01269999984651804,
+       0.44699999690055847,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 a9 13 50 3c 2f dd e4 3e 00 00 80 3f",
+     "float_off": 1111,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 7
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ],
+     [
+      "_shadow",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets",
+      "SimpleMeshPathForRenderShadow"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110128",
+   "中文名": "诡秘之颅",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_2003_019\\skin_2003_019.gim",
+   "gim_row": 3772,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3774,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_019\\skin_2003_019.mesh",
+    "bytes": 183699,
+    "sha16": "d89d641d0cfeadd1"
+   },
+   "bone_count": 19,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110128_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110128_skeleton.glb",
+    "glb_bytes": 8080,
+    "glb_header_ok": true,
+    "roots": [
+     0,
+     18
+    ],
+    "ascii_first_3_levels": [
+     "biped bone00",
+     "|-- biped bone01",
+     "|-- biped bone03",
+     "|-- biped bone04",
+     "|-- biped bone05",
+     "|-- biped bone06",
+     "|-- biped bone07",
+     "|-- biped bone08",
+     "|-- biped bone09",
+     "|-- biped bone10",
+     "|-- biped bone11",
+     "|-- biped bone12",
+     "|-- biped bone13",
+     "|-- biped bone14",
+     "|-- biped bone15",
+     "|-- biped bone16",
+     "|-- biped bone17",
+     "`-- biped bone18",
+     "biped root"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 19,
+     "bone_count": 19,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 183699,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 19,
+     "parent_area": {
+      "off": 13,
+      "bytes": 18,
+      "end_exclusive": 31,
+      "hex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff"
+     },
+     "name_block_off": 31,
+     "name_stride": 32,
+     "names_end": 639,
+     "per_bone_block_off": 640,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 2388,
+     "trailer_u32_off": 2388,
+     "sub_table_off": 2392,
+     "term_off": 2412,
+     "sub_k": 2,
+     "sub_tv": 6214,
+     "sub_tf": 6368,
+     "geometry_segment_off": 2392,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 2392",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110129",
+   "中文名": "熔炉寒霜",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1001_008\\skin_1001_008.gim",
+   "gim_row": 332,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 338,
+    "variant": "_1",
+    "path": "weapon\\skin\\skin_1001_008\\skin_1001_008_1.mesh",
+    "bytes": 92427,
+    "sha16": "69ccabdfe60f9c42"
+   },
+   "bone_count": 15,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110129_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110129_skeleton.glb",
+    "glb_bytes": 6544,
+    "glb_header_ok": true,
+    "roots": [
+     0,
+     14
+    ],
+    "ascii_first_3_levels": [
+     "biped bone00",
+     "|-- biped bone01",
+     "`-- biped bone02",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone06",
+     "    |-- biped bone08",
+     "    |-- biped bone09",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone17",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    `-- biped bone20",
+     "biped root"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 15,
+     "bone_count": 15,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 92427,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 15,
+     "parent_area": {
+      "off": 13,
+      "bytes": 14,
+      "end_exclusive": 27,
+      "hex": "00 00 02 02 02 02 02 02 02 02 02 02 02 ff"
+     },
+     "name_block_off": 27,
+     "name_stride": 32,
+     "names_end": 507,
+     "per_bone_block_off": 508,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1888,
+     "trailer_u32_off": 1888,
+     "sub_table_off": 1892,
+     "term_off": 1912,
+     "sub_k": 2,
+     "sub_tv": 2794,
+     "sub_tf": 2490,
+     "geometry_segment_off": 1892,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1892",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110137",
+   "中文名": "焚古龙息",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1013_007\\skin_1013_007.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3168,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1013_007\\skin_1013_007.mesh",
+    "bytes": 462010,
+    "sha16": "040b50054b1f2067"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110137_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "bag",
+     "hongwai",
+     "sound",
+     "pifuguashi",
+     "rotation",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 1149,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.17919999361038208,
+       -0.3702999949455261,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 34 80 37 3e f6 97 bd be 00 00 80 3f",
+     "float_off": 1155,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110145",
+   "中文名": "天马行空",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1001_014\\skin_1001_014.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 653,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_014\\skin_1001_014.mesh",
+    "bytes": 511408,
+    "sha16": "da706f0ec22b68e6"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110145_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "pifuguashi",
+     "rotation",
+     "bag",
+     "sound",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "hongwai",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 1667,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -1.0,
+       0.0,
+       0.00279999990016222,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       -0.00279999990016222,
+       0.0,
+       -1.0,
+       0.0
+      ],
+      [
+       -0.13809999823570251,
+       0.33000001311302185,
+       5.627099990844727,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 bf 00 00 00 00 34 80 37 3b 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 34 80 37 bb 00 00 00 00 00 00 80 bf 00 00 00 00 16 6a 0d be c3 f5 a8 3e 34 11 b4 40 00 00 80 3f",
+     "float_off": 1673,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110146",
+   "中文名": "龙渊永寂",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1002_007\\skin_1002_007.gim",
+   "gim_row": 867,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 869,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1002_007\\skin_1002_007.mesh",
+    "bytes": 539304,
+    "sha16": "8958ee1c607ce2fa"
+   },
+   "bone_count": 4,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110146_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110146_skeleton.glb",
+    "glb_bytes": 2296,
+    "glb_header_ok": true,
+    "roots": [
+     0,
+     3
+    ],
+    "ascii_first_3_levels": [
+     "biped bone00",
+     "|-- biped bone01",
+     "`-- biped bone02",
+     "biped root"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 4,
+     "bone_count": 4,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 539304,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 4,
+     "parent_area": {
+      "off": 13,
+      "bytes": 3,
+      "end_exclusive": 16,
+      "hex": "00 00 ff"
+     },
+     "name_block_off": 16,
+     "name_stride": 32,
+     "names_end": 144,
+     "per_bone_block_off": 145,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 513,
+     "trailer_u32_off": 513,
+     "sub_table_off": 517,
+     "term_off": 557,
+     "sub_k": 4,
+     "sub_tv": 16396,
+     "sub_tf": 15993,
+     "geometry_segment_off": 517,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 517",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110151",
+   "中文名": "阿赖耶识",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_2003_022\\skin_2003_022.gim",
+   "gim_row": 3855,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3857,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_022\\skin_2003_022.mesh",
+    "bytes": 27209,
+    "sha16": "86336d63313bb534"
+   },
+   "bone_count": 2,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110151_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110151_skeleton.glb",
+    "glb_bytes": 1528,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 2,
+     "bone_count": 2,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 27209,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 2,
+     "parent_area": {
+      "off": 13,
+      "bytes": 1,
+      "end_exclusive": 14,
+      "hex": "00"
+     },
+     "name_block_off": 14,
+     "name_stride": 32,
+     "names_end": 78,
+     "per_bone_block_off": 79,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 263,
+     "trailer_u32_off": 263,
+     "sub_table_off": 267,
+     "term_off": 277,
+     "sub_k": 1,
+     "sub_tv": 869,
+     "sub_tf": 1142,
+     "geometry_segment_off": 267,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 267",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110152",
+   "中文名": "灵态诱导",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1012_009\\skin_1012_009.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2718,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1012_009\\skin_1012_009.mesh",
+    "bytes": 358098,
+    "sha16": "989e03758b0a6930"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110152_mount.json",
+    "socket_count": 7,
+    "socket_names": [
+     "pifuguashi",
+     "fx_idle_01",
+     "bag",
+     "sound",
+     "rotation",
+     "muzzle_fire",
+     "muzzle_fire_02"
+    ],
+    "matrix_to_bone": {
+     "offset": 914,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -1.0,
+       0.0,
+       0.00279999990016222,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       -0.00279999990016222,
+       0.0,
+       -1.0,
+       0.0
+      ],
+      [
+       -0.5059999823570251,
+       0.490200012922287,
+       4.213099956512451,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 bf 00 00 00 00 34 80 37 3b 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 34 80 37 bb 00 00 00 00 00 00 80 bf 00 00 00 00 37 89 01 bf 7f fb fa 3e b7 d1 86 40 00 00 80 3f",
+     "float_off": 920,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 7
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110165",
+   "中文名": "墨隐麒麟",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1006_011\\skin_1006_011.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1618,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_011\\skin_1006_011.mesh",
+    "bytes": 408800,
+    "sha16": "3b85d3fdb386c02a"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110165_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "bag",
+     "sound",
+     "pifuguashi",
+     "rotation",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "hongwai",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 1230,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.17919999361038208,
+       -0.3702999949455261,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 34 80 37 3e f6 97 bd be 00 00 80 3f",
+     "float_off": 1236,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets",
+      "SimpleMeshPathForRenderShadow"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110169",
+   "中文名": "灰色协议",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1002_009\\skin_1002_009.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 912,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1002_009\\skin_1002_009.mesh",
+    "bytes": 349820,
+    "sha16": "d461ea6d0e17abc9"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110169_mount.json",
+    "socket_count": 6,
+    "socket_names": [
+     "pifuguashi",
+     "rotation",
+     "sound",
+     "hongwai",
+     "muzzle_fire",
+     "fx_idle_01"
+    ],
+    "matrix_to_bone": {
+     "offset": 906,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -1.0,
+       0.0,
+       -0.0052999998442828655,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0052999998442828655,
+       0.0,
+       -1.0,
+       0.0
+      ],
+      [
+       -0.1599999964237213,
+       0.7799999713897705,
+       7.699999809265137,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 bf 00 00 00 00 9f ab ad bb 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 9f ab ad 3b 00 00 00 00 00 00 80 bf 00 00 00 00 0a d7 23 be 14 ae 47 3f 66 66 f6 40 00 00 80 3f",
+     "float_off": 912,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 6
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110171",
+   "中文名": "光影咏叹调",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1003_010\\skin_1003_010.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1210,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1003_010\\skin_1003_010.mesh",
+    "bytes": 203406,
+    "sha16": "b23a889de07e22b0"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110171_mount.json",
+    "socket_count": 7,
+    "socket_names": [
+     "fx_idle_01",
+     "rotation",
+     "bag",
+     "hongwai",
+     "sound",
+     "muzzle_fire",
+     "pifuguashi"
+    ],
+    "matrix_to_bone": {
+     "offset": 1023,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       0.8500000238418579,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.8500000238418579,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.8500000238418579,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       0.0,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": true,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 9a 99 59 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 59 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a 99 59 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f",
+     "float_off": 1029,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 7
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110177",
+   "中文名": "极光剑",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_2003_029\\skin_2003_029.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3995,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_029\\skin_2003_029.mesh",
+    "bytes": 171716,
+    "sha16": "faff017dde8bb1e9"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110177_mount.json",
+    "socket_count": 5,
+    "socket_names": [
+     "rotation",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "pifuguashi",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 996,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       -0.25,
+       5.204999923706055,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 5c 8f a6 40 00 00 80 3f",
+     "float_off": 1002,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 5
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "11101451",
+   "中文名": "天马行空（14天）",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1001_014\\skin_1001_014.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 653,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_014\\skin_1001_014.mesh",
+    "bytes": 511408,
+    "sha16": "da706f0ec22b68e6"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\11101451_mount.json",
+    "socket_count": 8,
+    "socket_names": [
+     "pifuguashi",
+     "rotation",
+     "bag",
+     "sound",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "hongwai",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 1667,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -1.0,
+       0.0,
+       0.00279999990016222,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       -0.00279999990016222,
+       0.0,
+       -1.0,
+       0.0
+      ],
+      [
+       -0.13809999823570251,
+       0.33000001311302185,
+       5.627099990844727,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 bf 00 00 00 00 34 80 37 3b 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 34 80 37 bb 00 00 00 00 00 00 80 bf 00 00 00 00 16 6a 0d be c3 f5 a8 3e 34 11 b4 40 00 00 80 3f",
+     "float_off": 1673,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 8
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5",
+      "Socket_6",
+      "Socket_7"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "11101691",
+   "中文名": "灰色协议（14天）",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_1002_009\\skin_1002_009.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 912,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1002_009\\skin_1002_009.mesh",
+    "bytes": 349820,
+    "sha16": "d461ea6d0e17abc9"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\11101691_mount.json",
+    "socket_count": 6,
+    "socket_names": [
+     "pifuguashi",
+     "rotation",
+     "sound",
+     "hongwai",
+     "muzzle_fire",
+     "fx_idle_01"
+    ],
+    "matrix_to_bone": {
+     "offset": 906,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       -1.0,
+       0.0,
+       -0.0052999998442828655,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0052999998442828655,
+       0.0,
+       -1.0,
+       0.0
+      ],
+      [
+       -0.1599999964237213,
+       0.7799999713897705,
+       7.699999809265137,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 bf 00 00 00 00 9f ab ad bb 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 9f ab ad 3b 00 00 00 00 00 00 80 bf 00 00 00 00 0a d7 23 be 14 ae 47 3f 66 66 f6 40 00 00 80 3f",
+     "float_off": 912,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 6
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4",
+      "Socket_5"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "11101771",
+   "中文名": "极光剑（7天）",
+   "level": 5,
+   "level_name": "典藏(L5)",
+   "gim_path": "weapon\\skin\\skin_2003_029\\skin_2003_029.gim",
+   "gim_row": null,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3995,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_029\\skin_2003_029.mesh",
+    "bytes": 171716,
+    "sha16": "faff017dde8bb1e9"
+   },
+   "bone_count": 0,
+   "是否无骨架": true,
+   "status": "no_skeleton__mount_recovered",
+   "asset": {
+    "type": "mount",
+    "mount_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\11101771_mount.json",
+    "socket_count": 5,
+    "socket_names": [
+     "rotation",
+     "muzzle_fire",
+     "muzzle_fire_02",
+     "pifuguashi",
+     "fx01"
+    ],
+    "matrix_to_bone": {
+     "offset": 996,
+     "bytes": 70,
+     "count": 16,
+     "values_if_decodable": [
+      [
+       1.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       1.0,
+       0.0,
+       0.0
+      ],
+      [
+       0.0,
+       0.0,
+       1.0,
+       0.0
+      ],
+      [
+       0.0,
+       -0.25,
+       5.204999923706055,
+       1.0
+      ]
+     ],
+     "values_interpretation": "row-major 4x4（记录头 <u8 字段号><u8 类型=06><u32 count=16> + 16*float32；类型 06=u32 count+N*float32 见 c159_parser.py:51）",
+     "affine_row3_0001": false,
+     "affine_col3_0001": true,
+     "raw_hex": "07 06 10 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 be 5c 8f a6 40 00 00 80 3f",
+     "float_off": 1002,
+     "classification": "non_socket_record_primary_candidate",
+     "position": "插槽段之外（位于 SubMesh/Lods 记录之后）",
+     "semantic_state": "unresolved: 归属对象（模型根/容器/LOD）未定证"
+    },
+    "matrix_records": 5
+   },
+   "no_skeleton_evidence_4fold": {
+    "1_全部变体_flag0": [
+     [
+      "(main)",
+      0
+     ],
+     [
+      "_lod01",
+      0
+     ],
+     [
+      "_lod02",
+      0
+     ],
+     [
+      "_lod03",
+      0
+     ],
+     [
+      "_preview",
+      0
+     ]
+    ],
+    "2_biped串计数": 0,
+    "3_gim_MatrixToBone_Sockets_no_CutBones": {
+     "gim_binding_only": true,
+     "gim_has_cutbones": false,
+     "skeleton_props": [
+      "BindType",
+      "MatrixToBone",
+      "Sockets"
+     ],
+     "socket_types": [
+      "Socket_0",
+      "Socket_1",
+      "Socket_2",
+      "Socket_3",
+      "Socket_4"
+     ]
+    },
+    "4_扩展探针": null,
+    "reason": "no_weapon_skeleton__gim_binding_only"
+   }
+  },
+  {
+   "id": "1110115",
+   "中文名": "赤月晶魄",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_2003_013\\skin_2003_013.gim",
+   "gim_row": 3604,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3606,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_013\\skin_2003_013.mesh",
+    "bytes": 382031,
+    "sha16": "f367a45744f51395"
+   },
+   "bone_count": 5,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110115_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110115_skeleton.glb",
+    "glb_bytes": 2716,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    `-- biped bone01"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 5,
+     "bone_count": 5,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 382031,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 5,
+     "parent_area": {
+      "off": 13,
+      "bytes": 4,
+      "end_exclusive": 17,
+      "hex": "00 01 02 03"
+     },
+     "name_block_off": 17,
+     "name_stride": 32,
+     "names_end": 177,
+     "per_bone_block_off": 178,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 638,
+     "trailer_u32_off": 638,
+     "sub_table_off": 642,
+     "term_off": 672,
+     "sub_k": 3,
+     "sub_tv": 12754,
+     "sub_tf": 14654,
+     "geometry_segment_off": 642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110116",
+   "中文名": "赤月晶魄",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_2003_017\\skin_2003_017.gim",
+   "gim_row": 3683,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3685,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_017\\skin_2003_017.mesh",
+    "bytes": 710860,
+    "sha16": "99a6c0f98c95032b"
+   },
+   "bone_count": 35,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110116_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110116_skeleton.glb",
+    "glb_bytes": 14292,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone12",
+     "    |-- biped bone13",
+     "    |-- biped bone14",
+     "    |-- biped bone15",
+     "    |-- biped bone16",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone22",
+     "    |-- biped bone23",
+     "    |-- biped bone24",
+     "    |-- biped bone25",
+     "    |-- biped bone26",
+     "    |-- biped bone30",
+     "    |-- biped bone31",
+     "    |-- biped bone32",
+     "    |-- biped bone33",
+     "    |-- biped bone34",
+     "    |-- biped bone35",
+     "    |-- biped bone36",
+     "    |-- biped bone37",
+     "    |-- biped bone38",
+     "    |-- biped bone39",
+     "    |-- biped bone40",
+     "    |-- biped bone41",
+     "    |-- biped bone42",
+     "    |-- biped bone43",
+     "    |-- biped bone44",
+     "    `-- biped bone45"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 35,
+     "bone_count": 35,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 710860,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 35,
+     "parent_area": {
+      "off": 13,
+      "bytes": 34,
+      "end_exclusive": 47,
+      "hex": "00 01 02 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01"
+     },
+     "name_block_off": 47,
+     "name_stride": 32,
+     "names_end": 1167,
+     "per_bone_block_off": 1168,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 4388,
+     "trailer_u32_off": 4388,
+     "sub_table_off": 4392,
+     "term_off": 4442,
+     "sub_k": 5,
+     "sub_tv": 24573,
+     "sub_tf": 23505,
+     "geometry_segment_off": 4392,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 4392",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110117",
+   "中文名": "赤月晶魄",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_2003_018\\skin_2003_018.gim",
+   "gim_row": 3727,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 3729,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_2003_018\\skin_2003_018.mesh",
+    "bytes": 533252,
+    "sha16": "e8d3e51d7cea3d1a"
+   },
+   "bone_count": 28,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110117_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110117_skeleton.glb",
+    "glb_bytes": 11588,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone12",
+     "    |-- biped bone14",
+     "    |-- biped bone16",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone22",
+     "    |-- biped bone23",
+     "    |-- biped bone24",
+     "    |-- biped bone25",
+     "    |-- biped bone26",
+     "    |-- biped bone27",
+     "    |-- biped bone28",
+     "    |-- biped bone29",
+     "    |-- biped bone30",
+     "    |-- biped bone31",
+     "    |-- biped bone32",
+     "    |-- biped bone33",
+     "    |-- biped bone34",
+     "    |-- biped bone35",
+     "    |-- biped bone40",
+     "    `-- biped bone41"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 28,
+     "bone_count": 28,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 533252,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 28,
+     "parent_area": {
+      "off": 13,
+      "bytes": 27,
+      "end_exclusive": 40,
+      "hex": "00 01 02 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01"
+     },
+     "name_block_off": 40,
+     "name_stride": 32,
+     "names_end": 936,
+     "per_bone_block_off": 937,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 3513,
+     "trailer_u32_off": 3513,
+     "sub_table_off": 3517,
+     "term_off": 3557,
+     "sub_k": 4,
+     "sub_tv": 18886,
+     "sub_tf": 15866,
+     "geometry_segment_off": 3517,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 3517",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110131",
+   "中文名": "炽日耀斑",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1006_008\\skin_1006_008.gim",
+   "gim_row": 1459,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1461,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_008\\skin_1006_008.mesh",
+    "bytes": 474562,
+    "sha16": "2dd337491978aa0c"
+   },
+   "bone_count": 22,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110131_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110131_skeleton.glb",
+    "glb_bytes": 9288,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone06",
+     "    |-- biped bone07",
+     "    |-- biped bone08",
+     "    |-- biped bone09",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    `-- biped bone22"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 22,
+     "bone_count": 22,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 474562,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 22,
+     "parent_area": {
+      "off": 13,
+      "bytes": 21,
+      "end_exclusive": 34,
+      "hex": "00 01 01 01 01 01 01 01 01 01 01 01 0c 0d 0c 01 01 01 01 01 0a"
+     },
+     "name_block_off": 34,
+     "name_stride": 32,
+     "names_end": 738,
+     "per_bone_block_off": 739,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 2763,
+     "trailer_u32_off": 2763,
+     "sub_table_off": 2767,
+     "term_off": 2787,
+     "sub_k": 2,
+     "sub_tv": 14424,
+     "sub_tf": 13695,
+     "geometry_segment_off": 2767,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 2767",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110132",
+   "中文名": "炽日耀斑",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1006_009\\skin_1006_009.gim",
+   "gim_row": 1502,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1504,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_009\\skin_1006_009.mesh",
+    "bytes": 601388,
+    "sha16": "cca0a8b585fcf3cd"
+   },
+   "bone_count": 34,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110132_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110132_skeleton.glb",
+    "glb_bytes": 13924,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone06",
+     "    |-- biped bone07",
+     "    |-- biped bone08",
+     "    |-- biped bone09",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone22",
+     "    |-- biped bone30",
+     "    |-- biped bone31",
+     "    |-- biped bone32",
+     "    |-- biped bone33",
+     "    |-- biped bone34",
+     "    |-- biped bone35",
+     "    |-- biped bone36",
+     "    |-- biped bone37",
+     "    `-- biped bone38"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 34,
+     "bone_count": 34,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 601388,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 34,
+     "parent_area": {
+      "off": 13,
+      "bytes": 33,
+      "end_exclusive": 46,
+      "hex": "00 01 01 01 01 01 01 01 01 01 01 01 0c 0d 0d 0d 0d 0c 01 01 01 01 01 0a 01 01 01 01 01 01 01 01 01"
+     },
+     "name_block_off": 46,
+     "name_stride": 32,
+     "names_end": 1134,
+     "per_bone_block_off": 1135,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 4263,
+     "trailer_u32_off": 4263,
+     "sub_table_off": 4267,
+     "term_off": 4307,
+     "sub_k": 4,
+     "sub_tv": 18492,
+     "sub_tf": 16266,
+     "geometry_segment_off": 4267,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 4267",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110133",
+   "中文名": "炽日耀斑",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1006_010\\skin_1006_010.gim",
+   "gim_row": 1547,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 1549,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1006_010\\skin_1006_010.mesh",
+    "bytes": 531748,
+    "sha16": "f5b2bbe0aa6882aa"
+   },
+   "bone_count": 49,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110133_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110133_skeleton.glb",
+    "glb_bytes": 19736,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone06",
+     "    |-- biped bone07",
+     "    |-- biped bone08",
+     "    |-- biped bone09",
+     "    |-- biped bone10",
+     "    |-- biped bone11",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone22",
+     "    |-- biped bone30",
+     "    |-- biped bone31",
+     "    |-- biped bone32",
+     "    |-- biped bone33",
+     "    |-- biped bone34",
+     "    |-- biped bone35",
+     "    |-- biped bone36",
+     "    |-- biped bone37",
+     "    |-- biped bone38",
+     "    |-- biped bone39",
+     "    |-- biped bone40",
+     "    |-- biped bone41",
+     "    |-- biped bone42",
+     "    |-- biped bone43",
+     "    |-- biped bone52",
+     "    `-- biped bone53"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 49,
+     "bone_count": 49,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 531748,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 49,
+     "parent_area": {
+      "off": 13,
+      "bytes": 48,
+      "end_exclusive": 61,
+      "hex": "00 01 01 01 01 01 01 01 01 01 01 01 0c 0d 0d 0d 0d 0c 01 01 01 01 01 0a 01 01 01 01 01 01 01 01 01 01 01 01 01 01 12 12 12 12 12 12 12 12 01 01"
+     },
+     "name_block_off": 61,
+     "name_stride": 32,
+     "names_end": 1629,
+     "per_bone_block_off": 1630,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 6138,
+     "trailer_u32_off": 6138,
+     "sub_table_off": 6142,
+     "term_off": 6182,
+     "sub_k": 4,
+     "sub_tv": 18589,
+     "sub_tf": 16293,
+     "geometry_segment_off": 6142,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 6142",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110142",
+   "中文名": "金乌负日",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1007_007\\skin_1007_007.gim",
+   "gim_row": 2012,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2013,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1007_007\\skin_1007_007.mesh",
+    "bytes": 282188,
+    "sha16": "9383bb0c3248d7f9"
+   },
+   "bone_count": 13,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110142_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110142_skeleton.glb",
+    "glb_bytes": 5792,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone07",
+     "    `-- biped bone09"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 13,
+     "bone_count": 13,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 282188,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 13,
+     "parent_area": {
+      "off": 13,
+      "bytes": 12,
+      "end_exclusive": 25,
+      "hex": "00 01 01 01 03 01 02 01 02 03 02 03"
+     },
+     "name_block_off": 25,
+     "name_stride": 32,
+     "names_end": 441,
+     "per_bone_block_off": 442,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1638,
+     "trailer_u32_off": 1638,
+     "sub_table_off": 1642,
+     "term_off": 1682,
+     "sub_k": 4,
+     "sub_tv": 7617,
+     "sub_tf": 7377,
+     "geometry_segment_off": 1642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110143",
+   "中文名": "金乌负日",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1007_008\\skin_1007_008.gim",
+   "gim_row": 2096,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2097,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1007_008\\skin_1007_008.mesh",
+    "bytes": 417591,
+    "sha16": "e694aed774f3dad4"
+   },
+   "bone_count": 13,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110143_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110143_skeleton.glb",
+    "glb_bytes": 5792,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone07",
+     "    `-- biped bone09"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 13,
+     "bone_count": 13,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 417591,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 13,
+     "parent_area": {
+      "off": 13,
+      "bytes": 12,
+      "end_exclusive": 25,
+      "hex": "00 01 01 01 03 01 02 01 02 03 02 03"
+     },
+     "name_block_off": 25,
+     "name_stride": 32,
+     "names_end": 441,
+     "per_bone_block_off": 442,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1638,
+     "trailer_u32_off": 1638,
+     "sub_table_off": 1642,
+     "term_off": 1722,
+     "sub_k": 8,
+     "sub_tv": 11326,
+     "sub_tf": 10807,
+     "geometry_segment_off": 1642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110144",
+   "中文名": "金乌负日",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1007_009\\skin_1007_009.gim",
+   "gim_row": 2225,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2226,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1007_009\\skin_1007_009.mesh",
+    "bytes": 467864,
+    "sha16": "f4d28d45f457d2f1"
+   },
+   "bone_count": 13,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110144_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110144_skeleton.glb",
+    "glb_bytes": 5792,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone01",
+     "    |-- biped bone03",
+     "    |-- biped bone04",
+     "    |-- biped bone05",
+     "    |-- biped bone07",
+     "    `-- biped bone09"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 13,
+     "bone_count": 13,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 467864,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 13,
+     "parent_area": {
+      "off": 13,
+      "bytes": 12,
+      "end_exclusive": 25,
+      "hex": "00 01 01 01 03 01 02 01 02 03 02 03"
+     },
+     "name_block_off": 25,
+     "name_stride": 32,
+     "names_end": 441,
+     "per_bone_block_off": 442,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1638,
+     "trailer_u32_off": 1638,
+     "sub_table_off": 1642,
+     "term_off": 1732,
+     "sub_k": 9,
+     "sub_tv": 12741,
+     "sub_tf": 12300,
+     "geometry_segment_off": 1642,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1642",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110159",
+   "中文名": "沙海月鸣",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1001_011\\skin_1001_011.gim",
+   "gim_row": 460,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 462,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_011\\skin_1001_011.mesh",
+    "bytes": 572948,
+    "sha16": "dd9ff16f3ae63fd4"
+   },
+   "bone_count": 41,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110159_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110159_skeleton.glb",
+    "glb_bytes": 16712,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone04",
+     "    |-- biped bone10",
+     "    |-- biped bone12",
+     "    |-- biped bone15",
+     "    |-- biped bone16",
+     "    |-- biped bone17",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone23",
+     "    |-- biped bone25",
+     "    |-- biped bone43",
+     "    |-- biped bone44",
+     "    |-- biped bone45",
+     "    `-- biped bone46"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 41,
+     "bone_count": 41,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 572948,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 41,
+     "parent_area": {
+      "off": 13,
+      "bytes": 40,
+      "end_exclusive": 53,
+      "hex": "00 01 01 03 01 05 06 05 08 05 01 0b 01 01 01 01 01 01 01 01 14 01 16 01 15 15 15 1b 15 15 15 15 14 14 14 03 01 01 01 01"
+     },
+     "name_block_off": 53,
+     "name_stride": 32,
+     "names_end": 1365,
+     "per_bone_block_off": 1366,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 5138,
+     "trailer_u32_off": 5138,
+     "sub_table_off": 5142,
+     "term_off": 5192,
+     "sub_k": 5,
+     "sub_tv": 13825,
+     "sub_tf": 13948,
+     "geometry_segment_off": 5142,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 5142",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110160",
+   "中文名": "沙海月鸣",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1001_012\\skin_1001_012.gim",
+   "gim_row": 516,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 518,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_012\\skin_1001_012.mesh",
+    "bytes": 636130,
+    "sha16": "f1a744df39478177"
+   },
+   "bone_count": 46,
+   "是否无骨架": false,
+   "status": "ok_with_selfcheck_warning",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110160_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110160_skeleton.glb",
+    "glb_bytes": 18696,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone04",
+     "    |-- biped bone10",
+     "    |-- biped bone12",
+     "    |-- biped bone15",
+     "    |-- biped bone16",
+     "    |-- biped bone17",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone23",
+     "    |-- biped bone25",
+     "    |-- biped bone28",
+     "    |-- biped bone43",
+     "    |-- biped bone44",
+     "    |-- biped bone45",
+     "    `-- biped bone46"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 46,
+     "bone_count": 46,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": [
+      {
+       "bone": 29,
+       "parent": 31
+      }
+     ]
+    },
+    "layout": {
+     "mesh_bytes": 636130,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 46,
+     "parent_area": {
+      "off": 13,
+      "bytes": 45,
+      "end_exclusive": 58,
+      "hex": "00 01 01 03 01 05 06 05 08 05 01 0b 01 01 01 01 01 01 01 01 14 01 16 01 15 15 01 1b 1f 1c 1e 15 20 15 15 15 15 14 14 14 03 01 01 01 01"
+     },
+     "name_block_off": 58,
+     "name_stride": 32,
+     "names_end": 1530,
+     "per_bone_block_off": 1531,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 5763,
+     "trailer_u32_off": 5763,
+     "sub_table_off": 5767,
+     "term_off": 5807,
+     "sub_k": 4,
+     "sub_tv": 17048,
+     "sub_tf": 16929,
+     "geometry_segment_off": 5767,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 5767",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110161",
+   "中文名": "沙海月鸣",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1001_013\\skin_1001_013.gim",
+   "gim_row": 572,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 574,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1001_013\\skin_1001_013.mesh",
+    "bytes": 743598,
+    "sha16": "e0614159338cdbe9"
+   },
+   "bone_count": 46,
+   "是否无骨架": false,
+   "status": "ok_with_selfcheck_warning",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110161_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110161_skeleton.glb",
+    "glb_bytes": 18696,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone02",
+     "    |-- biped bone04",
+     "    |-- biped bone10",
+     "    |-- biped bone12",
+     "    |-- biped bone15",
+     "    |-- biped bone16",
+     "    |-- biped bone17",
+     "    |-- biped bone18",
+     "    |-- biped bone19",
+     "    |-- biped bone20",
+     "    |-- biped bone21",
+     "    |-- biped bone23",
+     "    |-- biped bone25",
+     "    |-- biped bone43",
+     "    |-- biped bone44",
+     "    |-- biped bone45",
+     "    `-- biped bone46"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 46,
+     "bone_count": 46,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": [
+      {
+       "bone": 29,
+       "parent": 31
+      }
+     ]
+    },
+    "layout": {
+     "mesh_bytes": 743598,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 46,
+     "parent_area": {
+      "off": 13,
+      "bytes": 45,
+      "end_exclusive": 58,
+      "hex": "00 01 01 03 01 05 06 05 08 05 01 0b 01 01 01 01 01 01 01 01 14 01 16 01 15 15 03 1b 1f 1c 1e 15 20 15 15 15 15 14 14 14 03 01 01 01 01"
+     },
+     "name_block_off": 58,
+     "name_stride": 32,
+     "names_end": 1530,
+     "per_bone_block_off": 1531,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 5763,
+     "trailer_u32_off": 5763,
+     "sub_table_off": 5767,
+     "term_off": 5827,
+     "sub_k": 6,
+     "sub_tv": 19906,
+     "sub_tf": 20062,
+     "geometry_segment_off": 5767,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 5767",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110173",
+   "中文名": "水晶玫瑰",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1012_011\\skin_1012_011.gim",
+   "gim_row": 2776,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2778,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1012_011\\skin_1012_011.mesh",
+    "bytes": 601333,
+    "sha16": "4d47d1c7ba71d376"
+   },
+   "bone_count": 11,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110173_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110173_skeleton.glb",
+    "glb_bytes": 5020,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    |-- biped bone04",
+     "    `-- biped bone05"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 11,
+     "bone_count": 11,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 601333,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 11,
+     "parent_area": {
+      "off": 13,
+      "bytes": 10,
+      "end_exclusive": 23,
+      "hex": "00 01 02 02 01 01 06 06 06 06"
+     },
+     "name_block_off": 23,
+     "name_stride": 32,
+     "names_end": 375,
+     "per_bone_block_off": 376,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 1388,
+     "trailer_u32_off": 1388,
+     "sub_table_off": 1392,
+     "term_off": 1432,
+     "sub_k": 4,
+     "sub_tv": 18328,
+     "sub_tf": 17488,
+     "geometry_segment_off": 1392,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 1392",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110174",
+   "中文名": "水晶玫瑰",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1012_012\\skin_1012_012.gim",
+   "gim_row": 2833,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2835,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1012_012\\skin_1012_012.mesh",
+    "bytes": 722140,
+    "sha16": "2fb2407fbd7f51fb"
+   },
+   "bone_count": 43,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110174_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110174_skeleton.glb",
+    "glb_bytes": 17416,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    `-- biped bone29"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 43,
+     "bone_count": 43,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 722140,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 43,
+     "parent_area": {
+      "off": 13,
+      "bytes": 42,
+      "end_exclusive": 55,
+      "hex": "00 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 01"
+     },
+     "name_block_off": 55,
+     "name_stride": 32,
+     "names_end": 1431,
+     "per_bone_block_off": 1432,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 5388,
+     "trailer_u32_off": 5388,
+     "sub_table_off": 5392,
+     "term_off": 5432,
+     "sub_k": 4,
+     "sub_tv": 22327,
+     "sub_tf": 18943,
+     "geometry_segment_off": 5392,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 5392",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  },
+  {
+   "id": "1110175",
+   "中文名": "水晶玫瑰",
+   "level": 6,
+   "level_name": "传世(L6)",
+   "gim_path": "weapon\\skin\\skin_1012_013\\skin_1012_013.gim",
+   "gim_row": 2891,
+   "mesh": {
+    "container": "res\\weapon.gpk",
+    "row": 2893,
+    "variant": "(main)",
+    "path": "weapon\\skin\\skin_1012_013\\skin_1012_013.mesh",
+    "bytes": 653380,
+    "sha16": "c74c82283efbf7f1"
+   },
+   "bone_count": 43,
+   "是否无骨架": false,
+   "status": "ok",
+   "asset": {
+    "type": "skeleton",
+    "skeleton_json": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110175_skeleton.json",
+    "glb": "E:\\la拆包项目\\03拆包产物\\_gim_out\\skel\\1110175_skeleton.glb",
+    "glb_bytes": 17416,
+    "glb_header_ok": true,
+    "roots": [
+     0
+    ],
+    "ascii_first_3_levels": [
+     "biped root",
+     "`-- biped bone00",
+     "    |-- biped bone01",
+     "    `-- biped bone29"
+    ],
+    "self_check": {
+     "sum_children_plus_roots": 43,
+     "bone_count": 43,
+     "sum_ok": true,
+     "cycle_state": "ok",
+     "all_nodes_reached_from_roots": true,
+     "parent_lt_self_violations": []
+    },
+    "layout": {
+     "mesh_bytes": 653380,
+     "skeleton_block_start": 13,
+     "bone_flag_u16_0x08": 1,
+     "bone_count_u16_0x0A": 43,
+     "parent_area": {
+      "off": 13,
+      "bytes": 42,
+      "end_exclusive": 55,
+      "hex": "00 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 0f 01"
+     },
+     "name_block_off": 55,
+     "name_stride": 32,
+     "names_end": 1431,
+     "per_bone_block_off": 1432,
+     "per_bone_stride": 92,
+     "per_bone_block_end_exclusive": 5388,
+     "trailer_u32_off": 5388,
+     "sub_table_off": 5392,
+     "term_off": 5432,
+     "sub_k": 4,
+     "sub_tv": 17803,
+     "sub_tf": 15985,
+     "geometry_segment_off": 5392,
+     "geometry_segment_formula": "骨名区尾 + 1 + 92*n + 4 = 5392",
+     "geometry_segment_basis": "与 sub 表三重校验位 sub_table_off 实测相等（term==1 && tv==Σv && tf==Σf）；该偏移起为 LOD/子网格描述区",
+     "geometry_segment_state": "偏移已实测自洽；顶点/索引/UV 段起点未逐字段定证（export_glb 请按 sub_table_off 消费并自行校验）"
+    }
+   }
+  }
+ ]
+}

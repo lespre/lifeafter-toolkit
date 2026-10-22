@@ -1,0 +1,155 @@
+# MTG raw dump — mod_skin_2003_029_dg_wl_04_djs.mtg
+# container=effect_01.gpk  row=192107  bytes=1165  sha16=41ad886b3868dd80
+# magic=c159410d  declared_len(u32@4)=1165
+# tag_table: 15 components + 9 params + 21 renderstate-fields; value region=[536,965) blocks=12 stray=58B
+
+## 1) tag 表（名字 + 偏移）
+   组件   off=13    AnimParam
+   组件   off=23    LightingMaterial
+   组件   off=40    Macro0
+   组件   off=47    Macro1
+   组件   off=54    Macro2
+   组件   off=61    Material
+   组件   off=70    MaterialGroup
+   组件   off=84    Material_0
+   组件   off=95    NeoX
+   组件   off=100   ParamTable
+   组件   off=111   RenderStates
+   组件   off=124   ShaderMacro
+   组件   off=136   Technique
+   组件   off=146   Tex0
+   组件   off=151   TransparentMode
+   参数   off=167   t_distort_tex1
+   参数   off=182   u_distort01_speed_y
+   参数   off=202   u_distort01_tilling_x
+   参数   off=224   u_distort1_intensity
+   参数   off=245   u_emissive_highlight_intensity
+   参数   off=276   u_emissive_power
+   参数   off=293   u_emissivecolor
+   参数   off=309   u_maintex_rotation
+   参数   off=328   u_maintex_tilling_x
+   状态字段 off=349   AlphaRef
+   状态字段 off=358   AlphaVal
+   状态字段 off=367   Ambient
+   状态字段 off=375   CullBack
+   状态字段 off=384   Diffuse
+   状态字段 off=392   Emissive
+   状态字段 off=401   Key
+   状态字段 off=405   LightingEnable
+   状态字段 off=420   MaterialCount
+   状态字段 off=434   Name
+   状态字段 off=439   Power
+   状态字段 off=445   Specular
+   状态字段 off=454   SpecularEnable
+   状态字段 off=469   Speed
+   状态字段 off=475   TechName
+   状态字段 off=484   TransparentMode
+   状态字段 off=500   Type
+   状态字段 off=505   VColorEnable
+   状态字段 off=518   Val
+   状态字段 off=522   Value
+   状态字段 off=528   Version
+
+## 2) 值区块结构 <01 00><count><record…>（record = <id><type><payload>）
+   block0   off=594   count=3   消费到 628  
+        off=599   id=0x08  i32       value=1                                          raw=01000000
+        off=605   id=0x09  str       value=""                                         raw=
+        off=612   id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block1   off=628   count=1   消费到 637  
+        off=633   id=0x10  i32       value=0                                          raw=00000000
+   block2   off=637   count=2   消费到 676  
+        off=642   id=0x09  str       value="Material #5"                              raw=4d6174657269616c202335
+        off=660   id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block3   off=676   count=1   消费到 685  
+        off=681   id=0x0d  i32       value=1                                          raw=01000000
+   block4   off=685   count=0   消费到 688  
+   block5   off=688   count=2   消费到 736  
+        off=693   id=0x0e  str       value="shader\\uber_fx_common.fx::TShader"       raw=7368616465725c756265725f66785f636f6d6d6f6e2e6678
+        off=729   id=0x10  str       value="Effect"                                   raw=456666656374
+   block6   off=736   count=0   消费到 739  
+   block7   off=739   count=5   消费到 836  
+        off=748   id=0x02  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=770   id=0x04  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=792   id=0x05  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=810   id=0x0a  i32       value=0                                          raw=00000000
+        off=820   id=0x0b  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+   block8   off=836   count=6   消费到 882  
+        off=841   id=0x00  i32       value=0                                          raw=00000000
+        off=847   id=0x01  i32       value=255                                        raw=ff000000
+        off=853   id=0x03  str       value="True"                                     raw=54727565
+        off=860   id=0x07  str       value="False"                                    raw=46616c7365
+        off=868   id=0x0c  str       value="False"                                    raw=46616c7365
+        off=876   id=0x11  str       value="False"                                    raw=46616c7365
+   block9   off=882   count=2   消费到 911  
+        off=887   id=0x06  str       value="USE_MAIN_ROTATION_UV"                     raw=5553455f4d41494e5f524f544154494f4e5f5556
+        off=910   id=0x12  u8        value=1                                          raw=01
+   block10  off=911   count=2   消费到 936  
+        off=916   id=0x06  str       value="USE_MAIN_DISTORT"                         raw=5553455f4d41494e5f444953544f5254
+        off=935   id=0x12  u8        value=1                                          raw=01
+   block11  off=936   count=2   消费到 965  
+        off=941   id=0x06  str       value="USE_EMISSIVE_CONTROL"                     raw=5553455f454d4953534956455f434f4e54524f4c
+        off=964   id=0x12  u8        value=1                                          raw=01
+
+## 3) ParamTable（参数名 → 原值，来自 01 00 01 13 条目 + 槽组配对）
+   材料组 1 ↔ 数值块 0 评分 19
+        u_maintex_tilling_x            i32      off=965   raw=02000000   value=2
+        u_maintex_rotation             i32      off=974   raw=b4000000   value=180
+        u_distort1_intensity           f32      off=983   raw=0ad7a33c   value=0.02
+        u_distort01_tilling_x          i32      off=992   raw=02000000   value=2
+        u_distort01_speed_y            f32      off=1001  raw=000000bf   value=-0.5
+        u_emissivecolor                f32[4]   off=1010  raw=04000000f5 value=[0.3647, 0.4902, 1.0, 1.0]
+        u_emissive_power               i32      off=1035  raw=05000000   value=5
+        u_emissive_highlight_intensity i32      off=1044  raw=05000000   value=5
+
+## 4) 贴图槽（槽 tag → 声明路径；按组序 ↔ 路径条目序）
+   Tex0                 effect\textures\trail\tex_trail03_yanwu_t02.tga
+   t_distort_tex1       effect\textures\veins\tex_noise12_yb52.tga
+
+## 5) 宏（06 str + 12 u8）
+   off=887   USE_MAIN_ROTATION_UV           enable=1
+   off=916   USE_MAIN_DISTORT               enable=1
+   off=941   USE_EMISSIVE_CONTROL           enable=1
+
+## 6) shader / technique / 材质名
+   shader    = shader\uber_fx_common.fx::TShader
+   technique = Effect
+   material_name(s) = ['', 'Material #5']
+
+## 7) 全文件 hex（每行 32 B，带偏移）
+   0000  c1 59 41 0d 8d 04 00 00 00 00 00 00 18 41 6e 69 6d 50 61 72 61 6d 00 4c 69 67 68 74 69 6e 67 4d
+   0032  61 74 65 72 69 61 6c 00 4d 61 63 72 6f 30 00 4d 61 63 72 6f 31 00 4d 61 63 72 6f 32 00 4d 61 74
+   0064  65 72 69 61 6c 00 4d 61 74 65 72 69 61 6c 47 72 6f 75 70 00 4d 61 74 65 72 69 61 6c 5f 30 00 4e
+   0096  65 6f 58 00 50 61 72 61 6d 54 61 62 6c 65 00 52 65 6e 64 65 72 53 74 61 74 65 73 00 53 68 61 64
+   0128  65 72 4d 61 63 72 6f 00 54 65 63 68 6e 69 71 75 65 00 54 65 78 30 00 54 72 61 6e 73 70 61 72 65
+   0160  6e 74 4d 6f 64 65 00 74 5f 64 69 73 74 6f 72 74 5f 74 65 78 31 00 75 5f 64 69 73 74 6f 72 74 30
+   0192  31 5f 73 70 65 65 64 5f 79 00 75 5f 64 69 73 74 6f 72 74 30 31 5f 74 69 6c 6c 69 6e 67 5f 78 00
+   0224  75 5f 64 69 73 74 6f 72 74 31 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 65 6d 69 73 73 69 76 65 5f
+   0256  68 69 67 68 6c 69 67 68 74 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 65 6d 69 73 73 69 76 65 5f 70
+   0288  6f 77 65 72 00 75 5f 65 6d 69 73 73 69 76 65 63 6f 6c 6f 72 00 75 5f 6d 61 69 6e 74 65 78 5f 72
+   0320  6f 74 61 74 69 6f 6e 00 75 5f 6d 61 69 6e 74 65 78 5f 74 69 6c 6c 69 6e 67 5f 78 00 15 41 6c 70
+   0352  68 61 52 65 66 00 41 6c 70 68 61 56 61 6c 00 41 6d 62 69 65 6e 74 00 43 75 6c 6c 42 61 63 6b 00
+   0384  44 69 66 66 75 73 65 00 45 6d 69 73 73 69 76 65 00 4b 65 79 00 4c 69 67 68 74 69 6e 67 45 6e 61
+   0416  62 6c 65 00 4d 61 74 65 72 69 61 6c 43 6f 75 6e 74 00 4e 61 6d 65 00 50 6f 77 65 72 00 53 70 65
+   0448  63 75 6c 61 72 00 53 70 65 63 75 6c 61 72 45 6e 61 62 6c 65 00 53 70 65 65 64 00 54 65 63 68 4e
+   0480  61 6d 65 00 54 72 61 6e 73 70 61 72 65 6e 74 4d 6f 64 65 00 54 79 70 65 00 56 43 6f 6c 6f 72 45
+   0512  6e 61 62 6c 65 00 56 61 6c 00 56 61 6c 75 65 00 56 65 72 73 69 6f 6e 00 45 02 00 00 00 00 00 00
+   0544  18 08 01 06 01 07 01 05 06 00 00 0b 03 0c 00 09 0a 01 00 0a 01 02 00 03 00 04 00 17 00 16 00 12
+   0576  00 11 00 10 00 15 00 14 00 13 00 0d 00 0f 00 0e 00 00 01 00 03 08 02 01 00 00 00 09 01 00 14 06
+   0608  04 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 40 40 01 00 01 10 02 00 00 00 00 01 00 02
+   0640  09 01 4d 61 74 65 72 69 61 6c 20 23 35 00 14 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f
+   0672  00 00 40 40 01 00 01 0d 02 01 00 00 00 01 00 00 01 00 02 0e 01 73 68 61 64 65 72 5c 75 62 65 72
+   0704  5f 66 78 5f 63 6f 6d 6d 6f 6e 2e 66 78 3a 3a 54 53 68 61 64 65 72 00 10 01 45 66 66 65 63 74 00
+   0736  01 00 00 01 00 05 02 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 06 04 00
+   0768  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05 06 04 00 00 00 00 00 00 00 00 00 00 00
+   0800  00 00 00 00 00 00 00 00 0a 02 00 00 00 00 0b 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0832  00 00 00 00 01 00 06 00 02 00 00 00 00 01 02 ff 00 00 00 03 01 54 72 75 65 00 07 01 46 61 6c 73
+   0864  65 00 0c 01 46 61 6c 73 65 00 11 01 46 61 6c 73 65 00 01 00 02 06 01 55 53 45 5f 4d 41 49 4e 5f
+   0896  52 4f 54 41 54 49 4f 4e 5f 55 56 00 12 03 01 01 00 02 06 01 55 53 45 5f 4d 41 49 4e 5f 44 49 53
+   0928  54 4f 52 54 00 12 03 01 01 00 02 06 01 55 53 45 5f 45 4d 49 53 53 49 56 45 5f 43 4f 4e 54 52 4f
+   0960  4c 00 12 03 01 01 00 01 13 02 02 00 00 00 01 00 01 13 02 b4 00 00 00 01 00 01 13 05 0a d7 a3 3c
+   0992  01 00 01 13 02 02 00 00 00 01 00 01 13 05 00 00 00 bf 01 00 01 13 06 04 00 00 00 f5 b9 ba 3e 7f
+   1024  fb fa 3e 00 00 80 3f 00 00 80 3f 01 00 01 13 02 05 00 00 00 01 00 01 13 02 05 00 00 00 01 00 01
+   1056  13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72 65 73 5c 74 72 61 69 6c 5c 74 65 78 5f 74 72 61 69
+   1088  6c 30 33 5f 79 61 6e 77 75 5f 74 30 32 2e 74 67 61 00 01 00 01 13 01 65 66 66 65 63 74 5c 74 65
+   1120  78 74 75 72 65 73 5c 76 65 69 6e 73 5c 74 65 78 5f 6e 6f 69 73 65 31 32 5f 79 62 35 32 2e 74 67
+   1152  61 00 01 00 01 0f 02 05 00 00 00 01 00

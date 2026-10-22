@@ -1,0 +1,14 @@
+#### 1110171
+   qiangpi            128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 199.542, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', '64x64', '32x32', '16x16', '8x8', '4x4', '2x2', '1x1']
+   car_studio01       128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 98.688, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', '64x64', '32x32', '16x16', '8x8', '4x4', '2x2', '1x1']
+   fashion_qiangpi    128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 132.779, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing']
+#### 1110177
+   qiangpi            128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 199.542, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing']
+   car_studio01       128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 98.688, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing']
+   fashion_qiangpi    128x128 mips=8 caps2=0xfe00 cubemap=True faces=[0, 1, 2, 3, 4, 5] layout=face-major({"mip-major": {"mean_abs_sum": 132.779, "faces_compared": 6}, "face-major": {"mean_abs_sum": 0.0, "faces_compared": 6}}) png_mips=['128x128', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing', 'missing']
+
+#### 1110171/src_cube/cube_faces_mips.json exists=True
+   qiangpi            faces=6 levels=[0, 1, 2, 3, 4, 5, 6, 7] sizes=[1, 2, 4, 8, 16, 32, 64, 128]
+   car_studio01       faces=6 levels=[0, 1, 2, 3, 4, 5, 6, 7] sizes=[1, 2, 4, 8, 16, 32, 64, 128]
+
+#### 1110177/src_cube/cube_faces_mips.json exists=False

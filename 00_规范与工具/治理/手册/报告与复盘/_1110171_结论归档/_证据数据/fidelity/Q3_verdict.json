@@ -1,0 +1,112 @@
+{
+ "sheet_nodes": 42289,
+ "resolvable": 2862,
+ "j1_canon_pct": 98.3550509611663,
+ "j1_noncanon_top": [
+  [
+   0.2,
+   67
+  ],
+  [
+   0.1,
+   63
+  ],
+  [
+   0.01,
+   44
+  ],
+  [
+   100.0,
+   41
+  ],
+  [
+   0.3,
+   39
+  ],
+  [
+   0.7,
+   23
+  ],
+  [
+   0.6,
+   22
+  ],
+  [
+   0.4,
+   22
+  ],
+  [
+   0.05,
+   22
+  ],
+  [
+   80.0,
+   17
+  ]
+ ],
+ "j2_pearson": 0.113273823986939,
+ "j2_ratio_median": 42.666666666666664,
+ "j2_within10_pct": 0.20964360587002095,
+ "j3_h2_advance_pct": 66.17749825296995,
+ "j3_h2_one_cycle_pct": 0.2445842068483578,
+ "j3_h1_strobe_pct": 6.149545772187282,
+ "j3_h2_frames_p10_med_p90_max": [
+  0.3,
+  1.25,
+  7.5,
+  25.0
+ ],
+ "our_nodes": [
+  {
+   "name": "H_p_闪电",
+   "tag": "ParticleSystem",
+   "tex": "lightning07_cs.spr",
+   "rate": 1.0,
+   "work": "0",
+   "node_life": 0.048,
+   "sprite_life": 0.15,
+   "container": "effect_01.gpk",
+   "row": "38420",
+   "minl": "0.150",
+   "maxl": "0.400",
+   "pps": "10.000",
+   "sprite_life_max": 0.4,
+   "eff_life": 0.275,
+   "N": 16
+  },
+  {
+   "name": "H_ shandian01_1_1",
+   "tag": "ParticleSystem",
+   "tex": "lightning_01.spr",
+   "rate": 15.0,
+   "work": "1",
+   "node_life": 1.07,
+   "sprite_life": 0.2,
+   "container": "effect_01.gpk",
+   "row": "38433",
+   "minl": "0.200",
+   "maxl": "0.500",
+   "pps": "5.000",
+   "sprite_life_max": 0.5,
+   "eff_life": 0.35,
+   "N": 16
+  },
+  {
+   "name": "M_lizi_闪电_01",
+   "tag": "ParticleSystem",
+   "tex": "shandian_05_yh_djs.spr",
+   "rate": 1.0,
+   "work": "0",
+   "node_life": 0.634,
+   "sprite_life": 0.2,
+   "container": "effect_01.gpk",
+   "row": "38433",
+   "minl": "0.200",
+   "maxl": "0.400",
+   "pps": "3.000",
+   "sprite_life_max": 0.4,
+   "eff_life": 0.30000000000000004,
+   "N": 4
+  }
+ ]
+}

@@ -1,0 +1,568 @@
+{
+ "blendmode_dist": {
+  "2": 41028,
+  "8": 33798,
+  "0": 30411,
+  "7": 16268,
+  "5": 4421,
+  "6": 3083,
+  "3": 3
+ },
+ "joint_issprblend": {
+  "('2', 'FALSE')": 40806,
+  "('8', 'FALSE')": 33751,
+  "('0', 'FALSE')": 29970,
+  "('7', 'FALSE')": 16186,
+  "('5', 'FALSE')": 4403,
+  "('6', 'FALSE')": 3075,
+  "('0', 'TRUE')": 441,
+  "('2', 'TRUE')": 222,
+  "('7', 'TRUE')": 82,
+  "('8', 'TRUE')": 47,
+  "('5', 'TRUE')": 18,
+  "('6', 'TRUE')": 8,
+  "('3', 'FALSE')": 3
+ },
+ "joint_transparentmode": {
+  "('2', None)": 41028,
+  "('8', None)": 33798,
+  "('0', None)": 30411,
+  "('7', None)": 16268,
+  "('5', None)": 4421,
+  "('6', None)": 3083,
+  "('3', None)": 3
+ },
+ "per_value_tags": {
+  "0": {
+   "ParticleSystem": 17148,
+   "Sprite": 13263
+  },
+  "2": {
+   "Sprite": 22660,
+   "ParticleSystem": 18368
+  },
+  "8": {
+   "ParticleSystem": 22459,
+   "Sprite": 11339
+  },
+  "5": {
+   "ParticleSystem": 3311,
+   "Sprite": 1110
+  },
+  "6": {
+   "ParticleSystem": 2722,
+   "Sprite": 361
+  },
+  "7": {
+   "ParticleSystem": 12295,
+   "Sprite": 3973
+  },
+  "3": {
+   "Sprite": 3
+  }
+ },
+ "value7_examples": [
+  {
+   "name": "M_g_旗子_1",
+   "tag": "Sprite",
+   "tex": "res\\special\\tex_special_qizi_tp60_01.tga",
+   "container": "effect_01.gpk",
+   "row": 55,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_鬼火_淡烟",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke_hd\\smoke_wf_25.spr",
+   "container": "effect_01.gpk",
+   "row": 81,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_鬼火_喷射烟",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke_hd\\smoke_wf_25.spr",
+   "container": "effect_01.gpk",
+   "row": 81,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_鬼火_喷暗",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke\\smoke25.spr",
+   "container": "effect_01.gpk",
+   "row": 81,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_图标",
+   "tag": "Sprite",
+   "tex": "tures\\special\\ui\\tex_ui_dusu_tp60_01.tga",
+   "container": "effect_01.gpk",
+   "row": 83,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_smoke_z",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke_hd\\smoke_wf_23.spr",
+   "container": "effect_01.gpk",
+   "row": 84,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_鬼火_2_3_1_1_1",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\debris\\wood\\wood02.spr",
+   "container": "effect_01.gpk",
+   "row": 85,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_圆形烟雾",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke\\smoke07.spr",
+   "container": "effect_01.gpk",
+   "row": 85,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_smoke_quan",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\smoke\\smoke05.spr",
+   "container": "effect_01.gpk",
+   "row": 85,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火_粘液",
+   "tag": "ParticleSystem",
+   "tex": "ct\\textures\\fx\\tex_fx_duye05_tp60_01.spr",
+   "container": "effect_01.gpk",
+   "row": 98,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火_星",
+   "tag": "ParticleSystem",
+   "tex": "s\\special\\tex_special_chilun_01_tp52.spr",
+   "container": "effect_01.gpk",
+   "row": 116,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火_星",
+   "tag": "ParticleSystem",
+   "tex": "s\\special\\tex_special_chilun_01_tp52.spr",
+   "container": "effect_01.gpk",
+   "row": 117,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_fangkuai2",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\glow\\glow25_d3.tga",
+   "container": "effect_01.gpk",
+   "row": 138,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_fangkuai2",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\glow\\glow25_d3.tga",
+   "container": "effect_01.gpk",
+   "row": 144,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_xian_1",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\water\\paopao01_lv.spr",
+   "container": "effect_01.gpk",
+   "row": 174,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_aixinglow",
+   "tag": "Sprite",
+   "tex": "ures\\debris\\other\\tex_aixin_tp270_01.tga",
+   "container": "effect_01.gpk",
+   "row": 183,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_andi",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow27.tga",
+   "container": "effect_01.gpk",
+   "row": 183,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_aixinglow",
+   "tag": "Sprite",
+   "tex": "ures\\debris\\other\\tex_aixin_tp270_01.tga",
+   "container": "effect_01.gpk",
+   "row": 184,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_andi",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow10_d.tga",
+   "container": "effect_01.gpk",
+   "row": 184,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_p_花_01",
+   "tag": "ParticleSystem",
+   "tex": "tures\\special\\special_hua_01_lyn_djs.tga",
+   "container": "effect_01.gpk",
+   "row": 188,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_p_花_01",
+   "tag": "ParticleSystem",
+   "tex": "tures\\special\\special_hua_01_lyn_djs.tga",
+   "container": "effect_01.gpk",
+   "row": 190,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_p_花_01",
+   "tag": "ParticleSystem",
+   "tex": "tures\\special\\special_hua_01_lyn_djs.tga",
+   "container": "effect_01.gpk",
+   "row": 191,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_p_长条",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\water\\water02.spr",
+   "container": "effect_01.gpk",
+   "row": 192,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_yan_001",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\water\\water34.spr",
+   "container": "effect_01.gpk",
+   "row": 195,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_p_雨",
+   "tag": "ParticleSystem",
+   "tex": "res\\special\\special_linyu_02_lyn_djs.spr",
+   "container": "effect_01.gpk",
+   "row": 195,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_y留下来",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\water\\water24.spr",
+   "container": "effect_01.gpk",
+   "row": 196,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_y留下来_1",
+   "tag": "ParticleSystem",
+   "tex": "effect\\textures\\water\\water24.spr",
+   "container": "effect_01.gpk",
+   "row": 196,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火",
+   "tag": "ParticleSystem",
+   "tex": "\\debris\\leaf\\tex_leaf_zhuye_tp104_01.spr",
+   "container": "effect_01.gpk",
+   "row": 200,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火",
+   "tag": "ParticleSystem",
+   "tex": "\\debris\\leaf\\tex_leaf_zhuye_tp104_01.spr",
+   "container": "effect_01.gpk",
+   "row": 201,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火",
+   "tag": "ParticleSystem",
+   "tex": "\\debris\\leaf\\tex_leaf_zhuye_tp104_01.spr",
+   "container": "effect_01.gpk",
+   "row": 203,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "L_鬼火_1",
+   "tag": "ParticleSystem",
+   "tex": "\\debris\\leaf\\tex_leaf_zhuye_tp104_01.spr",
+   "container": "effect_01.gpk",
+   "row": 203,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "H_鬼火_银杏叶",
+   "tag": "ParticleSystem",
+   "tex": "bris\\leaf\\tex_leaf_xingye_01_jzj_djs.tga",
+   "container": "effect_01.gpk",
+   "row": 219,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 301,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_01.tga",
+   "container": "effect_01.gpk",
+   "row": 302,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 303,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 304,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 305,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 306,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow05.tga",
+   "container": "effect_01.gpk",
+   "row": 307,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 322,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "TRUE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 364,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 366,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 368,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 370,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 372,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 374,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 376,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 378,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 380,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  },
+  {
+   "name": "M_di",
+   "tag": "Sprite",
+   "tex": "effect\\textures\\glow\\glow_38.tga",
+   "container": "effect_01.gpk",
+   "row": 382,
+   "IsSprBlend": "FALSE",
+   "TransparentMode": null,
+   "FxIgnore": "FALSE"
+  }
+ ],
+ "value7_total": 16268,
+ "nonnumeric_values": []
+}

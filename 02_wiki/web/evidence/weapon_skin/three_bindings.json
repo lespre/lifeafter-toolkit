@@ -1,0 +1,12 @@
+{
+ "claim": "113 条武器皮肤 runtime row / business / name 三 binding 全 verified",
+ "status": "verified",
+ "evidence_type": "runtime_ui_lookup",
+ "consumer": "PanelWeaponSkinCollection.update_right_info(skin_item_id) → Helpers.get_item_data → common_item_data → name",
+ "module": "ui\\PanelWeaponSkinCollection.py",
+ "snapshot_source": "root#BC1BEF691C819C9C",
+ "residual": [
+  "operand-level call binding = unresolved",
+  "1110185 / 1110186 = no_main_row"
+ ]
+}

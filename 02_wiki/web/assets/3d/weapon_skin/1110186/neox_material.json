@@ -1,0 +1,116 @@
+{
+  "schema": "neox_material/v2",
+  "skin": "1110186",
+  "display_name": "星辰刀",
+  "block_rule": "01 00 01 13 01 + path + 00 ; 01 00 01 0f 02 = EOB",
+  "source": {
+    "material_c159": "0058.gpk 条目 row 438/439/440/441（4 个 LOD 各一份 Material_0）",
+    "material_c159_declares": {
+      "Tex0": "skin_2003_031001a.tga",
+      "ParamMap": "skin_2003_031001m.tga",
+      "NormalMap": "skin_2003_031001n.tga",
+      "t_custom_ibl": "common\\env_map\\character_envmap_metal_01.cube",
+      "params": [
+        "u_cube_brightness"
+      ]
+    },
+    "container": "E:\\mrzh\\Documents\\gres\\0058.gpk",
+    "note": "槽位名与 cube 名均来自 c159 原文；贴图本体不在任何名字可解容器 ⇒ 走 UV 一致性认领。"
+  },
+  "glb": "model.glb",
+  "geometry_glb_sha256": "952309c964cd52c1",
+  "slot_binding_basis": "c159 声明槽名 + UV 一致性渲染认领贴图",
+  "product_default_environment_cube": "character_envmap_metal_01",
+  "cube_source": {
+    "name": "character_envmap_metal_01",
+    "status": "source_verified",
+    "container": "0000.gpk",
+    "row": 12460,
+    "sha16": "6edc35915695df34",
+    "dims": "128x128",
+    "resolve": "shared",
+    "note": "wiki cube 清册已解六面并在盘"
+  },
+  "primitives": [
+    {
+      "prim": 0,
+      "mtl_idx": 0,
+      "material": "skin_2003_031_0",
+      "glb_material": "skin_2003_031",
+      "shader": "shader\\pbr_weapon.fx::TShader",
+      "shader_kind": "weapon",
+      "shader_kind_basis": "c159 族（pbr_weapon）⇒ viewer weapon 分支",
+      "GROUP_INDEX": 0,
+      "textures": {
+        "Tex0": {
+          "logical_path": "weapon\\skin\\skin_2003_031\\textures\\skin_2003_031a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/031_a.png",
+          "source_block_entry": "slay_gods_patch i=31 (b9a351213f0d)",
+          "rgba_sha16": "e5c4dd11c1207e37",
+          "dims": "1024x1024",
+          "binding_basis": "UV_CONSISTENCY_RENDER_ALBEDO",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "declared path 在 313 个容器的 fid 反查 0 命中（12 变体全试）⇒ 源名不可解析，只能按 UV 一致性认领"
+        },
+        "t_basecolor": {
+          "logical_path": "weapon\\skin\\skin_2003_031\\textures\\skin_2003_031a.tga",
+          "slot": "t_basecolor",
+          "local_file": "src_tex/031_a.png",
+          "source_block_entry": "slay_gods_patch i=31 (b9a351213f0d)",
+          "rgba_sha16": "e5c4dd11c1207e37",
+          "dims": "1024x1024",
+          "binding_basis": "UV_CONSISTENCY_RENDER_ALBEDO",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "declared path 在 313 个容器的 fid 反查 0 命中（12 变体全试）⇒ 源名不可解析，只能按 UV 一致性认领"
+        },
+        "ParamMap": {
+          "logical_path": "weapon\\skin\\skin_2003_031\\textures\\skin_2003_031m.tga",
+          "slot": "ParamMap",
+          "local_file": "src_tex/031_m.png",
+          "source_block_entry": "slay_gods_patch i=59 (f4360d7403e0)",
+          "rgba_sha16": "88d70a88e3b7ce9a",
+          "dims": "1024x1024",
+          "binding_basis": "UV_CONSISTENCY_RENDER_MASK",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "declared path 在 313 个容器的 fid 反查 0 命中（12 变体全试）⇒ 源名不可解析，只能按 UV 一致性认领"
+        },
+        "NormalMap": {
+          "logical_path": "weapon\\skin\\skin_2003_031\\textures\\skin_2003_031n.tga",
+          "slot": "NormalMap",
+          "local_file": "src_tex/031_n.png",
+          "source_block_entry": "slay_gods_patch i=32 (643cae92c72d)",
+          "rgba_sha16": "4d1b226799552fb2",
+          "dims": "1024x1024",
+          "binding_basis": "UV_CONSISTENCY_RENDER_NORMAL",
+          "confidence": "medium",
+          "evidence_level": "uv_consistency_candidate_medium",
+          "why_not_direct": "declared path 在 313 个容器的 fid 反查 0 命中（12 变体全试）⇒ 源名不可解析，只能按 UV 一致性认领"
+        },
+        "t_custom_ibl": {
+          "logical_path": "common\\env_map\\character_envmap_metal_01.cube",
+          "slot": "t_custom_ibl",
+          "local_file": "src_cube/character_envmap_metal_01.dds",
+          "block_entry": "0000.gpk#12460",
+          "rgba_sha16": "6edc35915695df34",
+          "classification": "c159_declared_name",
+          "binding_basis": "DECLARED_NAME_HASH_RESOLVED",
+          "confidence": "high",
+          "evidence_level": "source_verified",
+          "why_not_direct": null
+        }
+      },
+      "missing_required": []
+    }
+  ],
+  "evidence_levels": {
+    "geometry": "source_verified",
+    "slot_names": "source_verified",
+    "ibl_cube": "source_verified",
+    "textures": "uv_consistency_candidate_medium"
+  },
+  "render_note": "照明 = 源 IBL cube（character_envmap_metal_01，c159 声明）；材质槽名来自 c159；三张贴图为 UV 一致性认领（源名不可解析），逐张 sha16 在案。"
+}

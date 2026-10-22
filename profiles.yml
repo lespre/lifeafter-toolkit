@@ -5,8 +5,8 @@ profiles:
   pe_test_20261020:
     label: 测试服 · PE · 经典 + 简单生存
     game_root: E:/mrzh
-    tree: 03_执行/41_还原树/pe_20261020
-    index_dir: 03_执行/30_分析/热更检测
+    tree: 01_索引与产物/41_还原树/pe_20261020
+    index_dir: 01_索引与产物/30_分析/热更检测
     containers: [gpk, npk, fpk]
     servers: [classic, simple]
     notes: 主用档案；资源与图标以 PE 为准
@@ -14,8 +14,8 @@ profiles:
   pc_test_20261020:
     label: 测试服 · PC 侧
     game_root: E:/mrzh
-    tree: 03_执行/41_还原树/res
-    index_dir: 03_执行/30_分析/热更检测
+    tree: 01_索引与产物/41_还原树/res
+    index_dir: 01_索引与产物/30_分析/热更检测
     containers: [gpk]
     servers: [classic, simple]
     notes: 仅作差异对照与补齐表，不作资源源

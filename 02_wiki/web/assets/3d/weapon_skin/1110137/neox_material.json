@@ -1,0 +1,167 @@
+{
+ "schema": "neox_material/v1",
+ "skin": "1110137",
+ "stem": "1110137",
+ "evidence_levels": {
+  "geometry": "verified(sizes_ok=True, extra_streams_state=exact)",
+  "texture_pairing": "ordered_1to1_candidate_high",
+  "note": "锚点=最后一条 material c159+1（反向校验含本皮肤）；签名冲突⇒槽位 unresolved，未顶替"
+ },
+ "backend": {
+  "glb": "1110137.glb",
+  "mesh": "1110137.std.mesh",
+  "glb_sha16": "2709fdceb60578af",
+  "vertices": 15078,
+  "faces": 16672
+ },
+ "primitives": [
+  {
+   "prim": 0,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    }
+   }
+  },
+  {
+   "prim": 1,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    }
+   }
+  },
+  {
+   "prim": 2,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    }
+   }
+  },
+  {
+   "prim": 3,
+   "shader_kind": "unresolved",
+   "textures": {
+    "t_basecolor": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "ParamMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "NormalMap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_surfacemap": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "Tex0": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    },
+    "t_custom_ibl": {
+     "local_file": null,
+     "status": "unresolved",
+     "why": "贴图配对 0/34 干净（区块已定位但签名冲突）"
+    }
+   }
+  }
+ ],
+ "residuals": [
+  "贴图槽位全部 unresolved",
+  "shader_kind 未定证"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "label": "directlight_soft",
+ "generated_at": "2026-09-20 14:29:09",
+ "base_neox_material_sha16": "6fccb23183bbd5a4",
+ "base_viewer_sha16": "e0d1efdaf02f4af7",
+ "variant_neox_material_sha16": "6fccb23183bbd5a4",
+ "variant_viewer_sha16": "54ea5735549842d6",
+ "patch": {
+  "note": "任务二对照：直接光强度减半（1.1），用于判断是否过曝/发白",
+  "viewer": {
+   "direct_light": true,
+   "direct_light_intensity": 1.1,
+   "key_dir": [
+    3,
+    -4,
+    -1
+   ]
+  }
+ },
+ "diff_summary": {
+  "primitives_patched": [],
+  "viewer_top": [
+   "direct_light",
+   "direct_light_intensity",
+   "key_dir"
+  ],
+  "effects_inlined": false
+ },
+ "relative_manifest_for_ab": "assets/3d/weapon_skin/1110025/viewer.variant_directlight_soft.json"
+}

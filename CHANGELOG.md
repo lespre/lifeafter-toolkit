@@ -71,7 +71,7 @@ py314 方言补齐，`HurtCalc.py` 从 64 个可解函数 → **99/99 全部可�
 toolkit_core/android_gpk.py, bindict_73.py, pe_index.py
 命令行/pe全量索引.py, 安卓gpk导出.py, 解码_0x73.py, dedupe_tree.py, repair_tree.py,
       图集_9月28以来新增.py, 本批overlay图集.py, 校验_本期热更.py …
-04_站点/web/tools/  build_scene_board_v2.py, render_scene_table_v3.py, decode_hurt_arrays.py,
+02_wiki/web/tools/  build_scene_board_v2.py, render_scene_table_v3.py, decode_hurt_arrays.py,
       probe_factor_groups.py, fix_provenance_tables.py, apply_provenance_fix.py,
       check_board_tables_v2.py, wiki_tidy.py, wiki_restructure*.py, gpk_reader.py, dis_arm64.py …
 ```

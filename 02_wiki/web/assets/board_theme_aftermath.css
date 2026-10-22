@@ -1,0 +1,201 @@
+/* ============================================================
+   板块页暗色主题 —— 与 wiki 主页同一套「废土档案」视觉
+   在 board_shadcn.css 之后加载，做变量级 + 关键选择器覆盖
+   ============================================================ */
+:root{
+  --bg:#0a0c0d;
+  --card:#12171a;
+  --fg:#ece7dd;
+  --muted:#8a8478;
+  --muted-2:#6d685f;
+  --border:#242b2e;
+  --border-strong:#394144;
+  --hover:#1a2023;
+  --accent:#e0a13c;
+  --accent-soft:rgba(224,161,60,.14);
+  --accent-border:#7c5f2b;
+  --ring:rgba(224,161,60,.20);
+  --shadow-xs:0 1px 2px rgba(0,0,0,.5);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.55);
+  --shadow-md:0 10px 30px rgba(0,0,0,.65);
+  --st:#8fd39a;   --st-bg:rgba(95,160,106,.14);  --st-bd:rgba(95,160,106,.4);
+  --vf:#e6bd7c;   --vf-bg:rgba(224,161,60,.14);  --vf-bd:rgba(224,161,60,.4);
+  --ca:#d9a06a;   --ca-bg:rgba(180,70,47,.14);   --ca-bd:rgba(180,70,47,.4);
+}
+
+body{
+  background:
+    radial-gradient(1100px 520px at 10% -8%,rgba(224,161,60,.07),transparent 62%),
+    radial-gradient(900px 460px at 90% -6%,rgba(180,70,47,.07),transparent 66%),
+    linear-gradient(180deg,#0a0c0d,#0d1012 45%,#090b0c);
+  background-attachment:fixed;
+  color:var(--fg);
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.28;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:1}
+.topbar{position:sticky!important;top:0!important;z-index:30}
+::selection{background:rgba(224,161,60,.3);color:#fff}
+
+/* 顶栏 */
+.topbar{background:rgba(11,14,15,.95);border-bottom:1px solid #232a2d;
+  border-top:0;box-shadow:0 10px 26px rgba(0,0,0,.55)}
+.topbar::before{content:"";display:block;position:absolute;left:0;right:0;bottom:-2px;height:2px;opacity:.4;
+  background:repeating-linear-gradient(115deg,#e0a13c 0 12px,#121617 12px 24px)}
+h1{color:#efe9de;letter-spacing:.04em}
+h1::before{content:"";width:4px;height:16px;background:linear-gradient(180deg,#f7cd7d,#b4462f);
+  display:inline-block;margin-right:2px;vertical-align:-2px}
+.crumb a{color:var(--muted)}
+.crumb a:hover{color:var(--accent)}
+.meta-line{color:var(--muted)}
+.pill{background:#151a1d;border-color:var(--border);color:var(--muted)}
+.pill b{color:var(--fg)}
+.notes{background:rgba(224,161,60,.07);border-color:rgba(224,161,60,.28);color:#e6bd7c}
+
+/* 控件 */
+.controls{background:rgba(10,12,13,.92);border-bottom:1px solid rgba(57,65,68,.5)}
+input,select,button{background:#0f1315;color:var(--fg);border-color:var(--border-strong)}
+input::placeholder{color:#6d685f}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+button:hover{background:#161c1f;border-color:var(--accent-border);color:#f7cd7d}
+.evbtn{background:transparent;color:var(--muted)}
+.evbtn:hover{background:var(--hover);color:var(--fg)}
+.evbtn.on{color:#f7cd7d;border-color:var(--accent-border);background:rgba(224,161,60,.08)}
+.count{color:var(--muted)}
+
+/* 通用卡 */
+.i{background:linear-gradient(180deg,#141a1d,#111517);border-color:var(--border);box-shadow:var(--shadow-xs)}
+.i:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
+.i-name{color:#efe9de}
+.i-id{color:var(--muted)}
+.i-detail{border-top-color:rgba(57,65,68,.8)!important}
+details.tech{background:rgba(255,255,255,.012);border-color:var(--border)}
+details.tech>summary{color:var(--muted)}
+.kv .k{color:var(--muted)}
+.kv .v{color:#cfc8bb}
+.kv .v.mono{color:#a89f8e}
+
+/* 皮肤/时装卡 */
+.skin-card{background:linear-gradient(180deg,#141a1d,#111517);border-color:var(--border)}
+.skin-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md)}
+.skin-card.open{border-color:var(--accent-border);box-shadow:0 0 0 1px rgba(224,161,60,.15),var(--shadow-md)}
+.skin-card .skin-head-row .skin-name{color:#efe9de}
+.skin-card.open .skin-name{color:var(--accent-2,#f7cd7d)}
+.skin-card .skin-head-right{color:var(--muted)}
+.skin-detail,.skin-detail *{color:#c8c1b3}
+.skin-sale{color:#c8a468}
+
+/* 品级左边条：暗底上提亮 */
+.skin-card.grade-t6{border-left-color:#e05c93;background:linear-gradient(90deg,rgba(224,92,147,.14),rgba(20,26,29,.9) 150px)}
+.skin-card.grade-t5{border-left-color:#e6c05c;background:linear-gradient(90deg,rgba(230,192,92,.14),rgba(20,26,29,.9) 150px)}
+.skin-card.grade-t4{border-left-color:#a08cff;background:linear-gradient(90deg,rgba(160,140,255,.12),rgba(20,26,29,.9) 150px)}
+.skin-card.grade-t3{border-left-color:#5b8cf7;background:linear-gradient(90deg,rgba(91,140,247,.10),rgba(20,26,29,.9) 150px)}
+.skin-card.grade-t2{border-left-color:#cfd6dd;box-shadow:none;background:linear-gradient(90deg,rgba(207,214,221,.08),rgba(20,26,29,.9) 150px)}
+.skin-card.grade-unknown{border-left-color:#3d4448}
+
+/* 图轨 / 信息条（var(--card) 已在 :root 换掉，这里补底色与边框） */
+.fr-head .fr-name,.fr-name{color:#efe9de}
+.fr-sub,.fr-model,.fr-part{color:var(--muted)}
+.fr-part{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:2px;padding:1px 6px;font-size:10.5px}
+.fr-tagtype{background:rgba(224,161,60,.12);color:#e6bd7c;border:1px solid rgba(224,161,60,.3);border-radius:2px;padding:0 5px;font-size:10px}
+.skin-media{background:var(--card)!important;border-color:var(--border)!important}
+
+/* 状态/证据标签 */
+.state-tag{background:rgba(255,255,255,.04);border-color:var(--border);color:#a8a296}
+.ev{background:rgba(255,255,255,.05)}
+
+/* 链接 */
+a{color:#d8c7a4}
+a:hover{color:var(--accent)}
+
+/* 滚动条 */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0a0c0d}
+::-webkit-scrollbar-thumb{background:#2b3235;border:2px solid #0a0c0d}
+::-webkit-scrollbar-thumb:hover{background:#3d4548}
+
+/* ---- 立绘是白底图：给图区做「档案照片」浅底相框，避免白块突兀 ---- */
+.fr-rail,.skin-media,.skin-preview,.i-media{
+  background:linear-gradient(180deg,#e7e2d7,#d9d3c6)!important;
+  border:1px solid #b9b1a1!important;
+  border-radius:6px!important;
+  padding:4px!important;
+  box-shadow:inset 0 0 22px rgba(0,0,0,.14);
+}
+.fr-rail img,.skin-media img,.skin-preview img,.i-media img{
+  filter:saturate(.94) contrast(1.02);
+}
+/* 图区占位问号图也一起压暗一点 */
+.fr-rail img[src*="placeholder"],.skin-media img[src*="placeholder"]{opacity:.75}
+
+/* 筛选 chip 区在暗底上的对比 */
+.pills .pill,.fr-chip{background:#151a1d!important;border-color:var(--border)!important;color:var(--muted)!important}
+.pills .pill b{color:#efe9de!important}
+.fr-chip.on,.fr-chip[aria-pressed="true"]{background:rgba(224,161,60,.16)!important;color:#f7cd7d!important;border-color:var(--accent-border)!important}
+
+/* ---- 图轨：白底立绘做成暖色档案照片；占位图换暗色虚线框 ---- */
+.fr-rail figure{background:#e3dccd!important;border-color:#b8b0a0!important;
+  box-shadow:inset 0 0 12px rgba(120,100,60,.18);border-radius:3px!important}
+.fr-rail figure img{filter:sepia(.10) saturate(.96) brightness(.98)}
+.fr-rail figure.ph{background:repeating-linear-gradient(45deg,#151a1d 0 6px,#13181a 6px 12px)!important;
+  border:1px dashed #394144!important;box-shadow:none}
+.fr-rail figure.ph img{display:none}
+.fr-rail figure.ph::after{content:"无图";display:flex;align-items:center;justify-content:center;
+  height:100%;color:#6d685f;font-size:10.5px;letter-spacing:.16em}
+
+/* ===== v2 顶栏常驻 + 卡片同底色 ===== */
+:root{--top-h:132px}
+.topbar{z-index:30}
+/* 筛选条贴着顶栏常驻，不再飘到画面中间 */
+.controls{position:sticky!important;top:var(--top-h)!important;z-index:25!important;
+  background:#0a0c0d!important;backdrop-filter:none!important;
+  border-bottom:1px solid var(--border);box-shadow:0 6px 16px rgba(0,0,0,.45);
+  margin-bottom:14px!important;padding:10px 0!important}
+@media(max-width:720px){:root{--top-h:150px}}
+
+/* 左上角返回首页按钮 */
+.crumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.crumb a{font-size:11.5px;text-decoration:none;color:var(--muted);padding:3px 9px;
+  border:1px solid var(--border);border-radius:2px;letter-spacing:.03em;transition:.14s}
+.crumb a:hover{color:var(--amber-2,#f7cd7d);border-color:var(--accent);background:rgba(224,161,60,.08)}
+.crumb a.backwiki{color:#f7cd7d;border-color:var(--accent-border,#7c5f2b);
+  background:linear-gradient(180deg,rgba(224,161,60,.16),rgba(224,161,60,.06));font-weight:700}
+
+/* 卡片底色 = 页面底色，只留描边 */
+.i,.skin-card{background:var(--bg)!important;background-image:none!important;box-shadow:none!important}
+.i:hover,.skin-card:hover{background:#0e1315!important;border-color:var(--border-strong)!important}
+.i-detail,.skin-detail{background:transparent!important}
+.block,.card,.panel{background:var(--bg)!important;background-image:none!important}
+
+/* 滚动后收紧顶栏，别把屏幕吃掉 */
+body.scrolled .meta-line,body.scrolled .pills{display:none!important}
+body.scrolled .topbar{padding-top:6px!important;padding-bottom:6px!important}
+body.scrolled h1{font-size:15px!important}
+body.scrolled .crumb{margin-bottom:4px}
+
+/* ===== v3 图区回到底色：立绘本身是透明 PNG，不需要浅色相框 ===== */
+.fr-rail figure,.skin-media,.skin-preview,.i-media{
+  background:transparent!important;
+  border:1px solid var(--border)!important;
+  box-shadow:none!important;
+  border-radius:3px!important;
+  padding:2px!important;
+}
+.fr-rail figure img,.skin-media img,.skin-preview img,.i-media img{
+  filter:none!important;
+}
+/* 占位仍用暗色斜纹，明确区分「没有图」 */
+.fr-rail figure.ph{
+  background:repeating-linear-gradient(45deg,#111618 0 6px,#0d1214 6px 12px)!important;
+  border:1px dashed #30383b!important;
+}
+.fr-rail figure.ph img{display:none}
+.fr-rail figure.ph::after{content:"无图";display:flex;align-items:center;justify-content:center;
+  height:100%;color:#5f6669;font-size:10.5px;letter-spacing:.16em}
+
+/* 真正的水落石出：浅色渐变是加在 .fr-rail 容器上的，不是 figure */
+.fr-rail,.skin-media,.skin-preview,.i-media{
+  background:transparent!important;background-image:none!important;
+  border:0!important;box-shadow:none!important;padding:0!important;
+}
+.fr-rail figure,.skin-media figure{border-color:rgba(255,255,255,.06)!important}

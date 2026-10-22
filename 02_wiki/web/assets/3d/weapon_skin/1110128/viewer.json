@@ -1,0 +1,22 @@
+{
+ "schema_version": 1,
+ "skin_id": "1110128",
+ "default_state": "single",
+ "states": [
+  {
+   "id": "single",
+   "label": "单件",
+   "model": "skin_2003_019.glb"
+  }
+ ],
+ "material_layers": {
+  "status": "source_neutral",
+  "global_rig": {
+   "env_intensity": 1.0,
+   "exposure": 1.0,
+   "tone_mapping": "NoToneMapping",
+   "emissive_gain": 0.0,
+   "lights": 0.0
+  }
+ }
+}
