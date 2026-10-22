@@ -140,18 +140,18 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "料理与食谱",
-      "category": "二、战力类 / （四）料理与食谱",
+      "category": "二、战力类 / （七）料理与食谱",
       "board": "edible_catalog",
-      "items": 1379,
-      "generated": "2026-10-21",
+      "items": 4557,
+      "generated": "2026-10-23",
       "source_server": "PE 体验服（pe_20261020 还原树）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 1379
+        "structure": 4557
       },
       "state_summary": {
-        "条目": 1379,
-        "食材": 808,
+        "条目": 4557,
+        "食材": 3986,
         "可烹饪": 571
       },
       "name_status_summary": {},
@@ -160,7 +160,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1379
+          "replayed-structural": 4557
         }
       }
     },
@@ -218,10 +218,10 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "潜能强化总表",
-      "category": "二、战力类 / （六）各种族潜能",
+      "category": "二、战力类 / （八）种族潜能",
       "board": "gene_potential_catalog",
       "items": 63,
-      "generated": "2026-10-21",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（pe_20261020 还原树）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
@@ -323,7 +323,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "击败播报（文案 + 击败特效）",
-      "category": "一、时装类 / （四）击败播报与全场最佳动画",
+      "category": "三、活动类 / （五）击败播报",
       "board": "kill_broadcast",
       "items": 38,
       "generated": "2026-10-22",
@@ -455,10 +455,10 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "服型总表 · 服务器类型后缀与依据",
-      "category": "四、综合资料 / （一）服务器类型",
+      "category": "四、资料层 / （四）服型",
       "board": "server_types",
       "items": 21,
-      "generated": "2026-10-19",
+      "generated": "2026-10-23",
       "source_server": "toolkit_core/server_types.py（唯一来源，依据均可在客户端复核）",
       "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
       "evidence": {
