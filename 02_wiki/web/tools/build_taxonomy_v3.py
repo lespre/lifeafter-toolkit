@@ -34,7 +34,7 @@ TREE = [
         "name": "二、战力类",
         "boards": [],
         "children": [
-            {"name": "（一）异变核芯", "boards": ["mutation_core_full", "core_skill_12star"]},
+            {"name": "（一）异变核芯", "boards": ["mutation_core_full"]},
             {"name": "（二）战术芯片", "boards": ["tactical_chip_full"]},
             {"name": "（三）无人机", "boards": ["drone_catalog"]},
             {"name": "（四）料理与食谱", "boards": ["edible_catalog"]},

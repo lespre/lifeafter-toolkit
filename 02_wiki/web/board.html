@@ -195,6 +195,9 @@ body.core-mode .i-media figcaption{display:none}
 #siteNav a.on{color:#fff;background:#151b24;border-left-color:#c0392b}
 body{padding-left:212px}
 @media(max-width:900px){#siteNav{display:none}body{padding-left:0}}
+
+#siteNav .leafhd{font-size:11px;color:#7a8a9c;padding:6px 8px 2px;letter-spacing:.06em;border-top:1px dashed #1c2531;margin-top:4px}
+#siteNav a.sub{padding-left:16px;font-size:11.8px}
 </style>
 </head>
 <body>
@@ -2789,13 +2792,20 @@ else loadBoard(b,d=>{
   var html='<div class="hd">资料分类</div>';
   (T['树']||[]).forEach(function(top){
     html += '<div class="grp">'+top.name+'</div>';
-    var ids=[];
-    (top.boards||[]).forEach(function(b){ids.push(b);});
-    (top.children||[]).forEach(function(c){(c.boards||[]).forEach(function(b){ids.push(b);});});
-    ids.forEach(function(id){
+    (top.boards||[]).forEach(function(id){
       var b=byId[id]; if(!b) return;
       var nm=(b.name||id).replace(/^当前包\s*·\s*/,'');
       html += '<a href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
+    });
+    (top.children||[]).forEach(function(leaf, li){
+      var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+      if(!ids.length) return;
+      html += '<div class="leafhd">'+leaf.name+'</div>';
+      ids.forEach(function(id, bi){
+        var b=byId[id];
+        var nm=(b.name||id).replace(/^当前包\s*·\s*/,'');
+        html += '<a class="sub" href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
+      });
     });
   });
   nav.innerHTML=html;
