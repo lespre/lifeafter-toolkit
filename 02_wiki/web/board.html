@@ -196,6 +196,7 @@ body.core-mode .i-media figcaption{display:none}
 body{padding-left:212px}
 @media(max-width:900px){#siteNav{display:none}body{padding-left:0}}
 
+#siteNav a.leafhd{display:block;text-decoration:none}
 #siteNav .leafhd{font-size:11px;color:#7a8a9c;padding:6px 8px 2px;letter-spacing:.06em;border-top:1px dashed #1c2531;margin-top:4px}
 #siteNav a.sub{padding-left:16px;font-size:11.8px}
 </style>
@@ -2787,6 +2788,16 @@ else loadBoard(b,d=>{
   var T=window.WIKI_TAXONOMY, M=window.WIKI_MANIFEST;
   if(!T||!M) return;
   var byId={}; (M.boards||[]).forEach(function(b){byId[b.board]=b;});
+  function cleanName(s){
+    return String(s||'')
+      .replace(/^当前包\s*·\s*/,'')
+      .replace(/（[^）]*）/g,'')
+      .replace(/\([^)]*\)/g,'')
+      .split('·')[0]
+      .replace(/全量/g,'')
+      .replace(/总表$/,'')
+      .trim();
+  }
   var cur=new URLSearchParams(location.search).get('b')||'';
   var nav=document.getElementById('siteNav');
   var html='<div class="hd">资料分类</div>';
@@ -2794,16 +2805,23 @@ else loadBoard(b,d=>{
     html += '<div class="grp">'+top.name+'</div>';
     (top.boards||[]).forEach(function(id){
       var b=byId[id]; if(!b) return;
-      var nm=(b.name||id).replace(/^当前包\s*·\s*/,'');
+      var nm=cleanName(b.name||id);
       html += '<a href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
     });
     (top.children||[]).forEach(function(leaf, li){
       var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
       if(!ids.length) return;
+      var leafNm = leaf.name.replace(/^（[^）]*）/,'');
+      var names = ids.map(function(id){ return cleanName(byId[id].name||id); });
+      // 只有一个板块且名字等于叶子名 ⇒ 叶子标题本身就是链接，不再重复一行
+      var nk = function(x){ return String(x).replace(/[、\/·\s（）()]/g,''); };
+      if(ids.length === 1 && (nk(names[0]) === nk(leafNm) || nk(names[0]).indexOf(nk(leafNm)) === 0 || nk(leafNm).indexOf(nk(names[0])) === 0)){
+        html += '<a class="leafhd'+(ids[0]===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(ids[0])+'" title="'+names[0]+'">'+leaf.name+'</a>';
+        return;
+      }
       html += '<div class="leafhd">'+leaf.name+'</div>';
-      ids.forEach(function(id, bi){
-        var b=byId[id];
-        var nm=(b.name||id).replace(/^当前包\s*·\s*/,'');
+      ids.forEach(function(id){
+        var nm=cleanName(byId[id].name||id);
         html += '<a class="sub" href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
       });
     });
