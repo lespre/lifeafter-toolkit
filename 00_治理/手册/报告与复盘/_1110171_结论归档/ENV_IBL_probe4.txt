@@ -1,0 +1,33 @@
+#### three r180 原 getIBLRadiance（vendor three.module.min.js @33802）
+   vec3 getIBLRadiance( const in vec3 viewDir, const in vec3 normal, const in float roughness ) {
+   \t\t#ifdef ENVMAP_TYPE_CUBE_UV
+   \t\t\tvec3 reflectVec = reflect( - viewDir, normal );
+   \t\t\treflectVec = normalize( mix( reflectVec, normal, roughness * roughness) );
+   \t\t\treflectVec = inverseTransformDirection( reflectVec, viewMatrix );
+   \t\t\tvec4 envMapColor = textureCubeUV( envMap, envMapRotation * reflectVec, roughness );
+   \t\t\treturn envMapColor.rgb * envMapIntensity;
+   \t\t#else
+   \t\t\treturn vec3( 0.0 );
+   \t\t#endif
+   \t}
+   \t#ifdef USE_ANISOTROPY
+   \t\tvec3 getIBLAnisotropyRadiance( const in vec3 viewDir, const in vec3 normal, const in float roughness, const in vec3 bitangent, const in fl
+
+#### cube 资产 sha16（跨皮肤同一性）
+   qiangpi            {"1110171": "173d52990b3ab836", "1110177": "173d52990b3ab836", "1110024": null, "1110129": "173d52990b3ab836", "1110145": null}
+   car_studio01       {"1110171": "bea649d8525cdc3e", "1110177": "bea649d8525cdc3e", "1110024": null, "1110129": null, "1110145": null}
+   fashion_qiangpi    {"1110171": "34252fcb4d641227", "1110177": "34252fcb4d641227", "1110024": null, "1110129": null, "1110145": null}
+   面 m0 同哈希：{"qiangpi_f0": true, "qiangpi_f1": true, "qiangpi_f2": true, "qiangpi_f3": true, "qiangpi_f4": true, "qiangpi_f5": true, "car_studio01_f0": true, "car_studio01_f1": true, "car_studio01_f2": true, "car_studio01_f3": true, "car_studio01_f4": true, "car_studio01_f5": true, "fashion_qiangpi_f0": true, "fashion_qiangpi_f1": true, "fashion_qiangpi_f2": true, "fashion_qiangpi_f3": true, "fashion_qiangpi_f4": true, "fashion_qiangpi_f5": true}
+
+#### 作者 mip vs m0 盒降采样（m1 64²）
+   1110171/qiangpi    [{"face": 0, "authored_m1": true, "mean_abs_rgb": 28.36, "max_abs_rgb": 131, "alpha_mean_authored": 5.2, "alpha_mean_box": 3.7}, {"face": 1, "authored_m1": true, "mean_abs_rgb": 23.77, "max_abs_rgb": 139, "alpha_mean_authored": 7.4, "alpha_mean_box": 5.4}, {"face": 2, "authored_m1": true, "mean_abs_rgb": 31.03, "max_abs_rgb": 125, "alpha_mean_authored": 7.6, "alpha_mean_box": 5.4}, {"face": 3, "authored_m1": true, "mean_abs_rgb": 4.35, "max_abs_rgb": 68, "alpha_mean_authored": 6.5, "alpha_mean_box": 6.5}, {"face": 4, "authored_m1": true, "mean_abs_rgb": 33.26, "max_abs_rgb": 129, "alpha_mean_a
+   1110171/car_studio01 [{"face": 0, "authored_m1": true, "mean_abs_rgb": 4.91, "max_abs_rgb": 59, "alpha_mean_authored": 7.4, "alpha_mean_box": 7.4}, {"face": 1, "authored_m1": true, "mean_abs_rgb": 5.02, "max_abs_rgb": 59, "alpha_mean_authored": 7.4, "alpha_mean_box": 7.4}, {"face": 2, "authored_m1": true, "mean_abs_rgb": 5.49, "max_abs_rgb": 54, "alpha_mean_authored": 6.0, "alpha_mean_box": 6.0}, {"face": 3, "authored_m1": true, "mean_abs_rgb": 7.96, "max_abs_rgb": 92, "alpha_mean_authored": 2.7, "alpha_mean_box": 2.7}, {"face": 4, "authored_m1": true, "mean_abs_rgb": 6.52, "max_abs_rgb": 93, "alpha_mean_authored"
+   1110171/fashion_qiangpi [{"face": 0, "authored_m1": false}, {"face": 1, "authored_m1": false}, {"face": 2, "authored_m1": false}, {"face": 3, "authored_m1": false}, {"face": 4, "authored_m1": false}, {"face": 5, "authored_m1": false}]
+
+#### 源 RGBM env 项 (rgb*a*16)^2 与六面均值
+   1110171/qiangpi            mean=[0.7866, 0.9157, 1.0719] per_face=[[0.17, 0.2446, 0.2248], [0.9972, 1.1329, 1.3198], [1.493, 1.728, 2.057], [0.1118, 0.1428, 0.1497], [0.9387, 1.0537, 1.225], [1.0087, 1.1921, 1.4551]]
+   1110171/car_studio01       mean=[0.3204, 0.3114, 0.3047] per_face=[[0.4714, 0.4538, 0.43], [0.4715, 0.4539, 0.4299], [0.1777, 0.1754, 0.1875], [0.0217, 0.0214, 0.0211], [0.2714, 0.2598, 0.248], [0.5085, 0.5043, 0.5116]]
+   1110171/fashion_qiangpi    mean=[0.2162, 0.2492, 0.2744] per_face=[[0.0178, 0.021, 0.0247], [0.1425, 0.1612, 0.1849], [0.0363, 0.0413, 0.046], [0.0817, 0.0996, 0.1017], [0.4399, 0.4884, 0.546], [0.579, 0.6835, 0.7429]]
+   1110177/qiangpi            mean=[0.7866, 0.9157, 1.0719] per_face=[[0.17, 0.2446, 0.2248], [0.9972, 1.1329, 1.3198], [1.493, 1.728, 2.057], [0.1118, 0.1428, 0.1497], [0.9387, 1.0537, 1.225], [1.0087, 1.1921, 1.4551]]
+   1110177/car_studio01       mean=[0.3204, 0.3114, 0.3047] per_face=[[0.4714, 0.4538, 0.43], [0.4715, 0.4539, 0.4299], [0.1777, 0.1754, 0.1875], [0.0217, 0.0214, 0.0211], [0.2714, 0.2598, 0.248], [0.5085, 0.5043, 0.5116]]
+   1110177/fashion_qiangpi    mean=[0.2162, 0.2492, 0.2744] per_face=[[0.0178, 0.021, 0.0247], [0.1425, 0.1612, 0.1849], [0.0363, 0.0413, 0.046], [0.0817, 0.0996, 0.1017], [0.4399, 0.4884, 0.546], [0.579, 0.6835, 0.7429]]

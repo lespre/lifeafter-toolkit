@@ -1,0 +1,2178 @@
+{
+ "tracks_multi": {
+  "1110177": [
+   {
+    "skin": "1110177",
+    "idx": 1,
+    "name": "L_g_爆点",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 6,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 224.0,
+     "end1": 13.0,
+     "corr": null,
+     "hue_jump": 228.89,
+     "hue_seq": [
+      178.3529411764706,
+      60.0,
+      60.0,
+      166.0,
+      163.23144104803495,
+      165.0
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 8.36,
+     "hue_seq": [
+      46.4516129032258,
+      45.974025974025984,
+      45.94594594594595,
+      43.74193548387097,
+      40.0,
+      41.904761904761905
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 2,
+    "name": "M_g_glow",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 126.0,
+     "end1": 9.0,
+     "corr": null,
+     "hue_jump": 213.91,
+     "hue_seq": [
+      171.76470588235296,
+      60.0,
+      154.79289940828403,
+      150.15706806282722,
+      147.44186046511626
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 20.66,
+     "hue_seq": [
+      43.720930232558146,
+      44.68965517241379,
+      37.696335078534034,
+      31.921182266009854,
+      25.000000000000004
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 3,
+    "name": "L_g_爆点_2",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 255.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 240.85,
+     "hue_seq": [
+      180.0,
+      60.0,
+      60.0,
+      90.4225352112676,
+      null
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 97.14,
+     "hue_seq": [
+      null,
+      48.571428571428555,
+      48.57142857142857,
+      23.89830508474576,
+      null
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 5,
+    "name": "L_g_暗底",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 6,
+    "rgba": {
+     "mono": 0.6,
+     "end_closed": 0,
+     "end0": 45.0,
+     "end1": 20.0,
+     "corr": null,
+     "hue_jump": 150.24,
+     "hue_seq": [
+      162.64705882352942,
+      131.25,
+      84.00000000000003,
+      142.83582089552237,
+      152.84916201117318,
+      155.58823529411762
+     ]
+    },
+    "argb": {
+     "mono": 0.6,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 7.02,
+     "hue_seq": [
+      37.73584905660377,
+      34.0,
+      31.8232044198895,
+      32.33333333333333,
+      32.849162011173185,
+      32.93478260869564
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 7,
+    "name": "H_p_闪电",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 0.75,
+     "end_closed": 0,
+     "end0": 224.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 139.71,
+     "hue_seq": [
+      60.0,
+      157.89473684210526,
+      141.26582278481013,
+      151.40625,
+      136.36363636363632
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 127.0,
+     "corr": null,
+     "hue_jump": 163.46,
+     "hue_seq": [
+      46.4516129032258,
+      46.87499999999999,
+      41.78571428571429,
+      40.83769633507853,
+      243.84
+     ]
+    },
+    "votes": [
+     "argb",
+     "tie",
+     "rgba"
+    ],
+    "vote_count": {
+     "argb": 1,
+     "tie": 1,
+     "rgba": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 8,
+    "name": "M_shandian_04",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 8,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 234.0,
+     "end1": 10.0,
+     "corr": null,
+     "hue_jump": 445.92,
+     "hue_seq": [
+      178.58823529411765,
+      60.0,
+      84.0000000000001,
+      177.64705882352942,
+      147.42857142857144,
+      65.58139534883723,
+      161.53846153846155,
+      163.2
+     ]
+    },
+    "argb": {
+     "mono": 0.5714,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 35.17,
+     "hue_seq": [
+      42.85714285714285,
+      37.67441860465116,
+      48.67924528301888,
+      49.83050847457628,
+      40.67796610169491,
+      40.601503759398504,
+      38.18181818181818,
+      32.0
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 9,
+    "name": "M_粒子_科技",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 6,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 234.0,
+     "end1": 10.0,
+     "corr": null,
+     "hue_jump": 221.79,
+     "hue_seq": [
+      178.58823529411765,
+      60.0,
+      110.0,
+      137.05882352941177,
+      155.39999999999998,
+      163.2
+     ]
+    },
+    "argb": {
+     "mono": 0.8,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 17.4,
+     "hue_seq": [
+      42.85714285714285,
+      37.67441860465116,
+      40.88495575221238,
+      36.94736842105263,
+      37.00934579439252,
+      32.0
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 16,
+    "name": "H_鬼火_射线_02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 136.0,
+     "end1": 10.0,
+     "corr": null,
+     "hue_jump": 217.63,
+     "hue_seq": [
+      170.11764705882354,
+      55.06849315068492,
+      103.15068493150685,
+      157.64705882352942
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 21.1,
+     "hue_seq": [
+      38.82352941176471,
+      32.83783783783784,
+      24.96,
+      32.195121951219505
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 17,
+    "name": "M_鬼火细线_2",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 194.0,
+     "end1": 29.0,
+     "corr": null,
+     "hue_jump": 40.57,
+     "hue_seq": [
+      176.44268774703556,
+      160.5128205128205,
+      146.55172413793105,
+      157.23214285714286
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 14.82,
+     "hue_seq": [
+      44.74576271186441,
+      41.904761904761905,
+      31.884057971014496,
+      33.84615384615385
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 19,
+    "name": "H_p_星点_02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 0.75,
+     "end_closed": 0,
+     "end0": 210.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 120.0,
+     "hue_seq": [
+      60.0,
+      71.70731707317074,
+      149.6,
+      155.07246376811594,
+      180.0
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 255.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 49.9,
+     "hue_seq": [
+      49.333333333333336,
+      36.57142857142858,
+      36.85279187817259,
+      33.93939393939394,
+      null
+     ]
+    },
+    "votes": [
+     "argb",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "argb": 3
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 20,
+    "name": "H_鬼火",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 3,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 188.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 165.64,
+     "hue_seq": [
+      60.0,
+      22.780748663101598,
+      151.2
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 255.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 145.83,
+     "hue_seq": [
+      44.776119402985074,
+      262.78074866310163,
+      258.94736842105266
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 26,
+    "name": "L_g_glow地_1",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 6.0,
+     "end1": 1.0,
+     "corr": null,
+     "hue_jump": 285.44,
+     "hue_seq": [
+      165.0,
+      12.903225806451616,
+      15.333333333333336,
+      146.25
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 11.45,
+     "hue_seq": [
+      30.0,
+      32.72727272727273,
+      29.333333333333332,
+      24.0
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 27,
+    "name": "L_g_glow地",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 150.0,
+     "end1": 35.0,
+     "corr": null,
+     "hue_jump": 32.67,
+     "hue_seq": [
+      168.0,
+      146.36942675159236,
+      150.34883720930233,
+      157.41176470588235
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 3.05,
+     "hue_seq": [
+      30.85714285714286,
+      33.86138613861386,
+      33.84615384615385,
+      33.81818181818181
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 30,
+    "name": "H_ shandian01_1_1",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 110.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 166.49,
+     "hue_seq": [
+      166.49214659685865,
+      1.6666666666666663,
+      0.972972972972973,
+      null
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 36.47,
+     "hue_seq": [
+      28.148148148148152,
+      32.30769230769231,
+      30.0,
+      null
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 31,
+    "name": "H_鬼火_射线_02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 136.0,
+     "end1": 10.0,
+     "corr": null,
+     "hue_jump": 217.63,
+     "hue_seq": [
+      170.11764705882354,
+      55.06849315068492,
+      103.15068493150685,
+      157.64705882352942
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 21.1,
+     "hue_seq": [
+      38.82352941176471,
+      32.83783783783784,
+      24.96,
+      32.195121951219505
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 34,
+    "name": "M_g_glow_an",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 3,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 111.0,
+     "end1": 66.0,
+     "corr": null,
+     "hue_jump": 13.87,
+     "hue_seq": [
+      164.7058823529412,
+      157.5369458128079,
+      164.23529411764707
+     ]
+    },
+    "argb": {
+     "mono": 0.5,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 5.81,
+     "hue_seq": [
+      32.91666666666667,
+      34.80662983425414,
+      38.73015873015873
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 37,
+    "name": "H_鬼火_lizi_1",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 157.0,
+     "end1": 151.0,
+     "corr": null,
+     "hue_jump": 31.0,
+     "hue_seq": [
+      171.52941176470588,
+      156.734693877551,
+      161.77777777777777,
+      172.94117647058823
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 5.36,
+     "hue_seq": [
+      37.959183673469376,
+      37.64705882352941,
+      40.93023255813954,
+      42.692307692307686
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 38,
+    "name": "M_lizi_闪电_01",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 8,
+    "rgba": {
+     "mono": 0.8571,
+     "end_closed": 1,
+     "end0": 154.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 556.61,
+     "hue_seq": [
+      169.8823529411765,
+      60.0,
+      65.21739130434784,
+      168.70588235294116,
+      120.85714285714286,
+      66.48648648648648,
+      151.14285714285714,
+      null
+     ]
+    },
+    "argb": {
+     "mono": 0.5714,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 44.34,
+     "hue_seq": [
+      34.455445544554465,
+      33.72549019607844,
+      34.90909090909091,
+      35.59322033898305,
+      27.906976744186046,
+      30.98039215686275,
+      28.923076923076923,
+      null
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 40,
+    "name": "H_p_光刺_01",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 171.0,
+     "end1": 28.0,
+     "corr": null,
+     "hue_jump": 213.79,
+     "hue_seq": [
+      173.41176470588235,
+      60.0,
+      155.38461538461536,
+      160.37383177570095
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 6.58,
+     "hue_seq": [
+      39.99999999999999,
+      37.89473684210526,
+      36.86746987951807,
+      33.41772151898734
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 41,
+    "name": "H_p_光刺_an",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 182.0,
+     "end1": 25.0,
+     "corr": null,
+     "hue_jump": 73.45,
+     "hue_seq": [
+      205.5944055944056,
+      139.7872340425532,
+      142.87769784172662,
+      147.42857142857144
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 180.37,
+     "hue_seq": [
+      203.4,
+      32.99999999999999,
+      31.803278688524586,
+      23.027027027027028
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "rgba"
+    ],
+    "vote_count": {
+     "rgba": 2,
+     "argb": 1
+    },
+    "verdict": "rgba"
+   },
+   {
+    "skin": "1110177",
+    "idx": 42,
+    "name": "H_g_glow",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 141.0,
+     "end1": 120.0,
+     "corr": null,
+     "hue_jump": 155.0,
+     "hue_seq": [
+      60.0,
+      132.72727272727272,
+      167.89473684210526,
+      215.0
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 255.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 176.21,
+     "hue_seq": [
+      35.78947368421053,
+      36.71641791044775,
+      41.9607843137255,
+      212.0
+     ]
+    },
+    "votes": [
+     "argb",
+     "argb",
+     "rgba"
+    ],
+    "vote_count": {
+     "argb": 2,
+     "rgba": 1
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 43,
+    "name": "H_g_glow地",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 159.0,
+     "end1": 23.0,
+     "corr": null,
+     "hue_jump": 213.65,
+     "hue_seq": [
+      172.7058823529412,
+      58.77551020408164,
+      149.58904109589042,
+      155.0,
+      158.5
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 10.91,
+     "hue_seq": [
+      40.62499999999999,
+      40.0,
+      34.91525423728814,
+      36.76056338028169,
+      33.4020618556701
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 44,
+    "name": "H_g_glow地_an",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 44.0,
+     "end1": 5.0,
+     "corr": null,
+     "hue_jump": 120.56,
+     "hue_seq": [
+      160.10526315789474,
+      149.16666666666666,
+      92.09302325581396,
+      144.64285714285714
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 30.03,
+     "hue_seq": [
+      34.109589041095894,
+      42.65624999999999,
+      25.599999999999998,
+      21.176470588235293
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 45,
+    "name": "M_g_爆点",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 140.0,
+     "end1": 31.0,
+     "corr": null,
+     "hue_jump": 211.71,
+     "hue_seq": [
+      170.3529411764706,
+      58.57142857142858,
+      146.85314685314685,
+      158.5
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 12.24,
+     "hue_seq": [
+      38.60869565217391,
+      40.930232558139544,
+      32.75862068965517,
+      31.011235955056176
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110177",
+    "idx": 49,
+    "name": "H_g_爆点_1",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 120.0,
+     "corr": null,
+     "hue_jump": 270.12,
+     "hue_seq": [
+      211.9526627218935,
+      58.57142857142858,
+      167.4125874125874,
+      159.5121951219512
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 334.06,
+     "hue_seq": [
+      209.3181818181818,
+      33.5483870967742,
+      40.43478260869565,
+      249.03225806451613
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "rgba"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 1,
+     "rgba": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 51,
+    "name": "H_粒子_1",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 40.0,
+     "corr": null,
+     "hue_jump": 201.77,
+     "hue_seq": [
+      180.0,
+      60.0,
+      60.0,
+      76.62650602409639,
+      141.7741935483871
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 127.0,
+     "end1": 131.0,
+     "corr": null,
+     "hue_jump": 45.53,
+     "hue_seq": [
+      null,
+      35.53398058252428,
+      31.744186046511626,
+      33.92670157068063,
+      37.95348837209302
+     ]
+    },
+    "votes": [
+     "rgba",
+     "tie",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "tie": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 60,
+    "name": "L_p_星点_02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 1,
+     "end0": 149.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 104.53,
+     "hue_seq": [
+      60.0,
+      99.3103448275862,
+      160.3125,
+      156.09375
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 127.0,
+     "corr": null,
+     "hue_jump": 25.55,
+     "hue_seq": [
+      28.867924528301884,
+      25.657894736842106,
+      44.81927710843374,
+      48.0
+     ]
+    },
+    "votes": [
+     "tie",
+     "rgba",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "rgba": 1,
+     "argb": 1
+    },
+    "verdict": "tie"
+   },
+   {
+    "skin": "1110177",
+    "idx": 61,
+    "name": "H_公告板_爆闪2",
+    "tag": "Sprite",
+    "track": "color_track",
+    "n_keys": 6,
+    "rgba": {
+     "mono": 0.8,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 39.0,
+     "corr": null,
+     "hue_jump": 218.07,
+     "hue_seq": [
+      180.0,
+      60.0,
+      60.0,
+      148.39999999999998,
+      156.3302752293578,
+      154.58823529411762
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 45.67,
+     "hue_seq": [
+      null,
+      33.89312977099237,
+      33.80952380952381,
+      30.0,
+      33.93939393939394,
+      29.999999999999996
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   }
+  ],
+  "1110171": [
+   {
+    "skin": "1110171",
+    "idx": 23,
+    "name": "H_星点粒子",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 6,
+    "rgba": {
+     "mono": 0.6,
+     "end_closed": 1,
+     "end0": 36.0,
+     "end1": 13.0,
+     "corr": null,
+     "hue_jump": 466.13,
+     "hue_seq": [
+      136.95652173913044,
+      260.5970149253731,
+      114.38423645320196,
+      210.6521739130435,
+      112.49999999999999,
+      110.64220183486239
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 71.0,
+     "end1": 71.0,
+     "corr": null,
+     "hue_jump": 699.7,
+     "hue_seq": [
+      23.835616438356162,
+      205.0434782608696,
+      327.192118226601,
+      85.17857142857143,
+      247.70053475935828,
+      5.9504132231404965
+     ]
+    },
+    "votes": [
+     "argb",
+     "rgba",
+     "rgba"
+    ],
+    "vote_count": {
+     "argb": 1,
+     "rgba": 2
+    },
+    "verdict": "rgba"
+   },
+   {
+    "skin": "1110171",
+    "idx": 24,
+    "name": "H_星点粒子_3",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 84.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 256.82,
+     "hue_seq": [
+      171.05882352941177,
+      153.57798165137615,
+      296.0869565217391,
+      199.25925925925924
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 193.57,
+     "hue_seq": [
+      46.66666666666666,
+      42.65060240963855,
+      213.20388349514562,
+      232.20000000000002
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110171",
+    "idx": 26,
+    "name": "L_p_光刺_01",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 366.21,
+     "hue_seq": [
+      185.59322033898306,
+      336.49484536082474,
+      92.49999999999999,
+      173.14285714285714,
+      154.48275862068965
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 53.28,
+     "hue_seq": [
+      207.80487804878047,
+      223.1111111111111,
+      247.82608695652172,
+      242.69662921348316,
+      250.82926829268294
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110171",
+    "idx": 29,
+    "name": "H_p_光圈01",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 162.0,
+     "end1": 107.0,
+     "corr": null,
+     "hue_jump": 360.0,
+     "hue_seq": [
+      180.0,
+      null,
+      180.0,
+      180.0
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 0,
+     "hue_seq": [
+      null,
+      null,
+      null,
+      null
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110171",
+    "idx": 34,
+    "name": "L_p_光刺_02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 5,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 366.21,
+     "hue_seq": [
+      185.59322033898306,
+      343.1111111111111,
+      92.49999999999999,
+      173.14285714285714,
+      154.48275862068965
+     ]
+    },
+    "argb": {
+     "mono": 0.75,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 53.28,
+     "hue_seq": [
+      207.80487804878047,
+      223.1111111111111,
+      247.82608695652172,
+      242.69662921348316,
+      250.82926829268294
+     ]
+    },
+    "votes": [
+     "rgba",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "rgba": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110171",
+    "idx": 37,
+    "name": "H_p_光圈02",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 4,
+    "rgba": {
+     "mono": 0.6667,
+     "end_closed": 0,
+     "end0": 162.0,
+     "end1": 107.0,
+     "corr": null,
+     "hue_jump": 360.0,
+     "hue_seq": [
+      180.0,
+      null,
+      180.0,
+      180.0
+     ]
+    },
+    "argb": {
+     "mono": 0.6667,
+     "end_closed": 1,
+     "end0": 0.0,
+     "end1": 0.0,
+     "corr": null,
+     "hue_jump": 0,
+     "hue_seq": [
+      null,
+      null,
+      null,
+      null
+     ]
+    },
+    "votes": [
+     "tie",
+     "argb",
+     "argb"
+    ],
+    "vote_count": {
+     "tie": 1,
+     "argb": 2
+    },
+    "verdict": "argb"
+   },
+   {
+    "skin": "1110171",
+    "idx": 43,
+    "name": "H_星点粒子_1",
+    "tag": "ParticleSystem",
+    "track": "color_track_par",
+    "n_keys": 2,
+    "rgba": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 29.92,
+     "hue_seq": [
+      316.1421319796954,
+      346.0663507109005
+     ]
+    },
+    "argb": {
+     "mono": 1.0,
+     "end_closed": 0,
+     "end0": 255.0,
+     "end1": 255.0,
+     "corr": null,
+     "hue_jump": 29.92,
+     "hue_seq": [
+      196.14213197969542,
+      226.06635071090048
+     ]
+    },
+    "votes": [
+     "tie",
+     "tie",
+     "tie"
+    ],
+    "vote_count": {
+     "tie": 3
+    },
+    "verdict": "tie"
+   }
+  ]
+ },
+ "tracks_const": {
+  "1110177": [
+   {
+    "idx": 7,
+    "name": "H_p_闪电",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 8,
+    "name": "M_shandian_04",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 9,
+    "name": "M_粒子_科技",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 16,
+    "name": "H_鬼火_射线_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 17,
+    "name": "M_鬼火细线_2",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 19,
+    "name": "H_p_星点_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 20,
+    "name": "H_鬼火",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 30,
+    "name": "H_ shandian01_1_1",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 7
+   },
+   {
+    "idx": 31,
+    "name": "H_鬼火_射线_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 5
+   },
+   {
+    "idx": 37,
+    "name": "H_鬼火_lizi_1",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 5
+   },
+   {
+    "idx": 38,
+    "name": "M_lizi_闪电_01",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 40,
+    "name": "H_p_光刺_01",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 41,
+    "name": "H_p_光刺_an",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 0
+   },
+   {
+    "idx": 51,
+    "name": "H_粒子_1",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 60,
+    "name": "L_p_星点_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 82,
+    "name": "M_鬼火_长条",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": "8"
+   },
+   {
+    "idx": 83,
+    "name": "H_p_烟雾_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": "0"
+   },
+   {
+    "idx": 88,
+    "name": "H_鬼火_星点_1",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": "8"
+   }
+  ],
+  "1110171": [
+   {
+    "idx": 23,
+    "name": "H_星点粒子",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 8
+   },
+   {
+    "idx": 24,
+    "name": "H_星点粒子_3",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 26,
+    "name": "L_p_光刺_01",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 27,
+    "name": "M_g_光晕暗_01",
+    "tag": "Sprite",
+    "track": "color_track",
+    "time": 0.3,
+    "value": [
+     116.0,
+     9.0,
+     12.0,
+     93.0
+    ],
+    "blend_mode": 0
+   },
+   {
+    "idx": 28,
+    "name": "M_g_光晕亮_01",
+    "tag": "Sprite",
+    "track": "color_track",
+    "time": 0.6,
+    "value": [
+     93.0,
+     48.0,
+     113.0,
+     255.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 29,
+    "name": "H_p_光圈01",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 34,
+    "name": "L_p_光刺_02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 35,
+    "name": "M_g_光晕暗_02",
+    "tag": "Sprite",
+    "track": "color_track",
+    "time": 0.3,
+    "value": [
+     185.0,
+     9.0,
+     12.0,
+     93.0
+    ],
+    "blend_mode": 0
+   },
+   {
+    "idx": 36,
+    "name": "M_g_光晕亮_02",
+    "tag": "Sprite",
+    "track": "color_track",
+    "time": 0.6,
+    "value": [
+     93.0,
+     48.0,
+     113.0,
+     255.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 37,
+    "name": "H_p_光圈02",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   },
+   {
+    "idx": 43,
+    "name": "H_星点粒子_1",
+    "tag": "ParticleSystem",
+    "track": "color_track",
+    "time": 0.0,
+    "value": [
+     255.0,
+     92.0,
+     243.0,
+     107.0
+    ],
+    "blend_mode": 2
+   }
+  ]
+ },
+ "skin_level": {
+  "1110177": {
+   "multi_tracks": 28,
+   "const_tracks": 18,
+   "verdict": {
+    "tie": 10,
+    "argb": 17,
+    "rgba": 1
+   },
+   "hue_cluster_rgba": {
+    "mean_hue_deg": 129.0,
+    "circ_std_deg": 25.2,
+    "n_tracks": 28
+   },
+   "hue_cluster_argb": {
+    "mean_hue_deg": 44.0,
+    "circ_std_deg": 30.3,
+    "n_tracks": 28
+   },
+   "endpoint_exact": {
+    "rgba_col3": {
+     "first": 4,
+     "last": 7
+    },
+    "argb_col0": {
+     "first": 27,
+     "last": 25
+    },
+    "n": 28
+   },
+   "mean_hue_jump_rgba": 188.27,
+   "mean_hue_jump_argb": 56.27,
+   "mean_mono_rgba": 0.8604,
+   "mean_mono_argb": 0.7277
+  },
+  "1110171": {
+   "multi_tracks": 7,
+   "const_tracks": 11,
+   "verdict": {
+    "rgba": 1,
+    "argb": 5,
+    "tie": 1
+   },
+   "hue_cluster_rgba": {
+    "mean_hue_deg": 189.7,
+    "circ_std_deg": 47.0,
+    "n_tracks": 7
+   },
+   "hue_cluster_argb": {
+    "mean_hue_deg": 194.3,
+    "circ_std_deg": 44.8,
+    "n_tracks": 5
+   },
+   "endpoint_exact": {
+    "rgba_col3": {
+     "first": 3,
+     "last": 4
+    },
+    "argb_col0": {
+     "first": 6,
+     "last": 6
+    },
+    "n": 7
+   },
+   "mean_hue_jump_rgba": 315.04,
+   "mean_hue_jump_argb": 147.11,
+   "mean_mono_rgba": 0.8476,
+   "mean_mono_argb": 0.7857
+  }
+ },
+ "shared_constant": {
+  "value": [
+   255,
+   92,
+   243,
+   107
+  ],
+  "rgba": {
+   "rgb": [
+    255,
+    92,
+    243
+   ],
+   "hue": 304.4171779141105,
+   "alpha": 107
+  },
+  "argb": {
+   "rgb": [
+    92,
+    243,
+    107
+   ],
+   "hue": 125.96026490066224,
+   "alpha": 255
+  }
+ }
+}

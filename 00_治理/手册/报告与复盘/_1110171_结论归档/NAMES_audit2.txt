@@ -1,0 +1,267 @@
+== 逐状态 id 清单
+  official_name_status   verified                                             n=113 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  official_name_status   no_item_row                                          n=2   ['1110185', '1110186']
+  name_status            verified                                             n=113 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  name_status            unresolved                                           n=2   ['1110185', '1110186']
+  catalog_layer          current_parent                                       n=113 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  catalog_layer          behavior_preview_only                                n=2   ['1110185', '1110186']
+  version_status         BA8/root 均有                                          n=108 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  version_status         BA8 新增（相对 root 对照）                                   n=5   ['1110181', '1110182', '1110183', '1110184', '1110190']
+  version_status         仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行              n=2   ['1110185', '1110186']
+  release_state          on_sale                                              n=109 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  release_state          no_sale_field                                        n=2   ['1110087', '1110088']
+  release_state          upcoming                                             n=2   ['1110184', '1110190']
+  release_state          behavior_only                                        n=2   ['1110185', '1110186']
+  sfx_consensus_state    no_sfx_text                                          n=102 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110010', '1110011', '1110012', '1110013', '…']
+  sfx_consensus_state    insufficient_sfx_names                               n=1   ['1110009']
+  sfx_consensus_state    ambiguous_sfx_names                                  n=5   ['1110151', '1110152', '1110154', '1110168', '1110182']
+  sfx_consensus_state    sfx_consensus_unpromoted                             n=5   ['1110178', '1110181', '1110183', '1110184', '1110190']
+  sfx_consensus_state    None                                                 n=2   ['1110185', '1110186']
+  name_resolution.state  verified                                             n=113 ['1110001', '1110002', '1110003', '1110004', '1110005', '1110006', '1110007', '1110008', '1110009', '1110010', '1110011', '1110012', '…']
+  name_resolution.state  behavior_preview_no_current_name_source              n=2   ['1110185', '1110186']
+
+== 特别项 1110169 全字段
+{
+ "id": "1110169",
+ "skin_id": 1110169,
+ "catalog_layer": "current_parent",
+ "name": "灰色协议",
+ "official_name_status": "verified",
+ "name_status": "verified",
+ "name_display": "灰色协议",
+ "official_desc": "我的参数在你的智慧之上。「明日之后×喜羊羊与灰太狼」联动限定外观",
+ "name_resolution": {
+  "state": "verified",
+  "name": "灰色协议",
+  "normalized_roots": [],
+  "named_sfx_row_count": 0,
+  "rule": "Current display name comes from the same-snapshot BA8 common_item_data_base row key==skin_id, field=name, with replayable CHS field/value slots. SFX text is never a name source."
+ },
+ "sfx_consensus_state": "no_sfx_text",
+ "version_status": "BA8/root 均有",
+ "model_path": "weapon/skin/skin_1002_009/skin_1002_009.gim",
+ "level": 5,
+ "grade": "5典藏级",
+ "sale_ts": 1782316800,
+ "sale_date": "2026-06-24",
+ "release_state": "on_sale",
+ "weapon_type": 5,
+ "weapon_type_label": "狙击枪（5）",
+ "weapon_type_state": "snapshot_field",
+ "sfx_item_count": 6,
+ "named_sfx_item_count": 0,
+ "variant_item_count": 1,
+ "behavior_resources": [
+  {
+   "field": "extension_defeat_sfx",
+   "path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_jisha.sfx",
+   "text_provenance": {
+    "field_chs_slot": 7,
+    "value_chs_slot": 183,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_jisha.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "fire_sfx_path",
+   "path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_kh_01.sfx",
+   "text_provenance": {
+    "field_chs_slot": 0,
+    "value_chs_slot": 184,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_kh_01.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "hit_sfx_path",
+   "path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_hit.sfx",
+   "text_provenance": {
+    "field_chs_slot": 1,
+    "value_chs_slot": 182,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_hit.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "trajectory_path_real",
+   "path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_dd.sfx",
+   "text_provenance": {
+    "field_chs_slot": 3,
+    "value_chs_slot": 180,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_dd.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "trajectory_path_special",
+   "path": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_dd_ydx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 8,
+    "value_chs_slot": 63,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_009/fx_skin_1002_009_dd_ydx.sfx"
+   },
+   "kind":
+  field_provenance 摘要: {"aim_cross_functions": {"field_chs_slot": 23, "value_chs_slot": null, "text": null}, "extension_defeat_functions": {"field_chs_slot": 21, "value_chs_slot": null, "text": null}, "hit_sfx_functions": {"field_chs_slot": 13, "value_chs_slot": null, "text": null}, "jump_word_functions": {"field_chs_slot": 19, "value_chs_slot": null, "text": null}, "nucleus_replace_ids": {"field_chs_slot": 18, "value_chs_slot": null, "text": null}, "sale_ts": {"field_chs_slot": 11, "value_chs_slot": null, "text": null}, "sound_functions": {"field_chs_slot": 17, "value_chs_slot": null, "text": null}, "trace_functions": {"field_chs_slot": 14, "value_chs_slot": null, "text": null}, "yk_accessory_model_line_id": {"field_chs_slot": 12, "value_chs_slot": null, "text": null}, "camera_conf_id": {"field_chs_slot": 0, "value_chs_slot": null, "text": null}, "camera_conf_id_2": {"field_chs_slot": 1, "value_chs_slot": nul
+
+== 特别项 1110146 全字段
+{
+ "id": "1110146",
+ "skin_id": 1110146,
+ "catalog_layer": "current_parent",
+ "name": "龙渊永寂",
+ "official_name_status": "verified",
+ "name_status": "verified",
+ "name_display": "龙渊永寂",
+ "official_desc": "冰龙覆械，晶光映雪；一狙破敌，万籁冰封。",
+ "name_resolution": {
+  "state": "verified",
+  "name": "龙渊永寂",
+  "normalized_roots": [],
+  "named_sfx_row_count": 0,
+  "rule": "Current display name comes from the same-snapshot BA8 common_item_data_base row key==skin_id, field=name, with replayable CHS field/value slots. SFX text is never a name source."
+ },
+ "sfx_consensus_state": "no_sfx_text",
+ "version_status": "BA8/root 均有",
+ "model_path": "weapon/skin/skin_1002_007/skin_1002_007.gim",
+ "level": 5,
+ "grade": "5典藏级",
+ "sale_ts": 1770825600,
+ "sale_date": "2026-02-11",
+ "release_state": "on_sale",
+ "weapon_type": 5,
+ "weapon_type_label": "狙击枪（5）",
+ "weapon_type_state": "snapshot_field",
+ "sfx_item_count": 6,
+ "named_sfx_item_count": 0,
+ "variant_item_count": 0,
+ "behavior_resources": [
+  {
+   "field": "extension_defeat_sfx",
+   "path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_bp_01_bx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 7,
+    "value_chs_slot": 175,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_bp_01_bx.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "fire_sfx_path",
+   "path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_kh_bx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 0,
+    "value_chs_slot": 178,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_kh_bx.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "hit_sfx_path",
+   "path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_sj_bx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 1,
+    "value_chs_slot": 179,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_sj_bx.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "trajectory_path_real",
+   "path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_dd_bx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 3,
+    "value_chs_slot": 176,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_dd_bx.sfx"
+   },
+   "kind": "sfx_path"
+  },
+  {
+   "field": "trajectory_path_special",
+   "path": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_dd_ydx_bx.sfx",
+   "text_provenance": {
+    "field_chs_slot": 8,
+    "value_chs_slot": 61,
+    "scalar_type": "0x05",
+    "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_dd_ydx_bx.sfx"
+   },
+
+  field_provenance 摘要: {"aim_cross_functions": {"field_chs_slot": 23, "value_chs_slot": null, "text": null}, "extension_defeat_functions": {"field_chs_slot": 21, "value_chs_slot": null, "text": null}, "fire_sfx_path": {"field_chs_slot": 16, "value_chs_slot": 80, "text": "effect/fx/weapon/skin/skin_1002_007/fx_skin_1002_007_kh_bx.sfx"}, "hit_sfx_functions": {"field_chs_slot": 13, "value_chs_slot": null, "text": null}, "jump_word_functions": {"field_chs_slot": 19, "value_chs_slot": null, "text": null}, "nucleus_replace_ids": {"field_chs_slot": 18, "value_chs_slot": null, "text": null}, "sale_ts": {"field_chs_slot": 11, "value_chs_slot": null, "text": null}, "sound_functions": {"field_chs_slot": 17, "value_chs_slot": null, "text": null}, "trace_functions": {"field_chs_slot": 14, "value_chs_slot": null, "text": null}, "yk_accessory_model_line_id": {"field_chs_slot": 12, "value_chs_slot": null, "text": null}, "came
+
+== common_item_data_rows.json 存在性（row_count=34949, id 类型分布={'int': 34949}）
+  缺失 id: ['1110177', '11101771']
+  逐项: {"1110013": true, "1110021": true, "1110022": true, "1110024": true, "1110031": true, "1110032": true, "1110036": true, "1110121": true, "1110128": true, "1110129": true, "1110137": true, "1110145": true, "1110146": true, "1110151": true, "1110152": true, "1110165": true, "1110169": true, "1110171": true, "1110177": false}
+
+== 板 meta / stats
+{
+ "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
+ "category": "二、时装类 / （七）武器皮肤",
+ "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）",
+ "package_sha": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
+ "generated": "2026-09-13T10:18:00+08:00",
+ "evidence": "structure",
+ "name_status_summary": {
+  "verified": 126,
+  "candidate": 5,
+  "unresolved": 2
+ },
+ "notes": "名称三级（name_status）：verified=126（同快照正式名链闭环）/ candidate=5（可回放候选名：如由主名+时限后缀推导的变体名，页面标「名称待确认」，不得升级为 verified）/ unresolved=2（无可回放候选，显示「未命名皮肤 · ID」）。name_status 与 identity_status 相互独立：identity 未确认不隐藏名称。正式名与描述来自 BA8 同快照 common_item_data_base（key==skin_id，name/desc CHS 槽可回放）：113 个主皮肤（其中 113 个道具行正式名 verified）；18 个时限变体（会员时限版）作为主皮肤子卡，其中 13 个有道具行正式名、5 个无道具行仅标注主名+时限版。仅行为资源（无父项无道具行）的预告层 id=[1110185, 1110186]，维持未回填。SFX 配置 352 行（含变体与类型化行尾容器）严格作为子项。历史整理参考层（你提供的 v3-2 表，128 行）保留曾用名与出处，不构成当前正式名；v3-2 之后 BA8 新增的主皮肤/预告 id（本快照 1 个）无参考行则以空参考标记。静态配置不表示当前活动、可得、价格、概率、战斗效果或服务器启用。时限识别=两步法：is_timed_skin_id(k) 区间识别 → variant_type=timed → permanent_skin_id = timed_id // 10 → variant_relation_state=verified_runtime_rule。runtime lower-bound literal = 11,100,000；runtime upper-bound literal = 11,199,999；exact boundary operators = opcode-level unresolved（残差，不阻塞展示）。字面量来自真实 runtime 模块 com\\utils\\EquipSkinHelpers.py 的 is_timed_skin_id 常量区（FID A108220338E1AE9B / entry 17364；双包 133,245 条 entry 全量扫描；函数内仅此两个字面量=无额外条件），不用末位数字、不由父集反推），再 permanent_skin_id = k // 10；parent_set 只做一致性审计（parent 在=target resolved / 不在=target missing）。时限变体→永久皮肤关系已正式发布：variant_type=timed、permanent_skin_id=timed_id//10、variant_relation_state=verified_runtime_rule（依据 runtime get_perm_skin_id(timed_id)=timed_id//10）；识别不使用任何末位数字门槛，也不附加未证明的末位假设。",
+ "provenance": {
+  "audit_status": "passed",
+  "source_locks": [
+   {
+    "role": "primary",
+    "sha256": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
+    "bytes": 188306920,
+    "mtime_ns": 1789264940046349100,
+    "declared_role": "current_documents",
+    "source_id": "documents-py314-current"
+   
+{
+ "weapon_skin_data_main_rows": 113,
+ "time_limit_variant_rows": 18,
+ "weapon_skin_data_total_rows": 131,
+ "behavior_preview_rows": 2,
+ "catalog_rows": 115,
+ "nested_variant_rows": 18,
+ "root_comparison_parent_rows": 121,
+ "ba8_only_parent_rows": 10,
+ "sfx_rows": 352,
+ "sfx_parent_skins": 77,
+ "sfx_on_variant_skins": 0,
+ "main_with_official_name": 113,
+ "variant_with_official_name": 13,
+ "variant_without_official_name": 5,
+ "reference_rows": 128,
+ "reference_overlay_rows": 115,
+ "behavior_preview_skin_ids": [
+  1110185,
+  1110186
+ ],
+ "release_state_counts": {
+  "on_sale": 109,
+  "upcoming": 2,
+  "no_sale_field": 2,
+  "behavior_only": 2
+ },
+ "upcoming_skin_ids": [
+  1110184,
+  1110190
+ ],
+ "catalog_main_pairs_without_reference_rows": [
+  1110185
+ ],
+ "name_status_counts": {
+  "verified": 126,
+  "candidate": 5,
+  "unresolved": 2
+ }
+}

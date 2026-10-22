@@ -1,0 +1,38 @@
+== G6 五组逐 id 身份字段
+  1110115 赤月晶魄 verified level=6 grade=6传世级 wt=50(冷兵器（50）) sale=2025-07-17 release=on_sale variant_items=0 path=weapon/skin/skin_2003_013/skin_2003_013.gim
+  1110116 赤月晶魄 verified level=6 grade=6传世级 wt=50(冷兵器（50）) sale=2025-07-17 release=on_sale variant_items=0 path=weapon/skin/skin_2003_017/skin_2003_017.gim
+  1110117 赤月晶魄 verified level=6 grade=6传世级 wt=50(冷兵器（50）) sale=2025-07-17 release=on_sale variant_items=0 path=weapon/skin/skin_2003_018/skin_2003_018.gim
+  1110131 炽日耀斑 verified level=6 grade=6传世级 wt=4(霰弹枪（4）) sale=2025-11-06 release=on_sale variant_items=0 path=weapon/skin/skin_1006_008/skin_1006_008.gim
+  1110132 炽日耀斑 verified level=6 grade=6传世级 wt=4(霰弹枪（4）) sale=2025-11-06 release=on_sale variant_items=0 path=weapon/skin/skin_1006_009/skin_1006_009.gim
+  1110133 炽日耀斑 verified level=6 grade=6传世级 wt=4(霰弹枪（4）) sale=2025-11-06 release=on_sale variant_items=0 path=weapon/skin/skin_1006_010/skin_1006_010.gim
+  1110142 金乌负日 verified level=6 grade=6传世级 wt=3(弓箭（3）) sale=2026-01-28 release=on_sale variant_items=0 path=weapon/skin/skin_1007_007/skin_1007_007.gim
+  1110143 金乌负日 verified level=6 grade=6传世级 wt=3(弓箭（3）) sale=2026-01-28 release=on_sale variant_items=0 path=weapon/skin/skin_1007_008/skin_1007_008.gim
+  1110144 金乌负日 verified level=6 grade=6传世级 wt=3(弓箭（3）) sale=2026-01-28 release=on_sale variant_items=0 path=weapon/skin/skin_1007_009/skin_1007_009.gim
+  1110159 沙海月鸣 verified level=6 grade=6传世级 wt=1(突击步枪（1）) sale=2026-04-29 release=on_sale variant_items=0 path=weapon/skin/skin_1001_011/skin_1001_011.gim
+  1110160 沙海月鸣 verified level=6 grade=6传世级 wt=1(突击步枪（1）) sale=2026-04-29 release=on_sale variant_items=0 path=weapon/skin/skin_1001_012/skin_1001_012.gim
+  1110161 沙海月鸣 verified level=6 grade=6传世级 wt=1(突击步枪（1）) sale=2026-04-29 release=on_sale variant_items=0 path=weapon/skin/skin_1001_013/skin_1001_013.gim
+  1110173 水晶玫瑰 verified level=6 grade=6传世级 wt=7(榴弹炮（7）) sale=2026-07-23 release=on_sale variant_items=0 path=weapon/skin/skin_1012_011/skin_1012_011.gim
+  1110174 水晶玫瑰 verified level=6 grade=6传世级 wt=7(榴弹炮（7）) sale=2026-07-23 release=on_sale variant_items=0 path=weapon/skin/skin_1012_012/skin_1012_012.gim
+  1110175 水晶玫瑰 verified level=6 grade=6传世级 wt=7(榴弹炮（7）) sale=2026-07-23 release=on_sale variant_items=0 path=weapon/skin/skin_1012_013/skin_1012_013.gim
+
+== 时限变体层（weapon_skin_data_rows.json：主 111 + 变体 14 = 125）
+   有道具行变体 = 8 / 无道具行（candidate）= 6
+   11100061 → perm=1110006 item_row=False board_item_name=None
+   11100231 → perm=1110023 item_row=True  board_item_name=None
+   11100271 → perm=1110027 item_row=True  board_item_name=None
+   11100281 → perm=1110028 item_row=True  board_item_name=None
+   11100901 → perm=1110090 item_row=True  board_item_name=None
+   11101141 → perm=1110114 item_row=True  board_item_name=None
+   11101341 → perm=1110134 item_row=False board_item_name=None
+   11101451 → perm=1110145 item_row=True  board_item_name=None
+   11101681 → perm=1110168 item_row=False board_item_name=None
+   11101691 → perm=1110169 item_row=True  board_item_name=None
+   11101701 → perm=1110170 item_row=True  board_item_name=None
+   11101771 → perm=1110177 item_row=False board_item_name=None
+   11101781 → perm=1110178 item_row=False board_item_name=None
+   11101811 → perm=1110181 item_row=False board_item_name=None
+   无道具行（名称 candidate）: ["11100061", "11101341", "11101681", "11101771", "11101781", "11101811"]
+
+== 1110169 / 1110146 资产侧（只读磁盘）
+  1110169 dir=True files=5 viewer.json=True neox=False glb=True ['effects.json', 'model.glb', 'poster.webp', 'provenance.json', 'viewer.json']
+  1110146 dir=True files=28 viewer.json=True neox=True glb=False ['_build\\BLOCKED.md', '_build\\BLOCKED.md.bak_20260918_014017', '_build\\BLOCKED.md.bak_20260918_022125_unseal', '_build\\BLOCKED.md.bak_20260918_022539_unseal2', 'neox_material.json', 'skin_1002_007.glb', 'skin_1002_007.mesh', 'src_cube\\faces\\glazed_patio_f0_m0.png']

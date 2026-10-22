@@ -1,0 +1,201 @@
+# MTG raw dump — mod_skin_2003_029_56_hjl_djs.mtg
+# container=effect_01.gpk  row=192023  bytes=1662  sha16=bdabfcb6d211ab5e
+# magic=c159410d  declared_len(u32@4)=1662
+# tag_table: 16 components + 22 params + 21 renderstate-fields; value region=[788,1251) blocks=13 stray=86B
+
+## 1) tag 表（名字 + 偏移）
+   组件   off=12    AnimParam
+   组件   off=23    LightingMaterial
+   组件   off=40    Macro0
+   组件   off=47    Macro1
+   组件   off=54    Macro2
+   组件   off=61    Macro3
+   组件   off=68    Material
+   组件   off=77    MaterialGroup
+   组件   off=91    Material_0
+   组件   off=102   NeoX
+   组件   off=107   ParamTable
+   组件   off=118   RenderStates
+   组件   off=131   ShaderMacro
+   组件   off=143   Technique
+   组件   off=153   Tex0
+   组件   off=158   TransparentMode
+   参数   off=174   t_dissolve_tex
+   参数   off=189   t_distort_tex1
+   参数   off=204   t_mask01
+   参数   off=213   u_dissolve_amount
+   参数   off=231   u_dissolvetex_tilling_x
+   参数   off=255   u_dissolvetex_tilling_y
+   参数   off=279   u_distort01_speed_y
+   参数   off=299   u_distort01_tilling_x
+   参数   off=321   u_distort01_tilling_y
+   参数   off=343   u_distort1_intensity
+   参数   off=364   u_emissive_highlight_intensity
+   参数   off=395   u_emissive_power
+   参数   off=412   u_emissivecolor
+   参数   off=428   u_fresnelcolor
+   参数   off=443   u_fresnelcolor_intensity
+   参数   off=468   u_fresnelmask_anti
+   参数   off=487   u_maintex_speed_y
+   参数   off=505   u_maintex_tilling_x
+   参数   off=525   u_maintex_tilling_y
+   参数   off=545   u_mask01_offset_y
+   参数   off=563   u_mask01_tilling_y
+   参数   off=582   u_use_fresnelmask
+   状态字段 off=601   AlphaRef
+   状态字段 off=610   AlphaVal
+   状态字段 off=619   Ambient
+   状态字段 off=627   CullBack
+   状态字段 off=636   Diffuse
+   状态字段 off=644   Emissive
+   状态字段 off=653   Key
+   状态字段 off=657   LightingEnable
+   状态字段 off=672   MaterialCount
+   状态字段 off=686   Name
+   状态字段 off=691   Power
+   状态字段 off=697   Specular
+   状态字段 off=706   SpecularEnable
+   状态字段 off=721   Speed
+   状态字段 off=727   TechName
+   状态字段 off=736   TransparentMode
+   状态字段 off=752   Type
+   状态字段 off=757   VColorEnable
+   状态字段 off=770   Val
+   状态字段 off=774   Value
+   状态字段 off=780   Version
+
+## 2) 值区块结构 <01 00><count><record…>（record = <id><type><payload>）
+   block0   off=874   count=3   消费到 908  
+        off=879   id=0x08  i32       value=1                                          raw=01000000
+        off=885   id=0x09  str       value=""                                         raw=
+        off=892   id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block1   off=908   count=1   消费到 917  
+        off=913   id=0x10  i32       value=0                                          raw=00000000
+   block2   off=917   count=2   消费到 956  
+        off=922   id=0x09  str       value="Cylinder001"                              raw=43796c696e646572303031
+        off=940   id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block3   off=956   count=1   消费到 965  
+        off=961   id=0x0d  i32       value=1                                          raw=01000000
+   block4   off=965   count=0   消费到 968  
+   block5   off=968   count=2   消费到 1016 
+        off=973   id=0x0e  str       value="shader\\uber_fx_common.fx::TShader"       raw=7368616465725c756265725f66785f636f6d6d6f6e2e6678
+        off=1009  id=0x10  str       value="Effect"                                   raw=456666656374
+   block6   off=1016  count=0   消费到 1019 
+   block7   off=1019  count=5   消费到 1116 
+        off=1028  id=0x02  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1050  id=0x04  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1072  id=0x05  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1090  id=0x0a  i32       value=0                                          raw=00000000
+        off=1100  id=0x0b  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+   block8   off=1116  count=6   消费到 1163 
+        off=1121  id=0x00  i32       value=0                                          raw=00000000
+        off=1127  id=0x01  i32       value=255                                        raw=ff000000
+        off=1133  id=0x03  str       value="False"                                    raw=46616c7365
+        off=1141  id=0x07  str       value="False"                                    raw=46616c7365
+        off=1149  id=0x0c  str       value="False"                                    raw=46616c7365
+        off=1157  id=0x11  str       value="False"                                    raw=46616c7365
+   block9   off=1163  count=2   消费到 1188 
+        off=1168  id=0x06  str       value="USE_MAIN_DISTORT"                         raw=5553455f4d41494e5f444953544f5254
+        off=1187  id=0x12  u8        value=1                                          raw=01
+   block10  off=1188  count=2   消费到 1207 
+        off=1193  id=0x06  str       value="USE_MASK01"                               raw=5553455f4d41534b3031
+        off=1206  id=0x12  u8        value=1                                          raw=01
+   block11  off=1207  count=2   消费到 1227 
+        off=1212  id=0x06  str       value="USE_FRESNEL"                              raw=5553455f465245534e454c
+        off=1226  id=0x12  u8        value=1                                          raw=01
+   block12  off=1227  count=2   消费到 1251 
+        off=1232  id=0x06  str       value="USE_DISSOLVE"                             raw=5553455f444953534f4c5645
+        off=1247  id=0x12  i32       value=1                                          raw=01000000
+
+## 3) ParamTable（参数名 → 原值，来自 01 00 01 13 条目 + 槽组配对）
+   材料组 1 ↔ 数值块 0 评分 37
+        u_maintex_tilling_x            i32      off=1251  raw=02000000   value=2
+        u_maintex_tilling_y            f32      off=1260  raw=0000003f   value=0.5
+        u_maintex_speed_y              f32      off=1269  raw=9a9999be   value=-0.3
+        u_distort1_intensity           f32      off=1278  raw=cdcccc3d   value=0.1
+        u_distort01_tilling_x          i32      off=1287  raw=05000000   value=5
+        u_distort01_tilling_y          f32      off=1296  raw=0000003f   value=0.5
+        u_distort01_speed_y            i32      off=1305  raw=ffffffff   value=-1
+        u_fresnelcolor                 f32[4]   off=1314  raw=0400000000 value=[0.0, 0.0, 0.0, 1.0]
+        u_fresnelcolor_intensity       i32      off=1339  raw=00000000   value=0
+        u_use_fresnelmask              i32      off=1348  raw=01000000   value=1
+        u_fresnelmask_anti             i32      off=1357  raw=01000000   value=1
+        u_dissolve_amount              i32      off=1366  raw=00000000   value=0
+        u_dissolvetex_tilling_x        i32      off=1375  raw=03000000   value=3
+        u_dissolvetex_tilling_y        f32      off=1384  raw=0000003f   value=0.5
+        u_emissivecolor                f32[4]   off=1393  raw=0400000055 value=[0.0824, 0.0471, 0.4, 1.0]
+        u_emissive_power               f32      off=1418  raw=0000c03f   value=1.5
+        u_emissive_highlight_intensity i32      off=1427  raw=05000000   value=5
+        u_mask01_tilling_y             i32      off=1436  raw=ffffffff   value=-1
+        u_mask01_offset_y              f32      off=1445  raw=cdcccc3d   value=0.1
+
+## 4) 贴图槽（槽 tag → 声明路径；按组序 ↔ 路径条目序）
+   Tex0                 effect\textures\veins\tex_noise13_yb52.tga
+   t_distort_tex1       effect\textures\veins\tex_veins_noise_tp60_02.tga
+   t_dissolve_tex       effect\textures\veins\noise_03_yh_djs.tga
+   t_mask01             effect\textures\alpha\alpha_01_ty_djs.tga
+
+## 5) 宏（06 str + 12 u8）
+   off=1168  USE_MAIN_DISTORT               enable=1
+   off=1193  USE_MASK01                     enable=1
+   off=1212  USE_FRESNEL                    enable=1
+   off=1232  USE_DISSOLVE                   enable=1
+
+## 6) shader / technique / 材质名
+   shader    = shader\uber_fx_common.fx::TShader
+   technique = Effect
+   material_name(s) = ['', 'Cylinder001']
+
+## 7) 全文件 hex（每行 32 B，带偏移）
+   0000  c1 59 41 0d 7e 06 00 00 00 00 00 00 26 41 6e 69 6d 50 61 72 61 6d 00 4c 69 67 68 74 69 6e 67 4d
+   0032  61 74 65 72 69 61 6c 00 4d 61 63 72 6f 30 00 4d 61 63 72 6f 31 00 4d 61 63 72 6f 32 00 4d 61 63
+   0064  72 6f 33 00 4d 61 74 65 72 69 61 6c 00 4d 61 74 65 72 69 61 6c 47 72 6f 75 70 00 4d 61 74 65 72
+   0096  69 61 6c 5f 30 00 4e 65 6f 58 00 50 61 72 61 6d 54 61 62 6c 65 00 52 65 6e 64 65 72 53 74 61 74
+   0128  65 73 00 53 68 61 64 65 72 4d 61 63 72 6f 00 54 65 63 68 6e 69 71 75 65 00 54 65 78 30 00 54 72
+   0160  61 6e 73 70 61 72 65 6e 74 4d 6f 64 65 00 74 5f 64 69 73 73 6f 6c 76 65 5f 74 65 78 00 74 5f 64
+   0192  69 73 74 6f 72 74 5f 74 65 78 31 00 74 5f 6d 61 73 6b 30 31 00 75 5f 64 69 73 73 6f 6c 76 65 5f
+   0224  61 6d 6f 75 6e 74 00 75 5f 64 69 73 73 6f 6c 76 65 74 65 78 5f 74 69 6c 6c 69 6e 67 5f 78 00 75
+   0256  5f 64 69 73 73 6f 6c 76 65 74 65 78 5f 74 69 6c 6c 69 6e 67 5f 79 00 75 5f 64 69 73 74 6f 72 74
+   0288  30 31 5f 73 70 65 65 64 5f 79 00 75 5f 64 69 73 74 6f 72 74 30 31 5f 74 69 6c 6c 69 6e 67 5f 78
+   0320  00 75 5f 64 69 73 74 6f 72 74 30 31 5f 74 69 6c 6c 69 6e 67 5f 79 00 75 5f 64 69 73 74 6f 72 74
+   0352  31 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 65 6d 69 73 73 69 76 65 5f 68 69 67 68 6c 69 67 68 74
+   0384  5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 65 6d 69 73 73 69 76 65 5f 70 6f 77 65 72 00 75 5f 65 6d
+   0416  69 73 73 69 76 65 63 6f 6c 6f 72 00 75 5f 66 72 65 73 6e 65 6c 63 6f 6c 6f 72 00 75 5f 66 72 65
+   0448  73 6e 65 6c 63 6f 6c 6f 72 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 66 72 65 73 6e 65 6c 6d 61 73
+   0480  6b 5f 61 6e 74 69 00 75 5f 6d 61 69 6e 74 65 78 5f 73 70 65 65 64 5f 79 00 75 5f 6d 61 69 6e 74
+   0512  65 78 5f 74 69 6c 6c 69 6e 67 5f 78 00 75 5f 6d 61 69 6e 74 65 78 5f 74 69 6c 6c 69 6e 67 5f 79
+   0544  00 75 5f 6d 61 73 6b 30 31 5f 6f 66 66 73 65 74 5f 79 00 75 5f 6d 61 73 6b 30 31 5f 74 69 6c 6c
+   0576  69 6e 67 5f 79 00 75 5f 75 73 65 5f 66 72 65 73 6e 65 6c 6d 61 73 6b 00 15 41 6c 70 68 61 52 65
+   0608  66 00 41 6c 70 68 61 56 61 6c 00 41 6d 62 69 65 6e 74 00 43 75 6c 6c 42 61 63 6b 00 44 69 66 66
+   0640  75 73 65 00 45 6d 69 73 73 69 76 65 00 4b 65 79 00 4c 69 67 68 74 69 6e 67 45 6e 61 62 6c 65 00
+   0672  4d 61 74 65 72 69 61 6c 43 6f 75 6e 74 00 4e 61 6d 65 00 50 6f 77 65 72 00 53 70 65 63 75 6c 61
+   0704  72 00 53 70 65 63 75 6c 61 72 45 6e 61 62 6c 65 00 53 70 65 65 64 00 54 65 63 68 4e 61 6d 65 00
+   0736  54 72 61 6e 73 70 61 72 65 6e 74 4d 6f 64 65 00 54 79 70 65 00 56 43 6f 6c 6f 72 45 6e 61 62 6c
+   0768  65 00 56 61 6c 00 56 61 6c 75 65 00 56 65 72 73 69 6f 6e 00 5d 03 00 00 00 00 00 00 26 09 01 07
+   0800  01 08 01 06 06 00 00 0c 04 0d 00 0a 17 01 00 0b 01 02 00 03 00 04 00 05 00 21 00 22 00 20 00 19
+   0832  00 17 00 18 00 16 00 1d 00 1e 00 25 00 1f 00 13 00 14 00 15 00 1c 00 1b 00 1a 00 24 00 23 00 0e
+   0864  00 11 00 10 00 12 00 0f 00 00 01 00 03 08 02 01 00 00 00 09 01 00 14 06 04 00 00 00 00 00 00 00
+   0896  00 00 00 00 00 00 80 3f 00 00 40 40 01 00 01 10 02 00 00 00 00 01 00 02 09 01 43 79 6c 69 6e 64
+   0928  65 72 30 30 31 00 14 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 40 40 01 00 01 0d
+   0960  02 01 00 00 00 01 00 00 01 00 02 0e 01 73 68 61 64 65 72 5c 75 62 65 72 5f 66 78 5f 63 6f 6d 6d
+   0992  6f 6e 2e 66 78 3a 3a 54 53 68 61 64 65 72 00 10 01 45 66 66 65 63 74 00 01 00 00 01 00 05 02 06
+   1024  04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 06 04 00 00 00 00 00 00 00 00 00
+   1056  00 00 00 00 00 00 00 00 00 00 05 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   1088  0a 02 00 00 00 00 0b 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 06 00
+   1120  02 00 00 00 00 01 02 ff 00 00 00 03 01 46 61 6c 73 65 00 07 01 46 61 6c 73 65 00 0c 01 46 61 6c
+   1152  73 65 00 11 01 46 61 6c 73 65 00 01 00 02 06 01 55 53 45 5f 4d 41 49 4e 5f 44 49 53 54 4f 52 54
+   1184  00 12 03 01 01 00 02 06 01 55 53 45 5f 4d 41 53 4b 30 31 00 12 03 01 01 00 02 06 01 55 53 45 5f
+   1216  46 52 45 53 4e 45 4c 00 12 03 01 01 00 02 06 01 55 53 45 5f 44 49 53 53 4f 4c 56 45 00 12 02 01
+   1248  00 00 00 01 00 01 13 02 02 00 00 00 01 00 01 13 05 00 00 00 3f 01 00 01 13 05 9a 99 99 be 01 00
+   1280  01 13 05 cd cc cc 3d 01 00 01 13 02 05 00 00 00 01 00 01 13 05 00 00 00 3f 01 00 01 13 02 ff ff
+   1312  ff ff 01 00 01 13 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 01 00 01 13 02
+   1344  00 00 00 00 01 00 01 13 02 01 00 00 00 01 00 01 13 02 01 00 00 00 01 00 01 13 02 00 00 00 00 01
+   1376  00 01 13 02 03 00 00 00 01 00 01 13 05 00 00 00 3f 01 00 01 13 06 04 00 00 00 55 c1 a8 3d ee eb
+   1408  40 3d cd cc cc 3e 00 00 80 3f 01 00 01 13 05 00 00 c0 3f 01 00 01 13 02 05 00 00 00 01 00 01 13
+   1440  02 ff ff ff ff 01 00 01 13 05 cd cc cc 3d 01 00 01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72
+   1472  65 73 5c 76 65 69 6e 73 5c 74 65 78 5f 6e 6f 69 73 65 31 33 5f 79 62 35 32 2e 74 67 61 00 01 00
+   1504  01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72 65 73 5c 76 65 69 6e 73 5c 74 65 78 5f 76 65 69
+   1536  6e 73 5f 6e 6f 69 73 65 5f 74 70 36 30 5f 30 32 2e 74 67 61 00 01 00 01 13 01 65 66 66 65 63 74
+   1568  5c 74 65 78 74 75 72 65 73 5c 76 65 69 6e 73 5c 6e 6f 69 73 65 5f 30 33 5f 79 68 5f 64 6a 73 2e
+   1600  74 67 61 00 01 00 01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72 65 73 5c 61 6c 70 68 61 5c 61
+   1632  6c 70 68 61 5f 30 31 5f 74 79 5f 64 6a 73 2e 74 67 61 00 01 00 01 0f 02 02 00 00 00 01 00

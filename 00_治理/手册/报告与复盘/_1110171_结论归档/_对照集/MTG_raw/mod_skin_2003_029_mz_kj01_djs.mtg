@@ -1,0 +1,228 @@
+# MTG raw dump — mod_skin_2003_029_mz_kj01_djs.mtg
+# container=effect_01.gpk  row=192314  bytes=1838  sha16=bdd0ee5808d1bc00
+# magic=c159410d  declared_len(u32@4)=1838
+# tag_table: 19 components + 25 params + 21 renderstate-fields; value region=[858,1419) blocks=16 stray=98B
+
+## 1) tag 表（名字 + 偏移）
+   组件   off=12    AnimParam
+   组件   off=23    LightingMaterial
+   组件   off=40    Macro0
+   组件   off=47    Macro1
+   组件   off=54    Macro2
+   组件   off=61    Macro3
+   组件   off=68    Macro4
+   组件   off=75    Macro5
+   组件   off=82    Macro6
+   组件   off=89    Material
+   组件   off=98    MaterialGroup
+   组件   off=112   Material_0
+   组件   off=123   NeoX
+   组件   off=128   ParamTable
+   组件   off=139   RenderStates
+   组件   off=152   ShaderMacro
+   组件   off=164   Technique
+   组件   off=174   Tex0
+   组件   off=179   TransparentMode
+   参数   off=195   t_dissolve_tex
+   参数   off=210   t_mask01
+   参数   off=219   t_mask02
+   参数   off=228   u_addcolor_intensity
+   参数   off=249   u_addcolortex_speed_x
+   参数   off=271   u_addcolortex_tilling_y
+   参数   off=295   u_dissolve_amount
+   参数   off=313   u_dissolve_edgecolor
+   参数   off=334   u_dissolve_edgewidth
+   参数   off=355   u_dissolve_smooth
+   参数   off=373   u_dissolvetex_speed_y
+   参数   off=395   u_dissolvetex_tilling_x
+   参数   off=419   u_emissive_desaturate
+   参数   off=441   u_emissive_highlight_intensity
+   参数   off=472   u_maintex_offset_x
+   参数   off=491   u_maintex_offset_y
+   参数   off=510   u_maintex_speed_y
+   参数   off=528   u_maintex_tilling_x
+   参数   off=548   u_mask01_rotation
+   参数   off=566   u_mask01_tilling_x
+   参数   off=585   u_mask02_speed_y
+   参数   off=602   u_mask02_tilling_x
+   参数   off=621   u_mask02_tilling_y
+   参数   off=640   u_mask_intensity
+   参数   off=657   u_mask_power
+   状态字段 off=671   AlphaRef
+   状态字段 off=680   AlphaVal
+   状态字段 off=689   Ambient
+   状态字段 off=697   CullBack
+   状态字段 off=706   Diffuse
+   状态字段 off=714   Emissive
+   状态字段 off=723   Key
+   状态字段 off=727   LightingEnable
+   状态字段 off=742   MaterialCount
+   状态字段 off=756   Name
+   状态字段 off=761   Power
+   状态字段 off=767   Specular
+   状态字段 off=776   SpecularEnable
+   状态字段 off=791   Speed
+   状态字段 off=797   TechName
+   状态字段 off=806   TransparentMode
+   状态字段 off=822   Type
+   状态字段 off=827   VColorEnable
+   状态字段 off=840   Val
+   状态字段 off=844   Value
+   状态字段 off=850   Version
+
+## 2) 值区块结构 <01 00><count><record…>（record = <id><type><payload>）
+   block0   off=956   count=3   消费到 990  
+        off=961   id=0x08  i32       value=1                                          raw=01000000
+        off=967   id=0x09  str       value=""                                         raw=
+        off=974   id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block1   off=990   count=1   消费到 999  
+        off=995   id=0x10  i32       value=0                                          raw=00000000
+   block2   off=999   count=2   消费到 1038 
+        off=1004  id=0x09  str       value="Material #5"                              raw=4d6174657269616c202335
+        off=1022  id=0x14  f32[4]    value=[0.0, 0.0, 1.0, 3.0]                       raw=00000000000000000000803f00004040
+   block3   off=1038  count=1   消费到 1047 
+        off=1043  id=0x0d  i32       value=1                                          raw=01000000
+   block4   off=1047  count=0   消费到 1050 
+   block5   off=1050  count=2   消费到 1098 
+        off=1055  id=0x0e  str       value="shader\\uber_fx_common.fx::TShader"       raw=7368616465725c756265725f66785f636f6d6d6f6e2e6678
+        off=1091  id=0x10  str       value="Effect"                                   raw=456666656374
+   block6   off=1098  count=0   消费到 1101 
+   block7   off=1101  count=5   消费到 1198 
+        off=1110  id=0x02  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1132  id=0x04  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1154  id=0x05  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+        off=1172  id=0x0a  i32       value=0                                          raw=00000000
+        off=1182  id=0x0b  f32[4]    value=[0.0, 0.0, 0.0, 0.0]                       raw=00000000000000000000000000000000
+   block8   off=1198  count=6   消费到 1245 
+        off=1203  id=0x00  i32       value=0                                          raw=00000000
+        off=1209  id=0x01  i32       value=255                                        raw=ff000000
+        off=1215  id=0x03  str       value="False"                                    raw=46616c7365
+        off=1223  id=0x07  str       value="False"                                    raw=46616c7365
+        off=1231  id=0x0c  str       value="False"                                    raw=46616c7365
+        off=1239  id=0x11  str       value="False"                                    raw=46616c7365
+   block9   off=1245  count=2   消费到 1271 
+        off=1250  id=0x06  str       value="USE_MAIN_POLAR_UV"                        raw=5553455f4d41494e5f504f4c41525f5556
+        off=1270  id=0x12  u8        value=1                                          raw=01
+   block10  off=1271  count=2   消费到 1290 
+        off=1276  id=0x06  str       value="USE_MASK01"                               raw=5553455f4d41534b3031
+        off=1289  id=0x12  u8        value=1                                          raw=01
+   block11  off=1290  count=2   消费到 1318 
+        off=1295  id=0x06  str       value="USE_MASK01_POLAR_UV"                      raw=5553455f4d41534b30315f504f4c41525f5556
+        off=1317  id=0x12  u8        value=1                                          raw=01
+   block12  off=1318  count=2   消费到 1337 
+        off=1323  id=0x06  str       value="USE_MASK02"                               raw=5553455f4d41534b3032
+        off=1336  id=0x12  u8        value=1                                          raw=01
+   block13  off=1337  count=2   消费到 1365 
+        off=1342  id=0x06  str       value="USE_MASK02_POLAR_UV"                      raw=5553455f4d41534b30325f504f4c41525f5556
+        off=1364  id=0x12  u8        value=1                                          raw=01
+   block14  off=1365  count=2   消费到 1389 
+        off=1370  id=0x06  str       value="USE_DISSOLVE"                             raw=5553455f444953534f4c5645
+        off=1385  id=0x12  i32       value=1                                          raw=01000000
+   block15  off=1389  count=2   消费到 1419 
+        off=1394  id=0x06  str       value="USE_DISSOLVE_POLAR_UV"                    raw=5553455f444953534f4c56455f504f4c41525f5556
+        off=1418  id=0x12  u8        value=1                                          raw=01
+
+## 3) ParamTable（参数名 → 原值，来自 01 00 01 13 条目 + 槽组配对）
+   材料组 1 ↔ 数值块 0 评分 35
+        u_maintex_tilling_x            i32      off=1419  raw=0a000000   value=10
+        u_maintex_offset_x             f32      off=1428  raw=0000803e   value=0.25
+        u_maintex_offset_y             f32      off=1437  raw=cdcccc3d   value=0.1
+        u_maintex_speed_y              i32      off=1446  raw=ffffffff   value=-1
+        u_dissolve_amount              f32      off=1455  raw=ae47213f   value=0.63
+        u_dissolve_edgewidth           i32      off=1464  raw=00000000   value=0
+        u_dissolve_smooth              i32      off=1473  raw=00000000   value=0
+        u_dissolve_edgecolor           f32[4]   off=1482  raw=0400000000 value=[0.0, 0.0, 0.0, 1.0]
+        u_dissolvetex_tilling_x        i32      off=1507  raw=0a000000   value=10
+        u_dissolvetex_speed_y          f32      off=1516  raw=000000bf   value=-0.5
+        u_addcolor_intensity           i32      off=1525  raw=05000000   value=5
+        u_addcolortex_tilling_y        i32      off=1534  raw=02000000   value=2
+        u_addcolortex_speed_x          i32      off=1543  raw=01000000   value=1
+        u_emissive_highlight_intensity i32      off=1552  raw=3c000000   value=60
+        u_mask_intensity               i32      off=1561  raw=04000000   value=4
+        u_mask_power                   i32      off=1570  raw=02000000   value=2
+        u_emissive_desaturate          i32      off=1579  raw=01000000   value=1
+        u_mask01_tilling_x             i32      off=1588  raw=05000000   value=5
+        u_mask01_rotation              i32      off=1597  raw=5a000000   value=90
+        u_mask02_tilling_x             i32      off=1606  raw=05000000   value=5
+        u_mask02_tilling_y             i32      off=1615  raw=02000000   value=2
+        u_mask02_speed_y               f32      off=1624  raw=cdcc4cbe   value=-0.2
+
+## 4) 贴图槽（槽 tag → 声明路径；按组序 ↔ 路径条目序）
+   Tex0                 effect\textures\veins\noise_95_zy_djs_02.tga
+   t_dissolve_tex       effect\textures\veins\noise_95_zy_djs_02.tga
+   t_mask01             effect\textures\trail\trail04_yc.tga
+   t_mask02             effect\textures\veins\tex_breath_noise_tex.tga
+
+## 5) 宏（06 str + 12 u8）
+   off=1250  USE_MAIN_POLAR_UV              enable=1
+   off=1276  USE_MASK01                     enable=1
+   off=1295  USE_MASK01_POLAR_UV            enable=1
+   off=1323  USE_MASK02                     enable=1
+   off=1342  USE_MASK02_POLAR_UV            enable=1
+   off=1370  USE_DISSOLVE                   enable=1
+   off=1394  USE_DISSOLVE_POLAR_UV          enable=1
+
+## 6) shader / technique / 材质名
+   shader    = shader\uber_fx_common.fx::TShader
+   technique = Effect
+   material_name(s) = ['', 'Material #5']
+
+## 7) 全文件 hex（每行 32 B，带偏移）
+   0000  c1 59 41 0d 2e 07 00 00 00 00 00 00 2c 41 6e 69 6d 50 61 72 61 6d 00 4c 69 67 68 74 69 6e 67 4d
+   0032  61 74 65 72 69 61 6c 00 4d 61 63 72 6f 30 00 4d 61 63 72 6f 31 00 4d 61 63 72 6f 32 00 4d 61 63
+   0064  72 6f 33 00 4d 61 63 72 6f 34 00 4d 61 63 72 6f 35 00 4d 61 63 72 6f 36 00 4d 61 74 65 72 69 61
+   0096  6c 00 4d 61 74 65 72 69 61 6c 47 72 6f 75 70 00 4d 61 74 65 72 69 61 6c 5f 30 00 4e 65 6f 58 00
+   0128  50 61 72 61 6d 54 61 62 6c 65 00 52 65 6e 64 65 72 53 74 61 74 65 73 00 53 68 61 64 65 72 4d 61
+   0160  63 72 6f 00 54 65 63 68 6e 69 71 75 65 00 54 65 78 30 00 54 72 61 6e 73 70 61 72 65 6e 74 4d 6f
+   0192  64 65 00 74 5f 64 69 73 73 6f 6c 76 65 5f 74 65 78 00 74 5f 6d 61 73 6b 30 31 00 74 5f 6d 61 73
+   0224  6b 30 32 00 75 5f 61 64 64 63 6f 6c 6f 72 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 61 64 64 63 6f
+   0256  6c 6f 72 74 65 78 5f 73 70 65 65 64 5f 78 00 75 5f 61 64 64 63 6f 6c 6f 72 74 65 78 5f 74 69 6c
+   0288  6c 69 6e 67 5f 79 00 75 5f 64 69 73 73 6f 6c 76 65 5f 61 6d 6f 75 6e 74 00 75 5f 64 69 73 73 6f
+   0320  6c 76 65 5f 65 64 67 65 63 6f 6c 6f 72 00 75 5f 64 69 73 73 6f 6c 76 65 5f 65 64 67 65 77 69 64
+   0352  74 68 00 75 5f 64 69 73 73 6f 6c 76 65 5f 73 6d 6f 6f 74 68 00 75 5f 64 69 73 73 6f 6c 76 65 74
+   0384  65 78 5f 73 70 65 65 64 5f 79 00 75 5f 64 69 73 73 6f 6c 76 65 74 65 78 5f 74 69 6c 6c 69 6e 67
+   0416  5f 78 00 75 5f 65 6d 69 73 73 69 76 65 5f 64 65 73 61 74 75 72 61 74 65 00 75 5f 65 6d 69 73 73
+   0448  69 76 65 5f 68 69 67 68 6c 69 67 68 74 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 6d 61 69 6e 74 65
+   0480  78 5f 6f 66 66 73 65 74 5f 78 00 75 5f 6d 61 69 6e 74 65 78 5f 6f 66 66 73 65 74 5f 79 00 75 5f
+   0512  6d 61 69 6e 74 65 78 5f 73 70 65 65 64 5f 79 00 75 5f 6d 61 69 6e 74 65 78 5f 74 69 6c 6c 69 6e
+   0544  67 5f 78 00 75 5f 6d 61 73 6b 30 31 5f 72 6f 74 61 74 69 6f 6e 00 75 5f 6d 61 73 6b 30 31 5f 74
+   0576  69 6c 6c 69 6e 67 5f 78 00 75 5f 6d 61 73 6b 30 32 5f 73 70 65 65 64 5f 79 00 75 5f 6d 61 73 6b
+   0608  30 32 5f 74 69 6c 6c 69 6e 67 5f 78 00 75 5f 6d 61 73 6b 30 32 5f 74 69 6c 6c 69 6e 67 5f 79 00
+   0640  75 5f 6d 61 73 6b 5f 69 6e 74 65 6e 73 69 74 79 00 75 5f 6d 61 73 6b 5f 70 6f 77 65 72 00 15 41
+   0672  6c 70 68 61 52 65 66 00 41 6c 70 68 61 56 61 6c 00 41 6d 62 69 65 6e 74 00 43 75 6c 6c 42 61 63
+   0704  6b 00 44 69 66 66 75 73 65 00 45 6d 69 73 73 69 76 65 00 4b 65 79 00 4c 69 67 68 74 69 6e 67 45
+   0736  6e 61 62 6c 65 00 4d 61 74 65 72 69 61 6c 43 6f 75 6e 74 00 4e 61 6d 65 00 50 6f 77 65 72 00 53
+   0768  70 65 63 75 6c 61 72 00 53 70 65 63 75 6c 61 72 45 6e 61 62 6c 65 00 53 70 65 65 64 00 54 65 63
+   0800  68 4e 61 6d 65 00 54 72 61 6e 73 70 61 72 65 6e 74 4d 6f 64 65 00 54 79 70 65 00 56 43 6f 6c 6f
+   0832  72 45 6e 61 62 6c 65 00 56 61 6c 00 56 61 6c 75 65 00 56 65 72 73 69 6f 6e 00 af 03 00 00 00 00
+   0864  00 00 2c 0c 01 0a 01 0b 01 09 06 00 00 0f 07 10 00 0d 1a 01 00 0e 01 02 00 03 00 04 00 05 00 06
+   0896  00 07 00 08 00 24 00 21 00 22 00 23 00 19 00 1b 00 1c 00 1a 00 1e 00 1d 00 16 00 18 00 17 00 20
+   0928  00 2a 00 2b 00 1f 00 26 00 25 00 28 00 29 00 27 00 11 00 13 00 14 00 15 00 12 00 00 01 00 03 08
+   0960  02 01 00 00 00 09 01 00 14 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00 40 40 01 00
+   0992  01 10 02 00 00 00 00 01 00 02 09 01 4d 61 74 65 72 69 61 6c 20 23 35 00 14 06 04 00 00 00 00 00
+   1024  00 00 00 00 00 00 00 00 80 3f 00 00 40 40 01 00 01 0d 02 01 00 00 00 01 00 00 01 00 02 0e 01 73
+   1056  68 61 64 65 72 5c 75 62 65 72 5f 66 78 5f 63 6f 6d 6d 6f 6e 2e 66 78 3a 3a 54 53 68 61 64 65 72
+   1088  00 10 01 45 66 66 65 63 74 00 01 00 00 01 00 05 02 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00
+   1120  00 00 00 00 00 00 04 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05 06 04 00
+   1152  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0a 02 00 00 00 00 0b 06 04 00 00 00 00 00
+   1184  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 06 00 02 00 00 00 00 01 02 ff 00 00 00 03 01 46
+   1216  61 6c 73 65 00 07 01 46 61 6c 73 65 00 0c 01 46 61 6c 73 65 00 11 01 46 61 6c 73 65 00 01 00 02
+   1248  06 01 55 53 45 5f 4d 41 49 4e 5f 50 4f 4c 41 52 5f 55 56 00 12 03 01 01 00 02 06 01 55 53 45 5f
+   1280  4d 41 53 4b 30 31 00 12 03 01 01 00 02 06 01 55 53 45 5f 4d 41 53 4b 30 31 5f 50 4f 4c 41 52 5f
+   1312  55 56 00 12 03 01 01 00 02 06 01 55 53 45 5f 4d 41 53 4b 30 32 00 12 03 01 01 00 02 06 01 55 53
+   1344  45 5f 4d 41 53 4b 30 32 5f 50 4f 4c 41 52 5f 55 56 00 12 03 01 01 00 02 06 01 55 53 45 5f 44 49
+   1376  53 53 4f 4c 56 45 00 12 02 01 00 00 00 01 00 02 06 01 55 53 45 5f 44 49 53 53 4f 4c 56 45 5f 50
+   1408  4f 4c 41 52 5f 55 56 00 12 03 01 01 00 01 13 02 0a 00 00 00 01 00 01 13 05 00 00 80 3e 01 00 01
+   1440  13 05 cd cc cc 3d 01 00 01 13 02 ff ff ff ff 01 00 01 13 05 ae 47 21 3f 01 00 01 13 02 00 00 00
+   1472  00 01 00 01 13 02 00 00 00 00 01 00 01 13 06 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   1504  00 80 3f 01 00 01 13 02 0a 00 00 00 01 00 01 13 05 00 00 00 bf 01 00 01 13 02 05 00 00 00 01 00
+   1536  01 13 02 02 00 00 00 01 00 01 13 02 01 00 00 00 01 00 01 13 02 3c 00 00 00 01 00 01 13 02 04 00
+   1568  00 00 01 00 01 13 02 02 00 00 00 01 00 01 13 02 01 00 00 00 01 00 01 13 02 05 00 00 00 01 00 01
+   1600  13 02 5a 00 00 00 01 00 01 13 02 05 00 00 00 01 00 01 13 02 02 00 00 00 01 00 01 13 05 cd cc 4c
+   1632  be 01 00 01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72 65 73 5c 76 65 69 6e 73 5c 6e 6f 69 73
+   1664  65 5f 39 35 5f 7a 79 5f 64 6a 73 5f 30 32 2e 74 67 61 00 01 00 01 13 01 65 66 66 65 63 74 5c 74
+   1696  65 78 74 75 72 65 73 5c 76 65 69 6e 73 5c 6e 6f 69 73 65 5f 39 35 5f 7a 79 5f 64 6a 73 5f 30 32
+   1728  2e 74 67 61 00 01 00 01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75 72 65 73 5c 74 72 61 69 6c 5c
+   1760  74 72 61 69 6c 30 34 5f 79 63 2e 74 67 61 00 01 00 01 13 01 65 66 66 65 63 74 5c 74 65 78 74 75
+   1792  72 65 73 5c 76 65 69 6e 73 5c 74 65 78 5f 62 72 65 61 74 68 5f 6e 6f 69 73 65 5f 74 65 78 2e 74
+   1824  67 61 00 01 00 01 0f 02 05 00 00 00 01 00

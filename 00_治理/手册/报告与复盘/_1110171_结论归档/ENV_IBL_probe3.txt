@@ -1,0 +1,52 @@
+#### 1110171 dual(001265) (c159_pair_v4_001265.json)
+#### 多文件回归（含 001265/001223/003996） (c159_pair_v4_regress.json)
+  node[0] file=001265.c159 blocks=[{"index": 0, "off": 3745, "n": 14}, {"index": 1, "off": 4560, "n": 14}, {"index": 2, "off": 5375, "n": 13}, {"index": 3, "off": 6509, "n": 14}, {"index": 4, "off": 7262, "n": 15}]
+    prim0  skin_1003_012_0    block_off=None   n_params=0   hot={}
+    prim1  skin_1003_012_1    block_off=3745   n_params=14  hot={}
+    prim2  skin_1003_012_2    block_off=4560   n_params=14  hot={}
+    prim3  skin_1003_012_3    block_off=5375   n_params=13  hot={}
+    prim4  skin_1003_010_0    block_off=None   n_params=0   hot={}
+    prim5  skin_1003_010_1    block_off=6509   n_params=14  hot={}
+    prim6  skin_1003_010_2    block_off=7262   n_params=15  hot={}
+  node[1] file=001223.c159 blocks=[{"index": 0, "off": 2430, "n": 14}, {"index": 1, "off": 3183, "n": 15}]
+    prim0  skin_1003_010_0    block_off=None   n_params=0   hot={}
+    prim1  skin_1003_010_1    block_off=2430   n_params=14  hot={}
+    prim2  skin_1003_010_2    block_off=3183   n_params=15  hot={}
+  node[2] file=003996.c159 blocks=[{"index": 0, "off": 2393, "n": 19}, {"index": 1, "off": 3221, "n": 18}]
+    prim0  skim_2003_029_0    block_off=None   n_params=0   hot={}
+    prim1  skim_2003_029_1    block_off=2393   n_params=19  hot={"u_cube_brightness": 0.71, "u_rotate_angle": 3.09}
+    prim2  skim_2003_029_2    block_off=3221   n_params=18  hot={"u_cube_brightness": 2.74, "u_rotate_angle": 2.6}
+
+#### 原始 c159 扫描（参数名 / 目标 float32 出现位置）
+  001265.c159 bytes=7860
+     u_rotate_angle               []
+     u_cube_brightness            [518]
+     u_lightmap_factor            []
+     u_env_day2night_exposure     []
+     float_le_3.09                []
+     float_le_0.71                []
+     float_le_2.6                 []
+     float_le_2.74                []
+  001223.c159 bytes=3781
+     u_rotate_angle               []
+     u_cube_brightness            [474]
+     u_lightmap_factor            []
+     u_env_day2night_exposure     []
+     float_le_3.09                []
+     float_le_0.71                []
+     float_le_2.6                 []
+     float_le_2.74                []
+  003996.c159 bytes=3872
+     u_rotate_angle               [653]
+     u_cube_brightness            [473]
+     u_lightmap_factor            []
+     u_env_day2night_exposure     []
+     float_le_3.09                [2434]
+     float_le_0.71                [2443]
+     float_le_2.6                 [3253]
+     float_le_2.74                [3262]
+
+#### 1110177 节点全字段（键名）: ['file', 'counts', 'method', 'confidence', 'reason', 'groups', 'blocks', 'primitives', 'label', 'expect', 'checks']
+  prim0 mtl=skim_2003_029_0 block_off=None keys=[]
+  prim1 mtl=skim_2003_029_1 block_off=2393 keys=['u_detail_tilling', 'u_detail_intensity', 'u_emissive_strength', 'u_emissive_fresnel', 'u_rotate_angle', 'u_cube_brightness', 'u_base_color', 'u_crystal_color', 'u_base_metallic', 'u_crystal_metallic', 'u_crystal_specular', 'u_caustic_tilling', 'u_caustic_depth', 'u_caustic_brightness', 'u_refraction_rotation', 'u_refraction_contrast', 'u_refraction_brightness', 'u_refraction_color', 'u_subsurface_color']
+  prim2 mtl=skim_2003_029_2 block_off=3221 keys=['u_detail_tilling', 'u_detail_intensity', 'u_emissive_strength', 'u_rotate_angle', 'u_cube_brightness', 'u_base_color', 'u_crystal_color', 'u_crystal_metallic', 'u_base_specular', 'u_crystal_specular', 'u_caustic_tilling', 'u_caustic_depth', 'u_caustic_brightness', 'u_refraction_rotation', 'u_refraction_contrast', 'u_refraction_brightness', 'u_refraction_color', 'u_subsurface_color']

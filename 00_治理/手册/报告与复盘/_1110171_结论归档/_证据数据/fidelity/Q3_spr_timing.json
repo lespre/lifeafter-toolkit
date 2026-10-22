@@ -1,0 +1,2546 @@
+{
+ "spr_headers": {
+  "lightning07_cs.spr": {
+   "mode": 1,
+   "sheet": [
+    512,
+    512
+   ],
+   "n_frames": 16,
+   "param": 10000,
+   "rects": [
+    [
+     0,
+     0,
+     128,
+     128
+    ],
+    [
+     128,
+     0,
+     256,
+     128
+    ],
+    [
+     256,
+     0,
+     384,
+     128
+    ],
+    [
+     384,
+     0,
+     512,
+     128
+    ],
+    [
+     0,
+     128,
+     128,
+     256
+    ]
+   ],
+   "bytes": 582
+  },
+  "lightning_01.spr": {
+   "mode": 1,
+   "sheet": [
+    512,
+    512
+   ],
+   "n_frames": 16,
+   "param": 10000,
+   "rects": [
+    [
+     0,
+     0,
+     128,
+     128
+    ],
+    [
+     128,
+     0,
+     256,
+     128
+    ],
+    [
+     256,
+     0,
+     384,
+     128
+    ],
+    [
+     384,
+     0,
+     512,
+     128
+    ],
+    [
+     0,
+     128,
+     128,
+     256
+    ]
+   ],
+   "bytes": 550
+  },
+  "shandian_05_yh_djs.spr": {
+   "mode": 0,
+   "sheet": [
+    256,
+    256
+   ],
+   "n_frames": 4,
+   "param": 1000,
+   "rects": [
+    [
+     0,
+     0,
+     63,
+     255
+    ],
+    [
+     64,
+     0,
+     127,
+     255
+    ],
+    [
+     128,
+     0,
+     191,
+     255
+    ],
+    [
+     192,
+     0,
+     255,
+     255
+    ]
+   ],
+   "bytes": 168
+  },
+  "smoke25.spr": {
+   "mode": 1,
+   "sheet": [
+    512,
+    512
+   ],
+   "n_frames": 64,
+   "param": 10000,
+   "rects": [
+    [
+     0,
+     0,
+     64,
+     64
+    ],
+    [
+     64,
+     0,
+     128,
+     64
+    ],
+    [
+     128,
+     0,
+     192,
+     64
+    ],
+    [
+     192,
+     0,
+     256,
+     64
+    ],
+    [
+     256,
+     0,
+     320,
+     64
+    ],
+    [
+     320,
+     0,
+     384,
+     64
+    ],
+    [
+     384,
+     0,
+     448,
+     64
+    ]
+   ],
+   "bytes": 1814
+  },
+  "tex_special_fangkuai_tp52.spr": {
+   "mode": 0,
+   "sheet": [
+    256,
+    256
+   ],
+   "n_frames": 4,
+   "param": 1000,
+   "rects": [
+    [
+     0,
+     0,
+     127,
+     127
+    ],
+    [
+     128,
+     0,
+     255,
+     127
+    ],
+    [
+     0,
+     128,
+     127,
+     255
+    ],
+    [
+     128,
+     128,
+     255,
+     255
+    ]
+   ],
+   "bytes": 200
+  },
+  "tex_glow_tp07_02.spr": {
+   "mode": 0,
+   "sheet": [
+    256,
+    256
+   ],
+   "n_frames": 4,
+   "param": 1000,
+   "rects": [
+    [
+     0,
+     0,
+     127,
+     127
+    ],
+    [
+     128,
+     0,
+     255,
+     127
+    ],
+    [
+     0,
+     128,
+     127,
+     255
+    ],
+    [
+     128,
+     128,
+     255,
+     255
+    ]
+   ],
+   "bytes": 164
+  }
+ },
+ "sfx_nodes": {
+  "1110177": [
+   {
+    "Name": "L_g_爆点",
+    "Texture": "effect\\textures\\glow\\tex_glow_ray_x10_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "5",
+    "TrackType": "4",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "6.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_g_glow",
+    "Texture": "effect\\textures\\glow\\glow25.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "8",
+    "TrackType": "4",
+    "FxLifeSpan": "0.250",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "8.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.300",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "L_g_爆点_2",
+    "Texture": "effect\\textures\\glow\\xing_01_yh_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "8",
+    "TrackType": "4",
+    "FxLifeSpan": "0.350",
+    "FxStartTime": "0.050",
+    "DecalColorName": "",
+    "Radius": "5.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.400",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_科技01",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.600",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_g_暗底",
+    "Texture": "effect\\textures\\glow\\tex_glow_x04_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "0.400",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "8.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "H_p_闪电",
+    "Texture": "effect\\textures\\lightning\\lightning07_cs.spr",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.048",
+    "FxStartTime": "0.060",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "7.000",
+    "MaxRadius": "12.000",
+    "MinSpriteLifespan": "0.150",
+    "MaxSpriteLifespan": "0.400",
+    "ParticlesPerSecond": "10.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_shandian_04",
+    "Texture": "effect\\textures\\lightning\\lighting_01_rzx_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.048",
+    "FxStartTime": "0.060",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "10.000",
+    "MaxRadius": "12.000",
+    "MinSpriteLifespan": "0.140",
+    "MaxSpriteLifespan": "0.350",
+    "ParticlesPerSecond": "3.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_粒子_科技",
+    "Texture": "effect\\textures\\trail\\keji_02_wh_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.048",
+    "FxStartTime": "0.060",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "10.000",
+    "MaxRadius": "12.000",
+    "MinSpriteLifespan": "0.180",
+    "MaxSpriteLifespan": "0.400",
+    "ParticlesPerSecond": "4.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "L_模型特效_01",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.268",
+    "FxStartTime": "0.060",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型纹理",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.348",
+    "FxStartTime": "0.060",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型核心电小_3",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.040",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型核心电小_4",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.400",
+    "FxStartTime": "0.060",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型核心电小_5",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.348",
+    "FxStartTime": "0.060",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_鬼火_射线_02",
+    "Texture": "effect\\textures\\glow\\tex_glow_tp07_05.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "1.100",
+    "MaxRadius": "1.300",
+    "MinSpriteLifespan": "0.250",
+    "MaxSpriteLifespan": "0.400",
+    "ParticlesPerSecond": "4.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_鬼火细线_2",
+    "Texture": "effect\\textures\\trail\\guangshu01_cjf_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.400",
+    "MaxRadius": "0.700",
+    "MinSpriteLifespan": "0.250",
+    "MaxSpriteLifespan": "0.350",
+    "ParticlesPerSecond": "4.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "L_模型_科技03",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.600",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_p_星点_02",
+    "Texture": "effect\\textures\\glow\\glow_16_yh_djs.tga",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "0.148",
+    "FxStartTime": "0.030",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "1.000",
+    "MaxRadius": "3.000",
+    "MinSpriteLifespan": "0.200",
+    "MaxSpriteLifespan": "0.600",
+    "ParticlesPerSecond": "7.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_鬼火",
+    "Texture": "effect\\textures\\glow\\tex_glow_tp61_02.tga",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.400",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.300",
+    "MaxRadius": "0.700",
+    "MinSpriteLifespan": "0.450",
+    "MaxSpriteLifespan": "0.900",
+    "ParticlesPerSecond": "4.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "L_模型火_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.500",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型红",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.700",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_m_流动_科技_1_1_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "3",
+    "FxLifeSpan": "1.498",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackRotate": {
+      "TimeLen": "20.000",
+      "CycleType": "0"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_g_glow地_1",
+    "Texture": "effect\\textures\\glow\\glow01_yc.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "2.000",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "13.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "L_g_glow地",
+    "Texture": "effect\\textures\\glow\\glow25.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "1.500",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "6.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型喇叭",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.350",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_m_流动_2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.498",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_ shandian01_1_1",
+    "Texture": "effect\\textures\\lightning\\lightning_01.spr",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "15.000",
+    "SprStartRandom": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "1",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "7",
+    "TrackType": "0",
+    "FxLifeSpan": "1.070",
+    "FxStartTime": "1.016",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.500",
+    "MaxRadius": "1.500",
+    "MinSpriteLifespan": "0.200",
+    "MaxSpriteLifespan": "0.500",
+    "ParticlesPerSecond": "5.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_鬼火_射线_02",
+    "Texture": "effect\\textures\\glow\\tex_glow_qirishijie_guangyun_hgz03_03.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "5",
+    "TrackType": "0",
+    "FxLifeSpan": "1.321",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "3.000",
+    "MaxRadius": "4.000",
+    "MinSpriteLifespan": "0.250",
+    "MaxSpriteLifespan": "0.400",
+    "ParticlesPerSecond": "6.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_g_glow_an",
+    "Texture": "effect\\textures\\glow\\glow_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "0.500",
+    "FxStartTime": "0.920",
+    "DecalColorName": "",
+    "Radius": "6.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型枪_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.700",
+    "FxStartTime": "0.920",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_鬼火_lizi_1",
+    "Texture": "effect\\textures\\glow\\dian_12.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "5",
+    "TrackType": "0",
+    "FxLifeSpan": "0.500",
+    "FxStartTime": "0.986",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.150",
+    "MaxRadius": "0.350",
+    "MinSpriteLifespan": "0.400",
+    "MaxSpriteLifespan": "0.800",
+    "ParticlesPerSecond": "5.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_lizi_闪电_01",
+    "Texture": "effect\\textures\\lightning\\shandian_05_yh_djs.spr",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "TRUE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.634",
+    "FxStartTime": "0.920",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "2.000",
+    "MaxRadius": "3.000",
+    "MinSpriteLifespan": "0.200",
+    "MaxSpriteLifespan": "0.400",
+    "ParticlesPerSecond": "3.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_p_光刺_01",
+    "Texture": "effect\\textures\\trail\\tex_trail_huo_01_zhf_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.100",
+    "FxStartTime": "1.010",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "4.500",
+    "MaxRadius": "5.000",
+    "MinSpriteLifespan": "0.120",
+    "MaxSpriteLifespan": "0.300",
+    "ParticlesPerSecond": "3.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_p_光刺_an",
+    "Texture": "effect\\textures\\trail\\tex_trail_x07_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "0",
+    "TrackType": "0",
+    "FxLifeSpan": "0.100",
+    "FxStartTime": "1.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "6.000",
+    "MaxRadius": "6.500",
+    "MinSpriteLifespan": "0.100",
+    "MaxSpriteLifespan": "0.300",
+    "ParticlesPerSecond": "3.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_g_glow",
+    "Texture": "effect\\textures\\glow\\tex_glow_01_cs_tp60_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "0.100",
+    "FxStartTime": "0.981",
+    "DecalColorName": "",
+    "Radius": "8.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "H_g_glow地",
+    "Texture": "effect\\textures\\glow\\glow25.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.982",
+    "DecalColorName": "",
+    "Radius": "20.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "H_g_glow地_an",
+    "Texture": "effect\\textures\\glow\\glow_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "1.300",
+    "FxStartTime": "0.982",
+    "DecalColorName": "",
+    "Radius": "13.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.200",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_g_爆点",
+    "Texture": "effect\\textures\\glow\\glow_04_tp29.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "8",
+    "TrackType": "4",
+    "FxLifeSpan": "0.250",
+    "FxStartTime": "0.982",
+    "DecalColorName": "",
+    "Radius": "8.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.250",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_地扩散2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.500",
+    "FxStartTime": "0.989",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.450",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型_gow",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.200",
+    "FxStartTime": "1.034",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_地裂亮_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.200",
+    "FxStartTime": "1.040",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_g_爆点_1",
+    "Texture": "effect\\textures\\glow\\tex_glow_guangci_tp78_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "8",
+    "TrackType": "4",
+    "FxLifeSpan": "0.250",
+    "FxStartTime": "1.032",
+    "DecalColorName": "",
+    "Radius": "10.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.250",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "L_m_扩散_02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.900",
+    "FxStartTime": "0.970",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.600",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_粒子_1",
+    "Texture": "effect\\textures\\glow\\glow_14_cs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "1",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "0.920",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.100",
+    "MaxRadius": "0.250",
+    "MinSpriteLifespan": "0.450",
+    "MaxSpriteLifespan": "1.000",
+    "ParticlesPerSecond": "5.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_模型气流升_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.700",
+    "FxStartTime": "0.920",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_m_扩散_科技_1_2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "1.050",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.600",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型气流升_1_1_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.900",
+    "FxStartTime": "1.008",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型特效_2_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.970",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "2",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型特效_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "4",
+    "FxLifeSpan": "0.834",
+    "FxStartTime": "0.990",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "1.000",
+      "CycleType": "0",
+      "YZCopyFromX": "FALSE"
+     },
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_mod_地裂流光_1_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.800",
+    "FxStartTime": "1.022",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_金线1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.900",
+    "FxStartTime": "0.920",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_p_星点_02",
+    "Texture": "effect\\textures\\glow\\glow_16_yh_djs.tga",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "1",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "0.200",
+    "FxStartTime": "1.120",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "2.000",
+    "MaxRadius": "6.000",
+    "MinSpriteLifespan": "0.300",
+    "MaxSpriteLifespan": "0.500",
+    "ParticlesPerSecond": "4.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_公告板_爆闪2",
+    "Texture": "effect\\textures\\glow\\glow_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "0.150",
+    "FxStartTime": "1.120",
+    "DecalColorName": "",
+    "Radius": "50.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.250",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_ParticleRes",
+    "TrackType": "0",
+    "FxLifeSpan": "0.616",
+    "FxStartTime": "1.049",
+    "MinSpriteLifespan": "2.000",
+    "MaxSpriteLifespan": "4.000",
+    "ParticlesPerSecond": "5.000",
+    "tracks": {
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {},
+     "TrackFixPoint": {}
+    }
+   },
+   {
+    "Name": "L_模型特效",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.800",
+    "FxStartTime": "0.920",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型特效_3",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "0.500",
+    "FxStartTime": "0.920",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   }
+  ],
+  "1110171": [
+   {
+    "Name": "H_模型_星点01",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型_星点02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型_光晕02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_宝石02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_水晶01",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_水晶02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_顶黄",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_顶黄_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_枪口黄",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_五线谱",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_五线谱_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_环绕蓝",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_环绕蓝_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_环绕蓝_1_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_环绕蓝_2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_顶渐变",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_底蓝",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_枪口紫",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_模型_枪口紫_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_气流暗",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型_底暗",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_m_弓弦_1",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_m_弓弦_2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_星点粒子",
+    "Texture": "effect\\textures\\glow\\tex_glow_tp07_02.spr",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "8",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.040",
+    "MaxRadius": "0.250",
+    "MinSpriteLifespan": "1.000",
+    "MaxSpriteLifespan": "2.000",
+    "ParticlesPerSecond": "5.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "H_星点粒子_3",
+    "Texture": "effect\\textures\\glow\\star_xing_02_tp165.tga",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.200",
+    "MaxRadius": "0.500",
+    "MinSpriteLifespan": "1.000",
+    "MaxSpriteLifespan": "2.000",
+    "ParticlesPerSecond": "3.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "L_p_光刺_01",
+    "Texture": "effect\\textures\\glow\\tex_glow_ray_tp60_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "3.000",
+    "MaxRadius": "3.500",
+    "MinSpriteLifespan": "1.000",
+    "MaxSpriteLifespan": "1.600",
+    "ParticlesPerSecond": "6.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_g_光晕暗_01",
+    "Texture": "effect\\textures\\glow\\glow40_tp30.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "6.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_g_光晕亮_01",
+    "Texture": "effect\\textures\\glow\\glow_gyun_01_smg.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "4.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "H_p_光圈01",
+    "Texture": "effect\\textures\\special\\caihong_06_jh_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "3.000",
+    "MaxRadius": "3.500",
+    "MinSpriteLifespan": "2.500",
+    "MaxSpriteLifespan": "2.500",
+    "ParticlesPerSecond": "0.900",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "L_模型_球02",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "M_模型_球01",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_模型_球03",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_p_光刺_02",
+    "Texture": "effect\\textures\\glow\\tex_glow_ray_tp60_01.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "3.000",
+    "MaxRadius": "3.500",
+    "MinSpriteLifespan": "1.000",
+    "MaxSpriteLifespan": "1.600",
+    "ParticlesPerSecond": "6.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_g_光晕暗_02",
+    "Texture": "effect\\textures\\glow\\glow40_tp30.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "0",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "6.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "M_g_光晕亮_02",
+    "Texture": "effect\\textures\\glow\\glow_gyun_01_smg.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "RandomStartSpr": "FALSE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "TextureRatio": "1",
+    "BlendMode": "2",
+    "TrackType": "4",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "DecalColorName": "",
+    "Radius": "4.000",
+    "tracks": {
+     "TrackScale": {
+      "TimeLen": "0.500",
+      "CycleType": "2",
+      "YZCopyFromX": "TRUE"
+     },
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "SmoothStartFrame": {},
+     "SmoothStopFrame": {}
+    }
+   },
+   {
+    "Name": "H_p_光圈02",
+    "Texture": "effect\\textures\\special\\caihong_06_jh_djs.tga",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "2",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "3.000",
+    "MaxRadius": "3.500",
+    "MinSpriteLifespan": "2.500",
+    "MaxSpriteLifespan": "2.500",
+    "ParticlesPerSecond": "0.900",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   },
+   {
+    "Name": "M_模型_球04",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "L_ParticleRes",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "MinSpriteLifespan": "2.000",
+    "MaxSpriteLifespan": "2.000",
+    "ParticlesPerSecond": "1.000",
+    "tracks": {
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {},
+     "TrackFixPoint": {}
+    }
+   },
+   {
+    "Name": "L_ParticleRes_1",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "MinSpriteLifespan": "2.000",
+    "MaxSpriteLifespan": "2.000",
+    "ParticlesPerSecond": "1.000",
+    "tracks": {
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {},
+     "TrackFixPoint": {}
+    }
+   },
+   {
+    "Name": "L_模型_气流02_2",
+    "SprWorkMode": "0",
+    "SprSpeedRate": "1.000",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ScaleFrame": {}
+    }
+   },
+   {
+    "Name": "H_星点粒子_1",
+    "Texture": "effect\\textures\\glow\\glow_tp17_04.tga",
+    "SprWorkMode": "1",
+    "SprSpeedRate": "0.000",
+    "SprStartRandom": "TRUE",
+    "IsSprBlend": "FALSE",
+    "TextureClockRotate": "0",
+    "TextureFlip": "FALSE",
+    "ScaleStyle": "0",
+    "SpriteScale": "FloatKeyFrame",
+    "SpriteHeight": "FloatKeyFrame",
+    "HWRatio": "FloatKeyFrame",
+    "BlendMode": "2",
+    "TrackType": "0",
+    "FxLifeSpan": "1.000",
+    "FxStartTime": "0.000",
+    "ColorType": "1",
+    "EffectColorName": "",
+    "MinRadius": "0.150",
+    "MaxRadius": "0.550",
+    "MinSpriteLifespan": "1.000",
+    "MaxSpriteLifespan": "2.000",
+    "ParticlesPerSecond": "6.000",
+    "tracks": {
+     "TrackFixPoint": {},
+     "ShaderComponent": {},
+     "ColorFrame": {},
+     "ColorFramePar": {},
+     "GravityFrame": {},
+     "MaxSpriteVelocityFrame": {},
+     "MinSpriteVelocityFrame": {},
+     "RotDegreeSpeedFrame": {},
+     "EmissionRadiusFrame": {},
+     "EmissionRadius2Frame": {},
+     "SpriteScaleFrame": {},
+     "SpriteHeightFrame": {},
+     "HWRatioFrame": {},
+     "EmissionDirDegreeFrame": {},
+     "NoiseStrengthFrame": {},
+     "XDirDisturb": {},
+     "YDirDisturb": {},
+     "ZDirDisturb": {}
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,75 @@
+板数据: E:\la拆包项目\08Lifeafter wiki\data\boards\weapon_skin_sfx_text_sources.json (2570063 B, 115 条)  meta={"name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）", "category": "二、时装类 / （七）武器皮肤", "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）", "package_sha": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3", "generated": "2026-09-13T10:18:00+08:00", "evidence": "structure", "name_status_summary
+字段存在性: {"weapon_type": true, "weapon_type_label": true, "release_state": true, "level": true, "official_name_status": true, "name_status": true, "name_display": true, "name_resolution": true, "field_provenance": true, "catalog_layer": true, "version_status": true, "charm_value": false, "official_desc": true}
+
+== 状态统计
+  official_name_status   {"verified": 113, "no_item_row": 2}
+  name_status            {"verified": 113, "unresolved": 2}
+  catalog_layer          {"current_parent": 113, "behavior_preview_only": 2}
+  version_status         {"BA8/root 均有": 108, "BA8 新增（相对 root 对照）": 5, "仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行": 2}
+  sfx_consensus_state    {"no_sfx_text": 102, "insufficient_sfx_names": 1, "ambiguous_sfx_names": 5, "sfx_consensus_unpromoted": 5, "None": 2}
+  release_state          {"on_sale": 109, "no_sale_field": 2, "upcoming": 2, "behavior_only": 2}
+  name_resolution.state  {"verified": 113, "behavior_preview_no_current_name_source": 2}
+
+== 非 official 条目（2 条）
+  1110185 name=None       official=no_item_row name_status=unresolved state=behavior_preview_no_current_name_source layer=behavior_preview_only release=behavior_only
+  1110186 name=None       official=no_item_row name_status=unresolved state=behavior_preview_no_current_name_source layer=behavior_preview_only release=behavior_only
+
+== G6 五组关系
+  [赤月晶魄] same_name=True same_weapon_type=True(=['50']/['冷兵器（50）']) name_status=['verified'] distinct_model_paths=3
+      1110115 wt=50   label=冷兵器（50）      level=6   path=weapon/skin/skin_2003_013/skin_2003_013.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+      1110116 wt=50   label=冷兵器（50）      level=6   path=weapon/skin/skin_2003_017/skin_2003_017.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+      1110117 wt=50   label=冷兵器（50）      level=6   path=weapon/skin/skin_2003_018/skin_2003_018.gim
+          desc=#cffc8a4当前已升至最高阶段#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+  [炽日耀斑] same_name=True same_weapon_type=True(=['4']/['霰弹枪（4）']) name_status=['verified'] distinct_model_paths=3
+      1110131 wt=4    label=霰弹枪（4）       level=6   path=weapon/skin/skin_1006_008/skin_1006_008.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+      1110132 wt=4    label=霰弹枪（4）       level=6   path=weapon/skin/skin_1006_009/skin_1006_009.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+      1110133 wt=4    label=霰弹枪（4）       level=6   path=weapon/skin/skin_1006_010/skin_1006_010.gim
+          desc=#cffc8a4当前已升至最高阶段#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+  [金乌负日] same_name=True same_weapon_type=True(=['3']/['弓箭（3）']) name_status=['verified'] distinct_model_paths=3
+      1110142 wt=3    label=弓箭（3）        level=6   path=weapon/skin/skin_1007_007/skin_1007_007.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+      1110143 wt=3    label=弓箭（3）        level=6   path=weapon/skin/skin_1007_008/skin_1007_008.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+      1110144 wt=3    label=弓箭（3）        level=6   path=weapon/skin/skin_1007_009/skin_1007_009.gim
+          desc=#cffc8a4当前已升至最高阶段#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+  [沙海月鸣] same_name=True same_weapon_type=True(=['1']/['突击步枪（1）']) name_status=['verified'] distinct_model_paths=3
+      1110159 wt=1    label=突击步枪（1）      level=6   path=weapon/skin/skin_1001_011/skin_1001_011.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n月色为我加冕，沙海听我号令。
+      1110160 wt=1    label=突击步枪（1）      level=6   path=weapon/skin/skin_1001_012/skin_1001_012.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n月色为我加冕，沙海听我号令。
+      1110161 wt=1    label=突击步枪（1）      level=6   path=weapon/skin/skin_1001_013/skin_1001_013.gim
+          desc=#cffc8a4当前已升至最高阶段#n月色为我加冕，沙海听我号令。
+  [水晶玫瑰] same_name=True same_weapon_type=True(=['7']/['榴弹炮（7）']) name_status=['verified'] distinct_model_paths=3
+      1110173 wt=7    label=榴弹炮（7）       level=6   path=weapon/skin/skin_1012_011/skin_1012_011.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n水晶雕琢的玫瑰，在炮火中静静绽放。
+      1110174 wt=7    label=榴弹炮（7）       level=6   path=weapon/skin/skin_1012_012/skin_1012_012.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#nn水晶玫瑰愈发璀璨，花瓣折射出致命光芒。
+      1110175 wt=7    label=榴弹炮（7）       level=6   path=weapon/skin/skin_1012_013/skin_1012_013.gim
+          desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n水晶玫瑰璀璨盛放，定格永恒的华丽瞬间。
+
+== 特别项
+  1110169 {"name": "灰色协议", "name_display": "灰色协议", "official_name_status": "verified", "name_status": "verified", "name_resolution": {"state": "verified", "name": "灰色协议", "normalized_roots": [], "named_sfx_row_count": 0, "rule": "Current display name comes from the same-snapshot BA8 common_item_data_base row key==skin_id, field=name, with replayable CHS field/value slots. SFX text is never a name source."}, "release_state": "on_sale", "catalog_layer": "current_parent", "version_status": "BA8/root 均有", "model_path": "weapon/skin/skin_1002_009/skin_1002_009.gim", "weapon_type": 5, "weapon_type_label": "狙击枪（5）", "level": 5, "official_desc": "我的参数在你的智慧之上。「明日之后×喜羊羊与灰太狼」联动限定外观", "sfx_consensus_state": "no_sfx_text"}
+      item_table: null
+  1110146 {"name": "龙渊永寂", "name_display": "龙渊永寂", "official_name_status": "verified", "name_status": "verified", "name_resolution": {"state": "verified", "name": "龙渊永寂", "normalized_roots": [], "named_sfx_row_count": 0, "rule": "Current display name comes from the same-snapshot BA8 common_item_data_base row key==skin_id, field=name, with replayable CHS field/value slots. SFX text is never a name source."}, "release_state": "on_sale", "catalog_layer": "current_parent", "version_status": "BA8/root 均有", "model_path": "weapon/skin/skin_1002_007/skin_1002_007.gim", "weapon_type": 5, "weapon_type_label": "狙击枪（5）", "level": 5, "official_desc": "冰龙覆械，晶光映雪；一狙破敌，万籁冰封。", "sfx_consensus_state": "no_sfx_text"}
+      item_table: null
+
+== item 表旁证（既有 JSON common_item_data_rows.json）
+  1110115 item_name=赤月晶魄     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+  1110116 item_name=赤月晶魄     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+  1110117 item_name=赤月晶魄     desc=#cffc8a4当前已升至最高阶段#n赤霄裂空斩碎千重夜，破月流光饮尽万壑霜。
+  1110131 item_name=炽日耀斑     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+  1110132 item_name=炽日耀斑     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+  1110133 item_name=炽日耀斑     desc=#cffc8a4当前已升至最高阶段#n炽日焚天烬云骸，耀斑灼夜裂神骸。
+  1110142 item_name=金乌负日     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+  1110143 item_name=金乌负日     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+  1110144 item_name=金乌负日     desc=#cffc8a4当前已升至最高阶段#n弓身熔铸金乌真火，弦动似有烈阳坠空。
+  1110159 item_name=沙海月鸣     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n月色为我加冕，沙海听我号令。
+  1110160 item_name=沙海月鸣     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n月色为我加冕，沙海听我号令。
+  1110161 item_name=沙海月鸣     desc=#cffc8a4当前已升至最高阶段#n月色为我加冕，沙海听我号令。
+  1110173 item_name=水晶玫瑰     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n水晶雕琢的玫瑰，在炮火中静静绽放。
+  1110174 item_name=水晶玫瑰     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#nn水晶玫瑰愈发璀璨，花瓣折射出致命光芒。
+  1110175 item_name=水晶玫瑰     desc=#cffc8a4可升格武器，外观和战斗表现会随升格变化#n水晶玫瑰璀璨盛放，定格永恒的华丽瞬间。
