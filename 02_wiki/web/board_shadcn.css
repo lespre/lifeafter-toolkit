@@ -44,7 +44,7 @@ select{cursor:pointer}
 .evbtn:hover{background:var(--hover);color:var(--fg)}
 .evbtn.on{font-weight:650;color:var(--fg);border-color:var(--border)}
 .count{color:var(--muted);font-size:12px;align-self:center;margin-left:auto;white-space:nowrap}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .i{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 15px;box-shadow:var(--shadow-xs);
    display:flex;flex-direction:column;gap:9px;transition:box-shadow .12s}
 .i:hover{box-shadow:var(--shadow-sm)}
@@ -340,7 +340,7 @@ details.vv-tech[open]>summary::before{content:"▾ "}
 @media (max-width:1200px){.skin-mode .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){.skin-mode .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:540px){.skin-mode .grid{grid-template-columns:minmax(0,1fr)}}
-.grid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
 .skin-card{min-width:0}
 .skin-card .skin-head-row,.skin-card .skin-summary,.skin-card .skin-name{min-width:0}
 .skin-card .skin-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

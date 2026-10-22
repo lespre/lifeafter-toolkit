@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="assets/weapon_skin_viewer.css?v=neox4">
 <script defer src="assets/weapon_skin_viewer.js?v=34983ec79804"></script>
 <script defer src="assets/weapon_skin_sfx_adapter.js?v=32d4c81fae01"></script>
-<link rel="stylesheet" href="board_shadcn.css?v=20261018-density1">
+<link rel="stylesheet" href="board_shadcn.css?v=20261023-narrow">
 <link rel="stylesheet" href="assets/board_theme_aftermath.css?v=20261018a">
 <link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
 <style>
@@ -284,6 +284,20 @@ body{padding-top:0}
 .hd2-logo img{height:26px;width:auto;filter:brightness(1.18) contrast(1.05)}
 .nav-logo{height:20px;width:auto;display:block;filter:brightness(1.2) contrast(1.05)}
 #siteNav .hd{padding:8px 8px 12px}
+
+/* 默认网格的板块：卡片偏宽 → 收窄（头像/核芯/料理） */
+body.b-avatar_catalog .grid,
+body.b-mutation_core_full .grid,
+body.b-edible_catalog .grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))!important;gap:12px}
+
+/* 窄列板块：名称不换行，标签不挤压 */
+body.b-avatar_catalog .i-name,
+body.b-mutation_core_full .i-name,
+body.b-edible_catalog .i-name{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.b-avatar_catalog .i-id,body.b-mutation_core_full .i-id,body.b-edible_catalog .i-id{white-space:nowrap}
+body.b-avatar_catalog .head-tags,
+body.b-mutation_core_full .head-tags,
+body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-origin:right center}
 </style>
 </head>
 <body>
@@ -2748,6 +2762,7 @@ function toggleDetail(head){
   head.setAttribute("aria-expanded",String(!target.hidden));
 }
 const b=getParam("b");
+try{document.body.classList.add("b-"+b);}catch(e){}
 const POLICY=window.WIKI_PUBLICATION_POLICY;
 const policyEntry=POLICY&&POLICY.boards?POLICY.boards[b]:null;
 function showQuarantine(reason){
@@ -3008,6 +3023,24 @@ else loadBoard(b,d=>{
       if(!notes.classList.contains('open')) notes.style.display='none';
     }).observe(notes,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
   });
+})();
+</script>
+
+<script>
+/* 头像/核芯/料理：默认卡偏宽 → 直接给网格设窄列宽（内联，压过任何外部样式） */
+(function(){
+  var NARROW={avatar_catalog:228, mutation_core_full:228, edible_catalog:228};
+  function apply(){
+    var b=new URLSearchParams(location.search).get('b');
+    if(!NARROW[b]) return;
+    var g=document.getElementById('grid');
+    if(!g) return;
+    g.style.gridTemplateColumns='repeat(auto-fill,minmax(210px,1fr))';
+    g.style.gap='12px';
+  }
+  document.addEventListener('DOMContentLoaded', apply);
+  var g=document.getElementById('grid');
+  if(g) new MutationObserver(apply).observe(g,{childList:true});
 })();
 </script>
 </body>
