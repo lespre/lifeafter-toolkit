@@ -192,6 +192,57 @@ def cmd_pe(a) -> int:
     return 2
 
 
+# ---------------- board ----------------
+def cmd_board(a) -> int:
+    """板块工具：check 校验 / run 跑构建脚本。"""
+    sys.path.insert(0, str(PROJ / "01_工具/工具库/00_共享核心"))
+    sys.path.insert(0, str(WEB / "tools"))
+    if a.action == "check" and a.target:
+        import json as _json
+        bp = WEB / "data/boards" / (a.target + ".json")
+        if not bp.is_file():
+            print("板块不存在：", bp)
+            return 2
+        d = _json.loads(bp.read_text(encoding="utf-8"))
+        meta, items = d.get("meta") or {}, d.get("items") or []
+        errs = []
+        for k in ("name", "category", "package_sha", "evidence", "provenance"):
+            if not meta.get(k):
+                errs.append("meta 缺 %s" % k)
+        if len(str(meta.get("package_sha", ""))) != 64:
+            errs.append("package_sha 非 64 位")
+        ids = [i.get("id") for i in items]
+        if len(ids) != len(set(ids)):
+            errs.append("存在重复 id")
+        for it in items:
+            if "table-absent" in (it.get("status_tags") or []):
+                continue
+            prov = it.get("provenance") or {}
+            miss = [k for k in ("source_id", "source_lock_sha256", "table", "row_key",
+                                "field_refs", "name_source", "upstream", "locator_chain")
+                    if not prov.get(k)]
+            if miss:
+                errs.append("%s provenance 缺 %s" % (it.get("id"), ",".join(miss)))
+                break
+        print("板块 %s ｜ 条目 %d ｜ %s" % (a.target, len(items), "通过" if not errs else "有问题"))
+        for e in errs[:10]:
+            print("  -", e)
+        return 0 if not errs else 1
+    if a.action == "run" and a.target:
+        import runpy
+        script = Path(a.target)
+        if not script.is_absolute():
+            script = (WEB / "tools" / a.target) if (WEB / "tools" / a.target).is_file() else script
+        if not script.is_file():
+            print("脚本不存在：", script)
+            return 2
+        sys.argv = [str(script)]
+        runpy.run_path(str(script), run_name="__main__")
+        return 0
+    print("用法：la.py board check <board_id> | la.py board run <builder.py>")
+    return 2
+
+
 def cmd_pc(a) -> int:
     if a.action == "check":
         return run("PC 取图覆盖统计", [FETCH / "pc_fetch.py"])
@@ -325,6 +376,10 @@ def main() -> int:
     tp = sub.add_parser("tool", help="透传到 toolkit_cli（tables/lottery/atlas/locate 等）")
     tp.add_argument("rest", nargs=argparse.REMAINDER)
 
+    bd = sub.add_parser("board", help="板块工具：check 校验 / run 跑构建脚本")
+    bd.add_argument("action", choices=["check", "run"])
+    bd.add_argument("target", nargs="?")
+
     sub.add_parser("doctor", help="自检：环境/索引/CLI/服务")
 
     wt = sub.add_parser("watch", help="监测")
@@ -343,6 +398,8 @@ def main() -> int:
         env = dict(os.environ)
         env["PYTHONPATH"] = str(PROJ / "01_工具/工具库/00_共享核心")
         return _sp.call([PY, "-u", str(PROJ / "01_工具/工具库/00_共享核心/命令行/toolkit_cli.py")] + a.rest, env=env)
+    if a.cmd == "board":
+        return cmd_board(a)
     if a.cmd == "doctor":
         return cmd_doctor(a)
     if a.cmd == "web":
