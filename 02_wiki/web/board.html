@@ -231,6 +231,21 @@ body{padding-left:212px}
 #siteNav a.sub.on{background:rgba(192,57,43,.12);color:#fff;border-left-color:#c0392b}
 
 #siteNav .grp .gi{width:22px;height:22px;object-fit:contain;border-radius:3px;opacity:1;flex:0 0 auto;filter:saturate(1.1) brightness(1.05)}
+
+/* 板级技术详情：并到标题下的 meta 行尾，默认折叠 */
+#notes{display:inline!important;margin:0 0 0 10px;vertical-align:baseline}
+#notes details.tech{border:0!important;background:none!important;padding:0!important;display:inline!important;box-shadow:none!important}
+#notes details.tech>summary{display:inline!important;cursor:pointer;font-size:11.5px;color:#8b98a8;letter-spacing:.04em;border:0!important}
+#notes details.tech>summary:hover{color:#cfd8e3}
+#notes details.tech[open]{display:block;margin-top:8px;border:1px solid #262f3b;border-radius:6px;
+  padding:8px 10px;background:#0f141b}
+
+.meta-line .techlink{color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
+.meta-line .techlink:hover{color:#e8ecf2}
+#notes{display:none;margin:10px 0 0;padding:0}
+#notes.open{display:block}
+#notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 10px}
+#notes details.tech>summary{display:none}
 </style>
 </head>
 <body>
@@ -2866,27 +2881,23 @@ else loadBoard(b,d=>{
 </script>
 
 <script>
-/* 板级「技术详情 / 数据来源 / 审计信息」统一挪到页面顶部（筛选栏上方）折叠 */
+/* 板级「技术详情」并到 meta 行尾，点开才展开 */
 (function(){
-  function move(){
-    var wrap=document.querySelector('.wrap'), ctl=document.querySelector('.controls'),
-        notes=document.getElementById('notes'), g=document.getElementById('grid');
-    if(!wrap||!ctl) return;
-    // 板级「技术详情 / 数据来源 / 审计信息」在 #notes 里 → 提到筛选栏上方
-    if(notes && notes.parentNode===wrap && notes.nextElementSibling!==ctl){
-      notes.style.margin='0 0 10px';
-      wrap.insertBefore(notes, ctl);
-    }
-    if(g) Array.prototype.forEach.call(g.children, function(el){
-      if(el.tagName==='DETAILS' && el.classList.contains('tech') && !el.dataset.moved){
-        el.dataset.moved='1'; el.style.margin='0 0 10px'; wrap.insertBefore(el, ctl);
-      }
-    });
+  function ensureLink(){
+    var meta=document.getElementById('metaline'), notes=document.getElementById('notes');
+    if(!meta||!notes||meta.querySelector('.techlink')) return;
+    var sep=document.createElement('span'); sep.className='techlink-sep'; sep.textContent=' · ';
+    var a=document.createElement('a'); a.className='techlink'; a.href='javascript:void(0)';
+    a.textContent='技术详情';
+    a.onclick=function(e){ e.preventDefault(); notes.classList.toggle('open');
+      if(notes.classList.contains('open')){ notes.style.display='block'; } else { notes.style.display='none'; } };
+    meta.appendChild(sep); meta.appendChild(a);
+    if(!notes.classList.contains('open')) notes.style.display='none';
   }
   document.addEventListener('DOMContentLoaded', function(){
-    move();
-    var g=document.getElementById('grid');
-    if(g) new MutationObserver(move).observe(g,{childList:true});
+    ensureLink();
+    var meta=document.getElementById('metaline');
+    if(meta) new MutationObserver(ensureLink).observe(meta,{childList:true,characterData:true,subtree:true});
   });
 })();
 </script>
