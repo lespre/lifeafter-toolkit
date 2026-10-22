@@ -322,6 +322,9 @@ def main() -> int:
     npk.add_argument("image", nargs="?")
     npk.add_argument("--id", dest="image_id")
 
+    tp = sub.add_parser("tool", help="透传到 toolkit_cli（tables/lottery/atlas/locate 等）")
+    tp.add_argument("rest", nargs=argparse.REMAINDER)
+
     sub.add_parser("doctor", help="自检：环境/索引/CLI/服务")
 
     wt = sub.add_parser("watch", help="监测")
@@ -335,6 +338,11 @@ def main() -> int:
         return 0
     if a.cmd == "status":
         return cmd_status(a)
+    if a.cmd == "tool":
+        import subprocess as _sp
+        env = dict(os.environ)
+        env["PYTHONPATH"] = str(PROJ / "01_工具/工具库/00_共享核心")
+        return _sp.call([PY, "-u", str(PROJ / "01_工具/工具库/00_共享核心/命令行/toolkit_cli.py")] + a.rest, env=env)
     if a.cmd == "doctor":
         return cmd_doctor(a)
     if a.cmd == "web":
