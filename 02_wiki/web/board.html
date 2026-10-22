@@ -245,7 +245,20 @@ body{padding-left:212px}
 #notes{display:none;margin:10px 0 0;padding:0}
 #notes.open{display:block}
 #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 10px}
-#notes details.tech>summary{display:none}
+#notes details.tech>summary{display:none;}
+#notes.open details.tech{display:block}
+
+/* 板级技术详情：固定在顶部标题区，展开也只占顶部 */
+.topbar #notes{display:none;margin:0;padding:0 22px 12px}
+.topbar #notes.open{display:block}
+.topbar #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 12px;margin:0}
+/* 卡片内的逐条技术详情不再占卡面 */
+#grid details.tech{display:none!important}
+
+#metaline{display:flex;align-items:baseline;gap:6px}
+.techlink-wrap{margin-left:auto;white-space:nowrap}
+.meta-line .techlink{font-size:12px;color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
+.meta-line .techlink:hover{color:#e8ecf2}
 </style>
 </head>
 <body>
@@ -2890,9 +2903,17 @@ else loadBoard(b,d=>{
     var a=document.createElement('a'); a.className='techlink'; a.href='javascript:void(0)';
     a.textContent='技术详情';
     a.onclick=function(e){ e.preventDefault(); notes.classList.toggle('open');
-      if(notes.classList.contains('open')){ notes.style.display='block'; } else { notes.style.display='none'; } };
-    meta.appendChild(sep); meta.appendChild(a);
-    if(!notes.classList.contains('open')) notes.style.display='none';
+      var det=notes.querySelector('details');
+      if(notes.classList.contains('open')){ notes.style.display='block'; if(det) det.open=true; }
+      else { notes.style.display='none'; } };
+    var wrap=document.createElement('span'); wrap.className='techlink-wrap';
+    wrap.appendChild(a);
+    meta.appendChild(wrap);
+    var bar=document.querySelector('.topbar');
+    if(bar && notes.parentNode!==bar){ bar.appendChild(notes); }
+    var det=notes.querySelector('details');
+    if(location.hash==='#tech'){ notes.classList.add('open'); notes.style.display='block'; if(det) det.open=true; }
+    else if(!notes.classList.contains('open')){ notes.style.display='none'; }
   }
   document.addEventListener('DOMContentLoaded', function(){
     ensureLink();
