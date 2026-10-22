@@ -73,7 +73,7 @@
 .skin-media img{display:block;max-width:100%;height:auto;border-radius:8px}
 /* ── 时装模式（board id = fashion_wardrobe）：只作用于 body.fashion-mode，武器皮肤板完全不受影响 ── */
 body.fashion-mode .controls{flex-wrap:wrap;row-gap:8px}
-body.fashion-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.fashion-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
 body.fashion-mode .i{padding:12px 12px 10px}
 .fr-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .fr-grp{display:inline-flex;align-items:center;gap:4px;padding:3px 6px 3px 8px;background:#fff;
@@ -125,7 +125,7 @@ body.fashion-mode .i details.tech summary{font-size:12px}
 .fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
 /* ── 载具模式（board id = vehicle_full）：复用 fr-* 图轨/灯箱，仅补类型色与「类型图」标记 ── */
 body.vehicle-mode .controls{flex-wrap:wrap;row-gap:8px}
-body.vehicle-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.vehicle-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
 body.vehicle-mode .i{padding:12px 12px 10px}
 body.vehicle-mode .i details.tech{margin:9px 0 0}
 body.vehicle-mode .i details.tech summary{font-size:12px}
@@ -138,7 +138,7 @@ body.vehicle-mode .vcard.typeonly .fr-rail figure img{opacity:.95}
 @media (max-width:640px){body.vehicle-mode .grid{grid-template-columns:minmax(0,1fr)}}
 /* ── 战术芯片模式（board id = tactical_chip_full，2026-10-18 新增）：复用 fr-* 图轨/灯箱，只加品质色档 ── */
 body.chip-mode .controls{flex-wrap:wrap;row-gap:8px}
-body.chip-mode .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start}
+body.chip-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
 body.chip-mode .i{padding:12px 12px 10px;min-width:0}
 body.chip-mode .i details.tech{margin:9px 0 0}
 body.chip-mode .i details.tech summary{font-size:12px}
@@ -159,7 +159,7 @@ body.chip-mode .chip-card.q3{border-left:3px solid #d9b24c}
 .chip-lv th{color:#8a8a96;font-weight:600;white-space:nowrap}
 .chip-lv td.num{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap}
 @media (max-width:640px){body.chip-mode .grid{grid-template-columns:minmax(0,1fr)}}
-#grid.period-grid{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))!important}
+#grid.period-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))!important}
 #grid.period-grid .pcard{width:100%;max-width:none}
 .pchip-cand{display:inline-block;margin-left:4px;padding:0 4px;border-radius:3px;font-size:10px;line-height:14px;color:#e2c48c;background:rgba(217,164,65,.14);border:1px solid rgba(217,164,65,.4)}
 .fr-desc{margin:6px 0 2px;font-size:12px;line-height:1.55;color:#a9b8c2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -1842,8 +1842,13 @@ function vSyncUrl(){
 }
 /* 排序：编号(vehicle_id) 优先，缺失值固定排最后，同号按名字 */
 function vSortList(list){
-  const asc=/_asc$/.test(V.sort||"id_desc");
-  const num=it=>{const v=it.vehicle_id;if(v==null||v==="")return null;const n=Number(v);return isNaN(n)?null:n;};
+  const key=(V.sort||"id_desc");
+  const asc=/_asc$/.test(key);
+  const byCharm=/_?charm_/.test(key);
+  const num=it=>{
+    const v = byCharm ? it.charm_value : it.vehicle_id;
+    if(v==null||v==="")return null;const n=Number(v);return isNaN(n)?null:n;
+  };
   const arr=[...list];
   arr.sort((A,B)=>{
     const a=num(A),b=num(B);
@@ -1978,8 +1983,11 @@ function vBuildFilters(items){
   sortSel.id="vSort";
   sortSel.setAttribute("aria-label","排序依据");
   sortSel.title="排序：编号 = 载具 ID（行键）；缺失值固定排最后，同号按名字";
-  [["id_desc","编号 ↓ 大→小（默认）"],["id_asc","编号 ↑ 小→大"]]
-    .forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;sortSel.appendChild(o);});
+  var vopts=[["id_desc","编号 ↓ 大→小（默认）"],["id_asc","编号 ↑ 小→大"]];
+  if((DATA.items||[]).some(function(x){return x.charm_value!=null;})){
+    vopts.push(["charm_desc","魅力值 ↓ 高→低"],["charm_asc","魅力值 ↑ 低→高"]);
+  }
+  vopts.forEach(([v,t])=>{const o=document.createElement("option");o.value=v;o.textContent=t;sortSel.appendChild(o);});
   sortSel.value=V.sort||"id_desc";
   sortSel.addEventListener("change",()=>{V.sort=sortSel.value;vSyncUrl();render();});
   box.appendChild(sortSel);
