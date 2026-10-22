@@ -199,6 +199,16 @@ body{padding-left:212px}
 #siteNav a.leafhd{display:block;text-decoration:none}
 #siteNav .leafhd{font-size:11px;color:#7a8a9c;padding:6px 8px 2px;letter-spacing:.06em;border-top:1px dashed #1c2531;margin-top:4px}
 #siteNav a.sub{padding-left:16px;font-size:11.8px}
+
+#siteNav a.leafrow{display:block;padding:5px 8px 5px 8px;font-size:12.2px;color:#9aa7b6;
+  border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#siteNav a.leafrow:hover{color:#fff;background:#151b24}
+#siteNav a.leafrow.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+#siteNav .leafhd{padding:8px 8px 3px;font-size:11px;color:#8496a8;letter-spacing:.05em}
+#siteNav a.sub{display:block;padding:4px 8px 4px 22px;font-size:11.8px;color:#8b9aab;
+  border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#siteNav a.sub:hover{color:#fff;background:#151b24}
+#siteNav a.sub.on{color:#fff;background:#151b24;border-left-color:#c0392b}
 </style>
 </head>
 <body>
@@ -2803,27 +2813,22 @@ else loadBoard(b,d=>{
   var html='<div class="hd">资料分类</div>';
   (T['树']||[]).forEach(function(top){
     html += '<div class="grp">'+top.name+'</div>';
+    var rows=[];
     (top.boards||[]).forEach(function(id){
-      var b=byId[id]; if(!b) return;
-      var nm=cleanName(b.name||id);
-      html += '<a href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
+      if(!byId[id]) return;
+      rows.push({kind:'row', id:id, label:top.name.replace(/^[^、]*、/,'')});
     });
-    (top.children||[]).forEach(function(leaf, li){
+    (top.children||[]).forEach(function(leaf){
       var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
       if(!ids.length) return;
-      var leafNm = leaf.name.replace(/^（[^）]*）/,'');
-      var names = ids.map(function(id){ return cleanName(byId[id].name||id); });
-      // 只有一个板块且名字等于叶子名 ⇒ 叶子标题本身就是链接，不再重复一行
-      var nk = function(x){ return String(x).replace(/[、\/·\s（）()]/g,''); };
-      if(ids.length === 1 && (nk(names[0]) === nk(leafNm) || nk(names[0]).indexOf(nk(leafNm)) === 0 || nk(leafNm).indexOf(nk(names[0])) === 0)){
-        html += '<a class="leafhd'+(ids[0]===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(ids[0])+'" title="'+names[0]+'">'+leaf.name+'</a>';
-        return;
-      }
-      html += '<div class="leafhd">'+leaf.name+'</div>';
-      ids.forEach(function(id){
-        var nm=cleanName(byId[id].name||id);
-        html += '<a class="sub" href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
-      });
+      if(ids.length===1){ rows.push({kind:'row', id:ids[0], label:leaf.name}); return; }
+      rows.push({kind:'head', label:leaf.name});
+      ids.forEach(function(id){ rows.push({kind:'sub', id:id, label:cleanName(byId[id].name||id)}); });
+    });
+    rows.forEach(function(r){
+      if(r.kind==='head'){ html += '<div class="leafhd">'+r.label+'</div>'; return; }
+      html += '<a class="'+(r.kind==='sub'?'sub':'leafrow')+(r.id===cur?' on':'')+
+              '" href="board.html?b='+encodeURIComponent(r.id)+'">'+r.label+'</a>';
     });
   });
   nav.innerHTML=html;
