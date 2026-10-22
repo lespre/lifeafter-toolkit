@@ -282,12 +282,13 @@ body{padding-top:0}
 .hd2 #notes details.tech>summary{display:none}
 .hd2-logo{display:block;margin-bottom:8px}
 .hd2-logo img{height:26px;width:auto;filter:brightness(1.18) contrast(1.05)}
+.nav-logo{height:20px;width:auto;display:block;filter:brightness(1.2) contrast(1.05)}
+#siteNav .hd{padding:8px 8px 12px}
 </style>
 </head>
 <body>
 <aside id="siteNav"><div class="hd">资料分类</div></aside>
 <header class="hd2">
-  <a class="hd2-logo" href="wiki.html"><img src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a>
   <div class="hd2-crumb">
     <a href="wiki.html">← 返回 Wiki 首页</a>
     <a href="index.html">三线状态</a>
@@ -2904,7 +2905,7 @@ else loadBoard(b,d=>{
   };
   var cur=new URLSearchParams(location.search).get('b')||'';
   var nav=document.getElementById('siteNav');
-  var html='<div class="hd">资料分类</div>';
+  var html='<div class="hd"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></div>';
   (T['树']||[]).forEach(function(top){
     html += '<div class="grp">'+ICON[top.id] + '<span>' + top.name + '</span></div>';
     var rows=[];
