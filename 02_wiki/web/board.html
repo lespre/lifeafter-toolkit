@@ -242,7 +242,7 @@ body{padding-left:212px}
 
 .meta-line .techlink{color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
 .meta-line .techlink:hover{color:#e8ecf2}
-#notes{display:none;margin:10px 0 0;padding:0}
+#notes{display:none!important}
 #notes.open{display:block}
 #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 10px}
 #notes details.tech>summary{display:none;}
@@ -259,16 +259,41 @@ body{padding-left:212px}
 .techlink-wrap{margin-left:auto;white-space:nowrap}
 .meta-line .techlink{font-size:12px;color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
 .meta-line .techlink:hover{color:#e8ecf2}
+
+/* ===== 页头（2026-10-23 重做，独立命名，不受旧 .topbar 规则影响） ===== */
+.hd2{position:sticky;top:0;z-index:60;background:rgba(11,15,20,.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid #1a222c;padding:12px 22px 10px}
+.hd2-crumb{display:flex;gap:6px;margin-bottom:10px}
+.hd2-crumb a{font-size:12px;color:#8b98a8;text-decoration:none;padding:3px 9px;border-radius:6px}
+.hd2-crumb a:hover{background:#151c25;color:#e9eef5}
+.hd2 h1{font-size:20px;font-weight:800;letter-spacing:.03em;color:#f3f7fb;
+  margin:0 0 8px;padding-left:11px;position:relative;line-height:1.3}
+.hd2 h1::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:3px;border-radius:2px;background:#c0392b}
+.hd2 .meta-line{display:flex;align-items:baseline;gap:8px;font-size:11.5px;color:#7f8d9e;line-height:1.7}
+.hd2 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.hd2 .pills .pill{font-size:11px;padding:3px 9px;border:1px solid #232d3a;border-radius:999px;
+  background:#11161e;color:#9aa7b6;letter-spacing:.02em}
+.hd2 #notes{margin:10px 0 0;padding:0}
+.hd2 #notes details.tech{border:1px solid #262f3b;border-radius:8px;background:#0f141b;padding:10px 12px}
+body{padding-top:0}
+
+.hd2 #notes{display:none;margin:10px 0 0}
+.hd2 #notes.open{display:block}
+.hd2 #notes details.tech>summary{display:none}
 </style>
 </head>
 <body>
 <aside id="siteNav"><div class="hd">资料分类</div></aside>
-<div class="topbar"><div class="topin">
-  <div class="crumb"><a class="backwiki" href="wiki.html">← 返回 Wiki 首页</a><a href="index.html">三线状态</a><a href="skeletons.html">骨骼库</a></div>
+<header class="hd2">
+  <div class="hd2-crumb">
+    <a href="wiki.html">← 返回 Wiki 首页</a>
+    <a href="index.html">三线状态</a>
+    <a href="skeletons.html">骨骼库</a>
+  </div>
   <h1 id="title">加载中…</h1>
   <div class="meta-line" id="metaline"></div>
   <div class="pills" id="pills"></div>
-</div></div>
+</header>
 <div class="wrap">
   <div class="controls">
     <input id="q" type="search" aria-label="搜索板内条目" placeholder="搜索名称 / ID / 任意字段…" autocomplete="off">
@@ -2828,7 +2853,7 @@ else loadBoard(b,d=>{
 <script>
 (function(){
   if(!document || !document.documentElement || !document.documentElement.style) return;
-  var bar = document.querySelector ? document.querySelector('.topbar') : null;
+  var bar = document.querySelector ? document.querySelector('.hd2') : null;
   if(!bar) return;
   function sync(){ try{ document.documentElement.style.setProperty('--top-h', bar.offsetHeight + 'px'); }catch(e){} }
   sync();
@@ -2902,14 +2927,23 @@ else loadBoard(b,d=>{
     var sep=document.createElement('span'); sep.className='techlink-sep'; sep.textContent=' · ';
     var a=document.createElement('a'); a.className='techlink'; a.href='javascript:void(0)';
     a.textContent='技术详情';
-    a.onclick=function(e){ e.preventDefault(); notes.classList.toggle('open');
-      var det=notes.querySelector('details');
-      if(notes.classList.contains('open')){ notes.style.display='block'; if(det) det.open=true; }
-      else { notes.style.display='none'; } };
+    a.onclick=function(e){
+      e.preventDefault();
+      var panel=document.getElementById('techPanel');
+      if(!panel){
+        panel=document.createElement('div');
+        panel.id='techPanel';
+        panel.style.cssText='margin:10px 0 0;padding:10px 12px;border:1px solid #262f3b;border-radius:8px;background:#0f141b;font-size:12px;color:#9aa7b6;max-height:320px;overflow:auto';
+        var hd=document.querySelector('.hd2'); if(hd) hd.appendChild(panel);
+      }
+      var html=notes.innerHTML.replace(/<summary[^>]*>[\s\S]*?<\/summary>/,'');
+      if(panel.style.display==='block' && panel.dataset.src===html){ panel.style.display='none'; return; }
+      panel.innerHTML=html; panel.dataset.src=html; panel.style.display='block';
+    };
     var wrap=document.createElement('span'); wrap.className='techlink-wrap';
     wrap.appendChild(a);
     meta.appendChild(wrap);
-    var bar=document.querySelector('.topbar');
+    var bar=document.querySelector('.hd2');
     if(bar && notes.parentNode!==bar){ bar.appendChild(notes); }
     var det=notes.querySelector('details');
     if(location.hash==='#tech'){ notes.classList.add('open'); notes.style.display='block'; if(det) det.open=true; }
@@ -2919,6 +2953,10 @@ else loadBoard(b,d=>{
     ensureLink();
     var meta=document.getElementById('metaline');
     if(meta) new MutationObserver(ensureLink).observe(meta,{childList:true,characterData:true,subtree:true});
+    var notes=document.getElementById('notes');
+    if(notes) new MutationObserver(function(){
+      if(!notes.classList.contains('open')) notes.style.display='none';
+    }).observe(notes,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
   });
 })();
 </script>
