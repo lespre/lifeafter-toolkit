@@ -83,9 +83,14 @@ def main() -> int:
     import struct as _st
     sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
     from toolkit_core import bindict_table as _BT
-    CD = PROJ / "01_索引与产物/41_还原树/pe_test_script/com/cdata/oversea"
+    # 表根走 _src（PE → Documents → LA_CDATA_ROOT），不再写死 PE 路径
+    from _src import cdata_dir
+    CD = cdata_dir("oversea")
     hp = CD / "huodong_conf_data_auto_oversea_data_kj1.py"
     hc = CD / "huodong_conf_data_auto_oversea_data_kj1_chs.py"
+    if not hp.exists():
+        print("缺表：%s（当前表根 %s）" % (hp.name, CD), file=sys.stderr)
+        return 3
     _raw = hp.read_bytes(); _at = _raw.find(b"x{")
     _L = _st.unpack_from("<I", _raw, _at + 2)[0]
     _rows, _ = _BT.decode_table_rows(_raw[_at + 6:_at + 6 + _L],
