@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>板块 · Lifeafter Wiki</title>
 <script src="data/publication_policy.js?v=ec7cf93a17f7"></script>
+<script src="data/manifest.js"></script>
+<script src="data/wiki_taxonomy.js"></script>
 <script src="data/workbench_manifest.js?v=7ee9dbaa765c"></script>
 <script src="data/weapon_skin_audio_attachments.js?v=bc990a74b699"></script>
 <script src="data/media/weapon_skin_media.js?v=a7232deb9d2a"></script>
@@ -181,9 +183,22 @@ body.core-mode .i-media figcaption{display:none}
 .i-detail>.kv>.v.stars .star-txt{min-width:0}
 .grade-pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;border:1px solid currentColor}
 .g-蓝{color:#5aa9e6}.g-绿{color:#7fbf5f}.g-紫{color:#b07ce8}.g-金{color:#d9a441}
+
+/* 左侧大类跳转筛选栏 */
+#siteNav{position:fixed;left:0;top:0;bottom:0;width:212px;overflow:auto;z-index:80;
+  background:#0f1319;border-right:1px solid #1e2631;padding:12px 8px;font-size:12.5px}
+#siteNav .hd{font-size:10px;letter-spacing:.2em;color:#5d6b7c;margin:4px 0 8px;padding-left:6px}
+#siteNav .grp{font-size:10.5px;letter-spacing:.14em;color:#6b7a8b;margin:12px 0 4px;padding-left:6px}
+#siteNav a{display:block;padding:5px 8px;color:#9aa7b6;border-left:2px solid transparent;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;border-radius:0 2px 2px 0}
+#siteNav a:hover{color:#fff;background:#151b24}
+#siteNav a.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+body{padding-left:212px}
+@media(max-width:900px){#siteNav{display:none}body{padding-left:0}}
 </style>
 </head>
 <body>
+<aside id="siteNav"><div class="hd">资料分类</div></aside>
 <div class="topbar"><div class="topin">
   <div class="crumb"><a class="backwiki" href="wiki.html">← 返回 Wiki 首页</a><a href="index.html">三线状态</a><a href="skeletons.html">骨骼库</a></div>
   <h1 id="title">加载中…</h1>
@@ -2761,6 +2776,29 @@ else loadBoard(b,d=>{
     }, {passive:true});
   }
   if(window && window.ResizeObserver){ try{ new ResizeObserver(sync).observe(bar); }catch(e){} }
+})();
+</script>
+
+<script>
+(function(){
+  var T=window.WIKI_TAXONOMY, M=window.WIKI_MANIFEST;
+  if(!T||!M) return;
+  var byId={}; (M.boards||[]).forEach(function(b){byId[b.board]=b;});
+  var cur=new URLSearchParams(location.search).get('b')||'';
+  var nav=document.getElementById('siteNav');
+  var html='<div class="hd">资料分类</div>';
+  (T['树']||[]).forEach(function(top){
+    html += '<div class="grp">'+top.name+'</div>';
+    var ids=[];
+    (top.boards||[]).forEach(function(b){ids.push(b);});
+    (top.children||[]).forEach(function(c){(c.boards||[]).forEach(function(b){ids.push(b);});});
+    ids.forEach(function(id){
+      var b=byId[id]; if(!b) return;
+      var nm=(b.name||id).replace(/^当前包\s*·\s*/,'');
+      html += '<a href="board.html?b='+encodeURIComponent(id)+'"'+(id===cur?' class="on"':'')+' title="'+nm+'">'+nm+'</a>';
+    });
+  });
+  nav.innerHTML=html;
 })();
 </script>
 </body>
