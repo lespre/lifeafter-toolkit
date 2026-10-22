@@ -498,7 +498,7 @@ def _path_fid_single(p, data):
 
 @slow("find_chain_usable", "逻辑路径 → 文件号 → 数据行的查询链实跑可用")
 def _find_chain(p, data):
-    py = p / ".venv" / "Scripts" / "python.exe"
+    py = p / "00_规范与工具/环境/venv" / "Scripts" / "python.exe"
     pr = subprocess.run([str(py), str(RUN_ALL), "find", r"common\env_map\qiangpi.cube"],
                         cwd=str(p / "00_规范与工具/工具"), capture_output=True, text=True,
                         timeout=240, encoding="utf-8", errors="replace")
@@ -507,7 +507,7 @@ def _find_chain(p, data):
 
 @slow("extract_usable", "纹理载荷可定点取出并解码")
 def _extract(p, data):
-    py = p / ".venv" / "Scripts" / "python.exe"
+    py = p / "00_规范与工具/环境/venv" / "Scripts" / "python.exe"
     out = Path(tempfile.gettempdir()) / "_checks_extract_out.bin"
     if out.exists():
         out.unlink()

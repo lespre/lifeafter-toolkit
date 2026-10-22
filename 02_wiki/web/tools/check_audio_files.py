@@ -8,7 +8,7 @@ from collections import defaultdict
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
 WEB = ROOT / "02_wiki/web"
-SKIP_PARTS = {".venv", ".git", "41_还原树"}
+SKIP_PARTS = {"00_规范与工具/环境/venv", ".git", "41_还原树"}
 
 # basename → 候选路径（优先级：audio_review > skin_audio_carved > skin_audio_all）
 byname: dict[str, list[pathlib.Path]] = defaultdict(list)

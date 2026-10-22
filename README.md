@@ -136,7 +136,7 @@
 | **01_索引与产物** | `10_索引` · `30_分析` · `41_还原树`（PE / PC 全量树）· `源包` · `交付` · 临时区 |
 | **02_wiki** | 可视化站点（wiki / 3D 预览 / 看板 / 数据板块） |
 
-**不在仓库里**（体积大 / 可重建）：`01_索引与产物/*`（源包 45G + 还原树 + 索引库）· `.venv` · 站点大素材。
+**不在仓库里**（体积大 / 可重建）：`01_索引与产物/*`（源包 45G + 还原树 + 索引库）· `00_规范与工具/环境/venv` · 站点大素材。
 
 > 还原树、索引库、源包都可以由本仓库的脚本**从原始客户端重建**，
 > 因此不入库；仓库只保留**代码 + 页面 + 文档**。
@@ -147,8 +147,8 @@
 
 ```bash
 # 0) 依赖
-python -m venv .venv
-.venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
+python -m venv 00_规范与工具/环境/venv
+00_规范与工具/环境/venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
 
 # 1) 每次开工必做：把共享核心放进 PYTHONPATH
 export PYTHONPATH="$PWD/00_规范与工具/工具/工具库/00_共享核心"     # Linux/macOS
@@ -496,7 +496,7 @@ la拆包项目/
 
 ## 环境要求
 
-- **Python 3.12**（`.venv`）
+- **Python 3.12**（`00_规范与工具/环境/venv`）
 - Windows（源包路径默认 `E:\mrzh`）
 - 可选：`astcenc`（KTX/ASTC 解码）· `OIIO`（贴图交叉校验）
 - 依赖清单：`00_规范与工具/工具/requirements.lock.txt`

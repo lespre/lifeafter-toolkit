@@ -63,7 +63,8 @@ def _env_selfcheck(quiet=False) -> int:
     import importlib
     tag = "[env]"
     exe = Path(sys.executable)
-    venv_hint = Path(__file__).resolve().parents[1] / ".venv" / "Scripts" / "python.exe"
+    _root = next((p for p in Path(__file__).resolve().parents if (p / "la.py").is_file()), None)
+    venv_hint = (_root or Path(__file__).resolve().parents[2]) / "00_规范与工具/环境/venv" / "Scripts" / "python.exe"
     in_venv = "la拆包项目" in str(exe)
     if not in_venv:
         print("%s 当前解释器不在项目专用环境里：" % tag)

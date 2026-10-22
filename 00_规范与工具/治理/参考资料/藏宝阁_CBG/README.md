@@ -67,7 +67,7 @@
 ## 怎么更新 / 校验
 
 ```bash
-PY=E:/la拆包项目/.venv/Scripts/python.exe
+PY=E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe
 TOOL=00_规范与工具/工具/工具库/01_解码定位复原/客户端逆向/cbg_reference.py
 
 $PY $TOOL fetch     # 重新下载 raw/（内容变了会打印 旧 sha256 → 新 sha256）

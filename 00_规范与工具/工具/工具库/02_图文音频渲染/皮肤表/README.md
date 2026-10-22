@@ -38,7 +38,7 @@ weapon_skin_kind_data 池（20 字符串）
 ## 使用
 
 ```bash
-E:\la拆包项目\.venv\Scripts\python.exe 工具库/02_图文音频渲染/皮肤表/build_weapon_skin_table.py [输出CSV]
+E:\la拆包项目\00_规范与工具/环境/venv/Scripts/python.exe 工具库/02_图文音频渲染/皮肤表/build_weapon_skin_table.py [输出CSV]
 ```
 
 ## 前置产物

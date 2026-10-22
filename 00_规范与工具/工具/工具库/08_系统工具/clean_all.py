@@ -7,7 +7,7 @@ import pathlib
 import shutil
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
-SKIP = {"41_还原树", ".venv", ".git", "01_索引与产物", "node_modules"}
+SKIP = {"41_还原树", "00_规范与工具/环境/venv", ".git", "01_索引与产物", "node_modules"}
 PATTERNS = ["*.bak", "*.bak_*", "*.tmp", "*.orig", "*.rej", "*.pyc", "*.pyo",
             "*.log", "*.building", "Thumbs.db", ".DS_Store"]
 DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache"}

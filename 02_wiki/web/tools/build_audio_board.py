@@ -17,7 +17,7 @@ from collections import defaultdict
 ROOT = pathlib.Path(r"E:/la拆包项目")
 WEB = ROOT / "02_wiki/web"
 OUT = WEB / "assets/audio"
-SKIP = {".venv", ".git", "41_还原树"}
+SKIP = {"00_规范与工具/环境/venv", ".git", "41_还原树"}
 
 byname: dict[str, list[pathlib.Path]] = defaultdict(list)
 for p in (ROOT / "01_索引与产物").rglob("*.wav"):

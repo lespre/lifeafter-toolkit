@@ -809,8 +809,8 @@ def write_report(board, names, table_ref, pkg_sha) -> None:
     A("")
     A("## 5. 复现\n")
     A("```")
-    A("E:/la拆包项目/.venv/Scripts/python.exe 02_wiki/web/tools/rebuild_lottery_periods.py")
-    A("E:/la拆包项目/.venv/Scripts/python.exe 02_wiki/web/tools/build_wiki.py")
+    A("E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe 02_wiki/web/tools/rebuild_lottery_periods.py")
+    A("E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe 02_wiki/web/tools/build_wiki.py")
     A("```")
 
     out = OUT_BOARD.parent / "_report_lottery_periods.md"

@@ -61,7 +61,7 @@ BINARY_TEXT_EXTS = {".bin", ".py", ".nxs", ".lc", ".pyc", ".bytes", ".dat", ".xm
                     ".csb"}      # ui 的 Cocos Studio 二进制（含资源名）
 SCAN_EXTS = TEXT_EXTS | BINARY_TEXT_EXTS
 #: 遍历开采源时跳过的目录名（大件产物 / 缓存，无差别递归会被拖死）
-SKIP_DIRS = {"__pycache__", ".git", ".venv", "node_modules", "_归档", "25_全量拆包",
+SKIP_DIRS = {"__pycache__", ".git", "00_规范与工具/环境/venv", "node_modules", "_归档", "25_全量拆包",
              "20_提取", "site_data", "site_analysis", "site_artifacts"}
 
 HEX16 = re.compile(r"^[0-9A-Fa-f]{16}$")

@@ -1,4 +1,4 @@
-.venv/
+00_规范与工具/环境/venv/
 __pycache__/
 *.pyc
 
@@ -104,3 +104,8 @@ seckeys/
 # README 预览图（GitHub 上需要显示）
 !00_规范与工具/治理/手册/images/
 !00_规范与工具/治理/手册/images/*.png
+
+# 环境依赖（体积大，按需求文档重建）
+00_规范与工具/环境/python/
+00_规范与工具/环境/everything/
+00_规范与工具/环境/*.zip

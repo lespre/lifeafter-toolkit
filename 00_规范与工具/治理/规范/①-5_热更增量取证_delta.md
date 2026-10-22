@@ -35,7 +35,7 @@
 ## 三、用法
 
 ```bash
-PY="E:/la拆包项目/.venv/Scripts/python.exe"
+PY="E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe"
 CLI="00_规范与工具/工具/run_all.py"
 
 # 拉清单到缓存（默认全部入口；可 --entry 指定）

@@ -156,7 +156,7 @@ toolkit_cli.py loose scan --out out/ && toolkit_cli.py loose match --dir out/
 
 | 项 | 值 |
 |---|---|
-| Python | 3.12（`.venv`） |
+| Python | 3.12（`00_规范与工具/环境/venv`） |
 | 平台 | Windows（源包默认 `E:\mrzh`） |
 | 工具入口 | `00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py` |
 | 配套脚本 | `00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染/{resolve_asset,shot_page,serve_web}.py` |

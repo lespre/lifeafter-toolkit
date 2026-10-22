@@ -12,7 +12,7 @@ import shutil
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
 SCOPE = ["00_规范与工具/治理", "00_规范与工具/工具", "02_wiki", "docs"]
-EXCLUDE_PARTS = {"01_索引与产物", "01_索引与产物", "交付", ".git", ".venv", "41_还原树"}
+EXCLUDE_PARTS = {"01_索引与产物", "01_索引与产物", "交付", ".git", "00_规范与工具/环境/venv", "41_还原树"}
 
 FILE_PATTERNS = ["*.bak", "*.bak_*", "*.bak.*", "probe*.png", "shot_*.png",
                  "*.building", "*_probe_test.html", "*.pyc", "*.pyo"]

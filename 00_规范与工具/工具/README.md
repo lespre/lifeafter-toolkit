@@ -29,7 +29,7 @@
 
 ```bash
 # 1) 依赖（本环境由 uv 创建，没有 pip，别用 python -m pip）
-uv pip install --python ".venv/Scripts/python.exe" -r 00_规范与工具/工具/requirements.lock.txt
+uv pip install --python "00_规范与工具/环境/venv/Scripts/python.exe" -r 00_规范与工具/工具/requirements.lock.txt
 
 # 2) 统一索引（只读源包，产物在 01_索引与产物/10_索引/indexes/）
 python run_all.py index status
@@ -83,7 +83,7 @@ export <输入> --out x.csv   解析结果 → 表格（csv/json/md）
 > - `统一索引与拆包流程.md` + 界面配图（原 `docs/screenshots/`）→ `00_规范与工具/治理/文档/工具说明/`
 > - `_archive/`（旧 EXE · readme.txt · requirements.txt · 旧索引_20260921/）→ `01_索引与产物/90_临时/工具区归档_20260926/_archive/`
 > - `.buildenv/`（孤儿 venv，718 MB，其中 `Scripts/activate.bat` 的 `VIRTUAL_ENV` 指向已不存在的旧路径）→ **已删除**；
->   依赖统一用 `E:\la拆包项目\.venv\Scripts\python.exe`。
+>   依赖统一用 `E:\la拆包项目\00_规范与工具/环境/venv/Scripts/python.exe`。
 > - `3D预览器/` → `工具库/02_图文音频渲染/3D预览器/`（`app.py` 按 `INDEX_HOME/工具库/02_图文音频渲染/3D预览器/poster` 取）。
 ```
 

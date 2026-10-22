@@ -42,7 +42,7 @@ cd lifeafter-toolkit
 
 ```bash
 # ① 依赖
-python -m venv .venv && .venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
+python -m venv 00_规范与工具/环境/venv && 00_规范与工具/环境/venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
 
 # ② ★ 设 PYTHONPATH —— 不设必报 ModuleNotFoundError: toolkit_core
 export PYTHONPATH="$PWD/00_规范与工具/工具/工具库/00_共享核心"

@@ -679,7 +679,7 @@ class Bundle:
             "```bash",
             "cd E:/la拆包项目",
             'export PYTHONPATH="E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心"',
-            'E:/la拆包项目/.venv/Scripts/python.exe "00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py" \\',
+            'E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe "00_规范与工具/工具/工具库/00_共享核心/命令行/toolkit_cli.py" \\',
             '    hotfix bundle --out <本目录>',
             "```",
             "",

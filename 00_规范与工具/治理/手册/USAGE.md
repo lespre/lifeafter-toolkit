@@ -3,7 +3,7 @@
 面向"我拿到一个需求，该按什么顺序做"。每条都是跑通过的。
 
 > 交接包已内置核心路径引导，不再要求先设置 `PYTHONPATH`。Windows 建议使用项目专用解释器：
-> `E:/la拆包项目/.venv/Scripts/python.exe`。
+> `E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe`。
 > 命令前缀：`python 00_规范与工具/工具/run_all.py`（也可直接运行 `toolkit_cli.py`）。
 
 ---

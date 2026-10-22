@@ -58,7 +58,7 @@ while not os.path.isdir(os.path.join(PROJ, "00_规范与工具/工具")):
         raise RuntimeError("找不到项目根（向上没有含 00_规范与工具/工具 的目录）")
     PROJ = _up
 
-PY = os.path.join(PROJ, ".venv", "Scripts", "python.exe")
+PY = os.path.join(PROJ, "00_规范与工具/环境/venv", "Scripts", "python.exe")
 if not os.path.exists(PY):
     PY = sys.executable
 RUN_ALL = os.path.join(PROJ, "00_规范与工具/工具", "run_all.py")

@@ -93,8 +93,8 @@ count × ( key: key_kind      # 材料 type_id，uleb
 
 ```bash
 cd E:/la拆包项目/02_wiki/web
-E:/la拆包项目/.venv/Scripts/python.exe tools/build_recipe_board.py   # ~3.2 s（294 张 PNG 全解）
-E:/la拆包项目/.venv/Scripts/python.exe tools/build_wiki.py           # 0 报错
+E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe tools/build_recipe_board.py   # ~3.2 s（294 张 PNG 全解）
+E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe tools/build_wiki.py           # 0 报错
 ```
 
 ## 8. 未做 / 留给下一步

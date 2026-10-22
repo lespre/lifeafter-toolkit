@@ -15,7 +15,7 @@ import argparse
 import pathlib
 import sys
 
-PROJ = pathlib.Path(__file__).resolve().parents[4]
+PROJ = pathlib.Path(__file__).resolve().parents[5]
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import pe_index as PI   # noqa: E402
 

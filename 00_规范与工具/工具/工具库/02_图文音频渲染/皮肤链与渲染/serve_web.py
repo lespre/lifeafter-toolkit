@@ -11,7 +11,7 @@ from pathlib import Path
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8770
 WEB = Path(r'E:\la拆包项目\02_wiki\web')
 LOG = Path(r'E:\la拆包项目\01_索引与产物\90_临时\web_%d.log' % PORT)
-PY = r'E:\la拆包项目\.venv\Scripts\python.exe'
+PY = r'E:\la拆包项目\00_规范与工具/环境/venv/Scripts/python.exe'
 
 
 def alive():

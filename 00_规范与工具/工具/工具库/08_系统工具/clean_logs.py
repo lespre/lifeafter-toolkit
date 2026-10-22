@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""清理分析区的运行日志与 pycache（严格限定目录，不碰 .venv）。"""
+"""清理分析区的运行日志与 pycache（严格限定目录，不碰 00_规范与工具/环境/venv）。"""
 from __future__ import annotations
 
 import pathlib
@@ -7,7 +7,7 @@ import shutil
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
 SCOPES = [ROOT / "01_索引与产物", ROOT / "00_规范与工具/工具", ROOT / "02_wiki"]
-SKIP = {"41_还原树", ".venv", ".git"}
+SKIP = {"41_还原树", "00_规范与工具/环境/venv", ".git"}
 
 logs, dirs, freed = 0, 0, 0
 for scope in SCOPES:

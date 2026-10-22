@@ -22,7 +22,7 @@ import sys
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
 WEB = PROJ / "02_wiki/web"
-PY = str(PROJ / ".venv/Scripts/python.exe")
+PY = str(PROJ / "00_规范与工具/环境/venv/Scripts/python.exe")
 TOOLS = WEB / "tools"
 
 RENAME = {"多时装抽奖": "自选保底奖池", "纯外观抽奖": "不放回抽奖",

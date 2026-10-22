@@ -24,7 +24,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 RENDER = HERE / 'render_game_faithful.py'
-PY = r'E:\la拆包项目\.venv\Scripts\python.exe'
+PY = r'E:\la拆包项目\00_规范与工具/环境/venv/Scripts/python.exe'
 CONF = Path(r'E:\la拆包项目\01_索引与产物\90_临时\common_model_show_conf.json')
 DEFAULT_WX = (r'E:/la拆包项目/01_索引与产物/41_还原树/Documents/gres/0000.gpk/weather/'
               r'weather_ct_pve_city08_v20_pve_zhanshen01.xml')
