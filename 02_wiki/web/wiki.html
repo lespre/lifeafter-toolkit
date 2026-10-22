@@ -352,9 +352,30 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
     return out.replace(/\s*→\s*/g,' 的 ').replace(/\s{2,}/g,' ').replace(/\s*·\s*·\s*/g,' · ').trim();
   }
 
+  // 标题一律走 taxonomy：单板块叶子用叶子名（带序号），多板块叶子用板块名（去说明词）
+  var TITLES = {};
+  (function(){
+    function cleanNm(x){
+      return String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+        .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
+    }
+    (T['树']||[]).forEach(function(top){
+      (top.boards||[]).forEach(function(id){
+        if(byId[id]) TITLES[id]=String(top.name||'').replace(/^[^、]*、/,'');
+      });
+      (top.children||[]).forEach(function(leaf){
+        var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+        ids.forEach(function(id){
+          TITLES[id]=(ids.length===1)?leaf.name:cleanNm(byId[id].name||id);
+        });
+      });
+    });
+  })();
   function cleanTitle(b, nm){
+    if(TITLES[nm]) return TITLES[nm];
     var s = String((b && b.name) || nm || '')
-      .replace(/^当前包\s*·\s*/,'').replace(/^[（(][^）)]*[）)]\s*/,'').trim();
+      .replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+      .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
     return zhName(s || nm);
   }
 
