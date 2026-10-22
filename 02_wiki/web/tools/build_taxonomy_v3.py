@@ -1,0 +1,88 @@
+# -*- coding: utf-8 -*-
+"""按草稿逐字重建 taxonomy：不加任何说明后缀，子级序号一一对应。"""
+import json
+import pathlib
+import shutil
+
+WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+DATA = WEB / "data"
+old = DATA / "wiki_taxonomy.json"
+if old.exists():
+    shutil.copy2(old, DATA / "wiki_taxonomy_旧_20261022b.json")
+
+TREE = [
+    {
+        "id": "preview",
+        "name": "置顶 · 预告专栏（角色时装、武器皮肤、活动奖池）",
+        "boards": ["upcoming_auto"],
+        "children": [],
+    },
+    {
+        "id": "fashion",
+        "name": "一、时装类",
+        "boards": [],
+        "children": [
+            {"name": "（一）人物时装", "boards": ["fashion_wardrobe"]},
+            {"name": "（二）武器皮肤", "boards": ["weapon_skin_sfx_text_sources"]},
+            {"name": "（三）载具", "boards": ["vehicle_full"]},
+            {"name": "（四）击败播报与全场最佳动画", "boards": ["kill_broadcast"]},
+            {"name": "（五）头像、头像框、名片框", "boards": ["avatar_catalog"]},
+        ],
+    },
+    {
+        "id": "combat",
+        "name": "二、战力类",
+        "boards": [],
+        "children": [
+            {"name": "（一）异变核芯", "boards": ["mutation_core_full", "core_skill_12star"]},
+            {"name": "（二）战术芯片", "boards": ["tactical_chip_full"]},
+            {"name": "（三）无人机", "boards": ["drone_catalog"]},
+            {"name": "（四）料理与食谱", "boards": ["edible_catalog"]},
+            {"name": "（五）伤害计算公式与场景平衡", "boards": ["scene_balance"]},
+            {"name": "（六）各种族潜能", "boards": ["gene_potential_catalog"]},
+            {"name": "（七）战斗天赋、职业天赋、职业技能",
+             "boards": ["talent_battle", "talent_prof"]},
+        ],
+    },
+    {
+        "id": "activity",
+        "name": "三、活动奖池",
+        "boards": [],
+        "children": [
+            {"name": "（一）活动表", "boards": ["activity_master", "lottery_periods"]},
+        ],
+    },
+    {
+        "id": "reference",
+        "name": "四、综合资料",
+        "boards": [],
+        "children": [
+            {"name": "（一）服务器类型", "boards": ["server_types"]},
+            {"name": "（二）全量道具总表", "boards": ["item_master_full"]},
+            {"name": "（三）称号", "boards": ["title_catalog"]},
+            {"name": "（四）配方", "boards": ["recipe_catalog"]},
+            {"name": "（五）说明条目、文字与提示总表",
+             "boards": ["desc_catalog", "text_notice_catalog", "gift_data_text_sources"]},
+            {"name": "（六）实体技能", "boards": ["entity_catalog", "skill_catalog"]},
+            {"name": "（七）状态", "boards": ["buff_catalog"]},
+            {"name": "（八）图鉴收集", "boards": ["illustration_catalog"]},
+        ],
+    },
+]
+
+doc = {
+    "schema": "wiki-taxonomy/v1",
+    "generated": "2026-10-22",
+    "说明": "按草稿逐字：置顶预告 + 四分类，子级序号一一对应",
+    "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…",
+    "折叠": False,
+    "树": TREE,
+}
+
+(DATA / "wiki_taxonomy.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+(DATA / "wiki_taxonomy.js").write_text("window.WIKI_TAXONOMY = " + json.dumps(doc, ensure_ascii=False) + ";\n", encoding="utf-8")
+print("顶层", len(TREE), "｜叶子", sum(len(t["children"]) for t in TREE))
+for t in TREE:
+    print(" ", t["name"])
+    for c in t["children"]:
+        print("    ", c["name"])

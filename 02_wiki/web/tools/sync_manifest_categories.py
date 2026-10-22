@@ -8,6 +8,8 @@ tax = json.loads((DATA / "wiki_taxonomy.json").read_text(encoding="utf-8"))
 
 path_of = {}
 for top in tax["树"]:
+    for b in top.get("boards", []):
+        path_of[b] = top["name"]
     for leaf in top.get("children", []):
         for b in leaf.get("boards", []):
             path_of[b] = "%s / %s" % (top["name"], leaf["name"])

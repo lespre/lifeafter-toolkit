@@ -128,6 +128,10 @@ a{color:inherit}
 .wp-sub > h3::before{content:"";width:5px;height:5px;background:var(--blood-2);transform:rotate(45deg)}
 .wp-sub > h3 em{font-style:normal;color:#5f6f79;font-weight:600;font-size:10px;letter-spacing:.1em}
 
+.sub-h{margin:18px 0 8px;font-size:13px;font-weight:700;color:var(--ink-2);
+  letter-spacing:.08em;display:flex;align-items:center;gap:8px}
+.sub-h::before{content:"";width:4px;height:12px;background:var(--steel);display:inline-block}
+
 /* ---------- 瓦片 ---------- */
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:10px}
 .card{position:relative}
@@ -446,27 +450,42 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       h2.appendChild(no); h2.appendChild(ti); h2.appendChild(cn);
       sec.appendChild(h2);
 
-      var list = [];
+      function tilesFor(entries){
+        var g = document.createElement('div');
+        g.className = 'tiles';
+        for(var li=0; li<entries.length; li++){
+          var e = entries[li];
+          if(e[0]) g.appendChild(tile(e[0], e[1], e[2], e[3]));
+          else g.appendChild(phTile(top.note));
+        }
+        return g;
+      }
+      var topList = [];
       for(var bi=0; bi<(top.boards||[]).length; bi++){
         var nm0 = top.boards[bi];
-        if(byId[nm0]) list.push([nm0, byId[nm0], false, '']);
-        else if(showArchived && pol[nm0]) list.push([nm0, {name:nm0}, true, '']);
+        if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
+        else if(showArchived && pol[nm0]) topList.push([nm0, {name:nm0}, true, '']);
       }
-      for(var ci=0; ci<(top.children||[]).length; ci++){
-        collect(top.children[ci], '', list);
-      }
-      if(!list.length && top.placeholder){
-        list.push([null, null, false, '']);
-      }
+      if(topList.length) sec.appendChild(tilesFor(topList));
 
-      var g = document.createElement('div');
-      g.className = 'tiles';
-      for(var li=0; li<list.length; li++){
-        var e = list[li];
-        if(e[0]) g.appendChild(tile(e[0], e[1], e[2], e[3]));
-        else g.appendChild(phTile(top.note));
+      for(var ci=0; ci<(top.children||[]).length; ci++){
+        var ch = top.children[ci];
+        var subList = [];
+        for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
+          var nm2 = ch.boards[bi2];
+          if(byId[nm2]) subList.push([nm2, byId[nm2], false, '']);
+          else if(showArchived && pol[nm2]) subList.push([nm2, {name:nm2}, true, ch.name]);
+        }
+        for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], ch.name, subList);
+        var h3 = document.createElement('h3');
+        h3.className = 'sub-h';
+        h3.textContent = ch.name;
+        sec.appendChild(h3);
+        sec.appendChild(tilesFor(subList.length ? subList : [[null, null, false, '']]));
       }
-      sec.appendChild(g);
+      if(!(top.children||[]).length && !topList.length && top.placeholder){
+        sec.appendChild(tilesFor([[null, null, false, '']]));
+      }
       host.appendChild(sec);
 
       var label = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
