@@ -14,9 +14,37 @@ import pathlib
 PROJ = pathlib.Path(r"E:/la拆包项目")
 import os
 
-# LA_CDATA_ROOT 可显式指定表根（例如只带 PC 客户端时指向 Documents 树）
+# 表根优先级：
+#   1) LA_CDATA_ROOT 环境变量（显式指定，测试/临时用）
+#   2) profiles.yml 的 source: pe|pc|documents
+#   3) 默认 PE → Documents 依次回落
 _ENV_ROOT = os.environ.get("LA_CDATA_ROOT")
-ROOTS = ([pathlib.Path(_ENV_ROOT)] if _ENV_ROOT else []) + [
+
+
+def _source_root() -> pathlib.Path | None:
+    name = os.environ.get("LA_SOURCE")
+    if not name:
+        try:
+            import yaml
+            cfg = yaml.safe_load((PROJ / "profiles.yml").read_text(encoding="utf-8")) or {}
+            name = cfg.get("source")
+        except Exception:
+            name = None
+    if not name:
+        return None
+    try:
+        import yaml
+        cfg = yaml.safe_load((PROJ / "profiles.yml").read_text(encoding="utf-8")) or {}
+        rel = ((cfg.get("sources") or {}).get(name) or {}).get("cdata")
+        if rel:
+            return PROJ / rel
+    except Exception:
+        return None
+    return None
+
+
+_SRC_ROOT = _source_root()
+ROOTS = ([pathlib.Path(_ENV_ROOT)] if _ENV_ROOT else []) + ([_SRC_ROOT] if _SRC_ROOT else []) + [
     PROJ / "01_索引与产物/41_还原树/pe_20261020/com/cdata",
     PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata",
 ]
