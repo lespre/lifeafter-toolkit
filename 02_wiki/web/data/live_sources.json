@@ -172,10 +172,13 @@
    "snapshot_role": "current-documents-hotfix",
    "reader_enabled": true,
    "path": "E:\\mrzh\\Documents\\script.py314.lc.npk",
-   "expected_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+   "expected_sha256": "d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9",
    "expected_bytes": 135531128,
    "expected_mtime_ns": 1790685070535917800,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "expected_sha256_prev": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+   "bytes_prev": null,
+   "bytes": 196059988
   },
   {
    "source_id": "mrzh-root-py314-full",
@@ -192,7 +195,9 @@
    "expected_sha256": "8514c5add38d6e3e26c96bba049d1bdd0d0691f73df9a1181a258fb9686e81c7",
    "expected_bytes": 465363048,
    "expected_mtime_ns": 1790349575285709500,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 465363048
   },
   {
    "source_id": "mrzh-documents-py3-legacy",
@@ -260,7 +265,9 @@
    "expected_sha256": "683098c34851f77676eb8b6a6710a6e7b2e11e3b952958e3af1837419d8c627e",
    "expected_bytes": 400155696,
    "expected_mtime_ns": 1773725103118735200,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 400155696
   },
   {
    "source_id": "lifeafter-documents-py3-legacy",
@@ -277,7 +284,9 @@
    "expected_sha256": "c3e6d347e3b85af6ac2ce07d59fe94eb34c3b452c0c45b12eb2a697d1c5b80d7",
    "expected_bytes": 349857404,
    "expected_mtime_ns": 1785249838291013300,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 349857404
   },
   {
    "source_id": "lifeafter-documents-script-legacy",
@@ -294,7 +303,9 @@
    "expected_sha256": "afa7d6e84be7213bacaa7aebf764bb25718c2fb112d67d79c7f2df8f1baf3756",
    "expected_bytes": 332566292,
    "expected_mtime_ns": 1782411101047412400,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 332566292
   },
   {
    "source_id": "lifeafter-root-py3-legacy",
@@ -311,7 +322,9 @@
    "expected_sha256": "6329fa77cce9c8d54c16de411672caecbeff07bdb3d83a48d3ff175626cf2350",
    "expected_bytes": 365064336,
    "expected_mtime_ns": 1773725103118735200,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 365064336
   },
   {
    "source_id": "lifeafter-root-script-legacy",
@@ -328,7 +341,9 @@
    "expected_sha256": "8e6cd795897be4f95609e80f854847b56ba757e8bd4e20f54ca376f616435368",
    "expected_bytes": 1441472,
    "expected_mtime_ns": 1621590458000000000,
-   "source_write_policy": "read_only"
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 1441472
   }
  ]
 }
