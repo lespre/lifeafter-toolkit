@@ -21,6 +21,33 @@ TABLE = PROJ / "01_索引与产物/41_还原树/pe_20261020/com/cdata/fashion_da
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 
 
+def gender_map() -> dict:
+    """player_appear_data.model_name 里带 _f_ / _m_，据此得到 model_id → 性别。"""
+    p = TABLE.with_name("player_appear_data.py")
+    if not p.exists():
+        return {}
+    raw = p.read_bytes()
+    at = raw.find(b"x{")
+    L = int.from_bytes(raw[at + 2:at + 6], "little")
+    chs = p.with_name(p.stem + "_chs.py")
+    pool = BT.parse_legacy_chs_pool(chs.read_bytes()) if chs.exists() else None
+    rows = BT.decode_table_rows(raw[at + 6:at + 6 + L], pool,
+                                resolve_jumps=False, lenient=True)[0]
+    out = {}
+    import re as _re
+    for r in rows:
+        key = str(r.get("key"))
+        mn = r.get("values", {}).get("model_name")
+        mn = mn[1] if isinstance(mn, tuple) else mn
+        if not isinstance(mn, str):
+            continue
+        if "_f_" in mn or "_female" in mn:
+            out[key] = "女"
+        elif "_m_" in mn or "_male" in mn:
+            out[key] = "男"
+    return out
+
+
 def charm_map() -> dict:
     raw = TABLE.read_bytes()
     at = raw.find(b"x{")
@@ -96,6 +123,7 @@ def status_label(tags) -> str:
 def main() -> int:
     d = json.loads(BOARD.read_text(encoding="utf-8"))
     cm = charm_map()
+    gm = gender_map()
     got = 0
     for it in d["items"]:
         keys = [str(k) for k in (it.get("row_keys") or [])]
@@ -115,9 +143,23 @@ def main() -> int:
         if ic in ("有图", "已上架"):
             it["status_label"] = "已上架"
         elif ic in ("未下发", "无图标字段"):
-            it["status_label"] = status_label(it.get("status_tags"))
+            # 性别：按 model_ids 映射（男女都有就是 男/女）
+        gl = []
+        for mid in (it.get("model_ids") or []):
+            g = gm.get(str(mid))
+            if g and g not in gl:
+                gl.append(g)
+        if gl:
+            it["gender"] = "/".join(gl)
         else:
-            it["status_label"] = status_label(it.get("status_tags"))
+            # 性别：按 model_ids 映射（男女都有就是 男/女）
+        gl = []
+        for mid in (it.get("model_ids") or []):
+            g = gm.get(str(mid))
+            if g and g not in gl:
+                gl.append(g)
+        if gl:
+            it["gender"] = "/".join(gl)
     # 时装板自带筛选模组（部位多选/期限/图示/性别/排序），不再叠加 meta.filters，避免两套控件打架
     d.setdefault("meta", {}).pop("filters", None)
     d["meta"]["notes"] = (d["meta"].get("notes") or "") + " ｜ 魅力值取自 fashion_data.charm_value"

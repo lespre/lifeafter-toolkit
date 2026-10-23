@@ -1802,7 +1802,10 @@ function frBuildFilters(items){
   if(cnt.duration["未知"])durOpts.push(["未知",cnt.duration["未知"]]);
   box.appendChild(one("期限","duration",durOpts,FR.duration));
   box.appendChild(one("图示","img",[["全部",items.length],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
-  box.appendChild(one("性别","gender",[["全部",items.length],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0]],FR.gender));
+  // 性别：只有板上确有男/女标记时才摆这一组（时装多为男女共用模型，字段为空就整组隐藏，不留 0 计数）
+  if((cnt.gender["女"]||0)||(cnt.gender["男"]||0)){
+    box.appendChild(one("性别","gender",[["全部",items.length],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0]],FR.gender));
+  }
   // 排序（先筛后排）：默认 = 板上原序；魅力值升降序时缺失值固定排最后
   const sortSel=document.createElement("select");
   sortSel.id="frSort";
