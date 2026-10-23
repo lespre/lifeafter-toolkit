@@ -49,6 +49,18 @@ class Report:
                    dict(self.reasons)))
 
 
+def _looks_like_sheet(path: pathlib.Path) -> bool:
+    """导出后自检：宽高比异常 / 尺寸过大 → 多半是图集或零件页，不能当单图用。"""
+    try:
+        from PIL import Image
+        w, h = Image.open(path).size
+    except Exception:
+        return False
+    if h and w / h > 1.8:
+        return True
+    return max(w, h) > 1500
+
+
 def _candidates(item: dict) -> list[str]:
     out = []
     for f in PATH_FIELDS:
@@ -73,6 +85,16 @@ def _candidates(item: dict) -> list[str]:
     return uniq
 
 
+def _load_locks(board: str) -> set:
+    f = WEB / "data/board_image_locks.json"
+    if not f.exists():
+        return set()
+    try:
+        return set((json.loads(f.read_text(encoding="utf-8")).get(board) or []))
+    except Exception:
+        return set()
+
+
 def fill_board(board: str, limit: int | None = None, quiet: bool = False) -> Report:
     from . import img_fetch
 
@@ -83,9 +105,14 @@ def fill_board(board: str, limit: int | None = None, quiet: bool = False) -> Rep
     outdir = CACHE / board
     outdir.mkdir(parents=True, exist_ok=True)
 
+    locked = _load_locks(board)
     for idx, it in enumerate(items):
         if limit and idx >= limit:
             break
+        if str(it.get("id")) in locked:
+            rep.ok += 1
+            rep.reasons["人工裁切锁定"] += 1
+            continue
         cands = _candidates(it)
         if not cands:
             rep.no_field += 1
@@ -101,6 +128,14 @@ def fill_board(board: str, limit: int | None = None, quiet: bool = False) -> Rep
                 hit = img_fetch.export(c, dst)
                 if hit:
                     break
+            if hit and _looks_like_sheet(dst):
+                add = img_fetch.export(cands[0], dst) if False else ""
+                dst.unlink(missing_ok=True)
+                rep.missing += 1
+                rep.reasons["疑似图集/零件页（需裁切）"] += 1
+                if len(rep.samples) < 5:
+                    rep.samples.append((it.get("id"), cands[0]))
+                continue
             if hit:
                 rep.ok += 1
             else:

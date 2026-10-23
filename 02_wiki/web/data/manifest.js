@@ -203,7 +203,9 @@ window.WIKI_MANIFEST = {
         "unresolved": 1253,
         "static config": 1253,
         "verified": 0,
-        "runtime final unknown": 1253
+        "runtime final unknown": 1253,
+        "有图": 1127,
+        "无图": 618
       },
       "name_status_summary": {},
       "provenance_status": {
