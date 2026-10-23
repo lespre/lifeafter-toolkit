@@ -217,12 +217,12 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "潜能强化总表",
-      "category": "二、战力类 / （八）种族潜能",
+      "name": "种族潜能总表",
+      "category": "二、战力类 / （六）种族潜能",
       "board": "gene_potential_catalog",
       "items": 63,
       "generated": "2026-10-23",
-      "source_server": "简单生存服（pe_20261020 还原树）",
+      "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
         "structure": 63
@@ -626,20 +626,21 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "新更新与预告（自动）",
-      "category": "置顶、预告专栏",
+      "category": "零、新更新与预告专栏（游戏未上线资源预告）",
       "board": "upcoming_auto",
-      "items": 50,
-      "generated": "2026-10-19",
+      "items": 16,
+      "generated": "2026-10-21",
       "source_server": "简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 50
+        "structure": 11,
+        "candidate": 5
       },
       "state_summary": {
         "武器皮肤": 11,
-        "奖池成员": 31,
-        "奖池期次": 3,
-        "合计": 50
+        "奖池成员": 5,
+        "奖池期次": 1,
+        "合计": 16
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -647,7 +648,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 50
+          "replayed-structural": 16
         }
       }
     },
