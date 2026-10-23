@@ -23,11 +23,52 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 from _src import table_path  # noqa: E402
 
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
-LAYERS = [("fashion_face_slots.json", "face_"), ("fashion_glow_slots.json", "glow_")]
+LAYERS = [("fashion_face_slots.json", "face_", "面饰"),
+          ("fashion_projection_slots.json", "proj_", "投影")]
 
 
 def _v(v):
     return v[1] if isinstance(v, tuple) else v
+
+
+def glows() -> list[dict]:
+    """荧光棒：player_appear_data 里 part_type=light 且 is_available_glowstick=1 的行。"""
+    from toolkit_core import bindict_table as BT
+    base = table_path("player_appear_data")
+    if not base or not base.exists():
+        return []
+    chs = base.with_name(base.stem + "_chs.py")
+    raw = base.read_bytes()
+    at = raw.find(b"x{")
+    if at < 0:
+        return []
+    L = int.from_bytes(raw[at + 2:at + 6], "little")
+    pool = BT.parse_legacy_chs_pool(chs.read_bytes()) if chs.exists() else None
+    rows = BT.decode_table_rows(raw[at + 6:at + 6 + L], pool, resolve_jumps=False, lenient=True)[0]
+    out, seen = [], set()
+    for r in rows:
+        vals = r.get("values") or {}
+        if str(_v(vals.get("part_type")) or "").lower() != "light":
+            continue
+        if str(_v(vals.get("is_available_glowstick")) or "") not in ("1", "True"):
+            continue
+        name = _v(vals.get("name"))
+        mid = _v(vals.get("model_id"))
+        if not name or (name, mid) in seen:
+            continue
+        seen.add((name, mid))
+        out.append({
+            "id": "glow_%s" % r.get("key"),
+            "name": str(name),
+            "part": "光源",
+            "charm_value": None,
+            "desc": _v(vals.get("desc")),
+            "evidence": "structure",
+            "evidence_level": "static/candidate",
+            "source": "player_appear_data 荧光棒行（part_type=light, row=%s）" % r.get("key"),
+            "status_tags": ["static config"],
+        })
+    return out
 
 
 def pendants() -> list[dict]:
@@ -71,8 +112,8 @@ def main() -> int:
     items = d.get("items", [])
     have = {str(i.get("id")) for i in items}
 
-    added = {"face": 0, "glow": 0, "pendant": 0}
-    for fname, prefix in LAYERS:
+    added = {"face": 0, "glow": 0, "pendant": 0, "proj": 0}
+    for fname, prefix, part in LAYERS:
         p = WEB / "data/boards" / fname
         if not p.exists():
             continue
@@ -83,7 +124,7 @@ def main() -> int:
             item = {
                 "id": iid,
                 "name": it.get("name") or it.get("display_name") or "",
-                "part": "面饰" if prefix == "face_" else "光源",
+                "part": part,
                 "charm_value": it.get("charm_value"),
                 "desc": it.get("desc"),
                 "evidence": it.get("evidence", "structure"),
@@ -95,6 +136,13 @@ def main() -> int:
             have.add(iid)
             added[prefix.strip("_")] += 1
 
+    for item in glows():
+        if item["id"] in have:
+            continue
+        items.append(item)
+        have.add(item["id"])
+        added["glow"] += 1
+
     for item in pendants():
         if item["id"] in have:
             continue
@@ -104,8 +152,8 @@ def main() -> int:
 
     d["items"] = items
     BOARD.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
-    print("并入 face %d / glow %d / pendant %d ｜ 总 %d"
-          % (added["face"], added["glow"], added["pendant"], len(items)))
+    print("并入 face %d / glow %d / proj %d / pendant %d ｜ 总 %d"
+          % (added["face"], added["glow"], added["proj"], added["pendant"], len(items)))
     return 0
 
 

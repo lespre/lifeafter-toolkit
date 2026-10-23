@@ -136,7 +136,14 @@ def build_board(registry_path: Path) -> dict:
     # common_item 640000 系投影道具层名册：buff 名册缺的 3 个（星河流淌/无尽之紫/星礼星愿）
     # 以已发布 common_item 板为源（行级槽位已回放）
     ci_path = ROOT / "data" / "boards" / "common_item_text_sources.json"
-    ci_items = {it["item_id"]: it for it in json.loads(ci_path.read_text(encoding="utf-8"))["items"]}
+    if not ci_path.exists():          # 该板已并入 item_master_full，回落到它
+        ci_path = ROOT / "data" / "boards" / "item_master_full.json"
+    ci_raw = json.loads(ci_path.read_text(encoding="utf-8"))["items"]
+    ci_items = {}
+    for it in ci_raw:
+        k = it.get("item_id", it.get("id"))
+        if k is not None:
+            ci_items[int(k)] = it
     for ci_id in (640001, 640020, 640032):
         it = ci_items.get(ci_id)
         if it is None:

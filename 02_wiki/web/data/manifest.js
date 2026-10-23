@@ -189,22 +189,21 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "人物时装",
-      "category": "一、时装类 / （一）人物时装",
+      "name": "人物·全量时装衣柜",
+      "category": "二、时装类 / （一）全量时装总表",
       "board": "fashion_wardrobe",
-      "items": 1623,
-      "generated": "2026-10-18",
+      "items": 1745,
+      "generated": "2026-09-28",
       "source_server": "体验服 script 表结构解析（正式解出的 name/desc/part_type/model_id 字段）",
       "package_sha": "2f2a4fc069a7c76710388ef7e31e153ed0d0023190e231f8223c415bde183df7",
       "evidence": {
-        "structure": 1623
+        "structure": 1745
       },
       "state_summary": {
         "unresolved": 1253,
         "static config": 1253,
         "verified": 0,
-        "runtime final unknown": 1253,
-        "有图": 1459
+        "runtime final unknown": 1253
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -212,7 +211,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1623
+          "replayed-structural": 1745
         }
       }
     },
