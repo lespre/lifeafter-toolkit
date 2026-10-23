@@ -74,6 +74,20 @@ def _candidates(item: dict) -> list[str]:
         base = im.get("base")
         if base:
             out.append(base)
+    # 规则补全：缺 ui/ 前缀 + 缺 _b/_s 档位（PE 里 icon_180000 查不到、icon_180000_b 才行）
+    expanded = []
+    for c in out:
+        c = c.replace("\\", "/")
+        forms = [c]
+        if not c.startswith("ui/"):
+            forms.append("ui/" + c)
+        for f in forms:
+            expanded.append(f)
+            for suf in ("_b", "_s", "_max", "_mid"):
+                if not f.endswith(suf):
+                    expanded.append(f + suf)
+    out = expanded + out
+
     # 去重保序
     seen, uniq = set(), []
     for c in out:
@@ -112,6 +126,9 @@ def fill_board(board: str, limit: int | None = None, quiet: bool = False) -> Rep
     for idx, it in enumerate(items):
         if limit and idx >= limit:
             break
+        if it.get("kind") == "名片框":
+            rep.reasons["名片框源不可信（已人工撤图）"] += 1
+            continue
         if str(it.get("id")) in locked:
             rep.ok += 1
             rep.reasons["人工裁切锁定"] += 1

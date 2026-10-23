@@ -1,5 +1,5 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-10-23",
+  "generated": "2026-10-24",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-09-10",
