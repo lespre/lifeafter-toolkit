@@ -49,16 +49,19 @@ class Report:
                    dict(self.reasons)))
 
 
-def _looks_like_sheet(path: pathlib.Path) -> bool:
-    """导出后自检：宽高比异常 / 尺寸过大 → 多半是图集或零件页，不能当单图用。"""
-    try:
-        from PIL import Image
-        w, h = Image.open(path).size
-    except Exception:
-        return False
-    if h and w / h > 1.8:
-        return True
-    return max(w, h) > 1500
+def _sheet_reason(path: pathlib.Path) -> str:
+    """导出后自检：用 asset_probe 判形态，返回不可用原因（空字符串=可用）。"""
+    from .asset_probe import probe
+    pr = probe(path)
+    if pr.usable_as_icon():
+        return ""
+    if pr.kind == "atlas_page":
+        return "疑似图集页（需按 atlas 帧裁切）"
+    if pr.kind == "part_sheet":
+        return "零件条（无整图）"
+    if pr.kind in ("dds_bc7", "ktx_etc2"):
+        return "容器未解码（%s）" % pr.kind
+    return "格式无法识别"
 
 
 def _candidates(item: dict) -> list[str]:
@@ -128,11 +131,12 @@ def fill_board(board: str, limit: int | None = None, quiet: bool = False) -> Rep
                 hit = img_fetch.export(c, dst)
                 if hit:
                     break
-            if hit and _looks_like_sheet(dst):
+            reason = _sheet_reason(dst) if hit else ""
+            if hit and reason:
                 add = img_fetch.export(cands[0], dst) if False else ""
                 dst.unlink(missing_ok=True)
                 rep.missing += 1
-                rep.reasons["疑似图集/零件页（需裁切）"] += 1
+                rep.reasons[reason] += 1
                 if len(rep.samples) < 5:
                     rep.samples.append((it.get("id"), cands[0]))
                 continue

@@ -129,11 +129,18 @@ def resolve_csv(stem: str, exact: dict, by_name: dict):
         for ext in EXTS:
             if alt + ext in exact:
                 return alt + ext, "CSV档位"
+    # ★ 同名兜底必须限定同目录：跨目录同名会把别的资源串进来（实测名片框串成场景截图）
     name = stem.rsplit("/", 1)[-1]
+    parent = stem.rsplit("/", 1)[0] if "/" in stem else ""
     for ext in (".bc7", ".png", ".jpg"):
         cands = by_name.get(name + ext) or []
-        if cands:
-            return cands[0], "CSV同名"
+        if parent:
+            same_dir = [c for c in cands if c.rsplit("/", 1)[0] == parent]
+            if same_dir:
+                return same_dir[0], "CSV同名(同目录)"
+            continue
+        if len(cands) == 1:
+            return cands[0], "CSV同名(唯一)"
     return None
 
 

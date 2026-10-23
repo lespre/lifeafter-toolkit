@@ -204,8 +204,8 @@ window.WIKI_MANIFEST = {
         "static config": 1253,
         "verified": 0,
         "runtime final unknown": 1253,
-        "有图": 1127,
-        "无图": 618
+        "有图": 1347,
+        "无图": 398
       },
       "name_status_summary": {},
       "provenance_status": {
