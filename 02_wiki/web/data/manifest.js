@@ -61,10 +61,10 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "状态效果总表",
-      "category": "四、综合资料 / （七）状态",
+      "category": "二、战力类 / （十一）状态效果",
       "board": "buff_catalog",
       "items": 18232,
-      "generated": "2026-10-21",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
@@ -166,10 +166,10 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "实体总表",
-      "category": "四、综合资料 / （六）实体技能",
+      "category": "四、资料层 / （八）实体",
       "board": "entity_catalog",
       "items": 9219,
-      "generated": "2026-10-21",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
@@ -578,10 +578,10 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "文本与提示（错误码 / 官方公告）",
-      "category": "四、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "四、资料层 / （十）文本与提示",
       "board": "text_notice_catalog",
       "items": 14841,
-      "generated": "2026-10-21",
+      "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
