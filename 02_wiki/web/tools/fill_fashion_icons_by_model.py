@@ -19,7 +19,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 import pe_fetch  # noqa: E402
-import img_fetch  # PE→PC 双源取图
+from toolkit_core import img_fetch  # PE→PC 双源取图
 
 P = WEB / "data/boards/fashion_wardrobe.json"
 OUT = WEB / "assets/fashion_posters"
