@@ -173,12 +173,13 @@
    "reader_enabled": true,
    "path": "E:\\mrzh\\Documents\\script.py314.lc.npk",
    "expected_sha256": "d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9",
-   "expected_bytes": 135531128,
+   "expected_bytes": 196059988,
    "expected_mtime_ns": 1790685070535917800,
    "source_write_policy": "read_only",
    "expected_sha256_prev": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
    "bytes_prev": null,
-   "bytes": 196059988
+   "bytes": 196059988,
+   "expected_bytes_prev": 135531128
   },
   {
    "source_id": "mrzh-root-py314-full",
