@@ -31,8 +31,10 @@ from collections import Counter, defaultdict
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
 WEB = PROJ / "02_wiki/web"
-CDATA = PROJ / "01_索引与产物/41_还原树/pe_test_script/com/cdata"
-CDATA_ROOT = PROJ / "01_索引与产物/41_还原树/pe_test_script"
+sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
+from _src import cdata_dir  # 表根随 LA_SOURCE / profiles 走
+CDATA = cdata_dir()
+CDATA_ROOT = CDATA.parent
 DET = PROJ / "01_索引与产物/30_分析/热更检测"
 IDX = DET / "pe_index.sqlite3"
 PACKS = DET / "pe_packs"

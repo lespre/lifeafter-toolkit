@@ -107,7 +107,7 @@ def collect_candidates() -> dict[int, set[int]]:
 
 def collect_identity(allowed: dict[int, set[int]]) -> dict[tuple[int, int], dict[str, Any]]:
     out: dict[tuple[int, int], dict[str, Any]] = {}
-    for row in load_jsonl("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CANDIDATES.jsonl", "common_item_data_base.py"):
+    for row in load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl"), "common_item_data_base.py"):
         if row.get("table") != SOURCE_TABLE or row.get("candidate_field") != "id":
             continue
         schema = row.get("schema_ref")
@@ -120,7 +120,7 @@ def collect_identity(allowed: dict[int, set[int]]) -> dict[tuple[int, int], dict
 
 def collect_names() -> dict[tuple[int, int], dict[str, Any]]:
     out: dict[tuple[int, int], dict[str, Any]] = {}
-    for row in load_jsonl("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_CHAIN_CANDIDATES.jsonl", "common_item_data_base.py"):
+    for row in load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_CHAIN_CANDIDATES.jsonl"), "common_item_data_base.py"):
         if row.get("table") != SOURCE_TABLE:
             continue
         schema = row.get("schema_ref")
@@ -247,8 +247,8 @@ def build_new_rows(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base", type=Path, default="E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_MASTER_v01.jsonl")
-    parser.add_argument("--jsonl", type=Path, default="E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_MASTER_v02.jsonl")
+    parser.add_argument("--base", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl"))
+    parser.add_argument("--jsonl", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl"))
     parser.add_argument("--rules", type=Path, default=DATA / "ITEM_MASTER_v02_RULES.json")
     parser.add_argument("--audit", type=Path, default=AUDIT / "item_master_v02_audit.json")
     args = parser.parse_args()

@@ -290,33 +290,26 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "全量道具总表 · 经典服 / 简单生存 / 会员专享",
+      "name": "全量道具总表",
       "category": "四、综合资料 / （二）全量道具总表",
       "board": "item_master_full",
-      "items": 43445,
-      "generated": "2026-10-19",
-      "source_server": "测试客户端快照（41_还原树 pe_test_script）＋ 简单生存/会员专享 oversea 变体",
-      "package_sha": "a29462a822deb0b249885ce2a93856849400e65b6dd705c136d030fc6f322ae3",
+      "items": 30252,
+      "generated": "2026-10-23",
+      "source_server": "测试服 · ITEM_MASTER v0.3 快照",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 43445
+        "structure": 30252
       },
       "state_summary": {
-        "已导出": 35698,
-        "未下发": 6629,
-        "无图标字段": 1118,
-        "条目": 43445,
-        "礼盒含内含": 1954,
-        "礼盒对应单品": 319
+        "identified": 0
       },
-      "name_status_summary": {
-        "resolved": 43496
-      },
+      "name_status_summary": {},
       "provenance_status": {
         "contract_version": 3,
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 43445
+          "replayed-structural": 30252
         }
       }
     },

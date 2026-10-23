@@ -57,12 +57,12 @@ GIFT_EVIDENCE = {"type": "runtime_dispatch_consumer", "runtime_module": "com.cda
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", type=Path, default="E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_MASTER_v03.jsonl")
+    ap.add_argument("--out", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl"))
     ap.add_argument("--rules", type=Path, default=DATA / "ITEM_MASTER_v03_RULES.json")
     ap.add_argument("--audit", type=Path, default=AUDIT / "item_master_v03_audit.json")
     a = ap.parse_args()
     cm = decode_common_item()
-    v2 = load_jsonl("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_MASTER_v02.jsonl")
+    v2 = load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl"))
     classify = json.loads((AUDIT / "p4a3_classify.json").read_text())
     ex58 = classify["ex58"]
     gb_items = {it.get("item_id"): it for it in (json.loads((DATA / "boards" / "gift_data_text_sources.json").read_text(encoding="utf-8")).get("items") or [])}
