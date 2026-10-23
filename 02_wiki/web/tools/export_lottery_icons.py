@@ -16,6 +16,7 @@ OUT = WEB / "assets/lottery_icons"
 sys.path.insert(0, str(DET))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 import pe_fetch  # noqa: E402
+import img_fetch  # PE→PC 双源取图
 import pc_fetch  # noqa: E402
 
 
@@ -38,7 +39,7 @@ def main() -> int:
             r = pe_fetch.resolve(b)
             if r:
                 png = OUT / ("%s%s.png" % (str(it["id"]).replace(":", "_"), suf))
-                if pe_fetch.export(b, png):
+                if img_fetch.export(b, png):
                     got = ("pe", b, suf, png)
                     break
         if not got:

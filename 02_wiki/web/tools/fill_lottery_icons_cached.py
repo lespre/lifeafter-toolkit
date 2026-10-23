@@ -19,6 +19,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 sys.path.insert(0, str(DET))
 sys.path.insert(0, str(DET / "pe_icon_bind"))
 import pe_fetch  # noqa: E402
+import img_fetch  # PE→PC 双源取图
 import pc_export  # noqa: E402
 
 LP = WEB / "data/boards/lottery_periods.json"
@@ -63,7 +64,7 @@ def main() -> int:
             if got:
                 break
             try:
-                if pe_fetch.export(cand, out):
+                if img_fetch.export(cand, out):
                     got = True
                     pe += 1
                     break
