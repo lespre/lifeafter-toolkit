@@ -114,7 +114,10 @@ def main() -> int:
         print(f'  {s["skin_id"]:>8} {s["name"]:<10} {len(s["files"]):>3} 个  例: {s["files"][0]["sample"]}')
     if doc["unknown"]:
         print("  未归属（前 10）:", [f["files"][0]["sample"] for f in doc["unknown"][:10]])
-    print("→", MANIFEST.relative_to(ROOT))
+    try:
+        print("→", MANIFEST.relative_to(ROOT))
+    except ValueError:
+        print("→", MANIFEST)
     return 0
 
 
