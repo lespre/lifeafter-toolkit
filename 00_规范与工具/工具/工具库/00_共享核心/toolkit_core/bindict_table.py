@@ -400,6 +400,22 @@ def _parse_tail_lists(blob: bytes, pos: int, end: int, pool: list[str]) -> tuple
     return blocks, p
 
 
+def _decode_inline_list(blob: bytes, q: int, nxt: int, pool: list[str]) -> tuple[list[dict[str, Any]], int]:
+    """解行尾 ``inline list variant``（space_data 275 行的行尾形态）。
+
+    文法与 :func:`_parse_tail_lists` 相同（``07`` 异构链 / ``27`` 同构链可交替串接），
+    但**语义边界不同**：这里只负责报 ``(blocks, 新 q)``，由调用方判定是否
+    ``新 q == nxt``。等于行尾 ⇒ 这一行其实**解完了**（值都拿到了，只是不在
+    字段流里）；小于行尾 ⇒ 还剩不认识的头（``0x20``/``0xa0`` 族，见报告），
+    调用方必须原样保留 ``stop:nxt`` 的字节，绝不填零、绝不猜长度。
+
+    不改行内状态、不抛异常：认不出就返回 ``([], q)``。
+    """
+    if q >= nxt or blob[q:q + 1] not in (b"\x07", b"\x27"):
+        return [], q
+    return _parse_tail_lists(blob, q, nxt, pool)
+
+
 def _tail_info(blob: bytes, pos: int, end: int, pool: list[str], reason: str) -> dict[str, Any]:
     """行尾证据块：已解析块 + 解析到的字节数 + 未解析出的原字节（hex）。"""
     blocks, stopped = _parse_tail_lists(blob, pos, end, pool)
@@ -474,6 +490,7 @@ def decode_table_rows(
     index_rows: list[tuple[int, int]] | None = None,
     resolve_jumps: bool = False,
     lenient: bool = False,
+    legacy_lenient: bool = False,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Decode every D6/C6/96 row of a base table.
 
@@ -489,6 +506,10 @@ def decode_table_rows(
 
     ★ 默认路径（``lenient=False``）与历史输出逐字节一致：所有丢弃点构造的
       unbound 记录、以及正常行的字段顺序都没动，宽松分支只是并列的一条路。
+
+    ``legacy_lenient``（默认 False）: 关掉 2026-10-22 起对行尾 ``inline list
+    variant``（``0x07``/``0x27`` 交替链）的恢复。置 True 时这类行重新变回
+    "整行丢弃/宽松保留但 tail 非空"，用于逐字复现改动前的输出做对照。
 
     Returns (rows, unbound). Each row includes decoded scalar ``values`` and
     bounded inline ``0x27`` groups when present.
@@ -635,6 +656,18 @@ def decode_table_rows(
                                 "error": "overrun", "consumed": q, "nxt": nxt})
             continue
         if q < nxt and blob[q:q + 1] not in (b"\x27", b"\x36"):
+            # ★ 行尾 inline list 变体（0x07 异构链 / 0x27 同构链交替）：整段吃到
+            #   行尾 ⇒ 这行其实**解完了**，块进 inline_groups，tail 清空。
+            #   只吃不完的（0x20 / 0xa0 族头）继续走下面的宽松取证分支。
+            #   legacy_lenient=True 时关闭本恢复，行为与改动前逐字一致。
+            if not legacy_lenient:
+                tail_blocks, tq = _decode_inline_list(blob, q, nxt, pool)
+                if tail_blocks and tq == nxt:
+                    rows.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
+                                 "bitmap": bitmap.hex(), "values": values,
+                                 "inline_groups": tail_blocks, "tail": "",
+                                 "inline_list_variant": "recovered"})
+                    continue
             if lenient:
                 rows.append({"key": key, "start": start, "marker": hex(marker), "schema": schema_ref,
                              "bitmap": bitmap.hex(), "values": values, "inline_groups": [],
@@ -1012,6 +1045,157 @@ def read_27_group(blob: bytes, pos: int) -> tuple[int, list[int]] | None:
             return None
         elements.append(value)
     return kind, elements
+
+
+# ---------------------------------------------------------------------------
+# 2026-10-24：jump 基址 + 帧族分派（all_equips_data 结案）
+# ---------------------------------------------------------------------------
+# 结论（分表实测，均为 blob 起点基址）：
+#   1) 全部 0x0b(SCALAR_JUMP) 值都是**统一基址** = blob 起点 = body[8+4*count:]。
+#      fashion_data / all_equips_data 一致，没有分表基址差异。
+#   2) 之前 all_equips_data 的 attrs 解不出来，**不是基址错，是帧族不同**：
+#      read_27_group 只认 0x27 帧，而 attrs 指向的是「嵌套行」帧。
+#      jump 目标有四种帧（首字节判定）：
+#        0x27  同构组      [27][elem_type][uleb count][count × 元素]
+#        0xC6  嵌套行/共享位图 [C6][uleb schema_ref][uleb bitmap_ref] + 值流
+#        0x86  嵌套行/内联位图 [86][uleb schema_ref][bits 位] + 值流
+#        0x07  异构元组    [07][uleb count][count × (type_byte, value)]
+#        0x06  空组        [06][uleb count=0]（跨表见到，恒为 0 元素，可当空集合）
+#   3) 自证：all_equips_data_kj1 753/753 行 attrs 全解出
+#      （AK47→hurt 85/power 1.4；白衣骑士→armor 49/max_hp_addition 750）；
+#      其余 0x0b 字段（move_speed 1226/1226、all_item_tag 835/835 …）在 0x27 帧下 100% 命中。
+#   基址如需偏移（暂未发现任何表需要），在此登记即可，取值 = 相对 blob 起点的字节偏移。
+JUMP_BASE_BY_TABLE: dict[str, int] = {}
+NESTED_ROW_MARKERS = (0xC6, 0x86)
+TUPLE_MARKER = 0x07
+GROUP_MARKER = 0x27
+
+
+def jump_base(table_name: str | None = None) -> int:
+    """Return the byte offset to add to a raw 0x0b jump value."""
+    if not table_name:
+        return 0
+    return int(JUMP_BASE_BY_TABLE.get(table_name, 0))
+
+
+def jump_target_pos(raw_jump: int, table_name: str | None = None) -> int:
+    return raw_jump + jump_base(table_name)
+
+
+def read_nested_row(blob: bytes, pos: int, pool: list[str]) -> dict[str, Any] | None:
+    """Read a ``0xC6`` / ``0x86`` nested row (a jump target shaped like a row).
+
+    ``0xC6`` carries a *shared* bitmap (``uleb bitmap_ref`` right after the
+    schema ref), ``0x86`` carries an *inline* bitmap.  Both decode a value
+    stream with the same schema/bitmap rules as a top-level row, which is why
+    ``all_equips_data``'s ``attrs`` (e.g. ``hurt``/``power``/``armor``) only
+    resolves through this path and not through :func:`read_27_group`.
+    """
+    if pos < 0 or pos + 2 > len(blob) or blob[pos] not in NESTED_ROW_MARKERS:
+        return None
+    marker = blob[pos]
+    q = pos + 1
+    bitmap_ref: int | None = None
+    try:
+        schema_ref, q = uleb(blob, q, len(blob))
+        bits, fields, _ = _schema_at(blob, schema_ref, pool)
+        bm_size = (bits + 7) // 8
+        if marker == 0x86:
+            bitmap = blob[q:q + bm_size]
+            q += bm_size
+        else:
+            bitmap_ref, q = uleb(blob, q, len(blob))
+            if bitmap_ref + bm_size > len(blob):
+                return None
+            bitmap = blob[bitmap_ref:bitmap_ref + bm_size]
+        if len(bitmap) < bm_size:
+            return None
+        enabled = [i for i, (_s, t, _n) in enumerate(fields)
+                   if i >= bits or (bitmap[i // 8] >> (i % 8)) & 1]
+        values: list[tuple[str, Any]] = []
+        vpos = q
+        for ix in enabled:
+            type_byte, name = fields[ix][1], fields[ix][2]
+            value, vpos = _decode_value(blob, vpos, type_byte, pool)
+            values.append((name, value))
+    except (ValueError, IndexError):
+        return None
+    return {
+        "marker": f"0x{marker:02x}",
+        "schema": schema_ref,
+        "bits": bits,
+        "bitmap_ref": bitmap_ref,
+        "values": values,
+        "end": vpos,
+    }
+
+
+def read_tuple(blob: bytes, pos: int, pool: list[str]) -> dict[str, Any] | None:
+    """Read a ``0x07`` heterogeneous tuple: [07][uleb count][count × (type,value)]."""
+    if pos < 0 or pos + 2 > len(blob) or blob[pos] != TUPLE_MARKER:
+        return None
+    try:
+        count, q = uleb(blob, pos + 1, len(blob))
+        if count > 256:
+            return None
+        values: list[Any] = []
+        for _ in range(count):
+            type_byte = blob[q]
+            q += 1
+            value, q = _decode_value(blob, q, type_byte, pool)
+            values.append(value)
+    except (ValueError, IndexError):
+        return None
+    return {"marker": "0x07", "values": values, "end": q}
+
+
+def resolve_jump_target(blob: bytes, target: int, pool: list[str] | None = None) -> dict[str, Any]:
+    """Resolve one raw 0x0b jump value to its payload, dispatching on frame byte.
+
+    Returns ``{"frame": "0x27"|"0xc6"|"0x86"|"0x07"|"0x??", ...}``.  This is
+    the frame-aware superset of :func:`resolve_27_chain`; keep using that one
+    when a caller only trusts homogeneous-list frames.
+    """
+    if target < 0 or target >= len(blob):
+        return {"frame": "oob", "values": [], "error": "target out of bounds"}
+    head = blob[target]
+    if head == GROUP_MARKER:
+        return {"frame": "0x27", **resolve_27_chain(blob, target)}
+    if head in NESTED_ROW_MARKERS:
+        if pool is None:
+            return {"frame": f"0x{head:02x}", "values": [], "error": "pool required for nested row"}
+        row = read_nested_row(blob, target, pool)
+        if row is None:
+            return {"frame": f"0x{head:02x}", "values": [], "error": "nested row parse failed"}
+        return {"frame": row["marker"], "values": row["values"], "schema": row["schema"],
+                "bits": row["bits"], "end": row["end"], "error": None}
+    if head == TUPLE_MARKER:
+        if pool is None:
+            return {"frame": "0x07", "values": [], "error": "pool required for tuple"}
+        tup = read_tuple(blob, target, pool)
+        if tup is None:
+            return {"frame": "0x07", "values": [], "error": "tuple parse failed"}
+        return {"frame": "0x07", "values": tup["values"], "end": tup["end"], "error": None}
+    return {"frame": f"0x{head:02x}", "values": [], "error": f"unhandled frame 0x{head:02x}"}
+
+
+def resolve_row_jumps_any(blob: bytes, rows: list[dict[str, Any]], pool: list[str],
+                          fields: tuple[str, ...] | None = None) -> list[dict[str, Any]]:
+    """Frame-aware :func:`resolve_row_jumps`: attach ``resolved_any`` to every row."""
+    for row in rows:
+        resolved: dict[str, Any] = {}
+        for name, payload in (row.get("values") or {}).items():
+            if fields is not None and name not in fields:
+                continue
+            if not (isinstance(payload, tuple) and len(payload) == 2):
+                continue
+            value = payload[1]
+            if not (isinstance(value, str) and value.startswith("jump:")):
+                continue
+            target = int(value[5:])
+            resolved[name] = {"jump": target, **resolve_jump_target(blob, target, pool)}
+        row["resolved_any"] = resolved
+    return rows
 
 
 def resolve_27_chain(blob: bytes, target: int, max_depth: int = MAX_CHAIN_DEPTH) -> dict[str, Any]:

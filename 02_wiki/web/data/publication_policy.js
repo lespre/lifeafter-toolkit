@@ -68,11 +68,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "note": "已被 vehicle_full 取代，保留直链，不进首页导航"
     },
     "fashion_identity_unresolved_v01": {
-      "publication_status": "published_hidden",
+      "publication_status": "published",
       "category": "二、时装类 / （一）时装静态记录（身份待解析）",
       "items": 31112,
-      "reason": "P4-B frozen_unresolved：仅展示 record-level static 候选；verified fashion self-ID = 0。",
-      "note": "身份待解析的历史记录，未达到发布标准"
+      "reason": "P4-B frozen_unresolved：仅展示 record-level static 候选；verified fashion self-ID = 0。"
     },
     "weapon_skin_structure_v01": {
       "publication_status": "published_hidden",
@@ -215,6 +214,82 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "一、时装类 / （六）其他外观",
       "items": 796,
       "reason": "player_appear_data（PE 还原树 pe_20261020，BlendDict 按 schema 逐行解出）中 name/part/model_name 非空、且 name 不在 fashion_data 的行；每条带 row_keys（可回溯原表行）与 model_ids（取自 model_name 文件名，非推断）；卡片粒度 = 名字 + 部位，男女同卡（图标按 _f_/_m_ 标记分别标注）。图标覆盖 11/796，其余在客户端未找到 2D 图标资源，标无图，不伪造。"
+    },
+    "chenshi_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "chip_lottery_guarantee_panel_static": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "common_item_text_sources": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_bag_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_bestplay_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_face_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_glow_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_projection_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "fashion_wardrobe_slots": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "lottery_kaijia_panel_static": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "manjian_market_panel_static": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "mystery_shop_panel_static": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "nucleus_lottery_panel_static": {
+      "publication_status": "retired",
+      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+    },
+    "skin_behavior_preview": {
+      "publication_status": "published",
+      "category": "零、新更新与预告专栏（游戏未上线资源预告） / （1）武器皮肤 · 未上线预告",
+      "items": 4,
+      "reason": "预告专栏·武器皮肤：①已配正式名未上架（皮肤行 sale_ts 晚于包快照日：1110184 星火永传、1110190 佳期如梦）；②仅行为资源行（无父项/无道具行/无名称：1110185、1110186）。均不表示上线、价格、概率或可得。"
+    },
+    "future_lottery_preview": {
+      "publication_status": "published",
+      "category": "零、新更新与预告专栏（游戏未上线资源预告） / （2）新奖池活动",
+      "items": 26,
+      "reason": "预告专栏：reward_pool_data_base 中 expiration_time 晚于快照日期的活动实例（按活动名+到期日聚类）；预告=未来档实例，非上线断言。"
+    },
+    "item_master_v01": {
+      "publication_status": "published",
+      "category": "一、道具总表 / （一）ITEM_MASTER v0.1",
+      "items": 1189,
+      "reason": "P4-A 冻结产物：1,189 条 verified item；hide_in_bag 缺席保持 unresolved。"
+    },
+    "lottery_pool_resolved_v01": {
+      "publication_status": "published",
+      "category": "四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1",
+      "items": 23567,
+      "reason": "P4-D verified runtime structure + source-locked static config；not runtime final；474 quarantined 默认隔离。"
     }
   }
 };

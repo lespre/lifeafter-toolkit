@@ -345,6 +345,25 @@
    "source_write_policy": "read_only",
    "bytes_prev": null,
    "bytes": 1441472
+  },
+  {
+   "source_id": "lifeafter-classic-current",
+   "label": "经典分支·对照源（别名：经典分支数据由测试服基线包提供；E:\\LifeAfter 按纪律禁读）",
+   "kind": "script_npk",
+   "source_kind": "comparison-alias",
+   "variant_id": "experience-py314-root-baseline",
+   "client_role": "test-primary",
+   "server_role": "experience",
+   "server_branch": "经典服",
+   "snapshot_role": "client-full-baseline",
+   "reader_enabled": false,
+   "path": "E:\\mrzh\\script.py314.lc.npk",
+   "expected_sha256": "8514c5add38d6e3e26c96bba049d1bdd0d0691f73df9a1181a258fb9686e81c7",
+   "expected_bytes": 465363048,
+   "expected_mtime_ns": 1790349575285709500,
+   "source_write_policy": "read_only",
+   "bytes_prev": null,
+   "bytes": 465363048
   }
  ]
 }

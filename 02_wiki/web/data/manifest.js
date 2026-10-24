@@ -218,6 +218,32 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "时装静态记录 · identity unresolved",
+      "category": "二、时装类 / （一）时装静态记录（身份待解析）",
+      "board": "fashion_identity_unresolved_v01",
+      "items": 31112,
+      "generated": "2026-09-10",
+      "source_server": "测试客户端静态快照；服务器分支 unresolved",
+      "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+      "evidence": {
+        "candidate": 31112
+      },
+      "state_summary": {
+        "unresolved": 31112,
+        "static config": 31112,
+        "verified": 0
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 31112
+        }
+      }
+    },
+    {
       "name": "人物·全量时装衣柜",
       "category": "二、时装类 / （一）全量时装总表",
       "board": "fashion_wardrobe",
@@ -345,6 +371,31 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "ITEM_MASTER v0.1 · verified 道具总表",
+      "category": "一、道具总表 / （一）ITEM_MASTER v0.1",
+      "board": "item_master_v01",
+      "items": 1189,
+      "generated": "2026-09-10",
+      "source_server": "测试客户端静态快照；服务器分支 unresolved",
+      "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
+      "evidence": {
+        "verified": 1189
+      },
+      "state_summary": {
+        "verified": 1189,
+        "unresolved": 329
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "semantic-verified": 1189
+        }
+      }
+    },
+    {
       "name": "击败播报（文案 + 击败特效）",
       "category": "三、活动类 / （五）击败播报",
       "board": "kill_broadcast",
@@ -396,6 +447,33 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 2266
+        }
+      }
+    },
+    {
+      "name": "LOTTERY_POOL_RESOLVED v0.1 · source-locked static config",
+      "category": "四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1",
+      "board": "lottery_pool_resolved_v01",
+      "items": 23567,
+      "generated": "2026-09-10",
+      "source_server": "测试客户端静态快照；服务器与 loader/final overlay unresolved",
+      "package_sha": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+      "evidence": {
+        "structure": 23567
+      },
+      "state_summary": {
+        "verified": 23567,
+        "static config": 23567,
+        "runtime final unknown": 23567,
+        "quarantined": 474
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "semantic-verified": 23567
         }
       }
     },
@@ -525,6 +603,33 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 6191
+        }
+      }
+    },
+    {
+      "name": "武器皮肤 · 未上线预告（已配名未上架 + 仅行为资源）",
+      "category": "零、新更新与预告专栏（游戏未上线资源预告） / （1）武器皮肤 · 未上线预告",
+      "board": "skin_behavior_preview",
+      "items": 9,
+      "generated": "2026-10-24",
+      "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）",
+      "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+      "evidence": {
+        "structure": 9
+      },
+      "state_summary": {
+        "unresolved": 9,
+        "static config": 9,
+        "verified": 0,
+        "runtime final unknown": 9
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 9
         }
       }
     },

@@ -1,0 +1,3462 @@
+{
+ "rows": [
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/all_equips_pair_cache.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/all_equips_pair_cache.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "locate_all_equips_pair.py"
+   ],
+   "sites": 1,
+   "ctx": "CACHE = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"audit\" / \"all_equips_pair_cache.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_508BB5BD/_entry_index.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_508BB5BD/_entry_index.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "extract_asset_path_dictionary.py"
+   ],
+   "sites": 1,
+   "ctx": "idx = WORKCOPY / \"_entry_index.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe_slots.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe_slots.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "rebuild_fashion_bag_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "src_path = ROOT / \"data\" / \"boards\" / \"fashion_wardrobe_slots.json\""
+  },
+  {
+   "expected": "data/boards/common_item_text_sources.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/common_item_text_sources.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "rebuild_fashion_bestplay_slots.py",
+    "rebuild_fashion_projection_slots.py",
+    "rebuild_nucleus_cards.py",
+    "rebuild_nucleus_item_catalog.py"
+   ],
+   "sites": 4,
+   "ctx": "ci = json.loads((ROOT / \"data/boards/common_item_text_sources.json\")"
+  },
+  {
+   "expected": "data/boards/item_master_v01.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/item_master_v01.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "BOARD = WEB / \"data/boards/item_master_v01.json\""
+  },
+  {
+   "expected": "data/boards/recipe_book.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/recipe_book.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "merge_edible_recipe.py"
+   ],
+   "sites": 1,
+   "ctx": "rb = json.loads((WEB / \"data/boards/recipe_book.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/boards/skin_behavior_preview.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/skin_behavior_preview.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"hist.board.behavior_preview\", \"data/boards/skin_behavior_preview.json\", [\"historical_only\"], \"—\","
+  },
+  {
+   "expected": "data/boards/theme_talent_catalog.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/theme_talent_catalog.json",
+   "tier": "C",
+   "twin": null,
+   "readers": [
+    "merge_talent_boards.py"
+   ],
+   "sites": 1,
+   "ctx": "theme = json.loads((WEB / \"data/boards/theme_talent_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/003547.bin",
+   "target": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/003547.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/003547.bin",
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"p4c-panel-item-info-functions\", entries_root / \"003547.bin\", 3547, \"249655341BEC6A69\"),"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/013001.bin",
+   "target": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/013001.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/013001.bin",
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"p4c-equip-skin-shell\", entries_root / \"013001.bin\", 13001, \"822E3046861AA53C\"),"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/015678.bin",
+   "target": "E:/la拆包项目/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/015678.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/015678.bin",
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"p4c-equip-skin-functions\", entries_root / \"015678.bin\", 15678, \"9CF387E2D156513B\"),"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/004463.bin",
+   "target": "E:/la拆包项目/02_wiki/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/004463.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/004463.bin",
+   "readers": [
+    "rebuild_chenshi_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "raw = (ent / \"004463.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/007912.bin",
+   "target": "E:/la拆包项目/02_wiki/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/007912.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/007912.bin",
+   "readers": [
+    "rebuild_chenshi_slots.py"
+   ],
+   "sites": 2,
+   "ctx": "pool = _pool((ent / \"007912.bin\").read_bytes())"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/003671.bin",
+   "target": "E:/la拆包项目/02_wiki/web/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/003671.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/003671.bin",
+   "readers": [
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 1,
+   "ctx": "es_base = ROOT / \"01_索引与产物\" / \"config_work\" / \"script_py314_docs_BA8A239A\" / \"entries\" / \"003671.bin\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/011817.bin",
+   "target": "E:/la拆包项目/02_wiki/web/01_索引与产物/config_work/script_py314_docs_BA8A239A/entries/011817.bin",
+   "tier": "P",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/011817.bin",
+   "readers": [
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 1,
+   "ctx": "skin_base = ROOT / \"01_索引与产物\" / \"config_work\" / \"script_py314_docs_BA8A239A\" / \"entries\" / \"011817.bin\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/item_master_v02_audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/item_master_v02_audit.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/item_master_v02_audit.json",
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--audit\", type=Path, default=AUDIT / \"item_master_v02_audit.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/item_master_v03_audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/item_master_v03_audit.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/item_master_v03_audit.json",
+   "readers": [
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "ap.add_argument(\"--audit\", type=Path, default=AUDIT / \"item_master_v03_audit.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a2_candidate_ids.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a2_candidate_ids.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/p4a2_candidate_ids.json",
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "cached = AUDIT / \"p4a2_candidate_ids.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a3_classify.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a3_classify.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/p4a3_classify.json",
+   "readers": [
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "classify = json.loads((AUDIT / \"p4a3_classify.json\").read_text())"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a3_sets.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/p4a3_sets.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/p4a3_sets.json",
+   "readers": [
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "chip54 = [i for i in ex58 if i in set(json.loads((AUDIT / \"p4a3_sets.json\").read_text())[\"chip\"])]"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_ui_asset_paths.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_ui_asset_paths.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_analysis/analysis/audit/weapon_skin_ui_asset_paths.json",
+   "readers": [
+    "extract_ui_assets.py"
+   ],
+   "sites": 1,
+   "ctx": "SRC = ROOT / \"analysis\" / \"audit\" / \"weapon_skin_ui_asset_paths.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/EFFECT_COMPLETENESS_V2.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/EFFECT_COMPLETENESS_V2.jsonl",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_artifacts/artifacts/active/weapon_skin/EFFECT_COMPLETENESS_V2.jsonl",
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "comp = {int(o[\"skin_item_id\"]): o for o in jl(ART / \"EFFECT_COMPLETENESS_V2.jsonl\")}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/PRESENTATION_LEGACY.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/PRESENTATION_LEGACY.jsonl",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/30_分析/site_artifacts/artifacts/active/weapon_skin/PRESENTATION_LEGACY.jsonl",
+   "readers": [
+    "build_weapon_skin_grade.py"
+   ],
+   "sites": 1,
+   "ctx": "for line in (ART / \"PRESENTATION_LEGACY.jsonl\").read_text(encoding=\"utf-8\").splitlines():"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/FIELD_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/FIELD_RULES.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FIELD_RULES.json",
+   "readers": [
+    "audit_item_master_v01_fields.py"
+   ],
+   "sites": 3,
+   "ctx": "\"FIELD_RULES.json\": _sha256(DATA / \"FIELD_RULES.json\"),"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_IDENTITY_CANDIDATES.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_IDENTITY_CANDIDATES.jsonl",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl",
+   "readers": [
+    "audit_item_master_v01_fields.py"
+   ],
+   "sites": 3,
+   "ctx": "path = DATA / \"ITEM_IDENTITY_CANDIDATES.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01.db",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01.db",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.db",
+   "readers": [
+    "audit_item_master_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--db\", type=Path, default=DATA / \"ITEM_MASTER_v01.db\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01.jsonl",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl",
+   "readers": [
+    "audit_item_master_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--jsonl\", type=Path, default=DATA / \"ITEM_MASTER_v01.jsonl\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/RELIABLE_SOURCES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/RELIABLE_SOURCES.json",
+   "tier": "B",
+   "twin": "E:/la拆包项目/01_索引与产物/10_索引/site_data/RELIABLE_SOURCES.json",
+   "readers": [
+    "audit_item_master_v01_fields.py"
+   ],
+   "sites": 3,
+   "ctx": "\"RELIABLE_SOURCES.json\": _sha256(DATA / \"RELIABLE_SOURCES.json\"),"
+  },
+  {
+   "expected": "01_索引与产物/10_索引/items/common_item_names.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/items/common_item_names.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_lottery_periods.py"
+   ],
+   "sites": 2,
+   "ctx": "\"01_索引与产物/10_索引/items/common_item_names.json\")"
+  },
+  {
+   "expected": "01_索引与产物/10_索引/items/show_item_names.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/items/show_item_names.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_lottery_periods.py"
+   ],
+   "sites": 2,
+   "ctx": "\"01_索引与产物/10_索引/items/show_item_names.json\")"
+  },
+  {
+   "expected": "01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "PC_HIT = PROJ / \"01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv\""
+  },
+  {
+   "expected": "01_索引与产物/41_还原树/_热更合并台账_20261017_005239.json",
+   "target": "E:/la拆包项目/01_索引与产物/41_还原树/_热更合并台账_20261017_005239.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_recipe_board.py"
+   ],
+   "sites": 1,
+   "ctx": "LEDGER = PROJ / \"01_索引与产物/41_还原树/_热更合并台账_20261017_005239.json\""
+  },
+  {
+   "expected": "C:/Users/Administrator/AppData/Roaming/Hermes/composer-images/image_135207.png",
+   "target": "C:/Users/Administrator/AppData/Roaming/Hermes/composer-images/image_135207.png",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "make_logo.py"
+   ],
+   "sites": 1,
+   "ctx": "SRC = Path(r\"C:/Users/Administrator/AppData/Roaming/Hermes/composer-images/image_135207.png\")"
+  },
+  {
+   "expected": "E:/la拆包项目/00_规范与工具/治理/台账/三线台账.md",
+   "target": "E:/la拆包项目/00_规范与工具/治理/台账/三线台账.md",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "gen_home.py"
+   ],
+   "sites": 1,
+   "ctx": "LEDGER_PATH = PROJECT / \"00_规范与工具/治理\" / \"台账\" / \"三线台账.md\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/checks_cache.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/checks_cache.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py",
+    "run_checks.py"
+   ],
+   "sites": 2,
+   "ctx": "CACHE_PATH = PROJECT / \"01_索引与产物\" / \"10_索引\" / \"checks_cache.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/indexes/lifeafter_files_status.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/indexes/lifeafter_files_status.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "gen_home.py"
+   ],
+   "sites": 1,
+   "ctx": "STATUS_SIDECAR = PROJECT / \"01_索引与产物\" / \"10_索引\" / \"indexes\" / \"lifeafter_files_status.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/names/coverage_latest.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/names/coverage_latest.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "gen_home.py",
+    "refresh_sidecars.py"
+   ],
+   "sites": 2,
+   "ctx": "NAMES_SIDECAR = PROJECT / \"01_索引与产物\" / \"10_索引\" / \"names\" / \"coverage_latest.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/names/names_dict.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/names/names_dict.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "refresh_sidecars.py"
+   ],
+   "sites": 1,
+   "ctx": "return root / \"names_dict.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/patch_manifests/delta_latest.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/patch_manifests/delta_latest.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "gen_home.py",
+    "refresh_sidecars.py"
+   ],
+   "sites": 2,
+   "ctx": "DELTA_SIDECAR = PROJECT / \"01_索引与产物\" / \"10_索引\" / \"patch_manifests\" / \"delta_latest.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FASHION_IDENTITY_CANDIDATES.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FASHION_IDENTITY_CANDIDATES.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py",
+    "build_fashion_identity_locator.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_CANDIDATES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"FASHION_IDENTITY_CANDIDATES.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FASHION_IDENTITY_LOCATOR.db",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FASHION_IDENTITY_LOCATOR.db",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py",
+    "build_fashion_identity_locator.py",
+    "query_fashion_identity.py"
+   ],
+   "sites": 3,
+   "ctx": "DEFAULT_DB = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"FASHION_IDENTITY_LOCATOR.db\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FIELD_RULES.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/FIELD_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_name_chain_candidates.py",
+    "build_reliable_sources.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_FIELD_RULES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"FIELD_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "for row in load_jsonl(Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl\"), \"common_item_data_base.py\"):"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.db",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.db",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "query_item_master_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "DEFAULT_DB = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"ITEM_MASTER_v01.db\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--base\", type=Path, default=Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py",
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 2,
+   "ctx": "parser.add_argument(\"--jsonl\", type=Path, default=Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_from_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "SRC = pathlib.Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/LOTTERY_POOL_RESOLVED_v01.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/LOTTERY_POOL_RESOLVED_v01.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_lottery_pool_resolved_v01.py",
+    "checks.py",
+    "rebuild_lottery_pool_resolved_board.py"
+   ],
+   "sites": 3,
+   "ctx": "DEFAULT_DATA = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"LOTTERY_POOL_RESOLVED_v01.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_CHAIN_CANDIDATES.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_CHAIN_CANDIDATES.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_name_chain.py",
+    "build_name_locator.py",
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 3,
+   "ctx": "DEFAULT_CANDIDATES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"NAME_CHAIN_CANDIDATES.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_LOCATOR.db",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_LOCATOR.db",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_name_chain.py",
+    "build_name_locator.py",
+    "query_name_locator.py"
+   ],
+   "sites": 3,
+   "ctx": "DEFAULT_DB = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"NAME_LOCATOR.db\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/RELIABLE_SOURCES.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/RELIABLE_SOURCES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_name_chain_candidates.py"
+   ],
+   "sites": 1,
+   "ctx": "DEFAULT_RELIABLE_SOURCES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"RELIABLE_SOURCES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/client_file_maps/big_npk_sha.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/client_file_maps/big_npk_sha.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_source_registry.py"
+   ],
+   "sites": 1,
+   "ctx": "big = (AUDIT / \"big_npk_sha.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/file_hash_pack/file_hash_pack_assessment.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/file_hash_pack/file_hash_pack_assessment.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "parse_file_hash_pack.py"
+   ],
+   "sites": 1,
+   "ctx": "out = OUT_DIR / \"file_hash_pack_assessment.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/npk_index_summary.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/npk_index_summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "index_all_npk.py"
+   ],
+   "sites": 1,
+   "ctx": "print(\"summary ->\", OUT_DIR / \"npk_index_summary.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/weapon_skin_resolved_v01_audit.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/weapon_skin_resolved_v01_audit.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_weapon_skin_resolved_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "AUDIT = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"audit\" / \"weapon_skin_resolved_v01_audit.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/exports/skin_audio_manifest.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/exports/skin_audio_manifest.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "aggregate_skin_audio.py"
+   ],
+   "sites": 1,
+   "ctx": "MANIFEST = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"exports\" / \"skin_audio_manifest.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/announce_chenshi.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/announce_chenshi.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "parse_chenshi_periods.py"
+   ],
+   "sites": 1,
+   "ctx": "ann = json.load(open(ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/announce_chenshi.json\", encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_period_content.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_period_content.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chenshi_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "cont = json.loads((ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_period_content.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_static_pool_002962.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_static_pool_002962.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chenshi_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "pool = json.loads((ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_static_pool_002962.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/field_names.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/field_names.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_name_chain_candidates.py",
+    "verify_field_semantics.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_FIELD_NAMES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"field_names.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/file_index_entries.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/file_index_entries.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_locator.py",
+    "merge_file_index.py"
+   ],
+   "sites": 2,
+   "ctx": "ENTRIES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"file_index_entries.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/id_locator_index.db",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/id_locator_index.db",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_locator.py",
+    "build_id_occurrence.py",
+    "build_row_index.py",
+    "build_table_families.py",
+    "build_table_index.py",
+    "query_id_locator.py"
+   ],
+   "sites": 6,
+   "ctx": "DB = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"id_locator_index.db\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/id_occurrence_index.db",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/id_occurrence_index.db",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_occurrence.py",
+    "query_id.py"
+   ],
+   "sites": 2,
+   "ctx": "OUT_DB = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"id_occurrence_index.db\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_weapon_skin_catalog_current.py"
+   ],
+   "sites": 2,
+   "ctx": "REFERENCE_RELATIVE_PATH = \"E:/la拆包项目/01_索引与产物/10_索引/site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/row_index.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/row_index.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_field_names.py",
+    "build_name_chain_candidates.py",
+    "build_row_index.py"
+   ],
+   "sites": 3,
+   "ctx": "ROW_INDEX = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"row_index.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_families.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_families.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_table_index.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_FAMILIES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"table_families.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_families_v2.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_families_v2.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_field_names.py"
+   ],
+   "sites": 1,
+   "ctx": "FAMILIES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"table_families_v2.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_index_entries.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_index_entries.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_occurrence.py",
+    "build_name_chain_candidates.py",
+    "build_reliable_sources.py",
+    "build_row_index.py",
+    "build_table_families.py",
+    "build_table_index.py",
+    "build_weapon_skin_source_graph.py",
+    "query_table.py"
+   ],
+   "sites": 8,
+   "ctx": "TABLE_ENTRIES = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"table_index_entries.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_index_entries_328b8446.jsonl",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/site_data/table_index_entries_328b8446.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_rebaseline.py"
+   ],
+   "sites": 1,
+   "ctx": "NEW_INV = ROOT / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"table_index_entries_328b8446.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/003278.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/003278.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chip_catalog.py"
+   ],
+   "sites": 1,
+   "ctx": "pool = parse_legacy_chs_pool((WORK / \"003278.bin\").read_bytes())"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/006879.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/006879.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chip_catalog.py"
+   ],
+   "sites": 1,
+   "ctx": "pool = parse_legacy_chs_pool((WORK / \"006879.bin\").read_bytes())"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/007998.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/007998.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_entry_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "base = (ENTRIES_DIR / \"007998.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/008771.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/008771.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_entry_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "chs = (ENTRIES_DIR / \"008771.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/009169.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/009169.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "export_fashion_face.py"
+   ],
+   "sites": 1,
+   "ctx": "hashlib.sha256((CW / \"010816.bin\").read_bytes() + (CW / \"009169.bin\").read_bytes()).hexdigest()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/009729.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/009729.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chip_catalog.py"
+   ],
+   "sites": 1,
+   "ctx": "data = (WORK / \"009729.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/010816.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/010816.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "export_fashion_face.py"
+   ],
+   "sites": 1,
+   "ctx": "hashlib.sha256((CW / \"010816.bin\").read_bytes() + (CW / \"009169.bin\").read_bytes()).hexdigest()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/016783.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/016783.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_cards.py"
+   ],
+   "sites": 1,
+   "ctx": "base = (ENTRIES_DIR / \"016783.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/018005.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/018005.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chip_catalog.py",
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 2,
+   "ctx": "body = xbody((WORK / \"018005.bin\").read_bytes())"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/020834.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/020834.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "export_fashion_kaijia.py",
+    "lib_fashion.py"
+   ],
+   "sites": 2,
+   "ctx": "for r in lf.load_fashion_rows((CW / \"022570.bin\").read_bytes(), (CW / \"020834.bin\").read_bytes()):"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/022570.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/022570.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "export_fashion_kaijia.py",
+    "lib_fashion.py"
+   ],
+   "sites": 3,
+   "ctx": "for r in lf.load_fashion_rows((CW / \"022570.bin\").read_bytes(), (CW / \"020834.bin\").read_bytes()):"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/023314.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/023314.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_cards.py"
+   ],
+   "sites": 1,
+   "ctx": "chs = (ENTRIES_DIR / \"023314.bin\").read_bytes()"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/023928.bin",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries/023928.bin",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_chip_catalog.py",
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 2,
+   "ctx": "pool = parse_legacy_chs_pool((WORK / \"023928.bin\").read_bytes())"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/manifest.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/manifest.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "calibrate_business_chains.py",
+    "export_kaijia_phase2.py",
+    "rebuild_chip_catalog.py",
+    "scan_table_family.py"
+   ],
+   "sites": 4,
+   "ctx": "BA8_MANIFEST = Path(r\"E:\\la拆包项目\\01_索引与产物\\\\30_分析\\config_work\\script_py314_docs_BA8A239A\\manifest.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向/scene_balance.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向/scene_balance.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_scene_board.py",
+    "build_scene_board_v2.py"
+   ],
+   "sites": 2,
+   "ctx": "SRC = pathlib.Path(r\"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向/scene_balance.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/名字到落点.tsv",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/名字到落点.tsv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "MAPDIR / \"名字到落点.tsv\",          # 全量（图 + 网格）"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/图_名字到落点.tsv",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/图_名字到落点.tsv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "MAPDIR / \"图_名字到落点.tsv\","
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/网格_名字到落点.tsv",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/名称映射表_20260928/网格_名字到落点.tsv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "MAPDIR / \"网格_名字到落点.tsv\","
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/子代理产出_20261022/_weapon_skin_table_rows.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/子代理产出_20261022/_weapon_skin_table_rows.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "merge_weapon_charm.py"
+   ],
+   "sites": 1,
+   "ctx": "ROWS = pathlib.Path(r\"E:/la拆包项目/01_索引与产物/30_分析/子代理产出_20261022/_weapon_skin_table_rows.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/引用索引_20260928/引用索引_统计.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/引用索引_20260928/引用索引_统计.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "stat = d / \"引用索引_统计.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/引用索引_20260928/行到引用.tsv",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/引用索引_20260928/行到引用.tsv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "tsv = d / \"行到引用.tsv\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/post_update_20261015_213737_events_cli.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/post_update_20261015_213737_events_cli.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 1,
+   "ctx": "EVENTS_REPORT = ANALYSIS / \"post_update_20261015_213737_events_cli.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 1,
+   "ctx": "AUDIO_EVIDENCE = SKIN_DIR / \"1110188_audio_evidence_20261015.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
+   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 1,
+   "ctx": "TRIDIFF = SKIN_DIR / \"三方差分与行为资源.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/skin_audio_match.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/skin_audio_match.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "aggregate_skin_audio.py"
+   ],
+   "sites": 1,
+   "ctx": "AUDIT = ROOT / \"analysis\" / \"audit\" / \"skin_audio_match.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_binding_report.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_binding_report.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 1,
+   "ctx": "REPORT = ROOT / \"analysis\" / \"audit\" / \"weapon_skin_binding_report.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_corroboration_matrix_v2.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_corroboration_matrix_v2.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "matrix = json.loads((AUDIT / \"weapon_skin_corroboration_matrix_v2.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_effect_report.json",
+   "target": "E:/la拆包项目/02_wiki/web/analysis/audit/weapon_skin_effect_report.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_effect_standard.py"
+   ],
+   "sites": 1,
+   "ctx": "REPORT = ROOT / \"analysis\" / \"audit\" / \"weapon_skin_effect_report.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/EFFECT_COMPLETENESS.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/EFFECT_COMPLETENESS.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_effect_standard.py"
+   ],
+   "sites": 1,
+   "ctx": "COMPLETENESS = ART / \"EFFECT_COMPLETENESS.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/MANIFEST.json",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/MANIFEST.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_weapon_skin_status_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "man = json.loads((ACTIVE / \"MANIFEST.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_weapon_skin_status_v02.py",
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 6,
+   "ctx": "rules = json.loads((ACTIVE / \"RULES.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/STATUS_VOCAB.json",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/STATUS_VOCAB.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_weapon_skin_status_v02.py"
+   ],
+   "sites": 3,
+   "ctx": "\"sha256\": sha256(ACTIVE / \"STATUS_VOCAB.json\"),"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_ACQUISITION.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_ACQUISITION.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "acq = {int(o[\"skin_item_id\"]): o for o in jl(ART / \"WEAPON_SKIN_ACQUISITION.jsonl\")}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_LISTING.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_LISTING.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "listing = {int(o[\"skin_item_id\"]): o for o in jl(ART / \"WEAPON_SKIN_LISTING.jsonl\")}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_RECORD_CLASSES.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_RECORD_CLASSES.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_phase6.py",
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 2,
+   "ctx": "for x in (ART / \"WEAPON_SKIN_RECORD_CLASSES.jsonl\").read_text(encoding=\"utf-8\").splitlines() if x.strip()}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_RESOLVED.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_weapon_skin_status_v02.py",
+    "audit_grade_effects.py",
+    "build_weapon_skin_binding_phase2.py",
+    "build_weapon_skin_compendium.py",
+    "build_weapon_skin_effect_standard.py",
+    "build_weapon_skin_grade.py",
+    "build_weapon_skin_source_bindings.py",
+    "build_weapon_skin_variant_phase5.py"
+   ],
+   "sites": 8,
+   "ctx": "TARGET = ACTIVE / \"WEAPON_SKIN_RESOLVED.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SALES.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SALES.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "sales = {int(o[\"skin_item_id\"]): o for o in jl(ART / \"WEAPON_SKIN_SALES.jsonl\")}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 4,
+   "ctx": "BINDINGS = ART / \"WEAPON_SKIN_SOURCE_BINDINGS.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py",
+    "build_weapon_skin_variant_phase5.py"
+   ],
+   "sites": 2,
+   "ctx": "bindings = jl(ART / \"WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/active/weapon_skin/audit.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_weapon_skin_status_v02.py"
+   ],
+   "sites": 3,
+   "ctx": "audit = json.loads((ACTIVE / \"audit.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/assets/fashion_icon_refs/_suspects.csv",
+   "target": "E:/la拆包项目/02_wiki/web/assets/fashion_icon_refs/_suspects.csv",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_CSV = PNG_DIR / \"_suspects.csv\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/assets/fashion_icon_refs/_校对_30条.png",
+   "target": "E:/la拆包项目/02_wiki/web/assets/fashion_icon_refs/_校对_30条.png",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_PNG = PNG_DIR / \"_校对_30条.png\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/assets/logo_lifeafter_wiki.png",
+   "target": "E:/la拆包项目/02_wiki/web/assets/logo_lifeafter_wiki.png",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "make_logo.py"
+   ],
+   "sites": 1,
+   "ctx": "DST = Path(r\"E:/la拆包项目/02_wiki/web/assets/logo_lifeafter_wiki.png\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/FASHION_IDENTITY_CONFLICTS.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/data/FASHION_IDENTITY_CONFLICTS.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py",
+    "build_fashion_identity_locator.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_CONFLICTS = ROOT / \"data\" / \"FASHION_IDENTITY_CONFLICTS.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/FASHION_IDENTITY_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/FASHION_IDENTITY_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py",
+    "build_fashion_identity_locator.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_RULES = ROOT / \"data\" / \"FASHION_IDENTITY_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v01_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_item_master_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--rules\", type=Path, default=DATA / \"ITEM_MASTER_v01_RULES.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v02_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v02_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "parser.add_argument(\"--rules\", type=Path, default=DATA / \"ITEM_MASTER_v02_RULES.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v03_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/ITEM_MASTER_v03_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "ap.add_argument(\"--rules\", type=Path, default=DATA / \"ITEM_MASTER_v03_RULES.json\")"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/LOTTERY_POOL_RESOLVED_v01_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/LOTTERY_POOL_RESOLVED_v01_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_lottery_pool_resolved_v01.py",
+    "rebuild_lottery_pool_resolved_board.py"
+   ],
+   "sites": 2,
+   "ctx": "DEFAULT_RULES = ROOT / \"data\" / \"LOTTERY_POOL_RESOLVED_v01_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/SOURCE_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/SOURCE_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_reliable_sources.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_RULES = ROOT / \"data\" / \"SOURCE_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/WEAPON_SKIN_RESOLVED_v0.1.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/data/WEAPON_SKIN_RESOLVED_v0.1.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_weapon_skin_resolved_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "JSONL = ROOT / \"data\" / \"WEAPON_SKIN_RESOLVED_v0.1.jsonl\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/WEAPON_SKIN_RESOLVED_v0.1_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/WEAPON_SKIN_RESOLVED_v0.1_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_weapon_skin_resolved_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "RULES = ROOT / \"data\" / \"WEAPON_SKIN_RESOLVED_v0.1_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/asset_path_dictionary.summary.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/asset_path_dictionary.summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "extract_asset_path_dictionary.py"
+   ],
+   "sites": 1,
+   "ctx": "SUMMARY = ROOT / \"data\" / \"asset_path_dictionary.summary.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "aggregate_skin_audio.py",
+    "apply_weapon_skin_hotfix_overlay.py",
+    "attach_skin_shots.py",
+    "build_upcoming_auto.py",
+    "build_weapon_skin_compendium.py",
+    "build_weapon_skin_presentation.py",
+    "build_weapon_skin_source_graph.py",
+    "build_weapon_skin_variant_phase5.py",
+    "patch_skin_grade_1110189.py",
+    "patch_skin_grade_chuanshi.py",
+    "patch_skin_names_20261017.py",
+    "patch_skin_names_note.py",
+    "patch_skin_names_stats.py",
+    "rebuild_skin_behavior_preview.py",
+    "rebuild_weapon_skin_resolved_v01.py",
+    "rebuild_weapon_skin_static_candidates_board.py",
+    "rebuild_weapon_skin_v02.py"
+   ],
+   "sites": 18,
+   "ctx": "BOARD = ROOT / \"data\" / \"boards\" / \"weapon_skin_sfx_text_sources.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/fashion_identity_audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/fashion_identity_audit.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py"
+   ],
+   "sites": 1,
+   "ctx": "DEFAULT_REPORT = ROOT / \"data\" / \"fashion_identity_audit.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/field_names_summary.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/field_names_summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_field_names.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_SUM = ROOT / \"data\" / \"field_names_summary.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/field_semantics_summary.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/field_semantics_summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "verify_field_semantics.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_SUM = ROOT / \"data\" / \"field_semantics_summary.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/file_index.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/file_index.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "merge_file_index.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_INDEX = ROOT / \"data\" / \"file_index.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/hotfix/weapon_skin_hotfix_playertest-newpc-hotfix-20261015.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/hotfix/weapon_skin_hotfix_playertest-newpc-hotfix-20261015.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "apply_weapon_skin_hotfix_overlay.py"
+   ],
+   "sites": 1,
+   "ctx": "DEFAULT_RECORD = ROOT / \"data\" / \"hotfix\" / \"weapon_skin_hotfix_playertest-newpc-hotfix-20261015.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/id_locator_audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/id_locator_audit.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_locator.py"
+   ],
+   "sites": 1,
+   "ctx": "AUDIT = ROOT / \"data\" / \"id_locator_audit.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/id_occurrence_summary.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/id_occurrence_summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_id_occurrence.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_SUM = ROOT / \"data\" / \"id_occurrence_summary.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/live_sources.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/live_sources.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_live_sources.py",
+    "provenance_standard.py",
+    "rebuild_chenshi_slots.py",
+    "rebuild_future_lottery_preview.py",
+    "rebuild_kaijia_panel_static.py",
+    "rebuild_lottery_research_panels.py",
+    "rebuild_manjian_panel_static.py",
+    "rebuild_mystery_shop_panel_static.py",
+    "rebuild_nucleus_cards.py",
+    "rebuild_nucleus_entry_slots.py",
+    "rebuild_weapon_attrs_schema_static.py",
+    "rebuild_weapon_skin_catalog_current.py",
+    "wiki_server.py"
+   ],
+   "sites": 13,
+   "ctx": "DEFAULT_REGISTRY = ROOT / \"data\" / \"live_sources.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/publication_policy.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/publication_policy.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "apply_weapon_skin_hotfix_overlay.py",
+    "audit_fixes.py",
+    "build_core_skill_board.py",
+    "build_scene_board_v2.py",
+    "build_wiki.py",
+    "fix_core_stars.py",
+    "list_orphan_boards.py",
+    "normalize_provenance.py",
+    "project_audit.py",
+    "provenance_standard.py",
+    "purge_retired_boards.py",
+    "register_board.py",
+    "register_mutation_core_full.py",
+    "register_vehicle_full.py",
+    "wiki_tidy.py"
+   ],
+   "sites": 15,
+   "ctx": "POLICY = ROOT / \"data\" / \"publication_policy.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/row_index_summary.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/row_index_summary.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_row_index.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_SUM = ROOT / \"data\" / \"row_index_summary.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/source_registry.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/source_registry.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "index_all_npk.py",
+    "index_fpk.py",
+    "index_gpk.py",
+    "index_script_packages.py",
+    "index_wpk_idx.py",
+    "merge_file_index.py"
+   ],
+   "sites": 6,
+   "ctx": "REG = ROOT / \"data\" / \"source_registry.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/data/table_index.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/table_index.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_table_index.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_INDEX = ROOT / \"data\" / \"table_index.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/docs/SOURCE_RULES.md",
+   "target": "E:/la拆包项目/02_wiki/web/docs/SOURCE_RULES.md",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_reliable_sources.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_MD = ROOT / \"docs\" / \"SOURCE_RULES.md\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/EFFECT_STANDARD.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/EFFECT_STANDARD.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_binding_phase2.py",
+    "build_weapon_skin_effect_standard.py",
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 3,
+   "ctx": "all_types = json.loads((DOM / \"EFFECT_STANDARD.json\").read_text(encoding=\"utf-8\"))[\"effect_types\"]"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/GRADE_EFFECT_RULES.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/GRADE_EFFECT_RULES.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_grade_effects.py"
+   ],
+   "sites": 1,
+   "ctx": "RULES = ROOT / \"domains\" / \"weapon_skin\" / \"GRADE_EFFECT_RULES.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/SOURCE_GRAPH.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/SOURCE_GRAPH.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_binding_phase2.py",
+    "build_weapon_skin_source_bindings.py"
+   ],
+   "sites": 3,
+   "ctx": "gp = DOM / \"SOURCE_GRAPH.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/SOURCE_REGISTRY.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/SOURCE_REGISTRY.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py",
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 3,
+   "ctx": "src = json.loads((DOM / \"SOURCE_REGISTRY.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/VARIANT_INHERITANCE.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/VARIANT_INHERITANCE.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "json.loads((DOM / \"VARIANT_INHERITANCE.json\").read_text(encoding=\"utf-8\"))[\"rows\"]}"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/WEAPON_SKIN_COMMERCE_GRAPH.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/WEAPON_SKIN_COMMERCE_GRAPH.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_6b.py"
+   ],
+   "sites": 1,
+   "ctx": "gp = DOM / \"WEAPON_SKIN_COMMERCE_GRAPH.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/WEAPON_SKIN_COMMERCE_SOURCE_REGISTRY.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/WEAPON_SKIN_COMMERCE_SOURCE_REGISTRY.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_6b.py",
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 2,
+   "ctx": "reg_p = DOM / \"WEAPON_SKIN_COMMERCE_SOURCE_REGISTRY.json\""
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/locator_chains/registry.json",
+   "target": "E:/la拆包项目/02_wiki/web/locator_chains/registry.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_locator_chains.py"
+   ],
+   "sites": 1,
+   "ctx": "REGISTRY = json.loads((CHAINS / \"registry.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/locator_chains/schema.json",
+   "target": "E:/la拆包项目/02_wiki/web/locator_chains/schema.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_locator_chains.py"
+   ],
+   "sites": 1,
+   "ctx": "SCHEMA = json.loads((CHAINS / \"schema.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "E:/la拆包项目/02_wiki/web/registry/tables.json",
+   "target": "E:/la拆包项目/02_wiki/web/registry/tables.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_weapon_skin_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "reg_p = ROOT / \"registry\" / \"tables.json\""
+  },
+  {
+   "expected": "artifacts/historical/weapon_skin/v01/WEAPON_SKIN_RESOLVED.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/artifacts/historical/weapon_skin/v01/WEAPON_SKIN_RESOLVED.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"hist.artifact.v01\", \"artifacts/historical/weapon_skin/v01/WEAPON_SKIN_RESOLVED.jsonl\", [\"historical_only\"], \"skin_item_id\","
+  },
+  {
+   "expected": "assets/fashion_icon_refs/icon_110240_b.png",
+   "target": "E:/la拆包项目/02_wiki/web/assets/fashion_icon_refs/icon_110240_b.png",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "fix_wiki_polish.py"
+   ],
+   "sites": 1,
+   "ctx": "\"assets/fashion_icon_refs/icon_110240_b.png\")"
+  },
+  {
+   "expected": "data/boards/_archive_lottery_20261020.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/_archive_lottery_20261020.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_lottery_board_v3.py"
+   ],
+   "sites": 1,
+   "ctx": "arc_path = WEB / \"data/boards/_archive_lottery_20261020.json\""
+  },
+  {
+   "expected": "data/boards/_report_item_icons.md",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/_report_item_icons.md",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "REPORT = WEB / \"data/boards/_report_item_icons.md\""
+  },
+  {
+   "expected": "data/boards/avatar_catalog.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/avatar_catalog.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "export_avatar_icons_hires.py",
+    "mark_missing_frames.py",
+    "mark_missing_frames2.py",
+    "refetch_broken_cards.py",
+    "wire_avatar_icons.py"
+   ],
+   "sites": 5,
+   "ctx": "board = json.loads((WEB / \"data/boards/avatar_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/boards/chip_item_catalog.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/chip_item_catalog.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "fix_ykxq_and_chip.py"
+   ],
+   "sites": 1,
+   "ctx": "cp = WEB / \"data/boards/chip_item_catalog.json\""
+  },
+  {
+   "expected": "data/boards/edible_catalog.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/edible_catalog.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "merge_edible_recipe.py",
+    "rebuild_illustration.py"
+   ],
+   "sites": 2,
+   "ctx": "ed = json.loads((WEB / \"data/boards/edible_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/boards/fashion_face_slots.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/fashion_face_slots.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "fill_fashion_extra_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "p = WEB / \"data/boards/fashion_face_slots.json\""
+  },
+  {
+   "expected": "data/boards/fashion_wardrobe.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_icons.py",
+    "backfill_fashion_layers_prov.py",
+    "backfill_fashion_layers_prov2.py",
+    "check_fashion_parts.py",
+    "check_image_alpha.py",
+    "check_parts_by_model.py",
+    "fill_board_provenance.py",
+    "fill_fashion_extra_icons.py",
+    "fill_fashion_icons_by_model.py",
+    "fill_fashion_icons_generic.py",
+    "fix_bucket_pendants.py",
+    "fix_fashion_parts.py",
+    "fix_projection_from_full_items.py",
+    "gen_layout_mockups.py",
+    "import_pendants.py",
+    "import_pendants_full.py",
+    "merge_fashion_layers.py",
+    "merge_fashion_media_into_board.py",
+    "rebuild_projection_rows.py",
+    "refresh_fashion_wardrobe_live.py",
+    "restore_fashion_charm_filters.py"
+   ],
+   "sites": 21,
+   "ctx": "BOARD = ROOT / \"data/boards/fashion_wardrobe.json\""
+  },
+  {
+   "expected": "data/boards/gift_data_text_sources.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/gift_data_text_sources.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "rebuild_fashion_bestplay_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "gift = json.loads((ROOT / \"data/boards/gift_data_text_sources.json\")"
+  },
+  {
+   "expected": "data/boards/item_master_full.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/item_master_full.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_avatar_full.py",
+    "build_class_layer.py",
+    "build_item_master_full.py",
+    "build_lottery_board_v3.py",
+    "fill_item_master_icons.py",
+    "link_gift_bundles.py",
+    "rebuild_fashion_projection_slots.py",
+    "rebuild_illustration.py"
+   ],
+   "sites": 8,
+   "ctx": "p = WEB / \"data/boards/item_master_full.json\""
+  },
+  {
+   "expected": "data/boards/lottery_periods.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/lottery_periods.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "add_chip_anchors.py",
+    "build_activity_master.py",
+    "build_class_layer.py",
+    "build_gene_board.py",
+    "build_lottery_board_v2.py",
+    "build_lottery_board_v3.py",
+    "build_misc_boards.py",
+    "build_scene_board.py",
+    "build_scene_board_v2.py",
+    "build_talent_by_prof.py",
+    "build_text_boards.py",
+    "build_theme_talent.py",
+    "build_upcoming_auto.py",
+    "fill_broadcast_only_activities.py",
+    "fill_lottery_building_icons.py",
+    "fill_lottery_icons_all.py",
+    "fill_lottery_icons_cached.py",
+    "fill_lottery_icons_official.py",
+    "fill_placeholder_names.py",
+    "fill_sf_entry_items.py",
+    "fill_show_reward_names.py",
+    "fix_lottery_period_names.py",
+    "import_yk_preview_pools.py",
+    "merge_broadcast_rewards.py",
+    "merge_show_rewards.py",
+    "merge_superfashion_preview.py",
+    "normalize_lottery_names.py",
+    "rebuild_chip_board_v3.py",
+    "rebuild_chip_board_v4.py",
+    "rebuild_chip_lottery_board.py",
+    "rebuild_chip_timeline.py",
+    "rebuild_edible.py",
+    "rebuild_illustration.py",
+    "rebuild_lottery_periods.py",
+    "rebuild_multioptional_periods.py",
+    "reclassify_lottery_families.py",
+    "refresh_lottery_board.py",
+    "scan_names_for_show_rewards.py",
+    "trace_placeholder_ids.py"
+   ],
+   "sites": 41,
+   "ctx": "P = WEB / \"data/boards/lottery_periods.json\""
+  },
+  {
+   "expected": "data/boards/mutation_core_full.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/mutation_core_full.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fixes.py",
+    "fill_core_star_entries.py",
+    "fill_core_star_values.py",
+    "register_mutation_core_full.py"
+   ],
+   "sites": 4,
+   "ctx": "p = WEB / \"data/boards/mutation_core_full.json\""
+  },
+  {
+   "expected": "data/boards/tactical_chip_full.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/tactical_chip_full.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "fill_chip_effect.py",
+    "rebuild_chip_lottery.py",
+    "rebuild_chip_lottery_board.py"
+   ],
+   "sites": 3,
+   "ctx": "cd = json.loads((WEB / \"data/boards/tactical_chip_full.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/boards/talent_catalog.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/talent_catalog.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "merge_talent_boards.py"
+   ],
+   "sites": 1,
+   "ctx": "base = json.loads((WEB / \"data/boards/talent_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/boards/vehicle_full.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/vehicle_full.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "register_vehicle_full.py"
+   ],
+   "sites": 1,
+   "ctx": "board = json.loads((ROOT / 'data/boards/vehicle_full.json').read_text(encoding='utf-8'))"
+  },
+  {
+   "expected": "data/boards/weapon_skin_static_candidates_v01.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_static_candidates_v01.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py",
+    "rebuild_weapon_skin_static_candidates_board.py"
+   ],
+   "sites": 2,
+   "ctx": "(\"hist.board.static_candidates\", \"data/boards/weapon_skin_static_candidates_v01.json\", [\"historical_only\"], \"skin_id\","
+  },
+  {
+   "expected": "data/boards/weapon_skin_structure_v01.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_structure_v01.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"hist.board.structure\", \"data/boards/weapon_skin_structure_v01.json\", [\"historical_only\"], \"—\","
+  },
+  {
+   "expected": "data/manifest.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/manifest.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "project_audit.py"
+   ],
+   "sites": 1,
+   "ctx": "man = load(WEB / \"data/manifest.json\") or {}"
+  },
+  {
+   "expected": "data/media/fashion_icon_audit.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/media/fashion_icon_audit.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_icons.py"
+   ],
+   "sites": 1,
+   "ctx": "OUT_JSON = ROOT / \"data/media/fashion_icon_audit.json\""
+  },
+  {
+   "expected": "data/media/fashion_icon_refs.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/media/fashion_icon_refs.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "audit_fashion_icons.py",
+    "merge_fashion_media_into_board.py"
+   ],
+   "sites": 2,
+   "ctx": "REFS = ROOT / \"data/media/fashion_icon_refs.json\""
+  },
+  {
+   "expected": "data/weapon_skin_audio_attachments.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/weapon_skin_audio_attachments.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_audio_board.py",
+    "check_audio_files.py",
+    "fill_skin_audio.py"
+   ],
+   "sites": 3,
+   "ctx": "att = json.loads((WEB / \"data/weapon_skin_audio_attachments.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "data/wiki_taxonomy.json",
+   "target": "E:/la拆包项目/02_wiki/web/data/wiki_taxonomy.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "align_board_categories.py",
+    "build_core_skill_board.py",
+    "build_scene_board.py",
+    "build_scene_board_v2.py",
+    "checks.py",
+    "list_orphan_boards.py",
+    "project_audit.py",
+    "purge_retired_boards.py",
+    "register_board.py",
+    "register_mutation_core_full.py",
+    "register_vehicle_full.py",
+    "wiki_restructure.py",
+    "wiki_restructure_fix.py",
+    "wiki_structure_check.py",
+    "wiki_tidy.py"
+   ],
+   "sites": 15,
+   "ctx": "tax = json.loads((WEB / \"data/wiki_taxonomy.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "domains/weapon_skin/WEAPON_SKIN_COMMERCE_CONFLICTS.json",
+   "target": "E:/la拆包项目/02_wiki/web/domains/weapon_skin/WEAPON_SKIN_COMMERCE_CONFLICTS.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "\"domains/weapon_skin/WEAPON_SKIN_COMMERCE_CONFLICTS.json\","
+  },
+  {
+   "expected": "evidence/item/consumers.json",
+   "target": "E:/la拆包项目/02_wiki/web/evidence/item/consumers.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "\"evidence/item/consumers.json\", \"DataHelpers.get_item_data → namespace dispatch\"),"
+  },
+  {
+   "expected": "evidence/weapon_skin/three_bindings.json",
+   "target": "E:/la拆包项目/02_wiki/web/evidence/weapon_skin/three_bindings.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 3,
+   "ctx": "\"evidence/weapon_skin/three_bindings.json\", \"EquipSkinComp.get_equip_skin_item_ids 消费 skin_item_id\"),"
+  },
+  {
+   "expected": "locator_chains/weapon_skin/instances.jsonl",
+   "target": "E:/la拆包项目/02_wiki/web/locator_chains/weapon_skin/instances.jsonl",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "\"evidence_ref\": [\"residuals/weapon_skin/canonical_vs_v01_diff.json\", \"locator_chains/weapon_skin/instances.jsonl\"],"
+  },
+  {
+   "expected": "residuals/weapon_skin/canonical_vs_v01_diff.json",
+   "target": "E:/la拆包项目/02_wiki/web/residuals/weapon_skin/canonical_vs_v01_diff.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 3,
+   "ctx": "\"snapshot\": BA, \"evidence_ref\": [\"residuals/weapon_skin/canonical_vs_v01_diff.json\"],"
+  },
+  {
+   "expected": "residuals/weapon_skin/grade_conflicts_residuals.json",
+   "target": "E:/la拆包项目/02_wiki/web/residuals/weapon_skin/grade_conflicts_residuals.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_compendium.py"
+   ],
+   "sites": 1,
+   "ctx": "\"residual_refs\": [\"residuals/weapon_skin/grade_conflicts_residuals.json\","
+  },
+  {
+   "expected": "residuals/weapon_skin/listing_status.json",
+   "target": "E:/la拆包项目/02_wiki/web/residuals/weapon_skin/listing_status.json",
+   "tier": "A",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py"
+   ],
+   "sites": 1,
+   "ctx": "\"source_refs\": [\"runtime.listing_consumer（未发现）\"], \"evidence_refs\": [\"residuals/weapon_skin/listing_status.json\"],"
+  },
+  {
+   "expected": "001765.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_split_shell.py"
+   ],
+   "sites": 1,
+   "ctx": "shell = _audit_file(\"001765.bin\", SHELL_TERMS)"
+  },
+  {
+   "expected": "002592.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_family.py"
+   ],
+   "sites": 1,
+   "ctx": "INC_ENTRY, INC_CHS = \"005292.bin\", \"002592.bin\""
+  },
+  {
+   "expected": "002962.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_chenshi_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "(ROOT / \"..\" / \"01_索引与产物\" / \"config_work\" / \"script_py314_docs_BA8A239A\" / \"entries\" / \"002962.bin\").read_bytes()"
+  },
+  {
+   "expected": "005292.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_family.py"
+   ],
+   "sites": 1,
+   "ctx": "INC_ENTRY, INC_CHS = \"005292.bin\", \"002592.bin\""
+  },
+  {
+   "expected": "016447.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_family.py",
+    "audit_common_item_split_shell.py"
+   ],
+   "sites": 2,
+   "ctx": "DEL_ENTRY = \"016447.bin\""
+  },
+  {
+   "expected": "016783.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_cards_classic.py"
+   ],
+   "sites": 3,
+   "ctx": "ba8_rows, _ = decode_rows(_xbody(open(Path(E) / \"016783.bin\", \"rb\").read()), ba8_pool)"
+  },
+  {
+   "expected": "018005.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_family.py",
+    "audit_item_identity_expansion.py",
+    "audit_item_master_v01_fields.py",
+    "rebuild_nucleus_cards_classic.py"
+   ],
+   "sites": 4,
+   "ctx": "BASE_ENTRY, BASE_CHS = \"018005.bin\", \"023928.bin\""
+  },
+  {
+   "expected": "018006.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_cards_classic.py"
+   ],
+   "sites": 1,
+   "ctx": "ba8_ci_pool = parse_pool(open(Path(E) / \"018006.bin\", \"rb\").read())"
+  },
+  {
+   "expected": "023314.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_nucleus_cards_classic.py"
+   ],
+   "sites": 1,
+   "ctx": "ba8_pool = parse_pool(open(Path(E) / \"023314.bin\", \"rb\").read())"
+  },
+  {
+   "expected": "023928.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_family.py",
+    "audit_item_identity_expansion.py",
+    "audit_item_master_v01_fields.py"
+   ],
+   "sites": 3,
+   "ctx": "BASE_ENTRY, BASE_CHS = \"018005.bin\", \"023928.bin\""
+  },
+  {
+   "expected": "FASHION_IDENTITY_CANDIDATES.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "path = root / Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / \"FASHION_IDENTITY_CANDIDATES.jsonl\""
+  },
+  {
+   "expected": "FASHION_IDENTITY_CONFLICTS.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py"
+   ],
+   "sites": 1,
+   "ctx": "conflicts_path = output_dir / \"FASHION_IDENTITY_CONFLICTS.jsonl\""
+  },
+  {
+   "expected": "FASHION_IDENTITY_RULES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py"
+   ],
+   "sites": 1,
+   "ctx": "rules_path = output_dir / \"FASHION_IDENTITY_RULES.json\""
+  },
+  {
+   "expected": "FIELD_RULES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity_expansion.py",
+    "build_fashion_identity_candidates.py",
+    "build_item_identity_candidates.py"
+   ],
+   "sites": 5,
+   "ctx": "\"FIELD_RULES.json\": _sha256(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"FIELD_RULES.json\"),"
+  },
+  {
+   "expected": "GRADE_EFFECT_RULES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_grade_effects.py"
+   ],
+   "sites": 1,
+   "ctx": "report = {\"generated_from\": [\"weapon_skin v0.2\", \"GRADE_EFFECT_RULES.json\"],"
+  },
+  {
+   "expected": "ITEM_IDENTITY_CANDIDATES.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity.py",
+    "audit_item_identity_expansion.py",
+    "build_item_identity_locator.py"
+   ],
+   "sites": 5,
+   "ctx": "parser.add_argument(\"--candidates\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"ITEM_IDENTITY_CANDIDATES.jsonl\")"
+  },
+  {
+   "expected": "ITEM_IDENTITY_CONFLICTS.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity.py",
+    "build_item_identity_candidates.py",
+    "build_item_identity_locator.py"
+   ],
+   "sites": 3,
+   "ctx": "parser.add_argument(\"--conflicts\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"ITEM_IDENTITY_CONFLICTS.jsonl\")"
+  },
+  {
+   "expected": "ITEM_IDENTITY_LOCATOR.db",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity.py",
+    "build_item_identity_locator.py",
+    "query_item_identity.py"
+   ],
+   "sites": 3,
+   "ctx": "parser.add_argument(\"--db\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"ITEM_IDENTITY_LOCATOR.db\")"
+  },
+  {
+   "expected": "ITEM_IDENTITY_RULES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity.py",
+    "audit_item_identity_expansion.py",
+    "build_item_identity_candidates.py",
+    "build_item_identity_locator.py"
+   ],
+   "sites": 6,
+   "ctx": "parser.add_argument(\"--rules\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"ITEM_IDENTITY_RULES.json\")"
+  },
+  {
+   "expected": "ITEM_MASTER_v01.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 2,
+   "ctx": "path = root / Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / \"ITEM_MASTER_v01.jsonl\""
+  },
+  {
+   "expected": "LOTTERY_POOL_RESOLVED_v01.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 2,
+   "ctx": "path = root / Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / \"LOTTERY_POOL_RESOLVED_v01.jsonl\""
+  },
+  {
+   "expected": "MANIFEST.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "make_spine_thumbs.py",
+    "render_spine_index.py"
+   ],
+   "sites": 2,
+   "ctx": "man = json.loads((ROOT / \"MANIFEST.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "NAME_CHAIN_CANDIDATES.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity_expansion.py",
+    "build_name_chain_candidates.py"
+   ],
+   "sites": 4,
+   "ctx": "\"NAME_CHAIN_CANDIDATES.jsonl\": _sha256(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"NAME_CHAIN_CANDIDATES.jsonl\"),"
+  },
+  {
+   "expected": "NAME_LOCATOR.db",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py",
+    "build_item_identity_candidates.py",
+    "checks.py"
+   ],
+   "sites": 4,
+   "ctx": "parser.add_argument(\"--name-locator\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"NAME_LOCATOR.db\")"
+  },
+  {
+   "expected": "RELIABLE_SOURCES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py",
+    "build_item_identity_candidates.py"
+   ],
+   "sites": 2,
+   "ctx": "parser.add_argument(\"--reliable-sources\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"RELIABLE_SOURCES.json\")"
+  },
+  {
+   "expected": "RULES.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_locator_chains.py"
+   ],
+   "sites": 1,
+   "ctx": "rules_p = REPO / \"artifacts\" / \"active\" / str(domain) / \"RULES.json\""
+  },
+  {
+   "expected": "SOURCE_GRAPH.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_final_closure.py"
+   ],
+   "sites": 1,
+   "ctx": "gp = DOM / \"SOURCE_GRAPH.json\""
+  },
+  {
+   "expected": "WEAPON_SKIN_ACQUISITION.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_6b.py"
+   ],
+   "sites": 1,
+   "ctx": "acq = load(\"WEAPON_SKIN_ACQUISITION.jsonl\")"
+  },
+  {
+   "expected": "WEAPON_SKIN_LISTING.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_6b.py"
+   ],
+   "sites": 1,
+   "ctx": "listing = load(\"WEAPON_SKIN_LISTING.jsonl\")"
+  },
+  {
+   "expected": "WEAPON_SKIN_RESOLVED.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_source_graph.py",
+    "rebuild_weapon_skin_v02.py"
+   ],
+   "sites": 3,
+   "ctx": "art = [json.loads(x) for x in (ROOT / \"artifacts\" / \"active\" / \"weapon_skin\" / \"WEAPON_SKIN_RESOLVED.jsonl\").read_text(encoding=\"utf-8\").splitlines() if x.strip"
+  },
+  {
+   "expected": "WEAPON_SKIN_SALES.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_commerce_6b.py"
+   ],
+   "sites": 1,
+   "ctx": "sales = load(\"WEAPON_SKIN_SALES.jsonl\")"
+  },
+  {
+   "expected": "WEAPON_SKIN_SOURCE_BINDINGS_V2.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_final_closure.py"
+   ],
+   "sites": 1,
+   "ctx": "V2 = ART / \"WEAPON_SKIN_SOURCE_BINDINGS_V2.jsonl\""
+  },
+  {
+   "expected": "WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_final_closure.py"
+   ],
+   "sites": 1,
+   "ctx": "V3 = ART / \"WEAPON_SKIN_SOURCE_BINDINGS_V3.jsonl\""
+  },
+  {
+   "expected": "_cache_official_icons.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "clean_site.py",
+    "fill_fashion_icons_generic.py",
+    "fill_item_master_icons.py",
+    "fill_lottery_icons_cached.py",
+    "rebuild_chip_board_v3.py",
+    "rebuild_chip_board_v4.py"
+   ],
+   "sites": 7,
+   "ctx": "mv(WEB / \"_cache_official_icons.json\", PARK / \"_cache_official_icons.json\", \"图标缓存 3.6MB\")"
+  },
+  {
+   "expected": "_file_inventory.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "analyze_client_file_map.py"
+   ],
+   "sites": 1,
+   "ctx": "p = AUDIT / f\"{client}_file_inventory.jsonl\""
+  },
+  {
+   "expected": "attr_compress_curves.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "render_compress_curves.py"
+   ],
+   "sites": 1,
+   "ctx": "DATA = json.loads((WEB / \"attr_compress_curves.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "chip_item_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "\"belt_chip\": board_ids(DATA / \"boards\" / \"chip_item_catalog.json\"),"
+  },
+  {
+   "expected": "common_item_names.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_lottery_periods.py"
+   ],
+   "sites": 6,
+   "ctx": "for label in (\"common_item_names.json\", \"show_item_names.json\"):"
+  },
+  {
+   "expected": "coverage_latest.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "side = NAMES_DICT.parent / \"coverage_latest.json\""
+  },
+  {
+   "expected": "edible_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "add_edible_craftable.py"
+   ],
+   "sites": 1,
+   "ctx": "ed = json.loads((B / \"edible_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "fashion_data_auto_oversea_data_kjxq_chs.py.rows.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_fashion_wardrobe.py"
+   ],
+   "sites": 1,
+   "ctx": "\"fashion_data_auto_oversea_data_kjxq_chs.py.rows.csv\","
+  },
+  {
+   "expected": "fashion_data_chs.py.rows.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_fashion_wardrobe.py"
+   ],
+   "sites": 1,
+   "ctx": "\"fashion_data_chs.py.rows.csv\","
+  },
+  {
+   "expected": "fashion_face.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_fashion_face.py"
+   ],
+   "sites": 1,
+   "ctx": "d = json.loads((BOARDS / \"fashion_face.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "fashion_face_slots.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_fashion_layers.py"
+   ],
+   "sites": 1,
+   "ctx": "LAYERS = [(\"fashion_face_slots.json\", \"face_\", \"面饰\"),"
+  },
+  {
+   "expected": "fashion_glow_slots.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_fashion_glow_slots.py"
+   ],
+   "sites": 1,
+   "ctx": "default=ROOT / \"data\" / \"boards\" / \"fashion_glow_slots.json\")"
+  },
+  {
+   "expected": "fashion_identity_audit.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 2,
+   "ctx": "fashion_audit = _load_json(data / \"fashion_identity_audit.json\")"
+  },
+  {
+   "expected": "fashion_kaijia.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_fashion_kaijia.py"
+   ],
+   "sites": 1,
+   "ctx": "d = json.loads((BOARDS / \"fashion_kaijia.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "fashion_projection_slots.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_fashion_layers.py",
+    "rebuild_fashion_projection_slots.py"
+   ],
+   "sites": 2,
+   "ctx": "(\"fashion_projection_slots.json\", \"proj_\", \"投影\")]"
+  },
+  {
+   "expected": "field_names.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py",
+    "build_item_identity_candidates.py"
+   ],
+   "sites": 2,
+   "ctx": "parser.add_argument(\"--field-names\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"field_names.json\")"
+  },
+  {
+   "expected": "file_hash_pack.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_source_registry.py",
+    "parse_file_hash_pack.py"
+   ],
+   "sites": 3,
+   "ctx": "if path.endswith(\"file_hash_pack.bin\"):"
+  },
+  {
+   "expected": "fpk_index_summary.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_file_index.py"
+   ],
+   "sites": 1,
+   "ctx": "\"fpk\": load_summary(\"fpk_index_summary.json\"),"
+  },
+  {
+   "expected": "gift_data_text_sources.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v03.py"
+   ],
+   "sites": 1,
+   "ctx": "gb_items = {it.get(\"item_id\"): it for it in (json.loads((DATA / \"boards\" / \"gift_data_text_sources.json\").read_text(encoding=\"utf-8\")).get(\"items\") or [])}"
+  },
+  {
+   "expected": "gpk_index_summary.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_file_index.py"
+   ],
+   "sites": 1,
+   "ctx": "\"gpk\": load_summary(\"gpk_index_summary.json\"),"
+  },
+  {
+   "expected": "icon_plan.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_item_master_full.py"
+   ],
+   "sites": 1,
+   "ctx": "plan_cache = STAGE / \"icon_plan.json\""
+  },
+  {
+   "expected": "icons.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_item_master_full.py"
+   ],
+   "sites": 1,
+   "ctx": "icons = json.loads((STAGE / \"icons.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "id_locator_index.db",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 2,
+   "ctx": "(\"id_locator_index.db\", WEB / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"id_locator_index.db\")]"
+  },
+  {
+   "expected": "index.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "project_audit.py"
+   ],
+   "sites": 1,
+   "ctx": "if f.name.startswith(\"_\") or f.name in (\"index.json\",):"
+  },
+  {
+   "expected": "item_identity_expansion_p4a2.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_identity_expansion.py"
+   ],
+   "sites": 1,
+   "ctx": "default=\"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"audit\" / \"item_identity_expansion_p4a2.json\","
+  },
+  {
+   "expected": "item_master_full.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_provenance.py"
+   ],
+   "sites": 1,
+   "ctx": "json.loads((BOARDS / \"item_master_full.json\").read_text(encoding=\"utf-8\"))[\"items\"]}"
+  },
+  {
+   "expected": "item_master_v01_audit.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "item_audit = _load_json(Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / Path(\"audit\") / \"item_master_v01_audit.json\")"
+  },
+  {
+   "expected": "item_master_v01_field_audit.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_item_master_v01_fields.py"
+   ],
+   "sites": 1,
+   "ctx": "default=DATA / \"audit\" / \"item_master_v01_field_audit.json\","
+  },
+  {
+   "expected": "lifeafter_file_inventory.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_source_registry.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"lifeafter\", \"lifeafter_file_inventory.jsonl\")):"
+  },
+  {
+   "expected": "live_sources.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_common_item_dual_source.py",
+    "build_release_pack.py",
+    "calibrate_business_chains.py",
+    "locate_all_equips_pair.py",
+    "rebuild_common_item_text_sources.py",
+    "rebuild_fashion_glow_slots.py",
+    "rebuild_fashion_projection_slots.py",
+    "rebuild_fashion_wardrobe_slots.py",
+    "rebuild_gift_data_text_sources.py",
+    "rebuild_nucleus_entry_slots.py",
+    "scan_table_family.py",
+    "wiki_server.py"
+   ],
+   "sites": 12,
+   "ctx": "parser.add_argument(\"--registry\", type=Path, default=ROOT / \"data\" / \"live_sources.json\")"
+  },
+  {
+   "expected": "lottery_inventory.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_lottery_board_v2.py"
+   ],
+   "sites": 1,
+   "ctx": "INV_BYTES = (DET / \"lottery_inventory.json\").read_bytes()"
+  },
+  {
+   "expected": "lottery_pool_resolved_v01_audit.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "lottery_audit = _load_json(Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / Path(\"audit\") / \"lottery_pool_resolved_v01_audit.json\")"
+  },
+  {
+   "expected": "lottery_server_variants.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_lottery_board_v2.py"
+   ],
+   "sites": 1,
+   "ctx": "var = json.loads((DET / \"lottery_server_variants.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "manifest.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_rebuildability.py",
+    "build_lottery_pool_resolved_v01.py",
+    "build_table_inventory_for_basis.py",
+    "sync_manifest_categories.py",
+    "trace_kaijia_formal_reward_chain.py"
+   ],
+   "sites": 6,
+   "ctx": "boards = [b[\"board\"] for b in json.loads((DATA / \"manifest.json\").read_text(encoding=\"utf-8\"))[\"boards\"]]"
+  },
+  {
+   "expected": "merged.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_item_master_full.py"
+   ],
+   "sites": 2,
+   "ctx": "merged = json.loads((STAGE / \"merged.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "mrzh_file_inventory.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_source_registry.py"
+   ],
+   "sites": 1,
+   "ctx": "for client, inv_name in ((\"mrzh\", \"mrzh_file_inventory.jsonl\"),"
+  },
+  {
+   "expected": "mutation_core_full.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_core_skill_board.py",
+    "fix_core_layout.py",
+    "fix_core_stars.py",
+    "merge_core_boards.py"
+   ],
+   "sites": 4,
+   "ctx": "core = json.loads((B / \"mutation_core_full.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "names_dict.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "base = root / \"names_dict.json\""
+  },
+  {
+   "expected": "npk_index_summary.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_file_index.py"
+   ],
+   "sites": 1,
+   "ctx": "\"npk\": load_summary(\"npk_index_summary.json\"),"
+  },
+  {
+   "expected": "nucleus.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_nucleus.py",
+    "backfill_nucleus_build.py",
+    "backfill_nucleus_extra.py",
+    "merge_core_boards.py"
+   ],
+   "sites": 5,
+   "ctx": "d = json.loads((BOARDS / \"nucleus.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "nucleus_entry_slots.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_provenance.py"
+   ],
+   "sites": 1,
+   "ctx": "d = json.loads((BOARDS / \"nucleus_entry_slots.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "nucleus_item_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_provenance.py",
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 2,
+   "ctx": "d = json.loads((BOARDS / \"nucleus_item_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "player_appear_data_auto_oversea_data_kjxq_chs.py.rows.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_fashion_wardrobe.py"
+   ],
+   "sites": 1,
+   "ctx": "\"player_appear_data_auto_oversea_data_kjxq_chs.py.rows.csv\","
+  },
+  {
+   "expected": "player_appear_data_chs.py.rows.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_fashion_wardrobe.py"
+   ],
+   "sites": 1,
+   "ctx": "\"player_appear_data_chs.py.rows.csv\","
+  },
+  {
+   "expected": "post__weapon_skin_behavior_res_data.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "beh_rows = load_rows(\"post__weapon_skin_behavior_res_data.py.bin\","
+  },
+  {
+   "expected": "post__weapon_skin_behavior_res_data_chs.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "\"post__weapon_skin_behavior_res_data_chs.py.bin\")"
+  },
+  {
+   "expected": "post__weapon_skin_data.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "skin_rows = load_rows(\"post__weapon_skin_data.py.bin\", \"post__weapon_skin_data_chs.py.bin\")"
+  },
+  {
+   "expected": "post__weapon_skin_data_chs.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "skin_rows = load_rows(\"post__weapon_skin_data.py.bin\", \"post__weapon_skin_data_chs.py.bin\")"
+  },
+  {
+   "expected": "post__weapon_skin_sfx_function_data.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "sfx_rows = load_rows(\"post__weapon_skin_sfx_function_data.py.bin\","
+  },
+  {
+   "expected": "post__weapon_skin_sfx_function_data_chs.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "\"post__weapon_skin_sfx_function_data_chs.py.bin\")"
+  },
+  {
+   "expected": "pre__weapon_skin_behavior_res_data.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "beh_pre = load_rows(\"pre__weapon_skin_behavior_res_data.py.bin\","
+  },
+  {
+   "expected": "pre__weapon_skin_behavior_res_data_chs.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 1,
+   "ctx": "\"pre__weapon_skin_behavior_res_data_chs.py.bin\")"
+  },
+  {
+   "expected": "pre__weapon_skin_data.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "skin_pre = load_rows(\"pre__weapon_skin_data.py.bin\", \"pre__weapon_skin_data_chs.py.bin\")"
+  },
+  {
+   "expected": "pre__weapon_skin_data_chs.py.bin",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_hotfix_record.py"
+   ],
+   "sites": 2,
+   "ctx": "skin_pre = load_rows(\"pre__weapon_skin_data.py.bin\", \"pre__weapon_skin_data_chs.py.bin\")"
+  },
+  {
+   "expected": "profiles.yml",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "_src.py"
+   ],
+   "sites": 2,
+   "ctx": "cfg = yaml.safe_load((PROJ / \"profiles.yml\").read_text(encoding=\"utf-8\")) or {}"
+  },
+  {
+   "expected": "provenance.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_poster.py"
+   ],
+   "sites": 1,
+   "ctx": "pj = os.path.join(W, 'assets', '3d', 'weapon_skin', SID, 'provenance.json')"
+  },
+  {
+   "expected": "publication_policy.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py",
+    "wiki_server.py"
+   ],
+   "sites": 2,
+   "ctx": "policy_path = Path(root) / Path(\"data\") / \"publication_policy.json\""
+  },
+  {
+   "expected": "recipe_book.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_edible_recipe.py"
+   ],
+   "sites": 1,
+   "ctx": "for f in (\"recipe_book.json\", \"recipe_book.js\"):"
+  },
+  {
+   "expected": "recipe_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "add_edible_craftable.py"
+   ],
+   "sites": 1,
+   "ctx": "recipes = json.loads((B / \"recipe_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "row_index.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "audit_fashion_identity.py",
+    "build_fashion_identity_candidates.py",
+    "build_item_identity_candidates.py"
+   ],
+   "sites": 3,
+   "ctx": "row_index_path = _resolve_input(input_root, \"row_index.jsonl\")"
+  },
+  {
+   "expected": "servers.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "gen_home.py"
+   ],
+   "sites": 1,
+   "ctx": "_sv = json.loads((WEB / \"data\" / \"servers.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "shader_compile.db",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "analyze_client_file_map.py"
+   ],
+   "sites": 1,
+   "ctx": "(\"shader_compile.db\", \"运行时缓存(shader管线)\", \"SQLite shader 编译缓存\"),"
+  },
+  {
+   "expected": "shop_static_candidates.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_provenance.py",
+    "export_exchange_static_candidates.py"
+   ],
+   "sites": 2,
+   "ctx": "d = json.loads((BOARDS / \"shop_static_candidates.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "show_item_names.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_lottery_periods.py"
+   ],
+   "sites": 5,
+   "ctx": "for label in (\"common_item_names.json\", \"show_item_names.json\"):"
+  },
+  {
+   "expected": "sources_index.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_item_master_full.py"
+   ],
+   "sites": 1,
+   "ctx": "sources_idx = json.loads((STAGE / \"sources_index.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "superfashion_preview.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_lottery_board_v3.py",
+    "merge_superfashion_preview.py"
+   ],
+   "sites": 2,
+   "ctx": "for x in json.loads((DET / \"superfashion_preview.json\").read_text(encoding=\"utf-8\"))}"
+  },
+  {
+   "expected": "table_index_entries.jsonl",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_fashion_identity_candidates.py",
+    "build_field_names.py",
+    "build_item_identity_candidates.py"
+   ],
+   "sites": 3,
+   "ctx": "parser.add_argument(\"--table-index\", type=Path, default=root / \"E:/la拆包项目/01_索引与产物/10_索引/site_data\" / \"table_index_entries.jsonl\")"
+  },
+  {
+   "expected": "text_notice_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_provenance.py"
+   ],
+   "sites": 1,
+   "ctx": "d = json.loads((BOARDS / \"text_notice_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "theme_talent_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_talent_boards.py"
+   ],
+   "sites": 1,
+   "ctx": "for f in (\"theme_talent_catalog.json\", \"theme_talent_catalog.js\"):"
+  },
+  {
+   "expected": "vehicle_catalog.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "backfill_vehicle.py"
+   ],
+   "sites": 1,
+   "ctx": "d = json.loads((BOARDS / \"vehicle_catalog.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "viewer.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_poster.py"
+   ],
+   "sites": 2,
+   "ctx": "viewer_json_sha16=hashlib.sha256(open(os.path.join(W, 'assets', '3d', 'weapon_skin', SID, 'viewer.json'), 'rb').read()).hexdigest()[:16],"
+  },
+  {
+   "expected": "weapon_attrs_schema_static.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_item_master_v02.py"
+   ],
+   "sites": 1,
+   "ctx": "\"all_equips\": board_ids(DATA / \"boards\" / \"weapon_attrs_schema_static.json\"),"
+  },
+  {
+   "expected": "weapon_skin_sfx_text_sources.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_weapon_charm.py"
+   ],
+   "sites": 1,
+   "ctx": "BOARD = WEB / \"data\" / \"boards\" / \"weapon_skin_sfx_text_sources.json\""
+  },
+  {
+   "expected": "weapon_skin_source_coverage.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "build_weapon_skin_final_closure.py"
+   ],
+   "sites": 1,
+   "ctx": "cp = AUDIT / \"weapon_skin_source_coverage.json\""
+  },
+  {
+   "expected": "wiki_taxonomy.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "align_board_meta.py",
+    "sync_manifest_categories.py"
+   ],
+   "sites": 2,
+   "ctx": "tax = json.loads((DATA / \"wiki_taxonomy.json\").read_text(encoding=\"utf-8\"))"
+  },
+  {
+   "expected": "wiki_v01_acceptance.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "rebuild_wiki_v01.py"
+   ],
+   "sites": 1,
+   "ctx": "_write_json(ROOT / Path(\"E:/la拆包项目/01_索引与产物/10_索引/site_data\") / Path(\"audit\") / \"wiki_v01_acceptance.json\", result)"
+  },
+  {
+   "expected": "wpk_idx_index_summary.json",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "merge_file_index.py"
+   ],
+   "sites": 1,
+   "ctx": "\"idx\": load_summary(\"wpk_idx_index_summary.json\"),"
+  },
+  {
+   "expected": "前端交付要求.md",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "checks.py"
+   ],
+   "sites": 1,
+   "ctx": "txt = _read_text(PROJECT / \"00_规范与工具/治理\" / \"规范\" / \"前端交付要求.md\")"
+  },
+  {
+   "expected": "帝皇铠甲奖池_当前期全量_2026-08-31.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_lottery.py"
+   ],
+   "sites": 1,
+   "ctx": "rows = read_csv(\"帝皇铠甲奖池_当前期全量_2026-08-31.csv\")"
+  },
+  {
+   "expected": "待修问题清单.md",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "gen_home.py"
+   ],
+   "sites": 1,
+   "ctx": "md = (PROJECT / \"00_规范与工具/治理\" / \"台账\" / \"待修问题清单.md\").read_text(encoding=\"utf-8\")"
+  },
+  {
+   "expected": "铠甲再临_刑天飞影_未上线预告层全量_2026-08-31.csv",
+   "target": null,
+   "tier": "U",
+   "twin": null,
+   "readers": [
+    "export_lottery.py"
+   ],
+   "sites": 1,
+   "ctx": "rows = read_csv(\"铠甲再临_刑天飞影_未上线预告层全量_2026-08-31.csv\")"
+  }
+ ],
+ "counts": {
+  "C": 8,
+  "P": 7,
+  "B": 13,
+  "A": 148,
+  "U": 114
+ }
+}

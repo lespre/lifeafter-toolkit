@@ -1,0 +1,1967 @@
+{
+ "meta": {
+  "name": "新更新与预告（自动）",
+  "category": "零、新更新与预告专栏（游戏未上线资源预告）",
+  "source_server": "简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）",
+  "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+  "generated": "2026-10-21",
+  "evidence": "structure",
+  "notes": "自动从武器皮肤板与奖池板筛选未上架条目（2026-10-23 为界）；不再人工维护预告卡。",
+  "state_summary": {
+   "武器皮肤": 11,
+   "奖池成员": 5,
+   "奖池期次": 1,
+   "合计": 16
+  },
+  "provenance": {
+   "contract_version": 3,
+   "audit_status": "passed",
+   "contract": "frozen-audited-artifact",
+   "source_locks": [
+    {
+     "source_id": "documents-py314-current",
+     "role": "primary",
+     "sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "path": "E:/mrzh/Documents/script.py314.lc.npk",
+     "bytes": 195840216,
+     "mtime_ns": 0
+    },
+    {
+     "source_id": "documents-py314-current",
+     "role": "comparison",
+     "sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "path": "",
+     "bytes": 0,
+     "mtime_ns": 0
+    }
+   ],
+   "source_scope": {
+    "cross_source_policy": "no-cross-source-field-join",
+    "integer_join_policy": "no-equal-integer-join",
+    "runtime_final_policy": "unknown-unless-runtime-proven"
+   }
+  },
+  "evidence_detail": {
+   "structure": 402,
+   "evidence_levels": {
+    "structure-only": 402
+   },
+   "status_tags": {
+    "runtime final unknown": 398,
+    "static config": 402,
+    "unresolved": 4,
+    "verified": 398
+   },
+   "families": {
+    "多时装抽奖": 10,
+    "宸世臻藏（保底典藏抽奖）": 30,
+    "纯外观抽奖": 10
+   }
+  },
+  "card_mode": "period",
+  "card_summary": [
+   [
+    "name",
+    "名称"
+   ],
+   [
+    "kind",
+    "类型"
+   ],
+   [
+    "expect_date",
+    "预计上架"
+   ]
+  ],
+  "field_labels": {
+   "name": "名称",
+   "item_id": "物品ID",
+   "period_id": "期次ID",
+   "period_label": "期次",
+   "period_date": "期次日期",
+   "period_start": "开始",
+   "period_end": "结束",
+   "activity": "活动",
+   "activity_id": "活动ID",
+   "activity_name": "活动名",
+   "activity_class": "活动类型",
+   "pool_id": "奖池ID",
+   "pool_uid": "池标识",
+   "pool_label": "奖池",
+   "pool_kind": "池类型",
+   "slot": "槽位",
+   "group_size": "组大小",
+   "slot_bg": "卡槽底图",
+   "slot_camera": "卡槽机位",
+   "kind": "类型",
+   "icon": "图标"
+  },
+  "icon_stats": {
+   "pe": 276,
+   "pc": 3,
+   "none": 0,
+   "no_icon_field": 123
+  },
+  "source_label": "Documents 快照 script.py314 · SuperFashionLotteryHD · 简单生存服",
+  "source_label_prev": "测试服 · Documents 快照"
+ },
+ "periods": [
+  {
+   "period_id": "up_skin",
+   "label": "武器皮肤 · 未上线",
+   "family": "武器皮肤（未上线）",
+   "family_key": "UpcomingSkin",
+   "start": "",
+   "member_count": 11
+  },
+  {
+   "period_id": "up_pool_lp_3637",
+   "label": "万圣绮夜",
+   "family": "奖池（未开始）",
+   "family_key": "UpcomingPool",
+   "start": "2026-10-29",
+   "member_count": 5
+  }
+ ],
+ "items": [
+  {
+   "id": "up_skin_1110087",
+   "name": "彩虹过载",
+   "item_id": 1110087,
+   "kind": "武器皮肤",
+   "grade": "4紫皮级",
+   "weapon_type": "榴弹炮（7）",
+   "expect_date": "未定",
+   "release_state": "no_sale_field",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110087.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=no_sale_field）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110087,
+    "field_refs": [
+     "weapon_skin_data.key=1110087",
+     "common_item_data_base.key=1110087",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=34139",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=51336",
+     "weapon_skin_sfx_function_data.key=1120080",
+     "weapon_skin_sfx_function_data.key=1120081",
+     "weapon_skin_behavior_res_data.key=1110087"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=34139",
+    "member_sfx_row_keys": [
+     1120080,
+     1120081
+    ],
+    "member_variant_row_keys": [],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110087,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": true
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110087,
+       "field_refs": [
+        "weapon_skin_data.key=1110087",
+        "common_item_data_base.key=1110087",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=34139",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=51336",
+        "weapon_skin_sfx_function_data.key=1120080",
+        "weapon_skin_sfx_function_data.key=1120081",
+        "weapon_skin_behavior_res_data.key=1110087"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110088",
+   "name": "全糖暴击",
+   "item_id": 1110088,
+   "kind": "武器皮肤",
+   "grade": "3直售级",
+   "weapon_type": "冷兵器（50）",
+   "expect_date": "未定",
+   "release_state": "no_sale_field",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110088.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=no_sale_field）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110088,
+    "field_refs": [
+     "weapon_skin_data.key=1110088",
+     "common_item_data_base.key=1110088",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=25804",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=46506"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=25804",
+    "member_sfx_row_keys": [],
+    "member_variant_row_keys": [],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110088,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": true
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110088,
+       "field_refs": [
+        "weapon_skin_data.key=1110088",
+        "common_item_data_base.key=1110088",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=25804",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=46506"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110185",
+   "name": "奇迹",
+   "item_id": 1110185,
+   "kind": "武器皮肤",
+   "grade": "5典藏级",
+   "weapon_type": "弓箭（3）",
+   "expect_date": "2026-09-29",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110185.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110185,
+    "field_refs": [
+     "weapon_skin_data.key=1110185",
+     "common_item_data_base.key=1110185",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=31414",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=9494",
+     "weapon_skin_sfx_function_data.key=1120365",
+     "weapon_skin_sfx_function_data.key=1120366",
+     "weapon_skin_sfx_function_data.key=1120367",
+     "weapon_skin_sfx_function_data.key=1120368",
+     "weapon_skin_sfx_function_data.key=1120369",
+     "weapon_skin_sfx_function_data.key=1120370",
+     "weapon_skin_sfx_function_data.key=1120371",
+     "weapon_skin_sfx_function_data.key=1120372",
+     "weapon_skin_data.key=11101851",
+     "weapon_skin_behavior_res_data.key=1110185"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=31414",
+    "member_sfx_row_keys": [
+     1120365,
+     1120366,
+     1120367,
+     1120368,
+     1120369,
+     1120370,
+     1120371,
+     1120372
+    ],
+    "member_variant_row_keys": [
+     11101851
+    ],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110185,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": false
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110185,
+       "field_refs": [
+        "weapon_skin_data.key=1110185",
+        "common_item_data_base.key=1110185",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=31414",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=9494",
+        "weapon_skin_sfx_function_data.key=1120365",
+        "weapon_skin_sfx_function_data.key=1120366",
+        "weapon_skin_sfx_function_data.key=1120367",
+        "weapon_skin_sfx_function_data.key=1120368",
+        "weapon_skin_sfx_function_data.key=1120369",
+        "weapon_skin_sfx_function_data.key=1120370",
+        "weapon_skin_sfx_function_data.key=1120371",
+        "weapon_skin_sfx_function_data.key=1120372",
+        "weapon_skin_data.key=11101851",
+        "weapon_skin_behavior_res_data.key=1110185"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110186",
+   "name": "星辰刀",
+   "item_id": 1110186,
+   "kind": "武器皮肤",
+   "grade": "4紫皮级",
+   "weapon_type": "冷兵器（50）",
+   "expect_date": "2026-09-29",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110186.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110186,
+    "field_refs": [
+     "weapon_skin_data.key=1110186",
+     "common_item_data_base.key=1110186",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=38674",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=10836",
+     "weapon_skin_sfx_function_data.key=1120360",
+     "weapon_skin_sfx_function_data.key=1120361",
+     "weapon_skin_data.key=11101861",
+     "weapon_skin_behavior_res_data.key=1110186"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=38674",
+    "member_sfx_row_keys": [
+     1120360,
+     1120361
+    ],
+    "member_variant_row_keys": [
+     11101861
+    ],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110186,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": false
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110186,
+       "field_refs": [
+        "weapon_skin_data.key=1110186",
+        "common_item_data_base.key=1110186",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=38674",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=10836",
+        "weapon_skin_sfx_function_data.key=1120360",
+        "weapon_skin_sfx_function_data.key=1120361",
+        "weapon_skin_data.key=11101861",
+        "weapon_skin_behavior_res_data.key=1110186"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110187",
+   "name": "前方禁行",
+   "item_id": 1110187,
+   "kind": "武器皮肤",
+   "grade": "3直售级",
+   "weapon_type": "冷兵器（50）",
+   "expect_date": "2026-09-29",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110187.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110187,
+    "field_refs": [
+     "weapon_skin_data.key=1110187",
+     "common_item_data_base.key=1110187",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=26804",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=50591"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=26804",
+    "member_sfx_row_keys": [],
+    "member_variant_row_keys": [],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110187,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": false
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110187,
+       "field_refs": [
+        "weapon_skin_data.key=1110187",
+        "common_item_data_base.key=1110187",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=26804",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=50591"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110192",
+   "name": "第十三页",
+   "item_id": 1110192,
+   "kind": "武器皮肤",
+   "grade": "4紫皮级",
+   "weapon_type": "电磁机枪（8）",
+   "expect_date": "2026-10-22",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110192.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "source_entries": [
+     {
+      "entry_index": 0,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+      "role": "weapon_skin_data"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110192,
+    "field_refs": [
+     "weapon_skin_data.key=1110192",
+     "weapon_skin_data.camera_conf_id",
+     "weapon_skin_data.charm_value",
+     "weapon_skin_data.hit_sfx_functions",
+     "weapon_skin_data.level",
+     "weapon_skin_data.model_extra_scale",
+     "weapon_skin_data.model_path",
+     "weapon_skin_data.obtain_limit",
+     "weapon_skin_data.priority",
+     "weapon_skin_data.sale_ts",
+     "weapon_skin_data.weapon_type",
+     "weapon_skin_behavior_res_data.fire_sfx_path",
+     "weapon_skin_behavior_res_data.hit_sfx_path",
+     "weapon_skin_behavior_res_data.trajectory_path_real",
+     "weapon_skin_behavior_res_data.trajectory_path_special",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path_nor",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path_trace",
+     "weapon_skin_sfx_function_data.key=1120377",
+     "weapon_skin_sfx_function_data.key=1120376"
+    ],
+    "name_source": "本热更无道具行；未命名",
+    "source_id": "documents-py314-current",
+    "hotfix_payload": {
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "note": "entry_index 为 0 仅因该 payload 是整表解码转储（无 npk 条目号语义），行身份由 row_key 与 payload sha256 锁定。"
+    },
+    "upstream": {
+     "package_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+     "entry_index": 0,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_data",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data",
+       "row_key": 1110192,
+       "field_refs": [
+        "weapon_skin_data.key=1110192",
+        "weapon_skin_data.camera_conf_id",
+        "weapon_skin_data.charm_value",
+        "weapon_skin_data.hit_sfx_functions",
+        "weapon_skin_data.level",
+        "weapon_skin_data.model_extra_scale",
+        "weapon_skin_data.model_path",
+        "weapon_skin_data.obtain_limit",
+        "weapon_skin_data.priority",
+        "weapon_skin_data.sale_ts",
+        "weapon_skin_data.weapon_type",
+        "weapon_skin_behavior_res_data.fire_sfx_path",
+        "weapon_skin_behavior_res_data.hit_sfx_path",
+        "weapon_skin_behavior_res_data.trajectory_path_real",
+        "weapon_skin_behavior_res_data.trajectory_path_special",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path_nor",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path_trace",
+        "weapon_skin_sfx_function_data.key=1120377",
+        "weapon_skin_sfx_function_data.key=1120376"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "member_sfx_row_keys": [
+     1120377,
+     1120376
+    ],
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110198",
+   "name": "拟化鳞渊",
+   "item_id": 1110198,
+   "kind": "武器皮肤",
+   "grade": "3直售级",
+   "weapon_type": "榴弹炮（7）",
+   "expect_date": "2026-09-29",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110198.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110198,
+    "field_refs": [
+     "weapon_skin_data.key=1110198",
+     "common_item_data_base.key=1110198",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=36613",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=52096"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=36613",
+    "member_sfx_row_keys": [],
+    "member_variant_row_keys": [],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110198,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": false
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110198,
+       "field_refs": [
+        "weapon_skin_data.key=1110198",
+        "common_item_data_base.key=1110198",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=36613",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=52096"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110199",
+   "name": "拟化幽瞳",
+   "item_id": 1110199,
+   "kind": "武器皮肤",
+   "grade": "3直售级",
+   "weapon_type": "手枪（6）",
+   "expect_date": "2026-09-29",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "current-snapshot-verified",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110199.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+    "source_entries": [
+     {
+      "entry_index": 12630,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "5f0165ad7c7423be500532c35a4b3414b59967da93896b9c09918ba2d71cfbbe",
+      "role": "weapon_skin_base"
+     },
+     {
+      "entry_index": 22566,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "faf102d513b0900c476787bb41dc85f262ed923b9b5774ec881b5e0803caded1",
+      "role": "weapon_skin_chs"
+     },
+     {
+      "entry_index": 19444,
+      "file_id": "B693DB548E5412B6",
+      "decoded_sha256": "983b9f0b1652d2e198b54cf507a7c42d58965afedfba79ab3eeaeb2477634b13",
+      "role": "weapon_skin_sfx_base"
+     },
+     {
+      "entry_index": 9763,
+      "file_id": "5C56D035B329BEBB",
+      "decoded_sha256": "65040b06c143529d9a95352ab06bc01fe4abc64e85d58a3eba86240282779450",
+      "role": "weapon_skin_sfx_chs"
+     },
+     {
+      "entry_index": 49069,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "f26f931848b9b4264d47d3fe54143b26496acaaa165a55a6d25156a635a9e917",
+      "role": "root_weapon_skin_base"
+     },
+     {
+      "entry_index": 87558,
+      "file_id": "D35E3103168889D2",
+      "decoded_sha256": "fc7806c9f1200edf276ea776354aaadad853af4a9929bdacefe91702763dd24f",
+      "role": "root_weapon_skin_chs"
+     },
+     {
+      "entry_index": 19192,
+      "file_id": "B42760CCA41DBC25",
+      "decoded_sha256": "26fe910d01078b2b4c303bceff039ef9f42a0140d5bb90e1ca91f068286d86bd",
+      "role": "common_item_base"
+     },
+     {
+      "entry_index": 25456,
+      "file_id": "EF3A8474A5E5F7A4",
+      "decoded_sha256": "09c286b210c4e484cfc9a6b0d66bb38892575b614bedec518cc03d58b2bb90bb",
+      "role": "common_item_chs"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110199,
+    "field_refs": [
+     "weapon_skin_data.key=1110199",
+     "common_item_data_base.key=1110199",
+     "common_item_data_base.name",
+     "common_item_data_base.name CHS field_slot=4 value_slot=36610",
+     "common_item_data_base.desc",
+     "common_item_data_base.desc CHS field_slot=6 value_slot=45087"
+    ],
+    "name_source": "same-snapshot BA8 common_item_data_base row key==skin_id field=name CHS field_slot=4 value_slot=36610",
+    "member_sfx_row_keys": [],
+    "member_variant_row_keys": [],
+    "business_chain": {
+     "chain": "weapon_skin_data.key -> common_item_data_base.key (item row) -> name/desc CHS replay",
+     "item_row_key": 1110199,
+     "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof"
+    },
+    "root_comparison": {
+     "source_lock_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+     "comparison": "key-presence only; never used as current display-name source",
+     "root_row_present": false
+    },
+    "source_id": "documents-py314-current",
+    "upstream": {
+     "package_sha256": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+     "entry_index": 12630,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_base",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+       "row_key": 1110199,
+       "field_refs": [
+        "weapon_skin_data.key=1110199",
+        "common_item_data_base.key=1110199",
+        "common_item_data_base.name",
+        "common_item_data_base.name CHS field_slot=4 value_slot=36610",
+        "common_item_data_base.desc",
+        "common_item_data_base.desc CHS field_slot=6 value_slot=45087"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_raw": "weapon_skin_data + common_item_data_base + weapon_skin_sfx_function_data; root weapon_skin_data comparison only",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110188",
+   "name": "一魂共鸣",
+   "item_id": 1110188,
+   "kind": "武器皮肤",
+   "grade": "5典藏级",
+   "weapon_type": "突击步枪（1）",
+   "expect_date": "2026-10-22",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110188.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "source_entries": [
+     {
+      "entry_index": 0,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+      "role": "weapon_skin_data"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110188,
+    "field_refs": [
+     "weapon_skin_data.key=1110188",
+     "weapon_skin_data.aim_cross_functions",
+     "weapon_skin_data.camera_conf_id",
+     "weapon_skin_data.charm_value",
+     "weapon_skin_data.extension_defeat_functions",
+     "weapon_skin_data.fire_sfx_path",
+     "weapon_skin_data.hit_sfx_functions",
+     "weapon_skin_data.jump_word_functions",
+     "weapon_skin_data.level",
+     "weapon_skin_data.model_extra_scale",
+     "weapon_skin_data.model_path",
+     "weapon_skin_data.obtain_limit",
+     "weapon_skin_data.play_anim_moudle",
+     "weapon_skin_data.priority",
+     "weapon_skin_data.sale_ts",
+     "weapon_skin_data.skin_replace_anims",
+     "weapon_skin_data.skin_trajectory_type",
+     "weapon_skin_data.sound_functions",
+     "weapon_skin_data.switch_weapon",
+     "weapon_skin_data.trace_functions",
+     "weapon_skin_data.weapon_type",
+     "weapon_skin_behavior_res_data.defeat_args",
+     "weapon_skin_behavior_res_data.defeat_model",
+     "weapon_skin_behavior_res_data.extension_defeat_sfx",
+     "weapon_skin_behavior_res_data.fire_sfx_path",
+     "weapon_skin_behavior_res_data.hit_sfx_path",
+     "weapon_skin_behavior_res_data.trajectory_path_real",
+     "weapon_skin_behavior_res_data.trajectory_path_special",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path_nor",
+     "weapon_skin_behavior_res_data.trajectory_sfx_path_trace",
+     "weapon_skin_sfx_function_data.key=1120374",
+     "weapon_skin_sfx_function_data.key=1120375",
+     "weapon_skin_sfx_function_data.key=1120373",
+     "weapon_skin_sfx_function_data.key=1120380",
+     "weapon_skin_sfx_function_data.key=1120379",
+     "weapon_skin_sfx_function_data.key=1120378",
+     "weapon_skin_sfx_function_data.key=1120382",
+     "weapon_skin_sfx_function_data.key=1120381"
+    ],
+    "name_source": "礼包描述旁证（候选）",
+    "source_id": "documents-py314-current",
+    "hotfix_payload": {
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "note": "entry_index 为 0 仅因该 payload 是整表解码转储（无 npk 条目号语义），行身份由 row_key 与 payload sha256 锁定。"
+    },
+    "upstream": {
+     "package_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+     "entry_index": 0,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_data",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data",
+       "row_key": 1110188,
+       "field_refs": [
+        "weapon_skin_data.key=1110188",
+        "weapon_skin_data.aim_cross_functions",
+        "weapon_skin_data.camera_conf_id",
+        "weapon_skin_data.charm_value",
+        "weapon_skin_data.extension_defeat_functions",
+        "weapon_skin_data.fire_sfx_path",
+        "weapon_skin_data.hit_sfx_functions",
+        "weapon_skin_data.jump_word_functions",
+        "weapon_skin_data.level",
+        "weapon_skin_data.model_extra_scale",
+        "weapon_skin_data.model_path",
+        "weapon_skin_data.obtain_limit",
+        "weapon_skin_data.play_anim_moudle",
+        "weapon_skin_data.priority",
+        "weapon_skin_data.sale_ts",
+        "weapon_skin_data.skin_replace_anims",
+        "weapon_skin_data.skin_trajectory_type",
+        "weapon_skin_data.sound_functions",
+        "weapon_skin_data.switch_weapon",
+        "weapon_skin_data.trace_functions",
+        "weapon_skin_data.weapon_type",
+        "weapon_skin_behavior_res_data.defeat_args",
+        "weapon_skin_behavior_res_data.defeat_model",
+        "weapon_skin_behavior_res_data.extension_defeat_sfx",
+        "weapon_skin_behavior_res_data.fire_sfx_path",
+        "weapon_skin_behavior_res_data.hit_sfx_path",
+        "weapon_skin_behavior_res_data.trajectory_path_real",
+        "weapon_skin_behavior_res_data.trajectory_path_special",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path_nor",
+        "weapon_skin_behavior_res_data.trajectory_sfx_path_trace",
+        "weapon_skin_sfx_function_data.key=1120374",
+        "weapon_skin_sfx_function_data.key=1120375",
+        "weapon_skin_sfx_function_data.key=1120373",
+        "weapon_skin_sfx_function_data.key=1120380",
+        "weapon_skin_sfx_function_data.key=1120379",
+        "weapon_skin_sfx_function_data.key=1120378",
+        "weapon_skin_sfx_function_data.key=1120382",
+        "weapon_skin_sfx_function_data.key=1120381"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "member_sfx_row_keys": [
+     1120374,
+     1120375,
+     1120373,
+     1120380,
+     1120379,
+     1120378,
+     1120382,
+     1120381
+    ],
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110189",
+   "name": "未命名皮肤 · ID 1110189",
+   "item_id": 1110189,
+   "kind": "武器皮肤",
+   "grade": "6传世级",
+   "weapon_type": "喷火器（20）· 由特效路径 skin_1013_* 推定",
+   "expect_date": "周年庆",
+   "release_state": "no_sale_field",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "icon_state": "未下发",
+   "source": "weapon_skin_sfx_text_sources（release_state=no_sale_field）",
+   "provenance": {
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "source_entries": [
+     {
+      "entry_index": 0,
+      "file_id": "9F445AE2AA87D880",
+      "decoded_sha256": "83787cdac041c7281f7ed8ffa80f27c6c7e256d5730674cf3a088a514dd60ddc",
+      "role": "weapon_skin_behavior_res_data"
+     }
+    ],
+    "table": "weapon_skin_behavior_res_data",
+    "row_key": 1110189,
+    "field_refs": [
+     "weapon_skin_behavior_res_data.key=1110189",
+     "weapon_skin_behavior_res_data.defeat_args",
+     "weapon_skin_behavior_res_data.defeat_model",
+     "weapon_skin_behavior_res_data.extension_defeat_sfx",
+     "weapon_skin_behavior_res_data.fire_sfx_path",
+     "weapon_skin_behavior_res_data.hit_sfx_path"
+    ],
+    "name_source": "本热更无道具行；未命名",
+    "source_id": "documents-py314-current",
+    "hotfix_payload": {
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_behavior_res_data.py.bin",
+     "note": "entry_index 为 0 仅因该 payload 是整表解码转储（无 npk 条目号语义），行身份由 row_key 与 payload sha256 锁定。"
+    },
+    "upstream": {
+     "package_sha256": "83787cdac041c7281f7ed8ffa80f27c6c7e256d5730674cf3a088a514dd60ddc",
+     "entry_index": 0,
+     "file_id": "9F445AE2AA87D880",
+     "role": "weapon_skin_behavior_res_data",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_behavior_res_data.py.bin",
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_behavior_res_data",
+       "row_key": 1110189,
+       "field_refs": [
+        "weapon_skin_behavior_res_data.key=1110189",
+        "weapon_skin_behavior_res_data.defeat_args",
+        "weapon_skin_behavior_res_data.defeat_model",
+        "weapon_skin_behavior_res_data.extension_defeat_sfx",
+        "weapon_skin_behavior_res_data.fire_sfx_path",
+        "weapon_skin_behavior_res_data.hit_sfx_path"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_skin_1110191",
+   "name": "紧急预案",
+   "item_id": 1110191,
+   "kind": "武器皮肤",
+   "grade": "2白送级",
+   "weapon_type": "手枪（6）",
+   "expect_date": "2026-10-22",
+   "release_state": "upcoming",
+   "family": "武器皮肤（未上线）",
+   "period_id": "up_skin",
+   "period_label": "武器皮肤 · 未上线",
+   "family_key": "UpcomingSkin",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "status_tags": [
+    "unresolved",
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110191.png",
+      "label": "海报"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "weapon_skin_sfx_text_sources（release_state=upcoming）",
+   "provenance": {
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "source_entries": [
+     {
+      "entry_index": 0,
+      "file_id": "765AB12F1D6EB0EA",
+      "decoded_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+      "role": "weapon_skin_data"
+     }
+    ],
+    "table": "weapon_skin_data",
+    "row_key": 1110191,
+    "field_refs": [
+     "weapon_skin_data.key=1110191",
+     "weapon_skin_data.camera_conf_id",
+     "weapon_skin_data.charm_value",
+     "weapon_skin_data.level",
+     "weapon_skin_data.model_extra_scale",
+     "weapon_skin_data.model_path",
+     "weapon_skin_data.obtain_limit",
+     "weapon_skin_data.priority",
+     "weapon_skin_data.sale_ts",
+     "weapon_skin_data.weapon_type"
+    ],
+    "name_source": "本热更无道具行；未命名",
+    "source_id": "documents-py314-current",
+    "hotfix_payload": {
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "note": "entry_index 为 0 仅因该 payload 是整表解码转储（无 npk 条目号语义），行身份由 row_key 与 payload sha256 锁定。"
+    },
+    "upstream": {
+     "package_sha256": "ebf107614719ab6128df4ed4aee65b82ce520872535ac28aae2fcfdc7783b57e",
+     "entry_index": 0,
+     "file_id": "765AB12F1D6EB0EA",
+     "role": "weapon_skin_data",
+     "payload_path": "E:\\la拆包项目\\01_索引与产物\\30_分析\\热更检测\\post_update_20261015_213737_weapon_skin_cli_v2\\_bits\\post__weapon_skin_data.py.bin",
+     "payload_kind": "cli_extracted_decoded_table_payload",
+     "decoded_sha256": null
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "weapon_skin_data",
+       "row_key": 1110191,
+       "field_refs": [
+        "weapon_skin_data.key=1110191",
+        "weapon_skin_data.camera_conf_id",
+        "weapon_skin_data.charm_value",
+        "weapon_skin_data.level",
+        "weapon_skin_data.model_extra_scale",
+        "weapon_skin_data.model_path",
+        "weapon_skin_data.obtain_limit",
+        "weapon_skin_data.priority",
+        "weapon_skin_data.sale_ts",
+        "weapon_skin_data.weapon_type"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_pool_lp_3637_580215",
+   "name": "魔女星愿",
+   "item_id": "580215",
+   "kind": "奖池奖励（候选）",
+   "grade": null,
+   "expect_date": "2026-10-29",
+   "release_state": "upcoming",
+   "family": "奖池（未开始）",
+   "period_id": "up_pool_lp_3637",
+   "period_label": "万圣绮夜",
+   "family_key": "UpcomingPool",
+   "family_src": "不放回抽奖",
+   "evidence": "candidate",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/lottery_icons/p10_391834_s8_580215.png",
+      "base": "ui/item_icon/icon_580215",
+      "suffix": "_b",
+      "label": "图标"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "lottery_periods · 万圣绮夜",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "lottery_periods(archive)",
+    "row_key": 3637,
+    "field_refs": [
+     "item_id",
+     "name",
+     "slot",
+     "kind"
+    ],
+    "name_source": "inventory",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "SuperFashionLotteryHD",
+       "row_key": 2205,
+       "field_refs": [
+        "extra_param"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_status": "archive-self",
+    "table_note": "本站归档板（非源表），期次信息由 huodong_conf 回证",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_pool_lp_3637_400019",
+   "name": "道具 400019",
+   "item_id": "400019",
+   "kind": "奖池奖励（候选）",
+   "grade": null,
+   "expect_date": "2026-10-29",
+   "release_state": "upcoming",
+   "family": "奖池（未开始）",
+   "period_id": "up_pool_lp_3637",
+   "period_label": "万圣绮夜",
+   "family_key": "UpcomingPool",
+   "family_src": "不放回抽奖",
+   "evidence": "candidate",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/lottery_icons/p10_391834_s4_400019.png",
+      "base": "ui/item_icon/icon_400019",
+      "suffix": "_b",
+      "label": "图标"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "lottery_periods · 万圣绮夜",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "lottery_periods(archive)",
+    "row_key": 3637,
+    "field_refs": [
+     "item_id",
+     "name",
+     "slot",
+     "kind"
+    ],
+    "name_source": "inventory",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "SuperFashionLotteryHD",
+       "row_key": 2205,
+       "field_refs": [
+        "extra_param"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_status": "archive-self",
+    "table_note": "本站归档板（非源表），期次信息由 huodong_conf 回证",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_pool_lp_3637_1110192",
+   "name": "第十三页",
+   "item_id": "1110192",
+   "kind": "奖池奖励（候选）",
+   "grade": null,
+   "expect_date": "2026-10-29",
+   "release_state": "upcoming",
+   "family": "奖池（未开始）",
+   "period_id": "up_pool_lp_3637",
+   "period_label": "万圣绮夜",
+   "family_key": "UpcomingPool",
+   "family_src": "不放回抽奖",
+   "evidence": "candidate",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/lottery_icons/p10_391834_s3_1110192.png",
+      "base": "ui/item_icon/icon_1110192",
+      "suffix": "_b",
+      "label": "图标"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "lottery_periods · 万圣绮夜",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "lottery_periods(archive)",
+    "row_key": 3637,
+    "field_refs": [
+     "item_id",
+     "name",
+     "slot",
+     "kind"
+    ],
+    "name_source": "inventory",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "SuperFashionLotteryHD",
+       "row_key": 2205,
+       "field_refs": [
+        "extra_param"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_status": "archive-self",
+    "table_note": "本站归档板（非源表），期次信息由 huodong_conf 回证",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_pool_lp_3637_741540120",
+   "name": "时装部件 741540120",
+   "item_id": "741540120",
+   "kind": "奖池奖励（候选）",
+   "grade": null,
+   "expect_date": "2026-10-29",
+   "release_state": "upcoming",
+   "family": "奖池（未开始）",
+   "period_id": "up_pool_lp_3637",
+   "period_label": "万圣绮夜",
+   "family_key": "UpcomingPool",
+   "family_src": "不放回抽奖",
+   "evidence": "candidate",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "icon_state": "未下发",
+   "source": "lottery_periods · 万圣绮夜",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "lottery_periods(archive)",
+    "row_key": 3637,
+    "field_refs": [
+     "item_id",
+     "name",
+     "slot",
+     "kind"
+    ],
+    "name_source": "inventory",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "SuperFashionLotteryHD",
+       "row_key": 2205,
+       "field_refs": [
+        "extra_param"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_status": "archive-self",
+    "table_note": "本站归档板（非源表），期次信息由 huodong_conf 回证",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  },
+  {
+   "id": "up_pool_lp_3637_637330110",
+   "name": "星紫迷踪-头饰",
+   "item_id": "637330110",
+   "kind": "奖池奖励（候选）",
+   "grade": null,
+   "expect_date": "2026-10-29",
+   "release_state": "upcoming",
+   "family": "奖池（未开始）",
+   "period_id": "up_pool_lp_3637",
+   "period_label": "万圣绮夜",
+   "family_key": "UpcomingPool",
+   "family_src": "不放回抽奖",
+   "evidence": "candidate",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/lottery_icons/p10_391834_s1_637330110_b.png",
+      "base": "ui/item_icon/icon_h_f_3733001_b",
+      "suffix": "_b",
+      "label": "图标"
+     }
+    ],
+    "total": 1
+   },
+   "icon_state": "有图",
+   "source": "lottery_periods · 万圣绮夜",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "lottery_periods(archive)",
+    "row_key": 3637,
+    "field_refs": [
+     "item_id",
+     "name",
+     "slot",
+     "kind"
+    ],
+    "name_source": "inventory",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "SuperFashionLotteryHD",
+       "row_key": 2205,
+       "field_refs": [
+        "extra_param"
+       ]
+      }
+     ],
+     "kind": "table-row"
+    },
+    "table_status": "archive-self",
+    "table_note": "本站归档板（非源表），期次信息由 huodong_conf 回证",
+    "source_lock_source_id": "documents-py314-current"
+   }
+  }
+ ]
+}
