@@ -61,8 +61,7 @@ def main() -> int:
     for r in rows:
         v = r["values"]
         name, part = _v(v.get("name")), _v(v.get("part"))
-        if re.match(r"^\d", str(name)):   # 纯编号内部件名（005high套/100头），不上架
-            continue
+
         key = (name, part)
         g = groups.setdefault(key, {"name": name, "part": part, "rows": [], "icons": []})
         g["rows"].append(r["key"])
@@ -107,6 +106,8 @@ def main() -> int:
             "id": iid,
             "name": name,
             "part": PART_CN.get(part, str(part)),
+            "name_type": ("开发名" if re.match(r"^(\d|[a-zA-Z])", str(name))
+                          or re.search(r"[a-zA-Z]{2,}\d*", str(name)) else "正式名"),
             "part_code": part,
             "gender": "/".join(sorted({i["gender"] for i in g["icons"]})) or "",
             "model_ids": sorted({i["model_id"] for i in g["icons"]}),
@@ -159,7 +160,8 @@ def main() -> int:
             "name": "其他外观（发型·脸型·背包·挂饰·特效·手持）",
             "category": "一、时装类 / （六）其他外观",
             "source_server": "PE 还原树 pe_20261020 · player_appear_data · 体验服",
-            "filters": [{"key": "part", "label": "部位"}],
+            "filters": [{"key": "part", "label": "部位"},
+                        {"key": "name_type", "label": "名称类型"}],
             "notes": "fashion_data 未收录的外观部件；男女同卡，图标按性别并排。",
             "provenance": {
                 "contract_version": 3,

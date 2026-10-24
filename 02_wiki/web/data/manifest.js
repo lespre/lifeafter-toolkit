@@ -35,20 +35,20 @@ window.WIKI_MANIFEST = {
       "name": "其他外观（发型·脸型·背包·挂饰·特效·手持）",
       "category": "一、时装类 / （六）其他外观",
       "board": "appearance_extra",
-      "items": 749,
+      "items": 796,
       "generated": "2026-10-24",
       "source_server": "PE 还原树 pe_20261020 · player_appear_data · 体验服",
       "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
       "evidence": {
-        "structure": 749
+        "structure": 796
       },
       "state_summary": {
-        "unresolved": 749,
-        "static config": 749,
+        "unresolved": 796,
+        "static config": 796,
         "verified": 0,
-        "runtime final unknown": 749,
+        "runtime final unknown": 796,
         "有图": 11,
-        "无图": 738
+        "无图": 785
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -56,7 +56,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 749
+          "replayed-structural": 796
         }
       }
     },
