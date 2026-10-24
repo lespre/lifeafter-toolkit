@@ -452,19 +452,23 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "PvP 场景平衡",
+      "name": "场景伤害加成（按服型分档）",
       "category": "二、战力类 / （五）伤害计算公式与场景平衡",
       "board": "scene_balance",
-      "items": 63,
-      "generated": "2026-10-21",
-      "source_server": "简单生存服（pe_20261020 还原树）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 1343,
+      "generated": "2026-10-24",
+      "source_server": "PE 还原树 pe_20261020（测试服同时携带经典服与简单生存服两套分支资源）",
+      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
       "evidence": {
-        "structure": 63
+        "structure": 1343
       },
       "state_summary": {
-        "场景组": 63,
-        "PvP 组": 16
+        "unresolved": 1343,
+        "static config": 1343,
+        "verified": 0,
+        "runtime final unknown": 1343,
+        "有专属行": 738,
+        "默认行": 605
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -472,7 +476,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 63
+          "replayed-structural": 1343
         }
       }
     },
