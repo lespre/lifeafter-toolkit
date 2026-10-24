@@ -459,7 +459,10 @@ def cmd_find(a) -> int:
     elif stem.endswith("_s"):
         variants += [stem[:-2] + "_b" + e for e in (".ktx", ".dds", ".png", ".bc7")]
 
-    dbs = [("PE", DET / "pe_index.sqlite3"), ("PC", DET / "pc_index.sqlite3")]
+    # PC 侧优先用分层索引（同 fid 多版本时取最新层并记录候选数）
+    pc_layered = DET / "pc_index_layered.sqlite3"
+    dbs = [("PE", DET / "pe_index.sqlite3"),
+           ("PC", pc_layered if pc_layered.is_file() else DET / "pc_index.sqlite3")]
     found = []
     for layer, db in dbs:
         if not db.is_file():
@@ -467,11 +470,21 @@ def cmd_find(a) -> int:
         con = sqlite3.connect("file:%s?mode=ro" % str(db).replace("\\", "/"), uri=True)
         for v in variants:
             fid = "%016X" % (fid_of(v) & 0xFFFFFFFFFFFFFFFF)
-            r = con.execute("select pack,row,decoded,flag from rows where fid=? limit 1",
-                            (fid,)).fetchone()
+            cols = "pack,row,decoded,flag"
+            has_layer = False
+            try:
+                con.execute("select layer from rows limit 1")
+                has_layer = True
+                cols += ",layer,pack_no,candidates"
+            except Exception:
+                pass
+            r = con.execute("select %s from rows where fid=? limit 1" % cols, (fid,)).fetchone()
             if r:
+                extra = ""
+                if has_layer and len(r) >= 7:
+                    extra = " 层=%s 包号=%s 候选=%s" % (r[4], r[5], r[6])
                 found.append({"layer": layer, "path": v, "pack": r[0], "row": r[1],
-                              "decoded": r[2], "flag": r[3]})
+                              "decoded": r[2], "flag": r[3], "extra": extra})
                 break
     if not found:
         if _find_table_fallback(a.path):
@@ -480,9 +493,9 @@ def cmd_find(a) -> int:
         print("提示：先 la.py img best 看候选，或换扩展名（.ktx/.bc7）再试")
         return 1
     for f in found:
-        print("[%s] %s → %s #%s（%s 字节, flag=%s）"
+        print("[%s] %s → %s #%s（%s 字节, flag=%s）%s"
               % (f["layer"], f["path"], f["pack"], f["row"],
-                 f["decoded"], f["flag"]))
+                 f["decoded"], f["flag"], f.get("extra", "")))
     return 0
 
 
