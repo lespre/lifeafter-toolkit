@@ -145,7 +145,7 @@ function buildScene(json, atlas) {
   }
   for (const b of bones) visit(b, 0);
 
-  const items = [];
+  let items = [];
   let skipped = 0, regions = 0;
   for (const sl of (json.slots || [])) {
     if (!sl.attachment) continue;
@@ -171,6 +171,27 @@ function buildScene(json, atlas) {
     const col = parseColor(att.color) || parseColor(sl.color) || { r: 255, g: 255, b: 255, a: 255 };
     items.push({ slot: sl.name, name: attName, rg: rg, w: w, h: h, m: m, col: col });
     regions++;
+  }
+  // 粒子/流光清理：同名小图（≤40×40）在场景里重复 ≥4 次，判为粒子阵列，不画；
+  // 槽名命中 lizi/guang/fx 等也跳过。可用 ?clean=0 关闭。
+  let clean = true;
+  try { clean = new URLSearchParams(location.search).get('clean') !== '0'; } catch (e) {}
+  if (clean) {
+    const seen = {};
+    for (const it of items) {
+      const k = it.name + '|' + it.rg.w + 'x' + it.rg.h;
+      seen[k] = (seen[k] || 0) + 1;
+    }
+    // 结构件 = 纯数字槽名（8_1 / 7_2 / 6 …）或名字带框类关键字；
+    // 其余（lizi / yan / rongjiangliudong / chenbao…）全是粒子流光装饰，静态帧里会堆成阵列。
+    const STRUCT = /^\d+(_\d+)?$/;
+    const FRAME = /(biankuang|kuang|frame|border)/i;
+    items = items.filter(it => {
+      const sl = String(it.slot || '');
+      if (STRUCT.test(sl) || FRAME.test(sl)) return true;
+      const k = it.name + '|' + it.rg.w + 'x' + it.rg.h;
+      return !(seen[k] >= 4 && Math.max(it.rg.w, it.rg.h) <= 200);
+    });
   }
   return { items: items, skipped: skipped, regions: regions, skinName: skinName };
 }
