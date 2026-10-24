@@ -16,7 +16,7 @@ import sys
 PROJ = pathlib.Path(r"E:/la拆包项目")
 WEB = PROJ / "02_wiki/web"
 CD = PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata"
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 

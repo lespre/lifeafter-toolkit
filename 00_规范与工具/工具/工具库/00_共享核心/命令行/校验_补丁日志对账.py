@@ -12,7 +12,7 @@ import re
 
 CLIENT = pathlib.Path(r"E:/mrzh")
 FVER = "20261016_213554_playertest_newpc"
-OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/校验")
+OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/校验")
 OUT.mkdir(parents=True, exist_ok=True)
 
 entries: dict[str, dict] = {}

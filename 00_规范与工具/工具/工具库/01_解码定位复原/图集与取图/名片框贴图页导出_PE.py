@@ -10,7 +10,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 from toolkit_core.path_fid import fids_for            # noqa: E402
 from toolkit_core import android_gpk as G             # noqa: E402
 
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 PACKS = DET / "pe_packs"
 IDX = DET / "pe_index.sqlite3"
 CON = sqlite3.connect("file:%s?mode=ro" % str(IDX).replace("\\", "/"), uri=True, timeout=30)

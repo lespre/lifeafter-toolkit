@@ -12,9 +12,9 @@ import pathlib
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
 BASE0928 = PROJ / "01_索引与产物/30_分析/全量拆包复核_20260928/03_download/pi"
-CUR = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/pkg_cache/pt"
-PREV1015 = PROJ / "01_索引与产物/30_分析/热更检测/batch2_overlay_recheck/prev_pkg"
-OUT = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/校验"
+CUR = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/pkg_cache/pt"
+PREV1015 = PROJ / "01_索引与产物/10_索引/热更检测/batch2_overlay_recheck/prev_pkg"
+OUT = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/校验"
 
 
 def fids(d: pathlib.Path) -> set[str]:

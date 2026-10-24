@@ -33,7 +33,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]      # 02_wiki/web
 PROJ = Path("E:/la拆包项目")
-CDATA = PROJ / "01_索引与产物/41_还原树/pe_20261020/com/cdata"
+CDATA = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
 BOARD = ROOT / "data/boards/fashion_wardrobe.json"
 REFS = ROOT / "assets/fashion_icon_refs"
 POSTERS = ROOT / "assets/fashion_posters"
@@ -382,7 +382,7 @@ def main() -> int:
         "provenance": {"contract_version": 3, "audit_status": "passed",
                        "contract": "frozen-audited-artifact",
                        "source_locks": [{"source_id": LOCK_SOURCE_ID, "role": "primary",
-                                         "path": "01_索引与产物/41_还原树/pe_20261020/com/cdata/fashion_data.py",
+                                         "path": "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/fashion_data.py",
                                          "sha256": PKG_SHA, "bytes": pkg.stat().st_size,
                                          "mtime_ns": pkg.stat().st_mtime_ns}],
                        "source_scope": {"cross_source_policy": "no-cross-source-field-join",

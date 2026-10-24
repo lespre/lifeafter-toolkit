@@ -6,7 +6,7 @@ import sqlite3
 import sys
 import zlib
 
-DB = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测/npk_index.sqlite3")
+DB = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测/npk_index.sqlite3")
 OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/npk_keyword_hits.json")
 KEYS = ("一勺甜", "不在线挂饰", "刑天铠甲", "面饰", "全场最佳", "击败")
 

@@ -4,8 +4,8 @@ import struct
 from pathlib import Path
 
 CANDS = [
-    r'E:\la拆包项目\01_索引与产物\41_还原树\script.py314.lc.npk\com\cdata\common_model_show_conf_chs.py',
-    r'E:\la拆包项目\01_索引与产物\41_还原树\script.py314.lc.npk\com\cdata\common_model_show_conf.py',
+    r'E:\la拆包项目\01_索引与产物\41_还原树\pe\配置_基线包\com\cdata\common_model_show_conf_chs.py',
+    r'E:\la拆包项目\01_索引与产物\41_还原树\pe\配置_基线包\com\cdata\common_model_show_conf.py',
     r'E:\la拆包项目\01_索引与产物\41_还原树\Documents\script.py314.lc.npk\com\cdata\fashion_bg_data_chs.py',
 ]
 for path in CANDS:

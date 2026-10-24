@@ -20,7 +20,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 from toolkit_core.path_fid import fid_of          # noqa: E402
 from toolkit_core import android_gpk as AG         # noqa: E402
 
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 IDX = DET / "pe_index.sqlite3"
 MAP = PROJ / "01_索引与产物/30_分析/子代理产出_20261022/item_icon_map_resolved.json"
 BOARD = PROJ / "02_wiki/web/data/boards/item_master_full.json"

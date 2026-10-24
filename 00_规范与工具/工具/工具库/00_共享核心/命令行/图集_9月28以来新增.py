@@ -16,7 +16,7 @@ import sqlite3
 import sys
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
-B2 = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2"
+B2 = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2"
 BASE = PROJ / "01_索引与产物/30_分析/全量拆包复核_20260928/03_download/pi"
 CUR = B2 / "pkg_cache/pt"
 IDX = PROJ / "01_索引与产物/10_索引/indexes/lifeafter_files.sqlite3"

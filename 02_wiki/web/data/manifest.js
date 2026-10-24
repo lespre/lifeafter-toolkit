@@ -1,5 +1,5 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-10-24",
+  "generated": "2026-10-25",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-09-10",
@@ -275,12 +275,12 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "二、时装类 / （一）全量时装总表",
       "board": "fashion_wardrobe",
-      "items": 2197,
+      "items": 2013,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 fashion_data 表（逐行解码：name/desc/model_id/charm_value/level/icons）",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2197
+        "structure": 2013
       },
       "state_summary": {
         "unresolved": 2197,
@@ -296,7 +296,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2197
+          "replayed-structural": 2013
         }
       }
     },
@@ -424,19 +424,19 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "击败播报（文案 + 击败特效）",
+      "name": "击败播报 / MVP 结算动画",
       "category": "三、活动类 / （五）击败播报",
       "board": "kill_broadcast",
-      "items": 38,
+      "items": 13,
       "generated": "2026-10-22",
-      "source_server": "简单生存服（PE pe_20261020）",
+      "source_server": "简单生存服·体验服（Documents py314 树）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 38
+        "structure": 13
       },
       "state_summary": {
-        "播报文案": 3,
-        "击败特效": 35
+        "击败播报": 5,
+        "MVP 结算动画": 8
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -444,7 +444,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 38
+          "replayed-structural": 13
         }
       }
     },
@@ -816,12 +816,12 @@ window.WIKI_MANIFEST = {
       "name": "载具·全量载具总表",
       "category": "一、时装类 / （三）载具",
       "board": "vehicle_full",
-      "items": 205,
+      "items": 174,
       "generated": "2026-10-18",
       "source_server": "体验服 script 表结构解析：com\\cdata\\vehicle_ui_data.py(+_chs.py) 当前 Documents 快照",
       "package_sha": "eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df",
       "evidence": {
-        "structure": 205
+        "structure": 174
       },
       "state_summary": {
         "static config": 277,
@@ -835,7 +835,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 205
+          "replayed-structural": 174
         }
       }
     },

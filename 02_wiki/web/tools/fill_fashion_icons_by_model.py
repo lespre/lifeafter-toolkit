@@ -18,7 +18,7 @@ sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from _src import cdata_dir
 CD = cdata_dir()
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
-sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测"))
+sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 import pe_fetch  # noqa: E402
 from toolkit_core import img_fetch  # PE→PC 双源取图

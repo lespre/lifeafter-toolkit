@@ -1,0 +1,90 @@
+{
+ "snapshot_basis": "test-documents-ba8a239a",
+ "1_level_counts": {
+  "2": 8,
+  "3": 29,
+  "4": 52,
+  "5": 22,
+  "6": 15
+ },
+ "2_catalog_labels": {
+  "2": "白送",
+  "3": "直售",
+  "4": "紫皮",
+  "5": "典藏",
+  "6": "传世"
+ },
+ "3_label_provenance": {
+  "2": "user_defined",
+  "3": "user_defined",
+  "4": "user_defined",
+  "5": "official",
+  "6": "official"
+ },
+ "4_level_status": {
+  "value": "verified",
+  "rows": 126,
+  "note": "canonical raw，126/126"
+ },
+ "5_runtime_semantic_status": {
+  "value": "likely",
+  "reason": "charm_value 阶梯 + 功能门控（仅 level≥5）强关联，但未找到直接读 level 的 runtime consumer",
+  "not_used_as": "runtime consumer evidence"
+ },
+ "6_priority_status": {
+  "value": "likely",
+  "verified_part": "priority 不决定 catalog_level_label（各档内 priority 全谱）",
+  "unverified_part": "「展示/排序优先级」仅为字段名+分布支持的 likely 语义"
+ },
+ "7_level_2_3_withdrawn_from_acquisition": true,
+ "8_completeness_level_2_3": {
+  "status": "effect_profile_not_defined",
+  "rows": 37,
+  "note": "level 与 catalog label 已知；该档位未定义 mandatory effect profile ⇒ 不做缺项判定（不再写 not_grade_tier）"
+ },
+ "9_yuyin": {
+  "rows": [
+   {
+    "skin_item_id": 1110023,
+    "name": "玉饮琼花",
+    "canonical_level": 4,
+    "catalog_level_label": "紫皮",
+    "label_provenance": "user_defined",
+    "presentation_exception": true
+   },
+   {
+    "skin_item_id": 11100231,
+    "name": "玉饮琼花（14天）",
+    "canonical_level": 4,
+    "catalog_level_label": "紫皮",
+    "label_provenance": "user_defined",
+    "presentation_exception": true
+   }
+  ],
+  "note": "不覆盖 level；presentation_exception 仅表示额外表现"
+ },
+ "10_label_literal_to_acquisition_derivation_remaining": false,
+ "11_not_grade_tier_remaining": false,
+ "12_phase4_can_freeze": true,
+ "12_condition": "五档同轴 + 两层状态（level_status/label_status）+ 证据边界（structural/likely）已一致；无 acquisition 推导残留",
+ "counts": {
+  "by_label": {
+   "直售": 29,
+   "紫皮": 52,
+   "白送": 8,
+   "典藏": 22,
+   "传世": 15
+  },
+  "label_status_split": {
+   "user_defined": 89,
+   "official_user_confirmed": 37
+  },
+  "completeness_checked": 89,
+  "effect_profile_not_defined": 37,
+  "unknown_level_rows": 0
+ },
+ "assertions": {
+  "priority_determines_label": false,
+  "unknown_levels": []
+ }
+}

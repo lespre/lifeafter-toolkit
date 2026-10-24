@@ -14,7 +14,7 @@ import sys
 sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-OV = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe_20261020/com/cdata/oversea")
+OV = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/oversea")
 OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向")
 FIELDS = ["source_hurt_interval", "source_hurt_factor", "source_hurt_offset",
           "p2p_a_class_hurt_additional_rate_interval", "p2p_a_class_hurt_additional_rate_factor",

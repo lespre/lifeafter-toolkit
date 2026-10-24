@@ -65,7 +65,7 @@ def b_stub_tables() -> list[dict]:
 
 def c_ext_mismatch() -> list[dict]:
     """板里写的图标路径是 .png，但真实资源是 .ktx/.bc7。"""
-    idx = PROJ / "01_索引与产物/30_分析/热更检测/pe_index.sqlite3"
+    idx = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
     if not idx.exists():
         return []
     import sqlite3

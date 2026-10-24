@@ -252,6 +252,19 @@ body{padding-left:212px}
 .topbar #notes{display:none;margin:0;padding:0 22px 12px}
 .topbar #notes.open{display:block}
 .topbar #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 12px;margin:0}
+
+/* 时装卡·描述折叠（2026-10-24） */
+.fdesc{margin-top:8px;border-top:1px dashed rgba(255,255,255,.08);padding-top:6px}
+.fdesc>summary{cursor:pointer;font-size:12px;color:#9aa0aa;list-style:none;display:flex;gap:6px;align-items:center}
+.fdesc>summary::-webkit-details-marker{display:none}
+.fdesc>summary::before{content:"▸";font-size:10px;color:#c0392b;transition:transform .15s}
+.fdesc[open]>summary::before{transform:rotate(90deg)}
+.fdesc>summary:hover{color:#e8e8ea}
+
+.fd-row{display:flex;gap:8px;margin:3px 0}
+.fd-k{flex:0 0 118px;color:#7c828c}
+.fd-v{flex:1;color:#c9ccd2;white-space:pre-wrap}
+.fdesc-body{margin-top:6px;font-size:12.5px;line-height:1.75;color:#c9ccd2;white-space:pre-wrap}
 /* 卡片内的逐条技术详情不再占卡面 */
 #grid details.tech{display:none!important}
 
@@ -298,6 +311,20 @@ body.b-avatar_catalog .i-id,body.b-mutation_core_full .i-id,body.b-edible_catalo
 body.b-avatar_catalog .head-tags,
 body.b-mutation_core_full .head-tags,
 body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-origin:right center}
+
+/* 名册类板（击败播报 / MVP 等）：横幅图居中 + 柔光底板，不再被拉成细条 */
+.i.roster .i-media{display:flex!important;justify-content:center!important;align-items:center!important;
+  padding:12px 10px;border-radius:12px;overflow:hidden;
+  background:radial-gradient(120% 140% at 50% 0%,rgba(255,255,255,.07),rgba(255,255,255,.012) 60%,transparent);
+  border:1px solid rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.i.roster .i-media .mi{flex:1 1 auto!important;display:flex;justify-content:center;align-items:center;margin:0!important}
+.i.roster .i-media .mi img{width:auto;max-width:100%;height:auto;max-height:104px;object-fit:contain;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.55))}
+.i.roster .i-media.empty{border-style:dashed;background:rgba(255,255,255,.012)}
+
+/* 筛选组内部换行：子类/品牌这类长列表不再挤出屏幕 */
+.fr-filters .fr-grp{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:100%}
+.fr-filters .fr-grp>em{flex:0 0 auto;margin-right:2px}
 </style>
 </head>
 <body>
@@ -361,6 +388,7 @@ const FIELD_CN={charm_value:"魅力值",charm_source:"魅力值来源",weapon_ty
   tier:"档位",layer:"所属层",pool_id:"池ID",slot:"槽位",item_id:"物品ID",
   prob:"原始概率",config_exp:"配置过期",server:"服务器分支",broadcast:"活动播报",
   base:"外观基名",kind:"类别",duration_days:"期限(天)",model_id:"模型ID",desc_theme:"描述主题",
+  acquire:"获取方式",skins:"所属皮肤与音效",anim_name:"动画代号",default_scene:"默认场景",duration:"时长(秒)",kind_detail:"档位类别",show_pos:"展示位",sort_id:"排序号",sub_item_type:"子类型",track:"结算动画轨道",track_alt:"备用轨道",video_covers:"视频封面",videos:"演示视频",
   part:"部位",all_model_ids:"全部模型ID",variants:"同款款数",
   all_parts:"全部部位",time_limited_variants:"时限档(天)",duration_variants:"期限档",
   tl_model_ids:"时限版模型ID",has_permanent:"含永久款",sample_paths:"资源路径样例",desc_note:"描述说明",
@@ -710,6 +738,11 @@ const TITLE_CN=[[/identity unresolved/g,"身份待确认"],[/runtime final unkno
   [/reward_pool_data_base/g,"奖池表"],[/gift_data/g,"礼盒表"],[/huodong_conf/g,"活动配置"],[/item_master/gi,"道具总表"],[/schema\s*(\d+)/g,"结构 $1"],[/\bschema\b/g,"结构"]];
 function zhTitle(s){let out=String(s??"");for(const [re,rp] of TITLE_CN)out=out.replace(re,rp);return out;}
 function fmtVal(k,v){
+  // 板级品级注释（如时装：5 典藏 / 6 幻彩 / 7 殿堂）
+  if(DATA&&DATA.meta&&DATA.meta.grade_labels&&/^(grade_level|grade|level)$/.test(k)){
+    const lb=DATA.meta.grade_labels[String(v)];
+    if(lb)return String(v)+" "+lb;
+  }
   if(k==="bundle"&&Array.isArray(v))return v.map(b=>`${b.name}×${b.count}`).join("、");
   if(k==="star_entries"&&Array.isArray(v))return v.map(s=>`${s.star}星：${s.text}`).join("  ｜  ");
   if(k==="version_status"&&VERSION_STATUS_CN[v])return VERSION_STATUS_CN[v];
@@ -787,6 +820,8 @@ function renderActivityPoolRefs(refs){
 }
 let DATA=null;
 // ---- skin-mode（武器皮肤图鉴）紧凑卡片 ----
+function gradeLabel(n){const m=(DATA&&DATA.meta&&DATA.meta.grade_labels)||null;
+  return m&&m[String(n)]?String(n)+" "+m[String(n)]:String(n);}
 function skinGradeTxt(it){return it.grade||(it.level!=null?("品级"+it.level):"");}
 // ── B. 品级视觉分级：层级由真实 grade/level 派生（不改底层 grade 数据）──
 //   6传世 / 5典藏 / 4紫皮 / 3直售 / 2白送 = 快照真实枚举的展示短名；未配置/未知 → 中性样式
@@ -1092,7 +1127,7 @@ function renderSkinCard(it){
   const detail=renderSkinDetail(it);
   const qNow=String((DATA&&DATA._query)||"");
   const vFocus=qNow&&(it.variant_items||[]).some(v=>variantHit(v,qNow));
-  return `<div class="skin-card grade-${tier.cls}${vFocus?" open":""}">`+renderSkinMedia(it,name)+renderSkinSkeleton(it)+`
+  return `<div class="skin-card grade-${tier.cls}${vFocus?" open":""}">`+renderSkinMedia(it,name)+`
     <div class="skin-summary" role="button" tabindex="0" aria-expanded="${vFocus?"true":"false"}" onclick="toggleSkin(this)" onkeydown="onSkinKey(event,this)">
       <div class="skin-head-row">
         <span class="skin-tag grade-badge ${tier.cls}" title="level=${esc(it.level!=null?it.level:"未配置")}">${esc(tier.label)}</span>
@@ -1153,6 +1188,8 @@ function renderSkinDetail(it){
   if(audioDetail)parts.push(audioDetail);
   const ref=renderReferenceFields(it.reference_fields,it);
   if(ref)parts.push(ref);
+  {const skel=renderSkinSkeleton(it);
+   if(skel)parts.push(`<details class="tech"><summary>骨骼 / 挂点 / 3D 预览</summary><div class="kv">${skel}</div></details>`);}
   parts.push(renderTechSection([
     ["skin_id",it.skin_id],["catalog_layer",it.catalog_layer],["model_path",it.model_path],
     ["version_status",it.version_status],["sfx_consensus_state",it.sfx_consensus_state],
@@ -1246,7 +1283,7 @@ function renderVariantItems(variants,main){
       `<span class="vv-id">ID ${esc(v.skin_id)}</span>`+
       variantDiffChips(v,main).map(c=>`<span class="vv-chip">${c}</span>`).join("")+`</li>`;
   }).join("");
-  return `<details class="vv"${anyHit?" open":""}><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul></details>`;
+  return `<details class="vv"><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul></details>`;
 }
 function referenceTitle(ref){
   return ref&&ref.name?`<div class="reference-name">历史整理参考：${esc(ref.name)}</div>`:"";
@@ -1288,7 +1325,7 @@ function renderTimedVariants(variants,main){
       pairs.filter(([,x])=>x!==null&&x!==undefined&&x!=="").map(([k,x])=>`<div class="k">${esc(k)}</div><div class="v">${esc(fmtVal(k,x))}</div>`).join("")+
       `</div></div>`;
   }).join("");
-  return `<details class="vv"${anyHit?" open":""}><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul>`+
+  return `<details class="vv"><summary>时限变体 ${variants.length}</summary><ul class="vv-list">${rows}</ul>`+
     `<details class="vv-tech"><summary>时限变体逐记录（技术 / 审计字段）</summary><div class="vv-audit-list">${audit}</div></details></details>`;
 }
 function renderCandidateSfxChildren(children){
@@ -1576,13 +1613,13 @@ function renderItemMedia(m){
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
 const FR_BUCKETS=["头饰","衣服","背包","整套","光源","面饰","发饰","挂饰","投影","其他"];
 const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
-const FR={parts:new Set(),duration:"",img:"",gender:"",sort:""};
+const FR={parts:new Set(),grade:"",img:"",gender:"",sort:""};
 /* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
 (function(){
   try{
     const u=new URLSearchParams(location.search);
     (u.get("frpart")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>FR.parts.add(p));
-    FR.duration=u.get("frdur")||"";
+    FR.grade=u.get("frgrade")||"";
     FR.img=u.get("frimg")||"";
     FR.gender=u.get("frgender")||"";
     FR.sort=u.get("frsort")||"";
@@ -1593,7 +1630,7 @@ function frSyncUrl(){
     const u=new URLSearchParams(location.search);
     const put=(k,v)=>{if(v)u.set(k,v);else u.delete(k);};
     put("frpart",[...FR.parts].join(","));
-    put("frdur",FR.duration);put("frimg",FR.img);put("frgender",FR.gender);put("frsort",FR.sort);
+    put("frgrade",FR.grade);put("frimg",FR.img);put("frgender",FR.gender);put("frsort",FR.sort);
     history.replaceState(null,"",location.pathname+"?"+u.toString());
   }catch(e){}
 }
@@ -1634,12 +1671,14 @@ function frPass(it){
     FR.parts.forEach(p=>{if(bs.indexOf(p)>=0)ok=true;});
     if(!ok)return false;
   }
-  if(FR.duration==="永久"&&it.has_permanent!==true)return false;
-  if(FR.duration==="限时"&&it.has_permanent!==false)return false;
-  if(FR.duration==="未知"&&it.has_permanent!=null)return false;
+  if(FR.grade&&String(it.grade_level==null?"":it.grade_level)!==FR.grade)return false;
   if(FR.img==="有图"&&it.icon_state!=="有图")return false;
   if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
-  if(FR.gender&&frGenders(it).indexOf(FR.gender)<0)return false;
+  if(FR.gender){
+    const gs=frGenders(it);
+    if(FR.gender==="未标"){ if(gs.length)return false; }
+    else if(gs.indexOf(FR.gender)<0) return false;
+  }
   return true;
 }
 /* 图轨：≤4 张真实图标；无图时落客户端占位图（placeholder 是对象，取 .png） */
@@ -1714,6 +1753,11 @@ document.addEventListener("click",e=>{
   frOpen(id,parseInt(t.dataset.idx||"0",10));
 },true);
 /* 卡面 = 图轨 + 名字 + 部位 + model_id（别的全部进折叠区） */
+const FD_OPEN_ALL=(function(){try{return new URLSearchParams(location.search).get('open')==='1';}catch(e){return false;}})();
+function fdOpenAll(){
+  try{ if(new URLSearchParams(location.search).get('open')!=='1')return; }catch(e){return;}
+  document.querySelectorAll('details.fdesc').forEach(d=>d.open=true);
+}
 function frCard(it){
   const bk=frBuckets(it),bkCn=bk.join(" / ");
   const partCn=(it.all_parts&&it.all_parts.length?it.all_parts.map(p=>COMMON_PART_CN[p]||p).join(" / "):(COMMON_PART_CN[it.part]||it.part||""));
@@ -1722,9 +1766,7 @@ function frCard(it){
   const durDays=(it.durations||[]).length?`（${it.durations.join("/")}天）`:"";
   const cls=FR_BUCKET_CLS[bk[0]]||"other";
   const pairs=[];
-  if(it.desc)pairs.push(["描述",zhText(it.desc)]);
-  if(it.desc_note&&!it.desc)pairs.push(["描述说明",it.desc_note]);
-  if(it.grade_level!=null)pairs.push(["品级",(it.grade_levels&&it.grade_levels.length>1?it.grade_levels.join("/")+"（取最高）":"品级 "+it.grade_level)]);
+  if(it.grade_level!=null)pairs.push(["品级",(it.grade_levels&&it.grade_levels.length>1?it.grade_levels.map(gradeLabel).join("/")+"（取最高）":"品级 "+gradeLabel(it.grade_level))]);
   if(it.charm_value!=null)pairs.push(["魅力值",String(it.charm_value)]);
   pairs.push(["期限",durCn+durDays]);
   if((it.time_limited_variants||[]).length)pairs.push(["时限档",it.time_limited_variants.map(d=>d+"天").join(" / ")]);
@@ -1764,24 +1806,39 @@ function frCard(it){
       <span class="fr-part b-${cls}" title="表的 part_type：${esc(it.part||"（表里无该字段）")}">${esc(partCn||"部位未标注")}</span>
       <span class="fr-charm${it.charm_value?"":" na"}" title="魅力值：fashion_data.charm_value">${it.charm_value?"魅力 "+esc(it.charm_value):"魅力 —"}</span>
       ${mid!=null?`<span class="fr-model" title="model_id（表的字段）">model ${esc(mid)}</span>`:`<span class="fr-model">model —</span>`}
-      <span class="fr-dur${it.duration_state==="timed"?" timed":""}">${esc(durCn)}</span>
     </div>
+    ${(it.desc||it.desc_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length)
+      ?`<details class="fdesc"${FD_OPEN_ALL?" open":""}><summary>详情</summary><div class="fdesc-body">${
+          ((it.vehicle_ids||[]).length>1?`<div class="fd-row"><span class="fd-k">全部编号</span><span class="fd-v mono">${it.vehicle_ids.join(" / ")}</span></div>`:"")+
+          (it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${richText(it.desc)}</span></div>`:"")+
+          (it.desc_note&&!it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${esc(it.desc_note)}</span></div>`:"")+
+          (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏半感染者花苞</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
+          ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
+          (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
+        }</div></details>`:""}
     <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>
   </div>`;
+}
+/* 折叠时显示描述的前一小段，展开看全文 */
+function frDescHead(desc){
+  const t=String(zhText(desc)).replace(/\s+/g," ").trim();
+  return t.length>22?("描述 · "+t.slice(0,22)+"…"):("描述 · "+t);
 }
 const COMMON_PART_CN={hat:"头饰",cloth:"衣服",bag:"背包",suit:"整套",light:"光源"};
 /* 筛选控件：部位多选 + 期限/图示/性别单选；计数按全量板算（不随其它筛选浮动，避免误读） */
 function frBuildFilters(items){
   const wrap=document.getElementById("fFashionWrap");
   if(!wrap)return;
-  const cnt={parts:{},duration:{},img:{},gender:{}};
+  const cnt={parts:{},grade:{},img:{},gender:{}};
   for(const b of FR_BUCKETS)cnt.parts[b]=0;
   for(const it of items){
     frBuckets(it).forEach(b=>{if(cnt.parts[b]!=null)cnt.parts[b]++;});
-    const dv=(it.has_permanent===true)?"永久":((it.has_permanent===false)?"限时":"未知");
-    cnt.duration[dv]=(cnt.duration[dv]||0)+1;
+    const gk=(it.grade_level==null)?"未标":String(it.grade_level);
+    cnt.grade[gk]=(cnt.grade[gk]||0)+1;
     cnt.img[it.icon_state||"未知"]=(cnt.img[it.icon_state||"未知"]||0)+1;
-    frGenders(it).forEach(g=>{cnt.gender[g]=(cnt.gender[g]||0)+1;});
+    const _gs=frGenders(it);
+    if(_gs.length)_gs.forEach(g=>{cnt.gender[g]=(cnt.gender[g]||0)+1;});
+    else cnt.gender["未标"]=(cnt.gender["未标"]||0)+1;
   }
   const chip=(label,on,n,fn)=>{
     const b=document.createElement("button");
@@ -1809,16 +1866,23 @@ function frBuildFilters(items){
   });
   box.appendChild(grp("部位",pc));
   const one=(title,key,opts,cur)=>{
-    const cs=opts.map(([label,n])=>chip(label,cur===label,n,()=>{FR[key]=(FR[key]===label)?"":label;redraw();frRender();}));
+    // opts 支持 [label, n] 或 [label, n, rawValue]；rawValue 用于「显示文案 ≠ 过滤值」的场景（如品级）
+    const cs=opts.map(([label,n,rv])=>{
+      const val=(rv===undefined)?label:rv;
+      return chip(label,cur===val,n,()=>{FR[key]=(FR[key]===val)?"":val;redraw();frRender();});
+    });
     return grp(title,cs);
   };
-  const durOpts=[["全部",items.length],["永久",cnt.duration["永久"]||0],["限时",cnt.duration["限时"]||0]];
-  if(cnt.duration["未知"])durOpts.push(["未知",cnt.duration["未知"]]);
-  box.appendChild(one("期限","duration",durOpts,FR.duration));
-  box.appendChild(one("图示","img",[["全部",items.length],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
+
+  const gk=Object.keys(cnt.grade).sort((a,b)=>{
+    if(a==="未标")return 1; if(b==="未标")return -1; return Number(a)-Number(b);
+  });
+  box.appendChild(one("品级","grade",[["全部",items.length,""]].concat(gk.map(k=>[k==="未标"?"未标":"品级 "+gradeLabel(k),cnt.grade[k],k])) ,FR.grade));
+
+  box.appendChild(one("图示","img",[["全部",items.length,""],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
   // 性别：只有板上确有男/女标记时才摆这一组（时装多为男女共用模型，字段为空就整组隐藏，不留 0 计数）
   if((cnt.gender["女"]||0)||(cnt.gender["男"]||0)){
-    box.appendChild(one("性别","gender",[["全部",items.length],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0]],FR.gender));
+    box.appendChild(one("性别","gender",[["全部",items.length,""],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0],["未标",cnt.gender["未标"]||0]],FR.gender));
   }
   // 排序（先筛后排）：默认 = 板上原序；魅力值升降序时缺失值固定排最后
   const sortSel=document.createElement("select");
@@ -1863,7 +1927,7 @@ function frRender(){
      · 图轨复用时装那套灯箱（.fr-rail/.fr-zoom/.fr-box + FR_IMGS），一套交互两板共用
    ★ 类名全部 v*，图轨/灯箱复用 fr-*；样式挂 body.vehicle-mode —— 时装板与武器皮肤板零影响。 */
 const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
-const V={cls:new Set(),img:"",sort:""};
+const V={cls:new Set(),sub:new Set(),img:"",sort:""};
 (function(){
   try{
     const u=new URLSearchParams(location.search);
@@ -1902,6 +1966,7 @@ function vSortList(list){
 }
 function vPass(it){
   if(V.cls.size&&!V.cls.has(it.vehicle_class||"（未标注）"))return false;
+  if(V.sub.size&&!V.sub.has(it.vehicle_subclass||"未匹配"))return false;
   if(V.img&&it.icon_state!==V.img)return false;
   return true;
 }
@@ -1909,7 +1974,6 @@ function vPass(it){
 function vCard(it){
   const clsCn=it.vehicle_class||"（未标注）";
   const pairs=[];
-  if(it.desc)pairs.push(["描述",zhText(it.desc)]);
   pairs.push(["载具类型",clsCn+(it.vehicle_class_token?"（ui_vehicle_icon 后缀 "+it.vehicle_class_token+"：表里无中文类型字段，token 直译）":"")]);
   if(it.brand_name)pairs.push(["品牌系列",it.brand_name]);
   if(it.theme)pairs.push(["主题标记",it.theme]);
@@ -1940,7 +2004,12 @@ function vCard(it){
   if(imgLines.length)pairs.push(["图标绑定",imgLines.join("\n")]);
   const md=(it._media&&it._media.note)||"";
   if(md)pairs.push(["配图说明",md]);
-  pairs.push(["载具 ID（行键）",String(it.vehicle_id)]);
+  if((it.vehicle_ids||[]).length>1){
+    pairs.push(["全部编号",(it.vehicle_ids||[]).join(" / ")]);
+    pairs.push(["编号数",String(it.vehicle_ids.length)]);
+  }else{
+    pairs.push(["载具 ID（行键）",String(it.vehicle_id)]);
+  }
   if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
   pairs.push(["解码路径",it.decode_path==="permissive"
     ?"行尾内联变体宽容重放（列表字段仍空）":"严格 D6 行解码"]);
@@ -1963,12 +2032,27 @@ function vCard(it){
     ${frRail(it)}
     <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div></div>
     <div class="fr-sub">
-      <span class="fr-part b-veh" title="类型来自 ui_vehicle_icon 文件名后缀 token（表里没有中文类型字段）">${esc(clsCn)}</span>
-      <span class="fr-model" title="载具 ID / 行键">编号 ${esc(it.vehicle_id)}</span>
+      <span class="fr-part b-veh" title="类型=vehicle_brand_data.type_name">${esc(clsCn)}</span>${it.vehicle_subclass?`<span class="fr-part b-veh" style="opacity:.8" title="子类=vehicle_brand_data.brands 品牌">${esc(it.vehicle_subclass)}</span>`:""}
+      <span class="fr-model" title="载具编号（同名含时限变体）">${(it.vehicle_ids&&it.vehicle_ids.length>1)?`编号 ×${it.vehicle_ids.length}`:`编号 ${esc(it.vehicle_id)}`}</span>
+      ${it.has_trial?'<span class="fr-tagtype" title="该卡包含体验版编号">含体验版</span>':""}
       ${typeTag}
     </div>
+    ${(it.desc||it.desc_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length)
+      ?`<details class="fdesc"${FD_OPEN_ALL?" open":""}><summary>详情</summary><div class="fdesc-body">${
+          ((it.vehicle_ids||[]).length>1?`<div class="fd-row"><span class="fd-k">全部编号</span><span class="fd-v mono">${it.vehicle_ids.join(" / ")}</span></div>`:"")+
+          (it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${richText(it.desc)}</span></div>`:"")+
+          (it.desc_note&&!it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${esc(it.desc_note)}</span></div>`:"")+
+          (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏半感染者花苞</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
+          ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
+          (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
+        }</div></details>`:""}
     <details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>
   </div>`;
+}
+/* 折叠时显示描述的前一小段，展开看全文 */
+function frDescHead(desc){
+  const t=String(zhText(desc)).replace(/\s+/g," ").trim();
+  return t.length>22?("描述 · "+t.slice(0,22)+"…"):("描述 · "+t);
 }
 function vCountBy(items,key){
   const acc={};
@@ -2014,6 +2098,16 @@ function vBuildFilters(items){
     }));
   });
   box.appendChild(grp("类型",cls));
+  const subCnt=vCountBy(items,"vehicle_subclass");
+  const subs=[chip("全部",V.sub.size===0,null,()=>{V.sub.clear();redraw();render();})];
+  Object.keys(subCnt).sort((a,b)=>subCnt[b]-subCnt[a]).forEach(k=>{
+    if(!subCnt[k]&&!V.sub.has(k))return;
+    subs.push(chip(k,V.sub.has(k),subCnt[k],()=>{
+      if(V.sub.has(k))V.sub.delete(k);else V.sub.add(k);
+      redraw();render();
+    }));
+  });
+  box.appendChild(grp("子类",subs));
   const one=(title,key,opts,cur)=>{
     const cs=opts.map(([label,n])=>chip(label,cur===label,n,()=>{V[key]=(V[key]===label)?"":label;redraw();render();}));
     return grp(title,cs);
@@ -2913,7 +3007,7 @@ else loadBoard(b,d=>{
   }
   if((d.items||[]).length>=HUGE_TABLE_MIN)buildHugeIndex(d);
   fillFilterSelects(d.items);
-  if(FASHION_BOARD)frBuildFilters(d.items);
+  if(FASHION_BOARD){frBuildFilters(d.items);fdOpenAll();}
   if(VEHICLE_BOARD)vBuildFilters(d.items);
   if(CHIP_BOARD)cBuildFilters(d.items);
   render();

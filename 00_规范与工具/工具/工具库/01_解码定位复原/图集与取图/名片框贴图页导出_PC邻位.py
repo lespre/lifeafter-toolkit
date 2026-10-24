@@ -13,7 +13,7 @@ from toolkit_core import android_gpk as G             # noqa: E402
 
 WEB = PROJ / "02_wiki/web"
 LIVE = WEB / "assets/spine_live"
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 TREE = PROJ / "01_索引与产物/41_还原树/res/ui_02.gpk"
 GAME = pathlib.Path("E:/mrzh")
 PC = sqlite3.connect("file:%s?mode=ro" % str(DET / "pc_index.sqlite3").replace("\\", "/"), uri=True, timeout=30)

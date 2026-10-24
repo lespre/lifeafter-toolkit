@@ -109,7 +109,7 @@ def check_pages() -> None:
 def check_index() -> None:
     print("\n== PE 索引 ==")
     import sqlite3
-    db = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测/pe_index.sqlite3")
+    db = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测/pe_index.sqlite3")
     if not db.is_file():
         print("  ✗ 索引不存在")
         return

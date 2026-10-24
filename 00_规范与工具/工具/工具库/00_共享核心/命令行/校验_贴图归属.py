@@ -16,8 +16,8 @@ import sqlite3
 PROJ = pathlib.Path(r"E:/la拆包项目")
 IDX = PROJ / "01_索引与产物/10_索引/indexes/lifeafter_files.sqlite3"
 ROWMAP = PROJ / "01_索引与产物/10_索引/indexes/row_path_map.db"
-DELIV = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/交付_playertest_20261017"
-OUT = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/校验"
+DELIV = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/交付_playertest_20261017"
+OUT = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/校验"
 OUT.mkdir(parents=True, exist_ok=True)
 
 CONT = ("Documents\\gres\\0006.gpk", "Documents\\gres\\0007.gpk")

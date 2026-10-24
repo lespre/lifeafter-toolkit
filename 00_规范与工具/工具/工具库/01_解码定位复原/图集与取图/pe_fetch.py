@@ -29,14 +29,16 @@ def _project_root() -> pathlib.Path:
 
 PROJ = _project_root()
 WEB = PROJ / "02_wiki/web"
-IDX = PROJ / "01_索引与产物/30_分析/热更检测/pe_index.sqlite3"
-PACKS = PROJ / "01_索引与产物/30_分析/热更检测/pe_packs"
+IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
+PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"   # 唯一包源（pe_packs 副本已删）
+if not PACKS.is_dir():
+    PACKS = PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
-sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测/pe_icon_bind"))
+sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind"))
 from toolkit_core.path_fid import fid_of  # noqa: E402
 from toolkit_core import android_gpk as AG  # noqa: E402
 
-_PE_BIND = PROJ / "01_索引与产物/30_分析/热更检测/pe_icon_bind"
+_PE_BIND = PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind"
 if _PE_BIND.is_dir() and str(_PE_BIND) not in sys.path:
     sys.path.insert(0, str(_PE_BIND))
 import decoders as DEC  # noqa: E402

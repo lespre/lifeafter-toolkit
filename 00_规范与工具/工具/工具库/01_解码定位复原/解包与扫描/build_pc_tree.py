@@ -18,10 +18,10 @@ from pathlib import Path
 
 _here = Path(__file__).resolve()
 PROJ = next((u for u in _here.parents if (u / "00_规范与工具/治理").is_dir() and (u / "00_规范与工具/工具").is_dir()), _here.parents[3])
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 PC_IDX = DET / "pc_index.sqlite3"
 PE_IDX = DET / "pe_index.sqlite3"
-TREE = PROJ / "01_索引与产物/41_还原树/pc_20261020"
+TREE = PROJ / "01_索引与产物/41_还原树/pc"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/01_解码定位复原/图集与取图"))
 
@@ -101,7 +101,7 @@ def run_pack(pack: str) -> tuple[str, int, int, int, float]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pack")
-    ap.add_argument("--out", help="输出根目录（默认 41_还原树/pc_20261020）")
+    ap.add_argument("--out", help="输出根目录（默认 41_还原树/pc）")
     ap.add_argument("--root", action="append", help="客户端根目录，可多次传（默认 E:/mrzh 系列）")
     ap.add_argument("--probe", type=int)
     ap.add_argument("--workers", type=int, default=3)

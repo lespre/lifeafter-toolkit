@@ -35,7 +35,7 @@ _GAME_CRYSTAL = False                    # ★ 由 --game-crystal 打开（默�
 T_REFR = None                            # ★ 折射贴图（--tex-refr）
 T_CAUS = None                            # ★ 焦散贴图（--tex-caustic ✓ c159 声明 t_caustic_tex ✓）
 # ★ 游戏 env_data_pc 的 cube brightness 真值（表列：average_brightness / brightness / file / sh ✓）
-#   来源：41_还原树/script.py314.lc.npk/com/cdata/env_data_pc.py（游戏 PC 环境表 ✓）
+#   来源：41_还原树/pe/配置_基线包/com/cdata/env_data_pc.py（游戏 PC 环境表 ✓）
 #   晶体块 c159 声明 t_custom_ibl = car_studio01.cube ⇒ 1.81897 ✓
 #   武器块 = qiangpi.cube ⇒ 1.79424 ✓
 GAME_CUBE_BRIGHTNESS = {'car_studio01': 1.81897, 'qiangpi': 1.79424}

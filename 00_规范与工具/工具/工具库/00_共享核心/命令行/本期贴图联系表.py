@@ -11,7 +11,7 @@ import sys
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
 TREE = PROJ / "01_索引与产物/41_还原树/Documents/gres"
-OUT = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/看图"
+OUT = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/看图"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染"))
 from toolkit_core import img_classify as IC    # noqa: E402

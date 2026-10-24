@@ -18,7 +18,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 from toolkit_core import bindict_table as BT  # noqa: E402
 from toolkit_core import img_fetch  # noqa: E402
 
-CDATA = PROJ / "01_索引与产物/41_还原树/pe_20261020/com/cdata"
+CDATA = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
 BOARD = WEB / "data/boards/appearance_extra.json"
 OUT = WEB / "assets/appearance_icons"
 REFS = WEB / "assets/fashion_icon_refs"
@@ -170,7 +170,7 @@ def main() -> int:
                 "source_locks": [{
                     "source_id": "appearance-extra-struct",
                     "role": "primary",
-                    "path": "01_索引与产物/41_还原树/pe_20261020/com/cdata/player_appear_data.py",
+                    "path": "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/player_appear_data.py",
                     "sha256": sha,
                     "bytes": table.stat().st_size if table.exists() else 0,
                     "mtime_ns": table.stat().st_mtime_ns if table.exists() else 0,

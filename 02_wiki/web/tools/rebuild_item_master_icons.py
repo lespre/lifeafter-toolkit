@@ -42,9 +42,9 @@ PROJ = pathlib.Path(r"E:/la拆包项目")
 WEB = PROJ / "02_wiki/web"
 BASE_TABLE = PROJ / "01_索引与产物/41_还原树/pe_test_script/common_item_data_base.py"
 BASE_CHS = PROJ / "01_索引与产物/41_还原树/pe_test_script/common_item_data_base_chs.py"
-IDX = PROJ / "01_索引与产物/30_分析/热更检测/pe_index.sqlite3"
-PACKS = PROJ / "01_索引与产物/30_分析/热更检测/pe_packs"
-PC_HIT = PROJ / "01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv"
+IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
+PACKS = PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"
+PC_HIT = PROJ / "01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv"
 PC_RES = pathlib.Path(r"E:/mrzh/res")
 OUTDIR = WEB / "assets/item_icons"
 BOARD = WEB / "data/boards/item_master_v01.json"
@@ -55,8 +55,8 @@ TABLE = r"com\cdata\common_item_data_base.py"
 
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染"))
-sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测/pe_icon_bind"))
-sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测/pc_fid_calib"))
+sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind"))
+sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测/pc_fid_calib"))
 import toolkit_core.bindict_table as BT  # noqa: E402
 from toolkit_core.path_fid import fid_of  # noqa: E402
 import toolkit_core.android_gpk as AG  # noqa: E402
@@ -496,8 +496,8 @@ def main() -> int:
         "icon_field": "icon",
         "icon_table": TABLE,
         "icon_table_sha256": table_sha,
-        "pe_index": "01_索引与产物/30_分析/热更检测/pe_index.sqlite3（174 包 / 1,801,666 行）",
-        "pc_table": "01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv（133,188 行路径）",
+        "pe_index": "01_索引与产物/10_索引/热更检测/pe_index.sqlite3（174 包 / 1,801,666 行）",
+        "pc_table": "01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv（133,188 行路径）",
         "pc_pack_root": "E:/mrzh/res（只读）",
         "fallback_policy": "none（未使用 APK npk 图库或按名/按 id 借用，缺失即未下发）",
     }

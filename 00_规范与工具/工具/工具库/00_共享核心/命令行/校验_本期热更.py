@@ -143,7 +143,7 @@ def landed():
 
 # ── ④ pkg_N.pi（rel vs pt）─────────────────────────────────
 def pkgdiff():
-    cache = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2/pkg_cache"
+    cache = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2/pkg_cache"
     rel, pt = cache / "rel", cache / "pt"
     if not (rel.is_dir() and pt.is_dir()):
         row("④ pkg_N.pi", "rel/pt 清单", "✗ 缓存不在了（已清理），跳过")

@@ -19,7 +19,7 @@ PROJ = pathlib.Path(__file__).resolve().parents[5]
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import pe_index as PI   # noqa: E402
 
-DEFAULT_DB = PROJ / "01_索引与产物/30_分析/热更检测/pe_index.sqlite3"
+DEFAULT_DB = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
 
 
 def cmd_build(a):
@@ -173,13 +173,13 @@ def main():
 
     e = sub.add_parser("export")
     e.add_argument("--like", default=None)
-    e.add_argument("--out", default=str(PROJ / "01_索引与产物/30_分析/热更检测/pe_export"))
+    e.add_argument("--out", default=str(PROJ / "01_索引与产物/10_索引/热更检测/pe_export"))
     e.add_argument("--limit", type=int, default=0)
     e.add_argument("--pack-dir", default=None)
     e.set_defaults(func=cmd_export)
 
     pl = sub.add_parser("pull")
-    pl.add_argument("--out", default=str(PROJ / "01_索引与产物/30_分析/热更检测/pe_packs"))
+    pl.add_argument("--out", default=str(PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"))
     pl.add_argument("--jobs", type=int, default=4)
     pl.add_argument("--limit", type=int, default=0)
     pl.set_defaults(func=cmd_pull)

@@ -7,7 +7,7 @@ r"""热更摘要：给**下一次会话开局**读的 15 行，替代「重新�
   就不必把历史输出留在对话里。
 
 用法：
-  热更摘要.py                     # 取 30_分析/热更检测 下最新的 RUN
+  热更摘要.py                     # 取 10_索引/热更检测 下最新的 RUN
   热更摘要.py <RUN目录>            # 指定
   热更摘要.py --json              # 机器读
 优先级：RUN/STATE.json > 从 manifest.json + inventory.json 现算。
@@ -19,7 +19,7 @@ import pathlib
 import sys
 import time
 
-HOT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测")
+HOT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测")
 
 
 def latest_run() -> pathlib.Path | None:

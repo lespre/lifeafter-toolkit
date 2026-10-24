@@ -568,8 +568,8 @@ def _find_table_fallback(raw: str):
         rel = "com/cdata/" + Path(tn).name
     stem2 = rel.rsplit(".", 1)[0]
     shown = False
-    for root in (PROJ / "01_索引与产物/41_还原树/pe_20261020",
-                 PROJ / "01_索引与产物/41_还原树/script.py314.lc.npk"):
+    for root in (PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照",
+                 PROJ / "01_索引与产物/41_还原树/pe/配置_基线包"):
         if not root.is_dir():
             continue
         for ext in (".nxs", ".py"):

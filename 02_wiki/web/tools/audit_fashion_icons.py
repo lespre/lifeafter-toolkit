@@ -4,7 +4,7 @@
 任务口径（2026-10-18）：
   ① gpk_loc0 命中率：每张 images[].png 对应的真实资源路径 base+suffix+.ktx
      → toolkit_core.path_fid.fid_of → %016X，查客户端自己的全局文件索引
-     `01_索引与产物/30_分析/热更检测/pe_file_index/gpk_loc0`（16 字节/条：[u64 fid][u32][u32]）
+     `01_索引与产物/10_索引/热更检测/pe_file_index/gpk_loc0`（16 字节/条：[u64 fid][u32][u32]）
   ② 部位自洽：hat→icon_h_ / bag→icon_bag_ / cloth→icon_b_|icon_cloth_ / suit→icon_suit_|icon_
      多部位件按「任一部位允许的前缀」判定
   ③ 30 条抽样联系表（PNG），每行标 名字 + 部位 + 图标基名
@@ -26,7 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]          # 02_wiki/web
 PROJ = Path("E:/la拆包项目")
-LOC0 = PROJ / "01_索引与产物/30_分析/热更检测/pe_file_index/gpk_loc0"
+LOC0 = PROJ / "01_索引与产物/10_索引/热更检测/pe_file_index/gpk_loc0"
 REFS = ROOT / "data/media/fashion_icon_refs.json"
 BOARD = ROOT / "data/boards/fashion_wardrobe.json"
 PNG_DIR = ROOT / "assets/fashion_icon_refs"

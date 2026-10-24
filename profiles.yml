@@ -7,38 +7,38 @@ source: pe
 sources:
   pe:
     label: PE 测试服（客户端 res/*.gpk，脚本表在 pe_20261020 树）
-    tree: 01_索引与产物/41_还原树/pe_20261020
-    cdata: 01_索引与产物/41_还原树/pe_20261020/com/cdata
-    index: 01_索引与产物/30_分析/热更检测/pe_index.sqlite3
+    tree: 01_索引与产物/41_还原树/pe
+    cdata: 01_索引与产物/41_还原树/pe/配置/com/cdata
+    index: 01_索引与产物/10_索引/热更检测/pe_index.sqlite3
     client: E:/mrzh
   pc:
     label: PC 客户端（.bc7 资源，脚本表在 Documents/script.py314.lc.npk）
-    tree: 01_索引与产物/41_还原树/pc_20261020
-    cdata: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata
-    index: 01_索引与产物/30_分析/热更检测/pc_index.sqlite3
+    tree: 01_索引与产物/41_还原树/pc
+    cdata: 01_索引与产物/41_还原树/pe/配置/com/cdata
+    index: 01_索引与产物/10_索引/热更检测/pc_index.sqlite3
     client: E:/mrzh
   documents:
     label: Documents 快照（script.py314.lc.npk）
-    tree: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk
-    cdata: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata
-    index: 01_索引与产物/30_分析/热更检测/pc_index.sqlite3
+    tree: 01_索引与产物/41_还原树/pe/配置
+    cdata: 01_索引与产物/41_还原树/pe/配置/com/cdata
+    index: 01_索引与产物/10_索引/热更检测/pc_index.sqlite3
     client: E:/mrzh
 
 profiles:
   pe_test_20261020:
     label: 测试服 · PE · 经典 + 简单生存
     game_root: E:/mrzh
-    tree: 01_索引与产物/41_还原树/pe_20261020
-    index_dir: 01_索引与产物/30_分析/热更检测
+    tree: 01_索引与产物/41_还原树/pe
+    index_dir: 01_索引与产物/10_索引/热更检测
     containers: [gpk, npk, fpk]
     servers: [classic, simple]
-    notes: 主用档案；资源与图标以 PE 为准
+    notes: 主用档案；配置读合成树，资源与图标以 PE 为准
 
   pc_test_20261020:
     label: 测试服 · PC 侧
     game_root: E:/mrzh
-    tree: 01_索引与产物/41_还原树/res
-    index_dir: 01_索引与产物/30_分析/热更检测
+    tree: 01_索引与产物/41_还原树/pc
+    index_dir: 01_索引与产物/10_索引/热更检测
     containers: [gpk]
     servers: [classic, simple]
     notes: 仅作差异对照与补齐表，不作资源源

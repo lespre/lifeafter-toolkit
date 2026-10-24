@@ -72,7 +72,7 @@ def main() -> int:
     print("期", len(out), "｜解出芯片的期", len(ok))
     for x in ok[:8]:
         print("  期%-3s %s %s" % (x["conf_key"], x["chips"], x["names"]))
-    (PROJ / "01_索引与产物/30_分析/热更检测/chip_lottery_fixed.json").write_text(
+    (PROJ / "01_索引与产物/10_索引/热更检测/chip_lottery_fixed.json").write_text(
         json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print("写 chip_lottery_fixed.json")
     return 0

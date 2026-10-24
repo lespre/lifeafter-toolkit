@@ -200,8 +200,8 @@
   "kill_broadcast": {
    "publication_status": "published",
    "category": "三、活动类 / （五）击败播报",
-   "reason": "播报文案 34 条（error_code_data 含「击败」）+ 击败特效 35 条（weapon_skin_sfx_function_data sfx_type=4）；播放器在 UI 代码里，无独立外观表。",
-   "items": 69
+   "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。",
+   "items": 13
   },
   "core_skill_12star": {
    "publication_status": "published",

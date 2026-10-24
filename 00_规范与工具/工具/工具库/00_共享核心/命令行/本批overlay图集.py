@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
-B2 = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2"
+B2 = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2"
 OUT = B2 / "看图_本批overlay"
 PKG = OUT / "pkgs"
 PNG = OUT / "png"

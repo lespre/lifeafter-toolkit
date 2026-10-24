@@ -13,7 +13,7 @@ import subprocess
 import sys
 import time
 
-SNAP = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测")
+SNAP = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测")
 SNAP.mkdir(parents=True, exist_ok=True)
 BASE = SNAP / "baseline.json"
 CLIENT = pathlib.Path(r"E:/mrzh")

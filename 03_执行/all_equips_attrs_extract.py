@@ -13,7 +13,7 @@ from toolkit_core.bindict_table import (  # noqa: E402
     decode_table_rows, parse_legacy_chs_pool, resolve_jump_target, JUMP_BASE_BY_TABLE,
 )
 
-BASE = r"E:/la拆包项目/01_索引与产物/41_还原树/pe_20261020/com/cdata/oversea/"
+BASE = r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/oversea/"
 P = BASE + "all_equips_data_auto_oversea_data_kj1.py"
 C = BASE + "all_equips_data_auto_oversea_data_kj1_chs.py"
 

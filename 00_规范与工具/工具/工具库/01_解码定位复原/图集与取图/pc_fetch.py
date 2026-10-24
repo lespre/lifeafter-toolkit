@@ -35,7 +35,7 @@ def _project_root() -> pathlib.Path:
 
 PROJ = _project_root()
 WEB = PROJ / "02_wiki/web"
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 IDX = DET / "pc_index.sqlite3"
 CAL = DET / "pc_fid_calib/hit_table.csv"
 EXTRA = DET / "pc_fid_calib/hit_table_extra.csv"

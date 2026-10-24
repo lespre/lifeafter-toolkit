@@ -17,8 +17,8 @@ import sqlite3
 import sys
 
 PROJ = pathlib.Path(r"E:/la拆包项目")
-B2 = PROJ / "01_索引与产物/30_分析/热更检测/post_update_20261017_batch2"
-RECHECK = PROJ / "01_索引与产物/30_分析/热更检测/batch2_overlay_recheck"
+B2 = PROJ / "01_索引与产物/10_索引/热更检测/post_update_20261017_batch2"
+RECHECK = PROJ / "01_索引与产物/10_索引/热更检测/batch2_overlay_recheck"
 IDX = PROJ / "01_索引与产物/10_索引/indexes/lifeafter_files.sqlite3"
 OUT = B2 / (sys.argv[2] if len(sys.argv) > 2 else "看图_本批新字节")
 PNG = OUT / "png"

@@ -35,7 +35,7 @@ sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from _src import cdata_dir  # 表根随 LA_SOURCE / profiles 走
 CDATA = cdata_dir()
 CDATA_ROOT = CDATA.parent
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 IDX = DET / "pe_index.sqlite3"
 PACKS = DET / "pe_packs"
 OUT_JSON = WEB / "data/boards/item_master_full.json"

@@ -3,12 +3,12 @@
 """从 PC 测试服热更落盘的解码 payload 里，抽出武器皮肤热更覆盖记录。
 
 数据来源（全部只读、全部本地已落盘）：
-  * `01_索引与产物/30_分析/热更检测/post_update_20261015_213737_weapon_skin_cli_v2/_bits/`
+  * `01_索引与产物/10_索引/热更检测/post_update_20261015_213737_weapon_skin_cli_v2/_bits/`
       - post__weapon_skin_data.py.bin / _chs.py.bin
       - post__weapon_skin_behavior_res_data.py.bin / _chs.py.bin
       - post__weapon_skin_sfx_function_data.py.bin / _chs.py.bin
       - pre__*（用于判定「本次新增」）
-  * `01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/`（人工核对产物）
+  * `01_索引与产物/10_索引/热更检测/新武器皮肤_1110188_1110191_1110192/`（人工核对产物）
 
 产物：`02_wiki/web/data/hotfix/weapon_skin_hotfix_<overlay_id>.json`
       —— 机器可读的覆盖记录（含 payload sha256 锁、逐行字段 provenance）。
@@ -38,7 +38,7 @@ for extra in (str(CORE), str(WEB_TOOLS)):
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
 
-ANALYSIS = Path(r"E:\la拆包项目\01_索引与产物\30_分析\热更检测")
+ANALYSIS = Path(r"E:\la拆包项目\01_索引与产物\10_索引\热更检测")
 BITS = ANALYSIS / "post_update_20261015_213737_weapon_skin_cli_v2" / "_bits"
 SKIN_DIR = ANALYSIS / "新武器皮肤_1110188_1110191_1110192"
 EVENTS_REPORT = ANALYSIS / "post_update_20261015_213737_events_cli.json"

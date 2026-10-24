@@ -28489,8 +28489,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150640.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/03/img_biankuang_03.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28548,8 +28555,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150664.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/04/img_biankuang_04.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28607,8 +28621,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150692.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/05/img_biankuang_05.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28666,8 +28687,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150710.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_huangsha.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28843,8 +28871,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150713.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_kuangye.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28902,8 +28937,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150714.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_huoshan.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -28961,8 +29003,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150751.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/07/img_biankuang_07.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29079,8 +29128,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150889.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/09/img_biankuang_09.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29138,8 +29194,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150890.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/09/img_biankuang_09_2.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29197,8 +29260,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150942.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/10/img_biankuang_10.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29256,8 +29326,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150943.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/10/img_biankuang_10_2.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29315,8 +29392,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150986.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/11/img_biankuang_11.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29374,8 +29458,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150987.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/11/img_biankuang_11_2.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29492,8 +29583,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151090.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/13/img_biankuang_13_2.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29551,8 +29649,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151118.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/12/img_biankuang_12.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29610,8 +29715,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151170.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/14/img_biankuang_14.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29669,8 +29781,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151237.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/15/img_biankuang_15.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29728,8 +29847,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151267.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/16/img_biankuang_16_1.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -29851,8 +29977,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151285.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/17/img_biankuang_17_1.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30028,8 +30161,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151648.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/19/img_biankuang_19.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30389,8 +30529,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151800.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/24/img_biankuang_24.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30566,8 +30713,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151803.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/27/img_biankuang_27.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30625,8 +30779,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151804.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/28/img_biankuang_28.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30752,8 +30913,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151867.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/30/img_biankuang_30.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31193,8 +31361,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152082.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/38/img_biankuang_38.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31572,8 +31747,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152143.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/44/img_biankuang_44.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32011,8 +32193,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152217.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/51/img_biankuang_51.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32442,8 +32631,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152390.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/58/img_biankuang_58.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32569,8 +32765,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152392.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/60/img_biankuang_60.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32696,8 +32899,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152520.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/62/img_biankuang_62.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32816,8 +33026,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152584.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/64/img_biankuang_64.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33660,8 +33877,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152766.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/81/img_biankuang_81.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33959,8 +34183,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580082.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/82/img_biankuang_82.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34230,8 +34461,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580086.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/86/img_biankuang_86.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34289,8 +34527,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580087.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/87/img_biankuang_87.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34416,8 +34661,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580089.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/89/img_biankuang_89.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34936,8 +35188,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580097.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/97/img_biankuang_97.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35054,8 +35313,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580099.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/99/img_biankuang_99.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35113,8 +35379,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580100.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/100/img_biankuang_100.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35294,8 +35567,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580103.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/103/img_biankuang_103.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35876,8 +36156,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580112.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/112/img_biankuang_112.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35935,8 +36222,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580113.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/113/img_biankuang_113.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36599,8 +36893,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580123.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/123/img_biankuang_123.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37118,8 +37419,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580131.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/131/img_biankuang_131.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38896,7 +39204,16 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580166.png",
+      "label": "名片框",
+      "w": 0,
+      "h": 0,
+      "source": "spine/setup-pose",
+      "spine": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_166"
+     }
+    ],
     "total": 0
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
@@ -39165,8 +39482,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580170.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/170/img_biankuang_170.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39224,8 +39548,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580171.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/171/img_biankuang_171.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39766,8 +40097,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580179.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/179/img_biankuang_179.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39963,7 +40301,16 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580182.png",
+      "label": "名片框",
+      "w": 0,
+      "h": 0,
+      "source": "spine/setup-pose",
+      "spine": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_182"
+     }
+    ],
     "total": 0
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
@@ -40088,8 +40435,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580184.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/184/img_biankuang_184.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40693,8 +41047,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580193.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/193/img_biankuang_193.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41018,8 +41379,15 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580198.png",
+      "label": "名片框",
+      "base": "ui/mingpiankuang_icon/198/img_biankuang_198.png",
+      "source": "business_card_scheme_data.image_path"
+     }
+    ],
+    "total": 1
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },

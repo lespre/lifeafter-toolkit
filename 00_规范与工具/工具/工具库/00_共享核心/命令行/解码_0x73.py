@@ -8,7 +8,7 @@ r"""解码_0x73.py — 把 `0x73` 包装的 bindict 表导出成 JSON / TSV。
 例
     python 解码_0x73.py \
       "E:/la拆包项目/01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata/weapon_skin_data.py" \
-      -o "E:/la拆包项目/01_索引与产物/30_分析/热更检测/task_0x73_decode"
+      -o "E:/la拆包项目/01_索引与产物/10_索引/热更检测/task_0x73_decode"
 
 输出（--name 默认取输入文件名去扩展名）
     <name>.json        全表：meta + rows（含字段类型）
@@ -36,7 +36,7 @@ from toolkit_core.bindict_73 import (                 # noqa: E402
     extract_body,
 )
 
-DEFAULT_OUT = Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测/task_0x73_decode")
+DEFAULT_OUT = Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测/task_0x73_decode")
 
 
 def field_order(body: bytes, rows: list[dict], pool: list[str]) -> list[str]:

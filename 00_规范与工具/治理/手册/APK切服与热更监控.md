@@ -41,7 +41,7 @@
 
 ## 三、工具
 
-`01_索引与产物/30_分析/热更检测/android_watch/切服.py`
+`01_索引与产物/10_索引/热更检测/android_watch/切服.py`
 
 ```bash
 python 切服.py status          # 渠道/版本/开关一览

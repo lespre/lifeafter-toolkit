@@ -15,7 +15,7 @@ PROJ = pathlib.Path("E:/la拆包项目")
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import android_gpk as AG  # noqa: E402
 
-BIND = PROJ / "01_索引与产物/30_分析/热更检测/pe_icon_bind/binding_rows_v2.jsonl"
+BIND = PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind/binding_rows_v2.jsonl"
 MAP = PROJ / "01_索引与产物/30_分析/子代理产出_20261022/item_icon_map_resolved.json"
 BOARD = PROJ / "02_wiki/web/data/boards/item_master_full.json"
 OUT = PROJ / "02_wiki/web/assets/img_cache/item_master_full"

@@ -19,7 +19,7 @@ from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 ROOT = pathlib.Path(r"E:/la拆包项目")
 WEB = ROOT / "02_wiki/web"
 BOARDS = WEB / "data/boards"
-CDATA = ROOT / "01_索引与产物/41_还原树/pe_20261020/com/cdata"
+CDATA = ROOT / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
 SHA = "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523"
 
 

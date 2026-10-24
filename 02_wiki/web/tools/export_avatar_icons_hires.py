@@ -29,7 +29,7 @@ def _project_root() -> pathlib.Path:
 
 
 PROJ = _project_root()
-DET = PROJ / "01_索引与产物/30_分析/热更检测"
+DET = PROJ / "01_索引与产物/10_索引/热更检测"
 sys.path.insert(0, str(DET))
 import pe_fetch as PE  # noqa: E402
 import pe_fetch_hires as H  # noqa: E402

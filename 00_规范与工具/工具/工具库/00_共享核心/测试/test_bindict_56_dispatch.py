@@ -24,7 +24,7 @@ from toolkit_core.bindict_table import (  # noqa: E402
     parse_index,
 )
 
-CDATA = Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe_20261020/com/cdata")
+CDATA = Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata")
 
 
 def _uleb(value: int) -> bytes:

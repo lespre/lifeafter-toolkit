@@ -1,11 +1,19 @@
 {
- "ok": [],
- "fail": [
+ "ok": [
   [
-   "bc_151760",
-   "ui/spine/mingpiankuang/mingpiankuang_yongzhuan",
-   "page miss mingpiankuang_yongzhuan.png"
+   "bc_580166",
+   0,
+   0,
+   285911
   ],
+  [
+   "bc_580182",
+   0,
+   0,
+   221161
+  ]
+ ],
+ "fail": [
   [
    "bc_151986",
    "ui/spine/mingpiankuang/img_biankuang37",
@@ -47,11 +55,6 @@
    "page miss img_biankuang_76.png"
   ],
   [
-   "bc_152708",
-   "ui/spine/mingpiankuang/img_biankuang_73",
-   "empty canvas"
-  ],
-  [
    "bc_580071",
    "ui/spine/mingpiankuang/img_biankuang_71",
    "page miss img_biankuang_71.png"
@@ -70,11 +73,6 @@
    "bc_580094",
    "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_94",
    "page miss img_biankuang_94.png"
-  ],
-  [
-   "bc_580095",
-   "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_95",
-   "page miss img_biankuang_95.png"
   ],
   [
    "bc_580096",
@@ -110,16 +108,6 @@
    "bc_580127",
    "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_127",
    "page miss img_biankuang_127.png"
-  ],
-  [
-   "bc_580215",
-   "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_215",
-   "text miss "
-  ],
-  [
-   "bc_580216",
-   "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_216",
-   "text miss "
   ]
  ]
 }

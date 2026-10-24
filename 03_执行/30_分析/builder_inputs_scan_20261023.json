@@ -334,15 +334,15 @@
    "ctx": "\"01_索引与产物/10_索引/items/show_item_names.json\")"
   },
   {
-   "expected": "01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv",
-   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv",
+   "expected": "01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv",
    "tier": "A",
    "twin": null,
    "readers": [
     "rebuild_item_master_icons.py"
    ],
    "sites": 1,
-   "ctx": "PC_HIT = PROJ / \"01_索引与产物/30_分析/热更检测/pc_fid_calib/hit_table.csv\""
+   "ctx": "PC_HIT = PROJ / \"01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv\""
   },
   {
    "expected": "01_索引与产物/41_还原树/_热更合并台账_20261017_005239.json",
@@ -1033,8 +1033,8 @@
    "ctx": "tsv = d / \"行到引用.tsv\""
   },
   {
-   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/post_update_20261015_213737_events_cli.json",
-   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/post_update_20261015_213737_events_cli.json",
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/post_update_20261015_213737_events_cli.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/post_update_20261015_213737_events_cli.json",
    "tier": "A",
    "twin": null,
    "readers": [
@@ -1044,8 +1044,8 @@
    "ctx": "EVENTS_REPORT = ANALYSIS / \"post_update_20261015_213737_events_cli.json\""
   },
   {
-   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
-   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/新武器皮肤_1110188_1110191_1110192/1110188_audio_evidence_20261015.json",
    "tier": "A",
    "twin": null,
    "readers": [
@@ -1055,8 +1055,8 @@
    "ctx": "AUDIO_EVIDENCE = SKIN_DIR / \"1110188_audio_evidence_20261015.json\""
   },
   {
-   "expected": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
-   "target": "E:/la拆包项目/01_索引与产物/30_分析/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
+   "expected": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
+   "target": "E:/la拆包项目/01_索引与产物/10_索引/热更检测/新武器皮肤_1110188_1110191_1110192/三方差分与行为资源.json",
    "tier": "A",
    "twin": null,
    "readers": [

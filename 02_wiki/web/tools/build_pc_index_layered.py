@@ -12,7 +12,7 @@ import pathlib
 import re
 import sqlite3
 
-DET = pathlib.Path("E:/la拆包项目/01_索引与产物/30_分析/热更检测")
+DET = pathlib.Path("E:/la拆包项目/01_索引与产物/10_索引/热更检测")
 SRC = DET / "pc_index.sqlite3"
 OUT = DET / "pc_index_layered.sqlite3"
 

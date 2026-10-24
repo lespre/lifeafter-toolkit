@@ -32,8 +32,8 @@ WEB = PROJ / "02_wiki/web"
 BASE = PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata"
 NPK = pathlib.Path(r"E:/mrzh/Documents/script.py314.lc.npk")
 LEDGER = PROJ / "01_索引与产物/41_还原树/_热更合并台账_20261017_005239.json"
-IDX = PROJ / "01_索引与产物/30_分析/热更检测/pe_index.sqlite3"
-PACKS = PROJ / "01_索引与产物/30_分析/热更检测/pe_packs"
+IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
+PACKS = PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"
 OUTDIR = WEB / "assets/recipe_icons"
 OUT = WEB / "data/boards/recipe_book.json"
 
@@ -43,7 +43,7 @@ TABLE = "com\\cdata\\cook_recipe_data.py"
 TABLE_EDIBLE = "com\\cdata\\edible_item_data.py"
 
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
-sys.path.insert(0, str(PROJ / "01_索引与产物/30_分析/热更检测/pe_icon_bind"))
+sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind"))
 import toolkit_core.bindict_table as BT  # noqa: E402
 from toolkit_core.bindict_table import uleb  # noqa: E402
 from toolkit_core.path_fid import fid_of  # noqa: E402

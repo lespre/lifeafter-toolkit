@@ -8,7 +8,7 @@ import pathlib
 
 WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
 TREES = [
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe_20261020"),
+    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照"),
     pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/Documents/script.py314.lc.npk"),
     pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/apk_mumu_5.0.679/assets/script.py314.lc.npk"),
 ]

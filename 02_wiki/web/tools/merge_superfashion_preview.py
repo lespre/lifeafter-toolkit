@@ -11,7 +11,7 @@ import pathlib
 import re
 
 WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
-DET = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/热更检测")
+DET = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测")
 FAM = "SuperFashion"
 
 
