@@ -457,7 +457,7 @@ window.WIKI_MANIFEST = {
       "board": "scene_balance",
       "items": 1363,
       "generated": "2026-10-24",
-      "source_server": "PE 还原树 pe_20261020（测试服同时携带经典服与简单生存服两套分支资源）",
+      "source_server": "PE 还原树 pe_20261020（测试服预发包，同时携带经典服源与简单生存服源）",
       "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
       "evidence": {
         "structure": 1363

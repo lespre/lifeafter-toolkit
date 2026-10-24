@@ -78,7 +78,7 @@ def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=
         c = conf.get(sid)
         lo, hi = (c["lower"], c["upper"]) if c else (0.5, 2.0)
         items.append({
-            "id": "%s_%d" % ("cls" if branch == "经典服" else "kj1", sid),
+            "id": "%s_%d" % ("cls" if branch == "测试服·经典服源" else "kj1", sid),
             "name": nm,
             "scene_id": sid,
             "server_type": branch,
@@ -90,11 +90,11 @@ def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=
             "row_key": c["row_key"] if c else -1,
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "source": (("special_hurt_params_data（经典服）" if c else
+            "source": (("special_hurt_params_data（测试服·经典服源）" if c else
                         "全局默认行 hurt_params_data（0.50~2.00 / min_attack 10）——本机 PE 树无该表，"
                         "数值取自 PR 交接包，未经本地复核")
-                       if branch == "经典服" else
-                       "special_hurt_params_data oversea/_kj1（简单生存服）"),
+                       if branch == "测试服·经典服源" else
+                       "special_hurt_params_data oversea/_kj1（测试服·简单生存服源）"),
             "status_tags": ["static config"],
         })
     return items
@@ -103,8 +103,8 @@ def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=
 def main() -> int:
     base_names = scene_names(TREE / "space_data.py")
     items = []
-    items += build("经典服", TREE / "special_hurt_params_data.py", CHS_HURT, base_names)
-    items += build("简单生存服",
+    items += build("测试服·经典服源", TREE / "special_hurt_params_data.py", CHS_HURT, base_names)
+    items += build("测试服·简单生存服源",
                    TREE / "oversea/special_hurt_params_data_auto_oversea_data_kj1.py",
                    None, base_names, only_configured=True)
 
@@ -114,11 +114,12 @@ def main() -> int:
             "category": "二、战力类 / （五）伤害计算公式与场景平衡",
             "generated": "2026-10-24",
             "evidence": "structure",
-            "source_server": "PE 还原树 pe_20261020（测试服同时携带经典服与简单生存服两套分支资源）",
+            "source_server": "PE 还原树 pe_20261020（测试服预发包，同时携带经典服源与简单生存服源）",
             "package_sha": "",
             "filters": [{"key": "server_type", "label": "服型"},
                         {"key": "source_kind", "label": "配置来源"}],
-            "notes": ("经典服取 special_hurt_params_data（693 行），简单生存服取 oversea/_kj1（98 行）；"
+            "notes": ("两个分支都来自测试服预发资源包：经典服源取 com/cdata/special_hurt_params_data（693 行），"
+                      "简单生存服源取 oversea/_kj1（98 行）；"
                       "scene_id 无专属行的场景按全局默认 hurt_params_data（0.50~2.00）标『默认行』并保留，"
                       "不从表里消失。两分支数值不混算、不互相回填。"),
         },
