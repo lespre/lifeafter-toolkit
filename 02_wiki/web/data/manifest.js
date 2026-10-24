@@ -218,6 +218,34 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "装备属性（武器 · 护甲）",
+      "category": "二、战力类 / （八）装备属性",
+      "board": "equipment_attrs",
+      "items": 753,
+      "generated": "2026-10-24",
+      "source_server": "PE 还原树 pe_20261020 · all_equips_data · 测试服",
+      "package_sha": "7167412975572b1466ad886823fb6f7336fa079dc8ba7c3d3506faf1d1d57020",
+      "evidence": {
+        "structure": 753
+      },
+      "state_summary": {
+        "unresolved": 753,
+        "static config": 753,
+        "verified": 0,
+        "runtime final unknown": 753,
+        "有属性": 753
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 753
+        }
+      }
+    },
+    {
       "name": "时装静态记录 · identity unresolved",
       "category": "二、时装类 / （一）时装静态记录（身份待解析）",
       "board": "fashion_identity_unresolved_v01",

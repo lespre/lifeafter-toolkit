@@ -290,6 +290,12 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1",
       "items": 23567,
       "reason": "P4-D verified runtime structure + source-locked static config；not runtime final；474 quarantined 默认隔离。"
+    },
+    "equipment_attrs": {
+      "publication_status": "published",
+      "category": "二、战力类 / （八）装备属性",
+      "items": 753,
+      "reason": "all_equips_data（PE 还原树 pe_20261020，oversea/_kj1）逐行解码；attrs 为 0xC6/0x86 嵌套行帧，属性名取自同表 chs 池；每条带 row_key 与定位链。只展示 attrs 非空条目，空属性条目不进板、不补零。"
     }
   }
 };
