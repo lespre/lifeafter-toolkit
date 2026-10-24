@@ -112,3 +112,16 @@ seckeys/
 
 # 站点运行配置（不是数据，必须随代码走）
 !02_wiki/web/data/live_sources.json
+
+# 武器皮肤 2D 媒体索引（board.html 卡面依赖它；新设备缺这个文件会整块不渲染）
+!02_wiki/web/data/media/
+!02_wiki/web/data/media/*.js
+!02_wiki/web/data/media/*.json
+
+# 站内构建脚本/配置（新设备靠它们复现）
+!02_wiki/web/data/boards/
+!02_wiki/web/data/boards/*.js
+!02_wiki/web/data/wiki_taxonomy.*
+!02_wiki/web/data/publication_policy.*
+!02_wiki/web/data/manifest.js
+!02_wiki/web/data/table_index.json

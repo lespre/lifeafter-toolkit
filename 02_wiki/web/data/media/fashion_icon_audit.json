@@ -1,0 +1,53 @@
+{
+ "generated_at": "2026-10-18T03:47:09+08:00",
+ "loc0": {
+  "path": "01_索引与产物/30_分析/热更检测/pe_file_index/gpk_loc0",
+  "records": 1805102,
+  "entry_bytes": 16
+ },
+ "items": 1253,
+ "items_with_img": 1127,
+ "images": 4240,
+ "gpk_loc0_hit": 4240,
+ "gpk_loc0_hit_rate": 100.0,
+ "items_all_imgs_hit": 1127,
+ "png_missing": 0,
+ "declared_missing_refs": 887,
+ "declared_missing_but_in_loc0": 8,
+ "suspects": 26,
+ "by_part": {
+  "整套": {
+   "imgs": 1527,
+   "hit": 1527
+  },
+  "hat": {
+   "imgs": 150,
+   "hit": 150
+  },
+  "cloth/hat": {
+   "imgs": 1476,
+   "hit": 1476
+  },
+  "bag": {
+   "imgs": 645,
+   "hit": 645
+  },
+  "cloth": {
+   "imgs": 150,
+   "hit": 150
+  },
+  "suit": {
+   "imgs": 40,
+   "hit": 40
+  },
+  "light": {
+   "imgs": 248,
+   "hit": 248
+  },
+  "cloth/hat/suit": {
+   "imgs": 4,
+   "hit": 4
+  }
+ },
+ "rule": "hat→icon_h_* / bag→icon_bag_* / cloth→icon_b_*|icon_cloth_* / suit→icon_suit_*|icon_*；多部位按并集；整套/光源不设命名约定"
+}

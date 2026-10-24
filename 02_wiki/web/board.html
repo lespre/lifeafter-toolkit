@@ -970,9 +970,23 @@ function mediaPreviewReady(record){
 /* 2026-10-18（用户口径）：卡面只放 2D 海报。3D 入口/材质保真徽标一律进「展开后」详情区，
    卡面无 2D 图就整块不渲染 —— 不拿 3D 渲染图顶卡面。 */
 function renderSkinMedia(it,name){
-  const record=skinMediaRecord(it);if(!record)return "";
+  /* ★ 2026-10-24：data/media/weapon_skin_media.js 可能没随数据包分发（新设备实测缺整个 data/media/）。
+     查不到 record 时，退回板内自带的 _media.images —— 不再让卡面整块消失。 */
+  const record=skinMediaRecord(it);
+  const fallback=(()=>{
+    const imgs=(it&&it._media&&it._media.images)||[];
+    const hit=imgs.find(x=>x&&x.png&&!/3d\//i.test(String(x.png)))||imgs[0];
+    return hit&&hit.png?hit.png:"";
+  })();
+  if(!record){
+    if(!fallback)return "";
+    return `<div class="skin-media"><img src="${esc(fallback)}" alt="${esc(name)}预览" loading="lazy" decoding="async"></div>`;
+  }
   const poster=media2DPosterSrc(record);
-  if(!poster)return "";
+  if(!poster){
+    if(!fallback)return "";
+    return `<div class="skin-media"><img src="${esc(fallback)}" alt="${esc(name)}预览" loading="lazy" decoding="async"></div>`;
+  }
   /* ★ 2026-10-17：这张图可能根本不是海报而是**素材底图**（法线图/掩码/色带/平铺）——
      按像素内容判过才有的字段；有就明说，别让人把法线图当皮肤预览看。无值不加标签。 */
   const kindLabel=(record&&record.poster_kind)||"";
