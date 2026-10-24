@@ -72,9 +72,9 @@ def params(tbl: pathlib.Path, chs: pathlib.Path | None) -> dict:
 def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=False):
     conf = params(p_tbl, p_chs)
     items = []
-    scope = sorted(conf) if only_configured else sorted(names)
+    scope = sorted(set(names) | set(conf)) if not only_configured else sorted(conf)
     for sid in scope:
-        nm = names.get(sid, "场景 %d" % sid)
+        nm = names.get(sid) or ("场景 %d（场景表无名字）" % sid)
         c = conf.get(sid)
         lo, hi = (c["lower"], c["upper"]) if c else (0.5, 2.0)
         items.append({
@@ -85,13 +85,16 @@ def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=
             "lower": lo,
             "upper": hi,
             "range": ("%.2f ~ %.2f" % (lo, hi)) if lo is not None and hi is not None else "",
-            "min_attack": c["min_attack"] if c else None,
-            "source_kind": "专属行" if c else "默认行",
+            "min_attack": c["min_attack"] if c else 10.0,
+            "source_kind": "专属行" if c else "默认行（外部参照）",
             "row_key": c["row_key"] if c else -1,
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "source": ("special_hurt_params_data（经典服）" if branch == "经典服"
-                       else "special_hurt_params_data oversea/_kj1（简单生存服）"),
+            "source": (("special_hurt_params_data（经典服）" if c else
+                        "全局默认行 hurt_params_data（0.50~2.00 / min_attack 10）——本机 PE 树无该表，"
+                        "数值取自 PR 交接包，未经本地复核")
+                       if branch == "经典服" else
+                       "special_hurt_params_data oversea/_kj1（简单生存服）"),
             "status_tags": ["static config"],
         })
     return items
@@ -128,6 +131,14 @@ def main() -> int:
         if p.exists():
             h.update(p.read_bytes())
     d["meta"]["package_sha"] = h.hexdigest()
+    from collections import Counter as _C
+    dup = {}
+    for br, pth, ch in (("经典服", TREE / "special_hurt_params_data.py", CHS_HURT),
+                        ("简单生存服", TREE / "oversea/special_hurt_params_data_auto_oversea_data_kj1.py", None)):
+        n = _C(_v(r["values"].get("scene_id")) for r in _rows(pth, ch))
+        dup[br] = {"rows": sum(n.values()), "unique_scene": len(n),
+                   "dup_rows": sum(n.values()) - len(n)}
+    d["meta"]["row_stats"] = dup
     d["meta"]["state_summary"] = {"unresolved": len(items), "static config": len(items),
                                   "verified": 0, "runtime final unknown": len(items),
                                   "有专属行": sum(1 for i in items if i["source_kind"] == "专属行"),

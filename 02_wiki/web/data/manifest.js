@@ -455,20 +455,20 @@ window.WIKI_MANIFEST = {
       "name": "场景伤害加成（按服型分档）",
       "category": "二、战力类 / （五）伤害计算公式与场景平衡",
       "board": "scene_balance",
-      "items": 1343,
+      "items": 1363,
       "generated": "2026-10-24",
       "source_server": "PE 还原树 pe_20261020（测试服同时携带经典服与简单生存服两套分支资源）",
       "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
       "evidence": {
-        "structure": 1343
+        "structure": 1363
       },
       "state_summary": {
-        "unresolved": 1343,
-        "static config": 1343,
+        "unresolved": 1363,
+        "static config": 1363,
         "verified": 0,
-        "runtime final unknown": 1343,
-        "有专属行": 738,
-        "默认行": 605
+        "runtime final unknown": 1363,
+        "有专属行": 758,
+        "默认行": 0
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -476,7 +476,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1343
+          "replayed-structural": 1363
         }
       }
     },

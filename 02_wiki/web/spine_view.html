@@ -6,148 +6,287 @@
 <style>
   html,body{margin:0;height:100%;background:#0c0b0a;color:#e8e0d8;font:13px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
   #wrap{display:flex;height:100%}
-  #stage{flex:1;display:flex;align-items:center;justify-content:center}
-  canvas{max-width:100%;max-height:100%}
-  #side{width:260px;border-left:1px solid #2b231d;padding:14px;box-sizing:border-box;overflow:auto}
+  #stage{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  canvas{max-width:100%;max-height:100%;background:#141110;box-shadow:0 0 0 1px #2b231d}
+  #side{width:280px;border-left:1px solid #2b231d;padding:14px;box-sizing:border-box;overflow:auto}
   h1{font-size:15px;margin:0 0 8px}
-  .kv{display:flex;justify-content:space-between;font-size:12px;color:#a8988a;margin:3px 0}
-  select,button{width:100%;margin-top:8px;background:#171310;color:#e8e0d8;border:1px solid #3a2f26;border-radius:6px;padding:6px}
+  .kv{display:flex;justify-content:space-between;font-size:12px;color:#a8988a;margin:3px 0;gap:8px}
+  .kv b{color:#e8e0d8;font-weight:600;text-align:right;word-break:break-all}
   #err{color:#ff8a7a;font-size:12px;white-space:pre-wrap;margin-top:10px}
+  #note{color:#6f6156;font-size:11px;margin-top:12px;line-height:1.6}
 </style>
 </head>
 <body>
 <div id="wrap">
-  <div id="stage"><canvas id="cv" width="512" height="512"></canvas></div>
+  <div id="stage"><canvas id="cv" width="1024" height="768"></canvas></div>
   <div id="side">
     <h1>Spine 预览</h1>
+    <div class="kv"><span>骨架</span><b id="src">-</b></div>
     <div class="kv"><span>版本</span><b id="ver">-</b></div>
     <div class="kv"><span>尺寸</span><b id="size">-</b></div>
     <div class="kv"><span>动画</span><b id="anim">-</b></div>
-    <div class="kv"><span>帧率</span><b id="fps">-</b></div>
-    <select id="animSel"></select>
-    <button id="pause">暂停 / 继续</button>
+    <div class="kv"><span>区域</span><b id="regions">-</b></div>
     <div id="err"></div>
+    <div id="note">Canvas2D 直绘（atlas + json → setup 姿势合成 region 附件）。
+      参数 <code>?f=&lt;atlas 逻辑路径&gt;</code>，兼容旧式 <code>?d=</code>&amp;<code>?n=</code>。</div>
   </div>
 </div>
-<script src="assets/spine_runtime/3.8/spine-webgl-3.8.js"></script>
 <script>
-const q = new URLSearchParams(location.search);
-const dir = q.get('d') || 'ui/spine/touxiang_ani';
-const name = q.get('n') || 'icon_touxiang_67';
-const base = `assets/spine_live/${dir}/${name}`;
-const err = m => { document.getElementById('err').textContent += m + "\n"; console.error(m); };
+/* ==================================================================
+   Spine 预览（Canvas2D 自绘，无第三方 runtime）
+   - atlas v1 文本（多页 / rotate 支持）
+   - skeleton JSON 2.1.x 与 3.8.x 的 region 附件
+   - mesh / skinnedmesh / path 附件跳过并计数（不伪造）
+   ================================================================== */
+const Q = new URLSearchParams(location.search);
+const errEl = document.getElementById('err');
+const err = m => { errEl.textContent += m + "\n"; console.error(m); };
 
-const canvas = document.getElementById('cv');
-const gl = canvas.getContext('webgl', {alpha: true, premultipliedAlpha: false, preserveDrawingBuffer: true});
-if (!gl) err('WebGL 不可用');
-
-let renderer, skeleton, state, paused = false, last = 0, acc = 0, frames = 0;
-
-function tick(now) {
-  const dt = Math.min(0.05, (now - last) / 1000 || 0);
-  last = now;
-  if (!paused) {
-    try {
-      if (window.__staticPose) { skeleton.setToSetupPose(); }
-      else { state.update(dt); state.apply(skeleton); }
-      skeleton.updateWorldTransform();
-      // 动画会把槽位 alpha 拉回 0（游戏由运行时控制），预览每帧强制不透明
-      if (window.__forceAlpha) skeleton.slots.forEach(sl => { sl.color.a = 1; });
-    }
-    catch (e) { err('anim: ' + e.message); paused = true; }
+function resolveAtlasPath() {
+  let f = Q.get('f');
+  if (f) {
+    f = f.replace(/\\/g, '/').replace(/^\/+/, '');
+    if (!/\.atlas$/i.test(f)) f += '.atlas';
+    return f;
   }
-  try {
-    renderer.begin();
-    renderer.drawSkeleton(skeleton, true);
-    renderer.end();
-  } catch (e) { err('draw: ' + e.message); paused = true; }
-  frames++; acc += dt;
-  if (acc >= 0.5) { document.getElementById('fps').textContent = Math.round(frames / acc); frames = 0; acc = 0; }
-  requestAnimationFrame(tick);
+  const d = Q.get('d') || 'ui/spine/touxiang_ani';
+  const n = Q.get('n') || 'icon_touxiang_67';
+  return d + '/' + n + '.atlas';
+}
+const ROOT = Q.get('root') || 'assets/spine_live/';
+const ATLAS_URL = ROOT + resolveAtlasPath();
+const BASE = ATLAS_URL.slice(0, -6);
+
+/* ------------------------------- atlas ------------------------------- */
+function parseAtlas(text) {
+  const pages = [], regions = {};
+  let page = null, cur = null;
+  for (const raw of text.split(/\r\n|\r|\n/)) {
+    const line = raw.replace(/^\uFEFF/, '');
+    const s = line.trim();
+    if (!s) continue;
+    const indented = /^[ \t]/.test(line);
+    if (!indented) {
+      if (/\.(png|jpe?g|webp)$/i.test(s)) { page = { name: s, w: 0, h: 0 }; pages.push(page); cur = null; continue; }
+      cur = { name: s, rotate: false, x: 0, y: 0, w: 0, h: 0, ox: 0, oy: 0 };
+      regions[s] = cur;
+      continue;
+    }
+    let m;
+    if (!cur) {
+      if (page && (m = /^size:\s*(\d+)\s*,\s*(\d+)/.exec(s))) { page.w = +m[1]; page.h = +m[2]; }
+      continue;
+    }
+    if ((m = /^rotate:\s*(\w+)/.exec(s))) cur.rotate = !/^(false|0)$/i.test(m[1]);
+    else if ((m = /^xy:\s*(-?\d+)\s*,\s*(-?\d+)/.exec(s))) { cur.x = +m[1]; cur.y = +m[2]; }
+    else if ((m = /^size:\s*(\d+)\s*,\s*(\d+)/.exec(s))) { cur.w = +m[1]; cur.h = +m[2]; }
+    else if ((m = /^off(?:set|s)?:\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)/.exec(s))) { cur.ox = +m[1]; cur.oy = +m[2]; }
+    else if ((m = /^orig:\s*(\d+)\s*,\s*(\d+)/.exec(s))) { cur.ow = +m[1]; cur.oh = +m[2]; }
+  }
+  return { pages, regions };
 }
 
+/* ----------------------------- 矩阵工具 ----------------------------- */
+const I = () => ({ a: 1, b: 0, c: 0, d: 1, x: 0, y: 0 });
+function mul(m, n) {
+  return {
+    a: m.a * n.a + m.c * n.b, b: m.b * n.a + m.d * n.b,
+    c: m.a * n.c + m.c * n.d, d: m.b * n.c + m.d * n.d,
+    x: m.a * n.x + m.c * n.y + m.x, y: m.b * n.x + m.d * n.y + m.y,
+  };
+}
+function trs(x, y, rotDeg, sx, sy) {
+  const r = rotDeg * Math.PI / 180, co = Math.cos(r), si = Math.sin(r);
+  return { a: co * sx, b: si * sx, c: -si * sy, d: co * sy, x, y };
+}
+function apply(m, u, v) { return [m.a * u + m.c * v + m.x, m.b * u + m.d * v + m.y]; }
+
+function parseColor(s) {
+  if (!s) return null;
+  const h = String(s).replace(/^#/, '');
+  if (h.length < 6) return null;
+  const n = i => parseInt(h.slice(i, i + 2), 16) || 0;
+  return { r: n(0), g: n(2), b: n(4), a: h.length >= 8 ? n(6) : 255 };
+}
+
+function skinMap(raw) {
+  if (Array.isArray(raw)) {
+    const out = {};
+    for (const s of raw) out[s.name || 'default'] = s.attachments || {};
+    return out;
+  }
+  return raw || {};
+}
+
+/* --------------------------- 场景构建（setup 姿势） --------------------------- */
+function buildScene(json, atlas) {
+  const skins = skinMap(json.skins);
+  const skinName = skins['default'] ? 'default' : Object.keys(skins)[0];
+  const skin = skins[skinName] || {};
+
+  const bones = (json.bones || []).map(function (b) {
+    return {
+      name: b.name, parent: b.parent || null,
+      x: b.x || 0, y: b.y || 0, rot: b.rotation || 0,
+      sx: b.scaleX === undefined ? 1 : b.scaleX,
+      sy: b.scaleY === undefined ? 1 : b.scaleY
+    };
+  });
+  const bmap = {};
+  for (const b of bones) bmap[b.name] = b;
+
+  const world = {};
+  function visit(b, guard) {
+    if (world[b.name] !== undefined || guard > 64) return world[b.name] || I();
+    const p = b.parent ? bmap[b.parent] : null;
+    const pm = p ? visit(p, guard + 1) : I();
+    world[b.name] = mul(pm, trs(b.x, b.y, b.rot, b.sx, b.sy));
+    return world[b.name];
+  }
+  for (const b of bones) visit(b, 0);
+
+  const items = [];
+  let skipped = 0, regions = 0;
+  for (const sl of (json.slots || [])) {
+    if (!sl.attachment) continue;
+    const slotAtt = skin[sl.name] || {};
+    let attName = sl.attachment;
+    let att = slotAtt[attName];
+    if (!att) {
+      const ks = Object.keys(slotAtt);
+      if (!ks.length) continue;
+      attName = ks[0]; att = slotAtt[attName];
+    }
+    const type = String(att.type || (att.vertices && att.uvs ? 'mesh' : 'region')).toLowerCase();
+    if (type !== 'region') { skipped++; continue; }
+    const rname = att.path || attName;
+    const rg = atlas.regions[rname] || atlas.regions[attName];
+    if (!rg) { skipped++; continue; }
+    const bw = world[sl.bone] || I();
+    const w = att.width === undefined ? rg.w : att.width;
+    const h = att.height === undefined ? rg.h : att.height;
+    const m = mul(bw, trs(att.x || 0, att.y || 0, att.rotation || 0,
+      att.scaleX === undefined ? 1 : att.scaleX,
+      att.scaleY === undefined ? 1 : att.scaleY));
+    const col = parseColor(att.color) || parseColor(sl.color) || { r: 255, g: 255, b: 255, a: 255 };
+    items.push({ slot: sl.name, name: attName, rg: rg, w: w, h: h, m: m, col: col });
+    regions++;
+  }
+  return { items: items, skipped: skipped, regions: regions, skinName: skinName };
+}
+
+/* ------------------------------- 渲染 ------------------------------- */
+function drawScene(scene, atlas, canvas) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  if (!scene.items.length) return null;
+
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const it of scene.items) {
+    const cs = [[-it.w / 2, -it.h / 2], [it.w / 2, -it.h / 2], [it.w / 2, it.h / 2], [-it.w / 2, it.h / 2]];
+    for (const c of cs) {
+      const p = apply(it.m, c[0], c[1]);
+      if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0];
+      if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1];
+    }
+  }
+  const sw = Math.max(1e-3, x1 - x0), sh = Math.max(1e-3, y1 - y0);
+  const k = Math.min(W / (sw * 1.08), H / (sh * 1.08));
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+
+  function toDev(m) {
+    return {
+      a: m.a * k, b: -m.b * k, c: m.c * k, d: -m.d * k,
+      x: (m.x - cx) * k + W / 2, y: -(m.y - cy) * k + H / 2
+    };
+  }
+
+  for (const it of scene.items) {
+    const rg = it.rg;
+    const img = atlas.pageImg[rg.pageIdx];
+    if (!img) continue;
+    const M = toDev(mul(it.m, trs(-it.w / 2, -it.h / 2, 0, 1, 1)));
+    ctx.save();
+    if (rg.rotate) {
+      const P = { a: 0, b: it.h / rg.w, c: -it.w / rg.h, d: 0, x: it.w, y: 0 };
+      const T = mul(M, P);
+      ctx.setTransform(T.a, T.b, T.c, T.d, T.x, T.y);
+      ctx.drawImage(img, rg.x, rg.y, rg.h, rg.w, 0, 0, rg.h, rg.w);
+    } else {
+      ctx.setTransform(M.a, M.b, M.c, M.d, M.x, M.y);
+      ctx.drawImage(img, rg.x, rg.y, rg.w, rg.h, 0, 0, it.w, it.h);
+    }
+    ctx.restore();
+  }
+  return { box: [x0, y0, x1, y1], k: k };
+}
+
+/* ------------------------------- 载入 ------------------------------- */
 function loadImage(url) {
-  return new Promise((res, rej) => {
-    const img = new Image();
-    img.onload = () => res(img);
-    img.onerror = () => rej(new Error('图片加载失败 ' + url));
-    img.src = url;
+  return new Promise(function (res, rej) {
+    const im = new Image();
+    im.onload = function () { res(im); };
+    im.onerror = function () { rej(new Error('图片加载失败 ' + url)); };
+    im.src = url;
   });
 }
 
 async function boot() {
+  window.__ready = false;
   try {
-    const [atlasText, jsonText] = await Promise.all([
-      fetch(`${base}.atlas`).then(r => r.text()),
-      fetch(`${base}.json`).then(r => r.text()),
-    ]);
-    const atlasDir = base.slice(0, base.lastIndexOf('/') + 1);
+    const rA = await fetch(ATLAS_URL, { cache: 'no-store' });
+    if (!rA.ok) throw new Error('atlas HTTP ' + rA.status + ' <- ' + ATLAS_URL);
+    const rJ = await fetch(BASE + '.json', { cache: 'no-store' });
+    if (!rJ.ok) throw new Error('json HTTP ' + rJ.status + ' <- ' + BASE + '.json');
+    const atlasText = await rA.text(), jsonText = await rJ.text();
 
-    // 先从 atlas 文本里取出贴图页文件名，预加载成 Image
-    const pages = atlasText.split(/\r?\n/).filter(l => /\.(png|jpg|webp)$/i.test(l.trim()))
-      .map(l => l.trim());
-    const imgs = {};
-    await Promise.all(pages.map(async p => {
-      let url = atlasDir + p;
-      try { await loadImage(url); } catch (e) {
-        // 该包过期时兜底：同目录 page0.png（早期转换产物）
-        url = atlasDir + "page0.png";
-      }
-      imgs[p] = await loadImage(url);
-    }));
-
-    const atlas = new spine.TextureAtlas(atlasText, path => {
-      const img = imgs[path];
-      if (!img) throw new Error('atlas 引用了未预加载的页: ' + path);
-      return new spine.webgl.GLTexture(gl, img);
-    });
-    // 3.8 导出把 skins 写成对象，而运行时按数组读：这里统一转成数组
-    const rawJson = JSON.parse(jsonText);
-    if (rawJson.skins && !Array.isArray(rawJson.skins)) {
-      rawJson.skins = Object.keys(rawJson.skins).map(k => ({ name: k, attachments: rawJson.skins[k] }));
+    const atlas = parseAtlas(atlasText);
+    if (!atlas.pages.length) throw new Error('atlas 未解析出贴图页');
+    const dir = BASE.slice(0, BASE.lastIndexOf('/') + 1);
+    atlas.pageImg = [];
+    for (let i = 0; i < atlas.pages.length; i++) {
+      const p = atlas.pages[i];
+      const im = await loadImage(dir + p.name);
+      atlas.pageImg[i] = im;
+      if (!p.w) { p.w = im.naturalWidth; p.h = im.naturalHeight; }
     }
-    const json = new spine.SkeletonJson(new spine.AtlasAttachmentLoader(atlas));
-    const data = json.readSkeletonData(rawJson);
+    for (const key in atlas.regions) {
+      const rg = atlas.regions[key];
+      rg.pageIdx = 0;
+      let acc = 0;
+      for (let i = 0; i < atlas.pages.length; i++) {
+        if (rg.y < acc + atlas.pages[i].h) { rg.pageIdx = i; break; }
+        acc += atlas.pages[i].h;
+      }
+    }
 
-    skeleton = new spine.Skeleton(data);
-    const skinNames = (data.skins || []).map(s => s.name);
-    try { skeleton.setSkinByName(skinNames.includes("default") ? "default" : skinNames[0]); } catch (e) { err("skin: " + e.message); }
-    skeleton.setToSetupPose();
-    // 游戏里槽位 alpha 初始为 0，由运行时淡入；静态预览统一置为不透明
-    skeleton.slots.forEach(sl => { try { sl.color.a = 1; } catch (e) {} });
-    skeleton.updateWorldTransform();
-    state = new spine.AnimationState(new spine.AnimationStateData(data));
+    const raw = JSON.parse(jsonText);
+    const scene = buildScene(raw, atlas);
+    const data = raw.skeleton || {};
 
-    const names = (data.animations || []).map(a => a.name);
-    document.getElementById('ver').textContent = data.version || '?';
-    document.getElementById('size').textContent = Math.round(data.width) + ' × ' + Math.round(data.height);
-    document.getElementById('anim').textContent = names[0] || '-';
-    const sel = document.getElementById('animSel');
-    sel.innerHTML = names.map(n => `<option>${n}</option>`).join('');
-    sel.onchange = () => state.setAnimation(0, sel.value, true);
-    if (names[0]) state.setAnimation(0, names[0], true);
+    const canvas = document.getElementById('cv');
+    const info = drawScene(scene, atlas, canvas);
 
-    renderer = new spine.webgl.SceneRenderer(canvas, gl, true);
-    const w = data.width || 200, h = data.height || 200;
-    const cw = canvas.width, ch = canvas.height;
-    const fit = Math.max(w / cw, h / ch) * 1.2;
-    const Q = new URLSearchParams(location.search);
-    const vw = Number(Q.get('vw') || 0), px = Q.get('px'), py = Q.get('py');
-    renderer.camera.viewportWidth = vw || cw * fit;
-    renderer.camera.viewportHeight = vw || ch * fit;
-    renderer.camera.position = new spine.webgl.Vector3(
-      px !== null ? Number(px) : w / 2,
-      py !== null ? Number(py) : h / 2, 0);
-    renderer.camera.update();
+    document.getElementById('src').textContent = ATLAS_URL.replace(ROOT, '');
+    document.getElementById('ver').textContent = data.spine || '?';
+    document.getElementById('size').textContent =
+      Math.round(data.width || 0) + ' x ' + Math.round(data.height || 0);
+    document.getElementById('anim').textContent = Object.keys(raw.animations || {})[0] || '-';
+    document.getElementById('regions').textContent =
+      scene.regions + (scene.skipped ? '（跳过 ' + scene.skipped + '）' : '');
 
-    window.__dbg = {atlas, skeleton, state, renderer, data, pages};
-    requestAnimationFrame(tick);
+    window.__scene = scene;
+    window.__info = info;
+    window.__atlas = atlas;
+    window.__ready = true;
   } catch (e) {
+    window.__ready = false;
     err('启动失败: ' + (e && e.message ? e.message : e));
     console.error(e);
   }
 }
-document.getElementById('pause').onclick = () => { paused = !paused; };
 boot();
 </script>
 </body>
