@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>伤害计算器 · 明日之后</title>
+<style>
+  :root{color-scheme:dark}
+  body{margin:0;font-family:system-ui,"Microsoft YaHei",sans-serif;background:#0e1014;color:#e8e8ea}
+  .wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+  h1{font-size:20px;margin:0 0 6px}
+  .src{color:#8b8f97;font-size:12px;margin-bottom:20px;line-height:1.6}
+  .row{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:center;margin:10px 0}
+  select,input{width:100%;padding:9px 10px;background:#171a21;border:1px solid #2a2f3a;border-radius:8px;color:#e8e8ea;font-size:14px}
+  button{padding:10px 18px;background:#c0392b;border:0;border-radius:8px;color:#fff;font-size:14px;cursor:pointer}
+  .out{margin-top:22px;padding:18px;background:#15181f;border:1px solid #262c38;border-radius:12px}
+  .big{font-size:28px;font-weight:700;color:#f0c419;letter-spacing:.5px}
+  .kv{display:flex;gap:18px;flex-wrap:wrap;color:#9aa0aa;font-size:13px;margin-top:8px}
+  .note{margin-top:14px;font-size:12px;color:#7c828c;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>伤害计算器</h1>
+  <div class="src">
+    数据：装备属性（all_equips attrs，0xC6/0x86 嵌套行帧）× 场景加成（special_hurt_params_data，按服型分档）× 伤害逆向结论<br>
+    口径：伤害 = 攻击力 × (1 + 场景加成) × (1 − 减伤率) × 部位 × 暴击
+  </div>
+
+  <div class="row"><label>服型</label><select id="server"></select></div>
+  <div class="row"><label>武器</label><select id="weapon"></select></div>
+  <div class="row"><label>目标护甲</label><select id="target"></select></div>
+  <div class="row"><label>场景</label><select id="scene"></select></div>
+  <div class="row"><label>部位系数</label><input id="part" type="number" value="1" step="0.05"></div>
+  <div class="row"><label>暴击系数</label><input id="crit" type="number" value="1" step="0.05"></div>
+  <div class="row"><label></label><button onclick="calc()">计算</button></div>
+
+  <div class="out" id="out">
+    <div class="big" id="range">—</div>
+    <div class="kv" id="detail"></div>
+    <div class="note">
+      区间内的具体值取决于「攻击力 vs 护甲」的分段曲线，客户端里未证实，所以这里只给区间不给点值。
+      部位/暴击是独立乘区，默认 1。
+    </div>
+  </div>
+</div>
+<script>
+let EQ=[], SB=[], SERVERS=[], WEAPONS=[], ARMORS=[];
+const pick=(o,k)=>o&&o[k]!=null?o[k]:0;
+function attrsOf(it){ return String(it['属性']||''); }
+function attrNum(it, names){
+  const t=attrsOf(it);
+  for(const seg0 of t.split('｜')){
+    const seg=seg0.trim();
+    for(const n of names){
+      if(seg.startsWith(n)){
+        const v=parseFloat(seg.slice(n.length).trim());
+        return isNaN(v)?0:v;
+      }
+    }
+  }
+  return 0;
+}
+function fill(sel, arr, labelFn){
+  sel.innerHTML=arr.map((x,i)=>`<option value="${i}">${labelFn(x)}</option>`).join('');
+}
+async function boot(){
+  EQ=(await (await fetch('data/boards/equipment_attrs.json')).json()).items||[];
+  SB=(await (await fetch('data/boards/scene_balance.json')).json()).items||[];
+  SERVERS=[...new Set(SB.map(x=>x.server_type))];
+  fill(document.getElementById('server'), SERVERS, s=>s);
+  WEAPONS=EQ.filter(x=>/攻击力/.test(attrsOf(x)));
+  ARMORS=[{name:'（不选）'},...EQ.filter(x=>/护甲值|伤害减免百分比/.test(attrsOf(x)))];
+  fill(document.getElementById('weapon'), WEAPONS, x=>x.name);
+  fill(document.getElementById('target'), ARMORS, x=>x.name);
+  document.getElementById('server').onchange=()=>sceneFill();
+  sceneFill();
+  document.getElementById('weapon').onchange=()=>{};
+}
+function sceneFill(){
+  const s=SERVERS[+document.getElementById('server').value]||SERVERS[0];
+  const arr=SB.filter(x=>x.server_type===s);
+  fill(document.getElementById('scene'), arr, x=>`${x.name}（${x.range.replace(/ /g,'')}｜${x.source_kind}）`);
+}
+function calc(){
+  const s=SERVERS[+document.getElementById('server').value]||SERVERS[0];
+  const w=WEAPONS[+document.getElementById('weapon').value];
+  const t=ARMORS[+document.getElementById('target').value];
+  const sc=SB.filter(x=>x.server_type===s)[+document.getElementById('scene').value];
+  const part=parseFloat(document.getElementById('part').value)||1;
+  const crit=parseFloat(document.getElementById('crit').value)||1;
+  const hurt=attrNum(w,['攻击力','伤害']);
+  const power=attrNum(w,['武器火力','功率']);
+  const red=t&&t.name!=='（不选）'?attrNum(t,['伤害减免百分比','减伤率']):0;
+  const armor=t&&t.name!=='（不选）'?attrNum(t,['护甲值','护甲']):0;
+  const lo=hurt*(1+sc.lower)*(1-red)*part*crit;
+  const hi=hurt*(1+sc.upper)*(1-red)*part*crit;
+  document.getElementById('range').textContent=`${lo.toFixed(1)} ~ ${hi.toFixed(1)}`;
+  document.getElementById('detail').innerHTML=
+    `<span>武器 ${w.name}（攻击力 ${hurt}｜火力 ${power}）</span>`+
+    `<span>目标 ${t?t.name:'—'}（护甲 ${armor}｜减伤 ${red}）</span>`+
+    `<span>场景 ${sc.name}（${sc.range}）</span>`;
+}
+boot();
+</script>
+</body>
+</html>

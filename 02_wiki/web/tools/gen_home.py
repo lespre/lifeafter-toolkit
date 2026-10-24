@@ -960,6 +960,7 @@ PORTALS = [
     ("板块浏览", "board.html", "ok"),
     ("外观三维预览", "skin3d.html", "ok"),
     ("武器模型", "weapon_models.html", "ok"),
+    ("伤害计算器", "damage.html", "ok"),
 ]
 
 
