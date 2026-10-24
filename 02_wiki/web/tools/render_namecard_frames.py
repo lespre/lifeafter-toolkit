@@ -103,6 +103,11 @@ async def render_all(items, ws_url, limit):
 
         for n, it in enumerate(items, 1):
             sid, sp = it["id"], it["spine_path"]
+            dst0 = FRAMES / (sid + '.png')
+            if dst0.is_file() and dst0.stat().st_size > 2048:
+                done.append((sid, 0, 0, dst0.stat().st_size))
+                print('[%d/%d] %s 已有，跳过' % (n, len(items), sid))
+                continue
             ok, why = ensure_assets(sp)
             if not ok:
                 fail.append((sid, sp, why))

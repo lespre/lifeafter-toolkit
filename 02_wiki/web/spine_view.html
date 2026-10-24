@@ -248,7 +248,13 @@ async function boot() {
     atlas.pageImg = [];
     for (let i = 0; i < atlas.pages.length; i++) {
       const p = atlas.pages[i];
-      const im = await loadImage(dir + p.name);
+      let im;
+      try {
+        im = await loadImage(dir + p.name);
+      } catch (e) {
+        // 历史包兜底：同目录 page0.png（早期转换产物）
+        im = await loadImage(dir + 'page0.png');
+      }
       atlas.pageImg[i] = im;
       if (!p.w) { p.w = im.naturalWidth; p.h = im.naturalHeight; }
     }

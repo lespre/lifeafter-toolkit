@@ -86,13 +86,13 @@ def build(branch: str, p_tbl: pathlib.Path, p_chs, names: dict, only_configured=
             "upper": hi,
             "range": ("%.2f ~ %.2f" % (lo, hi)) if lo is not None and hi is not None else "",
             "min_attack": c["min_attack"] if c else 10.0,
-            "source_kind": "专属行" if c else "默认行（外部参照）",
+            "source_kind": "专属行" if c else "默认行",
             "row_key": c["row_key"] if c else -1,
             "evidence": "structure",
             "evidence_level": "structure-only",
             "source": (("special_hurt_params_data（测试服·经典服源）" if c else
-                        "全局默认行 hurt_params_data（0.50~2.00 / min_attack 10）——本机 PE 树无该表，"
-                        "数值取自 PR 交接包，未经本地复核")
+                        "全局默认行 hurt_params_data（本机 .nxs 实测：0.50~2.00 / min_attack 10 / "
+                        "min_building_attack 2 / reduce 5 / K 1.0 / M 0.3）")
                        if branch == "测试服·经典服源" else
                        "special_hurt_params_data oversea/_kj1（测试服·简单生存服源）"),
             "status_tags": ["static config"],

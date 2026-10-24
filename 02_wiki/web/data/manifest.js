@@ -468,7 +468,7 @@ window.WIKI_MANIFEST = {
         "verified": 0,
         "runtime final unknown": 1363,
         "有专属行": 758,
-        "默认行": 0
+        "默认行": 605
       },
       "name_status_summary": {},
       "provenance_status": {
