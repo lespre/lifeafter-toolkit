@@ -1,0 +1,610 @@
+{
+ "stage": "P4-A2",
+ "artifact": "ITEM_MASTER_v02.jsonl",
+ "jsonl_sha256": "36042639e61d94b28892a94cf7e6c26903a9e38429c1b91376e406477774a4c8",
+ "base_rows": 1189,
+ "new_verified_rows": 27695,
+ "merged_rows": 28884,
+ "collisions_with_base": 0,
+ "name_verified": 27695,
+ "name_unresolved": 0,
+ "excluded_total": 58,
+ "excluded_by_state": {
+  "unresolved_dispatch_namespace_shadowed": 58
+ },
+ "per_schema": {
+  "92": {
+   "candidates": 992,
+   "verified": 992,
+   "shadowed": 0,
+   "name_verified": 992,
+   "name_unresolved": 0
+  },
+  "328": {
+   "candidates": 19146,
+   "verified": 19146,
+   "shadowed": 0,
+   "name_verified": 19146,
+   "name_unresolved": 0
+  },
+  "689": {
+   "candidates": 1350,
+   "verified": 1350,
+   "shadowed": 0,
+   "name_verified": 1350,
+   "name_unresolved": 0
+  },
+  "893": {
+   "candidates": 1610,
+   "verified": 1610,
+   "shadowed": 0,
+   "name_verified": 1610,
+   "name_unresolved": 0
+  },
+  "49912": {
+   "candidates": 1866,
+   "verified": 1812,
+   "shadowed": 54,
+   "name_verified": 1812,
+   "name_unresolved": 0
+  },
+  "118640": {
+   "candidates": 634,
+   "verified": 630,
+   "shadowed": 4,
+   "name_verified": 630,
+   "name_unresolved": 0
+  },
+  "245151": {
+   "candidates": 2155,
+   "verified": 2155,
+   "shadowed": 0,
+   "name_verified": 2155,
+   "name_unresolved": 0
+  }
+ },
+ "shadow_sets": {
+  "belt_chip": 60,
+  "nucleus": 130,
+  "all_equips": 196
+ },
+ "shadow_hits": 386,
+ "excluded": [
+  {
+   "schema_ref": 49912,
+   "item_id": 330001,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330002,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330003,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330004,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330006,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330007,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330008,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330009,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330010,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330011,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330012,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330013,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330014,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330015,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330016,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330017,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330019,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330020,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330021,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330022,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330023,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330024,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330025,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330026,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330028,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330029,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330032,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330033,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330034,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330035,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330037,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330038,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330039,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330040,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330041,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330042,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330043,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 330044,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331001,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331002,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331003,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331004,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331005,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331007,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331008,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331009,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331010,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331011,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331012,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331013,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331014,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331015,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331016,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 49912,
+   "item_id": 331017,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "belt_chip"
+   ]
+  },
+  {
+   "schema_ref": 118640,
+   "item_id": 660038,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "nucleus"
+   ]
+  },
+  {
+   "schema_ref": 118640,
+   "item_id": 660039,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "nucleus"
+   ]
+  },
+  {
+   "schema_ref": 118640,
+   "item_id": 660040,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "nucleus"
+   ]
+  },
+  {
+   "schema_ref": 118640,
+   "item_id": 660041,
+   "identity_state": "unresolved_dispatch_namespace_shadowed",
+   "reason": "id 同时存在于其它 dispatch namespace 表，运行时归属不可判",
+   "shadow_namespaces": [
+    "nucleus"
+   ]
+  }
+ ],
+ "negative_controls": {
+  "row_key_equals_id_only": false,
+  "integer_collision_only": false,
+  "table_name_heuristic": false,
+  "name_icon_presence": false,
+  "foreign_reference_field": false,
+  "foreign_entity_item_id": false,
+  "sample_default_debug_id": false,
+  "export_only_table": false,
+  "unsafe_source": false,
+  "circular_common_item_evidence": false,
+  "dispatch_namespace_shadowed": true,
+  "unsafe_name_slot": true
+ }
+}

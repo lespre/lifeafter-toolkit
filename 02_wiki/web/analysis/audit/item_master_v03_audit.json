@@ -1,0 +1,36 @@
+{
+ "stage": "P4-A3",
+ "artifact": "im_v03.json",
+ "jsonl_sha256": "44ce23278b7d6f8225dcc833f8586691e7d83e03d44df741d96c7715dae592fa",
+ "rows": 30252,
+ "namespaces": {
+  "belt_chip": 54,
+  "common_item": 29450,
+  "gift_data": 748
+ },
+ "namespace_count": 3,
+ "global_id_duplicates": 1,
+ "added": {
+  "common_item": 566,
+  "belt_chip": 54,
+  "gift_data": 748
+ },
+ "unique_namespace_id": 30252,
+ "classification": {
+  "unmatched_unique": 2164,
+  "common_item": 562,
+  "gift_data": 748,
+  "fashion": 47,
+  "reward_pool_non_item": 37,
+  "unknown_unresolved": 770
+ },
+ "name_status": {
+  "verified": 30252
+ },
+ "residuals": [
+  "58 中 54 为 common_item ∩ belt_chip 双列 id（dispatch 优先级未证）",
+  "770 个 reward id 未能归属 namespace（unresolved）",
+  "37 个为 reward pool_key（非 item）",
+  "gift 行集来自 board（structure 层）+ 快照不一致"
+ ]
+}

@@ -1,0 +1,2213 @@
+{
+ "schema": "weapon-skin-ui-asset-paths-v1",
+ "generated": "2026-09-13T10:29:24+08:00",
+ "snapshot_sha8": "508bb5bd",
+ "scanned_entries": 27519,
+ "path_hit_count": 370,
+ "panel_hit_count": 1331,
+ "by_ext": {
+  "gim": 261,
+  "png": 109
+ },
+ "ui_paths": [
+  "ui/wuqiku/wuqixitong/icon/img_quanchangzuijiadonghua.pngui/wuqiku/wuqixitong/icon/img_zhandoudongzuo.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_kaihe.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+  "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+  "ui/wuqiku/wuqixitong/tujian/img_tujian_youbian_wupin_lan_nory9ui/wuqiku/wuqixitong/bazi/img_texiao_bg_xuanzhong_lan.png",
+  "ui/wuqiku/youhua/btn_biaoqian_blue.png",
+  "ui/wuqiku/youhua/btn_biaoqian_golden.png",
+  "ui/wuqiku/youhua/btn_biaoqian_gray.png",
+  "ui/wuqiku/youhua/btn_biaoqian_green.png",
+  "ui/wuqiku/youhua/btn_biaoqian_huancai.png",
+  "ui/wuqiku/youhua/btn_biaoqian_purple.png",
+  "ui/wuqiku/youhua/btn_biaoqian_red.png",
+  "ui/wuqiku/youhua/icon_dakai.png",
+  "ui/wuqiku/youhua/icon_kezengsong.png",
+  "ui/wuqiku/youhua/img_biaoqian_2.png",
+  "ui/wuqiku/youhua/img_biaoqian_3.png",
+  "ui/wuqiku/youhua/img_biaoqian_4.png",
+  "ui/wuqiku/youhua/img_biaoqian_5.png",
+  "ui/wuqiku/youhua/img_biaoqian_6.png",
+  "ui/wuqiku/youhua/img_biaoqian_blue.png",
+  "ui/wuqiku/youhua/img_biaoqian_blue_bg.png",
+  "ui/wuqiku/youhua/img_biaoqian_golden.png",
+  "ui/wuqiku/youhua/img_biaoqian_golden_bg.png",
+  "ui/wuqiku/youhua/img_biaoqian_green_bg.png",
+  "ui/wuqiku/youhua/img_biaoqian_grey_bg.png",
+  "ui/wuqiku/youhua/img_biaoqian_huancai_bg.png",
+  "ui/wuqiku/youhua/img_biaoqian_purple.png",
+  "ui/wuqiku/youhua/img_biaoqian_purple_bg.png",
+  "ui/wuqiku/youhua/img_blue.png",
+  "ui/wuqiku/youhua/img_changpai_01.png",
+  "ui/wuqiku/youhua/img_changpai_02.png",
+  "ui/wuqiku/youhua/img_changpai_03.png",
+  "ui/wuqiku/youhua/img_changpai_04.png",
+  "ui/wuqiku/youhua/img_changpai_05.png",
+  "ui/wuqiku/youhua/img_gold.png",
+  "ui/wuqiku/youhua/img_green.png",
+  "ui/wuqiku/youhua/img_grey.png",
+  "ui/wuqiku/youhua/img_hongse.png",
+  "ui/wuqiku/youhua/img_huancai.png",
+  "ui/wuqiku/youhua/img_jianbian_blue.png",
+  "ui/wuqiku/youhua/img_jianbian_gold.png",
+  "ui/wuqiku/youhua/img_jianbian_green.png",
+  "ui/wuqiku/youhua/img_jianbian_grey.png",
+  "ui/wuqiku/youhua/img_jianbian_huancai.png",
+  "ui/wuqiku/youhua/img_jianbian_purple.png",
+  "ui/wuqiku/youhua/img_jianbian_red.png",
+  "ui/wuqiku/youhua/img_jianhao.png",
+  "ui/wuqiku/youhua/img_jiantou_green.png",
+  "ui/wuqiku/youhua/img_jiantou_red.png",
+  "ui/wuqiku/youhua/img_purple.png",
+  "ui/wuqiku_icon/img_wupindiguang_01.png",
+  "ui/wuqiku_icon/img_wupindiguang_02.png",
+  "ui/wuqiku_icon/img_wupindiguang_03.png",
+  "ui/wuqiku_icon/img_wupindiguang_04.png",
+  "ui/wuqiku_icon/img_wupindiguang_05.png",
+  "ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.png",
+  "ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.pngui/zhutihuodong_v5_icon/xinxishangdian/img_yinghua.png"
+ ],
+ "model_paths": [
+  "/skin_2003_020/fx_skin_2003_020_dg.sfxeffect/fx/weapon/skin/skin_2003_020/fx_skin_2003_020_sj.sfxutility/utility_hezi_1008/utility_hezi_1008.gim",
+  "01guitarbq_3284weaponskin_02_relaxbq_3363bq_qfjx_04building_jhkt_sofo_sit1bq_3718bq_3295bq_3725bq_qfjx_03utility/utility_1321/utility_1321_7.gim",
+  "2003_013/fx_skin_2003_013_sj_01.sfxeffect/fx/weapon/skin/skin_2003_019/fx_skin_2003_019_bp_01.sfxutility/utility_hezi_1008/utility_hezi_1008.gim",
+  "2006_002/fx_skin_2006_002_sj.sfxeffect/fx_h/weapon/common/kaihuo/fx_danke_xiandanqiang_k1_001.sfxutility/utility_hezi_1009/utility_hezi_1009.gim",
+  "ameinstancingcol_maskinst_idflagforest_idxprobegroupforest_extra_flagtreemodel_high_2024/common/tree/yewai/yewai_virginia_pine_l_02_posui_03.gim",
+  "ba_3587weaponskin_02_007xrzdx_m_jiangbeigaobai3weapon/skin/skin_1007_008/skin_1007_008_xiuxian_nv_niao01.gim",
+  "bq_3056weapon/skin/skin_1007_008/skin_1007_008_xiuxian_nan.gimutility/utility_1482/utility_1482_01.gim",
+  "bq_3564_poseweaponskin_02_009xrzdx_m_2007_003weapon/skin/skin_1007_004/skin_1007_004.gim",
+  "building/ying_farm/25_plants/boluo_01_a.gimweapon/skin/skin_1006_013/skin_1006_013_lod01.gimutility/utility_2127/utility_2127.gim",
+  "character/monster_dress/m_1381_2a/connect_2a_top01.gimcharacter/monster_dress/m_1381_2a/skin_2a_parent.gim",
+  "character/monster_dress/m_1381_2a/skin_2a_top01.gimcharacter/monster_dress/m_2001_002/body_m_2001_002.gim",
+  "effect/mesh/players/fashion/r_3693/mod_r_3693_huoqiang_hgz01_02.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_dd_bx_001_djs.gim",
+  "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_kuosan_hgz01_02.gim",
+  "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_xishou_hgz01_01.gim",
+  "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_xishou_hgz01_02.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_danjia01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_glow01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti02_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti03_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kh_sha_01_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan02_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan03_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_paiodaili_01_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_plane01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu07_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu08_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu09_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu10_hgzyd.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_005_djs.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu11_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu12_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu13_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu14_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu15_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu16_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_quan01_hgzyd.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_tuowei_01_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_01_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_02_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_03_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_04_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_05_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_06_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_07_hgzldl.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_01.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_08_hgzldl.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kaihuo_01.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_09_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_10_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_11_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_13_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_14_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_15_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_16_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_17_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_19_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_20_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_21_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_22_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_23_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1003_011/mod_skin_1003_011_idle_bs02_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_001_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_002_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_004_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_006_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_008_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_01.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_01_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_lx_bx_001_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_paiodaili_01_hgzldl.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_shouji_01.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_002_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_003_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_004_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_008_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_009_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_010_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_011_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_012_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_001_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_002_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_003_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_004_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_005_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_006_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_007_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_008_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_009_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_011_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_012_djs.gim",
+  "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_013_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_01_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_02_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_04_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_05_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_06_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_07_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_08_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_09_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_10_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_11_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_12_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_13_djs.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_02.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_01.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_02.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_03.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_sg_01.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_sg_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_dd.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_dd_bx_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_gy_01.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_gy_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_01.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_03.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_04.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_05.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_03.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_05.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_01.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_02.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_03.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_04.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_05.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_06.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_07.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_08.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_09.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_10.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_11.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_010_djs.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_12.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx1_x-3_y0_road_lod04.gim",
+  "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_14.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_07_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_17_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_22_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_25_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_27_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_28_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_52_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_53_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_54_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_55_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_56_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_57_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_58_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_61_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_62_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_63_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_64_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_65_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_66_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_67_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_hz_ty1_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_06_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_07_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_08_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_09_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_10_hjl_djs.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_17.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_08_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_04_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_05_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_07_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_09_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_10_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_02_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_04_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_01_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_02_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_03_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_04_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_05_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_06_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_09_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_gy_01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_01_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_03_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_04_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_bs01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_bs02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_lg04_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_lg05_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_03_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_031/mod_skin_2003_031_dg_010.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_59_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_031/mod_skin_2003_031_dg_011.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_60_hjl_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_011.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_02.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_03.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_07_djs.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_09.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_01.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_03.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_05.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_08.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_10.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_14.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_16.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_19.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx0_x-5_y0_road.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_21.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_01.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_23.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_24.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_25.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_28.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_01.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_02.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_04.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_05.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_07.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_07.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_11.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_12.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_13.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_14.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_sj_bf_04_djs.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_18.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_01.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_02.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_021.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_04.gim",
+  "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_06.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_06.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_07.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_08.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_10.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_11.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_12.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_13.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_14.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_16.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_19.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_20.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_21.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_22.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_gy01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun03_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun04_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun05_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun06_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun07_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun08_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_kuosan01_djs.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_01.gimmodel_high_2024/common/prop/common_lamp01_lod05.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_02.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_03.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_04.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_zishen_bs01.gim",
+  "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_zishen_nl.gimeffect/mesh/weapon/weapon_2026_02/mod_weapon_2026_02_guangci_yy_01.gim",
+  "fx_suotao_01zhongyanzhihua_jiandaoweapon/weapon_2005_02/weapon_2005_02.gimbq_zs_yidaozhanshenzheyidaoweapon/skin/skin_2003_031/skin_2003_031.gim",
+  "in_2003_005_1skin_2003_013_1skin_2003_017_1skin_2003_018_1skin_2003_020_1video_upload/huodong/jgd.mp4weapon/skin/skin_1001_001/skin_1001_001.gim",
+  "model/common/test/crystal_skin_compile.gimmodel/common/test/test_box02.gimmodel/happy101/changpai/building/hp_chongshan_01_door_01.gim",
+  "model_high_2024/huodong/kaijiayongshi/hd_kjys_belt01_c_lod02.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_07_djs.gim",
+  "mutation_arm_lmutation_arm_rmutation_leg_lmutation_leg_ru_skin_colorutility/utility_1366/utility_1366.gim",
+  "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim",
+  "onsv2_soft_bone_idsweapon_typeyk_accessory_model_line_idskin_2003_013_1skin_2003_017_1skin_2003_018_1weapon/skin/skin_2003_013/skin_2003_013.gim",
+  "oupuuidscalepositionpathsnameinstancingcol_maskinst_idflagforest_idxprobetreemodel_high_2024/common/tree/broadleaf/b_caribbean_s_01_posui_02.gim",
+  "skin/skin_2003_029/fx_skin_2003_029_dg.sfxeffect/fx/weapon/skin/skin_2003_030/fx_skin_2003_030_dg.sfxweapon/skin/skin_1001_002/skin_1001_002.gim",
+  "tility_1535bq_3561004collection_01wrosebuilding_tdfb_tpzyzh_beizi01bq_3436_idlebq_3112weaponskin_02_relax_1utility/utility_1662/utility_1662.gim",
+  "utility/utility_1266/utility_1266.gimweapon/skin/skin_1007_009/skin_1007_009_xiuxian_nan_niao01.gimutility/utility_1260/utility_1260.gim",
+  "utility/utility_p_1019/utility_p_1019_lod03.gimweapon/skin/skin_1001_017/skin_1001_017.gimweapon/skin/skin_1001_017/skin_1001_017_preview.gim",
+  "weapon/skin/skin_1001_003/skin_1001_003.gimweapon/skin/skin_1001_006/skin_1001_006.gimweapon/skin/skin_1001_014/skin_1001_014.gim",
+  "weapon/skin/skin_1001_004/skin_1001_004.gimweapon/skin/skin_1001_005/skin_1001_005.gimweapon/skin/skin_1001_008/skin_1001_008.gim",
+  "weapon/skin/skin_1001_009/skin_1001_009.gimweapon/skin/skin_1001_010/skin_1001_010.gimweapon/skin/skin_1001_011/skin_1001_011.gim",
+  "weapon/skin/skin_1001_012/skin_1001_012.gimweapon/skin/skin_1001_013/skin_1001_013.gimweapon/skin/skin_1002_001/skin_1002_001.gim",
+  "weapon/skin/skin_1001_015/skin_1001_015.gim",
+  "weapon/skin/skin_1001_015/skin_1001_015.gimweapon/skin/skin_1001_016/skin_1001_016.gimweapon/skin/skin_1002_002/skin_1002_002.gim",
+  "weapon/skin/skin_1002_003/skin_1002_003.gimweapon/skin/skin_1002_004/skin_1002_004.gimweapon/skin/skin_1002_007/skin_1002_007.gim",
+  "weapon/skin/skin_1002_005/skin_1002_005.gimweapon/skin/skin_1002_009/skin_1002_009.gimweapon/skin/skin_1003_004/skin_1003_004.gim",
+  "weapon/skin/skin_1002_008/skin_1002_008.gimweapon/skin/skin_1002_010/skin_1002_010.gimweapon/skin/skin_1002_011/skin_1002_011.gim",
+  "weapon/skin/skin_1002_012/skin_1002_012.gimweapon/skin/skin_1003_001/skin_1003_001.gimweapon/skin/skin_1003_002/skin_1003_002.gim",
+  "weapon/skin/skin_1003_003/skin_1003_003.gimweapon/skin/skin_1003_005/skin_1003_005.gimweapon/skin/skin_1003_006/skin_1003_006.gim",
+  "weapon/skin/skin_1003_008/skin_1003_008.gimweapon/skin/skin_1003_009/skin_1003_009.gimweapon/skin/skin_1003_010/skin_1003_010.gim",
+  "weapon/skin/skin_1003_011/skin_1003_011.gimweapon/skin/skin_1006_001/skin_1006_001.gimweapon/skin/skin_1006_006/skin_1006_006.gim",
+  "weapon/skin/skin_1003_012/skin_1003_012.gimweapon/skin/skin_1003_012/skin_1003_012_preview.gimweapon/skin/skin_1006_002/skin_1006_002.gim",
+  "weapon/skin/skin_1006_003/skin_1006_003.gimweapon/skin/skin_1006_004/skin_1006_004.gimweapon/skin/skin_1006_005/skin_1006_005.gim",
+  "weapon/skin/skin_1006_008/skin_1006_008.gimweapon/skin/skin_1006_009/skin_1006_009.gimweapon/skin/skin_1006_010/skin_1006_010.gim",
+  "weapon/skin/skin_1006_011/skin_1006_011.gimweapon/skin/skin_1006_012/skin_1006_012.gimweapon/skin/skin_1006_013/skin_1006_013.gim",
+  "weapon/skin/skin_1006_013/skin_1006_013.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx7_x-2_y0_road.gim",
+  "weapon/skin/skin_1006_013/skin_1006_013_lod02.gimweapon/skin/skin_1006_013/skin_1006_013_lod03.gim"
+ ],
+ "audio_paths": [],
+ "panels": [
+  "PanelDebugSkinDecal",
+  "PanelDebugSkinDecalConf",
+  "PanelEquipSkinPendantSettingZ",
+  "PanelSkinRecover",
+  "PanelSuitEquipSkinStoreBuy",
+  "PanelSuitEquipSkinStoreBuyV",
+  "PanelWeaponSkinCollection",
+  "PanelWeaponSkinExperience",
+  "PanelWeaponSkinExperienceZ",
+  "PanelWeaponSkinFullScenePreview",
+  "PanelWeaponSkinFullScenePreviewr",
+  "PanelWeaponSkinFullScenePreviewx",
+  "PanelWeaponSkinLegacyFullScenePreviewZ",
+  "PanelWeaponSkinMain",
+  "PanelWeaponSkinMainZ",
+  "PanelWeaponSkinMainx",
+  "PanelWeaponSkinMainy",
+  "PanelWeaponSkinMainz",
+  "PanelWeaponSkinPreview",
+  "PanelWeaponSkinSwitchAnim",
+  "PanelWeaponSkinSwitchAnimZ",
+  "PanelWeaponSkinSwitchAnimx",
+  "UID_SHADER_SKIN_IDS",
+  "UID_SHADER_SKIN_IDSy",
+  "UILDING_ONE_TO_TWOBW_PATCH_SHOWCANT_SAVE_THIS_FURNITURECARD_ZS_INFORMATIONCARD_ZS_REBORN_INFORMATIONCAR_AUTUMN_NO_PLAYER_ONCAR_NPC_LIFT_HUMANCAR_NPC_LIFT_HUMAN_REACTCAR_NPC_LIFT_REBORNCAR_NPC_LIFT_REBORN_REACTCASH_ORDER_CONFIRMCASH_ORDER_PROCESSCBG_DIFFUSER_SKINCEMETERY_LIGHT_PROCESSINGCHANGE_SYSTEM_TO_PAYCHIRS_GIFTMAP_GIFTCHIRS_GIFTMAP_GIFT_CONTEXTCHIRS_GIFTMAP_GIFT_FROMCHOOSE_RACECHOOSE_RACE_CONFIRMCHOUBEIZHONGQIUYANCHUNJIE_GIFTMAP_GIFTCHUNJIE_GIFTMAP_GIFT_CONTEXTCLEAR_BOUNTY_HUNTER_MISSION_AND_NOTIFYCLIMBER_LEAVECLIMBER_SUCCESS_LEAVECLIMB_TOWER_CLEAN_RADIANTCLIMB_TOWER_COLLECT_GOODSCLOSE_SETTING_UNBOUND_TIPSCOBUILD_PLAYER_QUITCOHABIT_CANCEL_MAIN_HOMECOHABIT_DENYCOHABIT_INVITECOHABIT_PERMISSION_CLOSECOHABIT_PERMISSION_OPENCOHABIT_SET_MAIN_HOMECOHABIT_TS_CONFIRMCOHABIT_UPGRADE_PARTNER_HOMECOLLECTINGCOLL_TEAM_ORDER_CORFIRM_TEXTCOLL_TEAM_ORDER_TEXTCOLL_TEAM_TIME_INFORMATIONCONFIRM_ACCEPT_INVITATION_OF_LAST_SQUADCONFIRM_ACTIVE_LIGHTHOUSECONFIRM_BLUEPRINT_USECONFIRM_BREAK_DOWNCONFIRM_ENABLE_ALARMCONFIRM_INVITE_LAST_SQUADCONFIRM_MOVE_HOUSECONFIRM_SEND_RENAME_MSGCONFIRM_TRANS_TO_PORTCONFIRM_TRANS_TO_SHIPCONFIRM_USE_HALF_RECIPECONFIRM_USE_HALF_RECIPE_V",
+  "UIP_MAKE_LEVEL_ERROREQUIP_MODULE_CANNOT_COMPOSITEEQUIP_MODULE_COMPOSITE_CANNOT_USE_GEMEQUIP_MODULE_COMPOSITE_FAIL_NOT_SAMEEQUIP_MODULE_COMPOSITE_GEM_NOT_ENOUGHEQUIP_MODULE_COMPOSITE_MODULE_NOT_ENOUGHEQUIP_MODULE_REACH_MAX_LEVELEQUIP_MODULE_SET_ACTIVEEQUIP_MODULE_SET_INACTIVEEQUIP_NEED_BINDINGEQUIP_NOT_USABLEEQUIP_NUCLEUS_TYPE_ERROREQUIP_NUCLEUS_UNSETEQUIP_OUT_OF_DURABILITY_TO_ADD_BULLETEQUIP_REFORM_LOCKEDEQUIP_REFORM_LOCK_SUCCESSEQUIP_REFORM_UNLOCK_SUCCESSEQUIP_REQUIRE_PROFSEQUIP_RESEARCH_REACH_LIMITEQUIP_SET_MODULE_FIGHTER_LEVEL_TOO_LOWEQUIP_SKIN_ALREADY_EQUIP_DECALEQUIP_SKIN_ALREADY_EQUIP_PENDANTEQUIP_SKIN_CANT_EXPERIENCEEQUIP_SKIN_CANT_NOT_EQUIP_TO_TEMP_WEAPONEQUIP_SKIN_CANT_NOT_UNLOCKEQUIP_SKIN_CAN_NOT_USE_THIS_SKINEQUIP_SKIN_DECAL_SLOT_IS_EMPTYEQUIP_SKIN_DECAL_SLOT_NOT_ALLOWEQUIP_SKIN_EQUIPPED_WEAPON_NOT_IN_BAGEQUIP_SKIN_EQUIP_NOT_EXISTEQUIP_SKIN_EQUIP_SUCCESSEQUIP_SKIN_LEGACY_LEVEL_TOO_LOWEQUIP_SKIN_LEGACY_SKIN_IS_MAX_LEVELEQUIP_SKIN_NEED_EVOLUTIONEQUIP_SKIN_NOT_EQUIPPEDEQUIP_SKIN_NOT_EQUIP_THIS_DECALEQUIP_SKIN_NOT_EQUIP_THIS_PENDANTEQUIP_SKIN_NOT_EXISTEQUIP_SKIN_NOT_LEGACY_SKINEQUIP_SKIN_NOT_SPECIAL_ANIMEQUIP_SKIN_NOT_SUPPORT_THIS_OPTEQUIP_SKIN_SFX_FUNCTION_ALREADY_EXISTEQUIP_SKIN_SFX_NOT_EQUIPEQUIP_SKIN_SFX_NOT_EXISTEQUIP_SKIN_TAKEOFF_SUCCESSEQUIP_SKIN_WEAPON_KIND_NOT_MATCHEQUIP_SWITCH_COMMON_STUNTEQUIP_WEAPON_CANT_NOT_USE_SKINEQUIP_WEAPON_NOT_EXISTEQUIP_WEAPON_SKIN_SUCCERROR_CODE_BAITS_ERRORERROR_IN_OCEAN_AREAERROR_PLACE_TPERROR_PRODUCT_IDERROR_SUPPORT_MATCH_STARTEDERROR_SUPPORT_NO_COINERR_CAMP_CAN_NOT_USE_HANDBOOKERR_CODE_SUBMIT_LOADINGERR_CT_EXP_MAXERR_CT_V",
+  "UIP_SKIN",
+  "UIP_SKINZf",
+  "UIP_SKIN_CLS",
+  "UIP_SKIN_FUNCTION",
+  "UIP_SKIN_SCENE_PROXY",
+  "UIP_SKIN_SFX_TYPEZ",
+  "UIP_SKIN_TARGET",
+  "UIP_WITH_SKIN_TO_PLAYER",
+  "UIREDSKILL_NOT_IN_IDLE_STAGESKILL_NO_TARGETSKILL_ON_CDSKILL_STAGE_NOT_AVAILABLESKIN_EDIT_INVALIDSKY_HIGH_ACKHOL_SELFSKY_LANTERN_DUP_WISHSKY_LANTERN_FLYSKY_LANTERN_GOTSKY_LANTERN_HELP_LIMITSKY_LANTERN_NO_MORE_WISHESSKY_LANTERN_NO_WISHSKY_LANTERN_PARTNER_LEAVESKY_LANTERN_WISH_ALREADY_DONESLEIGH_EXPRESSION_CDSLOGAN_ILLEGAL_CHARACTERSLOT_HAS_NO_MODULESLOT_LEVEL_LIMITSLOT_LEVEL_LIMIT_TIPSMALL_BP_CAN_GET_AFTER_PAYSMALL_BUBBLE_ALERTSMOKE_QUEUE_IS_FULLSM_CHAT_PANELSM_MISSION_PANELSNOWBALL_MATCH_DISABLE_TEAMSNOWMAN_ALREADY_GETSNOWMAN_MATCH_BALL_NOT_ENOUGHSNOWMAN_MATCH_BANSNOWMAN_MATCH_SCENE_NOT_ALLOWSNOWMAN_MATCH_SCENE_SELECTSNOWMAN_MATCH_SNOW_BALL_NOT_ENOUGHSNOWMAN_MATCH_SUBMIT_SUCCESSSNOWMAN_NO_SUBMITSNOWMAN_NO_WINSNOW_BALL_DIESNOW_BALL_FIT_SIZESNOW_BALL_OUT_BOUNDSNOW_BALL_REWARDSNOW_BALL_TOO_SMALLSNOW_MAN_CAMP_FULLSNOW_MAN_COMPETITION_IN_CALSNOW_MAN_DONOT_MAKE_TROUBLESNOW_MAN_MARQUEE_TEXTSNOW_MAN_MARQUEE_TEXT_",
+  "UITALREADY_PLANTED_FESTIVAL_SAKURAALREADY_PUBLISH_VEHICLEALREADY_PUT_FIRESTONEALREADY_QUIT_PRACTICE_MATCHALREADY_RECEIVED_FASHION_CHARM_MAG_HD_REWARDALREADY_SALVAGEDALREADY_SELECTEDALREADY_SELECTED_MISSIONALREADY_SET_MAIN_BATTLE_RECIPEALREADY_SIGN_UPALREADY_SIT_DOWNALREADY_START_BOUNTY_HUNTERALREADY_TARGET_RACEALREADY_TEAM_CALLALREADY_THIS_REVIVE_POINTALREADY_TICKLED_BY_OTHERALREADY_TRANSFERALREADY_TRANSFORMALREADY_TRANSFORM_EIDALREADY_UESD_THIS_EXPRESSIONALREADY_VOTEALREADY_VOTE_PHOTO_TODAYALREADY_WAITING_DELALREADY_WATCHINGALREDAY_IN_FLOORAMMO_CHARGEDANCHAO_JIYIWEITUO_CANNOTACCEPTANCHOR_CANNOT_LIKEANDROID_PRE_DOWNLOAD_NOT_READYANIMAL_CANNOT_SHOUHUI_VERYKUAIANIMAL_CHOOSE_UP_MAX_SELECT_NUMANIMAL_COMEANIMAL_ENTITY_NOT_FOUNDANIMAL_FUNNY_SUCCANIMAL_HAS_BEEN_DESTROYEDANIMAL_ID_NOT_FOUNDANIMAL_MOVE_OTHER_PEN_NO_HAVE_ANIMALANIMAL_NOT_FOUNDANIMAL_PEN_REACH_LIMITANIMAL_QUAN_CANNOT_FANGTHISANIMALANIMAL_SKIN_IS_SHOWINGANIMAL_SPECIAL_FUNC_ERRORANIMAL_STATUS_CHANGEDANIMATION_FORBIDDENANIMATION_LOADINGANIM_TYPE_ERRORANLIU_DISAPPEARANMIMAL_NO_FOODANMIMAL_QUAN_ADD_TROUGH_HINTANMIMAL_QUAN_MAX_ERRORMESSAGEANMIMAL_QUAN_MAX_ERRORMESSAGE",
+  "UIVehicleModelCaptureHDVehicleModelCaptureHDUIVideoShareHDVideoShareHDUIVideoSummaryHDVideoSummaryHDUIVillageFogOceanHDVillageFogOceanHDUIVisionWidgetHDVisionWidgetHDUIWarmUpSignInHDWarmUpSignInHDUIWasteTourHDWasteTourHDUIWeaponSkinSummaryHDWeaponSkinSummaryHDUIWeekCoinLotteryHDUIWeekCoinLotteryHDUIV",
+  "UIVehicleModelCaptureHDVehicleModelCaptureHDUIVideoShareHDVideoShareHDUIVideoSummaryHDVideoSummaryHDUIVillageFogOceanHDVillageFogOceanHDUIWarmUpSignInHDWarmUpSignInHDUIWeaponSkinSummaryHDWeaponSkinSummaryHDUIWebFirstChargeHDWeekendDungeonGuidingHDWeekendDungeonGuidingHDUIWenanHDUIV",
+  "UIVideoShareHDVideoShareHDUIVideoSummaryHDVideoSummaryHDUIVillageFogOceanHDVillageFogOceanHDUIWarmUpSignInHDWarmUpSignInHDUIWasteTourHDWasteTourHDUIWeaponDecompOptionalHDWeaponDecompOptionalHDUIWeaponSkinSummaryHDWeaponSkinSummaryHDUIWebFirstChargeHDWeekCoinLotteryHDWeekCoinLotteryHDUIV",
+  "ui_tipsshown_red_item_idsskill_idskin_cultivatesskinsspecial_recipe_compstatic_attrsstore_sporessupply_shortcutssystem_compensatesysytem_unlock_giftst_spore_exist_infost_spore_exist_listt_spore_wait_delete_infostactic_belt_comptalent_infostarget_advance_tipstemp_artifact_dicttemp_skin_idstemperaturetheme_talent_infosthrowable_shortcutthrowable_shortcutstitle_mgr_comptotal_enhancement_pointtotal_roll_counttransform_monster_hp_tipstry_move_home_idxunread_red_item_idsupdated_to_universeuse_device_replaced_appearuse_timesused_free_reset_countweak_unread_red_item_idsweapon_custom_chip_plan_configsweapon_custom_chip_plan_last_used_tsweapon_shortcutsweekly_exchangesyh_chipsyh_recipesZ",
+  "uid_ring_scaleu_lip_sparkle_coloru_lip_sparkle_idu_lip_sparkle_tilingu_lipstick_coloru_lipstick_curvatureu_lipstick_normal_opacityu_lipstick_smoothnessu_lipstick_specularu_lipstick_specular_tintu_lipstick_tintu_realistic_detailu_rebirth_tattoo_coloru_skin_brightu_skin_color",
+  "uid_skin_driver",
+  "uid_skin_id",
+  "uid_skin_idW",
+  "uid_skin_idZ",
+  "uidscalepositionpathsnameinstancingcol_maskinst_idflagforest_idxprobegroupforest_extra_flagtreemodel_high_",
+  "uidscalepositionpathsnameinstancingcol_maskinst_idflagforest_idxprobetreemodel_high_",
+  "uipSkin",
+  "uipSkinCamera",
+  "uipSkinCheck",
+  "uipSkinCollectionConst",
+  "uipSkinComp",
+  "uipSkinCompy",
+  "uipSkinConst",
+  "uipSkinDecal",
+  "uipSkinDecalItem",
+  "uipSkinDecalItemNew",
+  "uipSkinDecalNew",
+  "uipSkinDesc",
+  "uipSkinDescItem",
+  "uipSkinDescItemNew",
+  "uipSkinDescNew",
+  "uipSkinFunctionConst",
+  "uipSkinHelpers",
+  "uipSkinHelpersZ",
+  "uipSkinLegacyAnimatorCompy",
+  "uipSkinPendant",
+  "uipSkinPendantNew",
+  "uipSkinSceneProxy",
+  "uipSkinSceneProxyZ",
+  "uipSkinSealHandler",
+  "uipSkinTargetMonsterEntityEscortFinishNpcEscortStartNpcEscortTruckMonsterEvaEntityEvacuationPointEntityExchangeNpcEntityExchangeTradeNPCExchangedNpcExplodeMachineEntityExplorationDiffRewardBoxExplorationExchangeMonsterExplorationOnceBoxExploreMonsterProjectionEntityExplosionMonsterExplosiveEntityExplosiveFireEntityExplosivePillarEntityExpressReceiveEntityExpressionThumbsUpEntityExtendSceneLayerEntityExtraLootCorpseEntityFRZCameraCaptureEntityFRZFishingPondEntityFRZTeleportNPCFSGroundUnitEntityFSLighthouseFSPlatformControllerFSToolStandEntityFakeDroneMonsterFakeLavaEntityFakeProgressAnimMonsterFakeVehicleEntityFallAreaEntityFallingStoneEntityFallonGivingNPCFarmAnimalDroppedItemEntityFarmAnimalEntityFatherChristmasNpcFeedableSeagullMonsterFerrisWheelEntityFestivalAnn",
+  "uipSkinTargetMonsterEntityZj",
+  "uipSkinTargetMonsterEntityentities",
+  "uipSkins",
+  "uipWeaponSkin",
+  "uip_item_idlevel_ucattr_flagattributesbarracks_available_timecan_trade_timecbg_tsexpire_tsmodulescustom_data_aab_bind_curr_buff_id_drb_st_drb_stats_ea_eab_edr_elr_es_exp_lb_life_new_ts_ol_pn_rab_s_speedup_rate_s_speedup_ts_scd_spi_sps_spv_stb_tlt_ts_valuea_cntad_r_cflvsad_r_idad_r_msad_r_raad_r_rubad_r_selad_r_uidad_tmp_rpsbase_scorebow_is_rapid_shootingc_idcan_add_rbconsume_bag_bullet_idcurrent_sight_typeesigem_recipe_idhas_left_bulletis_double_shape_activatelast_r_shotlscm_indexoc_datarand_attr_versionserum_itemserver_dataskin_decalsskin_functionsskin_idskin_pendantskin_settingslevelsslisttorch_is_on_fireuse_primary_weapon_modelvalid_use_time_advance_exp_advance_lv_rl_star_lvgot_tshedge_exphedge_lvhedge_tshedge_ver_level_rank_temp_nucleuseaten_list_strentry_listequip_idis_newscorestunt_identriesis_auto_castis_temp_scheme_cf_lvs_free_ms_n_rc_uididxreinited_dish_attr_hashalienation_recoverattrscounthp_recoverhurt_source_datahurt_source_intervalinfection_recoverrecipe_idsatiety_recoverupdate_tsstarobtain_timecntcolor_rankdying_tsindexesmodule_item_levelsmuzzle_color_rankmuzzle_ranknucleusesranksuit_typevalid_tsall_scorearmorentity_typeequipped_nucleusexpired_timehurtimmuse_flagis_ghostis_possessionlife_statelocked_nucleusesmodel_datapos",
+  "uip_skin",
+  "uip_skinC",
+  "uip_skinR"
+ ],
+ "raw_hits": [
+  {
+   "entry": 1568,
+   "file_id": "0F046187FFCAAC69",
+   "path": "ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.pngui/zhutihuodong_v5_icon/xinxishangdian/img_yinghua.png"
+  },
+  {
+   "entry": 1568,
+   "file_id": "0F046187FFCAAC69",
+   "path": "ect_20241021/bgm_furni_autumn_73bpmg66_music_skin_zhaoyun/object_20220802/bgm_zhaoyunui/zhutihuodong_v5/common_content_ui/ui_icon/img_yinxin.png"
+  },
+  {
+   "entry": 2337,
+   "file_id": "16422DF732CFCD6C",
+   "path": "videoxy0ui/wuqiku/wuqixitong/jishabobao/img_texiaodi.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_jiantou_green.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_jiantou_red.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_jianhao.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_blue.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_biaoqian_blue_bg.png"
+  },
+  {
+   "entry": 2769,
+   "file_id": "1A03F9D17A20D622",
+   "path": "ui/wuqiku/youhua/img_jianbian_blue.png"
+  },
+  {
+   "entry": 2812,
+   "file_id": "1A64957F31D492E9",
+   "path": "iconnameorderui/wuqiku/wuqixitong/icon/img_jishabobao.pngui/wuqiku/wuqixitong/icon/img_quanchangzuijiadonghua.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/img_biaoqian_4.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/img_biaoqian_5.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/img_biaoqian_3.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/img_biaoqian_6.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/img_biaoqian_2.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/icon_kezengsong.png"
+  },
+  {
+   "entry": 3849,
+   "file_id": "249655341BEC6A69",
+   "path": "ui/wuqiku/youhua/icon_kezengsong.png"
+  },
+  {
+   "entry": 4138,
+   "file_id": "27894BAA18554B8C",
+   "path": "iconnameorderui/wuqiku/wuqixitong/icon/img_daiji.pngui/wuqiku/wuqixitong/icon/img_jishabobao.png"
+  },
+  {
+   "entry": 4138,
+   "file_id": "27894BAA18554B8C",
+   "path": "ui/wuqiku/wuqixitong/icon/img_quanchangzuijiadonghua.pngui/wuqiku/wuqixitong/icon/img_zhandoudongzuo.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_blue.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_biaoqian_4.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_biaoqian_5.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_biaoqian_3.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_biaoqian_6.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_biaoqian_2.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/img_blue.png"
+  },
+  {
+   "entry": 7925,
+   "file_id": "4A94E6D6B405C226",
+   "path": "ui/wuqiku/youhua/icon_kezengsong.png"
+  },
+  {
+   "entry": 9733,
+   "file_id": "5B2B31B8E7ACF18F",
+   "path": "g66_music_skin_zhaoyun/object_20220802/bgm_zhaoyung66_music_xyy/xyy/bgm_xyy_interfacekjxqui/zhutihuodong_v5_icon/xinxishangdian/img_jinbi_jk.png"
+  },
+  {
+   "entry": 9733,
+   "file_id": "5B2B31B8E7ACF18F",
+   "path": "ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.png"
+  },
+  {
+   "entry": 9885,
+   "file_id": "5C56D035B329BEBB",
+   "path": "/skin_2003_020/fx_skin_2003_020_dg.sfxeffect/fx/weapon/skin/skin_2003_020/fx_skin_2003_020_sj.sfxutility/utility_hezi_1008/utility_hezi_1008.gim"
+  },
+  {
+   "entry": 9885,
+   "file_id": "5C56D035B329BEBB",
+   "path": "xeffect/fx/weapon/skin/skin_2003_033/fx_skin_2003_033_sj.sfxswitch_jg_1switch_weaponskin_1003_010utility/utility_hezi_1009/utility_hezi_1009.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_02.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_04.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_zishen_bs01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_zishen_nl.gimeffect/mesh/weapon/weapon_2026_02/mod_weapon_2026_02_guangci_yy_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_wenli_01.gimmodel_high_2024/common/prop/common_lamp01_lod05.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "model_high_2024/huodong/kaijiayongshi/hd_kjys_belt01_c_lod02.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_07_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_04_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_05_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_07_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_09_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_10_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_02_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_bian_04_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_01_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_02_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_03_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_04_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_05_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_06_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_08_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_dg_wl_09_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_gy_01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_01_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_03_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_sj_bf_04_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_bs01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_bs02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_lg04_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_lg05_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_02_djs.gimeffect/mesh/weapon/skin/skin_2003_030/mod_skin_2003_030_zs_sd_03_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_031/mod_skin_2003_031_dg_010.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_59_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_14.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_07_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_17_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_22_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_25_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_27_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_28_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_52_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_53_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_54_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_55_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_56_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_57_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_58_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_031/mod_skin_2003_031_dg_011.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_60_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_61_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_62_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_63_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_64_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_65_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_66_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_67_hjl_djs.gimeffect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_hz_ty1_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_06_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_07_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_08_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_09_hjl_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_029/mod_skin_2003_029_sd_10_hjl_djs.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_17.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_01.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_021.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_04.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_zishen_06.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_06.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_07.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_08.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_10.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_11.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_12.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_13.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_14.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_16.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_sj_bf_04_djs.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_18.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_19.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_20.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_21.gimeffect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_dunpai_22.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_gy01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun03_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun04_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun05_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun06_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun07_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_hudun08_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2006_002/mod_skin_2006_002_open_kuosan01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_21.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_011.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_03.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_07_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_dg_09.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_03.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_05.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_08.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_10.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_14.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_16.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_19.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx0_x-5_y0_road.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_23.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_24.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_25.gimeffect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_28.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_04.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_05.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_glow_07.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_07.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_11.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_12.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_13.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_2003_033/mod_skin_2003_033_gl_yy_huoyan_14.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_030/skin_2003_030_preview.gimweapon/skin/skin_2003_033/skin_2003_033.gimweapon/skin/skin_2003_033/skin_2003_033_lod01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_033/skin_2003_033_lod02.gimweapon/skin/skin_2003_033/skin_2003_033_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_033/skin_2003_033_preview.gimweapon/skin/skin_2006_002/skin_2006_002.gimweapon/skin/skin_2006_002/skin_2006_002_lod01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2006_002/skin_2006_002_lod02.gimweapon/skin/skin_2006_002/skin_2006_002_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2006_002/skin_2006_002_preview.gimweapon/skin/skin_2006_002/skin_2006_002_preview_lod01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2006_002/skin_2006_002_preview_lod02.gimweapon/skin/skin_2006_002/skin_2006_002_preview_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_030/skin_2003_030_lod03.gimweapon/weapon_2003_120/weapon_2003_120_lod01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "building/ying_farm/25_plants/boluo_01_a.gimweapon/skin/skin_1006_013/skin_1006_013_lod01.gimutility/utility_2127/utility_2127.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "utility/utility_p_1019/utility_p_1019_lod03.gimweapon/skin/skin_1001_017/skin_1001_017.gimweapon/skin/skin_1001_017/skin_1001_017_preview.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_1006_013/skin_1006_013.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx7_x-2_y0_road.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_1006_013/skin_1006_013_lod02.gimweapon/skin/skin_1006_013/skin_1006_013_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_1006_013/skin_1006_013_preview.gimweapon/skin/skin_1012_014/skin_1012_014.gimweapon/skin/skin_1012_014/skin_1012_014_lod01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_1012_014/skin_1012_014_lod02.gimweapon/skin/skin_1012_014/skin_1012_014_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_1012_014/skin_1012_014_preview.gimweapon/skin/skin_2003_013/skin_2003_013_lod03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_017/skin_2003_017_lod03.gimweapon/skin/skin_2003_018/skin_2003_018_lod03.gimweapon/skin/skin_2003_030/skin_2003_030.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "weapon/skin/skin_2003_030/skin_2003_030_lod01.gimweapon/skin/skin_2003_030/skin_2003_030_lod02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_12.gimscene_bw/pvp/v2_yewai01_content/road/pcg_mesh_nx1_x-3_y0_road_lod04.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/players/fashion/r_3693/mod_r_3693_huoqiang_hgz01_02.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_dd_bx_001_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_09_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_10_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_11_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_13_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_14_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_15_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_16_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_17_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_19_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_20_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_21_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_22_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_23_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1003_011/mod_skin_1003_011_idle_bs02_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_08_hgzldl.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kaihuo_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_001_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_002_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_004_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_006_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_008_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_kh_01_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_lx_bx_001_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_paiodaili_01_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_shouji_01.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_002_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_003_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_004_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu11_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_glow01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti02_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_jingti03_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kh_sha_01_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan02_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_kuosan03_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_paiodaili_01_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_plane01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu07_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu08_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu09_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu10_hgzyd.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_005_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu12_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu13_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu14_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu15_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_qiliu16_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_quan01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_tuowei_01_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_01_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_02_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_03_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_04_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_05_hgzldl.gimeffect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_06_hgzldl.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_xz_07_hgzldl.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_01.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_kh_03.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_sg_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_sg_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_dd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_dd_bx_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_gy_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_gy_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_02.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_03.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_04.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_sj_05.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_13_djs.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_03.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_yjq_05.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_01.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_03.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_04.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_05.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_06.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_07.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_08.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_09.gimeffect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_10.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/model_1012_014_zishi_11.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_010_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_008_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_009_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_010_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_011_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_sj_012_djs.gimeffect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_001_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_002_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_003_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_004_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_005_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_006_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_007_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_008_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_009_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_016/mod_skin_1001_016_danjia01_hgzyd.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_011_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_012_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1006_013/mod_skin_1006_013_zishen_013_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_01_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_02_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_04_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_05_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_06_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_07_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_08_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_09_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_10_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_11_djs.gimeffect/mesh/weapon/skin/skin_1012_014/mod_skin_1012_014_dl_12_djs.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_kuosan_hgz01_02.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_xishou_hgz01_01.gim"
+  },
+  {
+   "entry": 10376,
+   "file_id": "60B17EB967EEFA78",
+   "path": "effect/mesh/weapon/skin/skin_1001_004/mod_skin_1001_004_bp_xishou_hgz01_02.gim"
+  },
+  {
+   "entry": 13799,
+   "file_id": "7FE4D2901510AE63",
+   "path": "ddle_img_pathsmiddle_video_pathsweapon_pendant_skin_idsuper_change_color_idui/zhutihuodong_v5/zhutihuodong/tianshangshi/jineng/icon_linglong.png"
+  },
+  {
+   "entry": 13855,
+   "file_id": "80481E9A57D02E93",
+   "path": "oupuuidscalepositionpathsnameinstancingcol_maskinst_idflagforest_idxprobetreemodel_high_2024/common/tree/broadleaf/b_caribbean_s_01_posui_02.gim"
+  },
+  {
+   "entry": 14116,
+   "file_id": "82B61AC26EF05A14",
+   "path": "model/common/test/crystal_skin_compile.gimmodel/common/test/test_box02.gimmodel/happy101/changpai/building/hp_chongshan_01_door_01.gim"
+  },
+  {
+   "entry": 15611,
+   "file_id": "9097862382EECA42",
+   "path": "hot_weapon_icony4ui/wuqiku/wuqixitong/pifudiedai/img_tuzhuang_nor.png"
+  },
+  {
+   "entry": 15985,
+   "file_id": "94014C463E794ADB",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 15985,
+   "file_id": "94014C463E794ADB",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 16451,
+   "file_id": "9873E31DC83CBA1B",
+   "path": "ameinstancingcol_maskinst_idflagforest_idxprobegroupforest_extra_flagtreemodel_high_2024/common/tree/yewai/yewai_virginia_pine_l_02_posui_03.gim"
+  },
+  {
+   "entry": 17396,
+   "file_id": "A108220338E1AE9B",
+   "path": "y7ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.pngy3ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png"
+  },
+  {
+   "entry": 17396,
+   "file_id": "A108220338E1AE9B",
+   "path": "y4ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.pngy5ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png"
+  },
+  {
+   "entry": 17396,
+   "file_id": "A108220338E1AE9B",
+   "path": "y6ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.pngy4ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png"
+  },
+  {
+   "entry": 17798,
+   "file_id": "A4C38F8E73C97D70",
+   "path": "iconnameorderui/wuqiku/wuqixitong/icon/img_jishabobao.pngui/wuqiku/wuqixitong/icon/img_quanchangzuijiadonghua.png"
+  },
+  {
+   "entry": 18059,
+   "file_id": "A703C08E329A6FE2",
+   "path": "y5ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.png"
+  },
+  {
+   "entry": 18611,
+   "file_id": "AC512E02F9F01742",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 18611,
+   "file_id": "AC512E02F9F01742",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 19462,
+   "file_id": "B48257E8D36A5AD4",
+   "path": "3bpmg66_music_skin_zhaoyun/object_20220802/bgm_zhaoyung66_music_xyy/xyy/bgm_xyy_interfaceui/zhutihuodong_v5_icon/xinxishangdian/img_jinbi_jk.png"
+  },
+  {
+   "entry": 19462,
+   "file_id": "B48257E8D36A5AD4",
+   "path": "ui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.png"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "tility_1535bq_3561004collection_01wrosebuilding_tdfb_tpzyzh_beizi01bq_3436_idlebq_3112weaponskin_02_relax_1utility/utility_1662/utility_1662.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "01guitarbq_3284weaponskin_02_relaxbq_3363bq_qfjx_04building_jhkt_sofo_sit1bq_3718bq_3295bq_3725bq_qfjx_03utility/utility_1321/utility_1321_7.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "bq_3564_poseweaponskin_02_009xrzdx_m_2007_003weapon/skin/skin_1007_004/skin_1007_004.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "xrzdx_f_jiangbeixrzdx_m_1003_02weaponskin_02_relax_2utility_scene/utility_1027/utility_1027_14.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weapon/skin/skin_1007_008/skin_1007_008_xiuxian_nan_niao01.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "ba_3587weaponskin_02_007xrzdx_m_jiangbeigaobai3weapon/skin/skin_1007_008/skin_1007_008_xiuxian_nv_niao01.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weaponskin_02_008building_qixi_hlbb3building/yingdi_gongneng/24_qingliuzhiyuan/chair_200_caomao.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "fx_suotao_01zhongyanzhihua_jiandaoweapon/weapon_2005_02/weapon_2005_02.gimbq_zs_yidaozhanshenzheyidaoweapon/skin/skin_2003_031/skin_2003_031.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weapon/skin/skin_1007_009/skin_1007_009_xiuxian_nv_niao01.gimweapon/skin/skin_1007_009/skin_1007_009_xiuxian_nv.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "utility/utility_1266/utility_1266.gimweapon/skin/skin_1007_009/skin_1007_009_xiuxian_nan_niao01.gimutility/utility_1260/utility_1260.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weapon_2003_79_geziqimudaobq_3079weapon_2003_81_nangua_idleweapon/skin/skin_1007_009/skin_1007_009_xiuxian_nan.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weapon/skin/skin_1007_007/skin_1007_007_xiuxian_nv.gimutility/utility_1234/utility_1234_c.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "weapon/skin/skin_1007_007/skin_1007_007_xiuxian_nan.gimweapon/skin/skin_1007_008/skin_1007_008_xiuxian_nv.gim"
+  },
+  {
+   "entry": 19463,
+   "file_id": "B482A1778D6FD801",
+   "path": "bq_3056weapon/skin/skin_1007_008/skin_1007_008_xiuxian_nan.gimutility/utility_1482/utility_1482_01.gim"
+  },
+  {
+   "entry": 21185,
+   "file_id": "C459731EF788CCD3",
+   "path": "onsv2_soft_bone_idsweapon_typeyk_accessory_model_line_idskin_2003_013_1skin_2003_017_1skin_2003_018_1weapon/skin/skin_2003_013/skin_2003_013.gim"
+  },
+  {
+   "entry": 21185,
+   "file_id": "C459731EF788CCD3",
+   "path": "weapon/skin/skin_2003_017/skin_2003_017.gimweapon/skin/skin_2003_018/skin_2003_018.gimweapon\\skin\\skin_2003_013\\skin_2003_013_1.gim"
+  },
+  {
+   "entry": 21185,
+   "file_id": "C459731EF788CCD3",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_1.gimweapon\\skin\\skin_2003_018\\skin_2003_018_1.gim"
+  },
+  {
+   "entry": 21374,
+   "file_id": "C60C377D493B2389",
+   "path": "weapon/skin/skin_1001_015/skin_1001_015.gim"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "cold_weapon_iconcold_weapon_namehot_weapon_iconhot_weapon_namenameorderui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.pngui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png"
+  },
+  {
+   "entry": 21417,
+   "file_id": "C6615A19F1A48137",
+   "path": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_kaihe.png"
+  },
+  {
+   "entry": 21804,
+   "file_id": "C9AB25B6F62038E8",
+   "path": "videoxy0ui/wuqiku/wuqixitong/jishabobao/img_texiaodi.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_gray.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_green.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_blue.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_purple.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_golden.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_huancai.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/btn_biaoqian_red.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_grey.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_green.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_blue.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_purple.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_gold.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_huancai.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_hongse.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_grey_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_green_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_blue_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_purple_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_golden_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_huancai_bg.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_grey.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_green.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_blue.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_purple.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_gold.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_huancai.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_jianbian_red.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku_icon/img_wupindiguang_01.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku_icon/img_wupindiguang_02.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku_icon/img_wupindiguang_03.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku_icon/img_wupindiguang_04.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku_icon/img_wupindiguang_05.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "y0ui/wuqiku/wuqixitong/icon/icon_tujian_wuqi02.pngyFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_hui.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yEui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_lv.pngyFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_lan.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yEui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_zi.pngyFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_jin.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yHui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_xzhui.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yGui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_xzlv.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yHui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_xzlan.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yGui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_xzzi.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yHui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_xiao_xzjin.pngyCui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_lv.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yDui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_lan.pngyCui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_zi.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yDui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_jin.pngyDui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_fen.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yEui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_xzlv.pngyFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_xzlan.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yEui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_xzzi.pngyFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_xzjin.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "yFui/wuqiku/wuqixitong/zhujiemian/img_wuqifangyin_wuqikuang_da_xzfen.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/wuqixitong/tujian/img_tujian_youbian_wupin_lan_nory9ui/wuqiku/wuqixitong/bazi/img_texiao_bg_xuanzhong_lan.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "y8ui/wuqiku/wuqixitong/bazi/img_texiao_bg_xuanzhong_zi.pngy5ui/wuqiku/wuqixitong/bazi/img_texiao_bg_xuanzhong.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "y9ui/wuqiku/wuqixitong/bazi/img_texiao_bg_xuanzhong_fen.pngy.ui/wuqiku/wuqixitong/shengge/img_shengge01.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "y.ui/wuqiku/wuqixitong/shengge/img_shengge02.pngy.ui/wuqiku/wuqixitong/shengge/img_shengge03.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_blue.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_purple.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_biaoqian_golden.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/icon_kezengsong.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/icon_dakai.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_changpai_02.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_changpai_01.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_changpai_03.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_changpai_04.png"
+  },
+  {
+   "entry": 21903,
+   "file_id": "CA8CE836F861B323",
+   "path": "ui/wuqiku/youhua/img_changpai_05.png"
+  },
+  {
+   "entry": 22582,
+   "file_id": "D0ED54AEBC8167E6",
+   "path": "ui/wuqiku/youhua/img_biaoqian_blue.png"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "skin/skin_2003_029/fx_skin_2003_029_dg.sfxeffect/fx/weapon/skin/skin_2003_030/fx_skin_2003_030_dg.sfxweapon/skin/skin_1001_002/skin_1001_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1001_003/skin_1001_003.gimweapon/skin/skin_1001_006/skin_1001_006.gimweapon/skin/skin_1001_014/skin_1001_014.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1001_015/skin_1001_015.gimweapon/skin/skin_1001_016/skin_1001_016.gimweapon/skin/skin_1002_002/skin_1002_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1002_005/skin_1002_005.gimweapon/skin/skin_1002_009/skin_1002_009.gimweapon/skin/skin_1003_004/skin_1003_004.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1003_011/skin_1003_011.gimweapon/skin/skin_1006_001/skin_1006_001.gimweapon/skin/skin_1006_006/skin_1006_006.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_006/skin_1007_006.gimweapon/skin/skin_1007_006/skin_1007_006_1.gimweapon/skin/skin_1007_006/skin_1007_006_2.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_007/skin_2003_007.gimweapon/skin/skin_2003_028/skin_2003_028.gimweapon/skin/skin_2003_029/skin_2003_029.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_030/skin_2003_030.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "in_2003_005_1skin_2003_013_1skin_2003_017_1skin_2003_018_1skin_2003_020_1video_upload/huodong/jgd.mp4weapon/skin/skin_1001_001/skin_1001_001.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1001_004/skin_1001_004.gimweapon/skin/skin_1001_005/skin_1001_005.gimweapon/skin/skin_1001_008/skin_1001_008.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1001_009/skin_1001_009.gimweapon/skin/skin_1001_010/skin_1001_010.gimweapon/skin/skin_1001_011/skin_1001_011.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1001_012/skin_1001_012.gimweapon/skin/skin_1001_013/skin_1001_013.gimweapon/skin/skin_1002_001/skin_1002_001.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1002_003/skin_1002_003.gimweapon/skin/skin_1002_004/skin_1002_004.gimweapon/skin/skin_1002_007/skin_1002_007.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1002_008/skin_1002_008.gimweapon/skin/skin_1002_010/skin_1002_010.gimweapon/skin/skin_1002_011/skin_1002_011.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1002_012/skin_1002_012.gimweapon/skin/skin_1003_001/skin_1003_001.gimweapon/skin/skin_1003_002/skin_1003_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1003_003/skin_1003_003.gimweapon/skin/skin_1003_005/skin_1003_005.gimweapon/skin/skin_1003_006/skin_1003_006.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1003_008/skin_1003_008.gimweapon/skin/skin_1003_009/skin_1003_009.gimweapon/skin/skin_1003_010/skin_1003_010.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1003_012/skin_1003_012.gimweapon/skin/skin_1003_012/skin_1003_012_preview.gimweapon/skin/skin_1006_002/skin_1006_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1006_003/skin_1006_003.gimweapon/skin/skin_1006_004/skin_1006_004.gimweapon/skin/skin_1006_005/skin_1006_005.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1006_008/skin_1006_008.gimweapon/skin/skin_1006_009/skin_1006_009.gimweapon/skin/skin_1006_010/skin_1006_010.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1006_011/skin_1006_011.gimweapon/skin/skin_1006_012/skin_1006_012.gimweapon/skin/skin_1006_013/skin_1006_013.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_001/skin_1007_001.gimweapon/skin/skin_1007_001/skin_1007_001_1.gimweapon/skin/skin_1007_002/skin_1007_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_002/skin_1007_002_1.gimweapon/skin/skin_1007_002/skin_1007_002_2.gimweapon/skin/skin_1007_003/skin_1007_003.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_003/skin_1007_003_1.gimweapon/skin/skin_1007_003/skin_1007_003_2.gimweapon/skin/skin_1007_004/skin_1007_004.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_004/skin_1007_004_1.gimweapon/skin/skin_1007_004/skin_1007_004_4.gimweapon/skin/skin_1007_005/skin_1007_005.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_005/skin_1007_005_1.gimweapon/skin/skin_1007_005/skin_1007_005_2.gimweapon/skin/skin_1007_007/skin_1007_007.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_007/skin_1007_007_1.gimweapon/skin/skin_1007_007/skin_1007_007_2.gimweapon/skin/skin_1007_008/skin_1007_008.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_008/skin_1007_008_1.gimweapon/skin/skin_1007_008/skin_1007_008_2.gimweapon/skin/skin_1007_009/skin_1007_009.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_009/skin_1007_009_1.gimweapon/skin/skin_1007_009/skin_1007_009_2.gimweapon/skin/skin_1007_010/skin_1007_010.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1007_010/skin_1007_010_1.gimweapon/skin/skin_1007_010/skin_1007_010_2.gimweapon/skin/skin_1008_001/skin_1008_001.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1008_002/skin_1008_002.gimweapon/skin/skin_1008_003/skin_1008_003.gimweapon/skin/skin_1008_004/skin_1008_004.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1008_006/skin_1008_006.gimweapon/skin/skin_1012_001/skin_1012_001.gimweapon/skin/skin_1012_002/skin_1012_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1012_003/skin_1012_003.gimweapon/skin/skin_1012_004/skin_1012_004.gimweapon/skin/skin_1012_007/skin_1012_007.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1012_008/skin_1012_008.gimweapon/skin/skin_1012_009/skin_1012_009.gimweapon/skin/skin_1012_010/skin_1012_010.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1012_011/skin_1012_011.gimweapon/skin/skin_1012_012/skin_1012_012.gimweapon/skin/skin_1012_013/skin_1012_013.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1012_014/skin_1012_014.gimweapon/skin/skin_1013_001/skin_1013_001.gimweapon/skin/skin_1013_002/skin_1013_002.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1013_003/skin_1013_003.gimweapon/skin/skin_1013_004/skin_1013_004.gimweapon/skin/skin_1013_006/skin_1013_006.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_1013_007/skin_1013_007.gimweapon/skin/skin_1013_008/skin_1013_008.gimweapon/skin/skin_1013_009/skin_1013_009.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_001/skin_2003_001.gimweapon/skin/skin_2003_002/skin_2003_002.gimweapon/skin/skin_2003_003/skin_2003_003.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_005/skin_2003_005.gimweapon/skin/skin_2003_008/skin_2003_008.gimweapon/skin/skin_2003_009/skin_2003_009.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_010/skin_2003_010.gimweapon/skin/skin_2003_011/skin_2003_011.gimweapon/skin/skin_2003_012/skin_2003_012.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_013/skin_2003_013.gimweapon/skin/skin_2003_015/skin_2003_015.gimweapon/skin/skin_2003_017/skin_2003_017.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_018/skin_2003_018.gimweapon/skin/skin_2003_019/skin_2003_019.gimweapon/skin/skin_2003_020/skin_2003_020.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_021/skin_2003_021.gimweapon/skin/skin_2003_022/skin_2003_022.gimweapon/skin/skin_2003_024/skin_2003_024.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_025/skin_2003_025.gimweapon/skin/skin_2003_026/skin_2003_026.gimweapon/skin/skin_2003_027/skin_2003_027.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2003_033/skin_2003_033.gimweapon/skin/skin_2003_034/skin_2003_034.gimweapon/skin/skin_2004_001/skin_2004_001.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon/skin/skin_2005_001/skin_2005_001.gimweapon/skin/skin_2006_002/skin_2006_002.gimweapon\\skin\\skin_1001_008\\skin_1001_008.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon\\skin\\skin_2003_005\\skin_2003_005_1.gimweapon\\skin\\skin_2003_013\\skin_2003_013_1.gimweapon\\skin\\skin_2003_017\\skin_2003_017_1.gim"
+  },
+  {
+   "entry": 22869,
+   "file_id": "D35E3103168889D2",
+   "path": "weapon\\skin\\skin_2003_018\\skin_2003_018_1.gimweapon\\skin\\skin_2003_020\\skin_2003_020_1.gim"
+  },
+  {
+   "entry": 23368,
+   "file_id": "D7E0F5DCB7D6B65B",
+   "path": "mutation_arm_lmutation_arm_rmutation_leg_lmutation_leg_ru_skin_colorutility/utility_1366/utility_1366.gim"
+  },
+  {
+   "entry": 23684,
+   "file_id": "DACF87AE00F14120",
+   "path": "AccumulateGiftLotteryHDUIV4FashionSaleHDUI1RouletteLotteryHDProtoUIeuui/zhutihuodong_v5_icon/xinxishangdian/img_wuqiku.png"
+  },
+  {
+   "entry": 24585,
+   "file_id": "E313703B49C7875D",
+   "path": "onsv2_soft_bone_idsweapon_typeyk_accessory_model_line_idskin_2003_013_1skin_2003_017_1skin_2003_018_1weapon/skin/skin_2003_013/skin_2003_013.gim"
+  },
+  {
+   "entry": 24585,
+   "file_id": "E313703B49C7875D",
+   "path": "weapon/skin/skin_2003_017/skin_2003_017.gimweapon/skin/skin_2003_018/skin_2003_018.gimweapon\\skin\\skin_2003_013\\skin_2003_013_1.gim"
+  },
+  {
+   "entry": 24585,
+   "file_id": "E313703B49C7875D",
+   "path": "weapon\\skin\\skin_2003_017\\skin_2003_017_1.gimweapon\\skin\\skin_2003_018\\skin_2003_018_1.gim"
+  },
+  {
+   "entry": 24656,
+   "file_id": "E3D81D94491E5B58",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 24656,
+   "file_id": "E3D81D94491E5B58",
+   "path": "n_2006_07_hit_01.sfxeffect/fx/weapon/weapon_2006_07/fx_weapon_2006_07_open_01.sfxeffect\\mesh\\weapon\\weapon_2006_07\\mod_skin_2006_07_baimo_01.gim"
+  },
+  {
+   "entry": 24842,
+   "file_id": "E59CCA1F31417C6A",
+   "path": "2003_013/fx_skin_2003_013_sj_01.sfxeffect/fx/weapon/skin/skin_2003_019/fx_skin_2003_019_bp_01.sfxutility/utility_hezi_1008/utility_hezi_1008.gim"
+  },
+  {
+   "entry": 24842,
+   "file_id": "E59CCA1F31417C6A",
+   "path": "2006_002/fx_skin_2006_002_sj.sfxeffect/fx_h/weapon/common/kaihuo/fx_danke_xiandanqiang_k1_001.sfxutility/utility_hezi_1009/utility_hezi_1009.gim"
+  },
+  {
+   "entry": 26365,
+   "file_id": "F48FF1A50DFC411A",
+   "path": "character/monster_dress/m_1381_2a/connect_2a_top01.gimcharacter/monster_dress/m_1381_2a/skin_2a_parent.gim"
+  },
+  {
+   "entry": 26365,
+   "file_id": "F48FF1A50DFC411A",
+   "path": "character/monster_dress/m_1381_2a/skin_2a_top01.gimcharacter/monster_dress/m_2001_002/body_m_2001_002.gim"
+  }
+ ]
+}

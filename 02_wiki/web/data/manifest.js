@@ -32,6 +32,35 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "其他外观（发型·脸型·背包·挂饰·特效·手持）",
+      "category": "一、时装类 / （六）其他外观",
+      "board": "appearance_extra",
+      "items": 749,
+      "generated": "2026-10-24",
+      "source_server": "PE 还原树 pe_20261020 · player_appear_data · 体验服",
+      "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
+      "evidence": {
+        "structure": 749
+      },
+      "state_summary": {
+        "unresolved": 749,
+        "static config": 749,
+        "verified": 0,
+        "runtime final unknown": 749,
+        "有图": 11,
+        "无图": 738
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 749
+        }
+      }
+    },
+    {
       "name": "头像 / 头像框 / 名片框",
       "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
@@ -192,20 +221,20 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "二、时装类 / （一）全量时装总表",
       "board": "fashion_wardrobe",
-      "items": 1745,
-      "generated": "2026-09-28",
-      "source_server": "体验服 script 表结构解析（正式解出的 name/desc/part_type/model_id 字段）",
-      "package_sha": "2f2a4fc069a7c76710388ef7e31e153ed0d0023190e231f8223c415bde183df7",
+      "items": 2197,
+      "generated": "2026-10-24",
+      "source_server": "PE 测试服 fashion_data 表（逐行解码：name/desc/model_id/charm_value/level/icons）",
+      "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 1745
+        "structure": 2197
       },
       "state_summary": {
-        "unresolved": 1253,
-        "static config": 1253,
+        "unresolved": 2197,
+        "static config": 2197,
         "verified": 0,
-        "runtime final unknown": 1253,
-        "有图": 1347,
-        "无图": 398
+        "runtime final unknown": 2197,
+        "有图": 1831,
+        "无图": 366
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -213,7 +242,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1745
+          "replayed-structural": 2197
         }
       }
     },

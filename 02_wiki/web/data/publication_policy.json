@@ -209,6 +209,12 @@
    "category": "二、战力类 / （零）核芯类 / 12 星特技",
    "reason": "极品（金/12星）核芯 50 条的完整特技与描述；升星段仅 5 星档有文本。",
    "items": 50
+  },
+  "appearance_extra": {
+   "publication_status": "published",
+   "category": "一、时装类 / （六）其他外观",
+   "items": 796,
+   "reason": "player_appear_data（PE 还原树 pe_20261020，BlendDict 按 schema 逐行解出）中 name/part/model_name 非空、且 name 不在 fashion_data 的行；每条带 row_keys（可回溯原表行）与 model_ids（取自 model_name 文件名，非推断）；卡片粒度 = 名字 + 部位，男女同卡（图标按 _f_/_m_ 标记分别标注）。图标覆盖 11/796，其余在客户端未找到 2D 图标资源，标无图，不伪造。"
   }
  }
 }
