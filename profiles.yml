@@ -1,6 +1,29 @@
 # 游戏/服型配置档案（改这里，不改代码）
 default: pe_test_20261020
 
+# 数据源类型：pe | pc（构建 wiki 板块用哪一侧的表）
+source: pe
+
+sources:
+  pe:
+    label: PE 测试服（客户端 res/*.gpk，脚本表在 pe_20261020 树）
+    tree: 01_索引与产物/41_还原树/pe_20261020
+    cdata: 01_索引与产物/41_还原树/pe_20261020/com/cdata
+    index: 01_索引与产物/30_分析/热更检测/pe_index.sqlite3
+    client: E:/mrzh
+  pc:
+    label: PC 客户端（.bc7 资源，脚本表在 Documents/script.py314.lc.npk）
+    tree: 01_索引与产物/41_还原树/pc_20261020
+    cdata: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata
+    index: 01_索引与产物/30_分析/热更检测/pc_index.sqlite3
+    client: E:/mrzh
+  documents:
+    label: Documents 快照（script.py314.lc.npk）
+    tree: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk
+    cdata: 01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata
+    index: 01_索引与产物/30_分析/热更检测/pc_index.sqlite3
+    client: E:/mrzh
+
 profiles:
   pe_test_20261020:
     label: 测试服 · PE · 经典 + 简单生存

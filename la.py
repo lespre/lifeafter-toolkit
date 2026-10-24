@@ -377,6 +377,47 @@ def apply_profile(name: str | None) -> str | None:
     return key
 
 
+
+
+# ---------------- source 数据源 ----------------
+
+def cmd_source(a) -> int:
+    import yaml
+    f = PROJ / "profiles.yml"
+    cfg = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    sources = cfg.get("sources") or {}
+    cur = cfg.get("source") or "pe"
+
+    if a.action in ("list", "detect"):
+        print("当前数据源：%s" % cur)
+        print()
+        for name, v in sources.items():
+            cdata = PROJ / (v.get("cdata") or "")
+            idx = PROJ / (v.get("index") or "")
+            tree = PROJ / (v.get("tree") or "")
+            ok_c = cdata.is_dir()
+            n_tab = len(list(cdata.glob("*.py"))) if ok_c else 0
+            ok_i = idx.is_file()
+            mark = "*" if name == cur else " "
+            print("%s %-10s %s" % (mark, name, v.get("label", "")))
+            print("    表根  %-6s %s（%d 张表）" % ("可用" if ok_c else "缺失", cdata, n_tab))
+            print("    索引  %-6s %s" % ("可用" if ok_i else "缺失", idx.name))
+            print("    树    %-6s %s" % ("可用" if tree.exists() else "缺失", v.get("tree")))
+        return 0
+
+    if a.action == "use":
+        if a.name not in sources:
+            print("未知数据源：%s（可用：%s）" % (a.name, ", ".join(sources)))
+            return 2
+        yaml.safe_dump  # noqa: B018
+        text = f.read_text(encoding="utf-8")
+        import re
+        text = re.sub(r"^source: .*$", "source: %s" % a.name, text, count=1, flags=re.M)
+        f.write_text(text, encoding="utf-8")
+        print("数据源已切到：%s（%s）" % (a.name, sources[a.name].get("label", "")))
+        return 0
+    return 2
+
 def cmd_profile(a) -> int:
     profiles, default = _load_profiles()
     if not profiles:
@@ -433,6 +474,8 @@ def cmd_find(a) -> int:
                               "decoded": r[2], "flag": r[3]})
                 break
     if not found:
+        if _find_table_fallback(a.path):
+            return 0
         print("未命中：%s" % a.path)
         print("提示：先 la.py img best 看候选，或换扩展名（.ktx/.bc7）再试")
         return 1
@@ -441,6 +484,93 @@ def cmd_find(a) -> int:
               % (f["layer"], f["path"], f["pack"], f["row"],
                  f["decoded"], f["flag"]))
     return 0
+
+
+def _find_table_fallback(raw: str):
+    """兜底：配置表（com/cdata/*.py）查 name_index（经典服表名索引）+ npk 条目 + 还原树。
+
+    命中返回 True。只读 cdata_name_index.sqlite3 / npk_index.sqlite3，不写任何库。
+    """
+    import sqlite3
+    from pathlib import Path
+
+    ni_db = DET / "cdata_name_index.sqlite3"
+    if not ni_db.is_file():
+        return False
+    npk_db = DET / "npk_index.sqlite3"
+
+    q = raw.replace("\\", "/").strip()
+    ql = q.lower()
+    stem = Path(ql).name.rsplit(".", 1)[0]
+    cands = []
+    if "/" in ql:
+        cands.append(ql)
+    cands += [stem, stem + ".nxs", "com/cdata/" + stem + ".nxs",
+              "com/cdata/" + stem + ".py",
+              "com/cdata/oversea/" + stem + ".py",
+              "com/cdata/oversea/" + stem + ".nxs"]
+
+    con = sqlite3.connect("file:%s?mode=ro" % str(ni_db).replace("\\", "/"), uri=True)
+    hit = None
+    for c in cands:
+        r = con.execute("select name_index.fid,name_index.entry,name_index.path,"
+                        "name_index.key,name_index.size,name_index.content_len "
+                        "from name_alias join name_index on name_index.fid=name_alias.fid "
+                        "where name_alias.alias=? limit 2", (c,)).fetchall()
+        if len(r) == 1:
+            hit = r[0]
+            break
+        if len(r) > 1:
+            print("表名候选 %d 条（%s）：" % (len(r), c))
+            for x in r[:5]:
+                print("   %s  entry=%s  %s" % (x[0], x[1], x[2]))
+            hit = r[0]
+            break
+    if hit is None:
+        con.close()
+        return False
+    fid, entry, path, key, size, clen = hit
+    print("[表] %s" % path)
+    print("     经典服表索引 entry=%s key=%s size=%s 载荷=%s fid=%s"
+          % (entry, key, size, clen, fid))
+
+    if npk_db.is_file():
+        try:
+            nc = sqlite3.connect("file:%s?mode=ro" % str(npk_db).replace("\\", "/"), uri=True)
+            loc = nc.execute("select layer,row,declared,flag from entries where file_id=? "
+                             "order by layer desc", (fid,)).fetchall()
+            nc.close()
+            if loc:
+                for layer, row, decl, flag in loc:
+                    print("     npk  %-9s #%s（%s 字节, flag=%s）" % (layer, row, decl, flag))
+            else:
+                print("     npk  本仓 npk_index 无此 fid（该表未随当前客户端下发）")
+        except Exception:
+            pass
+
+    tn = Path(path).as_posix()
+    if tn.startswith("com/cdata/"):
+        rel = tn
+    else:
+        rel = "com/cdata/" + Path(tn).name
+    stem2 = rel.rsplit(".", 1)[0]
+    shown = False
+    for root in (PROJ / "01_索引与产物/41_还原树/pe_20261020",
+                 PROJ / "01_索引与产物/41_还原树/script.py314.lc.npk"):
+        if not root.is_dir():
+            continue
+        for ext in (".nxs", ".py"):
+            f = root / (stem2 + ext)
+            if f.is_file():
+                print("     树   %s" % f)
+                shown = True
+                break
+        if shown:
+            break
+    if not shown:
+        print("     树   本地还原树无此表（源包独有或未解出）")
+    con.close()
+    return True
 
 
 def cmd_locate(a) -> int:
@@ -529,7 +659,14 @@ def cmd_list(a) -> int:
 
 
 def cmd_img(a) -> int:
-    """2D 图：best 看候选，export 导出（PE → PC 兜底）。"""
+    """2D 图：best 看候选，export 导出，fill 按板块批量补图。"""
+    if a.action == "fill":
+        sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
+        from toolkit_core import img_pipeline as IP
+        boards = [a.path] if a.path else [p.stem for p in (PROJ / "02_wiki/web/data/boards").glob("*.json")]
+        for b in boards:
+            IP.fill_board(b)
+        return 0
     path = a.path
     if not path:
         print("用法：la.py img best|export <逻辑路径> [-o 输出.png]")
@@ -566,6 +703,10 @@ def main() -> int:
 
     ap.add_argument("--profile", help="配置档案名（见 la.py profile list）")
 
+    src = sub.add_parser("source", help="数据源：list 检测 / use <pe|pc|documents>")
+    src.add_argument("action", nargs="?", choices=["list", "use", "detect"], default="list")
+    src.add_argument("name", nargs="?")
+
     pr = sub.add_parser("profile", help="配置档案：list / show <名>")
     pr.add_argument("action", nargs="?", choices=["list", "show"], default="list")
     pr.add_argument("name", nargs="?")
@@ -600,9 +741,9 @@ def main() -> int:
     ls.add_argument("--json")
     ls.add_argument("--layer", choices=["PE", "PC"], default="PE")
 
-    im = sub.add_parser("img", help="2D 图：best 看候选 / export 导出（PE→PC）")
-    im.add_argument("action", choices=["best", "export"])
-    im.add_argument("path")
+    im = sub.add_parser("img", help="2D 图：best / export / fill（统一补图）")
+    im.add_argument("action", choices=["best", "export", "fill"])
+    im.add_argument("path", nargs="?")
     im.add_argument("-o", "--out")
 
     bd = sub.add_parser("board", help="板块：check / run")
@@ -658,6 +799,8 @@ def main() -> int:
         return cmd_locate(a)
     if a.cmd == "tables":
         return cmd_tables(a)
+    if a.cmd == "source":
+        return cmd_source(a)
     if a.cmd == "profile":
         return cmd_profile(a)
     if a.cmd == "info":
