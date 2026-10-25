@@ -165,7 +165,7 @@
 
   var allTiles = [];
 
-  var URL_OVERRIDE = { scene_balance: 'analysis/scene_table.html' };
+  var URL_OVERRIDE = {};   // 2026-10-25：取消 scene_balance 跳转独立页，改走统一板块页（带导航与服型筛选）
   function tile(nm, b, arch, path){
     var a = document.createElement('a');
     a.className = 'card tile' + (arch ? ' deprecated' : '');
