@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-"""扫全部含 FSB5 的 gpk，建样本名 → (包, bank 偏移, 长度, 样本序号) 索引。"""
+"""扫 gpk 里的 FSB5 bank，建/并「样本名 → (包, bank 偏移, 长度, 样本序号)」索引。
+
+用法：
+  python build_fsb_sample_index_pe.py 0185.gpk 0186.gpk ...   # 覆盖写
+  python build_fsb_sample_index_pe.py --merge 0218.gpk        # 并入已有索引
+"""
 from __future__ import annotations
 
 import json
 import pathlib
-import re
 import struct
 import sys
 
@@ -34,17 +38,21 @@ def banks_in(d: bytes):
 
 
 def main() -> int:
-    packs = sys.argv[1:]
-    if not packs:
-        targets = sorted(p.name for p in PACKS.glob("*.gpk")
-                         if b"FSB5" in p.read_bytes()[:1] or True)
-    else:
-        targets = packs
+    args = sys.argv[1:]
+    merge = "--merge" in args
+    packs = [a for a in args if a.endswith(".gpk")]
     index: dict[str, list] = {}
-    meta = {}
-    for name in targets:
+    meta: dict[str, dict] = {}
+    if merge and OUT.is_file():
+        old = json.loads(OUT.read_text(encoding="utf-8"))
+        index = old.get("index", {})
+        meta = old.get("meta", {})
+        print("并入模式：已有样本名 %d" % len(index))
+
+    for name in packs:
         path = PACKS / name
         if not path.is_file():
+            print("缺包", name)
             continue
         d = path.read_bytes()
         nb = ns = 0
@@ -60,12 +68,12 @@ def main() -> int:
                     continue
                 ns += 1
                 index.setdefault(nm, []).append([name, off, ln, k])
-        if nb:
-            meta[name] = {"banks": nb, "samples": ns}
-            print("%-12s bank %5d 样本 %6d" % (name, nb, ns))
+        meta[name] = {"banks": nb, "samples": ns}
+        print("%-12s bank %5d 样本 %6d" % (name, nb, ns))
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"meta": meta, "index": index}, ensure_ascii=False), encoding="utf-8")
-    print("样本名 %d ｜ 写出 %s" % (len(index), OUT))
+    print("样本名合计 %d ｜ 写出 %s" % (len(index), OUT))
     return 0
 
 
