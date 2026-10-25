@@ -73,7 +73,7 @@ a{color:inherit}
 .wp-tools button:hover{background:linear-gradient(180deg,#c94534,#a8201c)}
 
 /* ---------- 首屏 ---------- */
-.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:330px;background:linear-gradient(90deg,rgba(9,13,17,.99) 0%,rgba(9,13,17,.98) 32%,rgba(9,13,17,.86) 50%,rgba(9,13,17,.42) 68%,rgba(9,13,17,0) 90%),url("assets/brand/hero_landscape.png") no-repeat center center;background-size:cover,cover}
+.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:330px;background:linear-gradient(270deg,rgba(9,13,17,.99) 0%,rgba(9,13,17,.92) 38%,rgba(9,13,17,.55) 62%,rgba(9,13,17,.0) 88%)}
 .wp-hero::before{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.2;pointer-events:none}
 .wp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
@@ -217,6 +217,20 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   background:linear-gradient(180deg,rgba(9,13,17,.92) 0%,rgba(9,13,17,.70) 32%,rgba(9,13,17,.34) 64%,rgba(9,13,17,.18) 100%)}
 .wp-side>*{position:relative;z-index:1}
 .wp-side{padding:18px 16px 26px}
+
+/* 横幅内容靠右（2026-10-25） */
+.wp-hero-in{justify-content:flex-end;text-align:right}
+.wp-hero-in>div:first-child{max-width:640px;margin-left:auto}
+.wp-hero p.lead{margin-left:auto}
+.wp-stats{justify-content:flex-end}
+
+/* 横幅：左侧图片块 + 右侧文字（2026-10-25） */
+.hero-bg{position:absolute;left:0;top:0;bottom:0;width:56%;
+  background:url("assets/brand/hero_landscape.png") no-repeat 88% center;background-size:cover;z-index:0}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(9,13,17,.25) 0%,rgba(9,13,17,.05) 45%,rgba(9,13,17,.75) 86%,rgba(9,13,17,1) 100%)}
+.wp-hero-in{position:relative;z-index:2}
+@media(max-width:900px){.hero-bg{width:100%}}
 </style>
 </head>
 <body>
@@ -239,6 +253,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 </header>
 
 <section class="wp-hero">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wp-hero-in">
     <div>
       <h1>废土档案 · 全资源图鉴</h1>
