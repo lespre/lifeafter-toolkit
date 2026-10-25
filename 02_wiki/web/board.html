@@ -1994,7 +1994,7 @@ function vSortList(list){
 }
 function vPass(it){
   if(V.cls.size&&!V.cls.has(it.vehicle_class||"（未标注）"))return false;
-  if(V.sub.size&&!V.sub.has(it.vehicle_subclass||"未匹配"))return false;
+  if(V.sub.size&&!V.sub.has(it.vehicle_subclass||"（未标注）"))return false;
   if(V.img&&it.icon_state!==V.img)return false;
   return true;
 }
