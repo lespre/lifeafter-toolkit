@@ -957,9 +957,8 @@ BANDS = [
 # 子界面入口（门户）—— 顶栏横排；手机上收进抽屉
 PORTALS = [
     ("图鉴首页", "wiki.html", "ok"),
-    ("板块浏览", "board.html", "ok"),
+    ("更新通知", "updates.html", "ok"),
     ("外观三维预览", "skin3d.html", "ok"),
-    ("武器模型", "weapon_models.html", "ok"),
     ("伤害计算器", "damage.html", "ok"),
 ]
 
