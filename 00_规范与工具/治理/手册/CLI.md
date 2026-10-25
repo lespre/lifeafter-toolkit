@@ -36,6 +36,27 @@ python la.py web build
 python la.py hotfix plan
 ```
 
+## PC 源（`E:\mrzh` 只读）
+
+PC 与 PE 共用同一套路径哈希，所以名字不用重做；只有容器索引要单独建。
+
+```bash
+# 索引（只读包头条目表，几分钟跑完 60 包）
+python 00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描/build_pc_index.py \
+    --root "E:/mrzh" --out 01_索引与产物/10_索引/pc_index.sqlite3
+python .../build_pc_index.py --probe 3        # 只扫 3 个包验证
+
+# 还原树（按名字表还原路径落盘）
+python .../build_pc_tree.py --workers 4
+python .../build_pc_tree.py --pack ui_01.gpk  # 单包
+
+# 取图
+python 00_规范与工具/工具/工具库/01_解码定位复原/图集与取图/pc_fetch.py <逻辑路径> out.png
+```
+
+本机实测规模：`pc_index` 60 包 / 2,363,986 行 · `pc_index_layered` 2,271,372 · `pc_index_res` 2,091,980 · `pc_index_gres` 201,747。
+名字口径：`murmur3_x86_32(路径)` 双 seed（高 `0x77777777` / 低 `0x66666666`），`names_join.sqlite3` 2,895,737 条，PE/PC 通用。
+
 ## 设计口径
 
 - 顶层命令按「用户要做什么」分组，不按代码模块分组。
