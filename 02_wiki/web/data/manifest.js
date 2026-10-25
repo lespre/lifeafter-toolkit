@@ -558,8 +558,8 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "场景伤害加成（按服型分档）",
-      "category": "二、战力类 / （五）伤害计算公式与场景平衡",
+      "name": "场景平衡",
+      "category": "二、战力类 / （五）场景平衡",
       "board": "scene_balance",
       "items": 573,
       "generated": "2026-10-24",
