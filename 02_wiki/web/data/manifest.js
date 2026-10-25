@@ -37,7 +37,7 @@ window.WIKI_MANIFEST = {
       "board": "appearance_extra",
       "items": 796,
       "generated": "2026-10-24",
-      "source_server": "PE 还原树 pe_20261020 · player_appear_data · 体验服",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
       "evidence": {
         "structure": 796
@@ -66,7 +66,7 @@ window.WIKI_MANIFEST = {
       "board": "avatar_catalog",
       "items": 673,
       "generated": "2026-10-22",
-      "source_server": "简单生存服（PE 测试服 pe_20261020）",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
         "structure": 673
@@ -251,7 +251,7 @@ window.WIKI_MANIFEST = {
       "board": "fashion_identity_unresolved_v01",
       "items": 31112,
       "generated": "2026-09-10",
-      "source_server": "测试客户端静态快照；服务器分支 unresolved",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
       "evidence": {
         "candidate": 31112
@@ -277,7 +277,7 @@ window.WIKI_MANIFEST = {
       "board": "fashion_wardrobe",
       "items": 2013,
       "generated": "2026-10-24",
-      "source_server": "PE 测试服 fashion_data 表（逐行解码：name/desc/model_id/charm_value/level/icons）",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
         "structure": 2013
@@ -818,7 +818,7 @@ window.WIKI_MANIFEST = {
       "board": "vehicle_full",
       "items": 174,
       "generated": "2026-10-18",
-      "source_server": "体验服 script 表结构解析：com\\cdata\\vehicle_ui_data.py(+_chs.py) 当前 Documents 快照",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df",
       "evidence": {
         "structure": 174
@@ -845,7 +845,7 @@ window.WIKI_MANIFEST = {
       "board": "weapon_skin_sfx_text_sources",
       "items": 122,
       "generated": "2026-10-17T00:06:34+08:00",
-      "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）",
+      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
       "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
       "evidence": {
         "structure": 122

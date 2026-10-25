@@ -552,6 +552,17 @@ function loadBoard(b,cb){
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
+    // 按编号排序（meta.sort_by_code）：先类型分组，再编号升序，显示层兜底
+    if(d.meta.sort_by_code){
+      const KN={"头像":0,"头像框":1,"名片框":2};
+      d.items.sort((x,y)=>{
+        const kx=(KN[x.kind]!=null?KN[x.kind]:9), ky=(KN[y.kind]!=null?KN[y.kind]:9);
+        if(kx!==ky)return kx-ky;
+        const nx=Number(x.item_id), ny=Number(y.item_id);
+        const vx=Number.isFinite(nx)?nx:1e15, vy=Number.isFinite(ny)?ny:1e15;
+        return vx-vy;
+      });
+    }
     cb(d);
   };
   s.onerror=()=>showLoadError("板块数据文件读取失败："+b);
