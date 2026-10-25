@@ -275,12 +275,12 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 2013,
+      "items": 2016,
       "generated": "2026-10-24",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py） · 资源 41_还原树/pe/资源",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2013
+        "structure": 2016
       },
       "state_summary": {
         "unresolved": 2197,
@@ -296,7 +296,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2013
+          "replayed-structural": 2016
         }
       }
     },
@@ -818,7 +818,7 @@ window.WIKI_MANIFEST = {
       "board": "vehicle_full",
       "items": 174,
       "generated": "2026-10-18",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（vehicle_ui_data.py、vehicle_brand_type_conf.py、vehicle_brand_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df",
       "evidence": {
         "structure": 174
@@ -845,7 +845,7 @@ window.WIKI_MANIFEST = {
       "board": "weapon_skin_sfx_text_sources",
       "items": 122,
       "generated": "2026-10-17T00:06:34+08:00",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（weapon_skin_data.py、weapon_skin_sfx_function_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
       "evidence": {
         "structure": 122
