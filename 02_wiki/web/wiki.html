@@ -73,7 +73,7 @@ a{color:inherit}
 .wp-tools button:hover{background:linear-gradient(180deg,#c94534,#a8201c)}
 
 /* ---------- 首屏 ---------- */
-.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:250px;background:linear-gradient(90deg,rgba(8,12,16,.94) 0%,rgba(8,12,16,.66) 30%,rgba(8,12,16,.18) 56%,rgba(8,12,16,0) 100%),url("assets/brand/hero_landscape.png") no-repeat right center;background-size:155% auto,155% auto}
+.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:330px;background:linear-gradient(90deg,rgba(9,13,17,.99) 0%,rgba(9,13,17,.98) 32%,rgba(9,13,17,.86) 50%,rgba(9,13,17,.42) 68%,rgba(9,13,17,0) 90%),url("assets/brand/hero_landscape.png") no-repeat center center;background-size:cover,cover}
 .wp-hero::before{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.2;pointer-events:none}
 .wp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
@@ -211,11 +211,12 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 /* ── 品牌图（2026-10-25）──────────────────────────── */
 .brand-mark{height:26px;width:auto;flex:0 0 auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.65))}
 .wp-hero-in{position:relative;z-index:2}
-.wp-side{position:relative;overflow:hidden;
+.wp-side{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;overflow-x:hidden;
   background:url("assets/brand/poster_portrait.png") no-repeat center bottom;background-size:cover}
 .wp-side::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(9,13,17,.92) 0%,rgba(9,13,17,.70) 32%,rgba(9,13,17,.34) 64%,rgba(9,13,17,.18) 100%)}
 .wp-side>*{position:relative;z-index:1}
+.wp-side{padding:18px 16px 26px}
 </style>
 </head>
 <body>
