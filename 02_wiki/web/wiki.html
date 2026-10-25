@@ -212,7 +212,8 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 /* ── 品牌图（2026-10-25）──────────────────────────── */
 .brand-mark{height:26px;width:auto;flex:0 0 auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.65))}
 .wp-hero-in{position:relative;z-index:2}
-.wp-side{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;overflow-x:hidden;
+.wp-side{position:relative;align-self:stretch;height:auto;min-height:0;
+  overflow:hidden;
   background:url("assets/brand/poster_portrait.png") no-repeat center bottom;background-size:cover}
 .wp-side::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(9,13,17,.92) 0%,rgba(9,13,17,.70) 32%,rgba(9,13,17,.34) 64%,rgba(9,13,17,.18) 100%)}
@@ -244,6 +245,11 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 /* 页脚统计（2026-10-25） */
 .hero-foot{color:rgba(183,194,203,.85);font-size:12.5px;letter-spacing:.06em;margin-top:14px}
 .hero-foot b{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;margin:0 3px}
+
+/* 底部「公开规则」居中折叠（2026-10-25） */
+.wp-foot{text-align:center}
+.wp-foot details.tech{max-width:760px;margin:0 auto;text-align:left}
+.wp-foot details.tech>summary{text-align:center}
 </style>
 </head>
 <body>
