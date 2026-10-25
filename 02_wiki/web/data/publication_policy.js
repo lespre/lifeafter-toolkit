@@ -290,22 +290,6 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "二、战力类 / （八）装备属性",
       "items": 753,
       "reason": "all_equips_data（PE 还原树 pe_20261020，oversea/_kj1）逐行解码；attrs 为 0xC6/0x86 嵌套行帧，属性名取自同表 chs 池；每条带 row_key 与定位链。只展示 attrs 非空条目，空属性条目不进板、不补零。"
-    },
-    "appearance_face": {
-      "publication_status": "published",
-      "category": "一、时装类 / （六）捏脸",
-      "reason": "由 appearance_extra 按部位拆出；数据来自 player_appear_data，只证静态存在。"
-    },
-    "appearance_ring": {
-      "publication_status": "published",
-      "category": "一、时装类 / （七）戒指",
-      "reason": "由 appearance_extra 按部位拆出；数据来自 player_appear_data，只证静态存在。"
-    },
-    "appearance_bud": {
-      "publication_status": "published",
-      "category": "一、时装类 / （八）半感染者花苞",
-      "items": 148,
-      "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
     }
   }
 };

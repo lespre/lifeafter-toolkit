@@ -32,90 +32,6 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "半感染者花苞",
-      "category": "一、时装类 / （八）半感染者花苞",
-      "board": "appearance_bud",
-      "items": 148,
-      "generated": "2026-10-26",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
-      "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
-      "evidence": {
-        "structure": 148
-      },
-      "state_summary": {
-        "verified": 0,
-        "unresolved": 148,
-        "quarantined": 0,
-        "static config": 148,
-        "runtime final unknown": 0
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 148
-        }
-      }
-    },
-    {
-      "name": "捏脸",
-      "category": "一、时装类 / （六）捏脸",
-      "board": "appearance_face",
-      "items": 22,
-      "generated": "2026-10-26",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（player_appear_data）",
-      "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
-      "evidence": {
-        "structure": 22
-      },
-      "state_summary": {
-        "verified": 0,
-        "unresolved": 22,
-        "quarantined": 0,
-        "static config": 22,
-        "runtime final unknown": 0
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 22
-        }
-      }
-    },
-    {
-      "name": "戒指",
-      "category": "一、时装类 / （七）戒指",
-      "board": "appearance_ring",
-      "items": 3,
-      "generated": "2026-10-26",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（player_appear_data）",
-      "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
-      "evidence": {
-        "structure": 3
-      },
-      "state_summary": {
-        "verified": 0,
-        "unresolved": 3,
-        "quarantined": 0,
-        "static config": 3,
-        "runtime final unknown": 0
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 3
-        }
-      }
-    },
-    {
       "name": "头像 / 头像框 / 名片框",
       "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
@@ -330,12 +246,12 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 2782,
+      "items": 2807,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2782
+        "structure": 2807
       },
       "state_summary": {
         "unresolved": 2197,
@@ -351,7 +267,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2782
+          "replayed-structural": 2807
         }
       }
     },
