@@ -33,7 +33,7 @@ body.wiki-board.scrolled .hd2{padding-block:12px}
 body.wiki-board.scrolled .hd2-crumb{margin-bottom:7px}
 body.wiki-board.scrolled .hd2 h1{font-size:19px!important;margin-bottom:0}
 body.wiki-board .wrap{max-width:1680px;padding:22px 28px 60px}
-body.wiki-board .controls{top:calc(var(--top-h,150px) + 10px);gap:10px!important;margin-bottom:20px;padding:14px!important;border:1px solid #35405a;border-radius:6px;background:#151c2af7!important;box-shadow:0 5px 20px #03040b14;backdrop-filter:blur(12px);align-items:center;scroll-margin-top:20px}
+body.wiki-board .controls{top:calc(var(--top-h,150px) + 10px)!important;gap:10px!important;margin-bottom:20px;padding:14px!important;border:1px solid #35405a;border-radius:6px;background:#151c2af7!important;box-shadow:0 5px 20px #03040b14;backdrop-filter:blur(12px);align-items:center;scroll-margin-top:20px}
 body.wiki-board :is(input,select,button){background:#111827!important;color:#dce4f4!important;border-color:#465470!important;border-radius:4px;box-shadow:none}
 body.wiki-board :is(input,select):focus{border-color:#b6a7df!important;box-shadow:0 0 0 2px #b6a7df20!important}
 body.wiki-board input::placeholder{color:#91a2c0!important}
@@ -139,7 +139,7 @@ body.wiki-board::-webkit-scrollbar-thumb:hover{background:#707c9b}
  body.wiki-board .hd2 #metaline{flex-wrap:wrap;gap:4px 10px;font-size:10px;line-height:1.85}body.wiki-board .techlink-wrap{margin-left:0}
  body.wiki-board .hd2 .pills{gap:5px;margin-top:10px!important}body.wiki-board .hd2 .pill{font-size:9px;padding:2px 6px}
  body.wiki-board .wrap{padding:16px 14px 40px}
- body.wiki-board .controls{position:static;top:auto;padding:12px!important;gap:9px!important;border-radius:5px;backdrop-filter:none}
+ body.wiki-board .controls{position:static!important;top:auto!important;padding:12px!important;gap:9px!important;border-radius:5px;backdrop-filter:none}
  body.wiki-board .controls #q{flex:1 1 100%!important;width:100%;max-width:none!important;min-width:0!important;height:38px!important}
  body.wiki-board .controls :is(select,.dir-btn,.density-btn){font-size:10.5px!important}
  body.wiki-board .board-filters>summary{display:flex;align-items:center;justify-content:space-between;padding:2px 0;font-size:11px;color:#c2cce0}
@@ -161,3 +161,11 @@ body.wiki-board::-webkit-scrollbar-thumb:hover{background:#707c9b}
 /* The selected row is marked by its border, without the legacy red dot. */
 body.wiki-board #siteNav a.leafrow:before{display:none}
 body.wiki-board #siteNav a.sub{margin-left:12px}
+
+/* Generic narrow cards: headings and evidence tags share flexible rows. */
+body.wiki-board .i-head{flex-wrap:wrap;min-width:0;row-gap:7px}
+body.wiki-board .i-name{min-width:0;max-width:100%;flex:1 1 110px}
+body.wiki-board .head-tags{flex:0 1 auto!important;max-width:100%;transform:none!important;justify-content:flex-start;gap:4px}
+body.wiki-board .i-head.toggle:after{flex-basis:100%;white-space:normal!important;margin-left:0!important;font-size:10px;color:#ad9dce}
+body.wiki-board :is(.v.nucleus-desc,.v.stars .star-txt){color:#cbd5e7!important;font-size:12px;line-height:1.8}
+body.wiki-board .v.stars .star{border-left-color:#8c7bad}
