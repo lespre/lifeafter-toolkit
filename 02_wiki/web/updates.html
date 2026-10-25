@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新通知 · 明日之后资料档案馆</title>
+<style>
+:root{
+  --bg:#0c0b0a;--panel:#171310;--panel-2:#1f1a16;
+  --ink:#f0eae4;--ink-2:#bdb0a4;--ink-3:#8c7d70;
+  --line:#2b231d;--line-2:#3d3128;--steel:#d14b32;--gold:#e0a83f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:14px;line-height:1.7;color:var(--ink);
+  background:radial-gradient(900px 420px at 18% -10%,rgba(111,159,186,.13),transparent 62%),
+             radial-gradient(700px 360px at 86% -6%,rgba(160,29,26,.10),transparent 66%),
+             linear-gradient(180deg,#0d151a,#0b1116 55%,#080d11);
+  background-attachment:fixed;min-height:100vh;padding:32px 20px 64px;
+}
+.wrap{max-width:900px;margin:0 auto}
+.top{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--line-2)}
+.top h1{font-size:22px;letter-spacing:.06em}
+.top a{margin-left:auto;color:var(--ink-3);text-decoration:none;font-size:13px;border:1px solid var(--line-2);padding:5px 12px;border-radius:2px}
+.top a:hover{color:var(--gold);border-color:var(--gold)}
+.entry{background:var(--panel);border:1px solid var(--line-2);border-radius:2px;padding:20px 22px;margin-bottom:16px;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px rgba(0,0,0,.5)}
+.entry h2{font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.entry .date{font-size:12px;color:var(--ink-3);letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.tag{font-size:11px;color:var(--gold);border:1px solid rgba(224,168,63,.4);border-radius:2px;padding:1px 7px;letter-spacing:.08em}
+ol{margin:12px 0 0 0;padding-left:22px}
+ol li{margin:7px 0;color:var(--ink-2)}
+ol li::marker{color:var(--steel);font-weight:700}
+.empty{color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>更新通知</h1>
+    <a href="index.html">← 返回总览</a>
+  </div>
+  <div id="list"><div class="empty">加载中…</div></div>
+</div>
+<script>
+fetch('data/updates.json',{cache:'no-store'}).then(r=>r.json()).then(rows=>{
+  const box=document.getElementById('list');
+  if(!rows.length){box.innerHTML='<div class="empty">暂无更新</div>';return}
+  box.innerHTML=rows.map(e=>`<div class="entry">
+    <div class="date">${e.date}${e.tag?` <span class="tag">${e.tag}</span>`:''}</div>
+    <h2>${e.title}</h2>
+    <ol>${(e.items||[]).map(t=>`<li>${t}</li>`).join('')}</ol>
+  </div>`).join('');
+}).catch(()=>{document.getElementById('list').innerHTML='<div class="empty">更新数据加载失败</div>'});
+</script>
+</body>
+</html>
