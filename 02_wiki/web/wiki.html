@@ -221,7 +221,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 
 /* 横幅内容靠右（2026-10-25） */
 .wp-hero-in{justify-content:flex-end;text-align:right}
-.wp-hero-in>div:first-child{max-width:640px;margin-left:auto}
+.wp-hero-in>div:first-child{max-width:700px;margin-left:auto}
 .wp-hero p.lead{margin-left:auto}
 .wp-stats{justify-content:flex-end}
 
@@ -236,14 +236,14 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 /* 横幅文案（2026-10-25 用户口径） */
 .hero-kicker{letter-spacing:.42em;margin-top:12px;color:rgba(111,159,186,.8)}
 .hero-meta{margin-top:16px;color:#cfd8e0;font-size:13px;letter-spacing:.04em}
-.hero-build{margin-top:6px;font:600 11.5px/1.5 ui-monospace,Consolas,monospace;color:rgba(183,194,203,.72);letter-spacing:.02em}
+.hero-build{margin-top:6px;white-space:nowrap;font:600 11.5px/1.5 ui-monospace,Consolas,monospace;color:rgba(183,194,203,.72);letter-spacing:.02em}
 
 /* 横幅不再显示统计块 */
 .wp-hero .wp-stats{display:none!important}
 
 /* 页脚统计（2026-10-25） */
-.foot-stats{color:var(--ink-3);font-size:12px;letter-spacing:.06em;margin:14px 0 6px}
-.foot-stats b{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;margin:0 2px}
+.hero-foot{color:rgba(183,194,203,.85);font-size:12.5px;letter-spacing:.06em;margin-top:14px}
+.hero-foot b{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;margin:0 3px}
 </style>
 </head>
 <body>
@@ -273,6 +273,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       <div class="jp hero-kicker">SURVIVOR ARCHIVE</div>
       <p class="lead hero-meta">Wiki <span id="buildVer">v—</span> · Designed by Preface</p>
       <p class="lead hero-build">This build was created on <span id="buildHost">—</span> at <span id="buildTime">—</span></p>
+      <div class="hero-foot"><b id="footBoards">—</b> 个公开板块 ｜ <b id="footItems">—</b> 条收录条目</div>
       <div class="wp-stats" aria-hidden="true" style="display:none">
         <div class="wp-stat"><b id="statBoards">—</b><span>公开板块</span></div>
         <div class="wp-stat"><b id="statItems">—</b><span>收录条目</span></div>
@@ -311,7 +312,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       <p class="mono">公开门禁 data/publication_policy.json ｜ 数据规范 docs/SCHEMA.md ｜ 流水线 docs/PIPELINE.md</p>
     </div>
   </details>
-  <div class="foot-stats"><b id="footBoards">—</b> 个公开板块 ｜ <b id="footItems">—</b> 条收录条目</div>
   <div class="copyright">LIFAFTER ARCHIVE · 数据来源：测试服客户端只读拆包</div>
 </div>
 
