@@ -1653,7 +1653,7 @@ function renderItemMedia(m){
    ★ 只用板上已有字段（part_bucket / has_permanent / icon_state / gender 由刷新脚本写入），
      不做任何推断：整套/光源没有图标命名约定就不按前缀判。 */
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
-const FR_BUCKETS=["头饰","衣服","背包","整套","光源","面饰","发饰","挂饰","投影","其他"];
+const FR_BUCKETS=["头饰","捏脸","衣服","背包","挂饰","戒指","半感染者花苞","整套","光源","面饰","发饰","投影","其他"];
 const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
 const FR={parts:new Set(),grade:"",img:"",gender:"",sort:""};
 /* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
