@@ -6,6 +6,7 @@
 <title>明日之后 · 资料档案馆</title>
 <link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
 <script src="data/manifest.js"></script>
+<script src="data/build_meta.js"></script>
 <script src="data/publication_policy.js"></script>
 <script src="data/wiki_taxonomy.js"></script>
 <style>
@@ -239,6 +240,10 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 
 /* 横幅不再显示统计块 */
 .wp-hero .wp-stats{display:none!important}
+
+/* 页脚统计（2026-10-25） */
+.foot-stats{color:var(--ink-3);font-size:12px;letter-spacing:.06em;margin:14px 0 6px}
+.foot-stats b{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;margin:0 2px}
 </style>
 </head>
 <body>
@@ -266,8 +271,8 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
     <div>
             <h1>LifeAfter · Wiki</h1>
       <div class="jp hero-kicker">SURVIVOR ARCHIVE</div>
-      <p class="lead hero-meta">Wiki v1.3.0 · Designed by Bless</p>
-      <p class="lead hero-build">This build was created on itx-241027 at 2026-10-25</p>
+      <p class="lead hero-meta">Wiki <span id="buildVer">v—</span> · Designed by Preface</p>
+      <p class="lead hero-build">This build was created on <span id="buildHost">—</span> at <span id="buildTime">—</span></p>
       <div class="wp-stats" aria-hidden="true" style="display:none">
         <div class="wp-stat"><b id="statBoards">—</b><span>公开板块</span></div>
         <div class="wp-stat"><b id="statItems">—</b><span>收录条目</span></div>
@@ -306,6 +311,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       <p class="mono">公开门禁 data/publication_policy.json ｜ 数据规范 docs/SCHEMA.md ｜ 流水线 docs/PIPELINE.md</p>
     </div>
   </details>
+  <div class="foot-stats"><b id="footBoards">—</b> 个公开板块 ｜ <b id="footItems">—</b> 条收录条目</div>
   <div class="copyright">LIFAFTER ARCHIVE · 数据来源：测试服客户端只读拆包</div>
 </div>
 
@@ -564,9 +570,20 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
     var boards = Object.keys(byId).length;
     var items = 0;
     for(var x=0;x<M.boards.length;x++) items += (M.boards[x].items || 0);
-    document.getElementById('statBoards').textContent = boards;
-    document.getElementById('statItems').textContent = items.toLocaleString('en-US');
-    document.getElementById('statCats').textContent = tops.length;
+    var sb=document.getElementById('statBoards'), si=document.getElementById('statItems'), sc=document.getElementById('statCats');
+    if(sb) sb.textContent = boards;
+    if(si) si.textContent = items.toLocaleString('en-US');
+    if(sc) sc.textContent = tops.length;
+    var fb=document.getElementById('footBoards'), fi=document.getElementById('footItems');
+    if(fb) fb.textContent = boards;
+    if(fi) fi.textContent = items.toLocaleString('en-US');
+    try{
+      var B = window.WIKI_BUILD || {};
+      var v=document.getElementById('buildVer'), h=document.getElementById('buildHost'), t=document.getElementById('buildTime');
+      if(v && B.version) v.textContent = B.version;
+      if(h && B.host) h.textContent = B.host;
+      if(t && B.time) t.textContent = B.time;
+    }catch(e){}
 
     var pc = {};
     Object.keys(pol).forEach(function(k){
