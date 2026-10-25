@@ -1,0 +1,14 @@
+const out={};const cdp=await context.newCDPSession(page);
+try{
+ await cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});await page.goto('http://127.0.0.1:8765/board.html?b=fashion_wardrobe',{waitUntil:'networkidle'});await page.waitForSelector('#grid .fcard',{timeout:20000});
+ const initial=await page.locator('#grid .fcard').count();out.initial=initial;
+ await page.locator('#q').fill('学院企划');await page.waitForFunction(()=>document.querySelectorAll('#grid .fcard').length<2016);out.search={count:await page.locator('#grid .fcard').count(),allMatch:await page.locator('#grid .fr-name').evaluateAll(xs=>xs.every(x=>x.textContent.includes('学院企划')))};
+ await page.locator('#q').fill('');await page.waitForFunction(()=>document.querySelectorAll('#grid .fcard').length===2016);
+ await page.getByRole('button',{name:/^头饰\s*838$/}).click();await page.waitForFunction(()=>document.querySelectorAll('#grid .fcard').length===838);out.partFilter=await page.locator('#grid .fcard').count();
+ await page.locator('.fr-grp').filter({has:page.getByText('部位',{exact:true})}).getByRole('button',{name:'全部',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('#grid .fcard').length===2016);
+ await page.locator('#grid .fdesc>summary').first().click();out.detailOpen=await page.locator('#grid .fdesc').first().getAttribute('open');out.detailText=await page.locator('#grid .fdesc[open] .fdesc-body').first().innerText();
+ await page.locator('.fr-zoom').first().click();await page.waitForSelector('#frBox',{state:'visible'});out.zoomVisible=await page.locator('#frBox').isVisible();out.zoomButtons=await page.locator('#frBox button').allTextContents();await page.keyboard.press('Escape');out.zoomClosed=await page.locator('#frBox').evaluate(el=>getComputedStyle(el).display==='none');
+ await cdp.send('Emulation.setDeviceMetricsOverride',{width:390,height:1000,deviceScaleFactor:1,mobile:true});await page.waitForFunction(()=>!document.querySelector('#boardFilters').open);await page.locator('#boardFilters>summary').click();out.mobileFilterExpanded=await page.locator('#boardFilters').evaluate(el=>el.open);await page.getByRole('button',{name:/^有图\s*1741$/}).click();await page.waitForFunction(()=>document.querySelectorAll('#grid .fcard').length===1741);out.mobileImageFilter=await page.locator('#grid .fcard').count();
+ out.widths=[];for(const width of [320,390,768,1024,1440]){await cdp.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<500});out.widths.push(await page.evaluate(()=>({width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth})));}
+ await page.goto('http://127.0.0.1:8765/board.html?b=fashion_wardrobe',{waitUntil:'networkidle'});await page.waitForSelector('#grid .fcard',{timeout:20000});return out;
+}finally{await cdp.send('Emulation.clearDeviceMetricsOverride');await cdp.detach();}

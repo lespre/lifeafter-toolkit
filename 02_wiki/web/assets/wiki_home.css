@@ -1,0 +1,510 @@
+*{
+  box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:130px}
+body{
+  margin:0;
+  font:14px/1.65 'Microsoft YaHei',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  --bg:#101614;
+  --panel:#18201d;
+  --text:#f2f0e8;
+  --muted:#a2ada5;
+  --line:#344039;
+  --accent:#d7b67b}
+a{
+  color:inherit;
+  text-decoration:none}
+button,input{
+  font:inherit}
+button,a,input{
+  outline-offset:5px}
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2px solid var(--accent)}
+.top{
+  height:78px;
+  display:flex;
+  align-items:center;
+  gap:42px;
+  padding:0 5%;
+  border-bottom:1px solid var(--line)}
+.brand{
+  font:bold 23px Georgia,serif;
+  letter-spacing:2px}
+.brand small{
+  font:10px monospace;
+  letter-spacing:4px;
+  margin-left:12px;
+  color:var(--accent)}
+.top nav{
+  display:flex;
+  gap:30px;
+  margin-left:auto;
+  font-size:13px;
+  color:var(--muted)}
+.top nav a:hover{
+  color:var(--accent)}
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden}
+.eyebrow{
+  font:11px/1.5 Consolas,monospace;
+  letter-spacing:3px;
+  color:var(--accent);
+  text-transform:uppercase}
+.hero h1{
+  font-size:58px;
+  line-height:1.2;
+  letter-spacing:3px;
+  margin:20px 0}
+.hero h1 em{
+  font-style:normal;
+  color:var(--accent)}
+.hero p{
+  color:var(--muted);
+  max-width:470px;
+  margin-bottom:24px}
+.searchbox{
+  display:flex;
+  width:min(540px,100%);
+  border:1px solid var(--line);
+  background:var(--panel)}
+.searchbox input{
+  width:100%;
+  min-width:0;
+  background:none;
+  border:0;
+  padding:18px;
+  color:var(--text)}
+.searchbox button{
+  border:0;
+  background:var(--accent);
+  color:#15211c;
+  padding:0 24px;
+  cursor:pointer;
+  white-space:nowrap}
+.hints{
+  display:flex;
+  gap:18px;
+  margin-top:12px;
+  font-size:12px;
+  color:var(--muted)}
+.stats{
+  display:flex;
+  gap:30px;
+  margin-top:26px;
+  color:var(--muted);
+  font-size:11px}
+.stats b{
+  font:24px Georgia,serif;
+  display:block;
+  color:var(--text)}
+.content{
+  max-width:1400px;
+  margin:auto;
+  padding:38px 5% 70px}
+.intro{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:24px}
+.intro h2{
+  font-size:24px;
+  margin:4px 0}
+.intro p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px}
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:42px}
+.feature{
+  position:relative;
+  min-height:200px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  overflow:hidden;
+  padding:23px;
+  display:flex;
+  flex-direction:column;
+  justify-content:end}
+.feature .num{
+  position:absolute;
+  top:15px;
+  left:22px;
+  font:11px monospace;
+  color:var(--accent);
+  letter-spacing:2px}
+.feature img{
+  height:125px;
+  width:65%;
+  object-fit:contain;
+  position:absolute;
+  top:1px;
+  right:-10px;
+  opacity:.9;
+  transition:transform .3s}
+.feature h3{
+  position:relative;
+  font-size:20px;
+  margin:5px 0}
+.feature span{
+  position:relative;
+  color:var(--muted);
+  font-size:12px}
+.feature:hover img{
+  transform:scale(1.08)}
+.feature:hover{
+  border-color:var(--accent)}
+.directory{
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr);
+  gap:34px}
+.side{
+  position:sticky;
+  top:130px;
+  align-self:start}
+.side .eyebrow{
+  font-size:10px;
+  margin-bottom:15px}
+.side a{
+  display:block;
+  padding:10px 0;
+  color:var(--muted);
+  border-bottom:1px solid var(--line);
+  font-size:13px}
+.side a:hover{
+  color:var(--accent)}
+.wp-cat{
+  margin-bottom:32px}
+.wp-cat > h2{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:12px;
+  margin-bottom:14px}
+.wp-cat > h2 .eyebrow{
+  font-size:10px}
+.wp-cat > h2 h2{
+  font-size:18px;
+  margin:0}
+.wp-cat > h2 small{
+  margin-left:auto;
+  color:var(--muted)}
+.tiles{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px}
+.tile{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  padding:16px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  min-height:86px;
+  transition:background .2s,border-color .2s}
+.tile:hover{
+  border-color:var(--accent);
+  background:color-mix(in srgb,var(--panel),var(--accent) 8%)}
+.tile img{
+  width:48px;
+  height:48px;
+  object-fit:contain}
+.tile strong{
+  display:block;
+  font-weight:500;
+  font-size:14px}
+.tile small{
+  color:var(--muted);
+  font-size:11px}
+.tile .arrow{
+  margin-left:auto;
+  color:var(--accent)}
+.foot{
+  padding:26px 5%;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:11px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px}
+.empty{
+  padding:30px;
+  color:var(--muted)}
+.concept{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:25px}
+.a .hero{
+  padding:70px 8% 45px;
+  min-height:510px;
+  background:linear-gradient(90deg,#10161499 0%,#10161444 35%,#10161411 65%,transparent),url('brand/hero_relay_duo_v5.png') center center/cover}
+.a .hero:after{
+  content:'';
+  position:absolute;
+  inset:auto 0 0;
+  height:100px;
+  background:linear-gradient(transparent,var(--bg));
+  z-index:-1}
+.a .feature{
+  background:linear-gradient(120deg,#25352b,#17211d)}
+
+[hidden]{
+  display:none!important}
+html{
+  scroll-padding-top:30px}
+.skip-link{
+  position:absolute;
+  left:20px;
+  top:-80px;
+  z-index:100;
+  background:var(--accent);
+  color:var(--bg);
+  padding:12px}
+.skip-link:focus{
+  top:10px}
+.top nav{
+  gap:23px}
+.top .project-link{
+  font-size:12px;
+  color:var(--muted);
+  border:1px solid var(--line);
+  padding:6px 12px;
+  white-space:nowrap}
+.top .project-link:hover{
+  color:var(--accent)}
+.hero-inner{
+  max-width:1160px;
+  margin:auto}
+.a .hero{
+  padding:65px 7% 48px;
+  min-height:510px;
+  background-position:center center}
+.hero h1{
+  max-width:620px}
+.searchbox{
+  max-width:100%}
+.searchbox .clear-search{
+  background:transparent;
+  color:var(--muted);
+  padding:0 13px;
+  border-left:1px solid var(--line)}
+.searchbox .clear-search:hover{
+  color:var(--text)}
+.wp-cat > h2{
+  font-size:18px;
+  margin:0 0 14px;
+  line-height:1.5}
+.wp-cat > h2 .no{
+  font:11px monospace;
+  color:var(--accent)}
+.wp-cat > h2 .cnt{
+  margin-left:auto;
+  font-size:11px;
+  font-weight:400;
+  color:var(--muted)}
+.tile .thumb{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  background:center/contain no-repeat}
+.tile .glyph{
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  font-family:serif;
+  color:var(--accent)}
+.tile .tx{
+  min-width:0}
+.tile .tname{
+  font-size:14px;
+  line-height:1.6;
+  font-weight:500;
+  overflow-wrap:anywhere}
+.tile .tmeta{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:3px}
+.tile:after{
+  content:'↗';
+  margin-left:auto;
+  color:var(--accent)}
+#categoryNav a{
+  display:flex;
+  gap:10px;
+  align-items:baseline}
+#categoryNav b{
+  color:var(--accent);
+  font-size:11px}
+#categoryNav i{
+  margin-left:auto;
+  font-style:normal;
+  font-size:10px}
+#gen{
+  margin-top:20px;
+  font-size:11px;
+  color:var(--muted)}
+#searchStatus{
+  font:11px/1.6 Consolas,'Microsoft YaHei',sans-serif;
+  color:var(--muted);
+  margin:0 0 20px;
+  letter-spacing:1px}
+#searchStatus b{
+  color:var(--accent)}
+.publication{
+  max-width:1260px;
+  margin:0 auto 36px;
+  padding:0 5%;
+  color:var(--muted);
+  font-size:12px}
+.publication summary{
+  cursor:pointer}
+.publication p{
+  max-width:850px}
+.build-info{
+  font:10px/1.8 Consolas,monospace;
+  color:var(--muted)}
+.foot{
+  align-items:center}
+.foot strong{
+  font-weight:400;
+  color:var(--text)}
+.foot a:hover{
+  color:var(--accent)}
+.feature{
+  background:linear-gradient(120deg,#25352b,#17211d)}
+@media(prefers-reduced-motion:reduce){
+  html{
+  scroll-behavior:auto}
+*{
+  transition:none!important}
+}
+@media(min-width:1800px){
+  .hero-inner{
+  max-width:1160px}
+.a .hero{
+  padding-left:7%}
+}
+@media(max-width:1100px){
+  .tiles{
+  grid-template-columns:repeat(2,minmax(0,1fr))}
+.top{
+  gap:24px}
+.top nav{
+  gap:14px;
+  font-size:12px}
+.top .project-link{
+  display:none}
+.feature img{
+  opacity:.6}
+}
+@media(max-width:760px){
+  html{
+  scroll-padding-top:20px}
+.top{
+  padding:0 6%;
+  height:65px}
+.top nav{
+  display:none}
+.top .project-link{
+  display:block;
+  margin-left:auto}
+.brand{
+  font-size:20px}
+.brand small{
+  font-size:9px;
+  margin-left:8px}
+.hero h1{
+  font-size:38px}
+.a .hero{
+  padding:40px 6%;
+  min-height:460px;
+  background-position:92% center;
+  background-image:linear-gradient(90deg,#101614d9,#10161455),url('brand/hero_relay_duo_v5.png')}
+.hero p{
+  max-width:340px}
+.searchbox input{
+  padding:15px 12px}
+.searchbox button{
+  padding:0 12px}
+.searchbox .clear-search{
+  padding:0 10px}
+.hints{
+  gap:13px;
+  font-size:11px;
+  flex-wrap:wrap}
+.feature-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px}
+.feature{
+  min-height:155px;
+  padding:16px}
+.feature h3{
+  font-size:18px}
+.feature span{
+  font-size:10px}
+.feature img{
+  opacity:.5}
+.feature .num{
+  left:16px}
+.intro p{
+  display:none}
+.intro h2{
+  font-size:22px}
+.content{
+  padding:28px 6%}
+.directory{
+  display:block}
+.side{
+  position:static;
+  margin-bottom:24px}
+.side .eyebrow,#gen{
+  display:none}
+#categoryNav{
+  display:flex;
+  gap:14px;
+  overflow:auto}
+#categoryNav a{
+  white-space:nowrap;
+  font-size:12px}
+#categoryNav i,#categoryNav b{
+  display:none}
+.side>a{
+  display:none}
+.tiles{
+  grid-template-columns:1fr}
+.stats{
+  gap:22px}
+.stats b{
+  font-size:22px}
+.wp-cat > h2{
+  font-size:17px;
+  gap:10px}
+.foot{
+  flex-direction:column;
+  align-items:start}
+.publication{
+  padding:0 6%}
+}
+
+
+
+/* Homepage identity and build information. */
+.hero h1{font-size:40px;letter-spacing:2px;margin:0 0 15px;line-height:1.25}
+.hero-build{font-size:12px;line-height:1.9;color:#c4cbbf;margin-bottom:28px;overflow-wrap:anywhere}
+.a .hero{min-height:420px;padding-top:54px;padding-bottom:42px}
+@media(max-width:760px){.hero h1{font-size:30px}.hero-build{font-size:11px;margin-bottom:24px}.a .hero{min-height:400px;padding-top:36px;padding-bottom:32px}}
+/* Original LifeAfter Wiki wordmark. */
+.top .brand{display:flex;align-items:center;flex:0 0 auto;line-height:1}
+.brand-logo{display:block;width:200px;height:auto}
+@media(max-width:760px){.brand-logo{width:165px}.top{gap:16px}}
+
+
+

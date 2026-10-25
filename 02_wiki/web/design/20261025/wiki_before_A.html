@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日之后 · 资料档案馆</title>
+<link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
+<script src="data/manifest.js"></script>
+<script src="data/build_meta.js"></script>
+<script src="data/publication_policy.js"></script>
+<script src="data/wiki_taxonomy.js"></script>
+<style>
+/* ============================================================
+   明日之后 · 资料档案馆 —— 官网视觉（钢灰蓝 / 血红 / 金）
+   ============================================================ */
+:root{
+  --bg:#0c0b0a; --bg-2:#141110;
+  --panel:#171310; --panel-2:#1f1a16;
+  --ink:#f0eae4; --ink-2:#bdb0a4; --ink-3:#8c7d70;
+  --line:#2b231d; --line-2:#3d3128;
+  --steel:#d14b32; --steel-dim:#7a2c1d;
+  --blood:#b62d15; --blood-2:#d11f1f;
+  --gold:#e0a83f;
+  --r:2px;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px rgba(0,0,0,.6);
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  font-size:14px;line-height:1.6;color:var(--ink);
+  background:
+    linear-gradient(180deg,rgba(120,155,175,.16) 0%,rgba(20,32,40,.0) 32%),
+    radial-gradient(1000px 460px at 20% -6%,rgba(111,159,186,.14),transparent 62%),
+    radial-gradient(800px 400px at 85% -4%,rgba(160,29,26,.10),transparent 66%),
+    linear-gradient(180deg,#0d151a,#0b1116 55%,#080d11);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0;background-image:var(--noise);opacity:.26;pointer-events:none;z-index:0}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(130% 92% at 50% -12%,transparent 50%,rgba(0,0,0,.66) 100%)}
+::selection{background:rgba(192,57,43,.42);color:#fff}
+a{color:inherit}
+[hidden]{display:none!important}
+
+/* ---------- 顶栏 ---------- */
+.wp-top{position:relative;position:sticky;top:0;z-index:40;
+  background:linear-gradient(180deg,rgba(13,21,26,.97),rgba(10,16,20,.92));
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.wp-top::after{content:"";display:block;height:1px;background:linear-gradient(90deg,transparent,rgba(111,159,186,.55),transparent)}
+.wp-top-in{max-width:1400px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:20px}
+.wp-brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+.wp-logo{width:22px;height:22px;flex:0 0 auto;border:1px solid var(--steel-dim);
+  transform:rotate(45deg);background:linear-gradient(135deg,rgba(111,159,186,.4),rgba(160,29,26,.25))}
+.wp-brand b{display:block;font-size:15px;font-weight:800;letter-spacing:.14em;color:#eaf1f5;white-space:nowrap}
+.wp-brand em{display:block;font:600 9px/1.2 ui-monospace,Consolas,monospace;font-style:normal;
+  letter-spacing:.3em;color:rgba(111,159,186,.6);margin-top:4px}
+.wp-nav{display:flex;gap:4px;flex:1 1 auto;flex-wrap:wrap}
+.wp-nav a{font-size:12px;text-decoration:none;color:var(--ink-2);letter-spacing:.08em;
+  padding:6px 10px;border-bottom:2px solid transparent;white-space:nowrap}
+.wp-nav a:hover{color:#fff;border-bottom-color:var(--blood-2);background:rgba(111,159,186,.06)}
+.wp-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.wp-tools input{width:250px;padding:8px 11px;font:inherit;font-size:12.5px;color:var(--ink);
+  background:rgba(6,10,13,.85);border:1px solid var(--line-2);border-radius:var(--r)}
+.wp-tools input::placeholder{color:#63737d}
+.wp-tools input:focus{outline:none;border-color:var(--steel);
+  box-shadow:0 0 0 1px rgba(111,159,186,.35),0 0 18px rgba(111,159,186,.12)}
+.wp-tools button{padding:8px 13px;font:inherit;font-size:12px;cursor:pointer;color:#fff;
+  background:linear-gradient(180deg,var(--blood-2),var(--blood));border:1px solid #7d1512;border-radius:var(--r);
+  letter-spacing:.06em}
+.wp-tools button:hover{background:linear-gradient(180deg,#c94534,#a8201c)}
+
+/* ---------- 首屏 ---------- */
+.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:330px;background:linear-gradient(270deg,rgba(9,13,17,.99) 0%,rgba(9,13,17,.92) 38%,rgba(9,13,17,.55) 62%,rgba(9,13,17,.0) 88%)}
+.wp-hero::before{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.2;pointer-events:none}
+.wp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+.wp-hero-in{max-width:1400px;margin:0 auto;padding:38px 22px 30px;position:relative;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.wp-hero h1{font-size:30px;line-height:1.15;font-weight:900;letter-spacing:.16em;color:#f2f7fa;
+  text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.wp-hero .jp{margin-top:10px;font:600 10px/1 ui-monospace,Consolas,monospace;
+  letter-spacing:.34em;color:rgba(111,159,186,.75)}
+.wp-hero p.lead{margin-top:13px;color:var(--ink-3);font-size:12.5px;letter-spacing:.03em;max-width:56ch}
+.wp-stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.wp-stat b{font-variant-numeric:tabular-nums;display:block;font-size:21px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.wp-stat span{font-size:10.5px;color:var(--ink-3);letter-spacing:.16em}
+.wp-hero-art{position:relative;display:flex;align-items:flex-end;justify-content:flex-end;gap:2px;max-width:50%;pointer-events:none;overflow:hidden}
+.wp-hero-art:before{content:"";position:absolute;right:-40px;top:-30px;width:520px;height:340px;background:radial-gradient(closest-side,rgba(209,75,50,.22),transparent 70%);filter:blur(8px)}
+.wp-hero-art img{position:relative;height:150px;width:auto;max-width:34%;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,.85)) saturate(1.05) contrast(1.03);-webkit-mask-image:linear-gradient(to bottom,#000 72%,rgba(0,0,0,.15) 100%);mask-image:linear-gradient(to bottom,#000 72%,rgba(0,0,0,.15) 100%)}
+.wp-hero-art img:nth-child(2){height:186px;transform:translateY(-8px);z-index:2;margin:0 -18px;max-width:38%}
+.wp-hero-art img:nth-child(3){height:132px;opacity:.92}
+
+/* ---------- 布局 ---------- */
+.wp-body{position:relative;z-index:1;max-width:1400px;margin:0 auto;
+  padding:24px 22px 70px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:26px;align-items:start}
+.wp-side{position:sticky;top:112px;align-self:start}
+.wp-side h2{font-size:10px;letter-spacing:.24em;color:var(--ink-3);font-weight:700;
+  padding:0 0 8px;border-bottom:1px solid var(--line);margin-bottom:8px}
+#categoryNav{display:flex;flex-direction:column;gap:1px}
+#categoryNav a{display:flex;align-items:center;gap:9px;text-decoration:none;padding:8px 9px;
+  border-left:2px solid transparent;color:var(--ink-2);font-size:12.5px;letter-spacing:.04em;transition:.14s}
+#categoryNav a:hover{color:#fff;background:rgba(111,159,186,.10);border-left-color:var(--blood-2)}
+#categoryNav a b{font-weight:800;color:var(--steel)}
+#categoryNav a i{font-style:normal;margin-left:auto;font-size:10px;color:#5f6f79;font-variant-numeric:tabular-nums}
+.wp-side .arch{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-3);cursor:pointer}
+.wp-side .arch input{accent-color:var(--blood-2);cursor:pointer}
+#gen{margin-top:10px;font-size:10.5px;color:#5f6f79;letter-spacing:.04em;line-height:1.5}
+
+/* ---------- 分类 ---------- */
+.wp-main{min-width:0}
+.wp-cat{margin-bottom:34px;scroll-margin-top:120px}
+.wp-cat > h2{display:flex;align-items:baseline;gap:12px;font-size:16px;font-weight:800;
+  letter-spacing:.14em;color:#eef4f7;padding-bottom:9px;border-bottom:1px solid var(--line-2);margin-bottom:16px}
+.wp-cat > h2 .no{font:800 11px/1 ui-monospace,Consolas,monospace;color:var(--steel);
+  letter-spacing:.14em;padding:4px 8px;border:1px solid var(--steel-dim);border-radius:1px}
+.wp-cat > h2 .cnt{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--gold);letter-spacing:.14em}
+.wp-cat > h2 span{flex-shrink:0}
+.wp-cat > h2 span:nth-child(2){flex-shrink:1;min-width:0}
+.wp-sub{margin:0 0 18px}
+.wp-sub > h3{font-size:12px;font-weight:700;color:var(--ink-2);letter-spacing:.1em;
+  margin:0 0 9px;display:flex;align-items:center;gap:8px}
+.wp-sub > h3::before{content:"";width:5px;height:5px;background:var(--blood-2);transform:rotate(45deg)}
+.wp-sub > h3 em{font-style:normal;color:#5f6f79;font-weight:600;font-size:10px;letter-spacing:.1em}
+
+.sub-h{margin:18px 0 8px;font-size:13px;font-weight:700;color:var(--ink-2);
+  letter-spacing:.08em;display:flex;align-items:center;gap:8px}
+.sub-h::before{content:"";width:4px;height:12px;background:var(--steel);display:inline-block}
+
+/* ---------- 瓦片 ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:10px}
+.card{position:relative}
+.tile{display:flex;gap:11px;align-items:flex-start;text-decoration:none;padding:11px 12px;
+  border:1px solid var(--line);border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(22,33,42,.72),rgba(15,23,29,.72));
+  box-shadow:var(--shadow);transition:border-color .15s,transform .12s,background .15s}
+.tile:hover{border-color:rgba(209,75,50,.55);transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.45),0 0 0 1px rgba(209,75,50,.12) inset;
+  background:linear-gradient(180deg,rgba(30,45,56,.85),rgba(17,26,33,.85));
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 10px 24px rgba(0,0,0,.6)}
+.tile .thumb{flex:0 0 auto;width:46px;height:46px;border-radius:1px;margin-top:2px;
+  background:rgba(6,10,13,.6) center/contain no-repeat;border:1px solid var(--line)}
+.tile .thumb.glyph{display:flex;align-items:center;justify-content:center;
+  font:700 15px/1 ui-monospace,Consolas,monospace;color:rgba(111,159,186,.7);
+  background:linear-gradient(135deg,rgba(111,159,186,.12),rgba(160,29,26,.08))}
+.tile .tx{min-width:0}
+.tile .tname{font-size:12.5px;font-weight:700;color:#e7eef2;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile:hover .tname{color:#fff}
+.tile .tmeta{font-size:10.5px;color:var(--ink-3);letter-spacing:.05em;margin-top:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile.placeholder,.tile.deprecated{opacity:.6;cursor:default}
+.tile.note{background:transparent;border-style:dashed}
+
+/* ---------- 其它 ---------- */
+.wp-empty{padding:34px;text-align:center;color:var(--ink-3);
+  border:1px dashed var(--line-2);border-radius:var(--r);background:rgba(255,255,255,.012)}
+#searchStatus{font-size:11px;color:var(--ink-3);letter-spacing:.08em;margin:0 0 14px}
+#searchStatus b{color:var(--gold);font-variant-numeric:tabular-nums}
+.wp-foot{max-width:1400px;margin:0 auto;padding:0 22px 50px;position:relative;z-index:1}
+details.tech{border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.012)}
+details.tech > summary{cursor:pointer;padding:9px 12px;font-size:11.5px;font-weight:600;
+  color:var(--ink-3);letter-spacing:.08em}
+details.tech .csub{padding:0 12px 12px;color:var(--ink-3);font-size:11.5px}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:#6b7b85}
+.copyright{margin-top:16px;text-align:center;color:#53636d;font-size:10px;letter-spacing:.24em}
+a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
+  outline:2px solid var(--steel);outline-offset:2px}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0a1014}
+::-webkit-scrollbar-thumb{background:#26343d;border:2px solid #0a1014}
+::-webkit-scrollbar-thumb:hover{background:#374a56}
+
+@media(max-width:1080px){
+  .wp-hero-art{display:none}
+  .wp-body{grid-template-columns:1fr;gap:18px}
+  .wp-side{position:static;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+  .wp-side h2{border:0;padding:0;margin:0}
+  #categoryNav{flex-direction:row;flex-wrap:wrap}
+  #categoryNav a{border:1px solid var(--line);border-radius:1px}
+}
+@media(max-width:720px){
+  .wp-top-in{flex-wrap:wrap;gap:10px;padding:9px 14px}
+  .wp-nav{order:3;width:100%;overflow:auto;flex-wrap:nowrap}
+  .wp-tools{width:100%}
+  .wp-tools input{flex:1;width:auto}
+  .wp-hero-in{padding:24px 14px 20px}
+  .wp-hero h1{font-size:22px;letter-spacing:.1em}
+  .wp-body{padding:16px 14px 50px}
+  .tiles{grid-template-columns:1fr}
+  .wp-foot{padding:0 14px 40px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile{transition:none}}
+
+/* 分类序号徽标：不许竖排 */
+.wp-cat > h2 .no{white-space:nowrap;min-width:26px;text-align:center;line-height:1}
+#categoryNav a{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;padding:7px 9px}
+#categoryNav a i{float:right;margin-left:8px}
+
+/* 分类序号：去掉方框，直接做冷钢蓝序号 */
+.wp-cat > h2 .no{border:0!important;padding:0!important;color:var(--steel)!important;
+  min-width:0!important;font-size:12px!important;letter-spacing:.16em}
+.wp-cat > h2{gap:10px}
+.wp-top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(209,75,50,.5),transparent)}
+.wiki-logo{height:24px;width:auto;display:block}
+.side-logo{padding:2px 0 12px}
+.side-logo img{height:22px;width:auto;display:block;filter:brightness(1.2) contrast(1.05)}
+
+/* ── 品牌图（2026-10-25）──────────────────────────── */
+.brand-mark{height:26px;width:auto;flex:0 0 auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.65))}
+.wp-hero-in{position:relative;z-index:2}
+.wp-side{position:relative;align-self:stretch;height:auto;min-height:0;
+  overflow:hidden;
+  background:url("assets/brand/poster_portrait.png") no-repeat center bottom;background-size:cover}
+.wp-side::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(9,13,17,.92) 0%,rgba(9,13,17,.70) 32%,rgba(9,13,17,.34) 64%,rgba(9,13,17,.18) 100%)}
+.wp-side>*{position:relative;z-index:1}
+.wp-side{padding:18px 16px 26px}
+
+/* 横幅内容靠右（2026-10-25） */
+.wp-hero-in{justify-content:flex-end;text-align:right}
+.wp-hero-in>div:first-child{max-width:700px;margin-left:auto}
+.wp-hero p.lead{margin-left:auto}
+.wp-stats{justify-content:flex-end}
+
+/* 横幅：左侧图片块 + 右侧文字（2026-10-25） */
+.hero-bg{position:absolute;left:0;top:0;bottom:0;width:56%;
+  background:url("assets/brand/hero_landscape.png") no-repeat 88% center;background-size:cover;z-index:0}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(9,13,17,.25) 0%,rgba(9,13,17,.05) 45%,rgba(9,13,17,.75) 86%,rgba(9,13,17,1) 100%)}
+.wp-hero-in{position:relative;z-index:2}
+@media(max-width:900px){.hero-bg{width:100%}}
+
+/* 横幅文案（2026-10-25 用户口径） */
+.hero-kicker{letter-spacing:.42em;margin-top:12px;color:rgba(111,159,186,.8)}
+.hero-meta{margin-top:16px;color:#cfd8e0;font-size:13px;letter-spacing:.04em}
+.hero-build{margin-top:6px;white-space:nowrap;font:600 11.5px/1.5 ui-monospace,Consolas,monospace;color:rgba(183,194,203,.72);letter-spacing:.02em}
+
+/* 横幅不再显示统计块 */
+.wp-hero .wp-stats{display:none!important}
+
+/* 页脚统计（2026-10-25） */
+.hero-foot{color:rgba(183,194,203,.85);font-size:12.5px;letter-spacing:.06em;margin-top:14px}
+.hero-foot b{color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;margin:0 3px}
+
+/* 底部「公开规则」居中折叠（2026-10-25） */
+.wp-foot{text-align:center}
+.wp-foot details.tech{max-width:760px;margin:0 auto;text-align:left}
+.wp-foot details.tech>summary{text-align:center}
+</style>
+</head>
+<body>
+
+<header class="wp-top">
+  <div class="wp-top-in">
+    <a class="wp-brand" href="wiki.html">
+      <img class="brand-mark" src="assets/brand/logo_mark.png" alt="">
+      <img class="wiki-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI">
+    </a>
+    <nav class="wp-nav" id="topNav" aria-label="分类导航"></nav>
+    <div class="wp-tools">
+      <a href="index.html#flow" title="返回项目总览 · 三线三带状态"
+         style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #2f4a58;border-radius:8px;background:#16212a;color:#dfe7ec;text-decoration:none;font-size:13px;white-space:nowrap"
+         onmouseover="this.style.background='#22343f'" onmouseout="this.style.background='#16212a'">三线三带</a>
+      <input id="homeSearch" type="search" aria-label="搜索板块" placeholder="搜索板块：武器皮肤 / 核芯 / 芯片…" autocomplete="off">
+      <button id="clearSearch" type="button">清空</button>
+    </div>
+  </div>
+</header>
+
+<section class="wp-hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wp-hero-in">
+    <div>
+            <h1>LifeAfter · Wiki</h1>
+      <div class="jp hero-kicker">SURVIVOR ARCHIVE</div>
+      <p class="lead hero-meta">Powered by LA Wiki <span id="buildVer">v—</span> · Designed by Preface</p>
+      <p class="lead hero-build">Deployed on <span id="buildTime">—</span> · Hosted on <span id="buildHost">—</span></p>
+      <div class="hero-foot"><b id="footBoards">—</b> 个公开板块 ｜ <b id="footItems">—</b> 条收录条目</div>
+      <div class="wp-stats" aria-hidden="true" style="display:none">
+        <div class="wp-stat"><b id="statBoards">—</b><span>公开板块</span></div>
+        <div class="wp-stat"><b id="statItems">—</b><span>收录条目</span></div>
+        <div class="wp-stat"><b id="statCats">—</b><span>资料大类</span></div>
+      </div>
+    </div>
+    <div class="wp-hero-art" aria-hidden="true" style="display:none">
+      <img src="assets/skin_posters/1110185.png" alt="奇迹" title="5典藏级">
+      <img src="assets/skin_posters/1110159.png" alt="沙海月鸣" title="6传世级">
+      <img src="assets/skin_posters/1110013.png" alt="幻影狩蝎" title="5典藏级">
+    </div>
+  </div>
+</section>
+
+<div class="wp-body">
+  <aside class="wp-side">
+    <div class="side-logo"><img src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></div>
+    <nav id="categoryNav" aria-label="侧边分类导航"></nav>
+    <div id="gen">读取发布策略中…</div>
+  </aside>
+
+  <main class="wp-main">
+    <div id="searchStatus" role="status" aria-live="polite"></div>
+    <div id="homeEmpty" class="wp-empty" hidden>没有匹配的板块，换个关键词试试。</div>
+    <div id="systemCards"></div>
+  </main>
+</div>
+
+<div class="wp-foot">
+  <details class="tech" id="boundary">
+    <summary>公开规则 · 来源与发布边界</summary>
+    <div class="csub">
+      <p><b>未知或已隔离的板块默认拒绝展示</b>；原始客户端包只读，读取工具只证明条目可解，不代表业务已启用。</p>
+      <p><b>资料可查 ≠ 当前可得或活动开启。</b>服务器分支、快照与证据范围以各板记录为准。</p>
+      <p>公开资料保留行级文字/配置来源；可解、可回放不等于可交易、可领取或业务启用。</p>
+      <p class="mono">公开门禁 data/publication_policy.json ｜ 数据规范 docs/SCHEMA.md ｜ 流水线 docs/PIPELINE.md</p>
+    </div>
+  </details>
+  <div class="copyright">LA Wiki · 数据来源：测试服客户端只读拆包</div>
+</div>
+
+<script>
+/* ============================================================
+   渲染：体系树 → 分类区 + 板块瓦片
+   ============================================================ */
+(function(){
+  var T = window.WIKI_TAXONOMY;
+  var M = window.WIKI_MANIFEST;
+  var P = window.WIKI_PUBLICATION_POLICY;
+  var host = document.getElementById('systemCards');
+  var navSide = document.getElementById('categoryNav');
+  var navTop = document.getElementById('topNav');
+  if(!T || !M || !host) return;
+
+  var byId = {};
+  (M.boards || []).forEach(function(b){ byId[b.board] = b; });
+  var pol = (P && P.boards) || {};
+
+  var THUMBS = [
+    [/weapon_skin/i,     'assets/skin_posters/1110001.png'],
+    [/^future_lottery/,  'assets/skin_posters/1110012.png'],
+    [/^skin_behavior/,   'assets/skin_posters/1110021.png'],
+    [/vehicle/i,         'assets/vehicle_icons/icon_195026_b.png'],
+    [/^tactical_chip/,   'assets/chip_icons/chip_11001_s.png'],
+    [/^mutation_core/,   'assets/core_icons/item_icon_jin_bing_b.png'],
+    [/fashion/i,         'assets/fashion_icon_refs/icon_110240_b.png'],
+    [/lottery|chenshi/i, 'assets/skin_posters/1110005.png'],
+    [/^drone/i,          'assets/drone_icons/icon_180010_b.png'],
+    [/recipe/i,          'assets/recipe_icons/icon_125058_b.png'],
+    [/item_master/i,     'assets/item_icons/icon_10004_b.png'],
+    [/gift_data/i,       'assets/item_icons/icon_1110002_b.png'],
+    [/nucleus_entry/i,   'assets/core_icons/item_icon_jin_bing_b.png'],
+    [/shop_static/i,     'assets/item_icons/icon_1110003_b.png'],
+    [/avatar/i,          'assets/avatar_icons/af_410001.png'],
+    [/kill_broadcast/i,  'assets/item_icons/icon_1110002_b.png'],
+    [/edible|recipe/i,   'assets/recipe_icons/icon_125058_b.png'],
+    [/upcoming/i,        'assets/skin_posters/1110012.png'],
+    [/talent|title|buff|entity|skill|illustration|server_types|text_notice|desc|activity|scene_balance/i,
+                         'assets/item_icons/icon_10004_b.png']
+  ];
+  function thumbOf(id){
+    for(var i=0;i<THUMBS.length;i++) if(THUMBS[i][0].test(id)) return THUMBS[i][1];
+    return null;
+  }
+  function glyphOf(name){
+    var m = String(name||'').match(/[\u4e00-\u9fff]/);
+    return m ? m[0] : '·';
+  }
+
+  function tally(n){
+    var boards = 0, ph = 0, i;
+    for(i=0;i<(n.boards||[]).length;i++) if(byId[n.boards[i]]) boards++;
+    if(n.placeholder && !boards) ph++;
+    for(i=0;i<(n.children||[]).length;i++){
+      var r = tally(n.children[i]); boards += r.boards; ph += r.ph;
+    }
+    return {boards:boards, ph:ph};
+  }
+  function badge(n){
+    var r = tally(n);
+    if(r.boards && r.ph) return r.boards + ' 块 · ' + r.ph + ' 项占位';
+    if(r.boards) return r.boards + ' 块';
+    if(r.ph) return r.ph + ' 项占位';
+    return '尚未产出';
+  }
+  var ZH_MAP=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时未确认'],
+    [/LOTTERY_POOL_RESOLVED/gi,'奖池解析'],[/ITEM_MASTER/gi,'道具总表'],
+    [/all_equips/g,'装备属性表'],[/common_item_data_base/g,'道具总表'],
+    [/weapon_skin_data/g,'武器皮肤表'],[/reward_pool_data_base/g,'奖池表'],
+    [/gift_data/g,'礼盒表'],[/huodong_conf/g,'活动配置'],
+    [/schema\s*(\d+)/gi,'结构 $1'],[/\bschema\b/gi,'结构'],
+    [/\bv0\.\d+/gi,''],[/\bsource-locked\b/gi,'锁源'],[/\bverified\b/gi,'已核验'],
+    [/\bunresolved\b/gi,'待确认'],[/\bcandidate\b/gi,'候选'],[/\bstatic config\b/gi,'静态配置']];
+  function zhName(s){
+    var out=String(s==null?'':s);
+    for(var i=0;i<ZH_MAP.length;i++) out=out.replace(ZH_MAP[i][0],ZH_MAP[i][1]);
+    return out.replace(/\s*→\s*/g,' 的 ').replace(/\s{2,}/g,' ').replace(/\s*·\s*·\s*/g,' · ').trim();
+  }
+
+  // 标题一律走 taxonomy：单板块叶子用叶子名（带序号），多板块叶子用板块名（去说明词）
+  var TITLES = {};
+  (function(){
+    function cleanNm(x){
+      var t=String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+        .replace(/\([^)]*\)/g,'').split('·')[0]
+        .replace(/全量|图鉴|说明文字|名称/g,'').replace(/总表|表$/,'').trim();
+      if(/当期&历史|历史每期/.test(t)) t='奖池';
+      if(/^活动$/.test(t)) t='活动';
+      t=t.replace(/[与及和、]+$/,'');
+      return t;
+    }
+    function numOf(leaf){
+      var m=String(leaf.name||'').match(/^（[^）]*）/);
+      return m?m[0]:'';
+    }
+    (T['树']||[]).forEach(function(top){
+      (top.boards||[]).forEach(function(id){
+        if(byId[id]) TITLES[id]=String(top.name||'').replace(/^[^、]*、/,'');
+      });
+      (top.children||[]).forEach(function(leaf){
+        var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+        ids.forEach(function(id){
+          TITLES[id]=(ids.length===1)?leaf.name:(numOf(leaf)+cleanNm(byId[id].name||id));
+        });
+      });
+    });
+  })();
+  function cleanTitle(b, nm){
+    if(TITLES[nm]) return TITLES[nm];
+    var s = String((b && b.name) || nm || '')
+      .replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
+      .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
+    return zhName(s || nm);
+  }
+
+  var allTiles = [];
+
+  var URL_OVERRIDE = { scene_balance: 'analysis/scene_table.html' };
+  function tile(nm, b, arch, path){
+    var a = document.createElement('a');
+    a.className = 'card tile' + (arch ? ' deprecated' : '');
+    if(!arch) a.href = URL_OVERRIDE[nm] || ('board.html?b=' + encodeURIComponent(nm));
+    var src = thumbOf(nm);
+    var th = document.createElement('div');
+    if(src){
+      th.className = 'thumb';
+      th.style.backgroundImage = 'url("' + src + '")';
+    }else{
+      th.className = 'thumb glyph';
+      th.textContent = glyphOf(cleanTitle(b, nm));
+    }
+    var tx = document.createElement('div'); tx.className = 'tx';
+    var n = document.createElement('div'); n.className = 'tname';
+    n.textContent = cleanTitle(b, nm);
+    var s = document.createElement('div'); s.className = 'tmeta';
+    s.textContent = (b.items != null ? b.items + ' 条' : '') + (path ? ' · ' + zhName(path.split(' · ').pop()).replace(/^[（(][^）)]*[）)]\s*/,'') : '') + (arch ? ' · 已归档' : '');
+    tx.appendChild(n); tx.appendChild(s);
+    a.appendChild(th); a.appendChild(tx);
+    a.setAttribute('data-search', (cleanTitle(b, nm) + ' ' + nm + ' ' + (path || '') + ' ' + ((b && b.category) || '')).toLowerCase());
+    allTiles.push(a);
+    return a;
+  }
+
+  function phTile(note){
+    var d = document.createElement('div');
+    d.className = 'card tile placeholder';
+    var th = document.createElement('div'); th.className = 'thumb glyph'; th.textContent = '·';
+    var tx = document.createElement('div'); tx.className = 'tx';
+    var n = document.createElement('div'); n.className = 'tname'; n.textContent = '尚未产出';
+    var s = document.createElement('div'); s.className = 'tmeta'; s.textContent = note || '对应板块还没有产物';
+    tx.appendChild(n); tx.appendChild(s);
+    d.appendChild(th); d.appendChild(tx);
+    return d;
+  }
+
+  function filterHome(){
+    var q = (document.getElementById('homeSearch').value || '').trim().toLowerCase();
+    var shown = 0, i, j;
+    for(i=0;i<allTiles.length;i++){
+      var hit = !q || (allTiles[i].getAttribute('data-search') || '').indexOf(q) >= 0;
+      allTiles[i].hidden = !hit;
+      if(hit) shown++;
+    }
+    var cats = document.querySelectorAll('.wp-cat');
+    for(i=0;i<cats.length;i++){
+      var any = false, ts = cats[i].querySelectorAll('.tile');
+      for(j=0;j<ts.length;j++) if(!ts[j].hidden) any = true;
+      cats[i].hidden = !any;
+    }
+    document.getElementById('searchStatus').innerHTML = q
+      ? ('匹配 <b>' + shown + '</b> 个板块')
+      : ('共 <b>' + allTiles.length + '</b> 个板块入口');
+    document.getElementById('homeEmpty').hidden = !(q && shown === 0);
+  }
+
+  function collect(node, path, out){
+    var p2 = path ? (path + ' · ' + node.name) : node.name;
+    var i;
+    for(i=0;i<(node.boards||[]).length;i++){
+      var nm = node.boards[i];
+      if(byId[nm]) out.push([nm, byId[nm], false, p2]);
+    }
+    for(i=0;i<(node.children||[]).length;i++) collect(node.children[i], p2, out);
+  }
+
+  function render(){
+    host.innerHTML = '';
+    navSide.innerHTML = '';
+    navTop.innerHTML = '';
+    allTiles.length = 0;
+
+    var tops = T['树'] || [];
+    tops.forEach(function(top, i){
+      var sec = document.createElement('section');
+      sec.className = 'wp-cat';
+      sec.id = 'cat-' + (i + 1);
+
+      var num = top.name.match(/^([零一二三四五六七八九十]+)、/);
+      var h2 = document.createElement('h2');
+      var no = document.createElement('span'); no.className = 'no';
+      no.textContent = num ? num[1] : String(i + 1);
+      var ti = document.createElement('span');
+      ti.textContent = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
+      var cn = document.createElement('span'); cn.className = 'cnt'; cn.textContent = badge(top);
+      h2.appendChild(no); h2.appendChild(ti); h2.appendChild(cn);
+      sec.appendChild(h2);
+
+      function tilesFor(entries){
+        var g = document.createElement('div');
+        g.className = 'tiles';
+        for(var li=0; li<entries.length; li++){
+          var e = entries[li];
+          if(e[0]) g.appendChild(tile(e[0], e[1], e[2], e[3]));
+          else g.appendChild(phTile(top.note));
+        }
+        return g;
+      }
+      var topList = [];
+      for(var bi=0; bi<(top.boards||[]).length; bi++){
+        var nm0 = top.boards[bi];
+        if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
+      }
+
+      // 整个大类合成一个网格：叶子不再各占一行
+      var allList = topList.slice();
+      for(var ci=0; ci<(top.children||[]).length; ci++){
+        var ch = top.children[ci];
+        for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
+          var nm2 = ch.boards[bi2];
+          if(byId[nm2]) allList.push([nm2, byId[nm2], false, '']);
+        }
+        for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], '', allList);
+      }
+      if(allList.length){ sec.appendChild(tilesFor(allList)); }
+      if(!(top.children||[]).length && !topList.length && top.placeholder){
+        sec.appendChild(tilesFor([[null, null, false, '']]));
+      }
+      host.appendChild(sec);
+
+      var label = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
+      var a1 = document.createElement('a');
+      a1.href = '#cat-' + (i + 1);
+      var b1 = document.createElement('b'); b1.textContent = num ? num[1] : String(i + 1);
+      var i1 = document.createElement('i'); i1.textContent = tally(top).boards;
+      a1.appendChild(b1); a1.appendChild(document.createTextNode(' ' + label)); a1.appendChild(i1);
+      navSide.appendChild(a1);
+
+      var a2 = document.createElement('a');
+      a2.href = '#cat-' + (i + 1);
+      a2.textContent = label;
+      navTop.appendChild(a2);
+    });
+
+    var boards = Object.keys(byId).length;
+    var items = 0;
+    for(var x=0;x<M.boards.length;x++) items += (M.boards[x].items || 0);
+    var sb=document.getElementById('statBoards'), si=document.getElementById('statItems'), sc=document.getElementById('statCats');
+    if(sb) sb.textContent = boards;
+    if(si) si.textContent = items.toLocaleString('en-US');
+    if(sc) sc.textContent = tops.length;
+    var fb=document.getElementById('footBoards'), fi=document.getElementById('footItems');
+    if(fb) fb.textContent = boards;
+    if(fi) fi.textContent = items.toLocaleString('en-US');
+    try{
+      var B = window.WIKI_BUILD || {};
+      var v=document.getElementById('buildVer'), h=document.getElementById('buildHost'), t=document.getElementById('buildTime');
+      if(v && B.version) v.textContent = B.version;
+      if(h && B.host) h.textContent = B.host;
+      if(t && B.time) t.textContent = B.time;
+    }catch(e){}
+
+    var pc = {};
+    Object.keys(pol).forEach(function(k){
+      var st = pol[k].publication_status;
+      pc[st] = (pc[st] || 0) + 1;
+    });
+    document.getElementById('gen').textContent = '公开 ' + boards + ' 个板块';
+
+    filterHome();
+  }
+
+  document.getElementById('homeSearch').addEventListener('input', filterHome);
+  document.getElementById('clearSearch').addEventListener('click', function(){
+    document.getElementById('homeSearch').value = '';
+    filterHome();
+  });
+
+  render();
+})();
+
+</script>
+</body>
+</html>

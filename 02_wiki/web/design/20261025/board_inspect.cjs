@@ -1,0 +1,1 @@
+await page.goto('http://127.0.0.1:8765/board.html?b=fashion_wardrobe',{waitUntil:'networkidle'});await page.waitForSelector('#grid .i',{timeout:20000});await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));return {state:await tabbit.observe({frames:'none',maxChars:6500}),screenshot:await page.screenshot({fullPage:false,timeout:10000})};
