@@ -971,7 +971,7 @@ function renderSfxRealNames(it){
   const names=Array.isArray(it.sfx_real_names)?it.sfx_real_names:[];
   const state=it.sfx_audio_state||"";
   if(!names.length)return "";
-  const rows=names.map(n=>`<li class="audio-row" title="${esc(n)}"><code class="sfx-real">${esc(n)}</code></li>`).join("");
+  const cn=it.sfx_real_names_cn||{};const rows=names.map(n=>`<li class="audio-row" title="${esc(n)}"><code class="sfx-real">${esc(n)}</code><span class="sfx-cn">${esc(cn[n]||"")}</span></li>`).join("");
   return `<div class="audio-group">音效真名（内部名）${names.length} 条${state?" · "+esc(state):""}</div>`+
     `<ul class="audio-list">${rows}</ul>`;
 }
