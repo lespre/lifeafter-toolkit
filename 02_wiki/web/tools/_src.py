@@ -46,7 +46,7 @@ def _source_root() -> pathlib.Path | None:
 _SRC_ROOT = _source_root()
 ROOTS = ([pathlib.Path(_ENV_ROOT)] if _ENV_ROOT else []) + ([_SRC_ROOT] if _SRC_ROOT else []) + [
     PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata",   # 基线+增量合成树（优先）
-    PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata",
+    PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata",
     PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata",
 ]
 

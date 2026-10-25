@@ -19,8 +19,8 @@ PROJ = WEB.parents[1]
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-TREE = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
-CHS_HURT = PROJ / "01_索引与产物/41_还原树/pe/配置_基线包/com/cdata/special_hurt_params_data_chs.py"
+TREE = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
+CHS_HURT = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata/special_hurt_params_data_chs.py"
 BOARD = WEB / "data/boards/scene_balance.json"
 
 
@@ -152,7 +152,7 @@ def main() -> int:
         "contract_version": 3, "audit_status": "passed", "contract": "frozen-audited-artifact",
         "source_locks": [
             {"source_id": "scene-balance-classic", "role": "primary",
-             "path": "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/special_hurt_params_data.py",
+             "path": "01_索引与产物/41_还原树/pe/配置/com/cdata/special_hurt_params_data.py",
              "sha256": h.hexdigest(), "bytes": 0, "mtime_ns": 0},
         ],
         "source_scope": {"cross_source_policy": "no-cross-source-field-join",

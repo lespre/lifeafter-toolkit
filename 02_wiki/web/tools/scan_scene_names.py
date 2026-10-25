@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-CD = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata")
+CD = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata")
 OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向/scene_name_scan_hits.json")
 WANT = {580, 750, 799, 754, 724, 2005, 200}
 

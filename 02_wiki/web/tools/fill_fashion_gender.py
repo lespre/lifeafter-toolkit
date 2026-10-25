@@ -19,7 +19,7 @@ WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-CD = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
+CD = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 v = lambda x: x[1] if isinstance(x, tuple) else x
 

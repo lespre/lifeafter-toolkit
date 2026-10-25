@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-CD = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata")
+CD = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata")
 CAND = [
     ("base（经典服）", CD / "special_hurt_params_data.py", CD / "special_hurt_params_data_chs.py"),
     ("kj1（简单生存）", CD / "oversea/special_hurt_params_data_auto_oversea_data_kj1.py",

@@ -8,7 +8,7 @@
   ① 击败播报外观  → common_item_kill_board_data（5 条，带 icon/名字/获取方式）
   ② MVP 结算动画  → mvp_action_data（8 条，带动画名/时长/轨道/演示视频/获取方式）
 
-数据源：41_还原树/pe/配置_基线包/com/cdata（= E:/mrzh/Documents/script.py314.lc.npk），
+数据源：41_还原树/pe/配置/com/cdata（= E:/mrzh/Documents/script.py314.lc.npk），
 pe_20261020 树里没有这两张表（已 ls 核对），只能用 documents 树。
 
 解码说明（kill_board 不走默认入口）：

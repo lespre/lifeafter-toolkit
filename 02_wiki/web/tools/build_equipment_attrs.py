@@ -16,7 +16,7 @@ PROJ = WEB.parents[1]
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-TABLE = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/oversea/all_equips_data_auto_oversea_data_kj1.py"
+TABLE = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata/oversea/all_equips_data_auto_oversea_data_kj1.py"
 CHS = TABLE.with_name(TABLE.stem + "_chs.py")
 SRC = PROJ / "01_索引与产物/30_分析/子代理产出_20261022/all_equips_attrs_kj1.json"
 BOARD = WEB / "data/boards/equipment_attrs.json"
@@ -110,7 +110,7 @@ def main() -> int:
             "provenance": {
                 "contract_version": 3, "audit_status": "passed", "contract": "frozen-audited-artifact",
                 "source_locks": [{"source_id": "equipment-attrs", "role": "primary",
-                                  "path": "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/oversea/all_equips_data_auto_oversea_data_kj1.py",
+                                  "path": "01_索引与产物/41_还原树/pe/配置/com/cdata/oversea/all_equips_data_auto_oversea_data_kj1.py",
                                   "sha256": sha, "bytes": TABLE.stat().st_size,
                                   "mtime_ns": TABLE.stat().st_mtime_ns}],
                 "source_scope": {"cross_source_policy": "no-cross-source-field-join",

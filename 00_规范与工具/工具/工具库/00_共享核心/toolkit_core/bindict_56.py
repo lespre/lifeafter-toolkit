@@ -149,7 +149,7 @@ def parse_table(raw_base: bytes, raw_chs: bytes | None = None) -> dict[str, Any]
 
 if __name__ == "__main__":
     import os
-    base = r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
+    base = r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata"
     for stem in ("vehicle_basic_conf", "nucleus_conf"):
         raw = open(os.path.join(base, stem + ".py"), "rb").read()
         chs_p = os.path.join(base, stem + "_chs.py")

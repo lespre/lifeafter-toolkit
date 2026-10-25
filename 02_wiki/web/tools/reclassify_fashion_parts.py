@@ -17,7 +17,7 @@ WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-T = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata/fashion_data.py"
+T = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata/fashion_data.py"
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 BAK = WEB / "data/boards/fashion_wardrobe.json.bak_merge"
 

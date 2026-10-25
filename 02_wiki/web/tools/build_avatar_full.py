@@ -15,7 +15,7 @@ import sys
 
 ROOT = pathlib.Path(r"E:/la拆包项目")
 WEB = ROOT / "02_wiki/web"
-TREE = ROOT / "01_索引与产物/41_还原树/pe/配置_增量快照/com/cdata"
+TREE = ROOT / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 FETCH = ROOT / "00_规范与工具/工具/工具库/01_解码定位复原/图集与取图"
 OUT_ICON = WEB / "assets/avatar_icons"
 sys.path.insert(0, str(ROOT / "00_规范与工具/工具/工具库/00_共享核心"))
