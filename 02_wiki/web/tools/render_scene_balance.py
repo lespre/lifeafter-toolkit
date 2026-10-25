@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-"""场景平衡页：按加成上下限分组列出全部场景。"""
+"""【已废弃 2026-10-25】场景加成平衡统一走板块页 board.html?b=scene_balance。
+本脚本曾生成 analysis/scene_balance.html（无导航的静态表），已删除该页；
+保留脚本仅作历史参考，不再写盘。
+"""
+
 from __future__ import annotations
 
 import html
@@ -75,3 +79,4 @@ __REST__
 dest = WEB / "scene_balance.html"
 dest.write_text(doc, encoding="utf-8")
 print("写出", dest, len(doc), "字节")
+raise SystemExit('已废弃：统一走 board.html?b=scene_balance')

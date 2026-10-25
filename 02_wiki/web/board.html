@@ -397,6 +397,7 @@ const FIELD_CN={gender_scope:"性别范围",gender_scope_note:"标注说明",gen
   tl_model_ids:"时限版模型ID",has_permanent:"含永久款",sample_paths:"资源路径样例",desc_note:"描述说明",
   hurt:"攻击力",power:"火力",damage:"理论伤害(攻×火力)",fire_speed:"射速",durability:"耐久",
   base_score:"基础评分",weapon_type_code:"武器类型码",weapon_kind_code:"武器子类码",
+  scene_id:"场景ID",server_type:"服型",source_kind:"来源",lower:"加成下限",upper:"加成上限",range:"加成区间",min_attack:"生效最低攻击",
   vehicle_class:"载具类型",series:"模型系列",body_model:"模型路径",vehicle_type_code:"载具类型码",
   item_ids:"关联物品ID",candidate_names:"候选名",
   name_field_chs_slot:"名称字段CHS槽",name_value_chs_slot:"名称文本CHS槽",
@@ -448,7 +449,7 @@ const FIELD_CN={gender_scope:"性别范围",gender_scope_note:"标注说明",gen
   ui_short_name_es_key:"UI 短名键",ui_combat_short_names:"战斗短名候选",
   ui_short_name_candidates:"UI 短名候选",listing_status:"上架状态（canonical）",listing_status_label:"上架状态",
   listing_evidence:"上架状态证据",sale_ts_role:"上架时间戳（非上架状态）",name_status_label:"名称状态"};
-const FIXED=new Set(["id","name","evidence","source","evidence_level","provenance","text_provenance","sfx_items","timed_variants","timed_variant_count","weapon_type_inference","name_resolution","reference_fields","behavior_resources","field_provenance","variant_items","display_name","stats","variants","all_row_keys","schema_refs","text_provenance_note","weapon_type_label","weapon_type_code","rewards","pools","activity_pool_refs","status_tags","search_text","_media"]);
+const FIXED=new Set(["id","name","evidence","source","evidence_level","provenance","text_provenance","sfx_items","timed_variants","timed_variant_count","weapon_type_inference","name_resolution","reference_fields","behavior_resources","field_provenance","variant_items","display_name","stats","variants","all_row_keys","schema_refs","text_provenance_note","weapon_type_label","weapon_type_code","rewards","pools","activity_pool_refs","status_tags","search_text","_media","scene_ids","server_types","source_kinds","row_keys","merged_rows"]);
 const HUGE_TABLE_MIN=15000;
 function buildHugeIndex(d){
   // 大表（如全道具总表 35986 行）：预构建轻量检索串，避免每次按键 JSON.stringify 全表。
