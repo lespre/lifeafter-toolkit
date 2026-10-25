@@ -32,23 +32,22 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "其他外观（发型·脸型·背包·挂饰·特效·手持）",
-      "category": "一、时装类 / （六）其他外观（发型·脸型·背包·挂饰·特效·手持）",
-      "board": "appearance_extra",
-      "items": 796,
-      "generated": "2026-10-24",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
+      "name": "捏脸",
+      "category": "一、时装类 / （六）捏脸",
+      "board": "appearance_face",
+      "items": 22,
+      "generated": "2026-10-26",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（player_appear_data）",
       "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
       "evidence": {
-        "structure": 796
+        "structure": 22
       },
       "state_summary": {
-        "unresolved": 796,
-        "static config": 796,
         "verified": 0,
-        "runtime final unknown": 796,
-        "有图": 11,
-        "无图": 785
+        "unresolved": 22,
+        "quarantined": 0,
+        "static config": 22,
+        "runtime final unknown": 0
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -56,7 +55,35 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 796
+          "replayed-structural": 22
+        }
+      }
+    },
+    {
+      "name": "戒指",
+      "category": "一、时装类 / （七）戒指",
+      "board": "appearance_ring",
+      "items": 3,
+      "generated": "2026-10-26",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（player_appear_data）",
+      "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
+      "evidence": {
+        "structure": 3
+      },
+      "state_summary": {
+        "verified": 0,
+        "unresolved": 3,
+        "quarantined": 0,
+        "static config": 3,
+        "runtime final unknown": 0
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 3
         }
       }
     },
@@ -275,12 +302,12 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 2016,
+      "items": 2782,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2016
+        "structure": 2782
       },
       "state_summary": {
         "unresolved": 2197,
@@ -296,7 +323,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2016
+          "replayed-structural": 2782
         }
       }
     },
