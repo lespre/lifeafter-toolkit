@@ -302,9 +302,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "reason": "由 appearance_extra 按部位拆出；数据来自 player_appear_data，只证静态存在。"
     },
     "appearance_bud": {
-      "publication_status": "unpublished",
+      "publication_status": "published",
       "category": "一、时装类 / （八）半感染者花苞",
-      "reason": "客户端 player_appear_data 无「花苞」部位行（0 条），暂不发布；待有数据再开。"
+      "items": 148,
+      "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
     }
   }
 };

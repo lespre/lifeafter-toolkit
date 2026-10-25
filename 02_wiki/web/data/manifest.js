@@ -32,6 +32,34 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "半感染者花苞",
+      "category": "一、时装类 / （八）半感染者花苞",
+      "board": "appearance_bud",
+      "items": 148,
+      "generated": "2026-10-26",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
+      "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
+      "evidence": {
+        "structure": 148
+      },
+      "state_summary": {
+        "verified": 0,
+        "unresolved": 148,
+        "quarantined": 0,
+        "static config": 148,
+        "runtime final unknown": 0
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 148
+        }
+      }
+    },
+    {
       "name": "捏脸",
       "category": "一、时装类 / （六）捏脸",
       "board": "appearance_face",
