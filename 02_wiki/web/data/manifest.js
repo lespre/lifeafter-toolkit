@@ -33,11 +33,11 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "其他外观（发型·脸型·背包·挂饰·特效·手持）",
-      "category": "一、时装类 / （六）其他外观",
+      "category": "一、时装类 / （六）其他外观（发型·脸型·背包·挂饰·特效·手持）",
       "board": "appearance_extra",
       "items": 796,
       "generated": "2026-10-24",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
       "package_sha": "61f7189bd6f94f58c07d350405a8820bc461183f03cee0b968df8dd2ff4cb199",
       "evidence": {
         "structure": 796
@@ -66,7 +66,7 @@ window.WIKI_MANIFEST = {
       "board": "avatar_catalog",
       "items": 673,
       "generated": "2026-10-22",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源 41_还原树/pe/资源",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
         "structure": 673
@@ -90,7 +90,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "状态效果总表",
-      "category": "二、战力类 / （十一）状态效果",
+      "category": "四、综合资料 / （七）状态",
       "board": "buff_catalog",
       "items": 18232,
       "generated": "2026-10-23",
@@ -169,7 +169,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "料理与食谱",
-      "category": "二、战力类 / （七）料理与食谱",
+      "category": "二、战力类 / （四）料理与食谱",
       "board": "edible_catalog",
       "items": 4557,
       "generated": "2026-10-23",
@@ -195,7 +195,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "实体总表",
-      "category": "四、资料层 / （八）实体",
+      "category": "四、综合资料 / （六）实体技能",
       "board": "entity_catalog",
       "items": 9219,
       "generated": "2026-10-23",
@@ -219,7 +219,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "装备属性（武器 · 护甲）",
-      "category": "二、战力类 / （八）装备属性",
+      "category": "二、战力类 / （八）装备属性（武器·护甲）",
       "board": "equipment_attrs",
       "items": 753,
       "generated": "2026-10-24",
@@ -251,7 +251,7 @@ window.WIKI_MANIFEST = {
       "board": "fashion_identity_unresolved_v01",
       "items": 31112,
       "generated": "2026-09-10",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
       "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
       "evidence": {
         "candidate": 31112
@@ -273,11 +273,11 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "人物·全量时装衣柜",
-      "category": "二、时装类 / （一）全量时装总表",
+      "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
       "items": 2013,
       "generated": "2026-10-24",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
         "structure": 2013
@@ -302,7 +302,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "种族潜能总表",
-      "category": "二、战力类 / （六）种族潜能",
+      "category": "二、战力类 / （六）各种族潜能",
       "board": "gene_potential_catalog",
       "items": 63,
       "generated": "2026-10-23",
@@ -425,11 +425,11 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "击败播报 / MVP 结算动画",
-      "category": "三、活动类 / （五）击败播报",
+      "category": "一、时装类 / （四）击败播报与全场最佳动画",
       "board": "kill_broadcast",
       "items": 13,
       "generated": "2026-10-22",
-      "source_server": "简单生存服·体验服（Documents py314 树）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（mvp_action_data、common_item_kill_board_data） · 资源 41_还原树/pe/资源",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
         "structure": 13
@@ -588,7 +588,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "服型总表 · 服务器类型后缀与依据",
-      "category": "四、资料层 / （四）服型",
+      "category": "四、综合资料 / （一）服务器类型",
       "board": "server_types",
       "items": 21,
       "generated": "2026-10-23",
@@ -738,7 +738,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "文本与提示（错误码 / 官方公告）",
-      "category": "四、资料层 / （十）文本与提示",
+      "category": "四、综合资料 / （五）说明条目、文字与提示总表",
       "board": "text_notice_catalog",
       "items": 14841,
       "generated": "2026-10-23",
@@ -786,7 +786,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "新更新与预告（自动）",
-      "category": "零、新更新与预告专栏（游戏未上线资源预告）",
+      "category": "置顶、预告专栏",
       "board": "upcoming_auto",
       "items": 16,
       "generated": "2026-10-21",
@@ -818,7 +818,7 @@ window.WIKI_MANIFEST = {
       "board": "vehicle_full",
       "items": 174,
       "generated": "2026-10-18",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
       "package_sha": "eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df",
       "evidence": {
         "structure": 174
@@ -845,7 +845,7 @@ window.WIKI_MANIFEST = {
       "board": "weapon_skin_sfx_text_sources",
       "items": 122,
       "generated": "2026-10-17T00:06:34+08:00",
-      "source_server": "PE 测试服 · 还原树 41_还原树/pe（表 com/cdata + 资源）",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
       "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
       "evidence": {
         "structure": 122
