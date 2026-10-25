@@ -331,12 +331,12 @@ window.WIKI_MANIFEST = {
       "name": "种族潜能总表",
       "category": "二、战力类 / （六）各种族潜能",
       "board": "gene_potential_catalog",
-      "items": 63,
+      "items": 48,
       "generated": "2026-10-23",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 63
+        "structure": 48
       },
       "state_summary": {
         "条目": 63
@@ -347,7 +347,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 63
+          "replayed-structural": 48
         }
       }
     },
