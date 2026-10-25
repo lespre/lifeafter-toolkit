@@ -1,5 +1,5 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-10-25",
+  "generated": "2026-10-26",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-09-10",
@@ -561,12 +561,12 @@ window.WIKI_MANIFEST = {
       "name": "场景伤害加成（按服型分档）",
       "category": "二、战力类 / （五）伤害计算公式与场景平衡",
       "board": "scene_balance",
-      "items": 562,
+      "items": 573,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（special_hurt_params_data、space_data） · 资源 41_还原树/pe/资源",
       "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
       "evidence": {
-        "structure": 562
+        "structure": 573
       },
       "state_summary": {
         "unresolved": 1363,
@@ -582,7 +582,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 562
+          "replayed-structural": 573
         }
       }
     },

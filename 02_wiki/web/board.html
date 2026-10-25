@@ -123,6 +123,19 @@ body.fashion-mode .i details.tech summary{font-size:12px}
 .fr-kv .v{color:#3f3f46;word-break:break-word}
 .fr-kv .v.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all}
 .fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
+/* ── 场景平衡表格模式（board id = scene_balance）── */
+body.scene-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
+body.scene-mode .grid table.sbt{width:100%;border-collapse:collapse;font-size:12.5px}
+body.scene-mode .sbt thead th{position:sticky;top:0;background:#131c23;color:#8fa3b0;font-weight:500;
+  text-align:left;padding:9px 12px;border-bottom:1px solid #22303a;white-space:nowrap;cursor:pointer;user-select:none}
+body.scene-mode .sbt thead th:hover{color:#cfe4f2}
+body.scene-mode .sbt tbody td{padding:8px 12px;border-bottom:1px solid #182129;color:#dbe6ee;white-space:nowrap}
+body.scene-mode .sbt tbody tr:hover td{background:#131d25}
+body.scene-mode .sbt td.num{font-family:ui-monospace,Consolas,monospace;color:#a9c0cf}
+body.scene-mode .sbt td.scene{color:#eaf2f8}
+body.scene-mode .sbt .tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+  border:1px solid #2a3a45;color:#9dbccd;background:#141e26}
+
 /* ── 载具模式（board id = vehicle_full）：复用 fr-* 图轨/灯箱，仅补类型色与「类型图」标记 ── */
 body.vehicle-mode .controls{flex-wrap:wrap;row-gap:8px}
 body.vehicle-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
@@ -1955,6 +1968,8 @@ function frRender(){
      · 排序：编号 ↓ 大→小（默认）/ 编号 ↑ 小→大，缺失值排最后
      · 图轨复用时装那套灯箱（.fr-rail/.fr-zoom/.fr-box + FR_IMGS），一套交互两板共用
    ★ 类名全部 v*，图轨/灯箱复用 fr-*；样式挂 body.vehicle-mode —— 时装板与武器皮肤板零影响。 */
+const SCENE_TABLE=(function(){try{return (getParam("b")||"")==="scene_balance";}catch(e){return false;}})();
+if(SCENE_TABLE)document.body.classList.add("scene-mode");
 const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
 const V={cls:new Set(),sub:new Set(),img:"",sort:""};
 (function(){
@@ -2420,6 +2435,72 @@ function hugeDraw(reset){
     }
   }else if(old)old.remove();
 }
+/* 场景平衡表格：列可点排序；沿用既有自定义筛选（服型/来源）与搜索 */
+let SB_SORT={key:"name",dir:1};
+function sbVal(it,k){
+  if(k==="场景编号")return (it["场景编号"]||"").replace(/[^0-9,，]/g,"");
+  if(k==="服型")return it["服型"]||"";
+  if(k==="加成下限")return Number(it.lower);
+  if(k==="加成上限")return Number(it.upper);
+  if(k==="生效最低攻击")return Number(it.min_attack);
+  if(k==="来源类型")return it["来源类型"]||"";
+  if(k==="加成区间")return it.range||"";
+  return it.name||"";
+}
+function sbRender(items){
+  const cols=["场景","场景编号","服型","加成下限","加成上限","加成区间","生效最低攻击","来源类型"];
+  const sorted=items.slice().sort((a,b)=>{
+    const k=SB_SORT.key,v1=sbVal(a,k),v2=sbVal(b,k);
+    if(typeof v1==="number"&&typeof v2==="number"){
+      if(v1!==v2)return (v1-v2)*SB_SORT.dir;
+    }else{
+      const c=String(v1).localeCompare(String(v2),"zh-CN");
+      if(c)return c*SB_SORT.dir;
+    }
+    return String(a.name||"").localeCompare(String(b.name||""),"zh-CN");
+  });
+  const g=document.getElementById("grid");
+  g.innerHTML="";
+  const t=document.createElement("table");
+  t.className="sbt";
+  const thead=document.createElement("thead");
+  const trh=document.createElement("tr");
+  for(const c of cols){
+    const th=document.createElement("th");
+    th.textContent=c+(SB_SORT.key===c?(SB_SORT.dir>0?" ▲":" ▼"):"");
+    th.onclick=()=>{
+      if(SB_SORT.key===c)SB_SORT.dir*=-1;else{SB_SORT.key=c;SB_SORT.dir=1;}
+      render();
+    };
+    trh.appendChild(th);
+  }
+  thead.appendChild(trh);t.appendChild(thead);
+  const tb=document.createElement("tbody");
+  for(const it of sorted){
+    const tr=document.createElement("tr");
+    const cells=[
+      ["scene",it.name||""],
+      ["num",(it["场景编号"]||"").replace(" 个：","")],
+      ["",`<span class="tag">${esc(it["服型"]||"-")}</span>`],
+      ["num",it.lower??"-"],
+      ["num",it.upper??"-"],
+      ["num",it.range||"-"],
+      ["num",it.min_attack??"-"],
+      ["", `<span class="tag">${esc(it["来源类型"]||"-")}</span>`],
+    ];
+    for(const [cls,val] of cells){
+      const td=document.createElement("td");
+      if(cls)td.className=cls;
+      if(cls==="num")td.textContent=val; else td.innerHTML=String(val);
+      tr.appendChild(td);
+    }
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb);g.appendChild(t);
+  const c=document.getElementById("count");
+  if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
+}
+
 function render(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   if(DATA)DATA._query=q;
@@ -2503,6 +2584,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     if(q){const hay=JSON.stringify(it).toLowerCase();if(!hay.includes(q))return false;}
     return true;
   });
+  if(SCENE_TABLE){ sbRender(items); return; }
   const g=document.getElementById("grid");g.innerHTML="";
   const hasSfxChildren=items.some(it=>Array.isArray(it.sfx_items));
   const childCount=items.reduce((sum,it)=>sum+(Array.isArray(it.sfx_items)?it.sfx_items.length:0),0);
