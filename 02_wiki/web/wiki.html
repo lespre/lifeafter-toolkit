@@ -231,6 +231,14 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   background:linear-gradient(90deg,rgba(9,13,17,.25) 0%,rgba(9,13,17,.05) 45%,rgba(9,13,17,.75) 86%,rgba(9,13,17,1) 100%)}
 .wp-hero-in{position:relative;z-index:2}
 @media(max-width:900px){.hero-bg{width:100%}}
+
+/* 横幅文案（2026-10-25 用户口径） */
+.hero-kicker{letter-spacing:.42em;margin-top:12px;color:rgba(111,159,186,.8)}
+.hero-meta{margin-top:16px;color:#cfd8e0;font-size:13px;letter-spacing:.04em}
+.hero-build{margin-top:6px;font:600 11.5px/1.5 ui-monospace,Consolas,monospace;color:rgba(183,194,203,.72);letter-spacing:.02em}
+
+/* 横幅不再显示统计块 */
+.wp-hero .wp-stats{display:none!important}
 </style>
 </head>
 <body>
@@ -256,10 +264,11 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wp-hero-in">
     <div>
-      <h1>废土档案 · 全资源图鉴</h1>
-      <div class="jp">SURVIVOR ARCHIVE / 2026 EDITION</div>
-      <p class="lead">拆包还原的游戏内数据：时装、皮肤、载具、核芯、芯片与每期奖池。全部条目带行级来源与证据等级，静态配置不代表当前可得。</p>
-      <div class="wp-stats">
+            <h1>LifeAfter · Wiki</h1>
+      <div class="jp hero-kicker">SURVIVOR ARCHIVE</div>
+      <p class="lead hero-meta">Wiki v1.3.0 · Designed by Bless</p>
+      <p class="lead hero-build">This build was created on itx-241027 at 2026-10-25</p>
+      <div class="wp-stats" aria-hidden="true" style="display:none">
         <div class="wp-stat"><b id="statBoards">—</b><span>公开板块</span></div>
         <div class="wp-stat"><b id="statItems">—</b><span>收录条目</span></div>
         <div class="wp-stat"><b id="statCats">—</b><span>资料大类</span></div>
