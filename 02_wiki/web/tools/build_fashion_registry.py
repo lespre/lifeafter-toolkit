@@ -57,6 +57,16 @@ def main() -> int:
             base = m.group(1).strip() if m else name
             part = m.group(2) if m else ""
             suffix = (m.group(3) or "") if m else ""
+            # 名字没写部位时，退回 part_type / desc 里的「- 衣服（」写法
+            if not part:
+                pt = str(v(val.get("part_type")) or "").lower()
+                part = {"hat": "头饰", "cloth": "衣服", "bag": "背包",
+                        "light": "光源", "suit": "整套", "face": "面饰"}.get(pt, "")
+            if not part:
+                dsc = str(v(val.get("desc")) or "")
+                m3 = re.search(r"[-－·]\s*(衣服|头饰|背包|光源|整套|面饰|发饰)", dsc)
+                if m3:
+                    part = m3.group(1)
             try:
                 model = int(v(val.get("model_id")))
             except (TypeError, ValueError):

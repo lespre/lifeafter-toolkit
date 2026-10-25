@@ -105,6 +105,7 @@ def main() -> int:
         _mod = _ilu.module_from_spec(_sp)
         _sp.loader.exec_module(_mod)
         _mod.main()
+
     except Exception as _e:  # noqa: BLE001
         print("⚠️ 时装登记表刷新失败：", _e)
 
