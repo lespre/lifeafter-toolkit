@@ -2936,6 +2936,16 @@ else loadBoard(b,d=>{
   document.getElementById("title").textContent=title;
   document.getElementById("metaline").textContent=
     `来源：${m.source_label||zhTitle(m.source_server)||'未记录'} · 生成 ${String(m.generated||'未记录').slice(0,10)}`;
+  if(m.registry){
+    const ml=document.getElementById("metaline");
+    if(ml&&!ml.querySelector(".reglink")){
+      const a=document.createElement("a");
+      a.className="techlink reglink"; a.href=m.registry; a.target="_blank";
+      a.textContent=" · 全量登记表";
+      a.title="人物时装全量登记表（fashion_data + player_appear_data + simple_fashion_data）";
+      ml.appendChild(a);
+    }
+  }
   const cnt={};d.items.forEach(i=>cnt[i.evidence]=(cnt[i.evidence]||0)+1);
   document.getElementById("pills").innerHTML=
     `<span class="pill">条目 <b>${d.items.length}</b></span>`+

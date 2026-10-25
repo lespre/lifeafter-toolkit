@@ -98,6 +98,16 @@ def main() -> int:
     errors: list = []
     boards: list = []
 
+    # 构建时刷新「人物时装全量登记表」（三源合并，构建一次读一次）
+    try:
+        import importlib.util as _ilu
+        _sp = _ilu.spec_from_file_location("_fashion_registry", Path(__file__).with_name("build_fashion_registry.py"))
+        _mod = _ilu.module_from_spec(_sp)
+        _sp.loader.exec_module(_mod)
+        _mod.main()
+    except Exception as _e:  # noqa: BLE001
+        print("⚠️ 时装登记表刷新失败：", _e)
+
     try:
         policy = load_policy(POLICY_FILE)
         public_ids = set(public_board_ids(POLICY_FILE, (p.stem for p in BOARDS_DIR.glob("*.json"))))
