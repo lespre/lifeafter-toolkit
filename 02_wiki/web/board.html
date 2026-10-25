@@ -1655,14 +1655,15 @@ function renderItemMedia(m){
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
 const FR_BUCKETS=["头饰","捏脸","衣服","背包","挂饰","戒指","半感染者花苞","整套","光源","面饰","发饰","投影","其他"];
 const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
-const FR={parts:new Set(),grade:"",img:"",gender:"",sort:""};
+const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:false};
 /* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
 (function(){
   try{
     const u=new URLSearchParams(location.search);
     (u.get("frpart")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>FR.parts.add(p));
     FR.grade=u.get("frgrade")||"";
-    FR.img=u.get("frimg")||"";
+    FR.img=(u.get("frimg")===null?"有图":u.get("frimg"));
+    FR.named=(u.get("frnamed")==="1");
     FR.gender=u.get("frgender")||"";
     FR.sort=u.get("frsort")||"";
   }catch(e){}
@@ -1672,7 +1673,7 @@ function frSyncUrl(){
     const u=new URLSearchParams(location.search);
     const put=(k,v)=>{if(v)u.set(k,v);else u.delete(k);};
     put("frpart",[...FR.parts].join(","));
-    put("frgrade",FR.grade);put("frimg",FR.img);put("frgender",FR.gender);put("frsort",FR.sort);
+    put("frgrade",FR.grade);put("frimg",FR.img);put("frgender",FR.gender);put("frsort",FR.sort);put("frnamed",FR.named?"1":"");
     history.replaceState(null,"",location.pathname+"?"+u.toString());
   }catch(e){}
 }
@@ -1716,6 +1717,7 @@ function frPass(it){
   if(FR.grade&&String(it.grade_level==null?"":it.grade_level)!==FR.grade)return false;
   if(FR.img==="有图"&&it.icon_state!=="有图")return false;
   if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
+  if(FR.named&&it.name_visible===false)return false;
   if(FR.gender){
     const gs=frGenders(it);
     if(FR.gender==="未标"){ if(gs.length)return false; }
@@ -1922,6 +1924,20 @@ function frBuildFilters(items){
   box.appendChild(one("品级","grade",[["全部",items.length,""]].concat(gk.map(k=>[k==="未标"?"未标":"品级 "+gradeLabel(k),cnt.grade[k],k])) ,FR.grade));
 
   box.appendChild(one("图示","img",[["全部",items.length,""],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
+  // 仅玩家可见名：默认不勾；勾上就只留名字能对上玩家可见表的条目
+  (function(){
+    const namedN=items.filter(it=>it.name_visible!==false).length;
+    const lab=document.createElement("label");
+    lab.className="fr-grp";
+    lab.title="勾上后只显示名字能对上玩家可见表的条目（开发名/工程名会被隐藏）";
+    const cb=document.createElement("input");
+    cb.type="checkbox";cb.checked=!!FR.named;
+    cb.addEventListener("change",()=>{FR.named=cb.checked;redraw();frRender();});
+    const em=document.createElement("em");em.textContent="仅玩家可见名";
+    const n=document.createElement("span");n.className="n";n.textContent=String(namedN);
+    lab.appendChild(em);lab.appendChild(cb);lab.appendChild(n);
+    box.appendChild(lab);
+  })();
   // 性别：只有板上确有男/女标记时才摆这一组（时装多为男女共用模型，字段为空就整组隐藏，不留 0 计数）
   if((cnt.gender["女"]||0)||(cnt.gender["男"]||0)){
     box.appendChild(one("性别","gender",[["全部",items.length,""],["女",cnt.gender["女"]||0],["男",cnt.gender["男"]||0],["未标",cnt.gender["未标"]||0]],FR.gender));
