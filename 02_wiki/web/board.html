@@ -2936,21 +2936,6 @@ else loadBoard(b,d=>{
   document.getElementById("title").textContent=title;
   document.getElementById("metaline").textContent=
     `来源：${m.source_label||zhTitle(m.source_server)||'未记录'} · 生成 ${String(m.generated||'未记录').slice(0,10)}`;
-  // 源包摘要 / 条目等级 折进技术详情，不再占副标题
-  (function(){
-    const ml=document.getElementById("metaline");
-    if(!ml||document.getElementById("metaTech"))return;
-    const box=document.createElement("details");
-    box.id="metaTech"; box.className="tech sub"; box.style.margin="8px 0 12px";
-    const sha=m.package_sha?String(m.package_sha).slice(0,16)+"…":"未记录";
-    const ev=EV_CN[m.evidence]||m.evidence||"未标注";
-    box.innerHTML=`<summary>技术详情 · 快照与证据</summary><div class="kv">`+
-      `<div class="k">源包摘要</div><div class="v mono">${esc(sha)}</div>`+
-      `<div class="k">条目等级</div><div class="v">${esc(ev)}</div>`+
-      `<div class="k">生成时间</div><div class="v">${esc(String(m.generated||"未记录"))}</div>`+
-      `</div>`;
-    ml.parentNode.insertBefore(box, ml.nextSibling);
-  })();
   const cnt={};d.items.forEach(i=>cnt[i.evidence]=(cnt[i.evidence]||0)+1);
   document.getElementById("pills").innerHTML=
     `<span class="pill">条目 <b>${d.items.length}</b></span>`+
@@ -2958,9 +2943,16 @@ else loadBoard(b,d=>{
     Object.entries(cnt).map(([k,v])=>`<span class="pill">${EV_CN[k]} <b>${v}</b></span>`).join("")+
     Object.entries(m.state_summary||{}).map(([k,v])=>`<span class="pill state-pill ${STATE_CLASS[k]||"unresolved"}">${esc(STATE_CN[k]||k)} <b>${v}</b></span>`).join("")+
     Object.entries(m.name_status_summary||{}).map(([k,v])=>`<span class="pill name-pill" title="name_status=${esc(k)}">名称${esc(VALUE_CN.name_status[k]||k)} <b>${v}</b></span>`).join("");
-  if(m.notes&&!m.notes_hidden){
+  {
     const n=document.getElementById("notes");n.style.display="block";
-    n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv"><div class="k">板块说明</div><div class="v">${esc(m.notes)}</div></div></details>`;
+    const _sha=m.package_sha?String(m.package_sha).slice(0,16)+"…":"未记录";
+    const _ev=EV_CN[m.evidence]||m.evidence||"未标注";
+    let _kv="";
+    if(m.notes&&!m.notes_hidden)_kv+=`<div class="k">板块说明</div><div class="v">${esc(m.notes)}</div>`;
+    _kv+=`<div class="k">源包摘要</div><div class="v mono">${esc(_sha)}</div>`;
+    _kv+=`<div class="k">条目等级</div><div class="v">${esc(_ev)}</div>`;
+    _kv+=`<div class="k">生成时间</div><div class="v">${esc(String(m.generated||"未记录"))}</div>`;
+    n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv">${_kv}</div></details>`;
   }
   if(m.liaison_descs&&m.liaison_descs.length){
     const notesEl=document.getElementById("notes");
