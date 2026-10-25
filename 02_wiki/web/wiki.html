@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>明日之后 · 资料档案馆</title>
+<link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
 <script src="data/manifest.js"></script>
 <script src="data/publication_policy.js"></script>
 <script src="data/wiki_taxonomy.js"></script>
@@ -72,10 +73,7 @@ a{color:inherit}
 .wp-tools button:hover{background:linear-gradient(180deg,#c94534,#a8201c)}
 
 /* ---------- 首屏 ---------- */
-.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);
-  background:
-    linear-gradient(180deg,rgba(150,180,195,.10),rgba(10,16,20,0) 78%),
-    radial-gradient(900px 320px at 72% 10%,rgba(111,159,186,.16),transparent 66%)}
+.wp-hero{position:relative;z-index:1;overflow:hidden;border-bottom:1px solid var(--line);min-height:250px;background:linear-gradient(90deg,rgba(8,12,16,.94) 0%,rgba(8,12,16,.66) 30%,rgba(8,12,16,.18) 56%,rgba(8,12,16,0) 100%),url("assets/brand/hero_landscape.png") no-repeat right center;background-size:155% auto,155% auto}
 .wp-hero::before{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.2;pointer-events:none}
 .wp-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
@@ -209,6 +207,15 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 .wiki-logo{height:24px;width:auto;display:block}
 .side-logo{padding:2px 0 12px}
 .side-logo img{height:22px;width:auto;display:block;filter:brightness(1.2) contrast(1.05)}
+
+/* ── 品牌图（2026-10-25）──────────────────────────── */
+.brand-mark{height:26px;width:auto;flex:0 0 auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.65))}
+.wp-hero-in{position:relative;z-index:2}
+.wp-side{position:relative;overflow:hidden;
+  background:url("assets/brand/poster_portrait.png") no-repeat center bottom;background-size:cover}
+.wp-side::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(9,13,17,.92) 0%,rgba(9,13,17,.70) 32%,rgba(9,13,17,.34) 64%,rgba(9,13,17,.18) 100%)}
+.wp-side>*{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -216,6 +223,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
 <header class="wp-top">
   <div class="wp-top-in">
     <a class="wp-brand" href="wiki.html">
+      <img class="brand-mark" src="assets/brand/logo_mark.png" alt="">
       <img class="wiki-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI">
     </a>
     <nav class="wp-nav" id="topNav" aria-label="分类导航"></nav>
@@ -241,7 +249,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
         <div class="wp-stat"><b id="statCats">—</b><span>资料大类</span></div>
       </div>
     </div>
-    <div class="wp-hero-art" aria-hidden="true">
+    <div class="wp-hero-art" aria-hidden="true" style="display:none">
       <img src="assets/skin_posters/1110185.png" alt="奇迹" title="5典藏级">
       <img src="assets/skin_posters/1110159.png" alt="沙海月鸣" title="6传世级">
       <img src="assets/skin_posters/1110013.png" alt="幻影狩蝎" title="5典藏级">
@@ -253,7 +261,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   <aside class="wp-side">
     <div class="side-logo"><img src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></div>
     <nav id="categoryNav" aria-label="侧边分类导航"></nav>
-    <label class="arch"><input type="checkbox" id="showArchived"> 显示已归档旧板</label>
     <div id="gen">读取发布策略中…</div>
   </aside>
 
@@ -392,7 +399,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   }
 
   var allTiles = [];
-  var showArchived = false;
 
   var URL_OVERRIDE = { scene_balance: 'analysis/scene_table.html' };
   function tile(nm, b, arch, path){
@@ -458,7 +464,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
     for(i=0;i<(node.boards||[]).length;i++){
       var nm = node.boards[i];
       if(byId[nm]) out.push([nm, byId[nm], false, p2]);
-      else if(showArchived && pol[nm]) out.push([nm, {name:nm}, true, p2]);
     }
     for(i=0;i<(node.children||[]).length;i++) collect(node.children[i], p2, out);
   }
@@ -499,7 +504,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       for(var bi=0; bi<(top.boards||[]).length; bi++){
         var nm0 = top.boards[bi];
         if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
-        else if(showArchived && pol[nm0]) topList.push([nm0, {name:nm0}, true, '']);
       }
 
       // 整个大类合成一个网格：叶子不再各占一行
@@ -509,7 +513,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
         for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
           var nm2 = ch.boards[bi2];
           if(byId[nm2]) allList.push([nm2, byId[nm2], false, '']);
-          else if(showArchived && pol[nm2]) allList.push([nm2, {name:nm2}, true, ch.name]);
         }
         for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], '', allList);
       }
@@ -545,9 +548,7 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
       var st = pol[k].publication_status;
       pc[st] = (pc[st] || 0) + 1;
     });
-    document.getElementById('gen').textContent =
-      '公开 ' + boards + ' · 隔离 ' + (pc.quarantined || 0) + ' · 退休 ' + (pc.retired || 0) +
-      ' · 未发布 ' + (pc.unpublished || 0);
+    document.getElementById('gen').textContent = '公开 ' + boards + ' 个板块';
 
     filterHome();
   }
@@ -556,10 +557,6 @@ a:focus-visible,input:focus-visible,summary:focus-visible,button:focus-visible{
   document.getElementById('clearSearch').addEventListener('click', function(){
     document.getElementById('homeSearch').value = '';
     filterHome();
-  });
-  document.getElementById('showArchived').addEventListener('change', function(e){
-    showArchived = e.target.checked;
-    render();
   });
 
   render();
