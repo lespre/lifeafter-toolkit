@@ -1,0 +1,64 @@
+v1 = 0
+L36:
+if not v0.'self':  goto L92
+L102:
+if not v0.'self'.'refresh_data'('pure_hurt'):  goto L125
+v1 = 'pure_hurt'[v0.'self']
+L146:
+goto L302
+L178:
+if not v0.'excepthook':  goto L317
+L232:
+if not (512 == v0.'excepthook'.'target_shield_change'):  goto L344
+L290:
+if not ?(v0.'excepthook', 'refresh_data', None):  goto L373
+L376:
+if not v0.'excepthook'.?.'refresh_data'('pure_hurt'):  goto L416
+v1 = v0.'excepthook'.?.'refresh_data'('pure_hurt')
+L488:
+if not v0.?:  goto L602
+L524:
+if not v0.'self':  goto L620
+L590:
+if not v0.'self'.'refresh_data'('pure_hurt_hp_percent'):  goto L653
+(v0.'self'.'refresh_data'('pure_hurt_hp_percent') * v0.?.?) += v1
+v1 = ?
+L726:
+if not v1:  goto L962
+L804:
+if not NULL(v0.?, 'equip_comp'):  goto L928
+L888:
+if not v0.?.?.?():  goto L970
+v3 = v0.?.?.?().?
+L992:
+if not (v3 <= v1):  goto L1006
+# ? 0
+v0.? = v1
+v1 = 0
+L1018:
+goto L1036
+# ? 0
+v0.? = v3
+v1 = (v3 - v1)
+# ? 0
+v0.? = v1
+L1098:
+if v0.?:  goto L1146
+L1166:
+if not v0.'self'.'refresh_data'('need_notify_pure_hurt', 122):  goto L1178
+v0.? = ('additional_data', 'get', 'source_entity', 'entity_type', 'getattr', 'equip_comp', 'target_entity', 'max_hp')
+return None
+return None
+return None
+return None
+# PUSH_EXC_INFO 0
+?.?
+# IMPORT_NAME 8
+v2 = None
+# CALL_FUNCTION_EX 0
+# POP_EXCEPT 0
+L1280:
+goto L999
+# COPY 3
+# POP_EXCEPT 0
+# RERAISE 1

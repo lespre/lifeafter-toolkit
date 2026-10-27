@@ -1,0 +1,45 @@
+v1 = v0.'source_entity'
+v2 = v0.'source_owner'
+v3 = NULL(v1)
+L106:
+if not v3:  goto L158
+L122:
+if not v2:  goto L166
+v4 = v1.'id'
+# STORE_SUBSCR 0
+# STORE_SUBSCR 0
+L220:
+if not v1:  goto L474
+L266:
+if not v1.'has_component'('source_after_hurt_calc'):  goto L495
+v1.'hurt_comp'.'trigger_event'('drone_after_hurt_calc', v0)
+L378:
+if not NULL(v1):  goto L417
+L394:
+if not v2:  goto L425
+v2.'hurt_comp'.'trigger_event'('tactic_after_hurt_calc', v0)
+L506:
+if not NULL(v1):  goto L545
+L522:
+if not v2:  goto L553
+v2.'hurt_comp'.'trigger_event'(None, v0)
+L634:
+if not NULL(v1):  goto L677
+L650:
+if not v2:  goto L683
+v2.'hurt_comp'.'trigger_event'(None, v0)
+return ?
+return ?
+return ?
+return ?
+return ?
+# PUSH_EXC_INFO 0
+'Helpers'.'is_strategy_equip_place_entity'
+v3 = 122
+# CALL_FUNCTION_EX 0
+# POP_EXCEPT 0
+L822:
+goto L460
+# COPY 3
+# POP_EXCEPT 0
+# RERAISE 1

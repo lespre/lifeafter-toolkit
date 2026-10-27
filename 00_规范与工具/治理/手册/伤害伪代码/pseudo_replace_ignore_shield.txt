@@ -1,0 +1,28 @@
+v1 = v0.'get_ignore_shield'()
+L46:
+if not v1:  goto L338
+L124:
+if not NULL(v0.'target_entity', 'equip_comp'):  goto L228
+L208:
+if not v0.'target_entity'.'equip_comp'.'get_shield_proxy'():  goto L270
+L242:
+if not (0 == v0.'target_shield_change'):  goto L287
+# COPY 1
+v0.'target_shield_change' += v0.'target_hp_change'
+# SWAP 2
+'Helpers'.'ensure_component'.'target_entity' = ?
+v0.'target_entity' = 0
+L362:
+if not v0.'additional_data':  goto L494
+L428:
+if not v0.'additional_data'.'get'('ignore_shield_extra_hurt_ratio'):  goto L525
+v2 = ('ignore_shield_extra_hurt_ratio'[v0.'additional_data'] * v0.'target_hp_change')
+v2 = 'math'.'ceil'(NULL(v2))
+# COPY 1
+v2 += v0.'target_hp_change'
+# SWAP 2
+'int'.'target_entity' = ?
+return None
+return None
+return None
+return None

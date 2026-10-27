@@ -1,0 +1,31 @@
+L40:
+if not 'switch'.'enable_new_hurt_calc':  goto L176
+L52:
+if not (v1 in v4):  goto L182
+L66:
+if not (0 == v0):  goto L89
+L106:
+if (0 <= 0[v2[v1]]):  goto L116
+L120:
+if not (0 >= v0):  goto L216
+for ... (L175):
+v6, v7 = 'enumerate'(v2[v1])[1], 'enumerate'(v2[v1])[0]
+L176:
+if (v7 <= v0):  goto L181
+L182:
+goto L171
+?
+L188:
+goto L209
+# END_FOR 0
+# POP_ITER 0
+v6 = 'len'(v2[v1])
+v0 = (v6[v4[v1]] + (v0 * v6[v3[v1]]))
+L314:
+if v5 is None:  goto L414
+L328:
+if not (v1 in 'p2m_a_class_min_hurt_additional_rate_region'):  goto L410
+v8 = 'p2m_a_class_min_hurt_additional_rate_region'[v1]
+v5 = (((0[v8] - v0) * ((0[v8] - 1[v8]) / (v5 - 1[v8]))) + v5)
+v0 = 'max'(v5, v0)
+return v0

@@ -1,0 +1,132 @@
+v3, v2 = 0, 0
+v4 = v0.'get_boss_level_section'(v0.'source_owner', v0.'target_owner', v1)
+L162:
+if not NULL(v0.'target_owner', 'buff_mgr_comp'):  goto L431
+L260:
+if NULL(v0.'source_position3d', v0.'target_entity'):  goto L298
+v5 = v1.'get'('slow_probs')
+v6 = v1.'get'('slow_buffs')
+L334:
+goto L370
+v5 = v1.'get'('back_slow_probs')
+v6 = v1.'get'('back_slow_buffs')
+L414:
+if not v5:  goto L557
+v7 = v4[v5]
+L482:
+if not (v7 <= NULL()):  goto L591
+v8 = v0.'get_slow_buff_idx'(v0.'source_owner', v0.'target_entity', v1)
+v9, v10 = v8[v4[v6]][2], v8[v4[v6]][1]
+v11 = v8[v4[v6]][0]
+v0.'target_owner'.'slow_probs'.'add_buff'(v0.'source_owner', v9, v10, v11)
+L708:
+if not (v1 in 'repel_prob'):  goto L841
+L798:
+if not v0.'can_build_repel_data'(v0.'source_owner', v0.'target_entity', v4, v1):  goto L886
+# STORE_SUBSCR 0
+L896:
+if not (v1 in 'repel_qili'):  goto L935
+# STORE_SUBSCR 0
+L1014:
+if not v0.'is_hit_weakness'():  goto L1323
+v12 = 'weakness_type'[v0.'additional_data']
+L1066:
+if not (v1 in 'weakness_rigid_probs'):  goto L1169
+L1124:
+if not (1 - v12)['weakness_rigid_probs'[v1]]:  goto L1198
+v13 = v4[(1 - v12)['weakness_rigid_probs'[v1]]]
+L1236:
+if not (v13 <= NULL()):  goto L1254
+# STORE_SUBSCR 0
+L1280:
+if not (v1 in 'weakness_body_part_addition_rates'):  goto L1342
+L1338:
+if not (1 - v12)['weakness_body_part_addition_rates'[v1]]:  goto L1371
+v2 = v4[(1 - v12)['weakness_body_part_addition_rates'[v1]]]
+v0.'additional_data'.'get'('hurt_weakness_additional_rate', 0) += v2
+v2 = 'weakness_hit_rigid'
+L1510:
+if not v0.'enable_compress_attr'():  goto L1569
+L1554:
+if not 'switch'.'enable_inverse_tower':  goto L1591
+v0.'source_attrs'.'get'('inverse_tower_hurt_weakness_additional_rate', 0) += v2
+v2 = v0.'additional_data'
+L1630:
+goto L1956
+L1640:
+if not (v1 in 'rigid_probs'):  goto L1700
+v14 = v4['rigid_probs'[v1]]
+L1724:
+if not (v14 <= NULL()):  goto L1742
+# STORE_SUBSCR 0
+v2, v3 = v0.'get_body_part_hurt_rate'()[1], v0.'get_body_part_hurt_rate'()[0]
+L1804:
+if not (v1 in 'addition_rates'):  goto L1829
+v4['addition_rates'[v1]] += v2
+v2 = 'weakness_hit_rigid'
+L1892:
+if not 'switch'.'enable_levin_monster_base':  goto L2086
+v15 = v0.'additional_data'.'get'('hit_body_part', 2)
+L1962:
+if not (1 == v15):  goto L2121
+L1976:
+if not (v1 in 'head_attacked_times'):  goto L2128
+L1990:
+if not (v1 in 'dizzy_anim'):  goto L2135
+v16 = 'head_attacked_times'[v1]
+v17 = 'dizzy_cds'[v1]
+v18 = 'dizzy_times'[v1]
+v19 = 0
+L2080:
+if not ('len'(v16) == v19):  goto L2138
+L2168:
+if not (v19[v16] cmp188 v0.'target_entity'.'ai_comp'.'spec_dizzy_count'):  goto L2182
+1 += v19
+v19 = v0.'additional_data'
+L2192:
+goto L2123
+# STORE_SUBSCR 0
+L2318:
+if not 'switch'.'enable_bw_corpse_tide':  goto L2497
+v15 = v0.'additional_data'.'get'('hit_body_part', 2)
+L2388:
+if not (1 == v15):  goto L2532
+L2402:
+if not (v1 in 'hit_head_blow_probs'):  goto L2539
+L2416:
+if not (v1 in 'hit_head_blow_anim'):  goto L2546
+v20 = v4['hit_head_blow_probs'[v1]]
+L2500:
+if not (v20 <= NULL()):  goto L2588
+# STORE_SUBSCR 0
+L2598:
+if not (v1 in 'hit_head_blow_qili'):  goto L2637
+# STORE_SUBSCR 0
+L2684:
+if not (v1 in 'aoe_count'):  goto L2771
+v21 = 0
+for ... (L2761):
+v22 = 'aoe_count'[v1]
+L2778:
+if not (v22 <= v0.'additional_data'.'get'('aoe_count', 1)):  goto L2783
+'qili'
+L2786:
+goto L2801
+1 += v21
+v21 = 'hit_head_blow_info'[v0.'additional_data']
+L2806:
+goto L2759
+# END_FOR 0
+# POP_ITER 0
+v21['aoe_addition_rate'[v1]] += v2
+v2 = v4['hit_head_blow_qili'[v1]]
+return (v2, v3)
+# PUSH_EXC_INFO 0
+'hit_head_blow_info'
+# CALL_FUNCTION_EX 0
+# SWAP 2
+# POP_EXCEPT 0
+return (v2, v3)
+# COPY 3
+# POP_EXCEPT 0
+# RERAISE 1

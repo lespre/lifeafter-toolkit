@@ -1,0 +1,7 @@
+v1 = None
+L36:
+if not v0.'additional_data':  goto L91
+L102:
+if not v0.'additional_data'.'get'('ignore_shield'):  goto L124
+v1 = 'ignore_shield'[v0.'additional_data']
+return v1

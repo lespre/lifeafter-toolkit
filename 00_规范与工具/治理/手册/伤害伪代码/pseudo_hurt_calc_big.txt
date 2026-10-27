@@ -1,0 +1,750 @@
+v7 = v0.'hurt_params'
+v0.'hurt_params' = <mark7a>
+L118:
+if not ('const'.'HurtSourceType'.'ENV' in v0.'source_type'):  goto L629
+v0.'const' = 0
+v4 = v0.'hurt_source_data'.'get'('hurt_hp_percent', 0)
+L204:
+if not v4:  goto L268
+# COPY 1
+('float'(v4) * v0.'target_entity'.'max_hp') -= v0.'target_hp_change'
+# SWAP 2
+?.'const' = ?
+v8 = v0.'additional_data'.'get'('resist_env_hurt_rate')
+L396:
+if not v8:  goto L425
+v2 = 'max'(0, (v2 * (v8 - 1)))
+# COPY 1
+'max'(0, v2) -= v0.'target_hp_change'
+# SWAP 2
+?.'const' = ?
+L584:
+if not (1 == v0.'additional_data'.'get'('enable_env_real_hurt', 0)):  goto L622
+# COPY 1
+'max'(0, v3) -= v0.'target_hp_change'
+# SWAP 2
+?.'const' = ?
+L740:
+if not (v0.'additional_data'.'get'('env_hurt_reduction_rate', {}) in v0.'source_type'):  goto L819
+# COPY 1
+'max'(0, (v0.'source_type'['env_hurt_reduction_rate'[v0.'additional_data']] - 1.0)) *= v0.'target_hp_change'
+# SWAP 2
+?.'const' = ?
+L978:
+if not (v0.'additional_data'.'get'('env_hurt_reduction_rate_while_vehicle', {}) in v0.'source_type'):  goto L1057
+# COPY 1
+'max'(0, (v0.'source_type'['env_hurt_reduction_rate_while_vehicle'[v0.'additional_data']] - 1.0)) *= v0.'target_hp_change'
+# SWAP 2
+?.'const' = ?
+return None
+v9 = v0.'pre_calc_virus_hurt'()
+v10 = (0 cmp103 v9)
+L1190:
+if not (0 <= v1):  goto L1231
+L1204:
+if not (0 <= v2):  goto L1238
+L1218:
+if not (0 <= v3):  goto L1245
+L1232:
+if not (0 <= v4):  goto L1252
+L1248:
+if v10:  goto L1260
+L1262:
+if not (0 <= v6):  goto L1267
+return None
+v11 = v0.'target_entity'.'entity_type'
+v12 = 1
+v13 = NULL(v0.'source_entity')
+# COPY 1
+L1424:
+if not 'switch'.'enable_new_attr':  goto L1488
+'DroneHelpers'.'check_entity_is_drone'
+# COPY 1
+L1450:
+if not (1 cmp72 v11):  goto L1501
+?
+# COPY 1
+L1496:
+if (100 cmp72 v0.'source_type'):  goto L1524
+?
+# COPY 1
+L1516:
+if not v13:  goto L1534
+?
+v14 = (101 cmp72 v0.'source_type')
+L1614:
+if v0.'additional_data'.'get'('is_bonus_hit'):  goto L1650
+L1680:
+if not v0.'additional_data'.'get'('ignore_parry'):  goto L1685
+v14 = 0
+L1702:
+if not v14:  goto L2489
+v15 = v0.'target_entity'.'weapon_comp'.'current_weapon_kind'
+L1782:
+if not (50 == v15):  goto L2529
+v16 = v0.'target_entity'.'buff_mgr_comp'.'addable_attrs'
+L1862:
+if not v16:  goto L1934
+v17 = 'kind_parry_num'[v16].'get'(v0.'hurt_source_data'.'get'('weapon_kind'), 0)
+v18 = v16.'get'('parry_rate_addition', 0)
+L2004:
+goto L2010
+v17 = 0
+v18 = 0
+L2044:
+if not v0.'target_attrs':  goto L2075
+L2104:
+goto L2107
+v19 = 0
+L2140:
+if not v0.'source_attrs':  goto L2171
+L2200:
+goto L2203
+v20 = 0
+v21 = (v0.'additional_data'.'get'('target_parry_addition', 0) + (v20 - (v17 + v19)))
+L2312:
+if (0 >= v21):  goto L2323
+L2328:
+if not (0 >= v18):  goto L2787
+L2428:
+if NULL(v0.'source_position3d', v0.'target_entity'):  goto L2837
+v22 = 'WEAPON_EXTRA_PARAMS_DATA'.'data'.'get'('m_parry', 0)
+v23 = 'WEAPON_EXTRA_PARAMS_DATA'.'data'.'get'('n_parry', 100)
+v24 = 'WEAPON_EXTRA_PARAMS_DATA'.'data'.'get'('max_parry', 1)
+v25 = 'min'(((((v21 + v23) / (1.0 * v23)) - 1) * v22), v24)
+v26 = (v18 + v25)
+L2776:
+if not v0.'enable_compress_attr'():  goto L2813
+v26 = NULL(v0.'attr_params', 'hc_parry_rate', v26)
+v27 = 0
+L2900:
+if not (v26 <= NULL()):  goto L2905
+v27 = <mark7a>
+L2920:
+if not v27:  goto L3083
+L2998:
+if not NULL(v0.'target_entity', 'parry_comp'):  goto L3037
+v0.'target_entity'.'parry_explode_hurt_reduce'.'handler_parry_action'()
+v28 = 'WEAPON_EXTRA_PARAMS_DATA'.'data'.'get'('parry_explode_hurt_reduce', 0)
+L3202:
+if not v0.'additional_data'.'get'('is_explode_hurt', 0):  goto L3222
+L3216:
+if not (0 >= v28):  goto L3229
+v12 = (v28 - 1)
+L3240:
+goto L3244
+return None
+# STORE_SUBSCR 0
+v29 = 'min_attack'
+v30 = 'M'
+L3328:
+if not (2 & v0.'source_owner_type'):  goto L3381
+L3378:
+if not (33554433 & v0.'target_owner_type'):  goto L3406
+v31 = 'm2p_source_hurt_interval'
+v32 = 'm2p_source_hurt_factor'
+v33 = 'm2p_source_hurt_offset'
+L3404:
+if not (v7 in 'm2p_M'):  goto L3418
+L3418:
+if not (v7 in 'm2p_min_attack'):  goto L3425
+v29 = 'm2p_min_attack'
+v30 = 'm2p_M'
+L3432:
+goto L3536
+L3472:
+if not 'switch'.'enable_drone_v2':  goto L3549
+L3488:
+if v13:  goto L3525
+L3556:
+if not v0.'additional_data'.'get'('is_drone', 0):  goto L3591
+L3606:
+if not (33554433 & v0.'target_owner_type'):  goto L3616
+v31 = 'd2p_source_hurt_interval'
+v32 = 'd2p_source_hurt_factor'
+v33 = 'd2p_source_hurt_offset'
+L3624:
+goto L3632
+v31 = 'source_hurt_interval'
+v32 = 'source_hurt_factor'
+v33 = 'source_hurt_offset'
+v34 = (v0.'additional_data'.'get'('armor_penetration', 0) - v0.'target_attrs'.'armor')
+v34 = 'max'(0, v34)
+v35 = (((v0.'target_attrs'.'armor_ratio' + 1) * v34) - v2)
+for ... (L3911):
+v36 = 'enumerate'(v31[v7])[1]
+v37 = 'enumerate'(v31[v7])[0]
+L3914:
+if (v37 <= v35):  goto L3919
+L3920:
+goto L3907
+'calc_talent_parry'
+L3926:
+goto L3948
+# END_FOR 0
+# POP_ITER 0
+v36 = 'len'(v31[v7])
+v38 = (v36[v33[v7]] + (v35 * v36[v32[v7]]))
+L4080:
+if not (4 & v11):  goto L4093
+v39 = 'min_building_attack'[v7]
+L4104:
+goto L4210
+v39 = v29[v7]
+L4132:
+if not ('min_attack' == v29):  goto L4223
+L4146:
+if not (v7 in 'min_attack_region'):  goto L4230
+v40 = 'min_attack_region'[v7]
+v39 = (((0[v40] - v38) * ((0[v40] - 1[v40]) / (v39 - 1[v40]))) + v39)
+v41 = 'max'(v38, 'min'((v30[v7] * v2), v39))
+v42 = (v3 + (v41 * v1))
+v43 = 1
+v44 = v0.'source_type'
+L4514:
+if not NULL(v0.'target_entity'):  goto L4519
+v44 = 100
+L4568:
+if not (1 & v0.'source_owner_type'):  goto L4708
+L4582:
+if (100 == v44):  goto L4619
+L4650:
+if not v0.'additional_data'.'get'('need_weapon_hurt_addition', 0):  goto L4749
+L4700:
+if not (2 & v0.'target_owner_type'):  goto L4774
+L4750:
+if not (1 & v0.'source_owner_type'):  goto L4799
+v0.'get_level_depress'(v0.'source_owner', v0.'target_owner', <mark7a>) += v43
+v43 = 'DroneHelpers'.'check_entity_is_drone'
+L4892:
+if not (1 & v0.'target_owner_type'):  goto L4966
+L4942:
+if not (2 & v0.'source_owner_type'):  goto L4991
+v0.'get_level_depress'(v0.'target_owner', v0.'source_owner', 0) += v43
+v43 = v0.'additional_data'
+v0.'explode_hit_blow_monster'()
+L5104:
+if v0.'is_cache_obj':  goto L12569
+L5140:
+if not v0.'target_entity':  goto L5212
+L5206:
+if not v0.'target_entity'.'has_component'('hurt_comp'):  goto L5245
+v0.'target_entity'.'hurt_additional_rate'.'disable_event_temp'()
+L5314:
+if not v0.'source_entity':  goto L5386
+L5380:
+if not v0.'source_entity'.'has_component'('hurt_comp'):  goto L5419
+v0.'source_entity'.'hurt_additional_rate'.'disable_event_temp'()
+v45 = v0.'_calc_boss_repress_data'()[1]
+v46 = v0.'_calc_boss_repress_data'()[0]
+# STORE_SUBSCR 0
+v47 = ((v0.'additional_data'.'get'('last_bullet_bazooka_talent', 0) + v0.'additional_data'.'get'('hurt_additional_rate', 0)) + 1)
+L5740:
+if v0.'source_attrs' is None:  goto L5778
+v0.'source_attrs'.'get'('init_hurt_additional_rate', 0) += v47
+v47 = 'hurt_factor'
+v48 = (v0.'additional_data'.'get'('hurt_reduction_rate', 0) + v0.'target_attrs'.'heavy_weapon_hurt_reduction_rate')
+L6032:
+if not ('const'.'WeaponKind'.'BURST_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L6098
+(v0.'additional_data'.'get'('light_weapon_hurt_reduction_rate', 0) + v0.'target_attrs'.'combo_fire_by_secondary_weapon') += v48
+v48 = v0.'args_backup'
+L6162:
+goto L6282
+L6270:
+if not ('const'.'WeaponKind'.'SINGLE_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L6335
+(v0.'additional_data'.'get'('heavy_weapon_hurt_reduction_rate', 0) + v0.'target_attrs'.'coldarm_hurt_reduction_rate') += v48
+v48 = {'hurt_factor': v0.'additional_data'.'get'('hurt_factor', 1)}
+v48 -= v47
+v47 = <mark7a>
+v49 = v0.'additional_data'.'get'('combo_fire_by_secondary_weapon', 0)
+L6518:
+if not (1024 & v0.'source_weapon_type'):  goto L6654
+L6534:
+if v49:  goto L6662
+(v0.'additional_data'.'get'('coldarm_hurt_reduction_rate', 0) - (v0.'target_attrs'.'__is_tactic_bomb' - v0.'source_attrs'.'firearm_hurt_reduction_rate')) += v47
+v47 = 'Helpers'.'ensure_component'
+v0.'additional_data'.'get'('coldarm_additional_rate', 0) += v47
+v47 = 'random'.'random'
+L6788:
+goto L7027
+L6834:
+if (512 & v0.'source_weapon_type'):  goto L6960
+L6878:
+if not 'switch'.'enable_theme_bomb_hurt':  goto L6906
+L6928:
+if (4096 & v0.'source_weapon_type'):  goto L7007
+L6996:
+if v0.'additional_data'.'get'('__is_tactic_bomb', 0):  goto L7041
+L7064:
+if v0.'additional_data'.'get'('need_weapon_hurt_addition', 0):  goto L7075
+L7080:
+if not v49:  goto L7172
+(v0.'additional_data'.'get'('firearm_hurt_reduction_rate', 0) - (v0.'target_attrs'.'high_hurt_additional_rate' - v0.'source_attrs'.'firearm_additional_rate')) += v47
+v47 = 'AttributeHelper'.'get_compressed_attr'
+L7330:
+if not (105382403 & v0.'target_entity'.'entity_type'):  goto L8633
+L7380:
+if not (4096 & v0.'source_weapon_type'):  goto L7414
+v0.'source_attrs'.'bombs_hurt_additional_rate' += v47
+v47 = 'Helpers'.'is_backstab_hurt'
+L7446:
+goto L7824
+L7508:
+if not v0.'additional_data'.'get'('fast_reload'):  goto L7683
+L7620:
+if ('const'.'WeaponKind'.'BURST_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L7679
+L7732:
+if not ('const'.'WeaponKind'.'SINGLE_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L7795
+'max'(v0.'source_attrs'.'light_weapon_hurt_additional_rate', v0.'source_attrs'.'heavy_weapon_hurt_additional_rate') += v47
+v47 = v0.'source_attrs'.'get'('accurate', 0)
+L7856:
+goto L8029
+L7964:
+if not ('const'.'WeaponKind'.'BURST_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L7997
+v0.'source_attrs'.'light_weapon_hurt_additional_rate' += v47
+v47 = v0.'target_attrs'.'get'('parry', 0)
+L8028:
+goto L8115
+L8136:
+if not ('const'.'WeaponKind'.'SINGLE_FIRE_GUN' in v0.'hurt_source_data'.'get'('weapon_kind')):  goto L8168
+v0.'source_attrs'.'heavy_weapon_hurt_additional_rate' += v47
+v47 = ?
+L8260:
+if not v0.'target_entity'.'has_any_state'((2, 18)):  goto L8325
+(v0.'additional_data'.'get'('jump_hurt_additional_rate', 0) + v0.'source_attrs'.'reload') += v47
+v47 = ?
+L8460:
+if not NULL(v0.'target_entity'):  goto L8492
+v0.'source_attrs'.'crouch_hurt_additional_rate' += v47
+v47 = 'Helpers'.'check_in_stack_gun'
+v50 = 'high_hurt_additional_rate'['AttributeHelper'.'ENAME_TO_PLAYER_ATTR_INFO'].'extra_params'
+L8700:
+if not (v50 >= (1[v0.'target_entity'.'position'] - 1[v0.'source_position'])):  goto L8732
+v0.'source_attrs'.'backstab_hurt_factor' += v47
+v47 = ?
+L8824:
+if not v0.'target_entity'.'has_any_state'((2, 18)):  goto L8889
+(v0.'additional_data'.'get'('jump_hurt_reduction_rate', 0) + v0.'target_attrs'.'damage_decrease') -= v47
+v47 = ?
+L9024:
+if not NULL(v0.'target_entity'):  goto L9056
+v0.'target_attrs'.'crouch_hurt_reduction_rate' -= v47
+v47 = 'Helpers'.'check_in_stack_gun'
+L9152:
+if not (1 & v0.'target_entity'.'entity_type'):  goto L9221
+L9226:
+if not ('reload' == v0.'target_entity'.'weapon_comp'.'state'):  goto L9258
+v0.'target_attrs'.'reload_hurt_reduction_rate' -= v47
+v47 = ?
+L9350:
+if not v0.'target_entity'.'has_state'(4):  goto L9382
+v0.'target_attrs'.'climb_hurt_reduction_rate' -= v47
+v47 = ?
+L9506:
+if not NULL(v0.'source_position3d', v0.'target_entity'):  goto L9630
+v0.'additional_data'.'get'('backstab_hurt_factor', 0) += v47
+v47 = 'Helpers'.'is_backstab_hurt'
+(v0.'target_attrs'.'backstab_hurt_reduction_rate' - v0.'source_attrs'.'max_damage_increase') += v47
+v47 = ?
+v0.'target_attrs'.'back_injured_rate' += v47
+v47 = ?
+L9752:
+goto L9783
+v0.'target_attrs'.'front_injured_factor' += v47
+v47 = ?
+L9872:
+if not v0.'target_entity'.'has_state'(22):  goto L9904
+v0.'target_attrs'.'dying_hurt_reduction_rate' -= v47
+v47 = ?
+L9958:
+if v0.'source_entity' is None:  goto L10048
+L10008:
+if not (1 & v0.'source_entity_type'):  goto L10073
+L10074:
+if not v0.'source_entity'.'has_any_state'((98, 99)):  goto L10106
+v0.'source_attrs'.'on_vehicle_hurt_additional_rate' += v47
+v47 = ?
+L10162:
+if not (1 & v11):  goto L10227
+L10228:
+if not v0.'target_entity'.'has_any_state'((98, 99)):  goto L10260
+v0.'target_attrs'.'on_vehicle_hurt_reduction_rate' -= v47
+v47 = ?
+L10324:
+if not v0.'source_owner':  goto L10598
+L10340:
+if v13:  goto L10377
+L10408:
+if not v0.'additional_data'.'get'('is_drone', 0):  goto L10640
+L10438:
+if not (1 & v11):  goto L10481
+v0.'source_owner'.'attrs'.'drone_player_hurt_addition_rate' += v47
+v47 = ?
+L10522:
+goto L10578
+L10548:
+if not (2 & v11):  goto L10590
+v0.'source_owner'.'attrs'.'drone_monster_hurt_addition_rate' += v47
+v47 = ?
+(v0.'target_attrs'.'drone_hurt_reduction_rate' - v0.'source_attrs'.'drone_additional_rate') += v47
+v47 = ?
+L10788:
+if not (1 & v0.'source_owner_type'):  goto L10830
+v0.'source_owner'.'attrs'.'drone_additional_rate' += v47
+v47 = ?
+v51 = 'MONSTER_LEVEL_ADJUST'
+v52 = v0.'target_entity'.'space'
+L10930:
+if v52 is None:  goto L11001
+L10974:
+if v52.'is_destroyed'():  goto L11023
+v53 = v52.'spaceno'
+L11054:
+if not NULL(v53):  goto L11063
+v51 = 'VILLAGE_BOSS_LEVEL_ADJUST'
+L11116:
+if not (2 & v0.'target_owner_type'):  goto L11349
+L11166:
+if not (1 & v0.'source_owner_type'):  goto L11374
+v54 = v51.'data'.'get'(v0.'target_owner'.'level', {})
+v55 = v54.'get'('damage_decrease', 0)
+L11314:
+if not v55:  goto L11326
+v55 -= v47
+v47 = 'Helpers'.'is_village_boss_scene'
+L11348:
+if v13:  goto L11385
+L11416:
+if not v0.'additional_data'.'get'('is_drone', 0):  goto L11454
+v56 = v54.'get'('drone_damage_decrease', 0)
+L11468:
+if not v56:  goto L11480
+v56 -= v47
+v47 = ?
+v57 = v54.'get'('max_damage_increase', 0)
+L11538:
+if not v57:  goto L11560
+v47 = 'min'(v47, (v57 + 1))
+L11626:
+if not (1 & v0.'target_owner_type'):  goto L11842
+L11676:
+if not (2 & v0.'source_owner_type'):  goto L11867
+L11710:
+if not (v0.'additional_data' in 'source_entity_level'):  goto L11733
+v58 = 'source_entity_level'[v0.'additional_data']
+L11754:
+goto L11795
+L11778:
+if v0.'source_owner' is None:  goto L11804
+v58 = v0.'source_owner'.'level'
+L11828:
+goto L11832
+v58 = None
+L11836:
+if v58 is None:  goto L11947
+v54 = v51.'data'.'get'(v58, {})
+v59 = v54.'get'('damage_increase', 0)
+L11944:
+if not v59:  goto L11956
+v59 += v47
+v47 = ?
+v60 = v54.'get'('max_damage_decrease', 0)
+L12014:
+if not v60:  goto L12036
+v47 = 'max'(v47, (v60 - 1))
+L12102:
+if not (1 & v0.'target_owner_type'):  goto L12280
+L12152:
+if not (1 & v0.'source_owner_type'):  goto L12305
+('player_hurt_reduction_rate'[v0.'target_attrs'] - 'player_hurt_additional_rate'[v0.'source_attrs']) += v47
+v47 = ?
+v47 = 'min'('max_hurt_additional_rate'[v7], v47)
+L12306:
+if v13:  goto L12343
+L12374:
+if not v0.'additional_data'.'get'('is_drone', 0):  goto L12397
+v47 = 'max'('p2d_min_hurt_additional_rate'[v7], v47)
+L12418:
+goto L12439
+v47 = 'max'('min_hurt_additional_rate'[v7], v47)
+L12508:
+if not (0 >= v0.'source_attrs'.'m2p_a_class_hurt_additional_rate_factor'):  goto L12826
+L12576:
+if not v0.'target_entity'.'has_component'('hurt_comp'):  goto L12860
+L12652:
+if not 'hasattr'(v0.'target_entity'.'hurt_additional_rate', 'thump_ts'):  goto L12898
+v61 = v0.'target_entity'.'hurt_additional_rate'
+v62 = 'thump'['AttributeHelper'.'ENAME_TO_PLAYER_ATTR_INFO'].'extra_params_2'
+L12794:
+if not (3 == 'len'(v62)):  goto L12969
+L12924:
+if not (0[v62] >= (1[v0.'source_position'] - 1[v0.'target_entity'.'position'])):  goto L13034
+L13016:
+if not (v0.'source_attrs'.'m2p_a_class_hurt_additional_rate_factor' <= NULL()):  goto L13080
+L13076:
+if not v61.'can_been_thump'(2[v62]):  goto L13110
+1[v62] += v47
+v47 = 'random'.'random'
+# STORE_SUBSCR 0
+v63 = (1 - v47)
+L13206:
+if not (2 & v0.'source_owner_type'):  goto L13241
+L13256:
+if not (1 & v0.'target_owner_type'):  goto L13266
+v64 = 'm2p_a_class_hurt_additional_rate_interval'
+v65 = 'm2p_a_class_hurt_additional_rate_factor'
+v66 = 'm2p_a_class_hurt_additional_rate_offset'
+L13274:
+goto L13435
+L13314:
+if not 'switch'.'enable_drone_v2':  goto L13391
+L13330:
+if v13:  goto L13367
+L13398:
+if not v0.'additional_data'.'get'('is_drone', 0):  goto L13433
+L13448:
+if not (1 & v0.'target_owner_type'):  goto L13458
+v64 = 'd2p_a_class_hurt_additional_rate_interval'
+v65 = 'd2p_a_class_hurt_additional_rate_factor'
+v66 = 'd2p_a_class_hurt_additional_rate_offset'
+L13466:
+goto L13531
+L13512:
+if not (1 & v0.'source_owner_type'):  goto L13547
+L13562:
+if not (1 & v0.'target_owner_type'):  goto L13572
+v64 = 'p2p_a_class_hurt_additional_rate_interval'
+v65 = 'p2p_a_class_hurt_additional_rate_factor'
+v66 = 'p2p_a_class_hurt_additional_rate_offset'
+L13580:
+goto L13588
+v64 = 'a_class_hurt_additional_rate_interval'
+v65 = 'a_class_hurt_additional_rate_factor'
+v66 = 'a_class_hurt_additional_rate_offset'
+L13638:
+if not (33554433 & v0.'source_owner_type'):  goto L13684
+L13688:
+if not (2 & v0.'target_owner_type'):  goto L13709
+v67 = v7.'get'('p2m_a_class_min_hurt_additional_rate')
+L13728:
+goto L13732
+v67 = None
+v63 = v0.'_apply_rate_factor'(v63, v7, v64, v65, v66, v67)
+v47 = (1 + v63)
+v68 = 0
+v69 = 0
+L13862:
+if not (5 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L13888
+v68 = v0.'target_attrs'.'sniper_rifle_hurt_reduction_rate'
+L13912:
+goto L14155
+L13972:
+if not (7 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14020
+v69 = v0.'target_attrs'.'range_hurt_reduction_rate'
+v68 = v0.'target_attrs'.'howitzer_hurt_reduction_rate'
+L14066:
+goto L14232
+L14126:
+if not (20 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14152
+v69 = v0.'target_attrs'.'range_hurt_reduction_rate'
+L14176:
+goto L14287
+L14236:
+if not (1 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14262
+v68 = v0.'target_attrs'.'assault_rifle_hurt_reduction_rate'
+L14286:
+goto L14342
+L14346:
+if not (3 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14371
+v68 = v0.'target_attrs'.'bow_hurt_reduction_rate'
+L14434:
+if not 'switch'.'enable_weapon_new_attr':  goto L14606
+L14498:
+if not (50 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14638
+L14576:
+if not NULL(v0.'target_entity', 'equip_comp'):  goto L14677
+L14660:
+if not v0.'target_entity'.'c_class_hurt_additional_rate_interval'.'is_shield_valid'():  goto L14719
+(v0.'target_attrs'.'coldarms_shiled_hurt_reduction_rate' - v0.'source_attrs'.'coldarms_shiled_hurt_addition_rate') -= v68
+v68 = 'Helpers'.'ensure_component'
+L14816:
+if not 'switch'.'enable_new_equip_module':  goto L15004
+L14880:
+if not (5 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L14913
+v0.'source_attrs'.'sniper_rifle_hurt_additional_rate' -= v68
+v68 = 'blow_down_by_thump'
+L14944:
+goto L15069
+L15004:
+if not (1 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L15037
+v0.'source_attrs'.'assault_rifle_hurt_additional_rate' -= v68
+v68 = v0.'additional_data'
+L15068:
+goto L15131
+L15128:
+if not (7 == v0.'hurt_source_data'.'get'('weapon_kind')):  goto L15160
+v0.'source_attrs'.'howitzer_hurt_addition_rate' -= v68
+v68 = <mark7a>
+L15220:
+if not (100 == v0.'source_type'):  goto L15361
+v70 = 'WEAPON_HURT_ADDITION_DATA'.'data'.'get'(v0.'source_weapon_id')
+L15320:
+if not v70:  goto L15411
+L15390:
+if not (2 & v0.'target_entity'.'entity_type'):  goto L15446
+v71 = 'monster_ids'[v70]
+L15464:
+if not (v71 in v0.'target_entity'.'monster_id'):  goto L15483
+'hurt_additional_rate'[v70] -= v68
+v68 = ?
+L15542:
+if not 'switch'.'enable_yk_strategy_equip':  goto L15677
+L15606:
+if not (3 == v0.'hurt_source_data'.'get'('strategy_type')):  goto L15640
+v0.'target_attrs'.'strategy_equip_hurt_reduction_rate' += v68
+v68 = ?
+L15672:
+goto L15743
+L15746:
+if not NULL(v0.'source_entity'):  goto L15779
+v0.'target_attrs'.'strategy_equip_hurt_reduction_rate' += v68
+v68 = 'Helpers'.'is_strategy_equip_place_entity'
+# ? 0
+v72 = v68
+v72 = v0.'_apply_rate_factor'(v72, v7, 'c_class_hurt_additional_rate_interval', 'c_class_hurt_additional_rate_factor', 'c_class_hurt_additional_rate_offset')
+v73 = ('max'(0, (v69 - 1)) * (1 + v72))
+L15966:
+if not 'switch'.'enable_nucleus':  goto L16017
+v74 = 'max'(0.0, 'min'(1.0, v0.'additional_data'.'get'('front_hurt_reduction_rate', 0.0)))
+# STORE_SUBSCR 0
+L16150:
+if not 'switch'.'enable_nucleus':  goto L16190
+'final_hurt'[v0.'args_backup'].'update'({'front_hurt_reduction_rate': v74})
+v75 = 0
+L16278:
+if not (2 & v0.'target_owner_type'):  goto L16347
+v54 = v51.'data'.'get'(v0.'target_owner'.'level', {})
+v75 = v54.'get'('def_violent_atk', 0)
+v76 = (v0.'additional_data'.'get'('section_critical_rate', 0) + (v0.'additional_data'.'get'('critical_rate_additional', 0) + (v0.'additional_data'.'get'('spore_critical_rate_additional', 0) + (v0.'additional_data'.'get'('source_critical_rate_additional_talent', 0) + (v0.'additional_data'.'get'('anti_critical_rate', 0) - (v75 - (v0.'target_attrs'.'section_critical_rate' - v0.'source_attrs'.'hc_critical_hurt_addition')))))))
+L16902:
+if not 'switch'.'enable_theme_nucleus':  goto L16940
+v0.'additional_data'.'get'('__extra_critical_rate', 0) += v76
+v76 = 'final_hurt'
+L17016:
+if not v0.'enable_compress_attr'():  goto L17136
+L17066:
+if not (1 & v0.'source_owner_type'):  goto L17161
+v76 = NULL(v0.'attr_params', 'hc_critical_rate', v76)
+L17180:
+if not 'switch'.'enable_inverse_tower':  goto L17218
+v0.'source_attrs'.'get'('inverse_tower_critical_rate', 0) += v76
+v76 = 'AttributeHelper'.'get_compressed_attr'
+v77 = v0.'additional_data'.'get'('hit_body_part', 2)
+v0.'high_hurt_additional_rate' = (1 cmp72 v77)
+L17394:
+if not v0.'additional_data'.'get'('is_force_critical', 0):  goto L17405
+v0.'bombs_hurt_additional_rate' = <mark7a>
+L17414:
+goto L17452
+L17424:
+if not (0 >= v76):  goto L17456
+v0.'bombs_hurt_additional_rate' = (v76 cmp2 NULL())
+L17550:
+if not v0.'additional_data'.'get'('is_force_not_critical', 0):  goto L17560
+v0.'bombs_hurt_additional_rate' = 0
+L17632:
+if not v0.'additional_data'.'get'('is_force_not_headshot', 0):  goto L17642
+v0.'high_hurt_additional_rate' = 0
+# STORE_SUBSCR 0
+v78 = (v0.'additional_data'.'get'('source_critical_hurt_factor_additional_talent', 0) + (v0.'target_attrs'.'critical_hurt_reduction_rate' - v0.'source_attrs'.'hc_explode_hurt_addition'))
+v78 = 'max'((v78 + 1.5), 1.25)
+v79 = v0.'additional_data'.'get'('max_critical_hurt_factor', None)
+L17950:
+if v79 is None:  goto L17965
+v78 = 'min'(v78, v79)
+L18018:
+if not v0.'enable_compress_attr'():  goto L18139
+L18068:
+if not (1 & v0.'source_owner_type'):  goto L18164
+v78 = NULL(v0.'attr_params', 'hc_critical_hurt_addition', v78, <mark7a>)
+L18184:
+if not 'switch'.'enable_inverse_tower':  goto L18222
+v0.'source_attrs'.'get'('inverse_tower_critical_hurt_addition_rate', 0) += v78
+v78 = 'AttributeHelper'.'get_compressed_attr'
+v0.'additional_data'.'get'('critical_hurt_addition_rate', 0) += v78
+v78 = 'is_critical'
+v80 = 1
+L18396:
+if v0.'additional_data'.'get'('is_explode_hurt', 0):  goto L18483
+L18432:
+if not (100 == v0.'source_type'):  goto L18710
+L18564:
+if not 'ALL_EQUIPS_DATA'.'data'.'get'(v0.'source_weapon_id', {}).'get'('is_explode_hurt', 0):  goto L18776
+v80 = (v0.'additional_data'.'get'('explode_hurt_addition_rate', 0) + (v0.'source_attrs'.'critical_hurt_factor' + (v0.'additional_data'.'get'('explode_hurt_reduction_rate', 0) - (v0.'target_attrs'.'hc_effect_bullet_addition' - 1))))
+L18882:
+if (1 & v0.'target_entity'.'entity_type'):  goto L18923
+L18958:
+if not NULL(v0.'target_entity'):  goto L18973
+v80 = 'max'(v80, 0.35)
+v81 = 1
+L19052:
+if not v0.'additional_data'.'get'('effect_bullet_rate'):  goto L19089
+v81 = (v0.'additional_data'.'get'('effect_bullet_rate') + v81)
+L19164:
+if not v0.'enable_compress_attr'():  goto L19262
+L19214:
+if not (1 & v0.'source_owner_type'):  goto L19287
+v80 = NULL(v0.'attr_params', 'hc_explode_hurt_addition', v80, <mark7a>)
+v81 = NULL(v0.'attr_params', 'hc_effect_bullet_addition', v81, <mark7a>)
+# STORE_SUBSCR 0
+L19478:
+if not (0 >= v0.'additional_data'.'get'('base_15008_real_hurt', 0)):  goto L19514
+# STORE_SUBSCR 0
+L19548:
+goto L19565
+# STORE_SUBSCR 0
+# STORE_SUBSCR 0
+# STORE_SUBSCR 0
+L19710:
+if not v0.'target_entity':  goto L19783
+L19776:
+if not v0.'target_entity'.'has_component'('hurt_comp'):  goto L19816
+v0.'target_entity'.'hurt_additional_rate'.'enable_event'()
+L19886:
+if not v0.'source_entity':  goto L19959
+L19952:
+if not v0.'source_entity'.'has_component'('hurt_comp'):  goto L19992
+v0.'source_entity'.'hurt_additional_rate'.'enable_event'()
+L20032:
+goto L20053
+v45 = v0.'_calc_boss_repress_data'()[1]
+v46 = v0.'_calc_boss_repress_data'()[0]
+v82 = v0.'calc_hp_change_args'(v45, v46, v42)[3]
+v43 = v0.'calc_hp_change_args'(v45, v46, v42)[2]
+v4, v5 = v0.'calc_hp_change_args'(v45, v46, v42)[1], v0.'calc_hp_change_args'(v45, v46, v42)[0]
+L20160:
+if 'switch'.'enable_yh_monster_event':  goto L20186
+L20206:
+if not v0.'enable_compress_attr'():  goto L20473
+L20252:
+if not 'switch'.'enable_inverse_tower':  goto L20496
+L20288:
+if not v0.'source_attrs':  goto L20326
+L20362:
+goto L20365
+v83 = 1
+L20398:
+if not v0.'target_attrs':  goto L20436
+L20472:
+goto L20475
+v84 = 1
+(v84 * v83) *= v82
+v82 = (v0.'target_attrs'.'get'('inverse_tower_vulnerable_rate', 0) + 1)
+L20580:
+if NULL(v0.'source_entity'):  goto L20623
+L20660:
+if not NULL(v0.'source_entity'):  goto L20700
+(v0.'source_attrs'.'drone_tactic_additional_rate' + 1) *= v82
+v82 = 'TacticEquipHelpers'.'check_entity_is_tactic_monster'
+v0.'_calc_target_hp_change'(v82, v43, v4, v5, v6)
+return None

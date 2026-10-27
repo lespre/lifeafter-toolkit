@@ -1,0 +1,36 @@
+v1 = v0.'target_entity'
+L64:
+if v1.'is_destroyed'():  goto L265
+L110:
+if not v1.'has_component'('hurt_comp'):  goto L288
+v1.'hurt_comp'.'on_hurt_calc_finished'(v0)
+v1.'hurt_comp'.'on_target_hurt_calc_finished'(v0)
+L274:
+if not NULL(v1):  goto L370
+v2 = v1.'owner_player'
+L314:
+if not v2:  goto L390
+L358:
+if v2.'is_destroyed'():  goto L412
+L404:
+if not v2.'has_component'('hurt_comp'):  goto L435
+v2.'hurt_comp'.'trigger_event'('target_drone_hurt_calc_finished', v0)
+L496:
+if not v0.'need_notify':  goto L515
+v0.'notify'()
+L556:
+if v0.'target_entity' is None:  goto L654
+L620:
+if not v0.'target_entity'.'is_destroyed'():  goto L686
+L664:
+if not 'G66ServerRepo'.'is_formal_server':  goto L708
+'_logger'.'error'('destroyed target_entity(%s) when in hurt calc', 'repr'(v0.'target_entity'))
+L774:
+if v0.'source_entity' is None:  goto L874
+L838:
+if not v0.'source_entity'.'is_destroyed'():  goto L906
+L882:
+if not 'G66ServerRepo'.'is_formal_server':  goto L928
+'_logger'.'error'('destroyed source_entity(%s) when in hurt calc', 'repr'(v0.'source_entity'))
+return v0
+return v0

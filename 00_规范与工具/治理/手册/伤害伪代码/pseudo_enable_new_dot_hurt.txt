@@ -1,0 +1,50 @@
+L54:
+if v0.?.?('check_is_dot_hurt') is None:  goto L84
+return v0.?.?('check_is_dot_hurt')
+L152:
+if ?.?:  goto L157
+return 0
+L192:
+if not v0.?:  goto L213
+L228:
+if v0.?:  goto L233
+return 0
+L296:
+if not v0.?.?():  goto L301
+return 0
+L364:
+if not v0.?.?():  goto L369
+return 0
+L434:
+if v0.?.?('attr_comp'):  goto L439
+return 0
+L504:
+if v0.?.?('attr_comp'):  goto L509
+return 0
+L542:
+if not (103 cmp119 v0.?):  goto L618
+L576:
+if not (100 == v0.?):  goto L633
+L612:
+if not v0.?:  goto L650
+L678:
+if not v0.?.?('is_frostbite_hurt_calc'):  goto L683
+return 1
+L688:
+goto L692
+return 0
+L724:
+if not v0.?:  goto L762
+L790:
+if not v0.?.?('new_is_dot_hurt'):  goto L795
+return 2
+L830:
+if v0.?:  goto L835
+return 0
+v1 = v0.?.?('__raw_buff_id')
+L896:
+if v1 is None:  goto L955
+L1008:
+if ?.?.?((v1, 1), {}).?('is_persistent', 3374):  goto L1013
+return 0
+return 1

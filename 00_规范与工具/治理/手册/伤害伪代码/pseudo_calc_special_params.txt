@@ -1,0 +1,211 @@
+v2 = v0.'target_entity'
+v3 = v0.'additional_data'
+v4 = v0.'hurt_source_data'
+v5 = v0.'source_type'
+v6 = v0.'source_entity'
+v7 = 516
+3 |= v7
+v7 = ?
+L188:
+if not (v7 & v2.'entity_type'):  goto L270
+L202:
+if not (8 in v5):  goto L276
+v8 = v4.'get'('hurt_factor', 1)
+v9 = v4.'get'('building_hurt_percent', 1)
+# STORE_SUBSCR 0
+L350:
+goto L455
+L396:
+if not (8 & v2.'entity_type'):  goto L477
+L410:
+if not (100 == v5):  goto L484
+v8 = v4.'get'('hurt_factor', 1)
+v10 = v4.'get'('res_hurt_percent', 1)
+# STORE_SUBSCR 0
+v11, v12 = 'calc_special_hurt_params_info'(v0)[1], 'calc_special_hurt_params_info'(v0)[0]
+L622:
+if not ('SPECIAL_HURT_PARAMS'.'data' in (v11, v12)):  goto L663
+v0.'entity_type' = 'SPECIAL_HURT_PARAMS'.'data'.'get'((v11, v12))
+L702:
+goto L818
+L744:
+if not ('SPECIAL_HURT_PARAMS'.'data' in (v11, 0)):  goto L786
+v0.'entity_type' = 'SPECIAL_HURT_PARAMS'.'data'.'get'((v11, 0))
+L826:
+goto L880
+L884:
+if not ('HURT_PARAMS_NORMAL'.'data' cmp119 v0.'hurt_params'):  goto L908
+v0.'entity_type' = 'HURT_PARAMS_NORMAL'.'data'
+L940:
+if not (20022 == v11):  goto L1138
+v13 = v2.'space'.'battle'.'shooting_team_comp'.'test_data'
+L1040:
+if not v13:  goto L1188
+# IMPORT_NAME 16
+# IMPORT_FROM 17
+# SWAP 2
+None
+# IMPORT_FROM 18
+v14 = 0
+'hurt_factor'
+v15 = (v13.'get'('test_id', 0), v13.'get'('test_difficult', 0))
+v16 = v14.'data'.'get'(v15, {}).'get'('special_hurt_id')
+L1258:
+if not ('SPECIAL_HURT_PARAMS'.'data' in v16):  goto L1297
+v0.'entity_type' = 'SPECIAL_HURT_PARAMS'.'data'.'get'(v16)
+L1366:
+if v0.'use_source_entity_info':  goto L1513
+L1422:
+if not NULL(v6):  goto L1541
+v0.'entity_type' = 'TACTIC_HURT_PARAMS_DATA'.'data'
+L1518:
+if not (2 == NULL(v6)):  goto L1589
+# STORE_SUBSCR 0
+L1686:
+if not (<mark7a> is v0.'use_source_entity_info'):  goto L1708
+v0.'init_entity_without_source'(v6, v2, v1)
+L1728:
+goto L1748
+v0.'init_entity'(v6, v2, v1)
+L1804:
+if not 'switch'.'enable_compress_attr':  goto L2019
+L1854:
+if not (33554433 & v0.'source_owner_type'):  goto L2044
+L1898:
+if not 'switch'.'enable_ugc_defense_mode':  goto L1937
+L1954:
+if NULL(v2):  goto L1965
+v0.'cdata' = None
+L1974:
+goto L2105
+L2014:
+if not ('SPECIAL_ATTR_PARAMS'.'data' in (v11, v12)):  goto L2055
+v0.'cdata' = 'SPECIAL_ATTR_PARAMS'.'data'.'get'((v11, v12))
+L2094:
+goto L2165
+L2136:
+if not ('SPECIAL_ATTR_PARAMS'.'data' in (v11, 0)):  goto L2178
+v0.'cdata' = 'SPECIAL_ATTR_PARAMS'.'data'.'get'((v11, 0))
+L2218:
+goto L2227
+v0.'cdata' = None
+v6 = v0.'source_entity'
+v17 = v0.'source_owner'
+L2290:
+if not (100 == v5):  goto L2453
+L2298:
+if v6 is None:  goto L2455
+L2344:
+if not v6.'has_component'('weapon_comp'):  goto L2478
+L2360:
+if not v4:  goto L2486
+v18 = NULL('id'[v4])
+v19 = 'id'[v4]
+L2450:
+if not (0 == v18):  goto L2517
+v18 = v6.'weapon_type'.'current_weapon'.'equip_type'
+v19 = v6.'weapon_type'.'current_weapon'.'item_id'
+v0.'check_entity_is_tactic_monster' = v18
+v0.'TACTIC_HURT_PARAMS_DATA' = v19
+L2614:
+goto L3080
+L2624:
+if not (101 == v5):  goto L2777
+L2632:
+if v6 is None:  goto L2779
+L2678:
+if not v6.'has_component'('skill_mgr_comp'):  goto L2802
+v20 = v0.'additional_data'.'get'('new_skill_weapon_type')
+L2740:
+if v20 is None:  goto L2752
+v0.'check_entity_is_tactic_monster' = v20
+L2762:
+goto L3154
+v21 = 'SKILL_DATA'.'data'.'get'(v6.'buff_level'.'current_skill_id', {})
+v22 = v21.'get'('weapon_type', None)
+L2906:
+if v22 is None:  goto L2916
+v0.'check_entity_is_tactic_monster' = v22
+L2928:
+goto L3237
+L2938:
+if not (103 == v5):  goto L3052
+v24 = v3.'get'('buff_level')
+v23 = v3.'get'('buff_id')
+L3022:
+if not v23:  goto L3093
+L3030:
+if v24 is None:  goto L3097
+v22 = 'BUFF_DATA'.'data'.'get'((v23, v24), {}).'get'('weapon_type')
+L3144:
+if not v22:  goto L3154
+v0.'check_entity_is_tactic_monster' = v22
+L3164:
+goto L3355
+L3174:
+if not (102 == v5):  goto L3265
+v25 = v3.'get'('mf_id')
+L3224:
+if not v25:  goto L3289
+v22 = 'MAGIC_FIELD_DATA'.'data'.'get'(v25, {}).'get'('weapon_type')
+L3334:
+if not v22:  goto L3344
+v0.'check_entity_is_tactic_monster' = v22
+L3354:
+goto L3450
+L3364:
+if not (106 == v5):  goto L3454
+v26 = v4.'get'('bullet_id')
+L3414:
+if not v26:  goto L3479
+v22 = 'SKILL_BULLET_DATA'.'data'.'get'(v26, {}).'get'('weapon_type')
+L3524:
+if not v22:  goto L3534
+v0.'check_entity_is_tactic_monster' = v22
+L3582:
+if not 'switch'.'enable_nucleus_bd':  goto L3768
+L3596:
+if not (100 == v5):  goto L3775
+L3604:
+if v6 is None:  goto L3678
+L3650:
+if not v6.'has_component'('nucleus_bd_comp'):  goto L3701
+L3696:
+if v3.'get'('nucleus_attr_type'):  goto L3724
+# STORE_SUBSCR 0
+L3754:
+if v6 is None:  goto L3854
+L3800:
+if not v6.'has_component'('nucleus_comp'):  goto L3877
+L3846:
+if v3.'get'('fire_nucleus_item_id'):  goto L3900
+v27 = v6.'source_before_hurt_calc'.'get_activated_nucleus'()
+L3914:
+if not v27:  goto L3929
+L3942:
+goto L3945
+# STORE_SUBSCR 0
+L3958:
+if v6 is None:  goto L4267
+L4006:
+if not v6.'has_component'('hurt_comp'):  goto L4289
+v6.<ref:tuple>.'trigger_event'('before_source_before_hurt_calc', v0)
+v6.<ref:tuple>.'trigger_event'('source_before_hurt_calc', v0)
+L4174:
+if not NULL(v6):  goto L4371
+L4190:
+if not v17:  goto L4377
+v17.<ref:tuple>.'trigger_event'('drone_before_hurt_calc', v0)
+L4260:
+if not ((100, 101, 106) in v5):  goto L4333
+# STORE_SUBSCR 0
+return None
+L4414:
+if not (100 == v5):  goto L4487
+# STORE_SUBSCR 0
+return None
+return None
+return None
+return None
+return None
+return None

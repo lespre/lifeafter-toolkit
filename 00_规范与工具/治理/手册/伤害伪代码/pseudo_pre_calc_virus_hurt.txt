@@ -1,0 +1,31 @@
+v1 = v0.'hurt_source_data'.'get'('base_virus_hurt', 0)
+v0.'additional_data'.'get'('virus_hurt', 0) += v1
+v1 = ?
+v2 = v0.'additional_data'.'get'('virus_charge_bow_addition', 1)
+L204:
+if v0.'source_attrs' is None:  goto L395
+L238:
+if not (100 cmp119 v0.'source_type'):  goto L270
+v3 = v0.'hurt_source_data'.'get'('base_virus_hurt_ratio', 0)
+L300:
+goto L304
+v3 = 1
+v0.'additional_data'.'get'('virus_hurt_ratio', 0) += v3
+v3 = ?
+(v3 * v0.'source_attrs'.'virus_hurt') += v1
+v1 = ?
+L452:
+if not (0 == v1):  goto L457
+return v1
+L470:
+if not (0 == v1):  goto L485
+return 'max'(0, v1)
+v4 = v0.'get_monseter_virus_resistance'()
+L540:
+if not (0 >= v4):  goto L563
+v4 -= v1
+v1 = ?
+v1 = 'max'(0, v1)
+v2 *= v1
+v1 = ?
+return v1

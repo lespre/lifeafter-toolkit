@@ -1,0 +1,41 @@
+v1 = v0.'additional_data'.'get'('hit_body_part', 2)
+v2 = 'const'.'HurtCalcConst'.'HIT_BODY_PART_ATTR_MAP'.'get'(v1, 'factor_chest')
+v3 = 'getattr'(v0.'source_attrs', v2, 0)
+L196:
+if not (1 == v1):  goto L293
+v0.'additional_data'.'get'('head_hurt_addition_rate', 0) += v3
+v3 = ?
+L314:
+if not (2 & v0.'target_owner_type'):  goto L351
+v0.'source_attrs'.'get'('monster_factor_head_add_rate', 0) += v3
+v3 = ?
+L388:
+goto L424
+v0.'additional_data'.'get'('body_hurt_addition_rate', 0) += v3
+v3 = ?
+v2 = 'const'.'HurtCalcConst'.'HIT_BODY_PART_ATTR_REDUCTION_MAP'.'get'(v1, 'factor_hurt_chest')
+v4 = 'getattr'(v0.'target_attrs', v2, 0)
+v0.'additional_data'.'get'('spore_hurt_factor', 0) += v3
+v3 = ?
+L716:
+if not v0.'additional_data'.'get'('buff_21096'):  goto L778
+L762:
+if not ('buff_21096'[v0.'additional_data'] in v2):  goto L801
+v4 = 'min'(v2['buff_21096'[v0.'additional_data']], v4)
+L878:
+if not v0.'enable_compress_attr'():  goto L1013
+L928:
+if not (1 & v0.'source_owner_type'):  goto L1038
+L942:
+if not (1 == v1):  goto L947
+L950:
+goto L953
+v5 = 'hc_body_part_addition'
+v3 = NULL(v0.'attr_params', v5, v3)
+L1060:
+if not 'switch'.'enable_inverse_tower':  goto L1104
+L1074:
+if not (1 == v1):  goto L1111
+v0.'source_attrs'.'get'('inverse_tower_hurt_weakness_additional_rate', 0) += v3
+v3 = 'AttributeHelper'.'get_compressed_attr'
+return (v3, v4)

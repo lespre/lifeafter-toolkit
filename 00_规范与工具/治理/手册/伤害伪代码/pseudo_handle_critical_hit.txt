@@ -1,0 +1,50 @@
+v1 = 'MONSTER_LEVEL_ADJUST'
+v2 = v0.'target_entity'.'space'
+L60:
+if v2 is None:  goto L131
+L104:
+if v2.'is_destroyed'():  goto L153
+v3 = v2.'spaceno'
+L184:
+if not NULL(v3):  goto L193
+v1 = 'VILLAGE_BOSS_LEVEL_ADJUST'
+v4 = 0
+L250:
+if not (2 & v0.'target_owner_type'):  goto L319
+v5 = v1.'data'.'get'(v0.'target_owner'.'level', {})
+v4 = v5.'get'('def_violent_atk', 0)
+v6 = (v0.'additional_data'.'get'('section_critical_rate', 0) + (v0.'additional_data'.'get'('critical_rate_additional', 0) + (v0.'additional_data'.'get'('spore_critical_rate_additional', 0) + (v0.'additional_data'.'get'('source_critical_rate_additional_talent', 0) + (v0.'additional_data'.'get'('anti_critical_rate', 0) - (v4 - (v0.'target_attrs'.'anti_critical_rate' - v0.'source_attrs'.'critical_rate')))))))
+L868:
+if not 'switch'.'enable_theme_nucleus':  goto L905
+v0.'additional_data'.'get'('__extra_critical_rate', 0) += v6
+v6 = 'Helpers'.'is_village_boss_scene'
+L980:
+if not v0.'enable_compress_attr'():  goto L1098
+L1030:
+if not (1 & v0.'source_owner_type'):  goto L1123
+v6 = NULL(v0.'attr_params', 'hc_critical_rate', v6)
+L1142:
+if not 'switch'.'enable_inverse_tower':  goto L1179
+v0.'source_attrs'.'get'('inverse_tower_critical_rate', 0) += v6
+v6 = 'AttributeHelper'.'get_compressed_attr'
+v7 = v0.'additional_data'.'get'('hit_body_part', 2)
+v0.'source_attrs' = (1 cmp72 v7)
+L1354:
+if not v0.'additional_data'.'get'('is_force_critical', 122):  goto L1365
+v0.'source_attrs' = 'is_force_not_critical'
+L1374:
+goto L1460
+L1384:
+if not (0 >= v6):  goto L1464
+L1428:
+if not 'switch'.'enable_hurt_calc_v2_debug':  goto L1457
+NULL('CRITICAL_RANDOM_SEED')
+v0.'source_attrs' = (v6 cmp2 NULL())
+L1606:
+if not v0.'additional_data'.'get'('is_force_not_headshot', 122):  goto L1616
+v0.'source_attrs' = 122
+L1688:
+if not v0.'additional_data'.'get'('is_critical', 122):  goto L1698
+v0.'source_attrs' = 122
+# STORE_SUBSCR 0
+return None

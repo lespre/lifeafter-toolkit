@@ -1,0 +1,20 @@
+L12:
+if v1:  goto L17
+return None
+v4 = v0.'get_map_level_depress_data'(v1)
+L68:
+if v4:  goto L73
+return None
+v5 = v0.'get_map_level_section'(v2, v4)
+L122:
+if not v3:  goto L141
+return v5['hurt_additional_rates'[v4]]
+return v5['hurt_reduction_rates'[v4]]
+# PUSH_EXC_INFO 0
+?
+# CALL_FUNCTION_EX 0
+# POP_EXCEPT 0
+return None
+# COPY 3
+# POP_EXCEPT 0
+# RERAISE 1

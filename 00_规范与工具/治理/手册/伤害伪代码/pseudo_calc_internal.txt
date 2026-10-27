@@ -1,0 +1,313 @@
+L4:
+if v5 is not None:  goto L10
+v5 = {}
+L14:
+goto L79
+L104:
+if not ('const'.'BuffID'.'IGNORE_BUFF_ID' not in v5.'get'('buff_id', 0)):  goto L123
+v5 = v5.'copy'()
+v14 = {}
+L154:
+if not (100 == v3):  goto L173
+v14 = v5.'copy'()
+L202:
+if v7:  goto L275
+L218:
+if not v0:  goto L283
+L264:
+if not v0.'has_component'('hurt_comp'):  goto L306
+v0.'hurt_comp'.'trigger_event'('before_calc', v1.'id', v5)
+L386:
+if not 'switch'.'enable_server_change_weapon_opt':  goto L464
+L402:
+if not v0:  goto L417
+L430:
+goto L433
+v15 = None
+# COPY 1
+L478:
+if not v1.'has_component'('hurt_comp'):  goto L509
+v0.'id'
+v1.'hurt_comp'.'trigger_event'('before_calc', v15, v5)
+L580:
+if not 'switch'.'print_additional_data':  goto L684
+L596:
+if not v0:  goto L692
+L612:
+if not v1:  goto L700
+L666:
+if not (v0.'id' cmp119 v1.'id'):  goto L727
+v1.'callothers'('print_additional_data', v1.'id', 'str'('id'(v5)), v0.'id')
+L790:
+if v4 is not None:  goto L795
+v4 = {}
+L810:
+if not v11:  goto L851
+v16 = v11
+v16.'trigger_event' = 0
+v16.'trigger_event' = 0
+v16.'id' = 0
+v16.'id' = 0
+v16.'switch' = 0
+L890:
+goto L902
+v16 = 'HurtCalc'()
+v16.'enable_server_change_weapon_opt' = (v0, v1, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13)
+v16.'enable_server_change_weapon_opt' = v2
+v17 = 122
+L968:
+if not v12:  goto L980
+v16.'print_additional_data' = v12
+v17 = 'cli_dly'
+L994:
+if v13 is None:  goto L1016
+v5.'update'({'color': v13})
+v16.'callothers' = v3
+v16.'callothers' = v6
+v16.'str' = v8
+v16.'str' = v5.'get'('', 'WP_ACCU_CALC_COUNT')
+v16.'target_shield_change' = v5.'get'('WP_ACCU_CALC_FIRE', 1)
+v16.'target_shield_change' = v5.'get'('WP_FIRE_HURT_RATE', 122)
+v16.'attacked_damage' = v5.'get'('hit_spore_entity_id', [1])
+v16.'attacked_damage' = v5.'get'('is_hd_car_racing_collide', 'WP_ACCU_CALC_COUNT')
+v16.'target_hp_change_notify' = 122
+L1374:
+if not NULL():  goto L1394
+L1408:
+if not (103 == v16.'source_type'):  goto L1411
+L1466:
+if not NULL(v1):  goto L1489
+# COPY 1
+L1484:
+if not v9:  goto L1495
+'Helpers'.'is_blast_entity'
+NULL(v16)
+return v16
+L1554:
+if not 'switch'.'enable_car_racing':  goto L1925
+L1572:
+if not v0:  goto L1934
+L1590:
+if not v1:  goto L1943
+L1636:
+if v1.'is_destroyed'():  goto L1966
+L1674:
+if not v1.'space':  goto L1985
+L1778:
+if not ('const'.'MapId'.'CAR_RACING_MAPS' in v1.'space'.'spaceno'):  goto L2037
+v18 = v5.'get'('is_hd_car_racing_weapon', 122)
+L1830:
+if v18:  goto L2063
+L1846:
+if not v7:  goto L1902
+v19 = v1.'space'
+v15 = v0.'id'
+v20 = v19.'entities'.'get'(v15, None)
+L1956:
+goto L1960
+v20 = v0
+L1972:
+if not v20:  goto L2114
+L2006:
+if not (1 == v20.'entity_type'):  goto L2085
+v21 = v20.'weapon_comp'.'current_weapon'
+L2116:
+if v21.'custom_data'.'get'('is_rent_weapon'):  goto L2139
+# COPY 1
+L2134:
+if not v9:  goto L2145
+v9
+NULL(v16)
+return v16
+L2162:
+goto L2230
+L2208:
+if (2 & v20.'entity_type'):  goto L2231
+# COPY 1
+L2226:
+if not v9:  goto L2237
+v9
+NULL(v16)
+return v16
+L2254:
+goto L2276
+# COPY 1
+L2268:
+if not v9:  goto L2279
+v9
+NULL(v16)
+return v16
+L2308:
+if not v0:  goto L2720
+L2326:
+if not v1:  goto L2729
+L2372:
+if v1.'is_destroyed'():  goto L2752
+L2410:
+if not v1.'space':  goto L2771
+L2426:
+if not v7:  goto L2482
+v19 = v1.'space'
+v15 = v0.'id'
+v20 = v19.'entities'.'get'(v15, None)
+L2536:
+goto L2540
+v20 = v0
+L2554:
+if not v20:  goto L2843
+L2590:
+if not (1 == v20.'entity_type'):  goto L2861
+v21 = v20.'weapon_comp'.'current_weapon'
+L2650:
+if not v21:  goto L2891
+L2716:
+if not v21.'custom_data'.'get'(20022):  goto L2924
+L2770:
+if not (564 == v20.'space'.'spaceno'):  goto L2791
+L2804:
+if not (2 == v1.'entity_type'):  goto L2808
+L2810:
+goto L2972
+L2860:
+if not (4 == v20.'space'.'spaceno'):  goto L2898
+L2894:
+if not (2 == v1.'entity_type'):  goto L2915
+L2928:
+if not (233 == v1.'special_function'):  goto L2932
+L2934:
+goto L3034
+L2964:
+if not (2 == v1.'entity_type'):  goto L2995
+L3018:
+if not ('sub_idx' == v20.'space'.'spaceno'):  goto L3022
+L3024:
+goto L3079
+L3084:
+if not v20.'arm_rack_comp'.'is_in_rent_mission'():  goto L3088
+L3090:
+goto L3112
+# COPY 1
+L3104:
+if not v9:  goto L3115
+v9
+NULL(v16)
+return v16
+L3170:
+if v1.'is_destroyed'():  goto L3198
+L3220:
+if not (10 & v1.'life_state'):  goto L3271
+L3276:
+if NULL(v1):  goto L3299
+# COPY 1
+L3294:
+if not v9:  goto L3305
+'Helpers'.'check_dad_dying_player'
+NULL(v16)
+return v16
+L3330:
+if not (2 == v6):  goto L3498
+v22 = 122
+v23 = v1.'weapon_comp'.'current_weapon'
+L3386:
+if v23 is None:  goto L3424
+L3452:
+if not (v5.'get'('shield_addition', None) == v23.'id'):  goto L3457
+v22 = 'cli_dly'
+L3472:
+if v22:  goto L3541
+v23 = v1.'equip_comp'.'get_equip_by_pos'(5)
+L3534:
+if v23 is None:  goto L3572
+L3600:
+if not (v5.'get'('shield_addition', None) == v23.'id'):  goto L3605
+v22 = 'cli_dly'
+L3620:
+if v22:  goto L3643
+# COPY 1
+L3638:
+if not v9:  goto L3649
+v9
+NULL(v16)
+return v16
+L3704:
+if not 'switch'.'enable_snow_piercer_dad_game':  goto L3872
+L3760:
+if not NULL(v1):  goto L3900
+v24 = v5.'get'('buff_id', 0)
+v25 = NULL()
+L3852:
+if not (103 == v3):  goto L3946
+L3866:
+if not (v25 not in v24):  goto L3953
+L3912:
+if not (0 cmp119 v4.'get'('base_heal', 0)):  goto L3920
+# STORE_SUBSCR 0
+L3968:
+if not (0 >= v4.'get'('heal_percent', 0)):  goto L3976
+# STORE_SUBSCR 0
+L4024:
+if not (0 >= v4.'get'('start', 0)):  goto L4032
+# STORE_SUBSCR 0
+v16.'accu_hurt_rate' = v5
+v16.'accu_hurt_rate' = v14
+v16.'hit_spore_entity_id' = v4
+v16.'hit_spore_entity_id' = v7
+v16.'hurt_available' = v1
+v16.'hurt_available' = v0
+L4162:
+if not 'HurtCalc'.'gm_show_log':  goto L4177
+'gm_print_info'(v16, 'source_calc_stage_1')
+'target_calc_stage_1'(v16, v17)
+L4254:
+if not 'HurtCalc'.'gm_show_log':  goto L4269
+'gm_print_info'(v16, 'target_calc_stage_1')
+L4294:
+if not v10:  goto L4309
+'do_effect'(v16, v10)
+L4362:
+if 'G66ServerRepo'.'is_formal_server':  goto L4381
+v16.'check_key_serialize'()
+L4450:
+if v16.'target_entity'.'is_ghost':  goto L4653
+v26 = 'finish'(v16)
+L4516:
+if not 'HurtCalc'.'gm_show_log':  goto L4531
+'gm_print_info'(v16, 'finish')
+L4548:
+if v26 is None:  goto L4571
+# COPY 1
+L4566:
+if not v9:  goto L4577
+'start'
+NULL(v16)
+return v16
+'source_calc_stage_2'(v16)
+'target_calc_stage_2'(v16)
+'source_calc_stage_finish'(v16)
+'target_calc_stage_finish'(v16)
+L4720:
+if not 'HurtCalc'.'gm_show_log':  goto L4735
+'gm_print_info'(v16, ?)
+L4788:
+if not 'HurtCalc'.'gm_show_final_info':  goto L4802
+'gm_print_final_info'(v16)
+# COPY 1
+L4828:
+if not v9:  goto L4839
+v9
+NULL(v16)
+return v16
+L4866:
+if not v9:  goto L4887
+v2.'insert'(0, v9)
+'ghost_hurt_calc'(v16, v2)
+return v16
+# PUSH_EXC_INFO 0
+v9
+# CALL_FUNCTION_EX 0
+# POP_EXCEPT 0
+L5022:
+goto L3269
+# COPY 3
+# POP_EXCEPT 0
+# RERAISE 1

@@ -1,0 +1,29 @@
+L12:
+if not v2:  goto L136
+L48:
+if not v0.?:  goto L154
+L114:
+if not v0.?.?('new_is_dot_hurt'):  goto L187
+L180:
+if (0 == v0.?.?('base_hurt_value', 0)):  goto L216
+L246:
+if not (0 == v0.?.?('base_sheild_change_value', 0)):  goto L251
+return <mark7a>
+return 1582
+# COPY 1
+L298:
+if (0 cmp2 v0.?):  goto L366
+?
+# COPY 1
+L344:
+if (0 cmp2 v0.?):  goto L389
+?
+# COPY 1
+L364:
+if not v1:  goto L399
+?
+# COPY 1
+L404:
+if v0.?:  goto L419
+?
+return v0.?
