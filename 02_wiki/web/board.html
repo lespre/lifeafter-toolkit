@@ -952,7 +952,7 @@ function combatItems(it){
     if(b&&o.internals.indexOf(b)<0)o.internals.push(b);
   };
   (it.combat_panel||[]).forEach(r=>{if(r&&r.cat)put(BIZ_FROM_PANEL[r.cat],r.name,r.src==="es"?"UI 面板":"同快照配置");});
-  (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.sfx_name||c.display_name,"同快照配置",c.sfx_params);});
+  (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.display_name||c.sfx_name,"同快照配置",c.sfx_params);});
   (it.behavior_resources||[]).forEach(r=>{if(r&&r.field)put(BIZ_FROM_BEHAVIOR[r.field],"","行为资源",r.path);});
   const ef=it.effects;
   if(ef&&ef.types)Object.keys(ef.types).forEach(t=>{
