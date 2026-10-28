@@ -31,6 +31,9 @@
 <link rel="stylesheet" href="assets/board_theme_aftermath.css?v=20261018a">
 <link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
 <style>
+.perf-name.official{color:#f3e7c8;font-weight:600}
+.perf-note{color:var(--muted,#8b8b8b);font-size:12px;margin-left:8px;opacity:.75}
+
 /* 品级多选下拉（2026-09-19）：作用域严格限定在 #fGrade，且全部加 !important。
    目的：防止其它样式表里针对 label / input / .controls>* 的通用规则把面板撑宽、
    把复选框与文字推到两端（用户已两次报该故障，第 3 次改为"不依赖层叠"的写法）。 */
@@ -965,6 +968,11 @@ function combatItems(it){
   // 其余项：逐项成行（如「护臂开合」是护臂专属特效，自己一行）；无标签的合并进「其它」
   const known=EXTRA_ORDER.filter(k=>acc[k]);
   known.forEach(k=>main.push({k:k,label:BIZ_EXTRA_LABEL[k],name:acc[k].names[0]||"",internals:acc[k].internals,srcs:acc[k].srcs}));
+  const normSlot=t=>String(t||"").replace(/[（(][^）)]*[）)]/g,"").trim();
+  const showMap={};
+  (it.effect_show||[]).forEach(r=>{if(r&&r.name){showMap[normSlot(r.slot_key||r.slot)]=r.name;showMap[normSlot(r.slot)]=r.name;}});
+  const SLOT_ALIAS={"攻击准心":"攻击准星","命中特效":"命中效果","专属战斗动作":"特殊交互","挥砍特效":"攻击弹道","特殊交互":"专属战斗动作"};
+  main.forEach(d=>{const k=normSlot(d.label);const hit=showMap[k]||showMap[SLOT_ALIAS[k]];if(hit){d.note=d.name;d.name=hit;d.official=true;}});
   const rest=Object.keys(acc).filter(k=>!BIZ_ORDER.some(b=>b.k===k)&&known.indexOf(k)<0);
   if(rest.length){
     const srcs=[],names=[];
@@ -982,8 +990,9 @@ function renderCombatUnified(it){
     const internals=(d.internals||[]).slice(0,3).map(x=>`<code class="perf-internal">${esc(x)}</code>`).join("");
     const fallback=(d.internals||[])[0]||"";
     return `<li class="perf-row"${tip}><span class="perf-cat">${esc(d.label)}</span>`+
-      (d.name?`<span class="perf-name">${esc(d.name)}</span>`
+      (d.name?`<span class="perf-name${d.official?" official":""}">${esc(d.name)}</span>`
              :(fallback?`<span class="perf-name">${esc(fallback)}</span>`:`<span class="perf-name weak">已配置</span>`))+
+      (d.note&&d.official?`<span class="perf-note">${esc(d.note)}</span>`:"")+
       internals+
       `<span class="perf-src">${esc(d.srcs.join(" · "))}</span></li>`;}).join("");
   return `<ul class="perf-list">${rows}</ul>`;
