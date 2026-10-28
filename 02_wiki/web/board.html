@@ -942,15 +942,18 @@ function combatItems(it){
   // 其余项顺序（非 10 项内）：保留各自业务名，不按 source 表名生成
   const EXTRA_ORDER=["charge","arm_open","explode","brass","preview_extra","switch_anim"];
   const acc={};
-  const put=(k,name,src)=>{
+  const base=p=>{const t=String(p||"");const i=t.lastIndexOf("/");return i>=0?t.slice(i+1):t;};
+  const put=(k,name,src,internal)=>{
     if(!k)return;
-    const o=acc[k]||(acc[k]={srcs:[],names:[]});
+    const o=acc[k]||(acc[k]={srcs:[],names:[],internals:[]});
     if(src&&o.srcs.indexOf(src)<0)o.srcs.push(src);
     if(name&&!isWeakName(name)&&o.names.indexOf(name)<0)o.names.push(name);
+    const b=base(internal);
+    if(b&&o.internals.indexOf(b)<0)o.internals.push(b);
   };
   (it.combat_panel||[]).forEach(r=>{if(r&&r.cat)put(BIZ_FROM_PANEL[r.cat],r.name,r.src==="es"?"UI 面板":"同快照配置");});
-  (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.display_name,"同快照配置");});
-  (it.behavior_resources||[]).forEach(r=>{if(r&&r.field)put(BIZ_FROM_BEHAVIOR[r.field],"","行为资源");});
+  (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.sfx_name||c.display_name,"同快照配置",c.sfx_params);});
+  (it.behavior_resources||[]).forEach(r=>{if(r&&r.field)put(BIZ_FROM_BEHAVIOR[r.field],"","行为资源",r.path);});
   const ef=it.effects;
   if(ef&&ef.types)Object.keys(ef.types).forEach(t=>{
     const o=ef.types[t]||{};const nm=(o.names&&o.names[0])||"";
@@ -958,10 +961,10 @@ function combatItems(it){
   });
   const main=[];
   BIZ_ORDER.forEach(b=>{const o=acc[b.k];if(!o)return;
-    main.push({k:b.k,label:(b.melee&&isMelee)?b.melee:b.t,name:o.names[0]||"",srcs:o.srcs});});
+    main.push({k:b.k,label:(b.melee&&isMelee)?b.melee:b.t,name:o.names[0]||"",internals:o.internals,srcs:o.srcs});});
   // 其余项：逐项成行（如「护臂开合」是护臂专属特效，自己一行）；无标签的合并进「其它」
   const known=EXTRA_ORDER.filter(k=>acc[k]);
-  known.forEach(k=>main.push({k:k,label:BIZ_EXTRA_LABEL[k],name:acc[k].names[0]||"",srcs:acc[k].srcs}));
+  known.forEach(k=>main.push({k:k,label:BIZ_EXTRA_LABEL[k],name:acc[k].names[0]||"",internals:acc[k].internals,srcs:acc[k].srcs}));
   const rest=Object.keys(acc).filter(k=>!BIZ_ORDER.some(b=>b.k===k)&&known.indexOf(k)<0);
   if(rest.length){
     const srcs=[],names=[];
@@ -976,8 +979,12 @@ function renderCombatUnified(it){
   if(!items.length)return "";
   const rows=items.map(d=>{
     const tip=d.detail?` title="${esc(d.detail)}"`:"";
+    const internals=(d.internals||[]).slice(0,3).map(x=>`<code class="perf-internal">${esc(x)}</code>`).join("");
+    const fallback=(d.internals||[])[0]||"";
     return `<li class="perf-row"${tip}><span class="perf-cat">${esc(d.label)}</span>`+
-      (d.name?`<span class="perf-name">${esc(d.name)}</span>`:`<span class="perf-name weak">已配置</span>`)+
+      (d.name?`<span class="perf-name">${esc(d.name)}</span>`
+             :(fallback?`<span class="perf-name">${esc(fallback)}</span>`:`<span class="perf-name weak">已配置</span>`))+
+      internals+
       `<span class="perf-src">${esc(d.srcs.join(" · "))}</span></li>`;}).join("");
   return `<ul class="perf-list">${rows}</ul>`;
 }
