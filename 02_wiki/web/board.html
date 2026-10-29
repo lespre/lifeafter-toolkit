@@ -932,7 +932,7 @@ const BIZ_FROM_SFX={3:"hit_effect",4:"kill_effect",6:"attack_visual",7:"combat_s
 const BIZ_FROM_BEHAVIOR={hit_sfx_path:"hit_effect",fire_sfx_path:"combat_sound",hold_sfx_path:"combat_sound",
  hold_sfx_loop_path:"combat_sound",trajectory_sfx_path:"attack_visual",trajectory_sfx_path_nor:"attack_visual",
  trajectory_path_real:"attack_visual",trajectory_sfx_path_trace:"attack_visual",trajectory_path_special:"attack_visual",
- skin_replace_anims:"attack_visual",defeat_args:"kill_effect",defeat_model:"kill_effect",
+ skin_replace_anims:"exclusive_combat_animation",defeat_args:"kill_effect",defeat_model:"kill_effect",
  extension_defeat_sfx:"kill_effect",explode_sfx_path:"explode",brass_sfx_path:"brass",
  socket:"special_interaction",preview_range_sfx_path:"preview_extra"};
 const BIZ_EXTRA_LABEL={charge:"蓄力表现",switch_anim:"切枪动画",arm_open:"护臂开合",explode:"爆炸特效",
@@ -954,7 +954,7 @@ function combatItems(it){
     if(src&&o.srcs.indexOf(src)<0)o.srcs.push(src);
     if(name&&!isWeakName(name)&&o.names.indexOf(name)<0)o.names.push(name);
     const b=base(internal);
-    if(b&&o.internals.indexOf(b)<0)o.internals.push(b);
+    if(b&&!/^[0-9]+$/.test(b)&&o.internals.indexOf(b)<0)o.internals.push(b);
   };
   (it.combat_panel||[]).forEach(r=>{if(r&&r.cat)put(BIZ_FROM_PANEL[r.cat],r.name,r.src==="es"?"UI 面板":"同快照配置");});
   (it.sfx_items||[]).forEach(c=>{if(c)put(BIZ_FROM_SFX[c.sfx_type],c.display_name||c.sfx_name,"同快照配置",c.sfx_params);});
