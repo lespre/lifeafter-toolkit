@@ -71,7 +71,10 @@ def load_after(label: str) -> tuple[dict, dict]:
             fp[p.stem] = f
             counts[p.stem] = n
         return fp, {"boards": sorted(fp), "items": counts,
-                    "total_items": sum(counts.values()), "label": "current"}
+                    "total_items": sum(counts.values()), "label": "current",
+                    # ★ 必须带上规则层指纹：缺了它，rules_delta 会把快照里
+                    #   全部规则文件误判为「删除」（实测 61 个全中）。
+                    "rules_fingerprint": rules_fingerprint()}
     return load_before(label)
 
 
@@ -171,6 +174,10 @@ def render_md(report: dict) -> str:
     A(f"- 生成时间：{report['created']}")
     A(f"- 对比板数：{report['board_count']}")
     A(f"- 数据变更条目：新增 {report['total_added']} / 删除 {report['total_removed']} / 修改 {report['total_modified']}")
+    unc = report.get("uncovered_boards") or []
+    if unc:
+        A(f"- 未纳入本次快照的板 {len(unc)} 块（无从比较，不计入变更）："
+          + "、".join(unc[:12]) + ("…" if len(unc) > 12 else ""))
     A("")
     A("## 一、口径变更（rules/ 规则层）")
     A("")
@@ -184,7 +191,9 @@ def render_md(report: dict) -> str:
     A("")
     A("## 二、数据变更（条目级）")
     A("")
-    if not report["boards"]:
+    # ★ 原代码写 report["boards"]，但 report 里只有 boards_detail —— 无变更时
+    #   走到这行直接 KeyError 崩掉（编排器串联时暴露）。正确的判空对象是 boards_detail。
+    if not report.get("boards_detail"):
         A("无条目级变化。")
     for bd in report["boards_detail"]:
         if not (bd["added_count"] or bd["removed_count"] or bd["modified_count"]):
@@ -228,10 +237,18 @@ def main() -> int:
     before_fp, before_meta = load_before(args.before)
     after_fp, after_meta = load_after(args.after)
 
-    boards = sorted(set(before_fp) | set(after_fp))
+    # ★ 比对范围 = 快照覆盖的板 ∩ 现产物存在的板。
+    #   原代码取两边并集：快照只拍了 1 块板时，其余 52 块会被判成「新增 22 万条」——
+    #   纯假象（快照本就没拍它们，无从比较）。
+    #   现产物里有、快照里没有的板 = 未纳入本次快照，跳过并在报告里说明。
+    boards = sorted(set(before_fp) & set(after_fp))
+    uncovered = sorted(set(after_fp) - set(before_fp))
     if args.board:
         if args.board not in boards:
-            raise SystemExit(f"❌ 板 {args.board} 不在对比范围内")
+            if args.board in before_fp:
+                raise SystemExit(f"❌ 板 {args.board} 在快照里但现产物中没有，无法对比")
+            raise SystemExit(f"❌ 板 {args.board} 不在对比范围内"
+                             f"（快照 {args.before} 未覆盖该板）")
         boards = [args.board]
 
     old_items = _old_item_map(args.before) if args.after == "current" else {}
@@ -252,6 +269,8 @@ def main() -> int:
         "total_added": ta, "total_removed": tr, "total_modified": tm,
         "rules_delta": rules_delta(before_meta, after_meta),
         "boards_detail": details,
+        # 未纳入本次快照的板（无从比较，不计入变更）
+        "uncovered_boards": uncovered,
     }
     outdir = pathlib.Path(args.out) if args.out else DIFF_DIR / f"{args.before}__{args.after}"
     outdir.mkdir(parents=True, exist_ok=True)

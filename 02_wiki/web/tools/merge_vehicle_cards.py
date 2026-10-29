@@ -4,6 +4,10 @@ from __future__ import annotations
 
 import json
 import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from notes_util import append_note  # noqa: E402
 
 WEB = pathlib.Path(__file__).resolve().parents[1]
 BOARD = WEB / "data/boards/vehicle_full.json"
@@ -53,7 +57,9 @@ def main() -> int:
         if it["variant_count"] > 1:
             it["name_display_group"] = it["name"]
     d["items"] = merged
-    d["meta"]["notes"] = (d["meta"].get("notes") or "") + " ｜ 同名（含时限变体）合并为一张卡，编号见详情"
+    # ★ 幂等追加：无条件拼接会让每次重跑都多一段 notes，产物噪声无界增长、
+    #   幂等性永不成立（实测累积到 31 段 / 单段重复 8 次）。
+    append_note(d, "同名（含时限变体）合并为一张卡，编号见详情")
     BOARD.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
     multi = sum(1 for i in merged if i["variant_count"] > 1)
     print("合并前 %d 张 → 合并后 %d 张（其中多编号 %d 张）" % (len(items), len(merged), multi))

@@ -17,6 +17,7 @@ from collections import Counter
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from la_paths import PROJ  # noqa: E402
+from notes_util import append_note  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
@@ -95,8 +96,8 @@ def main() -> int:
 
     board["meta"]["filters"] = [{"key": "vehicle_class", "label": "类型"},
                                 {"key": "vehicle_subclass", "label": "子类"}]
-    board["meta"]["notes"] = ((board["meta"].get("notes") or "")
-                              + " ｜ 类型=vehicle_brand_data.type_name（6 类），子类=brands 池")
+    # ★ 幂等追加（见 notes_util.append_note 说明）
+    append_note(board, "类型=vehicle_brand_data.type_name（6 类），子类=brands 池")
     BOARD.write_text(json.dumps(board, ensure_ascii=False), encoding="utf-8")
 
     print("类型分布", Counter(i["vehicle_class"] for i in board["items"]).most_common())

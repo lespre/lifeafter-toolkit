@@ -1,0 +1,196 @@
+# rules/pipeline_graph.yml — 板级重建执行图（编排器的**唯一**执行来源）
+#
+# ★ 本文件是**手工维护**层，脚本只读不写，**禁止任何生成器覆盖**。
+#   理由：重建顺序是**人工判定**，不是扫描结果。
+#   `rules/boards/<board>.yml` 里的 primary_builders / postprocess_scripts
+#   只是「脚本角色分类（build/patch）」的副产品 —— **角色 ≠ 顺序**，
+#   拿它当执行图会把「谁先谁后」搞错（实测同板 4~23 个脚本时全错）。
+#
+# ── 使用方 ────────────────────────────────────────────────────────────
+#   python 02_wiki/web/tools/build/build_pipeline.py --board vehicle_full
+#   python 02_wiki/web/tools/build/build_pipeline.py --all --apply
+#   体检： python 02_wiki/web/tools/build/build_pipeline.py --check
+#
+# ── 每条 step 的必填字段 ──────────────────────────────────────────────
+#   script      : 脚本文件名（在脚本搜索根里按名解析真实路径，允许多处同名→取唯一命中）
+#   stage       : rebuild（主产出）| postprocess（后处理）| global（跨板，只跑一次）
+#   order_basis : **为何排在这个位置**（必填，空字符串视为未声明）
+#   source      : **依据出处**（必填：脚本 docstring / 用户决策 / 实测 / 推定）
+#
+# ── 顺序依据等级（编排器据此决定能不能执行）──────────────────────────
+#   documented : 有明确书面依据（脚本文档 / 用户决策 / 实测验证）—— 可自动执行
+#   inferred   : 由 rules/boards/*.yml 的角色分类**推定** —— 默认**不执行**，
+#                需显式 --allow-inferred 才放行，且报告里标注「顺序为推定」
+#   unknown    : 无依据 —— 一律不执行，只在报告里列出待补
+#
+version: 1
+maintained_by: human
+generated_by: null
+note: >
+  手工维护层。执行顺序 = 人工判定结果，不是脚本扫描结果。
+  新增板或调整顺序时改本文件，再跑 build_pipeline.py --check 自检。
+
+# ── 编排器默认参数 ────────────────────────────────────────────────────
+defaults:
+  python: auto            # auto = 优先项目 venv（00_规范与工具/环境/venv），否则系统 python
+  cwd: 02_wiki/web        # 脚本工作目录（少数脚本用相对路径 data/boards/…，必须在此目录跑）
+  timeout_s: 3600         # 单脚本超时
+  allow_inferred: false   # 默认不执行「顺序为推定」的板
+
+# ── 阶段主干（编排器按此顺序推进）────────────────────────────────────
+#   前 4 段是**工具调用型**阶段（command 固定），后 3 段由本文件/工具链驱动。
+stages:
+  - id: snapshot
+    title: 灰度快照
+    tool: 02_wiki/web/tools/build/snapshot.py
+    args: ["--boards", "{boards}", "--label", "{label}"]
+    note: 改写前先给将被改写的板拍快照，供 --restore 回滚与条目级 diff 比对
+
+  - id: rebuild
+    title: 主产出脚本
+    kind: steps             # 按 boards.<board>.steps 中 stage=rebuild 的条目执行
+    note: 产出 boards/<board>.json 主体
+
+  - id: postprocess
+    title: 后处理脚本
+    kind: steps             # 按 boards.<board>.steps 中 stage=postprocess 的条目执行
+    note: 改写已产出板，顺序敏感
+
+  - id: contract_fix
+    title: 溯源契约修复 pass
+    tool: 02_wiki/web/tools/build/fix_provenance_contract.py
+    args: ["--all", "--apply"]
+    note: >
+      KI-008：修复器接入主构建编排，作为固定 pass 执行。
+      只按 rules/provenance_fixes.yml 里声明的事实修，推不出就跳过不伪造。
+
+  - id: gate
+    title: 发布门禁
+    tool: 02_wiki/web/tools/build_wiki.py
+    args: []
+    note: >
+      校验 + 导出 manifest.js / 每板 .js / manifest.json / build_meta.js。
+      ⚠️ 会重写 data/boards/*.js（当前 34 块的 .js 与 .json 不同源，门禁会改动它们）。
+
+  - id: diff
+    title: 条目级 diff
+    tool: 02_wiki/web/tools/checks/diff_boards.py
+    args: ["--before", "{label}", "--after", "current"]
+    note: 对比快照与现产物，分「口径变更」与「数据变更」两节
+
+  - id: changelog
+    title: 更新日志草稿
+    tool: 02_wiki/web/tools/build/gen_changelog_draft.py
+    args: ["--diff", "{diff_dir}"]
+    note: 从 diff 结果起草 updates.json 条目草稿；**只写 state/changelog_draft.json，不改线上 updates.json**
+
+# ── 跨板脚本（global stage：一次 run 内只跑一次，不随板重复）────────────
+# 依据：这批脚本同时改写多块板或全局策略文件，放进单板的 steps 会重复执行 / 归属错位。
+# 实测：rules/boards/*.yml 把它们按「字符串命中」归到了单板（如 audit_fixes.py 归到 vehicle_full），
+#       但它实际写的是 publication_policy.json + mutation_core_full.json —— 规则层归类噪声。
+global_scripts:
+  - script: ensure_builder_inputs.py
+    args: ["ensure", "--apply"]
+    order_basis: 补齐 builder 的隐式输入，须在任何 builder 之前跑
+    source: 脚本 docstring「审计并补齐 builder 的隐式输入」+ argparse 子命令定义（scan/ensure，ensure 默认 dry-run，需 --apply 才落盘）
+    boards: [common_item_text_sources, fashion_wardrobe_slots, recipe_book, theme_talent_catalog]
+
+  - script: audit_fixes.py
+    order_basis: 收尾 pass：改全局发布策略（chip/nucleus/vehicle_garage 三板降级）+ 补 mutation_core_full 溯源
+    source: 脚本 docstring「自查修复」+ 实测写入路径（publication_policy.json / mutation_core_full.json）
+    boards: [chip_item_catalog, mutation_core_full, nucleus_cards_classic, tactical_chip_full, vehicle_garage_names]
+
+# ── 逐板执行图 ───────────────────────────────────────────────────────
+# 「未在此声明的板」= 顺序未声明（unknown）→ 编排器不执行，--check 里列为待补。
+boards:
+  vehicle_full:
+    name: 载具·全量载具总表
+    note: >
+      全项目唯一有**书面顺序依据**的板（脚本 docstring 明确写出依赖关系）。
+      其余板的顺序仍在推断层，见 --check 输出。
+    steps:
+      - script: build_vehicle_params.py
+        stage: rebuild
+        order_basis: 第一期回填（魅力值 / 速度 / 加速度 / 等级属性）
+        source: 脚本 docstring「（三）载具板深挖回填：魅力值 / 加速度 / 最大速度」
+
+      - script: merge_vehicle_cards.py
+        stage: rebuild
+        order_basis: >
+          同名（含体验版 / N 天变体）合并成一张卡，产出 **vehicle_ids**（一个卡对应多个 vehicle_id）。
+          ★ 必须排在 build_vehicle_lore.py 之前 —— lore 的 vids 取值顺序是
+          `it["vehicle_ids"] or [it["vehicle_id"]]`，即优先读 merge 产出的 vehicle_ids；
+          merge 不先跑，lore 只能拿到单个 vehicle_id ⇒ 特技/描述按变体归并时漏掉其余变体
+          （实测：perks 16 条 → 3 条，非幂等）。
+        source: 脚本 docstring「载具板：同名（含时限变体）合并成一张卡，保留全部 vehicle_id」+ lore 源码 vids 取值行
+
+      - script: build_vehicle_lore.py
+        stage: rebuild
+        order_basis: >
+          第二期回填（描述 / 特技 / 氮气 / 生命量），**依赖第一期已回填的 params**，
+          本脚本在其之上追加、不覆盖第一期字段 ⇒ 排在 build_vehicle_params.py 之后；
+          又依赖 merge_vehicle_cards.py 产出的 vehicle_ids ⇒ 排在其后。
+        source: 脚本 docstring「依赖第一期 build_vehicle_params.py 已回填的 params」+ lore 源码 vids 取值行
+
+      - script: reclassify_vehicle_class.py
+        stage: postprocess
+        order_basis: v1 分类口径（vehicle_equip_type 码分）
+        source: 脚本 docstring「载具分类改为按 vehicle_equip_type 码分（用户 2026-10-24 口径）」
+
+      - script: reclassify_vehicle_class_v2.py
+        stage: postprocess
+        order_basis: v2 真表口径**取代** v1（vehicle_brand_data.type_name + brand_type 归属），故排 v1 之后
+        source: 脚本 docstring「载具分类改为真表口径」+ v1/v2 口径替代关系
+
+      - script: register_vehicle_full.py
+        stage: postprocess
+        requires:
+          - file: 02_wiki/web/data/wiki_taxonomy.json
+            contains: '"id": "fashion.vehicle"'
+            note: 脚本要往 taxonomy 的「（三）载具」节点追加 board_id，节点不存在则 assert 失败
+        order_basis: >
+          把 vehicle_full 登记进 publication_policy / manifest / wiki_taxonomy 三处入口 ——
+          登记的是**最终形态**的板 ⇒ 必须排在所有改写脚本之后。
+        source: 脚本 docstring「把 vehicle_full 登记进三处入口」
+
+  fashion_wardrobe:
+    name: 人物·全量时装衣柜
+    note: >
+      仅声明**已知的一条依赖**（单性别款标记）。该板 72 个脚本，
+      其余顺序**未声明** ⇒ 编排器不会整板执行，需人工补全后再开。
+    partial: true
+    steps:
+      - script: mark_single_gender.py
+        stage: postprocess
+        order_basis: 先写入 gender_scope_note（单性别判定口径与证据）
+        source: 脚本 docstring「判定口径（2026-10-30 复核 player_appear_data 字段语义后定版）」
+
+      - script: mark_single_gender_cards.py
+        stage: postprocess
+        order_basis: >
+          读用 gender_scope_note（**由 mark_single_gender.py 写入**），
+          不再自己重复一套说法 → 必须排在 mark_single_gender.py 之后。
+        source: 脚本 docstring「注记改为引用 gender_scope_note（由 mark_single_gender.py 写入）」
+
+# ── 待补登记（--check 输出会把这里的板列为「顺序未声明」）──────────────
+# 不在 boards: 里的板 = unknown。已确认无缺口、只是顺序待人工判定的板清单：
+unresolved_order:
+  - boards: [activity_master, avatar_catalog, buff_catalog, chip_item_catalog,
+             common_item_text_sources, desc_catalog, drone_catalog, edible_catalog,
+             entity_catalog, equipment_attrs, fashion_face, fashion_face_slots,
+             fashion_glow_slots, fashion_identity_unresolved_v01, fashion_kaijia,
+             fashion_projection_slots, fashion_wardrobe_slots, gene_potential_catalog,
+             gift_data_text_sources, illustration_catalog, item_master_full,
+             item_master_v01, kill_broadcast, lottery_periods, lottery_pool_resolved_v01,
+             mutation_core_full, nucleus_cards_classic, nucleus_entry_slots,
+             nucleus_item_catalog, recipe_book, recipe_catalog, scene_balance,
+             server_types, shop_static_candidates, skill_catalog, skin_behavior_preview,
+             tactical_chip_full, talent_catalog, text_notice_catalog, theme_talent_catalog,
+             title_catalog, upcoming_auto, vehicle_catalog, vehicle_garage_names,
+             weapon_skin_sfx_text_sources, weapon_skin_static_candidates_v01,
+             weapon_skin_structure_v01]
+    reason: >
+      脚本数 1~23 不等且相互依赖关系未在脚本文档中书面化。
+      需人工按「谁产出、谁改写、谁消费」逐板判定顺序后写入 boards: 段。
+      ⚠️ 高风险板（≥10 脚本）顺序错一次就会污染整板，建议逐板实测而非推定。
+    source: 规则层角色分类（build/patch）不足以判定顺序 —— 实测 vehicle_full 的 7 个脚本里角色分类给出的顺序与真实顺序仅 1 处吻合

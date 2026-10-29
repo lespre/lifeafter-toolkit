@@ -73,11 +73,19 @@ open_issues:
   - id: KI-006
     board: 全部板
     blocking: false
+    status: fixed
+    fixed_at: 2026-10-30
     symptom: 无编排器 —— 板级重建顺序仅存在于脚本命名与聊天记录
     root_cause: 没有 pipeline.yml 级别的可执行执行图
-    fix_path:
-      - 一期已生成 rules/boards/*.yml（脚本清单 + 风险等级）
-      - 二期据此生成可执行编排器 build_pipeline.py，按 primary → postprocess 顺序执行
+    fix: >-
+      新增 **rules/pipeline_graph.yml**（手工维护层，编排器唯一执行来源）+ 编排器
+      build_pipeline.py。每条 step 强制声明 order_basis（为何排此位）与 source（依据出处）；
+      依据等级 documented / inferred / unknown 三档，未声明顺序的板默认不执行。
+      编排器串联：灰度快照 → 主产出 → 后处理 → 溯源契约修复 pass → 发布门禁 → 条目级 diff → 更新日志草稿。
+      默认 dry-run，--apply 才落盘，--resume 续跑。
+    result: >-
+      编排器可用并通过实跑验证；执行图覆盖 2 块板（vehicle_full 完整 7 步、fashion_wardrobe 2 步），
+      其余 47 块顺序待人工判定（--check 会列为待补，不臆造）。
 
   - id: KI-007
     board: 入口
@@ -89,10 +97,15 @@ open_issues:
   - id: KI-008
     board: 全部板
     blocking: false
+    status: fixed
+    fixed_at: 2026-10-30
     symptom: 溯源修复靠「规则文件 + 专用工具」执行，未接入主构建编排
     root_cause: 修复器 fix_provenance_contract.py 目前独立运行（dry-run 默认，--apply 落盘）
-    fix_path: 二期把修复器作为构建流程的一个固定 pass 接入 build_pipeline.py，并在 diff 报告中
-      把「口径变更」与「数据变更」分列（本次修复属口径变更，需在更新日志中说明）
+    fix: >-
+      修复器作为构建流程的固定 pass 接入编排器（执行图 stages.contract_fix，
+      跑 fix_provenance_contract.py --all --apply），与门禁、diff 串在同一次 run 里。
+      diff 报告的「口径变更 / 数据变更」分列已生效（规则层指纹纳入快照 meta）。
+    result: 修复器随流水线自动执行；口径变更与数据变更分列呈现
 
 contract_changes:
   - date: 2026-10-30
@@ -104,6 +117,56 @@ contract_changes:
       allowed_tags 增加 unverified。
     authority: 用户决策（2026-10-30 问答）
     note: 该通道只放宽「公开资格」，不改变数据本身；页面已加名册级视觉区分
+
+  - date: 2026-10-30
+    file: rules/pipeline_graph.yml（新建）
+    change: >-
+      新增板级重建执行图（手工维护层）：阶段主干 + 跨板脚本 + 逐板有序步骤，
+      每步声明 order_basis（为何排此位）与 source（依据出处），依据等级分 documented / inferred / unknown。
+    authority: agent 判定（依据脚本 docstring 与源码取值逻辑）
+    note: >-
+      执行图是编排器唯一执行来源。rules/boards/*.yml 的 primary_builders / postprocess_scripts
+      是**角色分类不是顺序**，实测 vehicle_full 7 个脚本里角色分类给出的顺序与真实顺序仅 1 处吻合。
+
+  - date: 2026-10-30
+    file: web/tools/notes_util.py（新建）+ 4 个载具板脚本
+    change: >-
+      meta.notes 改为**幂等追加**（append_note / replace_note / dedupe_notes）。
+      原写法是无条件字符串拼接，每跑一次重建脚本就多一段说明。
+    authority: agent 判定（编排器实跑重跑校验时暴露）
+    note: >-
+      实测 vehicle_full 的 notes 累积到 31 段、单段重复 8 次 ⇒ 产物噪声无界增长、
+      **幂等性永不成立**（重跑后文件哈希必变，条目级 diff 每次都报「修改」，
+      灰度回滚判据随之失效）。收敛后 notes 稳定 5 段，连续两次重跑哈希一致。
+
+fixed_issues_extra:
+  - id: KI-009
+    board: 载具板（vehicle_full）
+    status: fixed
+    fixed_at: 2026-10-30
+    symptom: 编排器按执行图重跑后 perks / modding_levels 逐轮缩水（16 条 → 3 条）
+    root_cause: >-
+      build_vehicle_lore.py 的 vids 取值顺序是 `it["vehicle_ids"] or [it["vehicle_id"]]` ——
+      优先读 merge_vehicle_cards.py 产出的 vehicle_ids。原执行图把 lore 排在 merge 之前，
+      lore 拿不到合并后的 vehicle_ids ⇒ 特技/描述按变体归并时漏掉其余变体。
+    fix: >-
+      执行图顺序修正为 params → merge_vehicle_cards → lore（merge 提到 lore 之前），
+      并在 order_basis 里写明源码依据行。
+    result: 连续两次重跑产物哈希一致（686088e15fea53d5），条目级 0 变化
+
+  - id: KI-010
+    board: 工具（diff_boards.py）
+    status: fixed
+    fixed_at: 2026-10-30
+    symptom: >-
+      diff_boards.py 三个缺陷：① 无变更时 render_md 读不存在的 report["boards"] → KeyError 崩；
+      ② 比对范围取两边并集 → 只拍 1 块板的快照被判成「新增 22 万条」；
+      ③ after=current 时不返回规则层指纹 → 快照里 61 个规则文件全被误判「删除」。
+    root_cause: 三个缺陷都在「对比范围与元信息装配」这一层，写的时候没做边界场景
+    fix: >-
+      ① 判空对象改 boards_detail；② 比对范围改为 快照 ∩ 现产物，未覆盖板单列说明；
+      ③ load_after 补 rules_fingerprint。
+    result: 实测 diff 输出「对比板数 1 / 修改 1 条 / 规则层无变化」，可精确到字段（veh_193000 — name）
 
 resolved_notes:
   - 2026-10-30 完成 tools/ 大扫除：46 个探针脚本迁入 web/tools/_archive/（git mv，保留历史），现役脚本 531 个。
