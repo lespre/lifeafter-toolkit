@@ -1,0 +1,2424 @@
+{
+ "packages": [
+  {
+   "path": "Documents/gres/0000.gpk",
+   "size": 2140728130,
+   "magic_observed": "jPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 917,
+   "entry_count": 916,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 916
+   },
+   "unique_c1c2_pairs": 911,
+   "client_channel": "live",
+   "sha256": "ff4a7f3c189a14fa764b189d09fb7b29a3b8a8f4a1c0970368fc932fe212924a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0000_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0001.gpk",
+   "size": 2094832106,
+   "magic_observed": "_PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 401,
+   "entry_count": 400,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 350,
+    "2": 19,
+    "0": 31
+   },
+   "unique_c1c2_pairs": 389,
+   "client_channel": "live",
+   "sha256": "c673a4c388efca9b94d4ecd79869ba3f93b9bdaa4c25186c9e47e0248758bbaf",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0001_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0002.gpk",
+   "size": 2133277898,
+   "magic_observed": "oPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 339,
+   "entry_count": 338,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 338
+   },
+   "unique_c1c2_pairs": 337,
+   "client_channel": "live",
+   "sha256": "bbc8479f240a6c498c5d9ba007324571468d7a91abd1eef5187385487e1aae5e",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0002_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0003.gpk",
+   "size": 2102196150,
+   "magic_observed": "VPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 656,
+   "entry_count": 655,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 655
+   },
+   "unique_c1c2_pairs": 653,
+   "client_channel": "live",
+   "sha256": "7c1feb3a13b61c63e8540696e4ee86359de915cb218c20107ccfaab319947ce6",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0003_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0004.gpk",
+   "size": 2104504314,
+   "magic_observed": "UPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 40,
+   "entry_count": 39,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 39
+   },
+   "unique_c1c2_pairs": 38,
+   "client_channel": "live",
+   "sha256": "a0662d067b1eeb52b29e7411a5405aaa9e6e1a100e8605e5a4c1f1a199b5a75d",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0004_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0005.gpk",
+   "size": 2090080038,
+   "magic_observed": "\u0011PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 30,
+   "entry_count": 29,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 29
+   },
+   "unique_c1c2_pairs": 28,
+   "client_channel": "live",
+   "sha256": "7e706bb3b1e8eec2f7fd39684a3d2c93243212d75e7ef5f83bd91e5e585749a6",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0005_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0006.gpk",
+   "size": 2141815022,
+   "magic_observed": ":PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 17,
+   "entry_count": 16,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 16
+   },
+   "unique_c1c2_pairs": 15,
+   "client_channel": "live",
+   "sha256": "d5db80d19d160f2ed28333fea5657dbedb32c4869aef31e7cf9d60f7471adfc0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0006_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0007.gpk",
+   "size": 2131187034,
+   "magic_observed": "?PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 974,
+   "client_channel": "live",
+   "sha256": "70ef8660813e5ecfa0e49edc0852cfa90c390a9bb4f8022eac81b019329db6f7",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0007_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0008.gpk",
+   "size": 2139865122,
+   "magic_observed": "ZPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 101,
+   "entry_count": 100,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 100
+   },
+   "unique_c1c2_pairs": 99,
+   "client_channel": "live",
+   "sha256": "b456f0c7c8fb637696522fb43e9ebf8388ebd762bdb477fa94100cd7ed9b8ea1",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0008_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0009.gpk",
+   "size": 2139923638,
+   "magic_observed": "aPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 89,
+   "entry_count": 88,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 87,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 88,
+   "client_channel": "live",
+   "sha256": "5aa729c05a3d4478ebc978dea5bfa75dff96a521bc130e8d997eecfc55f1fad8",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0009_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0010.gpk",
+   "size": 2146355726,
+   "magic_observed": "FPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1015,
+    "0": 9
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "live",
+   "sha256": "a74650e29f071bd96ca64728cb767de04cc5b16172092960bcd94b5e517e5a92",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0010_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0011.gpk",
+   "size": 2146473570,
+   "magic_observed": "YPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 566,
+   "entry_count": 565,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 563,
+    "0": 2
+   },
+   "unique_c1c2_pairs": 565,
+   "client_channel": "live",
+   "sha256": "295ee5aafc9907f2bc8fa8deddd96bed7e5de2a9de7bbe8b71f9f2371417075d",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0011_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0012.gpk",
+   "size": 2145718274,
+   "magic_observed": "GPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 565,
+   "entry_count": 564,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 563,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 564,
+   "client_channel": "live",
+   "sha256": "c065f608c0e0ac3d61694989678f5a869c827e703241eb67113c5ae5e4fe5d77",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0012_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0013.gpk",
+   "size": 2145886030,
+   "magic_observed": "YPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 671,
+   "entry_count": 670,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 670
+   },
+   "unique_c1c2_pairs": 670,
+   "client_channel": "live",
+   "sha256": "384a9f2f4e7b37e559aa7848bc6eb55937c302d7689f3b3a87bb1bf6b3e87a52",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0013_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0014.gpk",
+   "size": 2144272886,
+   "magic_observed": "[PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 689,
+   "entry_count": 688,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 688
+   },
+   "unique_c1c2_pairs": 687,
+   "client_channel": "live",
+   "sha256": "87d0410087c87d690dd002e67f69accbf94bad10e33e9536c8fdfe2cbd4f1e90",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0014_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0015.gpk",
+   "size": 2144238974,
+   "magic_observed": "OPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 979,
+   "client_channel": "live",
+   "sha256": "9c6863073018b7a83cf3c55917fc6507ead8063a22c80e4ceede091cf401aaa4",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0015_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0016.gpk",
+   "size": 2122307910,
+   "magic_observed": "@PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 495,
+   "entry_count": 494,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 490,
+    "0": 4
+   },
+   "unique_c1c2_pairs": 473,
+   "client_channel": "live",
+   "sha256": "b8b6a1495ee13a9b8dbab7cea62259149e3efed6ba26acbe61d067d1136f1554",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0016_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0017.gpk",
+   "size": 2099104430,
+   "magic_observed": "TPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 910,
+   "entry_count": 909,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 900,
+    "0": 9
+   },
+   "unique_c1c2_pairs": 844,
+   "client_channel": "live",
+   "sha256": "736b73c4dee723a78d38a26c78195fe3e8d44b65be1d818af59d12fa1665b8d9",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0017_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0018.gpk",
+   "size": 2134088178,
+   "magic_observed": "EPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 649,
+   "entry_count": 648,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 637,
+    "0": 11
+   },
+   "unique_c1c2_pairs": 626,
+   "client_channel": "live",
+   "sha256": "9b9de2f80b05c37f46cec6f4659f224f23cbf8448ba0b2a2b988e50f79de8a42",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0018_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0019.gpk",
+   "size": 2137081458,
+   "magic_observed": "$PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 239,
+   "entry_count": 238,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 238
+   },
+   "unique_c1c2_pairs": 234,
+   "client_channel": "live",
+   "sha256": "8559d72a144c6c765a08cf832045b7b187efc77ec093c737e2a80452e1ecb043",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0019_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0020.gpk",
+   "size": 2136229854,
+   "magic_observed": "&PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 652,
+   "entry_count": 651,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 651
+   },
+   "unique_c1c2_pairs": 640,
+   "client_channel": "live",
+   "sha256": "e9c41d884a620c957e1738983586939cf47aeba805c2edb4eff8d87e0dd601f2",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0020_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0021.gpk",
+   "size": 2126528370,
+   "magic_observed": "\u0013PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 252,
+   "entry_count": 251,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 251
+   },
+   "unique_c1c2_pairs": 251,
+   "client_channel": "live",
+   "sha256": "4ecc5155a67d3ffe2cf95467366ae02f40ab78a749d0d97e45b9436c7c89cc3a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0021_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0022.gpk",
+   "size": 2137717430,
+   "magic_observed": "ÝPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 21,
+   "entry_count": 20,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 20
+   },
+   "unique_c1c2_pairs": 20,
+   "client_channel": "live",
+   "sha256": "6728db821796b032514ecc6c4a040a8638d5600a83b43d72385049f3398daf0c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0022_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0023.gpk",
+   "size": 2127649922,
+   "magic_observed": "ìPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 493,
+   "entry_count": 492,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 492
+   },
+   "unique_c1c2_pairs": 478,
+   "client_channel": "live",
+   "sha256": "28367d8bb49e35b95f5c6f9e9da217b235d4fb08a0d6ac87d3a824703e78591a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0023_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0024.gpk",
+   "size": 2144575258,
+   "magic_observed": "!PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 130,
+   "entry_count": 129,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 129
+   },
+   "unique_c1c2_pairs": 118,
+   "client_channel": "live",
+   "sha256": "d8309b6fb09c1e790c9afdeef5e8ac424bccf29671e8fea5318f316e2ab0ba46",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0024_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0025.gpk",
+   "size": 2144709958,
+   "magic_observed": "ePGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1015,
+    "0": 9
+   },
+   "unique_c1c2_pairs": 999,
+   "client_channel": "live",
+   "sha256": "784606087ff8b6b58a552ff3fb144694c3b65a5c54021b96491ddd7e52d069ba",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0025_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0026.gpk",
+   "size": 2114656446,
+   "magic_observed": "fPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 739,
+   "entry_count": 738,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 738
+   },
+   "unique_c1c2_pairs": 735,
+   "client_channel": "live",
+   "sha256": "d342305add091ff3f2e0befe25400631a4dd3a58c16c9e5c0a7e487b0dc41304",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0026_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0027.gpk",
+   "size": 2147262814,
+   "magic_observed": "xPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 556,
+   "entry_count": 555,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 533,
+    "0": 22
+   },
+   "unique_c1c2_pairs": 537,
+   "client_channel": "live",
+   "sha256": "6ce17e36fc80213603fecc2abfbd0f64a94fce2a6181f7a115c1c3bd4d26b8bc",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0027_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0032.gpk",
+   "size": 1417702366,
+   "magic_observed": "öPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 595,
+   "client_channel": "live",
+   "sha256": "84ac9b7ecd700e3ebfc1f9f12f98801680e20c3bb893deb11072f79d6228c890",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0032_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0039.gpk",
+   "size": 2146076922,
+   "magic_observed": ")PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 2047,
+   "entry_count": 2046,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1989,
+    "0": 57
+   },
+   "unique_c1c2_pairs": 1339,
+   "client_channel": "live",
+   "sha256": "d46f4ea516c11d5a85b9346f62c0ecf9f18f5f9ea06964392a667bc0397173bf",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0039_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0045.gpk",
+   "size": 2147061326,
+   "magic_observed": "ÊPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1031,
+   "entry_count": 1030,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 860,
+    "0": 170
+   },
+   "unique_c1c2_pairs": 847,
+   "client_channel": "live",
+   "sha256": "f99590fc5759d86d0e915678183ee55fa9d4287fc815ded4a67de6b1ad5c675f",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0045_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0046.gpk",
+   "size": 2145792354,
+   "magic_observed": "uPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1023,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "live",
+   "sha256": "f7f5e4fe8bbd1e5e2cf780ab9ffdc9eba82b9f2ca025164f1f68217d38b04684",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0046_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0047.gpk",
+   "size": 2060458190,
+   "magic_observed": "\u000ePGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1028,
+   "entry_count": 1027,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 985,
+    "0": 42
+   },
+   "unique_c1c2_pairs": 785,
+   "client_channel": "live",
+   "sha256": "f23740072096edcda7e23c9991a809a4faf6f3c273b2a23389334940220b4b71",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0047_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0048.gpk",
+   "size": 2147348478,
+   "magic_observed": "\u0014PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1387,
+   "entry_count": 1386,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 3,
+    "12": 1383
+   },
+   "unique_c1c2_pairs": 919,
+   "client_channel": "live",
+   "sha256": "e14f1a39cb0efeadc5f5e099451d4302182e0cb9c024966576f1c36ac9d564d5",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0048_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0049.gpk",
+   "size": 2147478690,
+   "magic_observed": "\u0010PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 908,
+   "entry_count": 907,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 756,
+    "0": 151
+   },
+   "unique_c1c2_pairs": 907,
+   "client_channel": "live",
+   "sha256": "2f09c00fdad33d2b908c1b9d46dc873304b3959ea845e23189d9b97ac6eb74d1",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0049_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0050.gpk",
+   "size": 2145612754,
+   "magic_observed": "\u0019PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 6,
+    "12": 1017,
+    "2": 1
+   },
+   "unique_c1c2_pairs": 784,
+   "client_channel": "live",
+   "sha256": "bb18a244ef982661ef5ca9868991d827fac63fa9175fa51ba5d5fe310a92cad7",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0050_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0051.gpk",
+   "size": 1548834950,
+   "magic_observed": "vPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 85,
+   "entry_count": 84,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 84
+   },
+   "unique_c1c2_pairs": 43,
+   "client_channel": "live",
+   "sha256": "ae46e95ff4fab7ede071487f1485ecc2e3fcc614e976dd6480a2fd0533754569",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0051_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0052.gpk",
+   "size": 2147257346,
+   "magic_observed": "TPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1029,
+   "entry_count": 1028,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 7,
+    "12": 1021
+   },
+   "unique_c1c2_pairs": 891,
+   "client_channel": "live",
+   "sha256": "8d73b48f624cead16e8a32173aff3a049dc94dfecf8ca5f0e67baf1dabcc96f3",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0052_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0053.gpk",
+   "size": 2144087578,
+   "magic_observed": "6PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1018,
+    "0": 6
+   },
+   "unique_c1c2_pairs": 990,
+   "client_channel": "live",
+   "sha256": "32d2295fae059aadbe8b88a442bd90de2eab17e245453ee944e4944ef0880fe7",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0053_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0054.gpk",
+   "size": 2147227862,
+   "magic_observed": "!PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1016,
+    "0": 8
+   },
+   "unique_c1c2_pairs": 759,
+   "client_channel": "live",
+   "sha256": "07790df96d0079f12debf1670ee71c186e8992861e4bfec3cbc410c9c240967d",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0054_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0060.gpk",
+   "size": 2147468778,
+   "magic_observed": "zPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1196,
+   "entry_count": 1195,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1190,
+    "2": 3,
+    "0": 2
+   },
+   "unique_c1c2_pairs": 1195,
+   "client_channel": "live",
+   "sha256": "9839423c99d63999bacf9d00016141dd8b978277e22c1f4b5cf0eab98f2c5331",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0060_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0061.gpk",
+   "size": 2146881678,
+   "magic_observed": "aPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1021,
+    "0": 3
+   },
+   "unique_c1c2_pairs": 1016,
+   "client_channel": "live",
+   "sha256": "0cf32f4b8b85b3bc9c65c8e77de50595e3950a7d5037a295ca849e22d849f8d4",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0061_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0062.gpk",
+   "size": 2146277390,
+   "magic_observed": "\u0006PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1023,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 876,
+   "client_channel": "live",
+   "sha256": "a6b0ca2ed618befa4ced675d56f12f26f52200a25dd3f6cbd47c68f987fc2d9c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0062_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0063.gpk",
+   "size": 2144716214,
+   "magic_observed": "^PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 788,
+   "entry_count": 787,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 786,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 727,
+   "client_channel": "live",
+   "sha256": "5fb24e2ef37ccfa805edc70cf8b0793470eb3eced6578ece05feb9da892ffe17",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0063_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0064.gpk",
+   "size": 1711834658,
+   "magic_observed": "tPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "live",
+   "sha256": "a62eb850cb81643d72e92486ac410d2f5502cf768f841e796b8db5f5bc3ed2ca",
+   "entries_file": "data\\audit\\package_indexes\\gpk_live_Documents_gres_0064_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0000.gpk",
+   "size": 2146671406,
+   "magic_observed": "RPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 8,
+   "entry_count": 7,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 7
+   },
+   "unique_c1c2_pairs": 7,
+   "client_channel": "test",
+   "sha256": "72db5552bb2a5f9bc46a13a9da48f3c6edcca1a0c4b0fccc3c6b1bd6f9670f74",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0000_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0001.gpk",
+   "size": 2145972830,
+   "magic_observed": "tPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 997,
+   "client_channel": "test",
+   "sha256": "d1170d3c87b3d8c41ee8137473092079d316cb73e0ae260589ecb27044f053fd",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0001_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0002.gpk",
+   "size": 2147291558,
+   "magic_observed": "gPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1015,
+   "client_channel": "test",
+   "sha256": "55752d7a38d400683b98df45da8f26fb37d0d5cf05c59912b3b411880694aaef",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0002_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0003.gpk",
+   "size": 2147220434,
+   "magic_observed": "\u0017PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1022,
+   "client_channel": "test",
+   "sha256": "4388e39306d4551679954ff5022feba8075bf3f8f234412b9cb21a1aadb49a2c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0003_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0004.gpk",
+   "size": 2147479562,
+   "magic_observed": "\u0006PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 938,
+    "0": 86
+   },
+   "unique_c1c2_pairs": 985,
+   "client_channel": "test",
+   "sha256": "57e731262655db8a88b94fd2aa788e06815fa25aa4aaf7a6eb7a656ed5cf7cdd",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0004_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0005.gpk",
+   "size": 2145167266,
+   "magic_observed": "ÃPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 580,
+    "12": 444
+   },
+   "unique_c1c2_pairs": 1023,
+   "client_channel": "test",
+   "sha256": "df2389bd24e02afe8ecce94d135e2a0e4c8e644f92c4fc045c6bb0de12727788",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0005_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0008.gpk",
+   "size": 2144663366,
+   "magic_observed": "\u0013PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "test",
+   "sha256": "caf84bc8cad0c41bd19f957ee877209ecd95b79ea75c49acb916c282f0c7d54c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0008_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0009.gpk",
+   "size": 2143047510,
+   "magic_observed": "2PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 825,
+   "client_channel": "test",
+   "sha256": "bd57b8c99d85b0bd81285bc2493a973cf11dc38225d8cdf51bc013dc8835f35d",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0009_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0010.gpk",
+   "size": 2147052406,
+   "magic_observed": "%PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 784,
+   "client_channel": "test",
+   "sha256": "ea8fe2adcd6a3d9ff0cfb5110bcd342c7520b7b7510bd30e2a390ab862afe13c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0010_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0011.gpk",
+   "size": 2137914010,
+   "magic_observed": "PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 866,
+   "client_channel": "test",
+   "sha256": "00531860bbe8040d41013e5507c2dc08daf22bc02767bd32e43b8f011abe3522",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0011_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0012.gpk",
+   "size": 2143766006,
+   "magic_observed": "\\PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1027,
+   "entry_count": 1026,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1025,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 794,
+   "client_channel": "test",
+   "sha256": "9ad584dc7f0d19e48e926c085979be6e8f4f760f6694b520631f90c5c1a259d2",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0012_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0013.gpk",
+   "size": 2123376618,
+   "magic_observed": "ZPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 971,
+   "client_channel": "test",
+   "sha256": "a9c7374c917b4c64ac69fa0410d3ea633f6f79366337a53d8b3fa01243a8cfa6",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0013_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0014.gpk",
+   "size": 2145006514,
+   "magic_observed": "LPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1029,
+   "entry_count": 1028,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024,
+    "0": 4
+   },
+   "unique_c1c2_pairs": 865,
+   "client_channel": "test",
+   "sha256": "af6c77e2f834c54ae06a33113029ebfddddfc8a1ced37263bf3e8580e2fd7033",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0014_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0015.gpk",
+   "size": 2145302474,
+   "magic_observed": "XPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1022,
+    "0": 2
+   },
+   "unique_c1c2_pairs": 806,
+   "client_channel": "test",
+   "sha256": "725a3cb73a1d89efe8f037a57b70838bd13db0eafe990d7035f5e199493ea331",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0015_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0016.gpk",
+   "size": 2146205198,
+   "magic_observed": "]PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1023,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 1001,
+   "client_channel": "test",
+   "sha256": "36972ad1e08c33ba7673e805e1b663e80a316c4fa81c6404ab1fcda5057a6565",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0016_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0017.gpk",
+   "size": 2145827514,
+   "magic_observed": "[PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 889,
+   "client_channel": "test",
+   "sha256": "7e6552d137148cfe7b375473f5f0c4501bfaa9a975f6c0363b1ec0d5f2fbe795",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0017_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0018.gpk",
+   "size": 2146809186,
+   "magic_observed": "YPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1020,
+    "0": 4
+   },
+   "unique_c1c2_pairs": 1007,
+   "client_channel": "test",
+   "sha256": "b25b9f94a7b19e0c1969311ec8bab85ee93d1449d346deabdd8c22eb4505813e",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0018_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0037.gpk",
+   "size": 2145848694,
+   "magic_observed": "=PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1383,
+   "entry_count": 1382,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1159,
+    "0": 223
+   },
+   "unique_c1c2_pairs": 1346,
+   "client_channel": "test",
+   "sha256": "67dcad2109eb0dd55a112a32c3f443ec671a142fc9492c1c9f699a9f0ec630bc",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0037_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0038.gpk",
+   "size": 1164603846,
+   "magic_observed": "wPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1023,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "test",
+   "sha256": "0af65b49a05c952d514aa69354d48b15110e5f5d6ed25b7f9b1828c8b8b34c61",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0038_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0039.gpk",
+   "size": 2147480502,
+   "magic_observed": "-PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1026,
+   "entry_count": 1025,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1006,
+    "0": 19
+   },
+   "unique_c1c2_pairs": 1025,
+   "client_channel": "test",
+   "sha256": "3b118f43a2e2bb4269bfb2fa60db33c033364d55a86c0f9fcfac7f43adaa49d0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0039_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0040.gpk",
+   "size": 2146552442,
+   "magic_observed": "\u0004PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1013,
+   "client_channel": "test",
+   "sha256": "be7ffe15848c245f0b101439493f9c3bd865e64d7df908eb9d95bff2870672d2",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0040_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0041.gpk",
+   "size": 2147481266,
+   "magic_observed": "9PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 365,
+   "entry_count": 364,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 103,
+    "2": 260,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 358,
+   "client_channel": "test",
+   "sha256": "9d0cc7be45ed89da0cc88d43da95f5b6bc86a7cb0d8555ff68b69c91c521cb49",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0041_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0042.gpk",
+   "size": 2146397610,
+   "magic_observed": "íPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 931,
+    "2": 93
+   },
+   "unique_c1c2_pairs": 1012,
+   "client_channel": "test",
+   "sha256": "bf9abb37b4044d3c7fb20d99ed9f66b25ad8d9d850e7bb2d9aaafb8906f4fa4c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0042_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0043.gpk",
+   "size": 2147255818,
+   "magic_observed": "pPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1017,
+    "0": 7
+   },
+   "unique_c1c2_pairs": 903,
+   "client_channel": "test",
+   "sha256": "74a83868598dd7bf7bf3c31a2855d8771094b8c924b2c5104747a181f4af886c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0043_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0044.gpk",
+   "size": 2147227410,
+   "magic_observed": "ÐPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 1000,
+   "client_channel": "test",
+   "sha256": "9b116fb32ddbfc20f6cf322f1fe3290364335dfcbceb51c15b9ad112b2816d26",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0044_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0045.gpk",
+   "size": 2147467078,
+   "magic_observed": "<PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 11,
+    "12": 1011,
+    "2": 2
+   },
+   "unique_c1c2_pairs": 1023,
+   "client_channel": "test",
+   "sha256": "6a3f41eef5f4900d8b04ab2fad6f7770a7fecf97df55c61ee0420cedbe2d1588",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0045_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0047.gpk",
+   "size": 2146485942,
+   "magic_observed": "cPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 934,
+    "0": 90
+   },
+   "unique_c1c2_pairs": 1024,
+   "client_channel": "test",
+   "sha256": "584ad8113c7002887a8e5579183809775c986442d4274864ca9767725e8a50e5",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0047_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0048.gpk",
+   "size": 990149586,
+   "magic_observed": "ZPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 912,
+   "entry_count": 911,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 911
+   },
+   "unique_c1c2_pairs": 659,
+   "client_channel": "test",
+   "sha256": "9107dc230cdfa3988e2383cba2591b09b142c3295842751df9e84a7cb1d80f01",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0048_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0049.gpk",
+   "size": 2154922812,
+   "magic_observed": "ßPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1259,
+   "entry_count": 1258,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1257,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 787,
+   "client_channel": "test",
+   "sha256": "78753d8021dba2cef8604b69ad6f17383dc01dd6128e3cd8400d82d4a84fea61",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0049_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0053.gpk",
+   "size": 2145721634,
+   "magic_observed": "ePGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1111,
+   "entry_count": 1110,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1088,
+    "0": 22
+   },
+   "unique_c1c2_pairs": 970,
+   "client_channel": "test",
+   "sha256": "5a805c143fe1e5d916e525d1b35f04b8bbd4ddd073d148c4beb767cc3b41844c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0053_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0054.gpk",
+   "size": 2146147534,
+   "magic_observed": "(PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1021,
+    "0": 3
+   },
+   "unique_c1c2_pairs": 1021,
+   "client_channel": "test",
+   "sha256": "379a9ae488b8c0abc66e79b75c889a3fe4c17bc8b4bbae933f0337b0fd8849a0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0054_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0055.gpk",
+   "size": 93519770,
+   "magic_observed": "OPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1024
+   },
+   "unique_c1c2_pairs": 956,
+   "client_channel": "test",
+   "sha256": "ab3627c3774027457c2a0fb068c5a614378fb33558778b5d8978ef10ea32cef0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0055_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0056.gpk",
+   "size": 2147299302,
+   "magic_observed": "{PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1172,
+   "entry_count": 1171,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1013,
+    "0": 158
+   },
+   "unique_c1c2_pairs": 1171,
+   "client_channel": "test",
+   "sha256": "a83918b5d13fbcda10f32fd64088372221e3c27385767a392456b22f0b96ad5a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0056_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0057.gpk",
+   "size": 2136576598,
+   "magic_observed": "ePGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1023,
+    "0": 1
+   },
+   "unique_c1c2_pairs": 964,
+   "client_channel": "test",
+   "sha256": "078daae33ce16fff114698b15e652d7eef9824f9bcbdc65f41de3691e507988c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0057_gpk.entries.jsonl"
+  },
+  {
+   "path": "Documents/gres/0058.gpk",
+   "size": 1158751514,
+   "magic_observed": "|PGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1025,
+   "entry_count": 1024,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1012,
+    "0": 12
+   },
+   "unique_c1c2_pairs": 1020,
+   "client_channel": "test",
+   "sha256": "3fc273495f62bcd7830e2b9b7c5e2a94201a1c95ac9c90ca1e8dbaa175d8d8de",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_Documents_gres_0058_gpk.entries.jsonl"
+  },
+  {
+   "path": "res.gpk",
+   "size": 1231876916,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 19600,
+   "entry_count": 19599,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 9699,
+    "0": 370,
+    "2": 9530
+   },
+   "unique_c1c2_pairs": 18363,
+   "client_channel": "test",
+   "sha256": "ee5e4b2f0446e222dfe166423ad9243b9df1d2c67cccaa5290f6bccaab9abf5f",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/building_01.gpk",
+   "size": 1381324868,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 32325,
+   "entry_count": 32324,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 148,
+    "12": 32176
+   },
+   "unique_c1c2_pairs": 22407,
+   "client_channel": "test",
+   "sha256": "3d6693eb3d0e38566086f11a05ecf1ebb66b3f373ea96bbffaad855110d52ec7",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_building_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/building_02.gpk",
+   "size": 1305642596,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1810,
+   "entry_count": 1809,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1807,
+    "0": 2
+   },
+   "unique_c1c2_pairs": 1797,
+   "client_channel": "test",
+   "sha256": "51f30d875c01982688b464672988f9a271948f386d2bd4c5b76b9f3ed5b2c7b6",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_building_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/building_03.gpk",
+   "size": 1402704492,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 33455,
+   "entry_count": 33454,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 32539,
+    "0": 915
+   },
+   "unique_c1c2_pairs": 28053,
+   "client_channel": "test",
+   "sha256": "088e0f0404077274b0cfa575dc65e459c4870071d92c57cac1802b595a693760",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_building_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/building_04.gpk",
+   "size": 887188860,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 16062,
+   "entry_count": 16061,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 15899,
+    "0": 162
+   },
+   "unique_c1c2_pairs": 13308,
+   "client_channel": "test",
+   "sha256": "69ec3a8c50f78352f4acf8c020e11e761a5e1f6477493acd01a9a8137b209981",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_building_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_01.gpk",
+   "size": 1574942896,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 47390,
+   "entry_count": 47389,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 47111,
+    "0": 278
+   },
+   "unique_c1c2_pairs": 32272,
+   "client_channel": "test",
+   "sha256": "bdcdcf1e7e874d2962c31f7a82625293cd555ea23d128517a674d79621fc62a9",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_02.gpk",
+   "size": 2128015100,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 22914,
+   "entry_count": 22913,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 22735,
+    "0": 178
+   },
+   "unique_c1c2_pairs": 19018,
+   "client_channel": "test",
+   "sha256": "b4e430208449c689f83dc46a158f6ece64597dec8d53eab5c1c2202c1ba65f58",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_03.gpk",
+   "size": 1956395064,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 21246,
+   "entry_count": 21245,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 21027,
+    "0": 218
+   },
+   "unique_c1c2_pairs": 17368,
+   "client_channel": "test",
+   "sha256": "19e747d33e43f1f4829fd7c48e03b5f8f5b7e93b469ec4991a917daa02628d36",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_04.gpk",
+   "size": 1782687580,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 58704,
+   "entry_count": 58703,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 58482,
+    "0": 221
+   },
+   "unique_c1c2_pairs": 43212,
+   "client_channel": "test",
+   "sha256": "b56fa70f60eaeb3b71f54464baef6c3b826251e908ba9393d32b2a991e36a8ed",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_05.gpk",
+   "size": 1889517172,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 77827,
+   "entry_count": 77826,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 77639,
+    "0": 187
+   },
+   "unique_c1c2_pairs": 68429,
+   "client_channel": "test",
+   "sha256": "b018783c0ce44d8bc3eee14cde837f3d744b2a85f0cc11c92d91b6bb2976333f",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_06.gpk",
+   "size": 1375271636,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 21160,
+   "entry_count": 21159,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 20945,
+    "0": 214
+   },
+   "unique_c1c2_pairs": 15750,
+   "client_channel": "test",
+   "sha256": "a3fbda956c8bbb3b887002f99649c0789780b0c9a9ad2e7de942427dc83aea4d",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_06_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_07.gpk",
+   "size": 1562022672,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 39991,
+   "entry_count": 39990,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 39763,
+    "0": 227
+   },
+   "unique_c1c2_pairs": 30459,
+   "client_channel": "test",
+   "sha256": "8d1431ad2440f682bb068f2b066b0efdd89f6c89f0987f73d57a18099f136c4c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_07_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_08.gpk",
+   "size": 1174066312,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 41655,
+   "entry_count": 41654,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 41388,
+    "0": 266
+   },
+   "unique_c1c2_pairs": 29272,
+   "client_channel": "test",
+   "sha256": "b6c8eebdff3cb1192cebd886efef0cbfbdf335d6d7b143057f7ada6366cb5a80",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_08_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/character_09.gpk",
+   "size": 1230157612,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 22902,
+   "entry_count": 22901,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 22555,
+    "0": 346
+   },
+   "unique_c1c2_pairs": 17835,
+   "client_channel": "test",
+   "sha256": "e187e59982a9119a3fcef9cd3859b14281c7ed68831bcb23899c8f01aa757a13",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_character_09_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/effect_01.gpk",
+   "size": 700157292,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 212152,
+   "entry_count": 212151,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 211543,
+    "0": 608
+   },
+   "unique_c1c2_pairs": 171899,
+   "client_channel": "test",
+   "sha256": "89cc9f78cb3633609542b8fbb9c57d7ab65bbde7560aa456d82288f8f78488a0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_effect_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/effect_02.gpk",
+   "size": 150980196,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 3049,
+   "entry_count": 3048,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 3043,
+    "0": 5
+   },
+   "unique_c1c2_pairs": 3008,
+   "client_channel": "test",
+   "sha256": "2b56f9a107499db9926a372732cafe3d49fbbe778f1322f245975a6a626c211e",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_effect_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/effect_cache.gpk",
+   "size": 752927516,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 99801,
+   "entry_count": 99800,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 99800
+   },
+   "unique_c1c2_pairs": 35313,
+   "client_channel": "test",
+   "sha256": "df045faf2cb246d360c013c21fba9cca4254345be2e5bb652313801d5ae27d18",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_effect_cache_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_01.gpk",
+   "size": 1696417564,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 22611,
+   "entry_count": 22610,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 22495,
+    "0": 115
+   },
+   "unique_c1c2_pairs": 18611,
+   "client_channel": "test",
+   "sha256": "44666f12c10423c1ad60a285664061e2e2a9570ebdf3e6acd41d0b924144bf49",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_02.gpk",
+   "size": 1641597588,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 17488,
+   "entry_count": 17487,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 17393,
+    "0": 94
+   },
+   "unique_c1c2_pairs": 14494,
+   "client_channel": "test",
+   "sha256": "9321b3e9d0c0e51fb42e6b9cb46db1c3b28ee65fed752481d2bfefdabd5f0e54",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_03.gpk",
+   "size": 1270552660,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 18895,
+   "entry_count": 18894,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 18812,
+    "0": 82
+   },
+   "unique_c1c2_pairs": 15681,
+   "client_channel": "test",
+   "sha256": "5e355bbdf5d3f947eb020d7a9a2abb1d59ad71c92bd7440d02a9f391e0cb2e62",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_04.gpk",
+   "size": 1457732920,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 9890,
+   "entry_count": 9889,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 9839,
+    "0": 50
+   },
+   "unique_c1c2_pairs": 8557,
+   "client_channel": "test",
+   "sha256": "1a66b7b3619a99a9bf19086a489ebc9b82f13d20a356f130df06c66e6c442041",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_05.gpk",
+   "size": 1783964736,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 17737,
+   "entry_count": 17736,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 17613,
+    "0": 123
+   },
+   "unique_c1c2_pairs": 15007,
+   "client_channel": "test",
+   "sha256": "374fae5bd21619742224ba8ead2cf903ef271ae501eec6fbfa6404105f75fb26",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_06.gpk",
+   "size": 1784573060,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 15275,
+   "entry_count": 15274,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 15212,
+    "0": 62
+   },
+   "unique_c1c2_pairs": 13315,
+   "client_channel": "test",
+   "sha256": "126db1773b923d58cf9b207ae2ac303e0c6c196fa68edd3e869aea193918aaf4",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_06_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_07.gpk",
+   "size": 1547338004,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 11281,
+   "entry_count": 11280,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 11255,
+    "0": 25
+   },
+   "unique_c1c2_pairs": 9710,
+   "client_channel": "test",
+   "sha256": "4c17954f2e4ddf34b8a0fe5b26db3d0c4a09311828692f0575e222ea2bdeb32b",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_07_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_08.gpk",
+   "size": 1619466992,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 11932,
+   "entry_count": 11931,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 11890,
+    "0": 41
+   },
+   "unique_c1c2_pairs": 10039,
+   "client_channel": "test",
+   "sha256": "1c0d1c0225b882e7cde0d3cf8880137a5308952824bd4347741cdb9a972e4b4f",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_08_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_09.gpk",
+   "size": 1625056964,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 17582,
+   "entry_count": 17581,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 17518,
+    "0": 63
+   },
+   "unique_c1c2_pairs": 14602,
+   "client_channel": "test",
+   "sha256": "582b8595a590508b6c47ab6130d6bcee07426921dc174a9eb0373022723bf229",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_09_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_10.gpk",
+   "size": 1461102456,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 16396,
+   "entry_count": 16395,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 16364,
+    "0": 31
+   },
+   "unique_c1c2_pairs": 14253,
+   "client_channel": "test",
+   "sha256": "c461667fa80cdfa2b6cc32120211dc5553ae3147132980cd3cd2ea55b5776e99",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_10_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_11.gpk",
+   "size": 895889692,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 7966,
+   "entry_count": 7965,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 7923,
+    "0": 42
+   },
+   "unique_c1c2_pairs": 6634,
+   "client_channel": "test",
+   "sha256": "22d63aad73ee9255fdb65a8e0526a80f8c6080f3cba022f5fa47f05654a9f683",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_11_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_01.gpk",
+   "size": 1612299220,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 10012,
+   "entry_count": 10011,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 10000,
+    "0": 11
+   },
+   "unique_c1c2_pairs": 6874,
+   "client_channel": "test",
+   "sha256": "e2aa4c440c6fc15b1102a1af97ea7581ff2b7ea1e53d0ed7b361e5fb8f07af4a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_02.gpk",
+   "size": 1664670884,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1058,
+   "entry_count": 1057,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 1057
+   },
+   "unique_c1c2_pairs": 932,
+   "client_channel": "test",
+   "sha256": "2e0b250d66a39b825735e3abd53bc22142b168ce9d7fd0190ee5a63a96c95569",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_03.gpk",
+   "size": 1600079840,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 16127,
+   "entry_count": 16126,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 16089,
+    "0": 37
+   },
+   "unique_c1c2_pairs": 11806,
+   "client_channel": "test",
+   "sha256": "3a123b359a5bb99313d1f6e35776c7343fa5334c50080587c24acfcd0cbf8633",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_04.gpk",
+   "size": 1609537040,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 22142,
+   "entry_count": 22141,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 22101,
+    "0": 40
+   },
+   "unique_c1c2_pairs": 14003,
+   "client_channel": "test",
+   "sha256": "780ec32abaad1a23502f45a63e3ed6558db9f25c3b6fb46925c62619a89814eb",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_05.gpk",
+   "size": 1663121884,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 12046,
+   "entry_count": 12045,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 12034,
+    "0": 11
+   },
+   "unique_c1c2_pairs": 7759,
+   "client_channel": "test",
+   "sha256": "17f57a9ebf1067b483cda317418db81564a63c4ed19493f48f565863cb045ff2",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/model_high_2024_06.gpk",
+   "size": 704754988,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 3449,
+   "entry_count": 3448,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 3446,
+    "0": 2
+   },
+   "unique_c1c2_pairs": 2722,
+   "client_channel": "test",
+   "sha256": "82d1d309d2f57f9f5e7bc7b734621387ab306e8a5d2eb011896bbedc9e36deff",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_model_high_2024_06_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_01.gpk",
+   "size": 1553251948,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 84295,
+   "entry_count": 84294,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 69967,
+    "0": 14327
+   },
+   "unique_c1c2_pairs": 72382,
+   "client_channel": "test",
+   "sha256": "2f3b1212a328cd0b0c083efff8e1c5972d4a841051c6a538218bf6187be49d8b",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_02.gpk",
+   "size": 1597204216,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 110664,
+   "entry_count": 110663,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 103110,
+    "0": 7553
+   },
+   "unique_c1c2_pairs": 84761,
+   "client_channel": "test",
+   "sha256": "84896252edfb3d471b8cec2625e5c3cdd949791700d79dd77930e575aa222f0e",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_03.gpk",
+   "size": 1404290908,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 79144,
+   "entry_count": 79143,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 66267,
+    "0": 12876
+   },
+   "unique_c1c2_pairs": 61845,
+   "client_channel": "test",
+   "sha256": "f7549eb7e5be5ddfc508ef5403c6bb7fb378e78725ec720aebae9e1ff5758f50",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_04.gpk",
+   "size": 1496614396,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 70841,
+   "entry_count": 70840,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 62464,
+    "0": 8376
+   },
+   "unique_c1c2_pairs": 54657,
+   "client_channel": "test",
+   "sha256": "a437ac5a86624cb0ac9029805367a216e6a5b33f1e27b08a21f26a0c0c3a9c73",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_05.gpk",
+   "size": 65578888,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 2759,
+   "entry_count": 2758,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 2057,
+    "0": 701
+   },
+   "unique_c1c2_pairs": 2403,
+   "client_channel": "test",
+   "sha256": "318078c11babcca85602c8d825a12c3c4c930322b0e20f6db0e3d463aedcef70",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_bw_01.gpk",
+   "size": 1713889104,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 147403,
+   "entry_count": 147402,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 113865,
+    "0": 33537
+   },
+   "unique_c1c2_pairs": 126514,
+   "client_channel": "test",
+   "sha256": "be1de9831f683ade9d3aa53b7385f5aa2ee9dc32f573a12066aa37ed8fa615d3",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_bw_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_bw_02.gpk",
+   "size": 1619724820,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 135552,
+   "entry_count": 135551,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 109494,
+    "0": 26057
+   },
+   "unique_c1c2_pairs": 119219,
+   "client_channel": "test",
+   "sha256": "3b086149c027251519eac7271041c2c9542c54a4b51d3a1b46dfd19c355a4f27",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_bw_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_bw_03.gpk",
+   "size": 1644606708,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 51043,
+   "entry_count": 51042,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 46985,
+    "0": 4057
+   },
+   "unique_c1c2_pairs": 43765,
+   "client_channel": "test",
+   "sha256": "3983d6353d786d990714521ee18854dba0890d6efb2d4843b624aa4102f858f0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_bw_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_bw_04.gpk",
+   "size": 1714647336,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 92261,
+   "entry_count": 92260,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 64451,
+    "0": 27809
+   },
+   "unique_c1c2_pairs": 58198,
+   "client_channel": "test",
+   "sha256": "bce5c17fc2a9e92257527c7a0825591a8a5556e447ae8d313f05dfe70e70e6a1",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_bw_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/scene_bw_05.gpk",
+   "size": 1349652660,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 92934,
+   "entry_count": 92933,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 71120,
+    "0": 21813
+   },
+   "unique_c1c2_pairs": 80664,
+   "client_channel": "test",
+   "sha256": "4254f976fa4051a7c615f87755d4a56696445ac29c880a58398e32425785886b",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_scene_bw_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/sound.gpk",
+   "size": 1226485512,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 1436,
+   "entry_count": 1435,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 367,
+    "0": 1068
+   },
+   "unique_c1c2_pairs": 1430,
+   "client_channel": "test",
+   "sha256": "3841f6763cb5947559250464ced383a21ea0c4632436d4c1c6c131e0f8271de8",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_sound_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/textures.gpk",
+   "size": 432207360,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 564,
+   "entry_count": 563,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 534,
+    "0": 29
+   },
+   "unique_c1c2_pairs": 549,
+   "client_channel": "test",
+   "sha256": "06e9f601f5c4fcfc86305db14dbaec837bbcaad087b87a03be49e4de8840a2f2",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_textures_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/textures_bw.gpk",
+   "size": 579698928,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 614,
+   "entry_count": 613,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 542,
+    "0": 71
+   },
+   "unique_c1c2_pairs": 586,
+   "client_channel": "test",
+   "sha256": "3fa00e278dfa6a2f569a3610cd7a20db598adac96263fe165f831db9a933028b",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_textures_bw_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/ui_01.gpk",
+   "size": 1386788696,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 79769,
+   "entry_count": 79768,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 78668,
+    "2": 362,
+    "0": 738
+   },
+   "unique_c1c2_pairs": 76450,
+   "client_channel": "test",
+   "sha256": "8dcf6b883dafc9e0d857bcda7487fb8970a8147d43cbecbcef75328447a6ab72",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_ui_01_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/ui_02.gpk",
+   "size": 799425184,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 7764,
+   "entry_count": 7763,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 7687,
+    "0": 76
+   },
+   "unique_c1c2_pairs": 7689,
+   "client_channel": "test",
+   "sha256": "ee695923778d354ac12d40c88063ee77397a5ee93f7511859f0975bf050cb533",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_ui_02_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/ui_03.gpk",
+   "size": 696876296,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 4922,
+   "entry_count": 4921,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 4921
+   },
+   "unique_c1c2_pairs": 4881,
+   "client_channel": "test",
+   "sha256": "36a9add850b5ffc874e42ec09b907fe2cd03703efec50b7834f1a21f42674618",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_ui_03_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/ui_04.gpk",
+   "size": 946658000,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 30003,
+   "entry_count": 30002,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 29815,
+    "2": 71,
+    "0": 116
+   },
+   "unique_c1c2_pairs": 29373,
+   "client_channel": "test",
+   "sha256": "6eb64d62cc72c7dc6191f5b0e9d86bbec56cb2f63c965cc5311a7de4c8130057",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_ui_04_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/ui_05.gpk",
+   "size": 823930424,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 25583,
+   "entry_count": 25582,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 25575,
+    "0": 6,
+    "2": 1
+   },
+   "unique_c1c2_pairs": 24330,
+   "client_channel": "test",
+   "sha256": "f139644903b6aa9f12ecb05b2ca7c77e3ccf900e6a23efb2f67b57f4c7dbe66c",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_ui_05_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/utility.gpk",
+   "size": 848386532,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 21426,
+   "entry_count": 21425,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 1069,
+    "12": 20356
+   },
+   "unique_c1c2_pairs": 16724,
+   "client_channel": "test",
+   "sha256": "23f8b9746b5d13ed01f0cb2ad04a5eb760d9feb7795390c3587aaeb1cd2dd14f",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_utility_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/utility_scene.gpk",
+   "size": 403361916,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 8097,
+   "entry_count": 8096,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "12": 8049,
+    "0": 47
+   },
+   "unique_c1c2_pairs": 6396,
+   "client_channel": "test",
+   "sha256": "6588937ce1674ccc06409a2d605d04cd20c12cd6cde56b4e19f06bddb50d576e",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_utility_scene_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/video.gpk",
+   "size": 1175457580,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 306,
+   "entry_count": 305,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 294,
+    "12": 11
+   },
+   "unique_c1c2_pairs": 303,
+   "client_channel": "test",
+   "sha256": "bb92e76cb489a7e2650d94a162cd16d5636039e97d43d6ce0847ad5804d0c5d0",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_video_gpk.entries.jsonl"
+  },
+  {
+   "path": "res/weapon.gpk",
+   "size": 1522433388,
+   "magic_observed": "HPGF",
+   "version": 2,
+   "status": "indexed",
+   "header_count": 51665,
+   "entry_count": 51664,
+   "rejected_rows": 1,
+   "flag_distribution": {
+    "0": 178,
+    "12": 51486
+   },
+   "unique_c1c2_pairs": 28474,
+   "client_channel": "test",
+   "sha256": "f1a07f5279f976153f51f2910cd55096665cfb6b0786a94f73cae3958024fa2a",
+   "entries_file": "data\\audit\\package_indexes\\gpk_test_res_weapon_gpk.entries.jsonl"
+  }
+ ],
+ "failures": []
+}

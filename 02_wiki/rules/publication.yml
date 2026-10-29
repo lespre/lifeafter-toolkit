@@ -1,0 +1,65 @@
+# ══════════════════════════════════════════════════════════════════════════
+# 发布契约（publication contract）—— 门禁 publication_policy.py 的唯一口径来源
+# ══════════════════════════════════════════════════════════════════════════
+# 铁律：口径写在这里，代码只读不写。
+#   改标签白名单 → 改本文件 → 重跑门禁，不要去改 publication_policy.py 的常量。
+#
+# 背景：status_tags 是条目的「证据状态」标签，页面据此做视觉区分。
+#   门禁要求每个已发布条目的 status_tags 必须是 list、非空、且每项都在白名单内；
+#   名册级条目（roster）额外强制含 unverified。
+
+version: 2
+
+# ── status_tags 合法取值白名单 ────────────────────────────────────────────
+# 取值风格：
+#   带空格的（"static config"）= 英文惯用标签，保持与页面既有渲染一致
+#   短横线的（"file-missing"）   = 2026-10-30 新增，资源缺失类
+#   中文（"框资源未下发"）        = 中文用户向状态，页面直接展示
+status_tags:
+  allowed:
+    # —— 证据充分度 ——
+    - verified                      # 已核验
+    - unresolved                    # 已定位但语义待定
+    - unverified                    # 未核验（名册级通道强制）
+    - quarantined                   # 隔离，不对外
+    # —— 数据来源性质 ——
+    - static config                 # 静态配置表
+    - runtime final unknown         # 运行期最终态未知
+    # —— 资源缺失类（2026-10-30 新增）——
+    - file-missing                  # 资源文件缺失（音频/图片等）
+    - table-absent                  # 源表本身不存在（该服该表未下发）
+    - 框资源未下发                   # 头像框资源未下发
+
+  # 标签语义说明（供人工复核，代码不读）
+  notes:
+    file-missing: 音频/图片等资源文件在客户端包内找不到，条目保留但无媒体
+    table-absent: 源表在该服不存在（如 vehicle_catalog / fashion_face 的部分服）
+    框资源未下发: 头像框资源未随包下发，头像本体可用但框无图
+
+# ── 名册级通道（roster）──────────────────────────────────────────────────
+# 来源于「静态导出 / 字符串池名册」的条目没有行级解码定位，
+# 不得伪造 locator_chain；改写 provenance.roster + status_tags 含 unverified。
+roster:
+  evidence:
+    - name-roster-only
+    - static-export
+  require_unverified_tag: true
+  require_source_id: true
+  require_source_desc: true
+
+# ── 溯源字段必填项 ───────────────────────────────────────────────────────
+required_provenance_fields:
+  - locator_chain
+  - table
+  - row_key
+  - field_refs
+  - name_source
+  - upstream
+  - source_lock_sha256
+
+# board 级必填 meta 字段
+required_board_meta_fields:
+  - package_sha
+
+# package_sha 必须是完整 SHA-256（64 位十六进制）
+package_sha_length: 64

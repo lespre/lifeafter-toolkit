@@ -2,359 +2,246 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#10131d">
-<meta name="description" content="明日之后 LifeAfter Wiki：查阅时装、武器皮肤、载具、异变核芯、战术芯片、料理与生存资料。">
-<title>明日之后 · LifeAfter Wiki</title>
-<link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
-<link rel="stylesheet" href="assets/wiki_home.css?v=20261025-a7">
-<link rel="stylesheet" href="assets/wiki_home_blackbox.css?v=20261025-09">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日之后 · 资料档案馆</title>
 <script src="data/manifest.js"></script>
-<script src="data/build_meta.js"></script>
 <script src="data/publication_policy.js"></script>
 <script src="data/wiki_taxonomy.js"></script>
-</head>
-<body class="a p1">
-<a class="skip-link" href="#systemCards">跳转到资料目录</a>
-<header class="top">
-  <a class="brand" href="wiki.html" aria-label="LifeAfter Wiki 首页"><img class="brand-logo" src="assets/logo_lifeafter_wiki.png" alt="LifeAfter Wiki"></a>
-  <nav id="topNav" aria-label="分类导航"></nav>
-  <a class="project-link" href="index.html#flow">三线三带 ↗</a>
-</header>
-<section class="hero" id="hero-top" aria-label="Wiki 搜索与部署信息">
- <div class="hero-inner">
-  
-  <form class="searchbox" id="homeSearchForm" role="search">
-   <input id="homeSearch" type="search" aria-label="搜索资料板块" placeholder="搜索板块：武器皮肤、核芯、料理…" autocomplete="off">
-   <button type="button" class="clear-search" id="clearSearch" aria-label="清空搜索">清空</button>
-   <button type="submit">查找资料 ↗</button>
-  </form>
-  <div class="hints"><span>快捷入口</span><a href="board.html?b=weapon_skin_sfx_text_sources">武器皮肤</a><a href="board.html?b=mutation_core_full">异变核芯</a><a href="board.html?b=vehicle_full">载具</a></div>
-  <div class="build-info hero-build">Powered by LA Wiki <span id="buildVer">—</span> · Designed by Preface<br>Deployed on <span id="buildTime">—</span> · Hosted on <span id="buildHost">—</span></div>
-  
- </div>
-</section>
-<main class="content">
- <div class="intro"><h2>资料导航</h2><div class="stats stats-inline"><span><b id="footBoards">—</b>公开资料板块</span><span><b id="footItems">—</b>收录条目</span></div></div><div class="feature-grid" aria-label="核心资料入口">
-  <a class="feature" href="#cat-2"><span class="num">01 / ARCHIVE</span><img src="assets/skin_posters/1110165.png" alt="墨隐麒麟"><h3>外观档案 ↗</h3><span>时装 · 武器皮肤 · 载具</span></a>
-  <a class="feature" href="#cat-3"><span class="num">02 / ARCHIVE</span><img src="assets/core_icons/item_icon_jin_bing_b.png" alt=""><h3>战斗研究 ↗</h3><span>核芯 · 芯片 · 装备属性</span></a>
-  <a class="feature" href="#cat-4"><span class="num">03 / ARCHIVE</span><img src="assets/fashion_posters/fw_3907f1c57d.png" alt="金镶玉龙"><h3>活动档案 ↗</h3><span>活动配置 · 历史奖池</span></a>
-  <a class="feature" href="#cat-5"><span class="num">04 / ARCHIVE</span><img src="assets/recipe_icons/icon_125058_b.png" alt=""><h3>生存百科 ↗</h3><span>料理 · 配方 · 道具</span></a>
- </div>
- <div class="directory">
-  <aside class="side"><div class="eyebrow">DIRECTORY / 目录</div><nav id="categoryNav" aria-label="侧边分类导航"></nav><a href="updates.html">更新记录 ↗</a><div id="gen"></div></aside>
-  <div><div id="searchStatus" role="status" aria-live="polite"></div><div id="homeEmpty" class="empty" hidden>未找到匹配的资料板块，请尝试其他关键词。</div><div id="systemCards"></div></div>
- </div>
-</main>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0e12; --bg2:#11161d; --bg3:#151b24;
+  --line:#1e2631; --line2:#26303d;
+  --ink:#e8ecf2; --ink2:#9aa7b6; --ink3:#6b7a8b;
+  --red:#c0392b; --gold:#e0a83f;
+}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block}
 
-<footer class="foot"><span><strong>LifeAfter Wiki</strong> / Designed by Preface · 非官方资料站<br>数据来源：测试服客户端只读拆包</span><div class="footer-source"><details id="boundary"><summary>资料来源与收录说明</summary><p>公开资料保留行级文字与配置来源。资料收录不代表当前可获取或活动开启；服务器分支、快照与证据范围以各板块记录为准。</p></details></div><a class="back-top" href="#hero-top">回到顶部 ↑</a></footer><script>
-/* ============================================================
-   渲染：体系树 → 分类区 + 板块瓦片
-   ============================================================ */
+/* 顶栏 */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:18px;
+  padding:0 22px;background:rgba(12,14,18,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{font-weight:800;letter-spacing:.12em;font-size:14px;padding:14px 0;white-space:nowrap}
+.brand em{font-style:normal;color:var(--ink3);font-size:9.5px;letter-spacing:.28em;margin-left:9px}
+.top nav{display:flex;gap:2px;flex:1 1 auto;overflow:auto}
+.top nav a{padding:14px 11px;font-size:12.5px;color:var(--ink2);border-bottom:2px solid transparent;white-space:nowrap}
+.top nav a:hover{color:#fff}
+.top nav a.on{color:#fff;border-bottom-color:var(--red)}
+.search{background:#121821;border:1px solid var(--line2);border-radius:3px;padding:7px 10px;
+  color:#cfd8e3;font-size:12px;width:230px;flex:0 0 auto}
+.search:focus{outline:none;border-color:var(--red)}
+
+/* 布局 */
+.wrap{display:grid;grid-template-columns:190px minmax(0,1fr);gap:22px;max-width:1340px;margin:0 auto;padding:18px 22px 60px}
+aside{position:sticky;top:64px;align-self:start;font-size:12.5px;max-height:calc(100vh - 80px);overflow:auto}
+aside h4{font-size:10px;letter-spacing:.22em;color:var(--ink3);margin:6px 0 8px;font-weight:700}
+aside a{display:flex;justify-content:space-between;gap:8px;padding:5px 8px;color:var(--ink2);border-left:2px solid transparent}
+aside a:hover{color:#fff;background:var(--bg3)}
+aside a.on{color:#fff;background:var(--bg3);border-left-color:var(--red)}
+aside a i{font-style:normal;color:#55637a;font-size:10.5px}
+aside a.child{padding-left:16px;font-size:12px}
+
+/* 分区 */
+main{min-width:0}
+h2.sec{font-size:15px;letter-spacing:.1em;margin:20px 0 10px;padding-bottom:8px;
+  border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+h2.sec .num{color:var(--red);font-size:11px;letter-spacing:.18em}
+h2.sec .cnt{margin-left:auto;color:var(--gold);font-size:11px;letter-spacing:.1em}
+h3.sub{font-size:12.5px;color:#93a2b2;margin:16px 0 8px;display:flex;gap:7px;align-items:center;font-weight:700}
+h3.sub::before{content:"";width:3px;height:11px;background:var(--red)}
+
+/* 筛选条 */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.chip{padding:4px 10px;border:1px solid var(--line2);border-radius:2px;font-size:11.5px;
+  color:#94a3b3;background:#11161e;cursor:pointer;transition:.12s}
+.chip:hover{color:#fff;border-color:#3a4b60}
+.chip.on{border-color:var(--red);color:#fff;background:#1b1412}
+
+/* 卡片网格 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:9px;display:flex;gap:10px;
+  align-items:center;transition:.15s}
+.card:hover{border-color:var(--red);background:var(--bg3);transform:translateY(-1px)}
+.card .th{flex:0 0 auto;width:46px;height:46px;border-radius:2px;background:#0a0e13 center/contain no-repeat;
+  border:1px solid #1b232e;display:flex;align-items:center;justify-content:center;
+  font:700 15px/1 ui-monospace,Consolas,monospace;color:rgba(110,150,190,.55)}
+.card .tx{min-width:0}
+.card .n{font-size:12.5px;font-weight:700;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .m{font-size:10.5px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{display:inline-block;font-size:10px;padding:0 5px;border:1px solid var(--line2);color:#8496a8;border-radius:2px;margin-right:4px}
+.empty{color:var(--ink3);font-size:12px;padding:10px 0}
+
+/* 页脚 */
+.foot{max-width:1340px;margin:0 auto;padding:0 22px 40px;color:var(--ink3);font-size:11px}
+.foot details{border:1px solid var(--line);border-radius:3px;padding:8px 12px;background:rgba(255,255,255,.012)}
+.foot summary{cursor:pointer;color:var(--ink3)}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  aside{position:static;max-height:none;display:flex;gap:10px;flex-wrap:wrap}
+  aside h4{width:100%}
+  aside a{border:1px solid var(--line);border-radius:2px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html">明日之后 · 资料档案馆<em>ARCHIVE</em></a>
+  <nav id="topNav"></nav>
+  <input class="search" id="q" type="search" placeholder="搜索板块 / 名称 / 编号" autocomplete="off">
+</header>
+
+<div class="wrap">
+  <aside id="side"><h4>资料分类</h4></aside>
+  <main id="main"></main>
+</div>
+
+<div class="foot">
+  <details>
+    <summary>公开规则 · 来源与发布边界</summary>
+    <p style="padding-top:8px">未知或已隔离的板块默认不展示；原始客户端包只读，可解 ≠ 已启用。
+    资料可查 ≠ 当前可得，服务器与快照以各板记录为准。</p>
+  </details>
+</div>
+
+<script>
 (function(){
-  var T = window.WIKI_TAXONOMY;
-  var M = window.WIKI_MANIFEST;
-  var P = window.WIKI_PUBLICATION_POLICY;
-  var host = document.getElementById('systemCards');
-  var navSide = document.getElementById('categoryNav');
-  var navTop = document.getElementById('topNav');
-  if(!T || !M || !host) return;
+  var T = window.WIKI_TAXONOMY, M = window.WIKI_MANIFEST, P = window.WIKI_PUBLICATION_POLICY;
+  if(!T || !M){ document.getElementById('main').innerHTML = '<p class="empty">数据未加载</p>'; return; }
 
   var byId = {};
-  (M.boards || []).forEach(function(b){ byId[b.board] = b; });
+  (M.boards||[]).forEach(function(b){ byId[b.board] = b; });
   var pol = (P && P.boards) || {};
 
   var THUMBS = [
-    [/^fashion_wardrobe$/, 'assets/fashion_posters/fw_c8c7d1c90f.png'],  // 人物时装：星云惊鸿幻彩典藏-头饰
-    [/^weapon_skin/, 'assets/skin_posters/1110031.png'],  // 武器皮肤：沧鳞破浪
-    [/weapon_skin/i,     'assets/skin_posters/1110001.png'],
-    [/^future_lottery/,  'assets/skin_posters/1110012.png'],
-    [/^skin_behavior/,   'assets/skin_posters/1110021.png'],
-    [/vehicle/i,         'assets/vehicle_icons/icon_194193_b.png'],  // 载具：帝皇铠骑
-    [/^tactical_chip/,   'assets/chip_icons/chip_11001_s.png'],
-    [/^mutation_core/,   'assets/core_icons/item_icon_jin_bing_b.png'],
-    [/fashion/i,         'assets/fashion_icon_refs/icon_110240_b.png'],
-    [/lottery|chenshi/i, 'assets/skin_posters/1110005.png'],
-    [/^drone/i,          'assets/drone_icons/icon_180010_b.png'],
-    [/recipe/i,          'assets/recipe_icons/icon_125058_b.png'],
-    [/item_master/i,     'assets/item_icons/icon_10004_b.png'],
-    [/gift_data/i,       'assets/item_icons/icon_1110002_b.png'],
-    [/nucleus_entry/i,   'assets/core_icons/item_icon_jin_bing_b.png'],
-    [/shop_static/i,     'assets/item_icons/icon_1110003_b.png'],
-    [/avatar/i,          'assets/img_cache/avatar_catalog/da_450101.png'],  // 头像：450101
-    [/kill_broadcast/i,  'assets/kill_broadcast/mvp_bq_mvp_03.png'],  // 击败播报：MVP 03
-    [/edible|recipe/i,   'assets/recipe_icons/icon_125058_b.png'],
-    [/upcoming/i,        'assets/skin_posters/1110171.png'],
-    [/talent|title|buff|entity|skill|illustration|server_types|text_notice|desc|activity|scene_balance/i,
-                         'assets/item_icons/icon_10004_b.png']
+    [/weapon_skin/i,'assets/skin_posters/1110001.png'],
+    [/^future_lottery|lottery|chenshi/i,'assets/skin_posters/1110005.png'],
+    [/^skin_behavior/i,'assets/skin_posters/1110021.png'],
+    [/vehicle/i,'assets/vehicle_icons/icon_195026_b.png'],
+    [/^tactical_chip/i,'assets/chip_icons/chip_11001_s.png'],
+    [/^mutation_core|core_skill/i,'assets/core_icons/item_icon_jin_bing_b.png'],
+    [/fashion|avatar/i,'assets/fashion_icon_refs/icon_110240_b.png'],
+    [/^drone/i,'assets/drone_icons/icon_180010_b.png'],
+    [/recipe/i,'assets/recipe_icons/icon_125058_b.png'],
+    [/item_master|gift_data/i,'assets/item_icons/icon_10004_b.png'],
+    [/shop_static/i,'assets/item_icons/icon_1110003_b.png']
   ];
-  function thumbOf(id){
-    for(var i=0;i<THUMBS.length;i++) if(THUMBS[i][0].test(id)) return THUMBS[i][1];
-    return null;
-  }
-  function glyphOf(name){
-    var m = String(name||'').match(/[\u4e00-\u9fff]/);
-    return m ? m[0] : '·';
-  }
+  function thumbOf(id){ for(var i=0;i<THUMBS.length;i++) if(THUMBS[i][0].test(id)) return THUMBS[i][1]; return null; }
+  function glyph(name){ var m=String(name||'').match(/[\u4e00-\u9fff]/); return m?m[0]:'·'; }
+  function fmt(n){ return (n==null)?'—':Number(n).toLocaleString('en-US'); }
 
-  function tally(n){
-    var boards = 0, ph = 0, i;
-    for(i=0;i<(n.boards||[]).length;i++) if(byId[n.boards[i]]) boards++;
-    if(n.placeholder && !boards) ph++;
-    for(i=0;i<(n.children||[]).length;i++){
-      var r = tally(n.children[i]); boards += r.boards; ph += r.ph;
-    }
-    return {boards:boards, ph:ph};
-  }
-  function badge(n){
-    var r = tally(n);
-    if(r.boards && r.ph) return r.boards + ' 块 · ' + r.ph + ' 项占位';
-    if(r.boards) return r.boards + ' 块';
-    if(r.ph) return r.ph + ' 项占位';
-    return '尚未产出';
-  }
-  var ZH_MAP=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时未确认'],
-    [/LOTTERY_POOL_RESOLVED/gi,'奖池解析'],[/ITEM_MASTER/gi,'道具总表'],
-    [/all_equips/g,'装备属性表'],[/common_item_data_base/g,'道具总表'],
-    [/weapon_skin_data/g,'武器皮肤表'],[/reward_pool_data_base/g,'奖池表'],
-    [/gift_data/g,'礼盒表'],[/huodong_conf/g,'活动配置'],
-    [/schema\s*(\d+)/gi,'结构 $1'],[/\bschema\b/gi,'结构'],
-    [/\bv0\.\d+/gi,''],[/\bsource-locked\b/gi,'锁源'],[/\bverified\b/gi,'已核验'],
-    [/\bunresolved\b/gi,'待确认'],[/\bcandidate\b/gi,'候选'],[/\bstatic config\b/gi,'静态配置']];
   function zhName(s){
-    var out=String(s==null?'':s);
-    for(var i=0;i<ZH_MAP.length;i++) out=out.replace(ZH_MAP[i][0],ZH_MAP[i][1]);
-    return out.replace(/\s*→\s*/g,' 的 ').replace(/\s{2,}/g,' ').replace(/\s*·\s*·\s*/g,' · ').trim();
+    return String(s||'')
+      .replace(/^当前包\s*·\s*/,'')
+      .replace(/（自动）/,'')
+      .replace(/全量/g,'')
+      .trim();
   }
 
-  // 标题一律走 taxonomy：单板块叶子用叶子名（带序号），多板块叶子用板块名（去说明词）
-  var TITLES = {};
-  (function(){
-    function cleanNm(x){
-      var t=String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
-        .replace(/\([^)]*\)/g,'').split('·')[0]
-        .replace(/全量|图鉴|说明文字|名称/g,'').replace(/总表|表$/,'').trim();
-      if(/当期&历史|历史每期/.test(t)) t='奖池';
-      if(/^活动$/.test(t)) t='活动';
-      t=t.replace(/[与及和、]+$/,'');
-      return t;
+  function boardCard(id){
+    var b = byId[id];
+    if(!b) return '';
+    var nm = (b.name ? zhName(b.name) : id);
+    var src = thumbOf(id);
+    var th = src ? '<div class="th" style="background-image:url(' + src + ')"></div>'
+                 : '<div class="th">' + glyph(nm) + '</div>';
+    var meta = '<span class="tag">' + (b.category ? String(b.category).split('/').pop().trim() : '板块') + '</span>' + fmt(b.items) + ' 条';
+    return '<a class="card" href="board.html?b=' + encodeURIComponent(id) + '" data-k="' +
+      (nm + ' ' + id + ' ' + (b.category||'')).toLowerCase() + '">' + th +
+      '<div class="tx"><div class="n">' + nm + '</div><div class="m">' + meta + '</div></div></a>';
+  }
+
+  function leafBlock(leaf, topName){
+    var ids = (leaf.boards||[]).filter(function(b){ return byId[b]; });
+    var h = document.createElement('section');
+    h.id = 'leaf-' + encodeURIComponent(topName + leaf.name);
+    h.innerHTML = '<h3 class="sub">' + leaf.name + '</h3>';
+    if(ids.length > 1){
+      var chips = document.createElement('div');
+      chips.className = 'chips';
+      chips.innerHTML = '<span class="chip on" data-f="*">全部 ' + fmt(ids.reduce(function(a,b){return a+(byId[b].items||0);},0)) + '</span>' +
+        ids.map(function(id){ return '<span class="chip" data-f="' + id + '">' + zhName(byId[id].name||id) + '</span>'; }).join('');
+      h.appendChild(chips);
     }
-    function numOf(leaf){
-      var m=String(leaf.name||'').match(/^（[^）]*）/);
-      return m?m[0]:'';
-    }
-    (T['树']||[]).forEach(function(top){
-      (top.boards||[]).forEach(function(id){
-        if(byId[id]) TITLES[id]=String(top.name||'').replace(/^[^、]*、/,'');
-      });
-      (top.children||[]).forEach(function(leaf){
-        var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
-        ids.forEach(function(id){
-          TITLES[id]=(ids.length===1)?leaf.name:(numOf(leaf)+cleanNm(byId[id].name||id));
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+    grid.innerHTML = ids.length ? ids.map(boardCard).join('') : '<div class="empty">该分类暂无板块</div>';
+    h.appendChild(grid);
+    if(ids.length > 1){
+      h.addEventListener('click', function(e){
+        var c = e.target.closest('.chip'); if(!c) return;
+        h.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('on'); });
+        c.classList.add('on');
+        var f = c.getAttribute('data-f');
+        h.querySelectorAll('.card').forEach(function(card){
+          card.style.display = (f === '*' || card.getAttribute('href').indexOf(encodeURIComponent(f)) >= 0) ? '' : 'none';
         });
       });
-    });
-  })();
-  function cleanTitle(b, nm){
-    var tag=(b && b.name && String(b.name).indexOf('（内测版）')===0) ? '（内测版）' : '';
-    if(TITLES[nm]) return tag + TITLES[nm];
-    var s = String((b && b.name) || nm || '')
-      .replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
-      .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
-    return tag + zhName(s || nm);
-  }
-
-  var allTiles = [];
-
-  var URL_OVERRIDE = {};   // 2026-10-25：取消 scene_balance 跳转独立页，改走统一板块页（带导航与服型筛选）
-  function tile(nm, b, arch, path){
-    var a = document.createElement('a');
-    a.className = 'card tile' + (arch ? ' deprecated' : '');
-    if(!arch) a.href = URL_OVERRIDE[nm] || ('board.html?b=' + encodeURIComponent(nm));
-    var src = thumbOf(nm);
-    var th = document.createElement('div');
-    if(src){
-      th.className = 'thumb';
-      th.style.backgroundImage = 'url("' + src + '")';
-    }else{
-      th.className = 'thumb glyph';
-      th.textContent = glyphOf(cleanTitle(b, nm).replace(/^（内测版）/,''));
     }
-    var tx = document.createElement('div'); tx.className = 'tx';
-    var n = document.createElement('div'); n.className = 'tname';
-    n.textContent = cleanTitle(b, nm);
-    var s = document.createElement('div'); s.className = 'tmeta';
-    s.textContent = (b.items != null ? b.items + ' 条' : '') + (path ? ' · ' + zhName(path.split(' · ').pop()).replace(/^[（(][^）)]*[）)]\s*/,'') : '') + (arch ? ' · 已归档' : '');
-    tx.appendChild(n); tx.appendChild(s);
-    a.appendChild(th); a.appendChild(tx);
-    a.setAttribute('data-search', (cleanTitle(b, nm) + ' ' + nm + ' ' + (path || '') + ' ' + ((b && b.category) || '')).toLowerCase());
-    allTiles.push(a);
-    return a;
-  }
-
-  function phTile(note){
-    var d = document.createElement('div');
-    d.className = 'card tile placeholder';
-    var th = document.createElement('div'); th.className = 'thumb glyph'; th.textContent = '·';
-    var tx = document.createElement('div'); tx.className = 'tx';
-    var n = document.createElement('div'); n.className = 'tname'; n.textContent = '尚未产出';
-    var s = document.createElement('div'); s.className = 'tmeta'; s.textContent = note || '对应板块还没有产物';
-    tx.appendChild(n); tx.appendChild(s);
-    d.appendChild(th); d.appendChild(tx);
-    return d;
-  }
-
-  function filterHome(){
-    var q = (document.getElementById('homeSearch').value || '').trim().toLowerCase();
-    var shown = 0, i, j;
-    for(i=0;i<allTiles.length;i++){
-      var hit = !q || (allTiles[i].getAttribute('data-search') || '').indexOf(q) >= 0;
-      allTiles[i].hidden = !hit;
-      if(hit) shown++;
-    }
-    var cats = document.querySelectorAll('.wp-cat');
-    for(i=0;i<cats.length;i++){
-      var any = false, ts = cats[i].querySelectorAll('.tile');
-      for(j=0;j<ts.length;j++) if(!ts[j].hidden) any = true;
-      cats[i].hidden = !any;
-    }
-    document.getElementById('searchStatus').innerHTML = q
-      ? ('匹配 <b>' + shown + '</b> 个板块')
-      : ('共 <b>' + allTiles.length + '</b> 个板块入口');
-    document.getElementById('homeEmpty').hidden = !(q && shown === 0);
-  }
-
-  function collect(node, path, out){
-    var p2 = path ? (path + ' · ' + node.name) : node.name;
-    var i;
-    for(i=0;i<(node.boards||[]).length;i++){
-      var nm = node.boards[i];
-      if(byId[nm]) out.push([nm, byId[nm], false, p2]);
-    }
-    for(i=0;i<(node.children||[]).length;i++) collect(node.children[i], p2, out);
+    return h;
   }
 
   function render(){
-    host.innerHTML = '';
-    navSide.innerHTML = '';
-    navTop.innerHTML = '';
-    allTiles.length = 0;
+    var main = document.getElementById('main'), side = document.getElementById('side'),
+        topNav = document.getElementById('topNav');
+    main.innerHTML = ''; topNav.innerHTML = '';
+    var sideHtml = '<h4>资料分类</h4>';
 
-    var tops = T['树'] || [];
-    tops.forEach(function(top, i){
+    (T['树']||[]).forEach(function(top, ti){
+      var label = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
+      var num = (top.name.match(/^([零一二三四五六七八九十]+)、/)||[])[1] || '';
+
+      var a = document.createElement('a');
+      a.href = '#sec-' + ti; a.textContent = label;
+      if(ti === 0) a.className = 'on';
+      topNav.appendChild(a);
+
       var sec = document.createElement('section');
-      sec.className = 'wp-cat';
-      sec.id = 'cat-' + (i + 1);
+      sec.id = 'sec-' + ti;
+      var total = 0;
+      (top.children||[]).forEach(function(c){ (c.boards||[]).forEach(function(b){ if(byId[b]) total += (byId[b].items||0); }); });
+      (top.boards||[]).forEach(function(b){ if(byId[b]) total += (byId[b].items||0); });
 
-      var num = top.name.match(/^([零一二三四五六七八九十]+)、/);
       var h2 = document.createElement('h2');
-      var no = document.createElement('span'); no.className = 'no';
-      no.textContent = num ? num[1] : String(i + 1);
-      var ti = document.createElement('span');
-      ti.textContent = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
-      var cn = document.createElement('span'); cn.className = 'cnt'; cn.textContent = badge(top);
-      h2.appendChild(no); h2.appendChild(ti); h2.appendChild(cn);
+      h2.className = 'sec';
+      h2.innerHTML = '<span class="num">' + (num||'·') + '</span>' + label +
+                     '<span class="cnt">' + fmt(total) + ' 条 / ' +
+                     ((top.children||[]).reduce(function(a,c){return a+(c.boards||[]).length;},0) + (top.boards||[]).length) + ' 块</span>';
       sec.appendChild(h2);
 
-      function tilesFor(entries){
-        var g = document.createElement('div');
-        g.className = 'tiles';
-        for(var li=0; li<entries.length; li++){
-          var e = entries[li];
-          if(e[0]) g.appendChild(tile(e[0], e[1], e[2], e[3]));
-          else g.appendChild(phTile(top.note));
-        }
-        return g;
-      }
-      var topList = [];
-      for(var bi=0; bi<(top.boards||[]).length; bi++){
-        var nm0 = top.boards[bi];
-        if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
-      }
+      (top.boards||[]).forEach(function(id){
+        var g = document.createElement('div'); g.className='grid';
+        g.innerHTML = boardCard(id); sec.appendChild(g);
+      });
+      (top.children||[]).forEach(function(leaf){ sec.appendChild(leafBlock(leaf, top.name)); });
+      main.appendChild(sec);
 
-      // 整个大类合成一个网格：叶子不再各占一行
-      var allList = topList.slice();
-      for(var ci=0; ci<(top.children||[]).length; ci++){
-        var ch = top.children[ci];
-        for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
-          var nm2 = ch.boards[bi2];
-          if(byId[nm2]) allList.push([nm2, byId[nm2], false, '']);
-        }
-        for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], '', allList);
-      }
-      if(allList.length){ sec.appendChild(tilesFor(allList)); }
-      if(!(top.children||[]).length && !topList.length && top.placeholder){
-        sec.appendChild(tilesFor([[null, null, false, '']]));
-      }
-      host.appendChild(sec);
-
-      var label = top.name.replace(/^[零一二三四五六七八九十]+、/, '');
-      var a1 = document.createElement('a');
-      a1.href = '#cat-' + (i + 1);
-      var b1 = document.createElement('b'); b1.textContent = num ? num[1] : String(i + 1);
-      var i1 = document.createElement('i'); i1.textContent = tally(top).boards;
-      a1.appendChild(b1); a1.appendChild(document.createTextNode(' ' + label)); a1.appendChild(i1);
-      navSide.appendChild(a1);
-
-      var a2 = document.createElement('a');
-      a2.href = '#cat-' + (i + 1);
-      a2.textContent = label;
-      navTop.appendChild(a2);
+      sideHtml += '<a href="#sec-' + ti + '"' + (ti===0?' class="on"':'') + '>' + (num?num+' ':'') + label +
+                  '<i>' + ((top.children||[]).length + (top.boards||[]).length) + '</i></a>';
+      (top.children||[]).forEach(function(leaf, li){
+        sideHtml += '<a class="child" href="#leaf-' + encodeURIComponent(top.name + leaf.name) + '">' +
+                    leaf.name + '<i>' + ((leaf.boards||[]).length) + '</i></a>';
+      });
     });
 
-    var boards = Object.keys(byId).length;
-    var items = 0;
-    for(var x=0;x<M.boards.length;x++) items += (M.boards[x].items || 0);
-    var sb=document.getElementById('statBoards'), si=document.getElementById('statItems'), sc=document.getElementById('statCats');
-    if(sb) sb.textContent = boards;
-    if(si) si.textContent = items.toLocaleString('en-US');
-    if(sc) sc.textContent = tops.length;
-    var fb=document.getElementById('footBoards'), fi=document.getElementById('footItems');
-    if(fb) fb.textContent = boards;
-    if(fi) fi.textContent = items.toLocaleString('en-US');
-    try{
-      var B = window.WIKI_BUILD || {};
-      var v=document.getElementById('buildVer'), h=document.getElementById('buildHost'), t=document.getElementById('buildTime');
-      if(v && B.version) v.textContent = B.version;
-      if(h && B.host) h.textContent = B.host;
-      if(t && B.time) t.textContent = B.time;
-    }catch(e){}
+    side.innerHTML = sideHtml;
 
-    var pc = {};
-    Object.keys(pol).forEach(function(k){
-      var st = pol[k].publication_status;
-      pc[st] = (pc[st] || 0) + 1;
+    // 搜索
+    var q = document.getElementById('q');
+    q.addEventListener('input', function(){
+      var s = (q.value||'').trim().toLowerCase();
+      document.querySelectorAll('.card').forEach(function(c){
+        c.style.display = (!s || (c.getAttribute('data-k')||'').indexOf(s) >= 0) ? '' : 'none';
+      });
+      document.querySelectorAll('h2.sec, h3.sub, .chips').forEach(function(el){ el.style.display = s ? 'none' : ''; });
     });
-    document.getElementById('gen').textContent = '公开 ' + boards + ' 个板块';
-
-    filterHome();
   }
 
-  document.getElementById('homeSearch').addEventListener('input', filterHome);
-  document.getElementById('clearSearch').addEventListener('click', function(){
-    document.getElementById('homeSearch').value = '';
-    filterHome();
-  });
-
-  document.getElementById('homeSearchForm').addEventListener('submit', function(e){ e.preventDefault(); document.getElementById('searchStatus').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); });
   render();
 })();
-
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

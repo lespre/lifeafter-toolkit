@@ -711,10 +711,12 @@ def cmd_spine(a) -> int:
 
 
 # ---------------- vehicle ----------------
-VEH_DEEP = PROJ / "03_执行" / "vehicle_deep_extract.py"
-VEH_LORE = PROJ / "03_执行" / "vehicle_lore_extract.py"
-VEH_PARAMS = TOOLS / "build_vehicle_params.py"
-VEH_LORE_BUILD = TOOLS / "build_vehicle_lore.py"
+# 四个脚本已收编进工具库（01_解码定位复原/表解码/载具板/，可复用 CLI）
+VEH_DIR = PROJ / "00_规范与工具/工具/工具库/01_解码定位复原/表解码/载具板"
+VEH_DEEP = VEH_DIR / "vehicle_deep_extract.py"
+VEH_LORE = VEH_DIR / "vehicle_lore_extract.py"
+VEH_PARAMS = VEH_DIR / "build_vehicle_params.py"
+VEH_LORE_BUILD = VEH_DIR / "build_vehicle_lore.py"
 
 
 def _stream(name: str, args: list[str], cwd: Path = WEB) -> int:

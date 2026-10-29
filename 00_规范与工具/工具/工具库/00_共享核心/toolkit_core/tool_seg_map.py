@@ -150,6 +150,10 @@ EXPLICIT: dict[str, tuple[str, str]] = {
     "01_解码定位复原/表解码/bindict_lib/static_all_equips_audit.py": ("①-2", "只做全表静态审计（批量质检形状）"),
     "01_解码定位复原/表解码/bindict_lib/validate_current_all_equips_0x76_index.py":
         ("①-2", "只校验 0x76 索引结构、不解值（质检形状）"),
+    "01_解码定位复原/表解码/载具板/build_vehicle_params.py":
+        ("③-3", "载具板回填：冻结产物→板 json/js（下一站=浏览器）；同目录提取器按目录判据归 ①-1"),
+    "01_解码定位复原/表解码/载具板/build_vehicle_lore.py":
+        ("③-3", "载具板回填：冻结产物→板 json/js（下一站=浏览器）；同目录提取器按目录判据归 ①-1"),
     "01_解码定位复原/客户端逆向/cbg_reference.py":
         ("①-1", "外部参照源（藏宝阁前端配置）：产物=官方口径物品名/品级/属性显示，供命名交叉校验；非拆包数据"),
     # ── 02 线：皮肤链与渲染（55 个文件按产物下一站细分）──
@@ -390,7 +394,14 @@ def collect(toolkit_root: Path | str, *, site_tools: Path | str | None = None,
     """扫两个根：00_规范与工具/工具/工具库（主）+ 02_wiki/web/tools（③ 线宿主）。"""
     toolk = Path(toolkit_root).resolve()
     if site_tools is None:
+        # ★ 向上找 <root>/02_wiki/web/tools（2026-10-30 修复：顶层目录收敛到
+        #   00_规范与工具/ 后，toolk.parent.parent 不再是项目根，旧相对猜测失效）
         site_tools = toolk.parent.parent / "02_wiki" / "web" / "tools"
+        for _up in (toolk, *toolk.parents):
+            _cand = _up / "02_wiki" / "web" / "tools"
+            if _cand.is_dir():
+                site_tools = _cand
+                break
     rows: list[dict[str, Any]] = []
 
     for p in sorted(toolk.rglob("*.py")):

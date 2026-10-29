@@ -133,3 +133,51 @@ seckeys/
 !00_规范与工具/治理/手册/images/
 !00_规范与工具/治理/手册/images/*.jpg
 !00_规范与工具/治理/手册/images/*.png
+
+# ── 克隆友好：以下都是本机一次性产物，不该进仓库 ──
+# 根目录临时脚本（一次性分析用）
+_tmp_*.py
+_tmp_*.json
+
+# 音频去重/试验垃圾（可由客户端重建）
+02_wiki/_audio_trash_*/
+
+# 改写器自动备份（改写前的原文件快照，可由 git 恢复）
+02_wiki/state/backups/
+
+# 派生图片缓存（可由客户端重建）
+02_wiki/web/assets/img_cache/
+02_wiki/web/assets/_backup_*/
+
+# 站点运行期状态报告（每次跑工具都会变，不属于源码）
+02_wiki/state/snapshots/
+02_wiki/state/*_report.json
+02_wiki/state/portability.json
+02_wiki/state/pipeline_state.json
+02_wiki/state/clone_repro_check.json
+
+# 代理记忆目录（本地工作记忆，非项目源码）
+.workbuddy/
+
+# 备份与中间产物
+02_wiki/web/*.bak_*
+02_wiki/web/**/*.bak_*
+**/*.fixwork
+**/*.damaged
+**/*.envroute_after
+**/*.p0_removed_*
+
+# 本地设计草稿与历史快照（不属于站点交付物）
+02_wiki/web/mockups/
+02_wiki/web/config_work/
+02_wiki/web/wiki_旧_*.html
+02_wiki/web/交付系统逆向/
+02_wiki/web/子代理产出_*/
+
+# 审计候选大表（1.7G，可由客户端拆包产物重建，不进仓库）
+02_wiki/web/site_data/NAME_CHAIN_CANDIDATES.jsonl
+02_wiki/web/site_data/ITEM_IDENTITY_CANDIDATES.jsonl
+02_wiki/web/site_data/row_index.jsonl
+02_wiki/web/site_data/LOTTERY_POOL_RESOLVED_v01.jsonl
+02_wiki/web/site_data/ITEM_MASTER_v02.jsonl
+02_wiki/web/site_data/ITEM_MASTER_v03.jsonl

@@ -85,6 +85,32 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "12 星全量特技表（极品核芯）",
+      "category": "二、战力类 / （零）核芯类 / 12 星特技",
+      "board": "core_skill_12star",
+      "items": 50,
+      "generated": "2026-10-22",
+      "source_server": "经典服口径（极品 = 金，12 星）",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "evidence": {
+        "structure": 50
+      },
+      "state_summary": {
+        "极品核芯": 50,
+        "有特技": 47,
+        "有升星段": 50
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 50
+        }
+      }
+    },
+    {
       "name": "（内测版）说明条目总表",
       "category": "四、综合资料 / （五）说明条目、文字与提示总表",
       "board": "desc_catalog",
@@ -349,18 +375,31 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）全量道具总表",
+      "name": "全量道具总表",
       "category": "四、综合资料 / （二）全量道具总表",
       "board": "item_master_full",
       "items": 30252,
       "generated": "2026-10-23",
       "source_server": "测试服 · ITEM_MASTER v0.3 快照",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "package_sha": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
       "evidence": {
         "structure": 30252
       },
       "state_summary": {
-        "identified": 0
+        "条目总数": 30252,
+        "命名空间": {
+          "common_item": 29450,
+          "gift_data": 748,
+          "belt_chip": 54
+        },
+        "证据等级": {
+          "static/candidate": 30252
+        },
+        "状态标签": {
+          "static config": 30252
+        },
+        "名册级条目": 0,
+        "行级可定位条目": 30252
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -368,7 +407,8 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 30252
+          "missing": 802,
+          "replayed-structural": 29450
         }
       }
     },
@@ -480,7 +520,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "异变核芯",
+      "name": "异变核芯 · 全量表",
       "category": "二、战力类 / （一）异变核芯",
       "board": "mutation_core_full",
       "items": 132,

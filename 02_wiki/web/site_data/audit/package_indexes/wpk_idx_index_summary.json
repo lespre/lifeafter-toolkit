@@ -1,0 +1,1421 @@
+{
+ "idx_packages": [
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building.idx",
+   "size": 86256,
+   "sha256": "67674749e04aeeb8233b8541de21b4237ffe6e3a6ef16c6b2c72bfdffd47e5ed",
+   "status": "indexed",
+   "record_count": 2395,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_building_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 289,
+    "4": 372,
+    "5": 343,
+    "6": 305,
+    "7": 408,
+    "8": 264,
+    "9": 187,
+    "10": 48,
+    "255": 179
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building_24_jijian.idx",
+   "size": 900,
+   "sha256": "1d9a1886878eb1fa0c7a26780cd3448af00f0e66bb139c053bcff850c2411e06",
+   "status": "indexed",
+   "record_count": 24,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_building_24_jijian_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 24
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character.idx",
+   "size": 296352,
+   "sha256": "0e4cc649f7f918c58928effaf9d200ea92ebab79fda14baab0470a481e2fba3c",
+   "status": "indexed",
+   "record_count": 8231,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_character_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 179,
+    "4": 224,
+    "5": 171,
+    "6": 180,
+    "7": 171,
+    "8": 168,
+    "9": 186,
+    "10": 226,
+    "11": 226,
+    "12": 231,
+    "13": 245,
+    "14": 165,
+    "15": 186,
+    "255": 5673
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/common.idx",
+   "size": 180,
+   "sha256": "339b54c2d100d1bd04e7fc77a925f32ce97a1b7966a597a9b21b7feceb762cde",
+   "status": "indexed",
+   "record_count": 4,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_common_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 4
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/effect.idx",
+   "size": 52848,
+   "sha256": "493ace456f88bc4696bcdae75ce7585f0915f3d913ad394e1021b3af1a52fbdc",
+   "status": "indexed",
+   "record_count": 1467,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_effect_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 1465,
+    "255": 2
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model.idx",
+   "size": 145080,
+   "sha256": "40dfaf54f489ec237319ba7e8d230c41aa42a466d45928466e72b0390fe289de",
+   "status": "indexed",
+   "record_count": 4029,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_model_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 218,
+    "4": 351,
+    "5": 156,
+    "6": 234,
+    "7": 223,
+    "8": 253,
+    "9": 377,
+    "10": 561,
+    "11": 423,
+    "12": 213,
+    "13": 220,
+    "14": 192,
+    "15": 12,
+    "255": 596
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model_high_2024.idx",
+   "size": 900,
+   "sha256": "240486a4953dab1dc5b1d98b9a74be943bbce440bbc221202e9fdd04510979bf",
+   "status": "indexed",
+   "record_count": 24,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_model_high_2024_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 17,
+    "255": 7
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene.idx",
+   "size": 155268,
+   "sha256": "512d6c67204d3cc40d604e924699914397f7c52e284c1a0fd091408474e6e62f",
+   "status": "indexed",
+   "record_count": 4312,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_scene_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 199,
+    "4": 245,
+    "5": 377,
+    "6": 317,
+    "7": 459,
+    "8": 344,
+    "9": 400,
+    "10": 386,
+    "11": 344,
+    "12": 311,
+    "13": 189,
+    "14": 347,
+    "15": 359,
+    "255": 35
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw.idx",
+   "size": 581724,
+   "sha256": "146d392806448eda2e6e7535244a4610bfb03c9f56f46512a1e64e4d32e6d8c2",
+   "status": "indexed",
+   "record_count": 16158,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_scene_bw_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 1127,
+    "4": 805,
+    "5": 496,
+    "6": 496,
+    "7": 777,
+    "8": 319,
+    "9": 921,
+    "10": 494,
+    "11": 886,
+    "12": 912,
+    "13": 1093,
+    "14": 1171,
+    "15": 1033,
+    "255": 5628
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/ui.idx",
+   "size": 155664,
+   "sha256": "6570b59c2c2112a75b691a0d002b6ef8ecea2f1ce5b0418460920a3483e8c641",
+   "status": "indexed",
+   "record_count": 4323,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_ui_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 1735,
+    "4": 1642,
+    "5": 918,
+    "255": 28
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/utility.idx",
+   "size": 10152,
+   "sha256": "aea8ba1261600d908b291bbc4615270df0ab557fd0d986f5d6b2c04bf9cea322",
+   "status": "indexed",
+   "record_count": 281,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_utility_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 255,
+    "255": 26
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/utility_scene.idx",
+   "size": 1008,
+   "sha256": "0ea805c9ea317ee71ac382091930388727c2bb470721e26ddb975a7ee5823534",
+   "status": "indexed",
+   "record_count": 27,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_utility_scene_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 26,
+    "255": 1
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/weapon.idx",
+   "size": 3168,
+   "sha256": "de737f245efa40e21610c3cf8517d8924141dd557367faedc6fdcba1270821e1",
+   "status": "indexed",
+   "record_count": 87,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_weapon_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 84,
+    "255": 3
+   }
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/weather.idx",
+   "size": 36,
+   "sha256": "e386f1e6d1fca2cb0f03c0b2c91fe2b010c8d9415e49de4ac043dd890db5dde0",
+   "status": "indexed",
+   "record_count": 0,
+   "records_file": "data\\audit\\package_indexes\\idx_live_Documents_res_weather_idx.records.jsonl",
+   "pkg_distribution": {}
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building.idx",
+   "size": 62820,
+   "sha256": "e967917ecac0dcab05a47f31ac64ef3836759a116dbff3470e44b86bc9826ec2",
+   "status": "indexed",
+   "record_count": 1744,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_building_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 247,
+    "4": 339,
+    "5": 233,
+    "6": 426,
+    "7": 260,
+    "8": 106,
+    "255": 133
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building_24_jijian.idx",
+   "size": 1764,
+   "sha256": "4287b894f1f484656f10792d841b27c3e9ab2310b74d772526da8a8a63632910",
+   "status": "indexed",
+   "record_count": 48,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_building_24_jijian_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 48
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character.idx",
+   "size": 177912,
+   "sha256": "76e046d6d4fc2da33301dd11760165870981ab387e1df67ea053a4ae6895c144",
+   "status": "indexed",
+   "record_count": 4941,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_character_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 200,
+    "4": 215,
+    "5": 202,
+    "6": 191,
+    "7": 227,
+    "8": 239,
+    "9": 196,
+    "10": 193,
+    "11": 153,
+    "12": 170,
+    "13": 160,
+    "14": 211,
+    "15": 133,
+    "255": 2451
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/common.idx",
+   "size": 108,
+   "sha256": "3e4cd1304083b18aa72de9cb9680f9f057b5d11e7a8833141a2a24dfb67f2d35",
+   "status": "indexed",
+   "record_count": 2,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_common_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 2
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/effect.idx",
+   "size": 36936,
+   "sha256": "fa68d8bbd1bf44bc03e6643210a9aac84c66415942af7f2dfdae12d6b0a8956f",
+   "status": "indexed",
+   "record_count": 1025,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_effect_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 1024,
+    "255": 1
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model.idx",
+   "size": 120276,
+   "sha256": "c17d0501f2b7e3b71a97e2de7a08357ce0ef75b6dca055bf3f8096a4d4a39eee",
+   "status": "indexed",
+   "record_count": 3340,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_model_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 376,
+    "4": 162,
+    "5": 225,
+    "6": 214,
+    "7": 276,
+    "8": 654,
+    "9": 449,
+    "10": 244,
+    "11": 187,
+    "12": 76,
+    "13": 50,
+    "14": 16,
+    "255": 411
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model_high_2024.idx",
+   "size": 1368,
+   "sha256": "5c41e797a2faa644a12e9e0650d3482794572e23a6f1bc137d5229a8a450e9b9",
+   "status": "indexed",
+   "record_count": 37,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_model_high_2024_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 17,
+    "255": 20
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene.idx",
+   "size": 16884,
+   "sha256": "4232c5c04b898ce0ae8ad3656ef0755f8c269a6f85820a12cda0dca46bc3b238",
+   "status": "indexed",
+   "record_count": 468,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_scene_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 222,
+    "4": 236,
+    "5": 2,
+    "255": 8
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw.idx",
+   "size": 110700,
+   "sha256": "5de4e057609e11b726ea0b045e7872824de08ecb7740604215d5529d15ff3137",
+   "status": "indexed",
+   "record_count": 3074,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_scene_bw_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 459,
+    "4": 1108,
+    "5": 558,
+    "6": 687,
+    "7": 261,
+    "255": 1
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/ui.idx",
+   "size": 178560,
+   "sha256": "31d98f0494355c5a10d6ee465447fa854ad3d5b51be4b943570f96402b5bb1a1",
+   "status": "indexed",
+   "record_count": 4959,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_ui_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 4677,
+    "4": 270,
+    "255": 12
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/utility.idx",
+   "size": 5616,
+   "sha256": "3bdd8d605f1e2691898da153a2cacd57842b825865816b9354645f170d0d757a",
+   "status": "indexed",
+   "record_count": 155,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_utility_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 135,
+    "255": 20
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/utility_scene.idx",
+   "size": 1080,
+   "sha256": "9ec3bab5918c0ee0ee4dc5fdb1cf255c2369ada94198ef5339d59a62f6c22ee9",
+   "status": "indexed",
+   "record_count": 29,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_utility_scene_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 25,
+    "255": 4
+   }
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/weapon.idx",
+   "size": 3384,
+   "sha256": "bd90bf941d86a50727f8016ec342f87d198c2d47354e1cfec1182b9f5b1c8869",
+   "status": "indexed",
+   "record_count": 93,
+   "records_file": "data\\audit\\package_indexes\\idx_test_Documents_res_weapon_idx.records.jsonl",
+   "pkg_distribution": {
+    "3": 91,
+    "255": 2
+   }
+  }
+ ],
+ "wpk_files": [
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building3.wpk",
+   "size": 67108864,
+   "sha256": "337d8f576016f77a21df9bf391510651e493923330cc01761b87bc368fc832e9",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building4.wpk",
+   "size": 67108864,
+   "sha256": "174a1a8f17b8c87fc2ae1d543bdcf2f33c6233a1ed57028b0f701961e8f22ab5",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building5.wpk",
+   "size": 67108864,
+   "sha256": "aace4df6102038ce3a9603ae9097167ed83f6816a9f501b2be492339faea74f0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building6.wpk",
+   "size": 67108864,
+   "sha256": "39162b23af0c6cad49b974dc32d2bf5a8f9bd8a9f667b33f788b68ea3fae0395",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building7.wpk",
+   "size": 67108864,
+   "sha256": "69cfbe10dea894b77c22da96895809597ebacf5fd1a05a2954d8acfb6344b942",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building8.wpk",
+   "size": 67108864,
+   "sha256": "b32b8b387a800690a716dc65d7b2da134c717c93fccc9f7d1eebe35a02827c2b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building9.wpk",
+   "size": 44040192,
+   "sha256": "09dc14f179531181a51463510f4d6d4772b8320d6b31a4e873e6442640e5f690",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/buildingA.wpk",
+   "size": 9437184,
+   "sha256": "695ce268805c4cc8ba52aeb58be9a781c4f39786129ec7c4069d1c81f905b645",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/building_24_jijian3.wpk",
+   "size": 4194304,
+   "sha256": "8a33e2eb9aa89602829052cff5e8c60185bc09b15ac4c6867a9165ee3fe53ec0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character3.wpk",
+   "size": 67108864,
+   "sha256": "a0b9175bf7feb0d870826cba12c615419d6785af4fb9bdbcaa712a0bcf04693a",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character4.wpk",
+   "size": 67108864,
+   "sha256": "4906ec1ea687a293c7cc7191f449958f67267f9ebff4d06532fb73a887d2de76",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character5.wpk",
+   "size": 67108864,
+   "sha256": "8ad4801602cc8beba09f7cebde3d3fb88d3c6e50cb131993c550e1272c3bc177",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character6.wpk",
+   "size": 67108864,
+   "sha256": "00ca275e4aae8003ff59eaf6814fddca31e197c971e4137a3a2655f033117650",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character7.wpk",
+   "size": 67108864,
+   "sha256": "a288f74fe88e979707d7f54ff3ca2ab4e7da20ef2185db87b6f58685e21762c2",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character8.wpk",
+   "size": 67108864,
+   "sha256": "262e669b53c287e0f8405df90655bea8751b077db1785431df78dbf3fb8f4975",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/character9.wpk",
+   "size": 67108864,
+   "sha256": "69aee70836191a443cc22c674dcc8dcdecf7baacaf6f508f48f12bfd2f15308f",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterA.wpk",
+   "size": 67108864,
+   "sha256": "b51a3ccfe0adae9e01bac2caa33f6f782274edbd27bda35461436db7ab9326f4",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterB.wpk",
+   "size": 67108864,
+   "sha256": "58c472493974f412024d62c148b6d7c8fb780f533c67096164114108ba6d7c66",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterC.wpk",
+   "size": 67108864,
+   "sha256": "ca63127a047032eef1a4e72823504e8bd4475cdb0427500d89d9b31f30669fb8",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterD.wpk",
+   "size": 67108864,
+   "sha256": "8107818c1bdbe384959fae51ea74f70e3a3a5c2068f1980ae66c4ed26b989187",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterE.wpk",
+   "size": 67108864,
+   "sha256": "7761997abdcbceb991e0a4b0d1d0d118f34b7a80e64ca974e583dbb811c84573",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/characterF.wpk",
+   "size": 67108864,
+   "sha256": "ee09b2206b74a715e2eff1958b82425991015fc8b32fe158801ab4c39d85a223",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/common3.wpk",
+   "size": 2097152,
+   "sha256": "40a0990d7749d4f061f399469fdfa58d1b08501322bcf4ea44aa2f67e65f4381",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/effect3.wpk",
+   "size": 55574528,
+   "sha256": "815fa6c081ba15651237f9ec2c0b0b613861461f6b59bc6cc466e5b12b2e6ff5",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model3.wpk",
+   "size": 67108864,
+   "sha256": "08387d3eea161cac68f495bdeb805fb7e58bd5c4f2801dfe43cd68a89f8b8079",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model4.wpk",
+   "size": 67108864,
+   "sha256": "2f4dc65ec193ae1c3c92be7f9eb0286fa8d66eddcaf03bcbb43959b9f5f53c16",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model5.wpk",
+   "size": 67108864,
+   "sha256": "f28e270056ffc0a970c52a306506915337c39cb79bf75b2214e568228a705828",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model6.wpk",
+   "size": 67108864,
+   "sha256": "caf39cb1e754f9bccc236ab7fe290a1eb66c6d94e9cae604b2a6ba7a0683ee9b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model7.wpk",
+   "size": 67108864,
+   "sha256": "17f69a5aa210d7dfac0c6cbc0060aaec264d7f1e0590434f2ce0c4d2e114766f",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model8.wpk",
+   "size": 67108864,
+   "sha256": "f40dce0eaf840cb9d99be0005e0219117d7358f070a39cb1ed5062da390b2e91",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model9.wpk",
+   "size": 67108864,
+   "sha256": "20c5b93e03097cfeca0f528f4b031cfc4b90b9660de03db01b02dc31283bf07e",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/model_high_20243.wpk",
+   "size": 6291456,
+   "sha256": "f2e01ecc7b3db30624a74eeed74f70b8d6419997c5f50d68c547e0bd54fb48af",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modela.wpk",
+   "size": 67108864,
+   "sha256": "c8892b390d473779fdd140af2e94861dccd10669fd8ca1e2035f40dc3985946c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modelb.wpk",
+   "size": 67108864,
+   "sha256": "b6c4a99571890a58dd858a85f0590fa54ebac5837579a9e49952cfd165ae2aa5",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modelc.wpk",
+   "size": 67108864,
+   "sha256": "3346617a75b972c2bc2f2ebde3f603343aae817e8c47869f827e03a82833ec61",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modeld.wpk",
+   "size": 67108864,
+   "sha256": "9e2fd913ff2fadc87c1d1a0da5bb582f5f04ef0f6d8fdeb9f1177d75378121ba",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modele.wpk",
+   "size": 67108864,
+   "sha256": "e2c636b0605c03f1674281e432c13a0b2acb34ca274ca8aa27e5158c3f995dd8",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/modelf.wpk",
+   "size": 3145728,
+   "sha256": "f788905aa9272a4a300d4ea9ac8f2a71316ddd9b80a2a40bb9d3ede9a00704c3",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene3.wpk",
+   "size": 67108864,
+   "sha256": "df1db867e5f729cbd01bfd8bc1e6261f546a1a2d38eeeab4d1d114c6dd495e22",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene4.wpk",
+   "size": 67108864,
+   "sha256": "90c0bd49adb596cc86fb0a8d158f6462f55cc9ba3e44601c6b26be137d09f8f0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene5.wpk",
+   "size": 67108864,
+   "sha256": "2756272437b3cdd926ff36111968d632c221aa7ebf776e9e2d50d8d5c3621e8f",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene6.wpk",
+   "size": 67108864,
+   "sha256": "969eb9137cd2316f22d86e389c231d6d65aa4320067e201211d952d38b33355a",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene7.wpk",
+   "size": 67108864,
+   "sha256": "8ac104ef30fd4ac6f01bab840484b8089c946d211ca652dc5d7c2934955463e6",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene8.wpk",
+   "size": 67108864,
+   "sha256": "fbb4a86f022d6b0027629d8abbd919c1ae4de1137cfac8ed8d364facb81f0139",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene9.wpk",
+   "size": 67108864,
+   "sha256": "7e07d19607841ee19c100b237312322ae62f4caf2688e98c748611824e525fc4",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw3.wpk",
+   "size": 67108864,
+   "sha256": "0a6133ea07cbd6da60f3a6c17a60473285aa018fed5d2e529e708ebd207e8c81",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw4.wpk",
+   "size": 67108864,
+   "sha256": "9ce71ff11d7f3a678efcee0064dd86b660f81af9fc7530dfc34ac00737f20126",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw5.wpk",
+   "size": 67108864,
+   "sha256": "21da92018ffb95928cdb3fa360ea0875ae80f8cd94ba478d2edffd8a3f13f4fa",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw6.wpk",
+   "size": 67108864,
+   "sha256": "3c8cd25dd5f43607f51ed5a008f8d198801340b75e1dedc86e1aea3d6983d96b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw7.wpk",
+   "size": 67108864,
+   "sha256": "fd8b856a5ffeab452b24e17d8ec5665115dd5f0cfe1943394a972c8684f2f544",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw8.wpk",
+   "size": 67108864,
+   "sha256": "871cf822c4edd0346b25e1202bb45a6eb7ad2b3002418e8524367265e9dcd032",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bw9.wpk",
+   "size": 67108864,
+   "sha256": "7e43f06731db0c21972b494991bc78d5d96b995a33333f72af72492ca175ae0b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwa.wpk",
+   "size": 67108864,
+   "sha256": "4609ccbcfbed2f11c297119c16656f9f148900afb3df29cadedef112cb954ce0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwb.wpk",
+   "size": 67108864,
+   "sha256": "7ce3d73a16f1a19bd99ffba6098cade02f2e058cb17fa1e79648a44a59a39ccb",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwc.wpk",
+   "size": 67108864,
+   "sha256": "9c8c15be579ef051788a3ed672e537d9c132a27f304721730e1d0e8e0639d397",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwd.wpk",
+   "size": 67108864,
+   "sha256": "c71de5c154e149428e6fd40152c2ae1fbf731460c68cfa72943dcc859a2871dd",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwe.wpk",
+   "size": 67108864,
+   "sha256": "3396a75283213e77fdb98fd7bb886309598f26ad47313e25204cabc036f4bc5f",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scene_bwf.wpk",
+   "size": 67108864,
+   "sha256": "4a8c9713fa6d537f22c7a466f385ce21daf4d34117bfb5e87d4dab2314e29bdc",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scenea.wpk",
+   "size": 67108864,
+   "sha256": "92c82e13c0e03d913e0f4655fed58d727cedd7f2731c11414b408673499ed253",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/sceneb.wpk",
+   "size": 67108864,
+   "sha256": "f97b94bcc33533bc3e25dbbcde1437f45da8d02cd19d003952c1fdb64e8d09b7",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scenec.wpk",
+   "size": 67108864,
+   "sha256": "fcb1059a0ca03d56c8524535b3033ab3aa481cfefc1fd4f2bcdb529b19e552b6",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scened.wpk",
+   "size": 67108864,
+   "sha256": "dc3f6a03eaa8e702aa1afeeffc5aeba83b381897327bb8f331fbc461ad22f210",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scenee.wpk",
+   "size": 67108864,
+   "sha256": "ce13ff651051f4116a246739e84b10c74e0dba0cfd8318a07115733e18e4bf87",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/scenef.wpk",
+   "size": 57671680,
+   "sha256": "77369f6f7a769506e5b61445b5375985548f27050475921e417cda0a988f10e3",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/ui3.wpk",
+   "size": 67108864,
+   "sha256": "f39cdfd571759dc80b41970e00aa8576c1b5058b26a0c136540441b867ec2f1b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/ui4.wpk",
+   "size": 67108864,
+   "sha256": "eeaef158bab339d8984adf8e6f8511f695f046aeb64da2c7a863d347b79808c2",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/ui5.wpk",
+   "size": 23068672,
+   "sha256": "789c1fb057d2991cf0847cd7a303fabbfc865a1e387717117974bf9b9c42b3f6",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/utility3.wpk",
+   "size": 53477376,
+   "sha256": "c73880ac040122fac25547afcaffdb02e2e5bc8c5ee8eb3028004dc0468846a0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/utility_scene3.wpk",
+   "size": 5242880,
+   "sha256": "ca5891e13870af2039c121bacbe7b823442044a76fc2f4ae70d080bb85c1c071",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/res/weapon3.wpk",
+   "size": 22020096,
+   "sha256": "f7c11df82fc9d2edd956c056bdfdeb2eccb7a8c366ae109c0870e006c4325b16",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building3.wpk",
+   "size": 60817408,
+   "sha256": "79845eb27cdc6a328b6681dc54783635bc4f4b38a30dd1444a40cee378f6d89e",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building4.wpk",
+   "size": 67108864,
+   "sha256": "8dd5536c2296cf2e9c66046f6f470ddf0e75983f9c141e20dc36dd769a197397",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building5.wpk",
+   "size": 67108864,
+   "sha256": "8bd4b2b3a20557b9d74328494fcdeaa76ba81f8a7d2b9baefac211adfd009309",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building6.wpk",
+   "size": 49283072,
+   "sha256": "9a17965a2452470810768f37724014683c2bf2b8a56e3e17d89a32b29f38c565",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building7.wpk",
+   "size": 65011712,
+   "sha256": "28f63475d19693552171cfc6fb9ef6ba8ead6916ad6a1177d4b38f2448d5b04c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building8.wpk",
+   "size": 25165824,
+   "sha256": "2f8dfc9b2c300a6faeb600688297c3f81a18b5a02ac8aafe0d45636462132ab6",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/building_24_jijian3.wpk",
+   "size": 7340032,
+   "sha256": "40ccc785a4ce192c4977f381f43e293651d28020e887bacdb1d73aae1df99436",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character3.wpk",
+   "size": 67108864,
+   "sha256": "10b26a766e039d94c16aecd0a8edcf59b187764c47d789025a5d6a8019f77134",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character4.wpk",
+   "size": 67108864,
+   "sha256": "f9537960a52fd556ad989932a0e2a19c4bee6e484f63bf4c6f3cd5cfd1bcce2c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character5.wpk",
+   "size": 67108864,
+   "sha256": "780720e5c37cf9f96172e5f1d2d36d94f540fba4676e8ee10155762aec5831c9",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character6.wpk",
+   "size": 67108864,
+   "sha256": "c3b766cd72ea1dd14b7fe64c7a0b1c67f3d59049ebf8ed72c5dbaff41b67d3fe",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character7.wpk",
+   "size": 67108864,
+   "sha256": "dac4222ec0898f129caa255970fab4a508dc5dbdc28659afba45830257bc4c49",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character8.wpk",
+   "size": 67108864,
+   "sha256": "49df2796ca223224405234b1aba5be05bd914135aff56ce627728d3f88ceb051",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/character9.wpk",
+   "size": 67108864,
+   "sha256": "4e14b1885e706d7c45311e2902369a355a2ffd337a62ddcb54ccc91e60dd1393",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/charactera.wpk",
+   "size": 67108864,
+   "sha256": "fbf7ef9d6f4fd1edd6f1036b62064e44d70d8cb7b67c1eab430add6231c299cf",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/characterb.wpk",
+   "size": 67108864,
+   "sha256": "a3594f005cbc6ec01eb8ce1ca277a21d2fdf51a83ad5f8d9ebcc443c09fd9096",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/characterc.wpk",
+   "size": 67108864,
+   "sha256": "873c49d5f2652924c1199afe58e1846d66bc33e6b33bc2c2108d85b2143ff52d",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/characterd.wpk",
+   "size": 67108864,
+   "sha256": "3925a7dc4d8b28e6dba46ef6d30fed72e22c7af87cd4fbb8de60e94ae293b57c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/charactere.wpk",
+   "size": 67108864,
+   "sha256": "f89380c4e99911d7ff279a40e01928ee8145a21e4ff3e7c82125d885705cc147",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/characterf.wpk",
+   "size": 67108864,
+   "sha256": "c2ac5faf5d8eb84b62042ed219627964ba31841dad29aa8f8a6594297408f1e9",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/common3.wpk",
+   "size": 1048576,
+   "sha256": "b9d0a316cd01ebfef4cbf69368e0f752bd8f1b335fe6c15091d3399562d9bf1b",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/effect3.wpk",
+   "size": 35651584,
+   "sha256": "6c31922b9d45d943debe512adcdebbddaf33505c07f074aadc9cb2fc50ce3521",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model3.wpk",
+   "size": 67108864,
+   "sha256": "57b8413ae4f69595cda09a80665d2602db321d26ecd326506a7b8ec677655c61",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model4.wpk",
+   "size": 67108864,
+   "sha256": "f786651318f68cc2da18bddd64ec83b6341b9f6b1eef4c281c1cf4f1bf64dd78",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model5.wpk",
+   "size": 67108864,
+   "sha256": "86deec720fc2f9aca8ef3a89b2fad6ca2296f0795c532d0e76ed9188f9389676",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model6.wpk",
+   "size": 67108864,
+   "sha256": "04f2767b0d770d39a83a313e0ddb3c692280a4b655011c1000781cd6c92c8572",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model7.wpk",
+   "size": 67108864,
+   "sha256": "624a5bbe3a18d7820f83b286669728983e7ead542b2149ae30426ad98a5fb9dc",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model8.wpk",
+   "size": 67108864,
+   "sha256": "ecf80364673cc29814598c448843d88b6eaccf577fafcb1678c521b17fbd30b0",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model9.wpk",
+   "size": 67108864,
+   "sha256": "a55b833df450724a32c3a309489c1150ba25876b5f7191987b09a9524050ab53",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/modelA.wpk",
+   "size": 67108864,
+   "sha256": "77d866260fb6ac0f2b1174a8cbe9e323f9180b6925fedaba8f3413ee2c96722c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/modelB.wpk",
+   "size": 59768832,
+   "sha256": "69461ba47c04e8daf3cb73611addf029a5556a4369e0429f073025ae4cb331d4",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/modelC.wpk",
+   "size": 18874368,
+   "sha256": "c1b671c40ef08ad616cf57b4a682798a4b885ce584685bc4e15fa30489c4a646",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/modelD.wpk",
+   "size": 16777216,
+   "sha256": "be5d9dbf8d7c3c576c6d365c07e3a49c44b79c21e912db24aee319f86ef9d670",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/modelE.wpk",
+   "size": 9437184,
+   "sha256": "03a224b2b1b400c7c51b198ffc70dcecd9078b1a7e2f924624002a87b9a51a52",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/model_high_20243.wpk",
+   "size": 10485760,
+   "sha256": "3adc252b5fa15764a619ad163d35e3c52d9d5c9d7d76b020c3b9eb2cf714385d",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene3.wpk",
+   "size": 67108864,
+   "sha256": "c2c06afc8798a53e285c9e9d1080e36ee887ea3b239c9d3f74f151384637972d",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene4.wpk",
+   "size": 67108864,
+   "sha256": "19716871dd9263ee8258d7567e6d42082bebb3c4e04d0e861033d0194c006899",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene5.wpk",
+   "size": 2097152,
+   "sha256": "47869310bd44293dd3bcad6fb513c440a74a4ac9d42b3170c5550a5d6e3b83a5",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw3.wpk",
+   "size": 67108864,
+   "sha256": "ed72cf5fc24b9c6bd503a75e391cdacddaf271ed4cc439eadbaf2b38e74b8765",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw4.wpk",
+   "size": 67108864,
+   "sha256": "9c379ec45e86a35e08279e5c0ae0a284012f536d4000da41ab45f5bcfed05897",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw5.wpk",
+   "size": 67108864,
+   "sha256": "c09fea283016198a713cedb980a5d8018731972fdbdef2a4cf9b936426c600d9",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw6.wpk",
+   "size": 67108864,
+   "sha256": "8fa21d7a95131f20ba1acf9737bdffdc2016670761af9bbc262b471d67562f6c",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/scene_bw7.wpk",
+   "size": 27262976,
+   "sha256": "d9868c6a6b9bd0e131fbddba9b574f883bd1bb7098e1270602c086fb09b5b1b3",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/ui3.wpk",
+   "size": 67108864,
+   "sha256": "185cbf6b013fb9f293ea1279460e6b8f52df453fa0d31bd0221b854f1cbab963",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/ui4.wpk",
+   "size": 4194304,
+   "sha256": "d747ac44ec6286ff46e0c43510df18d2adc493826d397db119c1453e866d8fa8",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/utility3.wpk",
+   "size": 26214400,
+   "sha256": "d7f68a97346e576a81cdeb18448ab99f47cf929753f031a57eb1ba692fc32312",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/utility_scene3.wpk",
+   "size": 5242880,
+   "sha256": "038d1e8ad787f2cd494a2fae92e2a29fc55b8eeb633c7606a69e52643c9192a2",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/res/weapon3.wpk",
+   "size": 20971520,
+   "sha256": "aabd13ef053580f46d858fd08566236733df3c61dae5a2b75656096cef9b1097",
+   "status": "wpk-file-registered",
+   "note": "wpk 实体由同名族 idx 记录定位（1DPW 头+payload）；本层为文件级元数据"
+  }
+ ],
+ "failures": [],
+ "idx_pkg_refs": {
+  "test": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   255
+  ],
+  "live": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   255
+  ]
+ }
+}

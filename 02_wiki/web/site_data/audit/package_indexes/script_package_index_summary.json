@@ -1,0 +1,203 @@
+{
+ "packages": [
+  {
+   "client_channel": "live",
+   "path": "Documents/script.npk",
+   "registry_sha256": "afa7d6e84be7213bacaa7aebf764bb25718c2fb112d67d79c7f2df8f1baf3756",
+   "size": 332566292,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 85525,
+   "mtime_ns": 1782411101047412400,
+   "entries_file": "data\\audit\\package_indexes\\live_Documents_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 85519,
+    "2": 6
+   },
+   "unique_file_ids": 85525,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/script.py3.npk",
+   "registry_sha256": "c3e6d347e3b85af6ac2ce07d59fe94eb34c3b452c0c45b12eb2a697d1c5b80d7",
+   "size": 349857404,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 38965,
+   "mtime_ns": 1785249838291013300,
+   "entries_file": "data\\audit\\package_indexes\\live_Documents_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 38956,
+    "2": 9
+   },
+   "unique_file_ids": 38965,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/script.py314.lc.npk",
+   "registry_sha256": "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d",
+   "size": 366060232,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 45687,
+   "mtime_ns": 1788438960850291500,
+   "entries_file": "data\\audit\\package_indexes\\live_Documents_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 5821,
+    "0": 39866
+   },
+   "unique_file_ids": 45687,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "live",
+   "path": "script.npk",
+   "registry_sha256": "8e6cd795897be4f95609e80f854847b56ba757e8bd4e20f54ca376f616435368",
+   "size": 1441472,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 531,
+   "mtime_ns": 1621590458000000000,
+   "entries_file": "data\\audit\\package_indexes\\live_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 530,
+    "2": 1
+   },
+   "unique_file_ids": 531,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "live",
+   "path": "script.py3.npk",
+   "registry_sha256": "6329fa77cce9c8d54c16de411672caecbeff07bdb3d83a48d3ff175626cf2350",
+   "size": 365064336,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 81148,
+   "mtime_ns": 1773725103118735200,
+   "entries_file": "data\\audit\\package_indexes\\live_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 81130,
+    "2": 18
+   },
+   "unique_file_ids": 81148,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "live",
+   "path": "script.py314.lc.npk",
+   "registry_sha256": "683098c34851f77676eb8b6a6710a6e7b2e11e3b952958e3af1837419d8c627e",
+   "size": 400155696,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 110836,
+   "mtime_ns": 1773725103118735200,
+   "entries_file": "data\\audit\\package_indexes\\live_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 23226,
+    "0": 87610
+   },
+   "unique_file_ids": 110836,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.npk",
+   "registry_sha256": "c230d49114f01e88107a0e1613273177ea85573bc8f48ca9c383162bf4e4982c",
+   "size": 340643664,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 87597,
+   "mtime_ns": 1782230566156216300,
+   "entries_file": "data\\audit\\package_indexes\\test_Documents_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 87586,
+    "2": 11
+   },
+   "unique_file_ids": 87597,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.py3.npk",
+   "registry_sha256": "8618ca1d8e2b29539cd13b1bc4b32aee9a44260761526298f7d41dc249f872b6",
+   "size": 473764988,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 93977,
+   "mtime_ns": 1784746822404735800,
+   "entries_file": "data\\audit\\package_indexes\\test_Documents_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 93963,
+    "2": 14
+   },
+   "unique_file_ids": 93977,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.py314.lc.npk",
+   "registry_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+   "size": 270106156,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 25485,
+   "mtime_ns": 1788266451099903500,
+   "anchor_ok": true,
+   "entries_file": "data\\audit\\package_indexes\\test_Documents_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 24411,
+    "2": 1074
+   },
+   "unique_file_ids": 25485,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "test",
+   "path": "script.npk",
+   "registry_sha256": "43023f17c12823866e9d2203a5a9c96ead5925b39c4b243b0560a000261635a1",
+   "size": 229084544,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 61343,
+   "mtime_ns": 1733835139867883200,
+   "entries_file": "data\\audit\\package_indexes\\test_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 61342,
+    "2": 1
+   },
+   "unique_file_ids": 61343,
+   "duplicate_file_id_rows": 0
+  },
+  {
+   "client_channel": "test",
+   "path": "script.py314.lc.npk",
+   "registry_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+   "size": 455619092,
+   "status": "indexed",
+   "sha256_ok": true,
+   "bytes_ok": true,
+   "entry_count": 105777,
+   "mtime_ns": 1787829591216349300,
+   "entries_file": "data\\audit\\package_indexes\\test_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 25065,
+    "0": 80712
+   },
+   "unique_file_ids": 105777,
+   "duplicate_file_id_rows": 0
+  }
+ ]
+}

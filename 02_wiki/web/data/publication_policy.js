@@ -104,9 +104,9 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "mutation_core_full": {
       "publication_status": "published",
-      "category": "二、战力类 /（一）异变核芯",
+      "category": "二、战力类 / （一）异变核芯",
       "items": 132,
-      "reason": "核芯唯一总表：common_item 660xxx 段 132 行。经典服口径：品级色 蓝5星 / 紫9星 / 金12星；简单生存统一 5 星。卡面简略、详情展开。"
+      "reason": "异变核芯全量表：common_item 660000 段 132 行（82 个唯一核芯名）逐行 name/desc/icon 槽位回放，按名字精确关联 gift_data 的「（禁交易）」礼包行 99 个与核芯卡 skill_icon；全部 107 张图逐张过 pe_file_index/gpk_loc0 精确命中后从 pe_packs 解码（命中率 1.0）。品级取自 desc 原文前缀，不做推断。只证静态表内容与资源存在，不证当前可得/可购买。"
     },
     "server_types": {
       "publication_status": "published",

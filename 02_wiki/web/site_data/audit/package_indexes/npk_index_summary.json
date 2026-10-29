@@ -1,0 +1,2652 @@
+{
+ "packages": [
+  {
+   "client_channel": "live",
+   "path": "Documents/script.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "afa7d6e84be7213bacaa7aebf764bb25718c2fb112d67d79c7f2df8f1baf3756",
+   "size": 332566292,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 85525,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_Documents_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 85519,
+    "2": 6
+   },
+   "unique_file_ids": 85525
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/script.py3.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "c3e6d347e3b85af6ac2ce07d59fe94eb34c3b452c0c45b12eb2a697d1c5b80d7",
+   "size": 349857404,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 38965,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_Documents_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 38956,
+    "2": 9
+   },
+   "unique_file_ids": 38965
+  },
+  {
+   "client_channel": "live",
+   "path": "Documents/script.py314.lc.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d",
+   "size": 366060232,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 45687,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_Documents_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 5821,
+    "0": 39866
+   },
+   "unique_file_ids": 45687
+  },
+  {
+   "client_channel": "live",
+   "path": "res.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "99d1f8cbd763693bf30d54920cc56e09d0a81d8ca93a77dc841853062f37b4b1",
+   "size": 8668140,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3114,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_res_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3111,
+    "0": 3
+   },
+   "unique_file_ids": 3114
+  },
+  {
+   "client_channel": "live",
+   "path": "res/ui.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "fcaf6ddede7be5cc43d990480bab61db8a0a84a118fa7e9f29d036f86cb7b68a",
+   "size": 10482100,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 35,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_res_ui_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 20,
+    "0": 15
+   },
+   "unique_file_ids": 35
+  },
+  {
+   "client_channel": "live",
+   "path": "script.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "8e6cd795897be4f95609e80f854847b56ba757e8bd4e20f54ca376f616435368",
+   "size": 1441472,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 531,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 530,
+    "2": 1
+   },
+   "unique_file_ids": 531
+  },
+  {
+   "client_channel": "live",
+   "path": "script.py3.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "6329fa77cce9c8d54c16de411672caecbeff07bdb3d83a48d3ff175626cf2350",
+   "size": 365064336,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 81148,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 81130,
+    "2": 18
+   },
+   "unique_file_ids": 81148
+  },
+  {
+   "client_channel": "live",
+   "path": "script.py314.lc.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "683098c34851f77676eb8b6a6710a6e7b2e11e3b952958e3af1837419d8c627e",
+   "size": 400155696,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 110836,
+   "entries_file": "data\\audit\\package_indexes\\npk_live_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 23226,
+    "0": 87610
+   },
+   "unique_file_ids": 110836
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "c230d49114f01e88107a0e1613273177ea85573bc8f48ca9c383162bf4e4982c",
+   "size": 340643664,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 87597,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_Documents_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 87586,
+    "2": 11
+   },
+   "unique_file_ids": 87597
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.py3.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "8618ca1d8e2b29539cd13b1bc4b32aee9a44260761526298f7d41dc249f872b6",
+   "size": 473764988,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 93977,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_Documents_script_py3_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 93963,
+    "2": 14
+   },
+   "unique_file_ids": 93977
+  },
+  {
+   "client_channel": "test",
+   "path": "Documents/script.py314.lc.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
+   "size": 270106156,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 25485,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_Documents_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 24411,
+    "2": 1074
+   },
+   "unique_file_ids": 25485
+  },
+  {
+   "client_channel": "test",
+   "path": "res.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0725f534e2b2a1c1c103a0ea40aeb22a3846cd6ed7392fc0604f8dd29ac279dc",
+   "size": 2015778608,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 16905,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 16371,
+    "0": 534
+   },
+   "unique_file_ids": 16905
+  },
+  {
+   "client_channel": "test",
+   "path": "res/building/yingdi_gongneng.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "126440a0216841ec0ccbf99d5bb1055ffcdab5f2bf7ac700eda6d44ba6b93534",
+   "size": 2101505740,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 23062,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_building_yingdi_gongneng_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 22721,
+    "0": 341
+   },
+   "unique_file_ids": 23062
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/carrier.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "1bb5915bc5afaecaff37718f66ff13dcce9ce0ca5185ff0c8e758b77aa5e8598",
+   "size": 1070828188,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 12633,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_carrier_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 12621,
+    "0": 12
+   },
+   "unique_file_ids": 12633
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/drones.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "94be8d162ead93f3e632408f376d3c8a51924a2cf492a7a8521369b4a8a41898",
+   "size": 35782612,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1595,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_drones_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1564,
+    "0": 31
+   },
+   "unique_file_ids": 1595
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/monster_dress.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f0bb37369e5adedcc203411c0fdbab307a0f9bfe6d9eae3de6ed9cc57a027d99",
+   "size": 329995164,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 7886,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_monster_dress_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 7728,
+    "0": 158
+   },
+   "unique_file_ids": 7886
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/monsters.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "da0ec265b9c759ee2e3bd771bf906842763d6fd6737e90701ed4b2f0f34445a2",
+   "size": 3626083760,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 40556,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_monsters_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 40089,
+    "0": 467
+   },
+   "unique_file_ids": 40556
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/npc_dress.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f06480a893dde8bdda17e977b5c180a56f1e08f98f9f552a798955f7b4c13922",
+   "size": 194669468,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 5450,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_npc_dress_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 5368,
+    "0": 82
+   },
+   "unique_file_ids": 5450
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/pendant.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "afdd968c885ddcddf9c5d725fa63ee0e3c26e600ab563ad5deff614f6ea81756",
+   "size": 81180984,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 879,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_pendant_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 857,
+    "0": 22
+   },
+   "unique_file_ids": 879
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/pet.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a7a5cef0d96da3aac0ee4cd7dc8865d4670d9293eb90e80a7c45948cfa2bd4e8",
+   "size": 86052096,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11476,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_pet_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 11437,
+    "0": 39
+   },
+   "unique_file_ids": 11476
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/players.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "9734fd1774f7f31f52eacd6987ad6fd5dd4359ab9df57a19571a4436e976415f",
+   "size": 3007054728,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 42192,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_players_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 41918,
+    "0": 274
+   },
+   "unique_file_ids": 42192
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/players2021.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b79395c391738576c15125f19d2eb834ce9cc1a53c9f4c48a20f4f31a9493d24",
+   "size": 4138186016,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 36098,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_players2021_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 35893,
+    "0": 205
+   },
+   "unique_file_ids": 36098
+  },
+  {
+   "client_channel": "test",
+   "path": "res/character/ring.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "c8ea8d57463f92a9747f4dd9d8a1728bd975c0c5f0561cfa3518a49f85a00d36",
+   "size": 7099408,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 77,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_character_ring_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 74,
+    "0": 3
+   },
+   "unique_file_ids": 77
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/bigworld.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f521901c10676a35a5a2c2fd533594341723072d495bed26fa8135278746f39a",
+   "size": 3141292044,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 20960,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_bigworld_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 20598,
+    "0": 362
+   },
+   "unique_file_ids": 20960
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/bigworld/bg61.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b97be8f941a813c0f3ff3354ea7ae7e9650c28434164365e7833d8bccbf4ca76",
+   "size": 882278004,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6525,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_bigworld_bg61_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 6472,
+    "0": 53
+   },
+   "unique_file_ids": 6525
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/caijiwu.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "009a372449cf2fe1536d7dde9249980cfb2d3b0123c0b6abdbcf2cbdb9596bf3",
+   "size": 76861476,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1195,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_caijiwu_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1106,
+    "0": 89
+   },
+   "unique_file_ids": 1195
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/common.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "94fad9d172a152933d2e850e4e65f8fd1a654c6a08daac9d4066fa7b1065ef7d",
+   "size": 1132377364,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6603,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_common_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 6438,
+    "0": 165
+   },
+   "unique_file_ids": 6603
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/function.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "608b4ce6b22379c347b68ecf20e447f211edb5ae4b85a8082e75a15e8d793996",
+   "size": 6114200,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 29,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_function_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 29
+   },
+   "unique_file_ids": 29
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/happy101.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "77dbd0ebdd6f28426c786b184aa6a723253459d16845e9d8daf5450391a0af47",
+   "size": 744826820,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3657,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_happy101_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3620,
+    "0": 37
+   },
+   "unique_file_ids": 3657
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/hd_gouhuo.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "23a227c21839019701bbb2d2bcc0903d300518a38059e68c23347a336222b0be",
+   "size": 2471440,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 373,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_hd_gouhuo_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 373
+   },
+   "unique_file_ids": 373
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/hd_zaishengzheyure.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "9bf5fe315c3fb3c37474ac0e03735208f3de734a2fa009494d69d904950e42f2",
+   "size": 1584996,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 64,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_hd_zaishengzheyure_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 64
+   },
+   "unique_file_ids": 64
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/jiayuan.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f575785bd4aaa671e79c0096d7653ab94e0fabc2ced84fea9774792e461760c2",
+   "size": 908401552,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3430,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_jiayuan_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3346,
+    "0": 84
+   },
+   "unique_file_ids": 3430
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/jiayuan03.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "4c040ded8213e924ce153aee8bea8c21be67d0cd98a2dd6e3c4b6ace8406ddc0",
+   "size": 50998192,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 645,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_jiayuan03_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 643,
+    "0": 2
+   },
+   "unique_file_ids": 645
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/login.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "975bb244e1dc59eb6bbbde3ae4923044799e29d269893acf7c3fec44c5b4ca2f",
+   "size": 14192876,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 51,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_login_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 50,
+    "0": 1
+   },
+   "unique_file_ids": 51
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/login02.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "72b36dc3f58f17e09e9ae6923216011b4dfe405c5dcf76d02b6ca5c8cdcc9d47",
+   "size": 23015764,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 80,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_login02_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 79,
+    "0": 1
+   },
+   "unique_file_ids": 80
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/login06.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e589a5257a38b5ba8b7eb2d7a7faf7c8ba70e3282b358addbf849edddbc597f6",
+   "size": 1956488,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 43,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_login06_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 43
+   },
+   "unique_file_ids": 43
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/login12.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0d33e7c06533d53b5738603b93f2c182dd6df9a826fc92808cba3a15d6c33f70",
+   "size": 5974380,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 97,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_login12_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4,
+    "2": 93
+   },
+   "unique_file_ids": 97
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/login13.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b71a85838b6385a2f14579684d01a3fafb719dbfd7a02c6eb6abec1c7434fdab",
+   "size": 1166172,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 24,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_login13_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 24
+   },
+   "unique_file_ids": 24
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "281ccb600911d8dc249b91c463a561807a2293d5a7a4c793a292439a6c1f541a",
+   "size": 315324176,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3403,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3270,
+    "0": 133
+   },
+   "unique_file_ids": 3403
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve01a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0751f87cc5f287208d71358e556544418d25280b962f794124fb5cfa16a0bf1e",
+   "size": 191187452,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1122,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve01a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1084,
+    "0": 38
+   },
+   "unique_file_ids": 1122
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve01b.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e6ebbb0ee888727a7fb046a1ebe4a4ff67d28928feff7824ba64ee246997a204",
+   "size": 7490456,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 240,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve01b_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 237,
+    "0": 3
+   },
+   "unique_file_ids": 240
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve02.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "8d546618fd188e42c4c35f2704c56b2856f2a7aa445bda3e12f11d8357cd49fb",
+   "size": 358185204,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3613,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve02_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3538,
+    "0": 75
+   },
+   "unique_file_ids": 3613
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve03.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6ab3032e02ac21a0dd7697cd5964d1982a275c77de3fec5f94410e156f204079",
+   "size": 70298228,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 562,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve03_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 544,
+    "0": 18
+   },
+   "unique_file_ids": 562
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve03a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a8dbcc91200c7cbcdc5f286406b52ac05d61f6a72983e3be8fb11cc7cbdf458f",
+   "size": 10209204,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 70,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve03a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 69,
+    "0": 1
+   },
+   "unique_file_ids": 70
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve03c.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e9336fa453a8a514a281d96614ce246ec80ce2bcaf086c02039494334ef6d6e3",
+   "size": 11583696,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 93,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve03c_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 93
+   },
+   "unique_file_ids": 93
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve04.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "2bff9ce2cca994c6a94b32b23243a79940219584eea3f860913164b120e7a555",
+   "size": 50143092,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 268,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve04_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 267,
+    "0": 1
+   },
+   "unique_file_ids": 268
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve05.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "61f3cea581c3c6551998af52b0199b36220a4031849b8f9f587a460055f5cfbc",
+   "size": 92239624,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 890,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve05_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 876,
+    "0": 14
+   },
+   "unique_file_ids": 890
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve05a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "84d52d1692aa524096d91335aa7751a513ef0d0835f1b4ba8cf9e85102d0d68a",
+   "size": 33865660,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 267,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve05a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 259,
+    "0": 8
+   },
+   "unique_file_ids": 267
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve06.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a7a7574603f3f0da129d6487f7efd61f2e0f6ad237e31a317a5e878df449ea48",
+   "size": 46529960,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 613,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve06_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 602,
+    "0": 11
+   },
+   "unique_file_ids": 613
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve06a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "25766f29aac68361ea0f8fd454e9438b88adac0ebd24930a5b87deb1745a4db9",
+   "size": 33126188,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 291,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve06a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 283,
+    "0": 8
+   },
+   "unique_file_ids": 291
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve07.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "1a8a6a907820e881619c54ef746f243a197435342577f594bb7b1c47153f2977",
+   "size": 275912984,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2481,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve07_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2414,
+    "0": 67
+   },
+   "unique_file_ids": 2481
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve07a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3ea10c8393bb573d68d53ec1cebe3cdd89d280f06b5b2fedac6abdae5cc0a4ca",
+   "size": 124089472,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 784,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve07a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 773,
+    "0": 11
+   },
+   "unique_file_ids": 784
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve08.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6377a211d42db61240dfcc8c86b40ebd073a19f4f972f24c3333266e70a112cf",
+   "size": 341310696,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3311,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve08_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3272,
+    "0": 39
+   },
+   "unique_file_ids": 3311
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve11.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "63e12133a03136bac2ed6b340f6196797892f54de17421bf60c717026ab62560",
+   "size": 5227616,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 152,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve11_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 152
+   },
+   "unique_file_ids": 152
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve12.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0d172b72a611ba357785de70ee96830c8c7c52aa9cb59c7fc7e83a180bfef827",
+   "size": 6316724,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 183,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve12_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 179,
+    "0": 4
+   },
+   "unique_file_ids": 183
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve13.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "2be27873192e5636f837f4a92e1eb64dd324c2104acc6a8fdafe4bd7f7df94de",
+   "size": 8814548,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 28,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve13_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 28
+   },
+   "unique_file_ids": 28
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve18.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "1e24ed85f71c25af65e0871b71153d262d585f425b9db141ef3a2fd16e5f00ec",
+   "size": 274554432,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1367,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve18_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1278,
+    "0": 89
+   },
+   "unique_file_ids": 1367
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve18a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "25de9ab60a00027e4d2af0178456f421acd3c341b148ef7abe97d34aa8e6aa22",
+   "size": 73656540,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 514,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve18a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 468,
+    "0": 46
+   },
+   "unique_file_ids": 514
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve19.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "8215cdfad2a09b5cf55ad89818a218b6a658cc9af53d356fbb98a93867208c45",
+   "size": 10468568,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 52,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve19_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 51,
+    "0": 1
+   },
+   "unique_file_ids": 52
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve20.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "7c2d5345976bca8da592143057757b68939cb8077e1cd176784371fa4b866017",
+   "size": 53439096,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 123,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve20_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 121,
+    "0": 2
+   },
+   "unique_file_ids": 123
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve21.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b2f38f412775e7c14f43ee9ac8f6df04ac21aae86f387214a894290f7f2068a2",
+   "size": 661907764,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2910,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve21_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2802,
+    "0": 108
+   },
+   "unique_file_ids": 2910
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve23.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "97b5ded6f28fc15f4c21789f9d57a691a21f17fba29314c4cc7bc9e8ff0ff207",
+   "size": 173710772,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1238,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve23_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1193,
+    "0": 45
+   },
+   "unique_file_ids": 1238
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve23a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a89a8f21d5ca63f0971c6cc9844b9b9c717ea181d08e293dade96388075c0e23",
+   "size": 24640512,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 149,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve23a_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 12,
+    "2": 137
+   },
+   "unique_file_ids": 149
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city01.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "761cc923c12e8ff579cc6d8c7a258181b9f5b236d7acec959eccc78225fa4cc7",
+   "size": 1245045384,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11915,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city01_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 11599,
+    "0": 316
+   },
+   "unique_file_ids": 11915
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city01_tiyuchang.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "abb4f1e3c171814f57bee46fc3585f5ab0b2e8a20c738255616e7ac5e2b16248",
+   "size": 95708588,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 842,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city01_tiyuchang_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 832,
+    "0": 10
+   },
+   "unique_file_ids": 842
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city02.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "333e3196fd26847fa56ceeb6162a3fb6b9bd0295c9a7e77b6aab82dc972be5cc",
+   "size": 353580392,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2544,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city02_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2464,
+    "0": 80
+   },
+   "unique_file_ids": 2544
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city03.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "62404fc5be5b1fc9d75e9fe082e999df99d14d39f6d2e9ea85144d6c85d59519",
+   "size": 256254228,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2580,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city03_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2424,
+    "0": 156
+   },
+   "unique_file_ids": 2580
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city04.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3c8f9364df6dee2113c6a495e1a2005a108df155935ea1ce31630ad38e100993",
+   "size": 231786360,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1827,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city04_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1765,
+    "0": 62
+   },
+   "unique_file_ids": 1827
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city05.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "c6cd0c888b6104dd29d89424418d95962b7f40ba19502fc19ef558f26116accb",
+   "size": 257969960,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1638,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city05_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1613,
+    "0": 25
+   },
+   "unique_file_ids": 1638
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city06.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "448a9ca218384bb25b29d819842fa546a7fd386ba132a1eb7c02f1c0c792f9c2",
+   "size": 189090680,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 941,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city06_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 925,
+    "0": 16
+   },
+   "unique_file_ids": 941
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city07.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b3c31648ba462b029841598d27b40b678c1d044bd792e6760fc5a4b683adcebc",
+   "size": 200669728,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 992,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city07_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 976,
+    "0": 16
+   },
+   "unique_file_ids": 992
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city08.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "7f48e051cdb4696d0e40b1b46cb1e44dc5df01bf20029df92dfc41d2edf6176e",
+   "size": 385078172,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2443,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city08_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2421,
+    "0": 22
+   },
+   "unique_file_ids": 2443
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city08_dajuyuan.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "9e001887050ad9b7779c98dc4df07b2f5f4211f8177db9ce0e2f0f0a1d05f804",
+   "size": 261360976,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1889,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city08_dajuyuan_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1829,
+    "0": 60
+   },
+   "unique_file_ids": 1889
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city08a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "d9ea0e15730223a893df794df26bde3a3d9602c3b48639cc569682f14560f344",
+   "size": 141545016,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1325,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city08a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1294,
+    "0": 31
+   },
+   "unique_file_ids": 1325
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_city09.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "452eab766c1fd29eaf3b436be380c5822929037d1d261289a3e357adf4b88fc4",
+   "size": 104218108,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 812,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_city09_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 810,
+    "0": 2
+   },
+   "unique_file_ids": 812
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pve_jiayuan01b.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "dd4b93b7c11ec68013a9353bc9d33eda87304e8f83c1bb6364567897e437a76f",
+   "size": 14617460,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 142,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pve_jiayuan01b_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 142
+   },
+   "unique_file_ids": 142
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pvp.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0edcf87fb49efb6be5e094e1e25e0358ca91b5e0dc3694c498bb5c2864edbee4",
+   "size": 643980620,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 8090,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pvp_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 7965,
+    "0": 125
+   },
+   "unique_file_ids": 8090
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pvp02.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a8f64e4c786e8c05e59780f0f6ce5b8cf741cab3ecf3a682318d2bbc972a6685",
+   "size": 199179952,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2418,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pvp02_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2399,
+    "0": 19
+   },
+   "unique_file_ids": 2418
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pvp02a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "891df0a49832df0c74bd09f7812855cb986db9ecdfb9edb67c5358e3b0ed5f00",
+   "size": 34938508,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 416,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pvp02a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 407,
+    "0": 9
+   },
+   "unique_file_ids": 416
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pvp03.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "29f7d1023200b09747e90e2fffbf93983963916db2cc81f214232e873a7662d7",
+   "size": 7000556,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 97,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pvp03_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 96,
+    "0": 1
+   },
+   "unique_file_ids": 97
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/pvp06.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "59c8a79142030e3e7ae748727abba3aab2198a6fda52b6c017e2f13670b1dd34",
+   "size": 17281980,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 602,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_pvp06_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 601,
+    "0": 1
+   },
+   "unique_file_ids": 602
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/test.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3e725ae5dafc534aaac54507286706cf3c0bab92e3eba98eb641b6a701531eb8",
+   "size": 270909740,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1750,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_test_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1743,
+    "0": 7
+   },
+   "unique_file_ids": 1750
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/xinshou.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "636309ce8de9ab2b2a7f27c4a398a1d613b90f86d2975565b7b7ca6a1d21f988",
+   "size": 78259704,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 640,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_xinshou_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 628,
+    "0": 12
+   },
+   "unique_file_ids": 640
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/xinshou_a.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "7c2651f555468a4a7d927507e898c16ad99d37fe7ef7a351a8884e07279833d1",
+   "size": 95145060,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 655,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_xinshou_a_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 637,
+    "0": 18
+   },
+   "unique_file_ids": 655
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/xinshou_b.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6ce23452ff82b8a78ca6f132764c7e9bb03c374b4d3fd98469dac0166ee9db01",
+   "size": 35109784,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 595,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_xinshou_b_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 591,
+    "0": 4
+   },
+   "unique_file_ids": 595
+  },
+  {
+   "client_channel": "test",
+   "path": "res/model/xiwanggu.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "80a007e3a75254351a87b674a028782155db449d926b8d7c192e441953231fb0",
+   "size": 26174856,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 256,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_model_xiwanggu_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 250,
+    "0": 6
+   },
+   "unique_file_ids": 256
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene/instance.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "94f92afd9c125608df94761fe01cc7e54d8b0794de8e9a50d78a7f9b6df86225",
+   "size": 1349929088,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 59127,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_instance_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 52936,
+    "0": 6191
+   },
+   "unique_file_ids": 59127
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene/pve_city.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "af2d13411b17238af1bed4d5a6b3fbf3c267cc28b5e2f060a7f8df4308e3e626",
+   "size": 518898880,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10263,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_pve_city_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9008,
+    "0": 1255
+   },
+   "unique_file_ids": 10263
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene/pve_new.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5dbc2cf5dbb8d5a627c158b8436d02f3961e528b3f8b62a7243ddba997a5ad81",
+   "size": 152716096,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4171,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_pve_new_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 4068,
+    "0": 103
+   },
+   "unique_file_ids": 4171
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene/pvp.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "ea737336ecc48eae204ef842e9d162e6f5b40287ba6f4d3315d4e98c13d5f1cc",
+   "size": 65584052,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1787,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_pvp_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 166,
+    "2": 1621
+   },
+   "unique_file_ids": 1787
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene/xinshou.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0bee088facf1e9eb73b402c3ddeb6da453b5809d7e97b198e4bfddc7f65af40f",
+   "size": 104208384,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6659,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_xinshou_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 3210,
+    "2": 3449
+   },
+   "unique_file_ids": 6659
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "4bd1ede60770cf2097e0c8284aa5858467ddafe6293725df4e59f43568996c7b",
+   "size": 1554221204,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 97389,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 74098,
+    "0": 23291
+   },
+   "unique_file_ids": 97389
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg01_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b621819c640436bc823141f2b9ae34d10ebdac1936871e22a672c611a4164ec6",
+   "size": 117148192,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 8617,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg01_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4341,
+    "2": 4276
+   },
+   "unique_file_ids": 8617
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg02_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "736f01bbc6613c12e5c5ee2ca7647d781cd252dd0f3bc9ad15d7296b0df96030",
+   "size": 168120756,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 15466,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg02_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 8178,
+    "2": 7288
+   },
+   "unique_file_ids": 15466
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg03_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "908b31e8ef90c52307dbcb8ae789e7599d0d44c02c678f994cb8cd54326d5b99",
+   "size": 197602892,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 13902,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg03_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 7100,
+    "0": 6802
+   },
+   "unique_file_ids": 13902
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg04_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "cc08cb9ecbe53e51cd6db7b21b63cf6a45593a5c961eabee1ef6e6690a4cc958",
+   "size": 161905180,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6581,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg04_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3628,
+    "0": 2953
+   },
+   "unique_file_ids": 6581
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg05_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f397f1f41a718128b906a73c835d1de6e87bb83da5124a2cac49fb47edd6362e",
+   "size": 101784296,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 8719,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg05_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4454,
+    "2": 4265
+   },
+   "unique_file_ids": 8719
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg06_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "1d826dceaca1dbb73c12be4a525735eaba7ce73c5afc03bcee7afab1d6556e67",
+   "size": 204839492,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 12886,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg06_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 6539,
+    "2": 6347
+   },
+   "unique_file_ids": 12886
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg07_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "ed51203cfdc09b63a5a53bd36ffe1c83c19541b5166d7586bd041f9e80355d00",
+   "size": 145477788,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 8394,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg07_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4054,
+    "2": 4340
+   },
+   "unique_file_ids": 8394
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg09_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "92812ea8a07159d4a434b1da753285dea65d27deb84e19723c1b62ce554cbf56",
+   "size": 225340076,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10976,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg09_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 6995,
+    "0": 3981
+   },
+   "unique_file_ids": 10976
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg10_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "8318c26ac2349e89a0a54bd0349a0361b4c80309e782db157010f482bad945e6",
+   "size": 59678032,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4976,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg10_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 2746,
+    "2": 2230
+   },
+   "unique_file_ids": 4976
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg11_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "ce6156f648d26ee5a44da6e4cd97f0376b979a719fb90c77bbc84b3b2cc5547b",
+   "size": 149558664,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10662,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg11_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4515,
+    "2": 6147
+   },
+   "unique_file_ids": 10662
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg12_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b5747a28e47db5acdf196245eda6ceee47ce700780b06e1ea0d532947cedc636",
+   "size": 134654016,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 7439,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg12_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 4525,
+    "0": 2914
+   },
+   "unique_file_ids": 7439
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg13_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "1f8dff78a505406701659d3871e0b60e87516fad7c0d26992e39a7902e5bfb4d",
+   "size": 49740724,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4986,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg13_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2987,
+    "0": 1999
+   },
+   "unique_file_ids": 4986
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg14_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3904367bd9d18d31c70bb62bcff6b19b4f6cab8677eaacd6d1bac10b32a556ab",
+   "size": 168940352,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 12208,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg14_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 6006,
+    "0": 6202
+   },
+   "unique_file_ids": 12208
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg15_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "8a1556d086bd2ee595c8bd6ca6c71f26b8e4a17851386276d96cd6e99a31cbf7",
+   "size": 127835248,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6432,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg15_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3384,
+    "0": 3048
+   },
+   "unique_file_ids": 6432
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg18_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "50de68487dd0968fe64d48562f9d6aa728c209346e9bacdfb121084db1d9ca27",
+   "size": 251597304,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10562,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg18_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 4795,
+    "0": 5767
+   },
+   "unique_file_ids": 10562
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg19_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "fa4985bb3752de56887916093ba619b5c0a1a57314c5d1475f0dd3ba595d166f",
+   "size": 171378648,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 5258,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg19_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2574,
+    "0": 2684
+   },
+   "unique_file_ids": 5258
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg20_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "739d183efbb2f49306774097255c180d741b3bcca686b9e6dd7724dbf3b71d70",
+   "size": 188296576,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 13657,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg20_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 6544,
+    "2": 7113
+   },
+   "unique_file_ids": 13657
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg21_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5cbbc1d7788a7d50ca7b29a6198c5c1589873e6c649144165479300a2f31c5b3",
+   "size": 166470004,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6713,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg21_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3458,
+    "0": 3255
+   },
+   "unique_file_ids": 6713
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg24_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "13bac164d992f7145c56fb8a75aea80aa40303c35a42908adb49793334540ffb",
+   "size": 150488844,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 5883,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg24_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 3006,
+    "2": 2877
+   },
+   "unique_file_ids": 5883
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg25_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6913df1169f0ea7ca21468db81fc0bdad8896c53c1cde935dcddc6b4208f9800",
+   "size": 53251152,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3393,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg25_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2688,
+    "0": 705
+   },
+   "unique_file_ids": 3393
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg27_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "d74a00a6c8058595fcf64ad482e84393137d8b9348859834aea0a0523966f756",
+   "size": 138156148,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10915,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg27_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 5374,
+    "2": 5541
+   },
+   "unique_file_ids": 10915
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg28_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e8786db5c17dde5285a11d27fa9e2599462438e356409872e9c82fac64963206",
+   "size": 96364844,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 7912,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg28_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 4653,
+    "0": 3259
+   },
+   "unique_file_ids": 7912
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg30_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5e35bac7943ef6575f4ae124970eb866cfa3b94fbe3cb62df9f705ca55c99a68",
+   "size": 121097436,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 5263,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg30_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 2336,
+    "2": 2927
+   },
+   "unique_file_ids": 5263
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg32_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e1831f8e7ba19a5d297fad49c0ad4ff8126bb16e030c7bc8e00f5f11971ba42d",
+   "size": 172952840,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 7773,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg32_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 4205,
+    "2": 3568
+   },
+   "unique_file_ids": 7773
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg37_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e5ce26f72fab4e73271f4a9f0e95e9a1200b78c8052e9aa91432acff36d72569",
+   "size": 168644944,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 12498,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg37_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9091,
+    "0": 3407
+   },
+   "unique_file_ids": 12498
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg38_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5abdbbe0334e48973669b2df4cd86337b02ad1731c286bb0064335f683f06872",
+   "size": 136458864,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11792,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg38_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9090,
+    "0": 2702
+   },
+   "unique_file_ids": 11792
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg39_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "aab59354a68e2051f41fada209700e8a21628d8cca9de8f1d8d54b777c911314",
+   "size": 103244384,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 9224,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg39_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 8752,
+    "0": 472
+   },
+   "unique_file_ids": 9224
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg40_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "65b0e3e7e6f50a0a72c327b208f368f7376635e6d6ab06ee229a7fb5f01f9aa6",
+   "size": 225383264,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 13501,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg40_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 11324,
+    "0": 2177
+   },
+   "unique_file_ids": 13501
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg41_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "32345c3a95ef00d1fc6573a6eed4a4118253788ed1a366a1e5275b0dd82ac961",
+   "size": 149924212,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10036,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg41_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 8041,
+    "0": 1995
+   },
+   "unique_file_ids": 10036
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg42_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "00563223fe1c9e3b96f63cf6aab6a1dbe9ea66afcfd8658a01f86da981c5ce6d",
+   "size": 207880184,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 16851,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg42_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 6445,
+    "2": 10406
+   },
+   "unique_file_ids": 16851
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg43_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "9f1c7424f1fe5aa0d58c5eee5d180da842ba1d9d2ef2af736c92acc1e90158f8",
+   "size": 170527524,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 10994,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg43_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9271,
+    "0": 1723
+   },
+   "unique_file_ids": 10994
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg44_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "db1de4b0a9e4166831f454513b39e8e97b151fc012b8a251be7d8668ccfd68fe",
+   "size": 176678048,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11877,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg44_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 10650,
+    "0": 1227
+   },
+   "unique_file_ids": 11877
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg45_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "ec189b56954b3c827dd5d37d3ccca36586bad9d183d5366fda2910d8c26279c6",
+   "size": 137081504,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 12166,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg45_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9412,
+    "0": 2754
+   },
+   "unique_file_ids": 12166
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg46_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "2aa7b2eaaf113843e33fa7ce1db3857062e289ad2762b12f47f9f9d708957ca9",
+   "size": 162284248,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11987,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg46_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 9348,
+    "0": 2639
+   },
+   "unique_file_ids": 11987
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg47_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "96b2cfeed613a76c148aa4f6b22bda63bb69221e00a29a45f45e05c2a7bf2abf",
+   "size": 191177860,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 15497,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg47_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 11437,
+    "0": 4060
+   },
+   "unique_file_ids": 15497
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg48_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "cd42ceda10398d3fba2d440073d0369bbd43aa70c85f007342d12b1272b2fa53",
+   "size": 191877908,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 11110,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg48_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 1664,
+    "2": 9446
+   },
+   "unique_file_ids": 11110
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg49_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "c646b0dd07561836dd577dfa32c27d447af8ff6bc45cdb4155f3ef3fd1b1f369",
+   "size": 183530836,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 13719,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg49_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 11839,
+    "0": 1880
+   },
+   "unique_file_ids": 13719
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg50_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "846b0902548ab831cc3b38fbf58b3ec0159399f4cd7fa87f8f7cf321fb47c93f",
+   "size": 115095156,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 9556,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg50_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 8631,
+    "0": 925
+   },
+   "unique_file_ids": 9556
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg51_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "cfe057b48fbb62828d8f459599d35ffe36e497fe409c3bca474ed4b965a57506",
+   "size": 112312004,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4069,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg51_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2797,
+    "0": 1272
+   },
+   "unique_file_ids": 4069
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg52_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a6e89fe54c5a7170a613406040db56fde7677b2d82033b17b38c8f81261b7ed5",
+   "size": 103346020,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 6562,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg52_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 5893,
+    "0": 669
+   },
+   "unique_file_ids": 6562
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg53_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "d5e35f5fe425627b69525d359ee13b3c7ddc5fdd97c49b490920f5e09a521325",
+   "size": 63843152,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2820,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg53_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 2521,
+    "0": 299
+   },
+   "unique_file_ids": 2820
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg54_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "daa053c9f1b9d9f7f9405b197d6a0a1ddd1b0c30d3478d0352a9555eacdf5d82",
+   "size": 44645772,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4075,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg54_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 3931,
+    "0": 144
+   },
+   "unique_file_ids": 4075
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bg55_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5e54e64f046221f1ea2886f6c5c626285f4898b9fc871cbc67b9f7763be0b6c5",
+   "size": 6674016,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1078,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bg55_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1071,
+    "0": 7
+   },
+   "unique_file_ids": 1078
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/bigworld/bigworld_cut_content.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "9a70ae79f44a7ddcd845addc96cfe19a657debd6a31a592ad7a57a5ebd7fd3c8",
+   "size": 364,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_bigworld_bigworld_cut_content_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1,
+    "0": 2
+   },
+   "unique_file_ids": 3
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/jiayuan.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3f113853ef4b09d4189f3a867f82b49413d82c9df72e9d3912ffe2aaf0547abb",
+   "size": 525033608,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 17311,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_jiayuan_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 7268,
+    "2": 10043
+   },
+   "unique_file_ids": 17311
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/pve.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6b08f5b12c516149f08012ef5023dfdfe5ac3a1107d87f3aaf7c1a88ab705aed",
+   "size": 702486252,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 34455,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_pve_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 19452,
+    "0": 15003
+   },
+   "unique_file_ids": 34455
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/pve_city.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b9c8f213226c07a992723049442ae29686a8482787b857f5e6bfe6cd05e15820",
+   "size": 573481320,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 19270,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_pve_city_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 7044,
+    "2": 12226
+   },
+   "unique_file_ids": 19270
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/pve_new.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "df79aa26da4c533d8d23e367d6152a5fdbf34dabb6aaa86195f1b9ba76270f91",
+   "size": 1053303820,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 63053,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_pve_new_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 31204,
+    "0": 31849
+   },
+   "unique_file_ids": 63053
+  },
+  {
+   "client_channel": "test",
+   "path": "res/scene_bw/pvp.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "94dab0612a7b8a0e20d713a4e444bdebf9673af447badf11ad3c12cfd0d357f0",
+   "size": 321117460,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 18879,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_scene_bw_pvp_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 6348,
+    "2": 12531
+   },
+   "unique_file_ids": 18879
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5b8857b97fd1193f90e77a21d544f7415f62bb5ad12af0b535a991d5907d3a05",
+   "size": 3327682040,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 57353,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 23716,
+    "0": 33637
+   },
+   "unique_file_ids": 57353
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/all_pc.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f6e9d51c4f80c6e5ba5349b8ec9b0aac61b067882c688be678cbcbd66876daa9",
+   "size": 111341980,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2062,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_all_pc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 736,
+    "0": 1326
+   },
+   "unique_file_ids": 2062
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/all_txt_meishuzi_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "849bf47c16bda9ae56302616fb68bf756626561de3f43a9be0b69e678cb01cf4",
+   "size": 262700636,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4998,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_all_txt_meishuzi_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 923,
+    "0": 4075
+   },
+   "unique_file_ids": 4998
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/bigmap.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "3fe91009f8e4582f6f63865ffa124e6ae41386b16b1fbc0f1a6f30e90da63ef5",
+   "size": 852218864,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 602,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_bigmap_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 578,
+    "2": 24
+   },
+   "unique_file_ids": 602
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/building_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5e4babaf49f5c4f3e687736fbc2395229757db339768de030289726b0c7ed7db",
+   "size": 174868892,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 8738,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_building_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 8271,
+    "2": 467
+   },
+   "unique_file_ids": 8738
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/haiyang.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b5d3319473f0f55a195363d62306e7e62847cdded015a80f90d14b4f826c3c50",
+   "size": 95650364,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 391,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_haiyang_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 317,
+    "2": 74
+   },
+   "unique_file_ids": 391
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/huodong_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "16a8ec32e479c6bd299b9c8964bf62cda0566211e5d9c8a1ce762d3d8f54d729",
+   "size": 297559144,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 653,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_huodong_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 652,
+    "2": 1
+   },
+   "unique_file_ids": 653
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/item_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "cfda6c821afb6a0da14c2b4851f0e3676731eb821a00dd2adf761efaeeb7692b",
+   "size": 835705856,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 29651,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_item_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 28544,
+    "2": 1107
+   },
+   "unique_file_ids": 29651
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/mingpiankuang_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "b9ad925346c8c760ae0d8d538e1f18d4be0120f1ec40457c0b9d8993eebc7823",
+   "size": 145943268,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 785,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_mingpiankuang_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 721,
+    "2": 64
+   },
+   "unique_file_ids": 785
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/nielian_icon_v4.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "d6f668512a28ec57d98116a64cec25ce04ec6d662b886738c154952b04b791e8",
+   "size": 46181356,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1056,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_nielian_icon_v4_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 951,
+    "2": 105
+   },
+   "unique_file_ids": 1056
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/quyuxingdong_v4_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "e28116273de70d09c65251f771cab16601eec6f9e29b07322139f65c4922759c",
+   "size": 120828644,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 205,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_quyuxingdong_v4_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 34,
+    "0": 171
+   },
+   "unique_file_ids": 205
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/renwu_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5e78dece3d80de514504e2c8b900249c926217533d13850da3d9cf80ece02f73",
+   "size": 843658436,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2295,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_renwu_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 2251,
+    "2": 44
+   },
+   "unique_file_ids": 2295
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/shengcunfu.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "f584f37662b13e61fb1884887ce995550475be30bcadf72303a7e99978f57a31",
+   "size": 188905468,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2063,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_shengcunfu_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 1387,
+    "2": 676
+   },
+   "unique_file_ids": 2063
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/shizhuang_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "a59ba0b6a2e0e239f7b25163e26ac6409799d998755ea21d7347cfc220338ff4",
+   "size": 597837152,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1328,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_shizhuang_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 1253,
+    "2": 75
+   },
+   "unique_file_ids": 1328
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/spine.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "0653414c19fa5d4a25845a1bd04a66a085ee3df1fd220ae6915d6ec6d225ea7b",
+   "size": 2023874364,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 4807,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_spine_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 1649,
+    "2": 3158
+   },
+   "unique_file_ids": 4807
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/spine_new.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "25880dfde678de46be18e3635884cea381cc2531be5b42cf51731f8e00ab03d4",
+   "size": 1239363180,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 2516,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_spine_new_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 1635,
+    "0": 881
+   },
+   "unique_file_ids": 2516
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/vx.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "5a44d7ec1228d9c385e2dc0234dad825d909b13122c035284eecd508e8c74dba",
+   "size": 153527792,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 3131,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_vx_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 2963,
+    "2": 168
+   },
+   "unique_file_ids": 3131
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/xueguolieche.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "6c49afa82f1cc6477e3a00480e4553c736933819c1b6fe6320ac26a5ec633038",
+   "size": 109912160,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 922,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_xueguolieche_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 695,
+    "2": 227
+   },
+   "unique_file_ids": 922
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/zhengbasai_xin.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "bef90c976ab09f5a4d5bb0bafbb4c561727eea430745f57a5112fe3934650fd7",
+   "size": 121158416,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 498,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_zhengbasai_xin_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 348,
+    "2": 150
+   },
+   "unique_file_ids": 498
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/zhutihuodong_v4.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "44bae14950c2283f82c2062f647b231b7dbeccb7d4f5c64ba05fd04fee12830f",
+   "size": 124173932,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 975,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_zhutihuodong_v4_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 702,
+    "2": 273
+   },
+   "unique_file_ids": 975
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/zhutihuodong_v5.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "2b6ef27bebe8fb775615735ae050ac476d9fb332d0746a8504234d68332287e5",
+   "size": 1979504136,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 13845,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_zhutihuodong_v5_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 10917,
+    "2": 2928
+   },
+   "unique_file_ids": 13845
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/zhutihuodong_v5_icon.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "172f62a4862bc8fd63b97911a964fac2101258426fe3b674d999476200babc7a",
+   "size": 1509995336,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 7566,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_zhutihuodong_v5_icon_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 6199,
+    "2": 1367
+   },
+   "unique_file_ids": 7566
+  },
+  {
+   "client_channel": "test",
+   "path": "res/ui/ziliaopian.npk",
+   "kind": "容器(npk)",
+   "registry_sha256": "8d637a97d754ef2303609441f7f86ec3cc1cbf6aaf3b6605f40cec09ddcec1cb",
+   "size": 238899748,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 1919,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_res_ui_ziliaopian_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 1586,
+    "2": 333
+   },
+   "unique_file_ids": 1919
+  },
+  {
+   "client_channel": "test",
+   "path": "script.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "43023f17c12823866e9d2203a5a9c96ead5925b39c4b243b0560a000261635a1",
+   "size": 229084544,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 61343,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_script_npk.entries.jsonl",
+   "flag_distribution": {
+    "0": 61342,
+    "2": 1
+   },
+   "unique_file_ids": 61343
+  },
+  {
+   "client_channel": "test",
+   "path": "script.py314.lc.npk",
+   "kind": "容器(script)",
+   "registry_sha256": "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7",
+   "size": 455619092,
+   "status": "indexed",
+   "sha256_ok": true,
+   "entry_count": 105777,
+   "entries_file": "data\\audit\\package_indexes\\npk_test_script_py314_lc_npk.entries.jsonl",
+   "flag_distribution": {
+    "2": 25065,
+    "0": 80712
+   },
+   "unique_file_ids": 105777
+  }
+ ],
+ "failures": []
+}

@@ -73,13 +73,14 @@ python la.py vehicle build --dry-run         # 只算不写
 python la.py web build                       # 回填后重建 manifest
 ```
 
-单脚本也能直接跑（等效于上面的命令，路径自动从脚本位置推断）：
+单脚本也能直接跑（等效于上面的命令，路径自动从脚本位置向上探测项目根；
+四个脚本已收编进工具库 `01_解码定位复原/表解码/载具板/`）：
 
 ```bash
-python 03_执行/vehicle_deep_extract.py   --out DIR [--server classic|kj1|yk]
-python 03_执行/vehicle_lore_extract.py   --out DIR
-python 02_wiki/web/tools/build_vehicle_params.py --dry-run
-python 02_wiki/web/tools/build_vehicle_lore.py   --dry-run
+python 00_规范与工具/工具/工具库/01_解码定位复原/表解码/载具板/vehicle_deep_extract.py --out DIR [--server classic|kj1|yk]
+python .../载具板/vehicle_lore_extract.py   --out DIR
+python .../载具板/build_vehicle_params.py   --dry-run
+python .../载具板/build_vehicle_lore.py     --dry-run
 ```
 
 口径与已知坑见各脚本头部注释；`vehicle_modding_data` 的 0x0b 指针基址（=28）

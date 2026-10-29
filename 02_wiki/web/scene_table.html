@@ -1,0 +1,69 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>场景加成平衡总表</title>
+<style>
+body{margin:0;padding:22px 26px;background:#0b1116;color:#dfe7ec;font:13.5px/1.55 "Segoe UI","Microsoft YaHei",sans-serif}
+h1{font-size:19px;margin:0 0 4px}
+.sub{color:#7d8e99;font-size:12px;margin-bottom:14px}
+.bar{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+input[type=search]{background:#0d151b;border:1px solid #243039;color:#dfe7ec;border-radius:8px;padding:7px 12px;width:260px;font-size:13px;outline:none}
+input[type=search]:focus{border-color:#3f6a80}
+button{background:#16212a;border:1px solid #243039;color:#a9b8c2;border-radius:8px;padding:7px 14px;font-size:12.5px;cursor:pointer}
+button.on{background:#1d3542;border-color:#3f6a80;color:#dfe7ec}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 14px;font-size:12px;color:#a9b8c2}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:7px 10px;border-bottom:1px solid #1a252d;text-align:left;vertical-align:top}
+th{color:#7d8e99;font-weight:500;font-size:11.5px;position:sticky;top:0;background:#0b1116;z-index:2}
+.mono{font-family:ui-monospace,Consolas,monospace;color:#a9b8c2}
+.num{color:#7d8e99;text-align:right;width:56px}
+tr.g1 td{background:#141d16}
+tr.g2 td{background:#1d1c14}
+tr.g3 td{background:#141a1f}
+tr.g4 td{background:#1b1418}
+tr.g0 td{color:#7d8e99}
+#cnt{color:#6f9fba;font-size:12px;margin-left:auto}
+</style></head><body>
+<h1>场景加成平衡总表</h1>
+<div class="sub">52 组（同名同值合并）· 覆盖 98 条参数 · 源 special_hurt_params_data(kj1) × space_data · 重点模块置顶</div>
+<div class="bar">
+  <input id="q" type="search" placeholder="搜索场景名 / 场景ID" autocomplete="off">
+  <button class="on" data-k="">全部</button>
+  <button data-k="PvP">PvP</button>
+  <button data-k="PvE">PvE</button>
+  <span id="cnt"></span>
+</div>
+<div class="legend">
+<span><i style="background:#2c4a33"></i>公平竞技 0.95~1.05</span>
+<span><i style="background:#4a4426"></i>限制型 0.95~1.x</span>
+<span><i style="background:#28445c"></i>常规 0.5~1.7</span>
+<span><i style="background:#5a2b33"></i>宽松 ≤2.0</span>
+</div>
+<table><thead><tr><th>场景</th><th>加成上下限</th><th>跨度</th><th>场景 ID</th><th>实例</th></tr></thead>
+<tbody id="tb"><tr class='g3' data-kind='PvP' data-text='夏尔镇 616'><td>夏尔镇</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>616</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='夏尔镇(安全) 304'><td>夏尔镇(安全)</td><td class='mono'>0.60 ~ 1.80</td><td class='mono'>1.20</td><td class='mono'>304</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='夏尔镇(战斗) 305'><td>夏尔镇(战斗)</td><td class='mono'>0.60 ~ 1.80</td><td class='mono'>1.20</td><td class='mono'>305</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='夏尔镇(约战) 799'><td>夏尔镇(约战)</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>799</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='夏尔镇中转站 19'><td>夏尔镇中转站</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>19</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='雷达模式-南希 329 802'><td>雷达模式-南希</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>329、802</td><td class='num'>2</td></tr><tr class='g3' data-kind='PvP' data-text='雷达模式-银翼 433 803'><td>雷达模式-银翼</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>433、803</td><td class='num'>2</td></tr><tr class='g1' data-kind='PvP' data-text='南希市 111 112 113 114 115 116 117 118 119 185 186 426 427'><td>南希市</td><td class='mono'>0.95 ~ 1.05</td><td class='mono'>0.10</td><td class='mono'>111、112、113、114、115、116、117、118、119、185、186、426、427</td><td class='num'>13</td></tr><tr class='g2' data-kind='PvP' data-text='南希市 800 801'><td>南希市</td><td class='mono'>0.95 ~ 1.10</td><td class='mono'>0.15</td><td class='mono'>800、801</td><td class='num'>2</td></tr><tr class='g3' data-kind='PvP' data-text='爆破模式-南希 754'><td>爆破模式-南希</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>754</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='远星城 23'><td>远星城</td><td class='mono'>0.80 ~ 1.90</td><td class='mono'>1.10</td><td class='mono'>23</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='远星城 698'><td>远星城</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>698</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='红杉镇-争夺模式 58'><td>红杉镇-争夺模式</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>58</td><td class='num'>1</td></tr><tr class='g2' data-kind='PvP' data-text='红杉镇-全面战争 724'><td>红杉镇-全面战争</td><td class='mono'>0.95 ~ 1.20</td><td class='mono'>0.25</td><td class='mono'>724</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='金库 61'><td>金库</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>61</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvP' data-text='旷野战场 242'><td>旷野战场</td><td class='mono'>0.50 ~ 1.80</td><td class='mono'>1.30</td><td class='mono'>242</td><td class='num'>1</td></tr><tr class='g1' data-kind='PvP' data-text='皇牌空战 54'><td>皇牌空战</td><td class='mono'>0.95 ~ 1.05</td><td class='mono'>0.10</td><td class='mono'>54</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='供电厂 69'><td>供电厂</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>69</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='修道院 322'><td>修道院</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>322</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='修道院(异变) 552'><td>修道院(异变)</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>552</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='傀儡迷途 463'><td>傀儡迷途</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>463</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='医院 75'><td>医院</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>75</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='危海寻晶 486 504 505 506'><td>危海寻晶</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>486、504、505、506</td><td class='num'>4</td></tr><tr class='g3' data-kind='PvE' data-text='危难雪峰 407'><td>危难雪峰</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>407</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='地下研究所 750'><td>地下研究所</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>750</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='寂海沉舟 449'><td>寂海沉舟</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>449</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='密斯卡园区 632'><td>密斯卡园区</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>632</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='山脚据点 618'><td>山脚据点</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>618</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='帝国军事博物馆 584'><td>帝国军事博物馆</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>584</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='水下工厂 323'><td>水下工厂</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>323</td><td class='num'>1</td></tr><tr class='g4' data-kind='PvE' data-text='污染狩猎 62'><td>污染狩猎</td><td class='mono'>0.50 ~ 2.00</td><td class='mono'>1.50</td><td class='mono'>62</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='海岛暗礁 667'><td>海岛暗礁</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>667</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='熔岩密窟 231'><td>熔岩密窟</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>231</td><td class='num'>1</td></tr><tr class='g4' data-kind='PvE' data-text='矿坑 43'><td>矿坑</td><td class='mono'>0.50 ~ 2.00</td><td class='mono'>1.50</td><td class='mono'>43</td><td class='num'>1</td></tr><tr class='g4' data-kind='PvE' data-text='神秘树林 49'><td>神秘树林</td><td class='mono'>0.50 ~ 2.00</td><td class='mono'>1.50</td><td class='mono'>49</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='秋日秘径 613'><td>秋日秘径</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>613</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='秋日秘径(异变) 551'><td>秋日秘径(异变)</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>551</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='秘密起点 301'><td>秘密起点</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>301</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='英雄公园 71'><td>英雄公园</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>71</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='莱文市火车站 96'><td>莱文市火车站</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>96</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='起源之地 230'><td>起源之地</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>230</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='迷境诡林 445'><td>迷境诡林</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>445</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='遗迹岛屿-讨伐 580'><td>遗迹岛屿-讨伐</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>580</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='面包博物馆 583'><td>面包博物馆</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>583</td><td class='num'>1</td></tr><tr class='g3' data-kind='PvE' data-text='黄沙戈壁 80 615'><td>黄沙戈壁</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>80、615</td><td class='num'>2</td></tr><tr class='g3' data-kind='PvE' data-text='黑泥沼 81 619'><td>黑泥沼</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>81、619</td><td class='num'>2</td></tr><tr class='g3' data-kind='PvE' data-text='黑泥沼（异变） 548'><td>黑泥沼（异变）</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>548</td><td class='num'>1</td></tr><tr class='g3' data-kind='未启用' data-text='未启用场景（space_data 无行） 4 6 20'><td>未启用场景（space_data 无行）</td><td class='mono'>0.80 ~ 1.80</td><td class='mono'>1.00</td><td class='mono'>4、6、20</td><td class='num'>3</td></tr><tr class='g2' data-kind='未启用' data-text='未启用场景（space_data 无行） 34 53'><td>未启用场景（space_data 无行）</td><td class='mono'>0.95 ~ 1.10</td><td class='mono'>0.15</td><td class='mono'>34、53</td><td class='num'>2</td></tr><tr class='g3' data-kind='未启用' data-text='未启用场景（space_data 无行） 76 77 78 79 232 234 258 507 510 511 527 528 539 540 549 587 633 634'><td>未启用场景（space_data 无行）</td><td class='mono'>0.50 ~ 1.70</td><td class='mono'>1.20</td><td class='mono'>76、77、78、79、232、234、258、507、510、511、527、528、539、540、549、587、633、634</td><td class='num'>18</td></tr><tr class='g1' data-kind='未启用' data-text='未启用场景（space_data 无行） 110 425'><td>未启用场景（space_data 无行）</td><td class='mono'>0.95 ~ 1.05</td><td class='mono'>0.10</td><td class='mono'>110、425</td><td class='num'>2</td></tr><tr class='g3' data-kind='未启用' data-text='未启用场景（space_data 无行） 541 550'><td>未启用场景（space_data 无行）</td><td class='mono'>0.60 ~ 1.60</td><td class='mono'>1.00</td><td class='mono'>541、550</td><td class='num'>2</td></tr></tbody></table>
+<script>
+var kind='';
+var q=document.getElementById('q');
+function apply(){
+  var rows=[].slice.call(document.querySelectorAll('#tb tr'));
+  var kw=(q.value||'').trim().toLowerCase();
+  var n=0;
+  rows.forEach(function(tr){
+    var okK=!kind||tr.dataset.kind===kind;
+    var okQ=!kw||tr.dataset.text.indexOf(kw)>=0;
+    var show=okK&&okQ;
+    tr.style.display=show?'':'none';
+    if(show)n++;
+  });
+  document.getElementById('cnt').textContent='显示 '+n+' / '+rows.length+' 组';
+}
+document.querySelectorAll('.bar button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.bar button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); kind=b.dataset.k||''; apply();
+  };
+});
+q.addEventListener('input',apply);
+apply();
+</script>
+</body></html>

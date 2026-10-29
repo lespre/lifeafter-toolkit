@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -31,13 +32,42 @@ _SOURCE_ROLES = {"primary", "comparison"}
 # 这类条目不得伪造 locator_chain；改为要求写 roster 块（证据等级 + 来源描述 + 原始标签），
 # 并强制打 unverified 标签，页面据此做视觉区分。
 _ROSTER_EVIDENCE = {"name-roster-only", "static-export"}
-_ALLOWED_TAGS = {"verified", "unresolved", "quarantined", "static config",
-                 "runtime final unknown", "unverified"}
+# 标签白名单等口径写在 rules/publication.yml（唯一事实来源），此处仅作兜底常量。
+# 加载失败时用这份常量继续跑 —— 门禁不该因为缺 PyYAML 就整体失效。
+_FALLBACK_ALLOWED_TAGS = {"verified", "unresolved", "quarantined", "static config",
+                          "runtime final unknown", "unverified",
+                          "file-missing", "table-absent", "框资源未下发"}
 _LOCATOR_STATUSES = {
     "legacy-imported-pending-semantic-review",
     "replayed-structural",
     "semantic-verified",
 }
+
+
+def _load_allowed_tags() -> set[str]:
+    """从 rules/publication.yml 读 status_tags 白名单；失败则回落到内置常量。"""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from la_paths import RULES_DIR
+        rules_file = RULES_DIR / "publication.yml"
+        if not rules_file.exists():
+            return set(_FALLBACK_ALLOWED_TAGS)
+        text = rules_file.read_text(encoding="utf-8")
+        # 优先用 PyYAML；没有则用仓库内的 mini_yaml（两者已验证等价）
+        try:
+            import yaml  # type: ignore
+            data = yaml.safe_load(text) or {}
+        except ImportError:
+            from mini_yaml import loads  # type: ignore
+            data = loads(text) or {}
+        allowed = ((data.get("status_tags") or {}).get("allowed")) or []
+        tags = {str(t) for t in allowed if isinstance(t, str) and t.strip()}
+        return tags or set(_FALLBACK_ALLOWED_TAGS)
+    except Exception:
+        return set(_FALLBACK_ALLOWED_TAGS)
+
+
+_ALLOWED_TAGS = _load_allowed_tags()
 
 
 def _nonblank(value: Any) -> bool:

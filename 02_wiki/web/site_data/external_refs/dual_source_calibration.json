@@ -1,0 +1,6078 @@
+{
+ "chains": {
+  "lottery": [
+   {
+    "file": "000035.bin",
+    "bytes": 3272,
+    "name": "common_lottery_conf_data_chs.py",
+    "fid": "004E1C024F5B3BF9",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1536
+   },
+   {
+    "file": "000196.bin",
+    "bytes": 327,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "01FB97F421331593",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000519.bin",
+    "bytes": 328,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_hmt.py",
+    "fid": "0569D95DBCC2F7B6",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000675.bin",
+    "bytes": 1046,
+    "name": "common_lottery_conf_data_auto_oversea_data_kj1.py",
+    "fid": "06FAC092ECDE8BBA",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 752
+   },
+   {
+    "file": "000864.bin",
+    "bytes": 317,
+    "name": "common_lottery_conf_data_auto_oversea_data_eu.py",
+    "fid": "08E9E7B025BFCCD4",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001041.bin",
+    "bytes": 318,
+    "name": "common_lottery_conf_data_auto_oversea_data_sea.py",
+    "fid": "0AFB27BD4BFC3651",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001159.bin",
+    "bytes": 331,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_jp.py",
+    "fid": "0C2D99A2830F2F93",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001388.bin",
+    "bytes": 8992,
+    "name": "fashion_sale_conf_data.py",
+    "fid": "0E69DCD5072F52FC",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 5296
+   },
+   {
+    "file": "001467.bin",
+    "bytes": 5789,
+    "name": "fashion_sale_conf_data_auto_oversea_data_ykxq.py",
+    "fid": "0F2C84649CCE0186",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 3488
+   },
+   {
+    "file": "001498.bin",
+    "bytes": 30907,
+    "name": "reward_pool_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "0F748A9290B9B1BA",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001567.bin",
+    "bytes": 309,
+    "name": "reward_pool_data_auto_oversea_data_kr.py",
+    "fid": "101BA7E926BD6B2B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001646.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjjp.py",
+    "fid": "10EAFD0B125C9183",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "001684.bin",
+    "bytes": 1127,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "116F5DE83C373CDB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001940.bin",
+    "bytes": 2020,
+    "name": "fashion_sale_conf_data_chs.py",
+    "fid": "140DF9C194B217A7",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1312
+   },
+   {
+    "file": "002058.bin",
+    "bytes": 326,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "154ADA1DA6EC7823",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002067.bin",
+    "bytes": 12755,
+    "name": "reward_pool_data_auto_oversea_data_yk_chs.py",
+    "fid": "1565D71D87A32C5D",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3776
+   },
+   {
+    "file": "002092.bin",
+    "bytes": 462,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "15AB149AC7182E6B",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002571.bin",
+    "bytes": 25369,
+    "name": "lottery_big_reward_index_data.py",
+    "fid": "1A47BDE5462DD445",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 16240
+   },
+   {
+    "file": "002672.bin",
+    "bytes": 7172,
+    "name": "reward_pool_data_inc_chs.py",
+    "fid": "1B4AD0BDA920139B",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002688.bin",
+    "bytes": 316,
+    "name": "fashion_sale_conf_data_auto_oversea_data_xyd.py",
+    "fid": "1B8320852A0C7A5B",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "002779.bin",
+    "bytes": 312,
+    "name": "reward_pool_data_auto_oversea_data_kjsea.py",
+    "fid": "1C6A15CE74AEA8D8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003580.bin",
+    "bytes": 361,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "24F2C28DE39149FD",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003722.bin",
+    "bytes": 328,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_sea.py",
+    "fid": "26927A11FD8AAAF9",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003867.bin",
+    "bytes": 329,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjna.py",
+    "fid": "281438124F6D80E3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003953.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_hmt.py",
+    "fid": "28F6839C3EFDAD0F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004258.bin",
+    "bytes": 3379,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "2C02FD81149084DF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004269.bin",
+    "bytes": 312,
+    "name": "reward_pool_data_auto_oversea_data_kjhmt.py",
+    "fid": "2C24E18A20D3B329",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004661.bin",
+    "bytes": 324,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_au.py",
+    "fid": "2FE37150EC9BC811",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004803.bin",
+    "bytes": 310,
+    "name": "reward_pool_data_auto_oversea_data_hmt.py",
+    "fid": "31720015206AEA11",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005143.bin",
+    "bytes": 334,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_kjsea.py",
+    "fid": "34E07D55675E14D0",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005166.bin",
+    "bytes": 327,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_jp.py",
+    "fid": "352773343AB28B0A",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005175.bin",
+    "bytes": 331,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_kr.py",
+    "fid": "3530410A2803E9D6",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005298.bin",
+    "bytes": 317,
+    "name": "common_lottery_conf_data_auto_oversea_data_na.py",
+    "fid": "3643917555AF9241",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005704.bin",
+    "bytes": 317,
+    "name": "common_lottery_conf_data_auto_oversea_data_jp.py",
+    "fid": "3A4BB6E0E4F570F4",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005782.bin",
+    "bytes": 310,
+    "name": "reward_pool_data_auto_oversea_data_sea.py",
+    "fid": "3B54D78894D02263",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005913.bin",
+    "bytes": 329,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "3C8C56E5A1E6AFF6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005969.bin",
+    "bytes": 317,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjna.py",
+    "fid": "3D2BFD4B5050FA7C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006128.bin",
+    "bytes": 1181,
+    "name": "fashion_sale_conf_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "3EB894E9C1AA323D",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 880
+   },
+   {
+    "file": "006173.bin",
+    "bytes": 42674,
+    "name": "lottery_big_reward_conf.py",
+    "fid": "3F1D4B74F1BFB15F",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 27792
+   },
+   {
+    "file": "006184.bin",
+    "bytes": 939,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kj1.py",
+    "fid": "3F38D0B8565BB01C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 688
+   },
+   {
+    "file": "006228.bin",
+    "bytes": 317,
+    "name": "common_lottery_conf_data_auto_oversea_data_kr.py",
+    "fid": "3F9F9D921F704643",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006524.bin",
+    "bytes": 324,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kr.py",
+    "fid": "428761AAF1F7BFBC",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006580.bin",
+    "bytes": 309,
+    "name": "reward_pool_data_auto_oversea_data_na.py",
+    "fid": "432C101C9DE694D0",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006693.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_kjjp.py",
+    "fid": "447FBBFAF10251AD",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006934.bin",
+    "bytes": 330,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "46C6F43AE780EFB9",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007192.bin",
+    "bytes": 461,
+    "name": "common_lottery_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "49803365413F0409",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 336
+   },
+   {
+    "file": "007341.bin",
+    "bytes": 315,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kr.py",
+    "fid": "4AE0B1BE4FB3E234",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007348.bin",
+    "bytes": 1068,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "4B01B24640A3795A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007398.bin",
+    "bytes": 412,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "4B73C138D36C12AF",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007953.bin",
+    "bytes": 3515,
+    "name": "super_fashion_lottery_conf_data_chs.py",
+    "fid": "512C733C3B263D37",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1776
+   },
+   {
+    "file": "008085.bin",
+    "bytes": 815,
+    "name": "reward_pool_data.py",
+    "fid": "52737DFB485077CF",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 544
+   },
+   {
+    "file": "008174.bin",
+    "bytes": 1179,
+    "name": "fashion_sale_conf_data_auto_oversea_data_yk_chs.py",
+    "fid": "533B4639BCBA4C38",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 880
+   },
+   {
+    "file": "008450.bin",
+    "bytes": 617,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "55EA3967F24CC752",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "008454.bin",
+    "bytes": 611,
+    "name": "reward_pool_data_inc.py",
+    "fid": "55F871522812BFCF",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 496
+   },
+   {
+    "file": "008644.bin",
+    "bytes": 38598,
+    "name": "common_lottery_conf_data.py",
+    "fid": "57CB7B9B13B6ED5A",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 21264
+   },
+   {
+    "file": "009828.bin",
+    "bytes": 2177,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "636E4A12A344E22F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1248
+   },
+   {
+    "file": "010219.bin",
+    "bytes": 655091,
+    "name": "reward_pool_data_base_yk.py",
+    "fid": "6731BD068F33B9BE",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 140064
+   },
+   {
+    "file": "010439.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "694F5CA6184038F7",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "010496.bin",
+    "bytes": 655092,
+    "name": "reward_pool_data_base_chs.py",
+    "fid": "69E58821939CB515",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 140080
+   },
+   {
+    "file": "010551.bin",
+    "bytes": 653779,
+    "name": "reward_pool_data_kj1.py",
+    "fid": "6A4EA1C58A922C45",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010728.bin",
+    "bytes": 326,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjna.py",
+    "fid": "6BCC835CD1F70FC4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010932.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_kjna.py",
+    "fid": "6E004AA06C3031A1",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011145.bin",
+    "bytes": 318,
+    "name": "common_lottery_conf_data_auto_oversea_data_hmt.py",
+    "fid": "6FDCF7FD50FC5B88",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011248.bin",
+    "bytes": 616,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kj1.py",
+    "fid": "70E51BC90EE500D6",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 496
+   },
+   {
+    "file": "011493.bin",
+    "bytes": 327,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_eu.py",
+    "fid": "7343477BA0B31525",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011634.bin",
+    "bytes": 309,
+    "name": "reward_pool_data_auto_oversea_data_au.py",
+    "fid": "74C48D7EC2D3918D",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011692.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjsea.py",
+    "fid": "753C4F3DB7D99108",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "011722.bin",
+    "bytes": 453,
+    "name": "super_fashion_lottery_v2_mission_data_chs.py",
+    "fid": "7582B92D5B97DA49",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 336
+   },
+   {
+    "file": "011852.bin",
+    "bytes": 311,
+    "name": "reward_pool_data_auto_oversea_data_kjjp.py",
+    "fid": "769772444FBAD060",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012386.bin",
+    "bytes": 18890,
+    "name": "reward_pool_data_auto_oversea_data_kj1.py",
+    "fid": "7C1978372D53EA7A",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 9552
+   },
+   {
+    "file": "012484.bin",
+    "bytes": 320,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "7D30E4DD34ACEBDF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012545.bin",
+    "bytes": 3378,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kj1.py",
+    "fid": "7DDCFA4A4BF8050C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 2368
+   },
+   {
+    "file": "012566.bin",
+    "bytes": 330,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "7E0E93626A9EE3D2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012591.bin",
+    "bytes": 13317,
+    "name": "super_fashion_lottery_conf_data.py",
+    "fid": "7E5A5A83B1F07D31",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 8624
+   },
+   {
+    "file": "013149.bin",
+    "bytes": 318,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "838C72D1005B00C9",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013451.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_sea.py",
+    "fid": "86BEC352E5BF67B0",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013692.bin",
+    "bytes": 315,
+    "name": "fashion_sale_conf_data_auto_oversea_data_na.py",
+    "fid": "88C0BCFFABD35A77",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014501.bin",
+    "bytes": 327,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_na.py",
+    "fid": "915661D8E73C2A3F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014540.bin",
+    "bytes": 360,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kj1_chs.py",
+    "fid": "91A08FA413CD1990",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 304
+   },
+   {
+    "file": "014916.bin",
+    "bytes": 315,
+    "name": "fashion_sale_conf_data_auto_oversea_data_jp.py",
+    "fid": "9556D0F308138869",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014948.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "95A74FB2CD0EEB5E",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "014995.bin",
+    "bytes": 578,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "9613C1337561AD88",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 384
+   },
+   {
+    "file": "015137.bin",
+    "bytes": 325,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_hmt.py",
+    "fid": "97A665DC65491A74",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015188.bin",
+    "bytes": 327,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "98246A8F539512BF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015372.bin",
+    "bytes": 331,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_na.py",
+    "fid": "99E9DA2C6722B506",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015847.bin",
+    "bytes": 317,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "9E7D0B85707C7099",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016188.bin",
+    "bytes": 318,
+    "name": "fashion_sale_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "A1BAC8FE19142BD6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016369.bin",
+    "bytes": 309,
+    "name": "reward_pool_data_auto_oversea_data_jp.py",
+    "fid": "A38FEA0B6BBB5DB1",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016751.bin",
+    "bytes": 324,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_jp.py",
+    "fid": "A7155EC092000CDA",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017195.bin",
+    "bytes": 5766,
+    "name": "fashion_sale_conf_data_auto_oversea_data_yk.py",
+    "fid": "ABC7D0F61BFF6CEC",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 3456
+   },
+   {
+    "file": "017244.bin",
+    "bytes": 315,
+    "name": "fashion_sale_conf_data_auto_oversea_data_au.py",
+    "fid": "AC5552A79944661B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017335.bin",
+    "bytes": 327,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_au.py",
+    "fid": "AD665B0EBC7B823B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017340.bin",
+    "bytes": 579,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "AD73C65E555D8FE2",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017434.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "AE7FD56D447CF17A",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "017443.bin",
+    "bytes": 309,
+    "name": "reward_pool_data_auto_oversea_data_eu.py",
+    "fid": "AEA2AE7E9C18BF57",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017792.bin",
+    "bytes": 331,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_eu.py",
+    "fid": "B2343AA012B443CD",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017821.bin",
+    "bytes": 319,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjna.py",
+    "fid": "B2874EEAF18319CF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018169.bin",
+    "bytes": 317,
+    "name": "common_lottery_conf_data_auto_oversea_data_au.py",
+    "fid": "B5D96FBEA6D0A247",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018233.bin",
+    "bytes": 2178,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "B68946910DD70165",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018457.bin",
+    "bytes": 324,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_eu.py",
+    "fid": "B8BC810983F1DC0F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018738.bin",
+    "bytes": 12189,
+    "name": "reward_pool_data_auto_oversea_data_ykxq.py",
+    "fid": "BBC2EAAA769B560A",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 6080
+   },
+   {
+    "file": "018938.bin",
+    "bytes": 331,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_au.py",
+    "fid": "BDBB4EE966D866E8",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019001.bin",
+    "bytes": 319,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "BE50FA537395E306",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019053.bin",
+    "bytes": 30906,
+    "name": "reward_pool_data_auto_oversea_data_kj1_chs.py",
+    "fid": "BEC1A7DD859A26BB",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 6496
+   },
+   {
+    "file": "019384.bin",
+    "bytes": 320,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "C1E83FD2F0488EFA",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020014.bin",
+    "bytes": 311,
+    "name": "reward_pool_data_auto_oversea_data_kjna.py",
+    "fid": "C7B91063259566D0",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020542.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjna.py",
+    "fid": "CD0805911EF598F5",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "020753.bin",
+    "bytes": 315,
+    "name": "fashion_sale_conf_data_auto_oversea_data_eu.py",
+    "fid": "CF47B9C54C2572DE",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020870.bin",
+    "bytes": 316,
+    "name": "fashion_sale_conf_data_auto_oversea_data_hmt.py",
+    "fid": "D06ECBE15C7C8693",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021380.bin",
+    "bytes": 1091069,
+    "name": "reward_pool_data_base.py",
+    "fid": "D558884A36C972C5",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 643616
+   },
+   {
+    "file": "021801.bin",
+    "bytes": 324,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_na.py",
+    "fid": "D9A2C99DA0FED596",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021903.bin",
+    "bytes": 1047,
+    "name": "common_lottery_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "DA9D0D3AA9D7FD8F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022118.bin",
+    "bytes": 332,
+    "name": "super_fashion_lottery_v2_ui_conf_data_auto_oversea_data_kjna.py",
+    "fid": "DCCF52FE8743095E",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "022181.bin",
+    "bytes": 940,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjxq.py",
+    "fid": "DD66ACC135009285",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "022652.bin",
+    "bytes": 316,
+    "name": "fashion_sale_conf_data_auto_oversea_data_sea.py",
+    "fid": "E21385D387019E98",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022896.bin",
+    "bytes": 1211,
+    "name": "super_fashion_lottery_v2_mission_data.py",
+    "fid": "E493FCDD82FE197E",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 880
+   },
+   {
+    "file": "023009.bin",
+    "bytes": 327,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kr.py",
+    "fid": "E5B0EA67E6D19C0F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023115.bin",
+    "bytes": 18891,
+    "name": "reward_pool_data_auto_oversea_data_kjxq.py",
+    "fid": "E6D350D76C052B91",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023207.bin",
+    "bytes": 334,
+    "name": "super_fashion_lottery_dragon_pray_data_auto_oversea_data_kjhmt.py",
+    "fid": "E7CD765C8E97821E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023391.bin",
+    "bytes": 653779,
+    "name": "reward_pool_data_chs.py",
+    "fid": "E9A246093CC3C37D",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023542.bin",
+    "bytes": 1067,
+    "name": "nt_super_fashion_lottery_conf_data_auto_oversea_data_kj1.py",
+    "fid": "EB25F7082D75C042",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 784
+   },
+   {
+    "file": "023705.bin",
+    "bytes": 653778,
+    "name": "reward_pool_data_yk.py",
+    "fid": "ECE61CFDAA9DC15D",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023723.bin",
+    "bytes": 655092,
+    "name": "reward_pool_data_base_kj1.py",
+    "fid": "ED0A14BC5FED6DAD",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 140064
+   },
+   {
+    "file": "024254.bin",
+    "bytes": 325,
+    "name": "super_fashion_lottery_conf_data_auto_oversea_data_sea.py",
+    "fid": "F2E105C275EFD58E",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024362.bin",
+    "bytes": 12187,
+    "name": "reward_pool_data_auto_oversea_data_yk.py",
+    "fid": "F3F1166CFA11E8EB",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 6064
+   },
+   {
+    "file": "024819.bin",
+    "bytes": 12757,
+    "name": "reward_pool_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "F8BBD20A0AC69BA3",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3776
+   },
+   {
+    "file": "025011.bin",
+    "bytes": 333,
+    "name": "super_fashion_lottery_v2_mission_data_auto_oversea_data_kjhmt.py",
+    "fid": "FAC90B248946F06C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   }
+  ],
+  "manjian": [
+   {
+    "file": "000619.bin",
+    "bytes": 317,
+    "name": "manjian_market_refresh_auto_oversea_data_kjjp.py",
+    "fid": "065E49DA915CB9E7",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000990.bin",
+    "bytes": 318,
+    "name": "manjian_market_refresh_auto_oversea_data_kjsea.py",
+    "fid": "0A7D7A33D53B143B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001368.bin",
+    "bytes": 316,
+    "name": "manjian_market_goods_auto_oversea_data_kjhmt.py",
+    "fid": "0E34236F0BD7C55A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002677.bin",
+    "bytes": 315,
+    "name": "manjian_market_refresh_auto_oversea_data_eu.py",
+    "fid": "1B5F2E230534F9C7",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002926.bin",
+    "bytes": 318,
+    "name": "manjian_market_refresh_auto_oversea_data_kjhmt.py",
+    "fid": "1E3B024368D57C2C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003203.bin",
+    "bytes": 3552,
+    "name": "manjian_market_goods_auto_oversea_data_kjxq.py",
+    "fid": "21161DE9C47D68EC",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003232.bin",
+    "bytes": 1594,
+    "name": "manjian_market_refresh_auto_oversea_data_kj1.py",
+    "fid": "2157FA3C200F50C7",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004442.bin",
+    "bytes": 325,
+    "name": "manjian_market_goods_auto_oversea_data_kjxq_chs.py",
+    "fid": "2DCC8318756968D4",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008083.bin",
+    "bytes": 1595,
+    "name": "manjian_market_refresh_auto_oversea_data_kjxq.py",
+    "fid": "526800F6B392E1A8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015592.bin",
+    "bytes": 315,
+    "name": "manjian_market_goods_auto_oversea_data_kjjp.py",
+    "fid": "9C0F2EADF7E152B4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017134.bin",
+    "bytes": 3551,
+    "name": "manjian_market_goods_auto_oversea_data_kj1.py",
+    "fid": "AB49822BD6459D80",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020123.bin",
+    "bytes": 316,
+    "name": "manjian_market_goods_auto_oversea_data_kjsea.py",
+    "fid": "C8DBB38FB5CF3DEF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020384.bin",
+    "bytes": 324,
+    "name": "manjian_market_goods_auto_oversea_data_kj1_chs.py",
+    "fid": "CB74ED2B52046A98",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022722.bin",
+    "bytes": 315,
+    "name": "manjian_market_goods_auto_oversea_data_kjna.py",
+    "fid": "E2BD33AFE3A4EB07",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024644.bin",
+    "bytes": 317,
+    "name": "manjian_market_refresh_auto_oversea_data_kjna.py",
+    "fid": "F6D187238391352C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   }
+  ],
+  "mystery": [],
+  "nucleus": [
+   {
+    "file": "001267.bin",
+    "bytes": 314,
+    "name": "nucleus_build_data_auto_oversea_data_kjsea.py",
+    "fid": "0D246E24CDBC849F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001907.bin",
+    "bytes": 313,
+    "name": "nucleus_lottery_data_auto_oversea_data_jp.py",
+    "fid": "13ABE696F179015B",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003119.bin",
+    "bytes": 12994,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kj1.py",
+    "fid": "2025C9C42D94237E",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 8128
+   },
+   {
+    "file": "003243.bin",
+    "bytes": 313,
+    "name": "nucleus_lottery_data_auto_oversea_data_eu.py",
+    "fid": "2170FD6097306F9C",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004201.bin",
+    "bytes": 327,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "2B6A53D553D3F619",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004853.bin",
+    "bytes": 314,
+    "name": "nucleus_lottery_data_auto_oversea_data_hmt.py",
+    "fid": "31F8B60B6E25A789",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005437.bin",
+    "bytes": 75599,
+    "name": "nucleus_build_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "3795F624B2FC56C3",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006141.bin",
+    "bytes": 314,
+    "name": "nucleus_lottery_data_auto_oversea_data_sea.py",
+    "fid": "3ED1C486D76D6A23",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006246.bin",
+    "bytes": 399,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "3FE1E5BAADF31447",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006897.bin",
+    "bytes": 546,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "466AD8E2A3AEA309",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007131.bin",
+    "bytes": 318,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kr.py",
+    "fid": "48D0A4CC51F24580",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008525.bin",
+    "bytes": 400,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "56A6F6E21B5D432D",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010463.bin",
+    "bytes": 313,
+    "name": "nucleus_lottery_data_auto_oversea_data_au.py",
+    "fid": "698D85407C106FCD",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010711.bin",
+    "bytes": 903,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "6BA9CCD2925CDCE8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012117.bin",
+    "bytes": 314,
+    "name": "nucleus_build_data_auto_oversea_data_kjhmt.py",
+    "fid": "79317A4B01E85E9A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012555.bin",
+    "bytes": 321,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjsea.py",
+    "fid": "7DF95A8091FE5C43",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013179.bin",
+    "bytes": 320,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjna.py",
+    "fid": "83E0FCCA45E27C84",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014033.bin",
+    "bytes": 545,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kj1_chs.py",
+    "fid": "8C94C13C7CE4969C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 384
+   },
+   {
+    "file": "014633.bin",
+    "bytes": 316,
+    "name": "nucleus_lottery_data_auto_oversea_data_kjhmt.py",
+    "fid": "926445AC47DAC3C3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016635.bin",
+    "bytes": 315,
+    "name": "nucleus_lottery_data_auto_oversea_data_kjna.py",
+    "fid": "A63A03DBD73842E5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016783.bin",
+    "bytes": 6318,
+    "name": "nucleus_build_data_auto_oversea_data_kj1.py",
+    "fid": "A75FB24D9CAAF511",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 3104
+   },
+   {
+    "file": "016861.bin",
+    "bytes": 316,
+    "name": "nucleus_lottery_data_auto_oversea_data_kjsea.py",
+    "fid": "A8326079726CF636",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016869.bin",
+    "bytes": 12336,
+    "name": "nucleus_lottery_pool_data.py",
+    "fid": "A844D2F8099BA289",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 7984
+   },
+   {
+    "file": "017571.bin",
+    "bytes": 327,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "AFF3D423BCCCD78C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017744.bin",
+    "bytes": 326,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "B19C67EC24461542",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017897.bin",
+    "bytes": 315,
+    "name": "nucleus_lottery_data_auto_oversea_data_kjjp.py",
+    "fid": "B32F841303A35323",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017951.bin",
+    "bytes": 2789,
+    "name": "nucleus_lottery_data.py",
+    "fid": "B3A6C3CC7BB3485A",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 1616
+   },
+   {
+    "file": "020841.bin",
+    "bytes": 6319,
+    "name": "nucleus_build_data_auto_oversea_data_kjxq.py",
+    "fid": "D0235388DC823B59",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021258.bin",
+    "bytes": 12995,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjxq.py",
+    "fid": "D4285E0EE205E45E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021518.bin",
+    "bytes": 320,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjjp.py",
+    "fid": "D69F5E659CAA7599",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022208.bin",
+    "bytes": 326,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kjna.py",
+    "fid": "DDAFC2A8EA238EE6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023274.bin",
+    "bytes": 313,
+    "name": "nucleus_lottery_data_auto_oversea_data_kr.py",
+    "fid": "E87C21DA9B663E0B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023314.bin",
+    "bytes": 75598,
+    "name": "nucleus_build_data_auto_oversea_data_kj1_chs.py",
+    "fid": "E8E16EEF3BE81935",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 22768
+   },
+   {
+    "file": "023709.bin",
+    "bytes": 313,
+    "name": "nucleus_build_data_auto_oversea_data_kjna.py",
+    "fid": "ECE9CDE4248A0628",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023907.bin",
+    "bytes": 313,
+    "name": "nucleus_lottery_data_auto_oversea_data_na.py",
+    "fid": "EF05CB66B1D151C1",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024203.bin",
+    "bytes": 902,
+    "name": "limit_nucleus_lottery_conf_data_auto_oversea_data_kj1.py",
+    "fid": "F239E65A907F090C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024461.bin",
+    "bytes": 2712,
+    "name": "limit_nucleus_lottery_conf_data.py",
+    "fid": "F50E738EBE614C2E",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 1680
+   },
+   {
+    "file": "024617.bin",
+    "bytes": 313,
+    "name": "nucleus_build_data_auto_oversea_data_kjjp.py",
+    "fid": "F682AED1116BE1E5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025336.bin",
+    "bytes": 321,
+    "name": "nucleus_lottery_pool_data_auto_oversea_data_kjhmt.py",
+    "fid": "FE855EEDC3211DFC",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   }
+  ],
+  "chip": [
+   {
+    "file": "001452.bin",
+    "bytes": 3376,
+    "name": "chip_type_data_auto_oversea_data_kj1.py",
+    "fid": "0F16EE270159A285",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1904
+   },
+   {
+    "file": "001605.bin",
+    "bytes": 284,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kj1_chs.py",
+    "fid": "1086806F30F390F1",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001808.bin",
+    "bytes": 329,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjhmt.py",
+    "fid": "12ACF79DEBC0BE8A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003278.bin",
+    "bytes": 3612,
+    "name": "chip_type_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "21BFD156882FEA36",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003461.bin",
+    "bytes": 408,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "237D2D199E704DCD",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003998.bin",
+    "bytes": 310,
+    "name": "chip_type_data_auto_oversea_data_kjhmt.py",
+    "fid": "29608AA16E310EF3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005852.bin",
+    "bytes": 3377,
+    "name": "chip_type_data_auto_oversea_data_kjxq.py",
+    "fid": "3BE9A25FDC6538BD",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006299.bin",
+    "bytes": 309,
+    "name": "chip_type_data_auto_oversea_data_kjjp.py",
+    "fid": "40662B648F7BCBA9",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006879.bin",
+    "bytes": 407,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "46375D1E8EE4FB1E",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009729.bin",
+    "bytes": 2960,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kj1.py",
+    "fid": "628CEBDC133329C4",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1856
+   },
+   {
+    "file": "010324.bin",
+    "bytes": 2961,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "683A76B8AF5C7754",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012314.bin",
+    "bytes": 285,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "7B49B1760AC11954",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015599.bin",
+    "bytes": 329,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "9C1A4C8A839D555A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017403.bin",
+    "bytes": 329,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "AE18C1ADED1D19C6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018718.bin",
+    "bytes": 329,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjsea.py",
+    "fid": "BB8917C46E6CE8D3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019106.bin",
+    "bytes": 328,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjna.py",
+    "fid": "BF2BD6BCB031CA95",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020514.bin",
+    "bytes": 310,
+    "name": "chip_type_data_auto_oversea_data_kjsea.py",
+    "fid": "CCBE3064AF17385D",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021225.bin",
+    "bytes": 328,
+    "name": "special_chip_lottery_hd_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "D3CE88AC03FDBD5E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021881.bin",
+    "bytes": 2173,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kj1.py",
+    "fid": "DA71481ED763F75B",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1600
+   },
+   {
+    "file": "022840.bin",
+    "bytes": 328,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjna.py",
+    "fid": "E3F5EDA5C0C1DD9E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022874.bin",
+    "bytes": 3611,
+    "name": "chip_type_data_auto_oversea_data_kj1_chs.py",
+    "fid": "E45B05022DBF209F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1648
+   },
+   {
+    "file": "023652.bin",
+    "bytes": 328,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjjp.py",
+    "fid": "EC3EEA7493859D08",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024047.bin",
+    "bytes": 2174,
+    "name": "special_chip_lottery_hd_rule_data_auto_oversea_data_kjxq.py",
+    "fid": "F066FF9501EF6BB9",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025318.bin",
+    "bytes": 309,
+    "name": "chip_type_data_auto_oversea_data_kjna.py",
+    "fid": "FE481D64A627A6F2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   }
+  ],
+  "vehicle": [
+   {
+    "file": "000642.bin",
+    "bytes": 48027,
+    "name": "tuning_vehicle_proto_data.py",
+    "fid": "0695FBFCD6DB3634",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 16912
+   },
+   {
+    "file": "001504.bin",
+    "bytes": 3918,
+    "name": "vehicle_proto_impulse_data_auto_oversea_data_ykxq.py",
+    "fid": "0F7C2B9678FB43FB",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 2288
+   },
+   {
+    "file": "001704.bin",
+    "bytes": 323,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_jp.py",
+    "fid": "119D574E2154D4B9",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "002587.bin",
+    "bytes": 1531,
+    "name": "character_vehicle_proto_data_auto_oversea_data_yk.py",
+    "fid": "1A72AB85E162DACD",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 960
+   },
+   {
+    "file": "002795.bin",
+    "bytes": 324,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_hmt.py",
+    "fid": "1CA01B7C7390B82F",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "003023.bin",
+    "bytes": 1485,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "1F3BAE8753439915",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "003202.bin",
+    "bytes": 323,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_na.py",
+    "fid": "211488FDBBC6B900",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "004130.bin",
+    "bytes": 1030,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "2AC5CF602CD57518",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 592
+   },
+   {
+    "file": "004243.bin",
+    "bytes": 325,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "2BD79813339627BB",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "004479.bin",
+    "bytes": 326,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "2E227243E5878C5C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "004594.bin",
+    "bytes": 326,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "2F2E8CF290BFBF4E",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "004733.bin",
+    "bytes": 326,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_sea.py",
+    "fid": "30C46ADD079AE91F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004800.bin",
+    "bytes": 2734,
+    "name": "vehicle_proto_data_auto_oversea_data_yk_chs.py",
+    "fid": "316C591FD8AE2842",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1264
+   },
+   {
+    "file": "008255.bin",
+    "bytes": 760,
+    "name": "character_vehicle_proto_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "540CFFC32B8CE450",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 432
+   },
+   {
+    "file": "010275.bin",
+    "bytes": 328,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "67B968AE9635B63D",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010747.bin",
+    "bytes": 323,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kr.py",
+    "fid": "6BFF0131E7C40CBF",
+    "cls": "oversea-shell",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "010769.bin",
+    "bytes": 2736,
+    "name": "vehicle_proto_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "6C41595EBCA1B813",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1264
+   },
+   {
+    "file": "011524.bin",
+    "bytes": 758,
+    "name": "character_vehicle_proto_data_auto_oversea_data_yk_chs.py",
+    "fid": "73AE68927D950A5E",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 432
+   },
+   {
+    "file": "011713.bin",
+    "bytes": 325,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_jp.py",
+    "fid": "756465E70CAA1241",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011935.bin",
+    "bytes": 327,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "776AF345FCF0BE54",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012315.bin",
+    "bytes": 323,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_eu.py",
+    "fid": "7B4A9A6AD65C4D72",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "012376.bin",
+    "bytes": 327,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_kjna.py",
+    "fid": "7BFF81278827DCF8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013067.bin",
+    "bytes": 325,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjna.py",
+    "fid": "82D644D681276B3C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "014564.bin",
+    "bytes": 3916,
+    "name": "vehicle_proto_impulse_data_auto_oversea_data_yk.py",
+    "fid": "91CE4B118F265C7F",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 2272
+   },
+   {
+    "file": "014612.bin",
+    "bytes": 325,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_na.py",
+    "fid": "9237C1DF476B36CA",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015924.bin",
+    "bytes": 1533,
+    "name": "character_vehicle_proto_data_auto_oversea_data_ykxq.py",
+    "fid": "9F33B7B64053B438",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 960
+   },
+   {
+    "file": "017870.bin",
+    "bytes": 1031,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "B2F177A5546BFE0D",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019702.bin",
+    "bytes": 326,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_hmt.py",
+    "fid": "C4FD3D12434D754A",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019849.bin",
+    "bytes": 5173,
+    "name": "vehicle_proto_data_auto_oversea_data_ykxq.py",
+    "fid": "C65F1F92268A2AE4",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 2656
+   },
+   {
+    "file": "021239.bin",
+    "bytes": 323,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_au.py",
+    "fid": "D3F70780FCA54568",
+    "cls": "oversea-shell",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "021514.bin",
+    "bytes": 325,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_au.py",
+    "fid": "D697482458B14E8D",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021723.bin",
+    "bytes": 113591,
+    "name": "vehicle_proto_data.py",
+    "fid": "D8D352B44F2D3627",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 41888
+   },
+   {
+    "file": "022428.bin",
+    "bytes": 5171,
+    "name": "vehicle_proto_data_auto_oversea_data_yk.py",
+    "fid": "DFEC5114F6C4F620",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 2656
+   },
+   {
+    "file": "024110.bin",
+    "bytes": 324,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_sea.py",
+    "fid": "F13E264F444F5A2F",
+    "cls": "oversea-shell",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "024301.bin",
+    "bytes": 328,
+    "name": "new_vehicle_lottery_v2_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "F3526AF4FFAAB66D",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025045.bin",
+    "bytes": 1484,
+    "name": "vehicle_lottery_base_conf_data_auto_oversea_data_kj1.py",
+    "fid": "FB274132B9D33332",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 976
+   }
+  ],
+  "chenshi": [
+   {
+    "file": "000323.bin",
+    "bytes": 2641,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "0366A1918EC324CB",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001307.bin",
+    "bytes": 327,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjna.py",
+    "fid": "0D8D33DF83ABF34E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001921.bin",
+    "bytes": 323,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_jp.py",
+    "fid": "13DD8829CAADB6F5",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002089.bin",
+    "bytes": 4163,
+    "name": "optional_version_data_auto_oversea_data_yk.py",
+    "fid": "15A729C62ABE647D",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 2784
+   },
+   {
+    "file": "002404.bin",
+    "bytes": 323,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_eu.py",
+    "fid": "18ACC4DB6A3FCCF4",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002529.bin",
+    "bytes": 328,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "19DC60661002893F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002594.bin",
+    "bytes": 326,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_hmt.py",
+    "fid": "1A83BD0F634F459D",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002625.bin",
+    "bytes": 325,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_kjjp.py",
+    "fid": "1AE4174C3DD8437F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002952.bin",
+    "bytes": 324,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_hmt.py",
+    "fid": "1E748CB2504D4DDF",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002962.bin",
+    "bytes": 81534,
+    "name": "optional_hd_exchange_shop_data.py",
+    "fid": "1E888FAB015CA82D",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 30896
+   },
+   {
+    "file": "003415.bin",
+    "bytes": 315,
+    "name": "optional_version_data_auto_oversea_data_hmt.py",
+    "fid": "2315079C6F9B8947",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003803.bin",
+    "bytes": 323,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_au.py",
+    "fid": "277ECDDD6C18BC41",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003849.bin",
+    "bytes": 3108,
+    "name": "optional_version_data_auto_oversea_data_kj1_chs.py",
+    "fid": "27FD6D58416F494F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 848
+   },
+   {
+    "file": "004463.bin",
+    "bytes": 4223,
+    "name": "optional_version_data.py",
+    "fid": "2E00546E44D8BEF1",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 2928
+   },
+   {
+    "file": "005580.bin",
+    "bytes": 76142,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_yk.py",
+    "fid": "391B0207F57BCF45",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 30208
+   },
+   {
+    "file": "005895.bin",
+    "bytes": 325,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_jp.py",
+    "fid": "3C533BF70AC79014",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006163.bin",
+    "bytes": 874,
+    "name": "multi_optional_lottery_stage_data_chs.py",
+    "fid": "3F0F3BEC5824F80F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 432
+   },
+   {
+    "file": "006391.bin",
+    "bytes": 317,
+    "name": "optional_version_data_auto_oversea_data_kjsea.py",
+    "fid": "4136890DF88609EB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006838.bin",
+    "bytes": 2640,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "45B7F353AE084A20",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 800
+   },
+   {
+    "file": "007471.bin",
+    "bytes": 4211,
+    "name": "optional_version_data_auto_oversea_data_kj1.py",
+    "fid": "4C4A85D446829353",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 2896
+   },
+   {
+    "file": "007912.bin",
+    "bytes": 3016,
+    "name": "optional_version_data_chs.py",
+    "fid": "50B88E1D47F3650B",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 800
+   },
+   {
+    "file": "007946.bin",
+    "bytes": 76144,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_ykxq.py",
+    "fid": "512164758E99BDEA",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 30208
+   },
+   {
+    "file": "007956.bin",
+    "bytes": 783,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "513AF18B4210B907",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 496
+   },
+   {
+    "file": "008530.bin",
+    "bytes": 1478,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kj1.py",
+    "fid": "56AE066D86C07274",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1024
+   },
+   {
+    "file": "009151.bin",
+    "bytes": 1479,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "5CD8F13C18F7C83F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009520.bin",
+    "bytes": 2572,
+    "name": "multi_optional_lottery_option_data.py",
+    "fid": "60515A08F838EDB0",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 1488
+   },
+   {
+    "file": "009531.bin",
+    "bytes": 326,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_kjsea.py",
+    "fid": "60806EF9ED0A3EA7",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010465.bin",
+    "bytes": 4165,
+    "name": "optional_version_data_auto_oversea_data_ykxq.py",
+    "fid": "6992C887CB66687D",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 2784
+   },
+   {
+    "file": "010589.bin",
+    "bytes": 316,
+    "name": "optional_version_data_auto_oversea_data_kjjp.py",
+    "fid": "6AB1B6CFF2FC72B0",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011600.bin",
+    "bytes": 4212,
+    "name": "optional_version_data_auto_oversea_data_kjxq.py",
+    "fid": "74759F25AC05971A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013562.bin",
+    "bytes": 1418,
+    "name": "multi_optional_lottery_conf_data.py",
+    "fid": "87B61DDB4E9D0ECF",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 976
+   },
+   {
+    "file": "013576.bin",
+    "bytes": 324,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_xyd.py",
+    "fid": "87CB63B5639E1F8C",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "014035.bin",
+    "bytes": 326,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_sea.py",
+    "fid": "8CA23FAC684525AE",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014381.bin",
+    "bytes": 325,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kr.py",
+    "fid": "900B1BEBAD58173A",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014831.bin",
+    "bytes": 314,
+    "name": "optional_version_data_auto_oversea_data_au.py",
+    "fid": "9474054230C73248",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015406.bin",
+    "bytes": 314,
+    "name": "optional_version_data_auto_oversea_data_eu.py",
+    "fid": "9A3D329889F914B0",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015663.bin",
+    "bytes": 324,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_sea.py",
+    "fid": "9CCED5DF1ACCE69A",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015710.bin",
+    "bytes": 3047,
+    "name": "optional_version_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "9D4B59D5FF516AF3",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 816
+   },
+   {
+    "file": "015902.bin",
+    "bytes": 1198,
+    "name": "multi_optional_lottery_stage_data.py",
+    "fid": "9F04B92BA8E885DA",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 880
+   },
+   {
+    "file": "016177.bin",
+    "bytes": 317,
+    "name": "optional_version_data_auto_oversea_data_kjhmt.py",
+    "fid": "A19A0E8F979E8F1E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016229.bin",
+    "bytes": 327,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "A20FC1A5ADA2EBD6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018281.bin",
+    "bytes": 325,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_au.py",
+    "fid": "B70400A94602863B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018519.bin",
+    "bytes": 314,
+    "name": "optional_version_data_auto_oversea_data_kr.py",
+    "fid": "B951354E8F1B3AE8",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018596.bin",
+    "bytes": 314,
+    "name": "optional_version_data_auto_oversea_data_na.py",
+    "fid": "BA2883482E298AE5",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018635.bin",
+    "bytes": 315,
+    "name": "optional_version_data_auto_oversea_data_xyd.py",
+    "fid": "BAA643841C8813AC",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "019343.bin",
+    "bytes": 326,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_kjhmt.py",
+    "fid": "C173C09B28B3775B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019573.bin",
+    "bytes": 3109,
+    "name": "optional_version_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "C39FF1296878B14D",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019642.bin",
+    "bytes": 323,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_kr.py",
+    "fid": "C45DBEB411DB3F6C",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020275.bin",
+    "bytes": 316,
+    "name": "optional_version_data_auto_oversea_data_kjna.py",
+    "fid": "CA53DD67A2502C3A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020487.bin",
+    "bytes": 315,
+    "name": "optional_version_data_auto_oversea_data_sea.py",
+    "fid": "CC8369195564555B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021767.bin",
+    "bytes": 3045,
+    "name": "optional_version_data_auto_oversea_data_yk_chs.py",
+    "fid": "D94CBA39D00B4CB2",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 816
+   },
+   {
+    "file": "021810.bin",
+    "bytes": 325,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_eu.py",
+    "fid": "D9AF358706EBEE8A",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021820.bin",
+    "bytes": 325,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_kjna.py",
+    "fid": "D9C9AE35BC2CE780",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022603.bin",
+    "bytes": 781,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_yk_chs.py",
+    "fid": "E1AD4D1FA12C830C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 480
+   },
+   {
+    "file": "023001.bin",
+    "bytes": 323,
+    "name": "optional_hd_exchange_shop_data_auto_oversea_data_na.py",
+    "fid": "E5A3D533AA20328E",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023220.bin",
+    "bytes": 2610,
+    "name": "multi_optional_lottery_conf_data_chs.py",
+    "fid": "E7ECAB0697A8A494",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 784
+   },
+   {
+    "file": "023297.bin",
+    "bytes": 328,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "E8A90C6E34BCF2D5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023408.bin",
+    "bytes": 9976,
+    "name": "multi_optional_lottery_option_data_chs.py",
+    "fid": "E9D0C5FA6AEE3497",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1280
+   },
+   {
+    "file": "024496.bin",
+    "bytes": 325,
+    "name": "multi_optional_lottery_conf_data_auto_oversea_data_na.py",
+    "fid": "F55ED7D59F6E2818",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025032.bin",
+    "bytes": 314,
+    "name": "optional_version_data_auto_oversea_data_jp.py",
+    "fid": "FB01FE12FD170AEE",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   }
+  ],
+  "huodong": [
+   {
+    "file": "000278.bin",
+    "bytes": 316,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_au.py",
+    "fid": "02BD3944A5E7EA6F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000368.bin",
+    "bytes": 317,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_sea.py",
+    "fid": "03BF5CD342FAD271",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000537.bin",
+    "bytes": 311,
+    "name": "huodong_conf_data_auto_oversea_data_hmt.py",
+    "fid": "058DB1309EC92F9C",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000842.bin",
+    "bytes": 310,
+    "name": "huodong_conf_data_auto_oversea_data_au.py",
+    "fid": "08A4DEEEEE04BC89",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000982.bin",
+    "bytes": 325,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "0A64C043B2B17947",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001380.bin",
+    "bytes": 313,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "0E56B44286625167",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001445.bin",
+    "bytes": 36849,
+    "name": "huodong_conf_data_auto_oversea_data_yk_chs.py",
+    "fid": "0F046187FFCAAC69",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 17056
+   },
+   {
+    "file": "001941.bin",
+    "bytes": 60692,
+    "name": "huodong_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "140E2B9B3F7597AE",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005515.bin",
+    "bytes": 323,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_hmt.py",
+    "fid": "3887C05D66064118",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005536.bin",
+    "bytes": 310,
+    "name": "huodong_conf_data_auto_oversea_data_kr.py",
+    "fid": "38B8FDACBEB1F31B",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005791.bin",
+    "bytes": 319,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "3B6250EDCC2915A5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006047.bin",
+    "bytes": 312,
+    "name": "huodong_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "3DF1C01E481EB8B7",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006185.bin",
+    "bytes": 324,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjna.py",
+    "fid": "3F3DAFBC5D3CF8FD",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006594.bin",
+    "bytes": 310,
+    "name": "huodong_conf_data_auto_oversea_data_eu.py",
+    "fid": "43637F82089D2F5B",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007359.bin",
+    "bytes": 322,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_na.py",
+    "fid": "4B20544E06E16B7B",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007575.bin",
+    "bytes": 956,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kj1.py",
+    "fid": "4D842D68BEA53E81",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007577.bin",
+    "bytes": 73687,
+    "name": "huodong_conf_data_auto_oversea_data_yk.py",
+    "fid": "4D88648174933AAE",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 37952
+   },
+   {
+    "file": "008000.bin",
+    "bytes": 322,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_au.py",
+    "fid": "519D8D186D28F952",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008103.bin",
+    "bytes": 311,
+    "name": "huodong_conf_data_auto_oversea_data_sea.py",
+    "fid": "529E14A8713A4072",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008900.bin",
+    "bytes": 313,
+    "name": "huodong_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "5A57DBE048EECB53",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008965.bin",
+    "bytes": 45625,
+    "name": "huodong_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "5B2B31B8E7ACF18F",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009395.bin",
+    "bytes": 322,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_eu.py",
+    "fid": "5F1332FE5CF38573",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010015.bin",
+    "bytes": 1131,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_ykxq.py",
+    "fid": "656E49B2B7D6A007",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 832
+   },
+   {
+    "file": "010163.bin",
+    "bytes": 712,
+    "name": "huodong_conf_data_auto_oversea_data_xq_chs.py",
+    "fid": "66BABCC0048D7288",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010166.bin",
+    "bytes": 310,
+    "name": "huodong_conf_data_auto_oversea_data_na.py",
+    "fid": "66C2BD61188F9020",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010741.bin",
+    "bytes": 689,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "6BE91E8507D47563",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011090.bin",
+    "bytes": 322,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kr.py",
+    "fid": "6F6C448D79B0A7AE",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011704.bin",
+    "bytes": 313,
+    "name": "huodong_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "75539AEA59FBFA4A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012719.bin",
+    "bytes": 317,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_hmt.py",
+    "fid": "7F8DC0C1027B27B0",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012940.bin",
+    "bytes": 452,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "8168EDD72D1D5EE4",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 352
+   },
+   {
+    "file": "013349.bin",
+    "bytes": 316,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kr.py",
+    "fid": "859A711A5FBE284C",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014190.bin",
+    "bytes": 1306,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "8E29B2B0DDD80E61",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014597.bin",
+    "bytes": 312,
+    "name": "huodong_conf_data_auto_oversea_data_kjna.py",
+    "fid": "9226131CC420836A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015755.bin",
+    "bytes": 450,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_yk_chs.py",
+    "fid": "9DBEEFFCF68A8C67",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 352
+   },
+   {
+    "file": "016168.bin",
+    "bytes": 323,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_sea.py",
+    "fid": "A188FA8CD636A5CB",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017426.bin",
+    "bytes": 322,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_jp.py",
+    "fid": "AE5F6ED367CDDE70",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017487.bin",
+    "bytes": 323,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_xyd.py",
+    "fid": "AF31F9669EA3F735",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "017719.bin",
+    "bytes": 1101,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_yk.py",
+    "fid": "B162F485EE445091",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 832
+   },
+   {
+    "file": "017725.bin",
+    "bytes": 324,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "B17159C025B026CA",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018008.bin",
+    "bytes": 1305,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kj1.py",
+    "fid": "B43520EF6594E1F0",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 960
+   },
+   {
+    "file": "018034.bin",
+    "bytes": 45591,
+    "name": "huodong_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "B48257E8D36A5AD4",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 21008
+   },
+   {
+    "file": "018777.bin",
+    "bytes": 311,
+    "name": "huodong_conf_data_auto_oversea_data_xyd.py",
+    "fid": "BC189809ED464EFE",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "018778.bin",
+    "bytes": 957,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjxq.py",
+    "fid": "BC18F7A4FC245CCE",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018994.bin",
+    "bytes": 325,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kjsea.py",
+    "fid": "BE3A25A44199D1E8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019185.bin",
+    "bytes": 310,
+    "name": "huodong_conf_data_auto_oversea_data_jp.py",
+    "fid": "C00B58FB41DB61E1",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019312.bin",
+    "bytes": 1106,
+    "name": "huodong_conf_data_auto_oversea_data_xq.py",
+    "fid": "C11F546510E29A49",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021905.bin",
+    "bytes": 314,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "DAA7F60B773CC4AA",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021919.bin",
+    "bytes": 47996,
+    "name": "huodong_conf_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "DACF87AE00F14120",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 21920
+   },
+   {
+    "file": "021932.bin",
+    "bytes": 316,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_na.py",
+    "fid": "DB009B8DFDA5D6F6",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022026.bin",
+    "bytes": 688,
+    "name": "falling_box_huodong_conf_data_auto_oversea_data_kj1_chs.py",
+    "fid": "DBF41D5F88865FF0",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 496
+   },
+   {
+    "file": "022634.bin",
+    "bytes": 318,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjna.py",
+    "fid": "E1F21FACB5D68EF4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022748.bin",
+    "bytes": 318,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjjp.py",
+    "fid": "E302BC72111DD523",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023397.bin",
+    "bytes": 316,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_jp.py",
+    "fid": "E9AFEDF6C32A8212",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023603.bin",
+    "bytes": 319,
+    "name": "bingo_huodong_conf_data_auto_oversea_data_kjhmt.py",
+    "fid": "EBBA6D121C20DEF1",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024329.bin",
+    "bytes": 81186,
+    "name": "huodong_conf_data_auto_oversea_data_ykxq.py",
+    "fid": "F394516378015E27",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 42112
+   },
+   {
+    "file": "025079.bin",
+    "bytes": 60629,
+    "name": "huodong_conf_data_auto_oversea_data_kj1.py",
+    "fid": "FB80FED51B8B4638",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 33264
+   }
+  ],
+  "fashion": [
+   {
+    "file": "000141.bin",
+    "bytes": 311,
+    "name": "player_appear_data_auto_oversea_data_jp.py",
+    "fid": "0162B2622002875C",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000195.bin",
+    "bytes": 329,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "01FAC299C7F3244F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000448.bin",
+    "bytes": 306,
+    "name": "fashion_data_auto_oversea_data_hmt.py",
+    "fid": "049DADACBF519676",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000480.bin",
+    "bytes": 312,
+    "name": "fashion_data_for_us_auto_oversea_data_au.py",
+    "fid": "04F4E060714E54D0",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000553.bin",
+    "bytes": 2491,
+    "name": "fashion_data_for_us_auto_oversea_data_yk_chs.py",
+    "fid": "05B0A5BA125C54D8",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1408
+   },
+   {
+    "file": "000556.bin",
+    "bytes": 41222,
+    "name": "simple_fashion_data_auto_oversea_data_kjxq.py",
+    "fid": "05C03DA2F8650E61",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000670.bin",
+    "bytes": 831311,
+    "name": "fashion_data.py",
+    "fid": "06EDEAAE3B08B985",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 330896
+   },
+   {
+    "file": "000688.bin",
+    "bytes": 314,
+    "name": "player_appear_data_auto_oversea_data_kjsea.py",
+    "fid": "07175F14738169ED",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000812.bin",
+    "bytes": 309,
+    "name": "weapon_skin_data_auto_oversea_data_kr.py",
+    "fid": "085A2909379473C7",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000850.bin",
+    "bytes": 312,
+    "name": "player_appear_data_auto_oversea_data_xyd.py",
+    "fid": "08B7CEA92C50B039",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "000872.bin",
+    "bytes": 1581,
+    "name": "fashion_data_for_export_auto_oversea_data_xq.py",
+    "fid": "09062BF61DFD2AC6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000908.bin",
+    "bytes": 308,
+    "name": "fashion_data_auto_oversea_data_kjhmt.py",
+    "fid": "096C12997BB1F3BD",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "000952.bin",
+    "bytes": 12737,
+    "name": "gift_data_auto_oversea_data_kj1.py",
+    "fid": "09FB5D561BD5C0CD",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 7008
+   },
+   {
+    "file": "001009.bin",
+    "bytes": 292,
+    "name": "village_competition_gift_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "0AAB1A9D203896EE",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 240
+   },
+   {
+    "file": "001088.bin",
+    "bytes": 671,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_yk.py",
+    "fid": "0B8472B7245357EB",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 528
+   },
+   {
+    "file": "001231.bin",
+    "bytes": 585,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kj1_chs.py",
+    "fid": "0CCFB284404182F0",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 368
+   },
+   {
+    "file": "001284.bin",
+    "bytes": 15900,
+    "name": "player_appear_data_auto_oversea_data_kj1.py",
+    "fid": "0D53486DFEC2C256",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 7664
+   },
+   {
+    "file": "001287.bin",
+    "bytes": 331,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjjp.py",
+    "fid": "0D5D4A33107DB9FD",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001299.bin",
+    "bytes": 309,
+    "name": "weapon_skin_data_auto_oversea_data_eu.py",
+    "fid": "0D769F519BACD588",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001337.bin",
+    "bytes": 267,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kj1_chs.py",
+    "fid": "0DDEAB38352B3F75",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001494.bin",
+    "bytes": 59654,
+    "name": "fashion_data_auto_oversea_data_kjxq.py",
+    "fid": "0F6A202C189398EE",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001666.bin",
+    "bytes": 16372,
+    "name": "gift_data_auto_oversea_data_yk_chs.py",
+    "fid": "112DA9185C331789",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3664
+   },
+   {
+    "file": "001743.bin",
+    "bytes": 304,
+    "name": "buff_data_auto_oversea_data_kjjp.py",
+    "fid": "11F68CB92CD87EC3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001757.bin",
+    "bytes": 2493,
+    "name": "fashion_data_for_us_auto_oversea_data_ykxq_chs.py",
+    "fid": "121D727ABC47091A",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1408
+   },
+   {
+    "file": "001765.bin",
+    "bytes": 815,
+    "name": "common_item_data.py",
+    "fid": "1232F498D07A0EBB",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 528
+   },
+   {
+    "file": "001792.bin",
+    "bytes": 1396,
+    "name": "weapon_skin_data_auto_oversea_data_ykxq.py",
+    "fid": "12869AA39BAFF157",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 960
+   },
+   {
+    "file": "001877.bin",
+    "bytes": 3605,
+    "name": "simple_optional_gift_data_auto_oversea_data_kjxq.py",
+    "fid": "135044408C2530CB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "001892.bin",
+    "bytes": 5416,
+    "name": "simple_fashion_data_auto_oversea_data_yk_chs.py",
+    "fid": "1380B44BFEBD7948",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1264
+   },
+   {
+    "file": "001973.bin",
+    "bytes": 319,
+    "name": "fashion_data_for_export_auto_oversea_data_kjhmt.py",
+    "fid": "14705C53ED447C91",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002017.bin",
+    "bytes": 328,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "14E993957C0D3959",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002027.bin",
+    "bytes": 311,
+    "name": "common_item_data_auto_oversea_data_kjna.py",
+    "fid": "150308A219F3E05A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002051.bin",
+    "bytes": 329,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_au.py",
+    "fid": "153CF7571524CC85",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002115.bin",
+    "bytes": 319,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "15DED36C786CA82B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002131.bin",
+    "bytes": 3496923,
+    "name": "common_item_data_chs.py",
+    "fid": "16037E102973F615",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002170.bin",
+    "bytes": 315,
+    "name": "simple_fashion_data_auto_oversea_data_kjsea.py",
+    "fid": "1660487900026B86",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002273.bin",
+    "bytes": 309,
+    "name": "weapon_skin_data_auto_oversea_data_jp.py",
+    "fid": "177938EE58BB72B7",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002314.bin",
+    "bytes": 1937,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "17CD89612E439D46",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002356.bin",
+    "bytes": 49472,
+    "name": "gift_data_auto_oversea_data_kj1_chs.py",
+    "fid": "18256592CA685363",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 8272
+   },
+   {
+    "file": "002518.bin",
+    "bytes": 1913,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kj1.py",
+    "fid": "19BE364AB6F78F19",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1104
+   },
+   {
+    "file": "002592.bin",
+    "bytes": 3764,
+    "name": "common_item_data_inc_chs.py",
+    "fid": "1A81E67098A6E8D9",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 2368
+   },
+   {
+    "file": "002655.bin",
+    "bytes": 900573,
+    "name": "gift_data_kj1.py",
+    "fid": "1B249D5C9984E1B4",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 152256
+   },
+   {
+    "file": "002865.bin",
+    "bytes": 329,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "1D8D8F6FE4E7C996",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "002918.bin",
+    "bytes": 518104,
+    "name": "buff_data_chs.py",
+    "fid": "1E23D0CBDFC4BEA7",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 168720
+   },
+   {
+    "file": "003038.bin",
+    "bytes": 4268,
+    "name": "simple_fashion_data_auto_oversea_data_yk.py",
+    "fid": "1F50D710E3D10D8B",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 2464
+   },
+   {
+    "file": "003040.bin",
+    "bytes": 960,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kj1.py",
+    "fid": "1F575072F08F4C7E",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 688
+   },
+   {
+    "file": "003180.bin",
+    "bytes": 310,
+    "name": "common_item_data_auto_oversea_data_sea.py",
+    "fid": "20C92295D0B65566",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003234.bin",
+    "bytes": 13322,
+    "name": "buff_data_auto_oversea_data_yk.py",
+    "fid": "215B7092526EA7AF",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 9056
+   },
+   {
+    "file": "003286.bin",
+    "bytes": 254210,
+    "name": "common_item_data_auto_oversea_data_kjxq_kj1.py",
+    "fid": "21D96154BC9A8B61",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003346.bin",
+    "bytes": 310,
+    "name": "common_item_data_auto_oversea_data_hmt.py",
+    "fid": "226C6A5BFCCFEF50",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003416.bin",
+    "bytes": 315,
+    "name": "simple_fashion_data_auto_oversea_data_kjhmt.py",
+    "fid": "23167B3F90B6470C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003546.bin",
+    "bytes": 60863,
+    "name": "player_module_appear_data.py",
+    "fid": "24947DBB72A943E5",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 25840
+   },
+   {
+    "file": "003667.bin",
+    "bytes": 305,
+    "name": "fashion_data_auto_oversea_data_na.py",
+    "fid": "260897DB23345D00",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "003707.bin",
+    "bytes": 2388,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kj1.py",
+    "fid": "266924CFC284F433",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 2048
+   },
+   {
+    "file": "003987.bin",
+    "bytes": 309,
+    "name": "rookie_gift_data_auto_oversea_data_kr.py",
+    "fid": "2947B1FC1E123F7F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004060.bin",
+    "bytes": 1394,
+    "name": "weapon_skin_data_auto_oversea_data_yk.py",
+    "fid": "29FC7FAA2A479D25",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 944
+   },
+   {
+    "file": "004140.bin",
+    "bytes": 1570,
+    "name": "fashion_data_auto_oversea_data_xq.py",
+    "fid": "2ADA222C85254C1A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004211.bin",
+    "bytes": 104944,
+    "name": "buff_data_auto_oversea_data_kj1.py",
+    "fid": "2B7D9E5CA67DC4B4",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 53856
+   },
+   {
+    "file": "004417.bin",
+    "bytes": 900572,
+    "name": "gift_data_yk.py",
+    "fid": "2D82D5496100FDAD",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 152256
+   },
+   {
+    "file": "004528.bin",
+    "bytes": 5928,
+    "name": "buff_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "2E96F00BA5AB8FF2",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 2544
+   },
+   {
+    "file": "004667.bin",
+    "bytes": 1173,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_ykxq.py",
+    "fid": "2FEBE416F27D9AF6",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 912
+   },
+   {
+    "file": "004668.bin",
+    "bytes": 317,
+    "name": "fashion_data_for_export_auto_oversea_data_xyd.py",
+    "fid": "2FEE76D1E56F2F27",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "004742.bin",
+    "bytes": 314,
+    "name": "simple_fashion_data_auto_oversea_data_kjjp.py",
+    "fid": "30CEEAEBC05B5C3B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005113.bin",
+    "bytes": 19289,
+    "name": "common_item_data_auto_oversea_data_ykxq.py",
+    "fid": "349372CEE8EBF9B4",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 10608
+   },
+   {
+    "file": "005123.bin",
+    "bytes": 24740,
+    "name": "fashion_data_auto_oversea_data_yk.py",
+    "fid": "34AE614E87F922E5",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 8976
+   },
+   {
+    "file": "005155.bin",
+    "bytes": 96564,
+    "name": "common_item_data_auto_oversea_data_kj1.py",
+    "fid": "34FC628362B08106",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 52112
+   },
+   {
+    "file": "005292.bin",
+    "bytes": 2624,
+    "name": "common_item_data_inc.py",
+    "fid": "363827281579481B",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 1888
+   },
+   {
+    "file": "005375.bin",
+    "bytes": 49888,
+    "name": "common_item_data_auto_oversea_data_yk_yk.py",
+    "fid": "370B0331C1AE3B3E",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 13504
+   },
+   {
+    "file": "005543.bin",
+    "bytes": 636,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kj1_chs.py",
+    "fid": "38C6BD169A5015E2",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 480
+   },
+   {
+    "file": "005651.bin",
+    "bytes": 312,
+    "name": "simple_fashion_data_auto_oversea_data_kr.py",
+    "fid": "39C5800A866EE4B1",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005808.bin",
+    "bytes": 2199,
+    "name": "super_fashion_gift_data_auto_oversea_data_ykxq.py",
+    "fid": "3B8D880E68D12392",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 1312
+   },
+   {
+    "file": "005832.bin",
+    "bytes": 804196,
+    "name": "fashion_data_for_export_base.py",
+    "fid": "3BC52E65A7B9A25B",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005865.bin",
+    "bytes": 316,
+    "name": "fashion_data_for_export_auto_oversea_data_au.py",
+    "fid": "3C1992B9EA0AFE43",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "005877.bin",
+    "bytes": 635,
+    "name": "rookie_gift_data_auto_oversea_data_kj1.py",
+    "fid": "3C2EBFC1510BCCC4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006064.bin",
+    "bytes": 318,
+    "name": "battle_level_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "3E11FE7848D4222B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006375.bin",
+    "bytes": 311,
+    "name": "player_appear_data_auto_oversea_data_na.py",
+    "fid": "4115E60F1E18DBD2",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006385.bin",
+    "bytes": 57991,
+    "name": "fashion_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "412C327B5BA72480",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006403.bin",
+    "bytes": 603891,
+    "name": "player_appear_data_chs.py",
+    "fid": "4151CFD3191DCAD7",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 96336
+   },
+   {
+    "file": "006473.bin",
+    "bytes": 312,
+    "name": "fashion_data_for_us_auto_oversea_data_jp.py",
+    "fid": "4211D2D4CED1A024",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006657.bin",
+    "bytes": 625,
+    "name": "player_module_appear_data_auto_oversea_data_kjxq.py",
+    "fid": "441A063923ABE67D",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006675.bin",
+    "bytes": 1018961,
+    "name": "buff_data.py",
+    "fid": "445751514818606E",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 556720
+   },
+   {
+    "file": "006700.bin",
+    "bytes": 309,
+    "name": "common_item_data_auto_oversea_data_na.py",
+    "fid": "448905FEA2ADF27F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006703.bin",
+    "bytes": 961,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "448EF6FE70F64F51",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006728.bin",
+    "bytes": 323,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "44C0BDEDC9711A03",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006762.bin",
+    "bytes": 826,
+    "name": "battle_level_buff_data_auto_oversea_data_kj1.py",
+    "fid": "450AE671BE172892",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006803.bin",
+    "bytes": 320,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "4566703777CF1BF1",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006876.bin",
+    "bytes": 312,
+    "name": "weapon_skin_data_auto_oversea_data_kjhmt.py",
+    "fid": "4631A2A6E625034B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "006888.bin",
+    "bytes": 57753,
+    "name": "simple_fashion_data_auto_oversea_data_kj1_chs.py",
+    "fid": "46553D4385F44DB1",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 8544
+   },
+   {
+    "file": "006942.bin",
+    "bytes": 566,
+    "name": "fashion_data_for_us_auto_oversea_data_kjxq_chs.py",
+    "fid": "46DC018F96395C80",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007018.bin",
+    "bytes": 637,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "47C70FB4CE5F8401",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007039.bin",
+    "bytes": 24753,
+    "name": "fashion_data_for_export_auto_oversea_data_ykxq.py",
+    "fid": "47EBF05842D5942F",
+    "cls": "ykxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007074.bin",
+    "bytes": 320613,
+    "name": "player_appear_data.py",
+    "fid": "484AB42BD31AE503",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 173920
+   },
+   {
+    "file": "007092.bin",
+    "bytes": 290,
+    "name": "village_competition_gift_data_auto_oversea_data_yk_chs.py",
+    "fid": "48741D3DE8474C74",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007173.bin",
+    "bytes": 634,
+    "name": "player_module_appear_data_for_export_auto_oversea_data_xq.py",
+    "fid": "494A8D6D06C30626",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007282.bin",
+    "bytes": 59664,
+    "name": "fashion_data_for_export_auto_oversea_data_kj1.py",
+    "fid": "4A5E0DE655DC0FB2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007521.bin",
+    "bytes": 19886,
+    "name": "fashion_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "4CDF6B1D8A2E128C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 4816
+   },
+   {
+    "file": "007525.bin",
+    "bytes": 317,
+    "name": "battle_level_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "4CF0056AA0180241",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "007596.bin",
+    "bytes": 2197,
+    "name": "super_fashion_gift_data_auto_oversea_data_yk.py",
+    "fid": "4DC6896AE4243E2A",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 1312
+   },
+   {
+    "file": "007597.bin",
+    "bytes": 517954,
+    "name": "buff_data_kj1.py",
+    "fid": "4DCBDB28BD3678C2",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 168736
+   },
+   {
+    "file": "007604.bin",
+    "bytes": 868,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kj1.py",
+    "fid": "4DD679477DDD5B6F",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 640
+   },
+   {
+    "file": "007710.bin",
+    "bytes": 9583,
+    "name": "fashion_data_for_us_auto_oversea_data_yk.py",
+    "fid": "4ED0A2CAB411DCA4",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 5968
+   },
+   {
+    "file": "007739.bin",
+    "bytes": 1078,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kj1_chs.py",
+    "fid": "4F0677F30ADF2D0D",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 640
+   },
+   {
+    "file": "007880.bin",
+    "bytes": 5700,
+    "name": "buff_data_auto_oversea_data_yk_chs.py",
+    "fid": "507DC5FD54B8FF1B",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 2432
+   },
+   {
+    "file": "008017.bin",
+    "bytes": 469,
+    "name": "buff_data_auto_oversea_data_xq_chs.py",
+    "fid": "51BEC4BE89DE3A1C",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008047.bin",
+    "bytes": 9585,
+    "name": "fashion_data_for_us_auto_oversea_data_ykxq.py",
+    "fid": "520C00B229D1FD86",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 5968
+   },
+   {
+    "file": "008163.bin",
+    "bytes": 310,
+    "name": "weapon_skin_data_auto_oversea_data_hmt.py",
+    "fid": "5324B267EAAC646A",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008187.bin",
+    "bytes": 18886,
+    "name": "player_appear_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "5368DDB16D2494F6",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3696
+   },
+   {
+    "file": "008201.bin",
+    "bytes": 313,
+    "name": "limit_time_gift_data_auto_oversea_data_kr.py",
+    "fid": "538CE704C7646A4C",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008243.bin",
+    "bytes": 26270,
+    "name": "player_module_appear_data_for_export.py",
+    "fid": "53F2760F013BBB0B",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008292.bin",
+    "bytes": 49889,
+    "name": "common_item_data_auto_oversea_data_yk_chs.py",
+    "fid": "546600FFDE8513C4",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 13504
+   },
+   {
+    "file": "008301.bin",
+    "bytes": 964,
+    "name": "climb_tower_buff_data_auto_oversea_data_yk_chs.py",
+    "fid": "547E708547873905",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 416
+   },
+   {
+    "file": "008518.bin",
+    "bytes": 322,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "569A2DB3973019B6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008796.bin",
+    "bytes": 103635,
+    "name": "simple_optional_gift_data.py",
+    "fid": "593A8A9637B3CED1",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 60864
+   },
+   {
+    "file": "008809.bin",
+    "bytes": 58002,
+    "name": "fashion_data_for_export_auto_oversea_data_kjxq_chs.py",
+    "fid": "595A05D7920FC1CC",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008812.bin",
+    "bytes": 303,
+    "name": "gift_data_auto_oversea_data_hmt.py",
+    "fid": "5960E3F03F1FEE01",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "008897.bin",
+    "bytes": 49473,
+    "name": "gift_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "5A576019376E1A10",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009034.bin",
+    "bytes": 19884,
+    "name": "fashion_data_auto_oversea_data_yk_chs.py",
+    "fid": "5BDE1813F28E9187",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 4800
+   },
+   {
+    "file": "009055.bin",
+    "bytes": 312,
+    "name": "simple_fashion_data_auto_oversea_data_eu.py",
+    "fid": "5C0862BE50073A1C",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009094.bin",
+    "bytes": 320,
+    "name": "simple_optional_gift_data_auto_oversea_data_kjjp.py",
+    "fid": "5C53965F087FF190",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009140.bin",
+    "bytes": 311,
+    "name": "weapon_skin_data_auto_oversea_data_kjna.py",
+    "fid": "5CC649D18E992D9A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009147.bin",
+    "bytes": 60701,
+    "name": "fashion_data_for_export_auto_oversea_data_kjxq.py",
+    "fid": "5CD2E313DF9F5BFC",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009157.bin",
+    "bytes": 329,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_jp.py",
+    "fid": "5CEC79D2EC74EB00",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009169.bin",
+    "bytes": 55956,
+    "name": "player_module_appear_data_for_export_chs.py",
+    "fid": "5D094B94133851D2",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009184.bin",
+    "bytes": 320,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "5D260E33BAA7A473",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009194.bin",
+    "bytes": 311,
+    "name": "rookie_gift_data_auto_oversea_data_kjna.py",
+    "fid": "5D41E9EE73EA7594",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009257.bin",
+    "bytes": 923,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_yk_chs.py",
+    "fid": "5DC2967733D6B691",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 640
+   },
+   {
+    "file": "009393.bin",
+    "bytes": 319,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjna.py",
+    "fid": "5F0F2459B8D6CB96",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009508.bin",
+    "bytes": 316,
+    "name": "fashion_data_for_export_auto_oversea_data_na.py",
+    "fid": "6033C6AB6006432A",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009657.bin",
+    "bytes": 653743,
+    "name": "fashion_data_base_chs.py",
+    "fid": "61C2C0BB2A11E9D9",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009691.bin",
+    "bytes": 623,
+    "name": "player_module_appear_data_auto_oversea_data_xq.py",
+    "fid": "6212DAFB2D1D9D8A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009766.bin",
+    "bytes": 12738,
+    "name": "gift_data_auto_oversea_data_kjxq.py",
+    "fid": "62EF1F240AC0DC98",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009775.bin",
+    "bytes": 1272,
+    "name": "super_fashion_gift_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "63027557B9F034F1",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 752
+   },
+   {
+    "file": "009848.bin",
+    "bytes": 1936,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kj1.py",
+    "fid": "639E4D39C79D92D7",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1632
+   },
+   {
+    "file": "009918.bin",
+    "bytes": 329,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_eu.py",
+    "fid": "6450F8BAFC267FC8",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "009967.bin",
+    "bytes": 13119,
+    "name": "buff_data_auto_oversea_data_kj1_kj1.py",
+    "fid": "64F4E2D56794DA3C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 5200
+   },
+   {
+    "file": "010025.bin",
+    "bytes": 304,
+    "name": "gift_data_auto_oversea_data_kjna.py",
+    "fid": "6584A7FD9ABFD25F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010089.bin",
+    "bytes": 558,
+    "name": "weapon_skin_data_auto_oversea_data_xq.py",
+    "fid": "66147817A67DA007",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010160.bin",
+    "bytes": 1406,
+    "name": "fashion_data_for_us_auto_oversea_data_kj1.py",
+    "fid": "66B5099C5FAE0029",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 1040
+   },
+   {
+    "file": "010385.bin",
+    "bytes": 2389,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "68D23EDBD5EFEFCB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010397.bin",
+    "bytes": 1079,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "68E9D4316A5E7EC8",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010410.bin",
+    "bytes": 332,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjhmt.py",
+    "fid": "690C1A29C79708F3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010458.bin",
+    "bytes": 575571,
+    "name": "simple_fashion_data_chs.py",
+    "fid": "697F130134D4517F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 117296
+   },
+   {
+    "file": "010525.bin",
+    "bytes": 314,
+    "name": "player_appear_data_auto_oversea_data_kjhmt.py",
+    "fid": "6A2394DADFB06AF4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010587.bin",
+    "bytes": 321,
+    "name": "simple_optional_gift_data_auto_oversea_data_kjsea.py",
+    "fid": "6AAD6E41A17A939E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010629.bin",
+    "bytes": 309,
+    "name": "weapon_skin_data_auto_oversea_data_au.py",
+    "fid": "6B00BAA0C33765AC",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010717.bin",
+    "bytes": 312,
+    "name": "fashion_data_for_us_auto_oversea_data_kr.py",
+    "fid": "6BB2EA9845E30D89",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "010816.bin",
+    "bytes": 76455,
+    "name": "player_module_appear_data_chs.py",
+    "fid": "6CD197C9670A961C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 18016
+   },
+   {
+    "file": "010997.bin",
+    "bytes": 302,
+    "name": "gift_data_auto_oversea_data_jp.py",
+    "fid": "6E7E05CA975120BC",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011205.bin",
+    "bytes": 673,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_ykxq.py",
+    "fid": "705B990A13AFCB47",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 528
+   },
+   {
+    "file": "011224.bin",
+    "bytes": 305,
+    "name": "buff_data_auto_oversea_data_kjsea.py",
+    "fid": "70A52A5BE79AB6A8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011251.bin",
+    "bytes": 330,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_xyd.py",
+    "fid": "70EA17F088ED0964",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 288
+   },
+   {
+    "file": "011283.bin",
+    "bytes": 312,
+    "name": "player_appear_data_auto_oversea_data_sea.py",
+    "fid": "713620ECCADFEA0F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011331.bin",
+    "bytes": 318,
+    "name": "battle_level_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "71C287E824675A00",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011476.bin",
+    "bytes": 57754,
+    "name": "simple_fashion_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "73130F162ACF6A27",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011492.bin",
+    "bytes": 318,
+    "name": "simple_optional_gift_data_auto_oversea_data_kr.py",
+    "fid": "7341E6A6DB171361",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "011501.bin",
+    "bytes": 1316,
+    "name": "simple_optional_gift_data_auto_oversea_data_ykxq.py",
+    "fid": "7363FB0F6D7A49E7",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 944
+   },
+   {
+    "file": "011817.bin",
+    "bytes": 11983,
+    "name": "weapon_skin_data.py",
+    "fid": "765AB12F1D6EB0EA",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 7120
+   },
+   {
+    "file": "011945.bin",
+    "bytes": 318,
+    "name": "fashion_data_for_export_auto_oversea_data_kjjp.py",
+    "fid": "7787EB5BFA40359A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012124.bin",
+    "bytes": 42887,
+    "name": "player_appear_data_auto_oversea_data_kj1_chs.py",
+    "fid": "794213C7C098103C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 4848
+   },
+   {
+    "file": "012142.bin",
+    "bytes": 316,
+    "name": "fashion_data_for_export_auto_oversea_data_jp.py",
+    "fid": "795FCB00A4558051",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012146.bin",
+    "bytes": 13122,
+    "name": "buff_data_auto_oversea_data_kj1_chs.py",
+    "fid": "7975244CF200C156",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 5200
+   },
+   {
+    "file": "012174.bin",
+    "bytes": 311,
+    "name": "player_appear_data_auto_oversea_data_au.py",
+    "fid": "79C8A9C44B153298",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012399.bin",
+    "bytes": 104970,
+    "name": "buff_data_auto_oversea_data_kjxq.py",
+    "fid": "7C3BED95F4174E84",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012423.bin",
+    "bytes": 313,
+    "name": "fashion_data_for_us_auto_oversea_data_sea.py",
+    "fid": "7C817E893E9F8033",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012449.bin",
+    "bytes": 313,
+    "name": "fashion_data_for_us_auto_oversea_data_hmt.py",
+    "fid": "7CD6BAD18404CFC4",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012482.bin",
+    "bytes": 317,
+    "name": "fashion_data_for_export_auto_oversea_data_sea.py",
+    "fid": "7D2D99A92431979F",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012495.bin",
+    "bytes": 306,
+    "name": "fashion_data_auto_oversea_data_xyd.py",
+    "fid": "7D5F6BEC22EAD7E7",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 256
+   },
+   {
+    "file": "012713.bin",
+    "bytes": 322,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjna.py",
+    "fid": "7F74C6F5BA2BC636",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012856.bin",
+    "bytes": 314,
+    "name": "fashion_data_for_us_auto_oversea_data_kjjp.py",
+    "fid": "80AF34B195DEFDEB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012900.bin",
+    "bytes": 312,
+    "name": "player_appear_data_auto_oversea_data_hmt.py",
+    "fid": "810395E1514C0599",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "012977.bin",
+    "bytes": 24742,
+    "name": "fashion_data_auto_oversea_data_ykxq.py",
+    "fid": "81E80BA448631C91",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 8976
+   },
+   {
+    "file": "012983.bin",
+    "bytes": 882,
+    "name": "village_competition_gift_data_auto_oversea_data_ykxq.py",
+    "fid": "81FB8264D94E18F7",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 656
+   },
+   {
+    "file": "013068.bin",
+    "bytes": 831190,
+    "name": "fashion_data_base.py",
+    "fid": "82D87ADAD0045305",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013074.bin",
+    "bytes": 1140,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_yk.py",
+    "fid": "82E85BFD97E8FE41",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 880
+   },
+   {
+    "file": "013198.bin",
+    "bytes": 308,
+    "name": "fashion_data_auto_oversea_data_kjsea.py",
+    "fid": "8413A603A06629F0",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013277.bin",
+    "bytes": 9370,
+    "name": "player_appear_data_auto_oversea_data_ykxq.py",
+    "fid": "84DF7DBBBD3E6E55",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 4752
+   },
+   {
+    "file": "013382.bin",
+    "bytes": 41221,
+    "name": "simple_fashion_data_auto_oversea_data_kj1.py",
+    "fid": "85EDF6F74302579F",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 21648
+   },
+   {
+    "file": "013413.bin",
+    "bytes": 827,
+    "name": "battle_level_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "8642326D3C4BEC2D",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013476.bin",
+    "bytes": 314,
+    "name": "fashion_data_for_us_auto_oversea_data_kjna.py",
+    "fid": "86F0545C0EE286E2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013607.bin",
+    "bytes": 328,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "880CB96A9C1BC526",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013631.bin",
+    "bytes": 312,
+    "name": "common_item_data_auto_oversea_data_kjsea.py",
+    "fid": "883790610FDF8803",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013684.bin",
+    "bytes": 312,
+    "name": "fashion_data_for_us_auto_oversea_data_eu.py",
+    "fid": "88B1D6DADF6C3121",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013752.bin",
+    "bytes": 304,
+    "name": "buff_data_auto_oversea_data_kjna.py",
+    "fid": "896D49918846D6D1",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "013959.bin",
+    "bytes": 9368,
+    "name": "player_appear_data_auto_oversea_data_yk.py",
+    "fid": "8BA4D46C14D9F5E6",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 4752
+   },
+   {
+    "file": "014080.bin",
+    "bytes": 305,
+    "name": "fashion_data_auto_oversea_data_kr.py",
+    "fid": "8D11E358D58920E1",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014326.bin",
+    "bytes": 1146,
+    "name": "common_item_data_auto_oversea_data_xq.py",
+    "fid": "8F88E6AD49AA165C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014386.bin",
+    "bytes": 317,
+    "name": "fashion_data_for_export_auto_oversea_data_hmt.py",
+    "fid": "9012AB84CA02D391",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014474.bin",
+    "bytes": 672,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kj1.py",
+    "fid": "9108C5E136F517D2",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 528
+   },
+   {
+    "file": "014585.bin",
+    "bytes": 320,
+    "name": "simple_optional_gift_data_auto_oversea_data_kjna.py",
+    "fid": "920E98649D51BCD5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014638.bin",
+    "bytes": 316,
+    "name": "fashion_data_for_export_auto_oversea_data_eu.py",
+    "fid": "926E846056BF6964",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014674.bin",
+    "bytes": 4270,
+    "name": "simple_fashion_data_auto_oversea_data_ykxq.py",
+    "fid": "92CE769B23F666BC",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 2464
+   },
+   {
+    "file": "014708.bin",
+    "bytes": 1890,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjxq.py",
+    "fid": "93250F1B95EB70FF",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014719.bin",
+    "bytes": 305,
+    "name": "buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "9336B35A52DEF768",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014746.bin",
+    "bytes": 900168,
+    "name": "gift_data_chs.py",
+    "fid": "938D86FE498D1B1A",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 152560
+   },
+   {
+    "file": "014758.bin",
+    "bytes": 311,
+    "name": "player_appear_data_auto_oversea_data_eu.py",
+    "fid": "93B240E39474EA1B",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "014808.bin",
+    "bytes": 305,
+    "name": "gift_data_auto_oversea_data_kjsea.py",
+    "fid": "94415E8AF1E07C8E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015095.bin",
+    "bytes": 608655,
+    "name": "fashion_data_for_export_base_chs.py",
+    "fid": "973A23D9C07D5F9B",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015124.bin",
+    "bytes": 13461,
+    "name": "buff_data_auto_oversea_data_ykxq.py",
+    "fid": "978EE476854185C3",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 9136
+   },
+   {
+    "file": "015165.bin",
+    "bytes": 328,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kjna.py",
+    "fid": "97E479C7C30E2012",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015257.bin",
+    "bytes": 309,
+    "name": "common_item_data_auto_oversea_data_jp.py",
+    "fid": "98D99CB2DFC296CA",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015271.bin",
+    "bytes": 6737,
+    "name": "gift_data_auto_oversea_data_ykxq.py",
+    "fid": "98F38AEEF70F768B",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 3552
+   },
+   {
+    "file": "015273.bin",
+    "bytes": 330,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_hmt.py",
+    "fid": "98F63D18B2D813AB",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015323.bin",
+    "bytes": 316,
+    "name": "fashion_data_for_export_auto_oversea_data_kr.py",
+    "fid": "9972E82F64DB12C1",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015336.bin",
+    "bytes": 3500622,
+    "name": "common_item_data_base_kj1.py",
+    "fid": "998C359A0BC8C647",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 861072
+   },
+   {
+    "file": "015734.bin",
+    "bytes": 548,
+    "name": "weapon_skin_data_auto_oversea_data_kjxq.py",
+    "fid": "9D86196AD133F14C",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "015761.bin",
+    "bytes": 329,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "9DC9AB6D53EC0791",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "015767.bin",
+    "bytes": 253781,
+    "name": "common_item_data_auto_oversea_data_kj1_chs.py",
+    "fid": "9DCDCF6345A0D32E",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 58816
+   },
+   {
+    "file": "015982.bin",
+    "bytes": 306,
+    "name": "fashion_data_auto_oversea_data_sea.py",
+    "fid": "9FA9727899DB8917",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016065.bin",
+    "bytes": 303,
+    "name": "gift_data_auto_oversea_data_sea.py",
+    "fid": "A073B11DFC8C540E",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016164.bin",
+    "bytes": 329,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_na.py",
+    "fid": "A17AC50A3B0A2390",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016291.bin",
+    "bytes": 268,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "A2BCD17FE01A04FE",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 224
+   },
+   {
+    "file": "016374.bin",
+    "bytes": 302,
+    "name": "gift_data_auto_oversea_data_kr.py",
+    "fid": "A3A27ACD1427E315",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016415.bin",
+    "bytes": 311,
+    "name": "weapon_skin_data_auto_oversea_data_kjjp.py",
+    "fid": "A406C20A336B0372",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016497.bin",
+    "bytes": 316,
+    "name": "super_fashion_gift_data_auto_oversea_data_eu.py",
+    "fid": "A4BB6C13E3B1215F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016538.bin",
+    "bytes": 318,
+    "name": "fashion_data_for_export_auto_oversea_data_kjna.py",
+    "fid": "A53FBC0FAF89F095",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016605.bin",
+    "bytes": 305,
+    "name": "fashion_data_auto_oversea_data_eu.py",
+    "fid": "A60474A7A28E1983",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016681.bin",
+    "bytes": 253790,
+    "name": "common_item_data_auto_oversea_data_kj1_kj1.py",
+    "fid": "A68F75CB33D88649",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 58768
+   },
+   {
+    "file": "016710.bin",
+    "bytes": 57990,
+    "name": "fashion_data_auto_oversea_data_kj1_chs.py",
+    "fid": "A6C34231F81F1B60",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 8736
+   },
+   {
+    "file": "016725.bin",
+    "bytes": 330,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_sea.py",
+    "fid": "A6EC0F98F051824E",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016813.bin",
+    "bytes": 1577,
+    "name": "simple_fashion_data_auto_oversea_data_xq.py",
+    "fid": "A7BD40C1728E04DB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "016900.bin",
+    "bytes": 1165,
+    "name": "climb_tower_buff_data_auto_oversea_data_ykxq.py",
+    "fid": "A88EF00D9F8DCF22",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 784
+   },
+   {
+    "file": "017001.bin",
+    "bytes": 317,
+    "name": "super_fashion_gift_data_auto_oversea_data_xyd.py",
+    "fid": "A9CA3A10F8B34090",
+    "cls": "oversea-var",
+    "dual": "shared",
+    "formal_bytes": 272
+   },
+   {
+    "file": "017113.bin",
+    "bytes": 309,
+    "name": "common_item_data_auto_oversea_data_eu.py",
+    "fid": "AAE6418D913174F5",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017255.bin",
+    "bytes": 586,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "AC7F15F9C867A6C2",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017526.bin",
+    "bytes": 323,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjjp.py",
+    "fid": "AF95374E3CDCDE70",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017544.bin",
+    "bytes": 307,
+    "name": "fashion_data_auto_oversea_data_kjjp.py",
+    "fid": "AFB4124BE9EF1616",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017553.bin",
+    "bytes": 311,
+    "name": "player_appear_data_auto_oversea_data_kr.py",
+    "fid": "AFD1E4B39627C4FD",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017688.bin",
+    "bytes": 310,
+    "name": "weapon_skin_data_auto_oversea_data_sea.py",
+    "fid": "B1104E7FB04B22B2",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "017826.bin",
+    "bytes": 1163,
+    "name": "climb_tower_buff_data_auto_oversea_data_yk.py",
+    "fid": "B28CE3E29575EACB",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 784
+   },
+   {
+    "file": "017869.bin",
+    "bytes": 3604,
+    "name": "simple_optional_gift_data_auto_oversea_data_kj1.py",
+    "fid": "B2EFA63488FF1551",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 2272
+   },
+   {
+    "file": "018005.bin",
+    "bytes": 1979020,
+    "name": "common_item_data_base.py",
+    "fid": "B42760CCA41DBC25",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 897696
+   },
+   {
+    "file": "018129.bin",
+    "bytes": 324,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjsea.py",
+    "fid": "B57785DC7659D547",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018308.bin",
+    "bytes": 449054,
+    "name": "simple_fashion_data.py",
+    "fid": "B7504872AB962052",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 245552
+   },
+   {
+    "file": "018530.bin",
+    "bytes": 18884,
+    "name": "player_appear_data_auto_oversea_data_yk_chs.py",
+    "fid": "B971AC7B34A0E57B",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3696
+   },
+   {
+    "file": "018536.bin",
+    "bytes": 268,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "B988D07B2E07DA2C",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018601.bin",
+    "bytes": 311,
+    "name": "common_item_data_auto_oversea_data_kjjp.py",
+    "fid": "BA362C019CBBD478",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018776.bin",
+    "bytes": 302,
+    "name": "gift_data_auto_oversea_data_eu.py",
+    "fid": "BC14494D3C3A280B",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018788.bin",
+    "bytes": 329,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "BC34D0B191370650",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018899.bin",
+    "bytes": 565,
+    "name": "fashion_data_for_us_auto_oversea_data_kj1_chs.py",
+    "fid": "BD3BBEA0463ABAAE",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 416
+   },
+   {
+    "file": "018964.bin",
+    "bytes": 58001,
+    "name": "fashion_data_for_export_auto_oversea_data_kj1_chs.py",
+    "fid": "BDE414302CFA3F50",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "018983.bin",
+    "bytes": 96872,
+    "name": "common_item_data_auto_oversea_data_kjxq.py",
+    "fid": "BE1A07BE0DFB752C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019040.bin",
+    "bytes": 1314,
+    "name": "simple_optional_gift_data_auto_oversea_data_yk.py",
+    "fid": "BEA4CB3EAC138D42",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 944
+   },
+   {
+    "file": "019119.bin",
+    "bytes": 3500550,
+    "name": "common_item_data_base_yk.py",
+    "fid": "BF4DFF0AFC2C00DD",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 861040
+   },
+   {
+    "file": "019264.bin",
+    "bytes": 936,
+    "name": "buff_data_auto_oversea_data_xq.py",
+    "fid": "C0AEFE5B9270384B",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 256
+   },
+   {
+    "file": "019296.bin",
+    "bytes": 42888,
+    "name": "player_appear_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "C104415B8F11B8C4",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019387.bin",
+    "bytes": 328,
+    "name": "theme_core_talent_fight_buff_data_auto_oversea_data_kjna.py",
+    "fid": "C1EBACDA97F62CD2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019456.bin",
+    "bytes": 13123,
+    "name": "buff_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "C28E77D0D38AD31B",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019639.bin",
+    "bytes": 1004,
+    "name": "weapon_skin_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "C459731EF788CCD3",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 512
+   },
+   {
+    "file": "019730.bin",
+    "bytes": 19895,
+    "name": "fashion_data_for_export_auto_oversea_data_yk_chs.py",
+    "fid": "C54E32D3075E757E",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "019768.bin",
+    "bytes": 270314,
+    "name": "gift_data.py",
+    "fid": "C5998AD60B305608",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 132112
+   },
+   {
+    "file": "019814.bin",
+    "bytes": 16374,
+    "name": "gift_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "C60E80BC01F7489F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 3664
+   },
+   {
+    "file": "019909.bin",
+    "bytes": 24751,
+    "name": "fashion_data_for_export_auto_oversea_data_yk.py",
+    "fid": "C6EBD06A22F97932",
+    "cls": "yk",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020042.bin",
+    "bytes": 321,
+    "name": "simple_optional_gift_data_auto_oversea_data_kjhmt.py",
+    "fid": "C81697379062079E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020092.bin",
+    "bytes": 1270,
+    "name": "super_fashion_gift_data_auto_oversea_data_yk_chs.py",
+    "fid": "C87CC3606BF95561",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 752
+   },
+   {
+    "file": "020204.bin",
+    "bytes": 305,
+    "name": "fashion_data_auto_oversea_data_au.py",
+    "fid": "C9B0859ED112E5D8",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020220.bin",
+    "bytes": 254201,
+    "name": "common_item_data_auto_oversea_data_kjxq_chs.py",
+    "fid": "C9C871E7C2ECC4BD",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020226.bin",
+    "bytes": 312,
+    "name": "common_item_data_auto_oversea_data_kjhmt.py",
+    "fid": "C9DF2A75E1CB5112",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020265.bin",
+    "bytes": 15901,
+    "name": "player_appear_data_auto_oversea_data_kjxq.py",
+    "fid": "CA43EC2CA53827D4",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020331.bin",
+    "bytes": 266,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_yk_chs.py",
+    "fid": "CAE1B4B71AC13807",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020402.bin",
+    "bytes": 636,
+    "name": "player_module_appear_data_for_export_auto_oversea_data_kjxq.py",
+    "fid": "CBB00FED72388465",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020437.bin",
+    "bytes": 332,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjsea.py",
+    "fid": "CC0442DEC914563E",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020497.bin",
+    "bytes": 302,
+    "name": "gift_data_auto_oversea_data_au.py",
+    "fid": "CC9B418B34E54BF7",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020499.bin",
+    "bytes": 323,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjna.py",
+    "fid": "CC9DA01D73441C0B",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020519.bin",
+    "bytes": 804297,
+    "name": "fashion_data_for_export.py",
+    "fid": "CCCA65A636AB9C10",
+    "cls": "main",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020740.bin",
+    "bytes": 309,
+    "name": "weapon_skin_data_auto_oversea_data_na.py",
+    "fid": "CF2755200EA71961",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020813.bin",
+    "bytes": 312,
+    "name": "weapon_skin_data_auto_oversea_data_kjsea.py",
+    "fid": "CFE63E3B2844480C",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020834.bin",
+    "bytes": 653969,
+    "name": "fashion_data_chs.py",
+    "fid": "D016140651FEAB34",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 140192
+   },
+   {
+    "file": "020846.bin",
+    "bytes": 304,
+    "name": "gift_data_auto_oversea_data_kjjp.py",
+    "fid": "D02F55DB1555E9C0",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "020989.bin",
+    "bytes": 11886,
+    "name": "new_player_appear_data_auto.py",
+    "fid": "D1B1A880897D108B",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 7856
+   },
+   {
+    "file": "021056.bin",
+    "bytes": 329,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kr.py",
+    "fid": "D2540B0C08012852",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021095.bin",
+    "bytes": 309,
+    "name": "common_item_data_auto_oversea_data_kr.py",
+    "fid": "D2AB27DF59F1FDFC",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021128.bin",
+    "bytes": 324,
+    "name": "new_back_flow_2021_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "D2FF196E88716757",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021177.bin",
+    "bytes": 10424,
+    "name": "weapon_skin_data_chs.py",
+    "fid": "D35E3103168889D2",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 2224
+   },
+   {
+    "file": "021507.bin",
+    "bytes": 312,
+    "name": "rookie_gift_data_auto_oversea_data_kjsea.py",
+    "fid": "D68FD4D2608B0628",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021579.bin",
+    "bytes": 5418,
+    "name": "simple_fashion_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "D73FF751E66ECDB5",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 1264
+   },
+   {
+    "file": "021671.bin",
+    "bytes": 323,
+    "name": "core_talent_fight_buff_data_auto_oversea_data_kjhmt.py",
+    "fid": "D8598A7C1465209A",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021680.bin",
+    "bytes": 305,
+    "name": "fashion_data_auto_oversea_data_jp.py",
+    "fid": "D875E5DE5246B72F",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021786.bin",
+    "bytes": 313,
+    "name": "player_appear_data_auto_oversea_data_kjna.py",
+    "fid": "D9746CA749FCD159",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021843.bin",
+    "bytes": 317,
+    "name": "battle_level_buff_data_auto_oversea_data_kjna.py",
+    "fid": "DA18A0ACE1267CDA",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021874.bin",
+    "bytes": 311,
+    "name": "rookie_gift_data_auto_oversea_data_kjjp.py",
+    "fid": "DA62EEB79074BCB6",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021908.bin",
+    "bytes": 636,
+    "name": "rookie_gift_data_auto_oversea_data_kjxq.py",
+    "fid": "DAB2F726ED7AD1B2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021992.bin",
+    "bytes": 319,
+    "name": "fashion_data_for_export_auto_oversea_data_kjsea.py",
+    "fid": "DB94584311A05957",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "021997.bin",
+    "bytes": 6292,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_ykxq.py",
+    "fid": "DB9AF45ECA077425",
+    "cls": "ykxq",
+    "dual": "shared",
+    "formal_bytes": 2864
+   },
+   {
+    "file": "022176.bin",
+    "bytes": 880,
+    "name": "village_competition_gift_data_auto_oversea_data_yk.py",
+    "fid": "DD5899C2442E0EF7",
+    "cls": "yk",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022282.bin",
+    "bytes": 1407,
+    "name": "fashion_data_for_us_auto_oversea_data_kjxq.py",
+    "fid": "DE6468CC9E568C5F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022489.bin",
+    "bytes": 50310,
+    "name": "common_item_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "E0A40A993C4F3B1F",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 13664
+   },
+   {
+    "file": "022607.bin",
+    "bytes": 636,
+    "name": "player_module_appear_data_for_export_auto_oversea_data_ykxq.py",
+    "fid": "E1B570546E885154",
+    "cls": "ykxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "022754.bin",
+    "bytes": 1002,
+    "name": "weapon_skin_data_auto_oversea_data_yk_chs.py",
+    "fid": "E313703B49C7875D",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 512
+   },
+   {
+    "file": "023128.bin",
+    "bytes": 312,
+    "name": "fashion_data_for_us_auto_oversea_data_na.py",
+    "fid": "E6F7EE7E07691FC2",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023316.bin",
+    "bytes": 547,
+    "name": "weapon_skin_data_auto_oversea_data_kj1.py",
+    "fid": "E8E53F094F1DD0DE",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 464
+   },
+   {
+    "file": "023493.bin",
+    "bytes": 869,
+    "name": "back_flow_2021_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "EA8B6A0AF2E656C2",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023502.bin",
+    "bytes": 6735,
+    "name": "gift_data_auto_oversea_data_yk.py",
+    "fid": "EAA478C8DF60BD04",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 3552
+   },
+   {
+    "file": "023506.bin",
+    "bytes": 625,
+    "name": "player_module_appear_data_auto_oversea_data_ykxq.py",
+    "fid": "EAB79FE50FC73945",
+    "cls": "ykxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023532.bin",
+    "bytes": 59653,
+    "name": "fashion_data_auto_oversea_data_kj1.py",
+    "fid": "EB081AA14F86FE76",
+    "cls": "kj1/kjxq",
+    "dual": "shared",
+    "formal_bytes": 24544
+   },
+   {
+    "file": "023849.bin",
+    "bytes": 19897,
+    "name": "fashion_data_for_export_auto_oversea_data_ykxq_chs.py",
+    "fid": "EE5A45F696BCE887",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "023928.bin",
+    "bytes": 3500753,
+    "name": "common_item_data_base_chs.py",
+    "fid": "EF3A8474A5E5F7A4",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 861264
+   },
+   {
+    "file": "024092.bin",
+    "bytes": 626,
+    "name": "player_appear_data_auto_oversea_data_xq.py",
+    "fid": "F10C100C890FA838",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024188.bin",
+    "bytes": 309,
+    "name": "rookie_gift_data_auto_oversea_data_eu.py",
+    "fid": "F214A7D9E9A7CD0D",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024218.bin",
+    "bytes": 302,
+    "name": "gift_data_auto_oversea_data_na.py",
+    "fid": "F2607E9590D83DB3",
+    "cls": "oversea-var",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024268.bin",
+    "bytes": 6663,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_yk.py",
+    "fid": "F30A7DEDAA59DAC8",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 3040
+   },
+   {
+    "file": "024307.bin",
+    "bytes": 673,
+    "name": "merge_core_talent_fight_buff_data_auto_oversea_data_kjxq.py",
+    "fid": "F36552236E6DAF4F",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024324.bin",
+    "bytes": 315,
+    "name": "fashion_data_for_us_auto_oversea_data_kjsea.py",
+    "fid": "F3889B869897A7EA",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024396.bin",
+    "bytes": 309,
+    "name": "common_item_data_auto_oversea_data_au.py",
+    "fid": "F462CAEEA6AD38A3",
+    "cls": "oversea-shell",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024557.bin",
+    "bytes": 313,
+    "name": "player_appear_data_auto_oversea_data_kjjp.py",
+    "fid": "F5F4FE1C9C1EED04",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024632.bin",
+    "bytes": 18998,
+    "name": "common_item_data_auto_oversea_data_yk.py",
+    "fid": "F6A9C28EF1130E5E",
+    "cls": "yk",
+    "dual": "shared",
+    "formal_bytes": 10496
+   },
+   {
+    "file": "024656.bin",
+    "bytes": 314,
+    "name": "simple_fashion_data_auto_oversea_data_kjna.py",
+    "fid": "F6EA7C83893F64C3",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024799.bin",
+    "bytes": 307,
+    "name": "fashion_data_auto_oversea_data_kjna.py",
+    "fid": "F8817262443D4E29",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "024959.bin",
+    "bytes": 305,
+    "name": "gift_data_auto_oversea_data_kjhmt.py",
+    "fid": "FA36E6694542EF22",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025002.bin",
+    "bytes": 925,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "FAB9FADE9C396A5C",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 640
+   },
+   {
+    "file": "025025.bin",
+    "bytes": 966,
+    "name": "climb_tower_buff_data_auto_oversea_data_ykxq_chs.py",
+    "fid": "FAECD434066EA662",
+    "cls": "chs",
+    "dual": "shared",
+    "formal_bytes": 416
+   },
+   {
+    "file": "025063.bin",
+    "bytes": 608768,
+    "name": "fashion_data_for_export_chs.py",
+    "fid": "FB5102C09DCE4757",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025064.bin",
+    "bytes": 315,
+    "name": "fashion_data_for_us_auto_oversea_data_kjhmt.py",
+    "fid": "FB53E7D7E18D50B9",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025260.bin",
+    "bytes": 13120,
+    "name": "buff_data_auto_oversea_data_kjxq_kj1.py",
+    "fid": "FD8D7F91838517E5",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025266.bin",
+    "bytes": 331,
+    "name": "store_daily_recommended_fashion_data_auto_oversea_data_kjna.py",
+    "fid": "FDAA4BCB2876FBBB",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025311.bin",
+    "bytes": 779,
+    "name": "common_item_data_auto_oversea_data_xq_chs.py",
+    "fid": "FE269FD2E30E5A59",
+    "cls": "chs",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025341.bin",
+    "bytes": 312,
+    "name": "rookie_gift_data_auto_oversea_data_kjhmt.py",
+    "fid": "FE93D3D2C95DECA8",
+    "cls": "kj1/kjxq",
+    "dual": "ba8-only",
+    "formal_bytes": null
+   },
+   {
+    "file": "025378.bin",
+    "bytes": 517953,
+    "name": "buff_data_yk.py",
+    "fid": "FEE0143910131231",
+    "cls": "main",
+    "dual": "shared",
+    "formal_bytes": 168736
+   }
+  ]
+ }
+}

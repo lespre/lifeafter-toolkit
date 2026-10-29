@@ -6,7 +6,7 @@ window.WIKI_BOARD_vehicle_full = {
   "package_sha": "eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df",
   "generated": "2026-10-29",
   "evidence": "structure",
-  "notes": "全量 205 行载具，严格解码 vehicle_ui_data 全部行，无宽容补行（旧版 72 条伪 id 行已剔除）。图标链路：id → ui/item_icon/icon_<id>_b|_s → 路径算 fid → gpk 内条目。 ｜ 同名（含时限变体）合并为一张卡，编号见详情 ｜ 类型口径=vehicle_equip_type（1摩托 2四轮 3飞行 4自行车 5/6马匹） ｜ 类型=vehicle_brand_data.type_name（6 类），子类=brands 池 ｜ 类型=vehicle_brand_data.type_name（6 类），子类=brands 池 ｜ 2026-10-29 深挖回填：魅力值=all_equips.charm_value（分服分别登记，主口径经典服）；加速度=vehicle_proto_data.acc（=(驱动力−摩擦阻力)/质量）；最大速度=vehicle_proto_data.top_speed（物理极速）与 all_equips.navi_speed（巡航/导航速度，上限 250）双轨展示；氮气/公路加成、水中速度比、等级生命曲线一并入库。 ｜ 2026-10-29 深挖回填：魅力值=all_equips.charm_value（分服分别登记，主口径经典服）；加速度=vehicle_proto_data.acc（=(驱动力−摩擦阻力)/质量）；最大速度=vehicle_proto_data.top_speed（物理极速）与 all_equips.navi_speed（巡航/导航速度，上限 250）双轨展示；氮气/公路加成、水中速度比、等级生命曲线一并入库。",
+  "notes": "全量 205 行载具，严格解码 vehicle_ui_data 全部行，无宽容补行（旧版 72 条伪 id 行已剔除）。图标链路：id → ui/item_icon/icon_<id>_b|_s → 路径算 fid → gpk 内条目。 ｜ 同名（含时限变体）合并为一张卡，编号见详情 ｜ 类型口径=vehicle_equip_type（1摩托 2四轮 3飞行 4自行车 5/6马匹） ｜ 类型=vehicle_brand_data.type_name（6 类），子类=brands 池 ｜ 2026-10-29 深挖回填：魅力值=all_equips.charm_value（分服分别登记，主口径经典服）；加速度=vehicle_proto_data.acc（=(驱动力−摩擦阻力)/质量）；最大速度=vehicle_proto_data.top_speed（物理极速）与 all_equips.navi_speed（巡航/导航速度，上限 250）双轨展示；氮气/公路加成、水中速度比、等级生命曲线一并入库。",
   "icon_verified_by_gpk_loc0": true,
   "icon_stats": {
    "items_total": 205,
@@ -254,8 +254,8 @@ window.WIKI_BOARD_vehicle_full = {
    "borrowed": 20,
    "still_missing": 10
   },
-  "source_label": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（vehicle_ui_data.py、vehicle_brand_type_conf.py、vehicle_brand_data.py） · 资源 41_还原树/pe/资源",
-  "source_label_prev": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
+  "source_label": "PE 还原树 pe_conf · vehicle_ui_data · 经典服 + 简单生存服",
+  "source_label_prev": "测试服 · PE 还原树",
   "filters": [
    {
     "key": "vehicle_class",
@@ -363,8 +363,8 @@ window.WIKI_BOARD_vehicle_full = {
   },
   "lore_meta": {
    "generated": "2026-10-30",
-   "extractor": "03_执行/vehicle_lore_extract.py",
-   "backfiller": "02_wiki/web/tools/build_vehicle_lore.py",
+   "extractor": "00_规范与工具/工具/工具库/01_解码定位复原/表解码/载具板/vehicle_lore_extract.py",
+   "backfiller": "00_规范与工具/工具/工具库/01_解码定位复原/表解码/载具板/build_vehicle_lore.py",
    "frozen_input": "E:/la拆包项目/01_索引与产物/30_分析/载具深挖_20261030/vehicle_lore.json",
    "sources": {
     "desc": "vehicle_ui_data.desc（277/277 行全有）",
@@ -414,16 +414,15 @@ window.WIKI_BOARD_vehicle_full = {
     "cards_with_health": 164,
     "cards_with_modding_levels": 27,
     "cards_with_ui_display": 174,
-    "perk_total": 70,
+    "perk_total": 55,
     "perk_kinds": {
-     "载具变形描述": 13,
-     "氮气加速": 7,
-     "便捷召唤": 5,
      "载具可变形为工具台": 4,
+     "载具变形描述": 4,
+     "氮气加速": 4,
+     "便捷召唤": 3,
      "古典绅士-粉黛": 2,
      "古典绅士-热潮": 2,
      "春日颂樱": 2,
-     "推进先锋": 2,
      "烟雾加速": 2,
      "天降甘霖": 2,
      "加强氮气": 1,
@@ -433,6 +432,7 @@ window.WIKI_BOARD_vehicle_full = {
      "月舞风华-夜星": 1,
      "鎏金煌影": 1,
      "推进先锋[幻形]": 1,
+     "推进先锋": 1,
      "赤霄烈焰涂装": 1,
      "飞齿金麟涂装": 1,
      "镭射流星涂装": 1,
@@ -540,7 +540,7 @@ window.WIKI_BOARD_vehicle_full = {
     193000
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -745,7 +745,7 @@ window.WIKI_BOARD_vehicle_full = {
     193003
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 550,
@@ -2118,7 +2118,7 @@ window.WIKI_BOARD_vehicle_full = {
     193004
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 550,
@@ -3436,12 +3436,8 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "专属图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
-     {
-      "png": "assets/img_cache/vehicle_full/veh_193005.png",
-      "label": "图标"
-     },
      {
       "png": "assets/vehicle_icons/icon_193005_b.png",
       "base": "ui/item_icon/icon_193005",
@@ -3450,7 +3446,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "slimmed_same_kind": true
+    "slimmed_same_kind": true,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -3495,7 +3492,7 @@ window.WIKI_BOARD_vehicle_full = {
     193005
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 1500,
@@ -4861,11 +4858,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "旷野骑士",
    "vehicle_ids": [
-    193007,
-    193046
+    193007
    ],
    "variant_rows": [
     {
@@ -4875,9 +4871,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往商城获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "旷野骑士",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 550,
@@ -6250,7 +6246,7 @@ window.WIKI_BOARD_vehicle_full = {
     193008
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 550,
@@ -7623,7 +7619,7 @@ window.WIKI_BOARD_vehicle_full = {
     193009
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 550,
@@ -8996,7 +8992,7 @@ window.WIKI_BOARD_vehicle_full = {
     193011
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -10369,7 +10365,7 @@ window.WIKI_BOARD_vehicle_full = {
     193012
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -10570,8 +10566,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "双栖幻影",
    "vehicle_ids": [
-    193013,
-    193060
+    193013
    ],
    "variant_rows": [
     {
@@ -10581,9 +10576,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往商城获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "双栖幻影",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "双栖幻影",
    "charm_value": 1500,
@@ -11963,7 +11958,7 @@ window.WIKI_BOARD_vehicle_full = {
     193015
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "双栖幻影",
    "charm_value": 1500,
@@ -13343,7 +13338,7 @@ window.WIKI_BOARD_vehicle_full = {
     193016
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "双栖幻影",
    "charm_value": 1500,
@@ -14722,7 +14717,7 @@ window.WIKI_BOARD_vehicle_full = {
     193017
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 1500,
@@ -16094,7 +16089,7 @@ window.WIKI_BOARD_vehicle_full = {
     193021
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -17459,7 +17454,7 @@ window.WIKI_BOARD_vehicle_full = {
     193022
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -18825,7 +18820,7 @@ window.WIKI_BOARD_vehicle_full = {
     193023
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": null,
@@ -20181,7 +20176,7 @@ window.WIKI_BOARD_vehicle_full = {
     193024
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": null,
@@ -21537,7 +21532,7 @@ window.WIKI_BOARD_vehicle_full = {
     193025
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 550,
@@ -22910,7 +22905,7 @@ window.WIKI_BOARD_vehicle_full = {
     193028
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 1500,
@@ -24283,7 +24278,7 @@ window.WIKI_BOARD_vehicle_full = {
     193030
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": 150,
@@ -25656,7 +25651,7 @@ window.WIKI_BOARD_vehicle_full = {
     193031
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天蝎座",
    "charm_value": 1500,
@@ -27038,7 +27033,7 @@ window.WIKI_BOARD_vehicle_full = {
     193032
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天蝎座",
    "charm_value": 1500,
@@ -28420,7 +28415,7 @@ window.WIKI_BOARD_vehicle_full = {
     193034
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天蝎座",
    "charm_value": 4500,
@@ -29802,7 +29797,7 @@ window.WIKI_BOARD_vehicle_full = {
     193042
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天蝎座",
    "charm_value": 1500,
@@ -31184,7 +31179,7 @@ window.WIKI_BOARD_vehicle_full = {
     193043
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -32552,7 +32547,7 @@ window.WIKI_BOARD_vehicle_full = {
     193044
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "双栖幻影",
    "params": {},
@@ -32661,7 +32656,7 @@ window.WIKI_BOARD_vehicle_full = {
     193047
    ],
    "variant_count": 1,
-   "vehicle_class_old": "船只",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": null,
@@ -34034,7 +34029,7 @@ window.WIKI_BOARD_vehicle_full = {
     193048
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "小叶鲸",
    "charm_value": 300,
@@ -35414,7 +35409,7 @@ window.WIKI_BOARD_vehicle_full = {
     193050
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "小叶鲸",
    "charm_value": 550,
@@ -36793,7 +36788,7 @@ window.WIKI_BOARD_vehicle_full = {
     193051
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "小叶鲸",
    "charm_value": 1200,
@@ -38120,32 +38115,15 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/vehicle_full/veh_193052.png",
-      "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/icon_193002_b.png",
-      "base": "ui/item_icon/icon_193002",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_193003_b.png",
       "base": "ui/item_icon/icon_193003",
       "suffix": "_b",
       "kind": "专属",
       "via": "同系列借用 都市游侠-怒火(193003)"
-     },
-     {
-      "png": "assets/vehicle_icons/icon_193013_b.png",
-      "base": "ui/item_icon/icon_193013",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
      }
     ],
-    "total": 4
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -38184,13 +38162,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "都市游侠",
    "vehicle_ids": [
-    193052,
-    194093,
-    194097,
-    194106
+    193052
    ],
    "variant_rows": [
     {
@@ -38212,9 +38187,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "副本载具"
     }
    ],
-   "variant_count": 4,
+   "variant_count": 1,
    "name_display_group": "都市游侠",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 550,
@@ -38228,8 +38203,7 @@ window.WIKI_BOARD_vehicle_full = {
     "server": "经典服",
     "servers_present": [
      "经典服",
-     "会员专享（月卡服）",
-     "简单生存服"
+     "会员专享（月卡服）"
     ],
     "proto_id": 102,
     "proto": {
@@ -39588,7 +39562,7 @@ window.WIKI_BOARD_vehicle_full = {
     193053
    ],
    "variant_count": 1,
-   "vehicle_class_old": "船只",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": null,
@@ -40960,7 +40934,7 @@ window.WIKI_BOARD_vehicle_full = {
     193054
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "小叶鲸",
    "charm_value": 1200,
@@ -42340,7 +42314,7 @@ window.WIKI_BOARD_vehicle_full = {
     193055
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银骑飞鹰",
    "charm_value": 1500,
@@ -43736,7 +43710,7 @@ window.WIKI_BOARD_vehicle_full = {
     193056
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银骑飞鹰",
    "charm_value": 1500,
@@ -45132,7 +45106,7 @@ window.WIKI_BOARD_vehicle_full = {
     193057
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银骑飞鹰",
    "charm_value": 1500,
@@ -46528,7 +46502,7 @@ window.WIKI_BOARD_vehicle_full = {
     193058
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银骑飞鹰",
    "charm_value": 4500,
@@ -47924,7 +47898,7 @@ window.WIKI_BOARD_vehicle_full = {
     193059
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "开拓者",
    "charm_value": null,
@@ -49290,11 +49264,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "猎户座",
    "vehicle_ids": [
-    194001,
-    194095
+    194001
    ],
    "variant_rows": [
     {
@@ -49304,9 +49277,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往商城获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "猎户座",
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎户座",
    "charm_value": 1200,
@@ -50679,7 +50652,7 @@ window.WIKI_BOARD_vehicle_full = {
     194002
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎户座",
    "charm_value": 1200,
@@ -52052,7 +52025,7 @@ window.WIKI_BOARD_vehicle_full = {
     194003
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎户座",
    "charm_value": 1200,
@@ -53424,7 +53397,7 @@ window.WIKI_BOARD_vehicle_full = {
     194004
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎户座",
    "charm_value": 3100,
@@ -54797,7 +54770,7 @@ window.WIKI_BOARD_vehicle_full = {
     194007
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 1200,
@@ -56170,7 +56143,7 @@ window.WIKI_BOARD_vehicle_full = {
     194008
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 1200,
@@ -57542,7 +57515,7 @@ window.WIKI_BOARD_vehicle_full = {
     194009
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 3100,
@@ -58914,7 +58887,7 @@ window.WIKI_BOARD_vehicle_full = {
     194012
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": 1500,
@@ -60303,7 +60276,7 @@ window.WIKI_BOARD_vehicle_full = {
     194014
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": 1500,
@@ -61692,7 +61665,7 @@ window.WIKI_BOARD_vehicle_full = {
     194015
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": 4500,
@@ -63081,7 +63054,7 @@ window.WIKI_BOARD_vehicle_full = {
     194016
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": null,
@@ -64463,11 +64436,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "仙灵花嫁-晨露",
    "vehicle_ids": [
-    194017,
-    194065
+    194017
    ],
    "variant_rows": [
     {
@@ -64477,9 +64449,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往仙灵花嫁活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "仙灵花嫁-晨露",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "仙灵花嫁",
    "charm_value": 1200,
@@ -65852,11 +65824,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "仙灵花嫁-朝雾",
    "vehicle_ids": [
-    194018,
-    194066
+    194018
    ],
    "variant_rows": [
     {
@@ -65866,9 +65837,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往仙灵花嫁活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "仙灵花嫁-朝雾",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "仙灵花嫁",
    "charm_value": 1200,
@@ -67241,11 +67212,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "仙灵花嫁-流云",
    "vehicle_ids": [
-    194019,
-    194067
+    194019
    ],
    "variant_rows": [
     {
@@ -67255,9 +67225,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往仙灵花嫁活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "仙灵花嫁-流云",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "仙灵花嫁",
    "charm_value": 1200,
@@ -68637,7 +68607,7 @@ window.WIKI_BOARD_vehicle_full = {
     194020
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 1200,
@@ -70011,7 +69981,7 @@ window.WIKI_BOARD_vehicle_full = {
     194021
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 3100,
@@ -71384,7 +71354,7 @@ window.WIKI_BOARD_vehicle_full = {
     194023
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "摩羯座",
    "charm_value": 1500,
@@ -72764,7 +72734,7 @@ window.WIKI_BOARD_vehicle_full = {
     194025
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "摩羯座",
    "charm_value": 4500,
@@ -74145,7 +74115,7 @@ window.WIKI_BOARD_vehicle_full = {
     194027
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 1200,
@@ -75518,7 +75488,7 @@ window.WIKI_BOARD_vehicle_full = {
     194029
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "英仙座",
    "charm_value": 1500,
@@ -76907,7 +76877,7 @@ window.WIKI_BOARD_vehicle_full = {
     194030
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "英仙座",
    "charm_value": 1500,
@@ -78296,7 +78266,7 @@ window.WIKI_BOARD_vehicle_full = {
     194031
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "英仙座",
    "charm_value": 1500,
@@ -79685,7 +79655,7 @@ window.WIKI_BOARD_vehicle_full = {
     194032
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "英仙座",
    "charm_value": 4500,
@@ -81073,7 +81043,7 @@ window.WIKI_BOARD_vehicle_full = {
     194035
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -82447,7 +82417,7 @@ window.WIKI_BOARD_vehicle_full = {
     194039
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天鹰座",
    "charm_value": 1500,
@@ -83836,7 +83806,7 @@ window.WIKI_BOARD_vehicle_full = {
     194040
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天鹰座",
    "charm_value": 4500,
@@ -85225,7 +85195,7 @@ window.WIKI_BOARD_vehicle_full = {
     194042
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 1500,
@@ -86621,7 +86591,7 @@ window.WIKI_BOARD_vehicle_full = {
     194043
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 1500,
@@ -88017,7 +87987,7 @@ window.WIKI_BOARD_vehicle_full = {
     194044
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 1500,
@@ -89409,8 +89379,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "玫瑰假日-红月",
    "vehicle_ids": [
-    194046,
-    194172
+    194046
    ],
    "variant_rows": [
     {
@@ -89420,9 +89389,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过冬日甜梦季活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "玫瑰假日-红月",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "玫瑰假日",
    "charm_value": 1200,
@@ -89436,8 +89405,7 @@ window.WIKI_BOARD_vehicle_full = {
     "server": "经典服",
     "servers_present": [
      "经典服",
-     "会员专享（月卡服）",
-     "简单生存服"
+     "会员专享（月卡服）"
     ],
     "proto_id": 119,
     "proto": {
@@ -90755,16 +90723,10 @@ window.WIKI_BOARD_vehicle_full = {
       "suffix": "_b",
       "kind": "专属",
       "via": "路径→fid 直达"
-     },
-     {
-      "png": "assets/vehicle_icons/icon_194046_b.png",
-      "base": "ui/item_icon/icon_194046",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "同系列借用 玫瑰假日-红月(194046)"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -90806,8 +90768,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "玫瑰假日-黛云",
    "vehicle_ids": [
-    194047,
-    194173
+    194047
    ],
    "variant_rows": [
     {
@@ -90817,9 +90778,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过冬日甜梦季活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "玫瑰假日-黛云",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "玫瑰假日",
    "charm_value": 1200,
@@ -90833,8 +90794,7 @@ window.WIKI_BOARD_vehicle_full = {
     "server": "经典服",
     "servers_present": [
      "经典服",
-     "会员专享（月卡服）",
-     "简单生存服"
+     "会员专享（月卡服）"
     ],
     "proto_id": 119,
     "proto": {
@@ -92200,7 +92160,7 @@ window.WIKI_BOARD_vehicle_full = {
     194050
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 1500,
@@ -93596,7 +93556,7 @@ window.WIKI_BOARD_vehicle_full = {
     194051
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 1500,
@@ -94992,7 +94952,7 @@ window.WIKI_BOARD_vehicle_full = {
     194052
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 1500,
@@ -96388,7 +96348,7 @@ window.WIKI_BOARD_vehicle_full = {
     194053
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 4500,
@@ -97729,12 +97689,8 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "专属图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
-     {
-      "png": "assets/img_cache/vehicle_full/veh_194058.png",
-      "label": "图标"
-     },
      {
       "png": "assets/vehicle_icons/icon_193002_b.png",
       "base": "ui/item_icon/icon_193002",
@@ -97743,7 +97699,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "slimmed_same_kind": true
+    "slimmed_same_kind": true,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -97788,7 +97745,7 @@ window.WIKI_BOARD_vehicle_full = {
     194058
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": null,
@@ -99107,19 +99064,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194059.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -99166,7 +99118,7 @@ window.WIKI_BOARD_vehicle_full = {
     194059
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": null,
@@ -100539,7 +100491,7 @@ window.WIKI_BOARD_vehicle_full = {
     194060
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "摩羯座",
    "charm_value": 1500,
@@ -101918,7 +101870,7 @@ window.WIKI_BOARD_vehicle_full = {
     194062
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天鹰座",
    "charm_value": 1500,
@@ -103301,11 +103253,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
-   "name_raw": "天马座（体验版）",
+   "has_trial": false,
+   "name_raw": "天马座",
    "vehicle_ids": [
-    194069,
-    194096
+    194069
    ],
    "variant_rows": [
     {
@@ -103315,9 +103266,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往飞驰天地活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "天马座",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": null,
@@ -104690,7 +104641,7 @@ window.WIKI_BOARD_vehicle_full = {
     194070
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎鸦座",
    "charm_value": 1500,
@@ -106086,7 +106037,7 @@ window.WIKI_BOARD_vehicle_full = {
     194071
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎鸦座",
    "charm_value": 1500,
@@ -107482,7 +107433,7 @@ window.WIKI_BOARD_vehicle_full = {
     194072
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎鸦座",
    "charm_value": 1500,
@@ -108878,7 +108829,7 @@ window.WIKI_BOARD_vehicle_full = {
     194074
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游鲤戏浪",
    "charm_value": 1500,
@@ -110274,7 +110225,7 @@ window.WIKI_BOARD_vehicle_full = {
     194075
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游鲤戏浪",
    "charm_value": 1500,
@@ -111677,7 +111628,7 @@ window.WIKI_BOARD_vehicle_full = {
     194076
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游鲤戏浪",
    "charm_value": 1500,
@@ -113081,7 +113032,7 @@ window.WIKI_BOARD_vehicle_full = {
     194078
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 4500,
@@ -114476,7 +114427,7 @@ window.WIKI_BOARD_vehicle_full = {
     194079
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 4500,
@@ -115873,7 +115824,7 @@ window.WIKI_BOARD_vehicle_full = {
     194080
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 4500,
@@ -117214,19 +117165,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194082.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -117273,7 +117219,7 @@ window.WIKI_BOARD_vehicle_full = {
     194082
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -118647,7 +118593,7 @@ window.WIKI_BOARD_vehicle_full = {
     194083
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铃弧飞翼",
    "charm_value": 1500,
@@ -120041,7 +119987,7 @@ window.WIKI_BOARD_vehicle_full = {
     194084
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铃弧飞翼",
    "charm_value": 1500,
@@ -121435,7 +121381,7 @@ window.WIKI_BOARD_vehicle_full = {
     194085
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铃弧飞翼",
    "charm_value": 1500,
@@ -122777,13 +122723,6 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/vehicle_icons/icon_194086_b.png",
-      "base": "ui/item_icon/icon_194086",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_194171_b.png",
       "base": "ui/item_icon/icon_194171",
       "suffix": "_b",
@@ -122791,7 +122730,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -122833,8 +122773,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "星澜耀光",
    "vehicle_ids": [
-    194086,
-    194171
+    194086
    ],
    "variant_rows": [
     {
@@ -122844,9 +122783,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过宸世臻藏活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "星澜耀光",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铃弧飞翼",
    "charm_value": null,
@@ -124241,7 +124180,7 @@ window.WIKI_BOARD_vehicle_full = {
     194087
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 100,
@@ -125607,7 +125546,7 @@ window.WIKI_BOARD_vehicle_full = {
     194089
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "古典绅士",
    "charm_value": null,
@@ -127052,7 +126991,7 @@ window.WIKI_BOARD_vehicle_full = {
     194090
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "古典绅士",
    "charm_value": null,
@@ -128476,7 +128415,7 @@ window.WIKI_BOARD_vehicle_full = {
     194091
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "古典绅士",
    "charm_value": null,
@@ -129914,7 +129853,7 @@ window.WIKI_BOARD_vehicle_full = {
     194092
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "星际漫游者",
    "charm_value": 1500,
@@ -131310,7 +131249,7 @@ window.WIKI_BOARD_vehicle_full = {
     194099
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "摩羯座",
    "charm_value": null,
@@ -132689,7 +132628,7 @@ window.WIKI_BOARD_vehicle_full = {
     194100
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -134055,7 +133994,7 @@ window.WIKI_BOARD_vehicle_full = {
     194101
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "赤鬃踏炎",
    "charm_value": 550,
@@ -135431,7 +135370,7 @@ window.WIKI_BOARD_vehicle_full = {
     194102
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "月舞风华",
    "charm_value": 1500,
@@ -136846,7 +136785,7 @@ window.WIKI_BOARD_vehicle_full = {
     194103
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "月舞风华",
    "charm_value": null,
@@ -138275,7 +138214,7 @@ window.WIKI_BOARD_vehicle_full = {
     194104
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "月舞风华",
    "charm_value": null,
@@ -139697,7 +139636,7 @@ window.WIKI_BOARD_vehicle_full = {
     194105
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "月舞风华",
    "charm_value": null,
@@ -141125,7 +141064,7 @@ window.WIKI_BOARD_vehicle_full = {
     194108
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "骏马",
    "charm_value": null,
@@ -142433,19 +142372,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194110.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -142492,7 +142426,7 @@ window.WIKI_BOARD_vehicle_full = {
     194110
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "骏马",
    "charm_value": null,
@@ -143804,19 +143738,10 @@ window.WIKI_BOARD_vehicle_full = {
      {
       "png": "assets/img_cache/vehicle_full/veh_194111.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
-     },
-     {
-      "png": "assets/img_cache/vehicle_full/veh_194115.png",
-      "label": "图标"
      }
     ],
-    "total": 3
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -143860,8 +143785,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "拳击手",
    "vehicle_ids": [
-    194111,
-    194115
+    194111
    ],
    "variant_rows": [
     {
@@ -143871,9 +143795,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往重拳出击活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "拳击手",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "拳击手",
    "charm_value": 1500,
@@ -145275,7 +145199,7 @@ window.WIKI_BOARD_vehicle_full = {
     194112
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 1500,
@@ -146671,7 +146595,7 @@ window.WIKI_BOARD_vehicle_full = {
     194113
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "天马座",
    "charm_value": 1500,
@@ -148045,7 +147969,7 @@ window.WIKI_BOARD_vehicle_full = {
     194114
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -149410,7 +149334,7 @@ window.WIKI_BOARD_vehicle_full = {
     194117
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "赤鬃踏炎",
    "charm_value": 1200,
@@ -150779,7 +150703,7 @@ window.WIKI_BOARD_vehicle_full = {
     194118
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "都市游侠",
    "charm_value": 550,
@@ -152152,7 +152076,7 @@ window.WIKI_BOARD_vehicle_full = {
     194119
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 4500,
@@ -153548,7 +153472,7 @@ window.WIKI_BOARD_vehicle_full = {
     194121
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "仙灵花嫁",
    "charm_value": 1200,
@@ -154928,7 +154852,7 @@ window.WIKI_BOARD_vehicle_full = {
     194125
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "星驰霜逸",
    "charm_value": 3000,
@@ -156323,7 +156247,7 @@ window.WIKI_BOARD_vehicle_full = {
     194127
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "蓝潮对策",
    "charm_value": 1500,
@@ -157730,7 +157654,7 @@ window.WIKI_BOARD_vehicle_full = {
     194128
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "蓝潮对策",
    "charm_value": 1500,
@@ -159144,7 +159068,7 @@ window.WIKI_BOARD_vehicle_full = {
     194129
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "蓝潮对策",
    "charm_value": 1500,
@@ -160558,7 +160482,7 @@ window.WIKI_BOARD_vehicle_full = {
     194130
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "蓝潮对策",
    "charm_value": 4500,
@@ -161979,7 +161903,7 @@ window.WIKI_BOARD_vehicle_full = {
     194131
    ],
    "variant_count": 1,
-   "vehicle_class_old": "自行车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "游园单车",
    "charm_value": 300,
@@ -163290,19 +163214,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194132.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -163349,7 +163268,7 @@ window.WIKI_BOARD_vehicle_full = {
     194132
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -163476,19 +163395,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194133.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -163535,7 +163449,7 @@ window.WIKI_BOARD_vehicle_full = {
     194133
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -163717,7 +163631,7 @@ window.WIKI_BOARD_vehicle_full = {
     194135
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": 4500,
@@ -165106,7 +165020,7 @@ window.WIKI_BOARD_vehicle_full = {
     194136
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银骑飞鹰",
    "charm_value": 4500,
@@ -166501,7 +166415,7 @@ window.WIKI_BOARD_vehicle_full = {
     194137
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "伏暗追光",
    "charm_value": 3000,
@@ -167904,7 +167818,7 @@ window.WIKI_BOARD_vehicle_full = {
     194138
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "伏暗追光",
    "charm_value": 4500,
@@ -169252,19 +169166,14 @@ window.WIKI_BOARD_vehicle_full = {
    "evidence_level": "structure-only",
    "icon_state": "仅类型图",
    "_media": {
-    "total": 2,
+    "total": 1,
     "images": [
      {
       "png": "assets/img_cache/vehicle_full/veh_194139.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
      }
-    ]
+    ],
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -169311,7 +169220,7 @@ window.WIKI_BOARD_vehicle_full = {
     194139
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -170684,7 +170593,7 @@ window.WIKI_BOARD_vehicle_full = {
     194140
    ],
    "variant_count": 1,
-   "vehicle_class_old": "风火轮",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "随身载具",
    "charm_value": 2000,
@@ -172060,7 +171969,7 @@ window.WIKI_BOARD_vehicle_full = {
     194142
    ],
    "variant_count": 1,
-   "vehicle_class_old": "滑板",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "趣味载具",
    "charm_value": 300,
@@ -173433,7 +173342,7 @@ window.WIKI_BOARD_vehicle_full = {
     194143
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "南极座",
    "charm_value": 4500,
@@ -174825,8 +174734,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "彩虹之旅",
    "vehicle_ids": [
-    194145,
-    194175
+    194145
    ],
    "variant_rows": [
     {
@@ -174836,9 +174744,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过冬日甜梦季活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "彩虹之旅",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "趣味载具",
    "charm_value": 300,
@@ -176211,7 +176119,7 @@ window.WIKI_BOARD_vehicle_full = {
     194146
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "锈蚀战垒",
    "charm_value": 1500,
@@ -177591,19 +177499,10 @@ window.WIKI_BOARD_vehicle_full = {
      {
       "png": "assets/img_cache/vehicle_full/veh_194148.png",
       "label": "图标"
-     },
-     {
-      "png": "assets/vehicle_icons/type_btn_zaiju_jiaoche_nor.png",
-      "base": "ui/main_zhujiemian_v4_icon/zaiju/btn_zaiju_jiaoche_nor",
-      "suffix": "type",
-      "kind": "类型"
-     },
-     {
-      "png": "assets/img_cache/vehicle_full/veh_194149.png",
-      "label": "图标"
      }
     ],
-    "total": 3
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -177644,11 +177543,10 @@ window.WIKI_BOARD_vehicle_full = {
     "verified",
     "static config"
    ],
-   "has_trial": true,
+   "has_trial": false,
    "name_raw": "深海狂鲨",
    "vehicle_ids": [
-    194148,
-    194149
+    194148
    ],
    "variant_rows": [
     {
@@ -177658,9 +177556,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过限时活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "深海狂鲨",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "神剑号",
    "charm_value": 1500,
@@ -179003,13 +178901,6 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/vehicle_icons/icon_194150_s.png",
-      "base": "ui/item_icon/icon_194150",
-      "suffix": "_s",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_194151_b.png",
       "base": "ui/item_icon/icon_194151",
       "suffix": "_b",
@@ -179017,7 +178908,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -179059,8 +178951,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "青锋铸镝",
    "vehicle_ids": [
-    194150,
-    194151
+    194150
    ],
    "variant_rows": [
     {
@@ -179070,9 +178961,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过宸世臻藏活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "青锋铸镝",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "锈蚀战垒",
    "charm_value": 1500,
@@ -180450,13 +180341,6 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/vehicle_icons/icon_194152_b.png",
-      "base": "ui/item_icon/icon_194152",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_194153_b.png",
       "base": "ui/item_icon/icon_194153",
       "suffix": "_b",
@@ -180464,7 +180348,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -180506,8 +180391,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "沧溟脉冲",
    "vehicle_ids": [
-    194152,
-    194153
+    194152
    ],
    "variant_rows": [
     {
@@ -180517,9 +180401,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过宸世臻藏活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "沧溟脉冲",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "锈蚀战垒",
    "charm_value": 1500,
@@ -181897,13 +181781,6 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/vehicle_icons/icon_194154_b.png",
-      "base": "ui/item_icon/icon_194154",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_194155_b.png",
       "base": "ui/item_icon/icon_194155",
       "suffix": "_b",
@@ -181911,7 +181788,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -181953,8 +181831,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "烬劫红渊",
    "vehicle_ids": [
-    194154,
-    194155
+    194154
    ],
    "variant_rows": [
     {
@@ -181964,9 +181841,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过宸世臻藏活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "烬劫红渊",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "锈蚀战垒",
    "charm_value": 4500,
@@ -183403,7 +183280,7 @@ window.WIKI_BOARD_vehicle_full = {
     194157
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎鸦座",
    "charm_value": 4500,
@@ -184800,7 +184677,7 @@ window.WIKI_BOARD_vehicle_full = {
     194158
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "假面骑士",
    "charm_value": null,
@@ -186233,8 +186110,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "推进先锋",
    "vehicle_ids": [
-    194160,
-    194161
+    194160
    ],
    "variant_rows": [
     {
@@ -186244,24 +186120,23 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往银狐破晓活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "推进先锋",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "假面骑士",
    "charm_value": 1500,
    "charm_by_server": {
     "经典服": 1500,
     "会员专享（月卡服）": 1500,
-    "简单生存服": 1500
+    "简单生存服": null
    },
    "proto_id": 127,
    "params": {
     "server": "经典服",
     "servers_present": [
      "经典服",
-     "会员专享（月卡服）",
-     "简单生存服"
+     "会员专享（月卡服）"
     ],
     "proto_id": 127,
     "proto": {
@@ -187535,15 +187410,6 @@ window.WIKI_BOARD_vehicle_full = {
      "desc": "推进先锋",
      "icon": "ui/item_icon/icon_194160",
      "via": "194160"
-    },
-    {
-     "func_id": 76,
-     "type": 1002,
-     "level": 5,
-     "name": "推进先锋",
-     "desc": "推进先锋",
-     "icon": "ui/item_icon/icon_194160",
-     "via": "194161"
     }
    ],
    "modding_levels": [
@@ -187671,7 +187537,7 @@ window.WIKI_BOARD_vehicle_full = {
     194165
    ],
    "variant_count": 1,
-   "vehicle_class_old": "马车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "仙灵花嫁",
    "charm_value": 1500,
@@ -189065,7 +188931,7 @@ window.WIKI_BOARD_vehicle_full = {
     194168
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轮式载具",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "趣味载具",
    "charm_value": 300,
@@ -190440,7 +190306,7 @@ window.WIKI_BOARD_vehicle_full = {
     194169
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轮式载具",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "趣味载具",
    "charm_value": 300,
@@ -191816,7 +191682,7 @@ window.WIKI_BOARD_vehicle_full = {
     194174
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "玫瑰假日",
    "charm_value": null,
@@ -193195,7 +193061,7 @@ window.WIKI_BOARD_vehicle_full = {
     194177
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "踏雪乌骓",
    "charm_value": 1200,
@@ -194570,7 +194436,7 @@ window.WIKI_BOARD_vehicle_full = {
     194179
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "马匹",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "玉影凌霄",
    "charm_value": 800,
@@ -195938,7 +195804,7 @@ window.WIKI_BOARD_vehicle_full = {
     194180
    ],
    "variant_count": 1,
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "灵笼",
    "charm_value": 1500,
@@ -196116,7 +195982,7 @@ window.WIKI_BOARD_vehicle_full = {
     194182
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "麒麟座",
    "charm_value": 4500,
@@ -196890,8 +196756,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "烈焰归途",
    "vehicle_ids": [
-    194184,
-    194188
+    194184
    ],
    "variant_rows": [
     {
@@ -196901,9 +196766,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往商城获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "烈焰归途",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "旷野骑士",
    "charm_value": 2000,
@@ -197670,8 +197535,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "羊羊摇摇车",
    "vehicle_ids": [
-    194185,
-    194189
+    194185
    ],
    "variant_rows": [
     {
@@ -197681,9 +197545,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往游园补给计划活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "羊羊摇摇车",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "特色载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "趣味载具",
    "charm_value": 550,
@@ -198454,7 +198318,7 @@ window.WIKI_BOARD_vehicle_full = {
     194187
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铃弧飞翼",
    "params": {},
@@ -198577,7 +198441,7 @@ window.WIKI_BOARD_vehicle_full = {
     194190
    ],
    "variant_count": 1,
-   "vehicle_class_old": "吉普",
+   "vehicle_class_old": "吉普车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "猎户座",
    "charm_value": 2000,
@@ -198674,13 +198538,6 @@ window.WIKI_BOARD_vehicle_full = {
    "_media": {
     "images": [
      {
-      "png": "assets/vehicle_icons/icon_194191_b.png",
-      "base": "ui/item_icon/icon_194191",
-      "suffix": "_b",
-      "kind": "专属",
-      "via": "路径→fid 直达"
-     },
-     {
       "png": "assets/vehicle_icons/icon_194193_b.png",
       "base": "ui/item_icon/icon_194193",
       "suffix": "_b",
@@ -198688,7 +198545,8 @@ window.WIKI_BOARD_vehicle_full = {
       "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -198730,8 +198588,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "帝皇铠骑",
    "vehicle_ids": [
-    194191,
-    194193
+    194191
    ],
    "variant_rows": [
     {
@@ -198741,9 +198598,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往限时活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "帝皇铠骑",
-   "vehicle_class_old": "汽车",
+   "vehicle_class_old": "摩托车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "铠甲勇士",
    "charm_value": 1500,
@@ -199413,27 +199270,12 @@ window.WIKI_BOARD_vehicle_full = {
      "desc": "载具变形描述",
      "icon": "ui/item_icon/icon_194191",
      "via": "194191"
-    },
-    {
-     "func_id": 116,
-     "type": 1002,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": "ui/item_icon/icon_194193",
-     "via": "194193"
     }
    ],
    "modding_levels": [
     {
      "level": 1,
      "func_id": 114,
-     "func_name": null,
-     "func_desc": "载具变形描述"
-    },
-    {
-     "level": 3,
-     "func_id": 116,
      "func_name": null,
      "func_desc": "载具变形描述"
     }
@@ -199548,7 +199390,7 @@ window.WIKI_BOARD_vehicle_full = {
     194195
    ],
    "variant_count": 1,
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "跑车",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "金牛座",
    "charm_value": 4500,
@@ -199705,7 +199547,7 @@ window.WIKI_BOARD_vehicle_full = {
     195006
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "虹神北斗",
    "charm_value": null,
@@ -201087,7 +200929,7 @@ window.WIKI_BOARD_vehicle_full = {
     195007
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "虹神北斗",
    "charm_value": null,
@@ -202470,7 +202312,7 @@ window.WIKI_BOARD_vehicle_full = {
     195008
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "虹神北斗",
    "charm_value": null,
@@ -203858,7 +203700,7 @@ window.WIKI_BOARD_vehicle_full = {
     195013
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "灰翼游鹰",
    "charm_value": null,
@@ -205262,7 +205104,7 @@ window.WIKI_BOARD_vehicle_full = {
     195014
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "灰翼游鹰",
    "charm_value": null,
@@ -206671,7 +206513,7 @@ window.WIKI_BOARD_vehicle_full = {
     195015
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "灰翼游鹰",
    "charm_value": null,
@@ -208081,7 +207923,7 @@ window.WIKI_BOARD_vehicle_full = {
     195016
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "灰翼游鹰",
    "charm_value": null,
@@ -209500,7 +209342,7 @@ window.WIKI_BOARD_vehicle_full = {
     195017
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银蛇迅影",
    "charm_value": 1500,
@@ -210888,7 +210730,7 @@ window.WIKI_BOARD_vehicle_full = {
     195018
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银蛇迅影",
    "charm_value": null,
@@ -212294,7 +212136,7 @@ window.WIKI_BOARD_vehicle_full = {
     195019
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银蛇迅影",
    "charm_value": null,
@@ -213697,7 +213539,7 @@ window.WIKI_BOARD_vehicle_full = {
     195020
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银蛇迅影",
    "charm_value": null,
@@ -215100,7 +214942,7 @@ window.WIKI_BOARD_vehicle_full = {
     195021
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "银蛇迅影",
    "charm_value": null,
@@ -216512,7 +216354,7 @@ window.WIKI_BOARD_vehicle_full = {
     195023
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "凌空战隼",
    "charm_value": null,
@@ -217931,7 +217773,7 @@ window.WIKI_BOARD_vehicle_full = {
     195024
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "凌空战隼",
    "charm_value": null,
@@ -219341,7 +219183,7 @@ window.WIKI_BOARD_vehicle_full = {
     195025
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "凌空战隼",
    "charm_value": null,
@@ -220751,7 +220593,7 @@ window.WIKI_BOARD_vehicle_full = {
     195026
    ],
    "variant_count": 1,
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "凌空战隼",
    "charm_value": null,
@@ -222158,11 +222000,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "雨燕号·芥子",
    "vehicle_ids": [
-    195028,
-    195029,
-    195030,
-    195031,
-    195032
+    195028
    ],
    "variant_rows": [
     {
@@ -222190,9 +222028,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "通过临渊对决活动获得"
     }
    ],
-   "variant_count": 5,
+   "variant_count": 1,
    "name_display_group": "雨燕号·芥子",
-   "vehicle_class_old": "直升机",
+   "vehicle_class_old": "飞行载具",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": "雨燕号",
    "charm_value": 1500,
@@ -222869,132 +222707,9 @@ window.WIKI_BOARD_vehicle_full = {
      "desc": "载具变形描述",
      "icon": null,
      "via": "195028"
-    },
-    {
-     "func_id": 107,
-     "type": 1016,
-     "level": 4,
-     "name": "氮气加速",
-     "desc": "飞行载具可使用更强力的氮气进行更高速度的加速。并且在加速的同时会向后方释放更炫丽的轨迹效果",
-     "icon": "ui/item_icon/icon_yinshexunyingi_02",
-     "via": "195029"
-    },
-    {
-     "func_id": 111,
-     "type": 1020,
-     "level": 4,
-     "name": "便捷召唤",
-     "desc": "在进入自动奔跑后，点击召唤载具，即可便捷召唤载具并驾驶。和疾跑上马冲突时，优先触发快捷召唤飞行载具",
-     "icon": "ui/item_icon/icon_bianjiezhaohuan01_b.png",
-     "via": "195029"
-    },
-    {
-     "func_id": 102,
-     "type": 1002,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195029"
-    },
-    {
-     "func_id": 96,
-     "type": 1045,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195029"
-    },
-    {
-     "func_id": 103,
-     "type": 1002,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195030"
-    },
-    {
-     "func_id": 97,
-     "type": 1045,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195030"
-    },
-    {
-     "func_id": 108,
-     "type": 1016,
-     "level": 4,
-     "name": "氮气加速",
-     "desc": "飞行载具可使用氮气进行喷射加速。",
-     "icon": "ui/item_icon/icon_yinshexunying_01",
-     "via": "195031"
-    },
-    {
-     "func_id": 104,
-     "type": 1002,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195031"
-    },
-    {
-     "func_id": 98,
-     "type": 1045,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195031"
-    },
-    {
-     "func_id": 109,
-     "type": 1016,
-     "level": 4,
-     "name": "氮气加速",
-     "desc": "飞行载具可使用更强力的氮气进行更高速度的加速。并且在加速的同时会向后方释放烟雾轨迹",
-     "icon": "ui/item_icon/icon_yinshexunyingi_02",
-     "via": "195032"
-    },
-    {
-     "func_id": 112,
-     "type": 1020,
-     "level": 4,
-     "name": "便捷召唤",
-     "desc": "在进入自动奔跑后，点击召唤载具，即可便捷召唤载具并驾驶。和疾跑上马冲突时，优先触发快捷召唤飞行载具",
-     "icon": "ui/item_icon/icon_bianjiezhaohuan01_b.png",
-     "via": "195032"
-    },
-    {
-     "func_id": 105,
-     "type": 1002,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195032"
-    },
-    {
-     "func_id": 99,
-     "type": 1045,
-     "level": 5,
-     "name": null,
-     "desc": "载具变形描述",
-     "icon": null,
-     "via": "195032"
     }
    ],
    "modding_levels": [
-    {
-     "level": 1,
-     "func_id": 103,
-     "func_name": null,
-     "func_desc": "载具变形描述"
-    },
     {
      "level": 2,
      "func_id": 106,
@@ -223006,24 +222721,6 @@ window.WIKI_BOARD_vehicle_full = {
      "func_id": 101,
      "func_name": null,
      "func_desc": "载具变形描述"
-    },
-    {
-     "level": 3,
-     "func_id": 107,
-     "func_name": "氮气加速",
-     "func_desc": "飞行载具可使用更强力的氮气进行更高速度的加速。并且在加速的同时会向后方释放更炫丽的轨迹效果"
-    },
-    {
-     "level": 3,
-     "func_id": 102,
-     "func_name": null,
-     "func_desc": "载具变形描述"
-    },
-    {
-     "level": 3,
-     "func_id": 109,
-     "func_name": "氮气加速",
-     "func_desc": "飞行载具可使用更强力的氮气进行更高速度的加速。并且在加速的同时会向后方释放烟雾轨迹"
     }
    ],
    "tags": [
@@ -223081,16 +222778,10 @@ window.WIKI_BOARD_vehicle_full = {
       "suffix": "_b",
       "kind": "专属",
       "via": "路径→fid 直达"
-     },
-     {
-      "png": "assets/vehicle_icons/icon_194064_s.png",
-      "base": "ui/item_icon/icon_194064",
-      "suffix": "_s",
-      "kind": "专属",
-      "via": "路径→fid 直达"
      }
     ],
-    "total": 2
+    "total": 1,
+    "slimmed": true
    },
    "provenance": {
     "source_id": "vehicle-ui-data-struct",
@@ -223132,8 +222823,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "飞鱼号",
    "vehicle_ids": [
-    196008,
-    196009
+    196008
    ],
    "variant_rows": [
     {
@@ -223143,9 +222833,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往摩羯座活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "飞鱼号",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -223385,8 +223075,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "海鸟号",
    "vehicle_ids": [
-    196010,
-    196011
+    196010
    ],
    "variant_rows": [
     {
@@ -223396,9 +223085,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往摩羯座活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "海鸟号",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -223638,8 +223327,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "虎鲸号",
    "vehicle_ids": [
-    196012,
-    196013
+    196012
    ],
    "variant_rows": [
     {
@@ -223649,9 +223337,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往摩羯座活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "虎鲸号",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,
@@ -223891,8 +223579,7 @@ window.WIKI_BOARD_vehicle_full = {
    "has_trial": false,
    "name_raw": "银鲨号",
    "vehicle_ids": [
-    196016,
-    196017
+    196016
    ],
    "variant_rows": [
     {
@@ -223902,9 +223589,9 @@ window.WIKI_BOARD_vehicle_full = {
      "jump_text": "前往摩羯座活动获得"
     }
    ],
-   "variant_count": 2,
+   "variant_count": 1,
    "name_display_group": "银鲨号",
-   "vehicle_class_old": "轿车",
+   "vehicle_class_old": "未分类",
    "class_source": "vehicle_brand_type_conf.brand_type + vehicle_brand_data.brands",
    "vehicle_subclass": null,
    "charm_value": null,

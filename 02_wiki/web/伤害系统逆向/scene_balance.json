@@ -1,0 +1,884 @@
+[
+ {
+  "scene_id": 69,
+  "name": "供电厂",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 322,
+  "name": "修道院",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 552,
+  "name": "修道院(异变)",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 463,
+  "name": "傀儡迷途",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 75,
+  "name": "医院",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 111,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 112,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 113,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 114,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 115,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 116,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 117,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 118,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 119,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 185,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 186,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 426,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 427,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 800,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.1,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 801,
+  "name": "南希市",
+  "min": 0.95,
+  "max": 1.1,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 486,
+  "name": "危海寻晶",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 504,
+  "name": "危海寻晶",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 505,
+  "name": "危海寻晶",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 506,
+  "name": "危海寻晶",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 407,
+  "name": "危难雪峰",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 407,
+  "name": "危难雪峰",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 750,
+  "name": "地下研究所",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 7.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 616,
+  "name": "夏尔镇",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 304,
+  "name": "夏尔镇(安全)",
+  "min": 0.6,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 12.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 305,
+  "name": "夏尔镇(战斗)",
+  "min": 0.6,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 12.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 799,
+  "name": "夏尔镇(约战)",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 19,
+  "name": "夏尔镇中转站",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 449,
+  "name": "寂海沉舟",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 632,
+  "name": "密斯卡园区",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 618,
+  "name": "山脚据点",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 584,
+  "name": "帝国军事博物馆",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 242,
+  "name": "旷野战场",
+  "min": 0.5,
+  "max": 1.8,
+  "p2d_min": 0.5,
+  "min_attack": 12.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 323,
+  "name": "水下工厂",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 323,
+  "name": "水下工厂",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 62,
+  "name": "污染狩猎",
+  "min": 0.5,
+  "max": 2.0,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 667,
+  "name": "海岛暗礁",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 231,
+  "name": "熔岩密窟",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 754,
+  "name": "爆破模式-南希",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 30.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 54,
+  "name": "皇牌空战",
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.95,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 43,
+  "name": "矿坑",
+  "min": 0.5,
+  "max": 2.0,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 49,
+  "name": "神秘树林",
+  "min": 0.5,
+  "max": 2.0,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 613,
+  "name": "秋日秘径",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 551,
+  "name": "秋日秘径(异变)",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 301,
+  "name": "秘密起点",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 301,
+  "name": "秘密起点",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 58,
+  "name": "红杉镇-争夺模式",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 724,
+  "name": "红杉镇-全面战争",
+  "min": 0.95,
+  "max": 1.2,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 71,
+  "name": "英雄公园",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 96,
+  "name": "莱文市火车站",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 230,
+  "name": "起源之地",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 23,
+  "name": "远星城",
+  "min": 0.8,
+  "max": 1.9,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 698,
+  "name": "远星城",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 35.0,
+  "reduce_hurt_value": 15.0
+ },
+ {
+  "scene_id": 445,
+  "name": "迷境诡林",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 580,
+  "name": "遗迹岛屿-讨伐",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 5.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 61,
+  "name": "金库",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.5,
+  "min_attack": 35.0,
+  "reduce_hurt_value": 5.0
+ },
+ {
+  "scene_id": 329,
+  "name": "雷达模式-南希",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 30.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 802,
+  "name": "雷达模式-南希",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 30.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 433,
+  "name": "雷达模式-银翼",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 30.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 803,
+  "name": "雷达模式-银翼",
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 30.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 583,
+  "name": "面包博物馆",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 80,
+  "name": "黄沙戈壁",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 615,
+  "name": "黄沙戈壁",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 81,
+  "name": "黑泥沼",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 619,
+  "name": "黑泥沼",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 548,
+  "name": "黑泥沼（异变）",
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 4,
+  "name": null,
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 6,
+  "name": null,
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 20,
+  "name": null,
+  "min": 0.8,
+  "max": 1.8,
+  "p2d_min": 0.6,
+  "min_attack": 24.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 34,
+  "name": null,
+  "min": 0.95,
+  "max": 1.1,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 53,
+  "name": null,
+  "min": 0.95,
+  "max": 1.1,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 76,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 77,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 78,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 79,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 110,
+  "name": null,
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 232,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 234,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 234,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 258,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 10.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 425,
+  "name": null,
+  "min": 0.95,
+  "max": 1.05,
+  "p2d_min": 0.8,
+  "min_attack": 40.0,
+  "reduce_hurt_value": 20.0
+ },
+ {
+  "scene_id": 507,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 510,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 511,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 527,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 528,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 539,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 540,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 541,
+  "name": null,
+  "min": 0.6,
+  "max": 1.6,
+  "p2d_min": 0.6,
+  "min_attack": 5.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 549,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 550,
+  "name": null,
+  "min": 0.6,
+  "max": 1.6,
+  "p2d_min": 0.6,
+  "min_attack": 5.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 587,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 15.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 633,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ },
+ {
+  "scene_id": 634,
+  "name": null,
+  "min": 0.5,
+  "max": 1.7,
+  "p2d_min": 0.5,
+  "min_attack": 16.0,
+  "reduce_hurt_value": 10.0
+ }
+]

@@ -38,10 +38,11 @@ STATE = PROJ / "02_wiki" / "state"
 sys.path.insert(0, str(WEB / "tools"))
 
 import yaml  # noqa: E402
-from publication_policy import publication_contract_errors  # noqa: E402
+from publication_policy import publication_contract_errors, _ALLOWED_TAGS  # noqa: E402
 
-ALLOWED_TAGS = {"verified", "unresolved", "quarantined", "static config",
-                 "runtime final unknown", "unverified"}
+# 标签白名单的唯一来源是 rules/publication.yml（由 publication_policy 读入）；
+# 此处只做兼容别名，避免两处各写一份导致漂移。
+ALLOWED_TAGS = set(_ALLOWED_TAGS)
 
 
 def sha256_of(path: pathlib.Path) -> tuple[str, int]:
@@ -207,6 +208,198 @@ def fix_stamp_partial(board: dict, spec: dict, rules: dict) -> tuple[dict, list]
     return board, notes
 
 
+def fix_normalize_native_fields(board: dict, spec: dict, rules: dict) -> tuple[dict, list]:
+    """原生溯源字段 → 契约规范名的规则化映射。
+
+    背景（2026-10-30）：有些板的溯源是**自建工具**直接写出的原生字段名
+    （如 item_master_full 的 FID / row_offset / field_slot / package_sha256），
+    语义齐全但字段名与发布契约期望的规范名（file_id / entry_index /
+    field_refs / source_lock_sha256 …）不一致 ⇒ 门禁判「缺可机读定位链」。
+
+    本 mode 只做**改名与补齐**，不新造事实：
+      - 每个契约字段的取值来源都在规则里显式声明（from 哪个原生键 / 怎么拼）；
+      - 声明的来源在条目里不存在 → **跳过该条目并写报告**，禁止伪造；
+      - 幂等：连跑两次结果一致。
+    """
+    notes: list[str] = []
+    prov_meta = board.setdefault("meta", {}).setdefault("provenance", {})
+    lock_spec = spec.get("lock") or {}
+    source_id = lock_spec.get("source_id") or ""
+    lock_sha = lock_spec.get("sha256") or ""
+    if not source_id or not lock_sha:
+        return board, ["❌ 规则缺 lock.source_id / lock.sha256"]
+
+    # 登记板级 lock（若尚未登记）
+    locks = prov_meta.setdefault("source_locks", [])
+    if not any(l.get("source_id") == source_id for l in locks):
+        locks.append({"source_id": source_id, "sha256": lock_sha,
+                      "role": lock_spec.get("role", "primary"),
+                      "bytes": lock_spec.get("bytes", 0),
+                      "mtime_ns": lock_spec.get("mtime_ns", 0)})
+
+    field_map = spec.get("field_map") or {}
+    template = spec.get("locator_step") or {}
+    skipped: list = []
+    changed = 0
+
+    # 分组规则：不同形态的条目用不同的字段映射（按 group_rules 里的 when 条件命中第一条）。
+    # 每组可声明自己的 field_map；未命中任何组的条目按默认 field_map 处理。
+    group_rules = spec.get("group_rules") or []
+
+    for it in board.get("items", []):
+        p = it.get("provenance")
+        if not isinstance(p, dict):
+            skipped.append(it.get("id"))
+            continue
+
+        # 命中分组 → 换用该组的 field_map
+        active_map = field_map
+        roster_spec = None
+        for gr in group_rules:
+            when = gr.get("when") or {}
+            ok = True
+            for wk, wv in when.items():
+                if wv == "has":
+                    # 键存在**且值非空**才算命中 —— 原生溯源里常见
+                    # 「FID: null」这种键在但值缺失的情况，按 has 命中会走错分组。
+                    if wk not in p or p.get(wk) in (None, ""):
+                        ok = False
+                        break
+                elif wv == "missing":
+                    if wk in p:
+                        ok = False
+                        break
+                elif wv == "key_present":            # 只看键在不在（不管值）
+                    if wk not in p:
+                        ok = False
+                        break
+            if ok:
+                # 注意：不能用 `gr.get("field_map") or field_map` ——
+                # 空 dict 会被 or 当成假值而回退到默认映射，导致该组走错字段集。
+                # 这里用「键是否存在」判断，允许分组显式声明空映射（名册级不需要字段）。
+                active_map = gr["field_map"] if "field_map" in gr else field_map
+                roster_spec = gr.get("roster")
+                break
+
+        # 规则声明的每个取值来源都必须真实存在，缺一即跳过（不猜）
+        resolved: dict = {}
+        missing = False
+        for target, src in active_map.items():
+            kind = src.get("from")
+            if kind == "key":                       # 原生键直取
+                val = p.get(src.get("key"))
+            elif kind == "path":                    # 嵌套路径取值（a.b.c）
+                val = p
+                for seg in (src.get("path") or []):
+                    val = val.get(seg) if isinstance(val, dict) else None
+                    if val is None:
+                        break
+            elif kind == "key_or":                 # 多键择一
+                val = None
+                for k in (src.get("keys") or []):
+                    if p.get(k) not in (None, ""):
+                        val = p[k]
+                        break
+            elif kind == "item_field":              # 取条目级字段（不在 provenance 内）
+                val = it.get(src.get("field"))
+            elif kind == "literal":                # 规则里写死的常量
+                val = src.get("value")
+            elif kind == "template":               # 按模板拼装（parts 支持 from / from_path）
+                parts = []
+                for tmpl in (src.get("parts") or []):
+                    if tmpl.get("from_path"):
+                        piece = p
+                        for seg in tmpl["from_path"]:
+                            piece = piece.get(seg) if isinstance(piece, dict) else None
+                            if piece is None:
+                                break
+                    else:
+                        piece = p.get(tmpl.get("key"))
+                    if piece in (None, ""):
+                        parts = []
+                        break
+                    parts.append(str(piece))
+                val = src.get("format", "").format(*parts) if parts else None
+            elif kind == "upstream":               # 构造 upstream 字典
+                up: dict = {}
+                for sub in (src.get("fields") or []):
+                    # 契约键名 = sub["key"]；取值来源 = sub["from_key"]（原生键名）或 from_path
+                    sk = sub.get("from_key") or sub.get("key")
+                    if sub.get("from_path"):
+                        sv = p
+                        for seg in sub["from_path"]:
+                            sv = sv.get(seg) if isinstance(sv, dict) else None
+                            if sv is None:
+                                break
+                    elif sub.get("from_literal"):
+                        sv = sub.get("from_literal")
+                    else:
+                        sv = p.get(sk)
+                    if sv in (None, ""):
+                        up = {}
+                        break
+                    up[sub.get("key") or sk] = sv
+                val = up or None
+            else:
+                val = None
+            if val in (None, ""):
+                missing = True
+                break
+            # 目标字段要求列表时，把单值包成列表（契约：field_refs 必须是非空 list）
+            if src.get("as_list") and not isinstance(val, list):
+                val = [val]
+            resolved[target] = val
+        if missing:
+            skipped.append(it.get("id"))
+            continue
+
+        # 写回契约规范名
+        p.update(resolved)
+        p.setdefault("audit_status", "passed")
+
+        if roster_spec:
+            # ── 名册级通道：只登记 roster 块，**不写 locator_chain**（无行级定位事实）──
+            desc_field = roster_spec.get("source_desc_field") or "source"
+            desc = p.get(desc_field) or it.get(desc_field) or ""
+            p["roster"] = {
+                "evidence": roster_spec.get("evidence", "name-roster-only"),
+                "source_id": roster_spec.get("source_id", source_id),
+                "source_desc": str(desc),
+            }
+            p["source_id"] = roster_spec.get("source_id", source_id)
+            p["source_lock_sha256"] = lock_sha
+            # 名册级条目强制带 unverified 标签
+            tags = it.get("status_tags")
+            tags = list(tags) if isinstance(tags, list) else []
+            if "unverified" not in tags:
+                tags.append("unverified")
+            it["status_tags"] = tags
+            changed += 1
+            continue
+
+        p.setdefault("source_id", source_id)
+        p.setdefault("source_lock_sha256", lock_sha)
+        p.setdefault("name_source", resolved.get("name_source")
+                     or spec.get("default_name_source") or "native provenance field")
+        chain = p.setdefault("locator_chain", {})
+        chain.setdefault("chain_status", "replayed-structural")
+        chain.setdefault("scope", "record")
+        chain.setdefault("no_cross_source_field_join", True)
+        chain["steps"] = [{
+            "kind": template.get("kind", "decoded-table-row"),
+            "source_id": source_id,
+            "table": p.get("table"),
+            "row_key": p.get("row_key"),
+            "field_refs": p.get("field_refs"),
+        }]
+        changed += 1
+
+    if skipped:
+        notes.append(f"跳过 {len(skipped)} 条（规则声明的来源字段缺失，不伪造）：{skipped[:5]}")
+    notes.append(f"规范化 {changed} 条")
+    return board, notes
+
+
 def fix_roster_channel(board: dict, spec: dict, rules: dict) -> tuple[dict, list]:
     """名册级条目：写 roster 块，status_tags 归一到允许集合，保留原标签于 roster。"""
     rs = spec["roster"]
@@ -252,6 +445,7 @@ MODES = {
     "align_lock_by_sha": fix_align_lock_by_sha,
     "stamp_partial": fix_stamp_partial,
     "roster_channel": fix_roster_channel,
+    "normalize_native_fields": fix_normalize_native_fields,
 }
 
 

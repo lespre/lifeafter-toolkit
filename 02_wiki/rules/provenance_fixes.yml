@@ -95,3 +95,165 @@ boards:
       source_desc_field: source
     status_tag_map:
       name-roster-only: unverified
+
+  # KI-011（2026-10-30）：item_master_full 的溯源是自建工具直接写出的**原生字段名**
+  # （FID / row_offset / field_slot / package_sha256 / table / row_key），
+  # 语义齐全但字段名与发布契约的规范名不一致 ⇒ 门禁判「缺可机读定位链」。
+  # 处理：只做**改名与补齐**，不新造事实 ——
+  #   每个契约字段的取值来源都在下面显式声明；声明的来源在条目里不存在就跳过该条目。
+  #   源包锁复用同一冻结工作副本（sha 与 chip_item_catalog 同源，见 snapshot 字段一致）。
+  item_master_full:
+    mode: normalize_native_fields
+    lock:
+      source_id: frozen-workcopy-ba8a239a
+      sha256: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+      role: primary
+      bytes: 0
+      mtime_ns: 0
+    default_name_source: common_item_data_base decoded row
+    locator_step:
+      kind: decoded-table-row
+    note: >
+      条目溯源事实齐全（FID/entry/table/row_key/row_offset/field_slot/package_sha256），
+      仅字段名与契约规范名不一致；本规则只做改名，来源缺失的条目跳过不伪造。
+      各形态的字段映射见下方 group_rules（组0 = 原生形态）。
+
+    # ── 分组：不同形态的条目用不同映射 ──────────────────────────────────
+    # 分组顺序即优先级，第一条命中的生效。
+    #   组0（27695 条）原生形态：FID/entry/table/row_key/row_offset/field_slot 齐全
+    #   组B（1189 条）record 扁平形态：字段级溯源，事实嵌在 record 子块里
+    #   组A1（566 条）common_item 且 FID 非空：原生形态的变体（多了 name 槽位）
+    #   组A2（748 条）gift_data / belt_chip：FID 为 null，来源是另一块板的导出
+    #          ⇒ 走名册级通道（只登记 roster 块 + unverified，不伪造 locator）
+    group_rules:
+      # 组0（27695 条）：默认原生形态 —— FID/entry/table/row_key/row_offset/field_slot 齐全
+      #   条件里带 row_key ⇒ 缺 row_key 的变体（组A1）落到后面的分组去，
+      #   避免「第一条命中即用」把变体吃掉。
+      - when:
+          FID: has
+          row_key: has
+        field_map:
+          # file_id ← 原生 FID（16 位十六进制 file id）
+          file_id:
+            from: key
+            key: FID
+          # entry_index ← 原生 entry（包内条目号）
+          entry_index:
+            from: key
+            key: entry
+          # table ← 原生 table（表路径）
+          table:
+            from: key
+            key: table
+          # row_key ← 原生 row_key（行号）
+          row_key:
+            from: key
+            key: row_key
+          # field_refs ← 原生 row_offset + field_slot 拼成可读定位串（契约要求非空列表）
+          field_refs:
+            from: template
+            format: "row_offset={} field_slot={}"
+            as_list: true
+            parts:
+              - key: row_offset
+              - key: field_slot
+          # name_source ← 原生 field_slot 指出名字所在槽位
+          name_source:
+            from: template
+            format: "common_item_data_base name slot field_slot={}"
+            parts:
+              - key: field_slot
+          # upstream ← 契约要求 dict，键名固定为 package_sha256 / entry_index / file_id
+          upstream:
+            from: upstream
+            fields:
+              - key: package_sha256
+                from_key: package_sha256
+              - key: entry_index
+                from_key: entry
+              - key: file_id
+                from_key: FID
+      # 组B：record 扁平形态（FID/entry/package_sha256/table/row_key 直接在 record 下）
+      - when:
+          record: has
+        field_map:
+          table:
+            from: path
+            path: [record, table]
+          row_key:
+            from: path
+            path: [record, row_key]
+          field_refs:
+            from: template
+            format: "row_offset={} (common_item_data_base decoded row)"
+            as_list: true
+            parts:
+              - from_path: [record, row_offset]
+          name_source:
+            from: template
+            format: "common_item_data_base decoded row row_offset={}"
+            parts:
+              - from_path: [record, row_offset]
+          upstream:
+            from: upstream
+            fields:
+              - key: package_sha256
+                from_path: [record, package_sha256]
+              - key: entry_index
+                from_path: [record, entry]
+              - key: file_id
+                from_path: [record, FID]
+      # 组A1（566 条）common_item 且 FID 非空：原生形态的变体（多了 name 槽位，但无 row_key/table）
+      #   row_key 取条目自身 item_id —— 依据：本板原生组 27695 条 row_key==item_id 一致率 100%（零例外），
+      #   且这些条目 identity_state=verified_runtime_business_key（业务主键已验证）。
+      #   table 取表路径常量；file_id/entry_index 取原生 FID/entry。
+      - when:
+          name_field_chs_slot: has
+          FID: has
+        field_map:
+          table:
+            from: literal
+            value: com\cdata\common_item_data_base.py
+          row_key:
+            from: item_field
+            field: item_id
+          field_refs:
+            from: template
+            format: "row_offset={} name_slot={} value_slot={}"
+            as_list: true
+            parts:
+              - key: row_offset
+              - key: name_field_chs_slot
+              - key: name_value_chs_slot
+          name_source:
+            from: template
+            format: "common_item_data_base name slot={}"
+            parts:
+              - key: name_field_chs_slot
+          file_id:
+            from: key
+            key: FID
+          entry_index:
+            from: key
+            key: entry
+          upstream:
+            from: upstream
+            fields:
+              - key: package_sha256
+                from_literal: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+              - key: entry_index
+                from_key: entry
+              - key: file_id
+                from_key: FID
+      # 组A2：gift_data / belt_chip 命名空间 —— 无包内定位（FID/entry 为 null），
+      #   来源是另一块板的导出（upstream 文本写明 gift_data_text_sources board），
+      #   按「名册级通道」处理：只登记 roster 块 + unverified 标签，**不伪造 locator**。
+      #   名册级契约不要求 row_key / field_refs / locator_chain ⇒ 该组无需 field_map。
+      #   条件用 key_present（只看键在不在）：这批条目的 name_field_chs_slot 键存在但值为 null。
+      - when:
+          name_field_chs_slot: key_present
+        roster:
+          evidence: name-roster-only
+          source_id: gift-data-text-sources
+          source_desc_field: upstream
+        field_map: {}
