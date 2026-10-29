@@ -150,7 +150,14 @@ _tmp_*.json
 02_wiki/web/assets/_backup_*/
 
 # 站点运行期状态报告（每次跑工具都会变，不属于源码）
-02_wiki/state/snapshots/
+# ★ 注意 Git 规则：目录被排除后，其子文件无法用 ! 重新包含（需先放行目录本身）。
+#   所以这里排除 snapshots/* 的内容，但保留目录，逐个放行发布基线快照。
+02_wiki/state/snapshots/*
+# ★ 例外：发布基线指纹快照要入库 —— 它是「clone 后能否构建出一样的 wiki」的验收基准，
+#   克隆者跑完自己的重建后，用它逐条比对（clone_repro_check.py 的 G4 关卡）。
+!02_wiki/state/snapshots/v*/
+!02_wiki/state/snapshots/v*/fingerprints.json
+!02_wiki/state/snapshots/v*/meta.json
 02_wiki/state/*_report.json
 02_wiki/state/portability.json
 02_wiki/state/pipeline_state.json
