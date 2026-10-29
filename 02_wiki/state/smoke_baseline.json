@@ -1,6 +1,6 @@
 {
   "base": "http://127.0.0.1:8765",
-  "at": "2026-10-29T19:18:43.404Z",
+  "at": "2026-10-29T19:32:07.037Z",
   "results": [
     {
       "board": "fashion_wardrobe",
@@ -220,9 +220,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -444,9 +445,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
-        "hasHorizontalScroll": true,
+        "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -791,9 +793,10 @@
           "unresolved"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -1097,9 +1100,10 @@
           "static-config"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -1445,9 +1449,10 @@
           "unverified"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -1752,9 +1757,10 @@
           "unverified"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -2059,9 +2065,10 @@
           "unresolved"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-equipment_attrs",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -2088,9 +2095,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -2312,9 +2320,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -2618,9 +2627,10 @@
           "static-config"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "block->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -2842,9 +2852,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -3066,9 +3077,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
-        "hasHorizontalScroll": true,
+        "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -3413,9 +3425,10 @@
           "unresolved"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -3719,9 +3732,10 @@
           "static-config"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -4067,9 +4081,10 @@
           "unverified"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -4374,9 +4389,10 @@
           "unverified"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -4681,9 +4697,10 @@
           "unresolved"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-equipment_attrs",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -4710,9 +4727,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -4934,9 +4952,10 @@
         ],
         "stateTagKinds": [],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
-        "hasHorizontalScroll": true,
+        "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     },
@@ -5240,9 +5259,10 @@
           "static-config"
         ],
         "siteNavItems": 28,
-        "hasHamburger": false,
+        "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,
+        "drawer": "none->block|opened",
         "detailOpens": "no-panel"
       }
     }
