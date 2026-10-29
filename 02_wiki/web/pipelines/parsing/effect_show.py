@@ -14,11 +14,16 @@
 from __future__ import annotations
 
 import importlib
+import os
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-WORKCOPY = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
+# 旧的 BA8A 工作副本（entry 级 payload）。已随数据树归一被清理，默认不存在；
+# 需要时用 LA_ES_WORKCOPY 指向自己的 entries 目录。
+# 只读还原树、不依赖工作副本的新入口见 pipelines/parsing/effect_show_names.py（la.py skin fx-names）。
+WORKCOPY = Path(os.environ.get("LA_ES_WORKCOPY")
+                or (REPO.parent / "01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries"))
 ES_DATA_ENTRY = 3671
 ES_CHS_ENTRY = 19852
 SKIN_DATA_ENTRY = 11817

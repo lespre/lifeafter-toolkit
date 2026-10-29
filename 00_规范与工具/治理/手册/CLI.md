@@ -18,12 +18,31 @@
 | `board run <脚本>` | 跑板块构建（board_kit） |
 | `vehicle extract [--only deep\|lore]` | （三）载具板：提取冻结产物（魅力值/速度物理参数 ／ 描述/特技/氮气/生命） |
 | `vehicle build [--only params\|lore]` | （三）载具板：回填到 vehicle_full（须先 extract） |
+| `skin fx-names [--out PATH] [--cdata DIR]` | 武器皮肤：从还原树解「战斗表现」正式名（62 皮肤 / 270 条），写 JSON |
+| `skin check` | 与现有产物逐项比对（新增/消失/变更），漂移即非 0 退出 |
 | `web build|serve|shot|refresh|check` | 站点：manifest / 服务 / 截图 / 刷新 |
 | `hotfix plan|apply|report` | 热更 |
 | `spine --filter <词>` | Spine 三件套导出 |
 | `npk export|query` | item_icon 图标库 |
 | `watch device|cdn|logcat` | 热更/设备监测 |
 | `tool <…>` | 透传 toolkit_cli（逃生舱） |
+
+## 武器皮肤正式名（特效真名）
+
+不复用旧工作副本，直接读还原树 cdata：
+
+```bash
+python la.py skin fx-names                     # 生成 01_索引与产物/30_分析/weapon_skin_effect_show.json
+python la.py skin fx-names --out /tmp/x.json   # 换输出（比对用）
+python la.py skin check                        # 与现有产物比对：无差异退出码 0
+LA_CDATA=<cdata 目录> python la.py skin check  # 换树（另一份客户端）
+```
+
+输出结构：`{skin_id: [{order, slot, slot_gun, slot_melee, name, icon, icon_melee, record_off}]}`，
+`slot` = 枪械面板显示名，`slot_melee` = 近战同位置名（近战面板显示「挥砍特效」）。
+
+解析器：`02_wiki/web/pipelines/parsing/effect_show_names.py`。
+同目录 `effect_show.py` 是旧的 entry 级入口（依赖已清理的工作副本，仅供历史调用方）。
 
 ## 典型链路
 
