@@ -199,3 +199,4 @@ body.scrolled .crumb{margin-bottom:4px}
   border:0!important;box-shadow:none!important;padding:0!important;
 }
 .fr-rail figure,.skin-media figure{border-color:rgba(255,255,255,.06)!important}
+.fr-gender{background:rgba(219,39,119,.10);border:1px solid rgba(219,39,119,.30);color:#f9a8d4}

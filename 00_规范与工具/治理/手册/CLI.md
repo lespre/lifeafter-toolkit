@@ -16,6 +16,8 @@
 | `img export <路径> [-o out.png]` | 导出图（PE `.ktx` → PC `.bc7` 兜底） |
 | `board check <板块>` | 校验板块契约 |
 | `board run <脚本>` | 跑板块构建（board_kit） |
+| `vehicle extract [--only deep\|lore]` | （三）载具板：提取冻结产物（魅力值/速度物理参数 ／ 描述/特技/氮气/生命） |
+| `vehicle build [--only params\|lore]` | （三）载具板：回填到 vehicle_full（须先 extract） |
 | `web build|serve|shot|refresh|check` | 站点：manifest / 服务 / 截图 / 刷新 |
 | `hotfix plan|apply|report` | 热更 |
 | `spine --filter <词>` | Spine 三件套导出 |
@@ -35,6 +37,34 @@ python la.py board check kill_broadcast
 python la.py web build
 python la.py hotfix plan
 ```
+
+## （三）载具板深挖链
+
+两期分离，各有一份冻结产物，`extract` 提取、`build` 回填，互不覆盖：
+
+```bash
+# 提取（只读源包与还原树 → 01_索引与产物/30_分析/载具深挖_2026xxxx/）
+python la.py vehicle extract                 # 两期全跑
+python la.py vehicle extract --only deep     # 第一期：魅力值 / 加速度 / 最大速度
+python la.py vehicle extract --only lore     # 第二期：描述 / 特技 / 氮气 / 生命量
+
+# 回填（冻结产物 → data/boards/vehicle_full.{json,js}）
+python la.py vehicle build                   # 两期全跑（params → lore，顺序固定）
+python la.py vehicle build --dry-run         # 只算不写
+python la.py web build                       # 回填后重建 manifest
+```
+
+单脚本也能直接跑（等效于上面的命令，路径自动从脚本位置推断）：
+
+```bash
+python 03_执行/vehicle_deep_extract.py   --out DIR [--server classic|kj1|yk]
+python 03_执行/vehicle_lore_extract.py   --out DIR
+python 02_wiki/web/tools/build_vehicle_params.py --dry-run
+python 02_wiki/web/tools/build_vehicle_lore.py   --dry-run
+```
+
+口径与已知坑见各脚本头部注释；`vehicle_modding_data` 的 0x0b 指针基址（=28）
+由脚本暴力自解，行↔块按序配平**不可靠**，特技归属一律以 `ref_vehicle_id` 为准。
 
 ## PC 源（`E:\mrzh` 只读）
 
@@ -62,3 +92,7 @@ python 00_规范与工具/工具/工具库/01_解码定位复原/图集与取图
 - 顶层命令按「用户要做什么」分组，不按代码模块分组。
 - 一个命令只做一件事；复杂组合走 `tool` 逃生舱。
 - `la.py doctor` 通过即可直接跑，不需要手动设 PYTHONPATH。
+- **解释器**：须用项目 venv（`00_规范与工具/环境/venv/Scripts/python.exe`）。
+  系统 python 缺 `cryptography` / `yaml`，`la.py` 与解包工具链都会 import 失败。
+- **路径**：所有脚本一律从 `__file__` 反推项目根，禁止写死 `E:/la拆包项目`，
+  否则项目一搬目录就全废。需要改指向时用 `--root` / `--cd` / `--out` / `--board`。

@@ -11,6 +11,8 @@
   --st:#15803d;--st-bg:#f0fdf4;--st-bd:#bbf7d0;
   --vf:#7c3aed;--vf-bg:#f5f3ff;--vf-bd:#ddd6fe;
   --ca:#b45309;--ca-bg:#fffbeb;--ca-bd:#fde68a;
+  /* 氮气加成黄字：游戏内面板同色系，取 yellow-700 保证浅底可读 */
+  --nitro:#a16207;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -236,6 +238,22 @@ li.audio-row:last-child{border-bottom:none}
 li.audio-row .audio-label{min-width:176px;color:#374151;font-weight:600}
 li.audio-row audio{height:30px;width:280px;max-width:100%}
 .audio-note{margin:8px 0 0;font-size:11px;color:#9ca3af}
+/* 音效表格式（2026-10-29）：表头 含义 / 原名 / 试听 */
+table.audio-table{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0 0}
+table.audio-table th{font-size:11px;font-weight:600;color:#9ca3af;text-align:left;
+  padding:3px 8px;border-bottom:1px solid var(--border,#e4e4e7);white-space:nowrap}
+table.audio-table td{padding:4px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+table.audio-table tr:last-child td{border-bottom:none}
+/* 组标题行：整行 colspan 小字标题（表头只出现一次，组名内嵌表中） */
+table.audio-table tr.a-group td{padding:7px 8px 3px;font-size:11px;font-weight:600;color:#64748b;
+  border-bottom:1px solid var(--border,#e4e4e7);background:none}
+table.audio-table td.a-mean{color:#374151;font-weight:600;white-space:nowrap}
+table.audio-table td.a-raw{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+table.audio-table td.a-raw code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-size:11px;color:#64748b;background:#f8fafc;border-radius:4px;padding:1px 5px}
+table.audio-table td.a-play{white-space:nowrap}
+/* 试听列要足够宽，否则 Chrome 音频控件会藏掉可拖动进度条（2026-10-29 用户反馈） */
+table.audio-table td.a-play audio{height:30px;width:280px;max-width:100%;vertical-align:middle}
 
 /* ── 排列控件：排列依据 + 方向按钮（与筛选完全分开）── */
 .dir-btn{cursor:pointer;font-size:12.5px;padding:5px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:#334155;white-space:nowrap}
@@ -364,10 +382,16 @@ details.vv-tech[open]>summary::before{content:"▾ "}
 .skin-card .skin-facts .fact.ls-no_sale_field{color:#52525b;background:#f4f4f5;border:1px solid #e4e4e7;border-radius:6px;padding:0 6px}
 /* 顶部统计复用同一套颜色（listingStatHTML 输出的 .ls-chip） */
 .count .ls-chip{display:inline-block;font-size:12px;line-height:1.6;border-radius:6px;padding:0 6px;margin:0 1px;
-  font-weight:600;border:1px solid transparent;font-variant-numeric:tabular-nums}
-.count .ls-chip.ls-on_sale,.count .ls-chip.ls-verified_listed{color:#15803d;background:#f0fdf4;border-color:#bbf7d0}
+  font-weight:600;border:1px solid transparent;font-variant-numeric:tabular-nums}.count .ls-chip.ls-on_sale,.count .ls-chip.ls-verified_listed{color:#15803d;background:#f0fdf4;border-color:#bbf7d0}
 .count .ls-chip.ls-upcoming{color:#b45309;background:#fffbeb;border-color:#fde68a}
 .count .ls-chip.ls-unresolved,.count .ls-chip.ls-no_sale_field{color:#52525b;background:#f4f4f5;border-color:#e4e4e7}
+
+/* ②-b 2026-10-29（用户口径）：上架状态不再单列一项，直接跟在「上架 <日期>」后面（只保留 已上架/未上架 两档） */
+.skin-card .skin-head-right .skin-ls{display:inline-block;margin-left:6px;padding:0 6px;border-radius:6px;
+  font-size:11px;line-height:1.7;font-weight:600;border:1px solid transparent;vertical-align:1px}
+.skin-card .skin-head-right .skin-ls.ls-on_sale,
+.skin-card .skin-head-right .skin-ls.ls-verified_listed{color:#15803d;background:#f0fdf4;border-color:#bbf7d0}
+.skin-card .skin-head-right .skin-ls.ls-upcoming{color:#b45309;background:#fffbeb;border-color:#fde68a}
 
 /* ③ 舒适档 = 默认基线：图区 150px、gap 14px、1440 宽 4 列。
    注意 .skin-mode 挂在 body 上（board.html: document.body.classList.add("skin-mode")），

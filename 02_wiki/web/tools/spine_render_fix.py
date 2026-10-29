@@ -337,6 +337,7 @@ def draw_order(skel, anim, t):
 
 # ---------------------------------------------------------------- 绘制
 def tint(im, col):
+    """对**小图**（region sprite）着色。不再对整张画布做转换 —— 那是性能灾难。"""
     if not col:
         return im
     r, g, b, a = col
@@ -363,8 +364,31 @@ def _crop_region(page_img, region):
     return crop
 
 
+_REGION_CACHE = {}
+
+
+def _region_cache(page_img, region):
+    """region 裁切缓存。key=(page 图 id, x, y, w, h, rotate)。"""
+    key = (id(page_img), region["x"], region["y"], region["w"], region["h"],
+           bool(region.get("rotate")))
+    hit = _REGION_CACHE.get(key)
+    if hit is not None:
+        return hit
+    rx, ry, rw, rh = region["x"], region["y"], region["w"], region["h"]
+    if region.get("rotate"):
+        crop = page_img.crop((rx, ry, rx + rh, ry + rw)).transpose(Image.ROTATE_270)
+    else:
+        crop = page_img.crop((rx, ry, rx + rw, ry + rh))
+    _REGION_CACHE[key] = crop
+    return crop
+
+
 def draw_region(canvas, page_img, region, att, world_mat, scale, off):
-    """region 附件：按骨骼世界矩阵贴图。"""
+    """region 附件：按骨骼世界矩阵贴图。
+
+    ★ 性能：贴图页的 region 裁切结果做**全局缓存**（同一页同 region 尺寸不变），
+      否则 500+ slot 的骨架每帧要重复 crop 上千次。
+    """
     w = float(att.get("width", region.get("w", 0)))
     h = float(att.get("height", region.get("h", 0)))
     if w <= 0 or h <= 0:
@@ -373,9 +397,9 @@ def draw_region(canvas, page_img, region, att, world_mat, scale, off):
                     float(att.get("rotation", 0)), 1.0, 1.0)
     m = mat_mul(world_mat, local)
     rx, ry, rw, rh = region["x"], region["y"], region["w"], region["h"]
-    crop = page_img.crop((rx, ry, rx + rw, ry + rh))
-    if region.get("rotate"):
-        crop = crop.transpose(Image.ROTATE_270)
+    crop = _region_cache(page_img, region)
+    if crop is None:
+        return False
     # 目标尺寸：附件尺寸 × 全局缩放（骨骼缩放已含在 world_mat 的行列式里）
     sx = math.hypot(m[0][0], m[1][0])
     sy = math.hypot(m[0][1], m[1][1])
@@ -386,7 +410,7 @@ def draw_region(canvas, page_img, region, att, world_mat, scale, off):
     sprite = crop.resize((dw, dh), Image.BILINEAR)
     ang = math.degrees(math.atan2(m[1][0], m[0][0]))
     if abs(ang) > 1e-3:
-        sprite = sprite.rotate(-ang, expand=True, resample=Image.BICUBIC)
+        sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
     px = m[0][2] * scale + off[0]
     py = -m[1][2] * scale + off[1]
     canvas.alpha_composite(sprite, (int(round(px - sprite.width / 2)),
@@ -422,15 +446,34 @@ def _sample_vertices(att, bones_mat, slotmat, scale, off):
 
 
 def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
-    """mesh / skinnedmesh：uv 直接映射到 att_img（已裁好的该附件位图）。"""
+    """mesh / skinnedmesh：uv 直接映射到 att_img（已裁好的该附件位图）。
+
+    ★ 性能：先算出所有三角形的整体像素包围盒，**只在该范围内**做 numpy 运算，
+      避免每帧为每个 mesh 拷贝整张 1400×1400 画布。
+    """
     tris = att.get("triangles") or []
     uvs = att.get("uvs") or []
     if not tris or not uvs:
         return False
     pts = _sample_vertices(att, bones_mat, slotmat, scale, off)
+    W, H = canvas.width, canvas.height
+    # 1) 整体像素包围盒
+    xs_all = [p[0] for p in pts]
+    ys_all = [p[1] for p in pts]
+    if not xs_all:
+        return False
+    minx = int(max(0, math.floor(min(xs_all))))
+    maxx = int(min(W - 1, math.ceil(max(xs_all))))
+    miny = int(max(0, math.floor(min(ys_all))))
+    maxy = int(min(H - 1, math.ceil(max(ys_all))))
+    if maxx <= minx or maxy <= miny:
+        return False
+    # 2) 只取该区域
+    bw, bh = maxx - minx + 1, maxy - miny + 1
+    base = np.asarray(canvas, dtype=np.float32)[miny:maxy + 1, minx:maxx + 1]
+    out = base.copy()
     tex = np.asarray(att_img.convert("RGBA"), dtype=np.float32)
     th, tw = tex.shape[:2]
-    out = np.asarray(canvas, dtype=np.float32).copy()
     drew = False
     for t in range(0, len(tris) - 2, 3):
         i0, i1, i2 = int(tris[t]), int(tris[t + 1]), int(tris[t + 2])
@@ -440,14 +483,17 @@ def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
         u0, v0 = uvs[2 * i0], uvs[2 * i0 + 1]
         u1, v1 = uvs[2 * i1], uvs[2 * i1 + 1]
         u2, v2 = uvs[2 * i2], uvs[2 * i2 + 1]
-        minx, maxx = int(max(0, np.floor(min(x0, x1, x2)))), int(min(canvas.width - 1, np.ceil(max(x0, x1, x2))))
-        miny, maxy = int(max(0, np.floor(min(y0, y1, y2)))), int(min(canvas.height - 1, np.ceil(max(y0, y1, y2))))
-        if maxx <= minx or maxy <= miny:
+        # 三角形自身的像素包围盒（相对 out 的偏移）
+        lx0 = int(max(0, math.floor(min(x0, x1, x2)) - minx))
+        lx1 = int(min(bw - 1, math.ceil(max(x0, x1, x2)) - minx))
+        ly0 = int(max(0, math.floor(min(y0, y1, y2)) - miny))
+        ly1 = int(min(bh - 1, math.ceil(max(y0, y1, y2)) - miny))
+        if lx1 <= lx0 or ly1 <= ly0:
             continue
         den = (y1 - y2) * (x0 - x2) + (x2 - x1) * (y0 - y2)
         if abs(den) < 1e-9:
             continue
-        ys, xs = np.mgrid[miny:maxy + 1, minx:maxx + 1]
+        ys, xs = np.mgrid[ly0:ly1 + 1, lx0:lx1 + 1]
         px = xs + 0.5
         py = ys + 0.5
         w0 = ((y1 - y2) * (px - x2) + (x2 - x1) * (py - y2)) / den
@@ -462,18 +508,20 @@ def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
         vi = np.clip(v.astype(np.int32), 0, th - 1)
         src = tex[vi, ui]
         a = (src[..., 3:4] / 255.0) * inside[..., None]
-        sub = out[miny:maxy + 1, minx:maxx + 1]
+        sub = out[ly0:ly1 + 1, lx0:lx1 + 1]
         sub[..., :3] = src[..., :3] * a + sub[..., :3] * (1 - a)
         sub[..., 3:4] = (a * 255 + sub[..., 3:4] * (1 - a))
-        out[miny:maxy + 1, minx:maxx + 1] = sub
+        out[ly0:ly1 + 1, lx0:lx1 + 1] = sub
         drew = True
     if drew:
-        canvas.paste(Image.fromarray(np.clip(out, 0, 255).astype(np.uint8), "RGBA"))
+        full = np.asarray(canvas, dtype=np.float32)
+        full[miny:maxy + 1, minx:maxx + 1] = out
+        canvas.paste(Image.fromarray(np.clip(full, 0, 255).astype(np.uint8), "RGBA"))
     return drew
 
 
 def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
-                 canvas_wh, att_cache, bone_order=None):
+                 canvas_wh, att_cache, bone_order=None, slot_map=None):
     """渲染一帧 RGBA。canvas_wh=(w,h)，所有内容以 off 为原点（spine 原点）居中。"""
     canvas = Image.new("RGBA", canvas_wh, (0, 0, 0, 0))
     world = bone_world(skel, anim, t)
@@ -493,8 +541,9 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
             atts.setdefault(n, a)
     # 绘制顺序
     order = bone_order or [s["name"] for s in skel.get("slots", [])]
+    smap = slot_map if slot_map is not None else {s["name"]: s for s in skel.get("slots", [])}
     for sname in order:
-        slot = next((s for s in skel["slots"] if s["name"] == sname), None)
+        slot = smap.get(sname)
         if slot is None:
             continue
         name = slot_attachment(skel, slot, anim_slots, t)
@@ -517,7 +566,7 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
                 page_img = page_imgs.get(pg)
                 if page_img is None:
                     continue
-                att_img = _crop_region(page_img, reg)
+                att_img = _region_cache(page_img, reg)
                 att_cache[key] = att_img
             draw_mesh(canvas, att_img, att, bones_mat, bm, scale, off)
             continue
@@ -530,13 +579,42 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
         if page_img is None:
             continue
         if col is not None:
-            # 先贴到临时画布再 tint
-            tmp = Image.new("RGBA", canvas_wh, (0, 0, 0, 0))
-            if draw_region(tmp, page_img, reg, att, bm, scale, off):
-                canvas.alpha_composite(tint(tmp, col))
+            # ★ 只对 region 小图着色，再贴到画布（旧版对整张 1400×1400 画布做
+            #   float32 转换，每个 slot 一次 → 551 slot 的骨架单帧要十几秒）
+            tmp = Image.new("RGBA", (1, 1), (0, 0, 0, 0))
+            sprite = _region_sprite(page_img, reg, att, bm, scale)
+            if sprite is None:
+                continue
+            canvas.alpha_composite(tint(sprite[0], col), sprite[1])
         else:
             draw_region(canvas, page_img, reg, att, bm, scale, off)
     return canvas
+
+
+def _region_sprite(page_img, region, att, world_mat, scale):
+    """region 附件 → (RGBA sprite, 贴图左上角坐标)。"""
+    w = float(att.get("width", region.get("w", 0)))
+    h = float(att.get("height", region.get("h", 0)))
+    if w <= 0 or h <= 0:
+        return None
+    local = mat_trs(float(att.get("x", 0)), float(att.get("y", 0)),
+                    float(att.get("rotation", 0)), 1.0, 1.0)
+    m = mat_mul(world_mat, local)
+    crop = _region_cache(page_img, region)
+    if crop is None:
+        return None
+    sx = math.hypot(m[0][0], m[1][0])
+    sy = math.hypot(m[0][1], m[1][1])
+    dw = max(1, int(round(w * scale * sx)))
+    dh = max(1, int(round(h * scale * sy)))
+    sprite = crop.resize((dw, dh), Image.BILINEAR)
+    ang = math.degrees(math.atan2(m[1][0], m[0][0]))
+    if abs(ang) > 1e-3:
+        sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
+    px = m[0][2] * scale
+    py = -m[1][2] * scale
+    pos = (int(round(px - sprite.width / 2)), int(round(py - sprite.height / 2)))
+    return (sprite, pos)
 
 
 def load_atlas(atlas: pathlib.Path):
@@ -567,14 +645,17 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
     anim = (skel.get("animations") or {}).get(aname) or {}
     anim_slots = anim.get("slots") or {}
     order_tl = anim.get("drawOrder")
+    slot_map = {s["name"]: s for s in skel.get("slots", [])}
+    # 静态绘制顺序（无 drawOrder 时间线时复用，避免每帧重建）
+    static_order = [s["name"] for s in skel.get("slots", [])]
 
     att_cache = {}
     frs = []
     for i in range(cnt):
         t = dur * i / cnt
-        order = draw_order(skel, anim, t) if order_tl else None
+        order = draw_order(skel, anim, t) if order_tl else static_order
         frs.append(render_frame(skel, regions, page_imgs, anim, anim_slots, t,
-                                scale, off, canvas_wh, att_cache, order))
+                                scale, off, canvas_wh, att_cache, order, slot_map))
 
     # 并集透明包围盒
     minx = miny = 10 ** 9

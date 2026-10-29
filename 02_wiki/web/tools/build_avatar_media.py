@@ -433,9 +433,9 @@ def step_anim(d, kinds=None, size=168, frames=24, budget=5400.0, dry=False, forc
             if not frs:
                 fail.append((iid, base, "无帧"))
                 continue
-            q = [f.quantize(colors=180, method=Image.FASTOCTREE) for f in frs]
-            q[0].save(out, format="PNG", save_all=True, append_images=q[1:],
-                      duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
+            # ★ 绝不量化：quantize() 会破坏 APNG 多帧透明通道，导致后续帧色块/反转。
+            frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
+                        duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
             done += 1
         m = it.setdefault("_media", {})
         m["anim"] = "assets/avatar_anim/%s.png" % iid

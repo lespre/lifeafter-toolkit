@@ -1,6 +1,6 @@
 window.WIKI_PUBLICATION_POLICY = {
   "schema": "lifeafter-wiki-publication-policy-v2",
-  "generated": "2026-09-10",
+  "generated": "2026-10-29",
   "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。",
   "boards": {
     "chip_item_catalog": {
@@ -147,9 +147,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "ok"
     },
     "talent_catalog": {
-      "publication_status": "published_hidden",
-      "category": "二、战力类",
-      "note": "已被 talent_battle / talent_prof 拆分替代"
+      "publication_status": "published",
+      "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能",
+      "items": 5304,
+      "reason": "天赋总表（2026-10-29 用户定版「八也合回一个」）：原按职业系拆分的战斗天赋/职业天赋两卡合并回一张总表，id 无重叠；页内「职业系」筛选区分 战斗/采集/制造。数据=体验服 Documents 快照 new_talent_data / talent_profession_data（简单生存服）。"
     },
     "edible_catalog": {
       "publication_status": "published",
@@ -180,14 +181,6 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "四、资料层（道具总表 / 文本来源）"
     },
     "gene_potential_catalog": {
-      "publication_status": "published",
-      "category": "二、战力类"
-    },
-    "talent_battle": {
-      "publication_status": "published",
-      "category": "二、战力类"
-    },
-    "talent_prof": {
       "publication_status": "published",
       "category": "二、战力类"
     },
@@ -287,9 +280,15 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "equipment_attrs": {
       "publication_status": "published",
-      "category": "二、战力类 / （八）装备属性",
-      "items": 753,
-      "reason": "all_equips_data（PE 还原树 pe_20261020，oversea/_kj1）逐行解码；attrs 为 0xC6/0x86 嵌套行帧，属性名取自同表 chs 池；每条带 row_key 与定位链。只展示 attrs 非空条目，空属性条目不进板、不补零。"
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "items": 1647,
+      "reason": "装备属性（武器·护甲）单卡双服（2026-10-29 用户定版「本来就是一个子卡」）：目录一张卡，条目级 server_branch（简单生存服=kj1 / 经典服=base）+ 页内「服别」下拉筛选，分服行数据不混排。数据=PE pe_20261020 快照 oversea_data_kj1（共创服玩家称呼）+ apk_20261002 安装基线经典服行表，node 索引法 100% 解码（30_分析/all_equips_全量_node索引_20261029），attrs 全命中。筛选/体验版合并规则两服一致（详见卡内 notes）。全量边界：护臂/进化武器行数值在未留盘热更 inc 分片内，待增量载荷入库后重跑 03_执行/all_equips_full_extract.py 补全。"
+    },
+    "appearance_bud": {
+      "publication_status": "published",
+      "category": "一、时装类 / （八）半感染者花苞",
+      "items": 148,
+      "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
     }
   }
 };

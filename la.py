@@ -710,6 +710,78 @@ def cmd_spine(a) -> int:
     return run("Spine 三件套导出", args)
 
 
+# ---------------- vehicle ----------------
+VEH_DEEP = PROJ / "03_执行" / "vehicle_deep_extract.py"
+VEH_LORE = PROJ / "03_执行" / "vehicle_lore_extract.py"
+VEH_PARAMS = TOOLS / "build_vehicle_params.py"
+VEH_LORE_BUILD = TOOLS / "build_vehicle_lore.py"
+
+
+def _stream(name: str, args: list[str], cwd: Path = WEB) -> int:
+    """实时输出版 run()：提取/回填耗时长，不能只留最后 4 行。"""
+    print("\n▶ %s" % name)
+    t0 = time.time()
+    r = subprocess.run([PY, "-u"] + [str(x) for x in args], cwd=str(cwd))
+    print("   %s (%.1fs)" % ("✓" if r.returncode == 0 else "✗ rc=%d" % r.returncode,
+                             time.time() - t0))
+    return r.returncode
+
+
+def cmd_vehicle(a) -> int:
+    """（三）载具板深挖：extract 提取冻结产物 / build 回填到板。
+
+    与 board_kit 类脚本不同，这两条链路有独立的冻结产物目录，
+    所以走专用子命令而不是 board run。
+    """
+    root = a.root or str(PROJ)
+    rc = 0
+
+    # --only 取值随动作而异：extract 只认 deep/lore，build 只认 params/lore
+    allowed = {"extract": ("deep", "lore"), "build": ("params", "lore")}[a.action]
+    if a.only and a.only not in allowed:
+        print("vehicle %s 不支持 --only %s（可选：%s）" % (a.action, a.only, " / ".join(allowed)))
+        return 2
+
+    if a.action == "extract":
+        if a.only in (None, "deep"):
+            args = [VEH_DEEP, "--root", root]
+            if a.cd:
+                args += ["--cd", a.cd]
+            if a.out:
+                args += ["--out", a.out]
+            rc |= _stream("载具提取 第一期：魅力值 / 加速度 / 最大速度", args)
+        if a.only in (None, "lore"):
+            args = [VEH_LORE, "--root", root]
+            if a.cd:
+                args += ["--cd", a.cd]
+            if a.out:
+                args += ["--out", a.out]
+            rc |= _stream("载具提取 第二期：描述 / 特技 / 氮气 / 生命量", args)
+        return rc
+
+    if a.action == "build":
+        if a.only in (None, "params"):
+            args = [VEH_PARAMS, "--root", root]
+            if a.board:
+                args += ["--board", a.board]
+            if a.dry_run:
+                args += ["--dry-run"]
+            rc |= _stream("载具回填 第一期：魅力值 / 速度 / 等级属性", args)
+        if a.only in (None, "lore"):
+            args = [VEH_LORE_BUILD, "--root", root]
+            if a.board:
+                args += ["--board", a.board]
+            if a.dry_run:
+                args += ["--dry-run"]
+            rc |= _stream("载具回填 第二期：描述 / 特技 / 氮气 / 生命量", args)
+        if not a.dry_run:
+            print("\n▸ 板已更新，记得刷新页面（缓存号见 board.html）：python la.py web build")
+        return rc
+
+    print("用法：la.py vehicle extract|build [--only deep|lore|params]")
+    return 2
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="la", description="明日之后拆包项目 CLI")
     sub = ap.add_subparsers(dest="cmd")
@@ -792,6 +864,17 @@ def main() -> int:
     tp = sub.add_parser("tool", help="透传 toolkit_cli（逃生舱）")
     tp.add_argument("rest", nargs=argparse.REMAINDER)
 
+    vh = sub.add_parser("vehicle", help="（三）载具板深挖：extract 提取 / build 回填")
+    vh.add_argument("action", choices=["extract", "build"])
+    vh.add_argument("--only", choices=["deep", "lore", "params"],
+                    help="只跑其中一期（extract: deep|lore ／ build: params|lore）")
+    vh.add_argument("--root", help="项目根（默认 la.py 所在目录）")
+    vh.add_argument("--cd", help="还原树 cdata 目录（仅 extract）")
+    vh.add_argument("--out", help="冻结产物输出目录（仅 extract）")
+    vh.add_argument("--board", help="板数据文件（仅 build）")
+    vh.add_argument("--dry-run", action="store_true",
+                    help="只算不写（仅 build）")
+
     a = ap.parse_args()
     _pname = apply_profile(getattr(a, "profile", None))
     if _pname and getattr(a, "cmd", None) not in (None, "profile"):
@@ -831,6 +914,8 @@ def main() -> int:
         return _toolkit(["hotfix", a.action], "热更 %s" % a.action)
     if a.cmd == "spine":
         return cmd_spine(a)
+    if a.cmd == "vehicle":
+        return cmd_vehicle(a)
     if a.cmd == "npk":
         return cmd_npk(a)
     if a.cmd == "watch":

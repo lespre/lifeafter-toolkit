@@ -183,9 +183,11 @@ def main() -> int:
             fails.append((iid, base, "无帧"))
             continue
         out = ANIM_DIR / (iid + ".png")
-        q = [f.quantize(colors=180, method=Image.FASTOCTREE) for f in frs]
-        q[0].save(out, format="PNG", save_all=True, append_images=q[1:],
-                  duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
+        # ★ 绝不能量化：Pillow 的 quantize() 会破坏 APNG 多帧的透明通道与调色板，
+        #   导致第 2~N 帧出现色块/反转（实测帧间差 75~120，视觉即"乱码"）。
+        #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
+        frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
+                    duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
         f0 = ANIM_DIR / (iid + "_f0.png")
         if not f0.is_file():
             frs[0].save(f0)
