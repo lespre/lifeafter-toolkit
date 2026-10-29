@@ -1,0 +1,15 @@
+board: talent_catalog
+name: （内测版）天赋总表
+category: 二、战力类 / （八）战斗天赋、职业天赋、职业技能
+source_server: 简单生存服（体验服 Documents 快照）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-29'
+evidence: structure
+items: 5304
+primary_builders:
+- build_talent_by_prof.py
+- build_text_boards.py
+postprocess_scripts:
+- merge_talent_boards.py
+script_count: 3
+rebuild_risk: low

@@ -1,0 +1,42 @@
+# 装备收录口径（all_equips 冻结产物 → 板）
+# 依据：2026-10-29 用户逐类判定 + 已结案结论。判定必须落成可复算规则（键段/槽位/名字正则）。
+# 数据源：30_分析/all_equips_全量_node索引_20261029/{classic,kj1,yk}.json
+
+key_segments:
+  weapons:      { range: [100000, 199999], label: 武器 }
+  armor_shield: { range: [300000, 339999], label: 护甲护盾, equip_type: 0 }
+  tools:        { range: [200000, 299999], label: 工具, equip_type: 2 }
+  throwable:    { range: [400000, 499999], label: 投掷物 }
+  traps:        { range: [600000, 699999], label: 陷阱 }
+  backpacks:    { range: [140000, 149999], label: 背包 }
+  drone_module: { range: [181000, 181999], label: 无人机模块 }
+  drone_unit:   { range: [182000, 182999], label: 无人机整机 }
+  pendants:     { range: [270000, 270999], label: 挂饰 }
+  vehicles:     { range: [193000, 196999], label: 载具 }
+
+exclude:
+  # 明确不进板的口径
+  - { rule: key_range, values: [[270000, 270999]], reason: 挂饰，不进装备属性板 }
+  - { rule: item_id, values: [14001], reason: 背包 wt14001，不进装备属性板 }
+  - { rule: name_regex, values: ["^测试", "^NPC"], reason: NPC / 测试件 }
+  - { rule: category, values: [夹层, 涂层], reason: 配件类不进装备属性板 }
+  - { rule: category, values: [无人机, 无人机模块], reason: 无人机不进装备属性板 }
+
+include_rules:
+  trial_variants:
+    merge_into_main: true
+    note: 体验版（含 N 天档）并入正式版，字段记入 trial_variants
+    match_name_regex: "体验版|体验|N天"
+
+pending:
+  # 待补数据后再进板，不猜数
+  - { category: 护臂, note: 琥珀护臂家族；名字在热更池，行数值在热更 inc 分片，库内留盘 npk 缺失 }
+  - { category: 进化武器, note: 数据源缺口，等增量载荷入库后重跑 }
+
+field_semantics:
+  evidence_levels:
+    structure: 结构已解析
+    verified: 业务链已核验
+    candidate: 候选待验证
+  required_item_fields: [id, name, evidence, source]
+  required_meta_fields: [name, category, source_server, package_sha, generated, evidence]

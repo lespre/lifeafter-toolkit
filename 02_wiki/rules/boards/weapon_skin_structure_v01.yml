@@ -1,0 +1,13 @@
+board: weapon_skin_structure_v01
+name: 武器皮肤 · 已证明结构（identity unresolved）
+category: 三、战力类 / （六）武器皮肤结构（身份待解析）
+source_server: 测试客户端静态消费者；运行时最终状态 unknown
+package_sha: 328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f
+generated: '2026-09-10'
+evidence: structure
+items: 3
+primary_builders:
+- build_weapon_skin_source_graph.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

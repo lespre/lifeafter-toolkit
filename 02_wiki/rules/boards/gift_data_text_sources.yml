@@ -1,0 +1,14 @@
+board: gift_data_text_sources
+name: （内测版）当前包 · 礼盒名称与说明文字表
+category: 四、综合资料 / （五）说明条目、文字与提示总表
+source_server: 简单生存服
+package_sha: 508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3
+generated: '2026-09-13'
+evidence: structure
+items: 5477
+primary_builders:
+- rebuild_fashion_bestplay_slots.py
+postprocess_scripts:
+- fix_legacy_provenance.py
+script_count: 2
+rebuild_risk: low

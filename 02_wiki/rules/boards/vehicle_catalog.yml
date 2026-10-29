@@ -1,0 +1,13 @@
+board: vehicle_catalog
+name: 载具·模型清单（以 body_model 为锚）
+category: 图鉴类-载具
+source_server: 体验服 script.py314 all_equips 载具行 + 二期奖池硬证据
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-01'
+evidence: structure
+items: 125
+primary_builders: []
+postprocess_scripts:
+- backfill_vehicle.py
+script_count: 1
+rebuild_risk: low

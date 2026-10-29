@@ -1,0 +1,14 @@
+board: drone_catalog
+name: （内测版）无人机总表
+category: 二、战力类 / （三）无人机
+source_server: 简单生存服（全字段）+ 经典服（CBG 名册并集）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-19T03:29:53+08:00'
+evidence: structure
+items: 287
+primary_builders:
+- rebuild_drone_classic.py
+postprocess_scripts:
+- wiki_restructure.py
+script_count: 2
+rebuild_risk: low

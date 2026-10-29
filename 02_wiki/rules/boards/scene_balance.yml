@@ -1,0 +1,24 @@
+board: scene_balance
+name: （内测版）场景平衡
+category: 二、战力类 / （六）场景平衡
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（special_hurt_params_data、space_data） · 资源 41_还原树/pe/资源
+package_sha: 5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6
+generated: '2026-10-24'
+evidence: structure
+items: 573
+primary_builders:
+- build_scene_balance_branch.py
+- build_scene_board.py
+- build_scene_board_v2.py
+postprocess_scripts:
+- add_scene_pvp_filter.py
+- audit_boards_full.py
+- merge_scene_balance.py
+- normalize_scene_source.py
+- set_scene_type_by_tag.py
+- set_scene_type_five.py
+- split_scene_by_server.py
+- tidy_scene_cards.py
+- wiki_restructure.py
+script_count: 12
+rebuild_risk: high

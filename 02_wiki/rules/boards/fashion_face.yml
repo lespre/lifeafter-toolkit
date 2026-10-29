@@ -1,0 +1,13 @@
+board: fashion_face
+name: 人物·面饰/挂饰
+category: 人物类-面饰
+source_server: 体验服 script.py314 面饰专池 BA entry010816/009169
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-01'
+evidence: structure
+items: 180
+primary_builders: []
+postprocess_scripts:
+- backfill_fashion_face.py
+script_count: 1
+rebuild_risk: low

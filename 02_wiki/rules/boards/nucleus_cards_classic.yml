@@ -1,0 +1,13 @@
+board: nucleus_cards_classic
+name: 核芯卡（双服合并：经典服 12 星 + 简单生存服独有）
+category: 三、战力类 / （二）核芯
+source_server: lifeafter-classic-current + documents-py314-current
+package_sha: 79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d
+generated: '2026-09-10T22:46:33Z'
+evidence: structure
+items: 77
+primary_builders: []
+postprocess_scripts:
+- audit_fixes.py
+script_count: 1
+rebuild_risk: low

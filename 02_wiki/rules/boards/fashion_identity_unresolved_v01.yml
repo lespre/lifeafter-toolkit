@@ -1,0 +1,14 @@
+board: fashion_identity_unresolved_v01
+name: （内测版）时装静态记录 · identity unresolved
+category: 二、时装类 / （一）时装静态记录（身份待解析）
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源
+package_sha: 328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f
+generated: '2026-09-10'
+evidence: candidate
+items: 31112
+primary_builders: []
+postprocess_scripts:
+- fix_escape_and_rest.py
+- fix_ykxq_and_chip.py
+script_count: 2
+rebuild_risk: low

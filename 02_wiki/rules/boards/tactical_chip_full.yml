@@ -1,0 +1,17 @@
+board: tactical_chip_full
+name: 战术芯片·全量芯片总表
+category: 二、战力类 / （二）战术芯片
+source_server: 当前客户端热更树（01_索引与产物/41_还原树/pe_test_script，2026-10-18 从 pe_packs 重抽）
+package_sha: 6bf87eb2ddaf44e57ad4b4a624e9f328c7abdc54cb76c08d28ebd585f8afab19
+generated: '2026-10-18'
+evidence: structure
+items: 71
+primary_builders:
+- rebuild_chip_lottery.py
+- rebuild_chip_lottery_board.py
+postprocess_scripts:
+- audit_fixes.py
+- fill_chip_effect.py
+- wiki_restructure.py
+script_count: 5
+rebuild_risk: mid

@@ -1,0 +1,31 @@
+# 服别口径（官方口径，2026-10-29 夜定版）
+# 唯一事实来源：板卡名、索引、筛选器一律读这里，禁止在脚本里另写映射。
+# 变更方式：改本文件 → 跑 gen_rules_inventory.py → 重建相关板 → 记入交接卡。
+
+servers:
+  kj1:
+    display: 简单生存服
+    channel: kj1
+    remark: 玩家俗称「共创服」，仅作备注，不入板名与索引
+    aliases_forbidden: [共创服]
+  base:
+    display: 经典服
+    channel: base
+    remark: 经典（怀旧）通道
+  yk:
+    display: 严选服
+    channel: yk
+    remark: 严选/oversea 通道
+
+policy:
+  # 分服铁律：分服子卡分开、不混排
+  mixed_server_cards: forbidden
+  # 数据缺失时生成说明性空卡，不猜数
+  missing_data_policy: explicit_empty_card
+  # 猜数即失败：数值缺失必须是 null/说明，不得插值
+  no_guessed_numbers: true
+
+# 板卡命名规范
+naming:
+  server_suffix: true        # 板内分服子卡需带服别标识
+  display_name_source: official_only   # 服名只用官方口径，玩家俗称仅进 remark

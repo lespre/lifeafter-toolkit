@@ -1,0 +1,17 @@
+board: recipe_book
+name: 食谱总表 · 烹饪配方与成品
+category: 三、活动类 / （四）食谱
+source_server: 简单生存服·体验服 Documents 快照（41_还原树）：cook_recipe_data + edible_item_data
+package_sha: c5a62a3a240128460781e500d95c4a7e2e8851fb2f341c813913ffa9792cdbe7
+generated: '2026-10-24'
+evidence: structure
+items: 571
+primary_builders:
+- build_recipe_board.py
+- ensure_builder_inputs.py
+postprocess_scripts:
+- fill_edible_icons_recipe.py
+- merge_edible_recipe.py
+- polish_new_boards.py
+script_count: 5
+rebuild_risk: mid

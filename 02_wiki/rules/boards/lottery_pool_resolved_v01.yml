@@ -1,0 +1,12 @@
+board: lottery_pool_resolved_v01
+name: （内测版）LOTTERY_POOL_RESOLVED v0.1 · source-locked static config
+category: 四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1
+source_server: 测试客户端静态快照；服务器与 loader/final overlay unresolved
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-10'
+evidence: structure
+items: 23567
+primary_builders: []
+postprocess_scripts: []
+script_count: 0
+rebuild_risk: low

@@ -1,0 +1,14 @@
+board: fashion_projection_slots
+name: 当前包 · 伴身投影（投影格）
+category: 二、时装类 / （五）投影
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源
+package_sha: d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9
+generated: '2026-10-23T14:40:23Z'
+evidence: structure
+items: 41
+primary_builders: []
+postprocess_scripts:
+- audit_boards_full.py
+- merge_fashion_layers.py
+script_count: 2
+rebuild_risk: low

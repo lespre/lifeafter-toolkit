@@ -1,0 +1,18 @@
+board: edible_catalog
+name: （内测版）料理与食谱
+category: 二、战力类 / （四）料理与食谱
+source_server: PE 体验服（pe_20261020 还原树）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-23'
+evidence: structure
+items: 4557
+primary_builders:
+- build_text_boards.py
+- rebuild_edible.py
+- rebuild_illustration.py
+postprocess_scripts:
+- fill_edible_icons_recipe.py
+- merge_edible_recipe.py
+- wiki_restructure.py
+script_count: 6
+rebuild_risk: mid

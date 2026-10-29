@@ -1,0 +1,16 @@
+board: gene_potential_catalog
+name: （内测版）种族潜能总表
+category: 二、战力类 / （七）各种族潜能
+source_server: 简单生存（字段级）+ 经典服（池名册级，待解码）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-23'
+evidence: structure
+items: 104
+primary_builders:
+- build_gene_board.py
+- build_talent_by_prof.py
+postprocess_scripts:
+- add_gene_classic_diff.py
+- fix_gene_races.py
+script_count: 4
+rebuild_risk: mid

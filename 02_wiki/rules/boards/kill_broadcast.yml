@@ -1,0 +1,19 @@
+board: kill_broadcast
+name: 击败播报 / MVP 结算动画
+category: 一、时装类 / （四）击败播报与全场最佳动画
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（mvp_action_data、common_item_kill_board_data） · 资源 41_还原树/pe/资源
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-22'
+evidence: structure
+items: 13
+primary_builders:
+- build_kill_broadcast.py
+postprocess_scripts:
+- fill_killboard_icons.py
+- fill_mvp_media.py
+- fix_mvp06_icon.py
+- fix_mvp06_media.py
+- fix_mvp06_transparent.py
+- normalize_board_meta.py
+script_count: 7
+rebuild_risk: mid

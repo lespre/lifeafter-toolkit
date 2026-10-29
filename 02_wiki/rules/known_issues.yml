@@ -1,0 +1,76 @@
+# 已知问题登记（Known Issues）
+# 每次重建前先看这里；修完一条就把 status 改成 fixed 并记入交接卡。
+# 体检工具：python 02_wiki/web/tools/checks/gate_report.py
+
+open_issues:
+  - id: KI-001
+    board: talent_catalog
+    blocking: true
+    symptom: 5304 条目全部缺 provenance.source_id 与 locator_chain.steps[0].source_id（契约错 10608）
+    root_cause: >-
+      板级 meta.provenance.source_locks 已从单源拆为双源
+      （documents-py314-current-battle / -prof），
+      但条目级 provenance.source_id 与 steps[0].source_id 仍是旧 id「documents-py314-current」，
+      与任一 lock 的 source_id 都不匹配 → strict_v2 判不合格。
+      即：meta 拆源后没同步到条目层。
+    fix_path:
+      - 按条目所属表（battle 侧 new_talent_data 行 vs prof 侧表）把 source_id 映射到对应新 lock id
+      - 同步 locator_chain.steps[0].source_id 与 source_lock_sha256
+      - 映射必须在产物脚本里做（build_talent_by_prof.py / merge_talent_boards.py），不得手改 json
+    note: 禁止为了让门禁变绿而把 source_id 统一填成某一个 lock id —— 那是伪造溯源。
+
+  - id: KI-002
+    board: equipment_attrs
+    blocking: true
+    symptom: 1647 条目缺 provenance.source_id / steps[0].source_id / upstream.entry_index / upstream.file_id（契约错 6596）
+    root_cause: 条目级溯源字段未按 frozen-v3 契约补齐（upstream 定位信息缺失）
+    fix_path:
+      - 在 build_equipment_attrs.py 产出时按 frozen-v3 契约写全 upstream.entry_index / file_id
+      - source_id 需落在 equipment-attrs-kj1 / equipment-attrs-base 两个 lock 之一
+    note: 另一处：source_locks[0].role 非法 1 条，需修 lock 声明
+
+  - id: KI-003
+    board: drone_catalog
+    blocking: true
+    symptom: 238/287 条目整块缺 provenance（locator_chain / upstream / source_lock_sha256 / status_tags）
+    root_cause: >-
+      该板条目由后处理/导入类脚本写入（写条目但没盖 provenance 戳），
+      典型是补录条目与导入条目未走盖章流程。
+    fix_path:
+      - 定位写入这批条目的脚本（见 rules/boards/drone_catalog.yml 的 postprocess_scripts）
+      - 让它复用 provenance_standard.py 的盖章逻辑，或在合板后统一补戳
+    note: 这是「补丁脚本是二等公民」问题的典型样本；修完应把盖章要求写进 RUNBOOK 第 2 节 G3
+
+  - id: KI-004
+    board: gene_potential_catalog
+    blocking: true
+    symptom: 56/104 条目整块缺 provenance（同 KI-003 形态）
+    root_cause: add_gene_classic_diff.py 等差分脚本写入条目未盖戳
+    fix_path: 同 KI-003，优先在差分脚本里盖戳
+
+  - id: KI-005
+    board: fashion_wardrobe
+    blocking: true
+    symptom: 39/2899 条目缺 provenance（含 name_source）
+    root_cause: 少量后处理脚本写入的补充条目未盖戳
+    fix_path: 定位写入这 39 条的脚本并补戳；注意 fashion_wardrobe 有 73 个脚本经手，需逐个确认
+
+  - id: KI-006
+    board: 全部板
+    blocking: false
+    symptom: 无编排器 —— 板级重建顺序仅存在于脚本命名与聊天记录
+    root_cause: 没有 pipeline.yml 级别的执行图
+    fix_path:
+      - 一期已生成 rules/boards/*.yml（脚本清单 + 风险等级）
+      - 二期据此生成可执行编排器 build_pipeline.py，按 primary → postprocess 顺序执行
+
+  - id: KI-007
+    board: 入口
+    blocking: false
+    symptom: 页面入口 wiki.html / board.html / index.html 三份，缺统一索引与版本一致性展示
+    root_cause: 历史上分批建设
+    fix_path: 方案 A 阶段统一入口样式与构建版本标识（build_meta.js 已存在，门户未统一展示）
+
+resolved_notes:
+  - 2026-10-30 完成 tools/ 大扫除：46 个探针脚本迁入 web/tools/_archive/（git mv，保留历史），现役脚本 531 个。
+  - 2026-10-30 建立规则层：rules/{servers,equip_scope,vehicle}.yml + rules/boards/*.yml（51 板）+ pipeline.yml + tools_inventory.yml。

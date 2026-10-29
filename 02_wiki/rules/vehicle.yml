@@ -1,0 +1,77 @@
+# 载具板口径（vehicle_full）
+# 依据：2026-10-30 两期深挖结案结论（用户给游戏内面板校准过）。
+# 关键：面板值与物理参数是两套量纲，禁止混排、禁止换算。
+
+panel_sources:            # 官方面板四值来源（唯一面板口径）
+  speed:    { field: ui_speed,    source: vehicle_ui_data }
+  accel:    { field: ui_acc,      source: vehicle_ui_data }
+  health:   { field: ui_health,   source: vehicle_ui_data, dynamic_by_level: true }
+  nitrogen: { field: max_nitrogen, source: all_equips }
+
+forbidden_sources:
+  - { field: ui_acc,   source: all_equips, reason: 仅 25/258 行有值，不可靠 }
+  - { field: ui_health, source: all_equips, reason: 全无 }
+  - { field: ui_speed, source: all_equips, reason: 32 辆与 vehicle_ui_data 不一致 }
+
+speed_dimensions:
+  navi_speed:
+    unit: 巡航速度
+    max: 250
+    source: vehicle_ui_data
+    display: true
+  proto_top_speed:
+    unit: PhysX 内部量
+    range: [233, 1215]
+    source: vehicle_proto_data
+    display: technical_only
+  rule: 两套速度量纲不同，表内无单位换算字段 → 不换算 km/h
+
+acc_formula:
+  acc: (driving_force - frictional_force) / C_Mass
+  verified: true
+  source: vehicle_proto_data (proto_id → acc / top_speed)
+
+global_limits:
+  source: vehicle_basic_conf
+  max_speed: 250
+  max_acc: 250
+  ui_speed_ratio: 0.7
+
+hp_curve:
+  source: vehicle_attr_data
+  attr_id: 13
+  field: hp
+  levels: 150            # 必须完整存 150 级，勿降采样（降采样会丢中间级，如 lv8=352）
+  panel_value: 按当前等级动态取
+
+special_tags:
+  source_field: vehicle_ui_data.special_function
+  type: uint 位掩码
+  bit_to_tag: vehicle_tags_data 行号 = bit_index + 1
+  verification: 277 辆车全部映射后 0 个无效引用 → 映射确定
+  example:
+    vehicle: 193031
+    special_function: 1073        # 0b10000110001
+    bits: [0, 4, 5, 10]
+    tags: [1, 5, 6, 11]
+  caveat: 与用户游戏内读法存在差异（PE 快照 vs 线上客户端版本），按 PE 还原树铁律落地并在板面标注口径
+
+modding:
+  table: vehicle_modding_data
+  block_layout:
+    pointer_group_tag: "27 0b"
+    leaf_tag: "27 01 02"
+    pointer_base: 28        # 暴力搜唯一解；次优 33 会自引用
+    shared_pool: true       # [34, tail) 是 27 组共享常量池，非标准行表
+  rule: 行↔块按序配平会串数据（古典绅士↔月舞风华），已弃用
+  ownership: 特技归属用 vehicle_modding_function_conf_data.ref_vehicle_id 反查，勿用块序配平
+
+nitrogen:
+  source: all_equips 载具行
+  fields: [max_nitrogen, acc_cost_*, restore_*]
+  zero_means: 无氮气（146 辆）
+  garage_bonus: { hp: 50, nitrogen_cap: 500, scope: 全局功能非逐车 }
+  garage_bonus_source: func_desc 文本「#F(1)<n>」
+
+data_gaps:
+  - { item: 护臂/进化武器, note: 热更 inc 分片缺口，数据源硬缺口，待增量载荷入库重跑 }

@@ -1,0 +1,85 @@
+version: 1
+generated_by: web/tools/build/gen_rules_inventory.py
+raw_layer: 01_索引与产物/30_分析 冻结产物（每两周热更后替换）
+rule_layer: 02_wiki/rules（人工/agent 维护，禁止自动覆盖）
+artifact_layer: 02_wiki/web/data/boards（纯生成，产物零手改）
+publish_gate:
+  command: python 02_wiki/web/tools/build_wiki.py
+  role: 校验 + 导出 manifest.js / 每板 .js / manifest.json / build_meta.js
+  note: 它不是全量构建器：只校验既有 boards/*.json 并导出产物
+inventory_generator: python 02_wiki/web/tools/build/gen_rules_inventory.py
+board_count: 51
+high_risk_boards:
+- board: fashion_wardrobe
+  script_count: 72
+  postprocess_count: 68
+- board: lottery_periods
+  script_count: 43
+  postprocess_count: 20
+- board: weapon_skin_sfx_text_sources
+  script_count: 27
+  postprocess_count: 18
+- board: avatar_catalog
+  script_count: 13
+  postprocess_count: 9
+- board: item_master_full
+  script_count: 13
+  postprocess_count: 7
+- board: mutation_core_full
+  script_count: 13
+  postprocess_count: 11
+- board: scene_balance
+  script_count: 12
+  postprocess_count: 9
+boards:
+- _archive_lottery_20261020
+- activity_master
+- appearance_extra.retired
+- avatar_catalog
+- buff_catalog
+- chip_item_catalog
+- common_item_text_sources
+- desc_catalog
+- drone_catalog
+- edible_catalog
+- entity_catalog
+- equipment_attrs
+- fashion_face
+- fashion_face_slots
+- fashion_glow_slots
+- fashion_identity_unresolved_v01
+- fashion_kaijia
+- fashion_projection_slots
+- fashion_wardrobe
+- fashion_wardrobe_slots
+- gene_potential_catalog
+- gift_data_text_sources
+- illustration_catalog
+- item_master_full
+- item_master_v01
+- kill_broadcast
+- lottery_periods
+- lottery_pool_resolved_v01
+- mutation_core_full
+- nucleus_cards_classic
+- nucleus_entry_slots
+- nucleus_item_catalog
+- recipe_book
+- recipe_catalog
+- scene_balance
+- server_types
+- shop_static_candidates
+- skill_catalog
+- skin_behavior_preview
+- tactical_chip_full
+- talent_catalog
+- text_notice_catalog
+- theme_talent_catalog
+- title_catalog
+- upcoming_auto
+- vehicle_catalog
+- vehicle_full
+- vehicle_garage_names
+- weapon_skin_sfx_text_sources
+- weapon_skin_static_candidates_v01
+- weapon_skin_structure_v01

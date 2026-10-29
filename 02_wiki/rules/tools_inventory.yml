@@ -1,0 +1,3793 @@
+version: 1
+generated_by: web/tools/build/gen_rules_inventory.py
+total: 578
+role_counts:
+  other: 32
+  patch: 194
+  check: 58
+  build: 147
+  probe: 85
+  infra: 62
+policy:
+  build: 现役：主产出脚本，产出 boards/*.json 主体
+  patch: 现役：后处理脚本，改写已产出板，顺序敏感
+  check: 现役：只读校验，可随时跑
+  probe: 探针/探查，多数为一次性，归档候选
+  infra: 公共库/服务/工具
+  other: 未归类，需人工判定
+  archive_candidate: 建议迁入 web/tools/_archive/，禁止执行
+scripts:
+  __init__.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  _cmp_decoder_20260921.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  _fw_selfcheck.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  _probe_huodong2_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_huodong3_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_huodong4_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_huodong_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_ice_drone_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_nucleus2_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_nucleus3_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _probe_nucleus_20260921.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  _src.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  _t_animtest.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_chip_anchors.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  add_edible_craftable.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_face_preset_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  add_fashion_part_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  add_gene_classic_diff.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - gene_potential_catalog
+  add_named_only_toggle.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_pendant_desc_effect.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  add_perf_icons.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_perf_internal_names.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_scene_pvp_filter.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+  add_scene_table_mode.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_updates_20261026.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_weapon_skin_status_v02.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  aggregate_skin_audio.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  align_board_categories.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  align_board_meta.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  analyze_client_file_map.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  annotate_new_skin_audio.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  announce_calibrate.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_bag_bud_rule.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  apply_brand_assets.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_build_meta.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_namecard_frames.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  apply_official_theme.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_provenance_fix.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+    - item_master_full
+    - mutation_core_full
+  apply_weapon_skin_hotfix_overlay.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  apply_wiki_theme.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_wiki_theme_v2.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_wiki_theme_v3.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  apply_wiki_theme_v4.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  attach_skin_posters.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  attach_skin_shots.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  audit_boards_full.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - activity_master
+    - avatar_catalog
+    - desc_catalog
+    - fashion_face_slots
+    - fashion_projection_slots
+    - fashion_wardrobe
+    - mutation_core_full
+    - scene_balance
+    - server_types
+    - text_notice_catalog
+    - weapon_skin_sfx_text_sources
+  audit_common_item_dual_source.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_common_item_family.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_common_item_split_shell.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_coupling.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_fashion_icons.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  audit_fashion_identity.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_fixes.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - chip_item_catalog
+    - mutation_core_full
+    - nucleus_cards_classic
+    - tactical_chip_full
+    - vehicle_full
+    - vehicle_garage_names
+  audit_grade_effects.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_item_identity.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_item_identity_expansion.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_item_master_v01.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_item_master_v01_fields.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_live_sources.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_locator_chains.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_lottery_pool_resolved_v01.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_male_part_mismatch.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  audit_name_chain.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_rebuildability.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_skin_sfx_events.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  audit_systemic.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_weapon_skin_optional.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_wiki_full.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_fashion_face.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_face
+  backfill_fashion_kaijia.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_kaijia
+  backfill_fashion_layers_prov.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  backfill_fashion_layers_prov2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  backfill_nucleus.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_nucleus_build.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_nucleus_extra.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+    - nucleus_entry_slots
+    - nucleus_item_catalog
+    - shop_static_candidates
+    - text_notice_catalog
+  backfill_scene_names.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_skin_official_desc.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  backfill_vehicle.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_catalog
+  bindict_provenance.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_activity_master.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - activity_master
+    - lottery_periods
+  build_appearance_bud.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  build_appearance_extra.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_audio_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_avatar_full.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+    - item_master_full
+  build_avatar_media.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  build_class_layer.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+    - lottery_periods
+    - recipe_catalog
+  build_core_skill_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  build_equipment_attrs.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - equipment_attrs
+  build_fashion_identity_candidates.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_fashion_identity_locator.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_fashion_registry.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_field_names.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_fpk_index.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_fsb_sample_index_pe.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_gene_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - gene_potential_catalog
+    - lottery_periods
+  build_id_locator.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_id_occurrence.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_issue3_pseudo_reply.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_item_identity_candidates.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_item_identity_locator.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_item_master_full.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  build_kill_broadcast.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  build_kill_broadcast_kit.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_locator_chains.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_lottery_board_v2.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  build_lottery_board_v3.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - _archive_lottery_20261020
+    - item_master_full
+    - lottery_periods
+  build_lottery_pool_resolved_v01.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_misc_boards.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - buff_catalog
+    - desc_catalog
+    - entity_catalog
+    - lottery_periods
+    - text_notice_catalog
+  build_name_chain_candidates.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_name_locator.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_nucleus_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_pc_index_layered.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_pvp_attr_table.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_recipe_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - recipe_book
+  build_registry_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_release_pack.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_release_pack_v2.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_reliable_sources.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_row_index.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_scene_balance.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_scene_balance_branch.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+  build_scene_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - scene_balance
+  build_scene_board_v2.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - scene_balance
+  build_server_types.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - server_types
+  build_skin_assets.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_skin_sfx_real_names.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_source_registry.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_stub_index.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_table_families.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_table_index.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_table_inventory_for_basis.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_talent_by_prof.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - gene_potential_catalog
+    - lottery_periods
+    - talent_catalog
+  build_taxonomy_v2.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_taxonomy_v3.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_text_boards.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+    - edible_catalog
+    - illustration_catalog
+    - lottery_periods
+    - skill_catalog
+    - talent_catalog
+    - title_catalog
+  build_theme_talent.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - theme_talent_catalog
+  build_upcoming_auto.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - upcoming_auto
+    - weapon_skin_sfx_text_sources
+  build_vehicle_lore.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  build_vehicle_params.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  build_weapon_glb.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_binding_phase2.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_commerce_6b.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_commerce_phase6.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  build_weapon_skin_compendium.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  build_weapon_skin_effect_standard.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_final_closure.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_grade.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_hotfix_record.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_presentation.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  build_weapon_skin_rebaseline.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_source_bindings.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_weapon_skin_source_graph.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - skin_behavior_preview
+    - weapon_skin_sfx_text_sources
+    - weapon_skin_static_candidates_v01
+    - weapon_skin_structure_v01
+  build_weapon_skin_variant_phase5.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_wiki.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_workcopy_current_package.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  calib_array_base.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  calibrate_business_chains.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  carve_fsb5_banks.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  carve_named_samples.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  cdp_probe.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  cdp_shot_local.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  check_audio_files.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  check_board_tables.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  check_board_tables_v2.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  check_fashion_parts.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  check_image_alpha.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  check_latest_npk_for_skin.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  check_parts_by_model.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  checks.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  clean_junk_20261025.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  clean_pc_tree_files.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  clean_site.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  compare_flame_skeletons.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  compare_server_scene_params.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  crack_mesh_layout.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  damage_calc.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - equipment_attrs
+    - scene_balance
+  decode_effect_show_v2.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  decode_hurt_arrays.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  decode_hurt_params.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  decode_probe.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  decode_skin_effect_show.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  decrypt_npk.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  dedupe_fashion_images.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  dedupe_media.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  dis_arm64.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  download_pe_npk_full.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  download_pe_npk_full_v2.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  drop_pc_skeleton.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  dump_weapon_1013_10.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  enrich_skin_sfx_real_names.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  ensure_builder_inputs.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - common_item_text_sources
+    - fashion_wardrobe_slots
+    - recipe_book
+    - theme_talent_catalog
+  estimate_coverage_ceiling.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_avatar_icons_hires.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  export_classic_hurt_params.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_effect_icons.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  export_exchange_static_candidates.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_fashion_face.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_fashion_kaijia.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_fashion_wardrobe.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_fpk_textures.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_kaijia_phase2.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_lottery.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_lottery_icons.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  export_lottery_icons_fast.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  export_poster.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_vehicle_catalog.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_asset_path_dictionary.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_attr_curves.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_compress_curves.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_gres_audio_banks.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_kaijia_formal_tables.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_pe_full_tree.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_raw_asset.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_ui_assets.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fetch_ui_icon_by_fid.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fill_appearance_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_board_icons_from_pe.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  fill_board_icons_pe_batched.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  fill_board_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_broadcast_only_activities.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_chip_effect.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - tactical_chip_full
+  fill_core_star_entries.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  fill_core_star_entries_classic.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  fill_core_star_values.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  fill_edible_icons_recipe.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - edible_catalog
+    - recipe_book
+  fill_fashion_by_model.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_detail_fields.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_extra_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_face_slots
+    - fashion_wardrobe
+  fill_fashion_from_icons_all.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_gender.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_icons_by_model.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_icons_generic.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_male.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_male_v2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_posters_pc.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_fashion_posters_pe.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_item_icons_from_pe_packs.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  fill_item_images_from_binding.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  fill_item_master_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  fill_killboard_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  fill_lottery_building_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_lottery_icons_all.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_lottery_icons_cached.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_lottery_icons_official.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_mvp_media.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  fill_namecard_static.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  fill_pendant_from_all_equips.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_pendant_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_placeholder_names.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_sf_entry_items.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_show_reward_names.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fill_skin_audio.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_gim_by_bounds.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_got_refs_all.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_gpk_got_refs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_gpk_reloc.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_gpk_xrefs2.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_gpk_xrefs_arm64.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_orphan_tests.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - common_item_text_sources
+    - fashion_face_slots
+    - fashion_glow_slots
+    - fashion_projection_slots
+    - fashion_wardrobe_slots
+  find_oversea_source.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_skin_audio_banks.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_special_hurt_refs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_1110188_reload_is_voice.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_1110189_base_audio.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_1110189_paint_name.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  fix_brand_ratio.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_bucket_pendants.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_cdata_paths.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_coating_vs_skin.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  fix_core_layout.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  fix_core_stars.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  fix_escape_and_rest.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_identity_unresolved_v01
+    - fashion_wardrobe
+    - lottery_periods
+  fix_fashion_gender_pairs.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_fashion_meta.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_fashion_parts.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_gene_races.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - gene_potential_catalog
+  fix_hero_bg.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_hero_crop.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_hero_crop2.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_legacy_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - gift_data_text_sources
+  fix_lottery_period_names.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  fix_male_by_name_part.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_male_part_mismatch.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_male_part_mismatch_v2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_meta_subtitles.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_mvp06_icon.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  fix_mvp06_media.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  fix_mvp06_transparent.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  fix_part_card_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_part_card_provenance2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_projection_from_full_items.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fix_provenance_tables.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+    - item_master_full
+    - mutation_core_full
+  fix_rebuild_paths.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_sb_quote.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_scene_nav.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_side_fullheight.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_source_label.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_source_three_parts.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_source_three_parts2.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_tree_refs.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_wiki_grid.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_wiki_polish.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_ykxq_and_chip.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - chip_item_catalog
+    - fashion_identity_unresolved_v01
+  gen_home.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  gen_layout_mockups.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  img_kind.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  import_pendants.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  import_pendants_full.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  import_yk_preview_pools.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  index_all_npk.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  index_fpk.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  index_gpk.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  index_script_packages.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  index_wpk_idx.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  inspect_mvp06.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  lib_fashion.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  link_gift_bundles.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  list_orphan_boards.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  list_orphan_pages.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  list_unused_assets.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  live_npk_reader.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  locate_all_equips_pair.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  make_logo.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  make_spine_thumbs.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  make_web_launcher.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  map_flame_skin_to_base.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  map_scene_names.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  mark_missing_frames.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  mark_missing_frames2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  mark_single_gender.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  mark_single_gender_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  mark_skins_listed_manual_20261029.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  match_and_carve_skin_audio.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  match_skin_sfx_gap.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  merge_alias_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_appearance_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_broadcast_rewards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  merge_core_boards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  merge_duration_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_edible_recipe.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - edible_catalog
+    - recipe_book
+  merge_extra_into_fashion.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_fashion_layers.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_face_slots
+    - fashion_glow_slots
+    - fashion_projection_slots
+    - fashion_wardrobe
+  merge_fashion_media_into_board.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_fashion_part_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_file_index.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  merge_pe_cdata.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  merge_pe_config_tree.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  merge_same_key_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_scene_balance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+    - server_types
+  merge_script_layer_then_cleanup.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  merge_show_rewards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  merge_skin_effect_show.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  merge_superfashion_preview.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  merge_talent_boards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - talent_catalog
+    - theme_talent_catalog
+  merge_vehicle_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  merge_version_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  merge_weapon_charm.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  normalize_board_meta.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+  normalize_fashion_parts_cn.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  normalize_lottery_names.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  normalize_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  normalize_scene_source.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+  normalize_table_names.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  note_1110189_reserved.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  note_male_scope.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  parity_check.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  parse_attr_curves.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  parse_c159.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  parse_chenshi_periods.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  parse_file_hash_pack.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  patch_build_meta.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  patch_skin_audio_realnames.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  patch_skin_grade_1110189.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  patch_skin_grade_chuanshi.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  patch_skin_names_20261017.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  patch_skin_names_note.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  patch_skin_names_stats.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  polish_new_boards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - recipe_book
+  preview_board_contract.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  probe_bindict_uleb.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_01.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_02.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_03.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_04.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_05.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_06.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_07.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_08.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_build.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_effect_show_layout.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_factor_groups.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_fashion_pe_coverage.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_fashion_rows.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_fashion_rows_by_name.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_files_db.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_gender_scope.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_gpk_fid.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_gpk_table.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hat_match.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hat_neighbors.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hat_sheet.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hpgf_cbc.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hpgf_modes.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_hpgf_table_stats.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_missing_male_cloth_hat.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_namecard_pages.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_oversea_in_npk.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_scene_tables.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_skin_sfx_rows.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_table_entry.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_untyped_containers.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_weapon_1013_10_owner.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  probe_weapon_skin_id.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  project_audit.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  provenance_standard.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  prune_unused_boards.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  publication_policy.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  purge_archived_toggle.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  purge_retired_boards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  push_pe_packs_to_device.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  qa_avatar_anim.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  qa_frame_hollow.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  query_fashion_identity.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_id.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_id_locator.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_item_identity.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_item_master_v01.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_name_locator.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  query_table.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  read_large_npk.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_1110188_audio.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_chenshi_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_chip_board_v3.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  rebuild_chip_board_v4.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  rebuild_chip_catalog.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_chip_lottery.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - tactical_chip_full
+  rebuild_chip_lottery_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+    - tactical_chip_full
+  rebuild_chip_timeline.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  rebuild_common_item_text_sources.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_drone_classic.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - drone_catalog
+  rebuild_edible.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - edible_catalog
+    - lottery_periods
+  rebuild_fashion_bag_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_fashion_bestplay_slots.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - common_item_text_sources
+    - gift_data_text_sources
+  rebuild_fashion_face_slots.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_face_slots
+  rebuild_fashion_glow_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_fashion_projection_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_fashion_wardrobe_full.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  rebuild_fashion_wardrobe_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_future_lottery_preview.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_gift_data_text_sources.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_illustration.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - edible_catalog
+    - illustration_catalog
+    - item_master_full
+    - lottery_periods
+  rebuild_item_master_from_v03.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_full
+  rebuild_item_master_icons.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - item_master_v01
+  rebuild_item_master_v02.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_item_master_v03.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_kaijia_panel_static.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_lottery_periods.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  rebuild_lottery_pool_resolved_board.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_lottery_research_panels.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_manjian_panel_static.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_multioptional_periods.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  rebuild_mystery_shop_panel_static.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_nucleus_cards.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_nucleus_cards_classic.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_nucleus_entry_slots.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_nucleus_item_catalog.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - common_item_text_sources
+    - nucleus_item_catalog
+  rebuild_projection_rows.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  rebuild_skin_behavior_preview.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_weapon_attrs_schema_static.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_weapon_skin_catalog_current.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_weapon_skin_media.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_weapon_skin_resolved_v01.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  rebuild_weapon_skin_sfx_text_sources.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  rebuild_weapon_skin_static_candidates_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+    - weapon_skin_static_candidates_v01
+  rebuild_weapon_skin_v02.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  rebuild_wiki_v01.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  reclassify_fashion_parts.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  reclassify_lottery_families.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  reclassify_vehicle_class.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  reclassify_vehicle_class_v2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  record_regression.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  refetch_broken_cards.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  refetch_dup_icons.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  refresh_fashion_wardrobe_live.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  refresh_lottery_board.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  refresh_sidecars.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  register_board.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  register_mutation_core_full.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - mutation_core_full
+  register_vehicle_full.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - vehicle_full
+  regroup_1110189_audio.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_bonus_test.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_compress_curves.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_damage_formula.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_namecard_frames.py:
+    role: infra
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  render_pvp_calc.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_pvp_chain.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_scene_balance.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_scene_table.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_scene_table_v2.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_scene_table_v3.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_spine_index.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  repair_fashion_by_model_sample.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  repair_fashion_icons_authoritative.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  repair_fashion_posters.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  repair_reborn_vis.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  report_fashion_male.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  report_missing_male_detail.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  report_skin_audio_gap.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  restore_fashion_charm_filters.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  restore_fashion_charm_filters_v2.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  reuse_same_model_images.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  rewrite_wiki_A.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  run_checks.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_classic_weapon_cfg.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_client_file_map.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_client_for_audio.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fev_events.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fpk_ids.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fpk_shuijin.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fpk_sky1003.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fpk_tujian.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fpk_yuese.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_fsb_names_in_pack.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_local_wav_for_gap.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  scan_names_for_show_rewards.py:
+    role: probe
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  scan_packs_for_name.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_packs_for_skin_assets.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_scene_names.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_sky1003_fpk.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_sky1003_fpk_064_050.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_table_family.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_tables_for_1110189.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_tables_for_skin_id.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_weapon_skin_ui_assets.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  search_decompressed.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  segment_scout.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  set_scene_type_by_tag.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+  set_scene_type_five.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+  show_official_effect_names.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  simplify_wiki_sidebar.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  slim_media.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  slim_media2.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  source_presence.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  spine_fetch.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  spine_probe.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: true
+    boards: []
+  spine_render.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  spine_render_fix.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  split_appearance_extra.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  split_part_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  split_scene_by_server.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+    - server_types
+  stage_namecard_pages.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  stage_namecard_pages_fast.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  stamp_board_contract.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  supplement_fashion_parts.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  swap_pc_icons_to_pe.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  sync_appearance_taxonomy.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  sync_manifest_categories.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  sync_manifest_counts.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  test_export_exchange_static_candidates.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  tidy_scene_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - scene_balance
+    - server_types
+  tidy_workspace.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  trace_kaijia_formal_reward_chain.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  trace_placeholder_ids.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - lottery_periods
+  translate_skin_sfx_names.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  tune_brand_assets.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  verify_fid_in_packs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  verify_field_semantics.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  verify_media_refs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+    - fashion_wardrobe
+  wiki_restructure.py:
+    role: infra
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+    - drone_catalog
+    - edible_catalog
+    - mutation_core_full
+    - scene_balance
+    - tactical_chip_full
+    - weapon_skin_sfx_text_sources
+  wiki_restructure_fix.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wiki_server.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wiki_structure_check.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wiki_tidy.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wire_avatar_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  wire_nucleus_icons.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  write_fashion_rules.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  xref_all_arm64.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []

@@ -1,0 +1,25 @@
+board: item_master_full
+name: （内测版）全量道具总表
+category: 四、综合资料 / （二）全量道具总表
+source_server: 测试服 · ITEM_MASTER v0.3 快照
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-23'
+evidence: structure
+items: 30252
+primary_builders:
+- build_avatar_full.py
+- build_class_layer.py
+- build_item_master_full.py
+- build_lottery_board_v3.py
+- rebuild_illustration.py
+- rebuild_item_master_from_v03.py
+postprocess_scripts:
+- apply_provenance_fix.py
+- backfill_provenance.py
+- fill_item_icons_from_pe_packs.py
+- fill_item_images_from_binding.py
+- fill_item_master_icons.py
+- fix_provenance_tables.py
+- link_gift_bundles.py
+script_count: 13
+rebuild_risk: high

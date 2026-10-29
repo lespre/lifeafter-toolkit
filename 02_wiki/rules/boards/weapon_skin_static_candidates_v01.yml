@@ -1,0 +1,14 @@
+board: weapon_skin_static_candidates_v01
+name: 武器皮肤 · 静态候选（identity unresolved）
+category: 三、战力类 / （六）武器皮肤（静态候选）
+source_server: 体验服静态快照；身份与运行时启用状态 unresolved
+package_sha: 328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f
+generated: '2026-09-10'
+evidence: candidate
+items: 118
+primary_builders:
+- build_weapon_skin_source_graph.py
+- rebuild_weapon_skin_static_candidates_board.py
+postprocess_scripts: []
+script_count: 2
+rebuild_risk: low

@@ -1,0 +1,15 @@
+board: common_item_text_sources
+name: 当前包 · 全道具总表（item_id 键文字表）
+category: 一、道具总表 / （一）全道具总表
+source_server: 简单生存服
+package_sha: d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9
+generated: '2026-10-24'
+evidence: structure
+items: 38571
+primary_builders:
+- ensure_builder_inputs.py
+- rebuild_fashion_bestplay_slots.py
+- rebuild_nucleus_item_catalog.py
+postprocess_scripts: []
+script_count: 3
+rebuild_risk: low

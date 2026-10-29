@@ -1,0 +1,20 @@
+board: vehicle_full
+name: 载具·全量载具总表
+category: 一、时装类 / （三）载具
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（vehicle_ui_data.py、vehicle_brand_type_conf.py、vehicle_brand_data.py、vehicle_proto_data.py、vehicle_attr_data.py、vehicle_basic_conf.py）
+  ＋ all_equips 载具行（经典服 apk_20261002 基线 / 简单生存 kj1 / 会员专享 yk，pe_20261020 快照） · 资源 41_还原树/pe/资源
+package_sha: eec55fcb9571ebfa7df5b56af11054003a8baa8e14d982f4536ccd77428a85df
+generated: '2026-10-29'
+evidence: structure
+items: 174
+primary_builders:
+- build_vehicle_lore.py
+- build_vehicle_params.py
+- register_vehicle_full.py
+postprocess_scripts:
+- audit_fixes.py
+- merge_vehicle_cards.py
+- reclassify_vehicle_class.py
+- reclassify_vehicle_class_v2.py
+script_count: 7
+rebuild_risk: mid

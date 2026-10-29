@@ -1,0 +1,17 @@
+board: server_types
+name: （内测版）服型总表 · 服务器类型后缀与依据
+category: 四、综合资料 / （一）服务器类型
+source_server: toolkit_core/server_types.py（唯一来源，依据均可在客户端复核）
+package_sha: '0000000000000000000000000000000000000000000000000000000000000000'
+generated: '2026-10-23'
+evidence: structure
+items: 21
+primary_builders:
+- build_server_types.py
+postprocess_scripts:
+- audit_boards_full.py
+- merge_scene_balance.py
+- split_scene_by_server.py
+- tidy_scene_cards.py
+script_count: 5
+rebuild_risk: mid

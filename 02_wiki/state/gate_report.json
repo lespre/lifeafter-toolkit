@@ -1,0 +1,354 @@
+{
+ "threshold_pct": 20.0,
+ "published_boards": 31,
+ "green": 26,
+ "red": 5,
+ "delta_alerts": 0,
+ "rows": [
+  {
+   "board": "activity_master",
+   "name": "活动总表 · 全部活动与起止时间",
+   "items": 886,
+   "baseline": 886,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "avatar_catalog",
+   "name": "头像 / 头像框 / 名片框",
+   "items": 673,
+   "baseline": 673,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "buff_catalog",
+   "name": "（内测版）状态效果总表",
+   "items": 18232,
+   "baseline": 18232,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "desc_catalog",
+   "name": "（内测版）说明条目总表",
+   "items": 3630,
+   "baseline": 3630,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "drone_catalog",
+   "name": "（内测版）无人机总表",
+   "items": 287,
+   "baseline": 287,
+   "delta_pct": 0.0,
+   "error_count": 2142,
+   "error_kinds": {
+    "items[N].provenance.source_id": 238,
+    "items[N].provenance.locator_chain": 238,
+    "items[N].provenance.source_lock_sha256": 238,
+    "items[N].provenance.upstream": 238,
+    "items[N].status_tags": 238,
+    "items[N].provenance.table": 238,
+    "items[N].provenance.row_key": 238,
+    "items[N].provenance.field_refs": 238
+   },
+   "delta_alert": false
+  },
+  {
+   "board": "edible_catalog",
+   "name": "（内测版）料理与食谱",
+   "items": 4557,
+   "baseline": 4557,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "entity_catalog",
+   "name": "（内测版）实体总表",
+   "items": 9219,
+   "baseline": 9219,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "equipment_attrs",
+   "name": "（内测版）装备属性（武器 · 护甲）",
+   "items": 1647,
+   "baseline": 1647,
+   "delta_pct": 0.0,
+   "error_count": 6596,
+   "error_kinds": {
+    "items[N].provenance.source_id": 1647,
+    "items[N].provenance.locator_chain.steps[0].source_id": 1647,
+    "items[N].provenance.upstream.entry_index": 1647,
+    "items[N].provenance.upstream.file_id": 1647,
+    "items[N].status_tags": 6,
+    "meta.provenance.source_locks[0].role": 1,
+    "meta.provenance.source_locks[1].role": 1
+   },
+   "delta_alert": false
+  },
+  {
+   "board": "fashion_identity_unresolved_v01",
+   "name": "（内测版）时装静态记录 · identity unresolved",
+   "items": 31112,
+   "baseline": 31112,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "fashion_wardrobe",
+   "name": "人物·全量时装衣柜",
+   "items": 2899,
+   "baseline": 2899,
+   "delta_pct": 0.0,
+   "error_count": 195,
+   "error_kinds": {
+    "items[N].provenance.source_id": 39,
+    "items[N].provenance.locator_chain": 39,
+    "items[N].provenance.source_lock_sha256": 39,
+    "items[N].provenance.upstream": 39,
+    "items[N].provenance.name_source": 39
+   },
+   "delta_alert": false
+  },
+  {
+   "board": "gene_potential_catalog",
+   "name": "（内测版）种族潜能总表",
+   "items": 104,
+   "baseline": 104,
+   "delta_pct": 0.0,
+   "error_count": 504,
+   "error_kinds": {
+    "items[N].provenance.source_id": 56,
+    "items[N].provenance.locator_chain": 56,
+    "items[N].provenance.source_lock_sha256": 56,
+    "items[N].provenance.upstream": 56,
+    "items[N].status_tags": 56,
+    "items[N].provenance.table": 56,
+    "items[N].provenance.row_key": 56,
+    "items[N].provenance.field_refs": 56
+   },
+   "delta_alert": false
+  },
+  {
+   "board": "gift_data_text_sources",
+   "name": "（内测版）当前包 · 礼盒名称与说明文字表",
+   "items": 5477,
+   "baseline": 5477,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "illustration_catalog",
+   "name": "（内测版）图鉴收集总表",
+   "items": 954,
+   "baseline": 954,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "item_master_full",
+   "name": "（内测版）全量道具总表",
+   "items": 30252,
+   "baseline": 30252,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "item_master_v01",
+   "name": "（内测版）ITEM_MASTER v0.1 · verified 道具总表",
+   "items": 1189,
+   "baseline": 1189,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "kill_broadcast",
+   "name": "击败播报 / MVP 结算动画",
+   "items": 13,
+   "baseline": 13,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "lottery_periods",
+   "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
+   "items": 2266,
+   "baseline": 2266,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "lottery_pool_resolved_v01",
+   "name": "（内测版）LOTTERY_POOL_RESOLVED v0.1 · source-locked static config",
+   "items": 23567,
+   "baseline": 23567,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "mutation_core_full",
+   "name": "异变核芯",
+   "items": 132,
+   "baseline": 132,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "recipe_catalog",
+   "name": "（内测版）配方总表",
+   "items": 4189,
+   "baseline": 4189,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "scene_balance",
+   "name": "（内测版）场景平衡",
+   "items": 573,
+   "baseline": 573,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "server_types",
+   "name": "（内测版）服型总表 · 服务器类型后缀与依据",
+   "items": 21,
+   "baseline": 21,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "skill_catalog",
+   "name": "（内测版）技能总表",
+   "items": 6191,
+   "baseline": 6191,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "skin_behavior_preview",
+   "name": "武器皮肤 · 未上线预告（已配名未上架 + 仅行为资源）",
+   "items": 9,
+   "baseline": 9,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "tactical_chip_full",
+   "name": "战术芯片·全量芯片总表",
+   "items": 71,
+   "baseline": 71,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "talent_catalog",
+   "name": "（内测版）天赋总表",
+   "items": 5304,
+   "baseline": 5304,
+   "delta_pct": 0.0,
+   "error_count": 10608,
+   "error_kinds": {
+    "items[N].provenance.source_id": 5304,
+    "items[N].provenance.locator_chain.steps[0].source_id": 5304
+   },
+   "delta_alert": false
+  },
+  {
+   "board": "text_notice_catalog",
+   "name": "（内测版）文本与提示（错误码 / 官方公告）",
+   "items": 14841,
+   "baseline": 14841,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "title_catalog",
+   "name": "（内测版）称号总表",
+   "items": 1539,
+   "baseline": 1539,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "upcoming_auto",
+   "name": "新更新与预告（自动）",
+   "items": 14,
+   "baseline": 14,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "vehicle_full",
+   "name": "载具·全量载具总表",
+   "items": 174,
+   "baseline": 174,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "weapon_skin_sfx_text_sources",
+   "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
+   "items": 122,
+   "baseline": 122,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  }
+ ]
+}

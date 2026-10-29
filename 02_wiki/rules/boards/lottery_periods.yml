@@ -1,0 +1,55 @@
+board: lottery_periods
+name: （内测版）当期&历史每期抽奖奖池（按活动表重建）
+category: 三、活动奖池 / （一）活动表
+source_server: 简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-21'
+evidence: structure
+items: 2266
+primary_builders:
+- build_activity_master.py
+- build_class_layer.py
+- build_gene_board.py
+- build_lottery_board_v2.py
+- build_lottery_board_v3.py
+- build_misc_boards.py
+- build_scene_board.py
+- build_scene_board_v2.py
+- build_talent_by_prof.py
+- build_text_boards.py
+- build_theme_talent.py
+- build_upcoming_auto.py
+- export_lottery_icons.py
+- export_lottery_icons_fast.py
+- rebuild_chip_board_v3.py
+- rebuild_chip_board_v4.py
+- rebuild_chip_lottery_board.py
+- rebuild_chip_timeline.py
+- rebuild_edible.py
+- rebuild_illustration.py
+- rebuild_lottery_periods.py
+- rebuild_multioptional_periods.py
+- refresh_lottery_board.py
+postprocess_scripts:
+- add_chip_anchors.py
+- fill_broadcast_only_activities.py
+- fill_lottery_building_icons.py
+- fill_lottery_icons_all.py
+- fill_lottery_icons_cached.py
+- fill_lottery_icons_official.py
+- fill_placeholder_names.py
+- fill_sf_entry_items.py
+- fill_show_reward_names.py
+- fix_escape_and_rest.py
+- fix_lottery_period_names.py
+- import_yk_preview_pools.py
+- merge_broadcast_rewards.py
+- merge_show_rewards.py
+- merge_superfashion_preview.py
+- normalize_lottery_names.py
+- polish_new_boards.py
+- reclassify_lottery_families.py
+- scan_names_for_show_rewards.py
+- trace_placeholder_ids.py
+script_count: 43
+rebuild_risk: high

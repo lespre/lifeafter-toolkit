@@ -1,0 +1,13 @@
+board: shop_static_candidates
+name: 商店静态候选总表（非当期货架）
+category: 奖池类-常驻宸世
+source_server: Documents 体验服 script.py314.lc.npk（common_exchange_shop_data）
+package_sha: 780363b86008999cf7ee5728e38033f4c7cfd8439977d098870d1aa7ffe3ba4d
+generated: '2026-09-01'
+evidence: structure
+items: 1757
+primary_builders: []
+postprocess_scripts:
+- backfill_provenance.py
+script_count: 1
+rebuild_risk: low

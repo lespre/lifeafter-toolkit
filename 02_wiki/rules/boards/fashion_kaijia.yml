@@ -1,0 +1,13 @@
+board: fashion_kaijia
+name: 人物·铠甲勇士联动外观
+category: 人物类-联动时装
+source_server: 体验服 script.py314 主外观表+面饰专池（BA8A239A 快照）
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-01'
+evidence: structure
+items: 9
+primary_builders: []
+postprocess_scripts:
+- backfill_fashion_kaijia.py
+script_count: 1
+rebuild_risk: low

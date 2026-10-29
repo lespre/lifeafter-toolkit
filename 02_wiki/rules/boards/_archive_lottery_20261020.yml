@@ -1,0 +1,13 @@
+board: _archive_lottery_20261020
+name: 当期&历史每期抽奖奖池
+category: 三、活动类 / （一）限时主题类 / 1、当期&历史每期抽奖奖池
+source_server: 简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-19'
+evidence: structure
+items: 4595
+primary_builders:
+- build_lottery_board_v3.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

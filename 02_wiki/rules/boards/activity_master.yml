@@ -1,0 +1,14 @@
+board: activity_master
+name: 活动总表 · 全部活动与起止时间
+category: 三、活动奖池 / （一）活动表
+source_server: 简单生存服（huodong_conf kj1）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-21'
+evidence: structure
+items: 886
+primary_builders:
+- build_activity_master.py
+postprocess_scripts:
+- audit_boards_full.py
+script_count: 2
+rebuild_risk: low

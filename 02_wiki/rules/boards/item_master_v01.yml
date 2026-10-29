@@ -1,0 +1,13 @@
+board: item_master_v01
+name: （内测版）ITEM_MASTER v0.1 · verified 道具总表
+category: 一、道具总表 / （一）ITEM_MASTER v0.1
+source_server: 测试客户端静态快照；服务器分支 unresolved
+package_sha: 328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f
+generated: '2026-09-10'
+evidence: verified
+items: 1189
+primary_builders:
+- rebuild_item_master_icons.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

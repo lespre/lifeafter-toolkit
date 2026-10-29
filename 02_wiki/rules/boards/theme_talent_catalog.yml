@@ -1,0 +1,15 @@
+board: theme_talent_catalog
+name: 主题天赋总表
+category: 二、战力类 / （十）主题天赋
+source_server: 简单生存服（体验服 Documents 快照）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-24'
+evidence: structure
+items: 2572
+primary_builders:
+- build_theme_talent.py
+- ensure_builder_inputs.py
+postprocess_scripts:
+- merge_talent_boards.py
+script_count: 3
+rebuild_risk: low

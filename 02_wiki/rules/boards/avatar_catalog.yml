@@ -1,0 +1,26 @@
+board: avatar_catalog
+name: 头像 / 头像框 / 名片框
+category: 一、时装类 / （五）头像、头像框、名片框
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源
+  41_还原树/pe/资源
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-22'
+evidence: structure
+items: 673
+primary_builders:
+- build_avatar_full.py
+- build_avatar_media.py
+- build_text_boards.py
+- export_avatar_icons_hires.py
+postprocess_scripts:
+- apply_namecard_frames.py
+- audit_boards_full.py
+- fill_namecard_static.py
+- mark_missing_frames.py
+- mark_missing_frames2.py
+- qa_avatar_anim.py
+- render_namecard_frames.py
+- wiki_restructure.py
+- wire_avatar_icons.py
+script_count: 13
+rebuild_risk: high

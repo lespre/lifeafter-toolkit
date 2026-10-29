@@ -1,0 +1,14 @@
+board: chip_item_catalog
+name: 芯片图鉴（chip_type 池全集）
+category: 三、战力类 / （四）芯片
+source_server: 体验服冻结工作副本（BA8A，2026-09-10 前）；当前客户端包 entries 未重抽
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-06'
+evidence: structure
+items: 65
+primary_builders: []
+postprocess_scripts:
+- audit_fixes.py
+- fix_ykxq_and_chip.py
+script_count: 2
+rebuild_risk: low

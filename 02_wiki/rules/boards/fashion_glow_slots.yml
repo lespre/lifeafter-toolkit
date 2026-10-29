@@ -1,0 +1,13 @@
+board: fashion_glow_slots
+name: 当前包 · 荧光棒（player_appear_data 名册）
+category: 二、时装类 / （四）荧光棒
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源
+package_sha: d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9
+generated: '2026-10-23T14:31:33Z'
+evidence: structure
+items: 116
+primary_builders: []
+postprocess_scripts:
+- merge_fashion_layers.py
+script_count: 1
+rebuild_risk: low

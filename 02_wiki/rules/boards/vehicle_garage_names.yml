@@ -1,0 +1,13 @@
+board: vehicle_garage_names
+name: 载具外观名册 · 车库实机锚
+category: 二、时装类 / （八）载具
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源
+package_sha: ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad
+generated: '2026-09-07'
+evidence: verified
+items: 47
+primary_builders: []
+postprocess_scripts:
+- audit_fixes.py
+script_count: 1
+rebuild_risk: low

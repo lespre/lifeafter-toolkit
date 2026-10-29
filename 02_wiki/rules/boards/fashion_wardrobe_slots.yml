@@ -1,0 +1,13 @@
+board: fashion_wardrobe_slots
+name: 当前包 · 时装外观表（内嵌中文名层）
+category: 二、时装类 / （一）全量时装总表
+source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源
+package_sha: d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9
+generated: '2026-10-24'
+evidence: structure
+items: 1492
+primary_builders:
+- ensure_builder_inputs.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

@@ -1,0 +1,13 @@
+board: nucleus_entry_slots
+name: 核芯词条名册（nucleus_entry_data 87 条·含数值区间）
+category: 三、战力类 / （2）异变核芯·词条
+source_server: documents-py314-current
+package_sha: 508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3
+generated: '2026-09-13T02:29:30Z'
+evidence: structure
+items: 87
+primary_builders: []
+postprocess_scripts:
+- backfill_provenance.py
+script_count: 1
+rebuild_risk: low

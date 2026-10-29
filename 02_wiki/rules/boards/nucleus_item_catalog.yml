@@ -1,0 +1,14 @@
+board: nucleus_item_catalog
+name: 异变核芯名册（common_item 660000 段）
+category: 三、战力类 / （2）异变核芯
+source_server: 简单生存服
+package_sha: 508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3
+generated: '2026-09-13T02:32:36Z'
+evidence: structure
+items: 130
+primary_builders:
+- rebuild_nucleus_item_catalog.py
+postprocess_scripts:
+- backfill_provenance.py
+script_count: 2
+rebuild_risk: low

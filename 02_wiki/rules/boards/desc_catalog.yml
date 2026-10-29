@@ -1,0 +1,14 @@
+board: desc_catalog
+name: （内测版）说明条目总表
+category: 四、综合资料 / （五）说明条目、文字与提示总表
+source_server: 简单生存服（体验服 Documents 快照）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-21'
+evidence: structure
+items: 3630
+primary_builders:
+- build_misc_boards.py
+postprocess_scripts:
+- audit_boards_full.py
+script_count: 2
+rebuild_risk: low
