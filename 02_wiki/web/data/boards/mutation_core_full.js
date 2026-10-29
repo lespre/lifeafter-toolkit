@@ -247,7 +247,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -268,10 +268,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huodaochongfeng.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huodaochongfeng",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5444,
+      "fid": "E6134F7F0AD8ED38",
+      "gpk_loc0_offset": 263580536,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huodaochongfeng.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660000 异变核芯-疾影火刃 特级 特级异变核芯，装配后冷兵器长按蓄力可以向前冲锋接续强力火焰斩击。 132646 133282 135970 冷兵器",
    "provenance": {
@@ -435,7 +454,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -456,10 +475,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_bingdongzhongpao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_bingdongzhongpao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4198,
+      "fid": "4153F08AD98EAE37",
+      "gpk_loc0_offset": 187322444,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_bingdongzhongpao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660001 异变核芯-绝对零度 特级 特级异变核芯，装配后榴弹炮打出减速冰场，炮击再次命中冰场会产生冰爆。 132647 133283 榴弹炮",
    "provenance": {
@@ -644,7 +682,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -665,10 +703,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianshouqian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianshouqian",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4200,
+      "fid": "4F3CA6403EC67C0F",
+      "gpk_loc0_offset": 187324136,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianshouqian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660002 异变核芯-脉冲闪电 特级 特级异变核芯，装配后手枪命中7次后，下次射击向前打出极快速的多次射击。 132341 132670 133284 手枪/双枪",
    "provenance": {
@@ -788,7 +845,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -809,10 +866,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_shuangshesandan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_shuangshesandan",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4201,
+      "fid": "8CDB9640A99FE3AC",
+      "gpk_loc0_offset": 187324900,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_shuangshesandan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660003 异变核芯-爆裂双响 高级 高级异变核芯，装配后霰弹枪暴击时，有概率使下一次射击连续打出两发子弹。 霰弹枪",
    "provenance": {
@@ -971,7 +1047,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -992,10 +1068,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huojian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huojian",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2985,
+      "fid": "CE2AC7EB8A88A5AA",
+      "gpk_loc0_offset": 95824516,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huojian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660004 异变核芯-萤火流星 高级 高级异变核芯，装配后喷火器对射程内目标喷射大量火焰飞弹。 132648 133561 喷火器",
    "provenance": {
@@ -1196,7 +1291,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -1217,10 +1312,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianjiguang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianjiguang",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2984,
+      "fid": "092ACFD0BDD3C896",
+      "gpk_loc0_offset": 95823764,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianjiguang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660005 异变核芯-电磁天幕 高级 高级异变核芯，装配后电磁机枪累积充能后可以打出高能激光造成高频伤害。 133389 133446 135202 135204 电磁机枪",
    "provenance": {
@@ -1358,7 +1472,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -1379,10 +1493,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_binlianju.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_binlianju",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5442,
+      "fid": "A107696E4A2F898A",
+      "gpk_loc0_offset": 263579004,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_binlianju.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660006 异变核芯-连霜鹰眼 高级 高级异变核芯，装配后狙击变为可以开镜连狙，连续命中后下一枪瞄准范围变大。 134359 狙击枪",
    "provenance": {
@@ -1521,7 +1654,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -1542,10 +1675,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xunjiesheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xunjiesheji",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5445,
+      "fid": "063EF23CF9053712",
+      "gpk_loc0_offset": 263581296,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xunjiesheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660007 异变核芯-迅光追击 高级 高级异变核芯，装配后持续移动积累能量，充能后强化自身移速射速。 135244 突击步枪",
    "provenance": {
@@ -1725,7 +1877,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -1746,10 +1898,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jinzhantanke.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jinzhantanke",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2987,
+      "fid": "E3EA3A1FF5AC317F",
+      "gpk_loc0_offset": 95825844,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jinzhantanke.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660008 异变核芯-电光意志 高级 高级异变核芯，装配后造成电磁伤害恢复护盾，命中时自身常驻电磁护盾减伤并对周围敌人伤害。 132676 133447 135242 冷兵器",
    "provenance": {
@@ -1864,7 +2035,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -1885,10 +2056,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ranbaosuangqiang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ranbaosuangqiang",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5547,
+      "fid": "B56A24885EC5682F",
+      "gpk_loc0_offset": 264955536,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ranbaosuangqiang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660009 异变核芯-溅射冰星 高级 高级异变核芯，手枪副手射击造成冰冻效果，主手射击对冰冻效果目标造成额外伤害并引发弹射。 手枪/双枪",
    "provenance": {
@@ -2179,7 +2369,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -2200,10 +2390,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_danyu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_danyu",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2983,
+      "fid": "B3CD734F85670109",
+      "gpk_loc0_offset": 95823184,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_danyu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660011 异变核芯-爆燃火箭 高级 高级异变核芯，装配后榴弹炮射击变为直线火箭，可以蓄力增加伤害和范围。 132677 133563 榴弹炮",
    "provenance": {
@@ -2317,7 +2526,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_huo_b.ktx",
@@ -2338,10 +2547,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_zhuoshao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_zhuoshao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4203,
+      "fid": "4803E339670358DA",
+      "gpk_loc0_offset": 187326580,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_zhuoshao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660012 异变核芯-引燃 中级 中级异变核芯，装配后突击步枪周期性对命中的目标施加点燃效果，连续命中可以延续点燃时长。 突击步枪",
    "provenance": {
@@ -2449,7 +2677,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_bing_b.ktx",
@@ -2470,10 +2698,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suibing.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suibing",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3674,
+      "fid": "D488AEC09026BCAD",
+      "gpk_loc0_offset": 163940996,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suibing.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660013 异变核芯-冰屑 中级 中级异变核芯，装配后霰弹枪周期性对命中目标施加DEBUFF，一段时间内命中额外附加伤害。 霰弹枪",
    "provenance": {
@@ -2581,7 +2828,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_huo_b.ktx",
@@ -2602,10 +2849,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_sanlianshe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_sanlianshe",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3673,
+      "fid": "EE4DDBF25FF57078",
+      "gpk_loc0_offset": 163940168,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_sanlianshe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660014 异变核芯-连射 中级 中级异变核芯，装配后手枪换弹后第一发射击打出三连点射。 手枪/双枪",
    "provenance": {
@@ -2713,7 +2979,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_huo_b.ktx",
@@ -2734,10 +3000,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ruodianshuangju.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ruodianshuangju",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2988,
+      "fid": "A04885BDCE7FDA59",
+      "gpk_loc0_offset": 95826724,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ruodianshuangju.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660015 异变核芯-双狙 中级 中级异变核芯，装配后狙击枪命中弱点产生一系列额外效果。 狙击枪",
    "provenance": {
@@ -2845,7 +3130,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_bing_b.ktx",
@@ -2866,10 +3151,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_binrenlianji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_binrenlianji",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 3771,
+      "fid": "2DF61F5F0C5FDCF8",
+      "gpk_loc0_offset": 98149540,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_binrenlianji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660016 异变核芯-积寒 中级 中级异变核芯，装配后冷兵器攻击会提升后续攻击的火力值，提升到一定值时下次攻击造成三段伤害。 冷兵器",
    "provenance": {
@@ -2977,7 +3281,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_dian_b.ktx",
@@ -2998,10 +3302,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jianshe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jianshe",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2986,
+      "fid": "AA8E4A3EB81E114E",
+      "gpk_loc0_offset": 95825160,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jianshe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660017 异变核芯-裂光 中级 中级异变核芯，装配后榴弹炮每第3次攻击溅射出额外的电磁弹片。 榴弹炮",
    "provenance": {
@@ -3109,7 +3432,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_bing_b.ktx",
@@ -3130,10 +3453,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_zhandong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_zhandong",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4202,
+      "fid": "6468104F944B7A49",
+      "gpk_loc0_offset": 187325780,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_zhandong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660018 异变核芯-凛霜 中级 中级异变核芯，装配后电磁机枪射速累积满时，射击概率造成额外伤害并叠加减速。 电磁机枪",
    "provenance": {
@@ -3241,7 +3583,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_dian_b.ktx",
@@ -3262,10 +3604,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_cibao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_cibao",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 3772,
+      "fid": "6B7FE521B499B9A6",
+      "gpk_loc0_offset": 98150252,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_cibao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660019 异变核芯-磁暴 中级 中级异变核芯，装配后喷火器充能后攻击会在随机目标处造成额外爆炸。 喷火器",
    "provenance": {
@@ -3371,7 +3732,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lv_huo_b.ktx",
@@ -3392,10 +3753,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huo.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huo",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5443,
+      "fid": "D654D372FFCEC8C3",
+      "gpk_loc0_offset": 263579864,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huo.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660020 异变核芯-燃烧 低级 低级异变核芯，装配后武器攻击附带燃烧属性。 通用",
    "provenance": {
@@ -3494,7 +3874,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lv_bing_b.ktx",
@@ -3515,10 +3895,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_bing.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_bing",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5441,
+      "fid": "A3FF8F54EB5120D7",
+      "gpk_loc0_offset": 263577780,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_bing.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660021 异变核芯-冰冻 低级 低级异变核芯，装配后武器攻击附带冰冻属性。 通用",
    "provenance": {
@@ -3617,7 +4016,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lv_dian_b.ktx",
@@ -3638,10 +4037,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dian",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4199,
+      "fid": "C3A814F586205515",
+      "gpk_loc0_offset": 187323228,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660022 异变核芯-电磁 低级 低级异变核芯，装配后武器攻击附带电磁属性。 通用",
    "provenance": {
@@ -3991,7 +4409,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -4012,10 +4430,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lindianbingbao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lindianbingbao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4317,
+      "fid": "DD9EB2742498DAB5",
+      "gpk_loc0_offset": 188713248,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lindianbingbao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660024 异变核芯-极寒冰爆 特级 特级异变核芯，装配后霰弹枪打出扇形弹道并可使用冰爆弹。 132555 133286 霰弹枪",
    "provenance": {
@@ -4159,7 +4596,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -4180,10 +4617,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyansheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyansheji",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3116,
+      "fid": "AB414AF1AAE6C2D0",
+      "gpk_loc0_offset": 97119748,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyansheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660025 异变核芯-四联爆鸣 高级 高级异变核芯，装配后突击步枪射击变为四连点射。 132649 突击步枪",
    "provenance": {
@@ -4298,7 +4754,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -4319,10 +4775,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianguangyongliu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianguangyongliu",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3117,
+      "fid": "4E05CC60446D5B53",
+      "gpk_loc0_offset": 97120564,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianguangyongliu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660026 异变核芯-电光溅射 高级 高级异变核芯，装配后喷火器命中时概率触发闪电，充能后可以快速喷出电火花。 喷火器",
    "provenance": {
@@ -4481,7 +4956,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -4502,10 +4977,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chireqiangtang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chireqiangtang",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4012,
+      "fid": "EC79DEDD9AE9DCA1",
+      "gpk_loc0_offset": 101474344,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chireqiangtang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660027 异变核芯-炽热枪膛 特级 特级异变核芯，装配后电磁机枪伤害随射击提升并在换弹时打出燃烧射击。 132620 133287 电磁机枪",
    "provenance": {
@@ -4669,7 +5163,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -4690,10 +5184,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jidongwuzhuang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jidongwuzhuang",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3921,
+      "fid": "D1DEB6F0C9C473C9",
+      "gpk_loc0_offset": 166487040,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jidongwuzhuang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660028 异变核芯-机动武装 高级 高级异变核芯，装配后手枪射速大幅提升但弹匣容量降低，射击时获得高额移速。 132621 135446 手枪/双枪",
    "provenance": {
@@ -4804,7 +5317,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lv_suan_b.ktx",
@@ -4825,10 +5338,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suanye.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suanye",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 20,
+      "fid": "E2277DC33B1D1193",
+      "gpk_loc0_offset": 135204,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suanye.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660029 异变核芯-酸液 低级 低级异变核芯，装配后武器攻击附带酸液属性。 通用",
    "provenance": {
@@ -4997,7 +5529,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -5018,10 +5550,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_zuilie.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_zuilie",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3992,
+      "fid": "3D71280CD749FF24",
+      "gpk_loc0_offset": 167017752,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_zuilie.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660030 异变核芯-侵蚀效应 特级 特级异变核芯，装配后突击步枪射击标记目标并累积酸液伤害 132693 133288 133496 突击步枪",
    "provenance": {
@@ -5185,7 +5736,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -5206,10 +5757,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jiliu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jiliu",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4485,
+      "fid": "03F5190C55C51A9B",
+      "gpk_loc0_offset": 189975980,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jiliu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660031 异变核芯-酸焰激流 特级 特级异变核芯，装配后喷火器喷射酸焰灼烧目标造成额外伤害并减速 132694 133289 喷火器",
    "provenance": {
@@ -5373,7 +5943,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -5394,10 +5964,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xungong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xungong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4103,
+      "fid": "2F75630146606378",
+      "gpk_loc0_offset": 102193284,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xungong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660032 异变核芯-锈刃连斩 高级 高级异变核芯，装配后冷兵器累积一定次数命中后可以快速二连斩击 132695 134993 冷兵器",
    "provenance": {
@@ -5535,7 +6124,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -5556,10 +6145,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_rongsuan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_rongsuan",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3305,
+      "fid": "BFEA17062B8D2752",
+      "gpk_loc0_offset": 98568408,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_rongsuan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660033 异变核芯-酸雨重炮 高级 高级异变核芯，装配后榴弹炮射击变为多发炮弹并叠加酸液效果 132696 榴弹炮",
    "provenance": {
@@ -5697,7 +6305,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -5718,10 +6326,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lianda.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lianda",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4102,
+      "fid": "68371FE66522180E",
+      "gpk_loc0_offset": 102192196,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lianda.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660034 异变核芯-酸流涌动 高级 高级异变核芯，装配后霰弹枪累积命中后提升射速并烧灼目标造成额外伤害 134991 霰弹枪",
    "provenance": {
@@ -5859,7 +6486,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -5880,10 +6507,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_sheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_sheji",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3306,
+      "fid": "296C7B59A9200D7D",
+      "gpk_loc0_offset": 98569416,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_sheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660035 异变核芯-酸蚀回响 高级 高级异变核芯，装配后狙击枪连续命中同一目标伤害不断提升 134992 狙击枪",
    "provenance": {
@@ -5996,7 +6642,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_suan_b.ktx",
@@ -6017,10 +6663,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_qinshi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_qinshi",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3991,
+      "fid": "DC3BB35E89A5807D",
+      "gpk_loc0_offset": 167016776,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_qinshi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660036 异变核芯-渗入 中级 中级异变核芯，装配后电磁机枪命中目标会使目标持续受到酸液伤害。 电磁机枪",
    "provenance": {
@@ -6128,7 +6793,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_suan_b.ktx",
@@ -6149,10 +6814,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chuantou.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chuantou",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3304,
+      "fid": "F07E9E4318BE94B9",
+      "gpk_loc0_offset": 98567420,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chuantou.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660037 异变核芯-透穿 中级 中级异变核芯，装配后手枪/双枪命中目标弱点会造成额外效果。 手枪/双枪",
    "provenance": {
@@ -6718,7 +7402,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -6739,10 +7423,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianguangjichong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianguangjichong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4252,
+      "fid": "5D7A0CE2699A7906",
+      "gpk_loc0_offset": 103754536,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianguangjichong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660042 异变核芯-电光疾冲 高级 高级异变核芯，装配后可以使用疾冲技能，射出高威力的电磁子弹。 手枪/双枪",
    "provenance": {
@@ -6901,7 +7604,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -6922,10 +7625,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chiyanbaohong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chiyanbaohong",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 160,
+      "fid": "3E7A4AAE2355425D",
+      "gpk_loc0_offset": 1511760,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chiyanbaohong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660043 异变核芯-极限火力 特级 特级异变核芯，装配后可以进入架设模式，对更大范围的目标更快的进行轰炸。 132812 133290 榴弹炮",
    "provenance": {
@@ -7068,7 +7790,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -7089,10 +7811,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jidianliuguang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jidianliuguang",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4695,
+      "fid": "F751CD2E42C722F7",
+      "gpk_loc0_offset": 191841916,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jidianliuguang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660044 异变核芯-电掣双刀 特级 特级异变核芯，装配后可以开启双刀模式，大幅提升机动性和作战能力。 135973 冷兵器",
    "provenance": {
@@ -7212,7 +7953,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -7233,10 +7974,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_weixianqipao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_weixianqipao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4696,
+      "fid": "2E999756C72CEA0A",
+      "gpk_loc0_offset": 191842688,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_weixianqipao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660045 异变核芯-危险气泡 高级 高级异变核芯，装配后榴弹炮射击打出可包裹角色的气泡。 榴弹炮",
    "provenance": {
@@ -7374,7 +8134,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -7395,10 +8155,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_toutihanshuang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_toutihanshuang",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 307,
+      "fid": "F9166FD6A829ABD8",
+      "gpk_loc0_offset": 2228972,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_toutihanshuang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660047 异变核芯-呼啸寒霜 特级 特级异变核芯，装配后喷火器攻击累积减速，并且造成持续伤害。 133291 喷火器",
    "provenance": {
@@ -7541,7 +8320,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -7562,10 +8341,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suibingfeijian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suibingfeijian",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4748,
+      "fid": "6A05AF6F04EF34C3",
+      "gpk_loc0_offset": 192367580,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suibingfeijian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660048 异变核芯-碎冰飞溅 高级 高级异变核芯，装配后喷火器攻击多目标有概率触发碎冰攻击。 134357 喷火器",
    "provenance": {
@@ -7724,7 +8522,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -7745,10 +8543,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dongchuanshuangchong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dongchuanshuangchong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4418,
+      "fid": "D0E7CB33EC04F09B",
+      "gpk_loc0_offset": 104926936,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dongchuanshuangchong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660049 异变核芯-刺骨冰锥 特级 特级异变核芯，装配后双枪对残血目标造成额外伤害，连续命中引发冰爆造成高额伤害。 132948 133292 手枪/双枪",
    "provenance": {
@@ -7912,7 +8729,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -7933,10 +8750,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suanshi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suanshi",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 4418,
+      "fid": "A2F779DCD20DE1E5",
+      "gpk_loc0_offset": 170958964,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suanshi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660050 异变核芯-连锁反应 特级 特级异变核芯，装配后霰弹枪随着能量积蓄提升射速，蓄满后打出狂暴一击。 133293 133303 霰弹枪",
    "provenance": {
@@ -8237,7 +9073,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -8258,10 +9094,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jihua.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jihua",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4930,
+      "fid": "7A424351D487065A",
+      "gpk_loc0_offset": 194815240,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jihua.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660052 异变核芯-强酸激化 高级 高级异变核芯，装配后连续命中同一目标后会造成高额伤害。 133189 霰弹枪",
    "provenance": {
@@ -8397,7 +9252,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -8418,10 +9273,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_yongshuangfengbao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_yongshuangfengbao",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4681,
+      "fid": "A6433CEAE79001B7",
+      "gpk_loc0_offset": 107839616,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_yongshuangfengbao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660053 异变核芯-冰凌龙息 特级 特级异变核芯，装配后射击不消耗弹药，连续射击累积极寒值造成更高伤害。 133310 电磁机枪",
    "provenance": {
@@ -8585,7 +9459,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -8606,10 +9480,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_leimingdianshan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_leimingdianshan",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 6194,
+      "fid": "A2D6F350746F05E4",
+      "gpk_loc0_offset": 200981020,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_leimingdianshan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660054 异变核芯-雷鸣电闪 高级 高级异变核芯，装配后榴弹炮命中附带持续伤害的电荷，电荷触发时概率引发磁暴。 133448 135243 榴弹炮",
    "provenance": {
@@ -8769,7 +9662,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -8790,10 +9683,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_liebian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_liebian",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 6634,
+      "fid": "119DFA57CB7D5A9B",
+      "gpk_loc0_offset": 114731328,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_liebian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660055 异变核芯-裂变效应 特级 特级异变核芯，装配后可以生成熔岩浮游炮对目标造成额外打击 133495 135968 突击步枪",
    "provenance": {
@@ -8936,7 +9848,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -8957,10 +9869,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianciqiu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianciqiu",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 6633,
+      "fid": "6AEF1111886F1B7E",
+      "gpk_loc0_offset": 114730380,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianciqiu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660056 异变核芯-球状闪电 特级 特级异变核芯，装配后可以生成球状闪电对敌人造成牵引和破甲效果。 134061 喷火器",
    "provenance": {
@@ -9145,7 +10076,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -9166,10 +10097,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lianpenliangxia.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lianpenliangxia",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7296,
+      "fid": "DEDD744E0A3AB46A",
+      "gpk_loc0_offset": 208514480,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lianpenliangxia.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660057 异变核芯-蓄能火铳 高级 高级异变核芯，装配后射击变为快速二连发，附加高额燃烧伤害。 133555 133571 135449 霰弹枪",
    "provenance": {
@@ -9349,7 +10299,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -9370,10 +10320,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_yanhuobaoshan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_yanhuobaoshan",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2752,
+      "fid": "5BF40FC7F24F49E8",
+      "gpk_loc0_offset": 18053212,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_yanhuobaoshan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660058 异变核芯-炎火爆闪 高级 高级异变核芯，装配后冷兵器命中有概率触发爆闪伤害自身周围目标。 133562 135448 135639 冷兵器",
    "provenance": {
@@ -9511,7 +10480,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -9532,10 +10501,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_cilibanxian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_cilibanxian",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 6151,
+      "fid": "8BF8E19D221C64DC",
+      "gpk_loc0_offset": 116068200,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_cilibanxian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660059 异变核芯-磁力伴星 高级 高级异变核芯，装配后箭矢射出时伴随射出追踪附近敌人的磁力箭头。 134106 弓箭",
    "provenance": {
@@ -9694,7 +10682,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -9715,10 +10703,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_qiangsuantouchuan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_qiangsuantouchuan",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2993,
+      "fid": "528E18867EA8C326",
+      "gpk_loc0_offset": 21586388,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_qiangsuantouchuan.png",
+      "px": [
+       41,
+       37
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660060 异变核芯-贯通战术 特级 特级异变核芯，装配后蓄力射出的箭矢可以穿透所有障碍物和目标。 134093 135972 弓箭",
    "provenance": {
@@ -9861,7 +10868,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -9882,10 +10889,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_liuguangjishe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_liuguangjishe",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2992,
+      "fid": "6049F4ABB2C94336",
+      "gpk_loc0_offset": 21585520,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_liuguangjishe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660061 异变核芯-流光疾射 特级 特级异变核芯，装配后射击会发出两支箭矢，且射击后可以接续快速移动。 134062 弓箭",
    "provenance": {
@@ -10003,7 +11029,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_lan_suan_b.ktx",
@@ -10024,10 +11050,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suanyong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suanyong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 7096,
+      "fid": "C7B166CD8C1D6968",
+      "gpk_loc0_offset": 119832740,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suanyong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660062 异变核芯-酸涌 中级 中级异变核芯，装配后满蓄力命中施加酸涌，射击酸涌状态目标额外附加伤害。 弓箭",
    "provenance": {
@@ -10137,7 +11182,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -10158,10 +11203,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chuanxinbingshi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chuanxinbingshi",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 7095,
+      "fid": "3620DDC5A678DEBF",
+      "gpk_loc0_offset": 119831532,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chuanxinbingshi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660063 异变核芯-穿心冰矢 高级 高级异变核芯，装配后射击附加白霜减速，叠满后触发冻伤。 弓箭",
    "provenance": {
@@ -10362,7 +11426,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -10383,10 +11447,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_hanbingbaohong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_hanbingbaohong",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7836,
+      "fid": "AF2B9C89DB066383",
+      "gpk_loc0_offset": 216059520,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_hanbingbaohong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660064 异变核芯-强袭冰爆 高级 高级异变核芯，装配后普通射击积累冰片，强化射击消耗冰片增加范围和附带减速。 134475 134477 135640 135735 榴弹炮",
    "provenance": {
@@ -10524,7 +11607,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -10545,10 +11628,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_podihanren.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_podihanren",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7837,
+      "fid": "1AFB102A84B20330",
+      "gpk_loc0_offset": 216060504,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_podihanren.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660065 异变核芯-追击冰刃 高级 高级异变核芯，装配后命中概率触发冰刃提升伤害，反击后大幅提升挥砍速度。 134358 冷兵器",
    "provenance": {
@@ -10708,7 +11810,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -10729,10 +11831,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianzhenxiaoying.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianzhenxiaoying",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 7746,
+      "fid": "876B8BFBB62B6BD2",
+      "gpk_loc0_offset": 196556700,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianzhenxiaoying.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660066 异变核芯-电极效应 特级 特级异变核芯，装配后持续充入电能，射击消耗电能触发额外电震射击。 134957 135971 突击步枪",
    "provenance": {
@@ -10918,7 +12039,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -10939,10 +12060,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_shigu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_shigu",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 3875,
+      "fid": "E0E10358777B817B",
+      "gpk_loc0_offset": 33893436,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_shigu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660067 异变核芯-蚀骨强击 高级 高级异变核芯，装配后突击步枪射击附加持续伤害，充能后打出高伤强击。 135000 135002 135952 突击步枪",
    "provenance": {
@@ -11080,7 +12220,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -11101,10 +12241,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyanhuohua.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyanhuohua",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8061,
+      "fid": "F61E3898AABC76B3",
+      "gpk_loc0_offset": 201136484,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyanhuohua.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660068 异变核芯-鸣闪火花 特级 特级异变核芯，装配后霰弹枪射击附加火花持续造成伤害，火花叠满后射击追加爆焰弹。 133618 霰弹枪",
    "provenance": {
@@ -11225,7 +12384,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -11246,10 +12405,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_kedijianbing.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_kedijianbing",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8893,
+      "fid": "0351FD4B4BF273E2",
+      "gpk_loc0_offset": 214483228,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_kedijianbing.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660069 异变核芯-克敌坚冰 高级 高级异变核芯，装配后突击步枪射击暴击/命中弱点累积多次后打出强力寒冰弹。 突击步枪",
    "provenance": {
@@ -11387,7 +12565,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -11408,10 +12586,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyanzhongji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyanzhongji",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 9061,
+      "fid": "F26F28D28017889F",
+      "gpk_loc0_offset": 153359636,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyanzhongji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660070 异变核芯-爆焰重击 高级 高级异变核芯，装配后狙击枪命中弱点附加伤害，有概率充能提升附加伤害次数。 135447 狙击枪",
    "provenance": {
@@ -11526,7 +12723,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -11547,10 +12744,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xianzhileiting.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xianzhileiting",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8894,
+      "fid": "7A5FDAE952F1593E",
+      "gpk_loc0_offset": 214484164,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xianzhileiting.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660071 异变核芯-先制雷霆 高级 高级异变核芯，装配后在未受到伤害时狙击枪射击附带额外伤害。 狙击枪",
    "provenance": {
@@ -11686,7 +12902,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -11707,10 +12923,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ningzhiqinxi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ningzhiqinxi",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 9368,
+      "fid": "03C2CC6A47CE4B3D",
+      "gpk_loc0_offset": 157621992,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ningzhiqinxi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660072 异变核芯-凝滞侵袭 特级 特级异变核芯，装配后凝滞命中部位并根据部位造成负面影响，并对凝滞目标进行追击。 135400 狙击枪",
    "provenance": {
@@ -11851,7 +13086,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -11872,10 +13107,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huoyanpenshe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huoyanpenshe",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 9665,
+      "fid": "A952A25C700A6559",
+      "gpk_loc0_offset": 227012960,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huoyanpenshe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660073 异变核芯-燎原炽焰 特级 特级异变核芯，装配后射击点燃目标并充能，充能后喷射炽焰猛烈攻击。 135541 喷火器",
    "provenance": {
@@ -12037,7 +13291,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -12058,10 +13312,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_juedoushike.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_juedoushike",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 9822,
+      "fid": "22994A3ED789EE4C",
+      "gpk_loc0_offset": 166219696,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_juedoushike.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660074 异变核芯-决斗时刻 特级 特级异变核芯，装配后根据副手武器变化被动效果与强力技能。 135569 135574 手枪/双枪",
    "provenance": {
@@ -12202,7 +13475,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -12223,10 +13496,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_gaoyapengshe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_gaoyapengshe",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 9322,
+      "fid": "383F4528CB573305",
+      "gpk_loc0_offset": 168821716,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_gaoyapengshe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660075 异变核芯-酸蚀溶溅 高级 高级异变核芯，装配后喷火器需要加压后射击，可以喷射更远并造成腐蚀。 135638 喷火器",
    "provenance": {
@@ -12383,7 +13675,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -12404,10 +13696,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_yujinliuhuo.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_yujinliuhuo",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 6256,
+      "fid": "27B7C1E593A9D018",
+      "gpk_loc0_offset": 72875220,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_yujinliuhuo.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660076 异变核芯-余烬流火 特级 特级异变核芯，装配后每次连续射出三支箭矢，命中时留下可引燃的余烬。 135719 135739 弓箭",
    "provenance": {
@@ -12569,7 +13880,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -12590,10 +13901,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chuanxinjilei.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chuanxinjilei",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 11333,
+      "fid": "EA7330907AF9DE5F",
+      "gpk_loc0_offset": 254907228,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chuanxinjilei.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660077 异变核芯-穿心极雷 特级 特级异变核芯，装配后霰弹枪射击发射单发电磁弹，直接命中或一段距离后爆散为弹片。 135989 136004 霰弹枪",
    "provenance": {
@@ -12756,7 +14086,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -12777,10 +14107,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ninghua.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ninghua",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 11567,
+      "fid": "C63C7B7682A51302",
+      "gpk_loc0_offset": 192405988,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ninghua.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660078 异变核芯-凝华效应 特级 特级异变核芯，装配后突击步枪射击附带冰凌追击，命中时概率冻伤目标增幅后续命中。 136405 136407 突击步枪",
    "provenance": {
@@ -12942,7 +14291,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -12963,10 +14312,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xushihanfeng.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xushihanfeng",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 8325,
+      "fid": "C36A09F30520B4D2",
+      "gpk_loc0_offset": 103257064,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xushihanfeng.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660079 异变核芯-蓄势寒锋 特级 特级异变核芯，装配后冷兵器可在战斗中充能蓄势，充能后可进入强力攻击模式。 136122 136126 冷兵器",
    "provenance": {
@@ -13128,7 +14496,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -13149,10 +14517,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_cijuhonglei.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_cijuhonglei",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 12352,
+      "fid": "37165225C46A17E2",
+      "gpk_loc0_offset": 201197340,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_cijuhonglei.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660080 异变核芯-磁聚轰雷 特级 特级异变核芯，装配后榴弹炮命中附带正、负电荷；目标同时存在正、负电荷时触发磁暴 136369 136389 榴弹炮",
    "provenance": {
@@ -13314,7 +14701,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -13335,10 +14722,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ranshao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ranshao",
+      "ext": ".ktx",
+      "pack": "0182.gpk",
+      "row": 3319,
+      "fid": "37FE0135733812EB",
+      "gpk_loc0_offset": 45640040,
+      "pkgidx": 14,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ranshao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660081 异变核芯-淬焰燃锋 特级 特级异变核芯，装配后在战斗中进行强化，获得增益。 136408 139175 冷兵器",
    "provenance": {
@@ -13496,7 +14902,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -13517,10 +14923,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chujue1png.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chujue1png",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 14117,
+      "fid": "051F68EAD5D5C992",
+      "gpk_loc0_offset": 230476568,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chujue1png.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660082 异变核芯-深蚀追猎 特级 特级异变核芯，装配后手枪命中累计酸蚀渗透层数，叠至6层可发动技能，对单体目标造成大量伤害。 139234 139242 手枪/双枪",
    "provenance": {
@@ -13705,7 +15130,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -13726,10 +15151,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huodaochongfeng.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huodaochongfeng",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5444,
+      "fid": "E6134F7F0AD8ED38",
+      "gpk_loc0_offset": 263580536,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huodaochongfeng.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660100 异变核芯-疾影火刃 特级 特级异变核芯，装配后冷兵器长按蓄力可以向前冲锋接续强力火焰斩击。 132646 133282 135970 冷兵器",
    "provenance": {
@@ -13892,7 +15336,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -13913,10 +15357,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_bingdongzhongpao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_bingdongzhongpao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4198,
+      "fid": "4153F08AD98EAE37",
+      "gpk_loc0_offset": 187322444,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_bingdongzhongpao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660101 异变核芯-绝对零度 特级 特级异变核芯，装配后榴弹炮打出减速冰场，炮击再次命中冰场会产生冰爆。 132647 133283 榴弹炮",
    "provenance": {
@@ -14100,7 +15563,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -14121,10 +15584,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianshouqian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianshouqian",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4200,
+      "fid": "4F3CA6403EC67C0F",
+      "gpk_loc0_offset": 187324136,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianshouqian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660102 异变核芯-脉冲闪电 特级 特级异变核芯，装配后手枪命中7次后，下次射击向前打出极快速的多次射击。 132341 132670 133284 手枪/双枪",
    "provenance": {
@@ -14243,7 +15725,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -14264,10 +15746,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_shuangshesandan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_shuangshesandan",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4201,
+      "fid": "8CDB9640A99FE3AC",
+      "gpk_loc0_offset": 187324900,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_shuangshesandan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660103 异变核芯-爆裂双响 高级 高级异变核芯，装配后霰弹枪暴击时，有概率使下一次射击连续打出两发子弹。 霰弹枪",
    "provenance": {
@@ -14425,7 +15926,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -14446,10 +15947,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_huojian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_huojian",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2985,
+      "fid": "CE2AC7EB8A88A5AA",
+      "gpk_loc0_offset": 95824516,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_huojian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660104 异变核芯-萤火流星 高级 高级异变核芯，装配后喷火器对射程内目标喷射大量火焰飞弹。 132648 133561 喷火器",
    "provenance": {
@@ -14649,7 +16169,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -14670,10 +16190,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianjiguang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianjiguang",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2984,
+      "fid": "092ACFD0BDD3C896",
+      "gpk_loc0_offset": 95823764,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianjiguang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660105 异变核芯-电磁天幕 高级 高级异变核芯，装配后电磁机枪累积充能后可以打出高能激光造成高频伤害。 133389 133446 135202 135204 电磁机枪",
    "provenance": {
@@ -14810,7 +16349,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -14831,10 +16370,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_binlianju.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_binlianju",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5442,
+      "fid": "A107696E4A2F898A",
+      "gpk_loc0_offset": 263579004,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_binlianju.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660106 异变核芯-连霜鹰眼 高级 高级异变核芯，装配后狙击变为可以开镜连狙，连续命中后下一枪瞄准范围变大。 134359 狙击枪",
    "provenance": {
@@ -14972,7 +16530,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -14993,10 +16551,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xunjiesheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xunjiesheji",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5445,
+      "fid": "063EF23CF9053712",
+      "gpk_loc0_offset": 263581296,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xunjiesheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660107 异变核芯-迅光追击 高级 高级异变核芯，装配后持续移动积累能量，充能后强化自身移速射速。 135244 突击步枪",
    "provenance": {
@@ -15175,7 +16752,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -15196,10 +16773,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jinzhantanke.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jinzhantanke",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2987,
+      "fid": "E3EA3A1FF5AC317F",
+      "gpk_loc0_offset": 95825844,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jinzhantanke.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660108 异变核芯-电光意志 高级 高级异变核芯，装配后造成电磁伤害恢复护盾，命中时自身常驻电磁护盾减伤并对周围敌人伤害。 132676 133447 135242 冷兵器",
    "provenance": {
@@ -15313,7 +16909,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -15334,10 +16930,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_ranbaosuangqiang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_ranbaosuangqiang",
+      "ext": ".ktx",
+      "pack": "0174.gpk",
+      "row": 5547,
+      "fid": "B56A24885EC5682F",
+      "gpk_loc0_offset": 264955536,
+      "pkgidx": 6,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_ranbaosuangqiang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660109 异变核芯-溅射冰星 高级 高级异变核芯，手枪副手射击造成冰冻效果，主手射击对冰冻效果目标造成额外伤害并引发弹射。 手枪/双枪",
    "provenance": {
@@ -15627,7 +17242,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -15648,10 +17263,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_danyu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_danyu",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 2983,
+      "fid": "B3CD734F85670109",
+      "gpk_loc0_offset": 95823184,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_danyu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660111 异变核芯-爆燃火箭 高级 高级异变核芯，装配后榴弹炮射击变为直线火箭，可以蓄力增加伤害和范围。 132677 133563 榴弹炮",
    "provenance": {
@@ -16011,7 +17645,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -16032,10 +17666,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lindianbingbao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lindianbingbao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4317,
+      "fid": "DD9EB2742498DAB5",
+      "gpk_loc0_offset": 188713248,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lindianbingbao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660113 异变核芯-极寒冰爆 特级 特级异变核芯，装配后霰弹枪打出扇形弹道并可使用冰爆弹。 132555 133286 霰弹枪",
    "provenance": {
@@ -16178,7 +17831,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -16199,10 +17852,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyansheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyansheji",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3116,
+      "fid": "AB414AF1AAE6C2D0",
+      "gpk_loc0_offset": 97119748,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyansheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660114 异变核芯-四联爆鸣 高级 高级异变核芯，装配后突击步枪射击变为四连点射。 132649 突击步枪",
    "provenance": {
@@ -16316,7 +17988,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -16337,10 +18009,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianguangyongliu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianguangyongliu",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3117,
+      "fid": "4E05CC60446D5B53",
+      "gpk_loc0_offset": 97120564,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianguangyongliu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660115 异变核芯-电光溅射 高级 高级异变核芯，装配后喷火器命中时概率触发闪电，充能后可以快速喷出电火花。 喷火器",
    "provenance": {
@@ -16498,7 +18189,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -16519,10 +18210,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chireqiangtang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chireqiangtang",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4012,
+      "fid": "EC79DEDD9AE9DCA1",
+      "gpk_loc0_offset": 101474344,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chireqiangtang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660116 异变核芯-炽热枪膛 特级 特级异变核芯，装配后电磁机枪伤害随射击提升并在换弹时打出燃烧射击。 132620 133287 电磁机枪",
    "provenance": {
@@ -16685,7 +18395,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -16706,10 +18416,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jidongwuzhuang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jidongwuzhuang",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3921,
+      "fid": "D1DEB6F0C9C473C9",
+      "gpk_loc0_offset": 166487040,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jidongwuzhuang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660117 异变核芯-机动武装 高级 高级异变核芯，装配后手枪射速大幅提升但弹匣容量降低，射击时获得高额移速。 132621 135446 手枪/双枪",
    "provenance": {
@@ -16889,7 +18618,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -16910,10 +18639,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_zuilie.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_zuilie",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 3992,
+      "fid": "3D71280CD749FF24",
+      "gpk_loc0_offset": 167017752,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_zuilie.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660118 异变核芯-侵蚀效应 特级 特级异变核芯，装配后突击步枪射击标记目标并累积酸液伤害 132693 133288 133496 突击步枪",
    "provenance": {
@@ -17076,7 +18824,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -17097,10 +18845,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jiliu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jiliu",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4485,
+      "fid": "03F5190C55C51A9B",
+      "gpk_loc0_offset": 189975980,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jiliu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660119 异变核芯-酸焰激流 特级 特级异变核芯，装配后喷火器喷射酸焰灼烧目标造成额外伤害并减速 132694 133289 喷火器",
    "provenance": {
@@ -17263,7 +19030,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -17284,10 +19051,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xungong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xungong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4103,
+      "fid": "2F75630146606378",
+      "gpk_loc0_offset": 102193284,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xungong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660120 异变核芯-锈刃连斩 高级 高级异变核芯，装配后冷兵器累积一定次数命中后可以快速二连斩击 132695 134993 冷兵器",
    "provenance": {
@@ -17424,7 +19210,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -17445,10 +19231,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_rongsuan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_rongsuan",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3305,
+      "fid": "BFEA17062B8D2752",
+      "gpk_loc0_offset": 98568408,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_rongsuan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660121 异变核芯-酸雨重炮 高级 高级异变核芯，装配后榴弹炮射击变为多发炮弹并叠加酸液效果 132696 榴弹炮",
    "provenance": {
@@ -17585,7 +19390,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -17606,10 +19411,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lianda.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lianda",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4102,
+      "fid": "68371FE66522180E",
+      "gpk_loc0_offset": 102192196,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lianda.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660122 异变核芯-酸流涌动 高级 高级异变核芯，装配后霰弹枪累积命中后提升射速并烧灼目标造成额外伤害 134991 霰弹枪",
    "provenance": {
@@ -17746,7 +19570,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -17767,10 +19591,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_sheji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_sheji",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 3306,
+      "fid": "296C7B59A9200D7D",
+      "gpk_loc0_offset": 98569416,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_sheji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660123 异变核芯-酸蚀回响 高级 高级异变核芯，装配后狙击枪连续命中同一目标伤害不断提升 134992 狙击枪",
    "provenance": {
@@ -17884,7 +19727,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -17905,10 +19748,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianguangjichong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianguangjichong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4252,
+      "fid": "5D7A0CE2699A7906",
+      "gpk_loc0_offset": 103754536,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianguangjichong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660124 异变核芯-电光疾冲 高级 高级异变核芯，装配后可以使用疾冲技能，射出高威力的电磁子弹。 手枪/双枪",
    "provenance": {
@@ -18066,7 +19928,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -18087,10 +19949,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chiyanbaohong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chiyanbaohong",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 160,
+      "fid": "3E7A4AAE2355425D",
+      "gpk_loc0_offset": 1511760,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chiyanbaohong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660125 异变核芯-极限火力 特级 特级异变核芯，装配后可以进入架设模式，对更大范围的目标更快的进行轰炸。 132812 133290 榴弹炮",
    "provenance": {
@@ -18232,7 +20113,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -18253,10 +20134,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jidianliuguang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jidianliuguang",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4695,
+      "fid": "F751CD2E42C722F7",
+      "gpk_loc0_offset": 191841916,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jidianliuguang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660126 异变核芯-电掣双刀 特级 特级异变核芯，装配后可以开启双刀模式，大幅提升机动性和作战能力。 135973 冷兵器",
    "provenance": {
@@ -18375,7 +20275,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -18396,10 +20296,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_weixianqipao.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_weixianqipao",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4696,
+      "fid": "2E999756C72CEA0A",
+      "gpk_loc0_offset": 191842688,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_weixianqipao.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660127 异变核芯-危险气泡 高级 高级异变核芯，装配后榴弹炮射击打出可包裹角色的气泡。 榴弹炮",
    "provenance": {
@@ -18536,7 +20455,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -18557,10 +20476,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_toutihanshuang.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_toutihanshuang",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 307,
+      "fid": "F9166FD6A829ABD8",
+      "gpk_loc0_offset": 2228972,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_toutihanshuang.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660128 异变核芯-呼啸寒霜 特级 特级异变核芯，装配后喷火器攻击累积减速，并且造成持续伤害。 133291 喷火器",
    "provenance": {
@@ -18702,7 +20640,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -18723,10 +20661,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suibingfeijian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suibingfeijian",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4748,
+      "fid": "6A05AF6F04EF34C3",
+      "gpk_loc0_offset": 192367580,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suibingfeijian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660129 异变核芯-碎冰飞溅 高级 高级异变核芯，装配后喷火器攻击多目标有概率触发碎冰攻击。 134357 喷火器",
    "provenance": {
@@ -18884,7 +20841,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_bing_b.ktx",
@@ -18905,10 +20862,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dongchuanshuangchong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dongchuanshuangchong",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 4418,
+      "fid": "D0E7CB33EC04F09B",
+      "gpk_loc0_offset": 104926936,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dongchuanshuangchong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660130 异变核芯-刺骨冰锥 特级 特级异变核芯，装配后双枪对残血目标造成额外伤害，连续命中引发冰爆造成高额伤害。 132948 133292 手枪/双枪",
    "provenance": {
@@ -19071,7 +21047,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -19092,10 +21068,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_suanshi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_suanshi",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 4418,
+      "fid": "A2F779DCD20DE1E5",
+      "gpk_loc0_offset": 170958964,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_suanshi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660131 异变核芯-连锁反应 特级 特级异变核芯，装配后霰弹枪随着能量积蓄提升射速，蓄满后打出狂暴一击。 133293 133303 霰弹枪",
    "provenance": {
@@ -19237,7 +21232,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -19258,10 +21253,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_jihua.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_jihua",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 4930,
+      "fid": "7A424351D487065A",
+      "gpk_loc0_offset": 194815240,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_jihua.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660132 异变核芯-强酸激化 高级 高级异变核芯，装配后连续命中同一目标后会造成高额伤害。 133189 霰弹枪",
    "provenance": {
@@ -19419,7 +21433,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -19440,10 +21454,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_leimingdianshan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_leimingdianshan",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 6194,
+      "fid": "A2D6F350746F05E4",
+      "gpk_loc0_offset": 200981020,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_leimingdianshan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660133 异变核芯-雷鸣电闪 高级 高级异变核芯，装配后榴弹炮命中附带持续伤害的电荷，电荷触发时概率引发磁暴。 133448 135243 榴弹炮",
    "provenance": {
@@ -19602,7 +21635,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -19623,10 +21656,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_liebian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_liebian",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 6634,
+      "fid": "119DFA57CB7D5A9B",
+      "gpk_loc0_offset": 114731328,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_liebian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660134 异变核芯-裂变效应 特级 特级异变核芯，装配后可以生成熔岩浮游炮对目标造成额外打击 133495 135968 突击步枪",
    "provenance": {
@@ -19768,7 +21820,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -19789,10 +21841,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianciqiu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianciqiu",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 6633,
+      "fid": "6AEF1111886F1B7E",
+      "gpk_loc0_offset": 114730380,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianciqiu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660135 异变核芯-球状闪电 特级 特级异变核芯，装配后可以生成球状闪电对敌人造成牵引和破甲效果。 134061 喷火器",
    "provenance": {
@@ -19976,7 +22047,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -19997,10 +22068,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_lianpenliangxia.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_lianpenliangxia",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7296,
+      "fid": "DEDD744E0A3AB46A",
+      "gpk_loc0_offset": 208514480,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_lianpenliangxia.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660136 异变核芯-蓄能火铳 高级 高级异变核芯，装配后射击变为快速二连发，附加高额燃烧伤害。 133555 133571 135449 霰弹枪",
    "provenance": {
@@ -20179,7 +22269,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -20200,10 +22290,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_yanhuobaoshan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_yanhuobaoshan",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2752,
+      "fid": "5BF40FC7F24F49E8",
+      "gpk_loc0_offset": 18053212,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_yanhuobaoshan.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660137 异变核芯-炎火爆闪 高级 高级异变核芯，装配后冷兵器命中有概率触发爆闪伤害自身周围目标。 133562 135448 135639 冷兵器",
    "provenance": {
@@ -20344,7 +22453,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -20365,10 +22474,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_cilibanxian.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_cilibanxian",
+      "ext": ".ktx",
+      "pack": "0178.gpk",
+      "row": 6151,
+      "fid": "8BF8E19D221C64DC",
+      "gpk_loc0_offset": 116068200,
+      "pkgidx": 10,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_cilibanxian.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660138 异变核芯-磁力伴星 高级 高级异变核芯，装配后箭矢射出时伴随射出追踪附近敌人的磁力箭头。 134106 弓箭",
    "provenance": {
@@ -20526,7 +22654,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_suan_b.ktx",
@@ -20547,10 +22675,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_qiangsuantouchuan.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_qiangsuantouchuan",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2993,
+      "fid": "528E18867EA8C326",
+      "gpk_loc0_offset": 21586388,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_qiangsuantouchuan.png",
+      "px": [
+       41,
+       37
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660139 异变核芯-贯通战术 特级 特级异变核芯，装配后蓄力射出的箭矢可以穿透所有障碍物和目标。 134093 135972 弓箭",
    "provenance": {
@@ -20692,7 +22839,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -20713,10 +22860,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_liuguangjishe.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_liuguangjishe",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 2992,
+      "fid": "6049F4ABB2C94336",
+      "gpk_loc0_offset": 21585520,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_liuguangjishe.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660140 异变核芯-流光疾射 特级 特级异变核芯，装配后射击会发出两支箭矢，且射击后可以接续快速移动。 134062 弓箭",
    "provenance": {
@@ -20835,7 +23001,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -20856,10 +23022,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_chuanxinbingshi.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_chuanxinbingshi",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 7095,
+      "fid": "3620DDC5A678DEBF",
+      "gpk_loc0_offset": 119831532,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_chuanxinbingshi.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660141 异变核芯-穿心冰矢 高级 高级异变核芯，装配后射击附加白霜减速，叠满后触发冻伤。 弓箭",
    "provenance": {
@@ -21059,7 +23244,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -21080,10 +23265,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_hanbingbaohong.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_hanbingbaohong",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7836,
+      "fid": "AF2B9C89DB066383",
+      "gpk_loc0_offset": 216059520,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_hanbingbaohong.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660142 异变核芯-强袭冰爆 高级 高级异变核芯，装配后普通射击积累冰片，强化射击消耗冰片增加范围和附带减速。 134475 134477 135640 135735 榴弹炮",
    "provenance": {
@@ -21220,7 +23424,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -21241,10 +23445,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_podihanren.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_podihanren",
+      "ext": ".ktx",
+      "pack": "0181.gpk",
+      "row": 7837,
+      "fid": "1AFB102A84B20330",
+      "gpk_loc0_offset": 216060504,
+      "pkgidx": 13,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_podihanren.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660143 异变核芯-追击冰刃 高级 高级异变核芯，装配后命中概率触发冰刃提升伤害，反击后大幅提升挥砍速度。 134358 冷兵器",
    "provenance": {
@@ -21403,7 +23626,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_dian_b.ktx",
@@ -21424,10 +23647,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_dianzhenxiaoying.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_dianzhenxiaoying",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 7746,
+      "fid": "876B8BFBB62B6BD2",
+      "gpk_loc0_offset": 196556700,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_dianzhenxiaoying.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660144 异变核芯-电极效应 特级 特级异变核芯，装配后持续充入电能，射击消耗电能触发额外电震射击。 134957 135971 突击步枪",
    "provenance": {
@@ -21612,7 +23854,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_suan_b.ktx",
@@ -21633,10 +23875,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_shigu.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_shigu",
+      "ext": ".ktx",
+      "pack": "0175.gpk",
+      "row": 3875,
+      "fid": "E0E10358777B817B",
+      "gpk_loc0_offset": 33893436,
+      "pkgidx": 7,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_shigu.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660145 异变核芯-蚀骨强击 高级 高级异变核芯，装配后突击步枪射击附加持续伤害，充能后打出高伤强击。 135000 135002 135952 突击步枪",
    "provenance": {
@@ -21773,7 +24034,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_jin_huo_b.ktx",
@@ -21794,10 +24055,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyanhuohua.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyanhuohua",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8061,
+      "fid": "F61E3898AABC76B3",
+      "gpk_loc0_offset": 201136484,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyanhuohua.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660146 异变核芯-鸣闪火花 特级 特级异变核芯，装配后霰弹枪射击附加火花持续造成伤害，火花叠满后射击追加爆焰弹。 133618 霰弹枪",
    "provenance": {
@@ -21917,7 +24197,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_bing_b.ktx",
@@ -21938,10 +24218,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_kedijianbing.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_kedijianbing",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8893,
+      "fid": "0351FD4B4BF273E2",
+      "gpk_loc0_offset": 214483228,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_kedijianbing.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660147 异变核芯-克敌坚冰 高级 高级异变核芯，装配后突击步枪射击暴击/命中弱点累积多次后打出强力寒冰弹。 突击步枪",
    "provenance": {
@@ -22078,7 +24377,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_huo_b.ktx",
@@ -22099,10 +24398,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_baoyanzhongji.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_baoyanzhongji",
+      "ext": ".ktx",
+      "pack": "0000.gpk",
+      "row": 9061,
+      "fid": "F26F28D28017889F",
+      "gpk_loc0_offset": 153359636,
+      "pkgidx": 0,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_baoyanzhongji.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660148 异变核芯-爆焰重击 高级 高级异变核芯，装配后狙击枪命中弱点附加伤害，有概率充能提升附加伤害次数。 135447 狙击枪",
    "provenance": {
@@ -22216,7 +24534,7 @@ window.WIKI_BOARD_mutation_core_full = {
    "icon_verified_by_gpk_loc0": true,
    "icon_missing": [],
    "_media": {
-    "total": 1,
+    "total": 2,
     "images": [
      {
       "file": "ui/item_icon/icon_zi_dian_b.ktx",
@@ -22237,10 +24555,29 @@ window.WIKI_BOARD_mutation_core_full = {
       ],
       "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
       "label": "品级图·大"
+     },
+     {
+      "file": "ui/other_icon/jinghejineng/icon_xianzhileiting.ktx",
+      "base": "ui/other_icon/jinghejineng/icon_xianzhileiting",
+      "ext": ".ktx",
+      "pack": "0003.gpk",
+      "row": 8894,
+      "fid": "7A5FDAE952F1593E",
+      "gpk_loc0_offset": 214484164,
+      "pkgidx": 3,
+      "gpk_loc0": true,
+      "suffix": "skill",
+      "kind": "核芯特技",
+      "png": "assets/core_icons/skill_icon_xianzhileiting.png",
+      "px": [
+       48,
+       48
+      ],
+      "source": "表内字段路径 → .ktx fid → pe_file_index/gpk_loc0 精确命中 → pe_packs 解码 RGBA",
+      "label": "核芯特技图"
      }
     ],
-    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）",
-    "slimmed": true
+    "note": "item = 表内 icon 字段的「品级×属性」图标（16 种，被同名/同属性核芯共用）；skill = 核芯卡 skill_icon（每核芯一张，48×48）"
    },
    "search_text": "660149 异变核芯-先制雷霆 高级 高级异变核芯，装配后在未受到伤害时狙击枪射击附带额外伤害。 狙击枪",
    "provenance": {
