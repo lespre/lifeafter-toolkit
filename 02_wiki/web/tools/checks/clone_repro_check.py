@@ -64,7 +64,23 @@ def g1_cold_clone(dest: pathlib.Path) -> dict:
 
     ★ 用 checkout-index 直写目标目录 —— 比 `git archive | tar` 快一个量级
       （仓库树 605MB，archive 走 stdout 再解包会超时）。
+    ★ 若当前目录**不是 git 仓库**（克隆者已 clone 到手、或者拷贝的目录），
+      退化为「就地校验」：直接检查当前目录的完整性，不做二次拷贝。
+      （原先硬依赖 git ⇒ 在克隆者的目录里直接失败，违背本工具初衷）
     """
+    if not (PROJ / ".git").exists():
+        # 就地模式：把当前目录当克隆结果来检
+        boards = list((PROJ / "02_wiki/web/data/boards").glob("*.json"))
+        checks = {
+            "la.py": (PROJ / "la.py").is_file(),
+            "profiles.yml": (PROJ / "profiles.yml").is_file(),
+            "shared_core": (PROJ / "00_规范与工具/工具/工具库/00_共享核心").is_dir(),
+            "boards_json": len(boards),
+            "artifacts_skeleton": (PROJ / "01_索引与产物").is_dir(),
+        }
+        ok = checks["la.py"] and checks["shared_core"] and checks["boards_json"] > 0
+        return {"ok": ok, "checks": checks, "path": str(PROJ), "mode": "in-place"}
+
     if dest.exists():
         shutil.rmtree(dest)
     dest.mkdir(parents=True)
@@ -136,10 +152,15 @@ def g3_portability() -> dict:
     r = sh([sys.executable, str(TOOLS / "checks" / "portability_audit.py"),
             "--scope", "tools", "--quiet"], timeout=300)
     rep = json.loads((STATE / "portability.json").read_text(encoding="utf-8"))
+    # ★ 判定口径见 rules/portability.yml：
+    #   探查类脚本（scan_*/index_*/find_* 等，不产出板、不在 clone 重建链上）
+    #   与溯源字面量（source_locks.path，必须字面量才可复现）**允许存在**。
+    #   真正阻塞的是「板构建链上的脚本写死了仓库路径或设备路径」。
     return {
         "ok": rep["files_with_hardcoded"] == 0,
         "files_scanned": rep["files_scanned"],
         "files_with_hardcoded": rep["files_with_hardcoded"],
+        "files_exploratory_only": rep.get("files_exploratory_only", 0),
         "project_abs_sites": rep["project_abs_sites"],
         "device_abs_sites": rep["device_abs_sites"],
         "portable_ratio": rep["portable_ratio"],
@@ -197,10 +218,13 @@ def main() -> int:
         if not args.skip_clone:
             tmp = pathlib.Path(tempfile.mkdtemp(prefix="la_clone_"))
             clone = tmp / "repo"
-            print("→ G1 冷克隆中（git archive → 临时目录）…")
-            results["G1_冷克隆完整性"] = g1_cold_clone(clone)
+            print("→ G1 冷克隆中…")
+            g1 = g1_cold_clone(clone)
+            results["G1_冷克隆完整性"] = g1
             print("→ G2 无 venv 起站测试…")
-            results["G2_无依赖起站"] = g2_serve_without_venv(clone, args.port)
+            # 就地模式（当前目录本身就是克隆结果）⇒ 直接测当前目录，不另拷贝
+            target = PROJ if g1.get("mode") == "in-place" else clone
+            results["G2_无依赖起站"] = g2_serve_without_venv(target, args.port)
         print("→ G3 路径可移植性…")
         results["G3_路径可移植性"] = g3_portability()
         print("→ G4 条目指纹可复现…")

@@ -48,16 +48,16 @@ FORBIDDEN_FIELDS = frozenset(
 SERVER_BRANCH = "unresolved"
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_FIELD_NAMES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "field_names.json"
-DEFAULT_ROW_INDEX = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "row_index.jsonl"
-DEFAULT_TABLE_INDEX = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
-DEFAULT_FIELD_RULES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json"
-DEFAULT_RELIABLE_SOURCES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "RELIABLE_SOURCES.json"
+_SITE_DATA = ROOT / "01_索引与产物/10_索引/site_data"
+DEFAULT_FIELD_NAMES = _SITE_DATA / "field_names.json"
+DEFAULT_ROW_INDEX = _SITE_DATA / "row_index.jsonl"
+DEFAULT_TABLE_INDEX = _SITE_DATA / "table_index_entries.jsonl"
+DEFAULT_FIELD_RULES = _SITE_DATA / "FIELD_RULES.json"
+DEFAULT_RELIABLE_SOURCES = _SITE_DATA / "RELIABLE_SOURCES.json"
 DEFAULT_OUTPUT_DIR = ROOT / "data"
 
-DEFAULT_ENTRIES_DIR = Path(
-    r"E:\la拆包项目\01_索引与产物\\30_分析\config_work"
-    r"\script_py314_docs_BA8A239A\entries"
+DEFAULT_ENTRIES_DIR = (
+    ROOT / "01_索引与产物/30_分析/config_work/script_py314_docs_BA8A239A/entries"
 )
 
 

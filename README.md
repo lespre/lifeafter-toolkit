@@ -4,7 +4,8 @@
 
 - **31 个板块 / 170,144 条数据**，每条带行级来源
 - 流程：拆包 → 解码 → 建板 → 发布，一条命令链跑完
-- 可复用：换台机器 clone 代码 + 重建索引也能起站
+- 可复现：换台机器 clone 代码，用**自己设备**的拆包产物，可构建出一样的 wiki
+  （验收命令见 [「从零复现 wiki」](#从零复现-wiki)）
 
 > 现行源 = **PE 测试服（雷电模拟器 `com.netease.mrzh`）**。PC 测试服源只作对照，
 > 两套的容器编号与 fid 体系并不完全相通，**服别不可混用**。
@@ -133,7 +134,7 @@
 ```bash
 # 0) 依赖
 python -m venv 00_规范与工具/环境/venv
-00_规范与工具/环境/venv/Scripts/pip install -r 00_规范与工具/工具/requirements.lock.txt
+00_规范与工具/环境/venv/Scripts/pip install -r 00_规范与工具/环境/requirements.lock.txt
 
 # 1) 每次开工必做：共享核心进 PYTHONPATH
 export PYTHONPATH="$PWD/00_规范与工具/工具/工具库/00_共享核心"      # Linux/macOS
@@ -147,6 +148,77 @@ python 02_wiki/web/tools/wiki_server.py --host 0.0.0.0 --port 8765
 ```
 
 > ⚠️ 不加 `PYTHONPATH` 会报 `ModuleNotFoundError: No module named 'toolkit_core'`。
+
+---
+
+## 从零复现 wiki
+
+> **目标**：你 clone 仓库后，用**自己设备**的拆包产物，能构建出**一样的** wiki。
+
+### 三层结构
+
+| 层 | 位置 | 是否入库 | 说明 |
+|---|---|---|---|
+| **代码层** | `00_规范与工具/`、`02_wiki/` | ✅ 入库 | 脚本 + 页面 + 规则层 |
+| **产物层** | `01_索引与产物/` | ❌ 不入库 | 你的拆包产物（数百 GB，可重建） |
+| **数据层** | `02_wiki/web/data/boards/` | ✅ 入库 | 板数据（克隆即可直接浏览） |
+
+**克隆后你立刻能浏览 wiki**（数据层已入库），无需任何拆包。
+要**自己重建**，则需要用自己的客户端产出替换产物层。
+
+### 一、只浏览（无需拆包）
+
+```bash
+git clone https://github.com/lespre/lifeafter-toolkit.git
+cd lifeafter-toolkit
+python 02_wiki/web/tools/wiki_server.py --host 127.0.0.1 --port 8765
+```
+
+浏览器打开 <http://127.0.0.1:8765/wiki.html>。
+
+> 💡 解密库（`cryptography`）是**可选依赖**：只影响「热更实时读取」，
+> 不装也能完整浏览静态站与全部已发布板块。
+
+### 二、用自己的设备重建
+
+```bash
+# 1) 指明你的客户端安装目录（PE 测试服在雷电模拟器里）
+export LA_CLIENT_ROOT="你的客户端目录"          # Linux/macOS
+set LA_CLIENT_ROOT=你的客户端目录                 # Windows cmd
+
+# 2) 装依赖 + 挂 PYTHONPATH（见「快速开始」）
+
+# 3) 建索引 → 物化还原树 → 解码 → 建板 → 发布
+python la.py index all
+python la.py board run            # 建板（可跟板名，如 `la.py board run vehicle_full`）
+python la.py web build            # 发布校验 + 生成 manifest
+
+# 4) 验收：跟入库数据对一遍，确认你的产物与本仓库一致
+python 02_wiki/web/tools/checks/clone_repro_check.py
+```
+
+### 三、验收标准
+
+`clone_repro_check.py` 跑五道关，全绿即「可复现」：
+
+| 关卡 | 检查什么 | 通过标准 |
+|---|---|---|
+| **G1** 冷克隆完整性 | 只取 git 入库内容后关键目录是否齐备 | `la.py` / 共享核心 / 已发布板数据都在 |
+| **G2** 无依赖起站 | 不装 `cryptography` 能否起站 | 页面全部 200 |
+| **G3** 路径可移植性 | 脚本里有没有写死绝对路径 | 合规率 100%（探查类脚本除外） |
+| **G4** 条目指纹可复现 | 重建产物与入库数据是否一致 | 条目指纹一致率 ≥ 99% |
+| **G5** 发布门禁 | 发布契约是否通过 | `build_wiki.py` exit 0 |
+
+### 四、两个环境变量
+
+| 变量 | 作用 | 默认 |
+|---|---|---|
+| `LA_ROOT` | 仓库根（脚本按此定位所有路径） | 自动探测 |
+| `LA_CLIENT_ROOT` | 你的客户端安装目录 | `E:/mrzh`（仅测试服常见布局） |
+
+路径规则详见 [`02_wiki/rules/portability.yml`](02_wiki/rules/portability.yml)：
+**仓库自身路径**必须从根推导；**你的设备路径**必须走环境变量；
+**写进产物元数据的溯源路径**保持字面量（否则每次构建产物都不同，破坏可复现）。
 
 ---
 
@@ -315,8 +387,9 @@ la拆包项目/
 ## 环境要求
 
 - **Python 3.12**（`00_规范与工具/环境/venv`）
-- Windows（默认源路径 `E:\mrzh`，PE 源在雷电模拟器目录）
+- Windows（PE 源在雷电模拟器目录；客户端路径用 `LA_CLIENT_ROOT` 指定，默认 `E:\mrzh`）
 - 可选：`astcenc`（KTX/ASTC）、`OIIO`（贴图交叉校验）
+- 可选依赖：`cryptography` 等 —— 只影响热更实时读取，**不影响静态站浏览**
 
 ---
 
@@ -325,6 +398,9 @@ la拆包项目/
 | 现象 | 原因 | 解法 |
 |---|---|---|
 | `ModuleNotFoundError: toolkit_core` | 没设 PYTHONPATH | 见「快速开始」 |
+| `ModuleNotFoundError: cryptography` | 缺可选依赖 | 只影响热更实时读取，静态站正常；需装则 `pip install -r 00_规范与工具/环境/requirements.lock.txt` |
+| clone 后找不到项目根 | 仓库放得太深 / 缺标记文件 | 设 `LA_ROOT=<仓库路径>` |
+| 换机器后读不到客户端 | 客户端路径是本机绝对路径 | 设 `LA_CLIENT_ROOT=<你的客户端目录>` |
 | `载荷里找不到 'x{' 表体标记` | payload 不对 | 按 `x{ + u32(len)` 切 |
 | `expected_single_block_got_56` | 把 `parse_gpk` 用在 gres 族 | 用 `parse_gpk_gres` |
 | `'function' object is not iterable` | `rows` 是函数 | 调 `rows_fn()` |

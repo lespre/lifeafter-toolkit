@@ -50,7 +50,7 @@ def summary_of(src: str) -> str:
 def write_index() -> int:
     tools = sorted((WEB / "tools").glob("*.py"))
     lines = ["# tools 索引（自动生成）", "",
-             "共 %d 个脚本；日常入口统一走 `python E:/la拆包项目/la.py`。" % len(tools), "",
+             "共 %d 个脚本；日常入口统一走 `python la.py`（仓库根）。" % len(tools), "",
              "| 脚本 | 说明 |", "|---|---|"]
     for p in tools:
         s = summary_of(p.read_text(encoding="utf-8", errors="replace"))

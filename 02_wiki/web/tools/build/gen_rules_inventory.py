@@ -22,7 +22,7 @@ import re
 import sys
 from collections import Counter, defaultdict
 
-PROJ = pathlib.Path(__file__).resolve().parents[4]        # E:/la拆包项目
+PROJ = pathlib.Path(__file__).resolve().parents[4]        # 项目根（自动推导）
 WEB = PROJ / "02_wiki" / "web"
 TOOLS = WEB / "tools"
 BOARDS = WEB / "data" / "boards"

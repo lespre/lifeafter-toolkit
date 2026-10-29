@@ -32,7 +32,7 @@ import time
 from collections import Counter, defaultdict
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ  # noqa: E402
+from la_paths import PROJ, client_root  # noqa: E402
 
 WEB = PROJ / "02_wiki/web"
 TOOLS = WEB / "tools"
@@ -45,7 +45,7 @@ ICONS_DIR = WEB / "assets/avatar_icons"
 ANIM_DIR = WEB / "assets/avatar_anim"
 SPINE_DIR = WEB / "assets/spine_live"
 
-GAME = pathlib.Path(r"E:/mrzh")
+GAME = client_root()
 PKGDIR = PROJ / "01_索引与产物/源包/pe_gres_android"
 NAMES_IDX = PROJ / "01_索引与产物/10_索引/names/fid_to_path_v2.jsonl"
 PE_IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"

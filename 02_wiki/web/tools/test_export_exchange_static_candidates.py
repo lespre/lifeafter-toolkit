@@ -16,9 +16,8 @@ from la_paths import ANALYSIS_ROOT  # noqa: E402
 
 class StaticExchangeBoardTests(unittest.TestCase):
     def test_covers_every_static_mapping_without_claiming_current_stock(self):
-        entries = Path(
-            r"E:\la拆包项目\01_索引与产物\\30_分析\config_work"
-            r"\script_py314_docs_780363b86008\entries"
+        entries = (
+            ANALYSIS_ROOT / "config_work/script_py314_docs_780363b86008/entries"
         )
         board, stats = build_static_board(
             entries_dir=entries,

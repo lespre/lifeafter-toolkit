@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """收尾核验：两板 _media.images 引用的 png 是否真实存在；统计改后数字。"""
-import json, pathlib
-PROJ = pathlib.Path("E:/la拆包项目")
+import json, pathlib, sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 for name, kind in (("fashion_wardrobe", None), ("avatar_catalog", "名片框")):
     p = WEB / "data/boards" / (name + ".json")
