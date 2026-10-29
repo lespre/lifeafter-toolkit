@@ -996,8 +996,7 @@ function renderCombatUnified(it){
       (d.name?`<span class="perf-name${d.official?" official":""}">${esc(d.name)}</span>`
              :(fallback?`<span class="perf-name">${esc(fallback)}</span>`:`<span class="perf-name weak">已配置</span>`))+
       (d.note&&d.official?`<span class="perf-note">${esc(d.note)}</span>`:"")+
-      internals+
-      `<span class="perf-src">${esc(d.srcs.join(" · "))}</span></li>`;}).join("");
+      `${d.srcs&&d.srcs.length?`<span class="perf-src perf-hidden" hidden></span>`:""}</li>`;}).join("");
   return `<ul class="perf-list">${rows}</ul>`;
 }
 function renderSfxRealNames(it){
