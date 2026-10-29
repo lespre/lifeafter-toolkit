@@ -74,6 +74,22 @@ def _nonblank(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _effective_provenance(item: dict[str, Any], board: dict[str, Any]) -> dict[str, Any]:
+    """取条目的有效溯源（板级默认 + 条目级，条目级优先）。
+
+    ★ 溯源常量上提后（见 tools/provenance_defaults.py），板级常量住在
+      `meta.provenance_defaults` 里，条目上只留行级定位事实。
+      门禁必须按**回退后**的口径核对，否则会把「上提过的板」误判为缺字段。
+    """
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from provenance_defaults import effective_provenance  # type: ignore
+        return effective_provenance(item, board)
+    except Exception:
+        p = item.get("provenance")
+        return p if isinstance(p, dict) else {}
+
+
 def _is_decoded_table_row(row_provenance: dict[str, Any]) -> bool:
     """表行来源：直接解出来的 cdata 行，不存在「npk 条目 file_id」这一层。
 
@@ -191,6 +207,8 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
         if not isinstance(row_provenance, dict):
             errors.append(prefix + ".provenance")
             continue
+        # ★ 溯源常量上提后，板级常量在 meta.provenance_defaults 里 ⇒ 按回退口径核对
+        row_provenance = _effective_provenance(item, board)
         roster = row_provenance.get("roster")
         is_roster = (isinstance(roster, dict)
                      and roster.get("evidence") in _ROSTER_EVIDENCE

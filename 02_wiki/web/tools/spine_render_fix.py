@@ -445,11 +445,13 @@ def _sample_vertices(att, bones_mat, slotmat, scale, off):
     return pts
 
 
-def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
+def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off, col=None):
     """mesh / skinnedmesh：uv 直接映射到 att_img（已裁好的该附件位图）。
 
     ★ 性能：先算出所有三角形的整体像素包围盒，**只在该范围内**做 numpy 运算，
       避免每帧为每个 mesh 拷贝整张 1400×1400 画布。
+    ★ col：slot 颜色。region 路径会用 tint 上色，mesh 路径原来**漏了** ——
+      于是 setup 里 alpha=0 的隐藏 slot（Spine 常用「淡入」做显隐）也会被画出来。
     """
     tris = att.get("triangles") or []
     uvs = att.get("uvs") or []
@@ -474,6 +476,14 @@ def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
     out = base.copy()
     tex = np.asarray(att_img.convert("RGBA"), dtype=np.float32)
     th, tw = tex.shape[:2]
+    # slot 颜色：RGB 相乘、alpha 相乘
+    cr = cg = cb = 1.0
+    ca = 1.0
+    if col:
+        cr, cg, cb, ca = (col[0] / 255.0, col[1] / 255.0, col[2] / 255.0,
+                          col[3] / 255.0)
+        if ca <= 0.002:
+            return False          # 完全透明 → 不画
     drew = False
     for t in range(0, len(tris) - 2, 3):
         i0, i1, i2 = int(tris[t]), int(tris[t + 1]), int(tris[t + 2])
@@ -494,8 +504,10 @@ def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
         if abs(den) < 1e-9:
             continue
         ys, xs = np.mgrid[ly0:ly1 + 1, lx0:lx1 + 1]
-        px = xs + 0.5
-        py = ys + 0.5
+        # ★ 关键：xs/ys 是**相对 out 的局部坐标**（从 0 起），而 x0/y0…是**画布绝对坐标**。
+        #   重心坐标必须在同一坐标系里算，否则 inside 恒为 False → 主体整块不绘制。
+        px = xs + minx + 0.5
+        py = ys + miny + 0.5
         w0 = ((y1 - y2) * (px - x2) + (x2 - x1) * (py - y2)) / den
         w1 = ((y2 - y0) * (px - x2) + (x0 - x2) * (py - y2)) / den
         w2 = 1.0 - w0 - w1
@@ -507,9 +519,10 @@ def draw_mesh(canvas, att_img, att, bones_mat, slotmat, scale, off):
         ui = np.clip(u.astype(np.int32), 0, tw - 1)
         vi = np.clip(v.astype(np.int32), 0, th - 1)
         src = tex[vi, ui]
-        a = (src[..., 3:4] / 255.0) * inside[..., None]
+        a = (src[..., 3:4] / 255.0) * inside[..., None] * ca
+        rgb = src[..., :3] * np.array([cr, cg, cb], dtype=np.float32)
         sub = out[ly0:ly1 + 1, lx0:lx1 + 1]
-        sub[..., :3] = src[..., :3] * a + sub[..., :3] * (1 - a)
+        sub[..., :3] = rgb * a + sub[..., :3] * (1 - a)
         sub[..., 3:4] = (a * 255 + sub[..., 3:4] * (1 - a))
         out[ly0:ly1 + 1, lx0:lx1 + 1] = sub
         drew = True
@@ -568,7 +581,7 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
                     continue
                 att_img = _region_cache(page_img, reg)
                 att_cache[key] = att_img
-            draw_mesh(canvas, att_img, att, bones_mat, bm, scale, off)
+            draw_mesh(canvas, att_img, att, bones_mat, bm, scale, off, col)
             continue
         if atype != "region":
             continue
@@ -617,9 +630,79 @@ def _region_sprite(page_img, region, att, world_mat, scale):
     return (sprite, pos)
 
 
+def parse_atlas_fixed(atlas: pathlib.Path):
+    """正确的 Spine atlas 解析（覆盖旧模块的 buggy 版本）。
+
+    ★ 旧实现的 bug：atlas 里页属性行（size:/format:/filter:/repeat:）是**不缩进**的，
+      与 region 名同层级。旧解析器把它们当成 region 名，于是 regions 里混进
+      "size: 256,128" 这类条目，页归属判定也随之错乱。
+
+    正确规则：
+      · 页名行 = 不缩进、非 key:value 形式（如 `touxiang_ani_39.png`）
+      · 页属性行 = 不缩进、key:value 形式（size/format/filter/repeat）→ 只影响当前页
+      · region 名 = 不缩进、非 key:value，且其后紧跟缩进属性行
+      · region 属性行 = 缩进（xy/size/orig/offset/rotate/index）
+    """
+    txt = atlas.read_text(encoding="utf-8", errors="ignore")
+    pages = []
+    regions = {}
+    cur_page = None
+    pending = None          # 等待缩进属性确认的 region 名
+    cur = None              # 正在收集属性的 region
+    for raw in txt.splitlines():
+        if not raw.strip():
+            continue
+        indented = raw.startswith((" ", "\t"))
+        s = raw.strip()
+        if not indented:
+            # 页名行
+            if s.lower().endswith((".png", ".jpg")):
+                cur_page = s
+                if s not in pages:
+                    pages.append(s)
+                pending = None
+                cur = None
+                continue
+            # 页属性行：只改当前页的元信息，不生成 region
+            if ":" in s:
+                pending = None
+                cur = None
+                continue
+            # 候选 region 名
+            pending = {"name": s, "page": cur_page}
+            cur = None
+            continue
+        # 缩进行：属性
+        if pending is not None and cur is None:
+            cur = pending
+            regions.setdefault(pending["name"], cur)
+        if cur is None:
+            continue
+        if s.startswith("xy:"):
+            p = s[3:].split(",")
+            cur["x"], cur["y"] = int(p[0]), int(p[1])
+        elif s.startswith("size:"):
+            p = s[5:].split(",")
+            cur["w"], cur["h"] = int(p[0]), int(p[1])
+        elif s.startswith("orig:"):
+            p = s[5:].split(",")
+            cur["ow"], cur["oh"] = int(p[0]), int(p[1])
+        elif s.startswith("offset:"):
+            p = s[7:].split(",")
+            cur["ox"], cur["oy"] = int(p[0]), int(p[1])
+        elif s.startswith("rotate:"):
+            cur["rotate"] = s.split(":", 1)[1].strip().lower() == "true"
+        elif s.startswith("index:"):
+            cur["index"] = s.split(":", 1)[1].strip()
+    # 只保留尺寸完整的 region
+    regions = {k: v for k, v in regions.items()
+               if v.get("w") is not None and v.get("h") is not None}
+    return pages, regions
+
+
 def load_atlas(atlas: pathlib.Path):
     skel = json.loads(atlas.with_suffix(".json").read_text(encoding="utf-8"))
-    pages, regions = parse_atlas(atlas)
+    pages, regions = parse_atlas_fixed(atlas)
     return skel, pages, regions
 
 
@@ -657,17 +740,26 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
         frs.append(render_frame(skel, regions, page_imgs, anim, anim_slots, t,
                                 scale, off, canvas_wh, att_cache, order, slot_map))
 
-    # 并集透明包围盒
-    minx = miny = 10 ** 9
-    maxx = maxy = -10 ** 9
-    for f in frs:
-        arr = np.asarray(f)[:, :, 3]
-        ys, xs = np.nonzero(arr)
+    # ── 包围盒：用「覆盖率」而不是并集，排除飞散的粒子/特效 ──
+    #   并集包围盒会被只在 1~2 帧出现的粒子撑得很大 → 主体被缩成一小块。
+    if frs:
+        cnt = None
+        for f in frs:
+            a = (np.asarray(f)[:, :, 3] > 4)
+            cnt = a.astype(np.int16) if cnt is None else (cnt + a)
+        thr = max(1, int(round(len(frs) * 0.25)))
+        ys, xs = np.nonzero(cnt >= thr)
+        if xs.size == 0:
+            ys, xs = np.nonzero(cnt >= 1)
         if xs.size:
-            minx = min(minx, int(xs.min())); maxx = max(maxx, int(xs.max()))
-            miny = min(miny, int(ys.min())); maxy = max(maxy, int(ys.max()))
-    if maxx < minx:
-        minx = miny = 0; maxx = canvas - 1; maxy = canvas - 1
+            minx, maxx = int(xs.min()), int(xs.max())
+            miny, maxy = int(ys.min()), int(ys.max())
+        else:
+            minx = miny = 0
+            maxx = maxy = canvas - 1
+    else:
+        minx = miny = 0
+        maxx = maxy = canvas - 1
     # 留 4px 边
     minx = max(0, minx - 4); miny = max(0, miny - 4)
     maxx = min(canvas - 1, maxx + 4); maxy = min(canvas - 1, maxy + 4)

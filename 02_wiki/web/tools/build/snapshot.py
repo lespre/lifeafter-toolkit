@@ -40,8 +40,12 @@ SNAP_DIR = STATE / "snapshots"
 
 # 指纹时忽略的键：这些字段每次重建都可能变化，算进指纹会产生假差异。
 # 规则层铁律：provenance 属于「证据元数据」，条目可见性判定看的是内容字段。
+# ★ _prov_shape（2026-10-30）：溯源常量上提后写入的**形态签名**，
+#   是「回退口径的定位信息」而非条目内容 ⇒ 必须忽略，
+#   否则上提/紧凑化这类**纯格式**改动会让 G4 指纹全部变红。
 IGNORE_KEYS = {"provenance", "source", "source_lock_sha256", "generated",
-               "_media_updated_at", "icon_state", "icon_via", "icon_verified_by_gpk_loc0"}
+               "_media_updated_at", "icon_state", "icon_via", "icon_verified_by_gpk_loc0",
+               "_prov_shape"}
 
 
 def now_stamp() -> str:

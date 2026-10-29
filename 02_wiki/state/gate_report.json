@@ -1,7 +1,7 @@
 {
  "threshold_pct": 20.0,
- "published_boards": 31,
- "green": 31,
+ "published_boards": 32,
+ "green": 32,
  "red": 0,
  "delta_alerts": 0,
  "rows": [
@@ -30,6 +30,16 @@
    "name": "（内测版）状态效果总表",
    "items": 18232,
    "baseline": 18232,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "core_skill_12star",
+   "name": "12 星全量特技表（极品核芯）",
+   "items": 50,
+   "baseline": 50,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},
@@ -137,7 +147,7 @@
   },
   {
    "board": "item_master_full",
-   "name": "（内测版）全量道具总表",
+   "name": "全量道具总表",
    "items": 30252,
    "baseline": 30252,
    "delta_pct": 0.0,
@@ -187,7 +197,7 @@
   },
   {
    "board": "mutation_core_full",
-   "name": "异变核芯",
+   "name": "异变核芯 · 全量表",
    "items": 132,
    "baseline": 132,
    "delta_pct": 0.0,

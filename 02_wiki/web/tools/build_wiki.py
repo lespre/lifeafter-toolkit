@@ -16,6 +16,7 @@ from pathlib import Path
 
 from publication_policy import (load_policy, public_board_ids, publication_contract_errors,
                                 PUBLISHED_HIDDEN)
+from board_io import dumps_board_js, write_text
 
 ROOT = Path(__file__).resolve().parent.parent
 BOARDS_DIR = ROOT / "data" / "boards"
@@ -198,9 +199,10 @@ def main() -> int:
             print(f"⚠ 板块文件名含非法字符，跳过 js 输出: {p.name}")
             continue
         raw = p.read_text(encoding="utf-8-sig")
-        (BOARDS_DIR / f"{stem}.js").write_text(
-            f"window.WIKI_BOARD_{stem} = " + raw.rstrip() + ";\n", encoding="utf-8"
-        )
+        # ★ 2026-10-30：.js 由 .json **原样**派生（不再重新序列化）。
+        #   板文件已由 compact_boards.py 压成紧凑格式 ⇒ .js 自动同源同紧凑。
+        #   若在此处重新 dumps，会与 .json 产生字节差异（键序/空白）⇒ 失去同源保证。
+        write_text(BOARDS_DIR / f"{stem}.js", dumps_board_js(stem, raw))
     total = sum(b["items"] for b in boards)
     try:
         write_build_meta()

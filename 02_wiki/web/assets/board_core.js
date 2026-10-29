@@ -369,6 +369,47 @@ function renderActivityPoolRefs(refs){
     }).join("")+`</section>`;
 }
 let DATA=null;
+// ---- 溯源板级常量上提后的回退（2026-10-30）--------------------------------
+//   背景：溯源常量（如 package_sha256 / table / snapshot）原被逐条重复写入，
+//   30,252 条重复同一批常量 ⇒ 板体积多出数十 MB。
+//   现改为按「条目形态」上提到 meta.provenance_defaults，条目里只留行级定位事实。
+//   ★ 读取必须走 effProv()，否则「源快照摘要」「定位表」等展示会空掉。
+// ★ 语义与后端 tools/provenance_defaults.py 保持一致（逐子键合并、条目级优先）。
+// ★ 签名只认条目上的 _prov_shape 字段：后端上提时已把它写进条目，
+//   这是**唯一权威来源**。前端不自己算签名（浏览器的哈希实现与 Python 不同，
+//   自行计算会算出不同的签名 ⇒ 回退失效 ⇒ 展示项凭空消失）。
+function effProv(it){
+  const p=(it&&it.provenance)||{};
+  const defs=(DATA&&DATA.meta&&DATA.meta.provenance_defaults)||null;
+  if(!defs) return p;
+  const sig=it&&it._prov_shape;
+  if(typeof sig!=="string") return p;      // 无签名 ⇒ 未上提过的条目，直接用原值
+  const sd=defs[sig];
+  if(!sd) return p;
+  const merged={};
+  for(const k of Object.keys(sd)){
+    const dv=sd[k], pv=p[k];
+    if(dv&&typeof dv==="object"&&!Array.isArray(dv)){
+      if(pv&&typeof pv==="object"&&!Array.isArray(pv)){
+        merged[k]=Object.assign({},dv,pv);       // 逐子键合并（条目级优先）
+      }else if(pv===undefined){
+        merged[k]=Object.assign({},dv);           // 条目级无此键 ⇒ 用板级默认
+      }else{
+        merged[k]=pv;                            // 非对象（如字符串）⇒ 条目级优先
+      }
+    }else{
+      merged[k]=dv;
+    }
+  }
+  for(const k of Object.keys(p)){
+    const pv=p[k], mv=merged[k];
+    if(pv&&typeof pv==="object"&&!Array.isArray(pv)&&mv&&typeof mv==="object"&&!Array.isArray(mv)){
+      continue;                                   // 已逐子键合并，不整体覆盖
+    }
+    merged[k]=pv;
+  }
+  return merged;
+}
 // ---- skin-mode（武器皮肤图鉴）紧凑卡片 ----
 function gradeLabel(n){const m=(DATA&&DATA.meta&&DATA.meta.grade_labels)||null;
   return m&&m[String(n)]?String(n)+" "+m[String(n)]:String(n);}
@@ -796,7 +837,7 @@ function renderSkinDetail(it,opts){
     ["skin_id",it.skin_id],["catalog_layer",it.catalog_layer],["model_path",it.model_path],
     ["version_status",it.version_status],["sfx_consensus_state",it.sfx_consensus_state],
     ["official_name_status",it.official_name_status],["reference_fields",it.reference_fields],
-    ["field_provenance",it.field_provenance],["provenance",it.provenance],["source",it.source],
+    ["field_provenance",it.field_provenance],["provenance",effProv(it)],["source",it.source],
     ["asset_paths",(it.behavior_resources||[]).map(r=>`${BEHAVIOR_FIELD_CN[r.field]||r.field}: ${r.path}`)],
   ])}${opts&&opts.anchor?"</div>":""}`);
   return dropEmptySections(parts.join(""));
@@ -1193,7 +1234,7 @@ function renderItemCard(it){
     <div class="i-id" title="id">道具ID ${esc(it.item_id??it.id)}</div></div>
     <span class="head-tags"><span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${renderStateTags(it.status_tags)}</span></div>
     <div class="kv">${rows.join("")}</div>
-    ${renderTechSection([["provenance",it.provenance],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}</div>`;
+    ${renderTechSection([["provenance",effProv(it)],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}</div>`;
 }
 /* 时装图标（游戏内真实引用）：最多显示 6 张，其余计数；无资源时用客户端占位图 */
 function renderItemMedia(m){
@@ -1510,7 +1551,7 @@ function frKvHtml(it){
   if(vm&&(vm.icon_paths||[]).length)pairs.push(["版本图标",vm.icon_paths.map(p=>String(p).split("/").pop()).join(" / ")]);
   pairs.push(["行键",(it.row_keys||[]).join(", ")]);
   if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
-  const p=it.provenance||{};
+  const p=effProv(it);
   if(p.source_id)pairs.push(["来源标识",p.source_id]);
   if(p.table)pairs.push(["定位表",p.table]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
@@ -1518,7 +1559,7 @@ function frKvHtml(it){
   if(p.upstream&&p.upstream.entry_index!=null)pairs.push(["上游条目号",String(p.upstream.entry_index)]);
   if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
   pairs.push(["证据等级",(EV_CN[it.evidence]||it.evidence||"")+(it.evidence_level?" · "+(VALUE_CN.evidence_level[it.evidence_level]||it.evidence_level):"")]);
-  const ros=(it.provenance||{}).roster;
+  const ros=p.roster;
   if(ros)pairs.push(["证据类型",`名册级（${ros.evidence==="name-roster-only"?"字符串池名册":"静态导出"}）· 无行级溯源`+(ros.source_desc?` · ${ros.source_desc}`:"")]);
   if((it.status_tags||[]).length)pairs.push(["状态标签",it.status_tags.map(t=>STATE_CN[t]||t).join(" / ")]);
   const imgLines=((it._media&&it._media.images)||[]).map(x=>`${x.base}${x.suffix||""}${x.pack?"  ← "+x.pack+(x.row!=null?" row "+x.row:""):""}`);
@@ -1932,14 +1973,14 @@ function vCard(it,i){
   if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
   pairs.push(["解码路径",it.decode_path==="permissive"
     ?"行尾内联变体宽容重放（列表字段仍空）":"严格 D6 行解码"]);
-  const p=it.provenance||{};
+  const p=effProv(it);
   if(p.table)pairs.push(["定位表",p.table]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
   if(p.name_source)pairs.push(["名称出处",p.name_source]);
   if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
   if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
   pairs.push(["证据等级",(EV_CN[it.evidence]||it.evidence||"")+(it.evidence_level?" · "+(VALUE_CN.evidence_level[it.evidence_level]||it.evidence_level):"")]);
-  const ros=(it.provenance||{}).roster;
+  const ros=p.roster;
   if(ros)pairs.push(["证据类型",`名册级（${ros.evidence==="name-roster-only"?"字符串池名册":"静态导出"}）· 无行级溯源`+(ros.source_desc?` · ${ros.source_desc}`:"")]);
   if((it.status_tags||[]).length)pairs.push(["状态标签",it.status_tags.map(t=>STATE_CN[t]||t).join(" / ")]);
   const kv=pairs.map(([k,v])=>{
@@ -2158,7 +2199,7 @@ function cKvHtml(it){
   const miss=((it.icon_missing)||[]).filter(m=>m&&m.reason);
   if(miss.length)pairs.push(["未下发图",miss.map(m=>`${m.base}_${m.suffix}：${m.reason}`).join("\n")]);
   if(it.item_name)pairs.push(["道具行名称",`${it.item_name}${it.item_link?"（"+it.item_link+"）":""}`]);
-  const p=it.provenance||{};
+  const p=effProv(it);
   if(p.table)pairs.push(["定位表",p.table]);
   if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);

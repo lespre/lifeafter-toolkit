@@ -64,13 +64,35 @@ stages:
       KI-008：修复器接入主构建编排，作为固定 pass 执行。
       只按 rules/provenance_fixes.yml 里声明的事实修，推不出就跳过不伪造。
 
+  - id: provenance_hoist
+    title: 溯源板级常量上提 pass
+    tool: 02_wiki/web/tools/build/hoist_provenance_defaults.py
+    args: ["--all", "--apply"]
+    note: >
+      ★ 必须排在 contract_fix **之后**：先把溯源字段补齐规范化，
+      再把「形态内全同」的板级常量上提到 meta.provenance_defaults。
+      排在 contract_fix 之前会把刚补上的字段又删回板级，破坏契约修复结果。
+      语义铁律：上提只搬不改取值，落盘前逐条断言回退后溯源与上提前完全一致。
+      ★ 条目指纹不受影响（snapshot.IGNORE_KEYS 含 provenance 与 _prov_shape）。
+
+  - id: compact
+    title: 板文件紧凑化 pass
+    tool: 02_wiki/web/tools/build/compact_boards.py
+    args: ["--all", "--apply"]
+    note: >
+      把板 JSON 压成紧凑格式（条目内部无缩进、每条目一行），
+      并由 .json 重新导出同名 .js ⇒ .js 与 .json 永远同源。
+      排在 provenance_hoist 之后：上提会改条目内容，先上提再压格式，
+      避免「压完再上提 ⇒ 又变松」的往复。
+      ★ 只改格式不改数据：落盘前逐板断言 json.loads(新文本) == 原对象。
+
   - id: gate
     title: 发布门禁
     tool: 02_wiki/web/tools/build_wiki.py
     args: []
     note: >
       校验 + 导出 manifest.js / 每板 .js / manifest.json / build_meta.js。
-      ⚠️ 会重写 data/boards/*.js（当前 34 块的 .js 与 .json 不同源，门禁会改动它们）。
+      ⚠️ 会重写 data/boards/*.js（.js 由 .json 原样派生 ⇒ 保持同源）。
 
   - id: diff
     title: 条目级 diff
