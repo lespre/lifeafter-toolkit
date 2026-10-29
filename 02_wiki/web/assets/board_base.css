@@ -1,0 +1,620 @@
+/* board.html 基础布局与组件样式（从 board.html 内联 <style> 拆出，2026-10-30）。
+   板型专属样式在 board_theme_*.css，板型专属渲染在 board_core.js。 */
+.perf-name.official{color:#f3e7c8;font-weight:600}
+.perf-icon{width:18px;height:18px;margin-right:8px;vertical-align:-4px;image-rendering:auto;flex:0 0 18px}
+.perf-icon.blank{display:inline-block}
+.perf-note{color:var(--muted,#8b8b8b);font-size:12px;margin-left:8px;opacity:.75}
+
+/* 品级多选下拉（2026-09-19）：作用域严格限定在 #fGrade，且全部加 !important。
+   目的：防止其它样式表里针对 label / input / .controls>* 的通用规则把面板撑宽、
+   把复选框与文字推到两端（用户已两次报该故障，第 3 次改为"不依赖层叠"的写法）。 */
+#fGrade{position:relative;flex:0 0 auto}
+#fGradeBtn{flex:0 0 auto}
+#fGradePanel{position:absolute;top:calc(100% + 4px);left:0;z-index:60;
+  width:250px!important;max-width:min(320px,80vw)!important;box-sizing:border-box!important;
+  max-height:300px;overflow:auto;background:#fff;border:1px solid #e4e4e7;border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px}
+#fGradePanel>div{display:flex!important;flex-direction:row!important;align-items:center!important;
+  justify-content:flex-start!important;gap:8px!important;width:100%!important;box-sizing:border-box!important;
+  padding:5px 8px!important;border-radius:7px;cursor:pointer;
+  white-space:nowrap!important;text-align:left!important;
+  font-size:12.5px!important;line-height:1.5!important;color:#3f3f46}
+#fGradePanel>div>input[type=checkbox]{flex:0 0 auto!important;width:14px!important;height:14px!important;
+  min-width:14px!important;margin:0!important;padding:0!important;accent-color:#6d28d9;cursor:pointer}
+#fGradePanel>div>span{flex:0 1 auto!important;min-width:0!important;max-width:100%!important;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 骨骼接线（2026-09-19）：卡面内一行，只放状态与链接，不抢 3D 预览按钮的位置 */
+.skin-skel{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:6px!important;
+  margin:6px 0 2px;padding:5px 6px;border:1px dashed #d4d4d8;border-radius:8px;background:#fafafa}
+.skin-skel .skel-tag{font-size:12px;color:#3f3f46;background:#f4f4f5;border:1px solid #e4e4e7;
+  border-radius:6px;padding:1px 6px;white-space:nowrap}
+.skin-skel .skel-tag b{color:#6d28d9}
+.skin-skel .skel-link{font-size:12px;color:#3f3f46;text-decoration:none;border:1px solid #e4e4e7;
+  border-radius:6px;padding:1px 7px;background:#fff;white-space:nowrap}
+.skin-skel .skel-link:hover{background:#f4f4f5;text-decoration:underline}
+.skin-skel .skel-link.primary{color:#1d4ed8;border-color:#bfdbfe;background:#eff6ff;font-weight:600}
+.skin-skel .skel-warn{font-size:12px;color:#b45309;background:#fffbeb;border:1px solid #fde68a;
+  border-radius:6px;padding:1px 6px;white-space:nowrap}
+/* 3D 预览入口（2026-10-18）：只在展开后的详情区出现；卡面只放 2D 海报 */
+.skin-preview3d{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:2px 0 2px}
+.skin-preview3d .skin-preview3d-note{font-size:12px;color:#71717a}
+.skin-media-button{font:inherit;font-size:12.5px;font-weight:600;color:#1d4ed8;background:#eff6ff;
+  border:1px solid #bfdbfe;border-radius:8px;padding:4px 12px;cursor:pointer;white-space:nowrap}
+.skin-media-button:hover{background:#dbeafe}
+.skin-media-fidelity{display:inline-block;font-size:11.5px;color:#52525b;background:#f4f4f5;
+  border:1px solid #e4e4e7;border-radius:6px;padding:1px 6px;white-space:nowrap}
+.skin-media{margin:6px 0 2px}
+.skin-media img{display:block;max-width:100%;height:auto;border-radius:8px}
+/* ── 时装模式（board id = fashion_wardrobe）：只作用于 body.fashion-mode，武器皮肤板完全不受影响 ── */
+body.fashion-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.fashion-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
+body.fashion-mode .i{padding:12px 12px 10px}
+.fr-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fr-grp{display:inline-flex;align-items:center;gap:4px;padding:3px 6px 3px 8px;background:#fff;
+  border:1px solid #e4e4e7;border-radius:9px}
+.fr-grp>em{font-style:normal;font-size:11.5px;color:#8a8a96;margin-right:2px;white-space:nowrap}
+.fr-chip{font:inherit;font-size:12px;line-height:1.5;color:#3f3f46;background:#fff;border:1px solid #e4e4e7;
+  border-radius:7px;padding:2px 8px;cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s}
+.fr-chip:hover{background:#f4f4f5}
+.fr-chip[aria-pressed="true"]{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe;font-weight:600}
+.fr-chip .n{font-size:10.5px;color:#a1a1aa;margin-left:3px;font-weight:400}
+.fr-chip[aria-pressed="true"] .n{color:#60a5fa}
+/* 图轨：最多 4 张，2:1 缩略图 */
+.fr-rail{display:flex;gap:5px;align-items:stretch;margin:0 0 9px;height:98px}
+.fr-rail figure{margin:0;flex:1 1 0;min-width:0;height:100%;background:#f7f7f9;border:1px solid #f0f0f2;
+  border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fr-rail figure img{width:100%;height:100%;object-fit:contain;display:block}
+.fr-rail figure.ph img{opacity:.5;filter:grayscale(1)}
+.fr-more{align-self:center;flex:0 0 auto;font-size:11.5px;color:#52525b;background:#f4f4f5;border:1px solid #e4e4e7;
+  border-radius:7px;padding:2px 7px;white-space:nowrap}
+.fr-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.fr-name{font-size:14.5px;font-weight:650;letter-spacing:-.01em;line-height:1.35;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fr-sub{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap}
+.fr-part{font-size:11.5px;color:#3f3f46;background:#f4f4f5;border:1px solid #e4e4e7;border-radius:6px;padding:0 6px}
+/* 2026-10-30 单性别款（实际仅女款）卡面标记 */
+.fr-gender{font-size:11.5px;font-weight:650;color:#9d174d;background:#fdf2f8;border:1px solid #fbcfe8;
+  border-radius:6px;padding:0 6px;white-space:nowrap}
+.fr-part.b-hat{color:#7c3aed;background:#f5f3ff;border-color:#ddd6fe}
+.fr-part.b-cloth{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.fr-part.b-bag{color:#0f766e;background:#f0fdfa;border-color:#99f6e4}
+.fr-part.b-suit{color:#b45309;background:#fffbeb;border-color:#fde68a}
+.fr-part.b-light{color:#a21caf;background:#fdf4ff;border-color:#f5d0fe}
+.fr-part.b-face{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+.fr-part.b-hair{color:#a16207;background:#fefce8;border-color:#fef08a}
+.fr-part.b-pendant{color:#166534;background:#f0fdf4;border-color:#bbf7d0}
+.fr-part.b-proj{color:#0e7490;background:#ecfeff;border-color:#a5f3fc}
+.fr-model{font-size:11.5px;color:#71717a;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.fr-model .fr-ref{color:#8b5cf6}
+/* 缺图标记：icons_all 登记了某性别的图标，但 PE/PC/refs 三处都没有这张图（取图不完整时如实标出） */
+.fr-gap{font-size:11px;font-weight:600;color:#92400e;background:#fffbeb;border:1px solid #fde68a;
+  border-radius:6px;padding:0 6px;white-space:nowrap}
+/* 同套版本标记：fashion_data 里同一 model 还有一条「耀·」等前缀的独立记录，已并入本卡 */
+.fr-alt{font-size:11px;color:#6d28d9;background:#f5f3ff;border:1px solid #ddd6fe;
+  border-radius:6px;padding:0 6px;white-space:nowrap}
+/* 同款别名标记：同 model 同部位的另一条记录是开发/占位名（desc=占位占位），已按一件并入本卡 */
+.fr-alias{color:#0f766e;background:#f0fdfa;border-color:#99f6e4}
+.fr-grade{flex:0 0 auto;font-size:11px;font-weight:650;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;
+  border-radius:6px;padding:1px 7px;white-space:nowrap}
+.fr-charm{font-size:11.5px;color:#a16207;background:#fefce8;border:1px solid #fde68a;border-radius:6px;
+  padding:0 6px;white-space:nowrap}
+.fr-charm.na{color:#a1a1aa;background:#f4f4f5;border-color:#e4e4e7}
+#frSort,#vSort{font-size:12px;padding:5px 9px}
+.fr-dur{font-size:11px;color:#8a8a96}
+.fr-dur.timed{color:#b45309}
+body.fashion-mode .i details.tech{margin:9px 0 0}
+body.fashion-mode .i details.tech summary{font-size:12px}
+.fr-kv{display:grid;grid-template-columns:78px 1fr;gap:3px 10px;font-size:12px;padding:2px 2px 6px}
+.fr-kv .k{color:#8a8a96}
+.fr-kv .v{color:#3f3f46;word-break:break-word}
+.fr-kv .v.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all}
+.fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
+/* ── 场景平衡表格模式（board id = scene_balance）── */
+body.scene-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
+body.scene-mode .grid table.sbt{width:100%;border-collapse:collapse;font-size:12.5px}
+body.scene-mode .sbt thead th{position:sticky;top:0;background:#131c23;color:#8fa3b0;font-weight:500;
+  text-align:left;padding:9px 12px;border-bottom:1px solid #22303a;white-space:nowrap;cursor:pointer;user-select:none}
+body.scene-mode .sbt thead th:hover{color:#cfe4f2}
+body.scene-mode .sbt tbody td{padding:8px 12px;border-bottom:1px solid #182129;color:#dbe6ee;white-space:nowrap}
+body.scene-mode .sbt tbody tr:hover td{background:#131d25}
+body.scene-mode .sbt td.num{font-family:ui-monospace,Consolas,monospace;color:#a9c0cf}
+body.scene-mode .sbt td.scene{color:#eaf2f8}
+body.scene-mode .sbt .tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+  border:1px solid #2a3a45;color:#9dbccd;background:#141e26}
+
+/* ── 载具模式（board id = vehicle_full）：复用 fr-* 图轨/灯箱，仅补类型色与「类型图」标记 ── */
+body.vehicle-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.vehicle-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
+body.vehicle-mode .i{padding:12px 12px 10px}
+body.vehicle-mode .i details.tech{margin:9px 0 0}
+body.vehicle-mode .i details.tech summary{font-size:12px}
+.fr-part.b-veh{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+.fr-tagtype{font-size:10.5px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;
+  border-radius:6px;padding:0 6px;white-space:nowrap}
+/* 只有「类型图」的卡：类型按钮图标是白色线稿，浅底几乎看不见 → 垫深色块，同时一眼区分 */
+body.vehicle-mode .vcard.typeonly .fr-rail figure{background:#2a2d33;border-color:#3a3d44}
+/* 2026-10-29 深挖参数小签：极速 / 加速（主题变量驱动，不自配色） */
+.v-perf{font-size:11.5px;color:var(--fg);background:var(--accent-soft);border:1px solid var(--border);
+  border-radius:6px;padding:1px 6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.v-perf.acc{background:transparent;border-style:dashed}
+/* 第二期（2026-10-30）：氮气 / 生命 / 特技 三签，虚线边以区别于速度签 */
+.v-perf.nit{background:transparent;border-style:dotted}
+.v-perf.hp{background:transparent;border-style:dotted}
+.v-perf.perk{background:transparent;border-style:dotted}
+/* 官方面板口径（2026-10-30 校准）：速度/加速度为主签，氮气加成用黄字，与游戏内一致 */
+.v-perf.ui{background:var(--accent-soft);border-style:solid}
+.v-nadd{color:#d97706;font-weight:700;margin-left:1px}
+/* 卡面描述：单行截断，完整文案在技术详情里 */
+.fr-desc{font-size:11px;color:var(--fg-muted,#6b7280);line-height:1.35;margin-top:3px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  word-break:break-word}
+body.vehicle-mode .vcard.typeonly .fr-rail figure img{opacity:.95}
+@media (max-width:640px){body.vehicle-mode .grid{grid-template-columns:minmax(0,1fr)}}
+/* ── 战术芯片模式（board id = tactical_chip_full，2026-10-18 新增）：复用 fr-* 图轨/灯箱，只加品质色档 ── */
+body.chip-mode .controls{flex-wrap:wrap;row-gap:8px}
+body.chip-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
+body.chip-mode .i{padding:12px 12px 10px;min-width:0}
+.fr-part.b-chip{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+/* 时装板「仅显示玩家可使用时装」勾选行：文字在前、小小勾选框跟在后面。
+   必须 !important 压掉 board_shadcn.css 的 input{min-width:260px;flex:1;padding:7px 12px;border:...}，
+   否则勾选框被撑成 260px 宽的大坨（本板此前已两次踩同一坑）。 */
+.fr-check{display:inline-flex;align-items:center;gap:4px;cursor:pointer;user-select:none;
+  border:0;background:none;padding:0}
+.fr-check input[type=checkbox]{width:13px!important;height:13px!important;min-width:0!important;
+  max-width:none!important;flex:0 0 auto!important;padding:0!important;margin:0!important;
+  border:0!important;background:none!important;border-radius:2px!important;
+  accent-color:#6d28d9;cursor:pointer;box-shadow:none!important}
+.fr-check .t{font-size:12px;color:var(--muted,#71717a);white-space:nowrap}
+.fr-check:hover .t{color:var(--fg,#18181b)}
+.fr-check .n{font-size:11px;color:var(--muted-2,#a1a1aa);white-space:nowrap}
+.fr-quality{font-size:11px;font-weight:600;border-radius:6px;padding:0 7px;line-height:19px;white-space:nowrap;
+  background:none;border:1px solid transparent}
+.fr-quality.q1{color:#1d4ed8}.fr-quality.q2{color:#8a70ff}.fr-quality.q3{color:#b8860b}
+/* 品级徽章只有特级/高级有底色（与武器皮肤板同一套视觉纪律） */
+.fr-quality.q3{background:linear-gradient(180deg,#f7e3ac,#d9b24c);color:#4a3405;border-color:#b8912f;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.fr-quality.q2{background:#f3efff;border-color:#cdbfff}
+body.chip-mode .chip-card.q1{border-left:3px solid #1d4ed8}
+body.chip-mode .chip-card.q2{border-left:3px solid #8a70ff}
+body.chip-mode .chip-card.q3{border-left:3px solid #d9b24c}
+.chip-rt .hl{color:#0f766e;font-weight:600}
+.chip-lv{width:100%;border-collapse:collapse;font-size:11.5px;margin:4px 0 0}
+.chip-lv th,.chip-lv td{border-top:1px solid #ececf0;padding:3px 4px;text-align:left;vertical-align:top}
+.chip-lv th{color:#8a8a96;font-weight:600;white-space:nowrap}
+.chip-lv td.num{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap}
+/* ══ D2 详情灯箱（2026-10-29）：中央大卡飘前 + 侧缩略卡直切 + 对比钉 + URL 深链 ══ */
+body.chip-mode .grid .chip-card{cursor:pointer}
+.c2-mask{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;
+  background:rgba(24,24,27,.55);opacity:0;transition:opacity .2s ease}
+.c2-mask.on{opacity:1}
+.c2-stage{position:relative;display:flex;align-items:center;justify-content:center;
+  width:min(680px,calc(100vw - 210px));max-width:100%;max-height:90vh}
+.c2-card{flex:1 1 auto;min-width:0;max-height:90vh;overflow:auto;background:var(--card,#fff);color:var(--fg,#18181b);
+  border:1px solid var(--border-strong,#d4d4d8);border-radius:14px;padding:16px 18px;
+  transform:translateY(10px);transition:transform .2s ease}
+.c2-mask.on .c2-card{transform:translateY(0)}
+.c2-hint{font-size:11px;color:var(--accent,#6d28d9);background:var(--accent-soft,#ede9fe);
+  border:1px solid var(--accent-border,#ddd6fe);border-radius:6px;padding:2px 8px;display:inline-block}
+/* 对比钉 = B 方案式右侧停靠栏：钉住的芯片靠右独立成栏，列表左移恢复可点 */
+.c2-dock{position:fixed;top:0;right:0;bottom:0;z-index:320;width:min(430px,92vw);
+  background:var(--card,#fff);border-left:1px solid var(--border-strong,#d4d4d8);
+  box-shadow:-12px 0 28px rgba(0,0,0,.10);display:none;flex-direction:column}
+.c2-dock.on{display:flex}
+.c2-dock-head{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border,#e4e4e7);flex:0 0 auto}
+.c2-dock-tag{font-size:10.5px;color:var(--accent,#6d28d9);background:var(--accent-soft,#ede9fe);
+  border:1px solid var(--accent-border,#ddd6fe);border-radius:5px;padding:1px 6px;white-space:nowrap}
+.c2-dock-name{font-size:13.5px;font-weight:600;color:var(--fg,#18181b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c2-dock-head button{margin-left:auto;font:inherit;font-size:11.5px;color:var(--muted,#71717a);background:none;
+  border:1px solid var(--border,#e4e4e7);border-radius:6px;padding:2px 8px;cursor:pointer;white-space:nowrap}
+.c2-dock-head button:hover{color:var(--fg,#18181b);background:var(--hover,#f4f4f5)}
+.c2-dock-body{flex:1 1 auto;overflow:auto;padding:12px 14px}
+body.c2-dockopen .grid{margin-right:min(430px,92vw)}
+body.c2-dockopen .c2-mask{padding-right:min(430px,92vw)}
+body.c2-dockopen .c2-stage{width:min(680px,calc(100vw - 470px))}
+@media (max-width:760px){
+  .c2-dock{top:auto;left:0;height:46vh;width:100vw;border-left:0;
+    border-top:1px solid var(--border-strong,#d4d4d8);box-shadow:0 -10px 24px rgba(0,0,0,.12)}
+  body.c2-dockopen .grid{margin-right:0;padding-bottom:46vh}
+  body.c2-dockopen .c2-mask{padding-right:0}
+  body.c2-dockopen .c2-stage{width:calc(100vw - 24px)}
+}
+/* ── D2 通用嵌入态：时装/武器皮肤/异变核芯复用各自板卡的详情 HTML，去卡壳、强制展开 ── */
+.c2-embed>.i,.c2-embed>.skin-card{border:0!important;background:transparent!important;
+  box-shadow:none!important;padding:0!important;border-radius:0!important;margin:0!important;cursor:default}
+.c2-embed .i-detail{display:block!important}
+.c2-embed .skin-detail{display:block!important}
+.c2-embed .skin-summary{display:none!important}
+.c2-embed details.fdesc{margin-top:10px}
+.c2-embed h4{margin:14px 0 6px;font-size:13px;font-weight:600;color:var(--fg,#18181b)}
+/* ── 皮肤板 D2 主卡：方案A 左图右文（2026-10-29）── 左栏固定海报+档案，右栏滚动数据 */
+.c2-mask.skinwide .c2-stage{width:min(1080px,calc(100vw - 210px))}
+.c2-card.skin-a{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.c2-card.skin-a .c2-head{margin:0;padding:12px 16px 10px;border-bottom:1px solid var(--border,#e4e4e7);flex:0 0 auto}
+.c2-card.skin-a .c2-foot{margin:0;border-top:1px solid var(--border,#e4e4e7);flex:0 0 auto}
+.c2-split{flex:1 1 auto;display:flex;min-height:0}
+.c2-split-l{flex:0 0 250px;border-right:1px dashed var(--border,#e4e4e7);background:var(--hover,#fafafa);
+  display:flex;flex-direction:column;align-items:center;padding:16px 14px;overflow-y:auto}
+.c2-split-l .skin-media{width:100%;margin:0;background:transparent;box-shadow:none}
+.c2-split-l .skin-media img{width:100%;max-height:230px;object-fit:contain}
+/* ── 皮肤 D2 主卡：方案一（锚点导航）+ 方案三（品级色系），2026-10-29 ──
+   --gc/--gsoft/--gbg 由 skinD2BodyA 按品级内联注入（色值取站内 grade-badge 同系） */
+.c2-posterwrap{position:relative;width:100%;border-radius:10px;
+  overflow:hidden;background:transparent}
+.c2-posterwrap .skin-media{border-radius:0}
+/* 2026-10-30：D2 详情内可放大的图片给个放大镜光标（点图看大图） */
+.c2-imgzoom{cursor:zoom-in}
+.c2-imgzoom:hover{filter:brightness(1.06)}
+.c2-ipbadge{position:absolute;left:0;top:0;z-index:2;background:var(--gc,#534ab7);color:#fff;
+  font-size:11px;line-height:1;padding:4px 10px;border-radius:0 0 9px 0}
+/* 大主页网格卡不标 IP 角标（用户 2026-10-29）：角标只出现在 D2 主卡与对比钉停靠栏 */
+.skin-card>.c2-posterwrap>.c2-ipbadge{display:none}
+#c2dock .skin-card>.c2-posterwrap>.c2-ipbadge{display:block}
+.c2-gbar{width:100%;height:4px;border-radius:2px;background:var(--gc,#534ab7);margin-top:10px}
+.c2-facts{width:100%;margin-top:10px;font-size:12px;border-top:1px dashed var(--gsoft,#e4e4e7);padding-top:8px}
+.c2-facts .frow{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.c2-facts .frow .k{color:var(--muted,#71717a);white-space:nowrap}
+.c2-facts .frow .v{min-width:0;text-align:right;word-break:break-all}
+.c2-split-r{flex:1 1 auto;min-width:0;overflow-y:auto;padding:0 18px 18px}
+/* 右栏粘性锚点条 */
+.c2-toc{position:sticky;top:0;z-index:6;display:flex;gap:6px;flex-wrap:wrap;
+  padding:10px 0 8px;margin:0 -18px 4px;padding-left:18px;padding-right:18px;
+  background:var(--card,rgba(255,255,255,.95));border-bottom:1px solid var(--border,#e4e4e7)}
+.c2-toc a{font-size:11.5px;padding:3px 11px;border:1px solid var(--border,#e4e4e7);border-radius:12px;
+  color:var(--muted,#52525b);cursor:pointer;user-select:none;text-decoration:none}
+.c2-toc a:hover{border-color:var(--gc,#534ab7);color:var(--gc,#534ab7)}
+.c2-toc a.act{background:var(--gc,#534ab7);border-color:var(--gc,#534ab7);color:#fff}
+/* 区块标题品级色条 + 描述引用块 */
+.c2-split-r h4{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+  color:var(--fg,#18181b);margin:16px 0 8px;scroll-margin-top:52px}
+.c2-split-r h4::before{content:"";flex:0 0 3px;width:3px;height:14px;border-radius:2px;background:var(--gc,#534ab7)}
+.c2-desc0{margin:10px 0 0;font-size:13px;line-height:1.7;color:var(--fg,#18181b);
+  border-left:3px solid var(--gc,#534ab7);padding:2px 0 2px 12px;scroll-margin-top:52px}
+.c2-split-r [id^="sec-"]{scroll-margin-top:52px}
+/* 表现行锚点（徽章已删，data-cat 保留在行上备用） */
+.perf-list li[data-cat]{scroll-margin-top:100px}
+/* 表现区移入左栏海报下方（用户 2026-10-29）；音效放右栏描述下 */
+/* 左栏内容超高时整栏滚动，禁止 flex 压扁海报（2026-10-29：表现列表长会把海报挤没） */
+.c2-split-l>*{flex:0 0 auto}
+.c2-lperf{width:100%;margin-top:12px}
+.c2-lperf details.perf{width:100%;margin:0;border-top:1px dashed var(--gsoft,#e4e4e7);padding-top:8px}
+.c2-lperf ul.perf-list{padding-left:2px}
+/* 窄栏行式（2026-10-29）：一律单行不换行，超长省略号截断、悬浮 title 看全名。
+   !important 钉死 display/white-space，防主题或旧缓存样式改回堆叠 */
+.c2-lperf li.perf-row{display:flex!important;align-items:baseline;gap:6px;padding:4px 0;
+  border-bottom:1px solid var(--border,#e4e4e7);white-space:nowrap!important;flex-wrap:nowrap!important}
+.c2-lperf li.perf-row:last-child{border-bottom:none}
+.c2-lperf li.perf-row .perf-icon{flex:0 0 auto!important;width:14px;height:14px;align-self:center}
+.c2-lperf li.perf-row .perf-cat{flex:0 0 auto!important;display:inline!important;min-width:0!important;
+  font-size:11px;color:var(--muted,#71717a);font-weight:600;white-space:nowrap!important}
+.c2-lperf li.perf-row .perf-name{flex:1 1 auto!important;display:inline!important;min-width:0!important;
+  overflow:hidden!important;text-overflow:ellipsis;white-space:nowrap!important;word-break:normal!important}
+#sec-audio{margin:12px 0 0}
+#sec-audio details.audio{margin:0}
+/* 异变核芯 D2（2026-10-29，1+3 结合）：hero 压顶 + 特技金卡 + 升星阶梯，配色全走主题变量 */
+.core-d2{display:flex;flex-direction:column;gap:12px}
+.cd-hero{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:var(--card,#fff);border:1px solid var(--border,#e4e4e7);border-radius:10px;padding:14px 18px}
+.cd-kicker{font-size:11px;color:var(--muted,#71717a)}
+.cd-name{font-size:16px;font-weight:500;margin:4px 0 8px}
+.cd-chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cd-chip{font-size:11px;color:var(--muted,#71717a);border:1px solid var(--border,#e4e4e7);border-radius:10px;padding:2px 9px}
+.cd-hero-img{margin:0;flex:0 0 auto}
+.cd-hero-img img{width:96px;height:96px;object-fit:contain;display:block}
+.cd-skill{background:var(--card,#fff);border:1px solid var(--accent-border,var(--border,#e4e4e7));
+  border-left:3px solid var(--accent,#534ab7);border-radius:10px;padding:10px 14px}
+.cd-skill-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px;font-weight:500;color:var(--accent,#534ab7)}
+.cd-skill-head img{width:22px;height:22px;object-fit:contain}
+.cd-skill-txt{font-size:13px;line-height:1.7;color:var(--fg,#18181b)}
+.cd-stars{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cd-star{background:var(--card,#fff);border:1px solid var(--border,#e4e4e7);border-radius:8px;padding:8px 10px;min-width:0}
+.cd-star.max{border-color:var(--accent-border,var(--border,#e4e4e7))}
+.cd-star .cd-sn{font-size:12px;font-weight:500;color:var(--accent,#534ab7);margin-bottom:4px}
+.cd-star .cd-st{font-size:12px;line-height:1.55;color:var(--muted,#71717a)}
+.cd-star.max .cd-st{color:var(--fg,#18181b)}
+.cd-sec{border-top:1px solid var(--border,#e4e4e7);padding-top:8px;font-size:13px;line-height:1.7;color:var(--fg,#18181b)}
+.cd-sec .cd-k{font-size:12px;color:var(--muted,#71717a);margin-right:8px}
+.core-d2 details.tech{margin-top:2px}
+/* MVP 结算动画：D2 详情内视频播放区（文件缺失时显示游戏内路径提示） */
+.mvp-videos{margin-top:10px}
+.mvp-videos h4{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--fg,#18181b)}
+.mvp-video{margin:0 0 12px;max-width:480px}
+.mvp-video-label{font-size:12px;color:var(--muted,#71717a);margin-bottom:4px}
+.mvp-video video{display:block;width:100%;background:#000;border-radius:8px;aspect-ratio:16/9}
+.mvp-video .mvp-video-miss{display:none;font-size:12px;color:var(--muted,#71717a);
+  border:1px dashed var(--border,#e4e4e7);border-radius:8px;padding:14px 12px;text-align:center}
+.mvp-video.missing video{display:none}
+.mvp-video.missing .mvp-video-miss{display:block}
+/* 2026-10-29 对比钉停靠栏内音效表：窄栏允许换行，试听列固定宽、播放器占满列宽，保证播放按钮可点 */
+.c2-dock table.audio-table{width:100%;table-layout:fixed}
+.c2-dock table.audio-table th:nth-child(1){width:76px}
+.c2-dock table.audio-table th:nth-child(3){width:176px}
+.c2-dock table.audio-table td,.c2-dock table.audio-table th{white-space:normal;word-break:break-all}
+.c2-dock table.audio-table td code{white-space:normal}
+.c2-dock table.audio-table audio{width:100%;max-width:100%}
+li.flash,h4.flash,div.flash,p.flash{animation:c2flash 1s ease}
+@keyframes c2flash{0%{background:var(--gbg,#eff5fd)}100%{background:transparent}}
+@media (max-width:640px){
+  .c2-mask.skinwide .c2-stage{width:100vw}
+  .c2-split{flex-direction:column;overflow-y:auto}
+  .c2-split-l{flex:0 0 auto;border-right:0;border-bottom:1px dashed var(--border,#e4e4e7)}
+  .c2-split-r{overflow:visible}
+}
+.c2-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.c2-name{font-size:16px;font-weight:600;color:var(--fg,#18181b)}
+.c2-no{font-size:11.5px;color:var(--muted-2,#a1a1aa)}
+.c2-x{margin-left:auto;font:inherit;font-size:12.5px;color:var(--muted,#71717a);background:none;
+  border:1px solid var(--border,#e4e4e7);border-radius:7px;padding:2px 10px;cursor:pointer}
+.c2-x:hover{color:var(--fg,#18181b);background:var(--hover,#f4f4f5)}
+.c2-pin{font:inherit;font-size:11.5px;color:var(--accent,#6d28d9);background:none;
+  border:1px dashed var(--accent-border,#ddd6fe);border-radius:6px;padding:1px 8px;cursor:pointer;white-space:nowrap}
+.c2-pin:hover,.c2-pin.on{background:var(--accent-soft,#ede9fe)}
+.c2-pin.on{border-style:solid;font-weight:600}
+.c2-rail{display:flex;gap:8px;align-items:flex-start;margin:2px 0 10px}
+.c2-rail .big{width:84px;height:84px;flex:0 0 auto;background:transparent;border:1px solid var(--border,#e4e4e7);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
+.c2-rail .big img,.c2-rail .smalls img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.c2-rail .smalls{display:flex;flex-wrap:wrap;gap:5px}
+.c2-rail .smalls figure{margin:0;width:38px;height:38px;background:transparent;border:1px solid var(--border,#e4e4e7);
+  border-radius:7px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
+.c2-desc{font-size:12.5px;color:var(--fg,#18181b);line-height:1.7;margin:0 0 6px}
+.c2-lvrow{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 8px}
+.c2-lvchip{font:inherit;font-size:11px;line-height:1.5;color:var(--muted,#71717a);background:var(--card,#fff);
+  border:1px solid var(--border,#e4e4e7);border-radius:6px;padding:1px 7px;cursor:pointer}
+.c2-lvchip:hover{background:var(--hover,#f4f4f5)}
+.c2-lvchip.on{color:var(--accent,#6d28d9);background:var(--accent-soft,#ede9fe);border-color:var(--accent-border,#ddd6fe);font-weight:600}
+.c2-lv{table-layout:fixed}
+.c2-lv tr.hl td{background:var(--accent-soft,#ede9fe)}
+.c2-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  border-top:1px solid var(--border,#e4e4e7);padding-top:9px;margin-top:11px;font-size:12px;color:var(--muted,#71717a)}
+.c2-nav{font:inherit;font-size:12px;color:var(--fg,#18181b);background:var(--card,#fff);border:1px solid var(--border-strong,#d4d4d8);
+  border-radius:7px;padding:3px 11px;cursor:pointer;white-space:nowrap}
+.c2-nav:hover{background:var(--hover,#f4f4f5)}
+.c2-side{position:absolute;top:50%;transform:translateY(-50%);width:86px;background:var(--card,#fff);
+  border:1px solid var(--border,#e4e4e7);border-radius:10px;padding:8px;cursor:pointer;opacity:.8;transition:opacity .15s}
+.c2-side:hover{opacity:1;border-color:var(--accent-border,#ddd6fe)}
+.c2-side img{width:100%;height:50px;object-fit:contain;display:block;margin-bottom:4px}
+.c2-side .t{font-size:11px;font-weight:600;color:var(--fg,#18181b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.c2-side .s{font-size:10.5px;color:var(--muted-2,#a1a1aa);text-align:center;margin-top:2px}
+.c2-side.l{left:-102px}.c2-side.r{right:-102px}
+.c2-card details.sub-tech{margin:8px 0 0;border:1px dashed var(--border,#e4e4e7);border-radius:6px}
+.c2-card details.sub-tech>summary{cursor:pointer;padding:6px 8px;font-size:11.5px;color:var(--muted,#71717a);font-weight:600;list-style:none}
+.c2-card details.sub-tech>summary::-webkit-details-marker{display:none}
+.c2-card details.sub-tech>summary::before{content:"▸ ";color:var(--muted-2,#a1a1aa)}
+.c2-card details.sub-tech[open]>summary::before{content:"▾ "}
+.c2-card details.sub-tech[open]>summary{border-bottom:1px dashed var(--border,#e4e4e7)}
+.c2-card details.sub-tech .fr-kv{padding:4px 8px 8px}
+.c2-dock details.sub-tech{margin:8px 0 0;border:1px dashed var(--border,#e4e4e7);border-radius:6px}
+.c2-dock details.sub-tech>summary{cursor:pointer;padding:6px 8px;font-size:11.5px;color:var(--muted,#71717a);font-weight:600;list-style:none}
+.c2-dock details.sub-tech>summary::-webkit-details-marker{display:none}
+.c2-dock details.sub-tech>summary::before{content:"▸ ";color:var(--muted-2,#a1a1aa)}
+.c2-dock details.sub-tech[open]>summary::before{content:"▾ "}
+.c2-dock details.sub-tech[open]>summary{border-bottom:1px dashed var(--border,#e4e4e7)}
+.c2-dock details.sub-tech .fr-kv{padding:4px 8px 8px}
+body.c2-lock{overflow:hidden}
+@media (max-width:960px){.c2-side{display:none}.c2-stage{width:min(680px,calc(100vw - 28px))}}
+@media (max-width:640px){
+  .c2-mask{align-items:stretch;padding:0}
+  .c2-stage{width:100vw;max-height:100vh}
+  .c2-card{max-height:100vh;border-radius:0;border:0}
+}
+@media (max-width:640px){body.chip-mode .grid{grid-template-columns:minmax(0,1fr)}}
+#grid.period-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))!important}
+#grid.period-grid .pcard{width:100%;max-width:none}
+.pchip-cand{display:inline-block;margin-left:4px;padding:0 4px;border-radius:3px;font-size:10px;line-height:14px;color:#e2c48c;background:rgba(217,164,65,.14);border:1px solid rgba(217,164,65,.4)}
+.fr-desc{margin:6px 0 2px;font-size:12px;line-height:1.55;color:#a9b8c2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+body.core-mode .i-media{display:flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:space-between!important;gap:10px;width:100%!important;box-sizing:border-box}
+body.core-mode .i-media .mi{flex:0 0 auto!important;align-items:center}
+body.core-mode .i-media .mi:last-of-type{margin-left:auto}
+body.core-mode .i-media .mi img{width:auto;height:84px;max-width:100%}
+body.core-mode .i-media figure{margin:0;flex:0 0 auto;max-width:48%}
+body.core-mode .i-media img{max-height:96px;width:auto;max-width:100%;object-fit:contain}
+body.core-mode .i-media figcaption{display:none}
+.stars-inline{color:#d9a441;letter-spacing:1px;font-size:11px}
+
+/* 核芯详情区排版：键列固定宽，值列允许换行但不乱断 */
+.i-detail{display:block;width:100%;box-sizing:border-box;grid-column:1/-1}
+.i-detail>.kv{display:grid;width:100%;box-sizing:border-box;grid-template-columns:86px minmax(120px,1fr);gap:6px 12px;align-items:start}
+.i-detail>.kv>.k{white-space:nowrap;color:#8c7d70;font-size:12px;line-height:1.5}
+.i-detail>.kv>.v{min-width:0;word-break:normal;overflow-wrap:anywhere;line-height:1.6}
+.i-detail>.kv>.v.stars{display:flex;flex-direction:column;gap:6px}
+.i-detail>.kv>.v.stars .star{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:start}
+.i-detail>.kv>.v.stars .star b{color:#d9a441;font-weight:600;font-size:12px}
+.i-detail>.kv>.v.stars .star-txt{min-width:0}
+.grade-pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;border:1px solid currentColor}
+.g-蓝{color:#5aa9e6}.g-绿{color:#7fbf5f}.g-紫{color:#b07ce8}.g-金{color:#d9a441}
+
+/* 左侧大类跳转筛选栏 */
+#siteNav{position:fixed;left:0;top:0;bottom:0;width:212px;overflow:auto;z-index:80;
+  background:#0f1319;border-right:1px solid #1e2631;padding:12px 8px;font-size:12.5px}
+#siteNav .hd{font-size:10px;letter-spacing:.2em;color:#5d6b7c;margin:4px 0 8px;padding-left:6px}
+#siteNav .grp{font-size:10.5px;letter-spacing:.14em;color:#6b7a8b;margin:12px 0 4px;padding-left:6px}
+#siteNav a{display:block;padding:5px 8px;color:#9aa7b6;border-left:2px solid transparent;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;border-radius:0 2px 2px 0}
+#siteNav a:hover{color:#fff;background:#151b24}
+#siteNav a.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+body{padding-left:212px}
+@media(max-width:900px){#siteNav{display:none}body{padding-left:0}}
+
+#siteNav a.leafhd{display:block;text-decoration:none}
+#siteNav .leafhd{font-size:11px;color:#7a8a9c;padding:6px 8px 2px;letter-spacing:.06em;border-top:1px dashed #1c2531;margin-top:4px}
+#siteNav a.sub{padding-left:16px;font-size:11.8px}
+
+#siteNav a.leafrow{display:block;padding:5px 8px 5px 8px;font-size:12.2px;color:#9aa7b6;
+  border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#siteNav a.leafrow:hover{color:#fff;background:#151b24}
+#siteNav a.leafrow.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+#siteNav .leafhd{padding:8px 8px 3px;font-size:11px;color:#8496a8;letter-spacing:.05em}
+#siteNav a.sub{display:block;padding:4px 8px 4px 22px;font-size:11.8px;color:#8b9aab;
+  border-left:2px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#siteNav a.sub:hover{color:#fff;background:#151b24}
+#siteNav a.sub.on{color:#fff;background:#151b24;border-left-color:#c0392b}
+
+/* shadcn 风格层级 */
+#siteNav{background:#0b0f14;border-right:1px solid #1a222c;padding:10px 8px}
+#siteNav .hd{font-size:10px;letter-spacing:.18em;color:#5f6d7e;text-transform:uppercase;padding:6px 8px 10px}
+#siteNav .grp{display:flex;align-items:center;gap:8px;padding:8px 8px 6px;margin-top:10px;
+  color:#8b98a8;font-size:11.5px;letter-spacing:.08em;font-weight:600}
+#siteNav .grp svg{width:14px;height:14px;opacity:.7;flex:0 0 auto}
+#siteNav a.leafrow{position:relative;display:block;margin:1px 0;padding:6px 8px 6px 26px;
+  border-radius:6px;font-size:12.2px;color:#9aa7b6;border-left:0}
+#siteNav a.leafrow::before{content:"";position:absolute;left:13px;top:50%;width:4px;height:4px;
+  margin-top:-2px;border-radius:50%;background:#3a4756}
+#siteNav a.leafrow:hover{background:#131a23;color:#e8ecf2}
+#siteNav a.leafrow:hover::before{background:#5b6b7d}
+#siteNav a.leafrow.on{background:rgba(192,57,43,.14);color:#fff}
+#siteNav a.leafrow.on::before{background:#e05542;box-shadow:0 0 0 3px rgba(224,85,66,.18)}
+#siteNav .leafhd{padding:7px 8px 4px 26px;font-size:11.2px;color:#7f8d9e;letter-spacing:.04em}
+#siteNav a.sub{margin:0 0 0 18px;padding:5px 8px 5px 14px;border-radius:6px;font-size:11.6px;color:#8391a2;
+  border-left:1px solid #1e2732}
+#siteNav a.sub:hover{background:#131a23;color:#e8ecf2;border-left-color:#33404f}
+#siteNav a.sub.on{background:rgba(192,57,43,.12);color:#fff;border-left-color:#c0392b}
+
+#siteNav .grp .gi{width:22px;height:22px;object-fit:contain;border-radius:3px;opacity:1;flex:0 0 auto;filter:saturate(1.1) brightness(1.05)}
+
+/* 板级技术详情：并到标题下的 meta 行尾，默认折叠 */
+#notes{display:inline!important;margin:0 0 0 10px;vertical-align:baseline}
+#notes details.tech{border:0!important;background:none!important;padding:0!important;display:inline!important;box-shadow:none!important}
+#notes details.tech>summary{display:inline!important;cursor:pointer;font-size:11.5px;color:#8b98a8;letter-spacing:.04em;border:0!important}
+#notes details.tech>summary:hover{color:#cfd8e3}
+#notes details.tech[open]{display:block;margin-top:8px;border:1px solid #262f3b;border-radius:6px;
+  padding:8px 10px;background:#0f141b}
+
+.meta-line .techlink{color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
+.meta-line .techlink:hover{color:#e8ecf2}
+#notes{display:none!important}
+#notes.open{display:block}
+#notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 10px}
+#notes details.tech>summary{display:none;}
+#notes.open details.tech{display:block}
+
+/* 板级技术详情：固定在顶部标题区，展开也只占顶部 */
+.topbar #notes{display:none;margin:0;padding:0 22px 12px}
+.topbar #notes.open{display:block}
+.topbar #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 12px;margin:0}
+
+/* 时装卡·描述折叠（2026-10-24） */
+.fdesc{margin-top:8px;border-top:1px dashed rgba(255,255,255,.08);padding-top:6px}
+.fdesc>summary{cursor:pointer;font-size:12px;color:#9aa0aa;list-style:none;display:flex;gap:6px;align-items:center}
+.fdesc>summary::-webkit-details-marker{display:none}
+.fdesc>summary::before{content:"▸";font-size:10px;color:#c0392b;transition:transform .15s}
+.fdesc[open]>summary::before{transform:rotate(90deg)}
+.fdesc>summary:hover{color:#e8e8ea}
+
+.fd-row{display:flex;gap:8px;margin:3px 0}
+.fd-k{flex:0 0 118px;color:#7c828c}
+.fd-v{flex:1;color:#c9ccd2;white-space:pre-wrap}
+.fdesc-body{margin-top:6px;font-size:12.5px;line-height:1.75;color:#c9ccd2;white-space:pre-wrap}
+/* 卡片内的逐条技术详情不再占卡面
+   （战术芯片板 2026-10-29 起卡内已无 details.tech——详情统一走 D2 灯箱，无需例外规则） */
+#grid details.tech{display:none!important}
+
+#metaline{display:flex;align-items:baseline;gap:6px}
+.techlink-wrap{margin-left:auto;white-space:nowrap}
+.meta-line .techlink{font-size:12px;color:#8b98a8;border-bottom:1px dashed #3b4757;text-decoration:none}
+.meta-line .techlink:hover{color:#e8ecf2}
+
+/* ===== 页头（2026-10-23 重做，独立命名，不受旧 .topbar 规则影响） ===== */
+.hd2{position:sticky;top:0;z-index:60;background:rgba(11,15,20,.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid #1a222c;padding:12px 22px 10px}
+.hd2-crumb{display:flex;gap:6px;margin-bottom:10px}
+.hd2-crumb a{font-size:12px;color:#8b98a8;text-decoration:none;padding:3px 9px;border-radius:6px}
+.hd2-crumb a:hover{background:#151c25;color:#e9eef5}
+.hd2 h1{font-size:20px;font-weight:800;letter-spacing:.03em;color:#f3f7fb;
+  margin:0 0 8px;padding-left:11px;position:relative;line-height:1.3}
+.hd2 h1::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:3px;border-radius:2px;background:#c0392b}
+.hd2 .meta-line{display:flex;align-items:baseline;gap:8px;font-size:11.5px;color:#7f8d9e;line-height:1.7}
+.hd2 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+/* 服别切换器：分服子卡（如装备属性板）在控件行内、类别筛选左侧显示 当前服 + 可切换的兄弟服卡 */
+.srv-sw{display:none;flex-wrap:wrap;align-items:center;gap:6px;vertical-align:middle}
+.srv-sw>em{font-style:normal;font-size:11.5px;color:#7f8d9e;margin-right:2px}
+.srv-sw .srv-btn{font-size:11.5px;padding:3px 12px;border:1px solid #2a3644;border-radius:999px;
+  background:#11161e;color:#9aa7b6;cursor:pointer;text-decoration:none;letter-spacing:.02em}
+.srv-sw .srv-btn:hover{border-color:#3d4f63;color:#d5dde6}
+.srv-sw .srv-cur{font-size:11.5px;padding:3px 12px;border:1px solid #3b82f6;border-radius:999px;
+  background:#132033;color:#7db2f5;letter-spacing:.02em}
+.hd2 .pills .pill{font-size:11px;padding:3px 9px;border:1px solid #232d3a;border-radius:999px;
+  background:#11161e;color:#9aa7b6;letter-spacing:.02em}
+.hd2 #notes{margin:10px 0 0;padding:0}
+.hd2 #notes details.tech{border:1px solid #262f3b;border-radius:8px;background:#0f141b;padding:10px 12px}
+body{padding-top:0}
+
+.hd2 #notes{display:none;margin:10px 0 0}
+.hd2 #notes.open{display:block}
+.hd2 #notes details.tech>summary{display:none}
+.hd2-logo{display:block;margin-bottom:8px}
+.hd2-logo img{height:26px;width:auto;filter:brightness(1.18) contrast(1.05)}
+.nav-logo{height:20px;width:auto;display:block;filter:brightness(1.2) contrast(1.05)}
+#siteNav .hd{padding:8px 8px 12px}
+
+/* 默认网格的板块：卡片偏宽 → 收窄（头像/核芯/料理） */
+body.b-avatar_catalog .grid,
+body.b-mutation_core_full .grid,
+body.b-edible_catalog .grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))!important;gap:12px}
+
+/* 窄列板块：名称不换行，标签不挤压 */
+body.b-avatar_catalog .i-name,
+body.b-mutation_core_full .i-name,
+body.b-edible_catalog .i-name{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.b-avatar_catalog .i-id,body.b-mutation_core_full .i-id,body.b-edible_catalog .i-id{white-space:nowrap}
+body.b-avatar_catalog .head-tags,
+body.b-mutation_core_full .head-tags,
+body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-origin:right center}
+
+/* 名册类板（击败播报 / MVP 等）：横幅图居中 + 柔光底板，不再被拉成细条 */
+.i.roster .i-media{display:flex!important;justify-content:center!important;align-items:center!important;
+  padding:12px 10px;border-radius:12px;overflow:hidden;
+  background:radial-gradient(120% 140% at 50% 0%,rgba(255,255,255,.07),rgba(255,255,255,.012) 60%,transparent);
+  border:1px solid rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.i.roster .i-media .mi{flex:1 1 auto!important;display:flex;justify-content:center;align-items:center;margin:0!important}
+.i.roster .i-media .mi img{width:auto;max-width:100%;height:auto;max-height:104px;object-fit:contain;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.55))}
+.i.roster .i-media.empty{border-style:dashed;background:rgba(255,255,255,.012)}
+
+/* 2026-10-30：名片框（1080×670 横幅）/ 头像框 都是**中空边框图**（中间透明），
+   直接摆在深色卡上就是几条边线 —— 给图本身垫一层卡片底板，才看得出是「框」。
+   注：avatar 板是**非 roster 模式**，故匹配 .i.k-nc / .i.k-af，不限定 .i.roster
+   ★ 2026-10-30 修正：主图（role=frame，=真边框）与背景图（role=background，
+     = 名片场景底图）必须分开 —— 背景图不再垫边框底板、缩小压暗并标注为「背景」，
+     绝不让场景截图冒充「边框图」。 */
+.i.k-nc .i-media .mi:not(.mi-bg),
+.i.k-af .i-media .mi:not(.mi-bg){position:relative}
+.i.k-nc .i-media .mi:not(.mi-bg) img,
+.i.k-af .i-media .mi:not(.mi-bg) img{
+  border-radius:9px;padding:3px;width:auto;max-width:100%;height:auto;max-height:150px;object-fit:contain;
+  background:
+    radial-gradient(120% 120% at 50% 10%,rgba(255,255,255,.06),transparent 62%),
+    linear-gradient(152deg,rgba(48,53,70,.95),rgba(19,21,30,.95) 52%,rgba(31,35,48,.95));
+  box-shadow:0 3px 12px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06);
+}
+/* 背景图（场景底图）：次要信息，缩小 + 压暗 + 虚线框，与边框图明显区分 */
+.i .i-media .mi.mi-bg img{
+  max-height:88px;width:auto;max-width:100%;height:auto;object-fit:contain;
+  opacity:.6;filter:saturate(.78) brightness(.92);border-radius:6px;
+  background:rgba(255,255,255,.03);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.i .i-media .mi.mi-bg figcaption{font-size:10px;opacity:.72;letter-spacing:.02em}
+/* 边框图缺失（当前包快照无该资源）：如实占位，不拿场景图顶替 */
+.i .i-media .mi.nofig{
+  min-height:86px;min-width:150px;display:flex;align-items:center;justify-content:center;
+  border:1px dashed rgba(255,190,120,.42);border-radius:9px;
+  background:repeating-linear-gradient(135deg,rgba(255,190,120,.07) 0 8px,transparent 8px 16px);
+  color:rgba(255,205,150,.88);font-size:11px;letter-spacing:.03em;text-align:center;padding:8px;
+}
+.i .i-media .mi.nofig figcaption{font-size:10px;opacity:.8}
+/* 卡片头部的「无边框图」标记 */
+.i .head-tags .ev.gap{
+  background:rgba(120,72,24,.35);color:#ffcf95;border:1px solid rgba(255,190,120,.42);
+}
+/* 动态头像/头框/名片框：卡图右上角一枚「动」标，提示悬停可播放 Spine 动画 */
+.mi-anim{position:relative}
+.anim-dot{position:absolute;top:3px;right:3px;z-index:2;font-size:10px;line-height:1.1;
+  padding:2px 4px;border-radius:4px;letter-spacing:.02em;
+  color:#ffe6a5;background:rgba(104,72,16,.9);border:1px solid rgba(255,199,89,.55);
+  pointer-events:none;opacity:.92}
+.i.k-nc .i-media .mi:not(.mi-bg).mi-anim img,
+.i.k-af .i-media .mi:not(.mi-bg).mi-anim img{background:none;padding:0;box-shadow:none;border-radius:0}
+
+/* 筛选组内部换行：子类/品牌这类长列表不再挤出屏幕 */
+.fr-filters .fr-grp{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:100%}
+.fr-filters .fr-grp>em{flex:0 0 auto;margin-right:2px}

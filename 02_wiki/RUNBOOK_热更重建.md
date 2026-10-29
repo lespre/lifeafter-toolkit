@@ -61,7 +61,7 @@
 | G4 | 不变量 | 概率池和=1；hp 曲线 150 级完整；navi_speed ≤ 250；分服子卡不混排 | 定位脚本，修源不修产物 |
 | G5 | 资源完整 | 图标/海报文件存在性校验，缺失出清单 | 补资源或标记缺图（虚线占位），不猜图 |
 | G6 | 口径一致 | 新产物与规则层一致（服名官方口径、排除范围、trial 合并） | 改 `rules/`，不手改产物 |
-| G7 | 前端冒烟 | 抽查 3 板：渲染正常、无 JS 报错 | 修完再发 |
+| G7 | 前端冒烟 | `frontend_smoke.mjs`：10 板 × 桌面/移动 = 20 组，断言渲染条数、JS 错误、横向溢出、抽屉可用；与基线 diff 必须 0 差异 | 修完再发 |
 
 体检工具：`python 02_wiki/web/tools/checks/gate_report.py`
 输出「每板契约错数 + 条目数环比 + 错误种类 Top」，写入 `state/gate_report.json`，退出码 0 全绿 / 1 有红板。
@@ -168,6 +168,10 @@ $PY 02_wiki/web/tools/build/fix_provenance_contract.py --all --apply
 
 # 发布门禁（重建完必须 exit 0）
 $PY 02_wiki/web/tools/build_wiki.py
+
+# 前端冒烟（渲染事实 + JS 错误 + 横向溢出 + 移动抽屉）
+node 02_wiki/web/tools/checks/frontend_smoke.mjs --out 02_wiki/state/smoke_now.json
+node 02_wiki/web/tools/checks/frontend_smoke.mjs --diff 02_wiki/state/smoke_baseline.json   # 与基线对比
 
 # 本地预览
 $PY 02_wiki/web/tools/wiki_server.py    # http://127.0.0.1:8765/wiki.html

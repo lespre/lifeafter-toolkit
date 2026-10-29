@@ -1,0 +1,144 @@
+# 前端改造规则层（2026-10-30 建立）
+#
+# 目的：前端已从「单文件巨石」拆为多文件，此后每次改动都必须遵守下列约束。
+#       这些约束不是风格偏好，而是**防止静默破坏**的硬规则。
+
+# ══════════════════════════════════════════════════════════════════
+# 一、文件结构（拆分的唯一事实来源）
+# ══════════════════════════════════════════════════════════════════
+structure:
+  board.html:
+    role: 结构骨架（~5.5KB）
+    contains:
+      - head 里的 script/link 引用
+      - body 结构：aside#siteNav / header.hd2 / div.wrap(controls+notes+grid)
+    must_not:
+      - 内联 <style>（应外置到 assets/board_base.css）
+      - 内联 <script>（应外置到 assets/board_core.js 等）
+      - 超过 200 行（超过说明该拆了）
+  assets/board_base.css:
+    role: 基础布局与组件样式（来自原内联 <style>，46KB）
+    note: 板型专属样式在 board_theme_*.css；跨主题通用样式在 board_tokens.css
+  assets/board_core.js:
+    role: 主渲染逻辑（230KB）
+    depends_on: [assets/board_dict.js]
+  assets/board_dict.js:
+    role: 字段中文名 / 取值中文名等纯字典（16KB）
+    rule: 只能放「字面量」，不得含逻辑；改动此文件不影响渲染逻辑
+  assets/board_plugins.js:
+    role: 尾部增强块（性能条 / 分类导航 / 技术详情 / 窄列宽，7KB）
+  assets/board_tokens.css:
+    role: 统一设计令牌 + 跨主题通用规则（含移动抽屉、溢出防护）
+    rule: 只声明「变量契约」与「所有主题都要生效的规则」；品牌色不写这里
+  assets/board_theme_dusk.css:
+    role: 深色主题（当前生效）
+  assets/board_theme_official.css:
+    role: 官方口径主题
+  assets/board_theme_aftermath.css:
+    role: 末世主题
+  board_shadcn.css:
+    role: shadcn 风格基础层（含 :root 变量契约的最早定义）
+
+# ══════════════════════════════════════════════════════════════════
+# 二、CSS 硬规则
+# ══════════════════════════════════════════════════════════════════
+css:
+  tokens:
+    # 所有颜色/圆角/投影必须走 var(--token)，不得硬编码
+    required_vars:
+      - --bg --card --panel --fg --fg-muted --ink-2 --muted --muted-2
+      - --border --border-strong --hover
+      - --accent --accent-soft --accent-border --accent-2 --amber-2 --ring
+      - --st --st-bg --st-bd        # 状态（已核验）
+      - --vf --vf-bg --vf-bd        # 候选
+      - --ca --ca-bg --ca-bd        # 待确认
+      - --nitro                     # 氮气加成黄字
+      - --gc --gbg --gsoft          # 时装分组色
+      - --radius --radius-sm --shadow-xs --shadow-sm --shadow-md
+      - --board-nav --top-h
+    ban:
+      - "裸 hex 值（#fff / #10131d 等）写在 body.wiki-board 规则里"
+      - "同一语义在不同主题文件里各写一套字面值"
+    fallback_rule: >
+      var(--x, #fallback) 只允许在 token 未定义时使用；
+      一旦 token 层已定义，必须改成纯 var(--x)，否则换肤时 fallback 会露出来。
+  important:
+    rule: >
+      !important 仅允许出现在「必须压过内联 style」的场合（如 #fGradePanel）。
+      组件微调优先提高选择器特异性，不得靠 !important 堆叠。
+  layer_order: >
+    board_shadcn.css → theme_aftermath → theme_official → board_base →
+    board_tokens → theme_dusk（后加载者可覆盖前者）
+
+# ══════════════════════════════════════════════════════════════════
+# 三、JS 硬规则
+# ══════════════════════════════════════════════════════════════════
+js:
+  load_order:
+    - assets/board_dict.js      # 字典必须最先（core 依赖它）
+    - assets/board_core.js
+    - assets/board_plugins.js
+  globals:
+    allow: >
+      仅允许 const/let/function 顶层声明；不得用 var 隐式全局，
+      不得在 window 上挂新键（现仅允许 window.WIKI_NAV_DRAWER / window.WIKI_TAXONOMY 等既有键）。
+  xss:
+    rule: 所有写入 innerHTML 的用户/数据来源字符串，必须过 esc() 或走 textContent。
+  null_safety:
+    rule: 板数据来自 51 块不同来源的 JSON，字段可能缺失；访问前必须可选链或显式判空。
+  board_specific:
+    rule: >
+      板型专属渲染（时装 fr-*、载具 v-*、芯片 c2-*、彩票 pcard-*）写进 board_core.js 时
+      必须用 body.<mode> 作用域隔离，禁止用无作用域的裸选择器覆盖其他板型。
+
+# ══════════════════════════════════════════════════════════════════
+# 四、移动端（<900px）硬规则
+# ══════════════════════════════════════════════════════════════════
+mobile:
+  nav:
+    rule: >
+      <900px 时 #siteNav 由 display:none 隐藏，必须始终存在替代入口
+      （当前实现：#navToggle 按钮 + body.nav-open 抽屉 + #navScrim 遮罩，
+      见 assets/board_navdrawer.js）。新增板型时不得把导航入口删掉。
+  overflow:
+    rule: >
+      任何板在 1440px 与 390px 两个视口下都不得出现横向滚动条。
+      常见成因：white-space:nowrap 的长标签、flex 子项缺 min-width:0、
+      等比图片未设 max-width。修在 board_tokens.css（通用）或对应板型样式里。
+      由 frontend_smoke.mjs 的 hasHorizontalScroll 断言守住。
+
+# ══════════════════════════════════════════════════════════════════
+# 五、验证硬规则（改前端必跑）
+# ══════════════════════════════════════════════════════════════════
+verification:
+  syntax:
+    - "node --check assets/board_core.js assets/board_dict.js assets/board_plugins.js"
+    - "node --check assets/board_navdrawer.js"
+  smoke:
+    command: >
+      node 02_wiki/web/tools/checks/frontend_smoke.mjs --out 02_wiki/state/smoke_now.json
+      node 02_wiki/web/tools/checks/frontend_smoke.mjs --diff 02_wiki/state/smoke_baseline.json
+    covers: [标题, 计数, 渲染条数, 状态标签种类, JS 错误, 控制台错误, 横向溢出, 移动抽屉, 站点导航项数]
+    pass_criteria:
+      - 与基线 diff = 0 差异
+      - JS 错误组 = 0
+      - 横向溢出组 = 0
+    note: >
+      基线文件 state/smoke_baseline.json 是「当前已知良好」的事实快照。
+      刻意改动渲染行为时，先更新基线并在提交信息里写明改了什么。
+  pitfalls:
+    - "不要用 rindex('</div>') 之类在 HTML 里搜字符串定位位置 —— JS 代码里有 300+ 处 '</div>' 字符串"
+    - "不要用 split('*/\\n') 剥离 JS 头部注释 —— 正文里有 110 处 JS 注释结束标记"
+
+# ══════════════════════════════════════════════════════════════════
+# 六、一次性脚本（拆分的可复现凭据）
+# ══════════════════════════════════════════════════════════════════
+tooling:
+  split_board_html:
+    path: 02_wiki/web/tools/build/split_board_html.py
+    purpose: board.html 巨石拆分（已完成，保留以便复现与校验）
+    guarantees:
+      - 内容守恒：去空白后字符多重集必须与原文完全一致，否则中止
+      - 顺序可逆：每个字典块「原位插回 == 原文」
+      - 幂等：检测到 <!-- board:split --> 标记即跳过
+    backup: board.html.bak_split

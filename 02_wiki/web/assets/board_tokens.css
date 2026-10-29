@@ -1,0 +1,165 @@
+/* ══════════════════════════════════════════════════════════════════
+   board_tokens.css —— 板块页统一设计令牌（2026-10-30 新增）
+
+   目的：把此前散在 4 套主题文件里的颜色/圆角/间距收敛成一套可覆盖的
+   token 契约，各主题只负责「给 token 赋值」，不再各自硬编码。
+
+   加载顺序（board.html）：
+     board_shadcn.css → theme_aftermath → theme_official → board_base
+     → board_tokens.css → theme_dusk        ← tokens 在主题之后，用于覆盖
+
+   规则：
+     1. 本文件只声明「契约」：变量名 + fallback 默认值，不写具体品牌色。
+     2. 主题文件在自身 :root 里覆盖同名 token 即可换肤。
+     3. 新增主题时，只需覆盖 :root 下的 token，不必再逐条改组件样式。
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── 语义色（默认取 dusk 深色基调，其他主题在自身 :root 覆盖）── */
+  --bg: #10131d;
+  --card: #191f2e;
+  --panel: #191f2e;
+  --fg: #e7eaf4;
+  --ink-2: #b4bfd3;
+  --muted: #a3afc6;
+  --muted-2: #8b9bb8;
+  --fg-muted: #8b9bb8;
+
+  --border: #323d53;
+  --border-strong: #4b5976;
+  --hover: #252e46;
+
+  --accent: #b6a7df;
+  --accent-soft: #29263f;
+  --accent-border: #8274aa;
+  --accent-2: #b6a7df;
+  --amber-2: #d4b58a;
+  --ring: #b6a7df24;
+
+  /* ── 语义色组（状态/证据等级）── */
+  --st: #a3d4b2;   --st-bg: #1c3029;  --st-bd: #3d6954;
+  --vf: #b8c9ee;   --vf-bg: #202d43;  --vf-bd: #475f87;
+  --ca: #d9bd94;   --ca-bg: #302a25;  --ca-bd: #6b5742;
+  --nitro: #d4b58a;
+
+  /* ── 业务分组色（时装图鉴 c2-* 组件；此前散落硬编码 #534ab7）── */
+  --gc: #534ab7;   --gbg: #eff5fd;   --gsoft: #e4e4e7;
+
+  --steel: #a1b9dc;
+  --blood: #8274aa;
+  --blood-2: #b6a7df;
+  --gold: #d4b58a;
+
+  /* ── 形状与投影 ── */
+  --radius: 6px;
+  --radius-sm: 4px;
+  --shadow-xs: none;
+  --shadow-sm: 0 8px 24px #05071120;
+  --shadow-md: 0 12px 32px #05071140;
+
+  /* ── 布局 ── */
+  --board-nav: 232px;
+  --top-h: 150px;            /* 顶栏高度（sticky 控件用；运行时由 JS 校准） */
+  --nav-fallback-bg: #111623;
+  --nav-border: #30394f;
+}
+
+/* ── 名册级条目：静态导出 / 字符串池名册，无行级溯源 ──
+   与行级条目视觉区分：虚线边 + 琥珀色（与 --ca 组同源）。 */
+body.wiki-board .state-tag.unverified {
+  background: var(--ca-bg) !important;
+  color: var(--ca) !important;
+  border-color: var(--ca-bd) !important;
+  border-style: dashed !important;
+}
+body.wiki-board .state-tag.unverified::before { content: "◇ "; opacity: .85; }
+
+/* ── 移动端导航抽屉 ─────────────────────────────────────────────
+   <900px 时左侧分类栏隐藏，改由顶栏「☰ 资料分类」按钮唤出抽屉。
+   抽屉复用 #siteNav 的内容（同一 DOM，切换定位方式），避免数据双份。 */
+body.wiki-board #navToggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--fg);
+  background: var(--hover);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+body.wiki-board #navToggle:hover { border-color: var(--accent); }
+
+body.wiki-board #navScrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #05070ecc;
+  z-index: 70;
+}
+body.wiki-board.nav-open #navScrim { display: block; }
+
+@media (max-width: 900px) {
+  body.wiki-board #navToggle { display: inline-flex; }
+
+  /* 抽屉态：siteNav 由固定侧栏变为覆盖式抽屉 */
+  body.wiki-board.nav-open #siteNav {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(82vw, 300px);
+    max-width: 300px;
+    z-index: 80;
+    box-shadow: 0 0 40px #00000066;
+    transform: translateX(0);
+    animation: navSlideIn .18s ease-out;
+  }
+  body.wiki-board.nav-open { overflow: hidden; }
+
+  /* 抽屉里的板链接点一下就收起（由 JS 绑定 click） */
+  body.wiki-board #siteNav a { -webkit-tap-highlight-color: transparent; }
+}
+
+@keyframes navSlideIn {
+  from { transform: translateX(-14px); opacity: .4; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.wiki-board.nav-open #siteNav { animation: none; }
+}
+
+/* ── 横向溢出防护（2026-10-30）────────────────────────────
+   实测问题：vehicle_full / lottery_periods 在视口右侧出现横向滚动条。
+   根因：载具卡面的「特性」签 .v-perf 用了 white-space:nowrap，
+         长文案（如「水陆两栖」「和平使者」）不换行 → 撑破卡片与文档。
+   修法：签容器允许换行 + 父容器 min-width:0（grid/flex 子项默认 min-width:auto，
+         不置 0 就不会收缩）。一处修，所有主题与板型生效。 */
+body.wiki-board .v-perf { white-space: normal; overflow-wrap: anywhere; }
+body.wiki-board :is(.i, .i-body, .v-perf-row, .i-perks) { min-width: 0; }
+
+/* 图片不得撑破容器（lottery_periods 的 87px 图标溢出 4px） */
+body.wiki-board :is(.grid, .i, .i-body) img { max-width: 100%; }
+
+/* 彩票期数卡：.pcard-cover 是 flex，img 的 max-width:26% 以 flex 基线解析，
+   width:auto 的等比图会溢出容器（实测溢出 26px）。改为 flex 基准约束。 */
+body.wiki-board .pcard-cover { min-width: 0; flex-wrap: wrap; }
+body.wiki-board .pcard-cover img {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 26%;
+  height: auto;
+}
+
+/* 窄屏进一步收紧 */
+@media (max-width: 900px) {
+  body.wiki-board .wrap { padding-inline: 14px; }
+  body.wiki-board .controls { gap: 8px; }
+  body.wiki-board .controls > * { max-width: 100%; }
+  body.wiki-board .v-perf { font-size: 11px; }
+}
