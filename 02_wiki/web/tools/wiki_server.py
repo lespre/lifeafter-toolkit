@@ -29,7 +29,20 @@ TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
-from live_npk_reader import LiveNpkReader, NpkFormatError, SourceChangedError
+# ★ 可选依赖：解密库（cryptography）只在「热更实时读取」这条可选功能上用到。
+#   开源场景：别人 clone 仓库后可能没装 venv，但**纯静态浏览**必须能跑。
+#   ⇒ 顶层不硬 import；缺库时把实时读取功能标记为不可用，其余功能照常。
+#   （原先是顶层硬 import，缺 cryptography ⇒ 整个站起不来，包括静态页。）
+try:
+    from live_npk_reader import LiveNpkReader, NpkFormatError, SourceChangedError
+    LIVE_NPK_AVAILABLE = True
+    LIVE_NPK_IMPORT_ERROR = ""
+except ImportError as _e:  # pragma: no cover - 环境相关
+    LiveNpkReader = None  # type: ignore[assignment]
+    NpkFormatError = RuntimeError  # type: ignore[assignment,misc]
+    SourceChangedError = RuntimeError  # type: ignore[assignment,misc]
+    LIVE_NPK_AVAILABLE = False
+    LIVE_NPK_IMPORT_ERROR = str(_e)
 from publication_policy import is_openable_board
 
 API_VERSION = "v1"
@@ -222,6 +235,12 @@ class RegisteredSource:
         if definition["kind"] != "script_npk":
             raise ValueError(f"unsupported live source kind: {definition['kind']}")
         self.definition = definition
+        if not LIVE_NPK_AVAILABLE:
+            raise RuntimeError(
+                "实时读取功能不可用：缺少解密库依赖（%s）。\n"
+                "⇒ 静态浏览不受影响；如需实时读取，请安装依赖："
+                "pip install -r 00_规范与工具/环境/requirements.lock.txt"
+                % LIVE_NPK_IMPORT_ERROR)
         self.reader = LiveNpkReader(definition["path"], definition["server_branch"])
 
     @property
@@ -287,7 +306,16 @@ class WikiContext:
             # endpoint. Enabling one is an explicit, read-only source review.
             if item.get("reader_enabled", True) is not True:
                 continue
-            source = RegisteredSource(item)
+            # ★ 缺解密库时**跳过**这个实时源，而不是让整个站崩掉。
+            #   静态浏览是主路径；实时读取是可选增强。
+            try:
+                source = RegisteredSource(item)
+            except RuntimeError as exc:
+                if not LIVE_NPK_AVAILABLE:
+                    print("[wiki_server] 实时源 %s 已跳过（缺解密库依赖）：%s"
+                          % (item.get("source_id"), exc))
+                    continue
+                raise
             if source.source_id in self.sources:
                 raise ValueError(f"duplicate source_id: {source.source_id}")
             self.sources[source.source_id] = source
