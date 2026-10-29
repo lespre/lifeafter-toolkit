@@ -96,7 +96,11 @@ body.wiki-board :is(.fr-kv,.kv){grid-template-columns:86px minmax(0,1fr);gap:6px
 body.wiki-board :is(.fr-kv,.kv) .k{color:#9eacc7!important}
 body.wiki-board :is(.fr-kv,.kv) .v{color:#cbd5e7!important;overflow-wrap:anywhere;min-width:0}
 body.wiki-board :is(.fr-sec,.src,.i-detail,.i-more,.skin-detail,.reference,.sfx-children,.variant-children,.behavior-resources){border-color:#35415a!important}
-body.wiki-board :is(.skin-desc,.skin-row,.skin-hist,.fact,.fx-names,.perf-row,.audio-row){color:#bdcbe1!important}
+body.wiki-board :is(.skin-desc,.skin-row,.skin-hist,.fact,.fx-names,.perf-row,.audio-row,table.audio-table td.a-mean,table.audio-table td.a-raw code){color:#bdcbe1!important}
+body.wiki-board table.audio-table th{color:#8fa0bd!important;border-color:#35415a!important}
+body.wiki-board table.audio-table td{border-color:#2a3550!important}
+body.wiki-board table.audio-table tr.a-group td{color:#8fa0bd!important;border-color:#35415a!important}
+body.wiki-board table.audio-table td.a-raw code{background:#1a2334!important}
 body.wiki-board .fact b{color:#d9e4f4!important}
 body.wiki-board :is(.skin-detail h4,.behavior-resources-title,.reference-title,.sfx-children-title){color:#aabbd8}
 body.wiki-board :is(.combat-panel,.combat-extra,.variant-child,.reward,.pool,.pf-bar){background:#141c2b;border-color:#35415a;color:#bfcee4}
@@ -169,3 +173,9 @@ body.wiki-board .head-tags{flex:0 1 auto!important;max-width:100%;transform:none
 body.wiki-board .i-head.toggle:after{flex-basis:100%;white-space:normal!important;margin-left:0!important;font-size:10px;color:#ad9dce}
 body.wiki-board :is(.v.nucleus-desc,.v.stars .star-txt){color:#cbd5e7!important;font-size:12px;line-height:1.8}
 body.wiki-board .v.stars .star{border-left-color:#8c7bad}
+body.wiki-board .fr-gender{background:#3b1633!important;color:#f9a8d4!important;border-color:#7e22ce!important}
+
+/* 名册级条目（静态导出 / 字符串池名册，无行级溯源）——与行级条目视觉区分：虚线边 + 琥珀色 */
+body.wiki-board .state-tag.unverified{background:rgba(217,164,65,.12)!important;color:#e6c78f!important;
+  border-color:rgba(217,164,65,.45)!important;border-style:dashed!important}
+body.wiki-board .state-tag.unverified::before{content:"◇ ";opacity:.85}

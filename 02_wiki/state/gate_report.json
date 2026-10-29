@@ -1,8 +1,8 @@
 {
  "threshold_pct": 20.0,
  "published_boards": 31,
- "green": 26,
- "red": 5,
+ "green": 31,
+ "red": 0,
  "delta_alerts": 0,
  "rows": [
   {
@@ -51,17 +51,8 @@
    "items": 287,
    "baseline": 287,
    "delta_pct": 0.0,
-   "error_count": 2142,
-   "error_kinds": {
-    "items[N].provenance.source_id": 238,
-    "items[N].provenance.locator_chain": 238,
-    "items[N].provenance.source_lock_sha256": 238,
-    "items[N].provenance.upstream": 238,
-    "items[N].status_tags": 238,
-    "items[N].provenance.table": 238,
-    "items[N].provenance.row_key": 238,
-    "items[N].provenance.field_refs": 238
-   },
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {
@@ -90,16 +81,8 @@
    "items": 1647,
    "baseline": 1647,
    "delta_pct": 0.0,
-   "error_count": 6596,
-   "error_kinds": {
-    "items[N].provenance.source_id": 1647,
-    "items[N].provenance.locator_chain.steps[0].source_id": 1647,
-    "items[N].provenance.upstream.entry_index": 1647,
-    "items[N].provenance.upstream.file_id": 1647,
-    "items[N].status_tags": 6,
-    "meta.provenance.source_locks[0].role": 1,
-    "meta.provenance.source_locks[1].role": 1
-   },
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {
@@ -118,14 +101,8 @@
    "items": 2899,
    "baseline": 2899,
    "delta_pct": 0.0,
-   "error_count": 195,
-   "error_kinds": {
-    "items[N].provenance.source_id": 39,
-    "items[N].provenance.locator_chain": 39,
-    "items[N].provenance.source_lock_sha256": 39,
-    "items[N].provenance.upstream": 39,
-    "items[N].provenance.name_source": 39
-   },
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {
@@ -134,17 +111,8 @@
    "items": 104,
    "baseline": 104,
    "delta_pct": 0.0,
-   "error_count": 504,
-   "error_kinds": {
-    "items[N].provenance.source_id": 56,
-    "items[N].provenance.locator_chain": 56,
-    "items[N].provenance.source_lock_sha256": 56,
-    "items[N].provenance.upstream": 56,
-    "items[N].status_tags": 56,
-    "items[N].provenance.table": 56,
-    "items[N].provenance.row_key": 56,
-    "items[N].provenance.field_refs": 56
-   },
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {
@@ -293,11 +261,8 @@
    "items": 5304,
    "baseline": 5304,
    "delta_pct": 0.0,
-   "error_count": 10608,
-   "error_kinds": {
-    "items[N].provenance.source_id": 5304,
-    "items[N].provenance.locator_chain.steps[0].source_id": 5304
-   },
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {

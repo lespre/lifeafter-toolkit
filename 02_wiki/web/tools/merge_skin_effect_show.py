@@ -50,7 +50,8 @@ def main() -> int:
             else:
                 slot, name = "", str(r)
             if name:
-                norm.append({"slot": slot, "slot_key": SLOT_ALIAS.get(slot, slot), "name": name})
+                norm.append({"slot": slot, "slot_key": SLOT_ALIAS.get(slot, slot), "name": name,
+                             "icon": r.get("icon"), "icon_melee": r.get("icon_melee")})
         if norm:
             it["effect_show"] = norm
             hit += 1

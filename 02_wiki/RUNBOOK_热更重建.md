@@ -69,19 +69,31 @@
 
 ---
 
-## 2.5 已知红灯（截至 2026-10-30）
+## 2.5 已知红灯（截至 2026-10-30：**已全部修绿**）
 
-体检当前有 **5 块板契约不合格**，`build_wiki.py` 因此**直接 exit 1、不生成 manifest**：
-`talent_catalog`(5304 条) / `equipment_attrs`(1647) / `drone_catalog`(238) / `gene_potential_catalog`(56) / `fashion_wardrobe`(39)。
+此前有 5 块板契约不合格（`build_wiki.py` exit 1），已用 `tools/build/fix_provenance_contract.py`
+按 `rules/provenance_fixes.yml` 修掉：talent_catalog 10,608 → equipment_attrs 6,596 →
+drone_catalog 2,142 → gene_potential_catalog 504 → fashion_wardrobe 195，**现在契约错 0、门禁 exit 0**。
+逐条根因与修复方式见 `rules/known_issues.yml`（KI-001 ~ KI-005）。
 
-根因与逐条修复路径见 **`rules/known_issues.yml`**（KI-001 ~ KI-005）。
+**下个热更周期若再出现红灯，按这个顺序查**：
 
-其中 **KI-001 是典型**：板级 meta 已把单源拆成双源 id，条目级 `provenance.source_id` 没跟着改，
-导致条目与 lock 对不上——**这类"改了一半"的漂移正是热更重建最容易踩的坑**，
-所以 G2（环比）与 G3（溯源）必须每期跑，不能靠人记。
+| 现象 | 根因 | 处置 |
+|---|---|---|
+| 条目 source_id 与板级 lock 对不上 | 板级 meta 改了 lock，条目层没同步（历史上被临时手改出假 lock） | `fix_provenance_contract.py --board <id>`（规则驱动，先 dry-run） |
+| 条目缺 upstream.file_id / entry_index | 冻结 JSON 提取缺 npk 定位层 | 按服别补**表级** file_id + entry_index（表定位取自 `30_分析/tI扫描_20260927/ti_paths_all.jsonl`） |
+| 条目整块缺 provenance | 后处理/差分脚本写入时没盖戳 | 定位写入脚本（见 `rules/boards/<board>.yml` 的 postprocess_scripts）并补戳 |
+| 名册级条目被契约判不合格 | 静态导出/字符串池条目本就没有行级溯源 | 走**名册级通道**（见下） |
 
-> ⚠️ 修 KI-001 时禁止把全部条目 source_id 统一填成某一个 lock id —— 那是伪造溯源，等于把门禁骗过去。
-> 必须按条目实际所属源（battle 侧 / prof 侧）分别映射。
+### 名册级通道（2026-10-30 用户决策）
+
+有些条目来自「静态导出 / 字符串池名册」，只有名字和图标，**没有行级解码定位**。
+这类条目不伪造 locator_chain，契约改为：条目写 `provenance.roster`
+（`evidence` ∈ {`name-roster-only`,`static-export`} + `source_id` + `source_desc` + 原标签留档），
+并强制 `status_tags` 含 `unverified`；页面以虚线琥珀标签「◇ 名册级」与行级条目区分。
+
+> ⚠️ 名册级通道只放宽「公开资格」，不改变数据本身。
+> 禁止给名册级条目硬造 locator_chain —— 那等于伪造可回放溯源。
 
 ---
 
@@ -149,6 +161,10 @@ $PY 02_wiki/web/tools/build/gen_rules_inventory.py
 
 # 门禁体检（红板 + 条目数环比 + 错误种类）
 $PY 02_wiki/web/tools/checks/gate_report.py
+
+# 溯源契约修复（先 dry-run 看错误数变化，确认后再 --apply）
+$PY 02_wiki/web/tools/build/fix_provenance_contract.py --all
+$PY 02_wiki/web/tools/build/fix_provenance_contract.py --all --apply
 
 # 发布门禁（重建完必须 exit 0）
 $PY 02_wiki/web/tools/build_wiki.py

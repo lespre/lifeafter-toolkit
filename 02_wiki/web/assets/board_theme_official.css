@@ -353,3 +353,8 @@ body.scrolled .crumb{margin-bottom:4px}
 #grid.period-grid .pfam-n{font-size:12px;color:#7d8e99}
 #grid.period-grid .pfam-arrow{margin-left:auto;color:#7d8e99}
 #grid.period-grid .pcard{margin:0}
+.fr-gender{background:rgba(219,39,119,.12)!important;color:#fbcfe8!important;border:1px solid rgba(219,39,119,.35)!important}
+
+/* 名册级条目（静态导出 / 字符串池名册，无行级溯源）——与行级条目视觉区分：虚线边 + 琥珀色 */
+.state-tag.unverified,.state-pill.unverified{background:rgba(217,164,65,.12)!important;color:#e6c78f!important;
+  border-color:rgba(217,164,65,.45)!important;border-style:dashed!important}

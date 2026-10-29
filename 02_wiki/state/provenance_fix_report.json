@@ -1,0 +1,53 @@
+{
+ "date": "2026-10-30",
+ "applied": true,
+ "boards": {
+  "talent_catalog": {
+   "mode": "align_package_lock",
+   "errors_before": 10608,
+   "errors_after": 0,
+   "notes": [
+    "locks→documents-py314-current"
+   ],
+   "remaining_kinds": [],
+   "backup": "02_wiki\\state\\backups\\talent_catalog_20261030_025419.json",
+   "written": true
+  },
+  "equipment_attrs": {
+   "mode": "align_lock_by_sha",
+   "errors_before": 6596,
+   "errors_after": 0,
+   "notes": [],
+   "remaining_kinds": [],
+   "backup": "02_wiki\\state\\backups\\equipment_attrs_20261030_025419.json",
+   "written": true
+  },
+  "fashion_wardrobe": {
+   "mode": "stamp_partial",
+   "errors_before": 195,
+   "errors_after": 0,
+   "notes": [],
+   "remaining_kinds": [],
+   "backup": "02_wiki\\state\\backups\\fashion_wardrobe_20261030_025419.json",
+   "written": true
+  },
+  "drone_catalog": {
+   "mode": "roster_channel",
+   "errors_before": 2142,
+   "errors_after": 0,
+   "notes": [],
+   "remaining_kinds": [],
+   "backup": "02_wiki\\state\\backups\\drone_catalog_20261030_025420.json",
+   "written": true
+  },
+  "gene_potential_catalog": {
+   "mode": "roster_channel",
+   "errors_before": 504,
+   "errors_after": 0,
+   "notes": [],
+   "remaining_kinds": [],
+   "backup": "02_wiki\\state\\backups\\gene_potential_catalog_20261030_025420.json",
+   "written": true
+  }
+ }
+}

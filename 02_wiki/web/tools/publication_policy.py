@@ -26,6 +26,13 @@ EVIDENCE_LEVELS = {
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 _FILE_ID_RE = re.compile(r"^[0-9A-F]{16}$")
 _SOURCE_ROLES = {"primary", "comparison"}
+# 名册级条目通道（2026-10-30 用户决策）：
+# 有些条目来自「静态导出 / 字符串池名册」，只有名字与图标，没有行级解码定位。
+# 这类条目不得伪造 locator_chain；改为要求写 roster 块（证据等级 + 来源描述 + 原始标签），
+# 并强制打 unverified 标签，页面据此做视觉区分。
+_ROSTER_EVIDENCE = {"name-roster-only", "static-export"}
+_ALLOWED_TAGS = {"verified", "unresolved", "quarantined", "static config",
+                 "runtime final unknown", "unverified"}
 _LOCATOR_STATUSES = {
     "legacy-imported-pending-semantic-review",
     "replayed-structural",
@@ -154,7 +161,12 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
         if not isinstance(row_provenance, dict):
             errors.append(prefix + ".provenance")
             continue
-        if strict_v2:
+        roster = row_provenance.get("roster")
+        is_roster = (isinstance(roster, dict)
+                     and roster.get("evidence") in _ROSTER_EVIDENCE
+                     and _nonblank(roster.get("source_id"))
+                     and _nonblank(roster.get("source_desc")))
+        if strict_v2 and not is_roster:
             source_id = row_provenance.get("source_id")
             if source_id not in lock_source_ids:
                 errors.append(prefix + ".provenance.source_id")
@@ -200,26 +212,30 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
                                 isinstance(fid, str) and _FILE_ID_RE.fullmatch(fid) for fid in source_entry_ids
                             ):
                                 errors.append(step_prefix + ".source_entry_ids")
-        if row_provenance.get("source_lock_sha256") not in lock_hashes:
-            errors.append(prefix + ".provenance.source_lock_sha256")
+        if strict_v2 and not is_roster:
+            if row_provenance.get("source_lock_sha256") not in lock_hashes:
+                errors.append(prefix + ".provenance.source_lock_sha256")
         if frozen_v3:
-            upstream = row_provenance.get("upstream")
-            if not isinstance(upstream, dict):
-                errors.append(prefix + ".provenance.upstream")
-            else:
-                package_sha = upstream.get("package_sha256")
-                if not isinstance(package_sha, str) or not _SHA256_RE.fullmatch(package_sha):
-                    errors.append(prefix + ".provenance.upstream.package_sha256")
-                if not _is_decoded_table_row(row_provenance):
-                    if not isinstance(upstream.get("entry_index"), int) or upstream["entry_index"] < 0:
-                        errors.append(prefix + ".provenance.upstream.entry_index")
-                    if not isinstance(upstream.get("file_id"), str) or not _FILE_ID_RE.fullmatch(upstream["file_id"]):
-                        errors.append(prefix + ".provenance.upstream.file_id")
+            if strict_v2 and not is_roster:
+                upstream = row_provenance.get("upstream")
+                if not isinstance(upstream, dict):
+                    errors.append(prefix + ".provenance.upstream")
+                else:
+                    package_sha = upstream.get("package_sha256")
+                    if not isinstance(package_sha, str) or not _SHA256_RE.fullmatch(package_sha):
+                        errors.append(prefix + ".provenance.upstream.package_sha256")
+                    if not _is_decoded_table_row(row_provenance):
+                        if not isinstance(upstream.get("entry_index"), int) or upstream["entry_index"] < 0:
+                            errors.append(prefix + ".provenance.upstream.entry_index")
+                        if not isinstance(upstream.get("file_id"), str) or not _FILE_ID_RE.fullmatch(upstream["file_id"]):
+                            errors.append(prefix + ".provenance.upstream.file_id")
             tags = item.get("status_tags")
-            allowed_tags = {"verified", "unresolved", "quarantined", "static config", "runtime final unknown"}
+            allowed_tags = _ALLOWED_TAGS
             if not isinstance(tags, list) or not tags or any(tag not in allowed_tags for tag in tags):
                 errors.append(prefix + ".status_tags")
-        else:
+            if is_roster and "unverified" not in (tags or []):
+                errors.append(prefix + ".status_tags.unverified")
+        elif not is_roster:
             entries = row_provenance.get("source_entries")
             if not isinstance(entries, list) or not entries:
                 errors.append(prefix + ".provenance.source_entries")
@@ -236,15 +252,16 @@ def publication_contract_errors(board: dict[str, Any], *, strict_v2: bool = Fals
                     decoded_sha = entry.get("decoded_sha256")
                     if not isinstance(decoded_sha, str) or not _SHA256_RE.fullmatch(decoded_sha):
                         errors.append(entry_prefix + ".decoded_sha256")
-        if not _nonblank(row_provenance.get("table")):
-            errors.append(prefix + ".provenance.table")
-        if row_provenance.get("row_key") is None:
-            errors.append(prefix + ".provenance.row_key")
-        fields = row_provenance.get("field_refs")
-        if not isinstance(fields, list) or not fields or not all(_nonblank(v) for v in fields):
-            errors.append(prefix + ".provenance.field_refs")
-        if not _nonblank(row_provenance.get("name_source")):
-            errors.append(prefix + ".provenance.name_source")
+        if not is_roster:
+            if not _nonblank(row_provenance.get("table")):
+                errors.append(prefix + ".provenance.table")
+            if row_provenance.get("row_key") is None:
+                errors.append(prefix + ".provenance.row_key")
+            fields = row_provenance.get("field_refs")
+            if not isinstance(fields, list) or not fields or not all(_nonblank(v) for v in fields):
+                errors.append(prefix + ".provenance.field_refs")
+            if not _nonblank(row_provenance.get("name_source")):
+                errors.append(prefix + ".provenance.name_source")
         evidence = item.get("evidence_level")
         if evidence == "current-snapshot-verified" and not frozen_v3 and not isinstance(row_provenance.get("business_chain"), dict):
             errors.append(prefix + ".provenance.business_chain")

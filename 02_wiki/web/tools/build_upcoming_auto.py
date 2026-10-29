@@ -25,6 +25,11 @@ def main() -> int:
     items = []
     src_skin = 0
     for it in skin["items"]:
+        # 2026-10-29：canonical listing_status 覆盖层优先（与 board.html listingOf 口径一致）。
+        # 人工订正已上线的皮肤（彩虹过载/全糖暴击，见 mark_skins_listed_manual_20261029.py）
+        # 不再进预告专栏；源表 release_state=no_sale_field 是数据源事实，不代表未上线。
+        if str(it.get("listing_status") or "") == "on_sale":
+            continue
         st = str(it.get("release_state") or "")
         sd = str(it.get("sale_date") or "")
         if st in ("upcoming", "no_sale_field") or (sd and sd > TODAY):

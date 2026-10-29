@@ -43,7 +43,11 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 import toolkit_core.bindict_table as BT  # noqa: E402
 
 CST = timezone(timedelta(hours=8))
-DUR_RE = re.compile(r"-(\d+)天$")
+# 时限后缀：-30天 / (30天) / （30天）三种写法都要归一，否则「冰雪礼赞-头饰(30天)」
+# 会跟永久款「冰雪礼赞-头饰」分成两张卡（2026-10-29 用户反馈）
+# ★ 仍有一种归不了的：时限行的 name 只写配色（如「不羁黄-30天」），永久款叫「悠游探索 不羁黄」。
+#   这类靠 tools/merge_duration_cards.py 兜（用 desc 里的全名 + 图标交集兜底匹配）。
+DUR_RE = re.compile(r"(?:[-－]\d+天|[(（]\d+天[)）])$")
 FAM = (("icon_b_", "cloth"), ("icon_h_", "hat"), ("icon_bag_", "bag"),
        ("icon_light_", "light"), ("icon_suit_", "suit"))
 BUCKET = {"hat": "头饰", "cloth": "衣服", "bag": "背包", "suit": "整套", "light": "光源"}
@@ -190,19 +194,25 @@ def main() -> int:
 
     print(f"卡片 {len(cards)}（归一名字+部位+model_id）")
 
-    # ── 图：先复用 refs，再按预算实导（只补「整张卡一张图都没有」的卡，别把预算花在补第二张图上）──
-    need = []
-    for (name, pt, mid), c in cards.items():
+    # ── 图：先复用 refs，再按预算实导
+    # ★ 2026-10-29 修正：原来的 need 只收「整张卡一张 refs 都没有」的卡，
+    #    于是女图命中 refs 的卡永远不去取男图 → 卡面只剩一个性别（用户报的
+    #    「男女角色取图不完整」就是这个）。改成 **按槽位** 判断：哪张图没 refs
+    #    就补哪张，预算也按张扣，不再按卡一刀切。
+    need_icons = set()
+    for (_name, _pt, _mid), c in cards.items():
         for p in c["icons"]:
-            if ref_file(p.rsplit("/", 1)[-1]):
+            base = p.rsplit("/", 1)[-1]
+            if ref_file(base):
                 c["have_ref"] = c.get("have_ref", 0) + 1
-        if not c.get("have_ref"):
-            need.append((name, pt, mid))
-    need_set = set(need)
-    print(f"可用 refs 直接复用的卡 {len(cards) - len(need)} ｜ 需实导 {len(need)}（预算 {args.fetch_budget}）")
+            else:
+                need_icons.add(base)
+    total_icons = sum(len(c["icons"]) for c in cards.values())
+    print(f"图标槽 {total_icons} ｜ refs 可直接复用 {total_icons - len(need_icons)} ｜ "
+          f"需实导 {len(need_icons)} 个不同图标（预算 {args.fetch_budget}）")
 
     fetcher = None
-    if not args.no_fetch and need:
+    if not args.no_fetch and need_icons:
         try:
             from toolkit_core.img_fetch import export as img_export
             fetcher = img_export
@@ -243,7 +253,7 @@ def main() -> int:
                     shutil.copyfile(rp, dst)
                 ic["png"] = f"assets/fashion_posters/{dst.name}"
                 ic["fetch"] = "refs"
-            elif fetcher and fetched < args.fetch_budget and (name, pt, mid) in need_set:
+            elif fetcher and fetched < args.fetch_budget and ic["base"] in need_icons:
                 ok = ""
                 try:
                     ok = fetcher(ic["path"], dst)

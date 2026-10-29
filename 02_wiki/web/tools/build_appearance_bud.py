@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 import pathlib
+import time
 
 ROOT = pathlib.Path("E:/la拆包项目")
 B = ROOT / "02_wiki/web/data/boards"
@@ -19,7 +20,10 @@ TAX = ROOT / "02_wiki/web/data/wiki_taxonomy.json"
 
 def main() -> int:
     fw = json.loads(FW.read_text(encoding="utf-8"))
-    src = [i for i in fw["items"] if i.get("reborn_vis") is not None]
+    # 过滤 name_visible=False 的「其他外观并入」卡（开发名、无独立图标），
+    # 否则同一套外观会在本板出现两条（正式卡 + 开发名卡）。
+    src = [i for i in fw["items"]
+           if i.get("reborn_vis") is not None and i.get("name_visible") is not False]
     items = []
     for it in src:
         items.append({
@@ -43,7 +47,7 @@ def main() -> int:
             "name": "半感染者花苞",
             "board": "appearance_bud",
             "category": "一、时装类 / （八）半感染者花苞",
-            "generated": "2026-10-26",
+            "generated": time.strftime("%Y-%m-%d"),
             "evidence": "structure",
             "package_sha": (fw["meta"].get("package_sha") or ""),
             "source_server": fw["meta"].get("source_server"),

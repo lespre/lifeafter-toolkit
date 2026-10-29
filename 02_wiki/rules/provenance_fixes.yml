@@ -1,0 +1,97 @@
+# 溯源修复规则（provenance remediation）
+# 用途：把「已发布板契约不合格」的历史债，用**可复算、可审计**的方式修掉，而不是手改产物。
+# 执行：python 02_wiki/web/tools/build/fix_provenance_contract.py --board <id> [--apply]
+# 原则：
+#   1. 只按本文件声明的事实修，脚本里不许写死判断；
+#   2. 任何无法从声明推导出来的字段 → 跳过该条目并写报告，禁止伪造；
+#   3. 幂等：连跑两次结果一致；
+#   4. 本文件改动属于「口径变更」，必须出现在 diff 报告的口径变更小节。
+
+# ── 包级 lock（真实客户端包，全站通用）────────────────────────────────
+package_locks:
+  documents-py314-current:
+    sha256: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+    bytes: 195840216
+    mtime_ns: 1792168962775981000
+    role: primary
+    note: 还原树/客户端包级来源，lottery_periods / gene_potential_catalog 等板沿用同一把锁
+
+# ── 表级 npk 定位（file_id + 条目号）──────────────────────────────────
+# 来源：01_索引与产物/30_分析/tI扫描_20260927/ti_paths_all.jsonl（fid + row 字段）
+table_locators:
+  all_equips_classic:
+    path: com\cdata\all_equips_data.py
+    container: script.py314.lc.npk
+    file_id: 1F8E9684E1B97CE0
+    entry_index: 13283
+  all_equips_kj1:
+    path: com\cdata\oversea\all_equips_data_auto_oversea_data_kj1.py
+    container: Documents\script.py314.lc.npk
+    file_id: 3D123F2BEE73ED47
+    entry_index: 6407
+  all_equips_kj1_chs:
+    path: com\cdata\oversea\all_equips_data_auto_oversea_data_kj1_chs.py
+    container: Documents\script.py314.lc.npk
+    file_id: 9B6BE39D902BD6D6
+    entry_index: 16532
+  fashion_preset_do_face:
+    path: com\cdata\fashion_preset_do_face_config_data.py
+    container: script.py314.lc.npk
+    file_id: F7E9D189D57F74F5
+    entry_index: 103550
+
+# ── 分板修复策略 ─────────────────────────────────────────────────────
+boards:
+  # KI-001：板级 meta 用了两个 bytes=0/mtime=0 的假 lock（无 path、非真实文件），
+  # 而条目级 source_id 仍是旧的单源 id → 恢复真实包级 lock，条目对齐。
+  talent_catalog:
+    mode: align_package_lock
+    lock: documents-py314-current
+    item_source_id: documents-py314-current
+    steps_source_id: documents-py314-current
+    note: 基础(new_talent_data) 与 主题(theme_..._kj1) 两表同属 kj1 包 c9e12b，条目已声明该 sha
+
+  # KI-002：条目已有 table/row_key/field_refs，缺 npk 定位层 → 补表级 file_id + entry_index；
+  # source_id 由条目自身 source_lock_sha256 反查对应 lock（经典服/kj1 两把）。
+  equipment_attrs:
+    mode: align_lock_by_sha
+    upstream_locator_by_branch:
+      经典服: all_equips_classic
+      简单生存服: all_equips_kj1
+    status_tag_map:
+      trial-unmatched: unresolved
+    lock_role_map:
+      primary-frozen-extract: primary
+    note: 条目已声明 source_lock_sha256（694b=classic / 5250=kj1），据此回推 source_id，不改归属
+
+  # KI-005：捏脸预设条目已有 table+row_key+field_refs，但源未登记 → 新增一条表级 lock 并补齐 locator_chain
+  fashion_wardrobe:
+    mode: stamp_partial
+    partial_lock:
+      source_id: face-preset-fashion_preset_do_face_config_data
+      role: primary
+      file_digest_from: 01_索引与产物/41_还原树/pe/配置/com/cdata/fashion_preset_do_face_config_data.py
+      table_locator: fashion_preset_do_face
+      package_sha256: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+    name_source_from_table: true
+    status_tag_map: {}
+
+  # KI-003：无人机条目为「CBG 静态导出」，只有名字/图标/等级，无行级解码 → 走名册级通道
+  drone_catalog:
+    mode: roster_channel
+    roster:
+      evidence: static-export
+      source_id: cbg_reference
+      source_desc_field: source
+    status_tag_map:
+      cbg_reference: unverified
+
+  # KI-004：种族潜能为经典服字符串池名册 → 走名册级通道
+  gene_potential_catalog:
+    mode: roster_channel
+    roster:
+      evidence: name-roster-only
+      source_id: classic-npk-pool
+      source_desc_field: source
+    status_tag_map:
+      name-roster-only: unverified
