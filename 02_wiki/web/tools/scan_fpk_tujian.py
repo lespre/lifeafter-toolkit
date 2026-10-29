@@ -26,12 +26,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import EXTRACT_ROOT, TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+from la_paths import EXTRACT_ROOT, TOOLKIT_CORE, TOOLKIT_DIR, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLKIT = str(TOOLKIT_CORE)
 sys.path.insert(0, TOOLKIT)
-RES = Path(r"E:\mrzh\res")
+RES = Path(client_root() / "res")
 OUT = Path(EXTRACT_ROOT / "ui_tujian")
 PATS = [b"img_tujian_", b"shizhuang_icon", b"wuqi_icon", b"zhuangban_icon"]
 

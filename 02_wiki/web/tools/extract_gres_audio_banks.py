@@ -30,7 +30,7 @@ import lifeafter_unpacker_full as m  # noqa: E402
 
 DEST = Path(ANALYSIS_ROOT / "skin_audio_all")
 OUT = ROOT / "analysis" / "audit" / "gres_audio_banks.json"
-GRES = Path(r"E:\mrzh\Documents\gres")
+GRES = Path(client_root() / "Documents/gres")
 KEYS = ("skin", "weapon", "wepon", "wuqi", "hexin", "gunshot", "qiang", "dao", "jiguan")
 
 

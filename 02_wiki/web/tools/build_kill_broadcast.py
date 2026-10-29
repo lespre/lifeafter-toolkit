@@ -32,7 +32,7 @@ import sys
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ, TOOLKIT_CORE, WEB  # noqa: E402
+from la_paths import PROJ, TOOLKIT_CORE, WEB, client_root  # noqa: E402
 sys.path.insert(0, str(TOOLKIT_CORE))
 sys.path.insert(0, str(WEB / "tools"))
 import toolkit_core.bindict_table as BT  # noqa: E402
@@ -68,7 +68,7 @@ def find_cdata() -> pathlib.Path:
 
 CD = find_cdata()
 
-_SRC = "E:/mrzh/Documents/script.py314.lc.npk"
+_SRC = str(client_root() / "Documents/script.py314.lc.npk")
 SHA = "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523"
 try:
     _st = os.stat(_SRC)

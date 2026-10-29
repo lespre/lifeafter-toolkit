@@ -27,13 +27,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TEMP_ROOT  # noqa: E402
+from la_paths import TEMP_ROOT, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "analysis" / "audit" / "skin_assets_in_packs.json"
 PREVIEW_DIR = Path(TEMP_ROOT / "skin_assets_preview")
-PACKS = [Path(r"E:\mrzh\res.gpk"), Path(r"E:\mrzh\res.npk")] + sorted(
-    Path(r"E:\mrzh\Documents\gres").glob("*.gpk"))
+PACKS = [Path(client_root() / "res.gpk"), Path(client_root() / "res.npk")] + sorted(
+    Path(client_root() / "Documents/gres").glob("*.gpk"))
 
 ZSTD_MAGIC = bytes([0x28, 0xB5, 0x2F, 0xFD])  # zstd frame magic
 PNG_SIG = b"\x89PNG\r\n\x1a\n"

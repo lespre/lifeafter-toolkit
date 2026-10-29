@@ -26,12 +26,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+from la_paths import INDEX_ROOT, TOOLKIT_CORE, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLKIT = str(TOOLKIT_CORE)
 sys.path.insert(0, TOOLKIT)
-RES = Path(r"E:\mrzh\res")
+RES = Path(client_root() / "res")
 OUT = ROOT / str(INDEX_ROOT / "site_data") / "fpk_index"
 IDX = OUT / "fpk_index.jsonl"
 STEM_RE = re.compile(rb"skin_\d{4}_\d{3}[A-Za-z0-9_]*")

@@ -16,7 +16,7 @@ import pathlib
 import argparse, json, pathlib, struct, sys, time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TOOLKIT_DIR  # noqa: E402
+from la_paths import TOOLKIT_DIR, client_root  # noqa: E402
 
 sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 
@@ -30,7 +30,7 @@ TARGETS = {
     'center_lod01': (0.0, 0.3, 1.7),
 }
 PATS = {k: b''.join(struct.pack('<f', v) for v in vals) for k, vals in TARGETS.items()}
-RES_DIR = pathlib.Path(r'E:\mrzh\res')
+RES_DIR = pathlib.Path(client_root() / "res")
 
 
 def packs(arg):

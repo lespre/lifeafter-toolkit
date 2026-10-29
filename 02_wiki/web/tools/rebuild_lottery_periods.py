@@ -35,7 +35,7 @@ WEB = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WEB / "tools"))
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ENV_DIR, INDEX_ROOT, TOOLKIT_CORE, TREE_ROOT  # noqa: E402
+from la_paths import ENV_DIR, INDEX_ROOT, TOOLKIT_CORE, TREE_ROOT, client_root  # noqa: E402
 sys.path.insert(0, str(TOOLKIT_CORE))
 
 from toolkit_core.bindict_table import (decode_86_row, parse_index,  # noqa: E402
@@ -46,7 +46,7 @@ from preview_board_contract import apply_frozen_v3  # noqa: E402
 
 TREE = Path(TREE_ROOT / "Documents/script.py314.lc.npk/com/cdata")
 OVER = TREE / "oversea"
-PKG = Path(r"E:\mrzh\Documents\script.py314.lc.npk")
+PKG = Path(client_root() / "Documents/script.py314.lc.npk")
 OUT_BOARD = WEB / "data" / "boards" / "lottery_periods.json"
 GEN_DATE = "2026-10-19"
 

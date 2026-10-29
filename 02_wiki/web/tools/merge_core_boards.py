@@ -8,12 +8,15 @@
   · card_mode=roster：卡面只留图+名，详情点开才看
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data/boards"
 
 core = json.loads((B / "mutation_core_full.json").read_text(encoding="utf-8"))

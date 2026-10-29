@@ -1,0 +1,89 @@
+# 开源可复现口径（clone → 用自己设备的拆包产物 → 构建出一样的 wiki）
+#
+# ★ 背景：README 承诺「换台机器 clone 代码 + 重建索引也能起站」，
+#   但 2026-10-30 体检发现 02_wiki/web/tools 下 477 个脚本写死了
+#   E:/la拆包项目/...（本机绝对路径），换机即崩 —— 承诺当时是落空的。
+#
+# ★ 本文件是「哪些脚本属于公开重建链」的判定口径，供
+#   tools/checks/portability_audit.py 与 tools/build/fix_hardcoded_paths.py 读取。
+#   脚本只读，不写。
+
+version: 1
+updated: 2026-10-30
+
+# 路径来源的三个层次（语义不同，不可混为一谈）
+path_classes:
+  project_internal:
+    # 指向仓库自身（01_索引与产物、02_wiki/...）
+    # ⇒ 必须是「从仓库根推导」，硬编码即 bug
+    rule: 必须走 la_paths 常量；命中即视为可移植性缺陷
+    enforced_by: [portability_audit, fix_hardcoded_paths]
+  device_runtime:
+    # 指向**用户自己设备**（游戏安装目录 / 模拟器目录）
+    # ⇒ 属运行期输入，走 LA_CLIENT_ROOT 环境变量，不得写死
+    rule: 走 la_paths.client_root()；写死即视为可移植性缺陷
+    enforced_by: [portability_audit, fix_hardcoded_paths]
+  provenance_literal:
+    # 写进产物元数据的来源路径（source_locks.path 等）
+    # ⇒ **必须保持字面量**：改成动态表达式会让每次构建产物不同，
+    #   破坏字节级可复现 ⇒ 别人重建的结果与入库的对不上，diff 全红
+    rule: 保持字面量，不改写
+    enforced_by: [fix_hardcoded_paths]
+
+# 公开重建链上的脚本角色判定
+board_chain:
+  # 主构建脚本：产出 boards/*.json 主体 —— 必须完全可移植
+  primary:
+    - 建板主产出（build_*/rebuild_*/register_*）
+    - 板级后处理（fill_*/merge_*/normalize_*/apply_*）
+  # 探查类：一次性本地取证工具，不产出板，不属于 clone 重建链
+  #   —— 允许保留设备路径（它们本就绑定具体客户端实例）
+  exploratory:
+    patterns:
+      - scan_*
+      - find_*
+      - index_*
+      - probe_*
+      - _probe*
+      - query_*
+      - dump_*
+      - decode_*
+      - extract_ui_assets
+      - make_readme_shots
+      - make_logo
+      - cdp_*
+      - spine_fetch
+      - spine_render*
+      - crack_*
+      - carve_*
+      - compare_*
+      - map_*
+      - match_*
+      - read_large_npk
+      - parse_file_hash_pack
+      - analyze_client_file_map
+      - _fw_selfcheck
+    note: 这些脚本不写 boards/*.json，不在「clone 后重建 wiki」的必经路径上
+
+# 必须保持可移植的板构建脚本白名单（来自 rules/boards/*.yml 的 primary_builders）
+# —— 由 gen_rules_inventory.py 派生，此处仅作兜底声明
+critical_paths:
+  - 02_wiki/web/tools/build_wiki.py
+  - 02_wiki/web/tools/publication_policy.py
+  - 02_wiki/web/tools/la_paths.py
+  - 02_wiki/web/tools/wiki_server.py
+  - 02_wiki/web/tools/build/snapshot.py
+  - 02_wiki/web/tools/build/fix_provenance_contract.py
+  - 02_wiki/web/tools/checks/gate_report.py
+  - 02_wiki/web/tools/checks/portability_audit.py
+  - 02_wiki/web/tools/checks/clone_repro_check.py
+  - 02_wiki/web/tools/checks/diff_boards.py
+  - 02_wiki/web/tools/checks/frontend_smoke.mjs
+
+# 验收标准（clone_repro_check.py 的 G 关卡）
+acceptance:
+  G1: 冷克隆（只取 git 入库内容）后 la.py / 共享核心 / 已发布板数据齐备
+  G2: 不装 venv（缺 cryptography 等可选依赖）也能起站，页面全部 200
+  G3: tools 层无项目自身绝对路径；设备路径仅存在于探查类脚本与溯源字面量
+  G4: 条目指纹与基线一致率 ≥ 99%
+  G5: 发布门禁 exit 0

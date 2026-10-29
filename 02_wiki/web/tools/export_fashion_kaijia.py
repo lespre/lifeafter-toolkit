@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """铠甲勇士联动·人物外观专题（BA 快照，经 lib_fashion 统一解码 + 面饰专池补充）。
 
@@ -8,14 +9,17 @@
 """
 import json, hashlib, re, sys
 from pathlib import Path
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, client_root  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import lib_fashion as lf  # noqa
-CW = Path("E:/la拆包项目/01_索引与产物\\30_分析/config_work/script_py314_docs_BA8A239A/entries")
-NPK = Path("E:/mrzh/Documents/script.py314.lc.npk")
+CW = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+NPK = Path(client_root() / "Documents/script.py314.lc.npk")
 OUT = ROOT / "data" / "boards" / "fashion_kaijia.json"
 DUR = re.compile(r"^(.+)-(\d+)天$")
 

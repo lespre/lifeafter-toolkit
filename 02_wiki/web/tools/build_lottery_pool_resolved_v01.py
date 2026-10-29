@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WORKCOPY = Path(
@@ -30,7 +30,7 @@ DEFAULT_OUTPUT = ROOT / str(INDEX_ROOT / "site_data") / "LOTTERY_POOL_RESOLVED_v
 DEFAULT_RULES_OUTPUT = ROOT / "data" / "LOTTERY_POOL_RESOLVED_v01_RULES.json"
 SCHEMA = "lottery_pool_resolved/v0.1"
 EXPECTED_SOURCE_SHA256 = "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad"  # P4-D3 冻结数据集源自 BA8A 快照（用户冻结指令；勿随热更改写）
-EXPECTED_SOURCE_PATH = r"E:\mrzh\Documents\script.py314.lc.npk"
+EXPECTED_SOURCE_PATH = str(client_root() / "Documents/script.py314.lc.npk")
 
 # Every table remains an independent component. These definitions are not an
 # overlay order and must never be folded into base ∪ inc − del.

@@ -19,12 +19,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "nucleus_cards_classic.json"
 PACKAGE_SHA_CLASSIC = "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d"
-NPK_CLASSIC = Path(r"E:\LifeAfter\Documents\script.py314.lc.npk")
+NPK_CLASSIC = Path(str(client_root() / "Documents/script.py314.lc.npk"))
 ENTRIES_CLASSIC = [
     ("common_item_kj1_base", 9503),
     ("common_item_kj1_chs", 28181),
@@ -275,7 +275,7 @@ def build_board() -> dict:
 
     import hashlib as _hl
     cls_meta = cls.entry_meta()
-    ba8_npk = NpkSource(r"E:\mrzh\Documents\script.py314.lc.npk", PACKAGE_SHA_BA8,
+    ba8_npk = NpkSource(str(client_root() / "Documents/script.py314.lc.npk"), PACKAGE_SHA_BA8,
                         [("nucleus_build_data_kj1_base", 16783),
                          ("nucleus_build_data_kj1_chs", 23314),
                          ("common_item_base", 18005),

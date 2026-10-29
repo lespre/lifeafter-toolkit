@@ -19,9 +19,9 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ANALYSIS_ROOT, TOOLKIT_DIR  # noqa: E402
+from la_paths import ANALYSIS_ROOT, TOOLKIT_DIR, client_root  # noqa: E402
 
-FORMAL_SOURCE = Path(r"E:\LifeAfter\Documents\script.py314.lc.npk")
+FORMAL_SOURCE = Path(str(client_root() / "Documents/script.py314.lc.npk"))
 FORMAL_SHA256 = "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d"
 DEFAULT_OUTPUT = Path(
     ANALYSIS_ROOT / "config_work/script_py314_docs_79c0d06f53db")

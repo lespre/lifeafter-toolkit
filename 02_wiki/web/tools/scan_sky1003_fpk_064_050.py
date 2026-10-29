@@ -24,7 +24,7 @@ from PIL import Image
 import texture2ddecoder
 from lifeafter_unpacker_full import extract_fsb
 
-SRC_ROOT = Path(r"E:\mrzh\res")
+SRC_ROOT = Path(client_root() / "res")
 OUT_ROOT = Path(ANALYSIS_ROOT / "sky1003")
 WAV_ROOT = OUT_ROOT / "wav"
 PACK_NUMBERS = list(range(64, 49, -1))

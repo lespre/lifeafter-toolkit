@@ -1,9 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """打包 wiki 数据包：板块 JSON/JS + live_sources + 图标素材（不含 3D/Spine/音频）。"""
 import pathlib
 import zipfile
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 OUT = pathlib.Path("C:/Users/Administrator/AppData/Local/hermes/cache/scratch/rel/la-wiki-data-v1.3.0.zip")
 
 ICON_DIRS = ["core_icons", "chip_icons", "drone_icons", "nucleus_icons", "skin_posters",

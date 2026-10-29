@@ -26,12 +26,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TOOLKIT_DIR, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLKIT = str(TOOLKIT_CORE)
 sys.path.insert(0, TOOLKIT)
-RES = Path(r"E:\mrzh\res")
+RES = Path(client_root() / "res")
 OUT = Path(ANALYSIS_ROOT / "sky_ids")
 PATS = [b"skin_1003_010", b"1120298", b"1120299", b"1120300", b"1120301", b"1120302", b"1120303", b"1120304", b"1120305"]
 

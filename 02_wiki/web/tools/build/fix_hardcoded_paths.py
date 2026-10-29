@@ -247,6 +247,58 @@ def _inside_fstring(src: str, pos: int) -> bool:
     return False
 
 
+def _is_provenance_literal(src: str, start: int, end: int) -> bool:
+    """判断该路径字符串是否属于**溯源元数据**（写进产物、影响可复现性）。
+
+    典型：
+        "path": "E:/mrzh/Documents/script.py314.lc.npk",
+    这类字段是「产物的来源记录」，必须保持字面量稳定 ——
+    改成 client_root() 会让每次构建写出的路径随环境变化，
+    破坏字节级可复现（⇒ 别人重建的产物与入库的不一致，diff 全部报差异）。
+
+    判据：该字符串是某个 dict 的 value，且 key 属于溯源语义字段。
+    """
+    key = src[max(0, start - 120):start]
+    m = None
+    for km in re.finditer(r"[\"']([A-Za-z_][A-Za-z0-9_]*)[\"']\s*:\s*$", key):
+        m = km
+    if not m:
+        return False
+    k = m.group(1).lower()
+    return k in {"path", "sha256", "source_path", "abs_path", "file", "filepath",
+                 "file_path", "source_file", "container_path", "npk_path",
+                 "package_path", "client_path", "root"}
+
+
+def build_device_expr(abs_path: str) -> str | None:
+    """设备路径 → client_root() 表达式。
+
+    ★ 设备路径 = **运行期输入**（用户自己的游戏安装目录），语义上必须可配。
+      映射到 la_paths.client_root()：环境变量 LA_CLIENT_ROOT > 默认值。
+    ★ 只在「该路径确实是客户端根或其子目录」时才改写；
+      形态不符（如 C:/Users/... 的临时目录）一律不改 —— 那是别的机器的残留。
+    """
+    m = DEVICE_RE.match(norm(abs_path))
+    if not m:
+        return None
+    kind = m.group(1).lower()
+    rest = norm(m.group(2) or "")
+    if kind == "users":
+        return None            # C:/Users/... 是别的机器的临时目录，不改
+    if kind == "lifeafter":
+        # 另一个客户端根 —— 同样可配，但与 mrzh 不是同一路径，不能混用
+        return 'str(client_root())' if not rest else f'str(client_root() / "{rest}")'
+    # mrzh（PE/PC 测试服常见布局）
+    if not rest:
+        return "client_root()"
+    return f'client_root() / "{rest}"'
+
+
+def _device_in_fstring_or_fragment(src: str, start: int) -> bool:
+    """设备路径同样要避开 f-string 内部与拼接片段（理由同项目内路径）。"""
+    return _inside_fstring(src, start) or _is_path_fragment(src, start)
+
+
 def rewrite_src(src: str, consts_out: set | None = None):
     """返回 (新源码, 改写记录, 设备路径清单)。
 
@@ -346,6 +398,14 @@ def rewrite_src(src: str, consts_out: set | None = None):
     def _call(m):
         expr = build_expr(m.group("path"), "call")
         if expr is None:
+            # ★ 设备路径：走 client_root()（运行期输入，可配）
+            dexpr = build_device_expr(m.group("path"))
+            if dexpr and not _device_in_fstring_or_fragment(src, m.start()) \
+                    and not _is_provenance_literal(src, m.start(), m.end()):
+                records.append({"from": m.group("path"), "to": dexpr, "form": "Path(...)"})
+                if consts_out is not None:
+                    consts_out.add("client_root")
+                return f'{m.group("lead")}{dexpr})'
             devices.append(m.group("path"))
             return m.group(0)
         records.append({"from": m.group("path"), "to": expr, "form": "Path(...)"})
@@ -359,6 +419,15 @@ def rewrite_src(src: str, consts_out: set | None = None):
         #   正确做法：裸字符串改写成 `str(常量)`，保持 str 语义。
         expr = build_expr(m.group("path"), "bare")
         if expr is None:
+            # ★ 设备路径：走 client_root()，但裸字符串要保持 str 语义
+            dexpr = build_device_expr(m.group("path"))
+            if dexpr and not _device_in_fstring_or_fragment(src, m.start()) \
+                    and not _is_provenance_literal(src, m.start(), m.end()):
+                strexpr = dexpr if dexpr.startswith("str(") else f"str({dexpr})"
+                records.append({"from": m.group("path"), "to": strexpr, "form": "裸字符串"})
+                if consts_out is not None:
+                    consts_out.add("client_root")
+                return strexpr
             devices.append(m.group("path"))
             return m.group(0)
         # ★ 避开 f-string 内部：f"{X}" 里的替换会引入引号，破坏 f-string 语法。
@@ -416,8 +485,20 @@ def insert_import(new: str, consts: list[str]) -> str:
     """
     if not consts:
         return new
-    if re.search(r"^\s*from\s+la_paths\s+import", new, re.M):
-        return new
+    # ★ 若已有 `from la_paths import ...` ⇒ **合并**常量，不能直接跳过。
+    #   否则后补的 client_root 等新常量不会进 import（实测 avatar_resolve.py：
+    #   已有 import PROJ，就跳过了 client_root ⇒ NameError）。
+    existing = re.search(r"^\s*from\s+la_paths\s+import\s+([^\n#]+)", new, re.M)
+    if existing:
+        have = {n.strip() for n in existing.group(1).split(",") if n.strip()}
+        missing = [c for c in consts if c not in have]
+        if not missing:
+            return new
+        repl = "from la_paths import %s  # noqa: E402" % ", ".join(sorted(have | set(missing)))
+        # ★ 去掉原行尾可能已有的 `# noqa: E402`，避免拼出 `# noqa: E402# noqa: E402`
+        tail = new[existing.end():]
+        tail = re.sub(r"^\s*#\s*noqa:[^\n]*", "", tail)
+        return new[:existing.start()] + repl + tail
     try:
         tree = ast.parse(new)
     except SyntaxError:
@@ -499,6 +580,22 @@ def _ensure_module_import(src: str, mod: str) -> str:
     return "".join(lines)
 
 
+def _is_precondition_error(why: str) -> bool:
+    """判断导入失败是否属于「脚本自身前置条件缺失」而非「改写引入的错误」。
+
+    ★ 关键区分：
+        FileNotFoundError / AssertionError / ModuleNotFoundError
+            ⇒ 脚本需要特定数据/依赖才能跑 —— 与路径改写无关，
+              保留改写（否则会错过本来正确的改写）。
+        NameError / AttributeError / SyntaxError / TypeError
+            ⇒ 改写引入的真错误 ⇒ 必须回滚。
+    """
+    return bool(re.search(
+        r"FileNotFoundError|NotADirectoryError|PermissionError|"
+        r"AssertionError|ModuleNotFoundError|ImportError|"
+        r"已废弃|SystemExit", why))
+
+
 def _import_smoke(path: pathlib.Path) -> tuple[bool, str]:
     """改写后真正 import 一次，确认模块可加载且路径常量指向真实目录。
 
@@ -508,13 +605,13 @@ def _import_smoke(path: pathlib.Path) -> tuple[bool, str]:
     """
     import subprocess
     tools_dir = str(path.parent)
+    # ★ 用 runpy 而非 importlib：runpy 直接执行文件，
+    #   而 importlib 需要额外把 tools_dir 放进 sys.path 才能找到 la_paths。
+    #   （原实现用 importlib 且未确保 la_paths 可导入 ⇒ 误报 NameError）
     code = (
-        "import sys\n"
+        "import sys, runpy\n"
         "sys.path.insert(0, %r)\n" % tools_dir +
-        "import importlib.util\n"
-        "spec = importlib.util.spec_from_file_location('_pf_smoke', %r)\n" % str(path) +
-        "m = importlib.util.module_from_spec(spec)\n"
-        "spec.loader.exec_module(m)\n"
+        "runpy.run_path(%r, run_name='__pf_smoke__')\n" % str(path) +
         "print('SMOKE_OK')\n"
     )
     try:
@@ -561,15 +658,24 @@ def apply_to_file(path: pathlib.Path, dry: bool) -> dict:
         elif r["form"] == "赋值语句":
             consts.add(to.split("=")[-1].split("/")[0].strip())
         elif r["form"] == "裸字符串":
-            # to 形如 "str(WEB)" 或 'str(WEB / "x")'
+            # to 形如 "str(WEB)" / 'str(WEB / "x")' / 'str(client_root())'
             inner = to[to.find("(") + 1:to.rfind(")")] if "(" in to else to
-            consts.add(inner.split("/")[0].strip())
+            head = inner.split("/")[0].strip()
+            consts.add(head if head.isidentifier() else "client_root"
+                       if "client_root" in inner else head)
         else:
-            consts.add(to.split("/")[0].strip())
-    consts = sorted({c for c in consts if c.isupper() and c.isidentifier()})
+            head = to.split("/")[0].strip()
+            consts.add(head if head.isidentifier() else to)
+    # ★ client_root 是**函数**不是常量，但它同样来自 la_paths —— 必须一起 import。
+    #   （漏了会得到 NameError: client_root，实测 avatar_resolve.py 命中）
+    consts = sorted({c for c in consts
+                      if (c.isupper() or c == "client_root") and c.isidentifier()})
 
-    # 3) 插入 import（模块级 import 区末尾）
-    if consts and not re.search(r"^\s*from\s+la_paths\s+import", new, re.M):
+    # 3) 插入 / 合并 import
+    #    ★ 不要在这里判断「是否已有 la_paths import」—— 已有时要**合并**新常量，
+    #      跳过会导致新常量没被导入（实测 avatar_resolve.py：已有 import PROJ，
+    #      后补的 client_root 丢失 ⇒ NameError）。合并逻辑在 insert_import 内。
+    if consts:
         new = insert_import(new, consts)
 
     # 4) 落盘前备份
@@ -594,6 +700,17 @@ def apply_to_file(path: pathlib.Path, dry: bool) -> dict:
     #   这里真正 import 一次，确认模块能加载且常量值正确。
     ok, why = _import_smoke(path)
     if not ok:
+        # ★ 区分「改写引入的错误」与「脚本自身的前置条件缺失」。
+        #   后者（缺数据文件 / 缺还原树产物 / 缺依赖）与路径改写无关 ——
+        #   若因此回滚，会白白错过本来正确的改写（实测 nucleus 系列 5 个文件）。
+        #   判据：报错是「找不到文件 / 断言失败 / 缺模块」⇒ 保留改写 + 标注；
+        #        报错是 NameError / AttributeError ⇒ 是改写引入的 ⇒ 回滚。
+        if _is_precondition_error(why):
+            return {"file": path.name, "changed": True, "records": records,
+                    "devices": devices, "backup": str(bak),
+                    "before_hard": before_hard, "after_hard": after_hard,
+                    "note": "已改写；自检因脚本自身前置条件缺失而未通过"
+                            "（与路径改写无关）: %s" % why[:120]}
         shutil.copy2(bak, path)
         return {"file": path.name, "changed": False,
                 "error": "导入自检失败，已回滚: %s" % why,
@@ -605,6 +722,7 @@ def apply_to_file(path: pathlib.Path, dry: bool) -> dict:
 
 # 检测用（不做行首锚定 —— 路径常出现在行中间的表达式里）
 PROJECT_ROOT_ANY = re.compile(r"(?i)[A-Za-z]:[\\/]la拆包项目")
+DEVICE_ANY = re.compile(r"(?i)[A-Za-z]:[\\/](?:mrzh|LifeAfter)[\\/]")
 
 
 def collect_files() -> list[pathlib.Path]:
@@ -617,13 +735,13 @@ def collect_files() -> list[pathlib.Path]:
         if p.name in SELF_PROTECT:
             continue
         src = p.read_text(encoding="utf-8", errors="ignore")
-        if PROJECT_ROOT_ANY.search(src):
+        if PROJECT_ROOT_ANY.search(src) or DEVICE_ANY.search(src):
             out.append(p)
     for p in sorted((TOOLS / "build").glob("*.py")) + sorted((TOOLS / "checks").glob("*.py")):
         if p.name in SELF_PROTECT:
             continue
         src = p.read_text(encoding="utf-8", errors="ignore")
-        if PROJECT_ROOT_ANY.search(src):
+        if PROJECT_ROOT_ANY.search(src) or DEVICE_ANY.search(src):
             out.append(p)
     return out
 

@@ -236,7 +236,7 @@ def build_board(registry_path: Path, source_id: str = SOURCE_ID) -> dict[str, An
                     "sha256": metadata["package_sha256"],
                     "bytes": metadata["bytes"],
                     "mtime_ns": metadata["mtime_ns"],
-                    "path_hint": "E:/mrzh/Documents/script.py314.lc.npk",
+                    "path_hint": str(client_root() / "Documents/script.py314.lc.npk"),
                     "lock_origin": "live-source-registry",
                 }, {
                     "source_id": COMPARISON_SOURCE_ID,
@@ -244,7 +244,7 @@ def build_board(registry_path: Path, source_id: str = SOURCE_ID) -> dict[str, An
                     "sha256": comparison["expected_sha256"],
                     "bytes": int(comparison["expected_bytes"]),
                     "mtime_ns": int(comparison.get("expected_mtime_ns", 0)),
-                    "path_hint": comparison.get("path_hint", "E:/LifeAfter/Documents/script.py314.lc.npk"),
+                    "path_hint": comparison.get("path_hint", str(client_root() / "Documents/script.py314.lc.npk")),
                     "lock_origin": "live-source-registry",
                 }],
                 "dual_source": {

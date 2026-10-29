@@ -5,13 +5,16 @@
 """
 
 from __future__ import annotations
+import sys
 
 import html
 import json
 import pathlib
 
-OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向")
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+
+OUT = pathlib.Path(ANALYSIS_ROOT / "伤害系统逆向")
 data = json.loads((OUT / "scene_balance.json").read_text(encoding="utf-8"))
 
 GROUPS = [

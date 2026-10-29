@@ -1,9 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """核芯详情整理：品级四档（极品/高级/中级/基础）+ 去重 + 技术信息二次折叠。"""
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
 B = WEB / "data/boards"
 
 GRADE = {

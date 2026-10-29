@@ -47,7 +47,7 @@ BASE_CHS = PROJ / "01_索引与产物/41_还原树/pe_test_script/common_item_da
 IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
 PACKS = PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"
 PC_HIT = PROJ / "01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv"
-PC_RES = pathlib.Path(r"E:/mrzh/res")
+PC_RES = pathlib.Path(client_root() / "res")
 OUTDIR = WEB / "assets/item_icons"
 BOARD = WEB / "data/boards/item_master_v01.json"
 REPORT = WEB / "data/boards/_report_item_icons.md"
@@ -500,7 +500,7 @@ def main() -> int:
         "icon_table_sha256": table_sha,
         "pe_index": "01_索引与产物/10_索引/热更检测/pe_index.sqlite3（174 包 / 1,801,666 行）",
         "pc_table": "01_索引与产物/10_索引/热更检测/pc_fid_calib/hit_table.csv（133,188 行路径）",
-        "pc_pack_root": "E:/mrzh/res（只读）",
+        "pc_pack_root": str(client_root() / "res（只读）"),
         "fallback_policy": "none（未使用 APK npk 图库或按名/按 id 借用，缺失即未下发）",
     }
     prov["source_locks"] = prov.get("source_locks") or []

@@ -1,11 +1,15 @@
+import sys
 # -*- coding: utf-8 -*-
 """把 PC 树的目录骨架导出成清单文件，然后删掉这棵树（省空目录的 4KB 块浪费）。"""
 import os
 import pathlib
 import shutil
 
-ROOT = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pc")
-OUT = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pc/骨架清单.txt")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT  # noqa: E402
+
+ROOT = pathlib.Path(TREE_ROOT / "pc")
+OUT = pathlib.Path(TREE_ROOT / "pc/骨架清单.txt")
 
 dirs = []
 for dp, dns, fns in os.walk(ROOT):

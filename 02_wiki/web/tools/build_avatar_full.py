@@ -76,7 +76,7 @@ def load_item_names():
         return {}
 
 
-_SRC = "E:/mrzh/Documents/script.py314.lc.npk"
+_SRC = str(client_root() / "Documents/script.py314.lc.npk")
 try:
     _st = os.stat(_SRC)
     _SRC_STAT = (_st.st_size, _st.st_mtime_ns)

@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """侧栏：改为 sticky 满视口高度，底图铺满整列而不是只在文字处。"""
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 old = ('.wp-side{position:relative;overflow:hidden;align-self:stretch;min-height:calc(100vh - 64px);\n'

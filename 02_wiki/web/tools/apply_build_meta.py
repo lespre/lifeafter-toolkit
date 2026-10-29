@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """横幅构建信息自动注入 + 页脚统计。
 
@@ -7,7 +8,10 @@
 """
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 # 1) 横幅文案

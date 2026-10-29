@@ -8,12 +8,12 @@ import os
 import pathlib
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import WEB  # noqa: E402
+from la_paths import WEB, client_root  # noqa: E402
 
 B = WEB / "data/boards"
 SHA = "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523"
 try:
-    st = os.stat("E:/mrzh/Documents/script.py314.lc.npk")
+    st = os.stat(str(client_root() / "Documents/script.py314.lc.npk"))
     BYTES, MTIME = st.st_size, st.st_mtime_ns
 except OSError:
     BYTES, MTIME = 0, 0

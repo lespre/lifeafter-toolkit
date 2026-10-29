@@ -24,13 +24,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ARTIFACTS  # noqa: E402
+from la_paths import ARTIFACTS, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "analysis" / "audit" / "weapon_skin_ui_asset_paths.json"
 OUT = Path(ARTIFACTS) / f"ui_assets_{datetime.now():%Y%m%d}"
-PACKS = [Path(r"E:\mrzh\res.npk"), Path(r"E:\mrzh\res.gpk")] + sorted(
-    Path(r"E:\mrzh\Documents\gres").glob("*.gpk"))
+PACKS = [Path(client_root() / "res.npk"), Path(client_root() / "res.gpk")] + sorted(
+    Path(client_root() / "Documents/gres").glob("*.gpk"))
 
 ZSTD_MAGIC = b"\x28\xb5\x2f\xfd"
 PNG_SIG = b"\x89PNG\r\n\x1a\n"

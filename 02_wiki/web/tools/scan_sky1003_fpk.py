@@ -23,7 +23,7 @@ sys.path.insert(0, str(UNPACKER))
 from toolkit_core.fpk_frames import FpkFrameError, iter_fpk_frames
 from lifeafter_unpacker_full import extract_fsb
 
-SRC_ROOT = Path(r"E:\mrzh\res")
+SRC_ROOT = Path(client_root() / "res")
 OUT_ROOT = Path(ANALYSIS_ROOT / "sky1003")
 WAV_ROOT = OUT_ROOT / "wav"
 PACK_NUMBERS = list(range(49, 36, -1))

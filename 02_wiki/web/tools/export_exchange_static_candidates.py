@@ -287,7 +287,7 @@ def main() -> int:
     parser.add_argument(
         "--source-package",
         type=Path,
-        default=Path(r"E:\mrzh\Documents\script.py314.lc.npk"),
+        default=Path(client_root() / "Documents/script.py314.lc.npk"),
     )
     parser.add_argument("--generated", default=date.today().isoformat())
     parser.add_argument("--out-dir", type=Path, default=None)

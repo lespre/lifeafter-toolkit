@@ -24,7 +24,7 @@ import lifeafter_unpacker_full as m  # noqa: E402
 import fsb5  # noqa: E402
 
 DEST = Path(ANALYSIS_ROOT / "skin_audio_carved")
-GRES = Path(r"E:\mrzh\Documents\gres")
+GRES = Path(client_root() / "Documents/gres")
 MAGIC = b"FSB5"
 WINDOWS = (1 << 20, 8 << 20, 32 << 20, 128 << 20)
 KEYS = ("skin", "weapon", "wepon", "wuqi", "hexin", "gunshot", "ice_", "motor", "car_", "jg_", "butterfly")

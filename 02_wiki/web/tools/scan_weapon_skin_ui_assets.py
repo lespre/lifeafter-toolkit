@@ -27,13 +27,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TOOLKIT_DIR  # noqa: E402
+from la_paths import TOOLKIT_DIR, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 
-PKG = Path(r"E:\mrzh\Documents\script.py314.lc.npk")
+PKG = Path(client_root() / "Documents/script.py314.lc.npk")
 
 PATHS = re.compile(
     rb"[A-Za-z0-9_/\\\.-]{4,140}\.(?:png|jpg|jpeg|tga|dds|gim|prefab|mat|spine|skel|atlas|wem|bnk)",

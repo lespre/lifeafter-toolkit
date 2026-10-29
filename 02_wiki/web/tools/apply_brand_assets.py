@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """把三张品牌图落进 wiki.html：
    P1 横版 → 顶部横幅背景
@@ -6,7 +7,10 @@
 """
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 # 1) favicon

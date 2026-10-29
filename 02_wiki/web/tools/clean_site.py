@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """站点清理 + 依赖归位。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import shutil
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 PARK = ROOT / "01_索引与产物/95_待清理/站点_20261022"
 PARK.mkdir(parents=True, exist_ok=True)

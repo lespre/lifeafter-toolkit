@@ -29,7 +29,7 @@ sys.path.insert(0, str(Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解�
 import lifeafter_unpacker_full as m  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 
-GRES = Path(r"E:\mrzh\Documents\gres")
+GRES = Path(client_root() / "Documents/gres")
 
 
 def decode_any(data: bytes) -> Image.Image | None:

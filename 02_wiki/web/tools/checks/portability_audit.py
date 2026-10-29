@@ -53,6 +53,39 @@ SCOPES = {
     "root": [PROJ],
 }
 
+# ── 规则层口径（rules/portability.yml）──────────────────────────────
+RULES_YML = PROJ / "02_wiki" / "rules" / "portability.yml"
+
+
+def load_rules() -> dict:
+    """读口径文件；缺失或解析失败时返回空（退化为「不分类，全算缺陷」）。"""
+    try:
+        import yaml
+        if RULES_YML.exists():
+            return yaml.safe_load(RULES_YML.read_text(encoding="utf-8")) or {}
+    except Exception:
+        pass
+    return {}
+
+
+def exploratory_patterns(rules: dict) -> list[str]:
+    ex = ((rules.get("board_chain") or {}).get("exploratory") or {})
+    return list(ex.get("patterns") or [])
+
+
+def is_exploratory(rel_path: str, patterns: list[str]) -> bool:
+    """是否属于「探查类脚本」（不产出板、不在 clone 重建链上）。
+
+    ★ 这些脚本本就绑定具体客户端实例（scan_*/index_*/find_* 等），
+      保留设备路径是可接受的 —— 它们不在「clone 后重建 wiki」的必经路径上。
+    """
+    import fnmatch
+    stem = pathlib.Path(rel_path).name
+    for pat in patterns:
+        if fnmatch.fnmatch(stem, pat) or fnmatch.fnmatch(stem, pat.replace("*", "*.py")):
+            return True
+    return False
+
 
 def iter_py(dirs):
     seen = set()
@@ -75,33 +108,46 @@ def scan_file(p: pathlib.Path) -> dict:
     proj_hits: list[int] = []
     dev_hits: list[int] = []
     for i, ln in enumerate(lines, 1):
-        # 注释行不算（注释里的路径只是说明）
         stripped = ln.strip()
         if stripped.startswith("#"):
             continue
-        for m in PROJECT_ROOT_PAT.finditer(ln):
-            if NOT_PATH.match(m.group(0)):
-                continue
+        if PROJECT_ROOT_PAT.search(ln) and not NOT_PATH.search(ln):
             proj_hits.append(i)
-            break
-        else:
-            for m in DEVICE_PAT.finditer(ln):
-                if NOT_PATH.match(m.group(0)):
-                    continue
-                dev_hits.append(i)
-                break
+        elif DEVICE_PAT.search(ln) and not NOT_PATH.search(ln):
+            dev_hits.append(i)
     portable = bool(PORTABLE_PAT.search(src))
-    try:
-        ast.parse(src)
-    except SyntaxError:
-        pass
+    rel = str(p.relative_to(PROJ)).replace("\\", "/")
     return {
-        "path": str(p.relative_to(PROJ)).replace("\\", "/"),
+        "path": rel,
         "project_abs": len(proj_hits),
         "device_abs": len(dev_hits),
         "portable_marker": portable,
         "lines": proj_hits[:20] + dev_hits[:20],
     }
+
+
+def classify(rows: list[dict], rules: dict) -> list[dict]:
+    """按口径分类：探查类脚本的设备路径不算缺陷；项目自身路径永远算缺陷。"""
+    patterns = exploratory_patterns(rules)
+    critical = set(rules.get("critical_paths") or [])
+    # ★ 工具自身豁免：路径工具必须**字面量**写着默认路径与检测模式
+    #   （否则它自己就找不到要治理的对象）。它们不是「使用者」。
+    self_tools = {"la_paths.py", "fix_hardcoded_paths.py", "portability_audit.py",
+                  "clone_repro_check.py"}
+    for r in rows:
+        stem = pathlib.Path(r["path"]).name
+        r["exploratory"] = is_exploratory(r["path"], patterns)
+        r["critical"] = r["path"] in critical
+        r["self_tool"] = stem in self_tools
+        # 判定为「阻塞缺陷」的条件：
+        #   · 项目自身绝对路径 —— 永远算（任何脚本都不该写死仓库路径）
+        #   · 设备路径 —— 仅当脚本不在探查类、且不是工具自身
+        r["blocking"] = (
+            bool(r["project_abs"]) and not r["self_tool"]
+        ) or (
+            bool(r["device_abs"]) and not r["exploratory"] and not r["self_tool"]
+        )
+    return rows
 
 
 def main() -> int:
@@ -122,10 +168,13 @@ def main() -> int:
     rows = []
     for p in iter_py(dirs):
         rows.append(scan_file(p))
+    rules = load_rules()
+    rows = classify(rows, rules)
 
-    bad = [r for r in rows if r["project_abs"] or r["device_abs"]]
+    bad = [r for r in rows if r["blocking"]]
     bad.sort(key=lambda r: -(r["project_abs"] + r["device_abs"]))
-    clean = [r for r in rows if not (r["project_abs"] or r["device_abs"])]
+    clean = [r for r in rows if not r["blocking"]]
+    exploratory = [r for r in rows if r["exploratory"] and (r["project_abs"] or r["device_abs"])]
 
     total_proj = sum(r["project_abs"] for r in rows)
     total_dev = sum(r["device_abs"] for r in rows)
@@ -134,6 +183,7 @@ def main() -> int:
         "files_scanned": len(rows),
         "files_clean": len(clean),
         "files_with_hardcoded": len(bad),
+        "files_exploratory_only": len(exploratory),
         "project_abs_sites": total_proj,
         "device_abs_sites": total_dev,
         "portable_ratio": round(len(clean) * 100.0 / len(rows), 1) if rows else 100.0,
@@ -145,9 +195,11 @@ def main() -> int:
 
     if not args.quiet:
         print(f"扫描 {report['files_scanned']} 个 py（scope={args.scope}）")
-        print(f"  含硬编码：{report['files_with_hardcoded']} 个文件"
+        print(f"  阻塞缺陷：{report['files_with_hardcoded']} 个文件"
               f"（项目自身 {total_proj} 处 / 本机设备 {total_dev} 处）")
-        print(f"  可移植：{report['files_clean']} 个文件（{report['portable_ratio']}%）")
+        print(f"  合规：{report['files_clean']} 个文件（{report['portable_ratio']}%）")
+        if exploratory:
+            print(f"  探查类（设备路径可接受）：{report['files_exploratory_only']} 个文件")
         if bad:
             print(f"\n问题最多的文件（前 {args.top}）：")
             print(f"{'文件':66s} {'项目':>4s} {'设备':>4s}")

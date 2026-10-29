@@ -13,7 +13,7 @@ from collections import defaultdict
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ  # noqa: E402
+from la_paths import PROJ, client_root  # noqa: E402
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import android_gpk as AG  # noqa: E402
 
@@ -21,7 +21,7 @@ BIND = PROJ / "01_索引与产物/10_索引/热更检测/pe_icon_bind/binding_ro
 MAP = PROJ / "01_索引与产物/30_分析/子代理产出_20261022/item_icon_map_resolved.json"
 BOARD = PROJ / "02_wiki/web/data/boards/item_master_full.json"
 OUT = PROJ / "02_wiki/web/assets/img_cache/item_master_full"
-GPK_DIR = pathlib.Path("E:/mrzh/Documents/gres")
+GPK_DIR = pathlib.Path(client_root() / "Documents/gres")
 LIMIT = int(sys.argv[1]) if len(sys.argv) > 1 else 10 ** 9
 
 

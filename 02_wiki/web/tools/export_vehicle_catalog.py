@@ -17,10 +17,10 @@ import re, json, hashlib, collections, importlib.util
 from pathlib import Path
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TOOLKIT_DIR  # noqa: E402
+from la_paths import TOOLKIT_DIR, client_root  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-NPK = Path("E:/mrzh/Documents/script.py314.lc.npk")
+NPK = Path(client_root() / "Documents/script.py314.lc.npk")
 OUT = ROOT / "data" / "boards" / "vehicle_catalog.json"
 spec = importlib.util.spec_from_file_location(
     "W", str(TOOLKIT_DIR / "工具库/01_解码定位复原/表解码/weapon_attrs_table.py"))

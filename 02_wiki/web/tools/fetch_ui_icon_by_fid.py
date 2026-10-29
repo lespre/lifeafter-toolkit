@@ -11,7 +11,7 @@ from la_paths import TEMP_ROOT, TOOLKIT_DIR  # noqa: E402
 sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 import la_unpack_core as core  # noqa: E402
 
-RES = pathlib.Path(r"E:/mrzh/res")
+RES = pathlib.Path(client_root() / "res")
 OUT = pathlib.Path(TEMP_ROOT / "ui_icons")
 FIDS = {
     "3FFB31FC57B53000": "icon_touxiangkuang_01",

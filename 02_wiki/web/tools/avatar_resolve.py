@@ -31,7 +31,7 @@ import sys
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ  # noqa: E402
+from la_paths import PROJ, client_root  # noqa: E402
 _TOOLS = PROJ / "00_规范与工具/工具/工具库"
 for _p in (_TOOLS / "00_共享核心", _TOOLS / "01_解码定位复原/图集与取图"):
     if str(_p) not in sys.path:
@@ -47,8 +47,8 @@ _CALIB = _DET / "pc_fid_calib"
 _PE_PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"
 if not _PE_PACKS.is_dir():
     _PE_PACKS = _DET / "pe_packs"
-_PC_ROOTS = (pathlib.Path(r"E:/mrzh"), pathlib.Path(r"E:/mrzh/res"),
-             pathlib.Path(r"E:/mrzh/Documents/gres"))
+_PC_ROOTS = (pathlib.Path(client_root()), pathlib.Path(client_root() / "res"),
+             pathlib.Path(client_root() / "Documents/gres"))
 
 PE_EXTS = (".ktx", ".dds", ".png", ".bc7")
 PC_EXTS = (".bc7", ".png", ".dds", ".ktx", ".jpg")

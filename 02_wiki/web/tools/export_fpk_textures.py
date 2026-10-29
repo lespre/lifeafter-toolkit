@@ -36,7 +36,7 @@ sys.path.insert(0, str(Path(TOOLKIT_CORE)))
 from toolkit_core.fpk_frames import iter_fpk_frames  # noqa: E402
 from PIL import Image  # noqa: E402
 
-RES = Path(r"E:\mrzh\res")
+RES = Path(client_root() / "res")
 BLOCK_RE = re.compile(r"\n([A-Za-z0-9_.]+)\n\s+rotate: \w+\n\s+xy: (\d+), (\d+)\n\s+size: (\d+), (\d+)")
 
 

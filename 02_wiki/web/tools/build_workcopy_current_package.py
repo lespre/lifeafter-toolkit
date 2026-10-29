@@ -13,6 +13,7 @@
   项目根**只允许**从 `toolkit_core.paths` 取，不得手算 `parents[N]`（层级随目录重构会静默漂移）。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
@@ -34,8 +35,11 @@ from toolkit_core.paths import PROJECT_ROOT                        # noqa: E402
 from toolkit_core.npk_extract import extract_npk_verified   # noqa: E402
 import npk_reader as NR                                     # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import client_root  # noqa: E402
+
 E = PROJECT_ROOT                                             # 项目根（唯一来源）
-SOURCE = Path(r"E:\mrzh\Documents\script.py314.lc.npk")
+SOURCE = Path(client_root() / "Documents/script.py314.lc.npk")
 OUT = E / "01_索引与产物" / "30_分析" / "config_work" / "script_py314_docs_328b8446"
 
 

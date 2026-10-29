@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """二期「铠甲再临(刑天飞影)」奖池板块 —— 已实装版（2026-09-01 快照 BA8A239A）。
 
@@ -14,11 +15,14 @@
 import sys, json, struct
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 sys.path.insert(0, str(CORE))
 from toolkit_core.bindict_table import decode_table_rows, parse_legacy_chs_pool, resolve_jump_group
 
-WC = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A")
+WC = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A")
 PKG_SHA = "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f"
 FID = {"super_base":"7E5A5A83B1F07D31","super_chs":"512C733C3B263D37",
        "gift_base":"C5998AD60B305608","gift_chs":"938D86FE498D1B1A"}

@@ -6,8 +6,8 @@
 再在解出的字节里搜。
 
 用法：
-  python tools/search_decompressed.py --gpk "E:\mrzh\res.gpk" --pat skin_1003_010 --pat guangying
-  python tools/search_decompressed.py --npk "E:\mrzh\res.npk" --pat skin_1003_010
+  python tools/search_decompressed.py --gpk str(client_root() / "res.gpk") --pat skin_1003_010 --pat guangying
+  python tools/search_decompressed.py --npk str(client_root() / "res.npk") --pat skin_1003_010
 产物：analysis/audit/decompressed_search.json
 """
 from __future__ import annotations

@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """把 attr_compress_curves.json 画成折线图 HTML（纯 SVG，无外链）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 DATA = json.loads((WEB / "attr_compress_curves.json").read_text(encoding="utf-8"))
 
 W, H = 860, 460

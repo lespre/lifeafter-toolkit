@@ -1,3 +1,5 @@
+import sys
+import pathlib
 # -*- coding: utf-8 -*-
 """把 mutation_core_full 登记进三处入口：publication_policy / manifest / wiki_taxonomy。
 
@@ -10,7 +12,10 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
-ROOT = Path('E:/la拆包项目/02_wiki/web')
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+ROOT = Path(WEB)
 BOARD_ID = 'mutation_core_full'
 
 
