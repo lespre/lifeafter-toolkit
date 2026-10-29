@@ -128,3 +128,8 @@ seckeys/
 02_wiki/web/data/boards/common_item_text_sources.js
 02_wiki/web/data/boards/fashion_identity_unresolved_v01.js
 !02_wiki/web/data/updates.json
+
+# README 效果预览图（站点截图，需要进仓库给 GitHub 渲染）
+!00_规范与工具/治理/手册/images/
+!00_规范与工具/治理/手册/images/*.jpg
+!00_规范与工具/治理/手册/images/*.png
