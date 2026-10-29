@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""主题 v2：卡片加宽 + 装甲细节 + 顶部档案标识。追加在 style 末尾，覆盖 v1。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-HTML = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+HTML = pathlib.Path(WEB / "wiki.html")
 
 CSS = r"""
 /* ===== v2 细化 ===== */

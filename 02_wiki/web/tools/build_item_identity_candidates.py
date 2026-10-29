@@ -6,6 +6,8 @@ All emitted identity candidates default to unresolved; promotion requires the
 frozen stability, positive-anchor, negative-control, and entity-kind gates.
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -14,6 +16,9 @@ import sqlite3
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Callable, Iterable
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 SERVER_BRANCH = "unresolved"
 SELF_ID_FIELDS = frozenset({"id", "item_id", "equip_id", "equipment_id"})
@@ -882,12 +887,12 @@ def main() -> int:
     )
 
     parser = argparse.ArgumentParser(description="Build frozen P4-2 item identity artifacts")
-    parser.add_argument("--field-names", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "field_names.json")
-    parser.add_argument("--row-index", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "row_index.jsonl")
-    parser.add_argument("--table-index", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl")
-    parser.add_argument("--field-rules", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json")
-    parser.add_argument("--reliable-sources", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "RELIABLE_SOURCES.json")
-    parser.add_argument("--name-locator", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db")
+    parser.add_argument("--field-names", type=Path, default=root / str(INDEX_ROOT / "site_data") / "field_names.json")
+    parser.add_argument("--row-index", type=Path, default=root / str(INDEX_ROOT / "site_data") / "row_index.jsonl")
+    parser.add_argument("--table-index", type=Path, default=root / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl")
+    parser.add_argument("--field-rules", type=Path, default=root / str(INDEX_ROOT / "site_data") / "FIELD_RULES.json")
+    parser.add_argument("--reliable-sources", type=Path, default=root / str(INDEX_ROOT / "site_data") / "RELIABLE_SOURCES.json")
+    parser.add_argument("--name-locator", type=Path, default=root / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db")
     parser.add_argument("--entries-dir", type=Path, default=DEFAULT_ENTRIES_DIR)
     parser.add_argument("--output-dir", type=Path, default=root / "data")
     parser.add_argument("--expected-upper-bound", type=int, default=1719)

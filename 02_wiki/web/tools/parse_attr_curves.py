@@ -15,12 +15,15 @@ import struct
 import sys
 import pathlib
 
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
+sys.path.insert(0, str(WEB / "tools"))
 from toolkit_core.bindict_table import decode_table_rows, parse_legacy_chs_pool  # noqa: E402
 from _src import cdata_dir  # noqa: E402
 
-OUT = pathlib.Path("E:/la拆包项目/01_索引与产物/30_分析/伤害加成曲线.json")
+OUT = pathlib.Path(ANALYSIS_ROOT / "伤害加成曲线.json")
 TABLE = "special_attr_params_data"
 
 

@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """场景平衡卡面收口：把工程数组换成人类可读文本，并把这些键从卡面隐藏。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/scene_balance.json"
 HTML = ROOT / "02_wiki/web/board.html"
 HIDE = ["scene_ids", "server_types", "source_kinds", "row_keys", "merged_rows"]

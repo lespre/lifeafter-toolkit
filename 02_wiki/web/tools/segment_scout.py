@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """
 segment_scout.py —— id 段侦察器：名册段 dump / jump 组引用收集 / 缺口对照
@@ -24,9 +25,12 @@ import struct
 import sys
 from pathlib import Path
 
-BA8_ENTRIES = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+BA8_ENTRIES = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
 sys.path[:0] = [str(Path(__file__).resolve().parent),
-                str(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")]
+                str(str(TOOLKIT_CORE))]
 from bindict_provenance import decode_table_rows_with_chs_slots
 from toolkit_core.bindict_table import parse_legacy_chs_pool
 from toolkit_core.bindict_rows import uleb

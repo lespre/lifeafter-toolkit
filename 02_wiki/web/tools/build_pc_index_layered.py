@@ -7,12 +7,16 @@
 本源内同名 fid 取 rank 最大者；同时写 candidates 数量，便于审计「当年有几个版本」。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 import re
 import sqlite3
 
-DET = pathlib.Path("E:/la拆包项目/01_索引与产物/10_索引/热更检测")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+DET = pathlib.Path(INDEX_ROOT / "热更检测")
 SRC = DET / "pc_index.sqlite3"
 OUT = DET / "pc_index_layered.sqlite3"
 

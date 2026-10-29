@@ -5,12 +5,15 @@ from __future__ import annotations
 import pathlib
 import sys
 
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web/tools")
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import SOURCE_PKG_ROOT, TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(WEB / "tools"))
+sys.path.insert(0, str(TOOLKIT_CORE))
 import live_npk_reader as L  # noqa: E402
 from toolkit_core.path_fid import fid_of  # noqa: E402
 
-ROOT = pathlib.Path("E:/la拆包项目/01_索引与产物/源包")
+ROOT = pathlib.Path(SOURCE_PKG_ROOT)
 NPKS = [
     ROOT / "apk_20261002/mumu_5.0.679/assets/script.py314.lc.npk",
     ROOT / "pe_20261020/script.py314.lc.npk",

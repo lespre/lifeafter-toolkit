@@ -1,10 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """按草稿逐字重建 taxonomy：不加任何说明后缀，子级序号一一对应。"""
 import json
 import pathlib
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 DATA = WEB / "data"
 old = DATA / "wiki_taxonomy.json"
 if old.exists():

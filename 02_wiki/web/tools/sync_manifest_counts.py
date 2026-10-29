@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 r"""同步 manifest 里各板块的条目数与分类（以 data/boards/*.json 实际内容为准）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 MAN = WEB / "data/manifest.js"
 BOARDS = WEB / "data/boards"
 

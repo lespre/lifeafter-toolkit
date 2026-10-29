@@ -10,7 +10,9 @@ import json
 import pathlib
 import sys
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 POL = WEB / "data/publication_policy.json"
 TAX = WEB / "data/wiki_taxonomy.json"
 

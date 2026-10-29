@@ -1,3 +1,5 @@
+import sys
+import pathlib
 # -*- coding: utf-8 -*-
 """全量时装衣柜板块（人物类）——★ 权威源换成【表结构解析的行】。
 
@@ -32,8 +34,10 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-PROJ = Path("E:/la拆包项目")
 OUT = ROOT / "data" / "boards" / "fashion_wardrobe.json"
 
 _NAMES = Path(__file__).name            # 便于报错时指路

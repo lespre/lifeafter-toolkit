@@ -2,10 +2,14 @@
 """武器皮肤卡：战斗表现优先显示游戏内正式名（weapon_skin_effect_show_data），
 备注名与资源基名作为次要信息保留。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 
 
 def rep(s: str, old: str, new: str, tag: str) -> str:

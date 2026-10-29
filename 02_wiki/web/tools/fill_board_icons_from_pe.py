@@ -27,7 +27,9 @@ from collections import Counter, defaultdict
 import numpy as np
 from PIL import Image
 
-PROJ = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core.path_fid import fid_of          # noqa: E402
 from toolkit_core import android_gpk as AG         # noqa: E402

@@ -7,6 +7,8 @@ workcopy with an explicit manifest; it refuses to merge into an existing
 nonempty directory.
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -16,14 +18,15 @@ import struct
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_DIR  # noqa: E402
+
 FORMAL_SOURCE = Path(r"E:\LifeAfter\Documents\script.py314.lc.npk")
 FORMAL_SHA256 = "79c0d06f53db02ca4f8ebad97da2cfef22916f963e8cae3461b914d4a39bb85d"
 DEFAULT_OUTPUT = Path(
-    r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_79c0d06f53db"
-)
+    ANALYSIS_ROOT / "config_work/script_py314_docs_79c0d06f53db")
 READER_PATH = Path(
-    r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描\npk_reader.py"
-)
+    TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描/npk_reader.py")
 
 # FIDs are verified stable in the official 79c0 package before this extractor
 # is allowed to write a workcopy.

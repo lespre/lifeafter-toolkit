@@ -11,6 +11,7 @@
   41_还原树/pe/pe_config_full_合并清单.json  每个文件的来源 + 被覆盖清单
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
@@ -18,7 +19,9 @@ import pathlib
 import shutil
 import time
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 BASE = PROJ / "01_索引与产物/41_还原树/pe/配置_基线包"
 OVER = PROJ / "01_索引与产物/41_还原树/pe/配置_增量快照"
 OUT = PROJ / "01_索引与产物/41_还原树/pe/配置"

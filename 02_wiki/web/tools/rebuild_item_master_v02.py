@@ -15,6 +15,8 @@
 所有排除项写入 audit，不写入 artifact。
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import collections
@@ -23,6 +25,9 @@ import json
 import os
 from pathlib import Path
 from typing import Any, Iterable
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"
@@ -107,7 +112,7 @@ def collect_candidates() -> dict[int, set[int]]:
 
 def collect_identity(allowed: dict[int, set[int]]) -> dict[tuple[int, int], dict[str, Any]]:
     out: dict[tuple[int, int], dict[str, Any]] = {}
-    for row in load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl"), "common_item_data_base.py"):
+    for row in load_jsonl(Path(INDEX_ROOT / "site_data/ITEM_IDENTITY_CANDIDATES.jsonl"), "common_item_data_base.py"):
         if row.get("table") != SOURCE_TABLE or row.get("candidate_field") != "id":
             continue
         schema = row.get("schema_ref")
@@ -120,7 +125,7 @@ def collect_identity(allowed: dict[int, set[int]]) -> dict[tuple[int, int], dict
 
 def collect_names() -> dict[tuple[int, int], dict[str, Any]]:
     out: dict[tuple[int, int], dict[str, Any]] = {}
-    for row in load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_CHAIN_CANDIDATES.jsonl"), "common_item_data_base.py"):
+    for row in load_jsonl(Path(INDEX_ROOT / "site_data/NAME_CHAIN_CANDIDATES.jsonl"), "common_item_data_base.py"):
         if row.get("table") != SOURCE_TABLE:
             continue
         schema = row.get("schema_ref")
@@ -224,12 +229,12 @@ def build_new_rows(
                         "field_slot": src.get("field_slot"),
                         "scalar_type": src.get("scalar_type"),
                         "repeat_decode_stable": src.get("repeat_decode_stable"),
-                        "upstream_artifact": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_IDENTITY_CANDIDATES.jsonl",
+                        "upstream_artifact": str(INDEX_ROOT / "site_data/ITEM_IDENTITY_CANDIDATES.jsonl"),
                         "upstream_business_id_allowed": src.get("business_id_allowed"),
                         "upstream_entity_kind": src.get("entity_kind"),
                     },
                     "name_evidence": {
-                        "source_artifact": "E:/la拆包项目/01_索引与产物/10_索引/site_data/NAME_CHAIN_CANDIDATES.jsonl",
+                        "source_artifact": str(INDEX_ROOT / "site_data/NAME_CHAIN_CANDIDATES.jsonl"),
                         "field_slot": 4,
                         "name_field": "name",
                         "name_role": "primary",
@@ -247,8 +252,8 @@ def build_new_rows(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v01.jsonl"))
-    parser.add_argument("--jsonl", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl"))
+    parser.add_argument("--base", type=Path, default=Path(INDEX_ROOT / "site_data/ITEM_MASTER_v01.jsonl"))
+    parser.add_argument("--jsonl", type=Path, default=Path(INDEX_ROOT / "site_data/ITEM_MASTER_v02.jsonl"))
     parser.add_argument("--rules", type=Path, default=DATA / "ITEM_MASTER_v02_RULES.json")
     parser.add_argument("--audit", type=Path, default=AUDIT / "item_master_v02_audit.json")
     args = parser.parse_args()

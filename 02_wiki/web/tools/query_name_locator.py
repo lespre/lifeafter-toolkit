@@ -20,6 +20,7 @@
 """
 
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -28,9 +29,12 @@ import sys
 from pathlib import Path
 from typing import Any, Sequence
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db"
+DEFAULT_DB = ROOT / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db"
 
 DB_COLUMNS = (
     "candidate_id",

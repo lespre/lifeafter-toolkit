@@ -13,6 +13,7 @@ SQLite 表 locations：kind/client_channel/package/identifier_type/identifier/
 重复与冲突只记录关系（同标识多处出现 / 同标识不同 decoded_size），不做业务解释。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sqlite3
@@ -21,9 +22,12 @@ import time
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "file_index_entries.jsonl"
-DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db"
+ENTRIES = ROOT / str(INDEX_ROOT / "site_data") / "file_index_entries.jsonl"
+DB = ROOT / str(INDEX_ROOT / "site_data") / "id_locator_index.db"
 AUDIT = ROOT / "data" / "id_locator_audit.json"
 
 SCHEMA = """

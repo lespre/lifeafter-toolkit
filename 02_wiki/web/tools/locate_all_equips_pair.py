@@ -17,6 +17,7 @@ A130A31532FAF63C / 94AB0B3FD057EF01 双双消失）。写死 FID 的工具会拒
 只报候选+校验结果，不自动认领：命中必须同时满足 schema 布局与关系条数下界。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -26,12 +27,15 @@ import sys
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(r"E:\la拆包项目\02_wiki\\web")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, TOOLKIT_DIR, WEB  # noqa: E402
+ROOT = Path(WEB)
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
-CODEC = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\表解码\weapon_attrs_table.py")
-CACHE = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "all_equips_pair_cache.json"
+CODEC = Path(TOOLKIT_DIR / "工具库/01_解码定位复原/表解码/weapon_attrs_table.py")
+CACHE = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "all_equips_pair_cache.json"
 MIN_SIZE = 200_000
 MIN_BASE_ROWS = 500
 MIN_CHS_STRINGS = 2000

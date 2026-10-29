@@ -16,6 +16,7 @@
         python gen_home.py --json     # 只打印采集结果
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import os
@@ -26,7 +27,10 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-PROJECT = Path(r"E:\la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+PROJECT = Path(PROJ)
 WEB = PROJECT / "02_wiki" / "web"
 TOOLS = PROJECT / "00_规范与工具/工具"
 OUT = WEB / "index.html"

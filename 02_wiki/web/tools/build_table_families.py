@@ -17,6 +17,7 @@
 输出：data/table_families_v2.json（族级结构 + 统计）
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sqlite3
@@ -24,10 +25,13 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
-DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db"
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_families_v2.json"
+ENTRIES = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl"
+DB = ROOT / str(INDEX_ROOT / "site_data") / "id_locator_index.db"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "table_families_v2.json"
 
 SLOT_SUFFIXES = ("_base_chs", "_base", "_inc_chs", "_inc", "_del", "_merged",
                  "_chs")

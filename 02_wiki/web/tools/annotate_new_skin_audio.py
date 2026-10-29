@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """给刚补的两张典藏/传世卡补证据标注，并把音频说明落到 attachments。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 
 EVID = {

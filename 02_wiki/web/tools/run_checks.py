@@ -17,6 +17,7 @@
 页面读到的是缓存值，会在条目后标「（慢判据，读缓存）」——不假装是实时的。
 """
 from __future__ import annotations
+import pathlib
 
 import importlib.util
 import json
@@ -24,8 +25,11 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 TOOLS = Path(__file__).resolve().parent
-CACHE = Path(r"E:/la拆包项目") / "01_索引与产物" / "10_索引" / "checks_cache.json"
+CACHE = Path(PROJ) / "01_索引与产物" / "10_索引" / "checks_cache.json"
 
 
 def load_checks():

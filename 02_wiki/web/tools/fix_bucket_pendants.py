@@ -5,13 +5,16 @@ r"""修正时装板的部位归类：
 其余保持原 part_bucket 不动。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 JS = WEB / "data/boards/fashion_wardrobe.js"
 

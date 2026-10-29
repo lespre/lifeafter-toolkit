@@ -6,8 +6,10 @@ import json
 import pathlib
 import sys
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/01_解码定位复原/图集与取图")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/图集与取图"))
 import pe_fetch as PE  # noqa: E402
 
 BOARD = WEB / "data/boards/avatar_catalog.json"

@@ -1,6 +1,10 @@
+import pathlib
 # -*- coding: utf-8 -*-
 import sys, os, importlib.util
-W = r'E:\la拆包项目\02_wiki\\web'
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+W = str(WEB)
 sys.path.insert(0, os.path.join(W, 'tools'))
 spec = importlib.util.spec_from_file_location('rws', os.path.join(W,'tools','rebuild_weapon_skin_catalog_current.py'))
 RWS = importlib.util.module_from_spec(spec)

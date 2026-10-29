@@ -30,12 +30,15 @@ import pathlib
 import struct
 import sys
 
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
-sys.path.insert(0, r"E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ, TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
+sys.path.insert(0, str(WEB / "tools"))
 import toolkit_core.bindict_table as BT  # noqa: E402
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 TREE = ROOT / "01_索引与产物/41_还原树"
 OUT = WEB / "data/boards/kill_broadcast.json"

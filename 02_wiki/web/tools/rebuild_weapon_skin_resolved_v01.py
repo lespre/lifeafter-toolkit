@@ -14,16 +14,21 @@
 """
 
 from __future__ import annotations
+import sys
+import pathlib
 
 import hashlib
 import json
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 BOARD = ROOT / "data" / "boards" / "weapon_skin_sfx_text_sources.json"
 JSONL = ROOT / "data" / "WEAPON_SKIN_RESOLVED_v0.1.jsonl"
 RULES = ROOT / "data" / "WEAPON_SKIN_RESOLVED_v0.1_RULES.json"
-AUDIT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "weapon_skin_resolved_v01_audit.json"
+AUDIT = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "weapon_skin_resolved_v01_audit.json"
 
 PRODUCT = "WEAPON_SKIN_RESOLVED"
 VERSION = "v0.1"
@@ -47,7 +52,7 @@ NAME_EVIDENCE = {
         "com\\utils\\DataHelpers.py (entry#8935 FID 53F5C9836AF935FC) — get_item_data_module_name + get_module_name + com.cdata.%s",
     ],
     "membership_check": {
-        "table_row_index": "E:/la拆包项目/01_索引与产物/10_索引/site_data/row_index.jsonl",
+        "table_row_index": str(INDEX_ROOT / "site_data/row_index.jsonl"),
         "skin_item_ids_checked": ["1110001", "1110002", "1110146", "1110177"],
         "present_in": ["com\\cdata\\weapon_skin_data.py", "com\\cdata\\common_item_data_base.py"],
         "absent_in": ["com\\cdata\\all_equips_data.py"],

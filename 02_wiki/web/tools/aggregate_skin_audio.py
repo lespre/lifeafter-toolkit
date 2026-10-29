@@ -13,6 +13,8 @@
 用法：python tools/aggregate_skin_audio.py [--audio-dir DIR]...
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import json
@@ -23,12 +25,15 @@ from pathlib import Path
 
 from pypinyin import lazy_pinyin
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, EXTRACT_ROOT, INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 BOARD = ROOT / "data" / "boards" / "weapon_skin_sfx_text_sources.json"
-MANIFEST = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "exports" / "skin_audio_manifest.json"
+MANIFEST = ROOT / str(INDEX_ROOT / "site_data") / "exports" / "skin_audio_manifest.json"
 AUDIT = ROOT / "analysis" / "audit" / "skin_audio_match.json"
-DEFAULT_DIRS = [Path(r"E:\la拆包项目\01_索引与产物\\30_分析\skin_audio_all"),
-                Path(r"E:\la拆包项目\01_索引与产物\\20_提取\gres_0058_可读版\WAV音频")]
+DEFAULT_DIRS = [Path(ANALYSIS_ROOT / "skin_audio_all"),
+                Path(EXTRACT_ROOT / "gres_0058_可读版/WAV音频")]
 STEM_RE = re.compile(r"skin_(\d{4})_(\d{3})")
 
 

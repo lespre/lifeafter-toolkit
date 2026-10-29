@@ -7,6 +7,7 @@ row always remains ``history-check-required`` until a separate historical-releas
 comparison has been recorded.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -22,9 +23,12 @@ if str(TOOLS) not in sys.path:
 
 from source_presence import diff_by_key  # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 FORMAL_SOURCE_ID = "lifeafter-classic-current"
 TEST_SOURCE_ID = "documents-py314-current"
-DEFAULT_OUTPUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audits" / "common_item_dual_source_presence.json"
+DEFAULT_OUTPUT = ROOT / str(INDEX_ROOT / "site_data") / "audits" / "common_item_dual_source_presence.json"
 
 
 def _source_id(board: dict[str, Any], expected: str) -> str:

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """把 fashion_registry.json 生成成 wiki 板块 data/boards/fashion_registry.json。"""
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 from collections import Counter
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT, WEB  # noqa: E402
+
 REG = WEB / "data/fashion_registry.json"
 OUT = WEB / "data/boards/fashion_registry.json"
 
@@ -18,7 +21,7 @@ SRC = ("PE 测试服 · 表 41_还原树/pe/配置/com/cdata"
 
 def _locks() -> list:
     import hashlib as _h
-    base = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata")
+    base = pathlib.Path(TREE_ROOT / "pe/配置/com/cdata")
     out = []
     for name in ("fashion_data.py", "player_appear_data.py", "simple_fashion_data.py"):
         f = base / name

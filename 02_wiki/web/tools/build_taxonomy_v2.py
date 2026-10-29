@@ -1,10 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """按用户草稿重建 wiki 目录树（四分类），旧树备份为 wiki_taxonomy_旧_20261022.json。"""
 import json
 import pathlib
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 DATA = WEB / "data"
 old = DATA / "wiki_taxonomy.json"
 if old.exists():

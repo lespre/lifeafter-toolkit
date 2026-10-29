@@ -31,7 +31,9 @@ import sys
 import time
 from collections import Counter, defaultdict
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 TOOLS = WEB / "tools"
 BOARD = "avatar_catalog"

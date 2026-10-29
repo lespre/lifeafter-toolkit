@@ -15,6 +15,8 @@ kaijiayongshi_box.png 这类具名 PNG）。此前的搜索只匹配"UI 清单�
 用法：python tools/scan_packs_for_skin_assets.py [--packs N]
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -24,9 +26,12 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TEMP_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "analysis" / "audit" / "skin_assets_in_packs.json"
-PREVIEW_DIR = Path(r"E:\la拆包项目\01_索引与产物\\90_临时\skin_assets_preview")
+PREVIEW_DIR = Path(TEMP_ROOT / "skin_assets_preview")
 PACKS = [Path(r"E:\mrzh\res.gpk"), Path(r"E:\mrzh\res.npk")] + sorted(
     Path(r"E:\mrzh\Documents\gres").glob("*.gpk"))
 

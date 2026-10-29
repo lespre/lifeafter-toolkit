@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """manifest 的分类路径按 taxonomy 重算（taxonomy 是唯一口径）。"""
 import json
 import pathlib
 
-DATA = pathlib.Path(r"E:/la拆包项目/02_wiki/web/data")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import DATA_DIR  # noqa: E402
+
+DATA = pathlib.Path(DATA_DIR)
 tax = json.loads((DATA / "wiki_taxonomy.json").read_text(encoding="utf-8"))
 
 path_of = {}

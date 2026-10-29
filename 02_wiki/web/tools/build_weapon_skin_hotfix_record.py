@@ -21,6 +21,7 @@
   * 没有父表行 / 没有模型实体的 id，不补 level、不补 model、不补名称。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -30,7 +31,10 @@ import struct
 import sys
 from pathlib import Path
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import DATA_DIR, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 WEB_TOOLS = Path(__file__).resolve().parent
 for extra in (str(CORE), str(WEB_TOOLS)):
     if extra not in sys.path:
@@ -38,7 +42,7 @@ for extra in (str(CORE), str(WEB_TOOLS)):
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
 
-ANALYSIS = Path(r"E:\la拆包项目\01_索引与产物\10_索引\热更检测")
+ANALYSIS = Path(INDEX_ROOT / "热更检测")
 BITS = ANALYSIS / "post_update_20261015_213737_weapon_skin_cli_v2" / "_bits"
 SKIN_DIR = ANALYSIS / "新武器皮肤_1110188_1110191_1110192"
 EVENTS_REPORT = ANALYSIS / "post_update_20261015_213737_events_cli.json"
@@ -260,7 +264,7 @@ def build() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path,
-                        default=Path(r"E:\la拆包项目\02_wiki\web\data\hotfix")
+                        default=Path(DATA_DIR / "hotfix")
                         / f"weapon_skin_hotfix_{OVERLAY_ID}.json")
     args = parser.parse_args()
     record = build()

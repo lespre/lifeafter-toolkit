@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 r"""清理已归档旧板：把 retired 状态的板块从站点移除（文件归档到 _备份归档，policy/导航清引用）。"""
 from __future__ import annotations
+import sys
 
 import datetime
 import json
 import pathlib
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 ARCH = WEB / "_备份归档" / ("deleted_boards_" + datetime.date.today().strftime("%Y%m%d"))
 POL = WEB / "data/publication_policy.json"
 TAX = WEB / "data/wiki_taxonomy.json"

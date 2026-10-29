@@ -6,8 +6,11 @@ import struct
 import sys
 import pathlib
 
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
+sys.path.insert(0, str(WEB / "tools"))
 from toolkit_core.bindict_table import decode_table_rows, parse_legacy_chs_pool  # noqa: E402
 from _src import cdata_dir  # noqa: E402
 

@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """把时装补图/去重/单性别的规则沉淀进板级技术详情（meta.notes）。"""
 import json
 import pathlib
 
-BOARD = pathlib.Path("E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "fashion_wardrobe.json")
 
 RULES = """
 

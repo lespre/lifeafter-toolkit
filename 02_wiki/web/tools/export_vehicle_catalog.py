@@ -1,3 +1,5 @@
+import sys
+import pathlib
 # -*- coding: utf-8 -*-
 """载具模型清单板块（图鉴类-载具）。
 
@@ -14,11 +16,14 @@
 import re, json, hashlib, collections, importlib.util
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 NPK = Path("E:/mrzh/Documents/script.py314.lc.npk")
 OUT = ROOT / "data" / "boards" / "vehicle_catalog.json"
 spec = importlib.util.spec_from_file_location(
-    "W", "E:/la拆包项目/00_规范与工具/工具/工具库/01_解码定位复原/表解码/weapon_attrs_table.py")
+    "W", str(TOOLKIT_DIR / "工具库/01_解码定位复原/表解码/weapon_attrs_table.py"))
 W = importlib.util.module_from_spec(spec); spec.loader.exec_module(W)
 
 TYPE_FROM_PATH = {

@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """在 ARM64 libclient.so 里找 GPK 相关字符串的 xref（ADRP+ADD 模式）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 import struct
 
-P = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/客户端逆向_20261022/libclient_emulator_arm64.so")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
+P = pathlib.Path(ANALYSIS_ROOT / "客户端逆向_20261022/libclient_emulator_arm64.so")
 
 
 class Elf:

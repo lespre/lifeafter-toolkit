@@ -1,3 +1,4 @@
+import pathlib
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """rebuild_chip_catalog.py — 芯片图鉴板：chip_type 池 65 名全集（游戏图鉴同源）
@@ -15,9 +16,12 @@ import struct
 import sys
 from pathlib import Path
 
-ROOT = Path(r"E:\la拆包项目\02_wiki\\web")
-WORK = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-sys.path[:0] = [str(ROOT / "tools"), str(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")]
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, WEB  # noqa: E402
+ROOT = Path(WEB)
+WORK = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+sys.path[:0] = [str(ROOT / "tools"), str(str(TOOLKIT_CORE))]
 from preview_board_contract import apply_frozen_v3
 from bindict_provenance import decode_table_rows_with_chs_slots
 from toolkit_core.bindict_table import parse_legacy_chs_pool
@@ -31,7 +35,7 @@ FID_CONF = "628CEBDC133329C4"   # conf kj1 009729（双源共享）
 SHA_CONF = "24389e0dc56179de5ba83d0224f98d258978092d1a95c982a009c6a504c81909"
 
 
-WORKCOPY_MANIFEST = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\manifest.json")
+WORKCOPY_MANIFEST = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/manifest.json")
 
 
 def frozen_workcopy_lock() -> dict:

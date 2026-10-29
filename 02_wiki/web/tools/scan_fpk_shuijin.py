@@ -12,6 +12,7 @@
 产物：01_索引与产物\\30_分析/sky1003/{hits.json, hitctx/*.txt, tex/*.png, wav/*.wav}
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import io
@@ -24,11 +25,14 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-TOOLKIT = r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"
+TOOLKIT = str(TOOLKIT_CORE)
 sys.path.insert(0, TOOLKIT)
 RES = Path(r"E:\mrzh\res")
-OUT = Path("E:/la拆包项目/01_索引与产物\\30_分析/sky_shuijin")
+OUT = Path(ANALYSIS_ROOT / "sky_shuijin")
 PATS = [b"shuijinmeigui", b"shuijin"]
 
 
@@ -89,7 +93,7 @@ def scan_pack(pack_name: str, max_frames: int) -> dict:
                 recent.pop(0)
         elif data[:4] == b"FSB5":
             try:
-                sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")
+                sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
                 import lifeafter_unpacker_full as m
                 wd = OUT / "wav"
                 wd.mkdir(parents=True, exist_ok=True)

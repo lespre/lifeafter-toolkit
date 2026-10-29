@@ -1,10 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """把 weapon_skin_data 的 charm_value / weapon_type 合并进武器皮肤板（按 skin_id 整数对齐）。"""
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
-ROWS = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/子代理产出_20261022/_weapon_skin_table_rows.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+
+ROWS = pathlib.Path(ANALYSIS_ROOT / "子代理产出_20261022/_weapon_skin_table_rows.json")
 BOARD = WEB / "data" / "boards" / "weapon_skin_sfx_text_sources.json"
 
 rows = {int(r["key"]): r for r in json.loads(ROWS.read_text(encoding="utf-8"))}

@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """board.html：皮肤音效区补「真名（内部名）」展示。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 OLD_START = "function renderSkinAudio(it){"
 OLD_END = "  return `<details class=\"audio\"><summary>皮肤音效 ${n} 条</summary>${groups}`+\n    `<div class=\"audio-note\">音频由客户端音频库静态提取；含义为人工听辨标注，仅供试听参考。</div></details>`;\n}"
 

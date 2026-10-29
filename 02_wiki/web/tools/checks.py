@@ -29,6 +29,8 @@
 带 TTL 跑一次落盘，主页读缓存（页面上会标明是缓存值）。
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import json
 import re
@@ -36,7 +38,10 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-PROJECT = Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, PROJ  # noqa: E402
+
+PROJECT = Path(PROJ)
 WEB = PROJECT / "02_wiki" / "web"
 API_DIR = PROJECT / "02_wiki" / "api"
 RUN_ALL = PROJECT / "00_规范与工具/工具" / "run_all.py"
@@ -198,8 +203,8 @@ def _row_npk(p, data):
 
 @quick("name_tables_exist", "名字查询表与编号定位表都已建立")
 def _name_tables(p, data):
-    items = [("NAME_LOCATOR.db", WEB / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db"),
-             ("id_locator_index.db", WEB / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db")]
+    items = [("NAME_LOCATOR.db", WEB / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db"),
+             ("id_locator_index.db", WEB / str(INDEX_ROOT / "site_data") / "id_locator_index.db")]
     ok = all(x.is_file() for _n, x in items)
     return ok, " · ".join(f"{n}{'✓' if x.is_file() else '✗'}" for n, x in items)
 

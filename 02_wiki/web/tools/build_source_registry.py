@@ -21,14 +21,18 @@
 server_branch=unresolved 是硬纪律：仅凭客户端目录不可判定经典服/简单生存服。
 """
 from __future__ import annotations
+import pathlib
 
 import hashlib
 import json
 import sys
 from pathlib import Path
 
-AUDIT = Path(r"E:/la拆包项目/01_索引与产物/10_索引/site_data/audit\client_file_maps")
-OUT = Path(r"E:\la拆包项目\02_wiki\\web\data\source_registry.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import DATA_DIR, INDEX_ROOT  # noqa: E402
+
+AUDIT = Path(INDEX_ROOT / "site_data/audit/client_file_maps")
+OUT = Path(DATA_DIR / "source_registry.json")
 CLIENT_ROLE = {"mrzh": "test", "lifeafter": "live"}
 
 CONTAINER_EXTS = {".npk", ".gpk", ".wpk", ".fpk", ".idx"}
@@ -154,7 +158,7 @@ def main() -> int:
     registry = {
         "schema_version": 1,
         "kind": "unified-source-registry",
-        "generated_from": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/client_file_maps/*_file_inventory.jsonl + big_npk_sha.json",
+        "generated_from": str(INDEX_ROOT / "site_data/audit/client_file_maps/*_file_inventory.jsonl + big_npk_sha.json"),
         "scope": "双客户端文件层数据源（后续可能参与解析）",
         "client_channels": {"test": "E:\\mrzh 测试服", "live": "E:\\LifeAfter 正式服"},
         "server_branch_policy": "unresolved（仅凭客户端目录不可判定经典服/简单生存服）",

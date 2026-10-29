@@ -8,6 +8,7 @@
 - 输出：data/audit/package_indexes/<client>_<pkg>.entries.jsonl + package_index_summary.json
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
@@ -18,9 +19,12 @@ sys.path[:0] = [str(Path(__file__).resolve().parent)]
 
 from live_npk_reader import LiveNpkReader, NpkFormatError  # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 REG = ROOT / "data" / "source_registry.json"
-OUT_DIR = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "package_indexes"
+OUT_DIR = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "package_indexes"
 
 # 已知锚：BA8 manifest header.entry_count（目录级，2026-09-07 实测 25,485；
 # 日志 27.14 的"25,373"为旧口径，以 manifest 为准）

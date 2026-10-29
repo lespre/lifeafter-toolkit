@@ -1,9 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """料理板：加「是否可制作」（是否出现在食谱 output_item）+ 板级筛选配置。"""
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data" / "boards"
 
 recipes = json.loads((B / "recipe_catalog.json").read_text(encoding="utf-8"))

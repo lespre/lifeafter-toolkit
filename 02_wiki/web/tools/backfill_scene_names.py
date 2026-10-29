@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """把子代理查出的 25 个场景名回填进 scene_balance.json。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
+OUT = pathlib.Path(ANALYSIS_ROOT / "伤害系统逆向")
 bal = OUT / "scene_balance.json"
 attr = OUT / "scene_attribution/unnamed_scene_ids/scene_attribution.json"
 

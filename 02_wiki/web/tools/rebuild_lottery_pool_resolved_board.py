@@ -6,6 +6,8 @@ Authority inputs are limited to the resolved JSONL and its RULES file.  The
 adapter never merges channels/overlays and never performs an ITEM_MASTER join.
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -14,7 +16,10 @@ from pathlib import Path
 
 from rebuild_wiki_v01 import ROOT, _lottery_board, _write_json
 
-DATA_REL = "E:/la拆包项目/01_索引与产物/10_索引/site_data/LOTTERY_POOL_RESOLVED_v01.jsonl"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+DATA_REL = str(INDEX_ROOT / "site_data/LOTTERY_POOL_RESOLVED_v01.jsonl")
 RULES_REL = "data/LOTTERY_POOL_RESOLVED_v01_RULES.json"
 
 

@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """Independently audit LOTTERY_POOL_RESOLVED v0.1 invariants."""
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -10,10 +12,13 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_DATA = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "LOTTERY_POOL_RESOLVED_v01.jsonl"
+DEFAULT_DATA = ROOT / str(INDEX_ROOT / "site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl"
 DEFAULT_RULES = ROOT / "data" / "LOTTERY_POOL_RESOLVED_v01_RULES.json"
-DEFAULT_OUTPUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "lottery_pool_resolved_v01_audit.json"
+DEFAULT_OUTPUT = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "lottery_pool_resolved_v01_audit.json"
 SCHEMA = "lottery_pool_resolved/v0.1"
 EXPECTED_SOURCE_SHA256 = "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad"
 REQUIRED_PROHIBITIONS = {

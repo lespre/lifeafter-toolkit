@@ -5,11 +5,15 @@ r"""改标：把「传世 + 周年庆」从 1110188（一魂共鸣）撤掉，�
 1110189 没有主表行（无 level），按用户口径标 6传世级，并显式写明来源=用户确认、非表值。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-BOARD = pathlib.Path(r"E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "weapon_skin_sfx_text_sources.json")
 JS = BOARD.with_suffix(".js")
 d = json.loads(BOARD.read_text(encoding="utf-8"))
 

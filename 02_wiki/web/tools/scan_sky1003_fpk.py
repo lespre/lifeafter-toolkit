@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """倒序扫描 049..037.fpk 的解压帧，定位 sky1003 皮肤资源。"""
 from __future__ import annotations
+import pathlib
 
 import io
 import json
@@ -12,15 +13,18 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # User-verified import path; keep source packages read-only.
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
-UNPACKER = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
+UNPACKER = Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描")
 sys.path.insert(0, str(CORE))
 sys.path.insert(0, str(UNPACKER))
 from toolkit_core.fpk_frames import FpkFrameError, iter_fpk_frames
 from lifeafter_unpacker_full import extract_fsb
 
 SRC_ROOT = Path(r"E:\mrzh\res")
-OUT_ROOT = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\sky1003")
+OUT_ROOT = Path(ANALYSIS_ROOT / "sky1003")
 WAV_ROOT = OUT_ROOT / "wav"
 PACK_NUMBERS = list(range(49, 36, -1))
 KEYWORDS = [b"skin_1003_010", b"guangying", b"yongtandiao"]

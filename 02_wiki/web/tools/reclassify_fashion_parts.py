@@ -12,7 +12,9 @@ import re
 import struct
 import sys
 
-PROJ = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402

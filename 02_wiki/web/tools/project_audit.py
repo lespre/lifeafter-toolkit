@@ -3,13 +3,16 @@ r"""项目自查：板块数据完整性 / 索引一致性 / 资源引用 / 发�
 只读检查，输出问题清单与计数。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 from collections import Counter
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, WEB  # noqa: E402
+
 BOARDS = WEB / "data/boards"
 
 
@@ -109,7 +112,7 @@ def check_pages() -> None:
 def check_index() -> None:
     print("\n== PE 索引 ==")
     import sqlite3
-    db = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测/pe_index.sqlite3")
+    db = pathlib.Path(INDEX_ROOT / "热更检测/pe_index.sqlite3")
     if not db.is_file():
         print("  ✗ 索引不存在")
         return

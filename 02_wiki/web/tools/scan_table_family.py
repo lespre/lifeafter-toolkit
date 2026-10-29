@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """
 scan_table_family.py v2 —— 表族通道侦察器（BA8 工作副本）
@@ -21,8 +22,11 @@ import struct
 import sys
 from pathlib import Path
 
-BA8_ENTRIES = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-BA8_MANIFEST = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\manifest.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+
+BA8_ENTRIES = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+BA8_MANIFEST = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/manifest.json")
 TAIL_PAT = re.compile(rb"[A-Za-z0-9_\\]{8,}\.py")
 
 OVERSEA_REGIONS = ("kr", "sea", "kjsea", "kjhmt", "kjjp", "kjna", "au", "hmt", "jp", "tw", "vn", "th")
@@ -107,7 +111,7 @@ def load_fids():
 
 # 解码器（模块级导入，decode_file 共用）
 sys.path[:0] = [str(Path(__file__).resolve().parent),
-                str(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")]
+                str(str(TOOLKIT_CORE))]
 try:
     from bindict_provenance import decode_table_rows_with_chs_slots
     from toolkit_core.bindict_table import parse_legacy_chs_pool

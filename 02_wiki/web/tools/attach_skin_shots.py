@@ -14,6 +14,8 @@
     python tools/attach_skin_shots.py --board data/boards/weapon_skin_sfx_text_sources.json
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -23,10 +25,13 @@ import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, TEMP_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-SHOTS_DIR = Path(r"E:\la拆包项目\01_索引与产物\\90_临时\skin_shots")
+SHOTS_DIR = Path(TEMP_ROOT / "skin_shots")
 ARCHIVE = SHOTS_DIR / "已归档"
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "exports" / "skin_shot_manifest.json"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "exports" / "skin_shot_manifest.json"
 DEFAULT_BOARD = "data/boards/weapon_skin_sfx_text_sources.json"
 EXTS = {".png", ".jpg", ".jpeg", ".webp", ".bmp"}
 ID_RE = re.compile(r"(11\d{5})")

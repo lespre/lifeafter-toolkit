@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """生成 Spine 三件套预览页（离线可看：贴图页 + 骨架信息）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path(r"E:/la拆包项目/02_wiki/web/assets/spine")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+ROOT = pathlib.Path(WEB / "assets/spine")
 man = json.loads((ROOT / "MANIFEST.json").read_text(encoding="utf-8"))
 
 cards = []

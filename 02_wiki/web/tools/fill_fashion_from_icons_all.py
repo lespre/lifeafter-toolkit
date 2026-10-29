@@ -7,7 +7,9 @@ import pathlib
 import sys
 import time
 
-PROJ = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/01_解码定位复原/图集与取图"))

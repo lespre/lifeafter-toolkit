@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """把场景加成上下限做成 wiki 板块（PvP 优先），并挂进三、活动类。"""
 from __future__ import annotations
+import sys
 
 import copy
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
-SRC = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向/scene_balance.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+
+SRC = pathlib.Path(ANALYSIS_ROOT / "伤害系统逆向/scene_balance.json")
 
 PVP_KW = ("南希", "夏尔", "远星", "红杉", "雷达", "爆破", "旷野", "皇牌", "特训")
 

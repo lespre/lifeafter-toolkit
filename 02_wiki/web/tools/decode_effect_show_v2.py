@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """尝试解 weapon_skin_effect_show_data（皮肤战斗表现正式名表）。"""
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
 
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web")
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(WEB))
+sys.path.insert(0, str(TOOLKIT_CORE))
+sys.path.insert(0, str(WEB / "tools"))
 
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
 from _src import cdata_dir  # noqa: E402

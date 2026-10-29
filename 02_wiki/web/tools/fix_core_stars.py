@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """核芯表按经典服口径收口：品级色 + 星上限（蓝5/紫9/金12）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
 B = WEB / "data/boards"
 
 GRADE2COLOR = {"低级": "蓝", "中级": "蓝", "高级": "紫", "特级": "金"}

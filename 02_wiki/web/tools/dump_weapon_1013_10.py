@@ -12,7 +12,9 @@ import sys
 import wave
 from collections import defaultdict
 
-PROJ = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 IDX = PROJ / "01_索引与产物/10_索引/热更检测"
 OUT = PROJ / "01_索引与产物/30_分析/weapon_1013_10_拆解_20261025.md"
 FSB = PROJ / "01_索引与产物/30_分析/fsb_sample_index_pe.json"

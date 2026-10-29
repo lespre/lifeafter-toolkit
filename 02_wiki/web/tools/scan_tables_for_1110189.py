@@ -10,7 +10,10 @@ import pathlib
 import struct
 import sys
 
-ROOT = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+ROOT = pathlib.Path(PROJ)
 TREES = [
     ROOT / "01_索引与产物/41_还原树/pe/配置/script.py314.lc.npk/com/cdata",
     ROOT / "01_索引与产物/41_还原树/pe/配置_增量快照/script.py314.lc.npk/com/cdata",

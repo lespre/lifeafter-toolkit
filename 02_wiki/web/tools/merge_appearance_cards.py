@@ -25,13 +25,16 @@ r"""把「外观补充卡」（长编号）并入同名的时装主卡（短编�
   python merge_appearance_cards.py          # 落盘（同步 .js）
 """
 from __future__ import annotations
+import sys
 
 import argparse
 import json
 import pathlib
 from collections import Counter, defaultdict
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BOARDS = WEB / "data/boards"
 BOARD_JSON = BOARDS / "fashion_wardrobe.json"

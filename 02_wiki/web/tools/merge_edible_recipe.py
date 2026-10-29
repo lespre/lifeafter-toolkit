@@ -7,11 +7,14 @@ r"""可食用 + 食谱合并：食谱成为「可烹饪」子项。
 - recipe_book 板块退役
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 
 def main() -> int:

@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """时装板：默认只显示有图；新增「仅玩家可见名」勾选项。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 
 
 def rep(s: str, old: str, new: str, tag: str) -> str:

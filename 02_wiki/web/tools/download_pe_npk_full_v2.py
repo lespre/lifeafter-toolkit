@@ -14,7 +14,9 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 MAN = PROJ / "01_索引与产物/10_索引/pl_npk_version_android4_playertest.json"
 OUT = PROJ / "01_索引与产物/源包/pe_npk_full"
 HOST = "https://g66.gph.netease.com"

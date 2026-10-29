@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 """规范化 provenance.table：去掉注解后缀；仍解析不到的标 table_status=unresolved。"""
 from __future__ import annotations
+import sys
 
 import collections
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT, WEB  # noqa: E402
+
 TREES = [
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照"),
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/Documents/script.py314.lc.npk"),
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/apk_mumu_5.0.679/assets/script.py314.lc.npk"),
+    pathlib.Path(TREE_ROOT / "pe/配置_增量快照"),
+    pathlib.Path(TREE_ROOT / "Documents/script.py314.lc.npk"),
+    pathlib.Path(TREE_ROOT / "apk_mumu_5.0.679/assets/script.py314.lc.npk"),
 ]
 BS = chr(92)
 

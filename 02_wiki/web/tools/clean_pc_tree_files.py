@@ -5,7 +5,10 @@ import pathlib
 import shutil
 import sys
 
-ROOT = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pc")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT  # noqa: E402
+
+ROOT = pathlib.Path(TREE_ROOT / "pc")
 GUARD = ("41_还原树/pe/资源", "源包", "pe_20261020")
 
 

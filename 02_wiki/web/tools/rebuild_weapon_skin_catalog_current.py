@@ -15,6 +15,7 @@ Evidence layers:
   reference fields (former names keep their origin there).
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import csv
@@ -34,7 +35,10 @@ from stamp_board_contract import stamp as _stamp_contract  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, SOURCE_PKG_ROOT, TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 sys.path.insert(0, str(CORE))
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_rows import uleb  # noqa: E402
@@ -42,19 +46,19 @@ from toolkit_core.bindict_table import parse_legacy_chs_pool, parse_index  # noq
 
 SOURCE_REGISTRY = ROOT / "data" / "live_sources.json"
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "weapon_skin_sfx_text_sources.json"
-DEFAULT_CSV_OUTPUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "exports" / "weapon_skin_catalog_current.csv"
-DEFAULT_REFERENCE_CSV = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "reference_inputs" / "weapon_skin_catalog_user_reference_v3_2.csv"
+DEFAULT_CSV_OUTPUT = ROOT / str(INDEX_ROOT / "site_data") / "exports" / "weapon_skin_catalog_current.csv"
+DEFAULT_REFERENCE_CSV = ROOT / str(INDEX_ROOT / "site_data") / "reference_inputs" / "weapon_skin_catalog_user_reference_v3_2.csv"
 CURRENT_SOURCE_ID = "documents-py314-current"
 # ★ 2026-10-01：客户端现场的根包已被热更覆盖（465,363,048 B），
 #   但本文件锁定的是「8-27 对照基线」——语义要求那份基线【不变】。
 #   ⇒ 指向我们保存的【历史快照】而不是客户端现场（快照与锁定的
 #     sha256/bytes/mtime_ns 三者完全一致，已实测；所以下面三个锁一个都不动）。
-ROOT_BASELINE_PATH = Path(r"E:\la拆包项目\01_索引与产物\源包\热更历史容器_20260829-20260916\pre_update_20260831_182129\raw_priority\script.py314.lc.npk")
+ROOT_BASELINE_PATH = Path(SOURCE_PKG_ROOT / "热更历史容器_20260829-20260916/pre_update_20260831_182129/raw_priority/script.py314.lc.npk")
 ROOT_BASELINE_SHA256 = "0f824b35120f42e310a6f42e4ea20200d9465ad34c2e98f47c8ecaf9853b03b7"
 ROOT_BASELINE_BYTES = 455_619_092
 ROOT_BASELINE_MTIME_NS = 1_787_829_591_216_349_300
 REFERENCE_SHA256 = "827935d81e276c90559ae69401aed9a4e7cf7d75633a96f1ddc7277874998456"
-REFERENCE_RELATIVE_PATH = "E:/la拆包项目/01_索引与产物/10_索引/site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv"
+REFERENCE_RELATIVE_PATH = str(INDEX_ROOT / "site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv")
 
 FIDS = {
     "weapon_skin_base": "765AB12F1D6EB0EA",

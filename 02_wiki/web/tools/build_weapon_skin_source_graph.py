@@ -15,6 +15,7 @@
   - historical/derived 来源只能做对照/回归/冲突检测，不得升级为 truth。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
@@ -27,9 +28,12 @@ sys.path.insert(0, str(ROOT))
 from pipelines.locator.resolve_table import resolve_table      # noqa: E402
 from pipelines.parsing.decoder import decode_table             # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 BA = "test-documents-ba8a239a"
 OUT = ROOT / "domains" / "weapon_skin"
-INVENTORY = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
+INVENTORY = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl"
 
 # ── 来源声明（role/type/期望字段/身份键/获取方式）；含 live 验证的走 locator+decoder ──
 CANONICAL = [
@@ -94,7 +98,7 @@ HISTORICAL = [
      "行为资源预览板"),
     ("hist.artifact.v01", "artifacts/historical/weapon_skin/v01/WEAPON_SKIN_RESOLVED.jsonl", ["historical_only"], "skin_item_id",
      "旧 artifact（115 行，board 派生 grade）"),
-    ("presentation.user_catalog_ip", "E:/la拆包项目/01_索引与产物/10_索引/site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv#联动IP", ["ip_liaison"], "skin_id",
+    ("presentation.user_catalog_ip", str(INDEX_ROOT / "site_data/reference_inputs/weapon_skin_catalog_user_reference_v3_2.csv#联动IP"), ["ip_liaison"], "skin_id",
      "用户提供的历史目录：128 行中 23 行有联动IP（→ legacy 板 ip_now → 展示边车）；canonical weapon_skin_data 无 IP 字段"),
 ]
 

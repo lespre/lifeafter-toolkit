@@ -9,6 +9,7 @@ v2 (2026-09-04 用户定版)：
   - 武器类型显示=种类（码）同行；simple/attr 文案不进卡（数据层保留于源码回放）
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import re
@@ -16,6 +17,9 @@ import struct
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "nucleus_cards_classic.json"
@@ -28,7 +32,7 @@ ENTRIES_CLASSIC = [
     ("nucleus_build_data_chs", 34899),
 ]
 # 简单生存服·体验服（BA8）：淬焰燃锋等独有核芯 + 名册品级兜底
-BA8_ENTRIES = r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries"
+BA8_ENTRIES = str(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
 BA8_BUILD_BASE = 16783
 BA8_BUILD_CHS = 23314
 BA8_CI_BASE = 18005
@@ -54,7 +58,7 @@ def _grade_of(text: str) -> str:
 
 def _load():
     import sys as _s
-    for p in (r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心", str(ROOT / "tools")):
+    for p in (str(TOOLKIT_CORE), str(ROOT / "tools")):
         if p not in _s.path:
             _s.path.insert(0, p)
     from toolkit_core.bindict_table import parse_legacy_chs_pool, uleb

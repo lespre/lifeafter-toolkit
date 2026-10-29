@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""给仍在发布的旧板补 provenance（发布门禁要求的 5 个字段），来源用板自带的 package_sha。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 TARGETS = {
     "gift_data_text_sources": ("gift-data-text", "com\\cdata\\gift_data.py"),
     "weapon_attrs_schema_static": ("all-equips-attrs", "com\\cdata\\all_equips_data.py"),

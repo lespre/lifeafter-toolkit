@@ -9,11 +9,15 @@ r"""把 wiki 主页换成官网《明日之后》视觉：冷蓝钢灰底 + 血�
   高亮    #d9a441（金，用于稀有/计数）
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 import shutil
 
-HTML = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+HTML = pathlib.Path(WEB / "wiki.html")
 BAK = HTML.with_suffix(".html.bak_officialtheme")
 
 CSS = r"""

@@ -11,7 +11,9 @@ import sys
 
 from PIL import Image  # noqa: E402
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/kill_broadcast.json"
 ASSETS = WEB / "assets/kill_broadcast"
 

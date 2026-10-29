@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 r"""收尾：把看板里「星魂追光只是候选名」的旧叙述改成「已由道具行正式名取代」。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-BOARD = pathlib.Path(r"E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "weapon_skin_sfx_text_sources.json")
 JS = BOARD.with_suffix(".js")
 d = json.loads(BOARD.read_text(encoding="utf-8"))
 

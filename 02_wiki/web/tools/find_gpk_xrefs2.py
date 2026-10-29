@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 """找 GPK ReadFromFile / decrypt_content 字符串的 ARM64 xref。"""
 from __future__ import annotations
+import pathlib
 
 import struct
 import sys
 
-sys.path.insert(0, r"E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+sys.path.insert(0, str(WEB / "tools"))
 from find_gpk_xrefs_arm64 import Elf, adrp_target  # noqa: E402
 
-SO = r"E:/la拆包项目/01_索引与产物/30_分析/客户端逆向_20261022/libclient_emulator_arm64.so"
+SO = str(ANALYSIS_ROOT / "客户端逆向_20261022/libclient_emulator_arm64.so")
 
 
 def main() -> int:

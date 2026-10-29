@@ -6,6 +6,8 @@ Read-only inputs. The generated JSON is a report only: no name inference,
 activity/shop/lottery joins, or candidate-to-locator join is performed.
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import datetime as dt
@@ -16,10 +18,13 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_CHAIN_CANDIDATES.jsonl"
-DEFAULT_DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db"
+DEFAULT_CANDIDATES = ROOT / str(INDEX_ROOT / "site_data") / "NAME_CHAIN_CANDIDATES.jsonl"
+DEFAULT_DB = ROOT / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db"
 DEFAULT_OUTPUT = ROOT / "data" / "name_chain_audit.json"
 
 FOUR_STATES = ("verified", "likely", "unresolved", "unsafe")

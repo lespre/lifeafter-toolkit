@@ -7,6 +7,7 @@
 cost/item 组为当前价格、货币或发放物。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import csv
@@ -20,7 +21,10 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-TOOLKIT = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+TOOLKIT = Path(TOOLKIT_CORE)
 if str(TOOLKIT) not in sys.path:
     sys.path.insert(0, str(TOOLKIT))
 
@@ -278,7 +282,7 @@ def main() -> int:
     parser.add_argument(
         "--entries",
         type=Path,
-        default=Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_780363b86008\entries"),
+        default=Path(ANALYSIS_ROOT / "config_work/script_py314_docs_780363b86008/entries"),
     )
     parser.add_argument(
         "--source-package",

@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """副标题来源归一：把 meta.source_server 的长句压成可核对的口径，写进 meta.source_label。
 
@@ -12,7 +13,9 @@
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data" / "boards"
 
 RULES = [

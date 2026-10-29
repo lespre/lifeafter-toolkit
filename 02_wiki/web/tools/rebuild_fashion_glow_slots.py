@@ -13,6 +13,7 @@
   彩虹大神荧光棒与普通荧光棒，缺 荧光棒·X 系列 7 款（本板补全）。
 """
 from __future__ import annotations
+import pathlib
 
 import hashlib
 import json
@@ -22,7 +23,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from live_npk_reader import LiveNpkReader, _unpack_entry  # noqa: E402
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402

@@ -1,10 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """动态标记：所有「框」图仍是 1292×812 旧产物且资源不可得的名片框 → 去坏图标状态。"""
 import json
 import pathlib
 from PIL import Image
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/avatar_catalog.json"
 d = json.loads(BOARD.read_text(encoding="utf-8"))
 

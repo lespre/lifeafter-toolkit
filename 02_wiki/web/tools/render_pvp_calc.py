@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """生成 PvP 伤害倍率计算器（公式来自 HurtCalc 反编译）。"""
 import pathlib
 
-OUT = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+OUT = pathlib.Path(WEB / "analysis")
 
 HTML = """<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <title>PvP 伤害倍率计算器</title>

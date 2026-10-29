@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """体检：board_builders 注册表 → 各板块能否在别的机器重建（脚本在不在、输入是什么、有无硬编码）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 _reg_raw = json.loads((ROOT / "02_wiki/web/data/board_builders.json").read_text(encoding="utf-8"))
 REG = _reg_raw.get("boards") if isinstance(_reg_raw, dict) else _reg_raw
 

@@ -21,6 +21,7 @@ all_equips(oversea yk) + 01_索引与产物/10_索引/items/{common_item_names,s
 输出：data/boards/lottery_periods.json (+ .js)
 """
 from __future__ import annotations
+import pathlib
 
 import datetime as dt
 import hashlib
@@ -32,7 +33,10 @@ from pathlib import Path
 
 WEB = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WEB / "tools"))
-sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ENV_DIR, INDEX_ROOT, TOOLKIT_CORE, TREE_ROOT  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 
 from toolkit_core.bindict_table import (decode_86_row, parse_index,  # noqa: E402
                                        parse_legacy_chs_pool, resolve_jump_group)
@@ -40,7 +44,7 @@ from toolkit_core.bindict_rows import uleb  # noqa: E402
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from preview_board_contract import apply_frozen_v3  # noqa: E402
 
-TREE = Path(r"E:\la拆包项目\01_索引与产物\41_还原树\Documents\script.py314.lc.npk\com\cdata")
+TREE = Path(TREE_ROOT / "Documents/script.py314.lc.npk/com/cdata")
 OVER = TREE / "oversea"
 PKG = Path(r"E:\mrzh\Documents\script.py314.lc.npk")
 OUT_BOARD = WEB / "data" / "boards" / "lottery_periods.json"
@@ -191,7 +195,7 @@ def kind_of(item_id: int) -> str:
 
 class Names:
     def __init__(self):
-        idx_items = Path(r"E:\la拆包项目\01_索引与产物\10_索引\items")
+        idx_items = Path(INDEX_ROOT / "items")
         self.maps: dict[str, tuple[dict[str, str], str]] = {}
         self.icons: dict[int, tuple[str, str]] = {}
 
@@ -809,8 +813,8 @@ def write_report(board, names, table_ref, pkg_sha) -> None:
     A("")
     A("## 5. 复现\n")
     A("```")
-    A("E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe 02_wiki/web/tools/rebuild_lottery_periods.py")
-    A("E:/la拆包项目/00_规范与工具/环境/venv/Scripts/python.exe 02_wiki/web/tools/build_wiki.py")
+    A(str(ENV_DIR / "venv/Scripts/python.exe 02_wiki/web/tools/rebuild_lottery_periods.py"))
+    A(str(ENV_DIR / "venv/Scripts/python.exe 02_wiki/web/tools/build_wiki.py"))
     A("```")
 
     out = OUT_BOARD.parent / "_report_lottery_periods.md"

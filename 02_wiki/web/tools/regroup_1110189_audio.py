@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """1110189：把音效分成「本体音 / 通用开火 / 通用补充」，并去掉与 lp1 完全相同的 lp2。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 DIR = ROOT / "02_wiki/web/assets/audio/weapon_skin/penhuoqi_base"
 

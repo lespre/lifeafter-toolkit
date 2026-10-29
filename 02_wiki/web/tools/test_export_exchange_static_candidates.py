@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """当前 Documents 静态商店候选总表的回归测试。"""
 import sys
@@ -8,6 +9,9 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
 from export_exchange_static_candidates import build_static_board  # noqa: E402
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
 
 
 class StaticExchangeBoardTests(unittest.TestCase):

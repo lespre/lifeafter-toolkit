@@ -1,11 +1,14 @@
+import sys
 # -*- coding: utf-8 -*-
 """列出仍缺男图的卡（含现有图 base、model、部位），并写清单文件。"""
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
-OUT = pathlib.Path("E:/la拆包项目/01_索引与产物/30_分析/时装仍缺男图_20261025.md")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+
+OUT = pathlib.Path(ANALYSIS_ROOT / "时装仍缺男图_20261025.md")
 
 
 def main() -> int:

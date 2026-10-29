@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """统计 web 下各 html 的入链（被其它页面引用次数），列出零入链页面。"""
 import pathlib
 import re
 
-W = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+W = pathlib.Path(WEB)
 pages = sorted(p.name for p in W.glob("*.html"))
 texts = {p.name: p.read_text(encoding="utf-8", errors="ignore") for p in W.glob("*.html")}
 

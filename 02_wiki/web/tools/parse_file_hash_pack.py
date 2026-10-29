@@ -8,6 +8,7 @@
 只读解析 TOC；对少量 h_data/x_data 抽样做 MD5 验证。输出评估：能提供哪些全局文件索引信息。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -17,7 +18,10 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-AUDIT = Path(r"E:/la拆包项目/01_索引与产物/10_索引/site_data/audit")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+AUDIT = Path(INDEX_ROOT / "site_data/audit")
 OUT_DIR = AUDIT / "file_hash_pack"
 HEADER = struct.Struct("<4sIIII20s")
 TAIL = struct.Struct("<QIQI16s16s")

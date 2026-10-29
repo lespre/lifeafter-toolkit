@@ -7,11 +7,14 @@ import pathlib
 import struct
 import sys
 
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TREE_ROOT  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-CD = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata")
-OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向")
+CD = pathlib.Path(TREE_ROOT / "pe/配置/com/cdata")
+OUT = pathlib.Path(ANALYSIS_ROOT / "伤害系统逆向")
 
 
 def rows_of(p: pathlib.Path, chs: pathlib.Path | None = None):

@@ -8,11 +8,14 @@ r"""天赋总表合并：new_talent_data(基础) + theme_new_talent_data(主题)
 输出：talent_catalog（合并后），theme_talent_catalog 退役
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 
 def main() -> int:

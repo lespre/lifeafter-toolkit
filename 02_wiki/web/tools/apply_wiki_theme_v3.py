@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 r"""主题 v3：顶部军械库剪影 + 修掉一级项的小圆点 + 卡片排版微调。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 import re
 
-HTML = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+HTML = pathlib.Path(WEB / "wiki.html")
 
 HERO_IMGS = ["1110001", "1110005", "1110012", "1110021"]
 

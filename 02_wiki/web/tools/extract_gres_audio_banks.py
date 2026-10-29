@@ -10,6 +10,7 @@
 用法：python tools/extract_gres_audio_banks.py [--packs N]
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -21,10 +22,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")))
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描")))
 import lifeafter_unpacker_full as m  # noqa: E402
 
-DEST = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\skin_audio_all")
+DEST = Path(ANALYSIS_ROOT / "skin_audio_all")
 OUT = ROOT / "analysis" / "audit" / "gres_audio_banks.json"
 GRES = Path(r"E:\mrzh\Documents\gres")
 KEYS = ("skin", "weapon", "wepon", "wuqi", "hexin", "gunshot", "qiang", "dao", "jiguan")

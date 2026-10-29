@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """补齐部位补卡的 provenance（契约要求 source_id / locator_chain / source_lock_sha256 / upstream）。"""
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
-CD = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT, WEB  # noqa: E402
+
+CD = pathlib.Path(TREE_ROOT / "pe/配置/com/cdata")
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 SEP = chr(92)
 

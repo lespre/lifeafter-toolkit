@@ -6,8 +6,11 @@ import pathlib
 import subprocess
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import SOURCE_PKG_ROOT  # noqa: E402
+
 ADB = r"E:/leidian/LDPlayer14/adb.exe"
-SRC = pathlib.Path("E:/la拆包项目/01_索引与产物/源包/pe_gres_android")
+SRC = pathlib.Path(SOURCE_PKG_ROOT / "pe_gres_android")
 DST = "/data/media/0/Android/data/com.netease.mrzh/files/netease/g66/Documents/gres"
 
 

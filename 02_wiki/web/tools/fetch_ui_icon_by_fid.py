@@ -5,11 +5,14 @@ from __future__ import annotations
 import pathlib
 import sys
 
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TEMP_ROOT, TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 import la_unpack_core as core  # noqa: E402
 
 RES = pathlib.Path(r"E:/mrzh/res")
-OUT = pathlib.Path(r"E:/la拆包项目/01_索引与产物/90_临时/ui_icons")
+OUT = pathlib.Path(TEMP_ROOT / "ui_icons")
 FIDS = {
     "3FFB31FC57B53000": "icon_touxiangkuang_01",
 }

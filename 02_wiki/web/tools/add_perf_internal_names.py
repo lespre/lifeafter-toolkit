@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """武器皮肤「特效与战斗表现」补内部名：每行显示 中文真名 + 内部资源名（.sfx 基名）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 
 
 def rep(s: str, old: str, new: str, tag: str) -> str:

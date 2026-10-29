@@ -5,6 +5,7 @@
 实现：硬链接进 配置_v2（不复制内容、不占空间），校验通过后再换名上线。
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
@@ -12,7 +13,10 @@ import os
 import pathlib
 import shutil
 
-PE = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pe")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT  # noqa: E402
+
+PE = pathlib.Path(TREE_ROOT / "pe")
 SRC = [("增量快照", PE / "配置_增量快照/com/cdata"),
        ("合并体", PE / "配置/com/cdata"),
        ("基线包", PE / "配置_基线包/com/cdata")]

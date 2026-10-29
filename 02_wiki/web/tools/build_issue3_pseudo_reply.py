@@ -5,10 +5,14 @@
 输出到 scratch，供 gh issue comment --body-file 使用。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-SRC = pathlib.Path("E:/la拆包项目/01_索引与产物/30_分析/伤害系统逆向")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
+SRC = pathlib.Path(ANALYSIS_ROOT / "伤害系统逆向")
 OUT = pathlib.Path("C:/Users/Administrator/AppData/Local/hermes/cache/scratch")
 
 REPO = "https://github.com/lespre/lifeafter-toolkit/blob/main/00_%E8%A7%84%E8%8C%83%E4%B8%8E%E5%B7%A5%E5%85%B7/%E6%B2%BB%E7%90%86/%E6%89%8B%E5%86%8C/"

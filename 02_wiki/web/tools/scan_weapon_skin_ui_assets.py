@@ -15,6 +15,7 @@
 用法：python tools/scan_weapon_skin_ui_assets.py [--max N] [--sha8 508bb5bd]
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -25,9 +26,12 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 
 PKG = Path(r"E:\mrzh\Documents\script.py314.lc.npk")
 

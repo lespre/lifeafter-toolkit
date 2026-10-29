@@ -6,12 +6,16 @@ part_code → 部位（用户 2026-10-26 口径）
 不再单开 捏脸 / 戒指 / 花苞 板块，全部合进人物时装。
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 B = ROOT / "02_wiki/web/data/boards"
 FW = B / "fashion_wardrobe.json"
 EX = B / "appearance_extra.retired.json"

@@ -7,6 +7,7 @@
 用法：python tools/build_skin_assets.py --pack 0045 --out <目录>
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import io
@@ -21,7 +22,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")))
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描")))
 import lifeafter_unpacker_full as m  # noqa: E402
 from PIL import Image, ImageDraw  # noqa: E402
 

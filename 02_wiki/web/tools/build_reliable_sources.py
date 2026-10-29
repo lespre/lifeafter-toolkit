@@ -10,16 +10,21 @@ can_prove/cannot_prove 按关键槽状态陈述（事实性，不升华语义）
 KJ1 格式表（无 schema 字段语义）=kj1-format 单列 unresolved（本层不适用）。
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import json
 import re
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-TE = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
-RULES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json"
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "RELIABLE_SOURCES.json"
+TE = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl"
+RULES = ROOT / str(INDEX_ROOT / "site_data") / "FIELD_RULES.json"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "RELIABLE_SOURCES.json"
 OUT_RULES = ROOT / "data" / "SOURCE_RULES.json"
 OUT_MD = ROOT / "docs" / "SOURCE_RULES.md"
 

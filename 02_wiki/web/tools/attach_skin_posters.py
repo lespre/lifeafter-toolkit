@@ -6,13 +6,16 @@ r"""把 assets/skin_posters/<skin_id>.png 挂到武器皮肤媒体库里（用�
 两边口径一致，下次重建不会把海报冲掉。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import shutil
 import datetime
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 MEDIA_JS = WEB / "data/media/weapon_skin_media.js"
 POSTERS = WEB / "assets/skin_posters"
 PREFIX = "window.WEAPON_SKIN_MEDIA = "

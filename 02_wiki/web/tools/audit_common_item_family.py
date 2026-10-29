@@ -16,6 +16,7 @@ Every row keeps its source-role identity (base / increment).  The audit
 reads the locked BA8 working copy only; the NPK sources are untouched.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -26,8 +27,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
-BA8_ENTRIES = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit"
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+BA8_ENTRIES = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / str(INDEX_ROOT / "site_data") / "audit"
 
 BASE_ENTRY, BASE_CHS = "018005.bin", "023928.bin"
 INC_ENTRY, INC_CHS = "005292.bin", "002592.bin"
@@ -44,7 +48,7 @@ LOCKED_SHA256 = {
 
 def _load_tools() -> None:
     sys.path[:0] = [str(Path(__file__).resolve().parent),
-                    r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"]
+                    str(TOOLKIT_CORE)]
 
 
 _load_tools()

@@ -16,6 +16,7 @@ order, key-overwrite semantics, delete-key values, gray-release conditions or
 live-server enablement.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -25,8 +26,11 @@ import sys
 import datetime as dt
 from pathlib import Path
 
-BA8_ENTRIES = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT  # noqa: E402
+
+BA8_ENTRIES = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / str(INDEX_ROOT / "site_data") / "audit"
 
 # SHA-256 locks captured from the locked BA8 working copy (2026-09-07).
 LOCKED_SHA256 = {
@@ -124,7 +128,7 @@ def build_report() -> dict[str, object]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=DEFAULT_OUTPUT,
-                    help="E:/la拆包项目/01_索引与产物/10_索引/site_data/audit)")
+                    help=str(INDEX_ROOT / "site_data/audit)"))
     args = ap.parse_args()
     report = build_report()
     args.out.mkdir(parents=True, exist_ok=True)

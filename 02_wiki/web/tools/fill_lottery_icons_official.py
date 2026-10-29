@@ -15,7 +15,9 @@ import struct
 import sys
 from collections import defaultdict
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 ROOT = PROJ / "01_索引与产物/41_还原树/pe_test_script"
 DET = PROJ / "01_索引与产物/10_索引/热更检测"

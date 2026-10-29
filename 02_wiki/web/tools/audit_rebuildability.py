@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """抽样审计：每个已发布板块能否在新设备全量拆包后重建。
 
@@ -10,7 +11,9 @@ import json
 import pathlib
 import re
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 DATA = WEB / "data"
 TOOLS = WEB / "tools"
 

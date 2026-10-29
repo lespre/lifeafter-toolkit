@@ -1,10 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """非时装板块：同一 kind/label 的 2D 图只保留最清晰的一张（像素面积 > 后缀档位 > 文件大小）。"""
 import json
 import pathlib
 from collections import defaultdict
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARDS = WEB / "data" / "boards"
 KEEP_ALL = {"fashion_wardrobe"}
 SUFFIX_RANK = {"_b": 3, "": 2, "_s": 1, "_low": 0}

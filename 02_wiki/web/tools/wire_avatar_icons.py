@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """把 assets/avatar_icons/<item_id>.png 挂到名片框板卡面（有图才挂）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 ICONS = WEB / "assets/avatar_icons"
 
 

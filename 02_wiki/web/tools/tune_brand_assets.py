@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """微调品牌图：横幅更明显、侧栏海报更清楚。"""
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 # 横幅：给高度 + 右侧少压暗，让 P1 露出来

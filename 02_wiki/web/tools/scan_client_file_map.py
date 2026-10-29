@@ -9,6 +9,7 @@
 - dir_role 按顶层目录角色：root/bin/Documents/res/launcher_conf/…
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -17,6 +18,9 @@ import os
 import sys
 import time
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 SHA_EXTENSIONS = {
     ".npk", ".gpk", ".wpk", ".idx", ".fpk", ".pi", ".pak", ".ini", ".conf",
@@ -115,7 +119,7 @@ def main() -> int:
     ap.add_argument("--max-sha-bytes", type=int, default=400 << 20)
     args = ap.parse_args()
     root = Path(r"E:\mrzh" if args.client == "mrzh" else r"E:\LifeAfter")
-    out_dir = Path(r"E:/la拆包项目/01_索引与产物/10_索引/site_data/audit\client_file_maps")
+    out_dir = Path(INDEX_ROOT / "site_data/audit/client_file_maps")
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{args.client}_file_inventory.jsonl"
     lines, counts = scan(root, args.max_sha_bytes)

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """给「板上只有同套其他部位、缺本部位独立卡」的登记行补卡（如 不湮之花-头饰）。"""
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 REG = WEB / "data/fashion_registry.json"
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 PART_END = re.compile(r"[-·](衣服|头饰|背包|光源|整套|面饰|发饰)$")

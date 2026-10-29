@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """给 la.py 加 skin 命令：fx-names 解武器皮肤战斗表现正式名 / check 与现有产物比对。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/la.py")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+P = pathlib.Path(PROJ / "la.py")
 
 
 def main() -> int:

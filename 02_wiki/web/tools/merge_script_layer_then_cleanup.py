@@ -5,12 +5,16 @@
 必须先并进来，否则删掉留档会丢脚本层。
 """
 from __future__ import annotations
+import sys
 
 import os
 import pathlib
 import shutil
 
-PE = pathlib.Path("E:/la拆包项目/01_索引与产物/41_还原树/pe")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT  # noqa: E402
+
+PE = pathlib.Path(TREE_ROOT / "pe")
 DST = PE / "配置"
 OLD = PE / "配置_旧_20261026"
 RETIRED = [PE / "配置_基线包.retired", PE / "配置_增量快照.retired", OLD]

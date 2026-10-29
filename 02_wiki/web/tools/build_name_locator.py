@@ -20,6 +20,7 @@ SQLite 表：
 """
 
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -32,10 +33,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_INPUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_CHAIN_CANDIDATES.jsonl"
-DEFAULT_DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db"
+DEFAULT_INPUT = ROOT / str(INDEX_ROOT / "site_data") / "NAME_CHAIN_CANDIDATES.jsonl"
+DEFAULT_DB = ROOT / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db"
 
 REQUIRED_FIELDS = (
     "client",

@@ -7,11 +7,14 @@ r"""把用户实机确认的限定芯片锚点写进奖池板（幂等，可重�
 其余期无客户端映射，保持空并注明。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 P = WEB / "data/boards/lottery_periods.json"
 FAM = "BeltChipSpecialLottery"
 

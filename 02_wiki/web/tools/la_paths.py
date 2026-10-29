@@ -34,7 +34,7 @@ from la_paths import PROJ, WEB, BOARDS_DIR, RULES_DIR, TREE_ROOT, client_root
 from la_paths import PROJ, WEB
 ```
 
-★ 纪律：**新脚本一律用本模块，不要再写 `Path(r"E:/la拆包项目")`。**
+★ 纪律：**新脚本一律用本模块，不要再写 `Path(PROJ)`。**
    体检工具：python 02_wiki/web/tools/checks/portability_audit.py
 """
 from __future__ import annotations
@@ -107,6 +107,7 @@ def find_project_root(explicit: str | os.PathLike | None = None) -> pathlib.Path
 # ── 项目根与派生目录 ────────────────────────────────────────────────
 PROJ: pathlib.Path = find_project_root()
 WEB: pathlib.Path = PROJ / "02_wiki" / "web"
+WIKI_DIR: pathlib.Path = PROJ / "02_wiki"
 BOARDS_DIR: pathlib.Path = WEB / "data" / "boards"
 DATA_DIR: pathlib.Path = WEB / "data"
 RULES_DIR: pathlib.Path = PROJ / "02_wiki" / "rules"
@@ -115,8 +116,16 @@ ARTIFACTS: pathlib.Path = PROJ / "01_索引与产物"
 TREE_ROOT: pathlib.Path = ARTIFACTS / "41_还原树"
 INDEX_ROOT: pathlib.Path = ARTIFACTS / "10_索引"
 ANALYSIS_ROOT: pathlib.Path = ARTIFACTS / "30_分析"
-TOOLKIT_CORE: pathlib.Path = PROJ / "00_规范与工具" / "工具" / "工具库" / "00_共享核心"
+TEMP_ROOT: pathlib.Path = ARTIFACTS / "90_临时"
+EXTRACT_ROOT: pathlib.Path = ARTIFACTS / "20_提取"
+SOURCE_PKG_ROOT: pathlib.Path = ARTIFACTS / "源包"
+PENDING_DELETE_ROOT: pathlib.Path = ARTIFACTS / "95_待清理"
+REVIEW_ROOT: pathlib.Path = ARTIFACTS / "96_审阅区"
+TOOLKIT_DIR: pathlib.Path = PROJ / "00_规范与工具" / "工具"
+TOOLKIT_LIB: pathlib.Path = TOOLKIT_DIR / "工具库"
+TOOLKIT_CORE: pathlib.Path = TOOLKIT_LIB / "00_共享核心"
 GOV_ROOT: pathlib.Path = PROJ / "00_规范与工具" / "治理"
+ENV_DIR: pathlib.Path = PROJ / "00_规范与工具" / "环境"
 
 
 def client_root(explicit: str | os.PathLike | None = None) -> pathlib.Path:

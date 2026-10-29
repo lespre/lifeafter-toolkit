@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Independent audit for the P4-3 fashion identity bundle."""
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 from collections import Counter, defaultdict
@@ -10,11 +12,14 @@ from pathlib import Path
 import sqlite3
 from typing import Any, Iterable
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FASHION_IDENTITY_CANDIDATES.jsonl"
+DEFAULT_CANDIDATES = ROOT / str(INDEX_ROOT / "site_data") / "FASHION_IDENTITY_CANDIDATES.jsonl"
 DEFAULT_RULES = ROOT / "data" / "FASHION_IDENTITY_RULES.json"
 DEFAULT_CONFLICTS = ROOT / "data" / "FASHION_IDENTITY_CONFLICTS.jsonl"
-DEFAULT_DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FASHION_IDENTITY_LOCATOR.db"
+DEFAULT_DB = ROOT / str(INDEX_ROOT / "site_data") / "FASHION_IDENTITY_LOCATOR.db"
 DEFAULT_REPORT = ROOT / "data" / "fashion_identity_audit.json"
 EXPECTED_NEGATIVE_CONTROLS = {
     "cross_table_equal_integer_rejected",

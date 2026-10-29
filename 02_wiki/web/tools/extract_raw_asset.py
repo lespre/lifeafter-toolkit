@@ -9,7 +9,9 @@ import pathlib
 import sqlite3
 import sys
 
-PROJ = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
 PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))

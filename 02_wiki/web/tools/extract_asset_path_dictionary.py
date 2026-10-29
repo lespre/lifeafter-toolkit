@@ -15,6 +15,7 @@
 用法：python tools/extract_asset_path_dictionary.py [--limit N]
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -24,9 +25,12 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-WORKCOPY = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_508BB5BD")
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "asset_path_dictionary.jsonl"
+WORKCOPY = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_508BB5BD")
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "asset_path_dictionary.jsonl"
 SUMMARY = ROOT / "data" / "asset_path_dictionary.summary.json"
 PATH_RE = re.compile(rb"(?:[A-Za-z0-9_][A-Za-z0-9_/\\.-]{2,180})\.(?:png|dds|tga|jpg|gim|mat|mesh|fx|sfx|prefab|anim|bnk|wem|ogg|mp3|wav|fbx|atlas)", re.I)
 

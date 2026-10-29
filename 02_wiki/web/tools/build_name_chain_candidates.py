@@ -15,6 +15,7 @@ Rules:
 """
 
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -24,6 +25,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
 
 
 PRIMARY_FIELDS = frozenset({"name", "display_name", "show_name"})
@@ -61,7 +65,7 @@ def _load_tools() -> None:
     """Make the repository decoder and shared toolkit importable."""
     sys.path[:0] = [
         str(Path(__file__).resolve().parent),
-        r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心",
+        str(TOOLKIT_CORE),
     ]
 
 

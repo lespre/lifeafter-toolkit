@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 r"""礼盒「内含」父子关系：解析 desc 文本（候选级）。"""
 from __future__ import annotations
+import sys
 
 import collections
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 P = WEB / "data/boards/item_master_full.json"
 
 COLOR = re.compile(r"#c[0-9a-fA-F]{6,8}|#n|#r|#b")

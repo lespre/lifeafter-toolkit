@@ -4,13 +4,17 @@
 表很小（6.7 KB），先把原始结构打出来，确认字段后再接到板子。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import struct
 import sys
 
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
-sys.path.insert(0, "E:/la拆包项目/02_wiki/web/tools")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
+sys.path.insert(0, str(WEB / "tools"))
 from toolkit_core.bindict_table import decode_table_rows, parse_legacy_chs_pool  # noqa: E402
 from _src import cdata_dir  # noqa: E402
 

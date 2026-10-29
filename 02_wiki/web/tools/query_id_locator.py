@@ -9,13 +9,17 @@
 输出：client/kind/package/entry/offset/size/flag 各出现位置（纯位置信息）。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import sqlite3
 import sys
 from pathlib import Path
 
-DB = Path(__file__).resolve().parents[1] / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+DB = Path(__file__).resolve().parents[1] / str(INDEX_ROOT / "site_data") / "id_locator_index.db"
 FIELDS = ("kind", "client_channel", "package", "entry_index", "offset",
           "packed_size", "decoded_size", "flag", "storage")
 

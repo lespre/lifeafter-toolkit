@@ -8,6 +8,7 @@ prob_note text, and the final reward jump group.  It does not treat a reward
 item ID that happens to equal a pool ID as a proved child-pool edge.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -17,10 +18,12 @@ from bisect import bisect_right
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+
 WORKCOPY = Path(
-    r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_79c0d06f53db"
-)
-CORE_DIR = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+    ANALYSIS_ROOT / "config_work/script_py314_docs_79c0d06f53db")
+CORE_DIR = Path(TOOLKIT_CORE)
 DEFAULT_OUTPUT = WORKCOPY / "kaijia_formal_reward_trace.json"
 POOL_IDS = (390704, 391536, 391533, 391772, 391782, 391783)
 

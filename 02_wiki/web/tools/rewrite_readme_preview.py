@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """重写 README「效果预览」为 8 张新截图（顺序按用户指定）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 import re
 
-P = pathlib.Path("E:/la拆包项目/README.md")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+P = pathlib.Path(PROJ / "README.md")
 
 NEW = """## 效果预览
 

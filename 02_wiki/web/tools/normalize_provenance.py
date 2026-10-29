@@ -7,6 +7,7 @@ r"""把已发布板块的 provenance 规范化成发布契约能过的最小完�
   · 条目缺 status_tags / evidence_level 时给静态配置口径
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
@@ -14,7 +15,9 @@ import pathlib
 import re
 from collections import defaultdict
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT, WEB  # noqa: E402
+
 BOARDS = WEB / "data/boards"
 POL = json.loads((WEB / "data/publication_policy.json").read_text(encoding="utf-8"))["boards"]
 PUBLISHED = [b for b, v in POL.items() if v.get("publication_status") in ("published", "published_hidden")]
@@ -27,8 +30,8 @@ DEFAULT_TAGS = ["static config"]
 def _sha_of_table(table: str, board_path: pathlib.Path) -> str:
     """表文件 sha；文件不在就退回板块快照 sha，仍然 64 位十六进制。"""
     rel = table.replace("\\", "/")
-    for base in (pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata"),
-                 pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/com/cdata")):
+    for base in (pathlib.Path(TREE_ROOT / "Documents/script.py314.lc.npk/com/cdata"),
+                 pathlib.Path(TREE_ROOT / "com/cdata")):
         f = base / rel
         if f.is_file():
             return hashlib.sha256(f.read_bytes()).hexdigest()

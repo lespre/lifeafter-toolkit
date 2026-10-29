@@ -6,7 +6,10 @@ import json
 import pathlib
 import sys
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 FETCH = ROOT / "00_规范与工具/工具/工具库/01_解码定位复原/图集与取图"
 OUT = WEB / "assets/nucleus_icons"

@@ -14,6 +14,7 @@
 产物：data/fpk_index/fpk_index.jsonl（追加写）+ data/fpk_index/_summary.json
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -24,11 +25,14 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-TOOLKIT = r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"
+TOOLKIT = str(TOOLKIT_CORE)
 sys.path.insert(0, TOOLKIT)
 RES = Path(r"E:\mrzh\res")
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "fpk_index"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "fpk_index"
 IDX = OUT / "fpk_index.jsonl"
 STEM_RE = re.compile(rb"skin_\d{4}_\d{3}[A-Za-z0-9_]*")
 NAME_RE = re.compile(rb"[A-Za-z0-9_]{3,64}\.png")

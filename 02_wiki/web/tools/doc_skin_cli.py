@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """在 CLI.md 里补 skin 命令条目与说明段。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/00_规范与工具/治理/手册/CLI.md")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import GOV_ROOT  # noqa: E402
+
+P = pathlib.Path(GOV_ROOT / "手册/CLI.md")
 
 ROW_ANCHOR = "| `vehicle build [--only params\\|lore]` | （三）载具板：回填到 vehicle_full（须先 extract） |\n"
 NEW_ROWS = (

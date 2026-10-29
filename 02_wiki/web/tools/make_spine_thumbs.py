@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """从 Spine atlas 切出最大区域做缩略图（展示真实元素，而不是整张贴图页）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
@@ -8,7 +9,10 @@ import re
 
 from PIL import Image
 
-ROOT = pathlib.Path(r"E:/la拆包项目/02_wiki/web/assets/spine")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+ROOT = pathlib.Path(WEB / "assets/spine")
 TH = ROOT / "thumbs"
 TH.mkdir(exist_ok=True)
 

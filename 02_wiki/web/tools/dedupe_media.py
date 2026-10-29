@@ -15,7 +15,9 @@ import re
 import sys
 from collections import defaultdict
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARDS = ["fashion_wardrobe", "vehicle_full", "tactical_chip_full", "mutation_core_full"]
 PRIORITY = {"_max": 0, "_b": 1, "_mid": 2, "_s": 3}
 KEEP_MAX = 6

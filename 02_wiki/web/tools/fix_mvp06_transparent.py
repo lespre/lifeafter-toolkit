@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """MVP 沙海月鸣：删男款结算截图；图标立绘去黑底转透明。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
@@ -8,7 +9,10 @@ from collections import deque
 
 from PIL import Image
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 BOARD = WEB / "data/boards/kill_broadcast.json"
 ICON = WEB / "assets/kill_broadcast/mvp_bq_mvp_06_icon.png"

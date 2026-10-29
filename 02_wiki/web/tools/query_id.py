@@ -8,13 +8,17 @@
 输出：table/FID/entry/row_key/row_index/offset/schema_ref/field_slot/raw_value。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import sqlite3
 import sys
 from pathlib import Path
 
-DB = Path(__file__).resolve().parents[1] / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_occurrence_index.db"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+DB = Path(__file__).resolve().parents[1] / str(INDEX_ROOT / "site_data") / "id_occurrence_index.db"
 FIELDS = ("table_name", "fid", "entry", "row_key", "row_index", "offset",
           "schema_ref", "field_slot", "group_index", "element_index", "marker")
 

@@ -4,13 +4,17 @@
 用户口径：花苞只有半感染者才有，reborn_vis 就是「是否隐藏半感染者花苞」。
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 import time
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 B = ROOT / "02_wiki/web/data/boards"
 FW = B / "fashion_wardrobe.json"
 OUT = B / "appearance_bud.json"

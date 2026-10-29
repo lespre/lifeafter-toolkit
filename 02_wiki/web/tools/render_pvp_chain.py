@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """生成 PvP 伤害链页面（属性表 + 结算链 + 压缩语义）。"""
 from __future__ import annotations
+import sys
 
 import html
 import json
 import pathlib
 
-OUT = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+OUT = pathlib.Path(WEB / "analysis")
 attrs = json.loads((OUT / "pvp_attrs.json").read_text(encoding="utf-8"))
 
 STAGES = [

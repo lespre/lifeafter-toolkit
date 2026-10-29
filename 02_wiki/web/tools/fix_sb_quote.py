@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """修 board.html 里 sbRender 的引号语法错误（来源类型那一列）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 
 
 def main() -> int:

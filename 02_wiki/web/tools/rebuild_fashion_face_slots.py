@@ -14,6 +14,7 @@
   - 聚合：同展示名（去 -N天）一行；代表行=无时限后缀行；variants=各时限档行（槽位回放）。
 """
 from __future__ import annotations
+import pathlib
 
 import hashlib
 import json
@@ -25,7 +26,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR, DATA_DIR, TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from live_npk_reader import LiveNpkReader, _unpack_entry  # noqa: E402
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
@@ -252,8 +256,8 @@ def build_board(registry_path: Path) -> dict[str, Any]:
 
 if __name__ == "__main__":
     import tempfile
-    out = Path(r"E:\la拆包项目\02_wiki\\web\data\boards\fashion_face_slots.json")
-    board = build_board(Path(r"E:\la拆包项目\02_wiki\\web\data\live_sources.json"))
+    out = Path(BOARDS_DIR / "fashion_face_slots.json")
+    board = build_board(Path(DATA_DIR / "live_sources.json"))
     out.write_text(json.dumps(board, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({"items": board["stats"]["catalog_entries"],
                       "stats": board["stats"]}, ensure_ascii=False))

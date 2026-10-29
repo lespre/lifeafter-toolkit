@@ -8,7 +8,9 @@ import re
 import struct
 import sys
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"
 OUT = PROJ / "01_索引与产物/30_分析/fev_scan_report.json"
 KW = sys.argv[1:] or ["nucleus_attack", "shoot_02", "reload_rifle"]

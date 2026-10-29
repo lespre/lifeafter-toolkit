@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """横幅取右半（避开图内自带 LA 文字），并隐藏旧的武器艺术图，避免叠字/叠图。"""
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 s = s.replace('url("assets/brand/hero_landscape.png") no-repeat center center',

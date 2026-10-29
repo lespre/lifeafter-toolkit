@@ -23,13 +23,16 @@ r"""同名同款不同写法（开发名/占位名）的时装卡合并。
   python merge_alias_cards.py
 """
 from __future__ import annotations
+import sys
 
 import argparse
 import json
 import pathlib
 from collections import Counter, defaultdict
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BOARDS = WEB / "data/boards"
 BOARD_JSON = BOARDS / "fashion_wardrobe.json"

@@ -5,19 +5,22 @@ r"""自查修复：
 2) mutation_core_full 132 条补 provenance（发布门禁要的 5 个字段）。
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TREE_ROOT, WEB  # noqa: E402
+
 POL = WEB / "data/publication_policy.json"
 SUPERSEDED = {
     "chip_item_catalog": "tactical_chip_full",
     "nucleus_cards_classic": "mutation_core_full",
     "vehicle_garage_names": "vehicle_full",
 }
-BASE = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata")
+BASE = pathlib.Path(TREE_ROOT / "Documents/script.py314.lc.npk/com/cdata")
 
 
 def fix_policy() -> None:

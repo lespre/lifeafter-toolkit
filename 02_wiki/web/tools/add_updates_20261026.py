@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """站点更新通知：补本轮改动（场景平衡表格化 / 外观合并 / 种族修订 / MVP 修复 / 树归一）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/data/updates.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import DATA_DIR  # noqa: E402
+
+P = pathlib.Path(DATA_DIR / "updates.json")
 
 NEW = [
     {

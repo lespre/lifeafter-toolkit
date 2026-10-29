@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """
 calibrate_business_chains.py —— 业务定位链双服双版本校准器（2026-09-06 用户定版铁律）
@@ -17,9 +18,12 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-BA8_ENTRIES = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-BA8_MANIFEST = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\manifest.json")
+BA8_ENTRIES = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+BA8_MANIFEST = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/manifest.json")
 TAIL_PAT = re.compile(rb"[A-Za-z0-9_\\]{8,}\.py")
 
 # 业务链 → 表名关键词（命中=该链成员表；注意别跨链误伤：用表名核心词）

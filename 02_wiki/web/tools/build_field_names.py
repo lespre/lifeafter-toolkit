@@ -13,6 +13,7 @@
 输出：data/field_names.json（(entry,schema_ref) 定义级）+ data/field_names_summary.json
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
@@ -20,13 +21,16 @@ import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES_DIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-ROW_INDEX = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "row_index.jsonl"
-FAMILIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_families_v2.json"
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "field_names.json"
+ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+ROW_INDEX = ROOT / str(INDEX_ROOT / "site_data") / "row_index.jsonl"
+FAMILIES = ROOT / str(INDEX_ROOT / "site_data") / "table_families_v2.json"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "field_names.json"
 OUT_SUM = ROOT / "data" / "field_names_summary.json"
-TOOLKIT = r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"
+TOOLKIT = str(TOOLKIT_CORE)
 
 
 def xbody_of(data: bytes):
@@ -118,7 +122,7 @@ def main() -> int:
     suspect_wide = 0
     multi_schema = 0
     table_name_map = {}
-    with (ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl").open(
+    with (ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl").open(
             encoding="utf-8") as f:
         for ln in f:
             r = json.loads(ln)

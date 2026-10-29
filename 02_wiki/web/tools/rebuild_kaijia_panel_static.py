@@ -18,6 +18,7 @@ user-permitted display bridge, prob parsed from prob_note, and the reward leaf.
 Nothing here claims activation or server-side selection.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -32,7 +33,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 sys.path.insert(0, str(CORE))
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_rows import uleb  # noqa: E402

@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """让 build_wiki.py 生成 data/build_meta.js（版本/设备/时间），供 wiki 横幅自动读取。"""
 import pathlib
 import re
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/tools/build_wiki.py")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "tools/build_wiki.py")
 s = p.read_text(encoding="utf-8")
 
 if "build_meta" not in s:

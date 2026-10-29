@@ -1,3 +1,5 @@
+import sys
+import pathlib
 # -*- coding: utf-8 -*-
 """把白底 logo 处理成透明背景 PNG（边界泛洪，保留白色笔画内部）。"""
 from collections import deque
@@ -6,8 +8,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 SRC = Path(r"C:/Users/Administrator/AppData/Roaming/Hermes/composer-images/image_135207.png")
-DST = Path(r"E:/la拆包项目/02_wiki/web/assets/logo_lifeafter_wiki.png")
+DST = Path(WEB / "assets/logo_lifeafter_wiki.png")
 
 im = Image.open(SRC).convert("RGBA")
 a = np.array(im)

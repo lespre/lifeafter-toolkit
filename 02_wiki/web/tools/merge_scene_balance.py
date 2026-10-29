@@ -5,12 +5,16 @@
 逐行成卡会显得又长又乱；并卡后把 scene_id / 服型 / 来源收进卡内清单。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import defaultdict
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/scene_balance.json"
 
 

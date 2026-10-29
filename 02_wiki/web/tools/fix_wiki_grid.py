@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""修正 wiki 渲染：每个大类一个瓦片网格（原来每个叶子节点各一格，导致一列一个）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "wiki.html")
 
 NEW = r'''  function collect(node, path, out){
     var p2 = path ? (path + ' · ' + node.name) : node.name;

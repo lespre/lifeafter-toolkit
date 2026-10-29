@@ -5,6 +5,8 @@ The subject scope is frozen at exact verified table/schema/field metadata. Equal
 integers never create relations across source/table/schema namespaces.
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 from collections import Counter, defaultdict
@@ -14,6 +16,9 @@ from pathlib import Path
 import sqlite3
 import struct
 from typing import Any, Callable, Iterable
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 SERVER_BRANCH = "unresolved"
 NAME_FIELDS = frozenset({"name", "show_name"})
@@ -1007,12 +1012,12 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     from build_name_chain_candidates import DEFAULT_ENTRIES_DIR, load_specs
     parser = argparse.ArgumentParser(description="Build frozen P4-3 fashion identity artifacts")
-    parser.add_argument("--field-names", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "field_names.json")
-    parser.add_argument("--row-index", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "row_index.jsonl")
-    parser.add_argument("--table-index", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl")
-    parser.add_argument("--field-rules", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json")
-    parser.add_argument("--reliable-sources", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "RELIABLE_SOURCES.json")
-    parser.add_argument("--name-locator", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_LOCATOR.db")
+    parser.add_argument("--field-names", type=Path, default=root / str(INDEX_ROOT / "site_data") / "field_names.json")
+    parser.add_argument("--row-index", type=Path, default=root / str(INDEX_ROOT / "site_data") / "row_index.jsonl")
+    parser.add_argument("--table-index", type=Path, default=root / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl")
+    parser.add_argument("--field-rules", type=Path, default=root / str(INDEX_ROOT / "site_data") / "FIELD_RULES.json")
+    parser.add_argument("--reliable-sources", type=Path, default=root / str(INDEX_ROOT / "site_data") / "RELIABLE_SOURCES.json")
+    parser.add_argument("--name-locator", type=Path, default=root / str(INDEX_ROOT / "site_data") / "NAME_LOCATOR.db")
     parser.add_argument("--entries-dir", type=Path, default=DEFAULT_ENTRIES_DIR)
     parser.add_argument("--output-dir", type=Path, default=root / "data")
     args = parser.parse_args()

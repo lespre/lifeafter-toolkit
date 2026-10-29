@@ -5,11 +5,15 @@
 同一档位若同时存在于经典服源与简单生存服源，就拆成两行——筛选才准。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/scene_balance.json"
 
 

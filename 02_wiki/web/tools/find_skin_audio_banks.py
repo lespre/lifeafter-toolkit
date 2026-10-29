@@ -15,6 +15,8 @@
 用法：python tools/find_skin_audio_banks.py [--packs N] [--extract]
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import json
@@ -22,8 +24,11 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-OUTDIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\skin_audio_banks")
+OUTDIR = Path(ANALYSIS_ROOT / "skin_audio_banks")
 OUT = ROOT / "analysis" / "audit" / "skin_audio_banks.json"
 MRZH = Path(r"E:\mrzh")
 PACKS = [MRZH / "res.gpk", MRZH / "res.npk"] + sorted((MRZH / "Documents" / "gres").glob("*.gpk"))

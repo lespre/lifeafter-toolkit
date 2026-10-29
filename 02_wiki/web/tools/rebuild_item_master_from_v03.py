@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """从 ITEM_MASTER_v03.jsonl 还原道具总表板（item_id / name / provenance）。
 
@@ -7,8 +8,11 @@
 import json
 import pathlib
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 WEB = pathlib.Path(__file__).resolve().parents[1]
-SRC = pathlib.Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl")
+SRC = pathlib.Path(INDEX_ROOT / "site_data/ITEM_MASTER_v03.jsonl")
 OUT = WEB / "data/boards/item_master_full.json"
 
 items = []

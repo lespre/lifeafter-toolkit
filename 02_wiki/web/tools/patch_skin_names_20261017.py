@@ -9,13 +9,16 @@ r"""把本批武器的**验证名 + 真值字段**写进看板  weapon_skin_sfx_
 写盘：.json + .js 同步；先备份。
 """
 from __future__ import annotations
+import sys
 
 import datetime
 import json
 import pathlib
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/weapon_skin_sfx_text_sources.json"
 JS = BOARD.with_suffix(".js")
 

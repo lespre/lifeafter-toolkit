@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 """Query ITEM_IDENTITY_LOCATOR with unresolved data isolated by default."""
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import json
 import sqlite3
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 
 def query(
@@ -55,7 +60,7 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
     parser.add_argument("value", nargs="?")
-    parser.add_argument("--db", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_LOCATOR.db")
+    parser.add_argument("--db", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_LOCATOR.db")
     parser.add_argument("--table")
     parser.add_argument("--field")
     parser.add_argument("--include-unresolved", action="store_true")

@@ -17,6 +17,7 @@ DX10 头：dxgiFormat = u32@128；像素从 offset 148（128 标准头 + 20 DX10
 产物：<目录>/frame_00012.png（RGBA）+ <目录>/sprites/<名字>.png + <目录>/_manifest.json
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import io
@@ -28,7 +29,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")))
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(Path(TOOLKIT_CORE)))
 from toolkit_core.fpk_frames import iter_fpk_frames  # noqa: E402
 from PIL import Image  # noqa: E402
 

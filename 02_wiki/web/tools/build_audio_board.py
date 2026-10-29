@@ -7,6 +7,7 @@
   · 找不到的条目仍保留在板上，标 available=False（不隐藏，方便后续补）
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
@@ -14,7 +15,10 @@ import pathlib
 import shutil
 from collections import defaultdict
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 OUT = WEB / "assets/audio"
 SKIP = {"00_规范与工具/环境/venv", ".git", "41_还原树"}

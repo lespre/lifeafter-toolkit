@@ -5,13 +5,16 @@ r"""把 SuperFashion 的奖励预览（panel_show_item_ids）写进奖池板。
 名称：优先用板上已有同 id 条目，其次 item 名索引。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
-DET = pathlib.Path(r"E:/la拆包项目/01_索引与产物/10_索引/热更检测")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, WEB  # noqa: E402
+
+DET = pathlib.Path(INDEX_ROOT / "热更检测")
 FAM = "SuperFashion"
 
 

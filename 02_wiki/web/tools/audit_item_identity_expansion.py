@@ -6,6 +6,7 @@ never emits ITEM_MASTER, never composes inc/del/merged, and never treats live
 FID propagation as row evidence.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -19,10 +20,12 @@ from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
 ENTRIES = Path(
-    r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries"
-)
-TOOLKIT = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+    ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+TOOLKIT = Path(TOOLKIT_CORE)
 if str(ROOT / "tools") not in sys.path:
     sys.path.insert(0, str(ROOT / "tools"))
 if str(TOOLKIT) not in sys.path:
@@ -196,7 +199,7 @@ def _decode_once() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
 
 def _load_candidates() -> dict[int, list[dict[str, Any]]]:
     grouped = {schema: [] for schema in TARGET_SCHEMAS}
-    with ("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CANDIDATES.jsonl").open(encoding="utf-8") as handle:
+    with (str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CANDIDATES.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             record = json.loads(line)
             schema = record.get("schema_ref")
@@ -226,7 +229,7 @@ def _load_candidates() -> dict[int, list[dict[str, Any]]]:
 
 
 def _load_p2_rules() -> tuple[dict[int, dict[str, dict[str, Any]]], dict[str, Any]]:
-    doc = json.loads(("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json").read_text(encoding="utf-8"))
+    doc = json.loads((str(INDEX_ROOT / "site_data") / "FIELD_RULES.json").read_text(encoding="utf-8"))
     table = next(
         item for item in doc.get("tables", [])
         if item.get("entry") == TARGET_ENTRY
@@ -244,7 +247,7 @@ def _load_p2_rules() -> tuple[dict[int, dict[str, dict[str, Any]]], dict[str, An
 
 
 def _load_frozen_identity_rules() -> dict[int, dict[str, Any]]:
-    doc = json.loads(("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_RULES.json").read_text(encoding="utf-8"))
+    doc = json.loads((str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_RULES.json").read_text(encoding="utf-8"))
     result = {}
     for rule in doc.get("rules", []):
         schema = rule.get("schema_ref")
@@ -262,7 +265,7 @@ def _load_frozen_identity_rules() -> dict[int, dict[str, Any]]:
 
 def _load_name_chain() -> dict[tuple[int, int], str]:
     result = {}
-    with ("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_CHAIN_CANDIDATES.jsonl").open(encoding="utf-8") as handle:
+    with (str(INDEX_ROOT / "site_data") / "NAME_CHAIN_CANDIDATES.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             record = json.loads(line)
             schema = record.get("schema_ref")
@@ -383,7 +386,7 @@ def _scan_anchor_candidates(candidate_to_schema: dict[int, int]) -> dict[str, An
                     document_meta,
                 )
 
-    for base in ("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "external_refs", DATA / "boards"):
+    for base in (str(INDEX_ROOT / "site_data") / "external_refs", DATA / "boards"):
         for path in sorted(base.rglob("*.json"), key=lambda item: str(item)):
             try:
                 obj = json.loads(path.read_text(encoding="utf-8"))
@@ -449,7 +452,7 @@ def _scan_anchor_candidates(candidate_to_schema: dict[int, int]) -> dict[str, An
     # rather than hidden, but they cannot satisfy the P4-2 positive-anchor gate.
     return {
         "search_roots": [
-            "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/**/*.json",
+            str(INDEX_ROOT / "site_data/external_refs/**/*.json"),
             "data/boards/*.json",
             "00_规范与工具/治理/手册/**/*.md",
         ],
@@ -753,10 +756,10 @@ def build_report() -> dict[str, Any]:
         "input_locks": {
             "working_copy_base": {"entry": BASE_ENTRY, "sha256": BASE_SHA256},
             "working_copy_base_chs": {"entry": BASE_CHS, "sha256": BASE_CHS_SHA256},
-            "ITEM_IDENTITY_CANDIDATES.jsonl": _sha256("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CANDIDATES.jsonl"),
-            "ITEM_IDENTITY_RULES.json": _sha256("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_RULES.json"),
-            "NAME_CHAIN_CANDIDATES.jsonl": _sha256("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "NAME_CHAIN_CANDIDATES.jsonl"),
-            "FIELD_RULES.json": _sha256("E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json"),
+            "ITEM_IDENTITY_CANDIDATES.jsonl": _sha256(str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CANDIDATES.jsonl"),
+            "ITEM_IDENTITY_RULES.json": _sha256(str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_RULES.json"),
+            "NAME_CHAIN_CANDIDATES.jsonl": _sha256(str(INDEX_ROOT / "site_data") / "NAME_CHAIN_CANDIDATES.jsonl"),
+            "FIELD_RULES.json": _sha256(str(INDEX_ROOT / "site_data") / "FIELD_RULES.json"),
         },
         "decode_provenance": {
             "entry": TARGET_ENTRY,
@@ -810,7 +813,7 @@ def main() -> int:
     parser.add_argument(
         "--out",
         type=Path,
-        default="E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "item_identity_expansion_p4a2.json",
+        default=str(INDEX_ROOT / "site_data") / "audit" / "item_identity_expansion_p4a2.json",
     )
     args = parser.parse_args()
     report = build_report()

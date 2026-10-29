@@ -5,13 +5,17 @@
 复制的是已存在且已按卡名部位校验过的 PNG，不改名不猜路径。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 import shutil
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 WANT = {"衣服": "icon_b", "头饰": "icon_h", "背包": "icon_bag", "光源": "icon_light", "整套": "icon_suit"}

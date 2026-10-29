@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""修两个新板的展示层：state_summary 扁平化（消除 [object Object]）+ 卡面摘要 + 中文字段名。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 SPECS = {
     "lottery_periods": {
         "card_summary": [["name", "外观"], ["period_label", "期次"], ["pool_label", "奖池"], ["slot", "槽位"]],

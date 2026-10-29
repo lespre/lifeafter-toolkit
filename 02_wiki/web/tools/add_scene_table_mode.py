@@ -4,10 +4,13 @@
 只对 board id = scene_balance 生效，其它板块不动。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 HTML = WEB / "board.html"
 
 CSS = """

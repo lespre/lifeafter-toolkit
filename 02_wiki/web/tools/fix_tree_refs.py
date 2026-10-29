@@ -9,10 +9,13 @@
   41_还原树/pc          → 41_还原树/pc
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 SKIP_DIRS = {"pe", ".git", "node_modules", "__pycache__", "环境"}
 RULES = [
     ("41_还原树/pe/资源", "41_还原树/pe/资源"),

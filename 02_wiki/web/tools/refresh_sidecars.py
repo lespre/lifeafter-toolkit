@@ -15,6 +15,7 @@ r"""refresh_sidecars.py — 给主页生成「重活」sidecar。
   python 02_wiki/web/tools/refresh_sidecars.py --delta    # 只刷增量
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -22,7 +23,10 @@ import sqlite3
 import sys
 from pathlib import Path
 
-PROJECT = Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+PROJECT = Path(PROJ)
 CORE = PROJECT / "00_规范与工具/工具" / "工具库" / "00_共享核心"
 sys.path.insert(0, str(CORE))
 

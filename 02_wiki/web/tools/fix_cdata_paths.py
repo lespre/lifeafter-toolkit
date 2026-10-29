@@ -4,10 +4,14 @@
 只改 .py（工具代码），不改产物/文档正文里的历史叙述。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 DIRS = [ROOT / "00_规范与工具", ROOT / "02_wiki", ROOT / "01_索引与产物/10_索引"]
 REPL = [
     ("41_还原树/pe/配置/com/cdata", "41_还原树/pe/配置/com/cdata"),

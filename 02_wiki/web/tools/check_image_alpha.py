@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 r"""统计板块引用图片里有多少是「不透明白底」，用于决定是否需要抠白。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
 from PIL import Image
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 
 def main() -> int:

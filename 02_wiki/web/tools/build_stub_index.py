@@ -6,11 +6,14 @@
 用途：任何脚本读到桩表时，按这个索引改走真身，别再解出 0 行还以为是没数据。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 TREE = PROJ / "01_索引与产物/41_还原树"
 OUT = PROJ / "01_索引与产物/10_索引/stub_tables.json"
 STUB_SIZES = {807, 808, 809, 815, 816}

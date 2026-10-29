@@ -9,16 +9,21 @@
 产物：01_索引与产物\\30_分析/skin_audio_carved/<pack>/{*.fsb, WAV/*.wav, _banks.json}
 """
 from __future__ import annotations
+import sys
+import pathlib
 import argparse, gc, json, shutil, sys, tempfile, time
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")))
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描")))
 import lifeafter_unpacker_full as m  # noqa: E402
 import fsb5  # noqa: E402
 
-DEST = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\skin_audio_carved")
+DEST = Path(ANALYSIS_ROOT / "skin_audio_carved")
 GRES = Path(r"E:\mrzh\Documents\gres")
 MAGIC = b"FSB5"
 WINDOWS = (1 << 20, 8 << 20, 32 << 20, 128 << 20)

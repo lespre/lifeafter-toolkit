@@ -1,10 +1,14 @@
+import sys
 # -*- coding: utf-8 -*-
 """盘点 wiki 构建脚本的耦合点：硬编码路径、直接写盘、重复解码。"""
 import pathlib
 import re
 from collections import Counter
 
-W = pathlib.Path(r"E:/la拆包项目/02_wiki/web/tools")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+W = pathlib.Path(WEB / "tools")
 pats = {
     "硬编码 pe_20261020": re.compile(r"pe_20261020"),
     "硬编码 E:/ 路径": re.compile(r"['\"]E:/"),

@@ -5,10 +5,13 @@
 3) 废弃 tools/render_scene_balance.py 的写盘（改为提示）
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 NAV = """<div class="nav" style="position:sticky;top:0;z-index:9;margin:-24px -28px 18px;padding:10px 28px;background:#0e151b;border-bottom:1px solid #1e2b33;display:flex;gap:16px;align-items:center;font-size:12.5px">
 <a href="../wiki.html" style="color:#7fb2cc;text-decoration:none">← 返回 Wiki 首页</a>

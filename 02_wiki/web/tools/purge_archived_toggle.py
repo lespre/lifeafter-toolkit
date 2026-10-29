@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """彻底清掉 wiki.html 里 showArchived（已归档旧板）相关代码分支。"""
 import pathlib
 import re
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 before = len(re.findall(r"showArchived", s))
 

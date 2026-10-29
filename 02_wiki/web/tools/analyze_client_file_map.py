@@ -9,6 +9,7 @@
 - 不产出任何业务关联结论；不动 wiki boards/业务数据。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -17,7 +18,10 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-AUDIT = Path(r"E:/la拆包项目/01_索引与产物/10_索引/site_data/audit\client_file_maps")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
+AUDIT = Path(INDEX_ROOT / "site_data/audit/client_file_maps")
 CLIENT_META = {
     "mrzh": {
         "client": "test",

@@ -3,12 +3,16 @@
 与并进来的 part_code 七类（头饰/捏脸/衣服/背包/挂饰/戒指/半感染者花苞）同一套。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import Counter
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 FW = ROOT / "02_wiki/web/data/boards/fashion_wardrobe.json"
 
 EN2CN = {"cloth": "衣服", "hat": "头饰", "bag": "背包", "light": "光源", "suit": "整套"}

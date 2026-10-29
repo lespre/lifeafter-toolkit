@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """重建 1110188（一魂共鸣）的音效分组：射击 / 换弹 / 切枪 / 语音。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 DIR = ROOT / "02_wiki/web/assets/audio/weapon_skin/asoul_1110188"
 

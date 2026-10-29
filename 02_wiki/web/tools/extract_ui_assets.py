@@ -11,6 +11,7 @@
 用法：python tools/extract_ui_assets.py [--limit 40] [--packs N]
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -22,9 +23,12 @@ import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ARTIFACTS  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "analysis" / "audit" / "weapon_skin_ui_asset_paths.json"
-OUT = Path(r"E:\la拆包项目\01_索引与产物") / f"ui_assets_{datetime.now():%Y%m%d}"
+OUT = Path(ARTIFACTS) / f"ui_assets_{datetime.now():%Y%m%d}"
 PACKS = [Path(r"E:\mrzh\res.npk"), Path(r"E:\mrzh\res.gpk")] + sorted(
     Path(r"E:\mrzh\Documents\gres").glob("*.gpk"))
 

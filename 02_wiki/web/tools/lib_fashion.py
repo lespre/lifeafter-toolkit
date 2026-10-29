@@ -8,9 +8,14 @@
 只读源表；输出纯 Python 结构。
 """
 from __future__ import annotations
+import sys
+import pathlib
 import struct, sys, re
 from pathlib import Path
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from toolkit_core.bindict_table import parse_chs_pool, parse_legacy_chs_pool, decode_table_rows  # noqa
 
 # 全部件后缀（覆盖穿戴全槽位）
@@ -120,7 +125,7 @@ def load_fashion_rows(base_bytes: bytes, chs_bytes: bytes):
 
 if __name__ == "__main__":  # 自检：覆盖率 + 铠甲联动核对
     import collections
-    BA = Path("E:/la拆包项目/01_索引与产物\\30_分析/config_work/script_py314_docs_BA8A239A/entries")
+    BA = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
     rows = load_fashion_rows((BA / "022570.bin").read_bytes(), (BA / "020834.bin").read_bytes())
     bases = sorted(set(r["base"] for r in rows))
     pc = collections.Counter(r["part_type"] or "整体/无部件后缀" for r in rows)

@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """精校副标题三要素：来源 / 生成日 / 源包摘要。
 
@@ -11,7 +12,9 @@ import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data" / "boards"
 
 fixed = []

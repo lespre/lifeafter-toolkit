@@ -4,11 +4,15 @@
 同时把卡片上的推断性名称降级为「用户口径」，不再写“新本体/新世代”。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 

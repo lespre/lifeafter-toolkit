@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """倒序扫描 064..050.fpk，命中 sky1003 后停止并提取邻近 DDS/FSB5。"""
 from __future__ import annotations
+import pathlib
 
 import io
 import json
@@ -10,8 +11,11 @@ from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
-UNPACKER = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
+UNPACKER = Path(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描")
 sys.path.insert(0, str(CORE))
 sys.path.insert(0, str(UNPACKER))
 
@@ -21,7 +25,7 @@ import texture2ddecoder
 from lifeafter_unpacker_full import extract_fsb
 
 SRC_ROOT = Path(r"E:\mrzh\res")
-OUT_ROOT = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\sky1003")
+OUT_ROOT = Path(ANALYSIS_ROOT / "sky1003")
 WAV_ROOT = OUT_ROOT / "wav"
 PACK_NUMBERS = list(range(64, 49, -1))
 KEYWORDS = (b"skin_1003_010", b"guangying", b"yongtandiao")

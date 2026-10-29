@@ -7,7 +7,9 @@ import pathlib
 import struct
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 CD = PROJ / "01_索引与产物/41_还原树/pe_test_script/com/cdata"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))

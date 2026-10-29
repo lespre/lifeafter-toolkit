@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """删除未被 taxonomy 引用的板块文件（先核其它引用，有引用则保留）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 PROJ = WEB.parents[1]
 BOARDS = WEB / "data/boards"
 SKIP_DIRS = {".git", "node_modules", "__pycache__", "环境", "pe", "assets"}

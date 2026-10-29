@@ -7,6 +7,7 @@ attrs-object offset, but intentionally does not infer an item/weapon name or a
 combat-damage formula from this configuration relation.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -21,9 +22,12 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+
 SOURCE_REGISTRY = ROOT / "data" / "live_sources.json"
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "weapon_attrs_schema_static.json"
-SOURCE_PARSER = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\表解码\weapon_attrs_table.py")
+SOURCE_PARSER = Path(TOOLKIT_DIR / "工具库/01_解码定位复原/表解码/weapon_attrs_table.py")
 BASE_FID = "A130A31532FAF63C"
 CHS_FID = "94AB0B3FD057EF01"
 ATTRS_SCHEMA = 6109

@@ -8,17 +8,21 @@
   offset/packed_size/decoded_size/flag|storage/name_known
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 REG = ROOT / "data" / "source_registry.json"
-PKG = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "package_indexes"
+PKG = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "package_indexes"
 OUT_INDEX = ROOT / "data" / "file_index.json"
-OUT_ENTRIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "file_index_entries.jsonl"
+OUT_ENTRIES = ROOT / str(INDEX_ROOT / "site_data") / "file_index_entries.jsonl"
 
 
 def load_summary(name: str) -> dict:
@@ -129,11 +133,11 @@ def main() -> int:
         "files": {
             "entries": str(OUT_ENTRIES.relative_to(ROOT)),
             "sources": {
-                "script": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/script_package_index_summary.json",
-                "npk": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/npk_index_summary.json",
-                "gpk": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/gpk_index_summary.json",
-                "fpk": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/fpk_index_summary.json",
-                "idx": "E:/la拆包项目/01_索引与产物/10_索引/site_data/audit/package_indexes/wpk_idx_index_summary.json",
+                "script": str(INDEX_ROOT / "site_data/audit/package_indexes/script_package_index_summary.json"),
+                "npk": str(INDEX_ROOT / "site_data/audit/package_indexes/npk_index_summary.json"),
+                "gpk": str(INDEX_ROOT / "site_data/audit/package_indexes/gpk_index_summary.json"),
+                "fpk": str(INDEX_ROOT / "site_data/audit/package_indexes/fpk_index_summary.json"),
+                "idx": str(INDEX_ROOT / "site_data/audit/package_indexes/wpk_idx_index_summary.json"),
             },
         },
     }

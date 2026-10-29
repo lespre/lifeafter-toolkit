@@ -5,13 +5,17 @@ board.html 的 renderSkinAudio 读的就是这个路径；缺一条就是 404 �
 来源：01_索引与产物 全库 WAV（按 basename 匹配）。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import shutil
 from collections import defaultdict
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 DST = WEB / "assets/audio/weapon_skin"
 SKIP = {"00_规范与工具/环境/venv", ".git", "41_还原树"}

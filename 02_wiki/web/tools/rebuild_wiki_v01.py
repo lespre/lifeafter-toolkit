@@ -6,6 +6,7 @@ This module consumes existing P4 artifacts only.  It does not scan archives,
 create new business joins, merge channels/overlays, or promote unresolved IDs.
 """
 from __future__ import annotations
+import pathlib
 
 import hashlib
 import json
@@ -19,6 +20,9 @@ TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 from rebuild_weapon_skin_static_candidates_board import build_board as build_weapon_skin_static_candidates_board
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, PROJ  # noqa: E402
 
 ROOT = TOOLS_DIR.parent
 
@@ -53,13 +57,13 @@ def validate_acceptance(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root)
     data = root / "data"
 
-    item_audit = _load_json(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / Path("audit") / "item_master_v01_audit.json")
+    item_audit = _load_json(Path(INDEX_ROOT / "site_data") / Path("audit") / "item_master_v01_audit.json")
     fashion_audit = _load_json(data / "fashion_identity_audit.json")
-    lottery_audit = _load_json(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / Path("audit") / "lottery_pool_resolved_v01_audit.json")
+    lottery_audit = _load_json(Path(INDEX_ROOT / "site_data") / Path("audit") / "lottery_pool_resolved_v01_audit.json")
 
     item_rows = 0
     item_ids: set[int] = set()
-    with (Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / "ITEM_MASTER_v01.jsonl").open(encoding="utf-8") as handle:
+    with (Path(INDEX_ROOT / "site_data") / "ITEM_MASTER_v01.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
@@ -79,7 +83,7 @@ def validate_acceptance(root: Path = ROOT) -> dict[str, Any]:
     channel_merges = 0
     runtime_final_false_claims = 0
     manifest: dict[str, Any] | None = None
-    with (Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl").open(encoding="utf-8") as handle:
+    with (Path(INDEX_ROOT / "site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl").open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
@@ -299,7 +303,7 @@ def _v3_provenance(
 
 
 def _item_master_board(root: Path) -> dict[str, Any]:
-    path = root / Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / "ITEM_MASTER_v01.jsonl"
+    path = root / Path(INDEX_ROOT / "site_data") / "ITEM_MASTER_v01.jsonl"
     lock = _source_lock(path, "ITEM_MASTER_v01", root)
     items: list[dict[str, Any]] = []
     with path.open(encoding="utf-8") as handle:
@@ -358,7 +362,7 @@ def _item_master_board(root: Path) -> dict[str, Any]:
 
 
 def _fashion_board(root: Path) -> dict[str, Any]:
-    path = root / Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / "FASHION_IDENTITY_CANDIDATES.jsonl"
+    path = root / Path(INDEX_ROOT / "site_data") / "FASHION_IDENTITY_CANDIDATES.jsonl"
     audit = _load_json(root / Path("data") / "fashion_identity_audit.json")
     lock = _source_lock(path, "FASHION_IDENTITY_CANDIDATES", root)
     groups: OrderedDict[tuple[Any, ...], dict[str, Any]] = OrderedDict()
@@ -454,7 +458,7 @@ def _fashion_board(root: Path) -> dict[str, Any]:
 
 
 def _weapon_skin_board(root: Path) -> dict[str, Any]:
-    _proj = Path("E:/la拆包项目")
+    _proj = Path(PROJ)
     entries_root = _proj / "01_索引与产物" / "30_分析" / "config_work" / "script_py314_docs_BA8A239A" / "entries"
     if not entries_root.is_dir():
         entries_root = _proj / "01_索引与产物" / "config_work" / "script_py314_docs_BA8A239A" / "entries"
@@ -519,7 +523,7 @@ def _weapon_skin_board(root: Path) -> dict[str, Any]:
 
 
 def _lottery_board(root: Path) -> dict[str, Any]:
-    path = root / Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl"
+    path = root / Path(INDEX_ROOT / "site_data") / "LOTTERY_POOL_RESOLVED_v01.jsonl"
     lock = _source_lock(path, "LOTTERY_POOL_RESOLVED_v01", root)
     items: list[dict[str, Any]] = []
     manifest: dict[str, Any] | None = None
@@ -750,6 +754,6 @@ def apply_publication_policy(root: Path = ROOT) -> dict[str, Any]:
 
 if __name__ == "__main__":
     result = build_boards(ROOT)
-    _write_json(ROOT / Path("E:/la拆包项目/01_索引与产物/10_索引/site_data") / Path("audit") / "wiki_v01_acceptance.json", result)
+    _write_json(ROOT / Path(INDEX_ROOT / "site_data") / Path("audit") / "wiki_v01_acceptance.json", result)
     apply_publication_policy(ROOT)
     print(json.dumps(result, ensure_ascii=False, indent=2))

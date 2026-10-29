@@ -6,12 +6,15 @@ board: data/boards/fashion_wardrobe.json（1253 件）
 写入: 每件的 _media = {images:[{png,suffix,base}], placeholder?, total}
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 BOARD_JS = WEB / "data/boards/fashion_wardrobe.js"
 MEDIA = WEB / "data/media/fashion_icon_refs.json"

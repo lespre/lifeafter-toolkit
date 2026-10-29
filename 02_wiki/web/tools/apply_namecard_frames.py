@@ -4,13 +4,16 @@
 只动 kind=名片框 且 spine_path 非空的条目；其余板块一律不碰。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
 from PIL import Image
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 FRAMES = WEB / "assets/avatar_frames"
 CAT = WEB / "data/boards/avatar_catalog.json"
 

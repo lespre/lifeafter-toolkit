@@ -7,10 +7,13 @@ import struct
 import sys
 from collections import Counter
 
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, TREE_ROOT  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-P = pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置/com/cdata/oversea/special_hurt_params_data_auto_oversea_data_kj1.py")
+P = pathlib.Path(TREE_ROOT / "pe/配置/com/cdata/oversea/special_hurt_params_data_auto_oversea_data_kj1.py")
 C = P.with_name(P.stem + "_chs.py")
 
 

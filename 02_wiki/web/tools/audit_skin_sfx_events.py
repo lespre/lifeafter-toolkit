@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """武器皮肤音效：统计「行为 .sfx 路径 → FxGroup 索引 → EventName」的覆盖情况。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import Counter
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ART = ROOT / "01_索引与产物/30_分析/site_artifacts/artifacts/active/weapon_skin_audio"
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 

@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""主题 v4：去掉重复箭头、把军械库剪影挪到顶栏下方并提亮。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-HTML = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+HTML = pathlib.Path(WEB / "wiki.html")
 
 CSS = r"""
 /* ===== v4 微调 ===== */

@@ -12,6 +12,7 @@ re-verified per activity; pool sets may include cross-activity shared rows.
 This is the preview column's「（2）新奖池活动」sub-card.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -29,7 +30,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 sys.path.insert(0, str(CORE))
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_rows import uleb  # noqa: E402

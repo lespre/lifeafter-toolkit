@@ -10,7 +10,10 @@ import pathlib
 import struct
 import sys
 
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 import la_unpack_core as LC  # noqa: E402
 
 SKIP = 8

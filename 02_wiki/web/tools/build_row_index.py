@@ -15,6 +15,7 @@ live：无独立解码证据，不靠 test 传播补行（仅 test 快照产行�
 输出：data/row_index.jsonl + data/row_index_summary.json
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sqlite3
@@ -25,14 +26,17 @@ from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES_DIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db"
-TABLE_ENTRIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
-OUT_ROWS = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "row_index.jsonl"
+ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+DB = ROOT / str(INDEX_ROOT / "site_data") / "id_locator_index.db"
+TABLE_ENTRIES = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl"
+OUT_ROWS = ROOT / str(INDEX_ROOT / "site_data") / "row_index.jsonl"
 OUT_SUM = ROOT / "data" / "row_index_summary.json"
 SNAPSHOT = "test-328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f"
-TOOLKIT = r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"
+TOOLKIT = str(TOOLKIT_CORE)
 TOOLS = str(Path(__file__).resolve().parent)
 
 

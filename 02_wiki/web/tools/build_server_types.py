@@ -10,7 +10,9 @@ import json
 import pathlib
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 OUT = WEB / "data/boards/server_types.json"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))

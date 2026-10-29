@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""wiki 修尾：标题中文化、时装缩略图、两行标题、路径去编号。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "wiki.html")
 
 ZH_FN = r'''  var ZH_MAP=[[/identity unresolved/g,'身份待确认'],[/runtime final unknown/g,'运行时未确认'],
     [/LOTTERY_POOL_RESOLVED/gi,'奖池解析'],[/ITEM_MASTER/gi,'道具总表'],

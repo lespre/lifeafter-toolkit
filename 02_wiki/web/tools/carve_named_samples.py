@@ -12,7 +12,9 @@ import subprocess
 import sys
 import tempfile
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 IDX = PROJ / "01_索引与产物/30_分析/fsb_sample_index_pe.json"
 PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"
 ATT = PROJ / "02_wiki/web/data/weapon_skin_audio_attachments.json"

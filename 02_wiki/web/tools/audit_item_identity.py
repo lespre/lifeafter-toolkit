@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Independent P4-2 item/equipment identity coverage and conflict audit."""
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import hashlib
@@ -11,6 +13,9 @@ from pathlib import Path
 from typing import Any
 
 from build_item_identity_candidates import EXCLUDED_TABLES, source_in_scope
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 
 def _sha256(path: Path) -> str:
@@ -273,10 +278,10 @@ def audit(
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
-    parser.add_argument("--candidates", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CANDIDATES.jsonl")
-    parser.add_argument("--rules", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_RULES.json")
-    parser.add_argument("--conflicts", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CONFLICTS.jsonl")
-    parser.add_argument("--db", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_LOCATOR.db")
+    parser.add_argument("--candidates", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CANDIDATES.jsonl")
+    parser.add_argument("--rules", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_RULES.json")
+    parser.add_argument("--conflicts", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CONFLICTS.jsonl")
+    parser.add_argument("--db", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_LOCATOR.db")
     parser.add_argument("--output", type=Path, default=root / "data" / "item_identity_audit.json")
     args = parser.parse_args()
     report = audit(args.candidates, args.rules, args.conflicts, args.db, args.output)

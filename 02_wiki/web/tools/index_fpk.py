@@ -6,6 +6,7 @@ zstd 帧边界只能靠完整解压确定（无索引），因此加速策略=�
 已完成包（jsonl 存在且非空）自动跳过（--skip-existing）。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import sys
@@ -13,10 +14,13 @@ from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 REG = ROOT / "data" / "source_registry.json"
-OUT_DIR = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "audit" / "package_indexes"
-TOOLKIT = str(Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"))
+OUT_DIR = ROOT / str(INDEX_ROOT / "site_data") / "audit" / "package_indexes"
+TOOLKIT = str(Path(TOOLKIT_CORE))
 TOOLS = str(Path(__file__).resolve().parent)
 
 

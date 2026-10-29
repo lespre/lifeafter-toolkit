@@ -12,7 +12,9 @@ import re
 import struct
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 BASE = PROJ / "01_索引与产物/41_还原树/Documents/script.py314.lc.npk/com/cdata"
 PACKS = PROJ / "01_索引与产物/10_索引/热更检测/pe_packs"

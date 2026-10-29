@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """生成 GBK 编码的 Windows 启动脚本（cmd 默认代码页 936，UTF-8 中文会乱码）。"""
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BODY = r"""@echo off
 chcp 936 >nul
 setlocal enabledelayedexpansion

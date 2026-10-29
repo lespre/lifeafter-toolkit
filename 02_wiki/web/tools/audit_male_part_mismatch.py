@@ -9,13 +9,17 @@
   卡部位含多个 → 男图数量应 ≥ 部位数，且前缀齐全
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 from collections import Counter, defaultdict
 
-BOARD = pathlib.Path("E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "fashion_wardrobe.json")
 PREFIX = {"衣服": "icon_b", "头饰": "icon_h", "背包": "icon_bag",
           "光源": "icon_light", "整套": "icon_suit"}
 

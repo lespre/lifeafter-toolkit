@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """统计武器皮肤音效清单的文件命中率（按 basename 在全库 WAV 里找）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import defaultdict
 
-ROOT = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 SKIP_PARTS = {"00_规范与工具/环境/venv", ".git", "41_还原树"}
 

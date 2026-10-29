@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """修正上一轮被 \f 转义破坏的路径，并处理剩余三类声明。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BS = chr(92)
 FASHION_EXPORT = "com" + BS + "cdata" + BS + "fashion_data_for_export.py"
 FASHION = "com" + BS + "cdata" + BS + "fashion_data.py"

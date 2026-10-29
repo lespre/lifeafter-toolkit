@@ -7,13 +7,15 @@ import pathlib
 import struct
 import sys
 
-sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, TREE_ROOT, WEB  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_CORE))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
 TREES = [
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/pe/配置_增量快照"),
-    pathlib.Path(r"E:/la拆包项目/01_索引与产物/41_还原树/apk_mumu_5.0.679/assets/script.py314.lc.npk"),
+    pathlib.Path(TREE_ROOT / "pe/配置_增量快照"),
+    pathlib.Path(TREE_ROOT / "apk_mumu_5.0.679/assets/script.py314.lc.npk"),
 ]
 BS = chr(92)
 

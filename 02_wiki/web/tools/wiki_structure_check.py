@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """wiki 结构体检：板块是否都被导航覆盖、编号是否连续、有无孤儿节点。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 
 def walk(node, path, out):

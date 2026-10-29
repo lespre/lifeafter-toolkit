@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 """Build the P4-2 item/equipment identity SQLite locator."""
 from __future__ import annotations
+import sys
+import pathlib
 
 import argparse
 import json
 import sqlite3
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 REQUIRED = (
     "client", "snapshot", "server_branch", "package", "package_sha256",
@@ -155,10 +160,10 @@ def build(candidates_path: Path, rules_path: Path, conflicts_path: Path, db_path
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
-    parser.add_argument("--candidates", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CANDIDATES.jsonl")
-    parser.add_argument("--rules", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_RULES.json")
-    parser.add_argument("--conflicts", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_CONFLICTS.jsonl")
-    parser.add_argument("--db", type=Path, default=root / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "ITEM_IDENTITY_LOCATOR.db")
+    parser.add_argument("--candidates", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CANDIDATES.jsonl")
+    parser.add_argument("--rules", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_RULES.json")
+    parser.add_argument("--conflicts", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_CONFLICTS.jsonl")
+    parser.add_argument("--db", type=Path, default=root / str(INDEX_ROOT / "site_data") / "ITEM_IDENTITY_LOCATOR.db")
     args = parser.parse_args()
     print(json.dumps(build(args.candidates, args.rules, args.conflicts, args.db), ensure_ascii=False))
     return 0

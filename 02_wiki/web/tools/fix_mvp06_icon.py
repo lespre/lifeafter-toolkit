@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """补齐 mvp_06 图标：ui/shangcheng_icon/jingshi/icon_mvp06.ktx（0000.gpk row 12735）已导出。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import shutil
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 SRC = pathlib.Path("C:/Users/Administrator/AppData/Local/hermes/cache/scratch/mvp06b/icon_mvp06.png")
 DST = WEB / "assets/kill_broadcast/mvp_bq_mvp_06_icon.png"

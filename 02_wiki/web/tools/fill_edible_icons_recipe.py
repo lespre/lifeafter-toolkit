@@ -25,7 +25,9 @@ import shutil
 import sys
 import time
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 CD = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 BOARD = WEB / "data/boards/edible_catalog.json"

@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """28 条名片框：框资源在 PE/PC 索引均无命中（未下发）→ 去掉坏图，标记状态。
 bc_580121 的框已重取成功，保留。
@@ -5,7 +6,9 @@ bc_580121 的框已重取成功，保留。
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/avatar_catalog.json"
 d = json.loads(BOARD.read_text(encoding="utf-8"))
 

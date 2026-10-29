@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """
 rebuild_chenshi_slots.py ——（三）宸世臻藏子卡（四、奖池区）
@@ -17,6 +18,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import json
 import rebuild_common_item_text_sources as base
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
 
 CURRENCY_NAMES = {"宸世之钥", "宸晶臻石", "稀世之证", "臻藏时装兑换券"}
 
@@ -78,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
     vers.sort(key=lambda v: v["period_date"])
     # 公告内容层：官方更新公告「宸世臻藏」段按起始日对齐（经典/简单服差异分列）
     try:
-        cont = json.loads((ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_period_content.json").read_text(encoding="utf-8"))
+        cont = json.loads((ROOT / str(INDEX_ROOT / "site_data/external_refs/chenshi_period_content.json")).read_text(encoding="utf-8"))
     except Exception:
         cont = {}
     for v in vers:
@@ -96,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
     # ── 商品主体层：002962 静态池拆包（2026-09-06 用户「不要实机截图=拆包+定位链=截图只是锚」定版）──
     # 行结构（27.109）：每商品行=[21011,行号][品id][品id,1][货币,价]；行内无限购周期/时间字段
     # → 常驻/限时=服务端维度=静态不可分（板上不做该断言）；实机锚点只作命名/验证字段。
-    pool = json.loads((ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_static_pool_002962.json").read_text(encoding="utf-8"))
+    pool = json.loads((ROOT / str(INDEX_ROOT / "site_data/external_refs/chenshi_static_pool_002962.json")).read_text(encoding="utf-8"))
     import hashlib as _hl2962
     _sha2962 = _hl2962.sha256(
         (ROOT / ".." / "01_索引与产物" / "config_work" / "script_py314_docs_BA8A239A" / "entries" / "002962.bin").read_bytes()

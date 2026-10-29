@@ -1,8 +1,11 @@
+import sys
 # -*- coding: utf-8 -*-
 """按方案 A（档案馆）重写 wiki 首页：左导航 + 筛选条 + 密集卡片网格。"""
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 target = WEB / "wiki.html"
 if target.exists():
     (WEB / "wiki_旧_20261022.html").write_text(target.read_text(encoding="utf-8"), encoding="utf-8")

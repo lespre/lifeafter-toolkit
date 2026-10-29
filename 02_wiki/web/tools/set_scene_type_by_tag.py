@@ -11,7 +11,10 @@ import struct
 import sys
 from collections import defaultdict
 
-ROOT = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/scene_balance.json"
 sys.path.insert(0, str(ROOT / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(ROOT / "02_wiki/web/tools"))

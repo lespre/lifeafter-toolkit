@@ -6,7 +6,10 @@ import pathlib
 import struct
 import sys
 
-ROOT = pathlib.Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+ROOT = pathlib.Path(PROJ)
 NPK = ROOT / "01_索引与产物/源包/pe_20261020/script.py314.lc.npk"
 sys.path.insert(0, str(ROOT / "02_wiki/web/tools"))
 sys.path.insert(0, str(ROOT / "00_规范与工具/工具/工具库/00_共享核心"))

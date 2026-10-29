@@ -12,8 +12,10 @@ import json
 import pathlib
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
 GAME = pathlib.Path(r"E:/mrzh")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 IDX = PROJ / "01_索引与产物/10_索引/names/fid_to_path_v2.jsonl"
 
 sys.path.insert(0, str(PROJ / "01_索引与产物/10_索引/热更检测"))

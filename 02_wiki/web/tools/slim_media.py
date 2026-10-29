@@ -1,9 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """非时装板块：每个条目只保留一张最清晰的 2D 图（像素面积优先，其次 _b>标准>_s，再按文件大小）。"""
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARDS = WEB / "data" / "boards"
 KEEP_ALL = {"fashion_wardrobe"}          # 时装要男女分图，保留多张
 SUFFIX_RANK = {"_b": 3, "": 2, "_s": 1, "_low": 0}

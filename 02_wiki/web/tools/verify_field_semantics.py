@@ -17,6 +17,7 @@ D. unresolved：池未配对表槽 / 槽 oob / 无样本
 输出：data/FIELD_RULES.json + field_semantics_summary.json
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import re
@@ -25,12 +26,15 @@ import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES_DIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-FNAMES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "field_names.json"
-OUT = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "FIELD_RULES.json"
+ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+FNAMES = ROOT / str(INDEX_ROOT / "site_data") / "field_names.json"
+OUT = ROOT / str(INDEX_ROOT / "site_data") / "FIELD_RULES.json"
 OUT_SUM = ROOT / "data" / "field_semantics_summary.json"
-TOOLKIT = r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心"
+TOOLKIT = str(TOOLKIT_CORE)
 
 TEXT_TAILS = ("_name", "_desc", "_title", "_text", "_talk", "_tip",
               "_content", "_icon", "_icons", "_icon2", "_path", "_url",

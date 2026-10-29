@@ -6,6 +6,7 @@ schema 40206.  This tool does not build ITEM_MASTER, does not compose
 base/inc/del, and does not inspect live fid-shared rows.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -18,10 +19,12 @@ from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
 ENTRIES = Path(
-    r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries"
-)
-TOOLKIT = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+    ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+TOOLKIT = Path(TOOLKIT_CORE)
 if str(ROOT / "tools") not in sys.path:
     sys.path.insert(0, str(ROOT / "tools"))
 if str(TOOLKIT) not in sys.path:

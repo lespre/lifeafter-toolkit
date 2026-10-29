@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """时装板：删掉「全量登记表」入口；把图标命名规律写进技术详情（meta.notes）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 BOARD = WEB / "data/boards/fashion_wardrobe.json"
 
 NOTES = """全量重建：11,036 行 → 2,016 张卡（归一名字 + 部位 + model_id）。部位分布 {bag 500 / cloth 838 / suit 57 / hat 575 / light 227}。

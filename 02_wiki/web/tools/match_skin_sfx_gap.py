@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """对「有 sfx 真名但没音频」的皮肤，在 FSB bank 里按样本名精确匹配，输出可提名单。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import defaultdict
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ART = ROOT / "01_索引与产物/30_分析/site_artifacts/artifacts/active/weapon_skin_audio"
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 OUT = ROOT / "01_索引与产物/30_分析/weapon_skin_audio_gap_match.json"

@@ -3,11 +3,15 @@ r"""给 wiki 主页换上《明日之后》主题皮肤：暗色金属 + 锈橙�
 只替换 <style> 块，结构/类名/JS 全不动。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 import shutil
 
-HTML = pathlib.Path(r"E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+HTML = pathlib.Path(WEB / "wiki.html")
 BAK = HTML.with_suffix(".html.bak_theme20261018")
 
 CSS = r"""

@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """列出 assets 下没有被任何 html/js 引用的子目录（候选删除）。"""
 import pathlib
 
-W = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+W = pathlib.Path(WEB)
 A = W / "assets"
 texts = []
 for pat in ("*.html", "*.js"):

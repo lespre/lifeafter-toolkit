@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """横幅改回正常比例（不放大裁切）；侧栏底图铺满整列高度。"""
 import pathlib
 
-p = pathlib.Path("E:/la拆包项目/02_wiki/web/wiki.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+p = pathlib.Path(WEB / "wiki.html")
 s = p.read_text(encoding="utf-8")
 
 # 1) 横幅：正常 cover，不再 155% 放大

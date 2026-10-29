@@ -15,6 +15,7 @@
   02_wiki/web/data/media/fashion_icon_audit.json
 """
 from __future__ import annotations
+import pathlib
 
 import csv
 import json
@@ -25,7 +26,9 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]          # 02_wiki/web
-PROJ = Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 LOC0 = PROJ / "01_索引与产物/10_索引/热更检测/pe_file_index/gpk_loc0"
 REFS = ROOT / "data/media/fashion_icon_refs.json"
 BOARD = ROOT / "data/boards/fashion_wardrobe.json"

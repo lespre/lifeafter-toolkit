@@ -17,6 +17,7 @@ canonical 链（Phase 2→Final）读的是 `test-documents-ba8a239a` 工作副�
   analysis/audit/weapon_skin_rebaseline_diff.json   逐表：行数/键集/字段差异/新键明细
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import json
@@ -31,9 +32,12 @@ sys.path.insert(0, str(ROOT))
 from pipelines.locator.resolve_table import resolve_table          # noqa: E402
 from pipelines.parsing.decoder import decode_table                 # noqa: E402
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT  # noqa: E402
+
 OLD_SNAP = "test-documents-ba8a239a"
 NEW_SNAP = "test-documents-328b8446"
-NEW_INV = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries_328b8446.jsonl"
+NEW_INV = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries_328b8446.jsonl"
 OUT = ROOT / "analysis" / "audit" / "weapon_skin_rebaseline_diff.json"
 
 # 链上的表（family 名以 com\cdata\<name>.py 为准）

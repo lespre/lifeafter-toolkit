@@ -1,8 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """生成「加成-伤害」实测反推工具：填数据 → 自动判线性/找拐点。"""
 import pathlib
 
-OUT = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+OUT = pathlib.Path(WEB / "analysis")
 
 HTML = r"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <title>加成收益实测反推</title>

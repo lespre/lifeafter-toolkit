@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""找出「只测已删除板块」的测试文件，列出来供归档。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 TESTS = WEB / "tests"
 DELETED = ["chip_lottery_guarantee_panel_static", "common_item_text_sources", "exchange_static_structure",
            "fashion_bag_slots", "fashion_bestplay_slots", "fashion_face_slots", "fashion_glow_slots",

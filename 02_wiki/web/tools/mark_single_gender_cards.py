@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """单性别款的卡：把 gender 统一标成「仅女款」，并保留原始字段。
 
@@ -7,7 +8,10 @@ force_gender 锁定 / 男款行未绑资源），不再在这里重复一套说�
 import json
 import pathlib
 
-BOARD = pathlib.Path("E:/la拆包项目/02_wiki/web/data/boards/fashion_wardrobe.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "fashion_wardrobe.json")
 
 
 def main() -> int:

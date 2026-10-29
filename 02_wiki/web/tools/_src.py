@@ -8,11 +8,14 @@ r"""还原树取值优先级：新 PE 树 → 旧 PE 树 → PC 树。
     p  = table_path("fashion_data")  # 按表名找 .py（优先 PE）
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
 import os
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 
 # 表根优先级：
 #   1) LA_CDATA_ROOT 环境变量（显式指定，测试/临时用）

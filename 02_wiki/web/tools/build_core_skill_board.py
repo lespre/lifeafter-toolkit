@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """抽出「12 星全量特技表」：极品核芯 50 条，特技全文 + 升星段。"""
 from __future__ import annotations
+import sys
 
 import json
 import os
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data/boards"
 SHA = "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523"
 try:

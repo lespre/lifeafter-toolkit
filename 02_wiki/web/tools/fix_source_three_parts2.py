@@ -1,3 +1,4 @@
+import sys
 # -*- coding: utf-8 -*-
 """副标题来源三要素（v2）：还原树源 · 数据源表 · 服务器类型。
 
@@ -7,7 +8,9 @@ import json
 import pathlib
 import re
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 B = WEB / "data" / "boards"
 
 

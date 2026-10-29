@@ -18,6 +18,7 @@ acquisition claim: it is a text/source index only.  The source NPK is opened
 read-only and individual entries are decoded in memory.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -32,7 +33,10 @@ ROOT = Path(__file__).resolve().parents[1]
 TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
-TOOLKIT = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+TOOLKIT = Path(TOOLKIT_CORE)
 if str(TOOLKIT) not in sys.path:
     sys.path.insert(0, str(TOOLKIT))
 
@@ -251,7 +255,7 @@ def build_board(registry_path: Path, source_id: str = SOURCE_ID) -> dict[str, An
                     "comparison_server_branch": str(comparison["server_branch"]),
                     "coverage": "source-scope-complement; item fields remain single-source",
                     "cross_source_policy": "no-cross-source-field-join",
-                    "calibration_ref": "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/dual_source_calibration.json",
+                    "calibration_ref": str(INDEX_ROOT / "site_data/external_refs/dual_source_calibration.json"),
                 },
                 "standardization_status": "v2-structure-upgraded",
                 "source_id": source_id,

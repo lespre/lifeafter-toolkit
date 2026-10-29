@@ -1,3 +1,5 @@
+import sys
+import pathlib
 # -*- coding: utf-8 -*-
 """从当前查看器同一次运行导出海报（P2）。
 要求：① 与实时图同代码路径（同一 viewer.js / 同一 viewer.json / 同一 GLB）
@@ -8,13 +10,16 @@ import asyncio, base64, hashlib, io, json, os, shutil, subprocess, sys, time
 import urllib.request
 import websockets
 from PIL import Image
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
 CHROME = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
-W = r'E:\la拆包项目\02_wiki\\web'
+W = str(WEB)
 SID = sys.argv[1] if len(sys.argv) > 1 else '1110171'
 STATE = sys.argv[2] if len(sys.argv) > 2 else 'dual'
 WIDTH, HEIGHT = 2260, 1150
 URL = 'http://127.0.0.1:8765/board.html?b=weapon_skin_sfx_text_sources&view=wiki&sort=id&dir=desc'
-OUT = r'E:\la拆包项目\01_索引与产物\\30_分析\render_1003_010\_poster_export'
+OUT = str(ANALYSIS_ROOT / "render_1003_010/_poster_export")
 os.makedirs(OUT, exist_ok=True)
 
 async def main():

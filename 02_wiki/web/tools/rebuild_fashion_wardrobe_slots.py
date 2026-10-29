@@ -19,6 +19,7 @@ into one catalog entry while preserving ALL original row keys per entry.
 Structure-only: no availability/price/activity/acquisition claim.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -35,10 +36,13 @@ ROOT = Path(__file__).resolve().parents[1]
 TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
-TOOLKIT = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE, TOOLKIT_DIR  # noqa: E402
+TOOLKIT = Path(TOOLKIT_CORE)
 if str(TOOLKIT) not in sys.path:
     sys.path.insert(0, str(TOOLKIT))
-FASHION_PARSER_DIR = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\表解码")
+FASHION_PARSER_DIR = Path(TOOLKIT_DIR / "工具库/01_解码定位复原/表解码")
 if str(FASHION_PARSER_DIR) not in sys.path:
     sys.path.insert(0, str(FASHION_PARSER_DIR))
 

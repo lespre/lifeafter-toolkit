@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """用 .rela.dyn 的 addend 反查 GPK 字符串引用（GOT/指针表）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 import struct
 
-SO = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/客户端逆向_20261022/libclient_emulator_arm64.so")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
+SO = pathlib.Path(ANALYSIS_ROOT / "客户端逆向_20261022/libclient_emulator_arm64.so")
 
 
 def main() -> int:

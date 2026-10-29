@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """taxonomy / publication_policy / board_builders 同步：去掉（六）其他外观，加捏脸·戒指·花苞。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 D = ROOT / "02_wiki/web/data"
 
 NEW = [

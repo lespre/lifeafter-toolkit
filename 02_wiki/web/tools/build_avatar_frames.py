@@ -26,7 +26,9 @@ import pathlib
 import sys
 import time
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from avatar_resolve import Resolver                # noqa: E402
 from PIL import Image                              # noqa: E402

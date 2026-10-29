@@ -6,13 +6,17 @@
 - appearance_extra 原板下线（改名 .retired.json）
 """
 from __future__ import annotations
+import sys
 
 import hashlib
 import json
 import pathlib
 import re
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 B = ROOT / "02_wiki/web/data/boards"
 FW = B / "fashion_wardrobe.json"
 EX = B / "appearance_extra.json"

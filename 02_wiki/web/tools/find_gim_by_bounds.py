@@ -11,9 +11,14 @@
 用法：python tools/find_gim_by_bounds.py [--packs model_01.gpk model_02.gpk ...]
 """
 from __future__ import annotations
+import sys
+import pathlib
 import argparse, json, pathlib, struct, sys, time
 
-sys.path.insert(0, r'E:\la拆包项目\00_规范与工具/工具\工具库\01_解码定位复原\解包与扫描')
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/01_解码定位复原/解包与扫描"))
 
 TARGETS = {
     'half_lod01': (0.33, 1.26, 2.47),

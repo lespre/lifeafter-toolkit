@@ -10,7 +10,10 @@ import pathlib
 import subprocess
 import sys
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 PY = ROOT / "00_规范与工具/环境/venv/Scripts/python.exe"
 OUTDIR = ROOT / "02_wiki/web/assets/effect_icons"
 REL = "assets/effect_icons"

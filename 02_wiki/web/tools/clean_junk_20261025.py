@@ -4,11 +4,15 @@
 只删确定没被线上页面引用的东西，删完打印清单。
 """
 from __future__ import annotations
+import sys
 
 import pathlib
 import shutil
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 
 FILES = [

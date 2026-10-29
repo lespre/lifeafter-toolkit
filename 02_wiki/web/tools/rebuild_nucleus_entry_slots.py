@@ -11,12 +11,17 @@
   各级成长表/星级特效仍待（nucleus_build_data 无 base，卡点维持）。
 """
 from __future__ import annotations
+import sys
+import pathlib
 
 import json
 import re
 import struct
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "nucleus_entry_slots.json"
@@ -37,7 +42,7 @@ def _package_sha() -> str:
 
 PACKAGE_SHA = _package_sha()
 
-ENTRIES_DIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
+ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
 
 
 def _xbody(payload: bytes) -> bytes:
@@ -48,7 +53,7 @@ def _xbody(payload: bytes) -> bytes:
 
 def _load_decoder():
     sys_path = [
-        r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心",
+        str(TOOLKIT_CORE),
         str(ROOT / "tools"),
     ]
     import sys
@@ -71,7 +76,7 @@ def _load_provenance():
     import sys as _sys
     reg = json.loads((ROOT / "data/live_sources.json").read_text(encoding="utf-8"))
     source = next(s for s in reg["sources"] if s["source_id"] == "documents-py314-current")
-    sys_path = [r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心", str(ROOT / "tools")]
+    sys_path = [str(TOOLKIT_CORE), str(ROOT / "tools")]
     for p in sys_path:
         if p not in _sys.path:
             _sys.path.insert(0, p)

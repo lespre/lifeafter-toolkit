@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """在已落盘的音频资产里，按真名找工作区里已有但未挂到卡上的 WAV。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import defaultdict
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 AUDIO_DIRS = [ROOT / "02_wiki/web/assets/audio", ROOT / "01_索引与产物/30_分析"]
 

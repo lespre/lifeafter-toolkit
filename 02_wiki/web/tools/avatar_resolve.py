@@ -29,7 +29,9 @@ import pathlib
 import sqlite3
 import sys
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 _TOOLS = PROJ / "00_规范与工具/工具/工具库"
 for _p in (_TOOLS / "00_共享核心", _TOOLS / "01_解码定位复原/图集与取图"):
     if str(_p) not in sys.path:

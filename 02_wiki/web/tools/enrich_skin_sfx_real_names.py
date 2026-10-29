@@ -6,11 +6,15 @@
       （如 1120380 → nucleus_attack_04_01 / shoot_02 / reload_rifle_01）
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 MAP = ROOT / "01_索引与产物/30_分析/weapon_skin_sfx_real_names.json"
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"

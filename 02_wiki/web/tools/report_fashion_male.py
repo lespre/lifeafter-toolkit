@@ -1,11 +1,14 @@
+import sys
 # -*- coding: utf-8 -*-
 """统计时装男图覆盖：已补 / 仍缺，并导出清单。"""
 import collections
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
-OUT = pathlib.Path("E:/la拆包项目/01_索引与产物/30_分析/时装男图_清单_20261025.md")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, WEB  # noqa: E402
+
+OUT = pathlib.Path(ANALYSIS_ROOT / "时装男图_清单_20261025.md")
 
 
 def imgs(i):

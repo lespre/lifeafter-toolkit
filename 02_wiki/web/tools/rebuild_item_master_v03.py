@@ -1,16 +1,21 @@
 
 """P4-A3 — ITEM_MASTER v0.3：统一业务物品索引（common_item / belt_chip / gift_data）。"""
 from __future__ import annotations
+import sys
+import pathlib
 import argparse, collections, hashlib, json, struct, sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"; AUDIT = REPO / "analysis" / "audit"
-sys.path.insert(0, str(REPO / "tools")); sys.path.insert(0, r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT, TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(REPO / "tools")); sys.path.insert(0, str(TOOLKIT_CORE))
 from bindict_provenance import decode_table_rows_with_chs_slots
 from toolkit_core.bindict_table import parse_legacy_chs_pool
 
-WORKCOPY = Path(r"E:/la拆包项目/01_索引与产物\\30_分析/config_work/script_py314_docs_BA8A239A/entries")
+WORKCOPY = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
 SNAP = "test-ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad"
 
 def sha256(p: Path) -> str:
@@ -57,12 +62,12 @@ GIFT_EVIDENCE = {"type": "runtime_dispatch_consumer", "runtime_module": "com.cda
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", type=Path, default=Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v03.jsonl"))
+    ap.add_argument("--out", type=Path, default=Path(INDEX_ROOT / "site_data/ITEM_MASTER_v03.jsonl"))
     ap.add_argument("--rules", type=Path, default=DATA / "ITEM_MASTER_v03_RULES.json")
     ap.add_argument("--audit", type=Path, default=AUDIT / "item_master_v03_audit.json")
     a = ap.parse_args()
     cm = decode_common_item()
-    v2 = load_jsonl(Path("E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl"))
+    v2 = load_jsonl(Path(INDEX_ROOT / "site_data/ITEM_MASTER_v02.jsonl"))
     classify = json.loads((AUDIT / "p4a3_classify.json").read_text())
     ex58 = classify["ex58"]
     gb_items = {it.get("item_id"): it for it in (json.loads((DATA / "boards" / "gift_data_text_sources.json").read_text(encoding="utf-8")).get("items") or [])}
@@ -138,7 +143,7 @@ def main() -> int:
     a.rules.write_text(json.dumps({"schema_version": 3, "artifact": a.out.name, "jsonl_sha256": digest,
       "namespaces": {"common_item": "com.cdata.common_item_data", "belt_chip": "com.cdata.belt_chip_data", "gift_data": "com.cdata.gift_data"},
       "dispatch_namespaces_discovered": ["common_item_data","bullets_data","edible_item_data","recipe","gift_data","fashion_data","advanced_recipe_material_data","advanced_recipe_data","player_module_appear_data","chat_bubble_data","spray_paint_data","all_equips_data","belt_chip_data","reward_pool_data","plants_seed_data","trade_items","space_data","race_ctrl_data"],
-      "uniqueness": "(item_namespace, item_id) 唯一；全局 id 唯一性未预设，已审计", "base": "E:/la拆包项目/01_索引与产物/10_索引/site_data/ITEM_MASTER_v02.jsonl",
+      "uniqueness": "(item_namespace, item_id) 唯一；全局 id 唯一性未预设，已审计", "base": str(INDEX_ROOT / "site_data/ITEM_MASTER_v02.jsonl"),
       "evidence": {"common_item": CM_EVIDENCE, "belt_chip": CHIP_EVIDENCE, "gift_data": GIFT_EVIDENCE},
       "forbidden": ["整数碰撞作为 namespace 证据","把 unresolved 写进 artifact","建立 reward→item 正式 join","改 lottery runtime 结构"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     a.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=1), encoding="utf-8")

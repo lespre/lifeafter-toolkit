@@ -15,6 +15,7 @@
 不猜 race/数值）；板内既有卡标注 server_branches 交集/独有；meta 记录口径。
 """
 from __future__ import annotations
+import sys
 
 import argparse
 import json
@@ -22,7 +23,9 @@ import pathlib
 import shutil
 import time
 
-PROJ = pathlib.Path(r"E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BOARD = WEB / "data/boards/gene_potential_catalog.json"
 BOARD_JS = WEB / "data/boards/gene_potential_catalog.js"

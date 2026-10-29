@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """把 1110189 的穷举负证据写进卡面与报告，避免以后再挖一遍。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 MD = ROOT / "01_索引与产物/30_分析/1110189_穷举结论_20261025.md"
 

@@ -1,3 +1,4 @@
+import pathlib
 # -*- coding: utf-8 -*-
 """把公告宸世段（announce_chenshi.json）按首日期对齐 optional_version_data 期次，更新 rebuild 脚本的期次内容层。"""
 import json
@@ -5,8 +6,11 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(r"E:\la拆包项目\02_wiki\\web")
-ann = json.load(open(ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/announce_chenshi.json", encoding="utf-8"))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import INDEX_ROOT, WEB  # noqa: E402
+
+ROOT = Path(WEB)
+ann = json.load(open(ROOT / str(INDEX_ROOT / "site_data/external_refs/announce_chenshi.json"), encoding="utf-8"))
 
 # 公告段：按（公告日期→段文本）收集；经典/简单服并存时合并标注
 by_date = {}   # 公告发布日期(YYYY-MM-DD) -> {"classic": [seg...], "simple": [seg...]}
@@ -48,7 +52,7 @@ for d, bucket in by_date.items():
         cb.setdefault(src, []).append(body)
 
 out = {k: v for k, v in sorted(content_by_period.items())}
-json.dump(out, open(ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data/external_refs/chenshi_period_content.json", "w", encoding="utf-8"),
+json.dump(out, open(ROOT / str(INDEX_ROOT / "site_data/external_refs/chenshi_period_content.json"), "w", encoding="utf-8"),
           ensure_ascii=False, indent=1)
 for k, v in out.items():
     c = " | ".join(v.get("classic", []))[:70]

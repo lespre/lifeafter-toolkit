@@ -30,6 +30,7 @@ r"""把「永久款 + 时限款」拆成两张卡的时装合并成一张。
   python merge_duration_cards.py
 """
 from __future__ import annotations
+import sys
 
 import argparse
 import csv
@@ -38,7 +39,9 @@ import pathlib
 import re
 from collections import Counter, defaultdict
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BOARDS = WEB / "data/boards"
 BOARD_JSON = BOARDS / "fashion_wardrobe.json"

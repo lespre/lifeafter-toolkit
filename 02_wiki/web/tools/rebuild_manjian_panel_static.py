@@ -16,6 +16,7 @@ announcement / trade tables). The only direct activity reference is gift 136388
 desc "灵笼满减活动结束后可交易". Nothing here claims prices or purchase rules.
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import datetime as dt
@@ -30,7 +31,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from live_npk_reader import LiveNpkReader, NpkFormatError, _unpack_entry  # noqa: E402
 
-CORE = Path(r"E:\la拆包项目\00_规范与工具/工具\工具库\00_共享核心")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_CORE  # noqa: E402
+CORE = Path(TOOLKIT_CORE)
 sys.path.insert(0, str(CORE))
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402

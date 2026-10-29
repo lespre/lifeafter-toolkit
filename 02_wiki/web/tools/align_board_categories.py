@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """把每个 board 的 meta.category 对齐到它在导航里的真实路径。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 
 def walk(node, path, out):

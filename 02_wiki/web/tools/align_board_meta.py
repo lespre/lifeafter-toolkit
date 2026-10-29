@@ -1,9 +1,12 @@
+import sys
 # -*- coding: utf-8 -*-
 """把每个板块的 meta.category 对齐到 taxonomy（序号/名称唯一口径）。"""
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 DATA = WEB / "data"
 
 tax = json.loads((DATA / "wiki_taxonomy.json").read_text(encoding="utf-8"))

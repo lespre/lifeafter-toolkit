@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 r"""整理工作区：把散落的 .bak 备份收进 _备份归档/<日期>/，并生成 tools/INDEX.md。"""
 from __future__ import annotations
+import sys
 
 import datetime
 import pathlib
 import re
 import shutil
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 ARCHIVE = WEB / "_备份归档" / datetime.date.today().strftime("%Y%m%d")
 
 

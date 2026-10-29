@@ -13,7 +13,10 @@ import pathlib
 
 import numpy as np
 
-sys.path.insert(0, "E:/la拆包项目/00_规范与工具/工具/工具库/02_图文音频渲染/皮肤链与渲染")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import TOOLKIT_DIR  # noqa: E402
+sys.path.insert(0, str(TOOLKIT_DIR / "工具库/02_图文音频渲染/皮肤链与渲染"))
 import mesh_parse2 as MP  # noqa: E402
 
 

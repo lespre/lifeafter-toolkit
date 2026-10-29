@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """按 items 现状重算名字相关统计（stats + meta.notes 里的计数），避免页面数字和卡片打架。"""
 from __future__ import annotations
+import sys
 
 import collections
 import json
 import pathlib
 import re
 
-BOARD = pathlib.Path(r"E:/la拆包项目/02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import BOARDS_DIR  # noqa: E402
+
+BOARD = pathlib.Path(BOARDS_DIR / "weapon_skin_sfx_text_sources.json")
 JS = BOARD.with_suffix(".js")
 d = json.loads(BOARD.read_text(encoding="utf-8"))
 items = d["items"]

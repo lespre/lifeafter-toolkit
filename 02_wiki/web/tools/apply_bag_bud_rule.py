@@ -6,11 +6,14 @@
 依据：`子代理产出_20261022/_work_bbox_final.json`（.mesh 文件头真值包围盒）。
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BB = PROJ / "01_索引与产物/30_分析/子代理产出_20261022/_work_bbox_final.json"
 BOARD = WEB / "data/boards/fashion_wardrobe.json"

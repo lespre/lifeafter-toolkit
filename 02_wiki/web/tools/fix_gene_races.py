@@ -5,12 +5,16 @@
 - 「再生者」= 现在的 半感染者 → race=3 改名半感染者
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 from collections import Counter
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/gene_potential_catalog.json"
 
 RENAME = {4: "械骨人", 3: "半感染者"}

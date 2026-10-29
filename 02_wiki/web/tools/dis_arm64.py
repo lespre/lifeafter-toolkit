@@ -8,7 +8,10 @@ import sys
 
 from capstone import CS_ARCH_ARM64, CS_MODE_ARM, Cs
 
-P = pathlib.Path(r"E:/la拆包项目/01_索引与产物/30_分析/客户端逆向_20261022/libclient_emulator_arm64.so")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT  # noqa: E402
+
+P = pathlib.Path(ANALYSIS_ROOT / "客户端逆向_20261022/libclient_emulator_arm64.so")
 
 
 class Elf:

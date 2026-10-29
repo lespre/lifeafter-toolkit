@@ -18,6 +18,7 @@
     没有才 img_fetch.export（PE→PC）实导，默认上限 200 条，其余如实标无图。
 """
 from __future__ import annotations
+import pathlib
 
 import argparse
 import hashlib
@@ -32,7 +33,9 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]      # 02_wiki/web
-PROJ = Path("E:/la拆包项目")
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
 CDATA = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 BOARD = ROOT / "data/boards/fashion_wardrobe.json"
 REFS = ROOT / "assets/fashion_icon_refs"

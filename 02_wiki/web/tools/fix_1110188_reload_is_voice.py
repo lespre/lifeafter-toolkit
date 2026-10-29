@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """一魂共鸣换弹音效=角色语音（vo_gunreload_all），移除误挂的步枪通用换弹底座。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 DIR = ROOT / "02_wiki/web/assets/audio/weapon_skin/asoul_1110188"
 

@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """把 README 用的 8 张站点截图转成优化后 JPG（宽 ≤1600，q88），落到 images/。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
 from PIL import Image
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import GOV_ROOT  # noqa: E402
+
 SRC = pathlib.Path("C:/Users/Administrator/AppData/Local/hermes/cache/documents/native-inputs")
-OUT = pathlib.Path("E:/la拆包项目/00_规范与工具/治理/手册/images")
+OUT = pathlib.Path(GOV_ROOT / "手册/images")
 
 ITEMS = [
     ("67508b5cec1d7e7f138964fdc4567fbae3606c6727ee12cc9d60db78105d4dba", "web-wiki"),

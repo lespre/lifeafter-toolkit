@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """把 provenance.table 修到真实表（已抽验 20/20 命中），并标注合成 row_key。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 FIX = {
     "item_master_full": {

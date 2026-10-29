@@ -21,7 +21,9 @@ import websockets
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import spine_fetch as SF  # noqa: E402
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 LIVE = WEB / "assets/spine_live"
 FRAMES = WEB / "assets/avatar_frames"
 CAT = WEB / "data/boards/avatar_catalog.json"

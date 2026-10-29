@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """战斗表现行加游戏面板同款小图标（18px，左对齐）。"""
 from __future__ import annotations
+import sys
 
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/board.html")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+P = pathlib.Path(WEB / "board.html")
 
 
 def rep(s: str, old: str, new: str, tag: str) -> str:

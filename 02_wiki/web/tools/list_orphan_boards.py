@@ -1,9 +1,13 @@
+import sys
 # -*- coding: utf-8 -*-
 """列出未被 taxonomy / policy 引用的孤儿板块文件。"""
 import json
 import pathlib
 
-W = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
+W = pathlib.Path(WEB)
 tax = json.loads((W / "data/wiki_taxonomy.json").read_text(encoding="utf-8"))
 pol = json.loads((W / "data/publication_policy.json").read_text(encoding="utf-8"))
 

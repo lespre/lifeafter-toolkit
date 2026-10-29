@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """按 wiki_taxonomy 修正每个板块的 meta.category；时装类统一来源副标题（含详细还原树路径）。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-WEB = pathlib.Path("E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 TAX = WEB / "data/wiki_taxonomy.json"
 BOARDS = WEB / "data/boards"
 

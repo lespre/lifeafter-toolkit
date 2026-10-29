@@ -1,8 +1,11 @@
+import sys
 # -*- coding: utf-8 -*-
 """生成「伤害公式」页面（反编译结论 + 证据行号 + 参数结构）。"""
 import pathlib
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web/analysis")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 
 HTML = r"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

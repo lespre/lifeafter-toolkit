@@ -24,13 +24,16 @@ r"""把「前缀版本卡」并入本体卡 —— 同一套时装在 fashion_da
   python merge_version_cards.py
 """
 from __future__ import annotations
+import sys
 
 import argparse
 import json
 import pathlib
 from collections import Counter
 
-PROJ = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
 WEB = PROJ / "02_wiki/web"
 BOARDS = WEB / "data/boards"
 BOARD_JSON = BOARDS / "fashion_wardrobe.json"

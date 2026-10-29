@@ -19,6 +19,7 @@
   + data/table_families.json（族级：成员与 role 分布）。live 命名=fid 传播（evidence=fid-shared）。
 """
 from __future__ import annotations
+import pathlib
 
 import json
 import os
@@ -30,12 +31,15 @@ from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import ANALYSIS_ROOT, INDEX_ROOT  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES_DIR = Path(r"E:\la拆包项目\01_索引与产物\\30_分析\config_work\script_py314_docs_BA8A239A\entries")
-DB = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "id_locator_index.db"
-OUT_ENTRIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_index_entries.jsonl"
+ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
+DB = ROOT / str(INDEX_ROOT / "site_data") / "id_locator_index.db"
+OUT_ENTRIES = ROOT / str(INDEX_ROOT / "site_data") / "table_index_entries.jsonl"
 OUT_INDEX = ROOT / "data" / "table_index.json"
-OUT_FAMILIES = ROOT / "E:/la拆包项目/01_索引与产物/10_索引/site_data" / "table_families.json"
+OUT_FAMILIES = ROOT / str(INDEX_ROOT / "site_data") / "table_families.json"
 
 CDATA = b"com" + bytes([92]) + b"cdata" + bytes([92])
 MODULE_TAG = b"<module>"

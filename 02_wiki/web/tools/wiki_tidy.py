@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """整理 wiki：清掉失效导航、隐藏两份重复/未解析板、修 三、活动类 编号。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 import re
 
-WEB = pathlib.Path(r"E:/la拆包项目/02_wiki/web")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import WEB  # noqa: E402
+
 CN = "零一二三四五六七八九十"
 
 STALE = ["weapon_skins", "new_textures", "shop_static_candidates",

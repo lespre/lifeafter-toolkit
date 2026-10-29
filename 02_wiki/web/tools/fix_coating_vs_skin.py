@@ -5,11 +5,15 @@
 - 1110189 是武器皮肤（传世），与 10854 涂装无关，名字仍未知
 """
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-ROOT = pathlib.Path("E:/la拆包项目")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import PROJ  # noqa: E402
+
+ROOT = pathlib.Path(PROJ)
 BOARD = ROOT / "02_wiki/web/data/boards/weapon_skin_sfx_text_sources.json"
 ATT = ROOT / "02_wiki/web/data/weapon_skin_audio_attachments.json"
 

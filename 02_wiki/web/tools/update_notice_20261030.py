@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """更新通知：移除 2026-10-25 已被取代的条目，写入 2026-10-30 本轮更新。"""
 from __future__ import annotations
+import sys
 
 import json
 import pathlib
 
-P = pathlib.Path("E:/la拆包项目/02_wiki/web/data/updates.json")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from la_paths import DATA_DIR  # noqa: E402
+
+P = pathlib.Path(DATA_DIR / "updates.json")
 
 NEW = [
     {
