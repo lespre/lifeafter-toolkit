@@ -1673,7 +1673,7 @@ function renderItemMedia(m){
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
 const FR_BUCKETS=["头饰","捏脸","衣服","背包","挂饰","戒指","半感染者花苞","整套","光源","面饰","发饰","投影","其他"];
 const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
-const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:false};
+const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:true};
 /* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
 (function(){
   try{
@@ -1681,7 +1681,7 @@ const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:false};
     (u.get("frpart")||"").split(",").map(s=>s.trim()).filter(Boolean).forEach(p=>FR.parts.add(p));
     FR.grade=u.get("frgrade")||"";
     FR.img=(u.get("frimg")===null?"有图":u.get("frimg"));
-    FR.named=(u.get("frnamed")==="1");
+    const _nv=u.get("frnamed"); FR.named=(_nv===null?true:_nv==="1");
     FR.gender=u.get("frgender")||"";
     FR.sort=u.get("frsort")||"";
   }catch(e){}
@@ -1942,16 +1942,16 @@ function frBuildFilters(items){
   box.appendChild(one("品级","grade",[["全部",items.length,""]].concat(gk.map(k=>[k==="未标"?"未标":"品级 "+gradeLabel(k),cnt.grade[k],k])) ,FR.grade));
 
   box.appendChild(one("图示","img",[["全部",items.length,""],["有图",cnt.img["有图"]||0],["含占位",cnt.img["含占位"]||0]],FR.img));
-  // 仅玩家可见名：默认不勾；勾上就只留名字能对上玩家可见表的条目
+  // 玩家可用时装：默认勾选；勾上只留名字能对上玩家可见表的条目
   (function(){
     const namedN=items.filter(it=>it.name_visible!==false).length;
     const lab=document.createElement("label");
     lab.className="fr-grp";
-    lab.title="勾上后只显示名字能对上玩家可见表的条目（开发名/工程名会被隐藏）";
+    lab.title="只显示玩家实际可用的时装（名字能对上玩家可见表）；取消勾选可看开发名/工程名条目";
     const cb=document.createElement("input");
     cb.type="checkbox";cb.checked=!!FR.named;
     cb.addEventListener("change",()=>{FR.named=cb.checked;redraw();frRender();});
-    const em=document.createElement("em");em.textContent="仅玩家可见名";
+    const em=document.createElement("em");em.textContent="玩家可用时装";
     const n=document.createElement("span");n.className="n";n.textContent=String(namedN);
     lab.appendChild(em);lab.appendChild(cb);lab.appendChild(n);
     box.appendChild(lab);
