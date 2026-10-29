@@ -32,6 +32,8 @@
 <link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
 <style>
 .perf-name.official{color:#f3e7c8;font-weight:600}
+.perf-icon{width:18px;height:18px;margin-right:8px;vertical-align:-4px;image-rendering:auto;flex:0 0 18px}
+.perf-icon.blank{display:inline-block}
 .perf-note{color:var(--muted,#8b8b8b);font-size:12px;margin-left:8px;opacity:.75}
 
 /* 品级多选下拉（2026-09-19）：作用域严格限定在 #fGrade，且全部加 !important。
@@ -970,9 +972,9 @@ function combatItems(it){
   known.forEach(k=>main.push({k:k,label:BIZ_EXTRA_LABEL[k],name:acc[k].names[0]||"",internals:acc[k].internals,srcs:acc[k].srcs}));
   const normSlot=t=>String(t||"").replace(/[（(][^）)]*[）)]/g,"").trim();
   const showMap={};
-  (it.effect_show||[]).forEach(r=>{if(r&&r.name){showMap[normSlot(r.slot_key||r.slot)]=r.name;showMap[normSlot(r.slot)]=r.name;}});
+  (it.effect_show||[]).forEach(r=>{if(r&&r.name){const h={name:r.name,icon:r.icon_rel||""};showMap[normSlot(r.slot_key||r.slot)]=h;showMap[normSlot(r.slot)]=h;}});
   const SLOT_ALIAS={"攻击准心":"攻击准星","命中特效":"命中效果","专属战斗动作":"特殊交互","挥砍特效":"攻击弹道","特殊交互":"专属战斗动作"};
-  main.forEach(d=>{const k=normSlot(d.label);const hit=showMap[k]||showMap[SLOT_ALIAS[k]];if(hit){d.note=d.name;d.name=hit;d.official=true;}});
+  main.forEach(d=>{const k=normSlot(d.label);const hit=showMap[k]||showMap[SLOT_ALIAS[k]];if(hit){d.note=d.name;d.name=hit.name;d.icon=hit.icon;d.official=true;}});
   const rest=Object.keys(acc).filter(k=>!BIZ_ORDER.some(b=>b.k===k)&&known.indexOf(k)<0);
   if(rest.length){
     const srcs=[],names=[];
@@ -989,7 +991,8 @@ function renderCombatUnified(it){
     const tip=d.detail?` title="${esc(d.detail)}"`:"";
     const internals=(d.internals||[]).slice(0,3).map(x=>`<code class="perf-internal">${esc(x)}</code>`).join("");
     const fallback=(d.internals||[])[0]||"";
-    return `<li class="perf-row"${tip}><span class="perf-cat">${esc(d.label)}</span>`+
+    const ico=d.icon?`<img class="perf-icon" src="${esc(d.icon)}" alt="">`:`<span class="perf-icon blank"></span>`;
+    return `<li class="perf-row"${tip}>`+ico+`<span class="perf-cat">${esc(d.label)}</span>`+
       (d.name?`<span class="perf-name${d.official?" official":""}">${esc(d.name)}</span>`
              :(fallback?`<span class="perf-name">${esc(fallback)}</span>`:`<span class="perf-name weak">已配置</span>`))+
       (d.note&&d.official?`<span class="perf-note">${esc(d.note)}</span>`:"")+

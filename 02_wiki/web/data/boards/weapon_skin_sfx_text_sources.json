@@ -5065,12 +5065,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "碧火焚身"
+     "name": "碧火焚身",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "青龙啸焰"
+     "name": "青龙啸焰",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -20132,12 +20140,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "橙色燃痕"
+     "name": "橙色燃痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "轨道之灼"
+     "name": "轨道之灼",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -21524,37 +21540,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "玫瑰裂空"
+     "name": "玫瑰裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "赤芒碎魂"
+     "name": "赤芒碎魂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "赤玫灼心"
+     "name": "赤玫灼心",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "赤玫焚空"
+     "name": "赤玫焚空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "赤玫狂舞"
+     "name": "赤玫狂舞",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "赤玫幽瞳"
+     "name": "赤玫幽瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "电掣双刀"
+     "name": "电掣双刀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -22393,37 +22437,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "玫瑰裂空"
+     "name": "玫瑰裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "赤芒碎魂"
+     "name": "赤芒碎魂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "赤玫灼心"
+     "name": "赤玫灼心",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "赤玫焚空"
+     "name": "赤玫焚空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "赤玫狂舞"
+     "name": "赤玫狂舞",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "赤玫幽瞳"
+     "name": "赤玫幽瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "电掣双刀"
+     "name": "电掣双刀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -23325,37 +23397,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "赤晶裂空"
+     "name": "赤晶裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "赤月碎晶"
+     "name": "赤月碎晶",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "赤月灼晶"
+     "name": "赤月灼晶",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "赤月流晶"
+     "name": "赤月流晶",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "赤月熔晶"
+     "name": "赤月熔晶",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "赤月晶瞳"
+     "name": "赤月晶瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "电掣双刀"
+     "name": "电掣双刀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -23840,12 +23940,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "真爱之心"
+     "name": "真爱之心",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "玫瑰灼痕"
+     "name": "玫瑰灼痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -25079,37 +25187,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "极狐之印"
+     "name": "极狐之印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "狐光锁定"
+     "name": "狐光锁定",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "游戏跳数"
+     "name": "游戏跳数",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "九尾光轨"
+     "name": "九尾光轨",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "骑士音爆"
+     "name": "骑士音爆",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "狐眸追击"
+     "name": "狐眸追击",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "决斗时刻"
+     "name": "决斗时刻",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -25459,12 +25595,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "致胜关键"
+     "name": "致胜关键",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "游戏时刻"
+     "name": "游戏时刻",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -26452,12 +26596,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "尖端刻印"
+     "name": "尖端刻印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "云端溯迹"
+     "name": "云端溯迹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -27081,12 +27233,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "大奖时分"
+     "name": "大奖时分",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "狐影突袭"
+     "name": "狐影突袭",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -27374,12 +27534,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "跗骨星蚀"
+     "name": "跗骨星蚀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "星涌洪流"
+     "name": "星涌洪流",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -28124,27 +28292,47 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "因果烙印"
+     "name": "因果烙印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "颅谕终章"
+     "name": "颅谕终章",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "颅谕裁罪"
+     "name": "颅谕裁罪",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "颅骸掠影"
+     "name": "颅骸掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "骸鸣震魄"
+     "name": "骸鸣震魄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     }
    ]
   },
@@ -28976,32 +29164,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "极寒凝霜"
+     "name": "极寒凝霜",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "永冬裁决"
+     "name": "永冬裁决",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "凛风碎魄"
+     "name": "凛风碎魄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "霜寒奔涌"
+     "name": "霜寒奔涌",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "冰晶碎鸣"
+     "name": "冰晶碎鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "霜晶凝视"
+     "name": "霜晶凝视",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -29344,12 +29556,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "绯域终幕"
+     "name": "绯域终幕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "流彩启幕"
+     "name": "流彩启幕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -30494,37 +30714,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "暗斑蚀日"
+     "name": "暗斑蚀日",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "暗域归墟"
+     "name": "暗域归墟",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "织烈崩宇"
+     "name": "织烈崩宇",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "熔金流光"
+     "name": "熔金流光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "日冕音爆"
+     "name": "日冕音爆",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "日轮凝瞳"
+     "name": "日轮凝瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "炽日重光"
+     "name": "炽日重光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -31689,37 +31937,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "光耀灼空"
+     "name": "光耀灼空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "光耀裁决"
+     "name": "光耀裁决",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "织烈吞噬"
+     "name": "织烈吞噬",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "极光圣痕"
+     "name": "极光圣痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "圣辉裂空"
+     "name": "圣辉裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "日轮照影"
+     "name": "日轮照影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "炽日重光"
+     "name": "炽日重光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -32869,37 +33145,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "光耀灼空"
+     "name": "光耀灼空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "光耀裁决"
+     "name": "光耀裁决",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "织烈吞噬"
+     "name": "织烈吞噬",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "极光圣痕"
+     "name": "极光圣痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "圣辉裂空"
+     "name": "圣辉裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "日轮照影"
+     "name": "日轮照影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "炽日重光"
+     "name": "炽日重光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -33688,12 +33992,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "净世圣焰"
+     "name": "净世圣焰",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "神谕箭轨"
+     "name": "神谕箭轨",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -34180,12 +34492,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "神翼决裁"
+     "name": "神翼决裁",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "神辉掠空"
+     "name": "神辉掠空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -35134,32 +35454,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "龙息烙印"
+     "name": "龙息烙印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "龙息祭舞"
+     "name": "龙息祭舞",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "龙吟烈焰"
+     "name": "龙吟烈焰",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "焚世龙吟"
+     "name": "焚世龙吟",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "焚击烙印"
+     "name": "焚击烙印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "炽热龙魂"
+     "name": "炽热龙魂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -35737,12 +36081,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "绮愿绽放"
+     "name": "绮愿绽放",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "好礼速递"
+     "name": "好礼速递",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -36204,12 +36556,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "粉爪萌力"
+     "name": "粉爪萌力",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "萌喵之力"
+     "name": "萌喵之力",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -36692,12 +37052,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "霜色星芒"
+     "name": "霜色星芒",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "雪舞星曳"
+     "name": "雪舞星曳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -37390,12 +37758,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "千骑卷尘"
+     "name": "千骑卷尘",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "兵戈裂甲"
+     "name": "兵戈裂甲",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -38608,42 +38984,74 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "赤焰灼痕"
+     "name": "赤焰灼痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "落羽诛邪"
+     "name": "落羽诛邪",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "赤芒溅字"
+     "name": "赤芒溅字",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "金乌掠影"
+     "name": "金乌掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "灼羽轻鸣"
+     "name": "灼羽轻鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "赤焰星标"
+     "name": "赤焰星标",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "蓄力效果",
      "slot_key": "蓄力效果",
-     "name": "金乌蓄光"
+     "name": "金乌蓄光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_xuli.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_xuli.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "金乌驭光"
+     "name": "金乌驭光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -39847,42 +40255,74 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "赤焰灼痕"
+     "name": "赤焰灼痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "落羽诛邪"
+     "name": "落羽诛邪",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "赤芒溅字"
+     "name": "赤芒溅字",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "金乌掠影"
+     "name": "金乌掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "灼羽轻鸣"
+     "name": "灼羽轻鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "赤焰星标"
+     "name": "赤焰星标",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "蓄力效果",
      "slot_key": "蓄力效果",
-     "name": "金乌蓄光"
+     "name": "金乌蓄光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_xuli.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_xuli.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "金乌驭光"
+     "name": "金乌驭光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -41101,42 +41541,74 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "炎羽燎空"
+     "name": "炎羽燎空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "曦轮寂灭"
+     "name": "曦轮寂灭",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "炎轮爆字"
+     "name": "炎轮爆字",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "曜日冲霄"
+     "name": "曜日冲霄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "曦轮撼空"
+     "name": "曦轮撼空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "金乌瞳印"
+     "name": "金乌瞳印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "蓄力效果",
      "slot_key": "蓄力效果",
-     "name": "曦轮凝焰"
+     "name": "曦轮凝焰",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_xuli.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_xuli.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "金乌驭光"
+     "name": "金乌驭光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     }
    ]
   },
@@ -42231,32 +42703,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "灵光乍现"
+     "name": "灵光乍现",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "梦笔生花"
+     "name": "梦笔生花",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "浮想联翩"
+     "name": "浮想联翩",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "气贯长虹"
+     "name": "气贯长虹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "空灵余韵"
+     "name": "空灵余韵",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "神来之笔"
+     "name": "神来之笔",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -43124,32 +43620,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "渊寒入骨"
+     "name": "渊寒入骨",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "永寂尘封"
+     "name": "永寂尘封",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "冥渊浮动"
+     "name": "冥渊浮动",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "潜龙掠影"
+     "name": "潜龙掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "寂灭龙吟"
+     "name": "寂灭龙吟",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "渊瞳凝视"
+     "name": "渊瞳凝视",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -44479,12 +44999,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "芳蕊绽华"
+     "name": "芳蕊绽华",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "铃兰曳影"
+     "name": "铃兰曳影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -45455,37 +45983,63 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "灵识凿骨"
+     "name": "灵识凿骨",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "意识归墟"
+     "name": "意识归墟",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "灵识刻痕"
+     "name": "灵识刻痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "幽魂残影"
+     "name": "幽魂残影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "识海余音"
+     "name": "识海余音",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "蓄势寒锋"
+     "name": "蓄势寒锋",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "切枪动画",
      "slot_key": "切枪动画",
-     "name": "收刀入鞘"
+     "name": "收刀入鞘",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -46407,32 +46961,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "骸波共鸣"
+     "name": "骸波共鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "灵态侵蚀"
+     "name": "灵态侵蚀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "骸纹浮刻"
+     "name": "骸纹浮刻",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "龙骨牵引"
+     "name": "龙骨牵引",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "诱导回响"
+     "name": "诱导回响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "灵态聚焦"
+     "name": "灵态聚焦",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -47201,12 +47779,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "坍星碎击"
+     "name": "坍星碎击",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "引力曳痕"
+     "name": "引力曳痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -47906,12 +48492,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "噬髓腐蚀"
+     "name": "噬髓腐蚀",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "噬炎蔓溢"
+     "name": "噬炎蔓溢",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -48488,12 +49082,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "玉泽流华"
+     "name": "玉泽流华",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "明珠曳光"
+     "name": "明珠曳光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -49960,42 +50562,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "冰晶溅射"
+     "name": "冰晶溅射",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "冰沙击灭"
+     "name": "冰沙击灭",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "寒晶碎魄"
+     "name": "寒晶碎魄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "霜晶掠影"
+     "name": "霜晶掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "碎玉沉鸣"
+     "name": "碎玉沉鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "弦月凝光"
+     "name": "弦月凝光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "凝华效应"
+     "name": "凝华效应",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "手握明月"
+     "name": "手握明月",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -51145,42 +51777,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "冰晶溅射"
+     "name": "冰晶溅射",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "冰沙击灭"
+     "name": "冰沙击灭",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "寒晶碎魄"
+     "name": "寒晶碎魄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "霜晶掠影"
+     "name": "霜晶掠影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "碎玉沉鸣"
+     "name": "碎玉沉鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "弦月凝光"
+     "name": "弦月凝光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "凝华效应"
+     "name": "凝华效应",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "手握明月"
+     "name": "手握明月",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -52353,42 +53015,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "沙漠流光"
+     "name": "沙漠流光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "月华寂灭"
+     "name": "月华寂灭",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "月华裂空"
+     "name": "月华裂空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "月华曳影"
+     "name": "月华曳影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "月华寂响"
+     "name": "月华寂响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "月华冷瞳"
+     "name": "月华冷瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "凝华效应"
+     "name": "凝华效应",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "手握明月"
+     "name": "手握明月",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -52940,12 +53632,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "元气龙尾"
+     "name": "元气龙尾",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "憨萌龙影"
+     "name": "憨萌龙影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -54386,32 +55086,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "麟火灼印"
+     "name": "麟火灼印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "灵威碎虚"
+     "name": "灵威碎虚",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "墨迹惊雷"
+     "name": "墨迹惊雷",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "墨纹曳影"
+     "name": "墨纹曳影",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "麟啸穿云"
+     "name": "麟啸穿云",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "麟目制敌"
+     "name": "麟目制敌",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -54924,12 +55648,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "贴芯印记"
+     "name": "贴芯印记",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "治愈轨迹"
+     "name": "治愈轨迹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -55434,12 +56166,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "芍光电弦"
+     "name": "芍光电弦",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "粉芍流光"
+     "name": "粉芍流光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -56228,12 +56968,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "云绽铃鸣"
+     "name": "云绽铃鸣",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "踏铃逐风"
+     "name": "踏铃逐风",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -57334,32 +58082,56 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "协议覆写"
+     "name": "协议覆写",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "终端抹除"
+     "name": "终端抹除",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "漏洞警报"
+     "name": "漏洞警报",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "狼影脉冲"
+     "name": "狼影脉冲",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "机械狼啸"
+     "name": "机械狼啸",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "狼眸锁定"
+     "name": "狼眸锁定",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     }
    ]
   },
@@ -58812,42 +59584,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "辉光绽放"
+     "name": "辉光绽放",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "咏叹终章"
+     "name": "咏叹终章",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "光影游数"
+     "name": "光影游数",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "辉光流转"
+     "name": "辉光流转",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "咏叹之音"
+     "name": "咏叹之音",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "辉影锁定"
+     "name": "辉影锁定",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "决斗时刻"
+     "name": "决斗时刻",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "光影咏叹"
+     "name": "光影咏叹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -60215,42 +61017,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "晶棱迸裂"
+     "name": "晶棱迸裂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "玫瑰凋零"
+     "name": "玫瑰凋零",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "晶瓣飞溅"
+     "name": "晶瓣飞溅",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "晶弹曳光"
+     "name": "晶弹曳光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "晶鸣回响"
+     "name": "晶鸣回响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "晶花瞄准"
+     "name": "晶花瞄准",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "绝对零度"
+     "name": "绝对零度",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "花绽成器"
+     "name": "花绽成器",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -61419,42 +62251,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "晶棱迸裂"
+     "name": "晶棱迸裂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "玫瑰凋零"
+     "name": "玫瑰凋零",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "晶瓣飞溅"
+     "name": "晶瓣飞溅",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "晶弹曳光"
+     "name": "晶弹曳光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "晶鸣回响"
+     "name": "晶鸣回响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "晶花瞄准"
+     "name": "晶花瞄准",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "绝对零度"
+     "name": "绝对零度",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "花绽成器"
+     "name": "花绽成器",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -62631,42 +63493,72 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "绽华碎光"
+     "name": "绽华碎光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "永恒凋零"
+     "name": "永恒凋零",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "璀璨飞溅"
+     "name": "璀璨飞溅",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "华彩曳光"
+     "name": "华彩曳光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "华鸣回响"
+     "name": "华鸣回响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "盛放瞄准"
+     "name": "盛放瞄准",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "绝对零度"
+     "name": "绝对零度",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "花绽成器"
+     "name": "花绽成器",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -63209,12 +64101,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "棘晶迸裂"
+     "name": "棘晶迸裂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "晶棘流光"
+     "name": "晶棘流光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -64590,37 +65490,63 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "帝皇裂穹"
+     "name": "帝皇裂穹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "光刃诛戮"
+     "name": "光刃诛戮",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "天刻皇印"
+     "name": "天刻皇印",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "极光贯日"
+     "name": "极光贯日",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "龙吟九霄"
+     "name": "龙吟九霄",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "核芯联动",
      "slot_key": "核芯联动",
-     "name": "疾影火刃"
+     "name": "疾影火刃",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_hexin.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_hexin.png"
     },
     {
      "slot": "切枪动画",
      "slot_key": "切枪动画",
-     "name": "虚空获刃"
+     "name": "虚空获刃",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
@@ -65385,12 +66311,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "天罚坠光"
+     "name": "天罚坠光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "圣裁破军"
+     "name": "圣裁破军",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -65882,12 +66816,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "沁夏水花"
+     "name": "沁夏水花",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "清凉水线"
+     "name": "清凉水线",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -66906,12 +67848,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "疾影贯心"
+     "name": "疾影贯心",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "疾影破空"
+     "name": "疾影破空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -67512,12 +68462,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "焚罪裁决"
+     "name": "焚罪裁决",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "烈焰巡空"
+     "name": "烈焰巡空",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -68219,12 +69177,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "战神断岳"
+     "name": "战神断岳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "烈火长虹"
+     "name": "烈火长虹",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -68699,12 +69665,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "铁花灼夜"
+     "name": "铁花灼夜",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "流金飞星"
+     "name": "流金飞星",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -70042,37 +71016,65 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "奇迹应验"
+     "name": "奇迹应验",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "夜幕归寂"
+     "name": "夜幕归寂",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "星陨留痕"
+     "name": "星陨留痕",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "破夜光矢"
+     "name": "破夜光矢",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "神性回响"
+     "name": "神性回响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "神谕之瞳"
+     "name": "神谕之瞳",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "蓄力效果",
      "slot_key": "蓄力效果",
-     "name": "奇迹汇聚"
+     "name": "奇迹汇聚",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_xuli.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_xuli.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_xuli.png"
     }
    ]
   },
@@ -70767,12 +71769,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "斩神裂星"
+     "name": "斩神裂星",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "星辰破界"
+     "name": "星辰破界",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -71565,12 +72575,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "月华碎玉"
+     "name": "月华碎玉",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "桂影流光"
+     "name": "桂影流光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -72066,12 +73084,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "第十三响"
+     "name": "第十三响",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "紫辉逐章"
+     "name": "紫辉逐章",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     }
    ]
   },
@@ -72348,12 +73374,20 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "不屈防御"
+     "name": "不屈防御",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "护臂开合",
      "slot_key": "护臂开合",
-     "name": "极光开阖"
+     "name": "极光开阖",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_kaihe.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_kaihe.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_kaihe.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_kaihe.png"
     }
    ]
   },
@@ -73643,37 +74677,63 @@
     {
      "slot": "命中效果",
      "slot_key": "命中特效",
-     "name": "共鸣绽放"
+     "name": "共鸣绽放",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_mingzhong.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_mingzhong.png"
     },
     {
      "slot": "击败特效",
      "slot_key": "击败特效",
-     "name": "谢幕高光"
+     "name": "谢幕高光",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_jisha.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_jisha.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_jisha.png"
     },
     {
      "slot": "伤害跳字",
      "slot_key": "伤害跳字",
-     "name": "心动点赞"
+     "name": "心动点赞",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_tiaozi.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_tiaozi.png"
     },
     {
      "slot": "攻击弹道",
      "slot_key": "攻击弹道",
-     "name": "魂之星轨"
+     "name": "魂之星轨",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_dandao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_huikan.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_dandao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_huikan.png"
     },
     {
      "slot": "战斗音效",
      "slot_key": "战斗音效",
-     "name": "灵魂应援"
+     "name": "灵魂应援",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_yinxiao.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_yinxiao.png"
     },
     {
      "slot": "攻击准星",
      "slot_key": "攻击准星",
-     "name": "心动聚焦"
+     "name": "心动聚焦",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_zhunxing.png",
+     "icon_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png",
+     "icon_melee_rel": "assets/effect_icons/img_wuqifangyin_zhunxing.png"
     },
     {
      "slot": "特殊交互",
      "slot_key": "专属战斗动作",
-     "name": "共鸣转场"
+     "name": "共鸣转场",
+     "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_qiang.png",
+     "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_chudao.png"
     }
    ]
   },
