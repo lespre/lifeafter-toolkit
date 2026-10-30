@@ -75703,7 +75703,7 @@
    },
    "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
    "official_name_status": "unresolved",
-   "weapon_type_label": "步枪（5）",
+   "weapon_type_label": "狙击枪（5）",
    "weapon_type_state": "snapshot_field",
    "level_source": "weapon_skin_data.level",
    "release_state": "upcoming",
@@ -75712,7 +75712,10 @@
    "sfx_item_count": 0,
    "named_sfx_item_count": 0,
    "sfx_audio_state": "未提取",
-   "ip_now_state": null
+   "ip_now_state": null,
+   "level": 3,
+   "catalog_layer": "current_parent",
+   "catalog_level_label": "直售"
   },
   {
    "id": "1110205",
@@ -75857,7 +75860,7 @@
    },
    "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
    "official_name_status": "unresolved",
-   "weapon_type_label": "步枪（5）",
+   "weapon_type_label": "狙击枪（5）",
    "weapon_type_state": "snapshot_field",
    "level_source": "weapon_skin_data.level",
    "release_state": "upcoming",
@@ -75866,7 +75869,10 @@
    "sfx_item_count": 0,
    "named_sfx_item_count": 0,
    "sfx_audio_state": "未提取",
-   "ip_now_state": null
+   "ip_now_state": null,
+   "level": 2,
+   "catalog_layer": "current_parent",
+   "catalog_level_label": "白送"
   }
  ]
 }
