@@ -13,8 +13,16 @@ sys.path.insert(0, str(pathlib.Path("E:/la拆包项目/00_规范与工具/工具
 from toolkit_core import script_decode as SD  # noqa: E402
 
 
+REG: list = []          # 所有构造出来的字典
+MAPADD: list = []       # MAP_ADD 记录 (key, value) → 外层表的行
+
+
 class TDict(dict):
     """TD(...) 构造出来的表行；只保留键值对语义。"""
+
+    def __init__(self, *a, **kw):
+        super().__init__(*a, **kw)
+        REG.append(self)
 
 
 def unwrap(v):
@@ -26,6 +34,8 @@ def unwrap(v):
 
 
 def call_td(args):
+    if len(args) == 1 and isinstance(args[0], dict):
+        return args[0]                      # TD({...}) 直接透传
     out = TDict()
     i = 0
     while i + 1 < len(args):
@@ -53,7 +63,11 @@ def run(code, verbose: bool = False):
     for item in ins:
         i = item[0]
         name, arg = i.name, i.arg
-        if name in ("RESUME", "NOP", "NOT_TAKEN", "POP_TOP"):
+        if name in ("RESUME", "NOP", "NOT_TAKEN"):
+            continue
+        if name == "POP_TOP":
+            if st:
+                st.pop()
             continue
         if name == "LOAD_CONST":
             st.append(consts[arg] if arg < len(consts) else None)
@@ -100,13 +114,19 @@ def run(code, verbose: bool = False):
                 st.append(None)
         elif name == "CALL" or name == "CALL_KW":
             a = pop(arg) if arg else []
-            fn = pop()
-            if st and st[-1] is None:          # 吃掉 PUSH_NULL 占位
-                st.pop()
+            if arg == 1:
+                a = [a]
+            slot = pop() if st else None       # [callable][NULL] 布局：先出 NULL
+            if slot is None and st:
+                fn = pop()
+            else:
+                fn = slot
             if callable(fn):
                 st.append(fn(list(a) if isinstance(a, list) else [a]))
             elif isinstance(fn, type):
                 st.append(fn())
+            elif len(a) == 1 and isinstance(a[0], dict):
+                st.append(a[0])                 # TD({...}) 透传
             else:
                 st.append(TDict())
         elif name == "STORE_NAME":
@@ -125,14 +145,8 @@ def run(code, verbose: bool = False):
         elif i.op == 0x57:                     # MAP_ADD(depth)：value,key → 第 depth 层字典
             val = pop()
             key = pop()
+            MAPADD.append((key, val))
             depth = arg if arg else 1
-            if not hasattr(run, "_dbg"):
-                run._dbg = 0
-            if run._dbg < 3:
-                run._dbg += 1
-                print("  [MAP_ADD] depth=%d key=%r target=%s stacktop=%s"
-                      % (depth, key, type(st[len(st)-depth]).__name__ if st else "empty",
-                         [type(x).__name__ for x in st[-3:]]))
             try:
                 tgt = st[len(st) - depth]
                 if isinstance(tgt, dict):
@@ -165,6 +179,11 @@ def main(argv: list[str]) -> int:
     data = g.get("data")
     print("解析终点 %d ｜ 全局变量 %s" % (end, list(g)))
     print("未处理指令", dict(sorted(skipped.items(), key=lambda x: -x[1])[:6]))
+    big = max(REG, key=len) if REG else None
+    print("构造字典 %d 个 ｜ 最大 %d 条（是 g['data']? %s）"
+          % (len(REG), len(big) if big else 0, big is g.get("data")))
+    if big is not None and len(big) > 0:
+        data = big
     if isinstance(data, dict):
         print("data 条目 %d" % len(data))
         k0 = next(iter(data), None)

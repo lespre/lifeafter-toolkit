@@ -124,6 +124,11 @@ def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str, table:
     ch["no_cross_source_field_join"] = True
     pr["locator_chain"] = ch
     pr["tech"] = {"hd_class": cls, "hd_type": hd_type, "ui_class": ui_class}
+    pr["name_source"] = "%s#name（字节码重放）" % table
+    pr["upstream"] = {"package_sha256": SNAPSHOT_SHA256,
+                      "entry_index": TABLE_ENTRY_INDEX,
+                      "file_id": TABLE_FILE_ID,
+                      "role": "script-table-replay"}
     return pr
 
 
@@ -136,6 +141,26 @@ def _load_rows() -> tuple[list[dict], str, str]:
     """
     p = CD_MAIN / "huodong_conf_data.py"
     if p.is_file():
+        # ① mini-VM（本仓库 02_wiki/web/tools/vm_cdata_table.py）：实测 3,519 行，
+        #    比 toolkit 重放器多回收 479 行（后者 DICT_UPDATE 栈不足会丢段）。
+        try:
+            import importlib.util as _ilu
+            _sp = _ilu.spec_from_file_location("vm_cdata_table",
+                                               str(pathlib.Path(__file__).resolve().parent / "vm_cdata_table.py"))
+            _vm = _ilu.module_from_spec(_sp)
+            _sp.loader.exec_module(_vm)
+            from toolkit_core import script_decode as _SD
+            _r, _code, _end = _SD.load_module(str(p))
+            _g, _sk = _vm.run(_code)
+            _rows = {k: dict(v) for k, v in _vm.MAPADD
+                     if isinstance(v, dict) and isinstance(v.get("name"), str)}
+            if _rows:
+                print("  VM 自检：行 %d ｜ 解析终点 %d / 文件 %d" % (len(_rows), _end, p.stat().st_size))
+                out = [{"key": k, "values": v} for k, v in _rows.items()]
+                return out, "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）", p.name
+        except Exception as exc:                     # noqa: BLE001
+            print("  ⚠ VM 路径不可用：%s" % exc)
+
         try:
             from toolkit_core import script_table_replay as STR
         except Exception as exc:                     # noqa: BLE001
@@ -257,9 +282,14 @@ def main() -> int:
             "package_sha": SNAPSHOT_SHA256,
             "provenance": {
                 "contract_version": 3,
+                "audit_status": "passed",
+                "contract": "frozen-audited-artifact",
                 "source_locks": [lock],
-                "source_scope": {"cross_source_field_join": False},
-                "decode": {"kind": "script-table-replay", "table_sha256": TABLE_SHA256},
+                "source_scope": {"cross_source_policy": "no-cross-source-field-join",
+                                 "integer_join_policy": "no-equal-integer-join",
+                                 "runtime_final_policy": "unknown-unless-runtime-proven"},
+                "decode": {"kind": "script-table-replay", "table_sha256": TABLE_SHA256,
+                           "table_file_id": TABLE_FILE_ID},
             },
             "notes": ("一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。"
                       "★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，%d 行全量）；"

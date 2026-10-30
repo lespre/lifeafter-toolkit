@@ -1,25 +1,25 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-10-30",
+  "generated": "2026-10-31",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-10-29",
   "boards": [
     {
       "name": "活动总表 · 全部活动与起止时间",
-      "category": "三、活动奖池 / （一）活动表",
+      "category": "三、活动类 / （零）活动总表",
       "board": "activity_master",
-      "items": 886,
-      "generated": "2026-10-21",
-      "source_server": "简单生存服（huodong_conf kj1）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 3519,
+      "generated": "2026-10-31",
+      "source_server": "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）",
+      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 886
+        "structure": 3519
       },
       "state_summary": {
-        "未开始": 9,
-        "进行中": 51,
-        "已结束": 794,
-        "无时间": 32
+        "未开始": 22,
+        "进行中": 115,
+        "已结束": 3304,
+        "无时间": 78
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -27,7 +27,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 886
+          "replayed-structural": 3519
         }
       }
     },
