@@ -95,10 +95,18 @@ def day(ts) -> str:
     return datetime.datetime.fromtimestamp(ts + 8 * 3600, datetime.UTC).strftime("%Y-%m-%d")
 
 
-def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str) -> dict:
+# ★ 2026-10-30 热更快照（溯源字面量，禁止改成运行时计算 —— 否则破坏字节级可复现）
+#   Documents/script.py314.lc.npk  237,984,616 B  mtime 2026-10-30 19:43
+SNAPSHOT_SHA256 = "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e"
+SNAPSHOT_BYTES = 237984616
+# com/cdata/huodong_conf_data.py（本次实际取数的表文件）
+TABLE_SHA256 = "cb5ece53e3c8f4522846686478ce59b365257c865322d72e1759def1b302e776"
+
+
+def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str, table: str) -> dict:
     import copy
     pr = copy.deepcopy(tpl)
-    pr["table"] = "huodong_conf_data_auto_oversea_data_kj1"
+    pr["table"] = table
     pr["row_key"] = row_key
     pr["field_refs"] = ["name", "hd_class", "start_ts", "end_ts"]
     ch = copy.deepcopy(pr.get("locator_chain") or {})
@@ -114,28 +122,54 @@ def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str) -> dic
     return pr
 
 
-def main() -> int:
-    # 2026-10-30：oversea/kj1 变体已随旧配置树清理丢失，回落主表 huodong_conf_data
+def _load_rows() -> tuple[list[dict], str, str]:
+    """取活动行。
+
+    ★ 2026-10-30 热更后 cdata 表改走「NeoX 字节码构造」打包（见
+      toolkit_core/script_table_replay.py 头注释），旧 `x{` 表体路径已不适用。
+      主路径 = 重放字节码；失败才回落旧 bindict 路径（并如实标注）。
+    """
+    p = CD_MAIN / "huodong_conf_data.py"
+    if p.is_file():
+        try:
+            from toolkit_core import script_table_replay as STR
+        except Exception as exc:                     # noqa: BLE001
+            print("  ⚠ 重放器不可用：%s" % exc)
+        else:
+            rows, meta = STR.replay_module(p)
+            if rows:
+                print("  重放自检：行 %d ｜ 字面量段 %d ｜ 写入 %d ｜ 解析%s"
+                      % (meta["rows"], meta["containers"], meta["map_add_writes"],
+                         "完整" if meta["parse_complete"] else "不完整"))
+                out = [{"key": k, "values": v} for k, v in rows.items()]
+                return out, "huodong_conf 主表 · 2026-10-30 热更（字节码重放）", p.name
+            print("  ⚠ 重放得到 0 行，回落旧路径")
+
+    # ── 回落：旧 bindict 表体（x{ …）
     cands = [
         (CD / "huodong_conf_data_auto_oversea_data_kj1.py",
          CD / "huodong_conf_data_auto_oversea_data_kj1_chs.py", "简单生存服（huodong_conf kj1）"),
         (CD_MAIN / "huodong_conf_data.py",
-         CD_MAIN / "huodong_conf_data_chs.py", "当前包（huodong_conf 主表，20261030 热更）"),
+         CD_MAIN / "huodong_conf_data_chs.py", "当前包（huodong_conf 主表）"),
     ]
-    p = c = None
-    src_label = None
     for _p, _c, _lab in cands:
         if _p.is_file() and _c.is_file():
-            p, c, src_label = _p, _c, _lab
-            break
-    if p is None:
-        raise SystemExit("huodong_conf 主表与 kj1 变体都不存在")
-    print("数据源：", src_label, "→", p.name)
-    raw = p.read_bytes()
-    at = raw.find(b"x{")
-    L = struct.unpack_from("<I", raw, at + 2)[0]
-    rows, _ = BT.decode_table_rows(raw[at + 6: at + 6 + L],
-                                   BT.parse_legacy_chs_pool(c.read_bytes()), resolve_jumps=False)
+            raw = _p.read_bytes()
+            at = raw.find(b"x{")
+            if at < 0:
+                continue
+            L = struct.unpack_from("<I", raw, at + 2)[0]
+            rr, _ = BT.decode_table_rows(raw[at + 6: at + 6 + L],
+                                         BT.parse_legacy_chs_pool(_c.read_bytes()),
+                                         resolve_jumps=False)
+            if rr:
+                return rr, _lab, _p.name
+    raise SystemExit("huodong_conf 主表与 kj1 变体都不存在/都解不出")
+
+
+def main() -> int:
+    rows, src_label, src_file = _load_rows()
+    print("数据源：", src_label, "→", src_file)
 
     def g(r, k):
         v = r["values"].get(k)
