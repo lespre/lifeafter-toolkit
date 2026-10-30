@@ -833,12 +833,12 @@ window.WIKI_MANIFEST = {
       "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
       "category": "一、时装类 / （二）武器皮肤",
       "board": "weapon_skin_sfx_text_sources",
-      "items": 122,
+      "items": 124,
       "generated": "2026-10-17T00:06:34+08:00",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（weapon_skin_data.py、weapon_skin_sfx_function_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
       "evidence": {
-        "structure": 122
+        "structure": 124
       },
       "state_summary": {
         "verified": 0,
@@ -857,7 +857,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 122
+          "replayed-structural": 124
         }
       }
     }
