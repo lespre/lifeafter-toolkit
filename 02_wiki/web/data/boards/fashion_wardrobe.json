@@ -417002,11 +417002,22 @@
     610400155,
     610400156
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_light_f_1040001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_light_m_1040001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417099,11 +417110,22 @@
     633260145,
     633260146
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_f_3326001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_m_3326001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417196,11 +417218,22 @@
     633270145,
     633270146
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_f_3327001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_m_3327001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417293,11 +417326,22 @@
     633280145,
     633280146
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_f_3328001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_m_3328001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417390,11 +417434,22 @@
     633380145,
     633380146
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_f_3338001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_bag_m_3338001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417494,11 +417549,32 @@
     637300315,
     637300316
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 4,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_f_3730001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_m_3730001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_f_3730003.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_m_3730003.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 4
    },
    "status_tags": [
     "static config"
@@ -417603,11 +417679,32 @@
     637300333,
     637300334
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 4,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_f_3730001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_m_3730001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_f_3730003.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_m_3730003.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 4
    },
    "status_tags": [
     "static config"
@@ -417706,11 +417803,22 @@
     637340235,
     637340236
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_f_3734001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_b_m_3734001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417801,11 +417909,22 @@
     637350112,
     637350113
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_f_3735001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_h_m_3735001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"
@@ -417894,11 +418013,22 @@
     637520135,
     637520136
    ],
-   "icon_state": "无图",
-   "icon_count": 0,
+   "icon_state": "有图",
+   "icon_count": 2,
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_suit_f_3752001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     },
+     {
+      "png": "assets/fashion_posters/pe_hotfix/icon_suit_m_3752001.png",
+      "label": "图示1",
+      "source": "PE 热更 20261030 · ui/item_icon"
+     }
+    ],
+    "total": 2
    },
    "status_tags": [
     "static config"

@@ -140,15 +140,21 @@ def cmd_web(a) -> int:
 
 
 # ---------------- index ----------------
+def _packs_dir() -> Path:
+    """PE gpk 包目录：优先 源包/pe_gres_android，回落旧 pe_packs。"""
+    p = PROJ / "01_索引与产物/源包/pe_gres_android"
+    return p if p.is_dir() else (DET / "pe_packs")
+
+
 def cmd_index(a) -> int:
     if a.action in ("all", "pull"):
-        rc = run("拉取 gpk 包", [INDEX_CLI, "pull", "--jobs", "8", "--out", DET / "pe_packs"])
+        rc = run("拉取 gpk 包", [INDEX_CLI, "pull", "--jobs", "8", "--out", _packs_dir()])
         if a.action == "pull":
             return rc
     else:
         rc = 0
     if a.action in ("all", "build"):
-        rc |= run("重建索引", [INDEX_CLI, "build", "--jobs", "8", DET / "pe_packs"])
+        rc |= run("重建索引", [INDEX_CLI, "build", "--jobs", "8", _packs_dir()])
         if a.action == "build":
             return rc
     if a.action in ("all", "names"):
