@@ -58,7 +58,7 @@ def main() -> int:
         shutil.copy2(p, imgs / p.name)
         entries.append(("时装", name_of.get(p.name, p.stem), "images/" + p.name))
 
-    for sid, label in (("1110189", "幻海？(未定名) · 喷火器 典藏"),
+    for sid, label in (("1110189", "浪漫过载 · 喷火器 典藏"),
                        ("1110194", "未定名 · 狙击枪 直售"),
                        ("1110205", "未定名 · 狙击枪 白送")):
         src = WEB / f"assets/skin_posters/{sid}.png"

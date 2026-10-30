@@ -537,15 +537,16 @@
    "id": "1110189",
    "skin_id": 1110189,
    "catalog_layer": "current_parent",
-   "name": "未命名皮肤 · ID 1110189",
-   "name_display": "未命名皮肤 · ID 1110189",
-   "official_name_status": "unresolved",
-   "name_status": "unresolved",
-   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
+   "name": "浪漫过载",
+   "name_display": "浪漫过载",
+   "official_name_status": "user_confirmed",
+   "name_status": "verified",
+   "name_status_note": "用户实机确认（2026-10-30）；数据侧道具表为桩，无法自动解析",
    "name_resolution": {
-    "state": "unresolved",
-    "name": null,
-    "rule": "name_only_from_item_row"
+    "state": "verified_user",
+    "name": "浪漫过载",
+    "rule": "用户实机确认优先于配置表",
+    "evidence": "用户提供：该皮肤名为「浪漫过载」"
    },
    "official_desc": null,
    "version_status": "PE/PC 热更 20261030 新增主表行",
@@ -740,7 +741,6 @@
    "sfx_audio_state": "未提取",
    "variant_kind": "武器皮肤（skin），非涂装",
    "variant_note": "系统区分：皮肤(weapon_skin_data, skin_id→model_path) 与 涂装(equip_coating_data, coating_name→item_id) 是两套。10854 是涂装物品「幻海典藏」，不是皮肤 id；1110189 的皮肤位是 skin_1013_010，资源未下发。",
-   "reserved_note": "20261030 热更修正：该 id 已出现在 weapon_skin_data（level 5 / weapon_type 20 / sale_ts 2026-11-05），skin_1013_010 模型与 icon_1110189_b 均可取 ⇒ 此前「预留未发布」结论作废。名字仍无可信来源（common_item_data 为桩）。",
    "grade_level": 5,
    "effect_show": [
     {
