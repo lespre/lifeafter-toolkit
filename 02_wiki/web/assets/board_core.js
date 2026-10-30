@@ -473,7 +473,7 @@ const BIZ_ORDER=[
  {k:"damage_number",t:"伤害跳字"},
  {k:"attack_visual",t:"攻击弹道",melee:"挥砍特效"},
  {k:"combat_sound",t:"战斗音效"},
- {k:"combat_crosshair",t:"攻击准心"},
+ {k:"combat_crosshair",t:"攻击准星"},
  {k:"special_interaction",t:"特殊交互"},
  {k:"nucleus_linkage",t:"核芯联动"},
  {k:"exclusive_combat_animation",t:"专属战斗动作"},
@@ -501,12 +501,16 @@ const BIZ_FROM_CANON={hit_effect:"hit_effect",kill_effect:"kill_effect",damage_n
  other:"preview_extra"};
 function combatItems(it){
   const isMelee=/冷兵器|护臂/.test(it.weapon_type_label||"");
+  /* 2026-10-31 用户口径：卡片可标 no_audio=true —— 该皮肤不展示任何音效类战斗表现 */
+  const noAudio=it.no_audio===true;
+  const AUDIO_KEYS={combat_sound:1};
   // 其余项顺序（非 10 项内）：保留各自业务名，不按 source 表名生成
   const EXTRA_ORDER=["charge","arm_open","explode","brass","preview_extra","switch_anim"];
   const acc={};
   const base=p=>{const t=String(p||"");const i=t.lastIndexOf("/");return i>=0?t.slice(i+1):t;};
   const put=(k,name,src,internal)=>{
     if(!k)return;
+    if(noAudio&&AUDIO_KEYS[k])return;
     const o=acc[k]||(acc[k]={srcs:[],names:[],internals:[]});
     if(src&&o.srcs.indexOf(src)<0)o.srcs.push(src);
     if(name&&!isWeakName(name)&&o.names.indexOf(name)<0)o.names.push(name);
@@ -532,6 +536,22 @@ function combatItems(it){
   (it.effect_show||[]).forEach(r=>{if(r&&r.name){const h={name:r.name,icon:r.icon_rel||""};showMap[normSlot(r.slot_key||r.slot)]=h;showMap[normSlot(r.slot)]=h;}});
   const SLOT_ALIAS={"攻击准心":"攻击准星","命中特效":"命中效果","专属战斗动作":"特殊交互","挥砍特效":"攻击弹道","特殊交互":"专属战斗动作"};
   main.forEach(d=>{const k=normSlot(d.label);const hit=showMap[k]||showMap[SLOT_ALIAS[k]];if(hit){d.note=d.name;d.name=hit.name;d.icon=hit.icon;d.official=true;}});
+  /* effect_show 里有、但上面的合并没覆盖到的槽位 → 单独成「官方名」行 */
+  (it.effect_show||[]).forEach(r=>{
+    if(!r||!r.name)return;
+    const slot=normSlot(r.slot_key||r.slot);
+    if(noAudio&&/音效/.test(slot))return;
+    if(main.some(d=>{const L=normSlot(d.label);return L===slot||SLOT_ALIAS[L]===slot||SLOT_ALIAS[slot]===L;}))return;
+    main.push({k:"es:"+slot,label:slot,name:r.name,internals:[],srcs:[],official:true,
+               icon:r.icon_rel||"",note:""});
+  });
+  /* 统一槽位顺序：effect_show 补进来的行也按业务顺序排 */
+  const SLOT_ORDER=["命中效果","击败特效","伤害跳字","攻击弹道","挥砍特效","攻击准星","特殊交互",
+                    "核芯联动","专属战斗动作","专属待机动作","蓄力效果","护臂开合"];
+  main.sort((a,b)=>{
+    const ia=SLOT_ORDER.indexOf(normSlot(a.label)), ib=SLOT_ORDER.indexOf(normSlot(b.label));
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  });
   const rest=Object.keys(acc).filter(k=>!BIZ_ORDER.some(b=>b.k===k)&&known.indexOf(k)<0);
   if(rest.length){
     const srcs=[],names=[];
