@@ -17,8 +17,10 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
-from _src import cdata_dir
-CD = cdata_dir("oversea")
+from _src import cdata_dir as _cdata_dir  # noqa: E402
+# 2026-10-30：_src.cdata_dir 仍指向已删除的旧快照路径，这里直接锁定现行还原树
+CD_MAIN = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
+CD = CD_MAIN / "oversea" if (CD_MAIN / "oversea").is_dir() else CD_MAIN
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
@@ -113,8 +115,22 @@ def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str) -> dic
 
 
 def main() -> int:
-    p = CD / "huodong_conf_data_auto_oversea_data_kj1.py"
-    c = CD / "huodong_conf_data_auto_oversea_data_kj1_chs.py"
+    # 2026-10-30：oversea/kj1 变体已随旧配置树清理丢失，回落主表 huodong_conf_data
+    cands = [
+        (CD / "huodong_conf_data_auto_oversea_data_kj1.py",
+         CD / "huodong_conf_data_auto_oversea_data_kj1_chs.py", "简单生存服（huodong_conf kj1）"),
+        (CD_MAIN / "huodong_conf_data.py",
+         CD_MAIN / "huodong_conf_data_chs.py", "当前包（huodong_conf 主表，20261030 热更）"),
+    ]
+    p = c = None
+    src_label = None
+    for _p, _c, _lab in cands:
+        if _p.is_file() and _c.is_file():
+            p, c, src_label = _p, _c, _lab
+            break
+    if p is None:
+        raise SystemExit("huodong_conf 主表与 kj1 变体都不存在")
+    print("数据源：", src_label, "→", p.name)
     raw = p.read_bytes()
     at = raw.find(b"x{")
     L = struct.unpack_from("<I", raw, at + 2)[0]
@@ -183,7 +199,7 @@ def main() -> int:
         "meta": {
             "name": "活动总表 · 全部活动与起止时间",
             "category": "三、活动类 / （零）活动总表",
-            "source_server": "简单生存服（huodong_conf kj1）",
+            "source_server": src_label,
             "generated": TODAY.isoformat(),
             "evidence": "structure",
             "card_mode": "roster",
