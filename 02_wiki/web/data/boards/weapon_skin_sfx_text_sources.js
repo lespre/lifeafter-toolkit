@@ -75052,18 +75052,19 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
   {
    "id": "1110189",
    "skin_id": 1110189,
-   "catalog_layer": "behavior_preview_only",
-   "name": "幻海版",
-   "name_display": "幻海版",
+   "catalog_layer": "current_parent",
+   "name": "未命名皮肤 · ID 1110189",
+   "name_display": "未命名皮肤 · ID 1110189",
    "official_name_status": "unresolved",
-   "name_status": "known_from_release_note",
-   "name_status_note": "无同快照道具行名、无可回放候选名",
+   "name_status": "unresolved",
+   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
    "name_resolution": {
-    "state": "reserved_unreleased",
-    "rule": "主表/道具行/资源/第二源四处同时缺失 ⇒ 预留条目；名字无从得出，禁猜。"
+    "state": "unresolved",
+    "name": null,
+    "rule": "name_only_from_item_row"
    },
    "official_desc": null,
-   "version_status": "PC 测试服热更行为资源行（无主表父行、无道具行） · 周年庆上线（用户口径 2026-10-17）",
+   "version_status": "PE/PC 热更 20261030 新增主表行",
    "model_path": "weapon/skin/skin_1013_010/skin_1013_010.gim",
    "field_provenance": {
     "defeat_args": {
@@ -75100,11 +75101,11 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "level": 6,
    "grade": "6传世级",
    "weapon_type": 20,
-   "weapon_type_label": "喷火器（20）· 由特效路径 skin_1013_* 推定",
-   "weapon_type_state": "candidate_asset_path_convention",
+   "weapon_type_label": "喷火器（20）",
+   "weapon_type_state": "snapshot_field",
    "sale_ts": 1793808000,
    "sale_date": "2026-11-05",
-   "release_state": "no_sale_field",
+   "release_state": "upcoming",
    "evidence": "structure",
    "evidence_level": "structure-only",
    "source": "PC 测试服 2026-10-15 热更 payload（只读解码）：父行 weapon_skin_data / 行为行 weapon_skin_behavior_res_data / 表现行 weapon_skin_sfx_function_data。静态配置不表示活动、可得、价格、概率或战斗效果。",
@@ -75239,23 +75240,23 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     "rule": "资源路径 token `skin_<4位模型前缀>_<序号>` → 前缀表映射；候选级，不当作 runtime 绑定",
     "not_a_name_source": true
    },
-   "resolution_note": "本次热更只新增行为资源行（无父行、无道具行）⇒ 不计入主表新增款数，不补名称/品级/模型。",
+   "resolution_note": "20261030 热更修正：该 id 已出现在 weapon_skin_data（level 5 / weapon_type 20 / sale_ts 2026-11-05），skin_1013_010 模型与 icon_1110189_b 均可取 ⇒ 此前「预留未发布」结论作废。名字仍无可信来源（common_item_data 为桩）。",
    "overlay_generated": "2026-10-17T00:06:34+08:00",
    "weapon_type_status": "inferred_from_sfx_path",
    "hotfix_note": "行为资源行（无主表父行/无道具行/无模型）；特效路径 skin_1013_010",
    "hotfix_batch": "20261016_213554_playertest_newpc",
    "grade_clean": "传世",
    "catalog_level_label": "传世",
-   "level_source": "用户确认（2026-10-17）：传世级、周年庆出；客户端无主表行 ⇒ 无表值",
+   "level_source": "weapon_skin_data.level",
    "grade_source": "用户确认（2026-10-17）",
    "release_event": "周年庆",
-   "sale_date_basis": "用户口径（2026-10-17）：周年庆出；客户端无主表行 ⇒ 无 sale_ts",
+   "sale_date_basis": "sale_ts",
    "charm_value": null,
    "charm_source": "no_table_row",
-   "sfx_audio_state": "已提取",
+   "sfx_audio_state": "未提取",
    "variant_kind": "武器皮肤（skin），非涂装",
    "variant_note": "系统区分：皮肤(weapon_skin_data, skin_id→model_path) 与 涂装(equip_coating_data, coating_name→item_id) 是两套。10854 是涂装物品「幻海典藏」，不是皮肤 id；1110189 的皮肤位是 skin_1013_010，资源未下发。",
-   "reserved_note": "全表扫描：经典服 cdata 12,451 张 + oversea 关键词表 1,508 张，仅 weapon_skin_behavior_res_data 一行命中 key=1110189。 | 区域皮肤表：oversea 下 12 张 weapon_skin_data_auto_oversea_data_*.py 全是 ~310 B 桩，均无该行。 | 第二源藏宝阁（cbg game_auto_config.js，25 MB）：有 1110187 前方禁行 / 1110188 一魂共鸣 / 1110190 佳期如梦，**没有 1110189**。 | 资源侧：skin_1013_010 在 names_join 0 命中；icon_1110189_s/_b 0 命中。 | 结论：预留条目（未发布）。不是资源没下完，而是主表与道具行都没配。",
+   "reserved_note": "20261030 热更修正：该 id 已出现在 weapon_skin_data（level 5 / weapon_type 20 / sale_ts 2026-11-05），skin_1013_010 模型与 icon_1110189_b 均可取 ⇒ 此前「预留未发布」结论作废。名字仍无可信来源（common_item_data 为桩）。",
    "grade_level": 5,
    "effect_show": [
     {
@@ -75317,7 +75318,8 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
      }
     ],
     "total": 1
-   }
+   },
+   "hotfix_source": "pc_20261030_1954"
   },
   {
    "id": "1110191",
@@ -75569,7 +75571,6 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "model_path": null,
    "effect_show": [],
    "hotfix_source": "pc_20261030_1954",
-   "note": "common_item_data 在 PE/PC 树里都是 815 B 桩，名字待从 ITEM_MASTER 快照或 PE 修复后取",
    "status_tags": [
     "static config"
    ],
@@ -75694,7 +75695,24 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
      }
     ],
     "total": 1
-   }
+   },
+   "name_resolution": {
+    "state": "unresolved",
+    "name": null,
+    "rule": "name_only_from_item_row"
+   },
+   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
+   "official_name_status": "unresolved",
+   "weapon_type_label": "步枪（5）",
+   "weapon_type_state": "snapshot_field",
+   "level_source": "weapon_skin_data.level",
+   "release_state": "upcoming",
+   "sale_date_basis": "sale_ts",
+   "version_status": "PE/PC 热更 20261030 新增主表行",
+   "sfx_item_count": 0,
+   "named_sfx_item_count": 0,
+   "sfx_audio_state": "未提取",
+   "ip_now_state": null
   },
   {
    "id": "1110205",
@@ -75707,7 +75725,6 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "model_path": null,
    "effect_show": [],
    "hotfix_source": "pc_20261030_1954",
-   "note": "同上",
    "status_tags": [
     "static config"
    ],
@@ -75832,7 +75849,24 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
      }
     ],
     "total": 1
-   }
+   },
+   "name_resolution": {
+    "state": "unresolved",
+    "name": null,
+    "rule": "name_only_from_item_row"
+   },
+   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
+   "official_name_status": "unresolved",
+   "weapon_type_label": "步枪（5）",
+   "weapon_type_state": "snapshot_field",
+   "level_source": "weapon_skin_data.level",
+   "release_state": "upcoming",
+   "sale_date_basis": "sale_ts",
+   "version_status": "PE/PC 热更 20261030 新增主表行",
+   "sfx_item_count": 0,
+   "named_sfx_item_count": 0,
+   "sfx_audio_state": "未提取",
+   "ip_now_state": null
   }
  ]
 };
