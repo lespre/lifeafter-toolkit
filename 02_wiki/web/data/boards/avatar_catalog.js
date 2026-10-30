@@ -250,10 +250,16 @@ window.WIKI_BOARD_avatar_catalog = {
       "label": "图标"
      }
     ],
-    "total": 1
-   },
-   "anim_status": "render_broken",
-   "anim_note": "骨架 setup pose 即散架（与动画无关）：角色与粒子/光效分布在画布两端，拼装后主体缩在一角；疑与 bone 层级缩放/子骨坐标解释有关，未定位"
+    "total": 1,
+    "anim": "assets/avatar_anim/da_450002.png",
+    "anim_meta": {
+     "spine": "2.1.27",
+     "anim": "loop",
+     "frames": 20,
+     "duration": 2.0,
+     "source": "ui/spine/touxiang_ani/touxiang_ani_03.atlas"
+    }
+   }
   },
   {
    "id": "da_450006",
