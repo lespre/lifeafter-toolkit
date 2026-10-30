@@ -190,9 +190,6 @@ def main() -> int:
         #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
         frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
                     duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
-        f0 = ANIM_DIR / (iid + "_f0.png")
-        if not f0.is_file():
-            frs[0].save(f0)
         m = it.setdefault("_media", {})
         m["anim"] = "assets/avatar_anim/%s.png" % iid
         m["anim_meta"] = {"spine": (skel.get("skeleton") or {}).get("spine"),
