@@ -367,7 +367,10 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "level": 2,
    "catalog_layer": "current_parent",
    "catalog_level_label": "白送",
-   "skin_id": 1110205
+   "skin_id": 1110205,
+   "grade": "2白送级",
+   "grade_clean": "2白送级",
+   "grade_source": "weapon_skin_data.level（PE 20261030 热更）"
   },
   {
    "id": "1110194",
@@ -525,7 +528,10 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "level": 3,
    "catalog_layer": "current_parent",
    "catalog_level_label": "直售",
-   "skin_id": 1110194
+   "skin_id": 1110194,
+   "grade": "3直售级",
+   "grade_clean": "3直售级",
+   "grade_source": "weapon_skin_data.level（PE 20261030 热更）"
   },
   {
    "id": "1110189",
@@ -576,8 +582,8 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
      "text": "effect/fx/weapon/skin/skin_1013_010/fx_skin_1013_010_sj.sfx"
     }
    },
-   "level": 6,
-   "grade": "6传世级",
+   "level": 5,
+   "grade": "5典藏级",
    "weapon_type": 20,
    "weapon_type_label": "喷火器（20）",
    "weapon_type_state": "snapshot_field",
@@ -723,10 +729,10 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "weapon_type_status": "inferred_from_sfx_path",
    "hotfix_note": "行为资源行（无主表父行/无道具行/无模型）；特效路径 skin_1013_010",
    "hotfix_batch": "20261016_213554_playertest_newpc",
-   "grade_clean": "传世",
-   "catalog_level_label": "传世",
+   "grade_clean": "5典藏级",
+   "catalog_level_label": "典藏",
    "level_source": "weapon_skin_data.level",
-   "grade_source": "用户确认（2026-10-17）",
+   "grade_source": "weapon_skin_data.level（PE 20261030 热更）",
    "release_event": "周年庆",
    "sale_date_basis": "sale_ts",
    "charm_value": null,
