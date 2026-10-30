@@ -156,16 +156,17 @@
     });
   })();
   function cleanTitle(b, nm){
-    if(TITLES[nm]) return TITLES[nm];
+    var tag=(b && b.name && String(b.name).indexOf('（内测版）')===0) ? '（内测版）' : '';
+    if(TITLES[nm]) return tag + TITLES[nm];
     var s = String((b && b.name) || nm || '')
       .replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
       .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
-    return zhName(s || nm);
+    return tag + zhName(s || nm);
   }
 
   var allTiles = [];
 
-  var URL_OVERRIDE = { scene_balance: 'analysis/scene_table.html' };
+  var URL_OVERRIDE = {};   // 2026-10-25：取消 scene_balance 跳转独立页，改走统一板块页（带导航与服型筛选）
   function tile(nm, b, arch, path){
     var a = document.createElement('a');
     a.className = 'card tile' + (arch ? ' deprecated' : '');
@@ -177,7 +178,7 @@
       th.style.backgroundImage = 'url("' + src + '")';
     }else{
       th.className = 'thumb glyph';
-      th.textContent = glyphOf(cleanTitle(b, nm));
+      th.textContent = glyphOf(cleanTitle(b, nm).replace(/^（内测版）/,''));
     }
     var tx = document.createElement('div'); tx.className = 'tx';
     var n = document.createElement('div'); n.className = 'tname';
