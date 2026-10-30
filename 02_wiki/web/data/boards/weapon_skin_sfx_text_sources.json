@@ -75307,7 +75307,17 @@
      "icon": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png",
      "icon_melee": "ui/wuqiku/wuqixitong/icon/img_wuqifangyin_hexin.png"
     }
-   ]
+   ],
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110189.png",
+      "label": "图示",
+      "source": "PE · ui/item_icon"
+     }
+    ],
+    "total": 1
+   }
   },
   {
    "id": "1110191",
@@ -75674,7 +75684,17 @@
     ],
     "rebuild": "hotfix-overlay-20261030_1954"
    },
-   "name_display": "未命名皮肤 · ID 1110194"
+   "name_display": "未命名皮肤 · ID 1110194",
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110194.png",
+      "label": "图示",
+      "source": "PE · ui/item_icon"
+     }
+    ],
+    "total": 1
+   }
   },
   {
    "id": "1110205",
@@ -75802,7 +75822,17 @@
     ],
     "rebuild": "hotfix-overlay-20261030_1954"
    },
-   "name_display": "未命名皮肤 · ID 1110205"
+   "name_display": "未命名皮肤 · ID 1110205",
+   "_media": {
+    "images": [
+     {
+      "png": "assets/skin_posters/1110205.png",
+      "label": "图示",
+      "source": "PE · ui/item_icon"
+     }
+    ],
+    "total": 1
+   }
   }
  ]
 }
