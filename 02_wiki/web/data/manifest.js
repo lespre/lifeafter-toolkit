@@ -274,12 +274,12 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 2899,
+      "items": 2909,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2899
+        "structure": 2909
       },
       "state_summary": {
         "unresolved": 2197,
@@ -295,7 +295,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2899
+          "replayed-structural": 2909
         }
       }
     },
