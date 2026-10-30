@@ -101,6 +101,11 @@ SNAPSHOT_SHA256 = "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a
 SNAPSHOT_BYTES = 237984616
 # com/cdata/huodong_conf_data.py（本次实际取数的表文件）
 TABLE_SHA256 = "cb5ece53e3c8f4522846686478ce59b365257c865322d72e1759def1b302e776"
+# 表级 npk 定位：fid 由路径哈希得出（与包版本无关，稳定）；
+# entry_index 取自 01_索引与产物/10_索引/热更检测/npk_index.sqlite3（documents 层 row=19597，
+# base 层 row=69912）。★ 条目号随包版本会变，溯源以 package_sha256 为准。
+TABLE_FILE_ID = "A703C08E329A6FE2"
+TABLE_ENTRY_INDEX = 19597
 
 
 def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str, table: str) -> dict:
