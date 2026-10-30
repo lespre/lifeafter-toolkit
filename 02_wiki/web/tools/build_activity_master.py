@@ -110,7 +110,7 @@ def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str, table:
     pr["row_key"] = row_key
     pr["field_refs"] = ["name", "hd_class", "start_ts", "end_ts"]
     ch = copy.deepcopy(pr.get("locator_chain") or {})
-    ch["steps"] = [{"kind": "decoded-table-row",
+    ch["steps"] = [{"kind": "replayed-script-table-row",
                     "source_id": pr.get("source_id", "documents-py314-current"),
                     "table": pr["table"], "row_key": row_key,
                     "field_refs": ["name", "hd_class", "start_ts", "end_ts"]}]
@@ -210,16 +210,17 @@ def main() -> int:
             "_media": {"images": [], "total": 0},
             "evidence": "structure", "evidence_level": "static/candidate",
             "status_tags": ["static config"],
-            "source": "huodong_conf_data_auto_oversea_data_kj1",
+            "source": src_file.rsplit(".", 1)[0] if src_file.endswith(".py") else src_file,
             "provenance": _prov(tpl_prov, r["key"], cls,
-                                 str(g(r, "hd_type") or ""), str(g(r, "ui_class") or "")),
+                                 str(g(r, "hd_type") or ""), str(g(r, "ui_class") or ""),
+                                 src_file.rsplit(".", 1)[0] if src_file.endswith(".py") else src_file),
         })
 
-    # 来源锁用现有板块的
-    ref = json.loads((WEB / "data/boards/lottery_periods.json").read_text(encoding="utf-8"))
-    lock = (ref["meta"].get("provenance") or {}).get("source_locks", [{}])[0]
+    # 来源锁：2026-10-30 热更快照（字面量，见文件头常量说明）
+    lock = {"source_id": "documents-py314-current", "role": "primary",
+            "sha256": SNAPSHOT_SHA256, "bytes": SNAPSHOT_BYTES, "mtime_ns": 0}
     for it in items:
-        it["provenance"]["source_lock_sha256"] = lock.get("sha256", "")
+        it["provenance"]["source_lock_sha256"] = SNAPSHOT_SHA256
 
     # 倒序：新的在前；无时间的排最后
     items.sort(key=lambda i: (i["start"] or "0000-00-00"), reverse=True)
@@ -248,8 +249,17 @@ def main() -> int:
                              "sub_title": "子标题", "first_level_tab": "页签", "tab_name": "页签名",
                              "hd_class": "原始类名", "hd_type": "活动子类型", "ui_class": "界面类"},
             "state_summary": stats,
-            "provenance": {"source_locks": [lock]},
-            "notes": "一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。",
+            "package_sha": SNAPSHOT_SHA256,
+            "provenance": {
+                "contract_version": 3,
+                "source_locks": [lock],
+                "source_scope": {"cross_source_field_join": False},
+                "decode": {"kind": "script-table-replay", "table_sha256": TABLE_SHA256},
+            },
+            "notes": ("一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。"
+                      "★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，%d 行全量）；"
+                      "旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。"
+                      % len(items)),
         },
         "periods": [],
         "items": items,
