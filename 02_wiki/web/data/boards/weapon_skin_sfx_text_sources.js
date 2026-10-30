@@ -213,8 +213,8 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
  "items": [
   {
    "id": "1110205",
-   "name": "未命名皮肤 · ID 1110205",
-   "name_status": "unresolved",
+   "name": "瑞秋之狙",
+   "name_status": "verified",
    "grade_level": 2,
    "weapon_type": 5,
    "sale_ts": 1793808000,
@@ -336,7 +336,7 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     ],
     "rebuild": "hotfix-overlay-20261030_1954"
    },
-   "name_display": "未命名皮肤 · ID 1110205",
+   "name_display": "瑞秋之狙",
    "_media": {
     "images": [
      {
@@ -348,12 +348,13 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     "total": 1
    },
    "name_resolution": {
-    "state": "unresolved",
-    "name": null,
-    "rule": "name_only_from_item_row"
+    "state": "verified_from_item_row",
+    "name": "瑞秋之狙",
+    "rule": "名字只认同快照道具行（key==skin_id）",
+    "evidence": "script.py314.lc.npk → fid B42760CCA41DBC25（39,146 行）"
    },
-   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
-   "official_name_status": "unresolved",
+   "name_status_note": "PE 20261030 热更 npc 内道具表（39,146 行）逐行命中",
+   "official_name_status": "item_row_match",
    "weapon_type_label": "狙击枪（5）",
    "weapon_type_state": "snapshot_field",
    "level_source": "weapon_skin_data.level",
@@ -370,12 +371,14 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "skin_id": 1110205,
    "grade": "2白送级",
    "grade_clean": "2白送级",
-   "grade_source": "weapon_skin_data.level（PE 20261030 热更）"
+   "grade_source": "weapon_skin_data.level（PE 20261030 热更）",
+   "official_desc": "别紧张，被瑞秋瞄准的，是与你共度下一个周年的未来。",
+   "charm_value": 40
   },
   {
    "id": "1110194",
-   "name": "未命名皮肤 · ID 1110194",
-   "name_status": "unresolved",
+   "name": "青瓷鉴心",
+   "name_status": "verified",
    "grade_level": 3,
    "weapon_type": 5,
    "sale_ts": 1793808000,
@@ -497,7 +500,7 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     ],
     "rebuild": "hotfix-overlay-20261030_1954"
    },
-   "name_display": "未命名皮肤 · ID 1110194",
+   "name_display": "青瓷鉴心",
    "_media": {
     "images": [
      {
@@ -509,12 +512,13 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     "total": 1
    },
    "name_resolution": {
-    "state": "unresolved",
-    "name": null,
-    "rule": "name_only_from_item_row"
+    "state": "verified_from_item_row",
+    "name": "青瓷鉴心",
+    "rule": "名字只认同快照道具行（key==skin_id）",
+    "evidence": "script.py314.lc.npk → fid B42760CCA41DBC25（39,146 行）"
    },
-   "name_status_note": "名字来自 common_item_data 的行 key==skin_id；该表在 PE 树与 20261030 热更包里均为 815 字节桩（无数据），ITEM_MASTER 快照亦无此 id ⇒ 当前无可信名字来源",
-   "official_name_status": "unresolved",
+   "name_status_note": "PE 20261030 热更 npc 内道具表（39,146 行）逐行命中",
+   "official_name_status": "item_row_match",
    "weapon_type_label": "狙击枪（5）",
    "weapon_type_state": "snapshot_field",
    "level_source": "weapon_skin_data.level",
@@ -531,7 +535,9 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "skin_id": 1110194,
    "grade": "3直售级",
    "grade_clean": "3直售级",
-   "grade_source": "weapon_skin_data.level（PE 20261030 热更）"
+   "grade_source": "weapon_skin_data.level（PE 20261030 热更）",
+   "official_desc": "青瓷藏锋，一狙鉴心。",
+   "charm_value": 100
   },
   {
    "id": "1110189",
@@ -539,16 +545,16 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "catalog_layer": "current_parent",
    "name": "浪漫过载",
    "name_display": "浪漫过载",
-   "official_name_status": "user_confirmed",
+   "official_name_status": "item_row_match",
    "name_status": "verified",
-   "name_status_note": "用户实机确认（2026-10-30）；数据侧道具表为桩，无法自动解析",
+   "name_status_note": "PE 20261030 热更 npc 内道具表（39,146 行）逐行命中",
    "name_resolution": {
-    "state": "verified_user",
+    "state": "verified_from_item_row",
     "name": "浪漫过载",
-    "rule": "用户实机确认优先于配置表",
-    "evidence": "用户提供：该皮肤名为「浪漫过载」"
+    "rule": "名字只认同快照道具行（key==skin_id）",
+    "evidence": "script.py314.lc.npk → fid B42760CCA41DBC25（39,146 行）"
    },
-   "official_desc": null,
+   "official_desc": "以花楹为引，一枪一鸣皆是深情。",
    "version_status": "PE/PC 热更 20261030 新增主表行",
    "model_path": "weapon/skin/skin_1013_010/skin_1013_010.gim",
    "field_provenance": {
@@ -736,7 +742,7 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
    "grade_source": "weapon_skin_data.level（PE 20261030 热更）",
    "release_event": "周年庆",
    "sale_date_basis": "sale_ts",
-   "charm_value": null,
+   "charm_value": 1000,
    "charm_source": "no_table_row",
    "sfx_audio_state": "未提取",
    "variant_kind": "武器皮肤（skin），非涂装",
@@ -1786,7 +1792,7 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     }
    },
    "level": 5,
-   "grade": "6传世级",
+   "grade": "5典藏级",
    "weapon_type": 1,
    "weapon_type_label": "突击步枪（1）",
    "weapon_type_state": "snapshot_field",
@@ -2408,9 +2414,9 @@ window.WIKI_BOARD_weapon_skin_sfx_text_sources = {
     "note": "回填：热更覆盖/时限变体条目生成时无道具行 desc，按当前快照道具行 CHS 回放补齐；已有描述条目未改动。"
    },
    "data_level": 5,
-   "grade_clean": "传世",
-   "catalog_level_label": "传世",
-   "grade_source": "用户确认（2026-10-17）：品级=传世，周年庆上线",
+   "grade_clean": "5典藏级",
+   "catalog_level_label": "典藏",
+   "grade_source": "weapon_skin_data.level",
    "release_event": "周年庆",
    "grade_conflict": "weapon_skin_data.level=5（客户端表值）与用户口径「传世(6)」不一致；展示按用户口径，表值保留在 data_level",
    "textures": [
