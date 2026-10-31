@@ -926,6 +926,17 @@ def main() -> int:
     vh.add_argument("--dry-run", action="store_true",
                     help="只算不写（仅 build）")
 
+    sx = sub.add_parser("sfx", help="特效：render 出 2D 预览 / tex 列贴图定位")
+    sx.add_argument("action", choices=["render", "tex"])
+    sx.add_argument("files", nargs="+", help=".sfx 文件（可多个，同一页对比）")
+    sx.add_argument("-o", "--out", default=str(WEB / ".." / ".." / "_截图" / "sfx_render.html"),
+                    help="输出 HTML（仅 render）")
+
+    dn = sub.add_parser("cdn", help="CDN 全库索引：status / find <路径或fid>")
+    dn.add_argument("action", choices=["status", "find"])
+    dn.add_argument("query", nargs="?", help="逻辑路径或 16 位 fid（find 用）")
+    dn.add_argument("--alt", action="store_true", help="未命中时自动试 .ktx/.dds 扩展名")
+
     sk = sub.add_parser("skin", help="武器皮肤：fx-names 解战斗表现正式名 / check 与现有产物比对")
     sk.add_argument("action", choices=["fx-names", "check"])
     sk.add_argument("--cdata", help="cdata 目录（默认按项目根推算，或 LA_CDATA）")
@@ -972,6 +983,14 @@ def main() -> int:
         return cmd_spine(a)
     if a.cmd == "vehicle":
         return cmd_vehicle(a)
+    if a.cmd == "sfx":
+        sys.path.insert(0, str(WEB))
+        from pipelines.parsing import sfx_cli          # noqa: PLC0415
+        return sfx_cli.cmd_sfx(a)
+    if a.cmd == "cdn":
+        sys.path.insert(0, str(WEB))
+        from pipelines.parsing import sfx_cli          # noqa: PLC0415
+        return sfx_cli.cmd_cdn(a)
     if a.cmd == "skin":
         return cmd_skin(a)
     if a.cmd == "npk":
