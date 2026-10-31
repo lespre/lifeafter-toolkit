@@ -14,7 +14,14 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "build"))
 from la_paths import PROJ  # noqa: E402
+from board_io import dumps_board, dumps_board_js, write_text  # noqa: E402
+from notes_util import SEP, append_note  # noqa: E402
+from upcoming_board_rules import (  # noqa: E402
+    CATEGORY, NOTE_COUNTS, NOTE_LISTED, NOTE_MAIN, NOTE_NAMES, NOTE_SCOPE,
+    load_name_index, recount, resolved_name,
+)
 
 WEB = PROJ / "02_wiki/web"
 TODAY = datetime.date.today().isoformat()
@@ -23,6 +30,8 @@ TODAY = datetime.date.today().isoformat()
 def main() -> int:
     skin = json.loads((WEB / "data/boards/weapon_skin_sfx_text_sources.json").read_text(encoding="utf-8"))
     lot = json.loads((WEB / "data/boards/lottery_periods.json").read_text(encoding="utf-8"))
+    # 占位名解析索引（时装部位表 → 时装板 → 全量道具表），口径见 upcoming_board_rules
+    name_idx = load_name_index(WEB / "data/boards")
 
     items = []
     src_skin = 0
@@ -64,9 +73,12 @@ def main() -> int:
     src_pool = 0
     for per in fut:
         for it in by_period.get(per["period_id"], []):
-            items.append({
+            # 名字：奖池成员的 name 常是构建期兜底「道具 400019」这类占位，
+            # 统一走 resolve_name 求真名；查不到显式标未解析（不编造）。
+            nm, nm_extra = resolved_name(it.get("item_id"), it.get("name"), name_idx)
+            _it = {
                 "id": "up_pool_%s_%s" % (per["period_id"], it.get("item_id")),
-                "name": it.get("name"),
+                "name": nm,
                 "item_id": it.get("item_id"),
                 "kind": it.get("kind") or "奖池奖励",
                 "grade": it.get("grade"),
@@ -83,7 +95,15 @@ def main() -> int:
                 "icon_state": it.get("icon_state") or "未下发",
                 "source": "lottery_periods · %s" % per.get("label"),
                 "provenance": it.get("provenance"),
-            })
+            }
+            _unres = nm_extra.pop("unresolved", False)
+            _it.update(nm_extra)
+            if _unres:
+                tags = list(_it.get("status_tags") or [])
+                if "unresolved" not in tags:
+                    tags.append("unresolved")
+                _it["status_tags"] = tags
+            items.append(_it)
             src_pool += 1
 
     # 3) 新活动（huodong 里 start > 今天、且不在奖池板里的）
@@ -147,12 +167,15 @@ def main() -> int:
     meta = dict(lot["meta"])
     meta.update({
         "name": "新更新与预告（自动）",
-        "category": "零、新更新与预告专栏（游戏未上线资源预告）",
+        # ★ 分类只认 wiki_taxonomy.json 的当前口径（原来是「零、新更新与预告专栏…」旧类名，
+        #   与导航树打架；改由 upcoming_board_rules.CATEGORY 单点维护）。
+        "category": CATEGORY,
         "card_mode": "period",
         "card_summary": [["name", "名称"], ["kind", "类型"], ["expect_date", "预计上架"]],
         "state_summary": {"武器皮肤": src_skin, "奖池成员": src_pool,
                           "奖池期次": len(fut), "合计": len(items)},
-        "notes": "自动从武器皮肤板与奖池板筛选未上架条目（%s 为界）；不再人工维护预告卡。" % TODAY,
+        "notes": NOTE_MAIN + SEP + NOTE_LISTED,
+        "updated": TODAY,
     })
     # provenance 归一：primary=奖池主源(documents)，comparison=皮肤热更源
     lot_lk = (lot["meta"].get("provenance") or {}).get("source_locks", [])[0]
@@ -202,11 +225,16 @@ def main() -> int:
                                       "member_count": 0})
         pg["member_count"] += 1
     out = {"meta": meta, "periods": list(per_map.values()), "items": items}
+    # 口径说明幂等追加 + 计数统一重算（state_summary / member_count / evidence_detail / icon_stats）
+    for _n in (NOTE_COUNTS, NOTE_NAMES, NOTE_SCOPE):
+        append_note(out, _n)
+    recount(out)
     p = WEB / "data/boards/upcoming_auto.json"
-    p.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    (WEB / "data/boards/upcoming_auto.js").write_text(
-        "window.WIKI_BOARD_upcoming_auto = " + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";",
-        encoding="utf-8")
+    # 板文件统一走 board_io 的既定紧凑格式（meta 单行 + 每条目一行），.js 同源导出
+    text = dumps_board(out)
+    assert json.loads(text) == out, "写出前语义校验失败"
+    write_text(p, text)
+    write_text(WEB / "data/boards/upcoming_auto.js", dumps_board_js("upcoming_auto", text))
     print("武器皮肤未上线", src_skin, "｜奖池未开始期次", len(fut), "｜奖池成员", src_pool, "｜合计", len(items))
     return 0
 

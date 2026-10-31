@@ -1,7 +1,7 @@
 {
  "threshold_pct": 20.0,
- "published_boards": 33,
- "green": 33,
+ "published_boards": 32,
+ "green": 32,
  "red": 0,
  "delta_alerts": 0,
  "rows": [
@@ -250,16 +250,6 @@
    "name": "（内测版）技能总表",
    "items": 6191,
    "baseline": 6191,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
-   "delta_alert": false
-  },
-  {
-   "board": "skin_behavior_preview",
-   "name": "武器皮肤 · 未上线预告（已配名未上架 + 仅行为资源）",
-   "items": 9,
-   "baseline": 9,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},

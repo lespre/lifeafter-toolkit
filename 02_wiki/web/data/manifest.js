@@ -2,7 +2,7 @@ window.WIKI_MANIFEST = {
   "generated": "2026-11-01",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
-  "policy_generated": "2026-10-31",
+  "policy_generated": "2026-11-01",
   "boards": [
     {
       "name": "活动总表 · 全部活动与起止时间",
@@ -675,33 +675,6 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "武器皮肤 · 未上线预告（已配名未上架 + 仅行为资源）",
-      "category": "置顶、活动奖池与预告 / （二）预告专栏",
-      "board": "skin_behavior_preview",
-      "items": 9,
-      "generated": "2026-10-24",
-      "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）",
-      "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
-      "evidence": {
-        "structure": 9
-      },
-      "state_summary": {
-        "unresolved": 9,
-        "static config": 9,
-        "verified": 0,
-        "runtime final unknown": 9
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 9
-        }
-      }
-    },
-    {
       "name": "战术芯片·全量芯片总表",
       "category": "二、战力类 / （二）战术芯片",
       "board": "tactical_chip_full",
@@ -813,10 +786,10 @@ window.WIKI_MANIFEST = {
         "candidate": 5
       },
       "state_summary": {
-        "武器皮肤": 11,
+        "武器皮肤": 9,
         "奖池成员": 5,
         "奖池期次": 1,
-        "合计": 16
+        "合计": 14
       },
       "name_status_summary": {},
       "provenance_status": {

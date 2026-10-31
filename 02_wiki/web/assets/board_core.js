@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101techsrc")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facemedia")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1597,6 +1597,10 @@ function frKvHtml(it){
   pairs.push(["性别",(it.gender||"图标未标性别")]);
   if(it.gender_scope)pairs.push(["性别范围",it.gender_scope+(it.gender_scope_note?(" · "+it.gender_scope_note):"")]);
   pairs.push(["图标",`${it.icon_state||"未知"}${it.icon_count!=null?` · ${it.icon_count} 张`:""}`]);
+  /* 2026-11-01：图标有替代/缺口说明时如实列出（例：头饰面饰的男版图缺失、改用同模块女版）。
+     原来这类说明只写在数据里没人显示，卡片等于"看着正常但没说清"。 */
+  if(it.icon_note)pairs.push(["图标说明",it.icon_note]);
+  if(it.icon_missing_reason&&it.icon_state!=="有图")pairs.push(["缺图原因",it.icon_missing_reason]);
   if((it.name_variants||[]).length>1)pairs.push(["表内变体名",it.name_variants.join("、")]);
   const bools=[];
   if(it.fashion_preview)bools.push("可预览");

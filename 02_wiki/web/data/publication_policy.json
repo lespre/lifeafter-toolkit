@@ -1,6 +1,6 @@
 {
  "schema": "lifeafter-wiki-publication-policy-v2",
- "generated": "2026-10-31",
+ "generated": "2026-11-01",
  "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。",
  "boards": {
   "chip_item_catalog": {
@@ -122,7 +122,9 @@
   },
   "upcoming_auto": {
    "publication_status": "published",
-   "category": "零、新更新与预告专栏（游戏未上线资源预告）"
+   "category": "置顶、活动奖池与预告 / （二）预告专栏",
+   "items": 14,
+   "reason": "预告专栏唯一板：武器皮肤未上架段 + 未开始奖池期次（万圣绮夜）连带成员。分类与条目数随板产物同步；数值来自各源板行，不含上线/价格/概率推断。"
   },
   "item_master_full": {
    "publication_status": "published",
@@ -255,10 +257,10 @@
    "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
   },
   "skin_behavior_preview": {
-   "publication_status": "published",
-   "category": "零、新更新与预告专栏（游戏未上线资源预告） / （1）武器皮肤 · 未上线预告",
-   "items": 4,
-   "reason": "预告专栏·武器皮肤：①已配正式名未上架（皮肤行 sale_ts 晚于包快照日：1110184 星火永传、1110190 佳期如梦）；②仅行为资源行（无父项/无道具行/无名称：1110185、1110186）。均不表示上线、价格、概率或可得。"
+   "publication_status": "published_hidden",
+   "category": "未列入导航（原 置顶、活动奖池与预告 / （二）预告专栏）",
+   "items": 9,
+   "reason": "2026-11-01 用户判定：预告专栏不再单列武器皮肤预览板——武器皮肤全量已在「一、时装类（二）武器皮肤」(weapon_skin_sfx_text_sources)。本板数据保留、直链可开，但不进导航/首页/清单。"
   },
   "future_lottery_preview": {
    "publication_status": "published",
