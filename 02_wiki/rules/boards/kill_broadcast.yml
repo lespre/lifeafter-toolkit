@@ -15,5 +15,6 @@ postprocess_scripts:
 - fix_mvp06_media.py
 - fix_mvp06_transparent.py
 - normalize_board_meta.py
-script_count: 7
+- restore_slimmed_media.py
+script_count: 8
 rebuild_risk: mid

@@ -10,6 +10,7 @@ primary_builders:
 - ensure_builder_inputs.py
 - rebuild_fashion_bestplay_slots.py
 - rebuild_nucleus_item_catalog.py
-postprocess_scripts: []
-script_count: 3
-rebuild_risk: low
+postprocess_scripts:
+- fix_projection_from_full_items.py
+script_count: 4
+rebuild_risk: mid

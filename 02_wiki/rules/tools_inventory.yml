@@ -1,13 +1,13 @@
 version: 1
 generated_by: web/tools/build/gen_rules_inventory.py
-total: 578
+total: 696
 role_counts:
-  other: 32
-  patch: 194
-  check: 58
-  build: 147
-  probe: 85
-  infra: 62
+  other: 79
+  patch: 213
+  check: 75
+  build: 155
+  probe: 99
+  infra: 75
 policy:
   build: 现役：主产出脚本，产出 boards/*.json 主体
   patch: 现役：后处理脚本，改写已产出板，顺序敏感
@@ -129,6 +129,25 @@ scripts:
     archived: false
     boards:
     - gene_potential_catalog
+  add_hotfix_skins.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  add_mesh_scale_override.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_mesh_scale_override2.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   add_named_only_toggle.py:
     role: patch
     writes_boards: false
@@ -162,6 +181,12 @@ scripts:
     boards:
     - scene_balance
   add_scene_table_mode.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  add_skin_cli.py:
     role: patch
     writes_boards: false
     archive_candidate: false
@@ -300,6 +325,24 @@ scripts:
     archived: false
     boards:
     - weapon_skin_sfx_text_sources
+  audit_avatar_gap.py:
+    role: check
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  audit_board_images.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+    - kill_broadcast
+    - mutation_core_full
+    - nucleus_item_catalog
+    - weapon_skin_sfx_text_sources
   audit_boards_full.py:
     role: check
     writes_boards: true
@@ -317,6 +360,12 @@ scripts:
     - server_types
     - text_notice_catalog
     - weapon_skin_sfx_text_sources
+  audit_clone_assets.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   audit_common_item_dual_source.py:
     role: check
     writes_boards: false
@@ -419,9 +468,14 @@ scripts:
     writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
   audit_name_chain.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_rebuild_chain.py:
     role: check
     writes_boards: false
     archive_candidate: false
@@ -433,6 +487,13 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  audit_skin_cards.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
   audit_skin_sfx_events.py:
     role: check
     writes_boards: false
@@ -455,6 +516,12 @@ scripts:
   audit_wiki_full.py:
     role: check
     writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  avatar_resolve.py:
+    role: other
+    writes_boards: false
     archive_candidate: false
     archived: false
     boards: []
@@ -540,6 +607,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  board_io.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
   build_activity_master.py:
     role: build
     writes_boards: true
@@ -566,7 +639,22 @@ scripts:
     writes_boards: true
     archive_candidate: false
     archived: false
-    boards: []
+    boards:
+    - audio_catalog
+  build_avatar_anim.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  build_avatar_frames.py:
+    role: build
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
   build_avatar_full.py:
     role: build
     writes_boards: true
@@ -582,6 +670,13 @@ scripts:
     archived: false
     boards:
     - avatar_catalog
+  build_cdn_board.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - cdn_library
   build_class_layer.py:
     role: build
     writes_boards: true
@@ -597,6 +692,7 @@ scripts:
     archive_candidate: false
     archived: false
     boards:
+    - core_skill_12star
     - mutation_core_full
   build_equipment_attrs.py:
     role: build
@@ -649,6 +745,12 @@ scripts:
     boards:
     - gene_potential_catalog
     - lottery_periods
+  build_hotfix_gallery.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   build_id_locator.py:
     role: build
     writes_boards: false
@@ -762,6 +864,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  build_png_gallery.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   build_pvp_attr_table.py:
     role: build
     writes_boards: false
@@ -841,6 +949,12 @@ scripts:
     archived: false
     boards:
     - server_types
+  build_sfx_timeline.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   build_skin_assets.py:
     role: build
     writes_boards: false
@@ -854,6 +968,12 @@ scripts:
     archived: false
     boards: []
   build_source_registry.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  build_spr_atlas.py:
     role: build
     writes_boards: false
     archive_candidate: false
@@ -934,20 +1054,6 @@ scripts:
     - lottery_periods
     - upcoming_auto
     - weapon_skin_sfx_text_sources
-  build_vehicle_lore.py:
-    role: build
-    writes_boards: true
-    archive_candidate: false
-    archived: false
-    boards:
-    - vehicle_full
-  build_vehicle_params.py:
-    role: build
-    writes_boards: true
-    archive_candidate: false
-    archived: false
-    boards:
-    - vehicle_full
   build_weapon_glb.py:
     role: build
     writes_boards: false
@@ -1063,6 +1169,18 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  capture_pc_hotfix.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  carve_1110189_audio.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   carve_fsb5_banks.py:
     role: infra
     writes_boards: false
@@ -1071,6 +1189,12 @@ scripts:
     boards: []
   carve_named_samples.py:
     role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  cdn_index_build.py:
+    role: other
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -1156,6 +1280,19 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  cleanup_f0_and_fallback.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  collect_hotfix_pngs.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   compare_flame_skeletons.py:
     role: infra
     writes_boards: false
@@ -1188,6 +1325,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  decode_huodong_from_npk.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   decode_hurt_arrays.py:
     role: probe
     writes_boards: false
@@ -1212,6 +1355,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  decode_variant_tokens.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   decrypt_npk.py:
     role: infra
     writes_boards: false
@@ -1220,18 +1369,90 @@ scripts:
     boards: []
   dedupe_fashion_images.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
   dedupe_media.py:
     role: patch
     writes_boards: false
     archive_candidate: false
     archived: false
     boards: []
+  deep_dive_1110189.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_450002.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_450002_baked.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_450002_bbox.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_450002_far.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_450002_outlier.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_73_huodong.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diag_avatar_render.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
+  diff_device_packs.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  diff_hotfix_key_tables.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   dis_arm64.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  disasm_bindict.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  doc_skin_cli.py:
     role: other
     writes_boards: false
     archive_candidate: false
@@ -1251,6 +1472,19 @@ scripts:
     boards: []
   drop_pc_skeleton.py:
     role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  dump_activity_conf.py:
+    role: probe
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - activity_master
+  dump_item_rows_3.py:
+    role: probe
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -1280,6 +1514,12 @@ scripts:
     - theme_talent_catalog
   estimate_coverage_ceiling.py:
     role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_1013_010_sfx.py:
+    role: build
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -1334,6 +1574,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  export_hotfix_icons_full.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   export_kaijia_phase2.py:
     role: build
     writes_boards: false
@@ -1361,6 +1607,12 @@ scripts:
     boards:
     - lottery_periods
   export_poster.py:
+    role: build
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  export_sfx_textures.py:
     role: build
     writes_boards: false
     archive_candidate: false
@@ -1396,7 +1648,25 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  extract_hotfix_fashion_rows.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   extract_kaijia_formal_tables.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_npk_tables.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  extract_pc_hotfix_tables.py:
     role: infra
     writes_boards: false
     archive_candidate: false
@@ -1416,6 +1686,37 @@ scripts:
     boards: []
   extract_ui_assets.py:
     role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fetch_hotfix_fashion_icons.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fetch_hotfix_fashion_icons2.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fetch_hotfix_skin_icons.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  fetch_layers_npk_20261029.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fetch_pe_hotfix_fashion_icons.py:
+    role: other
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -1447,11 +1748,10 @@ scripts:
     boards: []
   fill_board_provenance.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
   fill_broadcast_only_activities.py:
     role: patch
     writes_boards: true
@@ -1684,6 +1984,24 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  find_adrp_refs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_bindict_pymethods.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_common_item_in_npk.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   find_gim_by_bounds.py:
     role: check
     writes_boards: false
@@ -1720,6 +2038,18 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  find_item_row_in_npk.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_name_in_npk.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   find_orphan_tests.py:
     role: check
     writes_boards: false
@@ -1744,6 +2074,24 @@ scripts:
     archived: false
     boards: []
   find_special_hurt_refs.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_tex_npk.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_tex_npk2.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  find_textures_in_npk.py:
     role: check
     writes_boards: false
     archive_candidate: false
@@ -1808,6 +2156,24 @@ scripts:
     archived: false
     boards:
     - mutation_core_full
+  fix_crop_largest_subject.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_crop_median_bbox.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  fix_crop_to_bg.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   fix_escape_and_rest.py:
     role: patch
     writes_boards: true
@@ -1863,6 +2229,13 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  fix_hotfix_provenance.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   fix_legacy_provenance.py:
     role: patch
     writes_boards: true
@@ -1898,6 +2271,12 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  fix_mesh_page_uv.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   fix_meta_subtitles.py:
     role: patch
     writes_boards: false
@@ -1945,6 +2324,8 @@ scripts:
     archive_candidate: false
     archived: false
     boards:
+    - common_item_text_sources
+    - fashion_projection_slots
     - fashion_wardrobe
   fix_provenance_tables.py:
     role: patch
@@ -1979,6 +2360,20 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  fix_skin_1110189_perf.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
+  fix_skin_cards_from_item_rows.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
   fix_source_label.py:
     role: patch
     writes_boards: false
@@ -2086,6 +2481,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  index_sound_pack.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   index_wpk_idx.py:
     role: infra
     writes_boards: false
@@ -2094,6 +2495,42 @@ scripts:
     boards: []
   inspect_mvp06.py:
     role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  inspect_pc_new_packs.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  inspect_spine_mesh.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  ktx_dims_scan.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  ktx_sample_to_png.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  ktx_sweep.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  la_paths.py:
+    role: other
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -2111,6 +2548,12 @@ scripts:
     archived: false
     boards:
     - item_master_full
+  list_hotfix_new_fashion.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   list_orphan_boards.py:
     role: check
     writes_boards: false
@@ -2118,6 +2561,12 @@ scripts:
     archived: false
     boards: []
   list_orphan_pages.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  list_sfx_assets.py:
     role: check
     writes_boards: false
     archive_candidate: false
@@ -2135,6 +2584,18 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  locate_1013_010_assets.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  locate_1013_010_sfx.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   locate_all_equips_pair.py:
     role: infra
     writes_boards: false
@@ -2142,6 +2603,12 @@ scripts:
     archived: false
     boards: []
   make_logo.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  make_readme_shots.py:
     role: infra
     writes_boards: false
     archive_candidate: false
@@ -2194,13 +2661,18 @@ scripts:
     - fashion_wardrobe
   mark_single_gender_cards.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
   mark_skins_listed_manual_20261029.py:
     role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  marshal_walk_73.py:
+    role: other
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -2219,6 +2691,18 @@ scripts:
     archived: false
     boards:
     - weapon_skin_sfx_text_sources
+  match_spr_to_ktx.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  measure_board_size.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   merge_alias_cards.py:
     role: patch
     writes_boards: true
@@ -2299,6 +2783,13 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  merge_hotfix_fashion.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   merge_pe_cdata.py:
     role: patch
     writes_boards: false
@@ -2381,6 +2872,25 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  migrate_unnamed.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  mini_yaml.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  name_1110189.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
   normalize_board_meta.py:
     role: patch
     writes_boards: true
@@ -2395,6 +2905,13 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  normalize_hotfix_skin_cards.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - weapon_skin_sfx_text_sources
   normalize_lottery_names.py:
     role: patch
     writes_boards: true
@@ -2410,11 +2927,10 @@ scripts:
     boards: []
   normalize_scene_source.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - scene_balance
+    boards: []
   normalize_table_names.py:
     role: patch
     writes_boards: true
@@ -2430,11 +2946,16 @@ scripts:
     - weapon_skin_sfx_text_sources
   note_male_scope.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
+  notes_util.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   parity_check.py:
     role: check
     writes_boards: false
@@ -2459,7 +2980,19 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  parse_compact_stream.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   parse_file_hash_pack.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  parse_hit_table.py:
     role: infra
     writes_boards: false
     archive_candidate: false
@@ -2479,18 +3012,16 @@ scripts:
     boards: []
   patch_skin_grade_1110189.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - weapon_skin_sfx_text_sources
+    boards: []
   patch_skin_grade_chuanshi.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - weapon_skin_sfx_text_sources
+    boards: []
   patch_skin_names_20261017.py:
     role: patch
     writes_boards: true
@@ -2500,18 +3031,28 @@ scripts:
     - weapon_skin_sfx_text_sources
   patch_skin_names_note.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - weapon_skin_sfx_text_sources
+    boards: []
   patch_skin_names_stats.py:
     role: patch
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - weapon_skin_sfx_text_sources
+    boards: []
+  pe_device_packs.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  pick_lightning_textures.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   polish_new_boards.py:
     role: patch
     writes_boards: true
@@ -2712,6 +3253,36 @@ scripts:
     archive_candidate: false
     archived: true
     boards: []
+  probe_tag75.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: true
+    archived: false
+    boards: []
+  probe_taggeddict.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: true
+    archived: false
+    boards: []
+  probe_two_pools.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: true
+    archived: false
+    boards: []
+  probe_two_pools2.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: true
+    archived: false
+    boards: []
+  probe_two_pools3.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: true
+    archived: false
+    boards: []
   probe_untyped_containers.py:
     role: probe
     writes_boards: false
@@ -2732,6 +3303,12 @@ scripts:
     boards: []
   project_audit.py:
     role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  provenance_defaults.py:
+    role: patch
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -2925,11 +3502,10 @@ scripts:
     - gift_data_text_sources
   rebuild_fashion_face_slots.py:
     role: build
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_face_slots
+    boards: []
   rebuild_fashion_glow_slots.py:
     role: build
     writes_boards: false
@@ -3138,6 +3714,13 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  reclassify_face_by_source_part.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   reclassify_fashion_parts.py:
     role: patch
     writes_boards: true
@@ -3293,6 +3876,24 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  render_sfx_preview.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_sfx_real.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  render_sfx_textured.py:
+    role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   render_spine_index.py:
     role: infra
     writes_boards: false
@@ -3361,6 +3962,28 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  restore_one_anim.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  restore_slimmed_media.py:
+    role: patch
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - kill_broadcast
+    - mutation_core_full
+  restructure_wardrobe_parts.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_face
+    - fashion_wardrobe
   reuse_same_model_images.py:
     role: other
     writes_boards: true
@@ -3368,6 +3991,12 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  rewrite_readme_preview.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   rewrite_wiki_A.py:
     role: patch
     writes_boards: false
@@ -3376,6 +4005,12 @@ scripts:
     boards: []
   run_checks.py:
     role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_73_body.py:
+    role: probe
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -3484,7 +4119,19 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  scan_spine_mesh.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   scan_table_family.py:
+    role: probe
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  scan_table_like.py:
     role: probe
     writes_boards: false
     archive_candidate: false
@@ -3534,6 +4181,12 @@ scripts:
     archived: false
     boards:
     - scene_balance
+  sfx_inspect.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   show_official_effect_names.py:
     role: check
     writes_boards: false
@@ -3554,6 +4207,12 @@ scripts:
     boards: []
   slim_media2.py:
     role: infra
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  snapshot_before_update.py:
+    role: other
     writes_boards: false
     archive_candidate: false
     archived: false
@@ -3602,6 +4261,12 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  split_qa_warnings.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   split_scene_by_server.py:
     role: patch
     writes_boards: true
@@ -3637,6 +4302,19 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  survey_73_variant.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  swap_hotfix_imgs_to_pe.py:
+    role: other
+    writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   swap_pc_icons_to_pe.py:
     role: other
     writes_boards: true
@@ -3663,6 +4341,12 @@ scripts:
     archived: false
     boards: []
   test_export_exchange_static_candidates.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  test_render_one.py:
     role: other
     writes_boards: false
     archive_candidate: false
@@ -3708,6 +4392,25 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  update_notice_20261030.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  verify_75_payload.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  verify_avatar_gap_match.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - avatar_catalog
   verify_fid_in_packs.py:
     role: check
     writes_boards: false
@@ -3728,6 +4431,30 @@ scripts:
     boards:
     - avatar_catalog
     - fashion_wardrobe
+  vm_cdata_table.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wait_then_capture_pc.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  wait_then_capture_pc_v2.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  walk_taggeddict.py:
+    role: other
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   wiki_restructure.py:
     role: infra
     writes_boards: true
@@ -3780,11 +4507,10 @@ scripts:
     boards: []
   write_fashion_rules.py:
     role: other
-    writes_boards: true
+    writes_boards: false
     archive_candidate: false
     archived: false
-    boards:
-    - fashion_wardrobe
+    boards: []
   xref_all_arm64.py:
     role: other
     writes_boards: false

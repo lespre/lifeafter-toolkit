@@ -8,37 +8,40 @@ publish_gate:
   role: 校验 + 导出 manifest.js / 每板 .js / manifest.json / build_meta.js
   note: 它不是全量构建器：只校验既有 boards/*.json 并导出产物
 inventory_generator: python 02_wiki/web/tools/build/gen_rules_inventory.py
-board_count: 51
+board_count: 54
 high_risk_boards:
 - board: fashion_wardrobe
-  script_count: 72
-  postprocess_count: 68
+  script_count: 70
+  postprocess_count: 66
 - board: lottery_periods
   script_count: 43
   postprocess_count: 20
 - board: weapon_skin_sfx_text_sources
-  script_count: 27
-  postprocess_count: 18
+  script_count: 29
+  postprocess_count: 20
 - board: avatar_catalog
-  script_count: 13
-  postprocess_count: 9
+  script_count: 18
+  postprocess_count: 12
+- board: mutation_core_full
+  script_count: 14
+  postprocess_count: 12
 - board: item_master_full
   script_count: 13
   postprocess_count: 7
-- board: mutation_core_full
-  script_count: 13
-  postprocess_count: 11
 - board: scene_balance
-  script_count: 12
-  postprocess_count: 9
+  script_count: 11
+  postprocess_count: 8
 boards:
 - _archive_lottery_20261020
 - activity_master
 - appearance_extra.retired
+- audio_catalog
 - avatar_catalog
 - buff_catalog
+- cdn_library
 - chip_item_catalog
 - common_item_text_sources
+- core_skill_12star
 - desc_catalog
 - drone_catalog
 - edible_catalog

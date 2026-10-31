@@ -1,6 +1,6 @@
 {
   "base": "http://127.0.0.1:8765",
-  "at": "2026-10-29T19:32:07.037Z",
+  "at": "2026-10-31T15:54:13.737Z",
   "results": [
     {
       "board": "fashion_wardrobe",
@@ -11,11 +11,11 @@
       "consoleErrors": [],
       "facts": {
         "title": "（一）人物时装",
-        "metaline": "来源：PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源 · 生成 2026-10-24技术详情",
-        "count": "显示 1984 / 2899 件 · 多图(>4) 7 件 · 仅占位 0 件",
-        "pillCount": 14,
+        "metaline": "来源：PE 还原树 pe_20261020 · fashion_data · 测试服 · 生成 2026-10-24技术详情",
+        "count": "显示 2038 / 3135 件 · 多图(>4) 7 件 · 仅占位 0 件",
+        "pillCount": 15,
         "filterSelects": 7,
-        "gridChildren": 1984,
+        "gridChildren": 2038,
         "cardTags": [
           {
             "n": null,
@@ -219,7 +219,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
@@ -236,7 +236,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（三）载具",
-        "metaline": "来源：PE 测试服 · 表 41_还原树/pe/配置/com/cdata（vehicle_ui_data.py、vehicle_brand_type_conf.py、vehicle_brand_data.py） · 资源 41_还原树/pe/资源 · 生成 2026-10-29技术详情",
+        "metaline": "来源：PE 还原树 pe_conf · vehicle_ui_data · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
         "count": "显示 174 / 174 辆 · 专属图 166 辆 · 仅类型图 8 辆 · 图 295 张（gpk_loc0 逐图核验）",
         "pillCount": 5,
         "filterSelects": 7,
@@ -444,7 +444,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
         "hasHorizontalScroll": false,
@@ -792,7 +792,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
@@ -1099,7 +1099,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
@@ -1448,7 +1448,7 @@
           "runtime-final-unknown",
           "unverified"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
@@ -1465,7 +1465,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（内测版）（七）各种族潜能",
-        "metaline": "来源：简单生存（字段级）+ 经典服（池名册级，待解码） · 生成 2026-10-23技术详情",
+        "metaline": "来源：Documents 快照 script.py314 · gene_node_data(kj1) · 经典服 + 简单生存服 · 生成 2026-10-23技术详情",
         "count": "显示 104 / 104 条",
         "pillCount": 3,
         "filterSelects": 7,
@@ -1756,7 +1756,7 @@
           "static-config",
           "unverified"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
@@ -1773,7 +1773,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（内测版）（五）装备属性（武器·护甲）",
-        "metaline": "来源：PE 测试服源包 · 装备属性表_data · 简单生存服（kj1）+ 经典服（base） · 生成 2026-10-29技术详情",
+        "metaline": "来源：PE 还原树 pe_20261020 · 9B6BE39D902BD6D6；node 索引法 100% 解码：声明 5,248 槽 = 1,553 活跃行全解 + 1,238 墓碑 + 2,457 空槽） · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
         "count": "显示 1647 / 1647 条",
         "pillCount": 7,
         "filterSelects": 9,
@@ -2064,7 +2064,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-equipment_attrs",
         "hasHorizontalScroll": false,
@@ -2094,7 +2094,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
@@ -2108,11 +2108,13 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)"
+      ],
       "facts": {
         "title": "（内测版）当期&历史每期抽奖奖池",
-        "metaline": "来源：Documents 快照 script.py314 · SuperFashionLotteryHD · 简单生存服 · 生成 2026-10-21技术详情",
-        "count": "显示 2266 / 2266 条",
+        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（2026-10-30 热更） · 奖池配置 super_fashion_lottery_conf_data / special_chip_lottery_hd_conf_data · 生成 2026-10-31技术详情",
+        "count": "显示 688 / 688 条",
         "pillCount": 9,
         "filterSelects": 6,
         "gridChildren": 49,
@@ -2319,7 +2321,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
         "hasHorizontalScroll": false,
@@ -2626,7 +2628,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,
@@ -2643,11 +2645,11 @@
       "consoleErrors": [],
       "facts": {
         "title": "（一）人物时装",
-        "metaline": "来源：PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源 · 生成 2026-10-24技术详情",
-        "count": "显示 1984 / 2899 件 · 多图(>4) 7 件 · 仅占位 0 件",
-        "pillCount": 14,
+        "metaline": "来源：PE 还原树 pe_20261020 · fashion_data · 测试服 · 生成 2026-10-24技术详情",
+        "count": "显示 2038 / 3135 件 · 多图(>4) 7 件 · 仅占位 0 件",
+        "pillCount": 15,
         "filterSelects": 7,
-        "gridChildren": 1984,
+        "gridChildren": 2038,
         "cardTags": [
           {
             "n": null,
@@ -2851,7 +2853,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
@@ -2868,7 +2870,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（三）载具",
-        "metaline": "来源：PE 测试服 · 表 41_还原树/pe/配置/com/cdata（vehicle_ui_data.py、vehicle_brand_type_conf.py、vehicle_brand_data.py） · 资源 41_还原树/pe/资源 · 生成 2026-10-29技术详情",
+        "metaline": "来源：PE 还原树 pe_conf · vehicle_ui_data · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
         "count": "显示 174 / 174 辆 · 专属图 166 辆 · 仅类型图 8 辆 · 图 295 张（gpk_loc0 逐图核验）",
         "pillCount": 5,
         "filterSelects": 7,
@@ -3076,7 +3078,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
         "hasHorizontalScroll": false,
@@ -3424,7 +3426,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
@@ -3731,7 +3733,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
@@ -4080,7 +4082,7 @@
           "runtime-final-unknown",
           "unverified"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
@@ -4097,7 +4099,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（内测版）（七）各种族潜能",
-        "metaline": "来源：简单生存（字段级）+ 经典服（池名册级，待解码） · 生成 2026-10-23技术详情",
+        "metaline": "来源：Documents 快照 script.py314 · gene_node_data(kj1) · 经典服 + 简单生存服 · 生成 2026-10-23技术详情",
         "count": "显示 104 / 104 条",
         "pillCount": 3,
         "filterSelects": 7,
@@ -4388,7 +4390,7 @@
           "static-config",
           "unverified"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
@@ -4405,7 +4407,7 @@
       "consoleErrors": [],
       "facts": {
         "title": "（内测版）（五）装备属性（武器·护甲）",
-        "metaline": "来源：PE 测试服源包 · 装备属性表_data · 简单生存服（kj1）+ 经典服（base） · 生成 2026-10-29技术详情",
+        "metaline": "来源：PE 还原树 pe_20261020 · 9B6BE39D902BD6D6；node 索引法 100% 解码：声明 5,248 槽 = 1,553 活跃行全解 + 1,238 墓碑 + 2,457 空槽） · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
         "count": "显示 1647 / 1647 条",
         "pillCount": 7,
         "filterSelects": 9,
@@ -4696,7 +4698,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-equipment_attrs",
         "hasHorizontalScroll": false,
@@ -4726,7 +4728,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
@@ -4740,11 +4742,13 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)"
+      ],
       "facts": {
         "title": "（内测版）当期&历史每期抽奖奖池",
-        "metaline": "来源：Documents 快照 script.py314 · SuperFashionLotteryHD · 简单生存服 · 生成 2026-10-21技术详情",
-        "count": "显示 2266 / 2266 条",
+        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（2026-10-30 热更） · 奖池配置 super_fashion_lottery_conf_data / special_chip_lottery_hd_conf_data · 生成 2026-10-31技术详情",
+        "count": "显示 688 / 688 条",
         "pillCount": 9,
         "filterSelects": 6,
         "gridChildren": 49,
@@ -4951,7 +4955,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
         "hasHorizontalScroll": false,
@@ -5258,7 +5262,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 28,
+        "siteNavItems": 29,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,

@@ -9,6 +9,7 @@ items: 41
 primary_builders: []
 postprocess_scripts:
 - audit_boards_full.py
+- fix_projection_from_full_items.py
 - merge_fashion_layers.py
-script_count: 2
+script_count: 3
 rebuild_risk: low

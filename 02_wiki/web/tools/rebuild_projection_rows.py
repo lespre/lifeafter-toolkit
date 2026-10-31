@@ -15,7 +15,7 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from la_paths import PROJ  # noqa: E402
 WEB = PROJ / "02_wiki/web"
-CD = PROJ / "01_索引与产物/41_还原树/pe_test_script/com/cdata"
+CD = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 
@@ -35,7 +35,24 @@ def main() -> int:
 
     bf = WEB / "data/boards/fashion_wardrobe.json"
     d = json.loads(bf.read_text(encoding="utf-8"))
-    lock = d["meta"]["provenance"]["source_locks"][0]
+    # 投影的真实来源是 body_sfx_data（含 chs 名表），单独登记为 supplement source_lock，
+    # 不再错挂 fashion_data 的 source_lock（旧写法 provenance 与 locator_chain 的 table 自相矛盾）。
+    import hashlib
+    def _sha(path):
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    proj_base_id = "fashion-projection-body_sfx_data"
+    proj_chs_id = "fashion-projection-body_sfx_data-chs"
+    locks = d["meta"]["provenance"].setdefault("source_locks", [])
+    for _id, _p in ((proj_base_id, p), (proj_chs_id, c)):
+        if not any(l.get("source_id") == _id for l in locks):
+            st = _p.stat()
+            locks.append({
+                "source_id": _id, "role": "comparison",
+                "path": "01_索引与产物/41_还原树/pe/配置/com/cdata/" + _p.name,
+                "sha256": _sha(_p), "bytes": st.st_size,
+                "mtime_ns": int(st.st_mtime_ns),
+            })
+    lock = next(l for l in locks if l["source_id"] == proj_base_id)
     d["items"] = [i for i in d["items"] if i.get("part") != "投影"]
 
     added = 0

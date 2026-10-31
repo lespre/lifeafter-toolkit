@@ -1,0 +1,13 @@
+board: core_skill_12star
+name: 12 星全量特技表（极品核芯）
+category: 二、战力类 / （零）核芯类 / 12 星特技
+source_server: 经典服口径（极品 = 金，12 星）
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-22'
+evidence: structure
+items: 50
+primary_builders:
+- build_core_skill_board.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

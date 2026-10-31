@@ -1,11 +1,11 @@
 board: lottery_periods
 name: （内测版）当期&历史每期抽奖奖池（按活动表重建）
-category: 三、活动奖池 / （一）活动表
-source_server: 简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）
-package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
-generated: '2026-10-21'
+category: 置顶、活动奖池与预告 / （一）活动奖池
+source_server: 当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别
+package_sha: 1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e
+generated: '2026-10-31'
 evidence: structure
-items: 2266
+items: 688
 primary_builders:
 - build_activity_master.py
 - build_class_layer.py

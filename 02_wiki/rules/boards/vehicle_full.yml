@@ -8,13 +8,11 @@ generated: '2026-10-29'
 evidence: structure
 items: 174
 primary_builders:
-- build_vehicle_lore.py
-- build_vehicle_params.py
 - register_vehicle_full.py
 postprocess_scripts:
 - audit_fixes.py
 - merge_vehicle_cards.py
 - reclassify_vehicle_class.py
 - reclassify_vehicle_class_v2.py
-script_count: 7
+script_count: 5
 rebuild_risk: mid

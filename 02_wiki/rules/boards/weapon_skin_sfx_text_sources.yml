@@ -6,7 +6,7 @@ source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（weapon_ski
 package_sha: 06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274
 generated: '2026-10-17T00:06:34+08:00'
 evidence: structure
-items: 122
+items: 124
 primary_builders:
 - build_upcoming_auto.py
 - build_weapon_skin_commerce_phase6.py
@@ -18,23 +18,25 @@ primary_builders:
 - rebuild_weapon_skin_static_candidates_board.py
 - rebuild_weapon_skin_v02.py
 postprocess_scripts:
+- add_hotfix_skins.py
 - apply_weapon_skin_hotfix_overlay.py
 - attach_skin_shots.py
 - audit_boards_full.py
 - enrich_skin_sfx_real_names.py
+- fetch_hotfix_skin_icons.py
 - fix_1110189_paint_name.py
 - fix_coating_vs_skin.py
+- fix_skin_1110189_perf.py
+- fix_skin_cards_from_item_rows.py
 - match_and_carve_skin_audio.py
 - match_skin_sfx_gap.py
 - merge_skin_effect_show.py
+- name_1110189.py
+- normalize_hotfix_skin_cards.py
 - note_1110189_reserved.py
-- patch_skin_grade_1110189.py
-- patch_skin_grade_chuanshi.py
 - patch_skin_names_20261017.py
-- patch_skin_names_note.py
-- patch_skin_names_stats.py
 - report_skin_audio_gap.py
 - translate_skin_sfx_names.py
 - wiki_restructure.py
-script_count: 27
+script_count: 29
 rebuild_risk: high

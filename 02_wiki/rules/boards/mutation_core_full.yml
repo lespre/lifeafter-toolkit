@@ -1,5 +1,5 @@
 board: mutation_core_full
-name: 异变核芯
+name: 异变核芯 · 全量表
 category: 二、战力类 / （一）异变核芯
 source_server: 经典服口径（极品 12 / 高级 9 / 中级 5 / 基础不可升）
 package_sha: 508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3
@@ -20,6 +20,7 @@ postprocess_scripts:
 - fix_core_stars.py
 - fix_provenance_tables.py
 - merge_core_boards.py
+- restore_slimmed_media.py
 - wiki_restructure.py
-script_count: 13
+script_count: 14
 rebuild_risk: high

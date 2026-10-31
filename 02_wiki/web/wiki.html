@@ -36,10 +36,10 @@
 </section>
 <main class="content">
  <div class="intro"><h2>资料导航</h2><div class="stats stats-inline"><span><b id="footBoards">—</b>公开资料板块</span><span><b id="footItems">—</b>收录条目</span></div></div><div class="feature-grid" aria-label="核心资料入口">
-  <a class="feature" href="#cat-2"><span class="num">01 / ARCHIVE</span><img src="assets/skin_posters/1110165.png" alt="墨隐麒麟"><h3>外观档案 ↗</h3><span>时装 · 武器皮肤 · 载具</span></a>
-  <a class="feature" href="#cat-3"><span class="num">02 / ARCHIVE</span><img src="assets/core_icons/item_icon_jin_bing_b.png" alt=""><h3>战斗研究 ↗</h3><span>核芯 · 芯片 · 装备属性</span></a>
-  <a class="feature" href="#cat-4"><span class="num">03 / ARCHIVE</span><img src="assets/fashion_posters/fw_3907f1c57d.png" alt="金镶玉龙"><h3>活动档案 ↗</h3><span>活动配置 · 历史奖池</span></a>
-  <a class="feature" href="#cat-5"><span class="num">04 / ARCHIVE</span><img src="assets/recipe_icons/icon_125058_b.png" alt=""><h3>生存百科 ↗</h3><span>料理 · 配方 · 道具</span></a>
+  <a class="feature" href="#cat-1"><span class="num">01 / ARCHIVE</span><img src="assets/fashion_posters/fw_3907f1c57d.png" alt="金镶玉龙"><h3>活动档案 ↗</h3><span>活动总表 · 抽奖奖池 · 未上线预告</span></a>
+  <a class="feature" href="#cat-2"><span class="num">02 / ARCHIVE</span><img src="assets/skin_posters/1110165.png" alt="墨隐麒麟"><h3>外观档案 ↗</h3><span>时装 · 武器皮肤 · 载具</span></a>
+  <a class="feature" href="#cat-3"><span class="num">03 / ARCHIVE</span><img src="assets/core_icons/item_icon_jin_bing_b.png" alt=""><h3>战斗研究 ↗</h3><span>核芯 · 芯片 · 装备属性</span></a>
+  <a class="feature" href="#cat-4"><span class="num">04 / ARCHIVE</span><img src="assets/recipe_icons/icon_125058_b.png" alt=""><h3>生存百科 ↗</h3><span>料理 · 配方 · 道具</span></a>
  </div>
  <div class="directory">
   <aside class="side"><div class="eyebrow">DIRECTORY / 目录</div><nav id="categoryNav" aria-label="侧边分类导航"></nav><a href="updates.html">更新记录 ↗</a><div id="gen"></div></aside>
@@ -134,8 +134,10 @@
       var t=String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
         .replace(/\([^)]*\)/g,'').split('·')[0]
         .replace(/全量|图鉴|说明文字|名称/g,'').replace(/总表|表$/,'').trim();
-      if(/当期&历史|历史每期/.test(t)) t='奖池';
-      if(/^活动$/.test(t)) t='活动';
+      // 2026-10-31：置顶类下活动总表/抽奖奖池与预告同组，简称要能自解释
+      if(/当期&历史|历史每期/.test(t)) t='抽奖奖池';
+      if(/^活动$/.test(t)) t='活动总表';
+      if(/^武器皮肤$/.test(t) && /预告/.test(String(x||''))) t='未上线皮肤';
       t=t.replace(/[与及和、]+$/,'');
       return t;
     }

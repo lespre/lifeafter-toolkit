@@ -14,11 +14,10 @@ postprocess_scripts:
 - add_scene_pvp_filter.py
 - audit_boards_full.py
 - merge_scene_balance.py
-- normalize_scene_source.py
 - set_scene_type_by_tag.py
 - set_scene_type_five.py
 - split_scene_by_server.py
 - tidy_scene_cards.py
 - wiki_restructure.py
-script_count: 12
+script_count: 11
 rebuild_risk: high

@@ -1,7 +1,7 @@
 window.WIKI_BOARD_activity_master = {
  "meta": {
   "name": "活动总表 · 全部活动与起止时间",
-  "category": "三、活动类 / （零）活动总表",
+  "category": "置顶、活动奖池与预告 / （一）活动奖池",
   "source_server": "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）",
   "generated": "2026-10-31",
   "evidence": "structure",
@@ -95,7 +95,8 @@ window.WIKI_BOARD_activity_master = {
     "table_file_id": "A703C08E329A6FE2"
    }
   },
-  "notes": "一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，3519 行全量）；旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。"
+  "notes": "一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，3519 行全量）；旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。",
+  "category_before": "三、活动类 / （零）活动总表"
  },
  "periods": [],
  "items": [

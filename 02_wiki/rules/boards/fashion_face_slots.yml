@@ -6,11 +6,10 @@ package_sha: d5bc4f09209fbefbeba737498b5d142288662daa99e6b0dc7973b4d598f564d9
 generated: '2026-10-23T14:40:18Z'
 evidence: verified
 items: 186
-primary_builders:
-- rebuild_fashion_face_slots.py
+primary_builders: []
 postprocess_scripts:
 - audit_boards_full.py
 - fill_fashion_extra_icons.py
 - merge_fashion_layers.py
-script_count: 4
-rebuild_risk: mid
+script_count: 3
+rebuild_risk: low

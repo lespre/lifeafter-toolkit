@@ -1,0 +1,13 @@
+board: audio_catalog
+name: 武器皮肤音效
+category: 二、时装类 / （七）武器皮肤
+source_server: 体验服 Documents 快照 + 人工听辨
+package_sha: c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523
+generated: '2026-10-22'
+evidence: structure
+items: 426
+primary_builders:
+- build_audio_board.py
+postprocess_scripts: []
+script_count: 1
+rebuild_risk: low

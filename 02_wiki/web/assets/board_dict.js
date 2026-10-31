@@ -69,7 +69,7 @@ const FIELD_CN={gender_scope:"性别范围",gender_scope_note:"标注说明",gen
   ui_short_name_es_key:"UI 短名键",ui_combat_short_names:"战斗短名候选",
   ui_short_name_candidates:"UI 短名候选",listing_status:"上架状态（canonical）",listing_status_label:"上架状态",
   listing_evidence:"上架状态证据",sale_ts_role:"上架时间戳（非上架状态）",name_status_label:"名称状态"};const EV_CN={structure:"结构已解析",verified:"业务链已核验",candidate:"候选待验证"};const STATE_CN={verified:"已核验",unresolved:"待确认",quarantined:"已隔离","static config":"静态配置",
-  "runtime final unknown":"运行时结果未确认",candidate:"候选",unverified:"名册级"};const RT_COLORS={1:"#e8e8e8",2:"#7ed07e",3:"#58a6ff",4:"#c792ea",5:"#ffb300",6:"#ff7b72",7:"#79c0ff",8:"#56d4dd",9:"#ffa657",10:"#d2a8ff"};const RELEASE_CN={on_sale:"已上架",upcoming:"预告 · 未到上架日",no_sale_field:"未配上架时间",behavior_only:"仅行为资源（无父项/无道具行）"};const VERSION_STATUS_CN={"两个版本都有":"两个包都有","BA8/root 均有":"两个包都有",
+  "runtime final unknown":"运行时结果未确认",candidate:"候选"};const RT_COLORS={1:"#e8e8e8",2:"#7ed07e",3:"#58a6ff",4:"#c792ea",5:"#ffb300",6:"#ff7b72",7:"#79c0ff",8:"#56d4dd",9:"#ffa657",10:"#d2a8ff"};const RELEASE_CN={on_sale:"已上架",upcoming:"预告 · 未到上架日",no_sale_field:"未配上架时间",behavior_only:"仅行为资源（无父项/无道具行）"};const VERSION_STATUS_CN={"两个版本都有":"两个包都有","BA8/root 均有":"两个包都有",
   "BA8 新增（相对 root 对照）":"只在体验服 BA8 有（root 无）",
   "仅当前 BA8 行为资源；无 weapon_skin_data 父项、无道具行":"只有体验服的行为资源（连皮肤主行、道具行都没有）"};const COMMON_VAL_CN={none:"无",unknown:"未知",unresolved:"待确认",verified:"已核验",quarantined:"已隔离",
   candidate:"候选","static config":"静态配置","runtime final unknown":"运行时结果未确认",passed:"通过",

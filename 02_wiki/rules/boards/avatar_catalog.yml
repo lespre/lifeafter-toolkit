@@ -8,13 +8,18 @@ generated: '2026-10-22'
 evidence: structure
 items: 673
 primary_builders:
+- build_avatar_anim.py
+- build_avatar_frames.py
 - build_avatar_full.py
 - build_avatar_media.py
 - build_text_boards.py
 - export_avatar_icons_hires.py
 postprocess_scripts:
 - apply_namecard_frames.py
+- audit_avatar_gap.py
 - audit_boards_full.py
+- cleanup_f0_and_fallback.py
+- diag_avatar_render.py
 - fill_namecard_static.py
 - mark_missing_frames.py
 - mark_missing_frames2.py
@@ -22,5 +27,5 @@ postprocess_scripts:
 - render_namecard_frames.py
 - wiki_restructure.py
 - wire_avatar_icons.py
-script_count: 13
+script_count: 18
 rebuild_risk: high

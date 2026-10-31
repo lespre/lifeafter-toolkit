@@ -197,7 +197,11 @@ STR_TAGS = (0xD3, 0xF3, 0xDA, 0xFA, 0x79, 0x53, 0xF9)
 BYTES_TAGS = (0x7B, 0xFB)
 TUPLE_TAGS = (0x2E, 0xAE)
 CODE_TAG = 0x73
-KNOWN_TAGS = {0x73, 0x2E, 0x78, 0x7B, 0x79, 0x53, 0xD3, 0x5A, 0x7A, 0xBE, 0x3C, 0x22, 0x12, 0x3E, 0x30, 0x10, 0x7A, 0x3F, 0x04, 0x08, 0x28}
+KNOWN_TAGS = {0x73, 0x2E, 0x78, 0x7B, 0x79, 0x53, 0xD3, 0x5A, 0x7A, 0xBE, 0x3C, 0x22, 0x12, 0x3E, 0x30, 0x10, 0x7A, 0x3F, 0x04, 0x08, 0x28,
+              # ★ 2026-10-30：0x75 = 「u32 计数」的大表（co_consts 项数 > 255 时用）。
+              #   2026-10-30 热更后 cdata 表全部改走这种容器（旧 0x2e+u8 只能装 255 项），
+              #   缺它 ⇒ 2 万张变体表一律卡在「未知 marshal 标签 0x75」。
+              0x75}
 
 NAME_OPS_SHIFTED = {"LOAD_ATTR", "LOAD_GLOBAL", "LOAD_METHOD", "STORE_ATTR"}
 NAME_OPS_PLAIN = {"LOAD_NAME", "STORE_NAME", "DELETE_NAME", "IMPORT_NAME", "IMPORT_FROM",
@@ -486,6 +490,26 @@ class NeoXReader:
                 it = self.value(j, depth + 1)
                 v.v.append(it)
                 j = it.off + it.size
+            v.size = j - off
+            return v
+        if t == 0x75:
+            # ★ 2026-10-30：大表变体 —— `75 + u32 count` + count 个值。
+            #   与 0x2e 同语义（都是「表」），只是计数从 u8 扩到 u32。
+            #   实测 huodong_conf_data.py：co_consts 9768 项，解析终点 == 文件长度。
+            if off + 5 > self.hi:
+                raise NeoxDecodeError('大表(0x75) 头越界 @%d' % off)
+            cnt = struct.unpack_from('<I', b, off + 1)[0]
+            if cnt > 4_000_000:
+                raise NeoxDecodeError('大表(0x75) 计数不合理 @%d (n=%d)' % (off, cnt))
+            v = Value('tuple', [], off, 0)
+            self._reg(v)
+            j = off + 5
+            for i in range(cnt):
+                it = self.value(j, depth + 1)
+                v.v.append(it)
+                j = it.off + it.size
+                if j > self.hi:
+                    raise NeoxDecodeError('大表(0x75) @%d 第 %d 项越界' % (off, i))
             v.size = j - off
             return v
         if t == CODE_TAG:

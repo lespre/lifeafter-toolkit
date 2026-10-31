@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261030e")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101techsrc")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -261,6 +261,52 @@ const TECH_KEYS=new Set(["provenance","text_provenance","field_provenance","name
 // 数据里可能写死的英文术语 → 中文（只在显示层替换，旧产物不用重跑）
 
 function zhText(s){let out=String(s??"");for(const [re,rp] of TERM_CN)out=out.replace(re,rp);return out;}
+/* 板级「来源表」：把 meta.tech_sources 按角色分组渲染（口径见 tools/build/sync_board_tech_sources.py）*/
+const SRC_ROLE_CN={primary:"主源表（直接产出行条目）",comparison:"对照表（补字段 / 交叉校验）",chs:"文本池（中文名 / 描述）",lock_only:"仅校验（快照锁，不出条目）",unlabeled:"其它表（快照锁内未标注角色）",other:"其它"};
+const SRC_KIND_CN={row:"行表",field:"字段补充",chs:"文本池",lock_only:"快照锁"};
+function techSourcesHtml(ts){
+  if(!ts||!Array.isArray(ts.tables)||!ts.tables.length)return "";
+  const groups={};
+  for(const t of ts.tables){const g=t.role||"other";(groups[g]=groups[g]||[]).push(t);}
+  const order=["primary","comparison","chs","lock_only","unlabeled","other"];
+  let html='<div class="k">来源表</div><div class="v srv">';
+  html+=`<div class="srchint">本板块读取 <b>${ts.table_count??ts.tables.length}</b> 张表 · 快照锁 <b>${ts.lock_count??0}</b> 条；每张表的角色与命中的卡片数如下。</div>`;
+  for(const g of order){
+    const arr=groups[g];if(!arr)continue;
+    html+=`<div class="srcgroup"><div class="srcgname">${esc(SRC_ROLE_CN[g]||g)}</div>`;
+    for(const t of arr){
+      const meta=[SRC_KIND_CN[t.kind]||t.kind];
+      if(t.cards)meta.push(`${t.cards} 卡`);
+      if(t.fields&&t.fields.length)meta.push("字段 "+t.fields.join("/"));
+      html+=`<div class="srcrow"><code>${esc(t.table)}</code><span>${esc(meta.filter(Boolean).join(" · "))}</span></div>`;
+    }
+    html+="</div>";
+  }
+  return html+"</div>";
+}
+/* 字段级来源块：描述 / 图标 / 魅力值 / 部位 各自来自哪张表哪一行。
+   注：这些是「跨源补字段」，独立成块，不并入 locator_chain（契约禁跨源字段 join）。*/
+function fieldSrcText(v){
+  if(v==null)return "";
+  if(typeof v==="string")return v;
+  const out=[];
+  if(v.table)out.push(v.table);
+  if(v.row_key!=null)out.push("行 "+v.row_key);
+  if(v.field_refs&&v.field_refs.length)out.push(v.field_refs.join("/"));
+  if(v.note)out.push(v.note);
+  return out.length?out.join(" · "):(v.source_id||"");
+}
+function pushFieldSources(p,pairs){
+  if(!p)return;
+  if(p.desc_source)pairs.push(["描述来源",fieldSrcText(p.desc_source)]);
+  if(p.icon_source)pairs.push(["图标来源",fieldSrcText(p.icon_source)]);
+  if(p.charm_source)pairs.push(["魅力值来源",fieldSrcText(p.charm_source)]);
+  if(p.part_source)pairs.push(["部位来源",fieldSrcText(p.part_source)]);
+  if((p.supplement_locks||[]).length){
+    const ls=(p.supplement_locks||[]).map(l=>l&&(l.source_id||l.sha256)).filter(Boolean);
+    if(ls.length)pairs.push(["补充来源",ls.join(" / ")]);
+  }
+}
 function renderTechSection(pairs){
   // Wiki View / Workbench View 分层：折叠容器与标题始终保留（旧契约不变），只在容器内部换内容
   if(WB_VIEW!=="workbench"){
@@ -1312,8 +1358,8 @@ document.addEventListener("mouseout",e=>{
    ★ 只用板上已有字段（part_bucket / has_permanent / icon_state / gender 由刷新脚本写入），
      不做任何推断：整套/光源没有图标命名约定就不按前缀判。 */
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
-const FR_BUCKETS=["头饰","捏脸","衣服","背包","挂饰","戒指","半感染者花苞","整套","光源","面饰","发饰","投影","其他"];
-const FR_BUCKET_CLS={"头饰":"hat","衣服":"cloth","背包":"bag","整套":"suit","光源":"light","面饰":"face","发饰":"hair","挂饰":"pendant","投影":"proj","其他":"other"};
+const FR_BUCKETS=["头发","头饰","面饰","衣服","整套","背包","挂饰","荧光棒","投影","半感染者花苞","戒指","捏脸","其他"];
+const FR_BUCKET_CLS={"头发":"hair","头饰":"hat","面饰":"face","衣服":"cloth","整套":"suit","背包":"bag","挂饰":"pendant","荧光棒":"light","投影":"proj","其他":"other"};
 const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:true};
 /* 筛选状态可从 URL 预置（可分享的深链）：?frpart=头饰,衣服&frdur=限时&frimg=有图&frgender=女&frsort=charm_desc */
 (function(){
@@ -1382,8 +1428,14 @@ function frPass(it){
     if(!ok)return false;
   }
   if(FR.grade&&String(it.grade_level==null?"":it.grade_level)!==FR.grade)return false;
-  if(FR.img==="有图"&&it.icon_state!=="有图")return false;
-  if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
+  // 运行时特效/面容类「无独立 2D 图标」项：只要选中了它所在部位桶，即展示，不被
+  // 「有图/含占位」图示筛选吞掉；默认（未选任何部位，全部视图）仍按图示筛选正常隐藏。
+  const _fxNoImg=(it.icon_state||"").indexOf("无2D图")===0;
+  const _skipImg=_fxNoImg&&FR.parts.size>0;
+  if(!_skipImg){
+    if(FR.img==="有图"&&it.icon_state!=="有图")return false;
+    if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
+  }
   if(FR.named&&it.name_visible===false)return false;
   if(FR.gender){
     const gs=frGenders(it);
@@ -1575,6 +1627,7 @@ function frKvHtml(it){
   if(p.source_id)pairs.push(["来源标识",p.source_id]);
   if(p.table)pairs.push(["定位表",p.table]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  pushFieldSources(p,pairs);
   if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
   if(p.upstream&&p.upstream.entry_index!=null)pairs.push(["上游条目号",String(p.upstream.entry_index)]);
   if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
@@ -1996,6 +2049,7 @@ function vCard(it,i){
   const p=effProv(it);
   if(p.table)pairs.push(["定位表",p.table]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  pushFieldSources(p,pairs);
   if(p.name_source)pairs.push(["名称出处",p.name_source]);
   if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
   if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
@@ -2223,6 +2277,7 @@ function cKvHtml(it){
   if(p.table)pairs.push(["定位表",p.table]);
   if((it.tables||[]).length)pairs.push(["来源表",it.tables.join(" / ")]);
   if(p.field_refs)pairs.push(["字段出处",(p.field_refs||[]).join(" / ")]);
+  pushFieldSources(p,pairs);
   if(p.name_source)pairs.push(["名称出处",p.name_source]);
   if(p.source_lock_sha256)pairs.push(["源快照摘要",String(p.source_lock_sha256).slice(0,32)+"…"]);
   if(p.locator_chain&&p.locator_chain.chain_status)pairs.push(["定位链",p.locator_chain.chain_status]);
@@ -3658,6 +3713,7 @@ else loadBoard(b,d=>{
     const _ev=EV_CN[m.evidence]||m.evidence||"未标注";
     let _kv="";
     if(m.notes&&!m.notes_hidden)_kv+=`<div class="k">板块说明</div><div class="v">${esc(m.notes)}</div>`;
+    _kv+=techSourcesHtml(m.tech_sources);
     _kv+=`<div class="k">源包摘要</div><div class="v mono">${esc(_sha)}</div>`;
     _kv+=`<div class="k">条目等级</div><div class="v">${esc(_ev)}</div>`;
     _kv+=`<div class="k">生成时间</div><div class="v">${esc(String(m.generated||"未记录"))}</div>`;

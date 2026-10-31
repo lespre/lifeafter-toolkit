@@ -492,6 +492,18 @@ body{padding-left:212px}
 .topbar #notes.open{display:block}
 .topbar #notes details.tech{border:1px solid #262f3b;border-radius:6px;background:#0f141b;padding:8px 12px;margin:0}
 
+/* 板级技术详情·来源表（meta.tech_sources，2026-11-01 用户口径「表源要写进技术详情」）
+   按角色分组：主源 / 对照 / 文本池 / 仅校验 */
+#notes .kv .v.srv{display:block;line-height:1.65;color:#cfd8e3;white-space:normal}
+#notes .srv .srchint{font-size:11.5px;color:#8b98a8;margin:0 0 8px}
+#notes .srv .srchint b{color:#e8ecf2;font-weight:600}
+#notes .srv .srcgroup{margin:0 0 8px;padding-left:9px;border-left:2px solid #2b3746}
+#notes .srv .srcgname{font-size:11px;letter-spacing:.06em;color:#7f8d9e;margin:0 0 4px}
+#notes .srv .srcrow{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;font-size:11.8px;padding:1.5px 0}
+#notes .srv .srcrow code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.4px;
+  color:#cfe3d6;background:#131a23;border:1px solid #222c38;border-radius:4px;padding:0 5px}
+#notes .srv .srcrow span{color:#8b98a8}
+
 /* 时装卡·描述折叠（2026-10-24） */
 .fdesc{margin-top:8px;border-top:1px dashed rgba(255,255,255,.08);padding-top:6px}
 .fdesc>summary{cursor:pointer;font-size:12px;color:#9aa0aa;list-style:none;display:flex;gap:6px;align-items:center}

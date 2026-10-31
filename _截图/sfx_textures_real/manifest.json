@@ -1,0 +1,218 @@
+[
+ {
+  "name": "alpha_02_ty_djs.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 50034,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "alpha_02_ty_djs.png"
+ },
+ {
+  "name": "alpha_bai_lyn_djs.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 52939,
+  "w": 32,
+  "h": 32,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "alpha_bai_lyn_djs.png"
+ },
+ {
+  "name": "dian_12.tga",
+  "pack": "res.layers.1.1.1.npk",
+  "row": 61699,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "dian_12.png"
+ },
+ {
+  "name": "glow05.tga",
+  "pack": "res.layers.1.1.1.npk",
+  "row": 1172,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow05.png"
+ },
+ {
+  "name": "glow10_d.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 124322,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow10_d.png"
+ },
+ {
+  "name": "glow25.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 119581,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow25.png"
+ },
+ {
+  "name": "glow_01.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 89326,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow_01.png"
+ },
+ {
+  "name": "glow_04_tp29.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 50238,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGB8_ETC2",
+  "png": "glow_04_tp29.png"
+ },
+ {
+  "name": "glow_30_tp30.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 32778,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow_30_tp30.png"
+ },
+ {
+  "name": "glow_38.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 29305,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow_38.png"
+ },
+ {
+  "name": "glow_zxg01.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 94936,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "glow_zxg01.png"
+ },
+ {
+  "name": "lighting_02_dr.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 66045,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "lighting_02_dr.png"
+ },
+ {
+  "name": "lightning_01_ycy_djs.tga",
+  "pack": "res.layers.1.1.1.npk",
+  "row": 75371,
+  "w": 128,
+  "h": 256,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "lightning_01_ycy_djs.png"
+ },
+ {
+  "name": "ring_01_cs.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 100220,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "ring_01_cs.png"
+ },
+ {
+  "name": "ring_05_yh_djs.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 80673,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "ring_05_yh_djs.png"
+ },
+ {
+  "name": "tex_alpha_tp61_31.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 69616,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_alpha_tp61_31.png"
+ },
+ {
+  "name": "tex_glow_star_tp60_02.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 92669,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_glow_star_tp60_02.png"
+ },
+ {
+  "name": "tex_glow_xr_03_cc.tga",
+  "pack": "res.layers.1.1.1.npk",
+  "row": 5557,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_glow_xr_03_cc.png"
+ },
+ {
+  "name": "tex_lightning_02_zhf_djs.tga",
+  "pack": "res.layers.1.1.1.npk",
+  "row": 21632,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_lightning_02_zhf_djs.png"
+ },
+ {
+  "name": "tex_lightning_04_zhf_djs.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 126170,
+  "w": 128,
+  "h": 128,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_lightning_04_zhf_djs.png"
+ },
+ {
+  "name": "tex_trail_x01_01.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 77655,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "tex_trail_x01_01.png"
+ },
+ {
+  "name": "trail04.tga",
+  "pack": "res.layers.1.1.2.npk",
+  "row": 87210,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "trail04.png"
+ },
+ {
+  "name": "trail04_01.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 94268,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "trail04_01.png"
+ },
+ {
+  "name": "trail_76_lzz_djs.tga",
+  "pack": "res.layers.1.1.npk",
+  "row": 108244,
+  "w": 64,
+  "h": 64,
+  "fmt": "RGBA8_ETC2_EAC",
+  "png": "trail_76_lzz_djs.png"
+ }
+]

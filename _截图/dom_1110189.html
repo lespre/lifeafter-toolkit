@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="--top-h: 214px;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>（二）武器皮肤 · Wiki</title>
+<script src="data/publication_policy.js?v=ec7cf93a17f7"></script>
+<script src="data/manifest.js"></script>
+<script src="data/wiki_taxonomy.js"></script>
+<script src="data/workbench_manifest.js?v=7ee9dbaa765c"></script>
+<script src="data/weapon_skin_audio_attachments.js?v=bc990a74b699"></script>
+<script src="data/media/weapon_skin_media.js?v=a7232deb9d2a"></script>
+<script src="data/media/weapon_skin_skeleton.js?v=f921edf44d09"></script>
+<!-- ★ 新增（2026-09-20，CUBE_PICKER）：环境立方体（IBL cube）清册。
+     ⚠ 源数据里**没有**选择器决定预览该用哪一套 cube ⇒ 查看器里的「环境 cube」下拉是**取证/对比工具**，
+     不代表「游戏就是这么选的」。清册由 01_索引与产物/_target_1110025/_cubepick_build.py 按名字哈希枚举源容器后解码生成。
+     非 defer ⇒ 早于下方 defer 的 weapon_skin_viewer.js 执行，保证选择器首次填充时清册已就绪。 -->
+<script src="data/media/weapon_skin_cubes.js?v=cf095dc3fd73"></script>
+<!-- ★ 新增（2026-09-20，MERGE_FIX）：**自造近似**环境立方体清册（custom_studio_20260920）。
+     ⚠ 与上一行不同：这里面的 cube **不是游戏资产**（status='self_authored_approximate'，
+     authority=user_authorized_manual_20260920，由游戏自己的背景板重采样而来）。
+     它**故意落在**总清单既有枚举（source_verified/partial/unresolved）之外，因此绝不计入
+     「已定位源 cube」的 32 套；下拉里以独立分组「自造·近似（非游戏资产）」单列，文案写明非游戏资产。
+     本文件无副作用：只注册 window.WikiWeaponSkinCubesCustom，并在主清单已存在时**幂等** append
+     （同名不覆盖 ⇒ 踩不到真源 cube）。必须排在 weapon_skin_cubes.js 之后、defer 的 viewer.js 之前。 -->
+<script src="data/media/weapon_skin_cubes_custom.js?v=d40de75427ba"></script>
+<link rel="stylesheet" href="assets/weapon_skin_viewer.css?v=neox4">
+<script defer="" src="assets/weapon_skin_viewer.js?v=34983ec79804"></script>
+<script defer="" src="assets/weapon_skin_sfx_adapter.js?v=32d4c81fae01"></script>
+<link rel="stylesheet" href="board_shadcn.css?v=20261023-narrow">
+<link rel="stylesheet" href="assets/board_theme_aftermath.css?v=20261018a">
+<link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
+<link rel="stylesheet" href="assets/board_base.css?v=20261030-01">
+
+<meta name="theme-color" content="#10131d">
+<link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
+<link rel="stylesheet" href="assets/board_theme_dusk.css?v=20261025-02">
+<link rel="stylesheet" href="assets/board_tokens.css?v=20261030-01">
+<script defer="" src="assets/board_ui.js?v=20261025-01"></script>
+<script defer="" src="assets/board_navdrawer.js?v=20261030-01"></script>
+<script src="data/boards/weapon_skin_sfx_text_sources.js?v=20261030e"></script></head>
+<body class="wiki-board b-weapon_skin_sfx_text_sources skin-mode">
+<aside id="siteNav" aria-label="资料分类"><div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div><div class="grp"><img class="gi" src="assets/skin_posters/1110012.png" alt=""><span>置顶、预告专栏</span></div><a class="leafrow" href="board.html?b=upcoming_auto">预告专栏</a><div class="grp"><img class="gi" src="assets/fashion_icon_refs/icon_40095_b.png" alt=""><span>一、时装类</span></div><a class="leafrow" href="board.html?b=fashion_wardrobe">（一）人物时装</a><a class="leafrow on" href="board.html?b=weapon_skin_sfx_text_sources">（二）武器皮肤</a><a class="leafrow" href="board.html?b=vehicle_full">（三）载具</a><a class="leafrow" href="board.html?b=kill_broadcast">（四）击败播报与全场最佳动画</a><a class="leafrow" href="board.html?b=avatar_catalog">（五）头像、头像框、名片框</a><div class="grp"><img class="gi" src="assets/core_icons/item_icon_jin_bing_b.png" alt=""><span>二、战力类</span></div><a class="leafrow" href="board.html?b=mutation_core_full">（一）异变核芯</a><a class="leafrow" href="board.html?b=tactical_chip_full">（二）战术芯片</a><a class="leafrow" href="board.html?b=drone_catalog">（内测版）（三）无人机</a><a class="leafrow" href="board.html?b=edible_catalog">（内测版）（四）料理与食谱</a><a class="leafrow" href="board.html?b=equipment_attrs">（内测版）（五）装备属性（武器·护甲）</a><a class="leafrow" href="board.html?b=scene_balance">（内测版）（六）场景平衡</a><a class="leafrow" href="board.html?b=gene_potential_catalog">（内测版）（七）各种族潜能</a><a class="leafrow" href="board.html?b=talent_catalog">（内测版）（八）战斗天赋、职业天赋、职业技能</a><div class="grp"><img class="gi" src="assets/lottery_icons/102602.png" alt=""><span>三、活动奖池</span></div><div class="leafhd">（一）活动表</div><a class="sub" href="board.html?b=activity_master">活动总表</a><a class="sub" href="board.html?b=lottery_periods">（内测版）当期&amp;历史每期抽奖奖池</a><div class="grp"><img class="gi" src="assets/item_icons/icon_10004_b.png" alt=""><span>四、综合资料</span></div><a class="leafrow" href="board.html?b=server_types">（内测版）（一）服务器类型</a><a class="leafrow" href="board.html?b=item_master_full">（二）全量道具总表</a><a class="leafrow" href="board.html?b=title_catalog">（内测版）（三）称号</a><a class="leafrow" href="board.html?b=recipe_catalog">（内测版）（四）配方</a><div class="leafhd">（五）说明条目、文字与提示总表</div><a class="sub" href="board.html?b=desc_catalog">（内测版）说明条目</a><a class="sub" href="board.html?b=text_notice_catalog">（内测版）文本与提示</a><a class="sub" href="board.html?b=gift_data_text_sources">（内测版）当前包</a><div class="leafhd">（六）实体技能</div><a class="sub" href="board.html?b=entity_catalog">（内测版）实体</a><a class="sub" href="board.html?b=skill_catalog">（内测版）技能</a><a class="leafrow" href="board.html?b=buff_catalog">（内测版）（七）状态</a><a class="leafrow" href="board.html?b=illustration_catalog">（内测版）（八）图鉴收集</a></aside>
+<header class="hd2">
+  <button id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false"><span aria-hidden="true">☰</span><span>资料分类</span></button><div class="hd2-crumb">
+    <a href="wiki.html">← 返回 Wiki 首页</a>
+    <a href="index.html">三线状态</a>
+  </div>
+  <h1 id="title">（二）武器皮肤</h1>
+  <div class="meta-line" id="metaline" title="源包摘要＝该板块生成时所用客户端快照的摘要（不同板块快照可能不同）">来源：Documents 快照 script.py314 · weapon_skin_data · 测试服 · 生成 2026-10-17<span class="techlink-wrap"><a class="techlink" href="javascript:void(0)">技术详情</a></span></div>
+  <div class="pills" id="pills"><span class="pill">条目 <b>124</b></span><span class="pill">结构已解析 <b>124</b></span><span class="pill state-pill verified">已核验 <b>0</b></span><span class="pill state-pill unresolved">待确认 <b>122</b></span><span class="pill state-pill quarantined">已隔离 <b>0</b></span><span class="pill state-pill static-config">静态配置 <b>122</b></span><span class="pill state-pill runtime-final-unknown">运行时结果未确认 <b>0</b></span><span class="pill name-pill" title="name_status=verified">名称已核验 <b>138</b></span><span class="pill name-pill" title="name_status=candidate">名称待确认 <b>1</b></span><span class="pill name-pill" title="name_status=unresolved">名称未命名/未解析 <b>3</b></span></div>
+<div class="notes" id="notes" style="display: none;"><details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv"><div class="k">源包摘要</div><div class="v mono">06b3361167280c62…</div><div class="k">条目等级</div><div class="v">结构已解析</div><div class="k">生成时间</div><div class="v">2026-10-17T00:06:34+08:00</div></div></details></div></header>
+<div class="wrap">
+  <div class="controls">
+    <input id="q" type="search" aria-label="搜索板内条目" placeholder="搜索名称 / ID / 任意字段…" autocomplete="off">
+    <select id="fEv">
+      <option value="">全部证据等级</option>
+      <option value="structure">结构已解析</option>
+      <option value="verified">业务链已核验</option>
+      <option value="candidate">候选待验证</option>
+    </select>
+    <details class="board-filters" id="boardFilters"><summary>筛选条件</summary><span id="fFashionWrap" style="display:none"></span></details>
+    <select id="fRelease" style=""><option value="">全部上架状态</option><option value="on_sale">已上架（121）</option><option value="upcoming">预告 · 未到上架日（3）</option></select>
+    <select id="fNameSt" style=""><option value="">全部名称状态</option><option value="verified">已核验（124）</option></select>
+    <div id="fGrade" style="position: relative;">
+      <button type="button" id="fGradeBtn" aria-haspopup="listbox" aria-expanded="false" title="点击展开品级列表（可多选；一个都不勾 = 全部）" style="font:inherit;font-size:12px;color:#3f3f46;background:#fff;border:1px solid #e4e4e7;border-radius:8px;padding:6px 10px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+        <span id="fGradeLabel">品级：全部</span><span style="color:#a1a1aa">▾</span>
+      </button>
+      <div id="fGradePanel" role="listbox" aria-multiselectable="true" style="display:none;position:absolute;top:calc(100% + 4px);left:0;width:max-content;min-width:200px;max-width:320px;max-height:290px;overflow:auto;background:#fff;border:1px solid #e4e4e7;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:60;box-sizing:border-box"><div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; box-sizing: border-box; font-size: 12.5px; line-height: 1.5; color: rgb(63, 63, 70); padding: 5px 8px; border-radius: 7px; cursor: pointer; white-space: nowrap; text-align: left;"><input type="checkbox" id="fgcb_2___" name="fGrade" value="2白送级" style="margin: 0px; flex: 0 0 auto; width: 14px; height: 14px; accent-color: rgb(109, 40, 217); cursor: pointer;"><span style="flex: 0 1 auto; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">2白送级（10）</span></div><div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; box-sizing: border-box; font-size: 12.5px; line-height: 1.5; color: rgb(63, 63, 70); padding: 5px 8px; border-radius: 7px; cursor: pointer; white-space: nowrap; text-align: left;"><input type="checkbox" id="fgcb_3___" name="fGrade" value="3直售级" style="margin: 0px; flex: 0 0 auto; width: 14px; height: 14px; accent-color: rgb(109, 40, 217); cursor: pointer;"><span style="flex: 0 1 auto; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">3直售级（31）</span></div><div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; box-sizing: border-box; font-size: 12.5px; line-height: 1.5; color: rgb(63, 63, 70); padding: 5px 8px; border-radius: 7px; cursor: pointer; white-space: nowrap; text-align: left;"><input type="checkbox" id="fgcb_4___" name="fGrade" value="4紫皮级" style="margin: 0px; flex: 0 0 auto; width: 14px; height: 14px; accent-color: rgb(109, 40, 217); cursor: pointer;"><span style="flex: 0 1 auto; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">4紫皮级（46）</span></div><div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; box-sizing: border-box; font-size: 12.5px; line-height: 1.5; color: rgb(63, 63, 70); padding: 5px 8px; border-radius: 7px; cursor: pointer; white-space: nowrap; text-align: left;"><input type="checkbox" id="fgcb_5___" name="fGrade" value="5典藏级" style="margin: 0px; flex: 0 0 auto; width: 14px; height: 14px; accent-color: rgb(109, 40, 217); cursor: pointer;"><span style="flex: 0 1 auto; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">5典藏级（22）</span></div><div style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; box-sizing: border-box; font-size: 12.5px; line-height: 1.5; color: rgb(63, 63, 70); padding: 5px 8px; border-radius: 7px; cursor: pointer; white-space: nowrap; text-align: left;"><input type="checkbox" id="fgcb_6___" name="fGrade" value="6传世级" style="margin: 0px; flex: 0 0 auto; width: 14px; height: 14px; accent-color: rgb(109, 40, 217); cursor: pointer;"><span style="flex: 0 1 auto; min-width: 0px; overflow: hidden; text-overflow: ellipsis;">6传世级（15）</span></div></div>
+    </div>
+    <select id="fType" style=""><option value="">全部武器种类</option><option value="电磁机枪">电磁机枪</option><option value="弓箭">弓箭</option><option value="护臂/盾">护臂/盾</option><option value="狙击枪">狙击枪</option><option value="冷兵器">冷兵器</option><option value="榴弹炮">榴弹炮</option><option value="喷火器">喷火器</option><option value="手枪">手枪</option><option value="突击步枪">突击步枪</option><option value="霰弹枪">霰弹枪</option></select>
+    <select id="fIp" style=""><option value="">全部联动IP</option><option value="（无联动）">（无联动）</option><option value="非人哉">非人哉</option><option value="非遗传承人">非遗传承人</option><option value="假面骑士">假面骑士</option><option value="铠甲勇士">铠甲勇士</option><option value="灵笼">灵笼</option><option value="奶龙">奶龙</option><option value="喜羊羊与灰太狼">喜羊羊与灰太狼</option><option value="斩神">斩神</option><option value="A-SOUL">A-SOUL</option></select>
+    <span id="listingHint" class="sort-hint" style="display:none"></span>
+    <span class="srv-sw" id="serverSwitch" style="display:none" aria-label="服别切换"></span>
+    <span id="fCustomWrap"></span>
+    <span id="sortHint" class="sort-hint" style="">排列依据：无可靠图鉴顺序字段 → 默认皮肤 ID ↓（顶层仅永久主记录；时限变体并入主卡、不参与排列）</span>
+    <select id="fOrder" style="" aria-label="排列依据"><option value="id" selected="">排列依据：皮肤 ID</option><option value="sale">排列依据：上架时间</option><option value="charm">排列依据：魅力值</option></select>
+    <button id="fDir" type="button" class="dir-btn" style="" title="切换排列方向（↑/↓）" aria-label="切换排列方向" data-bound="1" data-dir="desc">↓ 降序</button>
+    <button id="fDensity" type="button" class="density-btn" aria-pressed="false" title="卡片密度：舒适（大图 4 列）— 点击切紧凑" data-bound="1" data-density="comfortable">密度：舒适</button>
+    <span class="count" id="count" role="status" aria-live="polite">显示 1 / 124 款皮肤 · 1 主皮肤 · 时限变体 0（并入主卡，不单独计款） · 0 行为预告 · 名称 1 已核验 / 0 待确认 / 0 未命名 · 上架状态 <span class="ls-chip ls-upcoming" title="预告 · 未到上架日">预告 · 未到上架日 1</span></span>
+  </div>
+  
+  <div class="grid" id="grid"><div class="skin-card grade-t5" data-cidx="0"><div class="c2-posterwrap" style="--gc:#8a6a1c;--gsoft:#f7ecc0;--gbg:#fdf9ec"><div class="skin-media"><img src="assets/skin_posters/1110189.png" alt="浪漫过载预览" loading="lazy" decoding="async"></div></div>
+    <div class="skin-summary" role="button" tabindex="0" aria-expanded="false" onclick="toggleSkin(this)" onkeydown="onSkinKey(event,this)">
+      <div class="skin-head-row">
+        <span class="skin-tag grade-badge t5" title="level=5">典藏</span>
+        <span class="skin-name">浪漫过载</span>
+        <span class="skin-head-right">
+          <span class="skin-sale" title="上架时间（sale_ts／sale_date）+ 上架状态">上架 2026-11-05（4 天 22 小时后上架）<span class="skin-ls ls-upcoming" title="上架状态：预告 · 未到上架日">未上架</span></span>
+          <span class="skin-id" title="skin_item_id">皮肤ID 1110189</span>
+        </span>
+      </div>
+      <div class="skin-facts"><span class="fact"><b>武器类型</b>喷火器</span></div>
+      <div class="skin-tags"></div>
+    </div>
+    <div class="skin-detail" hidden=""><h4>官方描述</h4><div class="skin-desc">以花楹为引，一枪一鸣皆是深情。</div><details class="perf"><summary>特效与战斗表现 6 项</summary><ul class="perf-list"><li class="perf-row" data-cat="命中效果"><span class="perf-icon blank"></span><span class="perf-cat">命中效果</span><span class="perf-name official" title="一击倾心">一击倾心</span><span class="perf-src perf-hidden" hidden=""></span></li><li class="perf-row" data-cat="击败特效"><span class="perf-icon blank"></span><span class="perf-cat">击败特效</span><span class="perf-name official" title="浪漫谢幕">浪漫谢幕</span><span class="perf-src perf-hidden" hidden=""></span></li><li class="perf-row" data-cat="伤害跳字"><span class="perf-icon blank"></span><span class="perf-cat">伤害跳字</span><span class="perf-name official" title="心动爆表">心动爆表</span><span class="perf-src perf-hidden" hidden=""></span></li><li class="perf-row" data-cat="战斗音效"><span class="perf-icon blank"></span><span class="perf-cat">战斗音效</span><span class="perf-name">fx_skin_1013_010_kh.sfx</span><span class="perf-src perf-hidden" hidden=""></span></li><li class="perf-row" data-cat="攻击准心"><span class="perf-icon blank"></span><span class="perf-cat">攻击准心</span><span class="perf-name official" title="心动锁定">心动锁定</span><span class="perf-src perf-hidden" hidden=""></span></li><li class="perf-row" data-cat="核芯联动"><span class="perf-icon blank"></span><span class="perf-cat">核芯联动</span><span class="perf-name official" title="球状闪电">球状闪电</span><span class="perf-src perf-hidden" hidden=""></span></li></ul></details><details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="sub">Wiki View：技术字段（溯源 / 快照基准 / 证据）已隐藏；已隐藏。</div></details></div>
+  </div></div>
+</div>
+
+<!-- board:split -->
+<script src="assets/board_dict.js?v=20261030-01"></script>
+<script src="assets/board_core.js?v=20261030-01"></script>
+
+
+
+
+
+
+
+
+<script src="assets/board_plugins.js?v=20261030-01"></script>
+
+
+<div id="navScrim" aria-hidden="true"></div></body></html>

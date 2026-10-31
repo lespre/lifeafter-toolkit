@@ -6,7 +6,7 @@ source_server: PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_da
 package_sha: 0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b
 generated: '2026-10-24'
 evidence: structure
-items: 2899
+items: 3135
 primary_builders:
 - build_appearance_bud.py
 - rebuild_fashion_wardrobe_full.py
@@ -23,9 +23,7 @@ postprocess_scripts:
 - backfill_fashion_layers_prov.py
 - backfill_fashion_layers_prov2.py
 - check_fashion_parts.py
-- dedupe_fashion_images.py
 - fill_appearance_icons.py
-- fill_board_provenance.py
 - fill_fashion_by_model.py
 - fill_fashion_detail_fields.py
 - fill_fashion_extra_icons.py
@@ -44,6 +42,7 @@ postprocess_scripts:
 - fix_fashion_gender_pairs.py
 - fix_fashion_meta.py
 - fix_fashion_parts.py
+- fix_hotfix_provenance.py
 - fix_male_by_name_part.py
 - fix_male_part_mismatch.py
 - fix_male_part_mismatch_v2.py
@@ -54,7 +53,6 @@ postprocess_scripts:
 - import_pendants.py
 - import_pendants_full.py
 - mark_single_gender.py
-- mark_single_gender_cards.py
 - merge_alias_cards.py
 - merge_appearance_cards.py
 - merge_duration_cards.py
@@ -62,10 +60,10 @@ postprocess_scripts:
 - merge_fashion_layers.py
 - merge_fashion_media_into_board.py
 - merge_fashion_part_cards.py
+- merge_hotfix_fashion.py
 - merge_same_key_cards.py
 - merge_version_cards.py
 - normalize_fashion_parts_cn.py
-- note_male_scope.py
 - reclassify_fashion_parts.py
 - refetch_dup_icons.py
 - repair_fashion_by_model_sample.py
@@ -79,7 +77,7 @@ postprocess_scripts:
 - split_appearance_extra.py
 - split_part_cards.py
 - supplement_fashion_parts.py
+- swap_hotfix_imgs_to_pe.py
 - swap_pc_icons_to_pe.py
-- write_fashion_rules.py
-script_count: 72
+script_count: 70
 rebuild_risk: high

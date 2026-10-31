@@ -1,17 +1,32 @@
 {
  "schema": "wiki-taxonomy/v1",
- "generated": "2026-10-22",
- "说明": "按草稿逐字：置顶预告 + 四分类，子级序号一一对应",
+ "generated": "2026-10-31",
+ "说明": "置顶、活动奖池与预告 + 三分类（原「三、活动奖池」并入置顶类后重编号）",
  "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…",
  "折叠": false,
  "树": [
   {
    "id": "preview",
-   "name": "置顶、预告专栏",
-   "boards": [
-    "upcoming_auto"
-   ],
-   "children": []
+   "name": "置顶、活动奖池与预告",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）活动奖池",
+     "boards": [
+      "activity_master",
+      "lottery_periods"
+     ],
+     "children": []
+    },
+    {
+     "name": "（二）预告专栏",
+     "boards": [
+      "upcoming_auto",
+      "skin_behavior_preview"
+     ],
+     "children": []
+    }
+   ]
   },
   {
    "id": "fashion",
@@ -106,22 +121,8 @@
    ]
   },
   {
-   "id": "activity",
-   "name": "三、活动奖池",
-   "boards": [],
-   "children": [
-    {
-     "name": "（一）活动表",
-     "boards": [
-      "activity_master",
-      "lottery_periods"
-     ]
-    }
-   ]
-  },
-  {
    "id": "reference",
-   "name": "四、综合资料",
+   "name": "三、综合资料",
    "boards": [],
    "children": [
     {
