@@ -86,7 +86,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "CDN 资源库总览（逻辑包 · 变体 · 档位 · 本地状态）",
-      "category": "四、综合资料 / （四）CDN 资源库",
+      "category": "三、综合资料 / （九）CDN 资源库",
       "board": "cdn_library",
       "items": 711,
       "generated": "2026-10-31",
