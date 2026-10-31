@@ -3122,23 +3122,41 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     hugeDraw(true);
     return;
   }
-  // 预告专栏：按当天日期实时剔除已到期的条目（不依赖重建板）
+  /* 预告专栏「是否还在预告窗口」（2026-11-01 修）。
+     原逻辑只按 expect_date 一刀切：奖池期次一开赛，整批成员（上架日=期次开始日）
+     连带「预计日已过但仍未上线」的皮肤被全部隐藏 —— 实测 14 条只剩 1 条、页面近空。
+     新口径：
+       ① 奖池成员：期次状态 进行中/未开始 ⇒ 仍在窗口；期次结束（period_end 已过）才剔除；
+       ② 武器皮肤：源表 release_state 仍为未上线 ⇒ 仍在窗口；预计上架日已过只标
+          「已过预计」（跳票 ≠ 过期），不再整条隐藏；
+       ③ 其余：有明确上架日且已过 ⇒ 剔除。 */
   const TODAY0=new Date(); TODAY0.setHours(0,0,0,0);
-  const upExpired=it=>{
-    const s=String(it.expect_date||'');
-    if(!/^\d{4}-\d{2}-\d{2}$/.test(s))return false;
-    const d=new Date(s+'T00:00:00');
+  const upDayPassed=s=>{
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(String(s||'')))return false;
+    const d=new Date(String(s)+'T00:00:00');
     return !isNaN(d) && d<=TODAY0;
   };
+  const upState=it=>{
+    if(it.period_end && upDayPassed(it.period_end))return 'ended';
+    if(it.period_status==='进行中'||it.period_status==='未开始')return 'live';
+    if(it.kind==='武器皮肤'||it.family_key==='UpcomingSkin')return 'skin';
+    return upDayPassed(it.expect_date)?'expired':'pending';
+  };
+  const upExpired=it=>upState(it)==='expired';
+  const upLate=it=>upState(it)==='skin'&&upDayPassed(it.expect_date);
   const upcomingBoard=(b==='upcoming_auto');
   if(upcomingBoard){
     const gone=DATA.items.filter(upExpired).length;
-    const pill=document.createElement('span');
-    pill.className='pill';
-    pill.textContent='已到期自动剔除 '+gone;
-    pill.title='按当天日期实时判断：上架日 ≤ 今天 的条目不再列入预告';
+    const late=DATA.items.filter(upLate).length;
     const pills=document.getElementById('pills');
-    if(pills && !pills.querySelector('.up-gone')){ pill.classList.add('up-gone'); pills.appendChild(pill); }
+    if(pills && !pills.querySelector('.up-gone') && (gone||late)){
+      const pill=document.createElement('span');
+      pill.className='pill up-gone';
+      pill.textContent=[gone?('已过期剔除 '+gone):'',late?('已过预计上架日·仍未上线 '+late):'']
+        .filter(Boolean).join(' · ');
+      pill.title='奖池成员看期次状态；武器皮肤看源表 release_state —— 预计日过了但还没上线，不算过期';
+      pills.appendChild(pill);
+    }
   }
   const items=DATA.items.filter(it=>{
     if(upcomingBoard && upExpired(it))return false;
@@ -3171,6 +3189,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     if(q){const hay=JSON.stringify(it).toLowerCase();if(!hay.includes(q))return false;}
     return true;
   });
+  // 预告专栏：给「预计日已过但源表仍算未上线」的条目打标（卡面显示「已过预计」）
+  if(upcomingBoard){ items.forEach(it=>{ it._late=upLate(it); }); }
   if(SCENE_TABLE){ sbRender(items); return; }
   const g=document.getElementById("grid");g.innerHTML="";
   const hasSfxChildren=items.some(it=>Array.isArray(it.sfx_items));
@@ -3545,7 +3565,7 @@ function renderPeriodMode(list){
         const hasImg=!!(im&&im.png);
         return `<div class="pchip${hasImg?"":" noimg"}" title="${esc(it.name||"")}${it.alias?`（内部名：${esc(it.alias)}）`:""}">
           ${hasImg?`<div class="pchip-img"><img src="${esc(im.png)}" alt="" loading="lazy"></div>`:""}
-          <div class="pchip-name">${esc(it.name||it.id)}${it.evidence==="candidate"?'<span class="pchip-cand">候选</span>':""}</div>
+          <div class="pchip-name">${esc(it.name||it.id)}${it._late?'<span class="pchip-cand">已过预计</span>':''}${it.evidence==="candidate"?'<span class="pchip-cand">候选</span>':""}</div>
           <div class="pchip-meta">${esc(it.kind||"")}${it.slot!=null?` · 槽位 ${esc(String(it.slot))}`:""}</div>
         </div>`;
       }).join("");

@@ -37,8 +37,9 @@ from board_io import dumps_board, dumps_board_js, write_text  # noqa: E402
 from la_paths import WEB  # noqa: E402
 from notes_util import SEP, append_note  # noqa: E402
 from upcoming_board_rules import (  # noqa: E402
-    CATEGORY, NOTE_COUNTS, NOTE_LISTED, NOTE_MAIN, NOTE_NAMES, NOTE_SCOPE,
-    fix_placeholders, load_name_index, recount,
+    CATEGORY, NOTE_COUNTS, NOTE_LISTED, NOTE_MAIN, NOTE_NAMES, NOTE_SCOPE, NOTE_WINDOW,
+    enrich_period_status, ensure_source_locks, fix_placeholders, load_name_index,
+    rebuild_skin_items, recount,
 )
 
 BOARDS = WEB / "data" / "boards"
@@ -70,23 +71,35 @@ def main() -> int:
     board = json.loads(TARGET.read_text(encoding="utf-8"))
     idx = load_name_index(BOARDS)
 
+    print("── ⓪ 武器皮肤段按当前源表重建（新热更的皮肤要进来）")
+    for line in rebuild_skin_items(board, BOARDS, TODAY) or ["（无变化）"]:
+        print("   " + line)
+
     print("── ① 占位名")
     logs = fix_placeholders(board, idx)
     for line in logs or ["（无占位名）"]:
         print("   " + line)
 
-    print("── ② 计数重算")
+    print("── ② 期次状态（供前端判断「还在预告窗口」）")
+    for line in enrich_period_status(board, BOARDS) or ["（无奖池成员）"]:
+        print("   " + line)
+
+    print("── ③ 计数重算")
     res = recount(board)
     print("   state_summary: %s → %s" % (res["state_summary"][0], res["state_summary"][1]))
     print("   periods.member_count: %s" % res["periods"])
 
-    print("── ③ notes 收敛")
+    print("── ③b 板级 source_locks 补齐（门禁逐条核对 sha 归属）")
+    for line in ensure_source_locks(board, BOARDS) or ["（已齐）"]:
+        print("   " + line)
+
+    print("── ④ notes 收敛")
     # 旧 notes 是一整段（含 10-29 手工订正长文、无 ｜ 分段）：收敛成两条规则句，
     # 再用 append_note 幂等补三条。重跑时同样走到这里，结果不变。
     old_note = str(board["meta"].get("notes") or "")
     if (not old_note) or ("不再人工维护预告卡。" in old_note):
         board["meta"]["notes"] = NOTE_MAIN + SEP + NOTE_LISTED
-    for n in (NOTE_COUNTS, NOTE_NAMES, NOTE_SCOPE):
+    for n in (NOTE_COUNTS, NOTE_NAMES, NOTE_WINDOW, NOTE_SCOPE):
         append_note(board, n)
     board["meta"]["updated"] = TODAY
     print("   notes = %s" % board["meta"]["notes"])

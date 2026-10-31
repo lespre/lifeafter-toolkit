@@ -67,12 +67,6 @@
    "superseded_by": "vehicle_full",
    "note": "已被 vehicle_full 取代，保留直链，不进首页导航"
   },
-  "fashion_identity_unresolved_v01": {
-   "publication_status": "published",
-   "category": "二、时装类 / （一）时装静态记录（身份待解析）",
-   "items": 31112,
-   "reason": "P4-B frozen_unresolved：仅展示 record-level static 候选；verified fashion self-ID = 0。"
-  },
   "weapon_skin_structure_v01": {
    "publication_status": "published_hidden",
    "category": "二、时装类 / （七）武器皮肤（隐藏审计板：已证明结构）",
@@ -123,7 +117,7 @@
   "upcoming_auto": {
    "publication_status": "published",
    "category": "置顶、活动奖池与预告 / （二）预告专栏",
-   "items": 14,
+   "items": 16,
    "reason": "预告专栏唯一板：武器皮肤未上架段 + 未开始奖池期次（万圣绮夜）连带成员。分类与条目数随板产物同步；数值来自各源板行，不含上线/价格/概率推断。"
   },
   "item_master_full": {
@@ -198,12 +192,6 @@
    "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。",
    "items": 13
   },
-  "core_skill_12star": {
-   "publication_status": "published",
-   "category": "二、战力类 / （零）核芯类 / 12 星特技",
-   "reason": "极品（金/12星）核芯 50 条的完整特技与描述；升星段仅 5 星档有文本。",
-   "items": 50
-  },
   "chenshi_slots": {
    "publication_status": "retired",
    "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
@@ -267,18 +255,6 @@
    "category": "零、新更新与预告专栏（游戏未上线资源预告） / （2）新奖池活动",
    "items": 26,
    "reason": "预告专栏：reward_pool_data_base 中 expiration_time 晚于快照日期的活动实例（按活动名+到期日聚类）；预告=未来档实例，非上线断言。"
-  },
-  "item_master_v01": {
-   "publication_status": "published",
-   "category": "一、道具总表 / （一）ITEM_MASTER v0.1",
-   "items": 1189,
-   "reason": "P4-A 冻结产物：1,189 条 verified item；hide_in_bag 缺席保持 unresolved。"
-  },
-  "lottery_pool_resolved_v01": {
-   "publication_status": "published",
-   "category": "四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1",
-   "items": 23567,
-   "reason": "P4-D verified runtime structure + source-locked static config；not runtime final；474 quarantined 默认隔离。"
   },
   "equipment_attrs": {
    "publication_status": "published",

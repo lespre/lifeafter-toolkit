@@ -111,32 +111,6 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "12 星全量特技表（极品核芯）",
-      "category": "二、战力类 / （零）核芯类 / 12 星特技",
-      "board": "core_skill_12star",
-      "items": 50,
-      "generated": "2026-10-22",
-      "source_server": "经典服口径（极品 = 金，12 星）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
-      "evidence": {
-        "structure": 50
-      },
-      "state_summary": {
-        "极品核芯": 50,
-        "有特技": 47,
-        "有升星段": 50
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 50
-        }
-      }
-    },
-    {
       "name": "（内测版）说明条目总表",
       "category": "三、综合资料 / （五）说明条目、文字与提示总表",
       "board": "desc_catalog",
@@ -267,32 +241,6 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 1647
-        }
-      }
-    },
-    {
-      "name": "（内测版）时装静态记录 · identity unresolved",
-      "category": "二、时装类 / （一）时装静态记录（身份待解析）",
-      "board": "fashion_identity_unresolved_v01",
-      "items": 31112,
-      "generated": "2026-09-10",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · 资源 41_还原树/pe/资源",
-      "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
-      "evidence": {
-        "candidate": 31112
-      },
-      "state_summary": {
-        "unresolved": 31112,
-        "static config": 31112,
-        "verified": 0
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 31112
         }
       }
     },
@@ -439,31 +387,6 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）ITEM_MASTER v0.1 · verified 道具总表",
-      "category": "一、道具总表 / （一）ITEM_MASTER v0.1",
-      "board": "item_master_v01",
-      "items": 1189,
-      "generated": "2026-09-10",
-      "source_server": "测试客户端静态快照；服务器分支 unresolved",
-      "package_sha": "328b8446212cbe40b449c5663dbeceef3444a64e36ec2f78be1ce726d1dbc59f",
-      "evidence": {
-        "verified": 1189
-      },
-      "state_summary": {
-        "verified": 1189,
-        "unresolved": 329
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "semantic-verified": 1189
-        }
-      }
-    },
-    {
       "name": "击败播报 / MVP 结算动画",
       "category": "一、时装类 / （四）击败播报与全场最佳动画",
       "board": "kill_broadcast",
@@ -515,33 +438,6 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 688
-        }
-      }
-    },
-    {
-      "name": "（内测版）LOTTERY_POOL_RESOLVED v0.1 · source-locked static config",
-      "category": "四、奖池 / （一）LOTTERY_POOL_RESOLVED v0.1",
-      "board": "lottery_pool_resolved_v01",
-      "items": 23567,
-      "generated": "2026-09-10",
-      "source_server": "测试客户端静态快照；服务器与 loader/final overlay unresolved",
-      "package_sha": "ba8a239a891d6230106bf53541d8ea63c0aeca8f3800398bf2d0763dbbcc55ad",
-      "evidence": {
-        "structure": 23567
-      },
-      "state_summary": {
-        "verified": 23567,
-        "static config": 23567,
-        "runtime final unknown": 23567,
-        "quarantined": 474
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "semantic-verified": 23567
         }
       }
     },
@@ -777,19 +673,19 @@ window.WIKI_MANIFEST = {
       "name": "新更新与预告（自动）",
       "category": "置顶、活动奖池与预告 / （二）预告专栏",
       "board": "upcoming_auto",
-      "items": 14,
+      "items": 16,
       "generated": "2026-10-21",
       "source_server": "简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 9,
+        "structure": 11,
         "candidate": 5
       },
       "state_summary": {
-        "武器皮肤": 9,
+        "武器皮肤": 11,
         "奖池成员": 5,
         "奖池期次": 1,
-        "合计": 14
+        "合计": 16
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -797,7 +693,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 14
+          "replayed-structural": 16
         }
       }
     },

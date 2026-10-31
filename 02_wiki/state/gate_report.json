@@ -1,8 +1,8 @@
 {
  "threshold_pct": 20.0,
- "published_boards": 32,
- "green": 32,
- "red": 0,
+ "published_boards": 28,
+ "green": 27,
+ "red": 1,
  "delta_alerts": 0,
  "rows": [
   {
@@ -40,16 +40,6 @@
    "name": "CDN 资源库总览（逻辑包 · 变体 · 档位 · 本地状态）",
    "items": 711,
    "baseline": 711,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
-   "delta_alert": false
-  },
-  {
-   "board": "core_skill_12star",
-   "name": "12 星全量特技表（极品核芯）",
-   "items": 50,
-   "baseline": 50,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},
@@ -106,16 +96,6 @@
    "delta_alert": false
   },
   {
-   "board": "fashion_identity_unresolved_v01",
-   "name": "（内测版）时装静态记录 · identity unresolved",
-   "items": 31112,
-   "baseline": 31112,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
-   "delta_alert": false
-  },
-  {
    "board": "fashion_wardrobe",
    "name": "人物·全量时装衣柜",
    "items": 3135,
@@ -166,16 +146,6 @@
    "delta_alert": false
   },
   {
-   "board": "item_master_v01",
-   "name": "（内测版）ITEM_MASTER v0.1 · verified 道具总表",
-   "items": 1189,
-   "baseline": 1189,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
-   "delta_alert": false
-  },
-  {
    "board": "kill_broadcast",
    "name": "击败播报 / MVP 结算动画",
    "items": 13,
@@ -190,16 +160,6 @@
    "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
    "items": 688,
    "baseline": 688,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
-   "delta_alert": false
-  },
-  {
-   "board": "lottery_pool_resolved_v01",
-   "name": "（内测版）LOTTERY_POOL_RESOLVED v0.1 · source-locked static config",
-   "items": 23567,
-   "baseline": 23567,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},
@@ -298,11 +258,15 @@
   {
    "board": "upcoming_auto",
    "name": "新更新与预告（自动）",
-   "items": 14,
+   "items": 16,
    "baseline": 14,
-   "delta_pct": 0.0,
-   "error_count": 0,
-   "error_kinds": {},
+   "delta_pct": 14.3,
+   "error_count": 12,
+   "error_kinds": {
+    "items[N].provenance.source_id": 4,
+    "items[N].provenance.locator_chain.steps[0].source_id": 4,
+    "items[N].provenance.source_lock_sha256": 4
+   },
    "delta_alert": false
   },
   {

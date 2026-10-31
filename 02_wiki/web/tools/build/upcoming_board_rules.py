@@ -35,6 +35,9 @@ NOTE_NAMES = ("占位名修复（2026-11-01）：姓名按 时装部位表 → �
               "仍查不到的显式标「未解析」并打 unresolved，不编造。")
 NOTE_SCOPE = ("2026-11-01：预告专栏已摘除独立武器皮肤预览板 skin_behavior_preview，"
               "本板武器皮肤段保留（武器皮肤全量见 一、时装类（二）武器皮肤）。")
+NOTE_WINDOW = ("预告窗口口径（2026-11-01 修）：奖池成员看期次状态（进行中/未开始 = 仍在窗口，"
+               "期次结束才剔除）；武器皮肤看源表 release_state（仍为未上线就保留，"
+               "预计上架日已过只标「已过预计」，不再当成过期整条隐藏）。")
 CATEGORY = "置顶、活动奖池与预告 / （二）预告专栏"
 
 
@@ -107,6 +110,171 @@ def resolved_name(item_id, raw_name, idx) -> tuple[str, dict]:
              "name_note": ("item_id %s 在 fashion_face_slots / fashion_wardrobe / "
                            "item_master_full 均无名称行；保留 ID，不编造名称。" % iid),
              "unresolved": True})
+
+
+def enrich_period_status(board: dict, boards: Path) -> list[str]:
+    """给奖池成员/期次补 period_status（源 = lottery_periods.periods[].status）。
+
+    ★ 为什么需要：前端原先只按 expect_date 判断「是否还在预告窗口」，
+      奖池成员的上架日 = 期次开始日，一开始就整批被判过期 → 页面被清空。
+      有了期次状态（进行中/未开始/已结束）才能区分「活动还在跑」和「真过期」。
+    """
+    p = boards / "lottery_periods.json"
+    if not p.exists():
+        return []
+    src = json.loads(p.read_text(encoding="utf-8"))
+    per = {str(x.get("period_id")): x for x in (src.get("periods") or [])}
+    got: list[str] = []
+    for it in board.get("items") or []:
+        pid = str(it.get("period_id") or "")
+        if it.get("family_key") != "UpcomingPool":
+            continue
+        # up_pool_lp_3637 → lp_3637
+        key = pid[len("up_pool_"):] if pid.startswith("up_pool_") else pid
+        row = per.get(key)
+        if not row:
+            continue
+        st = str(row.get("status") or "").strip()
+        if st:
+            it["period_status"] = st
+            it["period_start"] = row.get("start") or ""
+            if row.get("end"):
+                it["period_end"] = row.get("end")
+            got.append("%s ← %s(%s)" % (it.get("id"), st, key))
+    for pg in board.get("periods") or []:
+        pid = str(pg.get("period_id") or "")
+        key = pid[len("up_pool_"):] if pid.startswith("up_pool_") else pid
+        row = per.get(key)
+        if not row:
+            continue
+        st = str(row.get("status") or "").strip()
+        if st:
+            pg["status"] = st
+        if row.get("end"):
+            pg["end"] = row.get("end")
+    return got
+
+
+def ensure_source_locks(board: dict, boards: Path) -> list[str]:
+    """补齐板级 source_locks：条目实际用到、但板级没声明的 sha 会被门禁判红。
+
+    2026-11-01 实测：重建皮肤段后条目引用了两个 playertest 热更包的 sha
+    （ebf1076… / 83787cd…），而本板 meta.provenance.source_locks 只声明了两条
+    documents 快照 —— `publication_contract_errors` 逐条核对 sha 归属，直接红板。
+
+    口径：锁记录**只能从声明过该 sha 的源板搬**，搬不到就报出来，绝不编造 sha。
+    角色：本板已有 primary 时，新补的一律记 comparison（同一板只认一个主源）。
+    """
+    meta = board.setdefault("meta", {})
+    prov = meta.setdefault("provenance", {})
+    locks = prov.setdefault("source_locks", [])
+    have = {str(lk.get("sha256")) for lk in locks}
+    want = {str((it.get("provenance") or {}).get("source_lock_sha256"))
+            for it in (board.get("items") or [])} - {"", "None", "none"}
+    missing = sorted(want - have)
+    if not missing:
+        return []
+
+    pool: dict[str, dict] = {}
+    for name in ("weapon_skin_sfx_text_sources.json", "lottery_periods.json"):
+        p = boards / name
+        if not p.exists():
+            continue
+        src = json.loads(p.read_text(encoding="utf-8"))
+        for lk in (((src.get("meta") or {}).get("provenance") or {}).get("source_locks") or []):
+            pool.setdefault(str(lk.get("sha256")), dict(lk))
+
+    has_primary = any(str(lk.get("role")) == "primary" for lk in locks)
+    log: list[str] = []
+    for sha in missing:
+        lk = pool.get(sha)
+        if not lk:
+            log.append("⚠ 无法补齐锁 %s（源板未声明，需人工确认）" % sha[:12])
+            continue
+        new = {"source_id": lk.get("source_id"), "role": "comparison" if has_primary else "primary",
+               "sha256": sha, "path": lk.get("path", ""), "bytes": lk.get("bytes", 0),
+               "mtime_ns": lk.get("mtime_ns", 0)}
+        locks.append(new)
+        log.append("补锁 %s（%s，%s）" % (sha[:12], new["source_id"], new["role"]))
+    prov["source_locks"] = locks
+    return log
+
+
+def rebuild_skin_items(board: dict, boards: Path, today: str) -> list[str]:
+    """按当前 `weapon_skin_sfx_text_sources` 重建「武器皮肤 · 未上线」段（口径同构建器）。
+
+    用户 2026-11-01 指出：2026-10-30 热更新增的皮肤（1110194 青瓷鉴心 / 1110205 瑞秋之狙）
+    与已命名条目（1110189 浪漫过载）没进预告板 —— 因为本板仍是 10-21 的旧快照。
+    这里直接以源板为唯一事实来源重算这一段的条目集合，不保留历史残留。
+
+    返回改动日志（新增/移除/改名）。
+    """
+    p = boards / "weapon_skin_sfx_text_sources.json"
+    if not p.exists():
+        return ["缺源板 weapon_skin_sfx_text_sources.json，跳过"]
+    src = json.loads(p.read_text(encoding="utf-8"))
+
+    keep = [it for it in (board.get("items") or []) if it.get("kind") != "武器皮肤"]
+    old = {str(it.get("item_id")): it for it in (board.get("items") or [])
+           if it.get("kind") == "武器皮肤"}
+
+    log: list[str] = []
+    new: list[dict] = []
+    for it in src.get("items") or []:
+        # 上架状态优先（与 board.html listingOf 口径一致）：已上线的永不进预告
+        if str(it.get("listing_status") or "") == "on_sale":
+            continue
+        st = str(it.get("release_state") or "")
+        sd = str(it.get("sale_date") or "")
+        if not (st in ("upcoming", "no_sale_field") or (sd and sd > today)):
+            continue
+        sid = it.get("skin_id") or it.get("id")
+        nm = (it.get("name_display") or it.get("name") or "").strip()
+        if not nm:
+            nm, _ex = resolved_name(str(sid), "", load_name_index(boards))
+        media = it.get("_media") or {"images": [], "total": 0}
+        new.append({
+            "id": "up_skin_%s" % sid,
+            "name": nm or ("未命名皮肤 · ID %s" % sid),
+            "item_id": sid,
+            "kind": "武器皮肤",
+            "grade": it.get("grade"),
+            "weapon_type": it.get("weapon_type_label"),
+            "expect_date": sd or "未定",
+            "release_state": st or "unknown",
+            "family": "武器皮肤（未上线）", "period_id": "up_skin",
+            "period_label": "武器皮肤 · 未上线",
+            "family_key": "UpcomingSkin",
+            "evidence": it.get("evidence") or "structure",
+            "evidence_level": it.get("evidence_level") or "structure-only",
+            "status_tags": it.get("status_tags") or ["verified", "static config"],
+            "_media": media,
+            "icon_state": it.get("icon_state") or ("有图" if (media.get("images") or []) else "未下发"),
+            "charm_value": it.get("charm_value"),
+            "official_desc": it.get("official_desc") or "",
+            "hotfix_source": it.get("hotfix_source") or "",
+            "version_status": it.get("version_status") or "",
+            "source": "weapon_skin_sfx_text_sources（release_state=%s）" % st,
+            "provenance": it.get("provenance"),
+        })
+
+    new.sort(key=lambda x: (str(x.get("expect_date") or ""), x.get("item_id") or 0), reverse=True)
+    new_ids = {str(x.get("item_id")) for x in new}
+    for sid, it in old.items():
+        if sid not in new_ids:
+            log.append("移除 %s %s（源表已不再算未上线）" % (sid, it.get("name")))
+    for it in new:
+        sid = str(it.get("item_id"))
+        if sid not in old:
+            log.append("新增 %s %s（%s，%s 上架）"
+                       % (sid, it.get("name"), it.get("hotfix_source") or "源表",
+                          it.get("expect_date")))
+        elif old[sid].get("name") != it.get("name"):
+            log.append("改名 %s %r → %r" % (sid, old[sid].get("name"), it.get("name")))
+
+    # 皮肤段在前、奖池段在后，与既有阅读顺序一致
+    board["items"] = new + keep
+    return log
 
 
 def fix_placeholders(board: dict, idx) -> list[str]:
