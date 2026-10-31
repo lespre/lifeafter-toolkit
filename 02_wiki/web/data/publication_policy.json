@@ -1,6 +1,6 @@
 {
  "schema": "lifeafter-wiki-publication-policy-v2",
- "generated": "2026-10-29",
+ "generated": "2026-10-31",
  "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。",
  "boards": {
   "chip_item_catalog": {
@@ -289,6 +289,12 @@
    "category": "一、时装类 / （八）半感染者花苞",
    "items": 148,
    "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
+  },
+  "cdn_library": {
+   "publication_status": "published",
+   "category": "四、综合资料 / （四）CDN 资源库",
+   "items": 711,
+   "reason": "CDN 资源库总览：清单 1650 个文件归并为 711 个逻辑包（含多卷与画质/设备档变体），体积/档位/条目数取自 CDN 清单与 cdn_index（只拉头+条目表，未下载荷）；本地状态按 pe_npk_full / pe_npk_20261029 / pe_gres_android 实测。静态清单不等于客户端实装内容，档位选择由设备决定。"
   }
  }
 }

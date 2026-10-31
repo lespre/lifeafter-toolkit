@@ -1,12 +1,12 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-10-31",
+  "generated": "2026-11-01",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
-  "policy_generated": "2026-10-29",
+  "policy_generated": "2026-10-31",
   "boards": [
     {
       "name": "活动总表 · 全部活动与起止时间",
-      "category": "三、活动类 / （零）活动总表",
+      "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "activity_master",
       "items": 3519,
       "generated": "2026-10-31",
@@ -62,7 +62,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）状态效果总表",
-      "category": "四、综合资料 / （七）状态",
+      "category": "三、综合资料 / （七）状态",
       "board": "buff_catalog",
       "items": 18232,
       "generated": "2026-10-23",
@@ -81,6 +81,32 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 18232
+        }
+      }
+    },
+    {
+      "name": "CDN 资源库总览（逻辑包 · 变体 · 档位 · 本地状态）",
+      "category": "四、综合资料 / （四）CDN 资源库",
+      "board": "cdn_library",
+      "items": 711,
+      "generated": "2026-10-31",
+      "source_server": "PE 测试服 · CDN 清单 20261029_101825_playertest_android（1650 个文件 / 711 个逻辑包）",
+      "package_sha": "9fc1c58a379791d3cf82f2ff04b63b65da4db3be6bbfeafd9ebb4c75ebaf2688",
+      "evidence": {
+        "structure": 711
+      },
+      "state_summary": {
+        "完整": 77,
+        "部分": 2,
+        "未下载": 632
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 2,
+        "audit_status": "passed",
+        "dual_source_mode": "manifest-vs-index",
+        "locator_chain_statuses": {
+          "missing": 711
         }
       }
     },
@@ -112,7 +138,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）说明条目总表",
-      "category": "四、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
       "board": "desc_catalog",
       "items": 3630,
       "generated": "2026-10-21",
@@ -194,7 +220,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）实体总表",
-      "category": "四、综合资料 / （六）实体技能",
+      "category": "三、综合资料 / （六）实体技能",
       "board": "entity_catalog",
       "items": 9219,
       "generated": "2026-10-23",
@@ -274,19 +300,19 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 2909,
+      "items": 3135,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 2909
+        "structure": 3135
       },
       "state_summary": {
         "unresolved": 2197,
         "static config": 2197,
         "verified": 0,
         "runtime final unknown": 2197,
-        "有图": 1873,
+        "有图": 2045,
         "无图": 987
       },
       "name_status_summary": {},
@@ -295,7 +321,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2909
+          "replayed-structural": 3135
         }
       }
     },
@@ -326,7 +352,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）当前包 · 礼盒名称与说明文字表",
-      "category": "四、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
       "board": "gift_data_text_sources",
       "items": 5477,
       "generated": "2026-09-13",
@@ -350,7 +376,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）图鉴收集总表",
-      "category": "四、综合资料 / （八）图鉴收集",
+      "category": "三、综合资料 / （八）图鉴收集",
       "board": "illustration_catalog",
       "items": 954,
       "generated": "2026-10-21",
@@ -376,7 +402,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "全量道具总表",
-      "category": "四、综合资料 / （二）全量道具总表",
+      "category": "三、综合资料 / （二）全量道具总表",
       "board": "item_master_full",
       "items": 30252,
       "generated": "2026-10-23",
@@ -464,23 +490,23 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
-      "category": "三、活动奖池 / （一）活动表",
+      "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
-      "items": 2266,
-      "generated": "2026-10-21",
-      "source_server": "简单生存服（体验服 Documents 快照，热更合并至 2026-10-17）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 688,
+      "generated": "2026-10-31",
+      "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
+      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 418,
-        "candidate": 1848
+        "structure": 496,
+        "candidate": 192
       },
       "state_summary": {
-        "期次": 267,
-        "成员": 2266,
-        "候选成员": 1848,
-        "有成员期次": 160,
-        "进行中": 10,
-        "未开始": 4
+        "期次": 505,
+        "成员": 688,
+        "候选成员": 192,
+        "有成员期次": 125,
+        "进行中": 14,
+        "未开始": 1
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -488,7 +514,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 2266
+          "replayed-structural": 688
         }
       }
     },
@@ -549,7 +575,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）配方总表",
-      "category": "四、综合资料 / （四）配方",
+      "category": "三、综合资料 / （四）配方",
       "board": "recipe_catalog",
       "items": 4189,
       "generated": "2026-10-21",
@@ -602,7 +628,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）服型总表 · 服务器类型后缀与依据",
-      "category": "四、综合资料 / （一）服务器类型",
+      "category": "三、综合资料 / （一）服务器类型",
       "board": "server_types",
       "items": 21,
       "generated": "2026-10-23",
@@ -626,7 +652,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）技能总表",
-      "category": "四、综合资料 / （六）实体技能",
+      "category": "三、综合资料 / （六）实体技能",
       "board": "skill_catalog",
       "items": 6191,
       "generated": "2026-10-23",
@@ -650,7 +676,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "武器皮肤 · 未上线预告（已配名未上架 + 仅行为资源）",
-      "category": "零、新更新与预告专栏（游戏未上线资源预告） / （1）武器皮肤 · 未上线预告",
+      "category": "置顶、活动奖池与预告 / （二）预告专栏",
       "board": "skin_behavior_preview",
       "items": 9,
       "generated": "2026-10-24",
@@ -728,7 +754,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）文本与提示（错误码 / 官方公告）",
-      "category": "四、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
       "board": "text_notice_catalog",
       "items": 14841,
       "generated": "2026-10-23",
@@ -752,7 +778,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）称号总表",
-      "category": "四、综合资料 / （三）称号",
+      "category": "三、综合资料 / （三）称号",
       "board": "title_catalog",
       "items": 1539,
       "generated": "2026-10-23",
@@ -776,7 +802,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "新更新与预告（自动）",
-      "category": "置顶、预告专栏",
+      "category": "置顶、活动奖池与预告 / （二）预告专栏",
       "board": "upcoming_auto",
       "items": 14,
       "generated": "2026-10-21",
