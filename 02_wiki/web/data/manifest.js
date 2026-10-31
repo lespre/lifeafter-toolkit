@@ -778,7 +778,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）称号总表",
-      "category": "三、综合资料 / （三）称号",
+      "category": "一、时装类 / （六）称号",
       "board": "title_catalog",
       "items": 1539,
       "generated": "2026-10-23",
