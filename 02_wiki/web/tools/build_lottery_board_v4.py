@@ -33,13 +33,16 @@ from collections import Counter, defaultdict
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ  # noqa: E402
+from la_paths import PROJ, client_root  # noqa: E402
 WEB = PROJ / "02_wiki/web"
 CD = PROJ / "01_索引与产物/41_还原树/pe/配置/com/cdata"
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
+sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/01_解码定位复原/解包与扫描"))
 from toolkit_core import bindict_table as BT  # noqa: E402
 from toolkit_core import cdata_nxs  # noqa: E402
 from toolkit_core import script_decode as SD  # noqa: E402
+from toolkit_core import bindict_73 as B73  # noqa: E402
+from la_unpack_core import NpkArchive  # noqa: E402
 
 TODAY = datetime.date.today()
 # 2026-01-01 起深化成员；更早期次沿用 v3 规则，等下一轮再做
@@ -235,6 +238,21 @@ REWARD_LOC: dict = {}       # reward id → (表 stem, 行 key, items 引用)
 REWARD_NAME: dict = {}      # reward id → 该奖励包自己的 name（展开失败时的兜底名）
 REWARD_IDS: set = set()     # 字符串形式的 reward id，用于剔除旧板继承的礼包行
 
+# ── 快照 npk 的 *_base 真表（0x73 可解）────────────────────────────────────
+# 还原树 cdata 里的 common_item_data / reward_pool_data 是 815B 合并存根
+# （只有 translate 调用，没有 0x73 表体）；真表在客户端快照包的 *_base 条目：
+#   common_item_data_base  → 39,146 条道具名
+#   reward_pool_data_base  → 24,245 条奖池行（note 字段是池名）
+NPK_PATH_REL = "Documents/script.py314.lc.npk"
+NPK_ITEM_BASE = (25121, 33348,
+                 "com/cdata/common_item_data_base.py",
+                 "com/cdata/common_item_data_base_chs.py")
+NPK_POOL_BASE = (29769, 14650,
+                 "com/cdata/reward_pool_data_base.py",
+                 "com/cdata/reward_pool_data_base_chs.py")
+ITEM_NAMES_NPK: dict = {}   # item_id → 道具名
+POOL_NAME: dict = {}        # 池号 → 池名
+
 
 def _init_rewards():
     """加载全部 random_item_reward_data_* 行表，建 reward id → 行 索引。"""
@@ -261,23 +279,18 @@ def _init_rewards():
     print("奖励包索引：%d 张表 / %d 个 reward id" % (len(REWARD_TABLES), len(REWARD_LOC)))
 
 
-def _reward_leaves(rid: int) -> list[tuple[int, int]]:
-    """reward id → [(item_id, count)]；只在本表 blob 内解 jump 帧，不跨表编造。"""
-    loc = REWARD_LOC.get(rid)
-    if loc is None:
-        return []
-    stem, _rk, ref = loc
-    tbl = REWARD_TABLES.get(stem)
-    if tbl is None or tbl.blob is None or isinstance(ref, bool):
+def _jump_leaves(blob: bytes, ref) -> list[tuple[int, int]]:
+    """0x0b 引用/整数 → [(item_id, count)]；只在给定 blob 内解帧，不跨表编造。"""
+    if isinstance(ref, bool):
         return []
     if isinstance(ref, int):
         return [(ref, 1)] if ref > 0 else []
-    if not (isinstance(ref, str) and ref.startswith("jump:")):
+    if blob is None or not (isinstance(ref, str) and ref.startswith("jump:")):
         return []
     off = int(ref.split(":")[1])
-    if not (0 <= off < len(tbl.blob)):
+    if not (0 <= off < len(blob)):
         return []
-    res = BT.resolve_jump_target(tbl.blob, off, [])
+    res = BT.resolve_jump_target(blob, off, [])
     leaves = []
     for pair in (res.get("leaves") or []):
         if isinstance(pair, bool):
@@ -292,6 +305,109 @@ def _reward_leaves(rid: int) -> list[tuple[int, int]]:
             continue
         leaves.append((iid, cnt if isinstance(cnt, int) and not isinstance(cnt, bool) else 1))
     return leaves
+
+
+def _reward_leaves(rid: int) -> list[tuple[int, int]]:
+    """reward id → [(item_id, count)]；只在本表 blob 内解 jump 帧，不跨表编造。"""
+    loc = REWARD_LOC.get(rid)
+    if loc is None:
+        return []
+    stem, _rk, ref = loc
+    tbl = REWARD_TABLES.get(stem)
+    if tbl is None:
+        return []
+    return _jump_leaves(tbl.blob, ref)
+
+
+def _npk_entry(arc, idx: int, expect: str) -> bytes:
+    """按 entry_index 取条目，并用 co_filename 校验没取错（快照包已锁 sha）。"""
+    raw = arc.read_entry(entry_index=idx)
+    reader = SD.NeoXReader(raw)
+    reader.z7a = "marker"
+    top, _end = reader.read_top()
+    if (top.filename_str or "").replace("\\", "/") != expect:
+        raise ValueError("entry %d 实为 %r，期望 %s" % (idx, top.filename_str, expect))
+    return raw
+
+
+def _npk_body(raw: bytes) -> bytes:
+    """npk 条目 → 0x73 表体。
+
+    先走 B73（要求 0x76 索引尾）；reward_pool_data_base 的索引尾是别的族，
+    B73 会拒绝，所以留一条按 ``[count][reserved=0]`` 自校验的 0x7b 兜底。
+    """
+    try:
+        body, _meta = B73.extract_body(raw)
+        return body
+    except Exception:  # noqa: BLE001 - 兜底路径自己会校验
+        pass
+    best: bytes | None = None
+    for i in range(len(raw) - 5):
+        if raw[i] not in (0x7B, 0xFB):
+            continue
+        ln = struct.unpack_from("<I", raw, i + 1)[0]
+        if not (64 <= ln <= len(raw) - i - 5):
+            continue
+        payload = raw[i + 5: i + 5 + ln]
+        try:
+            cnt, reserved = struct.unpack_from("<II", payload, 0)
+        except struct.error:
+            continue
+        if reserved != 0 or not (1 <= cnt <= 200000) or 8 + 4 * cnt > len(payload):
+            continue
+        if best is None or ln > len(best):
+            best = payload
+    if best is None:
+        raise ValueError("0x7b 表体定位失败")
+    return best
+
+
+def _plain(v):
+    """decode_table_rows 的字段值是 (tag, value) 二元组，剥掉标签。"""
+    if isinstance(v, tuple) and len(v) == 2:
+        return v[1]
+    return v
+
+
+def _npk_base_rows(arc, base_idx: int, chs_idx: int, expect_base: str, expect_chs: str) -> list:
+    """读一对 (base, chs) 条目 → 解码后的行列表。"""
+    raw = _npk_entry(arc, base_idx, expect_base)
+    chs = _npk_entry(arc, chs_idx, expect_chs)
+    body = _npk_body(raw)
+    pool = BT.parse_legacy_chs_pool(chs)
+    rows, _unbound = BT.decode_table_rows(body, pool, resolve_jumps=False, lenient=True)
+    return rows
+
+
+def _init_npk_sources():
+    """从快照 npk 的 *_base 真表补名字：道具名 → ITEM_NAMES_NPK，池名 → POOL_NAME。"""
+    path = client_root() / NPK_PATH_REL
+    if not path.is_file():
+        print("⚠ 快照 npk 缺失，跳过 *_base 真表：%s" % path)
+        return
+    with NpkArchive(str(path)) as arc:
+        try:
+            rows = _npk_base_rows(arc, *NPK_ITEM_BASE)
+            for r in rows:
+                k = r.get("key")
+                nm = _plain((r.get("values") or {}).get("name"))
+                if (isinstance(k, int) and not isinstance(k, bool) and k > 0
+                        and isinstance(nm, str) and nm):
+                    ITEM_NAMES_NPK[k] = nm
+            print("npk 道具名：%d 条（%s）" % (len(ITEM_NAMES_NPK), NPK_ITEM_BASE[2]))
+        except Exception as exc:  # noqa: BLE001 - 缺表不阻断构建
+            print("⚠ npk 道具表解码失败：%r" % (exc,))
+        try:
+            rows = _npk_base_rows(arc, *NPK_POOL_BASE)
+            for r in rows:
+                k = r.get("key")
+                nm = _plain((r.get("values") or {}).get("note"))
+                if (isinstance(k, int) and not isinstance(k, bool) and k > 0
+                        and isinstance(nm, str) and nm):
+                    POOL_NAME[k] = nm
+            print("npk 池名：%d 条（%s）" % (len(POOL_NAME), NPK_POOL_BASE[2]))
+        except Exception as exc:  # noqa: BLE001 - 缺表不阻断构建
+            print("⚠ npk 奖池表解码失败：%r" % (exc,))
 
 
 def _expand_members(members: list, depth: int = 0, seen: frozenset = frozenset()) -> list:
@@ -502,6 +618,7 @@ def main() -> int:
     HD_SHA = _sha256(hd_path)
     _init_tables()
     _init_rewards()
+    _init_npk_sources()
 
     im = json.loads((WEB / "data/boards/item_master_full.json").read_text(encoding="utf-8"))
     names = {str(i.get("item_id")): i.get("name") for i in im["items"] if i.get("name")}
@@ -530,9 +647,14 @@ def main() -> int:
                     nm = v.get("name") if isinstance(v, dict) else v
                     if nm and k not in names:
                         names[k] = nm
+    # 快照 npk 的 *_base 真表（cdata 里只有 815B 存根）：道具名优先，池名最后兜底
+    for iid, nm in ITEM_NAMES_NPK.items():
+        names.setdefault(str(iid), nm)
     # 奖励包自身名字兜底（展开失败时至少显示配置里的包名，而不是「道具 <id>」）
     for rid, nm in REWARD_NAME.items():
         names.setdefault(str(rid), nm)
+    for pid_, nm in POOL_NAME.items():
+        names.setdefault(str(pid_), nm)
 
     # 兜底：活动展示表（key=活动 id → show_item_ids）
     show_map = {}

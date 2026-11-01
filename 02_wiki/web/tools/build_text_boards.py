@@ -131,7 +131,7 @@ def main() -> int:
                       "evidence": "structure", "evidence_level": "static/candidate",
                       "status_tags": ["static config"],
                       "source": "title_conf_data", "provenance": prov(r["key"], "title_conf_data")})
-    save(make_board("（内测版）称号总表", "四、资料层 / （四）称号", items,
+    save(make_board("称号总表", "四、资料层 / （四）称号", items,
                     [["name", "称号"], ["desc", "说明"]],
                     {"item_id": "称号ID", "obtain": "获取条件", "desc": "说明",
                      "style": "档位", "color": "颜色", "flags": "特性",

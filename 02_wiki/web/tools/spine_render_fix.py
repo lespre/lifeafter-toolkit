@@ -930,11 +930,12 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
     if crop == "artboard":
         # 名片框：按 skeleton 声明的画板裁（火焰特效横向溢出画板属正常，
         # 用覆盖率包围盒会把画面裁成 2.5:1 的长条）
-        # ★ 2026-11-02：有些骨架把画板声明得远大于实际内容（bc_580090 声明
-        #   593×640，实体只占 ~332×205），照画板裁出来的卡面就是「小框飘在
-        #   一张大空卡中间」，和别的名片框完全不是一个观感。这里拿这一步之前
-        #   算好的覆盖率包围盒做对照：只有**两个方向都**明显小于画板（<80%）
-        #   才改用实体包围盒；横向溢出的火焰会让覆盖率变宽，不会误触发。
+        # ★ 2026-11-02：有些骨架把画板声明得远大于实际内容（bc_580090 声明成
+        #   正方形 1152×1152，实体只占 82%×51%），照画板裁出来的卡面就是
+        #   「小框飘在一张大空卡中间」，和别的名片框完全不是一个观感。这里拿
+        #   前面算好的覆盖率包围盒做对照，三条都满足才改用实体包围盒：
+        #     · 覆盖率在两个方向都不超出画板（超出=火焰横向溢出，必须留画板）
+        #     · 覆盖面积不到画板六成（只是轻微内缩的不动，免得平白改变构图）
         cov = (minx, miny, maxx, maxy)
         half_w = W * scale / 2.0
         half_h = H * scale / 2.0
@@ -942,8 +943,10 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
         ax1 = int(min(canvas - 1, math.ceil(off[0] + half_w)))
         ay0 = int(max(0, math.floor(off[1] - half_h)))
         ay1 = int(min(canvas - 1, math.ceil(off[1] + half_h)))
-        if (cov[2] - cov[0] + 1 < (ax1 - ax0 + 1) * 0.8
-                and cov[3] - cov[1] + 1 < (ay1 - ay0 + 1) * 0.8):
+        art_w, art_h = ax1 - ax0 + 1, ay1 - ay0 + 1
+        cov_w, cov_h = cov[2] - cov[0] + 1, cov[3] - cov[1] + 1
+        if (cov_w <= art_w * 0.95 and cov_h <= art_h * 0.95
+                and cov_w * cov_h < 0.6 * art_w * art_h):
             minx, miny, maxx, maxy = cov
         else:
             minx, miny, maxx, maxy = ax0, ay0, ax1, ay1

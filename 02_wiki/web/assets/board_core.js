@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102coreflt1")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102sharp2")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1233,8 +1233,16 @@ function fillFilterSelects(items){
       oSel.value="id_desc";
       oSel.title="按标号（item_id）排序；先按类型分组（头像 / 头像框 / 名片框），再在组内比较标号";
       oSel.style.display="";
+    } else if(CORE_BOARD){
+      /* 核芯板：按编号（item_id）排序，默认小 → 大（保持原行序） */
+      oSel.innerHTML=`<option value="code_asc" selected>编号：小 → 大（默认）</option><option value="code_desc">编号：大 → 小</option>`;
+      oSel.value="code_asc";
+      oSel.title="按核芯编号（item_id）排序";
+      oSel.style.display="";
     } else if(!nucleusSort)oSel.style.display="none";
     cfg.forEach((f,ix)=>{
+      /* 活动总表：月份由台账顶部的年份/月份索引承担，不再放下拉（避免两套月份入口） */
+      if(ACTIVITY_BOARD&&f.key==="month")return;
       const set=new Set();
       items.forEach(it=>{const v=it[f.key];if(v!=null&&String(v)!=="")set.add(String(v));});
       if(!set.size)return;
@@ -4316,11 +4324,13 @@ function treeRender(items){
   treeIndexRender(items);
 }
 
-/* ════════════════ 活动总表月度台账（activity_master）════════════════
-   3519 条、0 张配图：不再铺 5 列卡片，改为「状态概览 + 月份折叠 + 44px 紧凑行」。
-   月份默认只展开当前/近期与仍有进行中、未开始的月份；历史月份折叠为单行头。
+/* ════════════════ 活动总表月度索引（activity_master，2026-11-02 方案 A）════════════════
+   3519 条、0 张配图。101 个月份折叠头本身就有 5k+ px，首屏照样 10 屏；改为
+   「状态概览 + 年份/月份索引 + 单月正文（60 行分页）」：索引两行 ≈ 90px，
+   正文只放选中的一个月，默认当前月。搜索时隐藏索引、平铺命中（同样 60 行分页）。
    行点击复用 .i.roster 的 D2 链路，详情由 ACTIVITY_D2 自建。 */
-let AM_GROUPS=null,AM_LIST=null,AM_INDEX=null,AM_SIG="",AM_STATE=Object.create(null);
+let AM_GROUPS=null,AM_LIST=null,AM_INDEX=null,AM_SIG="",AM_SEL={year:null,month:null},AM_PAGE=60;
+const AM_PAGE_STEP=60;
 function amStatusCls(s){
   return s==="进行中"?"live":s==="未开始"?"up":s==="已结束"?"end":"none";
 }
@@ -4331,10 +4341,8 @@ function amCurMonth(){
   const d=new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
 }
-function amShiftMonth(ym,n){
-  const [y,m]=String(ym).split("-").map(Number);
-  const d=new Date(y,(m||1)-1+n,1);
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+function amYearOf(key){
+  return key==="无时间"?"":String(key).slice(0,4);
 }
 function amDateRange(it,key){
   const s=String(it.start||""),e=String(it.end||"");
@@ -4393,17 +4401,38 @@ function amCountBase(q,fe){
   }
   return out;
 }
-function amShouldOpen(key,group,q,monthSel,statusFilter,cur,openTo){
-  if(q)return true;
-  if(monthSel)return key===monthSel;
-  if(key==="无时间")return statusFilter==="无时间";
-  if(key>=cur&&key<=openTo)return true;
-  /* 远期/历史组不因单个「未开始」「已结束」自动展开：只认近 12 个月内仍有进行中的月份，
-     否则 2030 年的单条预告会白白撑开一组。 */
-  if(key<amShiftMonth(cur,-12))return false;
-  if(statusFilter==="已结束")return false;
-  if(statusFilter&&statusFilter!=="进行中")return false;
-  return group.some(it=>it.activity_status==="进行中");
+function amIndexHTML(keys){
+  const byYear=new Map();
+  for(const k of keys){
+    if(k==="无时间")continue;
+    const y=k.slice(0,4);
+    if(!byYear.has(y))byYear.set(y,{n:0,months:[]});
+    const o=byYear.get(y);o.n+=(AM_GROUPS.get(k)||[]).length;o.months.push(k);
+  }
+  const years=[...byYear.keys()].sort((a,b)=>b.localeCompare(a));
+  const noneN=keys.includes("无时间")?(AM_GROUPS.get("无时间")||[]).length:0;
+  const isNone=AM_SEL.month==="无时间";
+  const yearSel=isNone?"无时间":(byYear.has(AM_SEL.year)?AM_SEL.year:(years[0]||"无时间"));
+  const ychips=years.map(y=>{
+    const on=yearSel===y;
+    return `<button type="button" class="am-ychip${on?" on":""}" data-am-year="${esc(y)}" aria-pressed="${on}">${esc(y)}<span class="am-yn">${byYear.get(y).n}</span></button>`;
+  }).join("")+(noneN?`<button type="button" class="am-ychip${isNone?" on":""}" data-am-year="无时间" aria-pressed="${isNone}">无时间<span class="am-yn">${noneN}</span></button>`:"");
+  const mchips=isNone
+    ?`<button type="button" class="am-mchip on" data-am-monthsel="无时间" aria-pressed="true">无时间<span class="am-mn">${noneN}</span></button>`
+    :(byYear.get(yearSel)?byYear.get(yearSel).months.map(k=>{
+      const g=AM_GROUPS.get(k)||[];
+      const on=k===AM_SEL.month;
+      const live=g.filter(it=>it.activity_status==="进行中").length;
+      const label=`${k.slice(5)}月`;
+      return `<button type="button" class="am-mchip${on?" on":""}" data-am-monthsel="${esc(k)}" aria-pressed="${on}" title="${esc(k)} · ${g.length} 条${live?` · 进行中 ${live}`:""}">${live?'<span class="am-mdot" aria-hidden="true"></span>':""}${esc(label)}<span class="am-mn">${g.length}</span></button>`;
+    }).join(""):"");
+  return `<div class="am-index">
+    <div class="am-irow"><span class="am-ilabel">年份</span><div class="am-chips">${ychips}</div></div>
+    <div class="am-irow"><span class="am-ilabel">月份</span><div class="am-chips">${mchips}</div></div>
+  </div>`;
+}
+function amMoreHTML(rest){
+  return `<button type="button" class="am-more" data-am-more>加载更多<span class="am-more-n">还有 ${rest} 条</span></button>`;
 }
 function amRowsHTML(group){
   return group.map(it=>{
@@ -4443,56 +4472,74 @@ function amOverviewHTML(counts,active){
 function amRenderLedger(g,items,q,fe){
   const cf=DATA._custFilters||[];
   const stSel=cf.find(f=>f.key==="activity_status");
-  const monthSel=cf.find(f=>f.key==="month");
   const active=stSel?stSel.value:"";
-  const mSel=monthSel?monthSel.value:"";
   const counts=amCountBase(q,fe);
-  const cur=amCurMonth(),openTo=amShiftMonth(cur,2);
   const sig=[q,fe,...cf.map(f=>f.key+"="+(f.sel?f.sel.value:""))].join("|");
-  if(sig!==AM_SIG){AM_SIG=sig;AM_STATE=Object.create(null);}
+  if(sig!==AM_SIG){AM_SIG=sig;AM_PAGE=AM_PAGE_STEP;}
   const list=amSortList(items);
   AM_LIST=list;
   AM_INDEX=new Map(list.map((it,i)=>[String(it.id),i]));
   AM_GROUPS=amGroupsOf(list);
   C2.prov=ACTIVITY_D2;C2.chips=list;C2.html={};
+  const countEl=document.getElementById("count");
+
+  /* 搜索：索引让位给命中列表（仍分页，避免一次铺 3519 行） */
+  if(q){
+    const shown=list.slice(0,AM_PAGE);
+    let html=amOverviewHTML(counts,active)
+      +`<div class="am-flathead"><span class="am-flat-title">搜索命中 ${list.length} 条</span><span class="am-flat-note">按开始时间 ↓ · 已显示 ${shown.length}</span></div>`
+      +`<section class="am-month open"><div class="am-rows" data-filled="1">${amRowsHTML(shown)}</div></section>`;
+    if(list.length>AM_PAGE)html+=amMoreHTML(list.length-AM_PAGE);
+    g.innerHTML=html;
+    if(countEl)countEl.textContent=`搜索命中 ${list.length} 条 · 已显示 ${shown.length} / ${list.length}`;
+    if(C2.open)c2Resync();
+    return;
+  }
+
   const keys=amMonthKeys(AM_GROUPS);
-  const months=keys.map(key=>{
-    const group=AM_GROUPS.get(key);
-    const live=group.filter(it=>it.activity_status==="进行中").length;
-    const up=group.filter(it=>it.activity_status==="未开始").length;
-    const open=(key in AM_STATE)?!!AM_STATE[key]:amShouldOpen(key,group,q,mSel,active,cur,openTo);
-    return `<section class="am-month${open?" open":""}" data-am-key="${esc(key)}">
-      <button type="button" class="am-mhead" data-am-month="${esc(key)}" aria-expanded="${open}">
-        <span class="am-m">${key==="无时间"?"无时间":esc(key)}</span>
+  /* 选中月份：默认当前月；当前月无数据取最新月；筛选后消失则回退 */
+  if(keys.indexOf(AM_SEL.month)<0){
+    AM_SEL.month=keys.indexOf(amCurMonth())>=0?amCurMonth():(keys[0]||"无时间");
+    AM_PAGE=AM_PAGE_STEP;
+  }
+  AM_SEL.year=amYearOf(AM_SEL.month);
+  const group=AM_GROUPS.get(AM_SEL.month)||[];
+  const shown=group.slice(0,AM_PAGE);
+  const live=group.filter(it=>it.activity_status==="进行中").length;
+  const up=group.filter(it=>it.activity_status==="未开始").length;
+  let html=amOverviewHTML(counts,active)
+    +amIndexHTML(keys)
+    +`<section class="am-month open">
+      <div class="am-curhead">
+        <span class="am-m">${AM_SEL.month==="无时间"?"无时间":esc(AM_SEL.month)}</span>
         <span class="am-mcount">${group.length} 条</span>
         ${live?`<span class="am-mlive">进行中 ${live}</span>`:""}
         ${up?`<span class="am-mup">未开始 ${up}</span>`:""}
-        <span class="am-chev" aria-hidden="true">▾</span>
-      </button>
-      <div class="am-rows"${open?' data-filled="1"':""}>${open?amRowsHTML(group):""}</div>
+        <span class="am-curpage">${shown.length} / ${group.length}</span>
+      </div>
+      <div class="am-rows" data-filled="1">${amRowsHTML(shown)}</div>
     </section>`;
-  }).join("");
-  g.innerHTML=amOverviewHTML(counts,active)+months;
-  const countEl=document.getElementById("count");
-  if(countEl)countEl.textContent=`显示 ${items.length} / ${DATA.items.length} 条 · ${keys.length} 个月份分组`;
+  if(group.length>AM_PAGE)html+=amMoreHTML(group.length-AM_PAGE);
+  g.innerHTML=html;
+  if(countEl)countEl.textContent=`显示 ${items.length} / ${DATA.items.length} 条 · 选中 ${AM_SEL.month}（${group.length} 条）· ${keys.length} 个月份索引`;
   if(C2.open)c2Resync();
 }
-function amToggleMonth(head){
-  const sec=head.closest(".am-month");
-  if(!sec)return;
-  const key=head.getAttribute("data-am-month");
-  const open=!sec.classList.contains("open");
-  sec.classList.toggle("open",open);
-  head.setAttribute("aria-expanded",String(open));
-  AM_STATE[key]=open;
-  if(open){
-    const rows=sec.querySelector(".am-rows");
-    if(rows&&rows.getAttribute("data-filled")!=="1"){
-      const group=AM_GROUPS&&AM_GROUPS.get(key);
-      rows.innerHTML=group?amRowsHTML(group):"";
-      rows.setAttribute("data-filled","1");
-    }
+function amSetYear(y){
+  if(y==="无时间"){
+    AM_SEL.year="";AM_SEL.month="无时间";
+  }else{
+    const months=amMonthKeys(AM_GROUPS||new Map()).filter(k=>k!=="无时间"&&k.slice(0,4)===y);
+    AM_SEL.year=y;
+    AM_SEL.month=months.indexOf(AM_SEL.month)>=0?AM_SEL.month:(months[0]||"无时间");
   }
+  AM_PAGE=AM_PAGE_STEP;
+  render();
+}
+function amSetMonthSel(k){
+  AM_SEL.month=k;
+  AM_SEL.year=amYearOf(k);
+  AM_PAGE=AM_PAGE_STEP;
+  render();
 }
 function amSetStatus(k){
   const cf=(DATA._custFilters||[]).find(f=>f.key==="activity_status");
@@ -4543,8 +4590,12 @@ const ACTIVITY_D2={
 };
 if(ACTIVITY_BOARD){
   document.addEventListener("click",e=>{
-    const mh=e.target.closest("[data-am-month]");
-    if(mh){e.preventDefault();amToggleMonth(mh);return;}
+    const yb=e.target.closest("[data-am-year]");
+    if(yb){e.preventDefault();amSetYear(yb.getAttribute("data-am-year"));return;}
+    const mb=e.target.closest("[data-am-monthsel]");
+    if(mb){e.preventDefault();amSetMonthSel(mb.getAttribute("data-am-monthsel"));return;}
+    const more=e.target.closest("[data-am-more]");
+    if(more){e.preventDefault();AM_PAGE+=AM_PAGE_STEP;render();return;}
     const sb=e.target.closest("[data-am-status]");
     if(sb){e.preventDefault();amSetStatus(sb.getAttribute("data-am-status"));}
   });
@@ -4558,88 +4609,58 @@ if(ACTIVITY_BOARD){
   });
 }
 
-/* ════════════════════ 无人机板「类型展柜」（2026-11-02，方案 B）════════════════════
-   数据事实：287 条 = 简单生存服 49 台完整机体（16 个官方类型）+ 经典服名册 238 行
-   （CBG all_equips 18xxxx 段只给 name/desc/icon/level，kind 统一「经典服收录」、无品级/战力/技能）。
-   ⇒ 类型展柜只给**有类型**的 49 台做分组展柜；经典服名册单列一个折叠区，不猜类型、不编品级。
-   卡面纪律：图 + 名字 + 品级色档 + 评分基数 + 编号；技能/科技/模型/溯源全部折进 D2 详情。
+/* ════════════════════ 无人机板「经典服名册」（2026-11-02 定稿口径）
+   用户口径：简单生存服的无人机是经典服的子集 ⇒ 不再分「类型展柜 + 经典服区」，
+   统一成一份经典服式紧凑名册。287 原始行按同名合并：简单服 48 条并入同名经典服行
+   补类型/品级/评分，仅「基础无人机」单独成行 → 239 条；缺失字段照实留空，不猜类型。
    ★ 类名统一 ds-*，样式挂 body.b-drone_catalog，其它板零影响。 */
 const DRONE_BOARD=(function(){try{return (getParam("b")||"")==="drone_catalog";}catch(e){return false;}})();
 const DRONE_CLASSIC_KIND="经典服收录";
-const DRONE_GRADE_ORD=["基础","进阶","高阶","典藏"];
 const DRONE_GRADE_CLS={"基础":"g-绿","进阶":"g-蓝","高阶":"g-紫","典藏":"g-金"};
-/* 折叠状态跨重绘保留；经典服名册默认收起（238 行不抢首屏） */
-const DRONE_COLLAPSED=new Set(["__classic"]);
 
-function droneKindIcon(kind,img){
-  return img
-    ?`<span class="ds-plate-ic"><img src="${esc(img)}" alt="${esc(kind||"")}类型徽标" loading="lazy"></span>`
-    :`<span class="ds-plate-ic ds-ph">${esc(String(kind||"?").slice(0,1))}</span>`;
-}
-function droneKindMedia(list){
-  for(const it of list){
-    const im=((it._kind_media&&it._kind_media.images)||[])[0];
-    if(im&&im.png)return im.png;
+/* 同名合并：每个有简单服记录的经典服名字只让位一行（id 最小的 18x 行），
+   其余 182 变体保留；简单服记录补进 kind/grade/power，供卡面与 D2 使用。 */
+function droneUnified(items){
+  const classic=items.filter(it=>String(it.kind||"")===DRONE_CLASSIC_KIND);
+  const simple=items.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND);
+  const byName=new Map();
+  for(const it of classic){
+    const n=String(it.name||"");
+    if(!byName.has(n))byName.set(n,[]);
+    byName.get(n).push(it);
   }
-  return "";
-}
-function droneGradeDots(list){
-  const cnt={};
-  for(const it of list){const g=String(it.grade||"");if(g)cnt[g]=(cnt[g]||0)+1;}
-  return DRONE_GRADE_ORD.filter(g=>cnt[g])
-    .map(g=>`<i class="ds-gdot" data-g="${esc(g)}" title="${esc(g)} ${cnt[g]} 台"></i>`).join("");
-}
-/* 分组：只按数据里真有的 kind 分；kind_code 是官方机体类型序号（同 code 再按台数、名字） */
-function droneGroups(items){
-  const kinds=new Map(),classic=[];
-  for(const it of items){
-    const k=String(it.kind||"");
-    if(k===DRONE_CLASSIC_KIND){classic.push(it);continue;}
-    const key=k||"（类型未标注）";
-    if(!kinds.has(key))kinds.set(key,{key,list:[],code:99});
-    const gr=kinds.get(key);
-    gr.list.push(it);
-    const c=Number(it.kind_code);
-    if(Number.isFinite(c))gr.code=Math.min(gr.code,c);
+  const simpByName=new Map();
+  for(const s of simple)simpByName.set(String(s.name||""),s);
+  const drop=new Set();
+  for(const [n,rows] of byName){
+    const s=simpByName.get(n);
+    if(!s)continue;
+    rows.sort((a,b)=>Number(a.drone_id||0)-Number(b.drone_id||0));
+    drop.add(rows[0]);            // 同名经典行让位给简单服完整记录
   }
-  const groups=[...kinds.values()];
-  groups.forEach(gr=>{
-    gr.list.sort((a,b)=>{
-      const la=DRONE_GRADE_ORD.indexOf(String(a.grade||"")),lb=DRONE_GRADE_ORD.indexOf(String(b.grade||""));
-      if(la!==lb)return lb-la;                       // 典藏 → 基础
-      const pa=Number(a.power)||0,pb=Number(b.power)||0;
-      if(pa!==pb)return pb-pa;
-      return Number(a.drone_id||0)-Number(b.drone_id||0);
-    });
-  });
-  groups.sort((a,b)=>a.code-b.code||b.list.length-a.list.length||a.key.localeCompare(b.key,"zh"));
-  classic.sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh")
+  const out=simple.slice();
+  for(const it of classic){
+    if(drop.has(it))continue;
+    const s=simpByName.get(String(it.name||""));
+    out.push(s&&s.kind?Object.assign({},it,{kind:s.kind,grade:s.grade,power:s.power,grade_level:s.grade_level,__enriched:true}):it);
+  }
+  out.sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh")
     ||Number(a.drone_id||0)-Number(b.drone_id||0));
-  return {groups,classic};
+  return out;
 }
-function droneCard(it,cidx){
+/* 统一行卡：图 + 名字 + 编号 +（有则）官方类型/品级；同名并列弱化并标「同名列」 */
+function droneRow(it,cidx,dup){
   const im=((it._media&&it._media.images)||[])[0];
+  const kind=String(it.kind||"");
   const grade=String(it.grade||"");
-  const gc=DRONE_GRADE_CLS[grade]||"";
-  const sub=[];
-  if(grade)sub.push(`<span class="grade-pill ds-grade ${gc}">${esc(grade)}</span>`);
-  if(it.power!=null&&it.power!=="")sub.push(`<span class="ds-power" title="评分基数（静态表 base_score，不等同实机面板战力）">评分 ${esc(it.power)}</span>`);
-  return `<div class="i roster ds-card" data-cidx="${cidx}">
-    <div class="ds-fig">${im?`<img src="${esc(im.png)}" alt="${esc(it.name||"")}" loading="lazy">`:'<span class="ds-fig-ph">无图</span>'}</div>
-    <div class="i-head"><div class="ds-txt">
-      <div class="i-name">${esc(it.name||it.id)}</div>
-      <div class="ds-sub">${sub.join("")}</div>
-      <div class="i-id">${esc(it.drone_id??it.id)}</div>
-    </div></div>
-  </div>`;
-}
-function droneClassicRow(it,cidx,dup){
-  const im=((it._media&&it._media.images)||[])[0];
+  const tags=[];
+  if(kind&&kind!==DRONE_CLASSIC_KIND)tags.push(`<span class="ds-type">${esc(kind)}</span>`);
+  if(grade)tags.push(`<span class="grade-pill ds-grade ${DRONE_GRADE_CLS[grade]||""}">${esc(grade)}</span>`);
   return `<div class="i roster ds-crow${dup?" ds-dup":""}" data-cidx="${cidx}">
-    <span class="ds-crow-fig">${im?`<img src="${esc(im.png)}" alt="" loading="lazy">`:'<span class="ds-fig-ph">无</span>'}</span>
+    <span class="ds-crow-fig${im?"":" ds-empty"}">${im?`<img src="${esc(im.png)}" alt="" loading="lazy">`:'<span class="ds-fig-ph">无</span>'}</span>
     <span class="ds-crow-main">
-      <span class="ds-crow-name">${esc(it.name||it.id)}</span>
-      <span class="ds-crow-meta">${esc(it.drone_id??it.id)}${dup?'<span class="ds-dup-tag">同名列</span>':""}</span>
+      <span class="ds-crow-name"><span class="ds-crow-nm">${esc(it.name||it.id)}</span>${dup?'<span class="ds-dup-tag">同名列</span>':""}</span>
+      <span class="ds-crow-meta"><span class="ds-crow-id">${esc(it.drone_id??it.id)}</span>${tags.join("")}</span>
     </span>
   </div>`;
 }
@@ -4681,90 +4702,18 @@ function droneD2Html(it){
   </div>`;
 }
 function droneShelfRender(items,g){
-  const {groups,classic}=droneGroups(items);
-  const forceOpen=!!(DATA&&DATA._query);      // 搜索时强制展开，避免命中结果藏在折叠区里
-  const flat=[];
-  groups.forEach(gr=>flat.push(...gr.list));
-  flat.push(...classic);
-  C2.prov=ROSTER_D2;C2.chips=flat;C2.html={};
-  for(const it of flat)C2.html[c2IdOf(it)]=droneD2Html(it);
-  let pos=0;
-  const dupCount={};
-  for(const it of classic){const n=String(it.name||"");dupCount[n]=(dupCount[n]||0)+1;}
-  const chips=[
-    groups.map(gr=>`<button type="button" class="ds-chip" data-dsnav="${esc(gr.key)}">${esc(gr.key)}<b>${gr.list.length}</b></button>`).join(""),
-    classic.length?`<button type="button" class="ds-chip ds-chip-classic" data-dsnav="__classic">经典服名册<b>${classic.length}</b></button>`:""
-  ].join("");
-  const nav=`<div class="ds-nav">
-    <div class="ds-nav-hd"><span class="ds-nav-title">类型展柜</span><span class="ds-nav-sub">按官方机体类型分组（${groups.length} 类 / ${flat.length-classic.length} 台）· 点标签跳到该柜</span></div>
-    <div class="ds-nav-chips">${chips}</div>
-  </div>`;
-  const sections=groups.map(gr=>{
-    const shut=!forceOpen&&DRONE_COLLAPSED.has(gr.key);
-    const cards=gr.list.map(it=>droneCard(it,pos++)).join("");
-    return `<section class="ds-row${shut?" is-collapsed":""}" id="ds-${esc(gr.key)}" data-k="${esc(gr.key)}">
-      <div class="ds-plate">
-        <button type="button" class="ds-plate-main" data-dsfold aria-expanded="${shut?"false":"true"}" title="折叠 / 展开「${esc(gr.key)}」">
-          ${droneKindIcon(gr.key,droneKindMedia(gr.list))}
-          <span class="ds-plate-name">${esc(gr.key)}</span>
-          <span class="ds-plate-count">${gr.list.length} 台</span>
-          <span class="ds-fold"></span>
-        </button>
-        <div class="ds-plate-grades">${droneGradeDots(gr.list)}</div>
-      </div>
-      <div class="ds-shelf">${cards}</div>
-    </section>`;
-  }).join("");
-  let classicSec="";
-  if(classic.length){
-    const uniq=new Set(classic.map(it=>String(it.name||""))).size;
-    const shut=!forceOpen&&DRONE_COLLAPSED.has("__classic");
-    const rows=classic.map(it=>droneClassicRow(it,pos++,dupCount[String(it.name||"")]>1)).join("");
-    classicSec=`<section class="ds-row ds-row-classic${shut?" is-collapsed":""}" id="ds-classic" data-k="__classic">
-      <div class="ds-plate">
-        <button type="button" class="ds-plate-main" data-dsfold aria-expanded="${shut?"false":"true"}" title="折叠 / 展开经典服名册">
-          <span class="ds-plate-ic ds-ph">经</span>
-          <span class="ds-plate-name">经典服名册</span>
-          <span class="ds-plate-count">${classic.length} 行</span>
-          <span class="ds-fold"></span>
-        </button>
-        <div class="ds-plate-note">类型未标注 · ${uniq} 个名字${classic.length>uniq?`（同名 ${classic.length-uniq} 行并列）`:""}</div>
-      </div>
-      <div class="ds-shelf ds-classic-shelf">${rows}</div>
-    </section>`;
-  }
-  g.innerHTML=nav+sections+classicSec;
+  const list=droneUnified(items);
+  C2.prov=ROSTER_D2;C2.chips=list;C2.html={};
+  for(const it of list)C2.html[c2IdOf(it)]=droneD2Html(it);
+  const cnt={};
+  for(const it of list){const n=String(it.name||"");cnt[n]=(cnt[n]||0)+1;}
+  const rich=list.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length;
+  const rows=list.map((it,i)=>droneRow(it,i,cnt[String(it.name||"")]>1)).join("");
+  g.innerHTML=`<div class="ds-nav"><div class="ds-nav-hd">
+    <span class="ds-nav-title">经典服无人机名册</span>
+    <span class="ds-nav-sub">${list.length} 条 · 按名称排序 · ${rich} 条带官方类型/品级 · 同名并列已标记</span>
+  </div></div><div class="ds-roster">${rows}</div>`;
   if(C2.open)c2Resync();
-}
-if(DRONE_BOARD){
-  /* 展柜交互：点类型标签跳柜；点类型铭牌折叠/展开（按钮不会触发卡面 D2） */
-  document.addEventListener("click",e=>{
-    const nav=e.target.closest&&e.target.closest("[data-dsnav]");
-    if(nav){
-      const k=nav.getAttribute("data-dsnav")||"";
-      const t=document.getElementById("ds-"+(k==="__classic"?"classic":k));
-      if(t){
-        /* 跳到折叠中的柜时先展开，否则只滚到一条空铭牌 */
-        if(t.classList.contains("is-collapsed")){
-          t.classList.remove("is-collapsed");
-          DRONE_COLLAPSED.delete(k);
-          const b=t.querySelector("[data-dsfold]");if(b)b.setAttribute("aria-expanded","true");
-        }
-        t.scrollIntoView({behavior:"smooth",block:"start"});
-        t.classList.add("ds-flash");
-        setTimeout(()=>t.classList.remove("ds-flash"),900);
-      }
-      return;
-    }
-    const fold=e.target.closest&&e.target.closest("[data-dsfold]");
-    if(!fold)return;
-    const row=fold.closest(".ds-row");
-    if(!row)return;
-    const k=row.getAttribute("data-k")||"";
-    const shut=row.classList.toggle("is-collapsed");
-    fold.setAttribute("aria-expanded",shut?"false":"true");
-    if(shut)DRONE_COLLAPSED.add(k);else DRONE_COLLAPSED.delete(k);
-  },true);
 }
 
 function render(){
@@ -4910,9 +4859,11 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     return acc;
   })();
   const timedVariantsShown=items.reduce((sum,it)=>sum+((Array.isArray(it.timed_variants)?it.timed_variants.length:0)),0);
+  const droneList=DRONE_BOARD?droneUnified(items):null;
+  const droneTotal=DRONE_BOARD?droneUnified(DATA.items).length:0;
   const countEl=document.getElementById("count");
   const countHtml=DRONE_BOARD
-    ? `显示 ${items.length} / ${DATA.items.length} 条 · 简单生存服机体 ${items.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length} 台 · 经典服名册 ${items.filter(it=>String(it.kind||"")===DRONE_CLASSIC_KIND).length} 行`
+    ? `显示 ${droneList.length} / ${droneTotal} 条 · 经典服式名册 · 其中 ${droneList.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length} 条带类型/品级（原始 ${DATA.items.length} 行已按同名合并）`
     : FASHION_BOARD
     ? `显示 ${items.length} / ${DATA.items.length} 件 · 多图(>4) ${items.filter(it=>((it._media&&it._media.images)||[]).length>4).length} 件 · 仅占位 ${items.filter(it=>it.icon_state==="含占位").length} 件`
     : (VEHICLE_BOARD
@@ -4935,7 +4886,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     g.innerHTML=GENE_BOARD?(geneTabsHTML()+'<div class="empty">无匹配条目</div>'):'<div class="empty">无匹配条目</div>';
     return;
   }
-  /* 无人机板：类型展柜（2026-11-02 方案 B） */
+  /* 无人机板：统一经典服式名册（2026-11-02） */
   if(DRONE_BOARD){droneShelfRender(items,g);return;}
   if(ACTIVITY_BOARD){amRenderLedger(g,items,q,fe);return;}
   if(CHIP_BOARD){
@@ -5045,6 +4996,10 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     ? [...items].sort((a,b)=>orderBy==="old"
         ? (a.sort_660||0)-(b.sort_660||0)
         : (b.sort_660||0)-(a.sort_660||0))
+    : CORE_BOARD&&(orderBy==="code_asc"||orderBy==="code_desc")
+    ? [...items].sort((a,b)=>orderBy==="code_asc"
+        ? Number(a.item_id||0)-Number(b.item_id||0)
+        : Number(b.item_id||0)-Number(a.item_id||0))
     : items;
   /* 称号板：分组由「按获取途径分组」勾选项控制；未勾选时整表按编号排，勾选后组内按编号排。
      注意 list 可能还是 items 本体（默认路径），这里只改顺序、不改集合。 */

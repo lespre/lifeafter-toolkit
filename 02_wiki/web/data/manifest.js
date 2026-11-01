@@ -536,22 +536,22 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
-      "items": 993,
-      "generated": "2026-11-01",
+      "items": 1098,
+      "generated": "2026-11-02",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 801,
+        "structure": 906,
         "candidate": 192
       },
       "state_summary": {
         "期次": 789,
-        "成员": 993,
-        "结构可证": 801,
+        "成员": 1098,
+        "结构可证": 906,
         "候选成员": 192,
         "有成员期次": 200,
         "空成员期次": 589,
-        "进行中": 22,
+        "进行中": 21,
         "未开始": 5,
         "2026起期次": 121,
         "2026起有成员期次": 80
@@ -562,7 +562,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 993
+          "replayed-structural": 1098
         }
       }
     },
@@ -570,16 +570,16 @@ window.WIKI_MANIFEST = {
       "name": "异变核芯 · 全量表",
       "category": "二、战力类 / （一）异变核芯",
       "board": "mutation_core_full",
-      "items": 132,
+      "items": 133,
       "generated": "2026-10-17T20:50:51Z",
       "source_server": "经典服口径（极品 12 / 高级 9 / 中级 5 / 基础不可升）",
       "package_sha": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
       "evidence": {
-        "structure": 132
+        "structure": 133
       },
       "state_summary": {
-        "核芯": 132,
-        "极品": 50,
+        "核芯": 133,
+        "极品": 51,
         "高级": 63,
         "中级": 11,
         "基础": 8
@@ -590,7 +590,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 132
+          "replayed-structural": 133
         }
       }
     },
@@ -847,7 +847,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）称号总表",
+      "name": "称号总表",
       "category": "四、资料层 / （四）称号",
       "board": "title_catalog",
       "items": 1550,
