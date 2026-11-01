@@ -233,7 +233,7 @@ def fill_missing_slots(it: dict, exp: "PackExporter", dry: bool, stat: Counter) 
     gaps = dedup_gaps(gaps)
     if gaps:
         media["missing"] = gaps
-        it["gender_icon_state"] = "缺%s图" % ("/".join(sorted({g["gender"] for g in gaps if g["gender"]})) or "图")
+        it["gender_icon_state"] = _gap_state({g["gender"] for g in gaps})
 
 
 def load_board():
@@ -301,13 +301,21 @@ def reuse_unisex(it: dict, dry: bool, stat: Counter) -> None:
     if rest:
         media["missing"] = rest
         if not dry:
-            it["gender_icon_state"] = "缺%s图" % ("/".join(
-                sorted({g["gender"] for g in rest if g["gender"]})) or "图")
+            it["gender_icon_state"] = _gap_state({g["gender"] for g in rest})
     else:
         media.pop("missing", None)
         if not dry:
             it.pop("gender_icon_state", None)
 
+
+def _gap_state(genders) -> str:
+    """缺口 → 标签。空集合/双缺都归「缺图」，绝不拼出「缺图图」「缺女/男图」。"""
+    gs = {g for g in genders if g}
+    if gs == {"女"}:
+        return "缺女图"
+    if gs == {"男"}:
+        return "缺男图"
+    return "缺图"
 
 def mark_gender_gaps(it: dict, dry: bool, stat: Counter) -> None:
     """表里标了「女/男」，卡上却只取到一种性别的图 —— 把缺口标出来，别让卡面假装完整。
@@ -337,8 +345,7 @@ def mark_gender_gaps(it: dict, dry: bool, stat: Counter) -> None:
     if not dry:
         media["missing"] = gaps
         it["_media"] = media
-        it["gender_icon_state"] = "缺%s图" % ("/".join(
-            sorted({x["gender"] for x in gaps if x.get("gender")})) or "图")
+        it["gender_icon_state"] = _gap_state({x.get("gender") for x in gaps})
 
 
 def dedup_gaps(gaps):
@@ -392,8 +399,7 @@ def prune_gaps(it: dict, dry: bool) -> None:
     if not dry:
         if keep:
             media["missing"] = keep
-            it["gender_icon_state"] = "缺%s图" % ("/".join(
-                sorted({x["gender"] for x in keep if x.get("gender")})) or "图")
+            it["gender_icon_state"] = _gap_state({x.get("gender") for x in keep})
         else:
             media.pop("missing", None)
             it.pop("gender_icon_state", None)
@@ -582,8 +588,7 @@ def main() -> int:
             media["total"] = len(kept)
             if gaps:
                 media["missing"] = gaps
-                it["gender_icon_state"] = "缺%s图" % ("/".join(
-                    sorted({g["gender"] for g in gaps if g["gender"]})) or "图")
+                it["gender_icon_state"] = _gap_state({g["gender"] for g in gaps})
             else:
                 media.pop("missing", None)
                 it.pop("gender_icon_state", None)
