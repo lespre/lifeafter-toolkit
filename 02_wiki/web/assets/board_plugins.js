@@ -82,29 +82,68 @@
   window.__BOARD_TITLES=TITLES;
   var nav=document.getElementById('siteNav');
   var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>'+'<a class="leafrow" id="navOptPreviewRow" href="javascript:void(0)" style="display:flex!important;align-items:center;gap:6px;color:#c9d3e6!important"><input type="checkbox" id="navOptPreview" style="width:13px;height:13px;accent-color:#b6a7df"'+(SHOW_PREVIEW_NAV?' checked':'')+'>显示内测板块</a>';
+  function _esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  var _NAVCLOSED=(function(){try{return JSON.parse(localStorage.getItem('board_nav_closed')||'[]');}catch(e){return [];}})();
+  function _isClosed(k){return _NAVCLOSED.indexOf(k)>=0;}
   (T['树']||[]).forEach(function(top){
-    html += '<div class="grp">'+(ICON[top.id]||'') + '<span>' + top.name + '</span></div>';
-    var rows=[];
+    var tid=String(top.id||top.name), body='';
     (top.boards||[]).forEach(function(id){
       if(!_navVis(id)) return;
-      rows.push({kind:'row', id:id, label:ntag(id)+top.name.replace(/^[^、]*、/,'')});
+      body += '<a class="leafrow'+(id===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(id)+'">'+
+              ntag(id)+top.name.replace(/^[^、]*、/,'')+'</a>';
     });
     (top.children||[]).forEach(function(leaf){
-      var ids=(leaf.boards||[]).filter(function(x){return _navVis(x);});
+      var ids=(leaf.boards||[]).filter(_navVis);
       if(!ids.length) return;
-      if(ids.length===1){ rows.push({kind:'row', id:ids[0], label:ntag(ids[0])+leaf.name}); return; }
-      var br=branchSuffix(ids);
-      rows.push({kind:'head', label:leaf.name});
-      ids.forEach(function(id){ rows.push({kind:'sub', id:id,
-        label:ntag(id)+cleanName(byId[id].name||id)+(br?(' · '+br[id]):'')}); });
+      if(ids.length===1){
+        body += '<a class="leafrow'+(ids[0]===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(ids[0])+'">'+
+                ntag(ids[0])+leaf.name+'</a>';
+        return;
+      }
+      var lid=tid+'/'+leaf.name, br=branchSuffix(ids), lc=_isClosed(lid);
+      body += '<div class="leafhd'+(lc?' closed':'')+'" data-leaf="'+_esc(lid)+'" role="button" tabindex="0">'+
+              '<i class="car">▾</i><span>'+_esc(leaf.name)+'</span></div>';
+      body += '<div class="leafbody" data-lbody="'+_esc(lid)+'"'+(lc?' style="display:none"':'')+'>';
+      ids.forEach(function(id){
+        body += '<a class="sub'+(id===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(id)+'">'+
+                ntag(id)+cleanName(byId[id].name||id)+(br?(' · '+br[id]):'')+'</a>';
+      });
+      body += '</div>';
     });
-    rows.forEach(function(r){
-      if(r.kind==='head'){ html += '<div class="leafhd">'+r.label+'</div>'; return; }
-      html += '<a class="'+(r.kind==='sub'?'sub':'leafrow')+(r.id===cur?' on':'')+
-              '" href="board.html?b='+encodeURIComponent(r.id)+'">'+r.label+'</a>';
-    });
+    if(!body) return;
+    var tc=_isClosed(tid);
+    html += '<div class="grp'+(tc?' closed':'')+'" data-grp="'+_esc(tid)+'" role="button" tabindex="0">'+
+            (ICON[top.id]||'')+'<span>'+_esc(top.name)+'</span><i class="car">▾</i></div>';
+    html += '<div class="grpbody" data-gbody="'+_esc(tid)+'"'+(tc?' style="display:none"':'')+'>'+body+'</div>';
   });
   nav.innerHTML=html;
+  /* 类目折叠：点大目录 / 子分组标题收放，状态记 localStorage(board_nav_closed) */
+  (function(){
+    var KEY='board_nav_closed';
+    function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return [];}}
+    function save(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
+    function toggle(el,key){
+      var closed=el.classList.toggle('closed');
+      var body=el.nextElementSibling;
+      if(body) body.style.display=closed?'none':'';
+      var a=load(),i=a.indexOf(key);
+      if(closed){ if(i<0) a.push(key); } else if(i>=0){ a.splice(i,1); }
+      save(a);
+    }
+    nav.addEventListener('click',function(ev){
+      var g=ev.target.closest('.grp[data-grp]');
+      if(g){ toggle(g,g.getAttribute('data-grp')); return; }
+      var h=ev.target.closest('.leafhd[data-leaf]');
+      if(h){ toggle(h,h.getAttribute('data-leaf')); }
+    });
+    nav.addEventListener('keydown',function(ev){
+      if(ev.key!=='Enter'&&ev.key!==' ') return;
+      var el=ev.target.closest('.grp[data-grp],.leafhd[data-leaf]');
+      if(!el) return;
+      ev.preventDefault();
+      toggle(el, el.getAttribute('data-grp')||el.getAttribute('data-leaf'));
+    });
+  })();
   (function(){
     var cb=document.getElementById('navOptPreview');
     if(!cb)return;

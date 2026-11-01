@@ -1359,3 +1359,12 @@ body.nav-collapsed #siteNav{width:0!important;min-width:0!important;max-width:0!
 body.nav-collapsed #navCollapse{left:0;border-left:1px solid var(--border,#2b3446);
   border-radius:0 6px 6px 0}
 @media(max-width:900px){#navCollapse{display:none}}
+
+/* ── 左栏类目折叠（板页）──────────────────────────────────────── */
+#siteNav .grp,#siteNav .leafhd{cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
+#siteNav .grp .car,#siteNav .leafhd .car{margin-left:auto;font-style:normal;font-size:10px;
+  opacity:.55;transition:transform .15s ease;flex:0 0 auto}
+#siteNav .grp.closed .car,#siteNav .leafhd.closed .car{transform:rotate(-90deg)}
+#siteNav .leafhd{color:var(--muted,#9aa6bd);font-size:12px;padding:4px 8px 2px 14px;letter-spacing:.02em}
+#siteNav .leafhd:hover{color:var(--fg,#e7eaf4)}
+#siteNav .grp.closed,#siteNav .leafhd.closed{opacity:.92}
