@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102-dronecat4")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102-ncname6")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
