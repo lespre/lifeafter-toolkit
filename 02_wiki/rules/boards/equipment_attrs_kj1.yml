@@ -1,0 +1,14 @@
+board: equipment_attrs_kj1
+name: 装备属性（武器 · 护甲） · 简单生存服
+category: 二、战力类 / （五）装备属性（武器·护甲）
+source_server: PE 测试服源包 · all_equips_data · 简单生存服（kj1）
+package_sha: c947fc1bb4b4627f536275e84ff24102db52a1eaebad7efabf8694a96f9d1268
+generated: '2026-11-01'
+evidence: structure
+items: 590
+primary_builders:
+- build_equipment_attrs.py
+- build_equip_icons.py
+postprocess_scripts: []
+script_count: 2
+rebuild_risk: low

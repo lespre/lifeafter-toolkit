@@ -232,8 +232,11 @@ def _render_item(job):
     try:
         # 名片框按画板裁（火焰溢出属正常），头像/头像框按覆盖率紧裁
         crop = "artboard" if it.get("kind") == "名片框" else "coverage"
+        # ★ internal 必须跟着 size 一起提：render_frames 先在内部画布上把主体
+        #   渲染到 internal 像素再缩到 box，默认 internal=420 —— 只调 box 的话
+        #   输出长边永远卡在 ~429，放大看还是糊。
         frs, _meta = FX.render_frames(at_f, img_of, box=size, cnt=cnt,
-                                      aname=aname, crop=crop)
+                                      internal=max(420, size), aname=aname, crop=crop)
     except Exception as ex:                            # noqa: BLE001
         return bad("渲染失败 " + str(ex)[:50])
     if not frs:

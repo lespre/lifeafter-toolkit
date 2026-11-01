@@ -197,3 +197,9 @@ _tmp_*.json
 .trae-html-share-packages/
 90_临时/_check/
 02_wiki/web/_mock_sib.html
+
+# 临时/备份（不入库）
+90_临时/_backup/
+90_临时/__pycache__/
+__pycache__/
+90_临时/

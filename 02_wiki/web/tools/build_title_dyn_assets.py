@@ -210,6 +210,8 @@ def load_csb_raws(csbs):
 # ── 方案2：整段动画（多帧 csb → 动画 WebP） ─────────────────
 PE_IDX = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
 PC_IDX = PROJ / "01_索引与产物/10_索引/热更检测/pc_index.sqlite3"
+# 底图贴图自带整字（叠美术字会重影）的 csb，实测确认后列在这里，写入 item.dyn_has_text。
+BAKED_TEXT_CSB = {"ui/main_chenghao_jiamianqishi.csb"}
 PC_ROOTS = (MRZH, MRZH / "res", MRZH / "Documents/gres")
 TEX_EXT = (".ktx", ".png", ".bc7", ".dds", ".jpg")
 
@@ -414,6 +416,14 @@ def build_anims(board):
 def main() -> int:
     board = json.loads(BOARD.read_text(encoding="utf-8"))
     items = board["items"]
+    # 底图贴图本身已经把称号字画进去了（实测：1214 骑士集结 的 vx 贴图是「徽章+整字」合成图）。
+    # 这类条目前端只显示底图，不再把美术字叠上去，否则会重影。其余条目的底图是纯光效/场景，
+    # 美术字要叠在它上面（与游戏内一致）。
+    for it in items:
+        if str(it.get("anim_csb") or "") in BAKED_TEXT_CSB:
+            it["dyn_has_text"] = True
+        else:
+            it.pop("dyn_has_text", None)
     csbs = sorted({str(it["anim_csb"]) for it in items if it.get("anim_csb")})
     print("动态条目 %d，唯一 csb %d" % (sum(1 for it in items if it.get("anim_csb")), len(csbs)))
     only_anim = "anim" in sys.argv[1:]

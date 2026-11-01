@@ -431,6 +431,7 @@
 | `rebuild_chip_timeline.py` | 重建限定芯片的 37 期时间线（来自 huodong_conf），保留已确认的芯片锚点。 |
 | `rebuild_common_item_text_sources.py` | Build a replayable same-snapshot common_item text source board. |
 | `rebuild_edible.py` | 从 PE 源直接重建「料理与食谱」板（食材 + 可烹饪），不依赖旧 board。 |
+| `rebuild_edible_catalog.py` | 按当前 PE 配置合并体重建「（四）料理与食谱」：634 配方（6 档成品属性）+ 701 食材，含材料/设施/效果标签/赐福/食材区间与 2D 图标（`--merge-icons` 复用已导出的图）。 |
 | `rebuild_fashion_bag_slots.py` | rebuild_fashion_bag_slots — 时装外观附件（背包）独立板导出器 |
 | `rebuild_fashion_bestplay_slots.py` | rebuild_fashion_bestplay_slots — 本场最佳动画 & 击败播报（衣柜-社交类目） |
 | `rebuild_fashion_face_slots.py` | rebuild_fashion_face_slots — 面饰/挂饰 face 槽行级槽位复证导出器（②b 交付） |

@@ -170,17 +170,19 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）料理与食谱",
       "category": "二、战力类 / （四）料理与食谱",
       "board": "edible_catalog",
-      "items": 4557,
-      "generated": "2026-10-23",
-      "source_server": "PE 体验服（pe_20261020 还原树）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 1335,
+      "generated": "2026-11-02",
+      "source_server": "PE 体验服 · 配置合并体（基线 script.py314.lc.npk + 2026-10 增量快照）",
+      "package_sha": "f40201831bd5f3af503028bd19d8f8b1ccf13de907dd82f709bfc7a85df90662",
       "evidence": {
-        "structure": 4557
+        "structure": 1335
       },
       "state_summary": {
-        "条目": 4557,
-        "食材": 3986,
-        "可烹饪": 571
+        "料理": 634,
+        "食材": 701,
+        "合计": 1335,
+        "有图": 821,
+        "缺图": 514
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -188,7 +190,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 4557
+          "replayed-structural": 1335
         }
       }
     },
@@ -217,7 +219,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲） · 三服总览",
+      "name": "装备属性（武器 · 护甲） · 三服总览",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs",
       "items": 2586,
@@ -246,7 +248,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲） · 经典服",
+      "name": "装备属性（武器 · 护甲） · 经典服",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs_classic",
       "items": 1057,
@@ -275,7 +277,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲） · 简单生存服",
+      "name": "装备属性（武器 · 护甲） · 简单生存服",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs_kj1",
       "items": 590,
@@ -304,7 +306,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲） · 月卡服",
+      "name": "装备属性（武器 · 护甲） · 月卡服",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs_yk",
       "items": 939,

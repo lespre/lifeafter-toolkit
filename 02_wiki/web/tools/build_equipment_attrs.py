@@ -33,7 +33,7 @@ PROJ = WEB.parents[1]
 FREEZE = PROJ / "01_索引与产物/30_分析/all_equips_全量_node索引_20261029"
 ICON_INDEX = WEB / "assets/equip_icons/_index.json"
 BOARDS = WEB / "data/boards"
-BASE_NAME = "（内测版）装备属性（武器 · 护甲）"
+BASE_NAME = "装备属性（武器 · 护甲）"
 CATEGORY = "二、战力类 / （五）装备属性（武器·护甲）"
 
 SERVERS = {

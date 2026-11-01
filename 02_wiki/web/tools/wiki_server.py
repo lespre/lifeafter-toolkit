@@ -330,6 +330,15 @@ class WikiContext:
 class WikiRequestHandler(SimpleHTTPRequestHandler):
     """Static Wiki handler with a narrow, source-locked localhost API."""
 
+    # 静态资源 MIME 补全：Python 3.12 的 mimetypes 表里没有 .webp，
+    # 会按 application/octet-stream 下发；动图 WebP 必须给 image/webp，
+    # 否则部分浏览器（Safari）不认这个 <img> 源。
+    extensions_map = {
+        **SimpleHTTPRequestHandler.extensions_map,
+        ".webp": "image/webp",
+        ".apng": "image/apng",
+    }
+
     def __init__(self, *args: Any, context: WikiContext, **kwargs: Any):
         self.context = context
         super().__init__(*args, directory=str(context.wiki_root), **kwargs)

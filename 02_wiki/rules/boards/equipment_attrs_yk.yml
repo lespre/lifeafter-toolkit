@@ -1,0 +1,14 @@
+board: equipment_attrs_yk
+name: 装备属性（武器 · 护甲） · 月卡服
+category: 二、战力类 / （五）装备属性（武器·护甲）
+source_server: PE 测试服源包 · all_equips_data · 月卡服（yk）
+package_sha: 99e0743b4437d7f2000205362116275686a4ad75e7d08ecfb8b6747c255a3dda
+generated: '2026-11-01'
+evidence: structure
+items: 939
+primary_builders:
+- build_equipment_attrs.py
+- build_equip_icons.py
+postprocess_scripts: []
+script_count: 2
+rebuild_risk: low

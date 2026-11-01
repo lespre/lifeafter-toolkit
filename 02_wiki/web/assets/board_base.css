@@ -130,6 +130,14 @@ body.equip-mode .eq-desc{margin:7px 0 0;font-size:12px;line-height:1.55;color:va
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 body.equip-mode .i details.tech{margin:9px 0 0}
 body.equip-mode .i details.tech summary{font-size:12px}
+/* 详情子卡（D2）：自建详情体 —— 大图铺一行，属性表默认展开，不再嵌回缩小的卡面 */
+body.equip-mode .eq-d2-rail{display:flex;gap:8px;margin:2px 0 10px}
+body.equip-mode .eq-d2-rail figure{margin:0;flex:0 1 300px;max-width:100%;border:1px solid var(--border,#e4e4e7);
+  border-radius:10px;overflow:hidden;background:transparent}
+body.equip-mode .eq-d2-rail figure.fr-zoom{cursor:zoom-in}
+body.equip-mode .eq-d2-rail img{display:block;width:100%;height:auto}
+body.equip-mode .eq-d2-rail .ph{flex:0 0 300px;aspect-ratio:2/1;display:flex;align-items:center;justify-content:center}
+body.equip-mode .eq-d2-desc{margin:6px 0 8px;font-size:13px;line-height:1.7;color:var(--fg,#18181b)}
 /* ── 表格视图（sbt-mode：场景平衡 scene_balance / 服务器类型 server_types 共用）──
    sbt-mode 是表格外观的公共开关；scene-mode / st-mode 只留各自的专属微调。 */
 body.sbt-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
@@ -621,17 +629,32 @@ body.b-title_catalog .tb-c[data-c="金"]{color:var(--tb-gold);border-color:var(-
 body.b-title_catalog .tb-c[data-c="红"]{color:var(--tb-red);border-color:var(--tb-red)}
 body.b-title_catalog .tb-c[data-c="绿"]{color:var(--tb-green);border-color:var(--tb-green)}
 body.b-title_catalog .tb-f{color:var(--accent);border-color:var(--accent-border)}
-/* 称号视觉：档位色贴图（line_N 下划线 / bg_N 底光）+ 美术字图（真实资源，见 build_title_art_assets.py） */
-body.b-title_catalog .i-skin{position:relative;display:block;height:11px;margin:2px 0 1px}
-body.b-title_catalog .i-skin .sk-bg{position:absolute;left:0;right:0;top:-7px;height:26px;
-  background-repeat:no-repeat;background-position:center;background-size:100% 100%;opacity:.5;pointer-events:none}
-body.b-title_catalog .i-skin .sk-ln{position:absolute;left:0;right:0;top:4px;height:7px;
-  background-repeat:no-repeat;background-position:center;background-size:100% 100%;opacity:.95;pointer-events:none}
+/* 称号视觉（2026-11-02 重做）：底光 / 下划线贴图不再按卡片整宽拉伸 + 写死 top 偏移，
+   而是锚在「称号名文字自身」的盒子（.i-title）上：
+     · .i-title = inline-block，宽度收缩到文字实际宽度；
+     · .sk-bg 以文字中心为圆心、按贴图原生比例 235:62 缩放（原生可见区只占中间 68%，相当于光晕）；
+     · .sk-ln 左右贴住文字盒，底边下压 4px —— 位置由文字推导，换字号/列宽都不会错位。
+   颜色取自游戏原生贴图实测（js 里 TITLE_SKIN_TXT），美术字图本身已有颜色则不叠贴图、不上色。 */
+body.b-title_catalog .i-title{position:relative;display:inline-block;max-width:100%;isolation:isolate}
+body.b-title_catalog .i-title .sk-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(235px,calc(100% + 44px));aspect-ratio:235/62;
+  background-repeat:no-repeat;background-size:100% 100%;opacity:.55;pointer-events:none;z-index:-1}
+body.b-title_catalog .i-title .sk-ln{position:absolute;left:0;right:0;bottom:-4px;height:3px;
+  background-repeat:no-repeat;background-size:100% 100%;opacity:.9;pointer-events:none}
+body.b-title_catalog .i-title.tinted{color:var(--tc);text-shadow:0 1px 0 rgba(0,0,0,.45)}
+/* 美术字 + 动态底图：叠成一枚「称号图」——底图（csb 首帧/逐帧动画）在下层居中铺开，
+   美术字在上层，与游戏内一致；不再上下各排一张。 */
+body.b-title_catalog .i-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-height:52px;padding:6px 16px;max-width:100%;line-height:0;isolation:isolate}
+body.b-title_catalog .i-logo .i-logo-bg{position:absolute;inset:0;background-repeat:no-repeat;
+  background-position:center;background-size:contain;pointer-events:none;z-index:0}
+body.b-title_catalog .i-logo .i-art{position:relative;z-index:1;max-height:30px;max-width:100%;object-fit:contain}
+/* 无美术字的动态称号：文字层压在底图之上（.i-logo 的 line-height:0 只用于图片层，这里复位） */
+body.b-title_catalog .i-logo .i-title{line-height:1.35;z-index:1}
+body.b-title_catalog .i-logo-solo{display:block;max-width:100%;max-height:54px;object-fit:contain}
 body.b-title_catalog .i-name .i-art{max-width:100%;max-height:26px;object-fit:contain;vertical-align:middle}
 body.b-title_catalog .i-name.has-art .i-name-txt{display:none}
-/* 动态称号首帧预览（真图；无资源条目不渲染） */
-body.b-title_catalog .i-dyn{margin:5px 0 3px}
-body.b-title_catalog .i-dyn img{max-width:100%;max-height:54px;object-fit:contain;display:block}
+
 /* 分组勾选项：默认不勾（整表平铺按编号排）；勾上才按获取途径分组 */
 body.b-title_catalog .controls .tg-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:8px;
   font-size:12.5px;color:var(--fg-muted);white-space:nowrap;cursor:pointer;user-select:none}
@@ -655,6 +678,24 @@ body.b-title_catalog .tg-name{font-size:13px;font-weight:650;letter-spacing:.02e
 body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-numeric:tabular-nums}
 @media (max-width:760px){body.b-title_catalog .tg-head{top:0}}
 @media (max-width:640px){body.b-title_catalog #grid{grid-template-columns:minmax(0,1fr)}}
+
+/* 料理与食谱板（edible_catalog，2026-11-02）：料理为主表 + 食材折叠次级分组 */
+body.b-edible_catalog .controls .tg-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:8px;
+  font-size:12.5px;color:var(--fg-muted);white-space:nowrap;cursor:pointer;user-select:none}
+body.b-edible_catalog .controls .tg-toggle input{appearance:none;-webkit-appearance:none;
+  width:16px;height:16px!important;min-width:16px;min-height:16px;padding:0;margin:0;cursor:pointer;
+  border:1px solid var(--border-strong);border-radius:4px;background:transparent;display:grid;place-content:center}
+body.b-edible_catalog .controls .tg-toggle input:checked{background:var(--accent);border-color:var(--accent)}
+body.b-edible_catalog .controls .tg-toggle input:checked::after{content:"";width:8px;height:4px;
+  border-left:2px solid #1a1408;border-bottom:2px solid #1a1408;transform:translateY(-1px) rotate(-45deg)}
+body.b-edible_catalog .tg-head{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;margin:16px 0 0;
+  padding:6px 4px 4px;border-bottom:1px solid var(--border);
+  position:sticky;top:calc(var(--top-h,150px) + 12px);z-index:8;background:var(--bg)}
+body.b-edible_catalog .tg-name{font-size:13px;font-weight:650;letter-spacing:.02em;color:var(--gold)}
+body.b-edible_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-numeric:tabular-nums}
+body.b-edible_catalog #grid>.i>.kv{grid-template-columns:66px minmax(0,1fr);gap:1px 8px}
+body.b-edible_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.6;white-space:normal;word-break:break-word}
+@media (max-width:760px){body.b-edible_catalog .tg-head{top:0}}
 
 /* 名册类板（击败播报 / MVP 等）：横幅图居中 + 柔光底板，不再被拉成细条 */
 .i.roster .i-media{display:flex!important;justify-content:center!important;align-items:center!important;

@@ -1,0 +1,14 @@
+board: equipment_attrs_classic
+name: 装备属性（武器 · 护甲） · 经典服
+category: 二、战力类 / （五）装备属性（武器·护甲）
+source_server: PE 测试服源包 · all_equips_data · 经典服（classic）
+package_sha: 2920fef142c4ce07ac6011f6f28e33fc10391652d88a987e69cdefcd6e5c16cc
+generated: '2026-11-01'
+evidence: structure
+items: 1057
+primary_builders:
+- build_equipment_attrs.py
+- build_equip_icons.py
+postprocess_scripts: []
+script_count: 2
+rebuild_risk: low

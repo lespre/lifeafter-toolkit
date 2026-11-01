@@ -201,6 +201,46 @@ def _silhouette_mask(cv2, a):
     return None
 
 
+def _interior_union(cv2, a, sil, main, w, h):
+    """外轮廓内「明确透明」且与主内孔相邻的碎片并集 —— 补齐被装饰切开的薄片。
+
+    ★ 为什么不直接取「轮廓内所有透明像素」：框体本身（花边/丝带之间）也有透明缝隙，
+      全并进来会把 bbox 撑到整张卡，背景铺到底会从半透明的边框里透出来，反而更假。
+      这里以主内孔（离中心最近的最大透光块）为种子，只收「bbox 与种子 bbox 相交
+      （外扩 2% 长边）」的碎片，一条丝带切出来的贴边薄片都会被收进来，
+      而边框环上的独立缝隙不会被牵连。
+    """
+    hole = ((sil > 0) & (a < 96)).astype(np.uint8)
+    n, lab, st, _c = cv2.connectedComponentsWithStats(hole, 4)
+    if n <= 1:
+        return main
+    # 种子：主内孔所在的连通块（_interior_mask 给的 mask 与 hole 的交集里面积最大的）
+    seed_i, seed_n = -1, 0
+    for i in range(1, n):
+        overlap = int(np.count_nonzero((lab == i) & (main > 0)))
+        if overlap > seed_n:
+            seed_i, seed_n = i, overlap
+    if seed_i < 0:
+        return main
+    pad = int(round(0.02 * max(w, h)))
+    min_area = max(16, int(0.0015 * w * h))
+    keep = np.zeros((h, w), bool)
+    x0, y0, bw, bh, _ar = st[seed_i]
+    cx0, cy0 = x0 - pad, y0 - pad
+    cx1, cy1 = x0 + bw + pad, y0 + bh + pad
+    for i in range(1, n):
+        x, y, bw2, bh2, area = st[i]
+        if i == seed_i:
+            keep |= (lab == i)
+            continue
+        if area < min_area:
+            continue
+        if x > cx1 or y > cy1 or x + bw2 < cx0 or y + bh2 < cy0:
+            continue
+        keep |= (lab == i)
+    return keep.astype(np.uint8) if keep.any() else main
+
+
 def _polygon_of(cv2, mask, w, h, eps_ratio, max_pts=600):
     """取 mask 的最大外轮廓 → 归一化多边形点列；取不到返回 None。"""
     cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -247,10 +287,20 @@ def hole_geom(path: pathlib.Path):
     if inner is None:
         # 内孔确实与画布外连通（框有真开口）→ 退回中心行列法，如实不裁轮廓
         return _hole_fallback(a)
+    # ★ 2026-11-02 三次修正（用户二次反馈「背景图和名片框还是不太适配」）：
+    #   旧 bbox 只取「离中心最近的那一块透明连通域」，可框里的花枝/丝带会横穿内孔，
+    #   把整块内孔切成一堆碎片 —— 贴在边上的薄片被丢掉，背景就缩在最大那块里，
+    #   框内侧于是露出一圈细长暗缝（截图实测 bc_580219 右侧、bc_580220 底边）。
+    #   新口径：内孔 = 外轮廓范围内所有明确透明的像素（含被装饰切开的碎片），
+    #   只按面积过滤掉零星碎点，再整体外扩 2~4px 压进框底。
+    sil = _silhouette_mask(cv2, a)
+    body = inner
+    if sil is not None:
+        body = _interior_union(cv2, a, sil, inner, w, h)
     # 外扩：背景压进框边 2~4px，消除抗锯齿造成的接缝暗边
     d = max(2, int(round(0.004 * min(h, w))))
     ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (d * 2 + 1, d * 2 + 1))
-    grown = cv2.dilate(inner, ker)
+    grown = cv2.dilate(body, ker)
     ys, xs = np.nonzero(grown)
     if len(xs) == 0:
         return _hole_fallback(a)
@@ -260,7 +310,6 @@ def hole_geom(path: pathlib.Path):
     # clip：优先取框的外轮廓（框内全允许背景，只有框外裁掉，不会被装饰啃出缺口）；
     # 外轮廓不可信时退回内孔轮廓，epsilon 取长边 0.12%（至少 1px）
     clip = None
-    sil = _silhouette_mask(cv2, a)
     if sil is not None:
         clip = _polygon_of(cv2, sil, w, h, 0.0012)
     if not clip:

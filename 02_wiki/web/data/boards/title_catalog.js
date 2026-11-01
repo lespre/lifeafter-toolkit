@@ -66206,7 +66206,8 @@ window.WIKI_BOARD_title_catalog = {
    "dyn_tex": "chenghao/jiamianqishi/vx/icon_chenghao_jmqs_vx_00.png",
    "dyn_webp": "assets/title_dyn/anim/main_chenghao_jiamianqishi.webp",
    "dyn_anim_frames": 40,
-   "dyn_anim_ms": 121
+   "dyn_anim_ms": 121,
+   "dyn_has_text": true
   },
   {
    "id": "title_1215",

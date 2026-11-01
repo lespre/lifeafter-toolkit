@@ -1,6 +1,6 @@
 {
   "base": "http://127.0.0.1:8765",
-  "at": "2026-11-01T14:02:55.054Z",
+  "at": "2026-11-01T17:12:17.157Z",
   "results": [
     {
       "board": "fashion_wardrobe",
@@ -219,7 +219,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
@@ -444,7 +444,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
         "hasHorizontalScroll": false,
@@ -792,7 +792,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
@@ -1099,7 +1099,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
@@ -1448,7 +1448,7 @@
           "runtime-final-unknown",
           "unverified"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
@@ -1756,7 +1756,7 @@
           "static-config",
           "unverified"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
@@ -1772,301 +1772,218 @@
       "pageErrors": [],
       "consoleErrors": [],
       "facts": {
-        "title": "（内测版）（五）装备属性（武器·护甲）",
-        "metaline": "来源：PE 还原树 pe_20261020 · 9B6BE39D902BD6D6；node 索引法 100% 解码：声明 5,248 槽 = 1,553 活跃行全解 + 1,238 墓碑 + 2,457 空槽） · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
-        "count": "显示 1647 / 1647 条",
-        "pillCount": 7,
-        "filterSelects": 9,
-        "gridChildren": 1647,
+        "title": "装备属性 · 三服总览",
+        "metaline": "来源：PE 测试服源包 · 装备属性表_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk） · 生成 2026-11-01技术详情",
+        "count": "显示 2586 / 2586 条",
+        "pillCount": 8,
+        "filterSelects": 10,
+        "gridChildren": 2586,
         "cardTags": [
           {
-            "n": "帝国坦克（等级1）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "帝国坦克（等级2）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "帝国坦克（等级3）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "诱饵手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "RX-78型扩散器",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "X10A型扩散器",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶（祝福）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶（临时）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶(战役)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "信号手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "鞭炮",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "糖豆",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶(增伤)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹(击晕)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "1级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "2级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "6级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹(击晕)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "异变手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "采集-诱饵手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "2级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级荧光水球",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级荧光水球",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           }
         ],
-        "stateTagKinds": [
-          "static-config",
-          "unresolved"
-        ],
-        "siteNavItems": 33,
+        "stateTagKinds": [],
+        "siteNavItems": 18,
         "hasHamburger": true,
-        "bodyClasses": "wiki-board b-equipment_attrs",
+        "bodyClasses": "wiki-board b-equipment_attrs equip-mode",
         "hasHorizontalScroll": false,
         "drawer": "block->block|opened",
         "detailOpens": "no-panel"
@@ -2088,7 +2005,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
@@ -2102,19 +2019,17 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 404 (File not found)"
-      ],
+      "consoleErrors": [],
       "facts": {
-        "title": "（内测版）当期&历史每期抽奖奖池",
-        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（2026-10-30 热更） · 奖池配置 super_fashion_lottery_conf_data / special_chip_lottery_hd_conf_data · 生成 2026-10-31技术详情",
-        "count": "显示 688 / 688 条",
-        "pillCount": 9,
+        "title": "（内测版）（一）活动奖池",
+        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（mini-VM 字节码执行，3519 行） · 奖池配置 super_fashion_lottery_conf_data / lottery_team_hd_conf_data 等 · 生成 2026-11-01技术详情",
+        "count": "显示 993 / 993 条",
+        "pillCount": 13,
         "filterSelects": 6,
-        "gridChildren": 49,
+        "gridChildren": 4,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
         "hasHorizontalScroll": false,
@@ -2130,7 +2045,7 @@
       "pageErrors": [],
       "consoleErrors": [],
       "facts": {
-        "title": "（内测版）（六）称号",
+        "title": "（内测版）（四）称号",
         "metaline": "来源：简单生存服（体验服 Documents 快照） · 生成 未记录技术详情",
         "count": "显示 1550 / 1550 条",
         "pillCount": 3,
@@ -2138,280 +2053,280 @@
         "gridChildren": 1550,
         "cardTags": [
           {
-            "n": "初级伐木工",
+            "n": "2026夏尔巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级挖矿工",
+            "n": "2026夏尔巅峰赛-全国季军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级采麻工",
+            "n": "2026夏尔巅峰赛-全国亚军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级枪械工",
+            "n": "2026夏尔巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级护甲工",
+            "n": "2026特战巅峰赛-全国季军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级家具工",
+            "n": "2026特战巅峰赛-全国亚军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级步枪兵",
+            "n": "2026特战巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级狙击手",
+            "n": "且循微光赴自由",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级武士",
+            "n": "向光生长",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级伐木工",
+            "n": "钓手·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级挖矿工",
+            "n": "钓师·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级采麻工",
+            "n": "钓神·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级枪械工",
+            "n": "钓手·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级护甲工",
+            "n": "钓师·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级家具工",
+            "n": "钓神·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级步枪兵",
+            "n": "钓手·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级狙击手",
+            "n": "钓师·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级武士",
+            "n": "钓神·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级伐木工",
+            "n": "钓手·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级挖矿工",
+            "n": "钓师·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级采麻工",
+            "n": "钓神·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级枪械工",
+            "n": "航海新秀",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级护甲工",
+            "n": "远洋精英",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级家具工",
+            "n": "深海霸主",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级步枪兵",
+            "n": "S2危域·征服者",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级狙击手",
+            "n": "S2危域·迅猎者",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级武士",
+            "n": "雪猿凯撒·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级伐木工",
+            "n": "幻瞳夜蛾·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级挖矿工",
+            "n": "突变暴君·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级采麻工",
+            "n": "剧毒螯蛛·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级枪械工",
+            "n": "秋叙晨光",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级护甲工",
+            "n": "A-SOUL时代沸腾期待",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级家具工",
+            "n": "焦香酥脆",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级步枪兵",
+            "n": "焦香酥脆",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级狙击手",
+            "n": "禁止通行",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级武士",
+            "n": "守夜人小队",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "伐木专家",
+            "n": "末世先驱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "挖矿专家",
+            "n": "荒野主宰",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "采麻专家",
+            "n": "废土专家",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "枪械专家",
+            "n": "星火相聚·守望",
             "tags": [
               "静态配置"
             ],
@@ -2421,7 +2336,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,
@@ -2445,7 +2360,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board view-mode b-cdn_library",
         "hasHorizontalScroll": false,
@@ -2469,7 +2384,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board view-mode b-local_restore_tree",
         "hasHorizontalScroll": false,
@@ -2694,7 +2609,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-fashion_wardrobe fashion-mode",
         "hasHorizontalScroll": false,
@@ -2919,7 +2834,7 @@
           }
         ],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-vehicle_full vehicle-mode",
         "hasHorizontalScroll": false,
@@ -3267,7 +3182,7 @@
           "static-config",
           "unresolved"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
@@ -3574,7 +3489,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-talent_catalog",
         "hasHorizontalScroll": false,
@@ -3923,7 +3838,7 @@
           "runtime-final-unknown",
           "unverified"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
@@ -4231,7 +4146,7 @@
           "static-config",
           "unverified"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-gene_potential_catalog",
         "hasHorizontalScroll": false,
@@ -4247,301 +4162,218 @@
       "pageErrors": [],
       "consoleErrors": [],
       "facts": {
-        "title": "（内测版）（五）装备属性（武器·护甲）",
-        "metaline": "来源：PE 还原树 pe_20261020 · 9B6BE39D902BD6D6；node 索引法 100% 解码：声明 5,248 槽 = 1,553 活跃行全解 + 1,238 墓碑 + 2,457 空槽） · 经典服 + 简单生存服 · 生成 2026-10-29技术详情",
-        "count": "显示 1647 / 1647 条",
-        "pillCount": 7,
-        "filterSelects": 9,
-        "gridChildren": 1647,
+        "title": "装备属性 · 三服总览",
+        "metaline": "来源：PE 测试服源包 · 装备属性表_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk） · 生成 2026-11-01技术详情",
+        "count": "显示 2586 / 2586 条",
+        "pillCount": 8,
+        "filterSelects": 10,
+        "gridChildren": 2586,
         "cardTags": [
           {
-            "n": "帝国坦克（等级1）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "帝国坦克（等级2）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "帝国坦克（等级3）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "诱饵手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "RX-78型扩散器",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "X10A型扩散器",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶（祝福）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶（临时）",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶(战役)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "信号手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "鞭炮",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "糖豆",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶(增伤)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹(击晕)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "1级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "2级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "6级冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹(击晕)",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "震爆弹",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "特制冲击手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "异变手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "采集-诱饵手雷",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "2级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级燃烧瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级荧光水球",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级荧光水球",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "3级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "4级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           },
           {
-            "n": "5级枯萎之瓶",
-            "tags": [
-              "静态配置"
-            ],
-            "ev": "结构已解析"
+            "n": null,
+            "tags": [],
+            "ev": null
           }
         ],
-        "stateTagKinds": [
-          "static-config",
-          "unresolved"
-        ],
-        "siteNavItems": 33,
+        "stateTagKinds": [],
+        "siteNavItems": 18,
         "hasHamburger": true,
-        "bodyClasses": "wiki-board b-equipment_attrs",
+        "bodyClasses": "wiki-board b-equipment_attrs equip-mode",
         "hasHorizontalScroll": false,
         "drawer": "none->block|opened",
         "detailOpens": "no-panel"
@@ -4563,7 +4395,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-common_item_text_sources",
         "hasHorizontalScroll": false,
@@ -4577,19 +4409,17 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [
-        "Failed to load resource: the server responded with a status of 404 (File not found)"
-      ],
+      "consoleErrors": [],
       "facts": {
-        "title": "（内测版）当期&历史每期抽奖奖池",
-        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（2026-10-30 热更） · 奖池配置 super_fashion_lottery_conf_data / special_chip_lottery_hd_conf_data · 生成 2026-10-31技术详情",
-        "count": "显示 688 / 688 条",
-        "pillCount": 9,
+        "title": "（内测版）（一）活动奖池",
+        "metaline": "来源：当前还原树 · com/cdata/huodong_conf_data（mini-VM 字节码执行，3519 行） · 奖池配置 super_fashion_lottery_conf_data / lottery_team_hd_conf_data 等 · 生成 2026-11-01技术详情",
+        "count": "显示 993 / 993 条",
+        "pillCount": 13,
         "filterSelects": 6,
-        "gridChildren": 49,
+        "gridChildren": 4,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-lottery_periods",
         "hasHorizontalScroll": false,
@@ -4605,7 +4435,7 @@
       "pageErrors": [],
       "consoleErrors": [],
       "facts": {
-        "title": "（内测版）（六）称号",
+        "title": "（内测版）（四）称号",
         "metaline": "来源：简单生存服（体验服 Documents 快照） · 生成 未记录技术详情",
         "count": "显示 1550 / 1550 条",
         "pillCount": 3,
@@ -4613,280 +4443,280 @@
         "gridChildren": 1550,
         "cardTags": [
           {
-            "n": "初级伐木工",
+            "n": "2026夏尔巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级挖矿工",
+            "n": "2026夏尔巅峰赛-全国季军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级采麻工",
+            "n": "2026夏尔巅峰赛-全国亚军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级枪械工",
+            "n": "2026夏尔巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级护甲工",
+            "n": "2026特战巅峰赛-全国季军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级家具工",
+            "n": "2026特战巅峰赛-全国亚军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级步枪兵",
+            "n": "2026特战巅峰赛-全国冠军",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级狙击手",
+            "n": "且循微光赴自由",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "初级武士",
+            "n": "向光生长",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级伐木工",
+            "n": "钓手·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级挖矿工",
+            "n": "钓师·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级采麻工",
+            "n": "钓神·向导",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级枪械工",
+            "n": "钓手·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级护甲工",
+            "n": "钓师·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级家具工",
+            "n": "钓神·巨物",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级步枪兵",
+            "n": "钓手·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级狙击手",
+            "n": "钓师·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "中级武士",
+            "n": "钓神·满舱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级伐木工",
+            "n": "钓手·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级挖矿工",
+            "n": "钓师·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级采麻工",
+            "n": "钓神·独竿",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级枪械工",
+            "n": "航海新秀",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级护甲工",
+            "n": "远洋精英",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级家具工",
+            "n": "深海霸主",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级步枪兵",
+            "n": "S2危域·征服者",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级狙击手",
+            "n": "S2危域·迅猎者",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "高级武士",
+            "n": "雪猿凯撒·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级伐木工",
+            "n": "幻瞳夜蛾·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级挖矿工",
+            "n": "突变暴君·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级采麻工",
+            "n": "剧毒螯蛛·克敌",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级枪械工",
+            "n": "秋叙晨光",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级护甲工",
+            "n": "A-SOUL时代沸腾期待",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级家具工",
+            "n": "焦香酥脆",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级步枪兵",
+            "n": "焦香酥脆",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级狙击手",
+            "n": "禁止通行",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "特级武士",
+            "n": "守夜人小队",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "伐木专家",
+            "n": "末世先驱",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "挖矿专家",
+            "n": "荒野主宰",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "采麻专家",
+            "n": "废土专家",
             "tags": [
               "静态配置"
             ],
             "ev": "结构已解析"
           },
           {
-            "n": "枪械专家",
+            "n": "星火相聚·守望",
             "tags": [
               "静态配置"
             ],
@@ -4896,7 +4726,7 @@
         "stateTagKinds": [
           "static-config"
         ],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board b-title_catalog",
         "hasHorizontalScroll": false,
@@ -4920,7 +4750,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board view-mode b-cdn_library",
         "hasHorizontalScroll": false,
@@ -4944,7 +4774,7 @@
         "gridChildren": 1,
         "cardTags": [],
         "stateTagKinds": [],
-        "siteNavItems": 33,
+        "siteNavItems": 18,
         "hasHamburger": true,
         "bodyClasses": "wiki-board view-mode b-local_restore_tree",
         "hasHorizontalScroll": false,
