@@ -185,7 +185,7 @@ def _render_item(job):
     ★ 并行安全：每条只写自己的 assets/avatar_anim/<id>.png，文件名互不冲突；
       avatar_catalog.json 只由主进程最后统一写一次，worker 绝不碰。
     """
-    it, size, frames, fmt = job
+    it, size, frames, fmt, q, aq = job
     iid = it["id"]
     base = it["spine_path"].strip().replace("\\", "/").rstrip("/")
     at_f = SPINE_DIR / (base + ".atlas")
@@ -247,9 +247,12 @@ def _render_item(job):
         #   于是名片框才能从 384 提到 768 重渲（详情卡面约 614px，384 放大 1.6 倍
         #   就是用户说的"糊得离谱"），总体积反而不涨。
         #   首帧另存 PNG：没有静态边框的卡面主图仍用它，动图只负责悬停/详情播放。
+        # ★ 2026-11-02：alpha_quality 单独可调。名片框的 alpha 基本是「框内/框外」
+        #   二分遮罩，降到 80 只影响半透明光晕的精度，体积却能省三成 ——
+        #   正好用来抵消分辨率从 640 提到 1152 的增量（灯箱 614 CSS×DPR2 需 1228）。
         frs[0].save(ANIM_DIR / (iid + ".webp"), format="WEBP", save_all=True,
                     append_images=frs[1:], duration=int(round(dur * 1000 / cnt)),
-                    loop=0, quality=90, method=4)
+                    loop=0, quality=q, alpha_quality=aq, method=4)
         frs[0].save(ANIM_DIR / (iid + ".png"), format="PNG")
         anim_rel = "assets/avatar_anim/%s.webp" % iid
     else:
@@ -273,6 +276,10 @@ def main() -> int:
     ap.add_argument("--size", type=int, default=168)
     ap.add_argument("--format", choices=["png", "webp"], default="png",
                     help="动图容器：png=APNG（默认）；webp=动图 WebP（同分辨率约 1/2.3 体积）")
+    ap.add_argument("--quality", type=int, default=90,
+                    help="WebP 质量（仅 --format webp 生效；提分辨率时用它压体积）")
+    ap.add_argument("--alpha-quality", type=int, default=100,
+                    help="WebP alpha 通道精度 0~100（仅 --format webp 生效；名片框降到 80 约省三成体积）")
     ap.add_argument("--frames", type=int, default=24)
     ap.add_argument("--budget", type=float, default=5400.0)
     ap.add_argument("--force", action="store_true")
@@ -330,7 +337,7 @@ def main() -> int:
         log("并行 %d 进程（共 %s 逻辑核）" % (jobs, os.cpu_count()))
         pool = ProcessPoolExecutor(max_workers=jobs)
         try:
-            futs = {pool.submit(_render_item, (it, a.size, a.frames, a.format)): it["id"]
+            futs = {pool.submit(_render_item, (it, a.size, a.frames, a.format, a.quality, a.alpha_quality)): it["id"]
                     for it in targets}
             for fut in as_completed(futs):
                 collect(fut.result())
@@ -346,7 +353,7 @@ def main() -> int:
             if time.time() > t0 + a.budget:
                 log("到预算，停在第 %d 条" % len(results))
                 break
-            collect(_render_item((it, a.size, a.frames, a.format)))
+            collect(_render_item((it, a.size, a.frames, a.format, a.quality, a.alpha_quality)))
     log("完成：成功 %d ｜ 失败 %d ｜ %.0fs" % (done, fail, time.time() - t0))
     for f in fails[:15]:
         log("  失败 %s ｜ %s ｜ %s" % f)

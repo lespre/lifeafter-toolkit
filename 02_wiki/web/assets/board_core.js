@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102eqtag1")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102coreflt1")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1469,7 +1469,10 @@ function renderItemMedia(m){
     /* 叠加模式照样挂动图：卡面比例已被 --ar 锁死，悬停换 src 不会改变卡面尺寸。
        只有排在后面的次图（非主图）不挂，避免一张卡上多个动图同时播放。 */
     const hot=(anim&&i===0&&!bg);
-    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}"${_cp}><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
+    /* 2026-11-02：烘焙过的背景（fit=frame）与边框图同尺寸，孔外已是全透明 alpha，
+       直接 inset:0 铺满即可 —— 不再按 --hl/--hw 摆位，也不吃 clip-path。 */
+    const _full=(bg&&x.fit==="frame")?" mi-bg-full":"";
+    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}${_full}"${_cp}><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
   }).join("");
   const ph=m.placeholder?`<figure class="mi ph"><img src="${esc(m.placeholder)}" alt="客户端占位图" loading="lazy"><figcaption>占位</figcaption></figure>`:"";
   /* 边框图确实缺失 → 如实标注，但不拿场景图顶替「边框」这个身份；
@@ -1519,6 +1522,228 @@ document.addEventListener("mouseout",e=>{
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
 /* 2026-11-01：装备属性四卡（三服总览 + 三张分服卡）——卡面按人物时装同款渲染 */
 const EQUIP_BOARD=(function(){try{return /^equipment_attrs/.test(getParam("b")||"");}catch(e){return false;}})();
+/* ════════════════════ 基因潜能板（board id = gene_potential_catalog）════════════════════
+   2026-11-02 用户口径：必须像装备属性板一样分服务器，不能把两服混进同一张视图。
+   数据事实（104 条）：简单生存 48 条（种族 × 潜能等级 Lv0–Lv3，带效果与节点分值）；
+   经典服 86 条 = 两服共有 30 条字段级（同口径）+ 仅经典服 56 条名册级（只有名字 + 档位）。
+   ⇒ 页内服别 Tab（两服总览 / 简单生存 / 经典服）；经典服页内再分「字段级 / 名册级」两块。
+   ★ 类名统一 gene-*，样式只挂 body.b-gene_potential_catalog，其它板零影响。 */
+const GENE_BOARD=(function(){try{return (getParam("b")||"")==="gene_potential_catalog";}catch(e){return false;}})();
+const GENE_SERVERS=[
+  {key:"overview",label:"两服总览",branch:null,desc:"服别入口"},
+  {key:"kj1",label:"简单生存",branch:"简单生存",desc:"字段级 · 种族 × 等级"},
+  {key:"classic",label:"经典服",branch:"经典服",desc:"字段级 + 名册级"}
+];
+const GENE_RACE_ORDER=["人类","半感染者","械骨人"];
+const GENE_RACE_CLS={"人类":"r-human","半感染者":"r-infected","械骨人":"r-bone"};
+const GENE_LEVELS=[0,1,2,3];
+const GENE_TIER_ORDER=["初级","中级","高级","超级","特级","究级"];
+let GENE_SERVER=(function(){
+  try{
+    const hit=GENE_SERVERS.find(s=>s.key===(getParam("gs")||""));
+    return hit?hit.key:"overview";
+  }catch(e){return "overview";}
+})();
+function geneServerDef(){return GENE_SERVERS.find(s=>s.key===GENE_SERVER)||GENE_SERVERS[0];}
+function geneBranches(it){return Array.isArray(it&&it.server_branches)?it.server_branches:[];}
+function geneInServer(it,branch){return !branch||geneBranches(it).includes(branch);}
+function geneRaceOf(it){const r=String((it&&it.race_name)||"");return GENE_RACE_ORDER.includes(r)?r:"";}
+function geneRaceCls(it){return GENE_RACE_CLS[geneRaceOf(it)]||"r-none";}
+function geneIsRoster(it){return it.level===null||it.level===undefined||it.level==="";}
+/* 卡面：族色条 + 名字 +（Lv / 分值 或 档位）徽章 + 效果（名册级给口径说明），证据标签压成圆点 */
+function geneCardHTML(it,cidx){
+  const roster=geneIsRoster(it);
+  const cls=`i roster gene-card ${geneRaceCls(it)}${roster?" gene-mini":""}`;
+  const badges=[];
+  if(roster){
+    if(it.tier)badges.push(`<span class="gene-b tier" data-tier="${esc(it.tier)}">${esc(it.tier)}</span>`);
+  }else{
+    if(it.level!=null)badges.push(`<span class="gene-b lv" title="潜能等级">Lv${esc(it.level)}</span>`);
+    if(it.node_score!=null)badges.push(`<span class="gene-b sc" title="节点分值（静态表 node_score）">${esc(it.node_score)} 分</span>`);
+  }
+  const shared=geneBranches(it).length>1;
+  if(shared)badges.push(`<span class="gene-b srv" title="简单生存与经典服同口径的字段级节点">两服共有</span>`);
+  const eff=String(it.effect_desc||"").trim();
+  const body=roster
+    ? `<div class="gene-note">名册级 · 字段待解码回填</div>`
+    : `<div class="gene-eff" title="${esc(eff)}">${esc(eff||"未给出效果文本")}</div>`;
+  const tags=Array.isArray(it.status_tags)?it.status_tags:[];
+  const dots=tags.length
+    ? `<span class="gene-dots">${tags.map(t=>`<i class="gene-dot ${STATE_CLASS[t]||"unresolved"}" title="${esc(STATE_CN[t]||COMMON_VAL_CN[t]||t)}"></i>`).join("")}</span>`
+    : "";
+  return `<div class="${cls}" data-cidx="${cidx}" role="button" tabindex="0" aria-label="查看「${esc(it.name||it.id)}」详情">
+    <span class="gene-race-bar" aria-hidden="true"></span>
+    <div class="gene-top"><span class="gene-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</span>${dots}</div>
+    <div class="gene-bads">${badges.join("")}</div>
+    ${body}
+  </div>`;
+}
+function geneTabsHTML(){
+  return `<nav class="gene-tabs" role="tablist" aria-label="服别">
+    ${GENE_SERVERS.map(s=>{
+      const on=s.key===GENE_SERVER;
+      return `<button type="button" class="gene-tab${on?" on":""}" role="tab" aria-selected="${on}" data-gene-server="${s.key}">
+        <span class="gene-tab-nm">${esc(s.label)}</span><span class="gene-tab-ds">${esc(s.desc)}</span>
+      </button>`;
+    }).join("")}
+  </nav>`;
+}
+function geneStatsHTML(list){
+  const shared=list.filter(it=>geneBranches(it).length>1).length;
+  if(GENE_SERVER==="classic"){
+    const field=list.filter(it=>!geneIsRoster(it)).length;
+    const roster=list.filter(geneIsRoster).length;
+    return `<div class="gene-stats">
+      <span class="gene-stat">条目 <b>${list.length}</b></span>
+      <span class="gene-stat">字段级 <b>${field}</b></span>
+      <span class="gene-stat">名册级 <b>${roster}</b></span>
+      <span class="gene-stat">两服共有字段级 <b>${shared}</b></span>
+    </div>`;
+  }
+  const races=GENE_RACE_ORDER.filter(r=>list.some(it=>geneRaceOf(it)===r)).length;
+  const lv=[...new Set(list.map(it=>it.level).filter(v=>v!=null))].sort((a,b)=>a-b);
+  const lvTxt=lv.length?(lv.length===1?`Lv${lv[0]}`:`Lv${lv[0]}–Lv${lv[lv.length-1]}`):"—";
+  return `<div class="gene-stats">
+    <span class="gene-stat">条目 <b>${list.length}</b></span>
+    <span class="gene-stat">种族 <b>${races}</b></span>
+    <span class="gene-stat">等级 <b>${lvTxt}</b></span>
+    <span class="gene-stat">两服共有 <b>${shared}</b></span>
+  </div>`;
+}
+function geneSectionHead(title,n,note){
+  return `<div class="gene-sec-h"><span class="gene-sec-t">${esc(title)}</span><span class="gene-sec-n">${n} 条</span>${note?`<span class="gene-sec-note">${esc(note)}</span>`:""}</div>`;
+}
+/* 种族 × 等级矩阵：每个种族一行 4 列等级泳道（Lv0–Lv3） */
+function geneRaceMatrix(list,htmls,idxs){
+  const byRace=new Map();
+  idxs.forEach(i=>{
+    const r=geneRaceOf(list[i])||"未标注";
+    if(!byRace.has(r))byRace.set(r,[]);
+    byRace.get(r).push(i);
+  });
+  const order=[...GENE_RACE_ORDER,...[...byRace.keys()].filter(r=>!GENE_RACE_ORDER.includes(r))];
+  const secs=[];
+  order.forEach(race=>{
+    const arr=byRace.get(race);
+    if(!arr||!arr.length)return;
+    const lanes=GENE_LEVELS.map(lv=>{
+      const lane=arr.filter(i=>Number(list[i].level)===lv);
+      return `<div class="gene-lane">
+        <div class="gene-lane-h"><span>Lv${lv}</span><b>${lane.length}</b></div>
+        <div class="gene-lane-body">${lane.length?lane.map(i=>htmls[i]).join(""):`<span class="gene-lane-empty">无节点</span>`}</div>
+      </div>`;
+    }).join("");
+    secs.push(`<section class="gene-race-sec ${GENE_RACE_CLS[race]||"r-none"}">
+      <div class="gene-race-h"><i class="gene-race-dot" aria-hidden="true"></i><span class="gene-race-nm">${esc(race)}</span><span class="gene-race-cn">${arr.length} 条</span></div>
+      <div class="gene-lanes">${lanes}</div>
+    </section>`);
+  });
+  return `<div class="gene-matrix">${secs.join("")}</div>`;
+}
+/* 经典服名册级：6 个档位列 */
+function geneTierBoard(list,htmls,idxs){
+  const cols=GENE_TIER_ORDER.map(t=>{
+    const arr=idxs.filter(i=>String(list[i].tier||"")===t);
+    return `<div class="gene-tier-col" data-tier="${esc(t)}">
+      <div class="gene-tier-h"><span>${esc(t)}</span><b>${arr.length}</b></div>
+      <div class="gene-tier-body">${arr.length?arr.map(i=>htmls[i]).join(""):`<span class="gene-lane-empty">无条目</span>`}</div>
+    </div>`;
+  }).join("");
+  return `<div class="gene-tiers">${cols}</div>`;
+}
+function geneBoardHTML(list,htmls){
+  const tabs=geneTabsHTML(),stats=geneStatsHTML(list);
+  if(GENE_SERVER==="classic"){
+    const fieldIdx=[],rosterIdx=[];
+    list.forEach((it,i)=>(geneIsRoster(it)?rosterIdx:fieldIdx).push(i));
+    let body="";
+    if(fieldIdx.length)body+=geneSectionHead("字段级节点",fieldIdx.length,"种族 × 潜能等级 · 与简单生存服同口径")+geneRaceMatrix(list,htmls,fieldIdx);
+    if(rosterIdx.length){
+      const uniq=new Set(rosterIdx.map(i=>String(list[i].name||"")).filter(Boolean)).size;
+      body+=geneSectionHead("名册级条目",rosterIdx.length,`经典服池名册 · 仅名字与档位 · ${uniq} 个名字`);
+      body+=geneTierBoard(list,htmls,rosterIdx);
+    }
+    return tabs+stats+body;
+  }
+  return tabs+stats+geneRaceMatrix(list,htmls,list.map((_,i)=>i));
+}
+function geneOvCard(key,label,desc,n,rows,cls){
+  return `<button type="button" class="gene-ov-card ${cls||""}" data-gene-server="${key}">
+    <span class="gene-ov-top"><span class="gene-ov-nm">${esc(label)}</span><span class="gene-ov-n">${n}<em>条</em></span></span>
+    <span class="gene-ov-desc">${esc(desc)}</span>
+    <span class="gene-ov-rows">${rows.map(r=>`<span>${esc(r)}</span>`).join("")}</span>
+    <span class="gene-ov-go">进入 →</span>
+  </button>`;
+}
+function geneOverviewRender(g,items){
+  C2.prov=GENE_D2;C2.chips=[];C2.html={};
+  const kj=items.filter(it=>geneInServer(it,"简单生存"));
+  const cl=items.filter(it=>geneInServer(it,"经典服"));
+  const shared=items.filter(it=>geneBranches(it).length>1);
+  const clField=cl.filter(it=>!geneIsRoster(it)).length;
+  const clRoster=cl.filter(geneIsRoster).length;
+  const hit=(items.length!==DATA.items.length)
+    ? `<div class="gene-ov-hit">当前搜索 / 筛选命中 ${items.length} 条 —— 点下方服别查看命中结果</div>`:"";
+  g.innerHTML=geneTabsHTML()+hit+`<div class="gene-ov">
+    ${geneOvCard("kj1","简单生存","字段级 · 种族 × 等级",kj.length,
+      [`种族 ${GENE_RACE_ORDER.filter(r=>kj.some(it=>geneRaceOf(it)===r)).length} 个 · 潜能等级 Lv0–Lv3`,
+       "带效果文本与节点分值",
+       `含两服共有 ${shared.length} 条`],"kj1")}
+    ${geneOvCard("classic","经典服","字段级 + 名册级",cl.length,
+      [`字段级 ${clField} 条（含共有 ${shared.length} 条）`,
+       `名册级 ${clRoster} 条 · 6 个档位`,
+       "名册级仅名字与档位，不猜种族 / 数值"],"classic")}
+  </div>`+`<div class="gene-ov-note">两服共有 ${shared.length} 条字段级节点会同时出现在两服页内；经典服另有 ${clRoster} 条仅池名册级条目，字段解码突破后回填。</div>`;
+  if(C2.open)c2Resync();
+}
+function geneCountText(list){
+  const total=DATA.items.length;
+  if(GENE_SERVER==="overview"){
+    return `两服总览 · 共 ${total} 条 · 简单生存 ${DATA.items.filter(it=>geneInServer(it,"简单生存")).length} · 经典服 ${DATA.items.filter(it=>geneInServer(it,"经典服")).length} · 两服共有 ${DATA.items.filter(it=>geneBranches(it).length>1).length}`;
+  }
+  if(GENE_SERVER==="classic"){
+    const field=list.filter(it=>!geneIsRoster(it)).length,roster=list.filter(geneIsRoster).length;
+    return `显示 ${list.length} / ${total} 条 · 经典服 · 字段级 ${field} 条 · 名册级 ${roster} 条`;
+  }
+  return `显示 ${list.length} / ${total} 条 · 简单生存 · ${GENE_RACE_ORDER.filter(r=>list.some(it=>geneRaceOf(it)===r)).length} 个种族 · ${new Set(list.map(it=>it.level).filter(v=>v!=null)).size} 个等级`;
+}
+function geneD2Body(it,mode){
+  const rows=[];
+  const put=(k,v)=>{if(v===null||v===undefined||String(v)==="")return;rows.push([k,String(v)]);};
+  put("种族",it.race_name||"未标注（经典服名册级）");
+  put("潜能等级",it.level!=null?`Lv${it.level}`:"未给出");
+  put("节点分值",it.node_score!=null?it.node_score:"未给出");
+  put("档位",it.tier);
+  put("服型并集",geneBranches(it).join("、"));
+  put("条目类型",it.kind);
+  put("字段口径",it.fields_note);
+  put("来源表",it.source);
+  put("证据等级",EV_CN[it.evidence]||it.evidence);
+  put("状态标签",(Array.isArray(it.status_tags)?it.status_tags:[]).map(t=>STATE_CN[t]||COMMON_VAL_CN[t]||t).join("、"));
+  put("源表行键",it.provenance&&it.provenance.row_key);
+  const eff=String(it.effect_desc||"").trim();
+  const kv=rows.map(([k,v])=>`<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`).join("");
+  const content=`<div class="c2-embed gene-d2">
+    <div class="gene-d2-eff"><span class="gene-d2-k">效果</span>${eff?esc(eff):'<span class="gene-d2-na">该条目只有池名册级信息（名字 + 档位），字段解码后回填</span>'}</div>
+    <div class="fr-sec">字段</div>
+    <div class="fr-kv">${kv}</div>
+  </div>`;
+  return mode==="dock"?content:c2BarHTML(it,(C2.prov&&C2.prov.meta)?C2.prov.meta(it):"","main")+content;
+}
+const GENE_D2={
+  idOf:it=>it.id,
+  name:it=>it.name||it.display_name||it.id,
+  body:geneD2Body,
+  meta:it=>{
+    const parts=[];
+    if(it.race_name)parts.push(`<span class="skin-tag">${esc(it.race_name)}</span>`);
+    if(it.level!=null)parts.push(`<span class="skin-tag">Lv${esc(it.level)}</span>`);
+    if(it.node_score!=null)parts.push(`<span class="skin-tag">${esc(it.node_score)} 分</span>`);
+    if(it.tier)parts.push(`<span class="skin-tag">${esc(it.tier)}</span>`);
+    parts.push(`<span class="c2-no">节点 ${esc(it.item_id??it.id)}</span>`);
+    return parts.join("");
+  }
+};
 const FR_BUCKETS=["头发","头饰","面饰","衣服","整套","背包","挂饰","荧光棒","投影","半感染者花苞","戒指","捏脸","其他"];
 const FR_BUCKET_CLS={"头发":"hair","头饰":"hat","面饰":"face","衣服":"cloth","整套":"suit","背包":"bag","挂饰":"pendant","荧光棒":"light","投影":"proj","其他":"other"};
 const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:true};
@@ -2589,6 +2814,9 @@ const CORE_BOARD=(function(){try{return (getParam("b")||"")==="mutation_core_ful
    style 是等级档位（初/中/高级/资深…），不是分类，因此不参与分组。
    中文标签按各行 desc 实证归纳，不做跨表推断。 */
 const TITLE_BOARD=(function(){try{return (getParam("b")||"")==="title_catalog";}catch(e){return false;}})();
+/* 活动总表（activity_master，2026-11-02）：3519 条且无一张配图。
+   按月份折叠为台账：状态概览 + 月份分组 + 紧凑行；仅本板生效。 */
+const ACTIVITY_BOARD=(function(){try{return (getParam("b")||"")==="activity_master";}catch(e){return false;}})();
 /* 料理与食谱板（edible_catalog，2026-11-02）：料理为主表，食材默认折叠为次级分组。
    折叠只影响可见范围，仍可勾选展开、仍可被类型筛选命中（不影响其它板）。 */
 const EDIBLE_BOARD=(function(){try{return (getParam("b")||"")==="edible_catalog";}catch(e){return false;}})();
@@ -4088,6 +4316,457 @@ function treeRender(items){
   treeIndexRender(items);
 }
 
+/* ════════════════ 活动总表月度台账（activity_master）════════════════
+   3519 条、0 张配图：不再铺 5 列卡片，改为「状态概览 + 月份折叠 + 44px 紧凑行」。
+   月份默认只展开当前/近期与仍有进行中、未开始的月份；历史月份折叠为单行头。
+   行点击复用 .i.roster 的 D2 链路，详情由 ACTIVITY_D2 自建。 */
+let AM_GROUPS=null,AM_LIST=null,AM_INDEX=null,AM_SIG="",AM_STATE=Object.create(null);
+function amStatusCls(s){
+  return s==="进行中"?"live":s==="未开始"?"up":s==="已结束"?"end":"none";
+}
+function amPlain(s){
+  return String(s??"").replace(/#[A-Za-z](?:\([^)]{0,80}\)|\d{1,3})?/g,"").replace(/\s+/g," ").trim();
+}
+function amCurMonth(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+}
+function amShiftMonth(ym,n){
+  const [y,m]=String(ym).split("-").map(Number);
+  const d=new Date(y,(m||1)-1+n,1);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+}
+function amDateRange(it,key){
+  const s=String(it.start||""),e=String(it.end||"");
+  if(!s&&!e)return "无时间";
+  const y=String(key||"").slice(0,4);
+  const sh=d=>{
+    if(!d)return "—";
+    return (y&&d.slice(0,4)===y)?d.slice(5):d;
+  };
+  return `${sh(s)} → ${sh(e)}`;
+}
+function amSortList(items){
+  return items.slice().sort((a,b)=>{
+    const sa=String(a.start||""),sb=String(b.start||"");
+    if(sa!==sb){
+      if(!sa)return 1;
+      if(!sb)return -1;
+      return sb.localeCompare(sa);
+    }
+    return Number(b.item_id||0)-Number(a.item_id||0);
+  });
+}
+function amGroupsOf(list){
+  const m=new Map();
+  for(const it of list){
+    const k=String(it.month||"").trim()||"无时间";
+    if(!m.has(k))m.set(k,[]);
+    m.get(k).push(it);
+  }
+  return m;
+}
+function amMonthKeys(groups){
+  return [...groups.keys()].sort((a,b)=>{
+    if(a==="无时间")return 1;
+    if(b==="无时间")return -1;
+    return b.localeCompare(a);
+  });
+}
+/* 状态概览口径：沿用当前「证据等级 + 板级筛选 + 搜索」，但剔除状态自身，
+   这样切到「已结束」时另外三张卡的数字不会被清零。 */
+function amCountBase(q,fe){
+  const cf=DATA._custFilters||[];
+  const out={"未开始":0,"进行中":0,"已结束":0,"无时间":0};
+  for(const it of DATA.items){
+    if(fe&&it.evidence!==fe)continue;
+    let ok=true;
+    for(const f of cf){
+      if(f.key==="activity_status")continue;
+      const v=f.sel?f.sel.value:"";
+      if(v&&String(it[f.key]??"")!==v){ok=false;break;}
+    }
+    if(!ok)continue;
+    if(q&&!JSON.stringify(it).toLowerCase().includes(q))continue;
+    const s=it.activity_status||"无时间";
+    out[s]=(out[s]||0)+1;
+  }
+  return out;
+}
+function amShouldOpen(key,group,q,monthSel,statusFilter,cur,openTo){
+  if(q)return true;
+  if(monthSel)return key===monthSel;
+  if(key==="无时间")return statusFilter==="无时间";
+  if(key>=cur&&key<=openTo)return true;
+  /* 远期/历史组不因单个「未开始」「已结束」自动展开：只认近 12 个月内仍有进行中的月份，
+     否则 2030 年的单条预告会白白撑开一组。 */
+  if(key<amShiftMonth(cur,-12))return false;
+  if(statusFilter==="已结束")return false;
+  if(statusFilter&&statusFilter!=="进行中")return false;
+  return group.some(it=>it.activity_status==="进行中");
+}
+function amRowsHTML(group){
+  return group.map(it=>{
+    const idx=AM_INDEX&&AM_INDEX.has(String(it.id))?AM_INDEX.get(String(it.id)):-1;
+    const st=it.activity_status||"无时间";
+    const cls=amStatusCls(st);
+    const name=it.name||it.display_name||it.id;
+    const typ=it.activity_type||it.kind||"";
+    const sub=amPlain(it.sub_title);
+    const tab=amPlain(it.tab_name||it.first_level_tab);
+    const note=sub||tab;
+    return `<div class="i roster am-row" data-cidx="${idx}" role="button" tabindex="0" aria-label="查看「${esc(name)}」详情">
+      <span class="am-dot ${cls}" aria-hidden="true"></span>
+      <div class="am-main">
+        <div class="am-name"><span class="am-nm">${esc(name)}</span>${typ?`<span class="am-type">${esc(typ)}</span>`:""}</div>
+        ${note?`<div class="am-sub">${esc(note)}</div>`:""}
+      </div>
+      <div class="am-when">
+        <span class="am-date">${esc(amDateRange(it,it.month))}</span>
+        <span class="am-status ${cls}">${esc(st)}</span>
+      </div>
+    </div>`;
+  }).join("");
+}
+function amOverviewHTML(counts,active){
+  const keys=["进行中","未开始","已结束","无时间"];
+  const total=keys.reduce((s,k)=>s+(counts[k]||0),0);
+  return `<div class="am-sum-head"><span class="am-sum-title">状态概览</span><span class="am-sum-note">当前筛选 ${total} 条 · 不含状态筛选 · 点击切换</span></div>`+
+    `<div class="am-sum">${keys.map(k=>{
+      const on=active===k;
+      return `<button type="button" class="am-stat${on?" on":""}" data-am-status="${esc(k)}" aria-pressed="${on}">
+        <span class="am-stat-n">${counts[k]||0}</span>
+        <span class="am-stat-l"><span class="am-dot ${amStatusCls(k)}" aria-hidden="true"></span>${esc(k)}</span>
+      </button>`;
+    }).join("")}</div>`;
+}
+function amRenderLedger(g,items,q,fe){
+  const cf=DATA._custFilters||[];
+  const stSel=cf.find(f=>f.key==="activity_status");
+  const monthSel=cf.find(f=>f.key==="month");
+  const active=stSel?stSel.value:"";
+  const mSel=monthSel?monthSel.value:"";
+  const counts=amCountBase(q,fe);
+  const cur=amCurMonth(),openTo=amShiftMonth(cur,2);
+  const sig=[q,fe,...cf.map(f=>f.key+"="+(f.sel?f.sel.value:""))].join("|");
+  if(sig!==AM_SIG){AM_SIG=sig;AM_STATE=Object.create(null);}
+  const list=amSortList(items);
+  AM_LIST=list;
+  AM_INDEX=new Map(list.map((it,i)=>[String(it.id),i]));
+  AM_GROUPS=amGroupsOf(list);
+  C2.prov=ACTIVITY_D2;C2.chips=list;C2.html={};
+  const keys=amMonthKeys(AM_GROUPS);
+  const months=keys.map(key=>{
+    const group=AM_GROUPS.get(key);
+    const live=group.filter(it=>it.activity_status==="进行中").length;
+    const up=group.filter(it=>it.activity_status==="未开始").length;
+    const open=(key in AM_STATE)?!!AM_STATE[key]:amShouldOpen(key,group,q,mSel,active,cur,openTo);
+    return `<section class="am-month${open?" open":""}" data-am-key="${esc(key)}">
+      <button type="button" class="am-mhead" data-am-month="${esc(key)}" aria-expanded="${open}">
+        <span class="am-m">${key==="无时间"?"无时间":esc(key)}</span>
+        <span class="am-mcount">${group.length} 条</span>
+        ${live?`<span class="am-mlive">进行中 ${live}</span>`:""}
+        ${up?`<span class="am-mup">未开始 ${up}</span>`:""}
+        <span class="am-chev" aria-hidden="true">▾</span>
+      </button>
+      <div class="am-rows"${open?' data-filled="1"':""}>${open?amRowsHTML(group):""}</div>
+    </section>`;
+  }).join("");
+  g.innerHTML=amOverviewHTML(counts,active)+months;
+  const countEl=document.getElementById("count");
+  if(countEl)countEl.textContent=`显示 ${items.length} / ${DATA.items.length} 条 · ${keys.length} 个月份分组`;
+  if(C2.open)c2Resync();
+}
+function amToggleMonth(head){
+  const sec=head.closest(".am-month");
+  if(!sec)return;
+  const key=head.getAttribute("data-am-month");
+  const open=!sec.classList.contains("open");
+  sec.classList.toggle("open",open);
+  head.setAttribute("aria-expanded",String(open));
+  AM_STATE[key]=open;
+  if(open){
+    const rows=sec.querySelector(".am-rows");
+    if(rows&&rows.getAttribute("data-filled")!=="1"){
+      const group=AM_GROUPS&&AM_GROUPS.get(key);
+      rows.innerHTML=group?amRowsHTML(group):"";
+      rows.setAttribute("data-filled","1");
+    }
+  }
+}
+function amSetStatus(k){
+  const cf=(DATA._custFilters||[]).find(f=>f.key==="activity_status");
+  if(!cf||!cf.sel)return;
+  cf.sel.value=(cf.sel.value===k?"":k);
+  render();
+}
+function amD2Body(it,mode){
+  const rows=[];
+  const add=(k,v)=>{if(v!=null&&String(v).trim()!=="")rows.push(`<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`);};
+  add("活动ID",it.item_id??it.id);
+  add("活动类型",it.activity_type);
+  add("类别",it.kind);
+  add("子标题",amPlain(it.sub_title));
+  add("常开",it.permanent);
+  add("开始",it.start);
+  add("结束",it.end);
+  add("状态",it.activity_status);
+  add("月份",it.month);
+  add("页签",it.first_level_tab);
+  add("页签名",amPlain(it.tab_name));
+  add("来源",it.source);
+  const pr=it.provenance||{};const tech=pr.tech||{};
+  const tr=[];
+  const tadd=(k,v)=>{if(v!=null&&String(v).trim()!=="")tr.push(`<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`);};
+  tadd("证据等级",EV_CN[it.evidence]||it.evidence);
+  tadd("证据类型",it.evidence_level);
+  tadd("源表行键",pr.row_key??it.item_id??it.id);
+  tadd("原始类名",tech.hd_class);
+  tadd("活动子类型",tech.hd_type);
+  tadd("界面类",tech.ui_class);
+  tadd("定位链状态",pr.locator_chain&&pr.locator_chain.chain_status);
+  tadd("状态标签",Array.isArray(it.status_tags)?it.status_tags.join("、"):"");
+  const sha=String(pr.source_lock_sha256||(pr.upstream&&pr.upstream.package_sha256)||"");
+  tadd("源包摘要",sha?sha.slice(0,16)+"…":"");
+  const content=`<div class="am-d2">
+    <div class="am-d2-h">活动信息</div>
+    <div class="kv">${rows.join("")}</div>
+    <details class="tech sub"><summary>技术详情 · 数据来源 / 审计信息</summary><div class="kv">${tr.join("")}</div></details>
+  </div>`;
+  return mode==="dock"?content:c2BarHTML(it,(C2.prov&&C2.prov.meta)?C2.prov.meta(it):"","main")+content;
+}
+const ACTIVITY_D2={
+  idOf:it=>it.id||it.item_id,
+  name:it=>it.name||it.display_name||it.id,
+  body:amD2Body,
+  meta:it=>`${it.activity_type?`<span class="skin-tag">${esc(it.activity_type)}</span>`:""}<span class="c2-no">活动ID ${esc(it.item_id??it.id)}</span>`
+};
+if(ACTIVITY_BOARD){
+  document.addEventListener("click",e=>{
+    const mh=e.target.closest("[data-am-month]");
+    if(mh){e.preventDefault();amToggleMonth(mh);return;}
+    const sb=e.target.closest("[data-am-status]");
+    if(sb){e.preventDefault();amSetStatus(sb.getAttribute("data-am-status"));}
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key!=="Enter"&&e.key!==" ")return;
+    const row=e.target.closest&&e.target.closest(".am-row");
+    if(!row)return;
+    e.preventDefault();
+    const i=parseInt(row.dataset.cidx||"-1",10);
+    if(i>=0&&C2.chips[i])c2Open(i);
+  });
+}
+
+/* ════════════════════ 无人机板「类型展柜」（2026-11-02，方案 B）════════════════════
+   数据事实：287 条 = 简单生存服 49 台完整机体（16 个官方类型）+ 经典服名册 238 行
+   （CBG all_equips 18xxxx 段只给 name/desc/icon/level，kind 统一「经典服收录」、无品级/战力/技能）。
+   ⇒ 类型展柜只给**有类型**的 49 台做分组展柜；经典服名册单列一个折叠区，不猜类型、不编品级。
+   卡面纪律：图 + 名字 + 品级色档 + 评分基数 + 编号；技能/科技/模型/溯源全部折进 D2 详情。
+   ★ 类名统一 ds-*，样式挂 body.b-drone_catalog，其它板零影响。 */
+const DRONE_BOARD=(function(){try{return (getParam("b")||"")==="drone_catalog";}catch(e){return false;}})();
+const DRONE_CLASSIC_KIND="经典服收录";
+const DRONE_GRADE_ORD=["基础","进阶","高阶","典藏"];
+const DRONE_GRADE_CLS={"基础":"g-绿","进阶":"g-蓝","高阶":"g-紫","典藏":"g-金"};
+/* 折叠状态跨重绘保留；经典服名册默认收起（238 行不抢首屏） */
+const DRONE_COLLAPSED=new Set(["__classic"]);
+
+function droneKindIcon(kind,img){
+  return img
+    ?`<span class="ds-plate-ic"><img src="${esc(img)}" alt="${esc(kind||"")}类型徽标" loading="lazy"></span>`
+    :`<span class="ds-plate-ic ds-ph">${esc(String(kind||"?").slice(0,1))}</span>`;
+}
+function droneKindMedia(list){
+  for(const it of list){
+    const im=((it._kind_media&&it._kind_media.images)||[])[0];
+    if(im&&im.png)return im.png;
+  }
+  return "";
+}
+function droneGradeDots(list){
+  const cnt={};
+  for(const it of list){const g=String(it.grade||"");if(g)cnt[g]=(cnt[g]||0)+1;}
+  return DRONE_GRADE_ORD.filter(g=>cnt[g])
+    .map(g=>`<i class="ds-gdot" data-g="${esc(g)}" title="${esc(g)} ${cnt[g]} 台"></i>`).join("");
+}
+/* 分组：只按数据里真有的 kind 分；kind_code 是官方机体类型序号（同 code 再按台数、名字） */
+function droneGroups(items){
+  const kinds=new Map(),classic=[];
+  for(const it of items){
+    const k=String(it.kind||"");
+    if(k===DRONE_CLASSIC_KIND){classic.push(it);continue;}
+    const key=k||"（类型未标注）";
+    if(!kinds.has(key))kinds.set(key,{key,list:[],code:99});
+    const gr=kinds.get(key);
+    gr.list.push(it);
+    const c=Number(it.kind_code);
+    if(Number.isFinite(c))gr.code=Math.min(gr.code,c);
+  }
+  const groups=[...kinds.values()];
+  groups.forEach(gr=>{
+    gr.list.sort((a,b)=>{
+      const la=DRONE_GRADE_ORD.indexOf(String(a.grade||"")),lb=DRONE_GRADE_ORD.indexOf(String(b.grade||""));
+      if(la!==lb)return lb-la;                       // 典藏 → 基础
+      const pa=Number(a.power)||0,pb=Number(b.power)||0;
+      if(pa!==pb)return pb-pa;
+      return Number(a.drone_id||0)-Number(b.drone_id||0);
+    });
+  });
+  groups.sort((a,b)=>a.code-b.code||b.list.length-a.list.length||a.key.localeCompare(b.key,"zh"));
+  classic.sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"zh")
+    ||Number(a.drone_id||0)-Number(b.drone_id||0));
+  return {groups,classic};
+}
+function droneCard(it,cidx){
+  const im=((it._media&&it._media.images)||[])[0];
+  const grade=String(it.grade||"");
+  const gc=DRONE_GRADE_CLS[grade]||"";
+  const sub=[];
+  if(grade)sub.push(`<span class="grade-pill ds-grade ${gc}">${esc(grade)}</span>`);
+  if(it.power!=null&&it.power!=="")sub.push(`<span class="ds-power" title="评分基数（静态表 base_score，不等同实机面板战力）">评分 ${esc(it.power)}</span>`);
+  return `<div class="i roster ds-card" data-cidx="${cidx}">
+    <div class="ds-fig">${im?`<img src="${esc(im.png)}" alt="${esc(it.name||"")}" loading="lazy">`:'<span class="ds-fig-ph">无图</span>'}</div>
+    <div class="i-head"><div class="ds-txt">
+      <div class="i-name">${esc(it.name||it.id)}</div>
+      <div class="ds-sub">${sub.join("")}</div>
+      <div class="i-id">${esc(it.drone_id??it.id)}</div>
+    </div></div>
+  </div>`;
+}
+function droneClassicRow(it,cidx,dup){
+  const im=((it._media&&it._media.images)||[])[0];
+  return `<div class="i roster ds-crow${dup?" ds-dup":""}" data-cidx="${cidx}">
+    <span class="ds-crow-fig">${im?`<img src="${esc(im.png)}" alt="" loading="lazy">`:'<span class="ds-fig-ph">无</span>'}</span>
+    <span class="ds-crow-main">
+      <span class="ds-crow-name">${esc(it.name||it.id)}</span>
+      <span class="ds-crow-meta">${esc(it.drone_id??it.id)}${dup?'<span class="ds-dup-tag">同名列</span>':""}</span>
+    </span>
+  </div>`;
+}
+/* D2 详情卡：与网格卡解耦（同一 id 只缓存这一份），字段平铺，不再逐卡重复审计标签 */
+function droneD2Html(it){
+  const kind=String(it.kind||"");
+  const isClassic=kind===DRONE_CLASSIC_KIND;
+  const im=(it._media&&it._media.total)?renderItemMedia(it._media):"";
+  const rows=[];
+  const put=(k,v)=>{if(v==null||String(v)==="")return;rows.push([k,String(v)]);};
+  put("类型",isClassic?"经典服收录（类型未标注）":kind);
+  if(it.grade!=null)put("品级",it.grade);
+  if(it.power!=null)put("评分基数",it.power+"（静态表 base_score，不等同实机面板战力）");
+  if(it.desc)put("机体说明",it.desc);
+  if(Array.isArray(it.function_tips)&&it.function_tips.length)put("功能提示",it.function_tips.join("、"));
+  if(Array.isArray(it.skills)&&it.skills.length)put("技能",fmtVal("skills",it.skills));
+  if(Array.isArray(it.talents)&&it.talents.length)put("账号级科技",fmtVal("talents",it.talents));
+  if(it.talent_scope)put("科技口径",it.talent_scope);
+  if(it.obtain_note)put("获取",it.obtain_note);
+  if(it.released_cbg!=null)put("藏宝阁白名单",it.released_cbg?"在名单内（不等于当前可得）":"不在名单内");
+  if(it.model)put("模型",it.model);
+  if(it.monster_id!=null)put("怪物 ID",it.monster_id);
+  if(it.module_id!=null)put("模块 ID",it.module_id);
+  if(it.normal_attack_skill_id!=null)put("普攻技能",it.normal_attack_skill_id);
+  if(it.classic_ref)put("经典服对照",fmtVal("classic_ref",it.classic_ref));
+  if(it.server_branch)put("服型",it.server_branch);
+  if(Array.isArray(it.server_branches)&&it.server_branches.length)put("服型并集",it.server_branches.join("、"));
+  if(it.skills_note&&isClassic)put("技能口径",it.skills_note);
+  put("证据等级",EV_CN[it.evidence]||it.evidence||"");
+  if(Array.isArray(it.status_tags)&&it.status_tags.length)
+    put("状态标签",it.status_tags.map(t=>STATE_CN[t]||COMMON_VAL_CN[t]||t).join("、"));
+  put("来源",it.source);
+  const kv=rows.map(([k,v])=>`<div class="k">${esc(k)}</div><div class="v">${esc(v).replace(/\n/g,"<br>")}</div>`).join("");
+  return `<div class="i roster ds-detail">
+    ${im}
+    <div class="i-head"><div><div class="i-name">${esc(it.name||it.id)}</div>
+      <div class="i-id">机体 ID ${esc(it.drone_id??it.id)}</div></div></div>
+    <div class="i-detail" hidden><div class="kv">${kv}</div></div>
+  </div>`;
+}
+function droneShelfRender(items,g){
+  const {groups,classic}=droneGroups(items);
+  const forceOpen=!!(DATA&&DATA._query);      // 搜索时强制展开，避免命中结果藏在折叠区里
+  const flat=[];
+  groups.forEach(gr=>flat.push(...gr.list));
+  flat.push(...classic);
+  C2.prov=ROSTER_D2;C2.chips=flat;C2.html={};
+  for(const it of flat)C2.html[c2IdOf(it)]=droneD2Html(it);
+  let pos=0;
+  const dupCount={};
+  for(const it of classic){const n=String(it.name||"");dupCount[n]=(dupCount[n]||0)+1;}
+  const chips=[
+    groups.map(gr=>`<button type="button" class="ds-chip" data-dsnav="${esc(gr.key)}">${esc(gr.key)}<b>${gr.list.length}</b></button>`).join(""),
+    classic.length?`<button type="button" class="ds-chip ds-chip-classic" data-dsnav="__classic">经典服名册<b>${classic.length}</b></button>`:""
+  ].join("");
+  const nav=`<div class="ds-nav">
+    <div class="ds-nav-hd"><span class="ds-nav-title">类型展柜</span><span class="ds-nav-sub">按官方机体类型分组（${groups.length} 类 / ${flat.length-classic.length} 台）· 点标签跳到该柜</span></div>
+    <div class="ds-nav-chips">${chips}</div>
+  </div>`;
+  const sections=groups.map(gr=>{
+    const shut=!forceOpen&&DRONE_COLLAPSED.has(gr.key);
+    const cards=gr.list.map(it=>droneCard(it,pos++)).join("");
+    return `<section class="ds-row${shut?" is-collapsed":""}" id="ds-${esc(gr.key)}" data-k="${esc(gr.key)}">
+      <div class="ds-plate">
+        <button type="button" class="ds-plate-main" data-dsfold aria-expanded="${shut?"false":"true"}" title="折叠 / 展开「${esc(gr.key)}」">
+          ${droneKindIcon(gr.key,droneKindMedia(gr.list))}
+          <span class="ds-plate-name">${esc(gr.key)}</span>
+          <span class="ds-plate-count">${gr.list.length} 台</span>
+          <span class="ds-fold"></span>
+        </button>
+        <div class="ds-plate-grades">${droneGradeDots(gr.list)}</div>
+      </div>
+      <div class="ds-shelf">${cards}</div>
+    </section>`;
+  }).join("");
+  let classicSec="";
+  if(classic.length){
+    const uniq=new Set(classic.map(it=>String(it.name||""))).size;
+    const shut=!forceOpen&&DRONE_COLLAPSED.has("__classic");
+    const rows=classic.map(it=>droneClassicRow(it,pos++,dupCount[String(it.name||"")]>1)).join("");
+    classicSec=`<section class="ds-row ds-row-classic${shut?" is-collapsed":""}" id="ds-classic" data-k="__classic">
+      <div class="ds-plate">
+        <button type="button" class="ds-plate-main" data-dsfold aria-expanded="${shut?"false":"true"}" title="折叠 / 展开经典服名册">
+          <span class="ds-plate-ic ds-ph">经</span>
+          <span class="ds-plate-name">经典服名册</span>
+          <span class="ds-plate-count">${classic.length} 行</span>
+          <span class="ds-fold"></span>
+        </button>
+        <div class="ds-plate-note">类型未标注 · ${uniq} 个名字${classic.length>uniq?`（同名 ${classic.length-uniq} 行并列）`:""}</div>
+      </div>
+      <div class="ds-shelf ds-classic-shelf">${rows}</div>
+    </section>`;
+  }
+  g.innerHTML=nav+sections+classicSec;
+  if(C2.open)c2Resync();
+}
+if(DRONE_BOARD){
+  /* 展柜交互：点类型标签跳柜；点类型铭牌折叠/展开（按钮不会触发卡面 D2） */
+  document.addEventListener("click",e=>{
+    const nav=e.target.closest&&e.target.closest("[data-dsnav]");
+    if(nav){
+      const k=nav.getAttribute("data-dsnav")||"";
+      const t=document.getElementById("ds-"+(k==="__classic"?"classic":k));
+      if(t){
+        /* 跳到折叠中的柜时先展开，否则只滚到一条空铭牌 */
+        if(t.classList.contains("is-collapsed")){
+          t.classList.remove("is-collapsed");
+          DRONE_COLLAPSED.delete(k);
+          const b=t.querySelector("[data-dsfold]");if(b)b.setAttribute("aria-expanded","true");
+        }
+        t.scrollIntoView({behavior:"smooth",block:"start"});
+        t.classList.add("ds-flash");
+        setTimeout(()=>t.classList.remove("ds-flash"),900);
+      }
+      return;
+    }
+    const fold=e.target.closest&&e.target.closest("[data-dsfold]");
+    if(!fold)return;
+    const row=fold.closest(".ds-row");
+    if(!row)return;
+    const k=row.getAttribute("data-k")||"";
+    const shut=row.classList.toggle("is-collapsed");
+    fold.setAttribute("aria-expanded",shut?"false":"true");
+    if(shut)DRONE_COLLAPSED.add(k);else DRONE_COLLAPSED.delete(k);
+  },true);
+}
+
 function render(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   if(DATA)DATA._query=q;
@@ -4169,6 +4848,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   }
   const items=DATA.items.filter(it=>{
     if(upcomingBoard && upExpired(it))return false;
+    /* 基因板：按服别 Tab 过滤 —— 两服绝不混排（overview 的 branch=null 表示不过滤） */
+    if(GENE_BOARD&&!geneInServer(it,geneServerDef().branch))return false;
     if(EDIBLE_BOARD && !edibleShowIngredients && String(it.kind||"")==="食材")return false;
     if(fe&&it.evidence!==fe)return false;
     if(FASHION_BOARD&&!frPass(it))return false;
@@ -4230,7 +4911,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   })();
   const timedVariantsShown=items.reduce((sum,it)=>sum+((Array.isArray(it.timed_variants)?it.timed_variants.length:0)),0);
   const countEl=document.getElementById("count");
-  const countHtml=FASHION_BOARD
+  const countHtml=DRONE_BOARD
+    ? `显示 ${items.length} / ${DATA.items.length} 条 · 简单生存服机体 ${items.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length} 台 · 经典服名册 ${items.filter(it=>String(it.kind||"")===DRONE_CLASSIC_KIND).length} 行`
+    : FASHION_BOARD
     ? `显示 ${items.length} / ${DATA.items.length} 件 · 多图(>4) ${items.filter(it=>((it._media&&it._media.images)||[]).length>4).length} 件 · 仅占位 ${items.filter(it=>it.icon_state==="含占位").length} 件`
     : (VEHICLE_BOARD
       ? `显示 ${items.length} / ${DATA.items.length} 辆 · 专属图 ${items.filter(it=>it.icon_state==="专属图").length} 辆 · 仅类型图 ${items.filter(it=>it.icon_state==="仅类型图").length} 辆 · 图 ${items.reduce((s,it)=>s+(it.icon_count||0),0)} 张（gpk_loc0 逐图核验）`
@@ -4242,10 +4925,19 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     : (skinBoard||hasSfxChildren)
     ? `显示 ${items.length} / ${DATA.items.length} 款皮肤 · ${currentParents} 主皮肤 · 时限变体 ${variantCount}（并入主卡，不单独计款） · ${behaviorPreviews} 行为预告 · 名称 ${nameStats.verified} 已核验 / ${nameStats.candidate} 待确认 / ${nameStats.unresolved} 未命名 · 上架状态 ${listingStatHTML(items)}`
     : `显示 ${items.length} / ${DATA.items.length} 条`;
+  if(GENE_BOARD)countEl.innerHTML=geneCountText(items);
   if(FASHION_BOARD)frPills(items);
   if(VEHICLE_BOARD)vPills(items);
   if(CHIP_BOARD)cPills(items);
-  if(!items.length){g.innerHTML='<div class="empty">无匹配条目</div>';return;}
+  /* 基因板：两服总览只给服别入口，不铺条目（避免两服混排） */
+  if(GENE_BOARD&&GENE_SERVER==="overview"){geneOverviewRender(g,items);return;}
+  if(!items.length){
+    g.innerHTML=GENE_BOARD?(geneTabsHTML()+'<div class="empty">无匹配条目</div>'):'<div class="empty">无匹配条目</div>';
+    return;
+  }
+  /* 无人机板：类型展柜（2026-11-02 方案 B） */
+  if(DRONE_BOARD){droneShelfRender(items,g);return;}
+  if(ACTIVITY_BOARD){amRenderLedger(g,items,q,fe);return;}
   if(CHIP_BOARD){
     // 芯片板：卡面 = 图轨/名字/品质色档/类型/编号/首档效果；点卡打开 D2 详情灯箱（12 档数值在灯箱内看）
     const list=cSortList(items);
@@ -4381,10 +5073,12 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
      注意：mutation_core_full 的 meta 也带 card_mode:"roster"（核芯板初建时基于名册体系），
      核芯板必须保持 CORE_D2，否则 provider 被覆盖回旧版网格卡直嵌（2026-10-30 修复） */
   const rosterBoard=!CORE_BOARD&&String(DATA.meta&&DATA.meta.card_mode)==="roster";
-  if(rosterBoard){C2.prov=ROSTER_D2;C2.chips=list;C2.html={};}
+  if(rosterBoard){C2.prov=GENE_BOARD?GENE_D2:ROSTER_D2;C2.chips=list;C2.html={};}
   /* 2026-11-02：装备属性四卡接 D2 —— 卡面点击打开自建详情（equipD2Body） */
   if(EQUIP_BOARD){C2.prov=EQUIP_D2;C2.chips=list;}
-  g.innerHTML=list.map((it,i)=>{
+  /* 基因板：卡面换成「族色条 + 名字 + Lv/分值或档位 + 效果」的紧凑卡，按服别 Tab 重排 */
+  const cardHTMLs=list.map((it,i)=>{
+    if(GENE_BOARD){const h=geneCardHTML(it,i);C2.html[c2IdOf(it)]=h;return h;}
     /* 2026-11-02：装备属性四卡按「人物时装同款」卡面渲染 */
     if(EQUIP_BOARD)return equipCardHTML(it,i);
     /* 核芯板所有条目都按核芯卡渲染（基础核芯无特技/升星段，卡面只剩品级+星上限+描述） */
@@ -4525,8 +5219,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       edHead=`<div class="tg-head ed-head"><span class="tg-name">食材 / 可食用物品</span><span class="tg-n">${n} 条</span></div>`;
     }
     return edHead+tgHead+html;
-  }).join("");
-  if((CORE_BOARD||rosterBoard||EQUIP_BOARD)&&C2.open)c2Resync();
+  });
+  g.innerHTML=GENE_BOARD?geneBoardHTML(list,cardHTMLs):cardHTMLs.join("");
+  if((CORE_BOARD||rosterBoard||EQUIP_BOARD||GENE_BOARD)&&C2.open)c2Resync();
   if(TITLE_BOARD)syncTitleHeadTop();
 }
 
@@ -4702,7 +5397,7 @@ function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
           const pic=im&&im.png?`<img src="${esc(im.png)}" alt="" loading="lazy">`:`<span class="ptd-ph">无图</span>`;
           /* 名字未解析：构建期只能回退成「道具 <id>」，这里如实标注，不伪装成正式名 */
           const bad=PT_UNRES.test(String(it.name||"").trim());
-          const kindLine=esc(it.kind||"")+(it.slot!=null?" · 槽位 "+esc(String(it.slot)):"")+(it.evidence==="candidate"?" · 候选":"");
+          const kindLine=esc(it.kind||"")+(it.count!=null?" ×"+esc(String(it.count)):"")+(it.slot!=null?" · 槽位 "+esc(String(it.slot)):"")+(it.evidence==="candidate"?" · 候选":"");
           return `<div class="ptd-item${bad?" unres":""}" title="${bad?"名字未解析（源表只给到道具 id）":esc(it.name||"")}">
             <div class="ptd-img">${pic}</div>
             <div class="ptd-n">${bad?"未知道具":esc(it.name||it.id)}</div>
@@ -5085,6 +5780,34 @@ else loadBoard(b,d=>{
     document.body.classList.add("equip-mode");
     const eqi=document.getElementById("q");
     if(eqi)eqi.placeholder="搜索：装备名 / 类型 / 武器细类 / 描述…";
+  }
+  if(GENE_BOARD){
+    document.body.classList.add("gene-mode");
+    const gqi=document.getElementById("q");
+    if(gqi)gqi.placeholder="搜索：潜能名 / 种族 / 效果 / 档位…";
+    /* 服别 Tab：点按钮即切换（深链写 ?gs=，不重载页面）；同页只绑一次委托 */
+    document.addEventListener("click",e=>{
+      const btn=e.target.closest("[data-gene-server]");
+      if(!btn||!btn.closest("#grid"))return;
+      e.preventDefault();
+      const k=btn.getAttribute("data-gene-server");
+      if(!GENE_SERVERS.some(s=>s.key===k)||k===GENE_SERVER)return;
+      GENE_SERVER=k;
+      try{
+        const u=new URLSearchParams(location.search);
+        if(k==="overview")u.delete("gs");else u.set("gs",k);
+        history.replaceState(null,"",location.pathname+"?"+u.toString());
+      }catch(err){}
+      render();
+    });
+    document.addEventListener("keydown",e=>{
+      if(e.key!=="Enter"&&e.key!==" ")return;
+      const c=e.target.closest&&e.target.closest(".gene-card");
+      if(!c)return;
+      e.preventDefault();
+      const i=parseInt(c.dataset.cidx||"-1",10);
+      if(i>=0&&C2.chips[i])c2Open(i);
+    });
   }
   if(CHIP_BOARD){
     document.body.classList.add("chip-mode");

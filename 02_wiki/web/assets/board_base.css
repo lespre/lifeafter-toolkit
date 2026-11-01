@@ -757,6 +757,11 @@ body.b-edible_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.6;white-spa
   width:calc(var(--hw,81.1%) + .7%);height:calc(var(--hh,73.9%) + .7%);
   max-height:none!important;object-fit:cover;object-position:center;
   border-radius:0;opacity:1;filter:none;box-shadow:none}
+/* 2026-11-02：烘焙背景（fit=frame）与边框图同尺寸，内孔以外已是全透明 alpha ——
+   直接铺满整卡，既不用 --hl/--hw 百分比摆位，也不会像 clip-path 多边形那样从
+   框外挂饰的缝隙里漏出场景。 */
+.i.k-nc .i-media.i-stack>.mi.mi-bg.mi-bg-full img{left:0;top:0;width:100%;height:100%;
+  object-fit:fill}
 .i.k-nc .i-media.i-stack>.mi figcaption{display:none}
 /* 边框图缺失（当前包快照无该资源）：如实占位，不拿场景图顶替 */
 .i .i-media .mi.nofig{
@@ -991,3 +996,350 @@ body.view-mode .vnote{font-size:11px;color:var(--muted-2);margin-top:9px;line-he
 #siteNav #navOptPreview{width:13px!important;height:13px!important;min-width:0!important;
   max-width:13px!important;flex:0 0 13px!important;margin:0!important;padding:0!important;
   accent-color:#b6a7df}
+
+/* ═══════════════════════════════════════════════════════════════════
+   活动总表月度台账（2026-11-02，仅 body.b-activity_master）
+   3519 条、0 张配图：状态概览 + 月份折叠 + 46px 单行，详情走 D2 抽屉。
+   全部选择器带 body.b-activity_master 前缀，其它板零影响。
+   ═══════════════════════════════════════════════════════════════════ */
+body.b-activity_master #grid{display:block}
+
+/* ── 状态概览（可点击筛选）── */
+body.b-activity_master .am-sum-head{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+body.b-activity_master .am-sum-title{font-size:12px;font-weight:650;color:var(--fg)}
+body.b-activity_master .am-sum-note{font-size:11px;color:var(--muted-2)}
+body.b-activity_master .am-sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;margin:0 0 16px}
+body.b-activity_master .am-stat{display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+  padding:9px 12px;font:inherit;text-align:left;cursor:pointer;
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  transition:border-color .12s,background .12s}
+body.b-activity_master .am-stat:hover{border-color:var(--border-strong)}
+body.b-activity_master .am-stat.on{border-color:var(--accent-border);background:var(--accent-soft)}
+body.b-activity_master .am-stat-n{font-size:20px;line-height:1.15;font-weight:650;color:var(--fg);
+  font-variant-numeric:tabular-nums}
+body.b-activity_master .am-stat-l{display:inline-flex;align-items:center;gap:6px;
+  font-size:11.5px;color:var(--muted)}
+
+/* ── 状态点 / 状态标签 ── */
+body.b-activity_master .am-dot{display:inline-block;flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+  background:var(--muted-2)}
+body.b-activity_master .am-dot.live{background:var(--st)}
+body.b-activity_master .am-dot.up{background:var(--vf)}
+body.b-activity_master .am-dot.end{background:var(--muted-2);opacity:.55}
+body.b-activity_master .am-dot.none{background:transparent;border:1px dashed var(--ca-bd)}
+body.b-activity_master .am-status{font-size:10.5px;line-height:17px;padding:0 7px;border-radius:5px;
+  border:1px solid var(--border);color:var(--muted-2);white-space:nowrap}
+body.b-activity_master .am-status.live{color:var(--st);background:var(--st-bg);border-color:var(--st-bd)}
+body.b-activity_master .am-status.up{color:var(--vf);background:var(--vf-bg);border-color:var(--vf-bd)}
+body.b-activity_master .am-status.none{color:var(--ca);background:var(--ca-bg);border-color:var(--ca-bd)}
+
+/* ── 月份分组 ── */
+body.b-activity_master .am-month{border:1px solid var(--border);border-radius:10px;
+  background:var(--card);margin:0 0 8px;overflow:hidden}
+body.b-activity_master .am-mhead{display:flex;align-items:center;gap:10px;width:100%;
+  padding:9px 12px;background:transparent;border:0;font:inherit;color:var(--fg);
+  text-align:left;cursor:pointer}
+body.b-activity_master .am-mhead:hover{background:var(--hover)}
+body.b-activity_master .am-m{font-size:13.5px;font-weight:650;font-variant-numeric:tabular-nums}
+body.b-activity_master .am-mcount{font-size:11.5px;color:var(--muted)}
+body.b-activity_master .am-mlive{font-size:10.5px;line-height:17px;padding:0 7px;border-radius:5px;
+  color:var(--st);background:var(--st-bg);border:1px solid var(--st-bd);white-space:nowrap}
+body.b-activity_master .am-mup{font-size:10.5px;line-height:17px;padding:0 7px;border-radius:5px;
+  color:var(--vf);background:var(--vf-bg);border:1px solid var(--vf-bd);white-space:nowrap}
+body.b-activity_master .am-chev{margin-left:auto;font-size:11px;color:var(--muted-2);
+  transform:rotate(-90deg);transition:transform .15s}
+body.b-activity_master .am-month.open .am-chev{transform:none}
+body.b-activity_master .am-rows{display:none}
+body.b-activity_master .am-month.open .am-rows{display:block}
+
+/* ── 紧凑行（覆盖 .i 的卡片外观；主题里对 .i 用了 !important，这里必须同样提权）── */
+body.b-activity_master #grid .i.am-row{display:grid;grid-template-columns:10px minmax(0,1fr) auto;
+  align-items:center;gap:10px;padding:6px 12px!important;min-height:46px!important;
+  background:transparent!important;border:0!important;border-top:1px solid var(--border)!important;
+  border-radius:0!important;box-shadow:none!important;transition:background .12s;cursor:pointer}
+body.b-activity_master #grid .i.am-row:hover{background:var(--hover)!important;
+  border-color:var(--border)!important;box-shadow:none!important}
+body.b-activity_master #grid .i.am-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+body.b-activity_master .am-main{display:flex;flex-direction:column;gap:1px;min-width:0}
+body.b-activity_master .am-name{display:flex;align-items:center;gap:8px;min-width:0;line-height:18px}
+body.b-activity_master .am-nm{font-size:13px;line-height:18px;font-weight:600;color:var(--fg);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.b-activity_master .am-type{flex:0 0 auto;font-size:10.5px;line-height:16px;padding:0 6px;
+  border-radius:5px;border:1px solid var(--border);color:var(--muted-2);white-space:nowrap}
+body.b-activity_master .am-sub{font-size:11px;line-height:15px;color:var(--muted-2);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.b-activity_master .am-when{display:flex;flex-direction:column;align-items:flex-end;gap:0;flex:0 0 auto}
+body.b-activity_master .am-date{font-size:11.5px;line-height:16px;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ── 窄屏 ── */
+@media (max-width:780px){
+  body.b-activity_master .am-sum{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  body.b-activity_master #grid .i.am-row{grid-template-columns:10px minmax(0,1fr)}
+  body.b-activity_master .am-when{grid-column:2;flex-direction:row;align-items:center;gap:8px}
+}
+
+/* ══ 无人机板（drone_catalog，2026-11-02）：类型展柜 ══
+   49 台完整机体按官方 16 类型分组 → 左「类型铭牌」+ 右「展柜」；
+   经典服名册 238 行类型未标注，单独折叠、紧凑行卡，不再铺 238 张同构大卡。
+   ★ 只作用于 body.b-drone_catalog，其它板零影响。 */
+body.b-drone_catalog #grid{display:block}
+
+/* ── 顶部类型锚点条 ── */
+body.b-drone_catalog .ds-nav{display:flex;flex-direction:column;gap:7px;
+  padding:12px 14px;margin:0 0 4px;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+body.b-drone_catalog .ds-nav-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+body.b-drone_catalog .ds-nav-title{font-size:12px;font-weight:650;letter-spacing:.14em;color:var(--gold)}
+body.b-drone_catalog .ds-nav-sub{font-size:11px;color:var(--muted-2)}
+body.b-drone_catalog .ds-nav-chips{display:flex;flex-wrap:wrap;gap:6px}
+body.b-drone_catalog .ds-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;
+  border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--ink-2);
+  font:inherit;font-size:12px;cursor:pointer;transition:border-color .12s,color .12s}
+body.b-drone_catalog .ds-chip b{font-weight:600;font-size:11px;color:var(--muted-2);font-variant-numeric:tabular-nums}
+body.b-drone_catalog .ds-chip:hover{border-color:var(--accent-border);color:var(--fg)}
+body.b-drone_catalog .ds-chip-classic{border-style:dashed;color:var(--ca)}
+body.b-drone_catalog .ds-chip-classic b{color:var(--ca)}
+
+/* ── 展柜行：左铭牌 + 右展架 ── */
+body.b-drone_catalog .ds-row{display:grid;grid-template-columns:168px minmax(0,1fr);gap:16px;
+  align-items:start;padding:18px 0;border-bottom:1px solid var(--border);
+  scroll-margin-top:calc(var(--top-h,150px) + 96px)}
+body.b-drone_catalog .ds-row:last-child{border-bottom:0}
+body.b-drone_catalog .ds-row.ds-flash{animation:dsFlash .9s ease-out}
+@keyframes dsFlash{0%{background:rgba(182,167,223,.12)}100%{background:transparent}}
+
+body.b-drone_catalog .ds-plate{display:flex;flex-direction:column;gap:8px;
+  padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+body.b-drone_catalog .ds-plate-main{display:grid;grid-template-columns:42px minmax(0,1fr);
+  grid-template-areas:"ic name" "ic count" "fold fold";align-items:center;gap:2px 10px;
+  width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+body.b-drone_catalog .ds-plate-ic{grid-area:ic;width:42px;height:42px;display:flex;align-items:center;
+  justify-content:center;border-radius:9px;border:1px solid var(--border);background:var(--hover);overflow:hidden}
+body.b-drone_catalog .ds-plate-ic img{max-width:34px;max-height:34px;object-fit:contain}
+body.b-drone_catalog .ds-plate-ic.ds-ph{font-size:15px;font-weight:650;color:var(--gold);letter-spacing:.02em}
+body.b-drone_catalog .ds-plate-name{grid-area:name;font-size:16px;font-weight:650;color:var(--fg);letter-spacing:.02em}
+body.b-drone_catalog .ds-plate-count{grid-area:count;font-size:11.5px;color:var(--muted-2);font-variant-numeric:tabular-nums}
+body.b-drone_catalog .ds-fold{grid-area:fold;margin-top:6px;font-size:10.5px;color:var(--muted-2)}
+body.b-drone_catalog .ds-fold::after{content:"收起 ▴"}
+body.b-drone_catalog .ds-row.is-collapsed .ds-fold::after{content:"展开 ▾"}
+body.b-drone_catalog .ds-plate-grades{display:flex;gap:5px;align-items:center;min-height:8px}
+body.b-drone_catalog .ds-gdot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.9}
+body.b-drone_catalog .ds-gdot[data-g="基础"]{color:#7fbf5f}
+body.b-drone_catalog .ds-gdot[data-g="进阶"]{color:#5aa9e6}
+body.b-drone_catalog .ds-gdot[data-g="高阶"]{color:#b07ce8}
+body.b-drone_catalog .ds-gdot[data-g="典藏"]{color:#d9a441}
+body.b-drone_catalog .ds-plate-note{font-size:10.5px;line-height:1.6;color:var(--muted-2)}
+
+/* ── 展架与卡面：图 + 名字 + 品级 + 评分 + 编号 ── */
+body.b-drone_catalog .ds-shelf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;align-items:start;min-width:0}
+body.b-drone_catalog .ds-card{padding:10px;gap:8px;cursor:pointer;background:var(--card);
+  transition:border-color .12s,box-shadow .12s,transform .12s}
+body.b-drone_catalog .ds-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+body.b-drone_catalog .ds-fig{display:flex;align-items:center;justify-content:center;height:126px;
+  border-radius:9px;border:1px solid rgba(255,255,255,.05);overflow:hidden;
+  background:radial-gradient(120% 140% at 50% 0%,rgba(255,255,255,.07),rgba(255,255,255,.012) 60%,transparent)}
+body.b-drone_catalog .ds-fig img{max-width:92%;max-height:112px;width:auto;height:auto;object-fit:contain;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.5))}
+body.b-drone_catalog .ds-fig-ph{font-size:11px;color:var(--muted-2);letter-spacing:.16em}
+body.b-drone_catalog .ds-txt{min-width:0;display:flex;flex-direction:column;gap:3px}
+body.b-drone_catalog .ds-card .i-name{font-size:13.5px;line-height:1.35;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;flex:0 0 auto;max-width:100%}
+body.b-drone_catalog .ds-sub{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+body.b-drone_catalog .ds-grade{font-size:10.5px;padding:0 6px;line-height:1.6}
+body.b-drone_catalog .ds-power{font-size:10.5px;color:var(--muted-2);font-variant-numeric:tabular-nums}
+body.b-drone_catalog .ds-card .i-id{font-size:10.5px;color:var(--muted-2)}
+
+/* ── 经典服名册：紧凑行卡（有图才出图，无图不再占大块虚线） ── */
+body.b-drone_catalog .ds-classic-shelf{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px}
+body.b-drone_catalog .ds-crow{flex-direction:row;align-items:center;gap:9px;padding:6px 8px;
+  border-radius:7px;cursor:pointer}
+body.b-drone_catalog .ds-crow:hover{border-color:var(--border-strong);background:var(--hover)}
+body.b-drone_catalog .ds-crow-fig{flex:0 0 34px;width:34px;height:34px;display:flex;align-items:center;
+  justify-content:center;border-radius:6px;border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);overflow:hidden}
+body.b-drone_catalog .ds-crow-fig img{max-width:100%;max-height:100%;object-fit:contain}
+body.b-drone_catalog .ds-crow-fig .ds-fig-ph{font-size:10px;letter-spacing:0}
+body.b-drone_catalog .ds-crow-main{min-width:0;display:flex;flex-direction:column;gap:1px}
+body.b-drone_catalog .ds-crow-name{font-size:12.5px;font-weight:600;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+body.b-drone_catalog .ds-crow-meta{display:flex;align-items:center;gap:6px;font-size:10.5px;
+  color:var(--muted-2);font-variant-numeric:tabular-nums}
+body.b-drone_catalog .ds-dup{opacity:.62}
+body.b-drone_catalog .ds-dup-tag{font-size:9.5px;padding:0 4px;border:1px dashed var(--border-strong);
+  border-radius:4px;color:var(--muted-2)}
+
+/* ── 折叠态 ── */
+body.b-drone_catalog .ds-row.is-collapsed{padding:12px 0}
+body.b-drone_catalog .ds-row.is-collapsed .ds-shelf{display:none}
+
+/* ── 响应式：窄屏铭牌改为横向条 ── */
+@media (max-width:1200px){
+  body.b-drone_catalog .ds-row{grid-template-columns:minmax(0,1fr);gap:10px}
+  body.b-drone_catalog .ds-plate{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  body.b-drone_catalog .ds-plate-main{flex:1 1 auto;grid-template-columns:36px auto 1fr auto;
+    grid-template-areas:"ic name count fold";gap:8px}
+  body.b-drone_catalog .ds-plate-ic{width:36px;height:36px}
+  body.b-drone_catalog .ds-plate-ic img{max-width:29px;max-height:29px}
+  body.b-drone_catalog .ds-fold{margin-top:0;white-space:nowrap}
+  body.b-drone_catalog .ds-plate-grades{flex:0 0 auto}
+}
+@media (max-width:720px){
+  body.b-drone_catalog .ds-shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.b-drone_catalog .ds-fig{height:104px}
+  body.b-drone_catalog .ds-fig img{max-height:92px}
+  body.b-drone_catalog .ds-classic-shelf{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   基因潜能板（2026-11-02，仅 body.b-gene_potential_catalog）
+   分服口径：页内服别 Tab（两服总览 / 简单生存 / 经典服），两服不混排；
+   简单生存 & 经典服字段级 = 种族 × 潜能等级矩阵（Lv0–Lv3 四列泳道）；
+   经典服名册级 = 6 个档位列。全部选择器带板前缀，其它板零影响。
+   ═══════════════════════════════════════════════════════════════════ */
+body.b-gene_potential_catalog #grid{display:block}
+
+/* ── 服别 Tab ── */
+body.b-gene_potential_catalog .gene-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+body.b-gene_potential_catalog .gene-tab{display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+  padding:7px 15px;font:inherit;text-align:left;cursor:pointer;color:var(--muted);
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  transition:border-color .12s,background .12s,color .12s}
+body.b-gene_potential_catalog .gene-tab:hover{border-color:var(--border-strong);color:var(--fg)}
+body.b-gene_potential_catalog .gene-tab.on{border-color:var(--accent-border);background:var(--accent-soft);color:var(--fg)}
+body.b-gene_potential_catalog .gene-tab-nm{font-size:13px;font-weight:650;letter-spacing:.01em}
+body.b-gene_potential_catalog .gene-tab-ds{font-size:10.5px;color:var(--muted-2)}
+body.b-gene_potential_catalog .gene-tab.on .gene-tab-ds{color:var(--accent)}
+
+/* ── 统计条 / 分区头 ── */
+body.b-gene_potential_catalog .gene-stats{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+body.b-gene_potential_catalog .gene-stat{font-size:11px;padding:2px 9px;border:1px solid var(--border);
+  border-radius:999px;color:var(--muted);background:var(--card)}
+body.b-gene_potential_catalog .gene-stat b{color:var(--fg);font-weight:650;font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-sec-h{display:flex;align-items:baseline;gap:8px;margin:18px 0 8px}
+body.b-gene_potential_catalog .gene-sec-t{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.02em}
+body.b-gene_potential_catalog .gene-sec-n{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-sec-note{font-size:11px;color:var(--muted-2)}
+
+/* ── 种族 × 等级矩阵 ── */
+body.b-gene_potential_catalog .gene-matrix{display:flex;flex-direction:column;gap:12px}
+body.b-gene_potential_catalog .gene-race-sec{--gene-race:var(--muted-2);
+  border:1px solid var(--border);border-left:3px solid var(--gene-race);border-radius:12px;
+  background:var(--card);overflow:hidden}
+body.b-gene_potential_catalog .gene-race-sec.r-human{--gene-race:var(--steel,#a1b9dc)}
+body.b-gene_potential_catalog .gene-race-sec.r-infected{--gene-race:var(--accent,#b6a7df)}
+body.b-gene_potential_catalog .gene-race-sec.r-bone{--gene-race:var(--gold,#d4b58a)}
+body.b-gene_potential_catalog .gene-race-sec.r-none{--gene-race:var(--muted-2,#8b9bb8)}
+body.b-gene_potential_catalog .gene-race-h{display:flex;align-items:center;gap:8px;padding:9px 12px;
+  background:var(--panel);border-bottom:1px solid var(--border)}
+body.b-gene_potential_catalog .gene-race-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--gene-race)}
+body.b-gene_potential_catalog .gene-race-nm{font-size:13px;font-weight:700;color:var(--fg)}
+body.b-gene_potential_catalog .gene-race-cn{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:10px 12px 12px}
+body.b-gene_potential_catalog .gene-lane{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:7px 7px 8px}
+body.b-gene_potential_catalog .gene-lane-h{display:flex;align-items:baseline;justify-content:space-between;
+  gap:6px;padding:0 2px 7px;font-size:11px;color:var(--steel);font-weight:650}
+body.b-gene_potential_catalog .gene-lane-h b{color:var(--muted-2);font-weight:500;font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-lane-body{display:flex;flex-direction:column;gap:6px}
+body.b-gene_potential_catalog .gene-lane-empty{display:block;text-align:center;padding:10px 6px;font-size:10.5px;
+  color:var(--muted-2);border:1px dashed var(--border);border-radius:7px}
+
+/* ── 卡面 ── */
+body.b-gene_potential_catalog .gene-card{--gene-race:var(--muted-2);
+  position:relative;padding:7px 9px 7px 11px;gap:4px;border-radius:8px;
+  border:1px solid var(--border);background:var(--card);cursor:pointer;
+  transition:border-color .12s,background .12s}
+body.b-gene_potential_catalog .gene-card:hover{border-color:var(--border-strong);box-shadow:none;background:var(--hover)}
+body.b-gene_potential_catalog .gene-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body.b-gene_potential_catalog .gene-card.r-human{--gene-race:var(--steel,#a1b9dc)}
+body.b-gene_potential_catalog .gene-card.r-infected{--gene-race:var(--accent,#b6a7df)}
+body.b-gene_potential_catalog .gene-card.r-bone{--gene-race:var(--gold,#d4b58a)}
+body.b-gene_potential_catalog .gene-card.r-none{--gene-race:var(--muted-2,#8b9bb8)}
+body.b-gene_potential_catalog .gene-race-bar{position:absolute;left:0;top:0;bottom:0;width:3px;
+  border-radius:7px 0 0 7px;background:var(--gene-race)}
+body.b-gene_potential_catalog .gene-top{display:flex;align-items:flex-start;justify-content:space-between;gap:5px}
+body.b-gene_potential_catalog .gene-name{font-size:12.5px;font-weight:650;line-height:1.35;color:var(--fg);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+body.b-gene_potential_catalog .gene-dots{display:inline-flex;gap:3px;margin-top:4px;flex:0 0 auto}
+body.b-gene_potential_catalog .gene-dot{width:5px;height:5px;border-radius:50%;background:var(--muted-2);opacity:.6}
+body.b-gene_potential_catalog .gene-dot.static-config{background:var(--steel);opacity:.9}
+body.b-gene_potential_catalog .gene-dot.unverified{background:var(--ca)}
+body.b-gene_potential_catalog .gene-bads{display:flex;flex-wrap:wrap;gap:4px}
+body.b-gene_potential_catalog .gene-b{font-size:10px;line-height:1.6;padding:0 5px;border-radius:4px;
+  border:1px solid var(--border);color:var(--muted);white-space:nowrap}
+body.b-gene_potential_catalog .gene-b.lv{color:var(--steel);border-color:rgba(161,185,220,.35)}
+body.b-gene_potential_catalog .gene-b.sc{color:var(--gold);border-color:rgba(212,181,138,.35);font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-b.srv{color:var(--accent);border-style:dashed;border-color:var(--accent-border)}
+body.b-gene_potential_catalog .gene-b.tier{color:var(--gold);border-color:rgba(212,181,138,.35)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="初级"]{color:var(--muted);border-color:var(--border)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="中级"]{color:var(--st);border-color:var(--st-bd)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="高级"]{color:var(--steel);border-color:rgba(161,185,220,.35)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="超级"]{color:var(--accent);border-color:var(--accent-border)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="特级"]{color:var(--gold);border-color:rgba(212,181,138,.35)}
+body.b-gene_potential_catalog .gene-b.tier[data-tier="究级"]{color:#e08a7a;border-color:rgba(224,138,122,.45)}
+body.b-gene_potential_catalog .gene-eff{font-size:11.5px;line-height:1.5;color:var(--muted);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+body.b-gene_potential_catalog .gene-note{font-size:10.5px;line-height:1.45;color:var(--muted-2)}
+body.b-gene_potential_catalog .gene-mini{padding:5px 8px 5px 10px;gap:3px}
+body.b-gene_potential_catalog .gene-mini .gene-name{font-size:11.5px;-webkit-line-clamp:1}
+body.b-gene_potential_catalog .gene-mini .gene-note{display:none}
+
+/* ── 经典服名册级：6 个档位列 ── */
+body.b-gene_potential_catalog .gene-tiers{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:4px}
+body.b-gene_potential_catalog .gene-tier-col{background:var(--card);border:1px solid var(--border);
+  border-top:3px solid var(--gold);border-radius:10px;padding:9px}
+body.b-gene_potential_catalog .gene-tier-h{display:flex;align-items:baseline;justify-content:space-between;
+  gap:6px;padding:0 2px 8px;font-size:12px;font-weight:700;color:var(--gold)}
+body.b-gene_potential_catalog .gene-tier-h b{font-size:11px;color:var(--muted-2);font-weight:500;font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-tier-body{display:flex;flex-direction:column;gap:6px}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="初级"]{border-top-color:var(--muted-2)}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="中级"]{border-top-color:var(--st)}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="高级"]{border-top-color:var(--steel)}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="超级"]{border-top-color:var(--accent)}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="特级"]{border-top-color:var(--gold)}
+body.b-gene_potential_catalog .gene-tier-col[data-tier="究级"]{border-top-color:#e08a7a}
+
+/* ── 两服总览：服别入口卡 ── */
+body.b-gene_potential_catalog .gene-ov{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:2px}
+body.b-gene_potential_catalog .gene-ov-card{display:flex;flex-direction:column;gap:7px;padding:16px 18px;
+  font:inherit;text-align:left;color:var(--fg);cursor:pointer;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  transition:border-color .12s,background .12s}
+body.b-gene_potential_catalog .gene-ov-card:hover{border-color:var(--accent-border);background:var(--hover)}
+body.b-gene_potential_catalog .gene-ov-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+body.b-gene_potential_catalog .gene-ov-nm{font-size:16px;font-weight:700;letter-spacing:.01em}
+body.b-gene_potential_catalog .gene-ov-n{font-size:22px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+body.b-gene_potential_catalog .gene-ov-n em{font-style:normal;font-size:11px;color:var(--muted);margin-left:3px}
+body.b-gene_potential_catalog .gene-ov-desc{font-size:11.5px;color:var(--muted)}
+body.b-gene_potential_catalog .gene-ov-rows{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--muted-2)}
+body.b-gene_potential_catalog .gene-ov-rows>span::before{content:"· ";color:var(--border-strong)}
+body.b-gene_potential_catalog .gene-ov-go{margin-top:2px;font-size:11.5px;color:var(--accent)}
+body.b-gene_potential_catalog .gene-ov-card.kj1{--gene-ov-bd:var(--steel,#a1b9dc)}
+body.b-gene_potential_catalog .gene-ov-card.classic{--gene-ov-bd:var(--gold,#d4b58a)}
+body.b-gene_potential_catalog .gene-ov-note{margin-top:12px;padding:10px 12px;font-size:11.5px;line-height:1.7;
+  color:var(--muted);background:var(--card);border:1px dashed var(--border);border-radius:8px}
+body.b-gene_potential_catalog .gene-ov-hit{margin:0 0 10px;font-size:11.5px;color:var(--ca)}
+
+/* ── D2 详情体 ── */
+body.b-gene_potential_catalog .gene-d2-eff{padding:10px 12px;margin-bottom:8px;font-size:13px;line-height:1.7;
+  color:var(--fg);background:var(--bg);border:1px solid var(--border);border-radius:8px}
+body.b-gene_potential_catalog .gene-d2-k{display:inline-block;margin-right:8px;padding:0 6px;font-size:10.5px;
+  color:var(--gold);border:1px solid var(--border);border-radius:4px;vertical-align:middle}
+body.b-gene_potential_catalog .gene-d2-na{color:var(--muted-2);font-size:12px}
+
+/* ── 响应式 ── */
+@media (max-width:1180px){
+  body.b-gene_potential_catalog .gene-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.b-gene_potential_catalog .gene-tiers{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  body.b-gene_potential_catalog .gene-lanes{grid-template-columns:minmax(0,1fr)}
+  body.b-gene_potential_catalog .gene-tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.b-gene_potential_catalog .gene-ov{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:480px){
+  body.b-gene_potential_catalog .gene-tiers{grid-template-columns:minmax(0,1fr)}
+}

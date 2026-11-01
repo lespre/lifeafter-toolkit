@@ -207,19 +207,124 @@ def status_of(st: str, en: str):
 
 # ── 成员绑定（返回 [{item_id, field, kind, table, row_key, slot}]）────────────
 
-def _add(out: list, iid, field: str, kind: str, table: str, row_key, slot=None):
+def _add(out: list, iid, field: str, kind: str, table: str, row_key, slot=None,
+         *, reward_id=None, count=None):
     if isinstance(iid, bool) or not isinstance(iid, int) or iid <= 0:
         return
     sid = str(iid)
     if any(x["item_id"] == sid for x in out):
         return
-    out.append({"item_id": sid, "field": field, "kind": kind,
-                "table": table, "row_key": row_key, "slot": slot})
+    rec = {"item_id": sid, "field": field, "kind": kind,
+           "table": table, "row_key": row_key, "slot": slot}
+    if reward_id is not None:
+        rec["reward_id"] = str(reward_id)
+    if count is not None:
+        rec["count"] = count
+    out.append(rec)
 
 
 T_SF = T_CHIP = T_TEAM = T_TEAMR = T_BUILD = T_WEAP = T_MULTI = None
 T_VEH = T_FALCON = T_BLN = T_LN = T_LIVE = T_PIGEON = None
 SF_PANEL_KEYS: dict = defaultdict(set)
+
+# ── 奖励包展开：reward id → random_item_reward_data_<n> 行 → jump 叶子 ─────
+# 配置里不少「道具 id」其实是奖励包 id（如返利小队 reward、大版本面板 show id），
+# 直接当成员会把礼包名冒充成奖励名。这里按包 id 展开成真实 (道具 id, 数量)。
+REWARD_TABLES: dict = {}
+REWARD_LOC: dict = {}       # reward id → (表 stem, 行 key, items 引用)
+REWARD_NAME: dict = {}      # reward id → 该奖励包自己的 name（展开失败时的兜底名）
+REWARD_IDS: set = set()     # 字符串形式的 reward id，用于剔除旧板继承的礼包行
+
+
+def _init_rewards():
+    """加载全部 random_item_reward_data_* 行表，建 reward id → 行 索引。"""
+    stems = sorted(p.stem for p in CD.glob("random_item_reward_data_*.py")
+                   if not p.stem.endswith(("_chs", "_kj1", "_yk"))
+                   and p.stem.rsplit("_", 1)[-1].isdigit())
+    for stem in stems:
+        t = load(stem)
+        if t is None or not t.rows:
+            continue
+        REWARD_TABLES[stem] = t
+        for r in t.rows:
+            rid = r["key"]
+            if isinstance(rid, bool) or not isinstance(rid, int) or rid <= 0:
+                continue
+            ref = r["fields"].get("items")
+            if ref is None:
+                continue
+            REWARD_LOC[rid] = (stem, rid, ref)
+            nm = r["fields"].get("name")
+            if isinstance(nm, str) and nm:
+                REWARD_NAME[rid] = nm
+    REWARD_IDS.update(str(k) for k in REWARD_LOC)
+    print("奖励包索引：%d 张表 / %d 个 reward id" % (len(REWARD_TABLES), len(REWARD_LOC)))
+
+
+def _reward_leaves(rid: int) -> list[tuple[int, int]]:
+    """reward id → [(item_id, count)]；只在本表 blob 内解 jump 帧，不跨表编造。"""
+    loc = REWARD_LOC.get(rid)
+    if loc is None:
+        return []
+    stem, _rk, ref = loc
+    tbl = REWARD_TABLES.get(stem)
+    if tbl is None or tbl.blob is None or isinstance(ref, bool):
+        return []
+    if isinstance(ref, int):
+        return [(ref, 1)] if ref > 0 else []
+    if not (isinstance(ref, str) and ref.startswith("jump:")):
+        return []
+    off = int(ref.split(":")[1])
+    if not (0 <= off < len(tbl.blob)):
+        return []
+    res = BT.resolve_jump_target(tbl.blob, off, [])
+    leaves = []
+    for pair in (res.get("leaves") or []):
+        if isinstance(pair, bool):
+            continue
+        if isinstance(pair, int):
+            iid, cnt = pair, 1
+        elif isinstance(pair, (list, tuple)) and len(pair) >= 2:
+            iid, cnt = pair[0], pair[1]
+        else:
+            continue
+        if isinstance(iid, bool) or not isinstance(iid, int) or iid <= 0:
+            continue
+        leaves.append((iid, cnt if isinstance(cnt, int) and not isinstance(cnt, bool) else 1))
+    return leaves
+
+
+def _expand_members(members: list, depth: int = 0, seen: frozenset = frozenset()) -> list:
+    """把成员里的奖励包 id 展开成真实道具；嵌套包最多展开 3 层，防环。"""
+    if depth > 3:
+        return members
+    out: list = []
+    for m in members:
+        try:
+            rid = int(m["item_id"])
+        except (TypeError, ValueError):
+            out.append(m)
+            continue
+        if rid in seen or rid not in REWARD_LOC:
+            out.append(m)
+            continue
+        leaves = _reward_leaves(rid)
+        if not leaves:
+            out.append(m)      # 包解不开：保留包 id，名字走 REWARD_NAME 兜底
+            continue
+        stem, _rk, _ref = REWARD_LOC[rid]
+        sub = []
+        for iid, cnt in leaves:
+            nm = dict(m)
+            nm["item_id"] = str(iid)
+            nm["field"] = "items"
+            nm["table"] = stem
+            nm["row_key"] = rid
+            nm["reward_id"] = str(rid)
+            nm["count"] = cnt
+            sub.append(nm)
+        out.extend(_expand_members(sub, depth + 1, seen | {rid}))
+    return out
 
 
 def _init_tables():
@@ -396,9 +501,38 @@ def main() -> int:
     rows, hd_meta = vm_rows(hd_path)
     HD_SHA = _sha256(hd_path)
     _init_tables()
+    _init_rewards()
 
     im = json.loads((WEB / "data/boards/item_master_full.json").read_text(encoding="utf-8"))
     names = {str(i.get("item_id")): i.get("name") for i in im["items"] if i.get("name")}
+    # 名字多源回填：活动道具名册（38k）→ 展示名（23k）→ 分命名空间名册（57k）
+    for path, mode in ((PROJ / "01_索引与产物/10_索引/items/common_item_names.json", "map"),
+                       (PROJ / "01_索引与产物/10_索引/items/show_item_names.json", "list"),
+                       (PROJ / "01_索引与产物/10_索引/items/item_names_ns.json", "ns")):
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001 - 名字源坏了不阻断构建
+            continue
+        if mode == "map":
+            for k, v in (data.get("items") or {}).items():
+                nm = v.get("name") if isinstance(v, dict) else v
+                if nm and k not in names:
+                    names[k] = nm
+        elif mode == "list":
+            for v in (data.get("items") or {}).values():
+                if isinstance(v, dict) and v.get("name") and v.get("item_id") is not None:
+                    names.setdefault(str(v["item_id"]), v["name"])
+        else:
+            for rows_ in (data.get("by_ns") or {}).values():
+                for k, v in rows_.items():
+                    nm = v.get("name") if isinstance(v, dict) else v
+                    if nm and k not in names:
+                        names[k] = nm
+    # 奖励包自身名字兜底（展开失败时至少显示配置里的包名，而不是「道具 <id>」）
+    for rid, nm in REWARD_NAME.items():
+        names.setdefault(str(rid), nm)
 
     # 兜底：活动展示表（key=活动 id → show_item_ids）
     show_map = {}
@@ -449,6 +583,9 @@ def main() -> int:
                   T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON):
             if t is not None and t.stem == name:
                 return t.sha
+        rt = REWARD_TABLES.get(name)
+        if rt is not None:
+            return rt.sha
         return HD_SHA
 
     periods, items = [], []
@@ -486,29 +623,41 @@ def main() -> int:
                                     "table": "common_hd_show_reward_data",
                                     "row_key": rk, "slot": None} for x in dict.fromkeys(ids)]
                     gap = ""
+            # ★ 奖励包展开：配置给的是 reward 包 id 时，落到真实道具（保留包 id 作证据）
+            new_members = _expand_members(new_members)
             if not new_members:
                 per["gap_reason"] = gap
                 gap_counter[cls] += 1
         elif pid in old_ids:
             per["gap_reason"] = "2026 前未深化（本轮只做 2026 起）"
         if new_members and cls in ("SuperFashionLotteryHD", "DragonBlessingLotteryHD",
-                                   "BlessingsAlwaysLotteryHD"):
+                                   "BlessingsAlwaysLotteryHD", "LotteryTeamHD"):
             per["pool_size"] = len(new_members)
             if T_SF:
                 per["lottery_id"] = (T_SF.by_key.get(conf) or {}).get("lottery_id")
 
         # 1) 旧板已存在的期次：成员原样继承（2026 前不动）
-        carried = old_items.get(pid, [])
+        #    2026 起且本轮已解出成员时：旧板里的奖励包行已被展开结果取代，剔除
+        carried = [it for it in old_items.get(pid, [])
+                   if not (recent and new_members and str(it.get("item_id")) in REWARD_IDS)]
         for it in carried:
+            # 旧板只回填名字（不改成员集），让上一版遗留的「道具 <id>」尽量显示真名
+            if str(it.get("name") or "").startswith("道具 "):
+                nm = names.get(str(it.get("item_id")))
+                if nm:
+                    it = dict(it)
+                    it["name"] = nm
             items.append(it)
             per["member_count"] += 1
         srcs = []
         if carried:
             per["member_source"] = (old_periods.get(pid) or {}).get("member_source") or "上一版产物（原样继承）"
             oldp = old_periods.get(pid) or {}
-            for f in ("pool_size", "lottery_id", "candidate_match_days", "pool_count"):
+            for f in ("lottery_id", "candidate_match_days", "pool_count"):
                 if oldp.get(f) is not None:
                     per[f] = oldp[f]
+            if not new_members and oldp.get("pool_size") is not None:
+                per["pool_size"] = oldp["pool_size"]
             srcs.append(per["member_source"])
 
         # 2) 2026 起：追加本轮结构可证成员（与旧成员按 item_id 去重）
@@ -522,6 +671,9 @@ def main() -> int:
             if src not in srcs:
                 srcs.append(src)
             prov = prov_for(m["table"], m["row_key"], [m["field"]], table_sha(m["table"]))
+            src_note = "%s.%s（%s conf %s）" % (m["table"], m["field"], cls, per["conf_key"])
+            if m.get("reward_id"):
+                src_note += " ← 奖励包 %s" % m["reward_id"]
             it = {
                 "id": "%s_n%s" % (pid, sid), "period_id": pid, "period_label": per["label"],
                 "period_start": st, "period_end": en, "family": fam, "family_key": cls,
@@ -529,11 +681,15 @@ def main() -> int:
                 "kind": m["kind"], "evidence": "structure", "evidence_level": "static/candidate",
                 "status_tags": ["static config"], "_media": {"images": [], "total": 0},
                 "icon_state": "未下发",
-                "source": "%s.%s（%s conf %s）" % (m["table"], m["field"], cls, per["conf_key"]),
+                "source": src_note,
                 "provenance": prov,
             }
             if m["slot"] is not None:
                 it["slot"] = m["slot"]
+            if m.get("reward_id"):
+                it["reward_id"] = m["reward_id"]
+            if m.get("count") is not None:
+                it["count"] = m["count"]
             icon_png = WEB / "assets/lottery_icons" / (re.sub(r"[^0-9A-Za-z_.-]+", "_", sid) + ".png")
             if icon_png.is_file():
                 it["_media"] = {"images": [{"png": "assets/lottery_icons/" + icon_png.name,
@@ -617,6 +773,11 @@ def main() -> int:
         "大版本奖池 / 龙祈福袋 / 福运常在用面板（面板 jump 组被多期共用时改用该期自己的主推道具）；"
         "限定芯片 up_chips+new_chips；核芯补给/核芯集市 limit_nucleus_item_id；典藏直播 rare_item_ids；"
         "许愿池取 grand_reward_item_id。2026 前保持上一版规则不动，等下一轮再深化。"
+        "★ 奖励包展开：配置里有些「道具 id」实际是 reward 包（返回礼包 944646、面板 10588 这类），"
+        "本版按 random_item_reward_data_<n> 行 → items jump 帧展开成真实道具与数量，"
+        "原包 id 保留在 item.reward_id / source 作证据；礼包内嵌套组最多展开 3 层。"
+        "★ 名字多源回填：item_master_full → common_item_names → show_item_names → item_names_ns，"
+        "仍未命中的保留「道具 <id>」并由前端标注「未解析」。"
         "成员分 kind：奖池奖励 / 展示道具 / 大奖 —— 展示道具不当奖励。"
         "解不开的家族（核芯抽奖、秘藏时装、不放回抽奖、T1 家具、转盘、天蝎座等）不编造，"
         "理由写在期次的 gap_reason，汇总见 meta.gap_summary。"

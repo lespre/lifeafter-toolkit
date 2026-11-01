@@ -301,6 +301,123 @@ def read_pack_rows(path, rows):
     return out
 
 
+def read_rows(path, rows):
+    """一个容器的若干行 → 解压后载荷；.npk 走条目表，.gpk 走块链。"""
+    if str(path).lower().endswith(".npk"):
+        out = {}
+        for r in rows:
+            try:
+                out[r] = UC.read_entry(str(path), entry_index=r)
+            except Exception:                        # noqa: BLE001
+                continue
+        return out
+    return read_pack_rows(path, rows)
+
+
+# ── 全容器 fid 回退 ─────────────────────────────────────────
+# 为什么需要：PC/PE 索引（pe_index/pc_index/row_path_map）没覆盖 gres 多块包、
+# 部分热更 gpk 与 npk 层；但这些容器表里同样按 fid 存行。按候选 fid 只读表扫一遍
+# （全量 294 个容器约 10 秒），就能把索引漏掉的贴图找回来，再按行号定向读载荷。
+NPK_DIRS = (PROJ / "01_索引与产物/源包/pe_npk_full",
+            PROJ / "01_索引与产物/源包/pe_ui_npk",
+            PROJ / "01_索引与产物/源包/pe_npk_20261029")
+SKIP_DIRS = ("sound", "video", "script", "model", "scene", "building", "character")
+
+
+def _scan_container(path, cand_arr):
+    """只读表 → [(行号, fid)]；支持 HPGF 块链 gpk 与 NXPK npk。"""
+    import numpy as np
+    from toolkit_core.resource_resolver import aes_ecb
+    import os
+    size = os.path.getsize(path)
+    with open(path, "rb") as f:
+        head = aes_ecb(f.read(48))
+    if len(head) >= 24 and head[8:12] == b"NXPK":
+        tab_off = struct.unpack_from("<I", head, 16)[0]
+        cnt = struct.unpack_from("<I", head, 20)[0]
+        if tab_off >= size or cnt > 4_000_000:
+            return []
+        with open(path, "rb") as f:
+            f.seek(tab_off)
+            tab = aes_ecb(f.read(cnt * 48))
+        arr = np.frombuffer(tab, dtype="<u4").reshape(-1, 12)
+        fids = arr[:, 0].astype(np.uint64) | (arr[:, 1].astype(np.uint64) << np.uint64(32))
+        idx = np.nonzero(np.isin(fids, cand_arr))[0]
+        return [(int(j), int(fids[j])) for j in idx.tolist()]
+    # HPGF 块链：头 [12] = 块数；块 base 16，+48 起为 cnt×32 B 表，行 <8I>
+    _zero, masked, two, nblocks = struct.unpack("<IIII", head[:16])
+    if two != 2 or (masked ^ 0x46475049) != nblocks or not (0 < nblocks < 100_000):
+        return []
+    out, B, row0 = [], 16, 0
+    with open(path, "rb") as f:
+        for _k in range(nblocks):
+            f.seek(B)
+            bh = aes_ecb(f.read(48))
+            if len(bh) < 48:
+                break
+            cnt, bsize = struct.unpack_from("<II", bh, 4)
+            cnt -= 1
+            if cnt < 0 or B + 48 + cnt * 32 > size:
+                break
+            f.seek(B + 48)
+            tab = aes_ecb(f.read(cnt * 32))
+            arr = np.frombuffer(tab, dtype="<u4").reshape(-1, 8)
+            # 表里第 6/7 个 u32 = fid 的低/高 32 位（与探针 scan_tables 口径一致）
+            fids = (arr[:, 7].astype(np.uint64) << np.uint64(32)) | arr[:, 6].astype(np.uint64)
+            idx = np.nonzero(np.isin(fids, cand_arr))[0]
+            for j in idx.tolist():
+                out.append((row0 + j, int(fids[j])))
+            row0 += cnt
+            if bsize <= 0 or B + bsize > size:
+                break
+            B += bsize
+    return out
+
+
+def build_full_tex_map(names):
+    """贴图名 → (容器文件, 行号)。先查 pe/pc 索引，未命中的再扫全部容器表。"""
+    import numpy as np
+    from toolkit_core.path_fid import fid_of
+    cands = {}
+    for n in names:
+        stem = tex_stem(n)
+        for pre in ("", "ui/"):
+            base = stem if stem.lower().startswith("ui/") else pre + stem
+            for e in TEX_EXT:
+                cands["%016X" % fid_of(base + e)] = n
+    containers = []
+    for p in sorted(MRZH.rglob("*")):
+        if p.suffix.lower() not in (".gpk", ".npk") or not p.is_file():
+            continue
+        rel = str(p.relative_to(MRZH)).replace("\\", "/")
+        if any(k in rel for k in SKIP_DIRS):
+            continue
+        containers.append(p)
+    for p in sorted(PE_PACKS.glob("*.gpk")):
+        containers.append(p)
+    for d in NPK_DIRS:
+        if d.is_dir():
+            containers.extend(sorted(d.glob("*.npk")))
+    cand_arr = np.array([int(h, 16) for h in cands], dtype=np.uint64)
+    found = {}
+    for p in containers:
+        try:
+            hits = _scan_container(p, cand_arr)
+        except Exception:                            # noqa: BLE001
+            continue
+        for row, fid in hits:
+            h = "%016X" % fid
+            if h not in found:
+                found[h] = (p, row)
+    out = {}
+    for h, loc in found.items():
+        name = cands[h]
+        out.setdefault(name, loc)
+    print("全容器回退：候选贴图名 %d，扫到容器 %d，命中 %d"
+          % (len(names), len(containers), len(out)))
+    return out
+
+
 def decode_payload(pl):
     """载荷 → RGBA PIL 图；认不出返回 None。"""
     from PIL import Image
@@ -338,9 +455,10 @@ def csb_anim_name(csb):
     return re.sub(r"[^0-9A-Za-z_.-]", "_", base) + ".webp"
 
 
-def build_anims(board):
+def build_anims(board, full_map=None):
     """每个多帧 csb 合成一个循环动画 WebP（同 csb 的称号共用一份）。"""
     from PIL import Image
+    full_map = full_map or {}
     items = board["items"]
     csbs = sorted({str(it["anim_csb"]) for it in items if it.get("anim_csb")})
     nf = load_csb_raws(csbs)
@@ -357,17 +475,20 @@ def build_anims(board):
         rows_by_pack = {}
         for tex in order:
             hit = res.resolve(tex)
-            if not hit:
+            if hit:
+                src, pack, row = hit
+                fp = pack_file(src, pack)
+            elif tex in full_map:
+                fp, row = full_map[tex]
+            else:
                 continue
-            src, pack, row = hit
-            fp = pack_file(src, pack)
             if not fp:
                 continue
             tex_hits.append((fp, row))
             rows_by_pack.setdefault(fp, set()).add(row)
         payloads = {}
         for fp, rows in rows_by_pack.items():
-            payloads.update({(fp, r): raw for r, raw in read_pack_rows(fp, rows).items()})
+            payloads.update({(fp, r): raw for r, raw in read_rows(fp, rows).items()})
         # 按贴图名里的序号还原帧序（不能按包内行号排，跨包会乱）
         imgs = []
         for fp, row in tex_hits:
@@ -432,7 +553,10 @@ def main() -> int:
     if not only_anim:
         tex_of = load_csb_raws(csbs)
         OUT_DIR.mkdir(parents=True, exist_ok=True)
+        all_names = sorted({n for ns in tex_of.values() for n in ns})
+        full_map = build_full_tex_map(all_names)
         ok = miss = 0
+        pending = []
         for it in items:
             for k in ("dyn_png", "dyn_frames", "dyn_tex"):
                 it.pop(k, None)
@@ -449,12 +573,47 @@ def main() -> int:
                 it["dyn_tex"] = first
                 ok += 1
             else:
-                miss += 1
-                print("  贴图未命中:", it["item_id"], it["name"], first)
-        print("首帧导出 %d / 未命中 %d；总动态条目 %d"
-              % (ok, miss, sum(1 for it in items if it.get("anim_csb"))))
-
-    build_anims(board)
+                pending.append((it, names, rel))
+        # 首帧不在索引里时，回退到全容器映射：按帧序逐张试，解出第一张可用的即停
+        # （有些 csb 的帧序号不从 000 起，如 vx_chenghao_reli_004.bc7，所以不能只试前几张）
+        item_plans = []
+        for it, names, rel in pending:
+            frames = [(n,) + full_map[n] for n in sorted(names, key=seq_key) if n in full_map]
+            if frames:
+                item_plans.append((it, rel, frames))
+        for it, rel, frames in item_plans:
+            rows_by_file = {}
+            for _n, fp, row in frames:
+                rows_by_file.setdefault(fp, set()).add(row)
+            payloads = {}
+            for fp, rows in rows_by_file.items():
+                try:
+                    payloads.update({(fp, r): raw for r, raw in read_rows(fp, rows).items()})
+                except Exception as e:               # noqa: BLE001
+                    print("  回退读取失败:", fp, e)
+            for n, fp, row in frames:
+                im = decode_payload(payloads.get((fp, row), b""))
+                if im is None:
+                    continue
+                im.save(WEB / rel, "PNG", optimize=True)
+                shrink(WEB / rel)
+                it["dyn_png"] = rel
+                it["dyn_frames"] = len(tex_of.get(str(it.get("anim_csb") or ""), []))
+                it["dyn_tex"] = n
+                ok += 1
+                break
+        miss = len(pending) - len(item_plans) + sum(
+            1 for it, _r, _f in item_plans if not it.get("dyn_png"))
+        for it, names, rel in pending:
+            if not it.get("dyn_png"):
+                print("  贴图未命中:", it["item_id"], it["name"], pick_first(names))
+        print("首帧导出 %d / 未命中 %d（其中全容器回退补 %d）；总动态条目 %d"
+              % (ok, miss, sum(1 for it, _r, _f in item_plans if it.get("dyn_png")),
+                 sum(1 for it in items if it.get("anim_csb"))))
+        build_anims(board, full_map)
+    else:
+        tex_of = load_csb_raws(csbs)
+        build_anims(board, build_full_tex_map(sorted({n for ns in tex_of.values() for n in ns})))
     labels = board["meta"].setdefault("field_labels", {})
     labels.update({"dyn_png": "动态预览", "dyn_frames": "动画帧数",
                    "dyn_tex": "动画贴图（csb 内引用）",

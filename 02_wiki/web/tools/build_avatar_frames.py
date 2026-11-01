@@ -207,8 +207,12 @@ def _interior_union(cv2, a, sil, main, w, h):
     ★ 为什么不直接取「轮廓内所有透明像素」：框体本身（花边/丝带之间）也有透明缝隙，
       全并进来会把 bbox 撑到整张卡，背景铺到底会从半透明的边框里透出来，反而更假。
       这里以主内孔（离中心最近的最大透光块）为种子，只收「bbox 与种子 bbox 相交
-      （外扩 2% 长边）」的碎片，一条丝带切出来的贴边薄片都会被收进来，
+      （外扩 0.8% 长边）」的碎片，一条丝带切出来的贴边薄片都会被收进来，
       而边框环上的独立缝隙不会被牵连。
+    ★ 外扩量从 2% 收到 0.8%（2026-11-02 灯箱实测 bc_580219）：框右侧挂饰（灯笼/花枝）
+      之间那道缝离内孔右沿只有 ~24px，2%（26px）恰好把它收进来，背景于是铺到
+      外轮廓边界、从缝里透出一大块蓝色场景。0.8%（10px）只够接住被丝带切开的
+      内孔薄片，接不到外侧挂饰的缝。
     """
     hole = ((sil > 0) & (a < 96)).astype(np.uint8)
     n, lab, st, _c = cv2.connectedComponentsWithStats(hole, 4)
@@ -222,7 +226,7 @@ def _interior_union(cv2, a, sil, main, w, h):
             seed_i, seed_n = i, overlap
     if seed_i < 0:
         return main
-    pad = int(round(0.02 * max(w, h)))
+    pad = max(4, int(round(0.008 * max(w, h))))
     min_area = max(16, int(0.0015 * w * h))
     keep = np.zeros((h, w), bool)
     x0, y0, bw, bh, _ar = st[seed_i]
@@ -344,6 +348,92 @@ def _hole_fallback(a):
             "clip": None}
 
 
+def _visible_mask(cv2, a):
+    """背景「只在内孔里显形」的遮罩：内孔=1，框体与框外=0，边缘羽化 1~2px。"""
+    h, w = a.shape
+    inner = _interior_mask(cv2, a)
+    if inner is None:
+        return None
+    sil = _silhouette_mask(cv2, a)
+    body = _interior_union(cv2, a, sil, inner, w, h) if sil is not None else inner
+    d = max(2, int(round(0.004 * min(h, w))))
+    ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (d * 2 + 1, d * 2 + 1))
+    body = cv2.dilate(body.astype(np.uint8), ker)
+    m = cv2.GaussianBlur(body.astype(np.float32), (0, 0), 1.2)
+    return np.clip(m, 0.0, 1.0)
+
+
+def bake_background(frame_path: pathlib.Path, bg_path: pathlib.Path,
+                    out_path: pathlib.Path, bbox) -> bool:
+    """把场景底图按内孔 bbox 裁好，并把「只在内孔里显形」写进 alpha 通道。
+
+    ★ 为什么弃用前端 clip-path（2026-11-02 用户二次反馈「背景图和名片框还是不太适配」）：
+      CSS clip-path 只能吃**一个单连通多边形**，而框外挂饰（灯笼/花枝）之间的透明缝隙
+      虽然落在外轮廓里，却不是内孔 —— 背景铺满就会从缝里透出来（灯箱实测 bc_580219
+      右侧漏出一条蓝色场景，边界还是多边形折线）。多边形带不了洞，只能改用 alpha
+      通道逐像素表达：孔里实心、孔外全透明。
+    ★ 产物与边框图**同尺寸**（整卡图层）：前端 inset:0 铺满，靠 alpha 决定哪里显形。
+      这样没有裁切框、没有多边形，位置对齐不会差半分。
+    """
+    try:
+        with Image.open(frame_path) as fim:
+            a = np.asarray(fim.convert("RGBA"))[:, :, 3]
+    except Exception:                                   # noqa: BLE001
+        return False
+    h, w = a.shape
+    if h < 8 or w < 8 or bbox is None:
+        return False
+    try:
+        import cv2
+    except Exception:                                   # noqa: BLE001
+        return False
+    mask = _visible_mask(cv2, a)
+    if mask is None:
+        return False
+    px, py = int(round(0.0035 * w)), int(round(0.0035 * h))
+    l, t, bw, bh = bbox
+    x0 = max(0, int(round(l * w)) - px)
+    y0 = max(0, int(round(t * h)) - py)
+    x1 = min(w, int(round((l + bw) * w)) + px)
+    y1 = min(h, int(round((t + bh) * h)) + py)
+    cw, ch = x1 - x0, y1 - y0
+    if cw < 16 or ch < 16:
+        return False
+    # ★ Spine 首帧只有 384~640 宽，照画布坐标烘焙会把 1080 的场景缩成小图，
+    #   灯箱里再放大就发虚。整卡图层等比放大（宽高同比），让场景保持 ~1100px 量级。
+    k = min(2.2, 1100.0 / cw) if cw < 1000 else 1.0
+    tw, th = int(round(w * k)), int(round(h * k))
+    sx, sy = int(round(x0 * k)), int(round(y0 * k))
+    sw, sh = int(round(cw * k)), int(round(ch * k))
+    sx = max(0, min(tw - sw, sx))
+    sy = max(0, min(th - sh, sy))
+    try:
+        with Image.open(bg_path) as bim:
+            scene = bim.convert("RGB")
+            s = max(sw / scene.width, sh / scene.height)   # cover：铺满内孔框，多出的居中裁掉
+            nw, nh = max(sw, int(round(scene.width * s))), max(sh, int(round(scene.height * s)))
+            scene = scene.resize((nw, nh), Image.LANCZOS)
+            ox, oy = (nw - sw) // 2, (nh - sh) // 2
+            scene = scene.crop((ox, oy, ox + sw, oy + sh))
+    except Exception:                                   # noqa: BLE001
+        return False
+    canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
+    canvas.paste(scene, (sx, sy))
+    alpha = mask[y0:y1, x0:x1] * 255.0
+    alpha = np.asarray(Image.fromarray(alpha.round().astype(np.uint8))
+                       .resize((sw, sh), Image.LANCZOS))
+    full = Image.new("L", (tw, th), 0)
+    full.paste(Image.fromarray(alpha), (sx, sy))
+    canvas.putalpha(full)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        canvas.save(out_path, format="WEBP", quality=90, method=4)
+    except Exception:                                   # noqa: BLE001
+        out_path.unlink(missing_ok=True)
+        return False
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true", help="真正写回 json（默认只报告）")
@@ -356,7 +446,8 @@ def main() -> int:
     items = cat["items"]
 
     stat = {"静态边框": 0, "Spine首帧": 0, "无边框图": 0,
-            "背景图": 0, "背景图缺失": 0, "场景图降级": 0, "场景图被替换": 0}
+            "背景图": 0, "背景图缺失": 0, "背景烘焙": 0,
+            "场景图降级": 0, "场景图被替换": 0}
     details = []
     bg_missing = []
     dirty = False
@@ -453,6 +544,21 @@ def main() -> int:
                 stat["场景图降级"] += 1
             else:
                 stat["场景图被替换"] += 1
+        # ★ 2026-11-02：名片背景改「烘焙成带 alpha 的图」——场景按内孔裁好、孔外全透明。
+        # 前端照旧按 --hl/--hw 摆图，但不再需要（也不再吃）clip-path 多边形。
+        if (kind == "名片框" and bg is not None and main_img is not None
+                and bg["png"].startswith("assets/avatar_frames_bg/")
+                and main_img.get("hole")):
+            _frame = WEB / main_img["png"]
+            _raw = WEB / bg["png"]
+            _out = FRAMES_BG / (iid + ".webp")
+            if _frame.is_file() and _raw.is_file() and bake_background(
+                    _frame, _raw, _out, main_img["hole"]):
+                _raw.unlink(missing_ok=True)             # 原始场景底图已烘进 webp，不再留盘
+                bg["png"] = "assets/avatar_frames_bg/%s.webp" % iid
+                bg["fit"] = "frame"                      # 前端按整卡铺满（同边框尺寸的透明图层）
+                main_img.pop("clip", None)               # alpha 已精确表达内孔，多边形无用
+                stat["背景烘焙"] += 1
         # 其余次图（旧背景 / 图标）不再占主图位
         for x in imgs:
             if x.get("role") == "fixture":
@@ -464,9 +570,14 @@ def main() -> int:
                 x["label"] = "实心原图"
 
         # 按 png 去重：脚本可重复跑，背景层不能每跑一次多挂一份
+        # ★ 2026-11-02：背景改成烘焙 webp 后，旧版本留下的 `avatar_frames_bg/<id>.png`
+        #   文件名不同、躲过了按 png 去重，会和新 webp 一起挂成两张「名片背景」
+        #   （实测 47 张）。这里按目录前缀一并清掉旧背景。
         _bg_png = (bg or {}).get("png")
+        _bg_prefix = "assets/avatar_frames_bg/%s." % iid
         others = [x for x in imgs
-                  if x is not cur and (not _bg_png or x.get("png") != _bg_png)]
+                  if x is not cur and x.get("png") != _bg_png
+                  and not str(x.get("png") or "").startswith(_bg_prefix)]
         if kind == "名片框" and bg is None:
             bg_missing.append((iid, it.get("name")))
         if main_img is None:
