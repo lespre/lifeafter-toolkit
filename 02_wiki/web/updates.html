@@ -32,6 +32,8 @@ ol{margin:12px 0 0 0;padding-left:22px}
 ol li{margin:7px 0;color:var(--ink-2)}
 ol li::marker{color:var(--steel);font-weight:700}
 .empty{color:var(--ink-3)}
+.entry h3.sec{font-size:14px;color:var(--gold);margin:16px 0 6px;letter-spacing:.05em;font-weight:600}
+.entry h3.sec+ol{margin-top:6px}
 </style>
 </head>
 <body>
@@ -46,10 +48,22 @@ ol li::marker{color:var(--steel);font-weight:700}
 fetch('data/updates.json',{cache:'no-store'}).then(r=>r.json()).then(rows=>{
   const box=document.getElementById('list');
   if(!rows.length){box.innerHTML='<div class="empty">暂无更新</div>';return}
+  /* 条目里以 <strong> 开头的行当「分区标题」：单独成 h3，不参与 ol 编号 */
+  function body(items){
+    let out='',buf=[];
+    const flush=()=>{ if(buf.length){ out+='<ol>'+buf.map(t=>`<li>${t}</li>`).join('')+'</ol>'; buf=[]; } };
+    (items||[]).forEach(t=>{
+      const m=/^\s*<strong>(.*?)<\/strong>\s*$/.exec(t);
+      if(m){ flush(); out+=`<h3 class="sec">${m[1]}</h3>`; }
+      else buf.push(t);
+    });
+    flush();
+    return out;
+  }
   box.innerHTML=rows.map(e=>`<div class="entry">
     <div class="date">${e.date}${e.tag?` <span class="tag">${e.tag}</span>`:''}</div>
     <h2>${e.title}</h2>
-    <ol>${(e.items||[]).map(t=>`<li>${t}</li>`).join('')}</ol>
+    ${body(e.items)}
   </div>`).join('');
 }).catch(()=>{document.getElementById('list').innerHTML='<div class="empty">更新数据加载失败</div>'});
 </script>
