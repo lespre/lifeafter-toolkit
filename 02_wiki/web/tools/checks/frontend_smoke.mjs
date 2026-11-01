@@ -143,14 +143,18 @@ async function probe(page, board, viewport) {
     const qa = (s) => Array.from(document.querySelectorAll(s));
     const txt = (el) => (el ? el.textContent.trim().replace(/\s+/g, " ").slice(0, 200) : null);
     const grid = q("#grid");
-    const cards = qa("#grid > *");
+    // 渲染条数只数真实条目卡（.i）。称号板等带分组头的板会把 .tg-head 也放进 #grid，
+    // 若按「所有子元素」计数，条目数会被分组头污染；表格类板（#grid 里是一张 table）没有 .i，
+    // 此时退回子元素数，保持原口径。
+    const cards = qa("#grid > .i");
+    const gridCount = grid ? (cards.length || grid.children.length) : -1;
     return {
       title: txt(q("#title")),
       metaline: txt(q("#metaline")),
       count: txt(q("#count")),
       pillCount: qa("#pills > *").length,
       filterSelects: qa(".controls select").length,
-      gridChildren: grid ? grid.children.length : -1,
+      gridChildren: gridCount,
       cardTags: cards.slice(0, 40).map((c) => {
         const n = c.querySelector(".i-name, .name, h3, .i-title");
         const tags = Array.from(c.querySelectorAll(".state-tag, .state-pill, .tag")).map((t) =>

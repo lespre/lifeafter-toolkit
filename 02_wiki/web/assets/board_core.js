@@ -2439,12 +2439,12 @@ function titleGroupKey(it){return String((it&&it.obtain)||"")||null;}
 function titleGroupLabel(v){const hit=TITLE_GROUPS.find(g=>g[0]===v);return hit?hit[1]:"其他";}
 function titleGroupOrder(v){const i=TITLE_GROUPS.findIndex(g=>g[0]===v);return i<0?TITLE_GROUPS.length-1:i;}
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
-   偏移不写死：读 .controls 的 computed top + 自身高度，控件换行/换视口时自动跟随。 */
+   只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
+   --top-h 表达式相加，这样 board_plugins 事后校准 --top-h 时两者一起走，不会错位。 */
 function syncTitleHeadTop(){
   if(!TITLE_BOARD)return;
   const c=document.querySelector(".controls");if(!c)return;
-  const st=parseFloat(getComputedStyle(c).top)||0;
-  document.documentElement.style.setProperty("--tg-top",`${Math.ceil(st+c.offsetHeight+2)}px`);
+  document.documentElement.style.setProperty("--tg-h",`${c.offsetHeight}px`);
 }
 window.addEventListener("resize",syncTitleHeadTop);
 const CQ={fam:new Set(),q:new Set(),img:"",sort:""};

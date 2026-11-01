@@ -1,6 +1,6 @@
 {
   "base": "http://127.0.0.1:8765",
-  "at": "2026-11-01T11:16:25.035Z",
+  "at": "2026-11-01T11:23:02.452Z",
   "results": [
     {
       "board": "title_catalog",
@@ -15,13 +15,8 @@
         "count": "显示 1539 / 1539 条",
         "pillCount": 3,
         "filterSelects": 7,
-        "gridChildren": 1550,
+        "gridChildren": 1539,
         "cardTags": [
-          {
-            "n": null,
-            "tags": [],
-            "ev": null
-          },
           {
             "n": "初级伐木工",
             "tags": [
@@ -290,6 +285,13 @@
           },
           {
             "n": "采麻专家",
+            "tags": [
+              "静态配置"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "枪械专家",
             "tags": [
               "静态配置"
             ],
@@ -320,13 +322,8 @@
         "count": "显示 1539 / 1539 条",
         "pillCount": 3,
         "filterSelects": 7,
-        "gridChildren": 1550,
+        "gridChildren": 1539,
         "cardTags": [
-          {
-            "n": null,
-            "tags": [],
-            "ev": null
-          },
           {
             "n": "初级伐木工",
             "tags": [
@@ -595,6 +592,13 @@
           },
           {
             "n": "采麻专家",
+            "tags": [
+              "静态配置"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "枪械专家",
             "tags": [
               "静态配置"
             ],

@@ -592,8 +592,9 @@ body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-or
 /* ── 称号板（title_catalog，2026-11-01）：1539 条以文字为主，密排 + 获取途径分组 ──
    卡头只留 称号名 / 称号ID（获取途径由分组头统一标注，不在每张卡上重复）；
    说明压到 2 行（全文仍在 D2 详情里，不受 clamp 影响）；
-   分组头横跨整行并吸顶；top 由 board_core.syncTitleHeadTop() 算出的 --tg-top 给定，
-   保证让开 .controls 粘性条（半透明底，用固定值会从下面透出字）。 */
+   分组头横跨整行并吸顶；桌面端位置 = .controls 的粘性 top + 控件条高度（--tg-h，
+   由 board_core.syncTitleHeadTop() 写入），与控件条用同一个 --top-h 表达式，校准后仍对齐；
+   ≤760px 时 .controls 改为 static，分组头直接贴顶。 */
 body.b-title_catalog .wrap{max-width:1780px}
 body.b-title_catalog #grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-items:start}
 body.b-title_catalog #grid>.i{padding:10px 12px;gap:4px}
@@ -606,9 +607,10 @@ body.b-title_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.55;display:-
   -webkit-box-orient:vertical;overflow:hidden}
 body.b-title_catalog .tg-head{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;margin:16px 0 0;
   padding:6px 4px 4px;border-bottom:1px solid var(--border);
-  position:sticky;top:var(--tg-top,var(--top-h));z-index:8;background:var(--bg)}
+  position:sticky;top:calc(var(--top-h,150px) + 12px + var(--tg-h,112px));z-index:8;background:var(--bg)}
 body.b-title_catalog .tg-name{font-size:13px;font-weight:650;letter-spacing:.02em;color:var(--gold)}
 body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-numeric:tabular-nums}
+@media (max-width:760px){body.b-title_catalog .tg-head{top:0}}
 @media (max-width:640px){body.b-title_catalog #grid{grid-template-columns:minmax(0,1fr)}}
 
 /* 名册类板（击败播报 / MVP 等）：横幅图居中 + 柔光底板，不再被拉成细条 */
