@@ -44,7 +44,20 @@ from toolkit_core.bindict_rows import uleb  # noqa: E402
 from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from preview_board_contract import apply_frozen_v3  # noqa: E402
 
-TREE = Path(TREE_ROOT / "Documents/script.py314.lc.npk/com/cdata")
+def _resolve_tree() -> Path:
+    """还原树 cdata 目录：新版在 41_还原树/pe/配置/com/cdata，老版在 Documents/script.py314.lc.npk。
+    两个都试，取存在的那个（换机器 / 重排目录后不至于直接 0 行）。"""
+    cands = [
+        Path(TREE_ROOT) / "pe" / "配置" / "com" / "cdata",
+        Path(TREE_ROOT) / "Documents/script.py314.lc.npk/com/cdata",
+    ]
+    for c in cands:
+        if c.exists():
+            return c
+    return cands[0]
+
+
+TREE = _resolve_tree()
 OVER = TREE / "oversea"
 PKG = Path(client_root() / "Documents/script.py314.lc.npk")
 OUT_BOARD = WEB / "data" / "boards" / "lottery_periods.json"
@@ -127,6 +140,8 @@ def parse_map_row(table: Table, start: int) -> list[tuple[int, int]]:
 
 
 def read_27(blob: bytes, start: int):
+    if start < 0 or start + 1 >= len(blob):
+        return None
     if blob[start] != 0x27:
         return None
     kind = blob[start + 1]

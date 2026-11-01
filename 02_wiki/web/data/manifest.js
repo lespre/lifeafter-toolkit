@@ -35,12 +35,12 @@ window.WIKI_MANIFEST = {
       "name": "头像 / 头像框 / 名片框",
       "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
-      "items": 676,
+      "items": 681,
       "generated": "2026-10-22",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源 41_还原树/pe/资源",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 676
+        "structure": 681
       },
       "state_summary": {
         "头像框": 252,
@@ -56,7 +56,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 676
+          "replayed-structural": 681
         }
       }
     },
@@ -161,8 +161,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "missing": 238,
-          "replayed-structural": 49
+          "replayed-structural": 287
         }
       }
     },
@@ -536,25 +535,25 @@ window.WIKI_MANIFEST = {
       "name": "当期&历史每期抽奖奖池（按活动表重建）",
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
-      "items": 1098,
+      "items": 1484,
       "generated": "2026-11-02",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 906,
-        "candidate": 192
+        "structure": 1415,
+        "candidate": 69
       },
       "state_summary": {
         "期次": 789,
-        "成员": 1098,
-        "结构可证": 906,
-        "候选成员": 192,
-        "有成员期次": 200,
-        "空成员期次": 589,
+        "成员": 1484,
+        "结构可证": 1415,
+        "候选成员": 69,
+        "有成员期次": 289,
+        "空成员期次": 500,
         "进行中": 21,
         "未开始": 5,
         "2026起期次": 121,
-        "2026起有成员期次": 80
+        "2026起有成员期次": 81
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -562,7 +561,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1098
+          "replayed-structural": 1484
         }
       }
     },
