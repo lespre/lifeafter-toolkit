@@ -658,6 +658,22 @@ body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-num
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
 }
 .i .i-media .mi.mi-bg figcaption{font-size:10px;opacity:.72;letter-spacing:.02em}
+/* 2026-11-01：名片框「背景 + 边框」叠加成整卡（.i-stack 由 board_core.js 打标）
+   role=background 垫底、role=frame 压上，两张图同宽居中 —— 才是游戏内名片的样子。
+   ★ 仅在同时存在两层时启用；只有背景的卡片仍走上面的「次图」样式（不放大、不冒充边框）。 */
+.i.k-nc .i-media.i-stack{display:grid;grid-template-areas:"stack";place-items:center;justify-items:center;
+  padding:10px 8px 26px}
+.i.k-nc .i-media.i-stack>.mi{grid-area:stack;margin:0;width:100%;max-width:100%}
+.i.k-nc .i-media.i-stack>.mi.mi-bg{z-index:0;pointer-events:none}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg){z-index:1}
+.i.k-nc .i-media.i-stack>.mi img{width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain}
+.i.k-nc .i-media.i-stack>.mi.mi-bg img{opacity:1;filter:none;border-radius:9px;
+  box-shadow:0 3px 12px rgba(0,0,0,.45)}
+.i.k-nc .i-media.i-stack>.mi.mi-bg figcaption{display:none}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) img{background:none;padding:0;border-radius:0;box-shadow:none;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) figcaption{position:absolute;left:0;right:0;bottom:-18px;
+  text-align:center;font-size:10px;opacity:.72}
 /* 边框图缺失（当前包快照无该资源）：如实占位，不拿场景图顶替 */
 .i .i-media .mi.nofig{
   min-height:86px;min-width:150px;display:flex;align-items:center;justify-content:center;

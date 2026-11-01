@@ -1333,7 +1333,12 @@ function renderItemMedia(m){
      卡面默认只显示游戏内静态图，悬停或开详情才换 src 播放 —— 673 张卡不会一进页面就拉 300 个动图。
      ★ 背景图（role=background，名片场景底图）不是边框图，不能挂动图、也不占主图位。 */
   const anim=m.anim?esc(m.anim):"";
-  const imgs=(m.images||[]).slice(0,6).map((x,i)=>{
+  /* 2026-11-01：名片框有「背景（role=background）」层时，与边框图（role=frame）
+     叠成同一张整卡 —— 背景垫底、边框压上，才是游戏内名片的样子。
+     只有背景、没有边框的卡片不叠（背景仍按次图小图展示）。 */
+  const _all=(m.images||[]);
+  const stack=_all.some(x=>x.role!=="background")&&_all.some(x=>x.role==="background");
+  const imgs=_all.slice(0,6).map((x,i)=>{
     const bg=(x.role==="background");
     const hot=(anim&&i===0&&!bg);
     return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}"><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
@@ -1342,7 +1347,7 @@ function renderItemMedia(m){
   /* 边框图在当前包快照里确实缺失 → 如实占位，不用场景图顶替 */
   const nofig=(m.frame_status==="missing")?`<figure class="mi nofig"><span>边框图缺失<br>（当前包快照无该资源）</span><figcaption>缺口</figcaption></figure>`:"";
   const more=(m.images||[]).length>6?`<span class="mi-more">+${m.images.length-6}</span>`:"";
-  return `<div class="i-media">${nofig}${imgs}${ph}${more}</div>`;
+  return `<div class="i-media${stack?" i-stack":""}">${nofig}${imgs}${ph}${more}</div>`;
 }
 /* 2026-10-30：动图播放。全局委托，卡片网格与 D2 灯箱共用一套；
    灯箱内（.c2-stage）放开了就不回退，卡片上移出即还原静态图。 */
