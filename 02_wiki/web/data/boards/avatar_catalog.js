@@ -14171,11 +14171,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410001.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410001.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14233,11 +14237,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410002.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410002.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_01.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14295,8 +14303,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410003.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410003.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_02.png"
      }
     ],
     "total": 1,
@@ -14307,7 +14317,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/touxiangkuang_middle.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14365,8 +14377,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410004.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410004.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_03.png"
      }
     ],
     "total": 1,
@@ -14377,7 +14391,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/touxiangkuang_high.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14435,8 +14451,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410005.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410005.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_05.png"
      }
     ],
     "total": 1,
@@ -14447,7 +14465,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/touxiangkuang_zhongqiu.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14505,11 +14525,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410006.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410006.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_04.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14567,11 +14591,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410007.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410007.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_06.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14629,11 +14657,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410008.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410008.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_07.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14691,11 +14723,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410009.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410009.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_08.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14753,8 +14789,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410010.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410010.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_09.png"
      }
     ],
     "total": 1,
@@ -14765,7 +14803,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/dongmei_touxiangkuang/touxiangkuang_dongmei.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14823,11 +14863,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410011.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410011.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_10.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14885,8 +14929,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410012.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410012.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_11.png"
      }
     ],
     "total": 1,
@@ -14897,7 +14943,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/xinchuntouxiangkuang/xinchunzhuti.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -14955,11 +15003,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410013.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410013.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_12.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15017,8 +15069,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410014.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410014.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_13.png"
      }
     ],
     "total": 1,
@@ -15029,7 +15083,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 13,
      "duration": 1.333,
      "source": "ui/spine/touxiangkuang/touxiangkuang_qingrenjie.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15087,11 +15143,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410015.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410015.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_14.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15149,11 +15209,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410016.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410016.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_15.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15211,11 +15275,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410017.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410017.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_16.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15273,11 +15341,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410018.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410018.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_14.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15335,11 +15407,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410019.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410019.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_17.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15397,8 +15473,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410020.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410020.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_19.png"
      }
     ],
     "total": 1,
@@ -15409,7 +15487,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/heitianetouxiangkuang.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15467,8 +15547,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410021.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410021.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_18.png"
      }
     ],
     "total": 1,
@@ -15479,7 +15561,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/baitianetouxiangkuang.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15537,11 +15621,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410022.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410022.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_21.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15599,11 +15687,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410023.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410023.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_20.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15661,11 +15753,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410024.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410024.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_22.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15723,8 +15819,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410025.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410025.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_23.png"
      }
     ],
     "total": 1,
@@ -15735,7 +15833,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/duanwujie.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15793,11 +15893,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410026.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410026.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_24.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15855,11 +15959,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410027.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410027.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_huiyuanri_1.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15917,11 +16025,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410028.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410028.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_28.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -15979,11 +16091,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410029.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410029.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_29.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16041,11 +16157,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410030.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410030.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_30.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16103,11 +16223,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410031.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410031.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_33.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16165,8 +16289,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410032.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410032.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_34.png"
      }
     ],
     "total": 1,
@@ -16177,7 +16303,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine/touxiangkuang/touxiangkuang_qixi.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16235,11 +16363,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410033.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410033.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_36.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16297,11 +16429,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410034.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410034.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_31.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16359,11 +16495,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410035.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410035.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_32.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16421,11 +16561,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410036.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410036.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_35.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16483,8 +16627,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410039.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410039.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_39.png"
      }
     ],
     "total": 1,
@@ -16495,7 +16641,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16553,11 +16701,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410040.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410040.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_40.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16615,11 +16767,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410043.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410043.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_43.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16677,11 +16833,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410044.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410044.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_44.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16739,11 +16899,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410045.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410045.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_45.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16801,11 +16965,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410046.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410046.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_46.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16863,11 +17031,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410047.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410047.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_47.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16925,11 +17097,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410048.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410048.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_48.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -16987,8 +17163,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410049.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410049.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_49.png"
      }
     ],
     "total": 1,
@@ -16999,7 +17177,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_49.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17057,11 +17237,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410050.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410050.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_50.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17119,11 +17303,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410051.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410051.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_51.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17181,11 +17369,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410052.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410052.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_52.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17243,8 +17435,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410053.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410053.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_53.png"
      }
     ],
     "total": 1,
@@ -17255,7 +17449,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_53.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17313,11 +17509,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410054.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410054.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_54.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17375,11 +17575,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410055.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410055.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_55.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17437,11 +17641,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410056.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410056.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_56.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17499,8 +17707,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410057.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410057.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_57.png"
      }
     ],
     "total": 1,
@@ -17511,7 +17721,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_57.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17569,11 +17781,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410058.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410058.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_58.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17631,11 +17847,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410059.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410059.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_59.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17693,8 +17913,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410060.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410060.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_60.png"
      }
     ],
     "total": 1,
@@ -17705,7 +17927,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_60.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17763,11 +17987,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410061.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410061.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_61.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17825,8 +18053,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410062.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410062.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_62.png"
      }
     ],
     "total": 1,
@@ -17837,7 +18067,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_62.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17895,11 +18127,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410063.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410063.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_63.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -17957,11 +18193,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410064.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410064.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_64.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18019,11 +18259,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410065.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410065.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_65.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18081,11 +18325,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410066.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410066.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_66.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18143,11 +18391,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410067.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410067.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_67.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18205,11 +18457,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410068.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410068.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_68.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18267,11 +18523,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410069.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410069.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_69.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18329,11 +18589,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410070.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410070.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_70.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18391,11 +18655,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410071.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410071.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_71.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18453,8 +18721,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410072.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410072.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_72.png"
      }
     ],
     "total": 1,
@@ -18465,7 +18735,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_72.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18523,11 +18795,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410073.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410073.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_73.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18585,8 +18861,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410074.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410074.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_74.png"
      }
     ],
     "total": 1,
@@ -18597,7 +18875,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_74.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18655,11 +18935,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410075.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410075.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_75.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18717,8 +19001,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410076.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410076.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_76.png"
      }
     ],
     "total": 1,
@@ -18729,7 +19015,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_76.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18787,11 +19075,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410077.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410077.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_77.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18849,8 +19141,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410078.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410078.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_78.png"
      }
     ],
     "total": 1,
@@ -18861,7 +19155,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_78.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18919,11 +19215,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410079.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410079.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_79.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -18981,8 +19281,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410080.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410080.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_80.png"
      }
     ],
     "total": 1,
@@ -18993,7 +19295,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_80.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19051,11 +19355,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410082.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410082.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_82.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19113,11 +19421,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410083.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410083.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_83.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19175,11 +19487,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410084.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410084.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_84.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19237,8 +19553,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410085.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410085.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_85.png"
      }
     ],
     "total": 1,
@@ -19249,7 +19567,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_85.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19307,11 +19627,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410086.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410086.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_86.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19369,8 +19693,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410087.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410087.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_87.png"
      }
     ],
     "total": 1,
@@ -19381,7 +19707,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 1.967,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_87.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19439,11 +19767,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410088.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410088.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_88.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19501,8 +19833,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410089.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410089.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_89.png"
      }
     ],
     "total": 1,
@@ -19513,7 +19847,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_89.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19571,11 +19907,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410090.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410090.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_90.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19633,11 +19973,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410091.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410091.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_91.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19695,11 +20039,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410092.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410092.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_92.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19757,11 +20105,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410093.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410093.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_93.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19819,11 +20171,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410094.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410094.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_94.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19881,11 +20237,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410095.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410095.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_95.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -19943,11 +20303,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410096.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410096.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_96.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20005,8 +20369,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410097.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410097.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_97.png"
      }
     ],
     "total": 1,
@@ -20017,7 +20383,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_97.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20075,11 +20443,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410098.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410098.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_98.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20137,11 +20509,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
+      "png": "assets/avatar_anim/af_410099.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/touxiangkuang/icon_touxiangkuang_99"
+     },
+     {
       "png": "assets/img_cache/avatar_catalog/af_410099.png",
-      "label": "图标"
+      "label": "名片背景",
+      "role": "background",
+      "base": ""
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/af_410099.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -20149,7 +20529,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_99.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    }
   },
   {
@@ -20207,11 +20589,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410100.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410100.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_100.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20269,8 +20655,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410101.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410101.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_101.png"
      }
     ],
     "total": 1,
@@ -20281,7 +20669,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_101.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20339,11 +20729,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410102.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410102.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_102.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20401,8 +20795,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410103.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410103.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_103.png"
      }
     ],
     "total": 1,
@@ -20413,7 +20809,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_103.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20471,11 +20869,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410104.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410104.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_104.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20533,11 +20935,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410105.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410105.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_105.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20595,8 +21001,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410106.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410106.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_106.png"
      }
     ],
     "total": 1,
@@ -20607,7 +21015,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_106.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20665,8 +21075,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410107.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410107.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_107.png"
      }
     ],
     "total": 1,
@@ -20677,7 +21089,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_107.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20735,8 +21149,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410108.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410108.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_108.png"
      }
     ],
     "total": 1,
@@ -20747,7 +21163,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_108.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20805,11 +21223,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410109.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410109.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_109.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20867,8 +21289,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410110.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410110.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_111.png"
      }
     ],
     "total": 1,
@@ -20879,7 +21303,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_111.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20937,11 +21363,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410111.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410111.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_110.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -20999,11 +21429,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410112.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410112.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_112.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21061,8 +21495,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410113.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410113.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_113.png"
      }
     ],
     "total": 1,
@@ -21073,7 +21509,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_113.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21131,8 +21569,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410114.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410114.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_114.png"
      }
     ],
     "total": 1,
@@ -21143,7 +21583,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_114.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21201,8 +21643,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410115.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410115.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_115.png"
      }
     ],
     "total": 1,
@@ -21213,7 +21657,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.133,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_115.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21271,8 +21717,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410116.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410116.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_116.png"
      }
     ],
     "total": 1,
@@ -21283,7 +21731,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_116.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21341,8 +21791,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410117.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410117.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_117.png"
      }
     ],
     "total": 1,
@@ -21353,7 +21805,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_117.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21411,11 +21865,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410118.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410118.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_118.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21473,11 +21931,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410119.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410119.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_119.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21535,11 +21997,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410120.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410120.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_120.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21597,8 +22063,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410121.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410121.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_121.png"
      }
     ],
     "total": 1,
@@ -21609,7 +22077,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_121.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21667,11 +22137,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410122.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410122.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_122.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21729,8 +22203,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410123.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410123.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_123.png"
      }
     ],
     "total": 1,
@@ -21741,7 +22217,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_123.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21799,8 +22277,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410124.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410124.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_124.png"
      }
     ],
     "total": 1,
@@ -21811,7 +22291,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_124.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21869,11 +22351,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410125.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410125.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_125.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21931,11 +22417,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410126.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410126.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_126.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -21993,8 +22483,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410127.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410127.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_127.png"
      }
     ],
     "total": 1,
@@ -22005,7 +22497,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_127.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22063,11 +22557,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410128.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410128.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_128.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22125,11 +22623,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410129.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410129.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_129.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22187,8 +22689,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410130.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410130.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_130.png"
      }
     ],
     "total": 1,
@@ -22199,7 +22703,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/touxiangkuang/icon_touxiangkuang_130.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22257,8 +22763,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410131.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410131.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_131.png"
      }
     ],
     "total": 1,
@@ -22269,7 +22777,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_131.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22327,8 +22837,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410132.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410132.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_132.png"
      }
     ],
     "total": 1,
@@ -22339,7 +22851,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_132.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22397,8 +22911,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410133.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410133.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_133.png"
      }
     ],
     "total": 1,
@@ -22409,7 +22925,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_133.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22467,8 +22985,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410134.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410134.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_134.png"
      }
     ],
     "total": 1,
@@ -22479,7 +22999,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_134.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22537,11 +23059,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410135.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410135.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_135.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22599,11 +23125,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410136.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410136.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_136.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22661,11 +23191,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410137.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410137.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_137.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22723,11 +23257,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410138.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410138.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_138.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22785,11 +23323,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410139.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410139.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_139.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22847,11 +23389,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410140.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410140.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_140.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22909,8 +23455,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410141.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410141.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_141.png"
      }
     ],
     "total": 1,
@@ -22921,7 +23469,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_141.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -22979,11 +23529,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410142.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410142.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_142.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23041,8 +23595,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410143.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410143.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_143.png"
      }
     ],
     "total": 1,
@@ -23053,7 +23609,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_143.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23111,8 +23669,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410144.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410144.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_144.png"
      }
     ],
     "total": 1,
@@ -23123,7 +23683,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_144.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23181,11 +23743,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410145.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410145.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_145.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23243,8 +23809,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410146.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410146.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_146.png"
      }
     ],
     "total": 1,
@@ -23255,7 +23823,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_146.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23313,8 +23883,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410147.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410147.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_147.png"
      }
     ],
     "total": 1,
@@ -23325,7 +23897,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_147.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23383,11 +23957,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410148.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410148.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_148.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23445,11 +24023,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410149.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410149.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_149.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23507,11 +24089,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410150.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410150.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_150.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23569,8 +24155,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410151.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410151.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_151.png"
      }
     ],
     "total": 1,
@@ -23581,7 +24169,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_151.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23639,11 +24229,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410152.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410152.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_152.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23701,11 +24295,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410153.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410153.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_153.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23763,11 +24361,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410154.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410154.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_154.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23825,8 +24427,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410155.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410155.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_155.png"
      }
     ],
     "total": 1,
@@ -23837,7 +24441,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_155.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23895,8 +24501,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410156.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410156.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_156.png"
      }
     ],
     "total": 1,
@@ -23907,7 +24515,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_156.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -23965,8 +24575,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410157.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410157.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_157.png"
      }
     ],
     "total": 1,
@@ -23977,7 +24589,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_157.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24035,8 +24649,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410158.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410158.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_158.png"
      }
     ],
     "total": 1,
@@ -24047,7 +24663,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_158.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24105,8 +24723,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410159.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410159.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_159.png"
      }
     ],
     "total": 1,
@@ -24117,7 +24737,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 8.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_159.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24175,8 +24797,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410160.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410160.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_160.png"
      }
     ],
     "total": 1,
@@ -24187,7 +24811,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 1.967,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_160.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24245,8 +24871,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410161.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410161.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_161.png"
      }
     ],
     "total": 1,
@@ -24257,7 +24885,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_161.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24315,11 +24945,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410162.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410162.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_162.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24377,11 +25011,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410163.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410163.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_163.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24439,8 +25077,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410164.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410164.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_164.png"
      }
     ],
     "total": 1,
@@ -24451,7 +25091,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_164.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24509,11 +25151,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410165.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410165.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_165.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24571,11 +25217,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410166.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410166.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_166.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24633,11 +25283,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410167.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410167.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_167.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24695,8 +25349,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410168.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410168.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_168.png"
      }
     ],
     "total": 1,
@@ -24707,7 +25363,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_168.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24765,8 +25423,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410169.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410169.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_169.png"
      }
     ],
     "total": 1,
@@ -24777,7 +25437,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_169.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24835,8 +25497,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410170.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410170.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_170.png"
      }
     ],
     "total": 1,
@@ -24847,7 +25511,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_170.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24905,11 +25571,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410171.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410171.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_171.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -24967,8 +25637,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410172.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410172.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_172.png"
      }
     ],
     "total": 1,
@@ -24979,7 +25651,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_172.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25037,11 +25711,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410173.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410173.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_174.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25099,11 +25777,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410174.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410174.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_173.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25161,11 +25843,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410175.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410175.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_175.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25223,8 +25909,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410176.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410176.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_176.png"
      }
     ],
     "total": 1,
@@ -25235,7 +25923,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_176.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25289,7 +25979,14 @@ window.WIKI_BOARD_avatar_catalog = {
      ]
     },
     "table_raw": "avatar_frame_conf_data"
-   }
+   },
+   "_media": {
+    "frame_status": "missing",
+    "images": [],
+    "total": 0
+   },
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "af_410178",
@@ -25346,8 +26043,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410178.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410178.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_178.png"
      }
     ],
     "total": 1,
@@ -25358,7 +26057,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_178.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25416,11 +26117,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410179.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410179.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_179.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25478,8 +26183,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410180.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410180.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_180.png"
      }
     ],
     "total": 1,
@@ -25490,7 +26197,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_180.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25548,11 +26257,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410181.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410181.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_181.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25610,11 +26323,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410182.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410182.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_182.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25672,11 +26389,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410183.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410183.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_183.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25734,11 +26455,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410186.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410186.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_186.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25796,8 +26521,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410187.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410187.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_187.png"
      }
     ],
     "total": 1,
@@ -25808,7 +26535,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_187.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25866,11 +26595,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410188.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410188.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_188.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25928,8 +26661,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410189.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410189.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_189.png"
      }
     ],
     "total": 1,
@@ -25940,7 +26675,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_189.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -25998,11 +26735,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410190.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410190.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_190.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26060,11 +26801,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410191.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410191.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_191.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26122,11 +26867,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410193.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410193.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_193.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26184,11 +26933,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410194.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410194.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_194.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26246,11 +26999,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410195.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410195.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_195.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26308,8 +27065,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410196.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410196.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_196.png"
      }
     ],
     "total": 1,
@@ -26320,7 +27079,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_196.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26378,8 +27139,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410197.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410197.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_197.png"
      }
     ],
     "total": 1,
@@ -26390,7 +27153,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_197.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26448,11 +27213,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410198.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410198.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_198.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26510,11 +27279,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410199.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410199.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_199.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26572,11 +27345,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410200.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410200.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_200.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26634,11 +27411,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410201.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410201.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_201.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26696,8 +27477,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410202.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410202.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_202.png"
      }
     ],
     "total": 1,
@@ -26708,7 +27491,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_202.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26766,8 +27551,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410203.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410203.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_203.png"
      }
     ],
     "total": 1,
@@ -26778,7 +27565,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_203.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26836,11 +27625,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410204.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410204.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_204.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26898,11 +27691,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410205.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410205.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_205.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -26960,11 +27757,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410206.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410206.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_206.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27022,8 +27823,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410207.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410207.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_207.png"
      }
     ],
     "total": 1,
@@ -27034,7 +27837,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_207.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27092,8 +27897,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410208.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410208.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_208.png"
      }
     ],
     "total": 1,
@@ -27104,7 +27911,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 10.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_208.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27162,8 +27971,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410209.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410209.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_209.png"
      }
     ],
     "total": 1,
@@ -27174,7 +27985,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_209.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27232,8 +28045,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410210.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410210.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_210.png"
      }
     ],
     "total": 1,
@@ -27244,7 +28059,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_210.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27302,11 +28119,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410211.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410211.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_211.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27364,11 +28185,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410212.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410212.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_212.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27426,11 +28251,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410213.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410213.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_213.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27488,11 +28317,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410214.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410214.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_214.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27550,11 +28383,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410215.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410215.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_215.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27612,8 +28449,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410216.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410216.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_216.png"
      }
     ],
     "total": 1,
@@ -27624,7 +28463,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_216.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27682,11 +28523,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410217.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410217.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_217.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27744,8 +28589,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410218.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410218.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_218.png"
      }
     ],
     "total": 1,
@@ -27756,7 +28603,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_218.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27814,8 +28663,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410219.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410219.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_219.png"
      }
     ],
     "total": 1,
@@ -27826,7 +28677,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_219.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27884,8 +28737,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410220.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410220.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_220.png"
      }
     ],
     "total": 1,
@@ -27896,7 +28751,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 10.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_220.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -27954,11 +28811,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410221.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410221.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_221.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28016,11 +28877,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410222.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410222.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_222.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28078,8 +28943,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410223.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410223.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_223.png"
      }
     ],
     "total": 1,
@@ -28090,7 +28957,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_223.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28148,8 +29017,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410224.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410224.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_224.png"
      }
     ],
     "total": 1,
@@ -28160,7 +29031,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_224.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28218,8 +29091,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410225.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410225.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_225.png"
      }
     ],
     "total": 1,
@@ -28230,7 +29105,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_225.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28288,11 +29165,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410226.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410226.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_226.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28350,11 +29231,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410227.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410227.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_227.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28412,8 +29297,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410228.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410228.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_228.png"
      }
     ],
     "total": 1,
@@ -28424,7 +29311,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_228.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28482,11 +29371,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410229.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410229.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_229.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28544,8 +29437,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410230.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410230.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_230.png"
      }
     ],
     "total": 1,
@@ -28556,7 +29451,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_230.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28614,8 +29511,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410231.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410231.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_231.png"
      }
     ],
     "total": 1,
@@ -28626,7 +29525,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_231.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28684,11 +29585,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410232.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410232.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_232.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28746,11 +29651,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410233.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410233.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_233.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28808,8 +29717,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410234.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410234.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_234.png"
      }
     ],
     "total": 1,
@@ -28820,7 +29731,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_234.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28878,8 +29791,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410235.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410235.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_235.png"
      }
     ],
     "total": 1,
@@ -28890,7 +29805,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_235.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -28948,8 +29865,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410236.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410236.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_236.png"
      }
     ],
     "total": 1,
@@ -28960,7 +29879,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_236.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29018,11 +29939,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410237.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410237.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_237.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29080,11 +30005,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410238.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410238.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_238.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29142,11 +30071,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410239.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410239.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_239.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29204,8 +30137,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410240.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410240.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_240.png"
      }
     ],
     "total": 1,
@@ -29216,7 +30151,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_240.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29274,8 +30211,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410241.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410241.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_241.png"
      }
     ],
     "total": 1,
@@ -29286,7 +30225,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_241.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29344,11 +30285,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410242.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410242.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_242.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29406,8 +30351,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410243.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410243.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_243.png"
      }
     ],
     "total": 1,
@@ -29418,7 +30365,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_243.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29476,11 +30425,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410244.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410244.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_244.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29538,8 +30491,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410245.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410245.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_245.png"
      }
     ],
     "total": 1,
@@ -29550,7 +30505,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_245.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29608,8 +30565,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410246.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410246.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_246.png"
      }
     ],
     "total": 1,
@@ -29620,7 +30579,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_246.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29678,11 +30639,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410247.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410247.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_247.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29740,11 +30705,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
+      "png": "assets/avatar_anim/af_410248.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_248"
+     },
+     {
       "png": "assets/img_cache/avatar_catalog/af_410248.png",
-      "label": "图标"
+      "label": "名片背景",
+      "role": "background",
+      "base": ""
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/af_410248.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -29752,7 +30725,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_248.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    }
   },
   {
@@ -29810,11 +30785,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410249.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410249.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_249.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29872,8 +30851,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410250.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410250.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_250.png"
      }
     ],
     "total": 1,
@@ -29884,7 +30865,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_250.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -29942,11 +30925,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410251.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410251.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_251.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30004,11 +30991,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410252.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410252.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_252.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30066,8 +31057,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410253.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410253.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_253.png"
      }
     ],
     "total": 1,
@@ -30078,7 +31071,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.3,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_253.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30136,8 +31131,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410254.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410254.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_254.png"
      }
     ],
     "total": 1,
@@ -30148,7 +31145,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_254.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30206,8 +31205,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410255.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410255.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_255.png"
      }
     ],
     "total": 1,
@@ -30218,7 +31219,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_255.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30276,8 +31279,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410256.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410256.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_256.png"
      }
     ],
     "total": 1,
@@ -30288,7 +31293,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_256.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30346,11 +31353,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410257.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410257.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_257.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30408,11 +31419,15 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410258.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410258.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_258.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30470,8 +31485,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410259.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410259.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_259.png"
      }
     ],
     "total": 1,
@@ -30482,7 +31499,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_259.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30540,8 +31559,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/img_cache/avatar_catalog/af_410260.png",
-      "label": "图标"
+      "png": "assets/avatar_frames/af_410260.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/nielian_icon_v4/kongjian_icon/icon_touxiangkuang_260.png"
      }
     ],
     "total": 1,
@@ -30552,7 +31573,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/touxiangkuang/icon_touxiangkuang_260.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    }
   },
   {
@@ -30612,11 +31635,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150638.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/02/img_biankuang_02.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150638.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/02/img_biankuang_b_02.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30677,11 +31709,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150639.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/01/img_biankuang_01.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150639.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/01/img_biankuang_b_01.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30740,8 +31781,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150640.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/03/img_biankuang_03.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150640.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/03/img_biankuang_b_03.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30802,11 +31858,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150664.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/04/img_biankuang_04.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150664.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/04/img_biankuang_b_04.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30865,8 +31930,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150692.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/05/img_biankuang_05.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150692.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/05/img_biankuang_b_05.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30927,11 +32007,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150710.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_huangsha.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150710.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/06/img_biankuang_b_06_01.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -30991,14 +32080,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_150711.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_150711.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/06/img_biankuang_b_06_01.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_150712",
@@ -31056,14 +32149,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_150712.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_150712.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/06/img_biankuang_b_06_01.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_150713",
@@ -31120,8 +32217,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150713.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_kuangye.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150713.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_b_06_01.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31180,8 +32292,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150714.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_huoshan.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150714.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/06/img_biankuang_b_06_01.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31242,11 +32369,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150751.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/07/img_biankuang_07.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150751.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/07/img_biankuang_b_07.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31306,14 +32442,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_150752.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_150752.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/08/img_biankuang_b_08.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_150889",
@@ -31370,8 +32510,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_150889.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/09/img_biankuang_09.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150889.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/09/img_biankuang_b_09.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31432,11 +32587,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150890.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/09/img_biankuang_09_2.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150890.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/09/img_biankuang_b_09_2.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31497,11 +32661,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150942.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/10/img_biankuang_10.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150942.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/10/img_biankuang_b_10.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31562,11 +32735,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150943.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/10/img_biankuang_10_2.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150943.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/10/img_biankuang_b_10_2.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31627,11 +32809,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150986.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/11/img_biankuang_11.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150986.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/11/img_biankuang_b_11.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31692,11 +32883,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_150987.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/11/img_biankuang_11_2.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_150987.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/11/img_biankuang_b_11_2.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31756,14 +32956,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151089.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151089.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/13/img_biankuang_b_13.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151090",
@@ -31822,11 +33026,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151090.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/13/img_biankuang_13_2.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151090.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/13/img_biankuang_b_13_2.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31887,11 +33100,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151118.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/12/img_biankuang_12.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151118.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/12/img_biankuang_b_12.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -31952,11 +33174,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151170.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/14/img_biankuang_14.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151170.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/14/img_biankuang_b_14.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32017,11 +33248,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151237.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/15/img_biankuang_15.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151237.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/15/img_biankuang_b_15.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32082,11 +33322,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151267.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/16/img_biankuang_16_1.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151267.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/16/img_biankuang_b_16_1.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32147,11 +33396,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151268.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/16/img_biankuang_16_2.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151268.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/16/img_biankuang_b_16_2.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32212,11 +33470,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151285.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/17/img_biankuang_17_1.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151285.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/17/img_biankuang_b_17_1.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32276,14 +33543,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151286.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151286.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/17/img_biankuang_b_17_2.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151623",
@@ -32339,9 +33610,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_151648",
@@ -32400,11 +33675,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151648.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/19/img_biankuang_19.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151648.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/19/img_biankuang_b_19.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32464,14 +33748,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151657.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151657.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/20/img_biankuang_b_20_1.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151658",
@@ -32529,14 +33817,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151658.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151658.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/20/img_biankuang_b_20_2.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151683",
@@ -32594,14 +33886,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151683.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151683.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/21/img_biankuang_b_21.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151759",
@@ -32657,9 +33953,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_151760",
@@ -32718,15 +34018,17 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/img_cache/avatar_catalog/bc_151760.png",
-      "label": "名片框",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/23/img_biankuang_b_23.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151800",
@@ -32785,11 +34087,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151800.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/24/img_biankuang_24.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151800.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/24/img_biankuang_b_24.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -32849,14 +34160,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151801.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151801.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/25/img_biankuang_b_25.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151802",
@@ -32914,14 +34229,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151802.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151802.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/26/img_biankuang_b_26.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151803",
@@ -32980,11 +34299,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151803.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/27/img_biankuang_27.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151803.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/27/img_biankuang_b_27.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33043,8 +34371,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_151804.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/28/img_biankuang_28.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151804.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/28/img_biankuang_b_28.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33104,12 +34447,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151821.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_151821.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/zhaozilong_mingpiankuang/zhaozilong_mingpiankuang"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151821.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/32/img_biankuang_b_32.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_151821.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -33117,7 +34467,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 19,
      "duration": 1.9,
      "source": "ui/spine/zhaozilong_mingpiankuang/zhaozilong_mingpiankuang.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33178,11 +34530,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_151867.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/30/img_biankuang_30.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151867.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/30/img_biankuang_b_30.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33242,12 +34603,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151868.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_151868.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_31"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151868.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/31/img_biankuang_b_31.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_151868.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -33255,7 +34623,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_31.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33315,14 +34685,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151869.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151869.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/33/img_biankuang_b_33.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151967",
@@ -33378,9 +34752,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_151970",
@@ -33438,14 +34816,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151970.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151970.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/35/img_biankuang_b_35.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_151985",
@@ -33503,12 +34885,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151985.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_151985.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang36"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_151985.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/36/img_biankuang_b_36.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_151985.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -33516,7 +34905,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/mingpiankuang/img_biankuang36.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33576,16 +34967,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_151986.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_151986.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/37/img_biankuang_b_37.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152082",
@@ -33644,11 +35037,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_152082.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/38/img_biankuang_38.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152082.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/38/img_biankuang_b_38.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -33708,16 +35110,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152083.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152083.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/39/img_biankuang_b_39.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152099",
@@ -33775,14 +35179,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152099.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152099.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/40/img_biankuang_b_40.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152100",
@@ -33840,22 +35248,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152100.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152100.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/41/img_biankuang_b_41.png"
      }
     ],
     "total": 1,
-    "anim": "assets/avatar_anim/bc_152100.png",
-    "anim_meta": {
-     "spine": "2.1.27",
-     "anim": "loop",
-     "frames": 24,
-     "duration": 4.0,
-     "source": "ui/spine/mingpiankuang/img_biankuang41.atlas"
-    }
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152113",
@@ -33913,14 +35317,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152113.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152113.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/42/img_biankuang_b_42.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152114",
@@ -33978,12 +35386,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152114.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152114.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang43"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152114.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/43/img_biankuang_b_43.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152114.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -33991,7 +35406,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/mingpiankuang/img_biankuang43.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34052,11 +35469,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_152143.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/44/img_biankuang_44.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152143.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/44/img_biankuang_b_44.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34116,22 +35542,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152159.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152159.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/45/img_biankuang_b_45.png"
      }
     ],
     "total": 1,
-    "anim": "assets/avatar_anim/bc_152159.png",
-    "anim_meta": {
-     "spine": "2.1.27",
-     "anim": "loop",
-     "frames": 20,
-     "duration": 2.0,
-     "source": "ui/spine/mingpiankuang/img_biankuang45.atlas"
-    }
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152165",
@@ -34189,14 +35611,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152165.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152165.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/46/img_biankuang_b_46.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152166",
@@ -34254,16 +35680,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152166.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152166.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/47/img_biankuang_b_47.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152184",
@@ -34321,14 +35749,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152184.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152184.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/48/img_biankuang_b_48.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152185",
@@ -34386,12 +35818,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152185.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152185.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang49"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152185.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/49/img_biankuang_b_49.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152185.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -34399,7 +35838,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/mingpiankuang/img_biankuang49.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34457,11 +35898,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_152217",
@@ -34518,8 +35961,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152217.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/51/img_biankuang_51.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152217.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/51/img_biankuang_b_51.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34579,16 +36037,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152218.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152218.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/52/img_biankuang_b_52.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152257",
@@ -34646,16 +36106,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152257.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152257.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/53/img_biankuang_b_53.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152344",
@@ -34714,11 +36176,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_152344.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/54/img_biankuang_54.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152344.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/54/img_biankuang_b_54.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34778,12 +36249,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152345.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152345.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang55"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152345.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/55/img_biankuang_b_55.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152345.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -34791,7 +36269,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine/mingpiankuang/img_biankuang55.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -34851,14 +36331,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152361.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152361.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/56/img_biankuang_b_56.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152362",
@@ -34916,14 +36400,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152362.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152362.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/57/img_biankuang_b_57.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152390",
@@ -34980,8 +36468,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152390.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/58/img_biankuang_58.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152390.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/58/img_biankuang_b_58.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35041,12 +36544,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152391.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152391.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang59"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152391.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/59/img_biankuang_b_59.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152391.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35054,7 +36564,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/mingpiankuang/img_biankuang59.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35113,8 +36625,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152392.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/60/img_biankuang_60.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152392.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/60/img_biankuang_b_60.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35174,12 +36701,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152393.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152393.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang61"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152393.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/61/img_biankuang_b_61.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152393.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35187,7 +36721,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/mingpiankuang/img_biankuang61.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35246,8 +36782,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152520.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/62/img_biankuang_62.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152520.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/62/img_biankuang_b_62.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35307,16 +36858,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152521.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152521.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/63/img_biankuang_b_63.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152584",
@@ -35373,8 +36926,17 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152584.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/64/img_biankuang_64.png"
+     }
+    ],
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35434,9 +36996,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152585.png",
-      "label": "名片框",
-      "base": "ui/mingpiankuang_icon/65/img_biankuang_b_65.png"
+      "png": "assets/avatar_anim/bc_152585.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang65"
      }
     ],
     "total": 1,
@@ -35447,7 +37010,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine/mingpiankuang/img_biankuang65.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35507,14 +37072,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152632.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152632.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/66/img_biankuang_b_66.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152633",
@@ -35572,12 +37141,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152633.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152633.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_67"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152633.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/67/img_biankuang_b_67.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152633.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35585,7 +37161,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_67.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35645,12 +37223,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152677.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152677.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_68"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152677.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/68/img_biankuang_b_68.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152677.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35658,7 +37243,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_68.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35719,11 +37306,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_152699.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/74/img_biankuang_74.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152699.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/74/img_biankuang_b_74.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -35783,14 +37379,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152700.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_152700.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/75/img_biankuang_b_75.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_152701",
@@ -35846,11 +37446,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_152708",
@@ -35908,12 +37510,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152708.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152708.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_73"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152708.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/73/img_biankuang_b_73.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152708.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35921,11 +37530,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 10.667,
      "source": "ui/spine/mingpiankuang/img_biankuang_73.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_152762",
@@ -35983,12 +37592,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152762.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152762.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_77"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152762.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/77/img_biankuang_b_77.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152762.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -35996,7 +37612,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_77.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36056,12 +37674,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152763.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152763.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_78"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152763.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/78/img_biankuang_b_78.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152763.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36069,7 +37694,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_78.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36129,12 +37756,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152764.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152764.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_79"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152764.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/79/img_biankuang_b_79.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152764.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36142,7 +37776,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_79.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36202,12 +37838,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_152765.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_152765.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_80"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152765.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/80/img_biankuang_b_80.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_152765.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36215,7 +37858,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_80.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36274,8 +37919,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_152766.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/81/img_biankuang_81.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_152766.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/81/img_biankuang_b_81.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36335,14 +37995,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580069.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580069.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/69/img_biankuang_b_69.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580070",
@@ -36400,14 +38064,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580070.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580070.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/70/img_biankuang_b_70.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580071",
@@ -36465,16 +38133,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580071.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580071.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/71/img_biankuang_b_71.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580072",
@@ -36532,16 +38202,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580072.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580072.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/72/img_biankuang_b_72.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580082",
@@ -36598,8 +38270,17 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580082.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/82/img_biankuang_82.png"
+     }
+    ],
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36659,12 +38340,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580083.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580083.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_83"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580083.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/83/img_biankuang_b_83.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580083.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36672,7 +38360,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_83.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36732,12 +38422,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580084.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580084.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_84"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580084.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/84/img_biankuang_b_84.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580084.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36745,7 +38442,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine/mingpiankuang/img_biankuang_84.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36805,12 +38504,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580085.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580085.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_85"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580085.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/85/img_biankuang_b_85.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580085.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -36818,7 +38524,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_85.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36879,11 +38587,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580086.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/86/img_biankuang_86.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580086.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/86/img_biankuang_b_86.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -36944,11 +38661,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580087.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/87/img_biankuang_87.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580087.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/87/img_biankuang_b_87.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37008,12 +38734,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580088.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580088.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_88"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580088.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/88/img_biankuang_b_88.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580088.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -37021,7 +38754,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_88.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37082,11 +38817,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580089.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/89/img_biankuang_89.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580089.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/89/img_biankuang_b_89.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37146,12 +38890,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580090.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580090.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine/mingpiankuang/img_biankuang_90"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580090.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/90/img_biankuang_b_90.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580090.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -37159,7 +38910,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 8.0,
      "source": "ui/spine/mingpiankuang/img_biankuang_90.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37219,16 +38972,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580091.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580091.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/91/img_biankuang_b_91.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580092",
@@ -37286,12 +39041,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580092.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580092.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_92"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580092.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/92/img_biankuang_b_92.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580092.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -37299,7 +39061,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_92.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37359,12 +39123,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580093.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580093.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_93"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580093.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/93/img_biankuang_b_93.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580093.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -37372,7 +39143,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_93.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37432,16 +39205,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580094.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580094.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/94/img_biankuang_b_94.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580095",
@@ -37499,16 +39274,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580095.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580095.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/95/img_biankuang_b_95.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580096",
@@ -37566,16 +39343,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580096.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580096.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/96/img_biankuang_b_96.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580097",
@@ -37634,11 +39413,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580097.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/97/img_biankuang_97.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580097.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/97/img_biankuang_b_97.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37698,14 +39486,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580098.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580098.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/98/img_biankuang_b_98.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580099",
@@ -37762,8 +39554,17 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580099.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/99/img_biankuang_99.png"
+     }
+    ],
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37824,11 +39625,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580100.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/100/img_biankuang_100.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580100.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/100/img_biankuang_b_100.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -37888,16 +39698,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580101.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580101.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/101/img_biankuang_b_101.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580102",
@@ -37955,16 +39767,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580102.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580102.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/102/img_biankuang_b_102.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580103",
@@ -38023,11 +39837,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580103.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/103/img_biankuang_103.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580103.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/103/img_biankuang_b_103.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38087,12 +39910,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580104.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580104.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_104"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580104.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/104/img_biankuang_b_104.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580104.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -38100,7 +39930,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_104.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38160,12 +39992,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580105.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580105.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_105"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580105.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/105/img_biankuang_b_105.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580105.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -38173,7 +40012,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_105.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38233,14 +40074,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580106.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580106.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/106/img_biankuang_b_106.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580107",
@@ -38298,12 +40143,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580107.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580107.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_107"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580107.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/107/img_biankuang_b_107.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580107.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -38311,7 +40163,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 9.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_107.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38371,12 +40225,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580108.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580108.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_108"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580108.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/108/img_biankuang_b_108.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580108.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -38384,7 +40245,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_108.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38444,14 +40307,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580109.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580109.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/109/img_biankuang_b_109.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580110",
@@ -38509,12 +40376,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580110.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580110.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_110"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580110.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/110/img_biankuang_b_110.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580110.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -38522,7 +40396,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_110.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38582,16 +40458,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580111.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580111.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/111/img_biankuang_b_111.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580112",
@@ -38650,11 +40528,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580112.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/112/img_biankuang_112.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580112.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/112/img_biankuang_b_112.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38713,8 +40600,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580113.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/113/img_biankuang_113.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580113.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/113/img_biankuang_b_113.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38774,12 +40676,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580114.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580114.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_114"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580114.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/114/img_biankuang_b_114.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580114.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -38787,7 +40696,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_114.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38847,12 +40758,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580115.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580115.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_115"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580115.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/115/img_biankuang_b_115.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580115.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -38860,7 +40778,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_115.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38920,12 +40840,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580116.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580116.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_116"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580116.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/116/img_biankuang_b_116.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580116.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -38933,7 +40860,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_116.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -38993,14 +40922,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580117.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580117.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/117/img_biankuang_b_117.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580118",
@@ -39058,16 +40991,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580118.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580118.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/118/img_biankuang_b_118.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580119",
@@ -39125,12 +41060,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580119.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580119.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_119"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580119.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/119/img_biankuang_b_119.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580119.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -39138,7 +41080,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_119.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39198,12 +41142,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580120.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580120.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_120"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580120.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/120/img_biankuang_b_120.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580120.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -39211,7 +41162,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_120.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39271,12 +41224,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580121.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580121.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_121"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580121.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/121/img_biankuang_b_121.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580121.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -39284,7 +41244,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_121.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39344,16 +41306,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580122.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580122.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/122/img_biankuang_b_122.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580123",
@@ -39412,11 +41376,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580123.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/123/img_biankuang_123.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580123.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/123/img_biankuang_b_123.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39476,12 +41449,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580124.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580124.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_124"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580124.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/124/img_biankuang_b_124.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580124.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -39489,7 +41469,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_124.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39549,14 +41531,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580125.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580125.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/125/img_biankuang_b_125.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580126",
@@ -39615,11 +41601,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580126.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/126/img_biankuang_126.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580126.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/126/img_biankuang_b_126.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39679,16 +41674,18 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580127.png",
-      "label": "名片框",
+      "png": "assets/avatar_frames_bg/bc_580127.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/127/img_biankuang_b_127.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580128",
@@ -39746,12 +41743,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580128.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580128.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_128"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580128.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/128/img_biankuang_b_128.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580128.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -39759,7 +41763,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_128.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39819,12 +41825,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580129.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580129.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_130"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580129.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/130/img_biankuang_b_130.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580129.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -39832,7 +41845,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_130.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39893,11 +41908,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580130.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/129/img_biankuang_129.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580130.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/129/img_biankuang_b_129.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -39958,11 +41982,14 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580131.png",
-      "label": "名片框",
-      "base": "ui/mingpiankuang_icon/131/img_biankuang_b_131.png"
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/131/img_biankuang_131.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40023,11 +42050,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580132.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/132/img_biankuang_132.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580132.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/132/img_biankuang_b_132.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40087,12 +42123,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580133.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580133.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_133"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580133.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/133/img_biankuang_b_133.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580133.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -40100,7 +42143,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_133.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40160,12 +42205,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580134.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580134.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_134"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580134.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/134/img_biankuang_b_134.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580134.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -40173,7 +42225,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_134.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40233,12 +42287,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580136.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580136.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_136"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580136.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/136/img_biankuang_b_136.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580136.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -40246,7 +42307,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_136.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40307,11 +42370,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580139.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/139/img_biankuang_139.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580139.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/139/img_biankuang_b_139.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40372,11 +42444,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580141.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/141/img_biankuang_141.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580141.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/141/img_biankuang_b_141.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40437,11 +42518,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580142.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/142/img_biankuang_142.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580142.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/142/img_biankuang_b_142.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40502,11 +42592,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580143.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/143/img_biankuang_143.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580143.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/143/img_biankuang_b_143.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40567,11 +42666,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580146.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/146/img_biankuang_146.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580146.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/146/img_biankuang_b_146.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40632,11 +42740,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580147.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/147/img_biankuang_147.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580147.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/147/img_biankuang_b_147.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580147.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -40644,7 +42759,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_147.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40705,11 +42822,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580149.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/149/img_biankuang_149.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580149.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/149/img_biankuang_b_149.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580149.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -40717,11 +42841,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_149.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580150",
@@ -40780,11 +42904,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580150.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/150/img_biankuang_150.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580150.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/150/img_biankuang_b_150.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40845,13 +42978,17 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/img_cache/avatar_catalog/bc_580152.png",
-      "label": "名片框",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/152/img_biankuang_b_152.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "missing"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）"
   },
   {
    "id": "bc_580153",
@@ -40910,11 +43047,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580153.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/153/img_biankuang_153.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580153.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/153/img_biankuang_b_153.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -40972,9 +43118,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_580155",
@@ -41033,11 +43183,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580155.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/155/img_biankuang_155.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580155.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/155/img_biankuang_b_155.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580155.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -41045,7 +43202,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_155.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41106,11 +43265,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580156.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/156/img_biankuang_156.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580156.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/156/img_biankuang_b_156.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580156.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -41118,7 +43284,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 20,
      "duration": 2.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_156.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41179,11 +43347,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580157.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/157/img_biankuang_157.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580157.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/157/img_biankuang_b_157.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41241,9 +43418,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_580159",
@@ -41302,11 +43483,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580159.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/159/img_biankuang_159.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580159.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/159/img_biankuang_b_159.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41367,11 +43557,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580160.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/160/img_biankuang_160.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580160.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/160/img_biankuang_b_160.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580160.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -41379,7 +43576,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_160.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41440,11 +43639,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580161.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/161/img_biankuang_161.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580161.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/161/img_biankuang_b_161.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580161.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -41452,7 +43658,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_161.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41513,11 +43721,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580162.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/162/img_biankuang_162.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580162.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/162/img_biankuang_b_162.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41578,11 +43795,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580163.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/163/img_biankuang_163.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580163.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/163/img_biankuang_b_163.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41643,11 +43869,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580164.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/164/img_biankuang_164.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580164.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/164/img_biankuang_b_164.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41708,11 +43943,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580165.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/165/img_biankuang_165.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580165.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/165/img_biankuang_b_165.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580165.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -41720,7 +43962,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_165.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41780,9 +44024,10 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580166.png",
-      "label": "名片框",
-      "base": "ui/mingpiankuang_icon/166/img_biankuang_b_166.png"
+      "png": "assets/avatar_anim/bc_580166.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_166"
      }
     ],
     "total": 1,
@@ -41793,11 +44038,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_166.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580167",
@@ -41856,11 +44101,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580167.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/167/img_biankuang_167.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580167.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/167/img_biankuang_b_167.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580167.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -41868,7 +44120,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 8.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_167.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -41929,11 +44183,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580168.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/168/img_biankuang_168.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580168.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/168/img_biankuang_b_168.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580168.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -41941,7 +44202,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 8.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_168.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42002,11 +44265,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580169.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/169/img_biankuang_169.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580169.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/169/img_biankuang_b_169.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42065,8 +44337,23 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580170.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/170/img_biankuang_170.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580170.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/170/img_biankuang_b_170.png"
+     }
+    ],
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42127,11 +44414,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580171.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/171/img_biankuang_171.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580171.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/171/img_biankuang_b_171.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42192,11 +44488,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580172.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/172/img_biankuang_172.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580172.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/172/img_biankuang_b_172.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580172.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -42204,7 +44507,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_172.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42265,11 +44570,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580173.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/173/img_biankuang_173.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580173.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/173/img_biankuang_b_173.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42330,11 +44644,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580174.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/174/img_biankuang_174.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580174.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/174/img_biankuang_b_174.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580174.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42342,7 +44663,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 10.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_174.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42403,19 +44726,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580175.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/175/img_biankuang_175.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580175.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/175/img_biankuang_b_175.png"
      }
     ],
-    "total": 1,
-    "anim": "assets/avatar_anim/bc_580175.png",
-    "anim_meta": {
-     "spine": "2.1.27",
-     "anim": "loop",
-     "frames": 24,
-     "duration": 2.667,
-     "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_175.atlas"
-    }
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42476,11 +44800,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580176.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/176/img_biankuang_176.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580176.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/176/img_biankuang_b_176.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580176.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42488,7 +44819,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 10.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_176.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42546,9 +44879,13 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "total": 0
+    "total": 0,
+    "frame_status": "missing",
+    "images": []
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
+   "image_status": "无边框图",
+   "image_note": "当前 PE/PC 包快照里该名片框的边框资源不可得（静态图未收录且 Spine 贴图页缺失）；背景图同样缺失"
   },
   {
    "id": "bc_580178",
@@ -42607,11 +44944,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580178.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/178/img_biankuang_178.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580178.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/178/img_biankuang_b_178.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580178.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42619,7 +44963,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_178.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42680,11 +45026,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580179.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/179/img_biankuang_179.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580179.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/179/img_biankuang_b_179.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42745,11 +45100,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580180.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/180/img_biankuang_180.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580180.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/180/img_biankuang_b_180.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580180.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42757,11 +45119,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_180.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580181",
@@ -42820,11 +45182,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580181.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/181/img_biankuang_181.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580181.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/181/img_biankuang_b_181.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580181.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42832,7 +45201,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_181.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -42891,8 +45262,21 @@ window.WIKI_BOARD_avatar_catalog = {
     "table_raw": "business_card_scheme_data"
    },
    "_media": {
-    "images": [],
-    "total": 0,
+    "images": [
+     {
+      "png": "assets/avatar_frames/bc_580182.png",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/182/img_biankuang_182.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580182.png",
+      "label": "名片背景",
+      "role": "background",
+      "base": "ui/mingpiankuang_icon/182/img_biankuang_b_182.png"
+     }
+    ],
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580182.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -42900,11 +45284,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_182.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580183",
@@ -42963,11 +45347,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580183.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/183/img_biankuang_183.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580183.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/183/img_biankuang_b_183.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43028,11 +45421,14 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580184.png",
-      "label": "名片框",
-      "base": "ui/mingpiankuang_icon/184/img_biankuang_b_184.png"
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/184/img_biankuang_184.png"
      }
     ],
-    "total": 1
+    "total": 1,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43093,11 +45489,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580185.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/185/img_biankuang_185.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580185.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/185/img_biankuang_b_185.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43158,11 +45563,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580186.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/186/img_biankuang_186.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580186.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/186/img_biankuang_b_186.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580186.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -43170,7 +45582,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_mingpiankuang_186.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43231,11 +45645,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580187.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/187/img_biankuang_187.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580187.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/187/img_biankuang_b_187.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580187.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -43243,7 +45664,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 12.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_mingpiankuang_187.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43304,11 +45727,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580188.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/188/img_biankuang_188.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580188.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/188/img_biankuang_b_188.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43369,11 +45801,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580189.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/189/img_biankuang_189.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580189.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/189/img_biankuang_b_189.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43434,11 +45875,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580190.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/190/img_biankuang_190.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580190.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/190/img_biankuang_b_190.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580190.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -43446,7 +45894,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_190.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43507,11 +45957,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580191.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/191/img_biankuang_191.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580191.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/191/img_biankuang_b_191.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580191.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -43519,7 +45976,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_191.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43580,11 +46039,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580192.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/192/img_biankuang_192.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580192.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/192/img_biankuang_b_192.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580192.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -43592,11 +46058,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 4.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_192.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580193",
@@ -43655,11 +46121,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580193.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/193/img_biankuang_193.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580193.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/193/img_biankuang_b_193.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43720,11 +46195,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580194.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/194/img_biankuang_194.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580194.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/194/img_biankuang_b_194.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43785,11 +46269,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580195.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/195/img_biankuang_195.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580195.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/195/img_biankuang_b_195.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43850,11 +46343,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580196.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/196/img_biankuang_196.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580196.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/196/img_biankuang_b_196.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580196.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -43862,7 +46362,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_196.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -43922,12 +46424,19 @@ window.WIKI_BOARD_avatar_catalog = {
    "_media": {
     "images": [
      {
-      "png": "assets/avatar_frames/bc_580197.png",
-      "label": "名片框",
+      "png": "assets/avatar_anim/bc_580197.png",
+      "label": "边框图(Spine)",
+      "role": "frame",
+      "base": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_197"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580197.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/197/img_biankuang_b_197.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580197.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -43935,11 +46444,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_197.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "Spine 动画（无独立首帧文件）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580198",
@@ -43998,11 +46507,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580198.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/198/img_biankuang_198.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580198.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/198/img_biankuang_b_198.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44063,11 +46581,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580199.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/199/img_biankuang_199.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580199.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/199/img_biankuang_b_199.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580199.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44075,7 +46600,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_199.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44136,11 +46663,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580200.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/200/img_biankuang_200.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580200.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/200/img_biankuang_b_200.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44201,11 +46737,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580201.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/201/img_biankuang_201.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580201.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/201/img_biankuang_b_201.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580201.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44213,11 +46756,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_201.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580202",
@@ -44276,11 +46819,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580202.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/202/img_biankuang_202.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580202.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/202/img_biankuang_b_202.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580202.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44288,7 +46838,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_202.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44349,11 +46901,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580203.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/203/img_biankuang_203.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580203.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/203/img_biankuang_b_203.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44414,11 +46975,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580204.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/204/img_biankuang_204.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580204.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/204/img_biankuang_b_204.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580204.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44426,7 +46994,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_204.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44487,11 +47057,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580206.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/206/img_biankuang_206.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580206.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/206/img_biankuang_b_206.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44552,11 +47131,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580207.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/207/img_biankuang_207.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580207.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/207/img_biankuang_b_207.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580207.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44564,7 +47150,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 2.667,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_207.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44625,11 +47213,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580208.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/208/img_biankuang_208.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580208.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/208/img_biankuang_b_208.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44690,11 +47287,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580209.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/209/img_biankuang_209.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580209.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/209/img_biankuang_b_209.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44755,11 +47361,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580210.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/210/img_biankuang_210.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580210.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/210/img_biankuang_b_210.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580210.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44767,7 +47380,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_210.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44828,11 +47443,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580211.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/211/img_biankuang_211.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580211.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/211/img_biankuang_b_211.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580211.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -44840,7 +47462,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_211.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44901,11 +47525,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580212.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/212/img_biankuang_212.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580212.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/212/img_biankuang_b_212.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580212.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -44913,7 +47544,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 6.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_212.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -44974,11 +47607,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580213.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/213/img_biankuang_213.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580213.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/213/img_biankuang_b_213.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580213.png",
     "anim_meta": {
      "spine": "3.8.99",
@@ -44986,7 +47626,9 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_213.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -45047,11 +47689,20 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580214.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/214/img_biankuang_214.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580214.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/214/img_biankuang_b_214.png"
      }
     ],
-    "total": 1
+    "total": 2,
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
@@ -45112,11 +47763,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580215.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/215/img_biankuang_215.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580215.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/215/img_biankuang_b_215.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580215.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -45124,11 +47782,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 3.0,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_215.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   },
   {
    "id": "bc_580216",
@@ -45187,11 +47845,18 @@ window.WIKI_BOARD_avatar_catalog = {
     "images": [
      {
       "png": "assets/avatar_frames/bc_580216.png",
-      "label": "名片框",
+      "label": "边框图",
+      "role": "frame",
+      "base": "ui/mingpiankuang_icon/216/img_biankuang_216.png"
+     },
+     {
+      "png": "assets/avatar_frames_bg/bc_580216.png",
+      "label": "名片背景",
+      "role": "background",
       "base": "ui/mingpiankuang_icon/216/img_biankuang_b_216.png"
      }
     ],
-    "total": 1,
+    "total": 2,
     "anim": "assets/avatar_anim/bc_580216.png",
     "anim_meta": {
      "spine": "2.1.27",
@@ -45199,11 +47864,11 @@ window.WIKI_BOARD_avatar_catalog = {
      "frames": 24,
      "duration": 5.333,
      "source": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_216.atlas"
-    }
+    },
+    "frame_status": "ok",
+    "frame_note": "静态高清边框（image_path）"
    },
-   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景",
-   "image_status": "无图",
-   "image_note": "atlas 引用的贴图页在包索引中无名（仅 .atlas/.json 有名字映射）"
+   "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
   }
  ]
 };

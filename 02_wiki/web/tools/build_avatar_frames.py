@@ -9,6 +9,18 @@
     · `img_biankuang_b_NN` = 场景底图（432×252）—— 是背景，不是边框
     · Spine 家族的名片框没有静态边框图，边框画在 Spine 图集里
 
+★ 2026-11-01 补：名片框的**背景图**（场景底图）也要找出来
+  背景图 = `resource_path`（`img_biankuang_b_NN.png`），是**实心的整幅场景**，
+  和「中空边框」正好互补：边框叠在背景上才是完整的游戏内名片。
+  以前脚本只在「主图被误挂成场景图」时把它降级成次图，从不主动去找 ——
+  于是 217 张名片框里绝大多数只有一层中空边线，背景层整片缺失。
+  现在按 `resource_path` 主动回源（还原树 → 索引/校准表），落盘到
+  `assets/avatar_frames_bg/<id>.png`，挂为 `role:"background"` 次图。
+  校验三道（任一不过就**如实不挂**，绝不拿边框/图标顶替）：
+      1) 路径必须含 `_b_`（背景命名约定）；
+      2) 中心不透明占比 ≥ 25%（中空图是边框，不是背景）；
+      3) 横版名片比例 1.45~2.0、短边 ≥ 200px（防止串到碎屑图/图标）。
+
 本脚本按下列优先级给每张边框卡定主图：
   1) 静态高清边框：`image_path` 经统一解析器（PE → PC 索引 → PC 校准表）取图，
      并用「中心不透明像素占比 < 25%」校验它确实是**中空边框**，不是场景；
@@ -37,12 +49,17 @@ import numpy as np                                 # noqa: E402
 WEB = PROJ / "02_wiki/web"
 CAT = WEB / "data/boards/avatar_catalog.json"
 FRAMES = WEB / "assets/avatar_frames"
+FRAMES_BG = WEB / "assets/avatar_frames_bg"
 ICONS = WEB / "assets/avatar_icons"
 ANIM = WEB / "assets/avatar_anim"
 
 # 中心区域不透明像素占比超过此值 → 判定为「实心场景图」，不是边框
 SOLID_MAX = 0.25
 KINDS = ("名片框", "头像框")
+
+# 名片背景（场景底图）的形态约束：横版整卡、实心
+BG_AR_MIN, BG_AR_MAX = 1.45, 2.0
+BG_MIN_W, BG_MIN_H = 360, 200
 
 
 def solid_ratio(path: pathlib.Path):
@@ -78,6 +95,40 @@ def fetch_frame(res: Resolver, logical: str, dst: pathlib.Path):
     return "hollow" if r < SOLID_MAX else "solid"
 
 
+def fetch_background(res: Resolver, logical: str, dst: pathlib.Path):
+    """取名片背景（场景底图）并落盘；不合形态就删掉返回 False。
+
+    ★ 三道校验见文件头：必须是 `_b_` 命名、实心、横版整卡尺寸。
+      任何一道不过都如实返回 False —— 宁可缺背景层，也不拿边框/图标冒充。
+    """
+    if not logical:
+        return False
+    logical = logical.replace("\\", "/").lstrip("/")
+    if "_b_" not in logical.rsplit(".", 1)[0]:
+        return False
+    # 还原树优先（文件名即逻辑路径），取不到再走索引/校准表
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    im = res.tree_image(logical)
+    if im is not None:
+        im.save(dst)
+    elif not res.fetch_png(logical, dst):
+        return False
+    try:
+        with Image.open(dst) as im2:
+            w, h = im2.size
+    except Exception:                                   # noqa: BLE001
+        dst.unlink(missing_ok=True)
+        return False
+    if w < BG_MIN_W or h < BG_MIN_H or not (BG_AR_MIN <= w / h <= BG_AR_MAX):
+        dst.unlink(missing_ok=True)
+        return False
+    r = solid_ratio(dst)
+    if r is None or r < SOLID_MAX:
+        dst.unlink(missing_ok=True)
+        return False
+    return True
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true", help="真正写回 json（默认只报告）")
@@ -89,8 +140,10 @@ def main() -> int:
     cat = json.loads(CAT.read_text(encoding="utf-8"))
     items = cat["items"]
 
-    stat = {"静态边框": 0, "Spine首帧": 0, "沿用原图": 0, "无边框图": 0, "场景图被替换": 0}
+    stat = {"静态边框": 0, "Spine首帧": 0, "无边框图": 0,
+            "背景图": 0, "背景图缺失": 0, "场景图降级": 0, "场景图被替换": 0}
     details = []
+    bg_missing = []
     dirty = False
 
     for it in items:
@@ -139,40 +192,50 @@ def main() -> int:
                 note = "Spine 动画（无独立首帧文件）"
                 stat["Spine首帧"] += 1
 
-        # 4) 场景底图降级成次图（保留信息，但不再冒充边框）
-        sec = [x for x in imgs if x is not cur]
-        scene = None
-        for x in sec:
-            if x.get("role") == "background":
-                scene = x
+        # 4) 背景图：主动按 resource_path 找名片场景底图（_b_ 命名）
+        bg = None
+        if kind == "名片框":
+            if fetch_background(res, it.get("resource_path") or "",
+                                FRAMES_BG / (iid + ".png")):
+                bg = {"png": "assets/avatar_frames_bg/%s.png" % iid,
+                      "label": "名片背景", "role": "background",
+                      "base": it.get("resource_path")}
+                stat["背景图"] += 1
+            else:
+                stat["背景图缺失"] += 1
+        # 旧主图本身若是场景底图 → 它是背景，绝不能当边框
+        cur_is_scene = (cur is not None and cur_solid is not None
+                        and cur_solid >= SOLID_MAX)
+        if cur_is_scene:
+            if bg is None:
+                bg = {"png": cur["png"], "label": "名片背景", "role": "background",
+                      "base": cur.get("base") or it.get("resource_path")}
+                stat["场景图降级"] += 1
+            else:
+                stat["场景图被替换"] += 1
+        # 其余次图（旧背景 / 图标）不再占主图位
         for x in imgs:
-            if x is not cur and x.get("role") != "background":
-                # 旧的次图（可能是背景也可能是图标）→ 统一标成 background
+            if x.get("role") == "fixture":
+                continue
+            if x is not cur and not x.get("role"):
                 x["role"] = "background"
-        if cur is not None and cur_solid is not None and cur_solid >= SOLID_MAX:
-            # 当前主图其实是场景底图 → 降级
-            scene = {"png": cur["png"], "label": "名片背景", "role": "background",
-                     "base": cur.get("base") or it.get("resource_path")}
-            stat["场景图被替换"] += 1
 
+        others = [x for x in imgs if x is not cur and x is not bg]
+        if kind == "名片框" and bg is None:
+            bg_missing.append((iid, it.get("name")))
         if main_img is None:
             stat["无边框图"] += 1
             it["image_status"] = "无边框图"
             it["image_note"] = ("当前 PE/PC 包快照里该名片框的边框资源不可得"
-                                "（静态图未收录且 Spine 贴图页缺失）")
+                                "（静态图未收录且 Spine 贴图页缺失）"
+                                + ("；背景图同样缺失" if bg is None else ""))
             m["frame_status"] = "missing"
-            new_imgs = ([scene] if scene else []) + [x for x in imgs
-                                                    if x is not cur and x is not scene]
+            new_imgs = ([bg] if bg else []) + others
         else:
-            if cur is not None and cur_solid is not None and cur_solid >= SOLID_MAX:
-                stat["场景图被替换"] += 0      # 已计数
-            else:
-                stat["沿用原图"] += 1
             it.pop("image_status", None)
             it.pop("image_note", None)
             m["frame_status"] = "ok"
-            new_imgs = [main_img] + ([scene] if scene else []) + \
-                       [x for x in imgs if x is not cur and x is not scene]
+            new_imgs = [main_img] + ([bg] if bg else []) + others
 
         if new_imgs != imgs:
             dirty = True
@@ -186,9 +249,20 @@ def main() -> int:
     print("统计：", stat)
     miss = [d for d in details if d[4] is None]
     print("无边框图 %d 张：%s" % (len(miss), [(d[0], d[1]) for d in miss[:12]]))
+    print("背景图缺失 %d 张：%s" % (len(bg_missing), bg_missing[:12]))
+    bg_cnt = sum(1 for it in items if it.get("kind") == "名片框"
+                 and any(x.get("role") == "background"
+                         and x.get("label") == "名片背景"
+                         and "/avatar_frames_bg/" in x.get("png", "")
+                         for x in ((it.get("_media") or {}).get("images") or [])))
+    print("名片背景（新回源）%d 张" % bg_cnt)
     if a.apply:
         CAT.write_text(json.dumps(cat, ensure_ascii=False, indent=1), encoding="utf-8")
-        print("已写回 %s（用时 %.0fs）" % (CAT.name, time.time() - t0))
+        # 看板走的是 .js（file:// 直开也要能读到），必须与 json 同步
+        (WEB / "data/boards/avatar_catalog.js").write_text(
+            "window.WIKI_BOARD_avatar_catalog = " + json.dumps(cat, ensure_ascii=False) + ";\n",
+            encoding="utf-8")
+        print("已写回 %s / %s.js（用时 %.0fs）" % (CAT.name, CAT.stem, time.time() - t0))
     else:
         print("试运行，未写回（加 --apply 生效）")
     return 0

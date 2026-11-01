@@ -389,12 +389,23 @@ _REGION_CACHE = {}
 
 
 def _region_cache(page_img, region):
-    """region 裁切缓存。key=(page 图 id, x, y, w, h, rotate)。"""
-    key = (id(page_img), region["x"], region["y"], region["w"], region["h"],
+    """region 裁切缓存。key=(页名, x, y, w, h, rotate)。
+
+    ★ 原来用 id(page_img) 当 key —— Python 的对象 id 是内存地址，页图被 GC 回收后
+      这个地址会被**下一张页图复用**，于是命中上一条头像留下的缓存切片。
+      450184 预览时前几帧变成 450181 就是此因：两张页图同尺寸、同 88×88 网格、
+      矩形坐标完全重合，地址一复用就直接取到别人的图。
+      改用 atlas 里声明的页名作 key，跨条目、跨进程都不会串。
+    """
+    page_key = region.get("page") or ""
+    key = (page_key, region["x"], region["y"], region["w"], region["h"],
            bool(region.get("rotate")))
     hit = _REGION_CACHE.get(key)
     if hit is not None:
         return hit
+    # ★ 缓存不能无限长：422 条 × 上百个 88×88 切片会吃掉上 GB 内存。
+    if len(_REGION_CACHE) > 4000:
+        _REGION_CACHE.clear()
     rx, ry, rw, rh = region["x"], region["y"], region["w"], region["h"]
     if region.get("rotate"):
         crop = page_img.crop((rx, ry, rx + rh, ry + rw)).transpose(Image.ROTATE_270)
