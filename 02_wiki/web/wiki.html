@@ -68,6 +68,11 @@
 
   var THUMBS = [
     [/^fashion_wardrobe$/, 'assets/fashion_posters/fw_c8c7d1c90f.png'],  // 人物时装：星云惊鸿幻彩典藏-头饰
+    // 装备属性四卡：与人物时装同款，用真实 2:1 装备大图当封面（不再显示汉字「五」占位）
+    [/^equipment_attrs$/,          'assets/equip_icons/ui_item_icon_icon_10001_b.png'],  // 三服总览：AK47
+    [/^equipment_attrs_kj1$/,      'assets/equip_icons/ui_item_icon_icon_10031_b.png'],  // 简单生存服：M416
+    [/^equipment_attrs_classic$/,  'assets/equip_icons/ui_item_icon_icon_10021_b.png'],  // 经典服：AWM
+    [/^equipment_attrs_yk$/,       'assets/equip_icons/ui_item_icon_icon_10004_b.png'],  // 月卡服：雷明顿M870
     [/^weapon_skin/, 'assets/skin_posters/1110031.png'],  // 武器皮肤：沧鳞破浪
     [/weapon_skin/i,     'assets/skin_posters/1110001.png'],
     [/^future_lottery/,  'assets/skin_posters/1110012.png'],
@@ -150,14 +155,34 @@
       var m=String(leaf.name||'').match(/^（[^）]*）/);
       return m?m[0]:'';
     }
+    // 2026-11-01：多板块叶子按「服别」区分。板块名共用「 · 」前缀时（如「…（武器 · 护甲） · 简单生存服」），
+    // 取分隔符后的尾段作后缀，避免同一节点下出现多个同名瓦片；没有公共前缀的节点保持原命名。
+    function branchSuffix(ids){
+      var names=ids.map(function(id){return String((byId[id]||{}).name||id);});
+      var p=names[0];
+      for(var i=1;i<names.length;i++){
+        var j=0; while(j<p.length&&j<names[i].length&&p.charAt(j)===names[i].charAt(j))j++;
+        p=p.slice(0,j);
+      }
+      var cut=p.lastIndexOf(' · ');
+      if(cut<0) return null;
+      var out={};
+      for(var k=0;k<names.length;k++){
+        var seg=names[k].slice(cut+3).trim();
+        if(!seg) return null;
+        out[ids[k]]=seg;
+      }
+      return out;
+    }
     (T['树']||[]).forEach(function(top){
       (top.boards||[]).forEach(function(id){
         if(byId[id]) TITLES[id]=String(top.name||'').replace(/^[^、]*、/,'');
       });
       (top.children||[]).forEach(function(leaf){
         var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+        var br=(ids.length>1)?branchSuffix(ids):null;
         ids.forEach(function(id){
-          TITLES[id]=(ids.length===1)?leaf.name:(numOf(leaf)+cleanNm(byId[id].name||id));
+          TITLES[id]=(ids.length===1)?leaf.name:(numOf(leaf)+cleanNm(byId[id].name||id)+(br?(' · '+br[id]):''));
         });
       });
     });

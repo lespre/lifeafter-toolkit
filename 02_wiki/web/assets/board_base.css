@@ -122,6 +122,14 @@ body.fashion-mode .i details.tech summary{font-size:12px}
 .fr-kv .v{color:#3f3f46;word-break:break-word}
 .fr-kv .v.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all}
 .fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
+/* ── 装备属性板（body.equip-mode，2026-11-01 用户口径：子卡与人物时装同款）──
+   卡面 = 顶部大图 + 名字/等级 + 关键 pill + 描述；其余字段折进详情，不再铺满 kv。 */
+body.equip-mode .grid{grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:14px;align-items:start}
+body.equip-mode .i{padding:12px 12px 10px}
+body.equip-mode .eq-desc{margin:7px 0 0;font-size:12px;line-height:1.55;color:var(--muted,#9aa6bd);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+body.equip-mode .i details.tech{margin:9px 0 0}
+body.equip-mode .i details.tech summary{font-size:12px}
 /* ── 表格视图（sbt-mode：场景平衡 scene_balance / 服务器类型 server_types 共用）──
    sbt-mode 是表格外观的公共开关；scene-mode / st-mode 只留各自的专属微调。 */
 body.sbt-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
@@ -621,6 +629,9 @@ body.b-title_catalog .i-skin .sk-ln{position:absolute;left:0;right:0;top:4px;hei
   background-repeat:no-repeat;background-position:center;background-size:100% 100%;opacity:.95;pointer-events:none}
 body.b-title_catalog .i-name .i-art{max-width:100%;max-height:26px;object-fit:contain;vertical-align:middle}
 body.b-title_catalog .i-name.has-art .i-name-txt{display:none}
+/* 动态称号首帧预览（真图；无资源条目不渲染） */
+body.b-title_catalog .i-dyn{margin:5px 0 3px}
+body.b-title_catalog .i-dyn img{max-width:100%;max-height:54px;object-fit:contain;display:block}
 /* 分组勾选项：默认不勾（整表平铺按编号排）；勾上才按获取途径分组 */
 body.b-title_catalog .controls .tg-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:8px;
   font-size:12.5px;color:var(--fg-muted);white-space:nowrap;cursor:pointer;user-select:none}

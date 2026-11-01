@@ -6,10 +6,10 @@ window.WIKI_MANIFEST = {
   "boards": [
     {
       "name": "活动总表 · 全部活动与起止时间",
-      "category": "置顶、活动奖池与预告 / （一）活动奖池",
+      "category": "三、活动类 / （零）活动总表",
       "board": "activity_master",
       "items": 3519,
-      "generated": "2026-10-31",
+      "generated": "2026-11-01",
       "source_server": "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
@@ -35,17 +35,17 @@ window.WIKI_MANIFEST = {
       "name": "头像 / 头像框 / 名片框",
       "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
-      "items": 673,
+      "items": 676,
       "generated": "2026-10-22",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源 41_还原树/pe/资源",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 673
+        "structure": 676
       },
       "state_summary": {
         "头像框": 252,
         "头像": 204,
-        "名片框": 217,
+        "名片框": 220,
         "有图": 663,
         "缺图": 10,
         "有动画": 347
@@ -56,7 +56,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 673
+          "replayed-structural": 676
         }
       }
     },
@@ -223,7 +223,7 @@ window.WIKI_MANIFEST = {
       "items": 2586,
       "generated": "2026-11-01",
       "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
-      "package_sha": "2236364e0ed4dfb295fb48bddc16fb527a734cb6b9a4144505167a5598ee9f9a",
+      "package_sha": "2e7cf47b42b9ce211092bea601258e9ca18e4dad48c07b85ca255cb0d11a75ee",
       "evidence": {
         "structure": 2586
       },
@@ -246,41 +246,12 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲） · 简单生存服",
-      "category": "二、战力类 / （五）装备属性（武器·护甲）",
-      "board": "equipment_attrs_kj1",
-      "items": 590,
-      "generated": "2026-11-01",
-      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
-      "package_sha": "c947fc1bb4b4627f536275e84ff24102db52a1eaebad7efabf8694a96f9d1268",
-      "evidence": {
-        "structure": 590
-      },
-      "state_summary": {
-        "unresolved": 590,
-        "static config": 590,
-        "verified": 0,
-        "runtime final unknown": 590,
-        "有属性": 590,
-        "有图标": 485
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "replayed-structural": 590
-        }
-      }
-    },
-    {
       "name": "（内测版）装备属性（武器 · 护甲） · 经典服",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs_classic",
       "items": 1057,
       "generated": "2026-11-01",
-      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
+      "source_server": "PE 测试服源包 · all_equips_data · 经典服（classic）",
       "package_sha": "2920fef142c4ce07ac6011f6f28e33fc10391652d88a987e69cdefcd6e5c16cc",
       "evidence": {
         "structure": 1057
@@ -304,13 +275,42 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "（内测版）装备属性（武器 · 护甲） · 简单生存服",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "board": "equipment_attrs_kj1",
+      "items": 590,
+      "generated": "2026-11-01",
+      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1）",
+      "package_sha": "c947fc1bb4b4627f536275e84ff24102db52a1eaebad7efabf8694a96f9d1268",
+      "evidence": {
+        "structure": 590
+      },
+      "state_summary": {
+        "unresolved": 590,
+        "static config": 590,
+        "verified": 0,
+        "runtime final unknown": 590,
+        "有属性": 590,
+        "有图标": 485
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 590
+        }
+      }
+    },
+    {
       "name": "（内测版）装备属性（武器 · 护甲） · 月卡服",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs_yk",
       "items": 939,
       "generated": "2026-11-01",
-      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
-      "package_sha": "b8179d7599d8266d20c880a451a5ef0e1da323cb3eab86756d8595238519e05e",
+      "source_server": "PE 测试服源包 · all_equips_data · 月卡服（yk）",
+      "package_sha": "99e0743b4437d7f2000205362116275686a4ad75e7d08ecfb8b6747c255a3dda",
       "evidence": {
         "structure": 939
       },
@@ -534,21 +534,25 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
-      "items": 688,
-      "generated": "2026-10-31",
+      "items": 993,
+      "generated": "2026-11-01",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 496,
+        "structure": 801,
         "candidate": 192
       },
       "state_summary": {
-        "期次": 505,
-        "成员": 688,
+        "期次": 789,
+        "成员": 993,
+        "结构可证": 801,
         "候选成员": 192,
-        "有成员期次": 125,
-        "进行中": 14,
-        "未开始": 1
+        "有成员期次": 200,
+        "空成员期次": 589,
+        "进行中": 22,
+        "未开始": 5,
+        "2026起期次": 121,
+        "2026起有成员期次": 80
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -556,7 +560,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 688
+          "replayed-structural": 993
         }
       }
     },

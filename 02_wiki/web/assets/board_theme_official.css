@@ -261,6 +261,8 @@ body.scrolled .crumb{margin-bottom:4px}
 .pstate.on{background:rgba(95,160,106,.16);color:#8fd39a;border:1px solid rgba(95,160,106,.45)}
 .pstate.upcoming{background:rgba(217,164,65,.14);color:#e2c48c;border:1px solid rgba(217,164,65,.42)}
 .pstate.ended{background:rgba(125,142,153,.12);color:#7d8e99;border:1px solid rgba(125,142,153,.3)}
+.pstate.longrun{background:rgba(111,159,186,.12);color:#9fc3d6;border:1px solid rgba(111,159,186,.4)}
+.pstate.unknown{background:rgba(125,142,153,.1);color:#8a8f93;border:1px solid rgba(125,142,153,.26)}
 .pcard-sub{font-size:12.5px;color:var(--muted,#a9b8c2)}
 .pcard-date{font-size:12px;color:#7d8e99;font-family:ui-monospace,Consolas,monospace}
 .pcard-body{margin-top:12px;display:flex;flex-direction:column;gap:12px}
@@ -353,6 +355,61 @@ body.scrolled .crumb{margin-bottom:4px}
 #grid.period-grid .pfam-n{font-size:12px;color:#7d8e99}
 #grid.period-grid .pfam-arrow{margin-left:auto;color:#7d8e99}
 #grid.period-grid .pcard{margin:0}
+/* 年份子分组（仅 period_group=family_year 的期次板：家族 → 年份） */
+#grid.period-grid .pfam-year{margin:6px 0 4px;padding:3px 2px 3px 10px;background:none;
+  border-bottom:1px dashed var(--border,#1e2a33);border-radius:0}
+#grid.period-grid .pfam-year .pfam-name{font-size:12px;font-weight:500;color:#9fb3bf}
+#grid.period-grid .pfam-year .pfam-n{font-size:11px}
+/* 无成员期次：仍列出（暂无可证成员），视觉弱化，不与有成员期次混淆 */
+.pcard.pempty .pcard-name{color:#93a6b1}
+.pcard-gap{padding:8px 2px;font-size:12px;line-height:1.6;color:#8fa3ae}
+/* 空期次聚合摘要（家族×年份）：默认折叠，点开才逐条列出 */
+.pfam-empty{grid-column:1/-1;display:flex;align-items:center;gap:8px;margin:2px 0 4px;padding:4px 10px;
+  border-radius:5px;cursor:pointer;user-select:none;background:rgba(125,142,153,.05);
+  border:1px dashed rgba(125,142,153,.28);color:#8d9aa4;font-size:12px}
+.pfam-empty:hover{background:rgba(111,159,186,.09)}
+.pfam-empty .pfe-name{font-weight:600;color:#9fb0bb}
+.pfam-empty .pfe-n{font-size:11.5px;color:#74838d}
+.pfam-empty .pfe-arrow{margin-left:auto;color:#74838d}
+.pfam-empty.open{border-style:solid;color:#a8b8c3}
+/* 无成员期次：紧凑单行（展开后才出现） */
+.prow{grid-column:1/-1;display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:center;
+  gap:8px;padding:5px 10px;margin:0 0 4px;border-radius:5px;cursor:default;
+  background:rgba(255,255,255,.015);border:1px solid rgba(30,42,51,.55);font-size:12px}
+.prow:hover{background:rgba(111,159,186,.06)}
+.prow-date{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:#8496a2}
+.prow-name{color:#b8c8d2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prow-note{font-size:11px;color:#6f7f8a;white-space:nowrap}
+.prow-state{font-size:10.5px;padding:0 6px;border-radius:3px;white-space:nowrap}
+.prow-state.on{color:#8fd39a;border:1px solid rgba(95,160,106,.4)}
+.prow-state.upcoming{color:#e2c48c;border:1px solid rgba(217,164,65,.4)}
+.prow-state.ended{color:#7d8e99;border:1px solid rgba(125,142,153,.28)}
+.prow-state.longrun{color:#9fb3bf;border:1px solid rgba(111,159,186,.4)}
+.prow-state.unknown{color:#8a8f93;border:1px solid rgba(125,142,153,.28)}
+@media(max-width:900px){.prow{grid-template-columns:74px minmax(0,1fr) auto}.prow-note{display:none}}
+/* 家族筛选条：20+ 家族只占一行，横向滚动，不再铺两行挤掉首屏 */
+.pf-bar-fam{overflow-x:auto;flex-wrap:nowrap!important;scrollbar-width:thin}
+.pf-bar-fam .pf-chip{flex:0 0 auto}
+/* 期次板（period_empty=show）：状态芯片 + 家族/类型下拉压成一条工具栏 */
+.pf-bar-one{gap:6px;row-gap:6px;padding:6px 10px;margin-bottom:8px}
+.pf-bar-one .pf-chip{padding:3px 9px;font-size:11.5px}
+.pf-sel{background:rgba(6,10,13,.85);color:#cfe3ee;border:1px solid rgba(111,159,186,.35);
+  border-radius:6px;font-size:11.5px;padding:3px 6px;max-width:200px;cursor:pointer}
+.pf-sel:focus{outline:none;border-color:var(--steel,#6f9fba);box-shadow:0 0 0 2px var(--ring,rgba(209,75,50,.22))}
+/* 三层标题拉开权重：家族（粗横条）> 年份（细虚线）> 空期次摘要（弱右缩进） */
+#grid.period-grid .pfam-head{margin:18px 0 6px;padding:0 0 6px 10px;background:none;
+  border:0;border-bottom:1px solid rgba(111,159,186,.28);border-left:3px solid rgba(111,159,186,.55);border-radius:0}
+#grid.period-grid .pfam-head:first-child{margin-top:4px}
+#grid.period-grid .pfam-head .pfam-name{font-size:15px;letter-spacing:.04em;color:#e2eef5}
+#grid.period-grid .pfam-head .pfam-n{font-size:11.5px;color:#82949f}
+#grid.period-grid .pfam-year{margin:10px 0 4px;padding:0 0 3px;background:none;
+  border:0;border-bottom:1px dashed rgba(125,142,153,.25);border-radius:0}
+#grid.period-grid .pfam-year .pfam-name{font-size:12px;font-weight:600;color:#8fa3ae}
+#grid.period-grid .pfam-year .pfam-name::before{content:"";display:inline-block;width:5px;height:5px;
+  margin-right:6px;background:#5b7280;vertical-align:1px}
+#grid.period-grid .pfam-year .pfam-n{font-size:11px;color:#74838d}
+.pfam-empty.under{margin-left:16px;padding:3px 8px;background:none;
+  border:0;border-left:2px solid rgba(125,142,153,.3);border-radius:0}
 .fr-gender{background:rgba(219,39,119,.12)!important;color:#fbcfe8!important;border:1px solid rgba(219,39,119,.35)!important}
 
 /* 名册级条目（静态导出 / 字符串池名册，无行级溯源）——与行级条目视觉区分：虚线边 + 琥珀色 */

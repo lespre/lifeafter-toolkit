@@ -86,7 +86,8 @@
 | `build_avatar_full.py` | 重建「头像 / 头像框 / 名片框」全量板：三张表 + 分服变体 + 全量 2D 定位。 |
 | `build_class_layer.py` | 按玩家用途补一层分类（学社区图鉴的纲）：配方表 + 道具总表的类别字段。 |
 | `build_core_skill_board.py` | 抽出「12 星全量特技表」：极品核芯 50 条，特技全文 + 升星段。 |
-| `build_equipment_attrs.py` | 建「装备属性」板：all_equips 的 attrs（伤害/护甲/血量加成…）从嵌套行帧解出后的落库。 |
+| `build_equip_icons.py` | 装备 2D 图标导出：all_equips 的 icon 路径 → pe_index fid 探测（_b 优先）→ gpk 解码 PNG，落 `assets/equip_icons/` 并写 `_index.json`（三服同路径共用一张）。 |
+| `build_equipment_attrs.py` | 建「装备属性」板：三服分服卡（kj1/classic/yk）+ 三服总览卡；all_equips 的 attrs（伤害/护甲/血量加成…）从嵌套行帧解出，同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value，并回填 2D 图标（缺图标 icon_missing）。 |
 | `build_fashion_identity_candidates.py` | P4-3 fashion identity candidate rules. |
 | `build_fashion_identity_locator.py` | Build the P4-3 fashion identity SQLite locator. |
 | `build_fashion_registry.py` | 生成人物时装全量登记表：fashion_data + player_appear_data + simple_fashion_data 三源合并。 |

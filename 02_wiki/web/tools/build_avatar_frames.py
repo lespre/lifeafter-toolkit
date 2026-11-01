@@ -129,12 +129,104 @@ def fetch_background(res: Resolver, logical: str, dst: pathlib.Path):
     return True
 
 
+def _interior_mask(cv2, a):
+    """找出「被边框围住」的透明内孔 → 二值 mask；找不到返回 None。
+
+    ★ 2026-11-01 修正：旧法直接取中心透明像素的连通域，遇到装饰件之间有小缺口
+      （内孔与画布外连通）就量不到，只能退回中心行列法，背景于是按一个大矩形铺，
+      在斜边/角饰处露出一块方角。新法先把不透明区做闭运算封住细缝，再从画布四边
+      找「外部」，剩下没被外部连到的透明区就是内孔；从细核到粗核逐级尝试，
+      封不住才算真开口（如实退回兜底，不硬猜）。
+    """
+    h, w = a.shape
+    opaque = (a > 8).astype(np.uint8)
+    base_k = max(3, int(round(0.006 * min(h, w))) | 1)
+    for k in (base_k, base_k * 2 | 1, base_k * 4 | 1):
+        ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k))
+        closed = cv2.morphologyEx(opaque, cv2.MORPH_CLOSE, ker)
+        free = (closed == 0).astype(np.uint8)
+        n, lab, st, _c = cv2.connectedComponentsWithStats(free, 4)
+        outside = np.zeros(n, bool)
+        for i in range(1, n):
+            x, y, bw, bh, _area = st[i]
+            if x == 0 or y == 0 or x + bw >= w or y + bh >= h:
+                outside[i] = True                 # 触到画布边 = 与外界连通
+        best_i, best_d = -1, float("inf")
+        for i in range(1, n):
+            if outside[i] or st[i][4] * 50 < w * h:   # 太小的碎片不是内孔
+                continue
+            d = ((st[i][0] + st[i][2] / 2 - w / 2) ** 2
+                 + (st[i][1] + st[i][3] / 2 - h / 2) ** 2)
+            if d < best_d:
+                best_d, best_i = d, i
+        if best_i >= 0:
+            return (lab == best_i).astype(np.uint8)
+    return None
+
+
+def _silhouette_mask(cv2, a):
+    """框的「整体轮廓」：返回被框围住的整块区域（含框体+框内），找不到返回 None。
+
+    ★ 2026-11-01 二次修正（用户反馈「背景和名片框还是不适配」）：
+      上一版把 clip 取成「透明内孔的轮廓」—— 框上的花枝/藤蔓往孔里探进来时，
+      内孔轮廓就会绕着这些装饰啃出一圈缺口，背景因此被切掉一块块，
+      合成后表现为框内沿边一圈锯齿状暗斑。实际正确的口子只要「不露到框外」，
+      框内被装饰压住的地方背景本来就该继续铺着（装饰画在上面会盖住）。
+      所以 clip 改取**外轮廓**：框内所有位置都允许背景，只有框外才裁掉。
+      阈值用 alpha>=96（只认明确的框体），柔光/抗锯齿算透明，避免光效把轮廓撑歪。
+    """
+    h, w = a.shape
+    base = max(3, int(round(0.004 * min(h, w))) | 1)
+    for th in (96, 64, 40):
+        solid = (a >= th).astype(np.uint8)
+        for mul in (1, 2, 4):
+            k = base * mul | 1
+            ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k))
+            closed = cv2.morphologyEx(solid, cv2.MORPH_CLOSE, ker)
+            free = (closed == 0).astype(np.uint8)
+            n, lab, st, _c = cv2.connectedComponentsWithStats(free, 4)
+            outside = np.zeros(n, bool)
+            for i in range(1, n):
+                x, y, bw, bh, _area = st[i]
+                if x == 0 or y == 0 or x + bw >= w or y + bh >= h:
+                    outside[i] = True             # 触到画布边 = 与框外连通
+            leak = np.zeros((h, w), bool)
+            for i in range(1, n):
+                if outside[i]:
+                    leak |= (lab == i)
+            inside = ~leak
+            # 面积过小说明框有真开口、外部灌进来了 —— 这一档不可信，继续加粗封缝
+            if inside.sum() >= 0.25 * w * h:
+                return inside.astype(np.uint8)
+    return None
+
+
+def _polygon_of(cv2, mask, w, h, eps_ratio, max_pts=600):
+    """取 mask 的最大外轮廓 → 归一化多边形点列；取不到返回 None。"""
+    cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not cnts:
+        return None
+    c = max(cnts, key=cv2.contourArea)
+    if cv2.contourArea(c) < 0.02 * w * h:
+        return None
+    eps = max(1.0, eps_ratio * max(w, h))
+    poly = cv2.approxPolyDP(c, eps, True).reshape(-1, 2)
+    while len(poly) > max_pts:
+        eps *= 1.5
+        poly = cv2.approxPolyDP(c, eps, True).reshape(-1, 2)
+    if len(poly) < 3:
+        return None
+    return [[round(px / w, 5), round(py / h, 5)] for px, py in poly]
+
+
 def hole_geom(path: pathlib.Path):
     """量边框的「内孔」几何：返回 {"bbox":[l,t,w,h], "clip":[[x,y],...]}（0~1）；量不到 None。
 
-    为什么不只用 bbox：内孔不是矩形（框边常是斜的/带角饰），矩形背景按 bbox 铺会从
-    斜边处露到框外。所以同时给一条沿透明内孔轮廓简化出来的多边形（clip），
-    前端把背景按 bbox 铺进去、再用 polygon 裁掉多余部分，才是「框完全包住背景」。
+    bbox = 背景照片摆放位置（内孔外接框，外扩 2~4px 压进框底）；
+    clip = 允许背景显示的多边形。★ 取「框的外轮廓」而不是内孔轮廓：
+      内孔轮廓会被探进孔里的花枝/藤蔓啃出缺口，背景沿边出现锯齿状暗斑；
+      外轮廓只在框外裁切，框内被装饰压住的地方背景照常铺，边缘才自然闭合。
+      外轮廓实在取不到（框真有开口）时，退回内孔轮廓。
     """
     try:
         with Image.open(path) as im:
@@ -151,26 +243,30 @@ def hole_geom(path: pathlib.Path):
         import cv2
     except Exception:                                   # noqa: BLE001
         return _hole_fallback(a)
-    mask = (a <= 8).astype(np.uint8)
-    _n, labels, stats, _cent = cv2.connectedComponentsWithStats(mask, 4)
-    lab = int(labels[cy, cx])
-    x, y, bw, bh, area = stats[lab]
-    if area > 0 and x > 0 and y > 0 and x + bw < w and y + bh < h:
-        bbox = [x / w, y / h, bw / w, bh / h]
-        clip = None
-        # 轮廓简化：epsilon 取长边的 0.6%，既能贴边又不让点太多
-        sub = (labels[y:y + bh, x:x + bw] == lab).astype(np.uint8)
-        cnts, _ = cv2.findContours(sub, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        if cnts:
-            c = max(cnts, key=cv2.contourArea)
-            eps = 0.006 * max(bw, bh)
-            poly = cv2.approxPolyDP(c, eps, True).reshape(-1, 2)
-            if 3 <= len(poly) <= 120:
-                clip = [[round((x + px) / w, 4), round((y + py) / h, 4)]
-                        for px, py in poly]
-        return {"bbox": bbox, "clip": clip}
-    # 内孔与画布外侧连通（框有缺口）→ 退回中心行列法
-    return _hole_fallback(a)
+    inner = _interior_mask(cv2, a)
+    if inner is None:
+        # 内孔确实与画布外连通（框有真开口）→ 退回中心行列法，如实不裁轮廓
+        return _hole_fallback(a)
+    # 外扩：背景压进框边 2~4px，消除抗锯齿造成的接缝暗边
+    d = max(2, int(round(0.004 * min(h, w))))
+    ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (d * 2 + 1, d * 2 + 1))
+    grown = cv2.dilate(inner, ker)
+    ys, xs = np.nonzero(grown)
+    if len(xs) == 0:
+        return _hole_fallback(a)
+    x0, x1 = int(xs.min()), int(xs.max())
+    y0, y1 = int(ys.min()), int(ys.max())
+    bw, bh = x1 - x0 + 1, y1 - y0 + 1
+    # clip：优先取框的外轮廓（框内全允许背景，只有框外裁掉，不会被装饰啃出缺口）；
+    # 外轮廓不可信时退回内孔轮廓，epsilon 取长边 0.12%（至少 1px）
+    clip = None
+    sil = _silhouette_mask(cv2, a)
+    if sil is not None:
+        clip = _polygon_of(cv2, sil, w, h, 0.0012)
+    if not clip:
+        clip = _polygon_of(cv2, grown, w, h, 0.0012)
+    return {"bbox": [round(x0 / w, 5), round(y0 / h, 5),
+                     round(bw / w, 5), round(bh / h, 5)], "clip": clip}
 
 
 def _hole_fallback(a):
@@ -197,12 +293,6 @@ def _hole_fallback(a):
         return None
     return {"bbox": [x0 / w, y0 / h, (x1 - x0 + 1) / w, (y1 - y0 + 1) / h],
             "clip": None}
-
-
-def hole_bbox(path: pathlib.Path):
-    """兼容旧调用：只要 bbox。"""
-    g = hole_geom(path)
-    return g["bbox"] if g else None
 
 
 def main() -> int:
@@ -246,9 +336,6 @@ def main() -> int:
             main_img = {"png": "assets/avatar_frames/%s.png" % iid,
                         "label": "边框图", "role": "frame",
                         "base": it.get("image_path")}
-            hole = hole_bbox(dst)
-            if hole:
-                main_img["hole"] = [round(v, 4) for v in hole]
             note = "静态高清边框（image_path）"
             stat["静态边框"] += 1
         elif got == "solid":
@@ -272,7 +359,9 @@ def main() -> int:
                 stat["Spine首帧"] += 1
         # Spine 边框同样量内孔：它也是「中空边框 + 场景底图」的同一套画法，
         # 只是贴图页缺失、只能拿到渲染图。量到了前端照样能叠（框在外、背景在孔内）。
-        if main_img is not None and "hole" not in main_img:
+        # ★ 每次都重量（不沿用旧值）：Spine 首帧分辨率会变（168→384），
+        #   旧的内孔百分比是新图上错的位置，背景会整块错位。
+        if main_img is not None:
             src = WEB / main_img["png"]
             g = hole_geom(src) if src.is_file() else None
             if g:
@@ -280,6 +369,8 @@ def main() -> int:
                 # 非矩形内孔：额外交一条多边形轮廓，前端裁掉溢出框外的部分
                 if g.get("clip"):
                     main_img["clip"] = g["clip"]
+                else:
+                    main_img.pop("clip", None)
         # 边框图原始宽高：前端要靠它固定卡面比例，悬停换成 Spine 动图时才不会跳尺寸
         if main_img is not None:
             src = WEB / main_img["png"]

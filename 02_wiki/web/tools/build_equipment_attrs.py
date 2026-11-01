@@ -252,7 +252,7 @@ def item_base(key, name, et, wt, attrs, NAME, label, sha, sv, row, ICONS, source
         "trial_variants": None,
         "icon": ic["icon"],
         "icon_state": ic["icon_state"],
-        "icon_missing": ic["icon_missing"],
+        **({"icon_missing": True} if ic["icon_missing"] else {}),
         **({"icon_missing_reason": ic["icon_missing_reason"]} if ic.get("icon_missing_reason") else {}),
         **({"_media": ic["_media"]} if ic.get("_media") else {}),
         "evidence": "structure",
@@ -379,7 +379,8 @@ def write_board(path_json: pathlib.Path, data: dict):
                                             encoding="utf-8")
 
 
-def meta_common(name, items, source_locks, notes, server_branch, sibling_cards, filters):
+def meta_common(name, items, source_locks, notes, server_branch, sibling_cards, filters,
+                source_server=None):
     return {
         "name": name,
         "category": CATEGORY,
@@ -387,8 +388,8 @@ def meta_common(name, items, source_locks, notes, server_branch, sibling_cards, 
         "evidence": "structure",
         "package_sha": hashlib.sha256(
             b"".join(l["sha256"].encode() for l in source_locks)).hexdigest(),
-        "source_server": "PE 测试服源包 · all_equips_data · " + " + ".join(
-            "%s（%s）" % (sv, cfg["channel"]) for sv, cfg in SERVERS.items()),
+        "source_server": source_server or ("PE 测试服源包 · all_equips_data · " + " + ".join(
+            "%s（%s）" % (sv, cfg["channel"]) for sv, cfg in SERVERS.items())),
         "server_branch": server_branch,
         "sibling_cards": sibling_cards,
         "filters": filters,
@@ -470,7 +471,9 @@ def main() -> int:
                                 sv, siblings,
                                 [{"key": "equip_label", "label": "类型"},
                                  {"key": "attr_first", "label": "主属性"},
-                                 {"key": "weapon_kind_label", "label": "武器细类"}]),
+                                 {"key": "weapon_kind_label", "label": "武器细类"}],
+                                source_server="PE 测试服源包 · all_equips_data · %s（%s）"
+                                              % (sv, cfg["channel"])),
             "items": v["items"],
         }
         out = BOARDS / (cfg["board"] + ".json")
@@ -485,7 +488,7 @@ def main() -> int:
               "mtime_ns": v["src_path"].stat().st_mtime_ns} for v in per.values()]
     notes = (
         "三服总览卡：%s，共 %d 条；页内「服别」下拉筛选区分三服，"
-        "逐条带 server_branch，不混排（简单生存服=kj1、经典服=base、月卡服=yk）。"
+        "逐条带 server_branch，不混排（简单生存服=kj1、经典服=classic、月卡服=yk）。"
         "① 筛选同三张分服卡（服别/类型/主属性/武器细类），收录与剔除规则见各分服卡说明。"
         "② 体验版：三服合计并入 %d 条、单列 %d 条。"
         "③ 图标：大图 _b 直出到 assets/equip_icons/（按路径扁平化命名，三服同路径共用同一张，"

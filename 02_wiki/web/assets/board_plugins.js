@@ -46,18 +46,40 @@
     return String(x||'').replace(/^当前包\s*·\s*/,'').replace(/（[^）]*）/g,'')
       .replace(/\([^)]*\)/g,'').split('·')[0].replace(/全量|图鉴/g,'').replace(/总表$/,'').trim();
   }
+  /* 2026-11-01：多卡叶子共用「 · 」前缀时（如「…（武器 · 护甲） · 简单生存服」），
+     取尾段作服别后缀，避免侧栏出现多个同名行；无公共前缀则返回 null（沿用原名）。 */
+  function branchSuffix(ids){
+    var names=ids.map(function(id){return String((byId[id]||{}).name||id);});
+    var p=names[0];
+    for(var i=1;i<names.length;i++){
+      var j=0; while(j<p.length&&j<names[i].length&&p.charAt(j)===names[i].charAt(j))j++;
+      p=p.slice(0,j);
+    }
+    var cut=p.lastIndexOf(' · ');
+    if(cut<0) return null;
+    var out={};
+    for(var k=0;k<names.length;k++){
+      var seg=names[k].slice(cut+3).trim();
+      if(!seg) return null;
+      out[ids[k]]=seg;
+    }
+    return out;
+  }
+  /* 2026-11-01：跟随首页的「显示内测板块」开关（localStorage: wiki_show_preview）
+     ★ 必须先于 TITLES 计算，否则内测卡的页面标题会退回分类名（四张分服卡同名）。 */
+  var SHOW_PREVIEW_NAV=(function(){try{return localStorage.getItem('wiki_show_preview')==='1';}catch(e){return false;}})();
+  function _navVis(id){var b=byId[id];return !!b && (SHOW_PREVIEW_NAV || !/内测/.test(String(b.name||'')));}
   (T['树']||[]).forEach(function(top){
     (top.children||[]).forEach(function(leaf){
       var ids=(leaf.boards||[]).filter(_navVis);
+      var br=(ids.length>1)?branchSuffix(ids):null;
       ids.forEach(function(id){
-        TITLES[id]=(ids.length===1) ? leaf.name : cleanNm(byId[id].name||id);
+        if(ids.length===1){ TITLES[id]=leaf.name; return; }
+        if(br){ TITLES[id]=cleanNm(byId[id].name||id)+' · '+br[id]; }
       });
     });
   });
   window.__BOARD_TITLES=TITLES;
-  /* 2026-11-01：跟随首页的「显示内测板块」开关（localStorage: wiki_show_preview） */
-  var SHOW_PREVIEW_NAV=(function(){try{return localStorage.getItem('wiki_show_preview')==='1';}catch(e){return false;}})();
-  function _navVis(id){var b=byId[id];return !!b && (SHOW_PREVIEW_NAV || !/内测/.test(String(b.name||'')));}
   var nav=document.getElementById('siteNav');
   var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>'+'<a class="leafrow" id="navOptPreviewRow" href="javascript:void(0)" style="display:flex!important;align-items:center;gap:6px;color:#c9d3e6!important"><input type="checkbox" id="navOptPreview" style="width:13px;height:13px;accent-color:#b6a7df"'+(SHOW_PREVIEW_NAV?' checked':'')+'>显示内测板块</a>';
   (T['树']||[]).forEach(function(top){
@@ -71,8 +93,10 @@
       var ids=(leaf.boards||[]).filter(function(x){return _navVis(x);});
       if(!ids.length) return;
       if(ids.length===1){ rows.push({kind:'row', id:ids[0], label:ntag(ids[0])+leaf.name}); return; }
+      var br=branchSuffix(ids);
       rows.push({kind:'head', label:leaf.name});
-      ids.forEach(function(id){ rows.push({kind:'sub', id:id, label:ntag(id)+cleanName(byId[id].name||id)}); });
+      ids.forEach(function(id){ rows.push({kind:'sub', id:id,
+        label:ntag(id)+cleanName(byId[id].name||id)+(br?(' · '+br[id]):'')}); });
     });
     rows.forEach(function(r){
       if(r.kind==='head'){ html += '<div class="leafhd">'+r.label+'</div>'; return; }

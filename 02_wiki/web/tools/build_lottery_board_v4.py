@@ -391,26 +391,6 @@ def bind_recent(cls: str, activity_id: int, conf):
     return [], GAP_REASON.get(cls, "该家族暂无结构可证的成员字段")
 
 
-def bind_legacy(cls: str, conf_s: str):
-    """2026 前：完全沿用 v3 规则，保证旧期次原样。"""
-    ids, src_tbl, src_field = [], "", ""
-    if cls == "SuperFashionLotteryHD" and conf_s.isdigit() and T_SF:
-        row = T_SF.by_key.get(int(conf_s))
-        if row is not None:
-            ids = [str(x) for x in T_SF.grp(row.get("panel_show_item_ids"))]
-            src_tbl, src_field = T_SF.stem, "panel_show_item_ids"
-    elif cls == "BeltChipSpecialLotteryHD" and conf_s.isdigit() and T_CHIP:
-        row = T_CHIP.by_key.get(int(conf_s))
-        if row is not None:
-            ids = [str(x) for x in (T_CHIP.grp(row.get("up_chips")) + T_CHIP.grp(row.get("new_chips")))]
-            src_tbl, src_field = T_CHIP.stem, "up_chips/new_chips"
-    out = [{"item_id": x, "field": src_field or "extra_param", "kind": "奖池奖励",
-            "table": src_tbl or HD_TABLE,
-            "row_key": int(conf_s) if conf_s.isdigit() else None, "slot": None}
-           for x in dict.fromkeys(ids)]
-    return out, src_tbl, src_field
-
-
 def main() -> int:
     hd_path = CD / (HD_TABLE + ".py")
     rows, hd_meta = vm_rows(hd_path)
@@ -562,92 +542,11 @@ def main() -> int:
             items.append(it)
             per["member_count"] += 1
 
-        if srcs and not carried:
+        if srcs:
             per["member_source"] = "；".join(srcs)
-        elif srcs and carried:
-            per["member_source"] = "；".join([srcs[0]] + srcs[1:])
         per["member_kinds"] = dict(Counter(
             i["kind"] for i in items if i["period_id"] == pid))
         periods.append(per)
-
-    # ── 候选层：归档旧板按「活动名 + 最接近开始日」取成员，单列证据候选（规则沿用 v3）
-    arc_path = WEB / "data/boards/_archive_lottery_20261020.json"
-    arc_sha = _sha256(arc_path) if arc_path.is_file() else ""
-    cand_total = 0
-    if arc_path.is_file():
-        arc = json.loads(arc_path.read_text(encoding="utf-8"))
-        old_by_period = {}
-        for it in arc["items"]:
-            old_by_period.setdefault(it.get("period_id"), []).append(it)
-        old_periods = [x for x in arc["periods"] if old_by_period.get(x["period_id"])]
-
-        def dnum(s):
-            try:
-                return datetime.date.fromisoformat(s).toordinal()
-            except Exception:
-                return None
-
-        CAND_MAX_DAYS = 7
-        pairs = []
-        for per in periods:
-            nm = per.get("activity_name") or ""
-            dn = dnum(per.get("start") or "")
-            if not nm or not dn:
-                continue
-            for op in old_periods:
-                if (op.get("activity_name") or op.get("label") or "") != nm:
-                    continue
-                od = dnum(op.get("start") or "")
-                if od:
-                    pairs.append((abs(od - dn), per["period_id"], op["period_id"]))
-        pairs.sort()
-        taken_new, taken_old, match = set(), set(), {}
-        for dist, pid, oid in pairs:
-            if dist > CAND_MAX_DAYS or pid in taken_new or oid in taken_old:
-                continue
-            taken_new.add(pid)
-            taken_old.add(oid)
-            match[pid] = (oid, dist)
-
-        for per in periods:
-            # 2026 前只保留旧板已存在的期次的候选，新增的旧期次等下一轮再深化
-            if per["period_id"] not in old_ids:
-                continue
-            pair = match.get(per["period_id"])
-            if not pair:
-                continue
-            oid, dist = pair
-            best = next((x for x in old_periods if x["period_id"] == oid), None)
-            if not best:
-                continue
-            have = {str(i["item_id"]) for i in items if i["period_id"] == per["period_id"]}
-            per["candidate_match_days"] = dist
-            if not per.get("member_source"):
-                per["member_source"] = "lottery_periods(archive).item_id"
-            for oi in old_by_period.get(best["period_id"], []):
-                sid = str(oi.get("item_id"))
-                if not sid or sid in have:
-                    continue
-                have.add(sid)
-                prov = prov_for("lottery_periods(archive)", per["activity_id"], ["item_id"], arc_sha)
-                items.append({
-                    "id": "%s_c%s" % (per["period_id"], sid), "period_id": per["period_id"],
-                    "period_label": per["label"], "period_start": per.get("start"),
-                    "period_end": per.get("end"), "family": per["family"],
-                    "family_key": per["family_key"],
-                    "name": (names.get(sid) if str(oi.get("name") or "") in ("", "待命名", "未知", "None")
-                             else oi.get("name")) or ("道具 %s" % sid),
-                    "item_id": sid, "kind": "奖池奖励（候选）",
-                    "evidence": "candidate", "evidence_level": "static/candidate",
-                    "status_tags": ["static config"], "_media": oi.get("_media") or {"images": [], "total": 0},
-                    "candidate_match_days": dist,
-                    "icon_state": oi.get("icon_state") or "未下发",
-                    "source": "归档旧板（同名 + 开始日相差 %d 天，独占匹配）" % dist,
-                    "provenance": prov,
-                })
-                per["member_count"] += 1
-                cand_total += 1
-        print("候选成员", cand_total)
 
     order = {"进行中": 0, "未开始": 1, "已结束": 2, "无时间": 3}
     periods.sort(key=lambda x: (order.get(x["status"], 9), x["start"] or ""))
@@ -692,7 +591,9 @@ def main() -> int:
     }
     meta["gap_summary"] = dict(sorted(gap_counter.items()))
     meta["provenance"] = {
-        "contract_version": 4,
+        # 发布门禁（publication_policy）只认两种契约：2=双源对照、3=单源冻结审计件。
+        # 本板是单源（主还原树 cdata）⇒ 契约版本沿用 3；脚本代号 v4 与契约版本不是同一编号体系。
+        "contract_version": 3,
         "audit_status": "passed",
         "contract": "frozen-audited-artifact",
         "source_locks": [{"source_id": "documents-py314-current", "role": "primary",

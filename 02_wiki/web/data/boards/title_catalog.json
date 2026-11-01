@@ -26,7 +26,13 @@
    "color": "颜色",
    "flags": "特性",
    "anim_csb": "动态动画资源",
-   "art_icon": "艺术字资源"
+   "art_icon": "艺术字资源",
+   "dyn_png": "动态预览",
+   "dyn_frames": "动画帧数",
+   "dyn_tex": "动画贴图（csb 内引用）",
+   "dyn_webp": "动态动画（逐帧合成）",
+   "dyn_anim_frames": "动画实际帧数（过长则抽帧）",
+   "dyn_anim_ms": "每帧时长（毫秒）"
   },
   "state_summary": {
    "条目": 1550
@@ -38425,7 +38431,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_714.png",
    "dyn_frames": 15,
-   "dyn_tex": "chenghao/heitiane/img_star_01.png"
+   "dyn_tex": "chenghao/heitiane/img_star_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_heitiane.webp",
+   "dyn_anim_frames": 7,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_715",
@@ -40266,7 +40275,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_748.png",
    "dyn_frames": 104,
-   "dyn_tex": "vx/zhanjilong_xuancaichenghao/lizi001/lizi001_00000.png"
+   "dyn_tex": "vx/zhanjilong_xuancaichenghao/lizi001/lizi001_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_zhaozilong.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 60
   },
   {
    "id": "title_749",
@@ -42755,7 +42767,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_794.png",
    "dyn_frames": 3,
-   "dyn_tex": "vx/chenghao_binghuofenghuang/huofenghuang.png"
+   "dyn_tex": "vx/chenghao_binghuofenghuang/huofenghuang.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_huofenghuang.webp",
+   "dyn_anim_frames": 2,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_795",
@@ -42814,7 +42829,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_795.png",
    "dyn_frames": 8,
-   "dyn_tex": "vx/chenghao_binghuofenghuang/bingchazi.png"
+   "dyn_tex": "vx/chenghao_binghuofenghuang/bingchazi.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_bingfenghuang.webp",
+   "dyn_anim_frames": 2,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_796",
@@ -45359,7 +45377,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_842.png",
    "dyn_frames": 20,
-   "dyn_tex": "vx/chenghao_xingyueshizhuang/xinghelizi/lizi_00000.png"
+   "dyn_tex": "vx/chenghao_xingyueshizhuang/xinghelizi/lizi_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_tunianchenghao.webp",
+   "dyn_anim_frames": 15,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_843",
@@ -49066,7 +49087,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_910.png",
    "dyn_frames": 96,
-   "dyn_tex": "vx/vx_libaiyuan/anim_piaodia_00.png"
+   "dyn_tex": "vx/vx_libaiyuan/anim_piaodia_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_libaiyuan.webp",
+   "dyn_anim_frames": 29,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_911",
@@ -51023,7 +51047,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_946.png",
    "dyn_frames": 63,
-   "dyn_tex": "vx/vx_qingshe/anim_piaodia_00.png"
+   "dyn_tex": "vx/vx_qingshe/anim_piaodia_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_renzhonglongfeng.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 56
   },
   {
    "id": "title_947",
@@ -51082,7 +51109,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_947.png",
    "dyn_frames": 61,
-   "dyn_tex": "vx/vx_jushiwushuang/img_jushiwushuang_chai_0000.png"
+   "dyn_tex": "vx/vx_jushiwushuang/img_jushiwushuang_chai_0000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jushiwushuang.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 60
   },
   {
    "id": "title_948",
@@ -53187,7 +53217,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_985.png",
    "dyn_frames": 130,
-   "dyn_tex": "vx/vx_yz/longdechuanren/long1_000.png"
+   "dyn_tex": "vx/vx_yz/longdechuanren/long1_000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_longyinyuxiao.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 130
   },
   {
    "id": "title_986",
@@ -53248,7 +53281,10 @@
    "art_png": "assets/title_art/ta_986.png",
    "dyn_png": "assets/title_dyn/ta_986.png",
    "dyn_frames": 158,
-   "dyn_tex": "vx/vx_yz/huxiaolongyin/img_longfeng-loop_00.png"
+   "dyn_tex": "vx/vx_yz/huxiaolongyin/img_longfeng-loop_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_longyingfengwu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 158
   },
   {
    "id": "title_987",
@@ -54620,7 +54656,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1011.png",
    "dyn_frames": 61,
-   "dyn_tex": "vx/chenghao_xinghe/img_nebula_pink_00.png"
+   "dyn_tex": "vx/chenghao_xinghe/img_nebula_pink_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_xinghe_2.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 54
   },
   {
    "id": "title_1012",
@@ -54679,7 +54718,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1012.png",
    "dyn_frames": 61,
-   "dyn_tex": "vx/chenghao_xinghe/img_nebula_blue_00.png"
+   "dyn_tex": "vx/chenghao_xinghe/img_nebula_blue_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_xinghe_1.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 55
   },
   {
    "id": "title_1013",
@@ -54740,7 +54782,10 @@
    "art_png": "assets/title_art/ta_1013.png",
    "dyn_png": "assets/title_dyn/ta_1013.png",
    "dyn_frames": 61,
-   "dyn_tex": "vx/chenghao_xingyunjinghong/vx_chenghao_xngyun_00000.png"
+   "dyn_tex": "vx/chenghao_xingyunjinghong/vx_chenghao_xngyun_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_xingyunjinghong.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 61
   },
   {
    "id": "title_1014",
@@ -54799,7 +54844,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1014.png",
    "dyn_frames": 120,
-   "dyn_tex": "vx/chenghao_chaor/img_chenghao_chaor_0000.png"
+   "dyn_tex": "vx/chenghao_chaor/img_chenghao_chaor_0000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_chaor.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 97
   },
   {
    "id": "title_1015",
@@ -55664,7 +55712,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1029.png",
    "dyn_frames": 30,
-   "dyn_tex": "vx/chenghao_lanyanlei02/vx_chenghao_lanyanlei_00.png"
+   "dyn_tex": "vx/chenghao_lanyanlei02/vx_chenghao_lanyanlei_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_sairenzhige_2.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1030",
@@ -55725,7 +55776,10 @@
    "art_png": "assets/title_art/ta_1030.png",
    "dyn_png": "assets/title_dyn/ta_1030.png",
    "dyn_frames": 76,
-   "dyn_tex": "vx/chenghao_lanyanlei/icon_chenghao_0000.png"
+   "dyn_tex": "vx/chenghao_lanyanlei/icon_chenghao_0000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_sairenzhige_1.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 76
   },
   {
    "id": "title_1031",
@@ -55899,7 +55953,10 @@
      "role": "super_fashion_lottery_conf_data",
      "table_sha256": "910fb7c0c4cd8a22e9940305f14d16098ade4901b0a37faf7efde65c4c1548fa"
     }
-   }
+   },
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_champion01.webp",
+   "dyn_anim_frames": 13,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1034",
@@ -57608,7 +57665,10 @@
    "art_png": "assets/title_art/ta_1064.png",
    "dyn_png": "assets/title_dyn/ta_1064.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/dunhuang/vx_chenghao_dunhuang02_00.png"
+   "dyn_tex": "chenghao/dunhuang/vx_chenghao_dunhuang02_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_dunhuang02.webp",
+   "dyn_anim_frames": 29,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1065",
@@ -58226,7 +58286,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1075.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/tianxie/vx_chenghao_tianxie_02/vx_tianxie_02_000.png"
+   "dyn_tex": "chenghao/tianxie/vx_chenghao_tianxie_02/vx_tianxie_02_000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_tianxie_02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 41
   },
   {
    "id": "title_1076",
@@ -58342,7 +58405,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1077.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/tianxie/vx_chenghao_meilizhi_01/vx_xinxiu_000.png"
+   "dyn_tex": "chenghao/tianxie/vx_chenghao_meilizhi_01/vx_xinxiu_000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_meilizhi_01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1078",
@@ -58401,7 +58467,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1078.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/tianxie/vx_chenghao_meilizhi_02/vx_milizhi_2_000.png"
+   "dyn_tex": "chenghao/tianxie/vx_chenghao_meilizhi_02/vx_milizhi_2_000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_meilizhi_02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1079",
@@ -58460,7 +58529,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1079.png",
    "dyn_frames": 31,
-   "dyn_tex": "chenghao/texunbei/vx/vx_chenghao_guanjun_01.png"
+   "dyn_tex": "chenghao/texunbei/vx/vx_chenghao_guanjun_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_guanjun.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1080",
@@ -58575,7 +58647,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1081.png",
    "dyn_frames": 31,
-   "dyn_tex": "chenghao/texunbei/vx/vx_chenghao_yajun_01.png"
+   "dyn_tex": "chenghao/texunbei/vx/vx_chenghao_yajun_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_jijun.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1082",
@@ -59370,7 +59445,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1095.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/mengya/icon_chenghao_mengya05/icon_chenghao_mengya05_01.png"
+   "dyn_tex": "chenghao/mengya/icon_chenghao_mengya05/icon_chenghao_mengya05_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_mengya04.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1096",
@@ -59429,7 +59507,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1096.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/mengya/icon_chenghao_mengya06/icon_chenghao_mengya06_01.png"
+   "dyn_tex": "chenghao/mengya/icon_chenghao_mengya06/icon_chenghao_mengya06_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_mengya05.webp",
+   "dyn_anim_frames": 36,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1097",
@@ -60249,7 +60330,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1111.png",
    "dyn_frames": 62,
-   "dyn_tex": "vx/chenghao_nezha/vx_main_chenghao_nezha/vx_main_chenghao/vx_main_chenghao_nezha_xg_00.png"
+   "dyn_tex": "vx/chenghao_nezha/vx_main_chenghao_nezha/vx_main_chenghao/vx_main_chenghao_nezha_xg_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_nezha.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 54
   },
   {
    "id": "title_1112",
@@ -60308,7 +60392,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1112.png",
    "dyn_frames": 121,
-   "dyn_tex": "vx/chenghao_sishijixiang/icon_chenghao_sijijixiang_00.png"
+   "dyn_tex": "vx/chenghao_sishijixiang/icon_chenghao_sijijixiang_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_sijijixiang.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 121
   },
   {
    "id": "title_1113",
@@ -60369,7 +60456,10 @@
    "art_png": "assets/title_art/ta_1113.png",
    "dyn_png": "assets/title_dyn/ta_1113.png",
    "dyn_frames": 60,
-   "dyn_tex": "chenghao/shenian/vx_img_shenian_00.png"
+   "dyn_tex": "chenghao/shenian/vx_img_shenian_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_shenian_cailu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 60
   },
   {
    "id": "title_1114",
@@ -62096,7 +62186,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1144.png",
    "dyn_frames": 62,
-   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun01/kumufengchun01_00.png"
+   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun01/kumufengchun01_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_kumufengchun01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 58
   },
   {
    "id": "title_1145",
@@ -62155,7 +62248,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1145.png",
    "dyn_frames": 61,
-   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun02/kumufengchun_00.png"
+   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun02/kumufengchun_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_kumufengchun02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 60
   },
   {
    "id": "title_1146",
@@ -62216,7 +62312,10 @@
    "art_png": "assets/title_art/ta_1146.png",
    "dyn_png": "assets/title_dyn/ta_1146.png",
    "dyn_frames": 60,
-   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun03/kumufengchun03_02.png"
+   "dyn_tex": "chenghao/kumufengchun/vx/kumufengchun03/kumufengchun03_02.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_kumufengchun03.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 59
   },
   {
    "id": "title_1147",
@@ -62727,7 +62826,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1155.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1156",
@@ -62786,7 +62888,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1156.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1157",
@@ -62845,7 +62950,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1157.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1158",
@@ -62904,7 +63012,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1158.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1159",
@@ -62963,7 +63074,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1159.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1160",
@@ -63022,7 +63136,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1160.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1161",
@@ -63081,7 +63198,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1161.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1162",
@@ -63140,7 +63260,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1162.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1163",
@@ -64708,7 +64831,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1190.png",
    "dyn_frames": 91,
-   "dyn_tex": "chenghao/xueyue/icon_chenghao_xueyue01/icon_chenghao_xueyue01_00.png"
+   "dyn_tex": "chenghao/xueyue/icon_chenghao_xueyue01/icon_chenghao_xueyue01_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_zhizhongyan_yixinsheng.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 90
   },
   {
    "id": "title_1191",
@@ -64769,7 +64895,10 @@
    "art_png": "assets/title_art/ta_1191.png",
    "dyn_png": "assets/title_dyn/ta_1191.png",
    "dyn_frames": 91,
-   "dyn_tex": "chenghao/xueyue/icon_chenghao_xueyue02/icon_chenghao_xueyue02_00.png"
+   "dyn_tex": "chenghao/xueyue/icon_chenghao_xueyue02/icon_chenghao_xueyue02_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_feiyuezhishi.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 84
   },
   {
    "id": "title_1192",
@@ -65725,7 +65854,10 @@
      "table_sha256": "910fb7c0c4cd8a22e9940305f14d16098ade4901b0a37faf7efde65c4c1548fa"
     }
    },
-   "art_png": "assets/title_art/ta_1208.png"
+   "art_png": "assets/title_art/ta_1208.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_reli.webp",
+   "dyn_anim_frames": 19,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1209",
@@ -66071,7 +66203,10 @@
    "art_png": "assets/title_art/ta_1214.png",
    "dyn_png": "assets/title_dyn/ta_1214.png",
    "dyn_frames": 122,
-   "dyn_tex": "chenghao/jiamianqishi/vx/icon_chenghao_jmqs_vx_00.png"
+   "dyn_tex": "chenghao/jiamianqishi/vx/icon_chenghao_jmqs_vx_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_jiamianqishi.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 121
   },
   {
    "id": "title_1215",
@@ -66130,7 +66265,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1215.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/jiamianqishi/vx_chenghao_00.png"
+   "dyn_tex": "chenghao/jiamianqishi/vx_chenghao_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_jihu.webp",
+   "dyn_anim_frames": 28,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1216",
@@ -66191,7 +66329,10 @@
    "art_png": "assets/title_art/ta_1216.png",
    "dyn_png": "assets/title_dyn/ta_1216.png",
    "dyn_frames": 45,
-   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_01_00.png"
+   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_01_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_ugc01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 45
   },
   {
    "id": "title_1217",
@@ -66252,7 +66393,10 @@
    "art_png": "assets/title_art/ta_1217.png",
    "dyn_png": "assets/title_dyn/ta_1217.png",
    "dyn_frames": 45,
-   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_02_00.png"
+   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_02_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_ugc02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1218",
@@ -66313,7 +66457,10 @@
    "art_png": "assets/title_art/ta_1218.png",
    "dyn_png": "assets/title_dyn/ta_1218.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_3_00.png"
+   "dyn_tex": "chenghao/ugc/vx_chenghao_ugc_3_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_ugc03.webp",
+   "dyn_anim_frames": 26,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1219",
@@ -66598,7 +66745,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1223.png",
    "dyn_frames": 25,
-   "dyn_tex": "chenghao/lieren/vx_chenghao_lieren_28.png"
+   "dyn_tex": "chenghao/lieren/vx_chenghao_lieren_28.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_lieren.webp",
+   "dyn_anim_frames": 22,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1224",
@@ -66937,7 +67087,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1229.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1230",
@@ -66996,7 +67149,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1230.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1231",
@@ -67055,7 +67211,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1231.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1232",
@@ -67114,7 +67273,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1232.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1233",
@@ -67173,7 +67335,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1233.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1234",
@@ -67232,7 +67397,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1234.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1235",
@@ -67291,7 +67459,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1235.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1236",
@@ -67350,7 +67521,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1236.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1237",
@@ -67468,7 +67642,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1238.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/jinxuanyongxuaiyi/chenghao_jinxian_00.png"
+   "dyn_tex": "chenghao/jinxuanyongxuaiyi/chenghao_jinxian_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_jinxian.webp",
+   "dyn_anim_frames": 28,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1239",
@@ -67527,7 +67704,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1239.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/chaoxizhihuichongguang/chenghao_chaoxi_00.png"
+   "dyn_tex": "chenghao/chaoxizhihuichongguang/chenghao_chaoxi_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_chaoxi.webp",
+   "dyn_anim_frames": 25,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1240",
@@ -67588,7 +67768,10 @@
    "art_png": "assets/title_art/ta_1240.png",
    "dyn_png": "assets/title_dyn/ta_1240.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/riyaoliuguang/chenghao_riyao_00.png"
+   "dyn_tex": "chenghao/riyaoliuguang/chenghao_riyao_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_riyao.webp",
+   "dyn_anim_frames": 28,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1241",
@@ -69057,7 +69240,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1267.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/tianmengchenhao/chenghao_tianmengguanjun/chenghao_tianmengguanjun_00.png"
+   "dyn_tex": "chenghao/tianmengchenhao/chenghao_tianmengguanjun/chenghao_tianmengguanjun_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_tianmeng01.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1268",
@@ -69116,7 +69302,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1268.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/tianmengchenhao/chenghao_tianmengerdengjiang/chenghao_tianmengerdengjiang_00.png"
+   "dyn_tex": "chenghao/tianmengchenhao/chenghao_tianmengerdengjiang/chenghao_tianmengerdengjiang_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_tianmeng02.webp",
+   "dyn_anim_frames": 29,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1269",
@@ -69909,7 +70098,10 @@
    "art_png": "assets/title_art/ta_1282.png",
    "dyn_png": "assets/title_dyn/ta_1282.png",
    "dyn_frames": 32,
-   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png"
+   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_zhongyanxingzhe01.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1283",
@@ -69970,7 +70162,10 @@
    "art_png": "assets/title_art/ta_1283.png",
    "dyn_png": "assets/title_dyn/ta_1283.png",
    "dyn_frames": 32,
-   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png"
+   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_zhongyanxingzhe02.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1284",
@@ -70031,7 +70226,10 @@
    "art_png": "assets/title_art/ta_1284.png",
    "dyn_png": "assets/title_dyn/ta_1284.png",
    "dyn_frames": 32,
-   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png"
+   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_zhongyanxingzhe03.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1285",
@@ -70092,7 +70290,10 @@
    "art_png": "assets/title_art/ta_1285.png",
    "dyn_png": "assets/title_dyn/ta_1285.png",
    "dyn_frames": 32,
-   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png"
+   "dyn_tex": "chenghao/zhongyanxingzhe/icon_chenghao_xingzhe_bg_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_zhongyanxingzhe04.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1286",
@@ -70480,7 +70681,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1292.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1293",
@@ -70539,7 +70743,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1293.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1294",
@@ -70598,7 +70805,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1294.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1295",
@@ -70657,7 +70867,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1295.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1296",
@@ -70716,7 +70929,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1296.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1297",
@@ -70775,7 +70991,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1297.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1298",
@@ -70834,7 +71053,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1298.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1299",
@@ -70893,7 +71115,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1299.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1300",
@@ -71723,7 +71948,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1314.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/bawangbieji/icon_chenghao_bawangbieji01_00.png"
+   "dyn_tex": "chenghao/bawangbieji/icon_chenghao_bawangbieji01_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_bufutianxia.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1315",
@@ -71784,7 +72012,10 @@
    "art_png": "assets/title_art/ta_1315.png",
    "dyn_png": "assets/title_dyn/ta_1315.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/bawangbieji/icon_chenghao_bawangbieji02_00.png"
+   "dyn_tex": "chenghao/bawangbieji/icon_chenghao_bawangbieji02_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_qingqingtianxia.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1316",
@@ -71845,7 +72076,10 @@
    "art_png": "assets/title_art/ta_1316.png",
    "dyn_png": "assets/title_dyn/ta_1316.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/riyaoliuguang/chenghao_riyao_00.png"
+   "dyn_tex": "chenghao/riyaoliuguang/chenghao_riyao_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_riyao.webp",
+   "dyn_anim_frames": 28,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1317",
@@ -72120,7 +72354,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1321.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/aobingdiancang/icon_aobingdiancang/icon_aobingdiancang_loop_01.png"
+   "dyn_tex": "chenghao/aobingdiancang/icon_aobingdiancang/icon_aobingdiancang_loop_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_aobingdiancang.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1322",
@@ -72181,7 +72418,10 @@
    "art_png": "assets/title_art/ta_1322.png",
    "dyn_png": "assets/title_dyn/ta_1322.png",
    "dyn_frames": 61,
-   "dyn_tex": "chenghao/manian/icon_chenghao_manian/icon_chenghao_manian_in_00.png"
+   "dyn_tex": "chenghao/manian/icon_chenghao_manian/icon_chenghao_manian_in_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_manian.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1323",
@@ -72242,7 +72482,10 @@
    "art_png": "assets/title_art/ta_1323.png",
    "dyn_png": "assets/title_dyn/ta_1323.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun01_79.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1324",
@@ -72303,7 +72546,10 @@
    "art_png": "assets/title_art/ta_1324.png",
    "dyn_png": "assets/title_dyn/ta_1324.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png"
+   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun02_79.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1325",
@@ -72364,7 +72610,10 @@
    "art_png": "assets/title_art/ta_1325.png",
    "dyn_png": "assets/title_dyn/ta_1325.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun04_79.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1326",
@@ -72483,7 +72732,10 @@
    "art_png": "assets/title_art/ta_1327.png",
    "dyn_png": "assets/title_dyn/ta_1327.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/yajun/yajun_01.png"
+   "dyn_tex": "chenghao/yajun/yajun_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_yajun_79.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1328",
@@ -72601,7 +72853,10 @@
    "art_png": "assets/title_art/ta_1329.png",
    "dyn_png": "assets/title_dyn/ta_1329.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/siqiang/siqiang_01.png"
+   "dyn_tex": "chenghao/siqiang/siqiang_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_siqiang_79.webp",
+   "dyn_anim_frames": 36,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1330",
@@ -75308,7 +75563,10 @@
    "art_png": "assets/title_art/ta_1379.png",
    "dyn_png": "assets/title_dyn/ta_1379.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun01_119.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1380",
@@ -75369,7 +75627,10 @@
    "art_png": "assets/title_art/ta_1380.png",
    "dyn_png": "assets/title_dyn/ta_1380.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png"
+   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun02_119.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1381",
@@ -75430,7 +75691,10 @@
    "art_png": "assets/title_art/ta_1381.png",
    "dyn_png": "assets/title_dyn/ta_1381.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun04_119.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1382",
@@ -75549,7 +75813,10 @@
    "art_png": "assets/title_art/ta_1383.png",
    "dyn_png": "assets/title_dyn/ta_1383.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/yajun/yajun_01.png"
+   "dyn_tex": "chenghao/yajun/yajun_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_yajun_119.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1384",
@@ -75667,7 +75934,10 @@
    "art_png": "assets/title_art/ta_1385.png",
    "dyn_png": "assets/title_dyn/ta_1385.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/siqiang/siqiang_01.png"
+   "dyn_tex": "chenghao/siqiang/siqiang_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_siqiang_119.webp",
+   "dyn_anim_frames": 36,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1386",
@@ -75728,7 +75998,10 @@
    "art_png": "assets/title_art/ta_1386.png",
    "dyn_png": "assets/title_dyn/ta_1386.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png"
+   "dyn_tex": "chenghao/guanjun02/guanjun02_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun02_150.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1387",
@@ -75789,7 +76062,10 @@
    "art_png": "assets/title_art/ta_1387.png",
    "dyn_png": "assets/title_dyn/ta_1387.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun01_150.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1388",
@@ -75850,7 +76126,10 @@
    "art_png": "assets/title_art/ta_1388.png",
    "dyn_png": "assets/title_dyn/ta_1388.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png"
+   "dyn_tex": "chenghao/guanjun03/guanjun03_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_guanjun04_150.webp",
+   "dyn_anim_frames": 33,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1389",
@@ -75969,7 +76248,10 @@
    "art_png": "assets/title_art/ta_1390.png",
    "dyn_png": "assets/title_dyn/ta_1390.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/yajun/yajun_01.png"
+   "dyn_tex": "chenghao/yajun/yajun_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_yajun_150.webp",
+   "dyn_anim_frames": 39,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1391",
@@ -76087,7 +76369,10 @@
    "art_png": "assets/title_art/ta_1392.png",
    "dyn_png": "assets/title_dyn/ta_1392.png",
    "dyn_frames": 42,
-   "dyn_tex": "chenghao/siqiang/siqiang_01.png"
+   "dyn_tex": "chenghao/siqiang/siqiang_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_pvp_xiaodui_siqiang_150.webp",
+   "dyn_anim_frames": 36,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1393",
@@ -76146,7 +76431,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1393.png",
    "dyn_frames": 62,
-   "dyn_tex": "chenghao/linglong/icon_chenghao_linglong01/img_linglong_00000.png"
+   "dyn_tex": "chenghao/linglong/icon_chenghao_linglong01/img_linglong_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_linglong_01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 56
   },
   {
    "id": "title_1394",
@@ -76207,7 +76495,10 @@
    "art_png": "assets/title_art/ta_1394.png",
    "dyn_png": "assets/title_dyn/ta_1394.png",
    "dyn_frames": 65,
-   "dyn_tex": "chenghao/linglong/icon_chenghao_msdt/icon_chenghao_msdt_00000.png"
+   "dyn_tex": "chenghao/linglong/icon_chenghao_msdt/icon_chenghao_msdt_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_linglong_02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 63
   },
   {
    "id": "title_1395",
@@ -76708,7 +76999,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1403.png",
    "dyn_frames": 123,
-   "dyn_tex": "chenghao/shamozhenzhu/chenghao_01/vx_chenghao_01_00000.png"
+   "dyn_tex": "chenghao/shamozhenzhu/chenghao_01/vx_chenghao_01_00000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_shamo_01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 116
   },
   {
    "id": "title_1404",
@@ -76769,7 +77063,10 @@
    "art_png": "assets/title_art/ta_1404.png",
    "dyn_png": "assets/title_dyn/ta_1404.png",
    "dyn_frames": 91,
-   "dyn_tex": "chenghao/shamozhenzhu/chenghao_02/vx_chenghao_02_000.png"
+   "dyn_tex": "chenghao/shamozhenzhu/chenghao_02/vx_chenghao_02_000.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_shamo_02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 90
   },
   {
    "id": "title_1405",
@@ -77117,7 +77414,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1410.png",
    "dyn_frames": 50,
-   "dyn_tex": "chenghao/jk/vx_chenghao_jk02/vx_yichu_chenghao_00.png"
+   "dyn_tex": "chenghao/jk/vx_chenghao_jk02/vx_yichu_chenghao_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_jk_02.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 42
   },
   {
    "id": "title_1411",
@@ -81487,7 +81787,10 @@
    "art_png": "assets/title_art/ta_1493.png",
    "dyn_png": "assets/title_dyn/ta_1493.png",
    "dyn_frames": 33,
-   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/siqiang2/siqiang_00.png"
+   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/siqiang2/siqiang_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_dianfengsai_siqiang.webp",
+   "dyn_anim_frames": 31,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1494",
@@ -81548,7 +81851,10 @@
    "art_png": "assets/title_art/ta_1494.png",
    "dyn_png": "assets/title_dyn/ta_1494.png",
    "dyn_frames": 33,
-   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/jijun2/jijun_00.png"
+   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/jijun2/jijun_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_dianfengsai_jijun.webp",
+   "dyn_anim_frames": 31,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1495",
@@ -81609,7 +81915,10 @@
    "art_png": "assets/title_art/ta_1495.png",
    "dyn_png": "assets/title_dyn/ta_1495.png",
    "dyn_frames": 33,
-   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/yajun2/yajun_00.png"
+   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/yajun2/yajun_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_dianfengsai_yajun.webp",
+   "dyn_anim_frames": 31,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1496",
@@ -81670,7 +81979,10 @@
    "art_png": "assets/title_art/ta_1496.png",
    "dyn_png": "assets/title_dyn/ta_1496.png",
    "dyn_frames": 33,
-   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/guanjun/guanjun_00.png"
+   "dyn_tex": "xiaoduisaishi/xiaerdianfengsai/chenghao/guanjun/guanjun_00.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_dianfengsai_guanjun.webp",
+   "dyn_anim_frames": 31,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1497",
@@ -83733,7 +84045,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1534.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_jingsu/icon_chenghao_xuancai_jingsu_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_jingsu.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1535",
@@ -83792,7 +84107,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1535.png",
    "dyn_frames": 41,
-   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png"
+   "dyn_tex": "chenghao/tiaozhanben/icon_chenghao_xuancai_shanghai/icon_chenghao_xuancai_shanghai_01.png",
+   "dyn_webp": "assets/title_dyn/anim/main_chenghao_xuancai_shanghai.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1536",
@@ -84738,7 +85056,10 @@
    "art_png": "assets/title_art/ta_1551.png",
    "dyn_png": "assets/title_dyn/ta_1551.png",
    "dyn_frames": 45,
-   "dyn_tex": "chenghao/xiangyangshengzhang/chenghao_xiangyang1_01.png"
+   "dyn_tex": "chenghao/xiangyangshengzhang/chenghao_xiangyang1_01.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_xiangyang_01.webp",
+   "dyn_anim_frames": 40,
+   "dyn_anim_ms": 45
   },
   {
    "id": "title_1552",
@@ -84797,7 +85118,10 @@
    },
    "dyn_png": "assets/title_dyn/ta_1552.png",
    "dyn_frames": 30,
-   "dyn_tex": "chenghao/xuancai_chenghao/xuancai_chenghao_00.png"
+   "dyn_tex": "chenghao/xuancai_chenghao/xuancai_chenghao_00.png",
+   "dyn_webp": "assets/title_dyn/anim/chenghao_xiangyang_02.webp",
+   "dyn_anim_frames": 30,
+   "dyn_anim_ms": 40
   },
   {
    "id": "title_1553",

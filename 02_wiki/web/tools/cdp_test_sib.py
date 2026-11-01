@@ -68,7 +68,9 @@ def main() -> int:
           })()
         """, returnByValue=True)
         print("直接调用:", r.get("result", {}).get("result", {}).get("value"))
-        time.sleep(2)
+        time.sleep(1.2)
+        r2 = call("Runtime.evaluate", expression="(()=>{const m=document.getElementById('c2mask');return m?m.style.display:'none';})()", returnByValue=True)
+        print("1.2 秒后 panel:", r2.get("result",{}).get("result",{}).get("value"))
 
         r = call("Runtime.evaluate", expression="""
           (() => ({

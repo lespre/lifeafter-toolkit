@@ -185,7 +185,7 @@ def _render_item(job):
     ★ 并行安全：每条只写自己的 assets/avatar_anim/<id>.png，文件名互不冲突；
       avatar_catalog.json 只由主进程最后统一写一次，worker 绝不碰。
     """
-    it, size, frames = job
+    it, size, frames, fmt = job
     iid = it["id"]
     base = it["spine_path"].strip().replace("\\", "/").rstrip("/")
     at_f = SPINE_DIR / (base + ".atlas")
@@ -238,14 +238,26 @@ def _render_item(job):
         return bad("渲染失败 " + str(ex)[:50])
     if not frs:
         return bad("无帧")
-    out = ANIM_DIR / (iid + ".png")
-    # ★ 绝不能量化：Pillow 的 quantize() 会破坏 APNG 多帧的透明通道与调色板，
-    #   导致第 2~N 帧出现色块/反转（实测帧间差 75~120，视觉即"乱码"）。
-    #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
-    frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
-                duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
+    anim_rel = "assets/avatar_anim/%s.png" % iid
+    if fmt == "webp":
+        # ★ 2026-11-01：动图改 WebP（q90）。实测同分辨率体积只有 APNG 的 1/2.3，
+        #   于是名片框才能从 384 提到 768 重渲（详情卡面约 614px，384 放大 1.6 倍
+        #   就是用户说的"糊得离谱"），总体积反而不涨。
+        #   首帧另存 PNG：没有静态边框的卡面主图仍用它，动图只负责悬停/详情播放。
+        frs[0].save(ANIM_DIR / (iid + ".webp"), format="WEBP", save_all=True,
+                    append_images=frs[1:], duration=int(round(dur * 1000 / cnt)),
+                    loop=0, quality=90, method=4)
+        frs[0].save(ANIM_DIR / (iid + ".png"), format="PNG")
+        anim_rel = "assets/avatar_anim/%s.webp" % iid
+    else:
+        # ★ 绝不能量化：Pillow 的 quantize() 会破坏 APNG 多帧的透明通道与调色板，
+        #   导致第 2~N 帧出现色块/反转（实测帧间差 75~120，视觉即"乱码"）。
+        #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
+        frs[0].save(ANIM_DIR / (iid + ".png"), format="PNG", save_all=True,
+                    append_images=frs[1:], duration=int(round(dur * 1000 / cnt)),
+                    loop=0, default_image=True)
     return {"ok": True, "id": iid, "base": base,
-            "anim": "assets/avatar_anim/%s.png" % iid,
+            "anim": anim_rel,
             "meta": {"spine": (skel.get("skeleton") or {}).get("spine"),
                      "anim": aname, "frames": cnt,
                      "duration": round(dur, 3), "source": base + ".atlas"}}
@@ -256,6 +268,8 @@ def main() -> int:
     ap.add_argument("--kind", default="", help="逗号分隔；空=全部")
     ap.add_argument("--ids", default="", help="只渲染指定 id（逗号分隔，用于抽样核对）")
     ap.add_argument("--size", type=int, default=168)
+    ap.add_argument("--format", choices=["png", "webp"], default="png",
+                    help="动图容器：png=APNG（默认）；webp=动图 WebP（同分辨率约 1/2.3 体积）")
     ap.add_argument("--frames", type=int, default=24)
     ap.add_argument("--budget", type=float, default=5400.0)
     ap.add_argument("--force", action="store_true")
@@ -282,7 +296,7 @@ def main() -> int:
             continue
         if want_ids and it["id"] not in want_ids:
             continue
-        out = ANIM_DIR / (it["id"] + ".png")
+        out = ANIM_DIR / (it["id"] + (".webp" if a.format == "webp" else ".png"))
         if not a.force and out.is_file() and out.stat().st_size > MIN_BYTES:
             continue
         targets.append(it)
@@ -313,7 +327,7 @@ def main() -> int:
         log("并行 %d 进程（共 %s 逻辑核）" % (jobs, os.cpu_count()))
         pool = ProcessPoolExecutor(max_workers=jobs)
         try:
-            futs = {pool.submit(_render_item, (it, a.size, a.frames)): it["id"]
+            futs = {pool.submit(_render_item, (it, a.size, a.frames, a.format)): it["id"]
                     for it in targets}
             for fut in as_completed(futs):
                 collect(fut.result())
@@ -329,7 +343,7 @@ def main() -> int:
             if time.time() > t0 + a.budget:
                 log("到预算，停在第 %d 条" % len(results))
                 break
-            collect(_render_item((it, a.size, a.frames)))
+            collect(_render_item((it, a.size, a.frames, a.format)))
     log("完成：成功 %d ｜ 失败 %d ｜ %.0fs" % (done, fail, time.time() - t0))
     for f in fails[:15]:
         log("  失败 %s ｜ %s ｜ %s" % f)
@@ -348,9 +362,10 @@ def main() -> int:
                 m = it.get("_media") or {}
                 m.pop("anim", None)
                 m.pop("anim_meta", None)
-                p = ANIM_DIR / (iid + ".png")
-                if p.is_file():
-                    p.unlink()
+                for ext in (".png", ".webp"):
+                    p = ANIM_DIR / (iid + ext)
+                    if p.is_file():
+                        p.unlink()
         CAT.write_text(json.dumps(cat, ensure_ascii=False, indent=1), encoding="utf-8")
         log("已写回 %s" % CAT.name)
     return 0

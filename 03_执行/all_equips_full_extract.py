@@ -60,7 +60,7 @@ TABLES = {
     },
     "yk": {
         "pack": PACK_PE20, "fid_rows": "5790A7683EB6AAA8", "fid_pool": "D1D2E03CF2901EBC",
-        "label": "悠客服 oversea_data_yk（pe_20261020 快照）",
+        "label": "月卡服 oversea_data_yk（pe_20261020 快照）",
     },
 }
 

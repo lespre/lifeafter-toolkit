@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev6")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev7")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1348,6 +1348,45 @@ function renderItemCard(it){
     <div class="kv">${rows.join("")}</div>
     ${renderTechSection([["provenance",effProv(it)],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}</div>`;
 }
+/* ════════════════ 装备属性板（board id 前缀 equipment_attrs）════════════════════
+   用户 2026-11-01 口径：子卡改成「人物时装同款」——
+   顶部大图 + 名字 + 关键几项 pill + 描述；其余字段（等级/槽位/类型码/主属性/属性/
+   模型/图标状态/服务器/溯源）全部折进「技术详情 / 其余字段」。
+   ★ 类名 eq-* + body.equip-mode，其它板零影响。 */
+const EQUIP_FACE=new Set(["id","name","row_key","equip_label","weapon_kind_label","durability",
+  "max_shield","shield_label","base_score","charm_value","desc","level","icon","icon_state","_media"]);
+function equipCardHTML(it,cidx){
+  const imgs=((it._media&&it._media.images)||[]).filter(x=>x&&x.png);
+  const rail=imgs.length
+    ? `<div class="fr-rail">${imgs.slice(0,1).map(x=>`<figure><img src="${esc(x.png)}" alt="" loading="lazy"></figure>`).join("")}</div>`
+    : `<div class="fr-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
+  const sub=[];
+  if(it.equip_label)sub.push(`<span class="fr-part" title="装备类型" data-k="equip_label">${esc(it.equip_label)}</span>`);
+  if(it.weapon_kind_label)sub.push(`<span class="fr-part" title="武器细类（按 weapon_kind 归纳）" data-k="weapon_kind_label">${esc(it.weapon_kind_label)}</span>`);
+  if(it.durability!=null)sub.push(`<span class="fr-part" title="耐久">耐久 ${esc(it.durability)}</span>`);
+  if(it.max_shield!=null)sub.push(`<span class="fr-part" title="护盾值">护盾 ${esc(it.max_shield)}</span>`);
+  if(it.shield_label)sub.push(`<span class="fr-part" title="护盾档位" data-k="shield_label">${esc(it.shield_label)}</span>`);
+  if(it.base_score!=null)sub.push(`<span class="fr-charm" title="评分">评分 ${esc(it.base_score)}</span>`);
+  if(it.charm_value!=null&&it.charm_value!=="")sub.push(`<span class="fr-charm" title="魅力值">魅力 ${esc(it.charm_value)}</span>`);
+  const desc=String(it.desc||"").trim();
+  const kv=[];
+  Object.entries(it).forEach(([k,v])=>{
+    if(EQUIP_FACE.has(k)||FIXED.has(k)||v==null||v===""||(Array.isArray(v)&&!v.length))return;
+    const mono=(k==="model_path"||k==="row_key")?" mono":"";
+    kv.push(`<div class="k">${esc(FIELD_CN[k]||k)}</div><div class="v${mono}">${esc(fmtVal(k,v))}</div>`);
+  });
+  return `<div class="i eqcard"${cidx==null?"":` data-cidx="${cidx}"`}>
+    ${rail}
+    <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div>${
+      it.level!=null?`<span class="fr-grade" title="等级">Lv ${esc(it.level)}</span>`:""}</div>
+    <div class="fr-sub">${sub.join("")}</div>
+    ${desc?`<div class="eq-desc">${esc(desc)}</div>`:""}
+    <details class="tech sub"><summary>其余字段 / 数据详情</summary>
+      <div class="kv">${kv.join("")}</div>
+      ${renderTechSection([["provenance",effProv(it)],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}
+    </details>
+  </div>`;
+}
 /* 时装图标（游戏内真实引用）：最多显示 6 张，其余计数；无资源时用客户端占位图 */
 function renderItemMedia(m){
   if(!m)return "";
@@ -1426,6 +1465,8 @@ document.addEventListener("mouseout",e=>{
    ★ 只用板上已有字段（part_bucket / has_permanent / icon_state / gender 由刷新脚本写入），
      不做任何推断：整套/光源没有图标命名约定就不按前缀判。 */
 const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardrobe";}catch(e){return false;}})();
+/* 2026-11-01：装备属性四卡（三服总览 + 三张分服卡）——卡面按人物时装同款渲染 */
+const EQUIP_BOARD=(function(){try{return /^equipment_attrs/.test(getParam("b")||"");}catch(e){return false;}})();
 const FR_BUCKETS=["头发","头饰","面饰","衣服","整套","背包","挂饰","荧光棒","投影","半感染者花苞","戒指","捏脸","其他"];
 const FR_BUCKET_CLS={"头发":"hair","头饰":"hat","面饰":"face","衣服":"cloth","整套":"suit","背包":"bag","挂饰":"pendant","荧光棒":"light","投影":"proj","其他":"other"};
 const FR={parts:new Set(),grade:"",img:"有图",gender:"",sort:"",named:true};
@@ -1542,7 +1583,8 @@ function cardOpensD2(card){
     (card.classList.contains("vcard")&&VEHICLE_BOARD)||
     (card.classList.contains("skin-card")&&document.body.classList.contains("skin-mode"))||
     (card.classList.contains("nucleus")&&CORE_BOARD)||
-    (card.classList.contains("roster"));
+    (card.classList.contains("roster")||
+    (card.classList.contains("eqcard")&&EQUIP_BOARD));
 }
 /* ── 大图查看器（灯箱）：点缩略图或 +N 打开，可左右翻、Esc 关 ── */
 const FR_IMGS=Object.create(null);
@@ -2546,21 +2588,50 @@ function titleBadges(it){
    红/蓝/绿没有对应 bg，紫/金没有双向缺失，因此按「有就叠、没有就只画一条」。 */
 const TITLE_SKIN_BG={紫:"bg_2",金:"bg_3",红:"bg_4"};
 const TITLE_SKIN_LINE={蓝:"line_1",紫:"line_2",金:"line_3",绿:"line_8"};
+/* 称号文字颜色：全部取自游戏原生贴图的实测像素（见 _probe_title_colors3.py）——
+     line_1 蓝 芯 #8CBDC5→#AAE4E4；bg_2 紫 心 #BE74FF；line_3 金 芯 #D0AF6D→#FDDB75；
+     bg_4 红 心 #EF5229；line_8 绿 芯 #ADC67C→#CEF09B。
+   取两端之间的代表值（比暗端亮、比高光端略压），保证深色卡面上可读。
+   5/6/7 档源表无对应贴图（颜色字段留空），照旧不上色、不叠贴图。 */
+const TITLE_SKIN_TXT={蓝:"#8FD6EA",紫:"#C68CFF",金:"#F3D26A",红:"#EF6A45",绿:"#B9DE8A"};
+/* 底光 / 下划线：锚在「称号名文字自身」的盒子上（.i-title = inline-block 收缩到文字宽），
+   底光以文字中心为圆心按贴图原生比例 235:62 缩放，下划线贴住文字底边；
+   不再用 import 时猜的 top/left 像素偏移，换字号/换列宽都不会错位。 */
 function titleSkin(it){
   const c=String(it.color||"");
-  const bg=TITLE_SKIN_BG[c],ln=TITLE_SKIN_LINE[c];
-  if(!bg&&!ln)return "";
-  return `<div class="i-skin" aria-hidden="true">`
-    +(bg?`<i class="sk-bg" style="background-image:url('assets/title_skin/${bg}.png')"></i>`:"")
-    +(ln?`<i class="sk-ln" style="background-image:url('assets/title_skin/${ln}.png')"></i>`:"")
-    +`</div>`;
+  const bg=TITLE_SKIN_BG[c];
+  if(!bg)return "";
+  return `<i class="sk-bg" aria-hidden="true" style="background-image:url('assets/title_skin/${bg}.png')"></i>`;
+}
+function titleLine(it){
+  const c=String(it.color||"");
+  const ln=TITLE_SKIN_LINE[c];
+  if(!ln)return "";
+  return `<i class="sk-ln" aria-hidden="true" style="background-image:url('assets/title_skin/${ln}.png')"></i>`;
 }
 /* 美术字：art_png 由 build_title_art_assets.py 只对「导出成功」的条目回填，
-   因此不会出现 404；无图时回落纯文字。文字仍保留在 DOM（隐藏），搜索/冒烟取文本不受影响。 */
+   因此不会出现 404；无图时回落纯文字。文字仍保留在 DOM（隐藏），搜索/冒烟取文本不受影响。
+   美术字本身已带颜色/描边，此时不再叠底光、也不改文字色（避免二次上色）。 */
 function titleName(it){
   const nm=esc(it.name||it.display_name||it.id);
-  if(!it.art_png)return nm;
-  return `<img class="i-art" src="${esc(it.art_png)}" alt=""><span class="i-name-txt">${nm}</span>`;
+  const art=it.art_png;
+  const hex=art?"":(TITLE_SKIN_TXT[String(it.color||"")]||"");
+  const bodyHtml=art
+    ?`<img class="i-art" src="${esc(art)}" alt=""><span class="i-name-txt">${nm}</span>`
+    :nm;
+  return `<span class="i-title${hex?" tinted":""}"${hex?` style="--tc:${hex}"`:""}>`
+    +(art?"":titleSkin(it))+bodyHtml+(art?"":titleLine(it))+`</span>`;
+}
+/* 动态称号预览：dyn_webp = build_title_dyn_assets.py 逐帧合成的循环动画（同 csb 的称号共用一份）；
+   没有动画时回落 dyn_png（csb 内引用贴图的首帧）。两者都没有就不渲染，卡片不受影响。 */
+function titleDyn(it){
+  const src=it.dyn_webp||it.dyn_png;
+  if(!src)return "";
+  const n=Number(it.dyn_frames||0);
+  const tip=it.dyn_webp?"动态称号：逐帧动画（循环播放）"
+    :(n>1?`动画共 ${n} 帧，此处为首帧`:"");
+  return `<div class="i-dyn"><img src="${esc(src)}" alt="" loading="lazy" decoding="async"`
+    +(tip?` title="${esc(tip)}"`:"")+`></div>`;
 }
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
    只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
@@ -3041,10 +3112,10 @@ window.__frJumpSibling=function(fromId,toId){
   const fi=fromItem?_frEnsureChip(fromItem):C2.chips.findIndex(x=>idOf(x)===String(fromId));
   const ti=toItem?_frEnsureChip(toItem):C2.chips.findIndex(x=>idOf(x)===String(toId));
   if(ti<0)return false;
-  if(fi>=0 && !(C2.pinned&&idOf(C2.pinned)===String(fromId))){
-    const keep=C2.idx; C2.idx=fi;
-    try{ c2TogglePin(); }catch(e){}
-    C2.idx=keep;
+  /* 钉住当前卡：直接设状态，不走 c2TogglePin —— 它内部会 c2Close()（history.back），
+     back 是异步的，会在下面 c2Open 之后才触发 popstate，把刚打开的详情又关掉。 */
+  if(fi>=0 && fromItem && !(C2.pinned&&idOf(C2.pinned)===String(fromItem.id))){
+    try{ C2.pinned=fromItem; C2.lvP=0; c2DockShow(); }catch(e){}
   }
   c2Open(ti);
   document.querySelectorAll('.fr-sib-card').forEach(el=>el.classList.remove('seen'));
@@ -3352,7 +3423,7 @@ document.addEventListener("click",e=>{
     const zc=zt.closest(".fcard,.i.roster,.i.nucleus,.skin-card");
     if(!(zc&&zc.closest("#grid")&&cardOpensD2(zc)))return;
   }else if(e.target.closest("summary,button,a,select,input,label,audio,video"))return;
-  const card=e.target.closest(".chip-card,.fcard,.skin-card,.i.nucleus,.i.roster,.i.fcard.vcard");
+  const card=e.target.closest(".chip-card,.fcard,.skin-card,.i.nucleus,.i.roster,.i.eqcard,.i.fcard.vcard");
   if(!card||!card.closest("#grid"))return;
   if(!cardOpensD2(card))return;
   const i=parseInt(card.dataset.cidx||"-1",10);
@@ -4237,7 +4308,15 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
      核芯板必须保持 CORE_D2，否则 provider 被覆盖回旧版网格卡直嵌（2026-10-30 修复） */
   const rosterBoard=!CORE_BOARD&&String(DATA.meta&&DATA.meta.card_mode)==="roster";
   if(rosterBoard){C2.prov=ROSTER_D2;C2.chips=list;C2.html={};}
+  /* 2026-11-02：装备属性四卡接 D2 —— 卡面点击打开完整详情（复用卡内折叠区） */
+  if(EQUIP_BOARD){C2.prov=EQUIP_D2;C2.chips=list;C2.html={};}
   g.innerHTML=list.map((it,i)=>{
+    /* 2026-11-02：装备属性四卡按「人物时装同款」卡面渲染；整卡同时缓存给 D2 详情复用 */
+    if(EQUIP_BOARD){
+      const h=equipCardHTML(it,i);
+      C2.html[c2IdOf(it)]=h;
+      return h;
+    }
     /* 核芯板所有条目都按核芯卡渲染（基础核芯无特技/升星段，卡面只剩品级+星上限+描述） */
     const nucleusMode=!!it.rank_star_segments||CORE_BOARD;
     const rosterMode=!nucleusMode&&rosterBoard;
@@ -4347,7 +4426,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       ${mediaBlock}
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
         <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
-        ${TITLE_BOARD?titleSkin(it):""}
+        ${TITLE_BOARD?titleDyn(it):""}
         ${referenceTitle(it.reference_fields)}
         <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
         ${TITLE_BOARD?titleBadges(it):""}</div>
@@ -4369,7 +4448,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     }
     return tgHead+html;
   }).join("");
-  if((CORE_BOARD||rosterBoard)&&C2.open)c2Resync();
+  if((CORE_BOARD||rosterBoard||EQUIP_BOARD)&&C2.open)c2Resync();
   if(TITLE_BOARD)syncTitleHeadTop();
 }
 
@@ -4398,7 +4477,9 @@ function renderMvpVideos(it){
 /* ════════════════ 期次容器卡（card_mode="period"）════════════════
    一张卡 = 一个期次；卡内按奖池分组列成员，成员只给「图标 + 名字 + 槽位」，成员不单独成卡。*/
 window.PF=window.PF||{status:"all",family:"all",kind:"all",limit:40,only:"1",closed:{}};
-function pSet(k,v){window.PF[k]=v; if(k!=="limit")window.PF.limit=40; render();}
+/* limit=0 表示不翻页（空成员期次也要全部出现）；仅 period_empty=show 的板用这种模式 */
+function pSet(k,v){window.PF[k]=v; if(k!=="limit")window.PF.limit=pNoCap()?0:40; render();}
+function pNoCap(){return !!window.PF_EMPTY;}
 function pToggleFam(f){PF.closed=PF.closed||{};PF.closed[f]=!PF.closed[f];render();}
 function pToggleCard(head){
   const card=head.closest(".pcard");
@@ -4409,6 +4490,7 @@ function pToggleCard(head){
   card.classList.toggle("open",open);
 }
 function pMore(){window.PF.limit=(window.PF.limit||24)+24; render();}
+function pToggleEmpty(k){window.PF.openEmpty=PF.openEmpty||{};PF.openEmpty[k]=!PF.openEmpty[k];render();}
 function periodStatus(p){
   const t=new Date(); const s=p.start?new Date(p.start+"T00:00:00"):null;
   const e=p.end?new Date(p.end+"T23:59:59"):null;
@@ -4417,32 +4499,100 @@ function periodStatus(p){
   return {k:"on",txt:"当期"};
 }
 function renderPeriodMode(list){
-  if(DATA.meta._pfInit!==1){
-    const qps=getParam("ps"),qpf=getParam("pf"),qpk=getParam("pk");
+  const meta=DATA.meta||{};
+  /* 仅本板（meta.period_empty="show"）启用的两件事：
+     ① 无成员期次也渲染成卡（589 期不能凭空消失）；
+     ② 家族内再按年份折叠（meta.period_group="family_year"）。
+     其它 period 板（upcoming_auto、归档板）meta 没有这两个开关，行为完全不变。 */
+  const showEmpty=String(meta.period_empty||"")==="show";
+  const groupByYear=showEmpty&&String(meta.period_group||"")==="family_year";
+  window.PF_EMPTY=showEmpty;
+  if(meta._pfInit!==1){
+    const qps=getParam("ps"),qpf=getParam("pf"),qpk=getParam("pk"),qpo=getParam("po");
     if(qps)PF.status=qps; if(qpf)PF.family=qpf; if(qpk)PF.kind=qpk;
-    DATA.meta._pfInit=1;
+    PF.only=(qpo==="1"||qpo==="0")?qpo:(showEmpty?"0":"1");
+    PF.limit=showEmpty?0:40;   // 0 = 不翻页
+    meta._pfInit=1;
   }
   const periods=(DATA.periods||[]).slice();
   const byPeriod={};
   list.forEach(it=>{(byPeriod[it.period_id]=byPeriod[it.period_id]||[]).push(it);});
   const cleanLabel=s=>String(s||"").replace(/（活动名未在活动表内）/g,"").trim();
-  const rank=p=>{const k=periodStatus(p).k;return k==="on"?0:(k==="upcoming"?1:2);};
+  /* 状态判定：本板区分「长期在架」（无结束时间）与「当期」（有结束时间且覆盖今天）。
+     否则 2022 年的周消费福利会被算成当期并置顶，首屏全是老日期 + 当期标签。 */
+  const stOf=showEmpty?(p=>{
+    const t=new Date();
+    const s=p.start?new Date(p.start+"T00:00:00"):null;
+    const e=p.end?new Date(p.end+"T23:59:59"):null;
+    if(!s&&!e)return {k:"unknown",txt:"无时间"};
+    if(s&&t<s)return {k:"upcoming",txt:"即将开始"};
+    if(e&&t>e)return {k:"ended",txt:"已结束"};
+    if(!e)return {k:"longrun",txt:"长期在架"};
+    return {k:"on",txt:"当期"};
+  }):periodStatus;
+  const rankOrder={on:0,upcoming:1,longrun:2,ended:3,unknown:4};
+  const rank=p=>{const v=rankOrder[stOf(p).k];return v==null?3:v;};
+  const yrOf=p=>{const s=String((p&&p.start)||"");return s.slice(0,4)||"—";};
   const famOrder=[...new Set(periods.map(p=>p.family).filter(Boolean))];
-  periods.sort((a,b)=>{
-    const fa=famOrder.indexOf(a.family), fb=famOrder.indexOf(b.family);
-    if(fa!==fb)return fa-fb;
-    const ra=rank(a),rb=rank(b);
-    if(ra!==rb)return ra-rb;
-    if(ra===1)return String(a.start||"").localeCompare(String(b.start||""));
-    return String(b.start||"").localeCompare(String(a.start||""));
-  });
+  if(showEmpty){
+    /* 当期置顶 → 家族 → 年份（新在前）→ 期次 */
+    periods.sort((a,b)=>{
+      const ra=rank(a),rb=rank(b);
+      if(ra!==rb)return ra-rb;
+      const fa=famOrder.indexOf(a.family),fb=famOrder.indexOf(b.family);
+      if(fa!==fb)return fa-fb;
+      const na=Number(yrOf(a)),nb=Number(yrOf(b));
+      const ya=Number.isFinite(na)?na:-1,yb=Number.isFinite(nb)?nb:-1;
+      if(ya!==yb)return yb-ya;
+      return ra===1?String(a.start||"").localeCompare(String(b.start||""))
+                   :String(b.start||"").localeCompare(String(a.start||""));
+    });
+  }else{
+    periods.sort((a,b)=>{
+      const fa=famOrder.indexOf(a.family), fb=famOrder.indexOf(b.family);
+      if(fa!==fb)return fa-fb;
+      const ra=rank(a),rb=rank(b);
+      if(ra!==rb)return ra-rb;
+      if(ra===1)return String(a.start||"").localeCompare(String(b.start||""));
+      return String(b.start||"").localeCompare(String(a.start||""));
+    });
+  }
 
   const fams=[...new Set(periods.map(p=>p.family).filter(Boolean))];
   const kinds=[...new Set(list.map(i=>i.kind).filter(Boolean))];
-  const stCount={on:0,upcoming:0,ended:0};
-  periods.forEach(p=>{if((byPeriod[p.period_id]||[]).length)stCount[periodStatus(p).k]++;});
+  const famYears={};
+  periods.forEach(p=>{const f=p.family||"—";(famYears[f]=famYears[f]||new Set()).add(yrOf(p));});
+  const stCount={on:0,upcoming:0,longrun:0,ended:0,unknown:0};
+  let withMembers=0;
+  periods.forEach(p=>{
+    const n=(byPeriod[p.period_id]||[]).length;
+    if(n)withMembers++;
+    if(showEmpty||n)stCount[stOf(p).k]++;
+  });
   const chip=(label,n,active,fn)=>`<button class="pf-chip${active?" on":""}" onclick="${fn}">${label}${n!=null?` <b>${n}</b>`:""}</button>`;
-  const bar=`<div class="pf-bar">
+  /* 本板（789 期 / 20+ 家族 / 多种奖励类型）筛选条如果三条并排会吃掉首屏 300px：
+     状态保留芯片（最常用），家族与类型收成下拉，合成一条工具栏。 */
+  const selOne=(cur,opts,fn,title)=>{
+    const html=opts.map(o=>`<option value="${esc(o.v)}"${o.v===cur?" selected":""}>${esc(o.t)}</option>`).join("");
+    return `<select class="pf-sel" title="${esc(title)}" onchange="${fn}(this.value)">${html}</select>`;
+  };
+  const famOpts=[{v:"all",t:"全部家族"},...fams.map(f=>({v:f,t:`${f}（${periods.filter(p=>p.family===f).length}）`}))];
+  const kindOpts=[{v:"all",t:"全部类型"},...kinds.map(k=>({v:k,t:`${k}（${list.filter(i=>i.kind===k).length}）`}))];
+  const bar=showEmpty?`<div class="pf-bar pf-bar-one">
+    <span class="pf-label">状态</span>
+    ${chip("全部",null,PF.status==="all","pSet('status','all')")}
+    ${chip("当期",stCount.on,PF.status==="on","pSet('status','on')")}
+    ${chip("即将开始",stCount.upcoming,PF.status==="upcoming","pSet('status','upcoming')")}
+    ${chip("长期在架",stCount.longrun,PF.status==="longrun","pSet('status','longrun')")}
+    ${chip("已结束",stCount.ended,PF.status==="ended","pSet('status','ended')")}
+    ${stCount.unknown?chip("无时间",stCount.unknown,PF.status==="unknown","pSet('status','unknown')"):""}
+    <span class="pf-sep"></span>
+    ${selOne(PF.family,famOpts,"pSet","按家族筛选")}
+    ${selOne(PF.kind,kindOpts,"pSet","按奖励类型筛选")}
+    <span class="pf-sep"></span>
+    ${chip("只看有内容",withMembers,PF.only==="1","pSet('only','1')")}
+    ${chip("全部期次",periods.length,PF.only==="0","pSet('only','0')")}
+  </div>`:`<div class="pf-bar">
     <span class="pf-label">展示</span>
     ${chip("只看有内容",null,PF.only==="1","pSet('only','1')")}
     ${chip("全部期次",null,PF.only==="0","pSet('only','0')")}
@@ -4453,7 +4603,7 @@ function renderPeriodMode(list){
     ${chip("即将开始",stCount.upcoming,PF.status==="upcoming","pSet('status','upcoming')")}
     ${chip("已结束",stCount.ended,PF.status==="ended","pSet('status','ended')")}
   </div>
-  <div class="pf-bar">
+  <div class="pf-bar pf-bar-fam">
     <span class="pf-label">家族</span>
     ${chip("全部",null,PF.family==="all","pSet('family','all')")}
     ${fams.map(f=>chip(esc(f),periods.filter(p=>p.family===f).length,PF.family===f,`pSet('family','${esc(f).replace(/'/g,"\'")}')`)).join("")}
@@ -4464,19 +4614,32 @@ function renderPeriodMode(list){
     ${kinds.map(k=>chip(esc(k),list.filter(i=>i.kind===k).length,PF.kind===k,`pSet('kind','${esc(k).replace(/'/g,"\'")}')`)).join("")}
   </div>`;
 
-  let shown=0, total=0, lastFam=null;
+  let shown=0, total=0, lastFam=null, lastYear=null;
+  const cap=showEmpty?0:(PF.limit||24);   // 0 = 不翻页
+  /* 空期次按「家族 + 年份」聚合成一条可展开摘要：589 个空期次逐条铺开会把真实内容淹没 */
+  const emptyByKey={}, yearTotal={};
+  if(showEmpty){
+    periods.forEach(p=>{
+      const f=p.family||"—",y=yrOf(p),k=f+"|"+y;
+      yearTotal[k]=(yearTotal[k]||0)+1;
+      if(!(byPeriod[p.period_id]||[]).length)emptyByKey[k]=(emptyByKey[k]||0)+1;
+    });
+  }
+  const emptyEmitted=new Set();
+  const yearHead=new Set();
   const cards=[];
   for(const p of periods){
     let mem=byPeriod[p.period_id]||[];
-    if(!mem.length)continue;
-    const st=periodStatus(p);
+    if(!mem.length && !showEmpty)continue;
+    const st=stOf(p);
     if(PF.status!=="all"&&st.k!==PF.status)continue;
     if(PF.family!=="all"&&p.family!==PF.family)continue;
     if(PF.kind!=="all"){mem=mem.filter(x=>x.kind===PF.kind); if(!mem.length)continue;}
     if(PF.only==="1" && !mem.length)continue;
     total++;
-    if(shown>=(PF.limit||24))continue;
+    if(cap && shown>=cap)continue;
     shown++;
+    const labelClean=cleanLabel(p.label)||cleanLabel(p.activity_name)||p.period_id;
     const pools=new Map();
     mem.forEach(it=>{
       const k=it.pool_uid||it.pool_id||it.pool_label||"—";
@@ -4499,22 +4662,75 @@ function renderPeriodMode(list){
         <div class="ppool-items">${chips}</div>
       </div>`;
     }).join("");
-    const labelClean=cleanLabel(p.label)||cleanLabel(p.activity_name)||p.period_id;
     const imgs=mem.map(x=>{const a=((x._media||{}).images)||[];return a.length&&a[0]&&a[0].png?a[0].png:null;}).filter(Boolean);
     const withImg=imgs.length;
     const cover=imgs.slice(0,4).map(s=>`<img src="${esc(s)}" alt="" loading="lazy">`).join("");
     const famName=p.family||"—";
-    if(PF.family==="all" && lastFam!==famName){
-      lastFam=famName;
-      const famTotal=periods.filter(x=>x.family===famName&&(byPeriod[x.period_id]||[]).length).length;
-      const closed=(PF.closed||{})[famName];
-      cards.push(`<div class="pfam-head${closed?" closed":""}" onclick="pToggleFam('${esc(famName).replace(/'/g,"\'")}')">
-        <span class="pfam-name">${esc(famName)}</span><span class="pfam-n">${famTotal} 期</span>
-        <span class="pfam-arrow">${closed?"▸":"▾"}</span></div>`);
-      if(closed){continue;}
+    const y=yrOf(p);
+    if(lastFam!==famName){
+      lastFam=famName; lastYear=null;
+      if(PF.family==="all"){
+        const famTotal=showEmpty
+          ?periods.filter(x=>(x.family||"—")===famName).length
+          :periods.filter(x=>(x.family||"—")===famName&&(byPeriod[x.period_id]||[]).length).length;
+        const famWith=showEmpty?periods.filter(x=>(x.family||"—")===famName&&(byPeriod[x.period_id]||[]).length).length:famTotal;
+        const closed=(PF.closed||{})[famName];
+        cards.push(`<div class="pfam-head${closed?" closed":""}" onclick="pToggleFam('${esc(famName).replace(/'/g,"\'")}')">
+          <span class="pfam-name">${esc(famName)}</span><span class="pfam-n">${famTotal} 期${showEmpty?` · 有内容 ${famWith}`:""}</span>
+          <span class="pfam-arrow">${closed?"▸":"▾"}</span></div>`);
+        if(closed){continue;}
+      }
     }
     if(PF.family==="all" && (PF.closed||{})[famName]) continue;
-    cards.push(`<div class="pcard ${st.k}">
+    if(groupByYear && ((famYears[famName]||new Set()).size>1)){
+      if(lastYear!==y){
+        lastYear=y;
+        const yKey=famName+"|"+y;
+        const yClosed=(PF.closed||{})[yKey];
+        const yTotalN=yearTotal[yKey]||periods.filter(x=>(x.family||"—")===famName&&yrOf(x)===y).length;
+        /* 整年都没有成员：年份头并入下面的空期次摘要，避免
+           「2026 20 期」+「2026 20 期 · 暂无可证成员」两行说同一件事。 */
+        if(!((emptyByKey[yKey]||0)>=yTotalN)){
+          yearHead.add(yKey);
+          cards.push(`<div class="pfam-head pfam-year${yClosed?" closed":""}" onclick="pToggleFam('${esc(yKey).replace(/'/g,"\'")}')">
+            <span class="pfam-name">${esc(y)}</span><span class="pfam-n">${yTotalN} 期</span>
+            <span class="pfam-arrow">${yClosed?"▸":"▾"}</span></div>`);
+        }
+      }
+      if((PF.closed||{})[famName+"|"+y]) continue;
+    }
+    /* 无成员期次：先按「家族 + 年份」折叠成一条摘要，展开后才是逐条紧凑行 */
+    if(!mem.length){
+      const eKey=famName+"|"+y;
+      const openEmpty=(PF.openEmpty||{})[eKey];
+      if(!emptyEmitted.has(eKey)){
+        emptyEmitted.add(eKey);
+        const n=emptyByKey[eKey]||1;
+        /* 该年已有年份头时，摘要不再重复年份，只报「余下 n 期」 */
+        const yShown=yearHead.has(eKey);
+        cards.push(`<div class="pfam-empty${openEmpty?" open":""}${yShown?" under":""}" onclick="pToggleEmpty('${esc(eKey).replace(/'/g,"\'")}')">
+          ${yShown?"":`<span class="pfe-name">${esc(y)}</span>`}<span class="pfe-n">${yShown?"余下 ":""}${n} 期 · 暂无可证成员</span>
+          <span class="pfe-arrow">${openEmpty?"▾":"▸"}</span></div>`);
+      }
+      if(!openEmpty) continue;
+      cards.push(`<div class="prow ${st.k}" title="${esc(p.gap_reason||"暂无可证成员")}">
+        <span class="prow-date">${esc(p.start||"—")}</span>
+        <span class="prow-name">${esc(labelClean)}</span>
+        <span class="prow-state ${st.k}">${st.txt}</span>
+        <span class="prow-note">暂无可证成员</span>
+      </div>`);
+      continue;
+    }
+    const dateParts=[];
+    if(p.start)dateParts.push(esc(p.start)+(p.end?" → "+esc(p.end):""));
+    else if(p.end)dateParts.push("→ "+esc(p.end));
+    dateParts.push((p.pool_count||1)+" 池");
+    dateParts.push(mem.length?("共 "+mem.length+" 件 · 有图 "+withImg):"暂无可证成员");
+    if(p.pool_size)dateParts.push("池内 "+p.pool_size+" 件（服务端下发）");
+    const dateLine=dateParts.join(" · ");
+    const bodyHtml=mem.length?poolHtml
+      :`<div class="pcard-gap">暂无可证成员${p.gap_reason?(" · "+esc(p.gap_reason)):""}</div>`;
+    cards.push(`<div class="pcard ${st.k}${mem.length?"":" pempty"}">
       <div class="pcard-head" onclick="pToggleCard(this)" role="button" tabindex="0">
         <div class="pcard-title">
           <span class="pcard-name">${esc(labelClean)}</span>
@@ -4522,12 +4738,12 @@ function renderPeriodMode(list){
           <span class="pfam">${esc(p.family||"")}</span>
         </div>
         ${cover?`<div class="pcard-cover">${cover}</div>`:""}
-        <div class="pcard-date">${esc(p.start||"")}${p.end?" → "+esc(p.end):""} · ${p.pool_count||1} 池 · 共 ${mem.length} 件 · 有图 ${withImg}${p.pool_size?` · 池内 ${p.pool_size} 件（服务端下发）`:""}</div>
+        <div class="pcard-date">${dateLine}</div>
       </div>
-      <div class="pcard-body" hidden>${poolHtml}</div>
+      <div class="pcard-body" hidden>${bodyHtml}</div>
     </div>`);
   }
-  const more=(shown<total)?`<div style="text-align:center;margin:6px 0 24px"><button class="pf-chip on" onclick="pMore()">加载更多（已显示 ${shown}/${total}）</button></div>`:"";
+  const more=(cap&&shown<total)?`<div style="text-align:center;margin:6px 0 24px"><button class="pf-chip on" onclick="pMore()">加载更多（已显示 ${shown}/${total}）</button></div>`:"";
   return bar+(cards.length?cards.join("")+more:'<div class="empty">当前筛选下没有期次</div>');
 }
 
@@ -4626,6 +4842,11 @@ else loadBoard(b,d=>{
     document.body.classList.add("fashion-mode");
     const qi=document.getElementById("q");
     if(qi)qi.placeholder="搜索：时装名 / model_id / 描述 / 行键…";
+  }
+  if(EQUIP_BOARD){
+    document.body.classList.add("equip-mode");
+    const eqi=document.getElementById("q");
+    if(eqi)eqi.placeholder="搜索：装备名 / 类型 / 武器细类 / 描述…";
   }
   if(CHIP_BOARD){
     document.body.classList.add("chip-mode");

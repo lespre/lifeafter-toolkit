@@ -2,6 +2,13 @@
 # 依据：2026-10-29 用户逐类判定 + 已结案结论。判定必须落成可复算规则（键段/槽位/名字正则）。
 # 数据源：30_分析/all_equips_全量_node索引_20261029/{classic,kj1,yk}.json
 
+# 2026-11-01 用户定版：三服数据互不相同 → 拆独立卡（每卡只放本服行）+ 另出三服总览卡（页内「服别」筛选）。
+server_branches:
+  简单生存服: { channel: kj1,     board: equipment_attrs_kj1,     rows: 590,  active_rows: 1553 }
+  经典服:     { channel: classic, board: equipment_attrs_classic, rows: 1057, active_rows: 3287 }
+  月卡服:     { channel: yk,      board: equipment_attrs_yk,      rows: 939,  active_rows: 2228 }
+  三服总览:   { channel: all,     board: equipment_attrs,          rows: 2586 }
+
 key_segments:
   weapons:      { range: [100000, 199999], label: 武器 }
   armor_shield: { range: [300000, 339999], label: 护甲护盾, equip_type: 0 }
@@ -40,3 +47,33 @@ field_semantics:
     candidate: 候选待验证
   required_item_fields: [id, name, evidence, source]
   required_meta_fields: [name, category, source_server, package_sha, generated, evidence]
+  # 2026-11-01 扩字段：全部为同行直读（不做跨源拼接、不做整数等值 join）
+  item_display_fields:
+    desc: 官方描述（all_equips_data#desc，chs 池）
+    level: 品级（1–5）
+    durability: 耐久
+    max_shield: 护盾值（仅护甲·护盾行）
+    shield_type: 护盾档位数值码；1=基础护盾 2=蔚蓝护盾 3=磺骨护盾
+    shield_label: 护盾档位中文（由 shield_type 映射，见上）
+    weapon_kind: 武器细类数值码（同行字段）
+    weapon_kind_label: 武器细类中文标签，按装备名归纳（非官方枚举；客户端无码→名称表）
+    model_path: 模型路径（同行字段）
+    base_score: 装备基础评分
+    charm_value: 魅力值
+    icon: 客户端 ui/item_icon 路径（原样保留）
+    icon_state: 图标状态（有图 / 缺图（客户端无素材） / 无图标字段）
+    icon_missing: 缺图标标记（客户端无素材时 true，不补占位图）
+  icon_policy:
+    source: 客户端 ui/item_icon 大图 _b（同路径带 _b/_s 后缀；三服共用同一张，按路径扁平化命名）
+    dir: 02_wiki/web/assets/equip_icons/
+    index: 02_wiki/web/assets/equip_icons/_index.json（路径 → png / pack+row / 覆盖服别）
+    builder: 02_wiki/web/tools/build_equip_icons.py
+    missing: 留空 + icon_missing=true + status_tags 含 file-missing（不补占位、不伪造路径）
+  weapon_kind_labels:
+    note: 归纳口径，非官方枚举；未知码写「未归类码 N」并在板面注明
+    mapping: { 1: 步枪, 2: 冲锋枪, 3: 弓, 4: 霰弹枪, 5: 狙击枪, 6: 手枪, 7: 火箭筒/榴弹, 8: 电磁, 20: 喷火器, 21: 重机枪, 50: 冷兵器, 999: 特殊/怪物专用 }
+  status_tags:
+    normal: [static config]
+    missing_icon: [static config, file-missing]
+    trial_alone: [static config, unresolved]
+
