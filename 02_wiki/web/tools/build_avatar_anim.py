@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-"""头像板动态头像（Spine → APNG）构建：统一解析器三路回源版。
+"""头像板动态头像（Spine → APNG）构建：还原树优先 + 三路回源。
 
-★ 与旧版 build_avatar_media.py --step anim 的差别
-  旧版只查 PE（安卓测试服）索引，于是：
-    · 422 条有 spine_path 的条目里，PE 缺 atlas/json/page 的 68 条直接放弃
-      （其中 26 条名片框、29 条头像、15 条头像框 —— 这些在 **PC 包**里是齐的）
-    · 页贴图找不到时用主贴图页顶替 → 渲染出的是别的图（"乱七八糟"的一部分）
-  新版按 **PE 索引 → PC 索引 → PC 校准表** 三路回源，
-  页贴图按「atlas 声明的页名 → 同名 .bc7/.ktx/.png」两条规则解析，
-  拿不到就**如实放弃**（不做任何顶替）。
+★ 2026-11-01 重做页贴图解析（针对「渲染乱七八糟」的根因）
+  旧版把**整个 atlas 的所有页**都映射到同一个 `base + ".png"`：
+  19 个多页 atlas（如 img_biankuang41 有 img_biankuang41.png +
+  img_biankuang412.png）的第二、三页被第一页顶替 → 贴图串图。
+  现在按 atlas 声明的**每个页名**单独取图，优先级：
+      1) 新还原树（41_还原树/pe/资源）里同名资源（.ktx/.png/.bc7 均可）
+      2) 本地单页缓存（spine_live/<目录>/<页名>.png）
+      3) PE 索引 → PC 索引 → PC 校准表 回源
+  任何一页取不到就**如实记失败**，绝不拿别的页顶替。
 
 渲染内核见 tools/spine_render_fix.py（已支持 skinnedmesh/mesh/IK/附件切换）。
 
@@ -32,6 +33,7 @@ WEB = PROJ / "02_wiki/web"
 sys.path.insert(0, str(WEB / "tools"))
 from avatar_resolve import Resolver                # noqa: E402
 import spine_render_fix as FX                      # noqa: E402
+import numpy as np                                 # noqa: E402
 from PIL import Image                              # noqa: E402
 
 CAT = WEB / "data/boards/avatar_catalog.json"
@@ -45,37 +47,113 @@ def log(msg):
     print("[anim] %s" % msg, flush=True)
 
 
-def page_candidates(base: str, atlas_text: str):
-    """页贴图的候选逻辑路径（按优先级）。"""
-    out = []
+def page_logical(base: str, page_name: str):
+    """atlas 页名 → 客户端逻辑路径（页名自带目录时直接使用）。"""
+    name = page_name.replace("\\", "/").strip()
+    if "/" in name:
+        return name
     d0 = base.rsplit("/", 1)[0] if "/" in base else ""
-    # 1) atlas 声明的页名（Spine atlas 第一行就是页图文件名）
-    for line in atlas_text.splitlines():
-        s = line.strip()
+    return (d0 + "/" + name) if d0 else name
+
+
+def page_cache_path(base: str, page_name: str):
+    """页贴图的本地缓存文件（与 atlas 同目录、沿用页名）。"""
+    name = page_name.replace("\\", "/").strip()
+    if "/" in name:
+        return SPINE_DIR / name
+    d0 = base.rsplit("/", 1)[0] if "/" in base else ""
+    return SPINE_DIR / ((d0 + "/" + name) if d0 else name)
+
+
+def page_declared_sizes(atlas_text: str):
+    """从 atlas 头解析每页声明的尺寸 → {页名: (w, h)}。"""
+    sizes = {}
+    cur = None
+    for raw in atlas_text.splitlines():
+        s = raw.strip()
         if not s:
             continue
-        if s.lower().endswith((".png", ".jpg")):
-            out.append((d0 + "/" + s) if d0 else s)
-            break
-    # 2) 与 atlas 同名的贴图页（PC 侧常以 .bc7 存）
-    for e in (".bc7", ".ktx", ".png"):
-        out.append(base + e)
-    return out
+        indented = raw.startswith((" ", "\t"))
+        if not indented and s.lower().endswith((".png", ".jpg")):
+            cur = s
+            continue
+        if cur and not indented and s.startswith("size:"):
+            try:
+                w, h = [int(x) for x in s[5:].split(",")]
+                sizes[cur] = (w, h)
+            except ValueError:
+                pass
+    return sizes
 
 
-def grab_page(res: Resolver, base: str, atlas_text: str, dst: pathlib.Path):
-    """把页贴图落到本地（png）；返回 True/False。"""
-    if dst.is_file() and dst.stat().st_size > MIN_BYTES:
-        return True
-    for logical in page_candidates(base, atlas_text):
-        if res.fetch_png(logical, dst):
-            return True
-    return False
+def _page_fingerprint(img):
+    """页图的廉价指纹（64×64 缩略图），用于识别「多页被同一张图顶替」。"""
+    small = np.asarray(img.convert("RGBA").resize((64, 64), Image.BILINEAR))
+    return hash(small.tobytes())
+
+
+def load_pages(res: Resolver, base: str, pages, sizes):
+    """逐页解析页贴图 → ({页名: RGBA}, 缺失页名列表)。
+
+    ★ 多页 atlas 必须每页单独取图。旧版把全部页映射到 base+".png"，
+      导致 19 个多页骨架的后续页全部串成第一页（画面"乱七八糟"）。
+    ★ 两条硬校验（2026-11-01）：
+      · 页图尺寸必须与 atlas 头声明的 size 一致（尺寸不符 = 取到了别的图）
+      · 同一 atlas 内不能出现两张完全相同的页图（= 该页从未单独解出，
+        旧管线把第一页复制成了后续页）
+      任一校验不过就记为缺失，绝不顶替。
+    """
+    img_of = {}
+    missing = []
+    fps = {}
+    for pg in pages:
+        logical = page_logical(base, pg)
+        cache = page_cache_path(base, pg)
+        img = None
+        # 1) 新还原树（权威本地资源层：文件名即客户端逻辑路径）
+        img = res.tree_image(logical)
+        if img is not None:
+            img = img.convert("RGBA")
+            # 顺手落一份 png 缓存，便于离线复核与其它工具复用
+            if not (cache.is_file() and cache.stat().st_size > MIN_BYTES):
+                try:
+                    cache.parent.mkdir(parents=True, exist_ok=True)
+                    img.save(cache)
+                except Exception:                          # noqa: BLE001
+                    pass
+        # 2) 本地缓存（含旧版遗留的单页 base+".png"）
+        if img is None and cache.is_file() and cache.stat().st_size > MIN_BYTES:
+            try:
+                img = Image.open(cache).convert("RGBA")
+            except Exception:                              # noqa: BLE001
+                img = None
+        # 3) PE 索引 → PC 索引 → PC 校准表
+        if img is None and res.fetch_png(logical, cache):
+            try:
+                img = Image.open(cache).convert("RGBA")
+            except Exception:                              # noqa: BLE001
+                img = None
+        if img is None:
+            missing.append(pg)
+            continue
+        declared = sizes.get(pg)
+        if declared and img.size != declared:
+            missing.append(pg)
+            continue
+        fp = _page_fingerprint(img)
+        if fp in fps:
+            # 与本 atlas 的某一页完全同图 → 该页实际没解出来
+            missing.append(pg)
+            continue
+        fps[fp] = pg
+        img_of[pg] = img
+    return img_of, missing
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--kind", default="", help="逗号分隔；空=全部")
+    ap.add_argument("--ids", default="", help="只渲染指定 id（逗号分隔，用于抽样核对）")
     ap.add_argument("--size", type=int, default=168)
     ap.add_argument("--frames", type=int, default=24)
     ap.add_argument("--budget", type=float, default=5400.0)
@@ -88,6 +166,7 @@ def main() -> int:
     cat = json.loads(CAT.read_text(encoding="utf-8"))
     items = cat["items"]
     kinds = [k for k in a.kind.split(",") if k]
+    want_ids = {x for x in a.ids.split(",") if x}
 
     SPINE_DIR.mkdir(parents=True, exist_ok=True)
     ANIM_DIR.mkdir(parents=True, exist_ok=True)
@@ -98,6 +177,8 @@ def main() -> int:
         if not sp:
             continue
         if kinds and it.get("kind") not in kinds:
+            continue
+        if want_ids and it["id"] not in want_ids:
             continue
         out = ANIM_DIR / (it["id"] + ".png")
         if not a.force and out.is_file() and out.stat().st_size > MIN_BYTES:
@@ -138,31 +219,18 @@ def main() -> int:
             fail += 1
             fails.append((iid, base, "json 取不到"))
             continue
-        # 页贴图
-        pg_f = SPINE_DIR / (base + ".png")
-        if not grab_page(res, base, atlas_text, pg_f):
-            fail += 1
-            fails.append((iid, base, "贴图页取不到"))
-            continue
+        # 页贴图：按 atlas 声明的每个页名逐页解析（还原树优先）
         try:
             skel, pages, regions = FX.load_atlas(at_f)
         except Exception as ex:                            # noqa: BLE001
             fail += 1
             fails.append((iid, base, "解析失败 " + str(ex)[:50]))
             continue
-        img_of = {}
-        for pg in pages:
-            src = pg_f if (pg_f.is_file() and not "/" in pg) else (SPINE_DIR / (base.rsplit("/", 1)[0] + "/" + pg if "/" in base else pg))
-            if not src.is_file():
-                cand = pg_f
-                if cand.is_file():
-                    src = cand
-                else:
-                    continue
-            try:
-                img_of[pg] = Image.open(src).convert("RGBA")
-            except Exception:                              # noqa: BLE001
-                continue
+        img_of, missing = load_pages(res, base, pages, page_declared_sizes(atlas_text))
+        if missing:
+            fail += 1
+            fails.append((iid, base, "页贴图缺失 " + ",".join(missing[:3])))
+            continue
         if not img_of:
             fail += 1
             fails.append((iid, base, "贴图页读不出"))
@@ -205,6 +273,17 @@ def main() -> int:
     (PROJ / "01_索引与产物/30_分析/avatar_anim_fail_rescue.json").write_text(
         json.dumps(fails, ensure_ascii=False, indent=1), encoding="utf-8")
     if not a.dry:
+        # ★ 失败条目不能继续挂着旧动图（旧产物大量残缺/串图）。
+        #   清引用 + 删旧文件 → 看板回落静态图，且下次不带 --force 也会重试。
+        for it in items:
+            if it["id"] not in {f[0] for f in fails}:
+                continue
+            m = it.get("_media") or {}
+            m.pop("anim", None)
+            m.pop("anim_meta", None)
+            p = ANIM_DIR / (it["id"] + ".png")
+            if p.is_file():
+                p.unlink()
         CAT.write_text(json.dumps(cat, ensure_ascii=False, indent=1), encoding="utf-8")
         log("已写回 %s" % CAT.name)
     return 0

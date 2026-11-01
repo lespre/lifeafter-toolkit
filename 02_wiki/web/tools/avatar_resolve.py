@@ -49,6 +49,10 @@ if not _PE_PACKS.is_dir():
     _PE_PACKS = _DET / "pe_packs"
 _PC_ROOTS = (pathlib.Path(client_root()), pathlib.Path(client_root() / "res"),
              pathlib.Path(client_root() / "Documents/gres"))
+# ★ 2026-11-01：新还原树（41_还原树/pe/资源）已是权威本地资源层。
+#   优先级高于「索引 + 包回源」：树里的文件名就是客户端逻辑路径，
+#   命中即直接读盘，不再受 fid 校准表跨目录同名污染影响。
+TREE_ROOT = PROJ / "01_索引与产物/41_还原树/pe/资源"
 
 PE_EXTS = (".ktx", ".dds", ".png", ".bc7")
 PC_EXTS = (".bc7", ".png", ".dds", ".ktx", ".jpg")
@@ -207,6 +211,34 @@ class Resolver:
         self._pe_pack_cache[key] = entries
         return entries
 
+    # ── 还原树 ──────────────────────────────────────────────
+    @staticmethod
+    def tree_find(logical: str):
+        """逻辑路径 → 还原树里的实际文件（允许扩展名不同，如 .ktx）。"""
+        if not TREE_ROOT.is_dir():
+            return None
+        logical = logical.replace("\\", "/").lstrip("/")
+        p = TREE_ROOT / logical
+        if p.is_file():
+            return p
+        for e in TEX_EXTS:
+            q = p.with_suffix(e)
+            if q.is_file():
+                return q
+        return None
+
+    def tree_image(self, logical: str):
+        """读还原树里的图片 → PIL.Image(RGBA) | None（.ktx/.bc7/.png/.dds 均支持）。"""
+        p = self.tree_find(logical)
+        if p is None:
+            return None
+        try:
+            data = p.read_bytes()
+        except Exception:                                   # noqa: BLE001
+            return None
+        im = self._decode_bytes(data)
+        return im
+
     # ── 取载荷 ──────────────────────────────────────────────
     def payload(self, tag: str, pack: str, row: int):
         for e in self._iter(tag, pack):
@@ -218,6 +250,13 @@ class Resolver:
     def image(self, tag: str, pack: str, row: int):
         """→ PIL.Image(RGBA) | None"""
         data = self.payload(tag, pack, row)
+        if not data:
+            return None
+        return self._decode_bytes(data)
+
+    @staticmethod
+    def _decode_bytes(data: bytes):
+        """图片字节 → PIL.Image(RGBA)｜None（支持 CompBlks / KTX / DDS / PNG）。"""
         if not data:
             return None
         try:

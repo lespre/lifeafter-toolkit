@@ -1159,6 +1159,24 @@ function fillFilterSelects(items){
     if(DATA)DATA._custFilters=[];
     return;
   }
+  /* 称号板：只保留「获取途径」一个筛选（与分组同源），武器/皮肤系列控件全部隐藏。 */
+  if(TITLE_BOARD){
+    ["fGrade","fType","fIp","fRelease","fNameSt","fOrder","fDir"].forEach(id=>{
+      const el=document.getElementById(id);if(el)el.style.display="none";
+    });
+    const sh=document.getElementById("sortHint");if(sh)sh.style.display="none";
+    const lh=document.getElementById("listingHint");if(lh)lh.style.display="none";
+    const wrap=document.getElementById("fCustomWrap");if(wrap)wrap.innerHTML="";
+    DATA._custFilters=[];
+    const sel=document.createElement("select");
+    sel.innerHTML=`<option value="">全部获取途径</option>`+
+      TITLE_GROUPS.map(([k,l])=>`<option value="${k==null?"__none__":esc(k)}">${esc(l)}</option>`).join("");
+    sel.setAttribute("aria-label","获取途径");
+    sel.onchange=render;
+    wrap.appendChild(sel);
+    DATA._custFilters.push({key:"obtain",sel});
+    return;
+  }
   // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
   const cfg=DATA.meta&&Array.isArray(DATA.meta.filters)?DATA.meta.filters:null;
   const oSel=document.getElementById("fOrder");
@@ -2399,6 +2417,36 @@ function vBuildFilters(items){
    ★ 类名全部 chip-* / c* —— 图轨与灯箱复用 fr-*，样式挂 body.chip-mode，其它板零影响。 */
 const CHIP_BOARD=(function(){try{return (getParam("b")||"")==="tactical_chip_full";}catch(e){return false;}})();
 const CORE_BOARD=(function(){try{return (getParam("b")||"")==="mutation_core_full";}catch(e){return false;}})();
+/* 称号板（title_catalog，2026-11-01）：1539 条平铺太散，按「获取途径」分组。
+   唯一可直译的结构化轴是源表 title_conf_data.quest（板上字段 obtain）；
+   style 是等级档位（初/中/高级/资深…），不是分类，因此不参与分组。
+   中文标签按各行 desc 实证归纳，不做跨表推断。 */
+const TITLE_BOARD=(function(){try{return (getParam("b")||"")==="title_catalog";}catch(e){return false;}})();
+const TITLE_GROUPS=[
+  ["SpecProfLevel","职业认证"],
+  ["ProfLevel","生存等级"],
+  ["ItemGain","活动 / 物品获取"],
+  ["ValentineDayTitleQuest","社区活动（情人节）"],
+  ["Mayor","营地市长"],
+  ["Dominate","地图占领"],
+  ["PVERanking","排行榜"],
+  ["SuperMem","网易会员"],
+  ["WestWorldHonor","红杉镇势力"],
+  ["ExploreFinish","地图探索"],
+  [null,"未登记获取条件"],
+];
+function titleGroupKey(it){return String((it&&it.obtain)||"")||null;}
+function titleGroupLabel(v){const hit=TITLE_GROUPS.find(g=>g[0]===v);return hit?hit[1]:"其他";}
+function titleGroupOrder(v){const i=TITLE_GROUPS.findIndex(g=>g[0]===v);return i<0?TITLE_GROUPS.length-1:i;}
+/* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
+   偏移不写死：读 .controls 的 computed top + 自身高度，控件换行/换视口时自动跟随。 */
+function syncTitleHeadTop(){
+  if(!TITLE_BOARD)return;
+  const c=document.querySelector(".controls");if(!c)return;
+  const st=parseFloat(getComputedStyle(c).top)||0;
+  document.documentElement.style.setProperty("--tg-top",`${Math.ceil(st+c.offsetHeight+2)}px`);
+}
+window.addEventListener("resize",syncTitleHeadTop);
 const CQ={fam:new Set(),q:new Set(),img:"",sort:""};
 (function(){
   try{
@@ -3831,7 +3879,10 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     if(Array.isArray(DATA._custFilters)){
       for(const cf of DATA._custFilters){
         const v=cf.sel?cf.sel.value:"";
-        if(v&&String(it[cf.key]??"")!==v)return false;
+        if(!v)continue;
+        /* __none__ = 「该字段在源表里没登记」，与「空值不过滤」区分开 */
+        if(v==="__none__"){if(String(it[cf.key]??"")!=="")return false;continue;}
+        if(String(it[cf.key]??"")!==v)return false;
       }
     }
     if(fg.size){
@@ -3982,6 +4033,13 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         ? (a.sort_660||0)-(b.sort_660||0)
         : (b.sort_660||0)-(a.sort_660||0))
     : items;
+  /* 称号板：先按获取途径分组排序（组内保持原始称号 ID 升序），组头由下面的 map 注入。
+     注意 list 可能还是 items 本体（默认路径），这里只改顺序、不改集合。 */
+  if(TITLE_BOARD){
+    list.sort((a,b)=>titleGroupOrder(titleGroupKey(a))-titleGroupOrder(titleGroupKey(b))
+      ||(Number(a.item_id||0)-Number(b.item_id||0)));
+  }
+  let lastTitleGroup="";
   /* 2026-10-30：核芯板全量入 chips——基础（绿）核芯（家园守卫限定 4 条）无 skill_desc/升星段，
      之前按 rank_star_segments 过滤会把它们漏出 D2，且走普通 kv 卡分支格式乱 */
   const coreList=CORE_BOARD?list.slice():null;
@@ -4068,6 +4126,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       const sum=[];
       (Array.isArray(DATA.meta.card_summary)?DATA.meta.card_summary:[]).forEach(p=>{
         const k=p[0],label=p[1],v=it[k];if(v==null||v==="")return;
+        /* 称号板：卡头已有「称号名 + 称号ID」，不再重复 name 行（1539 条时省掉整行冗余） */
+        if(TITLE_BOARD&&k==="name")return;
         sum.push(`<div class="k">${esc(label)}</div><div class="v${String(k).indexOf("desc")>=0?" nucleus-desc":""}">${richText(String(v))}</div>`);
       });
       if(Array.isArray(it.gift_ids)&&it.gift_ids.length)sum.push(`<div class="k">礼包</div><div class="v mono">${esc(it.gift_ids.join("、"))}</div>`);
@@ -4107,7 +4167,17 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     </div>`;
     if(CORE_BOARD&&nucleusMode)C2.html[c2IdOf(it)]=html;
     if(rosterMode)C2.html[c2IdOf(it)]=html;
-    return html;
+    /* 称号板：分组头随卡片一起进网格（grid-column:1/-1），位置和数据顺序同源 */
+    let tgHead="";
+    if(TITLE_BOARD){
+      const gk=titleGroupKey(it);
+      if(i===0||gk!==lastTitleGroup){
+        lastTitleGroup=gk;
+        const n=list.filter(x=>titleGroupKey(x)===gk).length;
+        tgHead=`<div class="tg-head" data-tg="${esc(gk||"none")}"><span class="tg-name">${esc(titleGroupLabel(gk))}</span><span class="tg-n">${n} 条</span></div>`;
+      }
+    }
+    return tgHead+html;
   }).join("");
   if((CORE_BOARD||rosterBoard)&&C2.open)c2Resync();
 }

@@ -53,9 +53,9 @@ def main() -> int:
         scope = (it.get("gender_scope") or "").strip()
         gender = (it.get("gender") or "").strip()
         want_f = want_m = False
-        if scope == "仅女" or gender == "女":
+        if "仅女" in scope or "仅女" in gender or gender == "女":
             want_f = True
-        elif scope == "仅男" or gender == "男":
+        elif "仅男" in scope or "仅男" in gender or gender == "男":
             want_m = True
         elif scope == "双版" or gender == "女/男":
             want_f = want_m = True
@@ -63,7 +63,21 @@ def main() -> int:
             # 通用/未知：有图就不要求成对，没图就记「缺图」
             want_f = want_m = False
 
-        generic = any(("图示" in x or "图标" in x or not x) for x in labels) if label_list else False
+        # 单性别款：把对侧的「缺口」记录清掉，否则页面仍会按 missing 渲染成缺男/缺女图
+        single_f = ("仅女" in scope) or ("仅女" in gender)
+        single_m = ("仅男" in scope) or ("仅男" in gender)
+        media = it.get("_media") or {}
+        gaps = media.get("missing")
+        if gaps and (single_f or single_m):
+            keep = [g for g in gaps
+                    if not ((single_f and "男" in str(g.get("gender")))
+                            or (single_m and "女" in str(g.get("gender"))))]
+            if keep:
+                media["missing"] = keep
+            else:
+                media.pop("missing", None)
+            it["_media"] = media
+
         if not imgs:
             state = "缺图"
         elif want_f and want_m:
@@ -76,9 +90,9 @@ def main() -> int:
             else:
                 state = None          # 只有通用图，无法判断缺哪一侧
         elif want_f:
-            state = None if has_f else ("缺女图" if not has_m else "缺女图")
+            state = None if has_f else "缺女图"
         elif want_m:
-            state = None if has_m else ("缺男图" if not has_f else "缺男图")
+            state = None if has_m else "缺男图"
         else:
             state = None
 

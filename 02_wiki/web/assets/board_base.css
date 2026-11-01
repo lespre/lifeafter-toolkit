@@ -589,6 +589,29 @@ body.b-avatar_catalog .head-tags,
 body.b-mutation_core_full .head-tags,
 body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-origin:right center}
 
+/* ── 称号板（title_catalog，2026-11-01）：1539 条以文字为主，密排 + 获取途径分组 ──
+   卡头只留 称号名 / 称号ID / 获取途径；说明压到 2 行（全文仍在 D2 详情里，不受 clamp 影响）；
+   分组头横跨整行，并吸顶在标题栏下方。 */
+body.b-title_catalog .wrap{max-width:1780px}
+body.b-title_catalog #grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-items:start}
+body.b-title_catalog #grid>.i{padding:10px 12px;gap:5px}
+body.b-title_catalog #grid>.i .i-head{align-items:center}
+body.b-title_catalog #grid>.i .i-name{font-size:13.5px;line-height:1.3}
+body.b-title_catalog #grid>.i .i-id{font-size:11px}
+body.b-title_catalog #grid>.i .i-obtain{display:inline-block;margin-top:3px;font-size:10.5px;line-height:1.5;
+  color:#9ec1e0;background:rgba(110,160,210,.12);border:1px solid rgba(110,160,210,.28);border-radius:6px;padding:0 6px}
+body.b-title_catalog #grid>.i .head-tags{display:none}
+body.b-title_catalog #grid>.i>.kv{grid-template-columns:46px minmax(0,1fr);gap:1px 8px}
+body.b-title_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden}
+body.b-title_catalog .tg-head{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;margin:6px 0 0;
+  padding:6px 4px 4px;border-bottom:1px solid rgba(255,255,255,.12);
+  position:sticky;top:var(--top-h,64px);z-index:8;
+  background:linear-gradient(180deg,rgba(16,19,29,.96),rgba(16,19,29,.88))}
+body.b-title_catalog .tg-name{font-size:13px;font-weight:650;letter-spacing:.02em;color:#d9a441}
+body.b-title_catalog .tg-n{font-size:11px;color:var(--muted,#8b8b8b);font-variant-numeric:tabular-nums}
+@media (max-width:640px){body.b-title_catalog #grid{grid-template-columns:minmax(0,1fr)}}
+
 /* 名册类板（击败播报 / MVP 等）：横幅图居中 + 柔光底板，不再被拉成细条 */
 .i.roster .i-media{display:flex!important;justify-content:center!important;align-items:center!important;
   padding:12px 10px;border-radius:12px;overflow:hidden;

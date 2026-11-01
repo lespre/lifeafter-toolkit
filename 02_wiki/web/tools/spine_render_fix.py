@@ -383,6 +383,18 @@ def _region_cache(page_img, region):
     return crop
 
 
+def _composite_clipped(canvas, sprite, x, y):
+    """把 sprite 贴到 canvas；越界部分裁剪（PIL 的 alpha_composite 不允许负坐标）。"""
+    bx0, by0 = max(0, x), max(0, y)
+    bx1 = min(canvas.width, x + sprite.width)
+    by1 = min(canvas.height, y + sprite.height)
+    if bx1 <= bx0 or by1 <= by0:
+        return False
+    piece = sprite.crop((bx0 - x, by0 - y, bx1 - x, by1 - y))
+    canvas.alpha_composite(piece, (bx0, by0))
+    return True
+
+
 def draw_region(canvas, page_img, region, att, world_mat, scale, off):
     """region 附件：按骨骼世界矩阵贴图。
 
@@ -405,7 +417,9 @@ def draw_region(canvas, page_img, region, att, world_mat, scale, off):
     sy = math.hypot(m[0][1], m[1][1])
     dw = max(1, int(round(w * scale * sx)))
     dh = max(1, int(round(h * scale * sy)))
-    if dw < 1 or dh < 1:
+    # ★ 骨架里 scale=0 的插槽（粒子从 0 放大）缩放后只剩 1px，
+    #   会变成画布上的杂点并撑大包围盒 —— 直接不画。
+    if dw < 2 or dh < 2:
         return False
     sprite = crop.resize((dw, dh), Image.BILINEAR)
     ang = math.degrees(math.atan2(m[1][0], m[0][0]))
@@ -413,9 +427,9 @@ def draw_region(canvas, page_img, region, att, world_mat, scale, off):
         sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
     px = m[0][2] * scale + off[0]
     py = -m[1][2] * scale + off[1]
-    canvas.alpha_composite(sprite, (int(round(px - sprite.width / 2)),
-                                    int(round(py - sprite.height / 2))))
-    return True
+    return _composite_clipped(canvas, sprite,
+                              int(round(px - sprite.width / 2)),
+                              int(round(py - sprite.height / 2)))
 
 
 def _sample_vertices(att, bones_mat, slotmat, scale, off):
@@ -594,8 +608,9 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
         if col is not None:
             # ★ 只对 region 小图着色，再贴到画布（旧版对整张 1400×1400 画布做
             #   float32 转换，每个 slot 一次 → 551 slot 的骨架单帧要十几秒）
-            tmp = Image.new("RGBA", (1, 1), (0, 0, 0, 0))
-            sprite = _region_sprite(page_img, reg, att, bm, scale)
+            # ★ off 必须传进去：曾漏传导致着色插槽贴在 (0,0) 左上角，
+            #   这些杂点会把包围盒撑大，主体被缩成一小块。
+            sprite = _region_sprite(page_img, reg, att, bm, scale, off)
             if sprite is None:
                 continue
             canvas.alpha_composite(tint(sprite[0], col), sprite[1])
@@ -604,8 +619,11 @@ def render_frame(skel, regions, page_imgs, anim, anim_slots, t, scale, off,
     return canvas
 
 
-def _region_sprite(page_img, region, att, world_mat, scale):
-    """region 附件 → (RGBA sprite, 贴图左上角坐标)。"""
+def _region_sprite(page_img, region, att, world_mat, scale, off=(0, 0)):
+    """region 附件 → (RGBA sprite, 贴图左上角坐标)。
+
+    off 必须是画布原点（画布中心）。漏传会把着色插槽贴到 (0,0)。
+    """
     w = float(att.get("width", region.get("w", 0)))
     h = float(att.get("height", region.get("h", 0)))
     if w <= 0 or h <= 0:
@@ -620,12 +638,14 @@ def _region_sprite(page_img, region, att, world_mat, scale):
     sy = math.hypot(m[0][1], m[1][1])
     dw = max(1, int(round(w * scale * sx)))
     dh = max(1, int(round(h * scale * sy)))
+    if dw < 2 or dh < 2:
+        return None
     sprite = crop.resize((dw, dh), Image.BILINEAR)
     ang = math.degrees(math.atan2(m[1][0], m[0][0]))
     if abs(ang) > 1e-3:
         sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
-    px = m[0][2] * scale
-    py = -m[1][2] * scale
+    px = m[0][2] * scale + off[0]
+    py = -m[1][2] * scale + off[1]
     pos = (int(round(px - sprite.width / 2)), int(round(py - sprite.height / 2)))
     return (sprite, pos)
 
@@ -743,13 +763,51 @@ def _bg_rect(skel, regions, world, scale, off, canvas):
         return None
     return (max(0, x0), max(0, y0), min(canvas - 1, x1), min(canvas - 1, y1))
 
+def _render_all(skel, regions, page_imgs, anim, anim_slots, dur, cnt, scale, off,
+                canvas_wh, order_tl, slot_map, static_order):
+    """按给定 scale 渲染 cnt 帧。"""
+    att_cache = {}
+    frs = []
+    for i in range(cnt):
+        t = dur * i / cnt
+        order = draw_order(skel, anim, t) if order_tl else static_order
+        frs.append(render_frame(skel, regions, page_imgs, anim, anim_slots, t,
+                                scale, off, canvas_wh, att_cache, order, slot_map))
+    return frs
+
+
+def _coverage_bbox(frs, canvas):
+    """按「覆盖率」求包围盒（排除只在少数帧出现的飞散粒子/特效）。
+
+    返回 (minx, miny, maxx, maxy)；无内容时返回整张画布。
+    """
+    acc = None
+    for f in frs:
+        a = (np.asarray(f)[:, :, 3] > 4)
+        acc = a.astype(np.int16) if acc is None else (acc + a)
+    if acc is None:
+        return 0, 0, canvas - 1, canvas - 1
+    thr = max(1, int(round(len(frs) * 0.25)))
+    ys, xs = np.nonzero(acc >= thr)
+    if xs.size == 0:
+        ys, xs = np.nonzero(acc >= 1)
+    if xs.size == 0:
+        return 0, 0, canvas - 1, canvas - 1
+    return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
+
+
 def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=None,
                   internal=420, canvas=1400):
     """→ (frames[RGBA], meta)。
 
-    box：最终输出最长边（px）。internal：骨架最长边在内部画布上的映射尺寸。
+    box：最终输出最长边（px）。internal：主体在内部画布上应占的最长边。
     canvas：内部全画布边长（要足够大以容纳超出 skeleton 声明边界的装饰）。
     先在大画布渲染所有帧，再对并集包围盒紧裁，最后等比缩到 box。
+
+    ★ 两遍渲染（2026-11-01）：不同骨架声明的 width/height 与实际内容尺寸
+      差异极大（3.8 素材常见声明 520×1025 而主体只有 ~110 单位），
+      一层 scale 会让部分条目渲成 40px 的小图。第一遍渲染后量**实测覆盖率
+      包围盒**，若明显小于 internal 则按实测值重算 scale 再渲一遍。
     """
     skel, pages, regions = load_atlas(atlas)
     aname = aname or anim_name(skel)
@@ -759,59 +817,39 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
     sk = skel.get("skeleton") or {}
     W = max(float(sk.get("width") or 128), 1.0)
     H = max(float(sk.get("height") or 128), 1.0)
-    scale = internal / max(W, H)
+    anim = (skel.get("animations") or {}).get(aname) or {}
+    # ★ 骨架声明的 width/height 不含根部缩放（Spine 3.8 的 GUI 素材常见
+    #   root scale=0.14 这类写法）。只按 W/H 定 scale 会让主体只占几十像素，
+    #   之后再放大 → 又糊又小。这里把根部缩放并进去，让主体稳定占满 internal。
+    try:
+        root_w = bone_world(skel, anim, 0.0)[skel["bones"][0]["name"]]
+        root_scale = math.hypot(root_w[0][0], root_w[1][0])
+    except Exception:                                   # noqa: BLE001
+        root_scale = 1.0
+    root_scale = min(max(root_scale, 0.02), 4.0)
+    scale = internal / (max(W, H) * root_scale)
+    scale = min(max(scale, 0.02), 16.0)
     canvas_wh = (canvas, canvas)
     off = (canvas / 2, canvas / 2)
-    anim = (skel.get("animations") or {}).get(aname) or {}
     anim_slots = anim.get("slots") or {}
     order_tl = anim.get("drawOrder")
     slot_map = {s["name"]: s for s in skel.get("slots", [])}
     # 静态绘制顺序（无 drawOrder 时间线时复用，避免每帧重建）
     static_order = [s["name"] for s in skel.get("slots", [])]
 
-    att_cache = {}
-    frs = []
-    for i in range(cnt):
-        t = dur * i / cnt
-        order = draw_order(skel, anim, t) if order_tl else static_order
-        frs.append(render_frame(skel, regions, page_imgs, anim, anim_slots, t,
-                                scale, off, canvas_wh, att_cache, order, slot_map))
-
-    # ── 包围盒：用「覆盖率」而不是并集，排除飞散的粒子/特效 ──
-    #   并集包围盒会被只在 1~2 帧出现的粒子撑得很大 → 主体被缩成一小块。
-    if frs:
-        cnt = None
-        for f in frs:
-            a = (np.asarray(f)[:, :, 3] > 4)
-            cnt = a.astype(np.int16) if cnt is None else (cnt + a)
-        thr = max(1, int(round(len(frs) * 0.25)))
-        ys, xs = np.nonzero(cnt >= thr)
-        if xs.size == 0:
-            ys, xs = np.nonzero(cnt >= 1)
-        if xs.size:
-            minx, maxx = int(xs.min()), int(xs.max())
-            miny, maxy = int(ys.min()), int(ys.max())
-        else:
-            minx = miny = 0
-            maxx = maxy = canvas - 1
-    else:
-        minx = miny = 0
-        maxx = maxy = canvas - 1
-    # ★ 背景框优先：有 bg 槽的骨架，游戏里是被头像框裁切显示的，
-    #   按内容 bbox 裁会把框外的装饰（金币/光效）算进画幅 → 主体缩成小块。
-    try:
-        w0 = bone_world(skel, anim, 0.0)
-        brect = _bg_rect(skel, regions, w0, scale, off, canvas)
-        if brect:
-            # 只有「内容大部分落在背景框内」才按背景框裁（游戏里就是这样被裁的）；
-            # 否则说明这个 bg 候选不是头像框，退回内容 bbox。
-            a0 = (np.asarray(frs[0])[:, :, 3] > 4)
-            inside = a0[brect[1]:brect[3] + 1, brect[0]:brect[2] + 1].sum()
-            total = a0.sum()
-            if total and inside / total >= 0.45:
-                minx, miny, maxx, maxy = brect
-    except Exception:                                   # noqa: BLE001
-        pass
+    frs = _render_all(skel, regions, page_imgs, anim, anim_slots, dur, cnt, scale,
+                      off, canvas_wh, order_tl, slot_map, static_order)
+    minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
+    long = max(maxx - minx + 1, maxy - miny + 1)
+    # 主体远小于内部画布 → 按实测包围盒放大 scale 再渲一遍（最多一次）
+    if long > 0 and long < internal * 0.9:
+        factor = min(internal / float(long), 20.0)
+        scale = min(scale * factor, 16.0)
+        frs = _render_all(skel, regions, page_imgs, anim, anim_slots, dur, cnt, scale,
+                          off, canvas_wh, order_tl, slot_map, static_order)
+        minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
+    # ★ 不再用 _bg_rect 猜背景框：它会把面积大的方形装饰（烟花/粒子）
+    #   当成背景框，裁出的画面里主体只剩一小点 —— 这正是「乱七八糟」的来源。
     # 留 4px 边
     minx = max(0, minx - 4); miny = max(0, miny - 4)
     maxx = min(canvas - 1, maxx + 4); maxy = min(canvas - 1, maxy + 4)
@@ -823,8 +861,8 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
     if long > box:
         r = box / long
         nw, nh = max(1, int(round(cw * r))), max(1, int(round(ch * r)))
-        frs = [f.resize((nw, nh), Image.BILINEAR) for f in frs]
+        frs = [f.resize((nw, nh), Image.LANCZOS) for f in frs]
 
-    meta = {"anim": aname, "duration": dur, "frames": cnt,
+    meta = {"anim": aname, "duration": dur, "frames": len(frs),
             "canvas": (cw, ch), "spine": sk.get("spine"), "ik": bool(skel.get("ik"))}
     return frs, meta
