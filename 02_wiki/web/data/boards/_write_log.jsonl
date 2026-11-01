@@ -11,3 +11,6 @@
 {"ts": "2026-11-01 19:20:57", "board": "fashion_wardrobe", "items": 3152, "sha_before": "9c4d7f75fce7bfd1", "sha_after": "8edaac3d0e330ccd", "script": "fetch_missing_icons_v4.py", "pid": 40772}
 {"ts": "2026-11-01 19:21:10", "board": "fashion_wardrobe", "items": 3152, "sha_before": "8edaac3d0e330ccd", "sha_after": "ef1a242964173b15", "script": "-c", "pid": 45552}
 {"ts": "2026-11-01 19:22:07", "board": "fashion_wardrobe", "items": 3152, "sha_before": "ef1a242964173b15", "sha_after": "3d54a62e30f23fb5", "script": "fetch_missing_icons_v5.py", "pid": 21816}
+{"ts": "2026-11-01 20:10:20", "board": "fashion_wardrobe", "items": 3152, "sha_before": "3d54a62e30f23fb5", "sha_after": "bddf0e0bff9e78b6", "script": "fetch_icons_v6_families.py", "pid": 44584}
+{"ts": "2026-11-01 20:13:57", "board": "fashion_wardrobe", "items": 3152, "sha_before": "bddf0e0bff9e78b6", "sha_after": "5035a1630158176b", "script": "fetch_partial_gender_v6b.py", "pid": 40760}
+{"ts": "2026-11-01 20:14:01", "board": "fashion_wardrobe", "items": 3152, "sha_before": "5035a1630158176b", "sha_after": "4f9bce3175e42e97", "script": "recompute_gender_icon_state.py", "pid": 42396}

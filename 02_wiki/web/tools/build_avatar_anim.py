@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import pathlib
 import sys
 import time
@@ -45,6 +46,23 @@ MIN_BYTES = 1024
 
 def log(msg):
     print("[anim] %s" % msg, flush=True)
+
+
+def _atomic_save_image(img, path):
+    """原子落盘（写临时文件再 replace）。
+
+    ★ 并行渲染时同一骨架的多条头像可能同时取到同一张页贴图/同一份 atlas，
+      直接写会互相覆盖出半截文件；原子替换可避免读到残缺产物。
+    """
+    tmp = path.with_name(path.name + ".%d.tmp" % os.getpid())
+    img.save(tmp, format="PNG")
+    os.replace(tmp, path)
+
+
+def _atomic_write_text(path, text):
+    tmp = path.with_name(path.name + ".%d.tmp" % os.getpid())
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
 
 
 def page_logical(base: str, page_name: str):
@@ -118,7 +136,7 @@ def load_pages(res: Resolver, base: str, pages, sizes):
             if not (cache.is_file() and cache.stat().st_size > MIN_BYTES):
                 try:
                     cache.parent.mkdir(parents=True, exist_ok=True)
-                    img.save(cache)
+                    _atomic_save_image(img, cache)
                 except Exception:                          # noqa: BLE001
                     pass
         # 2) 本地缓存（含旧版遗留的单页 base+".png"）
@@ -150,6 +168,89 @@ def load_pages(res: Resolver, base: str, pages, sizes):
     return img_of, missing
 
 
+_WORKER_RES = None
+
+
+def _worker_res():
+    """worker 进程内复用同一个 Resolver（每条任务都新建会重复扫索引）。"""
+    global _WORKER_RES
+    if _WORKER_RES is None:
+        _WORKER_RES = Resolver()
+    return _WORKER_RES
+
+
+def _render_item(job):
+    """渲染单条（可在子进程里跑）。只返回结果，不做任何全局写回。
+
+    ★ 并行安全：每条只写自己的 assets/avatar_anim/<id>.png，文件名互不冲突；
+      avatar_catalog.json 只由主进程最后统一写一次，worker 绝不碰。
+    """
+    it, size, frames = job
+    iid = it["id"]
+    base = it["spine_path"].strip().replace("\\", "/").rstrip("/")
+    at_f = SPINE_DIR / (base + ".atlas")
+    js_f = SPINE_DIR / (base + ".json")
+    res = _worker_res()
+
+    def bad(why):
+        return {"ok": False, "id": iid, "base": base, "why": why}
+
+    # 文本资源：优先本地缓存，否则回源
+    atlas_text = None
+    if at_f.is_file():
+        atlas_text = at_f.read_text(encoding="utf-8", errors="ignore")
+    else:
+        t = res.fetch_text(base + ".atlas")
+        if t is not None:
+            at_f.parent.mkdir(parents=True, exist_ok=True)
+            _atomic_write_text(at_f, t)
+            atlas_text = t
+    if atlas_text is None:
+        return bad("atlas 取不到")
+    if not js_f.is_file():
+        t = res.fetch_text(base + ".json")
+        if t is not None:
+            js_f.parent.mkdir(parents=True, exist_ok=True)
+            _atomic_write_text(js_f, t)
+    if not js_f.is_file():
+        return bad("json 取不到")
+    # 页贴图：按 atlas 声明的每个页名逐页解析（还原树优先）
+    try:
+        skel, pages, _regions = FX.load_atlas(at_f)
+    except Exception as ex:                            # noqa: BLE001
+        return bad("解析失败 " + str(ex)[:50])
+    img_of, missing = load_pages(res, base, pages, page_declared_sizes(atlas_text))
+    if missing:
+        return bad("页贴图缺失 " + ",".join(missing[:3]))
+    if not img_of:
+        return bad("贴图页读不出")
+    aname = FX.anim_name(skel)
+    if not aname:
+        return bad("无动画")
+    dur = FX.anim_duration(skel, aname) or 1.0
+    cnt = max(6, min(frames, int(round(dur * FPS_FALLBACK))))
+    try:
+        # 名片框按画板裁（火焰溢出属正常），头像/头像框按覆盖率紧裁
+        crop = "artboard" if it.get("kind") == "名片框" else "coverage"
+        frs, _meta = FX.render_frames(at_f, img_of, box=size, cnt=cnt,
+                                      aname=aname, crop=crop)
+    except Exception as ex:                            # noqa: BLE001
+        return bad("渲染失败 " + str(ex)[:50])
+    if not frs:
+        return bad("无帧")
+    out = ANIM_DIR / (iid + ".png")
+    # ★ 绝不能量化：Pillow 的 quantize() 会破坏 APNG 多帧的透明通道与调色板，
+    #   导致第 2~N 帧出现色块/反转（实测帧间差 75~120，视觉即"乱码"）。
+    #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
+    frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
+                duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
+    return {"ok": True, "id": iid, "base": base,
+            "anim": "assets/avatar_anim/%s.png" % iid,
+            "meta": {"spine": (skel.get("skeleton") or {}).get("spine"),
+                     "anim": aname, "frames": cnt,
+                     "duration": round(dur, 3), "source": base + ".atlas"}}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--kind", default="", help="逗号分隔；空=全部")
@@ -159,10 +260,11 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=5400.0)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--jobs", type=int, default=0,
+                    help="并行进程数；0=按 CPU 自动（上限 24）")
     a = ap.parse_args()
 
     t0 = time.time()
-    res = Resolver()
     cat = json.loads(CAT.read_text(encoding="utf-8"))
     items = cat["items"]
     kinds = [k for k in a.kind.split(",") if k]
@@ -186,107 +288,69 @@ def main() -> int:
         targets.append(it)
 
     log("待渲染 %d 条（总条目 %d）" % (len(targets), len(items)))
+    jobs = a.jobs or min(24, max(1, (os.cpu_count() or 4) // 2))
     done = fail = 0
     fails = []
-    for n, it in enumerate(targets, 1):
-        if time.time() > t0 + a.budget:
-            log("到预算，停在第 %d 条" % n)
-            break
-        iid = it["id"]
-        base = it["spine_path"].strip().replace("\\", "/").rstrip("/")
-        at_f = SPINE_DIR / (base + ".atlas")
-        js_f = SPINE_DIR / (base + ".json")
-        # 文本资源：优先本地缓存，否则回源
-        atlas_text = None
-        if at_f.is_file():
-            atlas_text = at_f.read_text(encoding="utf-8", errors="ignore")
-        else:
-            t = res.fetch_text(base + ".atlas")
-            if t is not None:
-                at_f.parent.mkdir(parents=True, exist_ok=True)
-                at_f.write_text(t, encoding="utf-8")
-                atlas_text = t
-        if atlas_text is None:
-            fail += 1
-            fails.append((iid, base, "atlas 取不到"))
-            continue
-        if not js_f.is_file():
-            t = res.fetch_text(base + ".json")
-            if t is not None:
-                js_f.parent.mkdir(parents=True, exist_ok=True)
-                js_f.write_text(t, encoding="utf-8")
-        if not js_f.is_file():
-            fail += 1
-            fails.append((iid, base, "json 取不到"))
-            continue
-        # 页贴图：按 atlas 声明的每个页名逐页解析（还原树优先）
-        try:
-            skel, pages, regions = FX.load_atlas(at_f)
-        except Exception as ex:                            # noqa: BLE001
-            fail += 1
-            fails.append((iid, base, "解析失败 " + str(ex)[:50]))
-            continue
-        img_of, missing = load_pages(res, base, pages, page_declared_sizes(atlas_text))
-        if missing:
-            fail += 1
-            fails.append((iid, base, "页贴图缺失 " + ",".join(missing[:3])))
-            continue
-        if not img_of:
-            fail += 1
-            fails.append((iid, base, "贴图页读不出"))
-            continue
-        aname = FX.anim_name(skel)
-        if not aname:
-            fail += 1
-            fails.append((iid, base, "无动画"))
-            continue
-        dur = FX.anim_duration(skel, aname) or 1.0
-        cnt = max(6, min(a.frames, int(round(dur * FPS_FALLBACK))))
-        try:
-            # 名片框按画板裁（火焰溢出属正常），头像/头像框按覆盖率紧裁
-            crop = "artboard" if it.get("kind") == "名片框" else "coverage"
-            frs, meta = FX.render_frames(at_f, img_of, box=a.size, cnt=cnt,
-                                         aname=aname, crop=crop)
-        except Exception as ex:                            # noqa: BLE001
-            fail += 1
-            fails.append((iid, base, "渲染失败 " + str(ex)[:50]))
-            continue
-        if not frs:
-            fail += 1
-            fails.append((iid, base, "无帧"))
-            continue
-        out = ANIM_DIR / (iid + ".png")
-        # ★ 绝不能量化：Pillow 的 quantize() 会破坏 APNG 多帧的透明通道与调色板，
-        #   导致第 2~N 帧出现色块/反转（实测帧间差 75~120，视觉即"乱码"）。
-        #   直接保存 RGBA 帧，重编码后帧间差为 0.0，画面完全正确。
-        frs[0].save(out, format="PNG", save_all=True, append_images=frs[1:],
-                    duration=int(round(dur * 1000 / cnt)), loop=0, default_image=True)
-        m = it.setdefault("_media", {})
-        m["anim"] = "assets/avatar_anim/%s.png" % iid
-        m["anim_meta"] = {"spine": (skel.get("skeleton") or {}).get("spine"),
-                          "anim": aname, "frames": cnt,
-                          "duration": round(dur, 3), "source": base + ".atlas"}
-        done += 1
-        if n % 25 == 0:
-            log("  %d/%d ｜ 成功 %d ｜ 失败 %d ｜ %.0fs" % (n, len(targets), done, fail, time.time() - t0))
+    media = {}
+    results = []
 
+    def collect(r):
+        nonlocal done, fail
+        results.append(r)
+        if r["ok"]:
+            done += 1
+            media[r["id"]] = (r["anim"], r["meta"])
+        else:
+            fail += 1
+            fails.append((r["id"], r["base"], r["why"]))
+        n = done + fail
+        if n % 25 == 0:
+            log("  %d/%d ｜ 成功 %d ｜ 失败 %d ｜ %.0fs"
+                % (n, len(targets), done, fail, time.time() - t0))
+
+    if jobs > 1 and len(targets) > 1:
+        from concurrent.futures import ProcessPoolExecutor, as_completed
+        log("并行 %d 进程（共 %s 逻辑核）" % (jobs, os.cpu_count()))
+        pool = ProcessPoolExecutor(max_workers=jobs)
+        try:
+            futs = {pool.submit(_render_item, (it, a.size, a.frames)): it["id"]
+                    for it in targets}
+            for fut in as_completed(futs):
+                collect(fut.result())
+                if time.time() > t0 + a.budget:
+                    log("到预算，取消剩余任务")
+                    for f2 in futs:
+                        f2.cancel()
+                    break
+        finally:
+            pool.shutdown(wait=True, cancel_futures=True)
+    else:
+        for it in targets:
+            if time.time() > t0 + a.budget:
+                log("到预算，停在第 %d 条" % len(results))
+                break
+            collect(_render_item((it, a.size, a.frames)))
     log("完成：成功 %d ｜ 失败 %d ｜ %.0fs" % (done, fail, time.time() - t0))
     for f in fails[:15]:
         log("  失败 %s ｜ %s ｜ %s" % f)
     (PROJ / "01_索引与产物/30_分析/avatar_anim_fail_rescue.json").write_text(
         json.dumps(fails, ensure_ascii=False, indent=1), encoding="utf-8")
     if not a.dry:
-        # ★ 失败条目不能继续挂着旧动图（旧产物大量残缺/串图）。
-        #   清引用 + 删旧文件 → 看板回落静态图，且下次不带 --force 也会重试。
+        fail_ids = {f[0] for f in fails}
         for it in items:
-            if it["id"] not in {f[0] for f in fails}:
-                continue
-            m = it.get("_media") or {}
-            m.pop("anim", None)
-            m.pop("anim_meta", None)
-            p = ANIM_DIR / (it["id"] + ".png")
-            if p.is_file():
-                p.unlink()
+            iid = it["id"]
+            if iid in media:
+                m = it.setdefault("_media", {})
+                m["anim"], m["anim_meta"] = media[iid]
+            elif iid in fail_ids:
+                # ★ 失败条目不能继续挂着旧动图（旧产物大量残缺/串图）。
+                #   清引用 + 删旧文件 → 看板回落静态图，且下次不带 --force 也会重试。
+                m = it.get("_media") or {}
+                m.pop("anim", None)
+                m.pop("anim_meta", None)
+                p = ANIM_DIR / (iid + ".png")
+                if p.is_file():
+                    p.unlink()
         CAT.write_text(json.dumps(cat, ensure_ascii=False, indent=1), encoding="utf-8")
         log("已写回 %s" % CAT.name)
     return 0
