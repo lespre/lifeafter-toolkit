@@ -754,17 +754,17 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）称号总表",
-      "category": "一、时装类 / （六）称号",
+      "category": "四、资料层 / （四）称号",
       "board": "title_catalog",
-      "items": 1539,
-      "generated": "2026-10-23",
+      "items": 1550,
+      "generated": "",
       "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 1539
+        "structure": 1550
       },
       "state_summary": {
-        "条目": 1539
+        "条目": 1550
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -772,7 +772,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1539
+          "replayed-structural": 1550
         }
       }
     },

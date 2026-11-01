@@ -1,0 +1,250 @@
+{
+ "meta": {
+  "name": "（内测版）包体入口与版本线 · 国内 47 / 海外 63",
+  "category": "三、综合资料 / （十二）包体入口与版本线",
+  "source_server": "本会话实测（2026-11-01）· 全矩阵探测 460 + 1,840 次请求",
+  "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+  "generated": "2026-11-01",
+  "evidence": "structure",
+  "notes": "结论：包体入口不是一个数——国内 47 个真入口（另有 18 个假 200 占位）、海外 63 个。最新构建永远在国内提前测试线；海外没有测试服体系。CDN 全站 3,428 条 / 246.4GB，按类别取用即可：补名字不需要下任何资源层包，要资源本体只需取对应模块的内容档，每个模块最小档合计仅 3.09GB。",
+  "state_summary": {
+   "verified": 17,
+   "unresolved": 1
+  },
+  "source_label": "本会话实测",
+  "provenance": {
+   "contract_version": 3,
+   "contract": "frozen-audited-artifact",
+   "audit_status": "passed",
+   "source_scope": {
+    "cross_source_policy": "no-cross-source-field-join",
+    "integer_join_policy": "no-equal-integer-join",
+    "runtime_final_policy": "unknown-unless-runtime-proven"
+   },
+   "source_locks": [
+    {
+     "source_id": "package-entries",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+     "bytes": 0,
+     "mtime_ns": 0,
+     "role": "primary"
+    }
+   ]
+  }
+ },
+ "items": [
+  {
+   "id": "ent_cn",
+   "name": "国内真入口 · 47 个",
+   "desc": "按「代次 × 后缀」全矩阵探测（23 代次 × 20 后缀 = 460 个组合），返回 200 且版本号不是占位值的算真入口。代次分布：newpc 7、android3 7、pc3 6、android4 6、newpc4 6、ios3 5、android 4、ios 3、pc 3。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "国内入口",
+   "真入口": 47
+  },
+  {
+   "id": "ent_fake",
+   "name": "假 200 · 18 个入口是占位",
+   "desc": "不存在的入口也返回 200，但版本号恒为一个 2018 年的固定串。只看状态码会把入口数记成 65——必须用版本号过滤，真入口才 47 个。这是本项目踩过的坑。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "探测纪律",
+   "占位入口": 18
+  },
+  {
+   "id": "ent_latest",
+   "name": "当前最新构建 · newpc4_playertest",
+   "desc": "版本 20261029_133512_playertest_newpc，分支 2026_11_06_release，提交号 5849888。内容目录比版本号还新一天（清单写的是打包时间，目录是最后一次上传时间）。这是全体系最高的提交号，端游测试线永远领先海外。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "最新构建",
+   "版本": "20261029_133512_playertest_newpc",
+   "提交号": "5849888"
+  },
+  {
+   "id": "ent_oversea",
+   "name": "海外真入口 · 63 个 / 4 台主机",
+   "desc": "海外按域名分四套：g66na.update.easebar.com（25）、g66eu.update.netease.com（5）、g66kr.update.easebar.com（8）、g66na.update.netease.com（25）。其中两台的返回内容一模一样，是同一个后端的域名别名。海外版本号多一段 oversea/taiwan 标记，且没有端游测试线那批后缀。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "海外入口",
+   "真入口": 63
+  },
+  {
+   "id": "ent_nofs",
+   "name": "海外没有测试服这套体系",
+   "desc": "提前测试、大版本测试、比赛服、KOL 服、主题服等十几条后缀线，海外一条都没有；白名单文件在四个海外域名下全部 404。⇒ 提前测试 + 白名单 + 激活码是国服独有玩法，不是「海外藏起来了」。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "海外对比"
+  },
+  {
+   "id": "ent_ab",
+   "name": "分发参数 · 补丁按 50% 灰度 + 最低客户端版本",
+   "desc": "包清单里带着分发开关：补丁 AB 测试比例 50%、最低客户端版本号、是否走覆盖层、是否禁海洋强制更新、是否禁云游戏 A 包。这些字段决定「同一版本号下不同账号拿到的文件可能不同」。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "分发参数"
+  },
+  {
+   "id": "ent_diff",
+   "name": "版本增量 · 端游 5.6 万 / 安卓 14.2 万条路径",
+   "desc": "用包清单里的条目差集算下一版新增：端游从正式到提前测试新增 55,704 条路径、移除 36,510 条；安卓同口径新增 141,739、移除 43,153。两条线差 2.5 倍是正常的（安卓分片条目本来就多一倍），报数必须写明是哪条线。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "版本增量"
+  },
+  {
+   "id": "ent_cross",
+   "name": "★ 跨发行线差集不能当新增",
+   "desc": "欧盟线与国服线对比，双向各十几万条差异——那不是新旧差异，是发行线差异（海外带语言包、渠道包、审查调整）。只有同一条线的前后两个版本才能读「新增了什么」。这条是本轮实测纠正的方法论错误。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "纪律"
+  },
+  {
+   "id": "ent_modular",
+   "name": "资源按模块切包 · 212 个模块 / 91.9 GB",
+   "desc": "清单里列出 711 个按模块切分的资源层包：角色 7.8GB、场景实例 6.0GB、怪物 5.7GB、建筑 3.6GB、影地功能建筑 3.0GB、武器 1.65GB。这些包在资源站上 404、在下载站上被签名挡住，只能由客户端按需拉。",
+   "evidence": "structure",
+   "state": "unresolved",
+   "status_tags": [
+    "unresolved"
+   ],
+   "类别": "分发结构",
+   "模块": 212,
+   "总量GB": 91.9
+  },
+  {
+   "id": "B_rule",
+   "name": "★ 报数纪律",
+   "desc": "一、入口计数必须滤占位，否则数字虚高。二、清单版本号不等于内容目录名，取内容要按目录取。三、跨发行线差集不算增量。四、可达性必须做阴性对照，代理接管会让裸连接假阳性。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "纪律"
+  },
+  {
+   "id": "cdn_total",
+   "name": "CDN 目录五分类 · 3,428 条 / 246.4 GB",
+   "desc": "把安卓测试线与端游测试线两份版本清单合并去重后，全站可下东西分五类：资源层包 2,231 条 220.9GB（占 90%）、包体容器 102 条 21.4GB、引擎与可执行 1,056 条 4.0GB、补丁分片 38 条 0.05GB。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "目录总览",
+   "条目": 3428,
+   "总量GB": 246.4
+  },
+  {
+   "id": "cdn_layers",
+   "name": "资源层包按模块 · 模型最重、多语言最小",
+   "desc": "命名规律「模块.图层.分块[.分卷]」。体积前六：模型 50.2GB／角色 47.7GB／场景带宽 25.7GB／界面图层 23.5GB／场景 22.2GB／高清模型 18.9GB。小模块里武器 1.65GB、界面动画 2.3GB、多语言 3.3GB。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "资源层包",
+   "模块数": 183
+  },
+  {
+   "id": "cdn_tier",
+   "name": "档位实测 · 最小档是索引，内容档也不含材质",
+   "desc": "抽三层验证：最小档（28MB 整包）里材质与贴图引用全为 0，只是索引与元数据；内容档（803MB，取前 20MB）有 96 个容器但材质与贴图引用同样为 0；本地 2.5GB 主图层包全扫也只有 29 条贴图引用。⇒ 省体积可行（每模块最小档合计仅 3.09GB，全量 149.9GB），但对还原文件名没有帮助，因为材质都在 gpk 里。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "档位机制",
+   "最小档GB": 3.09,
+   "全量GB": 149.9
+  },
+  {
+   "id": "cdn_abi",
+   "name": "引擎四套变体 · 只需匹配本机那一套",
+   "desc": "运行库按 ABI 与系统兼容线切成四套：x64（275 个）、x64-2（251）、x64-3（276）、x64-win7（251），合计 4.0GB。同一批 dll 的四份，实际只需要与机器匹配的一套。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "引擎",
+   "套数": 4
+  },
+  {
+   "id": "cdn_patch",
+   "name": "补丁分片 · 18 个里 9 个是空占位",
+   "desc": "每个版本 18 个分片清单，但其中 5/6/7/9/10/11/12/14/17 这九个只有 8 字节（空占位），真内容只落在 pkg_1/2/3/4/8/13/15/16/18。分片清单本身是全站最小的一类，合计 50MB。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "补丁分片",
+   "空占位": 9
+  },
+  {
+   "id": "cdn_recipe",
+   "name": "★ 下载配方 · 三个关键参数缺一就 404",
+   "desc": "请求头必须带客户端标识：UA 用 Orbit/1.0、加 X-NTES-PROJECT: 66，否则一律 404。资源层包的目录用清单里的 version 字段（如 20261020_080153_playertest_android），而补丁分片用内容目录（如 20261030_182900_playertest_newpc）——两套目录不能混用。支持 Range 断点续传与分片采样。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "操作配方"
+  },
+  {
+   "id": "cdn_archaeology",
+   "name": "版本考古 · 28 个历史目录仍在线，最早回到 2026-05",
+   "desc": "历史内容目录没有下线，仍可逐个拉分片清单：端游正式线 9-15→9-17→10-26（条目 441,979→441,980→465,981，最后一次 +38002/-1899）；端游测试线 9-23→9-28→10-15→10-30（最后一次 +41152/-34267）；安卓测试线 10-14→10-30 增加 116,445 条。★ 必须按「平台＋线路」分组相减——跨线路相减会得到几十万的假差集。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "版本考古",
+   "存活目录": 28
+  },
+  {
+   "id": "cdn_archaeology_naming",
+   "name": "★ 版本考古对还原文件名没用（三条依据）",
+   "desc": "第一，分片清单是纯 8 字节标识数组，里面没有名字；第二，历史目录只放分片清单与覆盖包，不放资源容器本体；第三，名字来源（界面清单、材质引用）全在资源容器里，与目录属哪个版本无关。⇒ 版本考古记在「溯源账」：能回答某资源首次出现在哪一版、每版真实增删多少，但不产生任何文件名。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "纪律"
+  }
+ ]
+}

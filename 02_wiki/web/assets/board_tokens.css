@@ -49,6 +49,10 @@
   --blood: #8274aa;
   --blood-2: #b6a7df;
   --gold: #d4b58a;
+  /* 称号档位色（2026-11-01）：取自 ui/chenghao_icon/img_chenghao_line_N、bg_N 贴图实测
+     （1 蓝 / 2 紫 / 3 金 / 4 红 / 8 绿），仅称号板使用 */
+  --tb-blue: #7fb3e8;  --tb-purple: #b48ee0;  --tb-gold: #d9b46a;
+  --tb-red: #e08a7a;   --tb-green: #8fc98e;
 
   /* ── 形状与投影 ── */
   --radius: 6px;

@@ -1,0 +1,155 @@
+window.WIKI_BOARD_package_entries = {
+ "meta": {
+  "name": "（内测版）包体入口与版本线 · 国内 47 / 海外 63",
+  "category": "三、综合资料 / （十二）包体入口与版本线",
+  "source_server": "本会话实测（2026-11-01）· 全矩阵探测 460 + 1,840 次请求",
+  "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+  "generated": "2026-11-01",
+  "evidence": "structure",
+  "notes": "结论：包体入口不是一个数——国内 47 个真入口（另有 18 个假 200 占位）、海外 63 个。最新构建永远在国内提前测试线；海外没有测试服体系。清单里能拿到全部分片清单，但 91.9GB 的模块资源包被签名挡住，只能由客户端按需拉。",
+  "state_summary": {
+   "verified": 9,
+   "unresolved": 1
+  },
+  "source_label": "本会话实测",
+  "provenance": {
+   "contract_version": 3,
+   "contract": "frozen-audited-artifact",
+   "audit_status": "passed",
+   "source_scope": {
+    "cross_source_policy": "no-cross-source-field-join",
+    "integer_join_policy": "no-equal-integer-join",
+    "runtime_final_policy": "unknown-unless-runtime-proven"
+   },
+   "source_locks": [
+    {
+     "source_id": "package-entries",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+     "bytes": 0,
+     "mtime_ns": 0,
+     "role": "primary"
+    }
+   ]
+  }
+ },
+ "items": [
+  {
+   "id": "ent_cn",
+   "name": "国内真入口 · 47 个",
+   "desc": "按「代次 × 后缀」全矩阵探测（23 代次 × 20 后缀 = 460 个组合），返回 200 且版本号不是占位值的算真入口。代次分布：newpc 7、android3 7、pc3 6、android4 6、newpc4 6、ios3 5、android 4、ios 3、pc 3。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "国内入口",
+   "真入口": 47
+  },
+  {
+   "id": "ent_fake",
+   "name": "假 200 · 18 个入口是占位",
+   "desc": "不存在的入口也返回 200，但版本号恒为一个 2018 年的固定串。只看状态码会把入口数记成 65——必须用版本号过滤，真入口才 47 个。这是本项目踩过的坑。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "探测纪律",
+   "占位入口": 18
+  },
+  {
+   "id": "ent_latest",
+   "name": "当前最新构建 · newpc4_playertest",
+   "desc": "版本 20261029_133512_playertest_newpc，分支 2026_11_06_release，提交号 5849888。内容目录比版本号还新一天（清单写的是打包时间，目录是最后一次上传时间）。这是全体系最高的提交号，端游测试线永远领先海外。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "最新构建",
+   "版本": "20261029_133512_playertest_newpc",
+   "提交号": "5849888"
+  },
+  {
+   "id": "ent_oversea",
+   "name": "海外真入口 · 63 个 / 4 台主机",
+   "desc": "海外按域名分四套：g66na.update.easebar.com（25）、g66eu.update.netease.com（5）、g66kr.update.easebar.com（8）、g66na.update.netease.com（25）。其中两台的返回内容一模一样，是同一个后端的域名别名。海外版本号多一段 oversea/taiwan 标记，且没有端游测试线那批后缀。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "海外入口",
+   "真入口": 63
+  },
+  {
+   "id": "ent_nofs",
+   "name": "海外没有测试服这套体系",
+   "desc": "提前测试、大版本测试、比赛服、KOL 服、主题服等十几条后缀线，海外一条都没有；白名单文件在四个海外域名下全部 404。⇒ 提前测试 + 白名单 + 激活码是国服独有玩法，不是「海外藏起来了」。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "海外对比"
+  },
+  {
+   "id": "ent_ab",
+   "name": "分发参数 · 补丁按 50% 灰度 + 最低客户端版本",
+   "desc": "包清单里带着分发开关：补丁 AB 测试比例 50%、最低客户端版本号、是否走覆盖层、是否禁海洋强制更新、是否禁云游戏 A 包。这些字段决定「同一版本号下不同账号拿到的文件可能不同」。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "分发参数"
+  },
+  {
+   "id": "ent_diff",
+   "name": "版本增量 · 端游 5.6 万 / 安卓 14.2 万条路径",
+   "desc": "用包清单里的条目差集算下一版新增：端游从正式到提前测试新增 55,704 条路径、移除 36,510 条；安卓同口径新增 141,739、移除 43,153。两条线差 2.5 倍是正常的（安卓分片条目本来就多一倍），报数必须写明是哪条线。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "版本增量"
+  },
+  {
+   "id": "ent_cross",
+   "name": "★ 跨发行线差集不能当新增",
+   "desc": "欧盟线与国服线对比，双向各十几万条差异——那不是新旧差异，是发行线差异（海外带语言包、渠道包、审查调整）。只有同一条线的前后两个版本才能读「新增了什么」。这条是本轮实测纠正的方法论错误。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "纪律"
+  },
+  {
+   "id": "ent_modular",
+   "name": "资源按模块切包 · 212 个模块 / 91.9 GB",
+   "desc": "清单里列出 711 个按模块切分的资源层包：角色 7.8GB、场景实例 6.0GB、怪物 5.7GB、建筑 3.6GB、影地功能建筑 3.0GB、武器 1.65GB。这些包在资源站上 404、在下载站上被签名挡住，只能由客户端按需拉。",
+   "evidence": "structure",
+   "state": "unresolved",
+   "status_tags": [
+    "unresolved"
+   ],
+   "类别": "分发结构",
+   "模块": 212,
+   "总量GB": 91.9
+  },
+  {
+   "id": "B_rule",
+   "name": "★ 报数纪律",
+   "desc": "一、入口计数必须滤占位，否则数字虚高。二、清单版本号不等于内容目录名，取内容要按目录取。三、跨发行线差集不算增量。四、可达性必须做阴性对照，代理接管会让裸连接假阳性。",
+   "evidence": "structure",
+   "state": "verified",
+   "status_tags": [
+    "verified"
+   ],
+   "类别": "纪律"
+  }
+ ]
+};
+try{document.body.classList.add('doc-mode');}catch(e){}

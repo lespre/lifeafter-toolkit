@@ -91,25 +91,57 @@ def save(board, bid):
 
 def main() -> int:
     # 称号
+    # 2026-11-01：补齐「档位 / 颜色 / 动态 / 艺术字」四项，全部来自 title_conf_data 自身字段或同源资源，
+    # 不做跨表推断：
+    #   style            → 档位 1-8（源表字段；1/2/3 对应初/中/高级职业称号，4+ 为特殊称号）
+    #   style + 贴图色   → 颜色（ui/chenghao_icon/img_chenghao_line_N、bg_N 已解码：1 蓝 / 2 紫 / 3 金 / 4 红 / 8 绿）
+    #   shining_style    → 动态；319 条全部命中 shining_title_conf_data.key，取其 cocos_csb 动画文件
+    #   style_icon / normal_name_icon → 艺术字（称号名美术字图，png 路径）
+    # 无对应贴图的档位（5/6/7）颜色留空，不猜。
+    shining = {r["key"]: r for r in decode("shining_title_conf_data")}
+
+    def sval(r, k):
+        v = r["values"].get(k)
+        return v[1] if isinstance(v, tuple) else v
+
+    style_color = {1: "蓝", 2: "紫", 3: "金", 4: "红", 8: "绿"}
     items = []
     for r in decode("title_conf_data"):
         nm = str(g(r, "name") or "").strip()
         if not nm:
             continue
+        st = g(r, "style")
+        st = int(st) if st not in (None, "") else None
+        col = style_color.get(st, "") if st else ""
+        ss = g(r, "shining_style")
+        anim = ""
+        if ss not in (None, "") and int(ss) in shining:
+            anim = str(sval(shining[int(ss)], "cocos_csb") or "")
+        art = str(g(r, "style_icon") or g(r, "normal_name_icon") or "")
+        flags = []
+        if anim:
+            flags.append("动态")
+        if art:
+            flags.append("美术字")
         items.append({"id": "title_%s" % r["key"], "item_id": r["key"], "name": nm,
                       "kind": "称号", "desc": str(g(r, "desc") or "").strip(),
                       "obtain": str(g(r, "quest") or ""),
+                      "style": st, "color": col, "flags": flags,
+                      "anim_csb": anim, "art_icon": art,
                       "evidence": "structure", "evidence_level": "static/candidate",
                       "status_tags": ["static config"],
                       "source": "title_conf_data", "provenance": prov(r["key"], "title_conf_data")})
-    save(make_board("称号总表", "四、资料层 / （四）称号", items,
+    save(make_board("（内测版）称号总表", "四、资料层 / （四）称号", items,
                     [["name", "称号"], ["desc", "说明"]],
-                    {"item_id": "称号ID", "obtain": "获取条件", "desc": "说明"},
-                    "一行 = title_conf_data 一行；获取条件为客户端 quest 键名（技术详情）。"), "title_catalog",
-         id_label="称号ID") if False else save(make_board("称号总表", "四、资料层 / （四）称号", items,
-                    [["name", "称号"], ["desc", "说明"]],
-                    {"item_id": "称号ID", "obtain": "获取条件", "desc": "说明"},
-                    "一行 = title_conf_data 一行；获取条件为客户端 quest 键名（技术详情）。", id_label="称号ID"), "title_catalog")
+                    {"item_id": "称号ID", "obtain": "获取条件", "desc": "说明",
+                     "style": "档位", "color": "颜色", "flags": "特性",
+                     "anim_csb": "动态动画资源", "art_icon": "艺术字资源"},
+                    "一行 = title_conf_data 一行；获取条件为客户端 quest 键名（技术详情）。"
+                    "档位=style（1-8）；颜色按 style 对应贴图（ui/chenghao_icon/img_chenghao_line_N、bg_N）实测："
+                    "1 蓝 / 2 紫 / 3 金 / 4 红 / 8 绿，5-7 无贴图留空；"
+                    "动态=shining_style 命中 shining_title_conf_data 的 cocos 动画；"
+                    "美术字=style_icon / normal_name_icon 指向的称号名图。",
+                     id_label="称号ID"), "title_catalog")
 
     # 头像框 + 动态头像
     items = []

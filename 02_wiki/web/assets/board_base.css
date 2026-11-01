@@ -602,6 +602,17 @@ body.b-title_catalog #grid>.i .i-head{align-items:center}
 body.b-title_catalog #grid>.i .i-name{font-size:13.5px;line-height:1.3}
 body.b-title_catalog #grid>.i .i-id{font-size:11px}
 body.b-title_catalog #grid>.i .head-tags{display:none}
+/* 属性小标：颜色（按档位贴图实测色）/ 档位 / 特性（动态、美术字） */
+body.b-title_catalog .i-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+body.b-title_catalog .tb{font-size:10.5px;line-height:1.65;padding:0 6px;border-radius:5px;
+  border:1px solid var(--border);color:var(--fg-muted);background:var(--panel);white-space:nowrap}
+body.b-title_catalog .tb-c{font-weight:650}
+body.b-title_catalog .tb-c[data-c="蓝"]{color:var(--tb-blue);border-color:var(--tb-blue)}
+body.b-title_catalog .tb-c[data-c="紫"]{color:var(--tb-purple);border-color:var(--tb-purple)}
+body.b-title_catalog .tb-c[data-c="金"]{color:var(--tb-gold);border-color:var(--tb-gold)}
+body.b-title_catalog .tb-c[data-c="红"]{color:var(--tb-red);border-color:var(--tb-red)}
+body.b-title_catalog .tb-c[data-c="绿"]{color:var(--tb-green);border-color:var(--tb-green)}
+body.b-title_catalog .tb-f{color:var(--accent);border-color:var(--accent-border)}
 body.b-title_catalog #grid>.i>.kv{grid-template-columns:46px minmax(0,1fr);gap:1px 8px}
 body.b-title_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;
   -webkit-box-orient:vertical;overflow:hidden}
@@ -800,3 +811,14 @@ body.view-mode .vnote{font-size:11px;color:var(--muted-2);margin-top:9px;line-he
   body.view-mode .vbar-row .vb-k{flex:0 0 104px}
   body.view-mode .vcol-b{max-height:340px}
 }
+
+/* 同系列图（子卡详情）：立绘/宣传/赠送/衣柜背景 */
+.fr-art{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;padding:8px 0}
+.fr-art a{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--card)}
+.fr-art img{width:100%;height:150px;object-fit:contain;display:block;background:#0d1014}
+.fr-art span{display:block;font-size:11px;padding:4px 6px;opacity:.75;text-align:center}
+.fr-artbox summary{cursor:pointer}
+/* 同 model 跳转 */
+.fr-sib{cursor:pointer}
+.fr-sib:hover{text-decoration:underline}
+.fcard.fr-flash{outline:2px solid var(--accent);outline-offset:2px}

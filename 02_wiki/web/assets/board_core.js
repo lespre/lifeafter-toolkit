@@ -1159,7 +1159,8 @@ function fillFilterSelects(items){
     if(DATA)DATA._custFilters=[];
     return;
   }
-  /* 称号板：只保留「获取途径」一个筛选（与分组同源），武器/皮肤系列控件全部隐藏。 */
+  /* 称号板：筛选只保留数据里真有的轴 —— 获取途径（分组同源）、颜色档位、特性（动态/美术字）。
+     其它控件（武器/皮肤系列、排序）全部隐藏。 */
   if(TITLE_BOARD){
     ["fGrade","fType","fIp","fRelease","fNameSt","fOrder","fDir"].forEach(id=>{
       const el=document.getElementById(id);if(el)el.style.display="none";
@@ -1168,13 +1169,18 @@ function fillFilterSelects(items){
     const lh=document.getElementById("listingHint");if(lh)lh.style.display="none";
     const wrap=document.getElementById("fCustomWrap");if(wrap)wrap.innerHTML="";
     DATA._custFilters=[];
-    const sel=document.createElement("select");
-    sel.innerHTML=`<option value="">全部获取途径</option>`+
-      TITLE_GROUPS.map(([k,l])=>`<option value="${k==null?"__none__":esc(k)}">${esc(l)}</option>`).join("");
-    sel.setAttribute("aria-label","获取途径");
-    sel.onchange=render;
-    wrap.appendChild(sel);
-    DATA._custFilters.push({key:"obtain",sel});
+    const mk=(label,opts)=>{
+      const s=document.createElement("select");
+      s.innerHTML=`<option value="">${esc(label)}</option>`+
+        opts.map(([k,l])=>`<option value="${k==null?"__none__":esc(k)}">${esc(l)}</option>`).join("");
+      s.setAttribute("aria-label",label.replace(/^全部/,""));
+      s.onchange=render;wrap.appendChild(s);return s;
+    };
+    DATA._custFilters.push({key:"obtain",sel:mk("全部获取途径",TITLE_GROUPS)});
+    DATA._custFilters.push({key:"color",sel:mk("全部颜色",[["蓝","蓝色"],["紫","紫色"],["金","金色"],["红","红色"],["绿","绿色"]])});
+    /* 特性是数组字段（flags），走自定义判定，不按字符串等值比较 */
+    DATA._custFilters.push({sel:mk("全部特性",[["动态","动态"],["美术字","美术字"]]),
+      test:(it,v)=>Array.isArray(it.flags)&&it.flags.includes(v)});
     return;
   }
   // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
@@ -1608,8 +1614,12 @@ function frCard(it,cidx,full){
         const nm=vma.aliases.map(x=>String(x).split("-")[0]).join("、");
         return `<span class="fr-alt fr-alias" title="表里同 model 同一件时装的另一条记录（开发/占位名），已并入本卡：${esc(vma.aliases.join("、"))}">别名 ${esc(nm)}</span>`;})()}
       ${((it.value_words||[]).length)?`<span class="fr-alt fr-vw" title="${esc(frValueWordsTitle(it))}">${esc(frValueWords(it).split(" / ")[0]||"卖点")}${(it.value_words||[]).length>1?` +${(it.value_words||[]).length-1}`:""}</span>`:""}
+      ${(()=>{const _m=(mid!=null)?String(mid):null;const _g=_m&&window.FR_MODEL_INDEX&&window.FR_MODEL_INDEX[_m];
+        if(!_g||_g.length<2)return "";const _others=_g.filter(x=>x.id!==it.id);
+        if(!_others.length)return "";
+        return `<a class="fr-alt fr-sib" href="#" data-sib-model="${esc(_m)}" title="同 model ${esc(_m)} 的其它部件：${esc(_others.map(x=>x.name).join("、"))}">同 model ${_g.length}</a>`;})()}
       ${(it.dye&&((it.dye.scheme_count||0)>0||((it.dye.hair||[]).length>0)))?`<span class="fr-alt fr-dye" title="${esc(frDyeText(it))}${it.dye&&(it.dye.hair||[]).length?"；发色 "+esc(frHairDyeText(it)):""}">可染色</span>`:""}
-      ${it.reborn_vis?`<span class="fr-alt fr-bud" title="fashion_data.reborn_vis=1：藏花——再生者形态下把背上的花苞藏起来（2026-11-01 游戏内核对确认）。与「换花」互斥，只出现在头发/衣服/套装，背包 0">藏花</span>`:""}
+      ${it.reborn_vis?`<span class="fr-alt fr-bud" title="reborn_vis=1">藏花</span>`:""}
       ${it.flower_bud?`<span class="fr-alt fr-flower" title="换花：replace_flower_path 把花苞换成主题花，不走藏花；${it.flower_bud&&it.flower_bud.reborn_socket?"挂在 "+(it.flower_bud.reborn_socket.socket||"flower")+" 挂点、仅再生者形态挂载：":""}${esc(frFlowerText(it))}">换花</span>`:""}
       ${(()=>{const g=(it._media&&it._media.missing)||[];if(!g.length)return "";
         const gs=[...new Set(g.map(x=>x.gender).filter(Boolean))].sort().join("");
@@ -1817,7 +1827,7 @@ function frDetailsHTML(it,kv){
         (it.effect_text?`<div class="fd-row"><span class="fd-k">效果来源</span><span class="fd-v mono">${esc(it.effect_source||"—")}</span></div>`:"")+
         (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${it.charm_value!=null?esc(it.charm_value)+" · ":""}${esc(it.charm_note)}${(it.charm_candidates||[]).length?`<br><span style="opacity:.75">各款式行取值：${esc(it.charm_candidates.join(" / "))}（当前取主行，待核对）</span>`:""}</span></div>`:"")+
         (it.equip_charm!=null?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.equip_charm)}${it.equip_level!=null?` · 装备品级 ${esc(it.equip_level)}`:""}<br><span style="opacity:.75">来源：all_equips_data（装备表）· ${esc(it.equip_charm_source||"")}</span></span></div>`:"")+
-        (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是 · <span class=\"mono\">reborn_vis=1</span>（再生者形态下把背上的花苞藏起来）":"否"}</span></div>`:"")+
+        (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是 · <span class=\"mono\">reborn_vis=1</span>":"否"}</span></div>`:"")+
         (it.flower_bud?`<div class="fd-row"><span class="fd-k">换花</span><span class="fd-v">${esc(frFlowerText(it))}${it.flower_bud.reborn_socket?`<br><span class="mono" style="opacity:.75">挂点 ${esc(it.flower_bud.reborn_socket.socket||"flower")} · ${it.flower_bud.reborn_socket.only_reborn?"仅再生者形态挂载":"常规挂载"}${(it.flower_bud.reborn_socket.models||[]).length?" · "+esc(it.flower_bud.reborn_socket.models[0]):""}</span>`:""}</span></div>`:"")+
         (it.dye?`<div class="fd-row"><span class="fd-k">染色方案</span><span class="fd-v">${esc(frDyeText(it))}${frDyeSwatches(it)}${(it.dye.hair||[]).length?`<br><span class="mono" style="opacity:.75">发色 ${esc(frHairDyeText(it))}</span>`:""}</span></div>`:"")+
         (it.obtain_res?`<div class="fd-row"><span class="fd-k">获取途径</span><span class="fd-v">${esc(it.obtain_res)}</span></div>`:"")+
@@ -1831,17 +1841,21 @@ function frDetailsHTML(it,kv){
         (it.model_paths?`<div class="fd-row"><span class="fd-k">模型路径</span><span class="fd-v mono">${esc([...(it.model_paths.model||[]).map(x=>"主体 "+x),...(it.model_paths.high||[]).map(x=>"高模 "+x),...(it.model_paths.body||[]).map(x=>"身体 "+x),...(it.model_paths.socket||[]).map(x=>"挂点 "+x),...(it.model_paths.v2_socket||[]).map(x=>"v2挂点 "+x)].join(" ｜ "))}</span></div>`:"")+
         (it.model_note?`<div class="fd-row"><span class="fd-k">模型说明</span><span class="fd-v">${esc(it.model_note)}</span></div>`:"")+
         (it.npc_hidden?`<div class="fd-row"><span class="fd-k">NPC 展示</span><span class="fd-v">不在 NPC/怪物身上出现</span></div>`:"")+
-        ((it.durations&&it.durations.length)?`<div class="fd-row"><span class="fd-k">时限</span><span class="fd-v">${it.duration_state==="permanent"?"永久":(it.duration_state==="timed"?"限时":"永久 + 限时")}（${it.durations.join(" / ")} 天）</span></div>`:"")+
+        
         (it.part_code!=null?`<div class="fd-row"><span class="fd-k">内部部位码</span><span class="fd-v"><span class="mono">${it.part_code}</span> · ${esc(it.part_code_cn||"")}（部位判定唯一口径）</span></div>`:"")+
         (it.show_name&&it.show_name!==it.name?`<div class="fd-row"><span class="fd-k">游戏内显示名</span><span class="fd-v">${esc(it.show_name)}</span></div>`:"")+
-        (it.cohabit_level?`<div class="fd-row"><span class="fd-k">friendliness</span><span class="fd-v">${esc(frCohabitText(it))}<br><span style="opacity:.75">按部位固定：背包 1960 · 衣服 1280 · 头饰 680（与魅力值无关）<br><span style="opacity:.75">100 分制隐藏分值；数值刻度与同居五档相同，但配置表未把时装与好感度关联，<b>语义待核</b></span></span></div>`:"")+
+        
         (it.show_no_have!=null?`<div class="fd-row"><span class="fd-k">未拥有时</span><span class="fd-v">${it.show_no_have?"衣柜里也显示":"衣柜里不显示"}</span></div>`:"")+
         (it.desc_man?`<div class="fd-row"><span class="fd-k">男版描述</span><span class="fd-v">${richText(it.desc_man)}</span></div>`:"")+
         ((it.name_man||it.name_female)?`<div class="fd-row"><span class="fd-k">分版命名</span><span class="fd-v">女版 ${esc(it.name_female||"—")} / 男版 ${esc(it.name_man||"—")}</span></div>`:"")+
         ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
         (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
       }</div></details>`:"";
-  return fdesc+`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>`;
+  const art=((it._media||{}).art)||[];
+  const artHtml=art.length?`<details class="tech fr-artbox"><summary>同系列图 ${art.length}</summary><div class="fr-art">${
+    art.map(a=>`<a href="${esc(a.png)}" target="_blank" rel="noopener" title="${esc(a.family||"")} · ${esc(a.source||"")}"><img src="${esc(a.png)}" alt="${esc(a.label||a.family||"")}" loading="lazy"><span>${esc(a.label||a.family||"")}</span></a>`).join("")
+  }</div></details>`:"";
+  return fdesc+artHtml+`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>`;
 }
 /* 折叠时显示描述的前一小段，展开看全文 */
 function frDescHead(desc){
@@ -2438,6 +2452,16 @@ const TITLE_GROUPS=[
 function titleGroupKey(it){return String((it&&it.obtain)||"")||null;}
 function titleGroupLabel(v){const hit=TITLE_GROUPS.find(g=>g[0]===v);return hit?hit[1]:"其他";}
 function titleGroupOrder(v){const i=TITLE_GROUPS.findIndex(g=>g[0]===v);return i<0?TITLE_GROUPS.length-1:i;}
+/* 称号属性小标：档位(style)、颜色(style 对应贴图)、特性(动态/美术字)。
+   数据由 build_text_boards.py 从 title_conf_data 的 style / shining_style / style_icon 直读，
+   前端只负责显示，不做二次推断。 */
+function titleBadges(it){
+  const out=[];
+  if(it.color)out.push(`<span class="tb tb-c" data-c="${esc(it.color)}">${esc(it.color)}色</span>`);
+  if(it.style)out.push(`<span class="tb tb-lv" title="源表 style 档位">档位 ${esc(it.style)}</span>`);
+  (Array.isArray(it.flags)?it.flags:[]).forEach(f=>out.push(`<span class="tb tb-f">${esc(f)}</span>`));
+  return out.length?`<div class="i-badges">${out.join("")}</div>`:"";
+}
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
    只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
    --top-h 表达式相加，这样 board_plugins 事后校准 --top-h 时两者一起走，不会错位。 */
@@ -3880,6 +3904,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       for(const cf of DATA._custFilters){
         const v=cf.sel?cf.sel.value:"";
         if(!v)continue;
+        /* 数组/多值字段走 test 回调；其余按字段等值比较 */
+        if(typeof cf.test==="function"){if(!cf.test(it,v))return false;continue;}
         /* __none__ = 「该字段在源表里没登记」，与「空值不过滤」区分开 */
         if(v==="__none__"){if(String(it[cf.key]??"")!=="")return false;continue;}
         if(String(it[cf.key]??"")!==v)return false;
@@ -3966,7 +3992,23 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     // 时装板：卡面只留 图轨/名字/部位/品级/魅力值/model_id；详情/技术详情只在 D2 灯箱里（frCard full 版缓存到 C2.htmlFull）
     // 顺序 = 先按筛选结果，再按排序控件（默认保留板上原序 = 归一名字序）
     const frList=frSortList(items);
+    /* 同 model 索引：用于卡内「同 model N」跳转（钉住后可点，滚到兄弟卡并高亮） */
+    window.FR_MODEL_INDEX={};
+    for(const _it of frList){
+      const _m=(_it.model_id!=null)?String(_it.model_id):null;
+      if(!_m)continue;
+      (window.FR_MODEL_INDEX[_m]=window.FR_MODEL_INDEX[_m]||[]).push({id:_it.id,name:_it.name,part:_it.part});
+    }
     C2.prov=FR_D2;C2.chips=frList;C2.html={};C2.htmlFull={};
+    /* 深链：?d2=<卡id> 直接打开该卡的详情（也方便实测/分享某一子卡） */
+    const _d2id=(function(){try{return getParam("d2");}catch(e){return "";}})();
+    if(_d2id){
+      const _di=frList.findIndex(x=>String(c2IdOf(x))===String(_d2id));
+      if(_di>=0) setTimeout(()=>{try{c2Open(_di);
+        if((function(){try{return getParam("art");}catch(e){return "";}})()==="1"){
+          document.querySelectorAll(".fr-artbox").forEach(d=>d.open=true);
+        }}catch(e){}},60);
+    }
     g.innerHTML=frList.map((it,i)=>{
       const h=frCard(it,i);C2.html[c2IdOf(it)]=h;C2.htmlFull[c2IdOf(it)]=frCard(it,i,true);return h;
     }).join("");
@@ -4160,7 +4202,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
         <div><div class="i-name">${esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
         ${referenceTitle(it.reference_fields)}
-        <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div></div>
+        <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
+        ${TITLE_BOARD?titleBadges(it):""}</div>
         <span class="head-tags">${nucleusMode?"":`<span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${it.image_status?`<span class="ev gap" title="${esc(it.image_note||"该资源在当前包快照中不可得")}">${esc(it.image_status)}</span>`:""}${renderStateTags(it.status_tags)}`}</span>
       </div>
       ${bodyHtml}
@@ -4565,4 +4608,25 @@ else loadBoard(b,d=>{
       if(s!==sig){sig=s;try{render();}catch(err){/* 保持页面可用，不因刷新失败白屏 */}}
     },30000);
   })();
+});
+
+
+/* 2026-11-01：同 model 跳转 —— 点「同 model N」滚到同 model 的下一张卡并高亮
+   只在时装板生效；被钉住（D2 灯箱）时也能用，因为卡片仍在列表 DOM 里。 */
+document.addEventListener("click", function(e){
+  const a=e.target.closest&&e.target.closest("[data-sib-model]");
+  if(!a)return;
+  e.preventDefault();
+  const m=a.getAttribute("data-sib-model");
+  const group=(window.FR_MODEL_INDEX||{})[m]||[];
+  if(group.length<2)return;
+  const cur=a.closest(".fcard");
+  const curId=cur?cur.getAttribute("data-frid"):null;
+  const idx=group.findIndex(x=>x.id===curId);
+  const next=group[(idx+1)%group.length];
+  const el=document.querySelector('.fcard[data-frid="'+String(next.id).replace(/"/g,'')+'"]');
+  if(!el)return;
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+  el.classList.add("fr-flash");
+  setTimeout(()=>el.classList.remove("fr-flash"),1600);
 });
