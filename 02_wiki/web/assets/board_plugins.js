@@ -48,24 +48,27 @@
   }
   (T['树']||[]).forEach(function(top){
     (top.children||[]).forEach(function(leaf){
-      var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+      var ids=(leaf.boards||[]).filter(_navVis);
       ids.forEach(function(id){
         TITLES[id]=(ids.length===1) ? leaf.name : cleanNm(byId[id].name||id);
       });
     });
   });
   window.__BOARD_TITLES=TITLES;
+  /* 2026-11-01：跟随首页的「显示内测板块」开关（localStorage: wiki_show_preview） */
+  var SHOW_PREVIEW_NAV=(function(){try{return localStorage.getItem('wiki_show_preview')==='1';}catch(e){return false;}})();
+  function _navVis(id){var b=byId[id];return !!b && (SHOW_PREVIEW_NAV || !/内测/.test(String(b.name||'')));}
   var nav=document.getElementById('siteNav');
   var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>';
   (T['树']||[]).forEach(function(top){
     html += '<div class="grp">'+(ICON[top.id]||'') + '<span>' + top.name + '</span></div>';
     var rows=[];
     (top.boards||[]).forEach(function(id){
-      if(!byId[id]) return;
+      if(!_navVis(id)) return;
       rows.push({kind:'row', id:id, label:ntag(id)+top.name.replace(/^[^、]*、/,'')});
     });
     (top.children||[]).forEach(function(leaf){
-      var ids=(leaf.boards||[]).filter(function(x){return byId[x];});
+      var ids=(leaf.boards||[]).filter(function(x){return _navVis(x);});
       if(!ids.length) return;
       if(ids.length===1){ rows.push({kind:'row', id:ids[0], label:ntag(ids[0])+leaf.name}); return; }
       rows.push({kind:'head', label:leaf.name});
