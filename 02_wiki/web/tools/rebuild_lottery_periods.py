@@ -208,19 +208,42 @@ def kind_of(item_id: int) -> str:
     return "道具"
 
 
+
+class _EmptyTable:
+    """oversea 变体被清理后占位：名字/图标解析退回到成品索引表，不抛异常。"""
+
+    def __init__(self, rel: str = "<missing>"):
+        self.by_key = {}
+        self.rel = rel
+        self.blob = b""
+        self.pool = []
+
+    def jump_values(self, value):
+        return []
+
+
+def _opt_table(path: Path, chs: Path | None = None) -> "Table | _EmptyTable":
+    if not path.exists():
+        return _EmptyTable(path.name)
+    try:
+        return Table(path, chs if (chs and chs.exists()) else None)
+    except Exception:
+        return _EmptyTable(path.name)
+
+
 class Names:
     def __init__(self):
         idx_items = Path(INDEX_ROOT / "items")
         self.maps: dict[str, tuple[dict[str, str], str]] = {}
         self.icons: dict[int, tuple[str, str]] = {}
 
-        self.fashion = Table(TREE / "fashion_data.py", TREE / "fashion_data_chs.py")
-        self.gift = Table(TREE / "gift_data.py", TREE / "gift_data_chs.py")
-        self.recipe = Table(TREE / "recipe.py", TREE / "recipe_chs.py")
-        self.common_ov = Table(OVER / "common_item_data_auto_oversea_data_kj1.py",
-                               OVER / "common_item_data_auto_oversea_data_kj1_chs.py")
-        self.equips = Table(OVER / "all_equips_data_auto_oversea_data_yk.py",
-                            OVER / "all_equips_data_auto_oversea_data_yk_chs.py")
+        self.fashion = _opt_table(TREE / "fashion_data.py", TREE / "fashion_data_chs.py")
+        self.gift = _opt_table(TREE / "gift_data.py", TREE / "gift_data_chs.py")
+        self.recipe = _opt_table(TREE / "recipe.py", TREE / "recipe_chs.py")
+        self.common_ov = _opt_table(OVER / "common_item_data_auto_oversea_data_kj1.py",
+                                    OVER / "common_item_data_auto_oversea_data_kj1_chs.py")
+        self.equips = _opt_table(OVER / "all_equips_data_auto_oversea_data_yk.py",
+                                 OVER / "all_equips_data_auto_oversea_data_yk_chs.py")
 
         for label, table in (("fashion_data", self.fashion), ("gift_data", self.gift),
                              ("recipe", self.recipe),

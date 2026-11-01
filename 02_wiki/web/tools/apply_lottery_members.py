@@ -28,6 +28,7 @@ from board_io import write_board_pair  # noqa: E402
 ANALYSIS = Path(r"E:\la拆包项目\01_索引与产物\30_分析")
 INDEX = Path(r"E:\la拆包项目\01_索引与产物\10_索引")
 BOARD = WEB / "data/boards/lottery_periods.json"
+ASSETS = WEB / "assets"
 GEN = dt.date.today().strftime("%Y%m%d")
 
 
@@ -83,6 +84,11 @@ def main() -> int:
     board["items"] = [i for i in board["items"] if not i.get("pool_mapped")]
 
     names_map = load_names()
+    # 先用 R.Names（fashion/gift/recipe/索引 多表合判），补不上的再退回本地表
+    try:
+        Rnames = R.Names()
+    except Exception:
+        Rnames = None
     board_names = {str(i.get("item_id")): i.get("name")
                    for i in board["items"] if i.get("name")}
 
@@ -99,7 +105,23 @@ def main() -> int:
             if str(iid) in have:
                 continue
             have.add(str(iid))
-            name = names_map.get(str(iid)) or board_names.get(str(iid))
+            name, name_src = None, None
+            if Rnames is not None:
+                try:
+                    n0, nsrc0, _alts0 = Rnames.resolve(iid)
+                    if n0:
+                        name, name_src = n0, nsrc0
+                except Exception:
+                    pass
+            if not name:
+                name = names_map.get(str(iid)) or board_names.get(str(iid))
+                name_src = "index:item_names" if names_map.get(str(iid)) else "board:existing" 
+            icon_rel = None
+            png = ASSETS / "lottery_icons" / f"{iid}.png"
+            if not png.exists():
+                png = ASSETS / "item_icons" / f"{iid}.png"
+            if png.exists():
+                icon_rel = f"assets/{png.parent.name}/{png.name}"
             item = {
                 "id": f"{pid}:m{iid}",
                 "period_id": pid,
@@ -116,8 +138,10 @@ def main() -> int:
                 "status_tags": (["unresolved", "static config"] if not name
                                 else ["verified", "static config", "runtime final unknown"]),
                 "_media": {"images": [], "total": 0},
-                "icon_state": "未下发",
-                "icon": None,
+                "icon_state": "已下发" if icon_rel else "未下发",
+                "icon": icon_rel,
+                "_media": {"images": ([{"png": icon_rel}] if icon_rel else []),
+                           "total": (1 if icon_rel else 0)},
                 "source": f"{rec['source']} · 槽位 {ent.get('slot')}",
                 "pool_id": ent.get("pool_id"),
                 "slot": ent.get("slot"),
@@ -127,7 +151,7 @@ def main() -> int:
                     "table": rec["source"].split(".")[0],
                     "row_key": ent.get("pool_id") or per.get("conf_key"),
                     "field_refs": ["slot", "item_id"],
-                    "name_source": "index:item_names" if names_map.get(str(iid)) else "unresolved",
+                    "name_source": name_src or "unresolved",
                     "locator_chain": {
                         "steps": [{
                             "kind": "decoded-table-row",

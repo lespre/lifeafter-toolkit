@@ -536,7 +536,7 @@ window.WIKI_MANIFEST = {
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
       "items": 1484,
-      "generated": "2026-11-02",
+      "generated": "20261102",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
