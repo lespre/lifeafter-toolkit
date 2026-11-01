@@ -24,3 +24,5 @@
 {"ts": "2026-11-01 21:36:23", "board": "fashion_wardrobe", "items": 3150, "sha_before": "47b8535840302401", "sha_after": "c1dbfe3c54be529d", "script": "recompute_gender_icon_state.py", "pid": 39900}
 {"ts": "2026-11-01 21:37:48", "board": "fashion_wardrobe", "items": 3150, "sha_before": "c1dbfe3c54be529d", "sha_after": "7a70aff37d7140c4", "script": "mark_shared_gender_art.py", "pid": 37476}
 {"ts": "2026-11-01 21:37:48", "board": "fashion_wardrobe", "items": 3150, "sha_before": "7a70aff37d7140c4", "sha_after": "7a70aff37d7140c4", "script": "recompute_gender_icon_state.py", "pid": 42928}
+{"ts": "2026-11-01 21:40:42", "board": "fashion_wardrobe", "items": 3150, "sha_before": "7a70aff37d7140c4", "sha_after": "59f10844dfab1764", "script": "recompute_gender_icon_state.py", "pid": 40128}
+{"ts": "2026-11-01 21:41:54", "board": "fashion_wardrobe", "items": 3150, "sha_before": "59f10844dfab1764", "sha_after": "83791afb3aca2a08", "script": "recompute_gender_icon_state.py", "pid": 28604}

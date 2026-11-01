@@ -68,16 +68,17 @@ def main() -> int:
         single_f = ("仅女" in scope) or ("仅女" in gender)
         single_m = ("仅男" in scope) or ("仅男" in gender)
         media = it.get("_media") or {}
-        gaps = media.get("missing")
-        if gaps and (single_f or single_m):
-            keep = [g for g in gaps
-                    if not ((single_f and "男" in str(g.get("gender")))
-                            or (single_m and "女" in str(g.get("gender"))))]
-            if keep:
-                media["missing"] = keep
-            else:
-                media.pop("missing", None)
-            it["_media"] = media
+        old_gaps = media.get("missing") or []
+        # 按旧缺口记录保留 base 名，便于 tooltip 说明是哪一张
+        bases_by_gender = {}
+        for g in old_gaps:
+            gd = str(g.get("gender") or "")
+            if gd:
+                bases_by_gender.setdefault(gd, []).append(g.get("base"))
+
+        # 单性别款：对侧缺口一律不算
+        single_f = ("仅女" in scope) or ("仅女" in gender)
+        single_m = ("仅男" in scope) or ("仅男" in gender)
 
         if not imgs:
             state = "缺图"
@@ -96,6 +97,21 @@ def main() -> int:
             state = None if has_m else "缺男图"
         else:
             state = None
+
+        # ★ 页面角标只看 _media.missing ⇒ 这里按实际图重建，保证与判定一致
+        new_gaps = []
+        if not single_f and not single_m:
+            if state == "缺男图":
+                new_gaps = [{"gender": "男", "base": b, "why": "包里无该侧图标"}
+                            for b in (bases_by_gender.get("男") or ["(未登记路径)"])]
+            elif state == "缺女图":
+                new_gaps = [{"gender": "女", "base": b, "why": "包里无该侧图标"}
+                            for b in (bases_by_gender.get("女") or ["(未登记路径)"])]
+        if new_gaps:
+            media["missing"] = new_gaps
+        else:
+            media.pop("missing", None)
+        it["_media"] = media
 
         old = it.get("gender_icon_state")
         if state is None:
