@@ -15,7 +15,7 @@ import sys
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import PROJ  # noqa: E402
+from la_paths import PROJ, client_root  # noqa: E402
 ROOT = pathlib.Path(PROJ)
 WEB = ROOT / "02_wiki/web"
 TREE = ROOT / "01_索引与产物/41_还原树/pe/配置/com/cdata"

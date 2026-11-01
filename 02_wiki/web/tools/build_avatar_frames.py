@@ -129,6 +129,41 @@ def fetch_background(res: Resolver, logical: str, dst: pathlib.Path):
     return True
 
 
+def hole_bbox(path: pathlib.Path):
+    """边框图中心透明内孔的相对包围盒 (l, t, w, h)（0~1）；量不到返回 None。
+
+    ★ 为什么要它：名片框的正确叠法是「背景铺满框内孔、边框在外包住」，不是两图等宽居中。
+      实测 118 张静态边框的内孔宽高比中位 1.73，与背景图（432×252 / 1080×630 ≈1.72）
+      基本一致 —— 内孔就是背景该占的位置。每张边框的内孔位置不同（上边距 11%~15%），
+      必须逐图量出来，前端才能把背景精确贴进去。
+    做法：取中心行、中心列的「包含中心的连续透明段」，两者交集即内孔（中空边框通用）。
+    """
+    try:
+        with Image.open(path) as im:
+            a = np.asarray(im.convert("RGBA"))[:, :, 3]
+    except Exception:                                   # noqa: BLE001
+        return None
+    h, w = a.shape
+    if h < 8 or w < 8:
+        return None
+    cy, cx = h // 2, w // 2
+    if a[cy, cx] > 8:                                   # 中心不透明 → 不是中空框
+        return None
+    row = a[cy] > 8
+    left = np.where(row[:cx])[0]
+    right = np.where(row[cx + 1:])[0]
+    x0 = int(left.max()) + 1 if len(left) else 0
+    x1 = cx + 1 + int(right.min()) - 1 if len(right) else w - 1
+    col = a[:, cx] > 8
+    up = np.where(col[:cy])[0]
+    down = np.where(col[cy + 1:])[0]
+    y0 = int(up.max()) + 1 if len(up) else 0
+    y1 = cy + 1 + int(down.min()) - 1 if len(down) else h - 1
+    if x1 <= x0 or y1 <= y0:
+        return None
+    return (x0 / w, y0 / h, (x1 - x0 + 1) / w, (y1 - y0 + 1) / h)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true", help="真正写回 json（默认只报告）")
@@ -170,6 +205,9 @@ def main() -> int:
             main_img = {"png": "assets/avatar_frames/%s.png" % iid,
                         "label": "边框图", "role": "frame",
                         "base": it.get("image_path")}
+            hole = hole_bbox(dst)
+            if hole:
+                main_img["hole"] = [round(v, 4) for v in hole]
             note = "静态高清边框（image_path）"
             stat["静态边框"] += 1
         elif got == "solid":

@@ -659,23 +659,24 @@ body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-num
 }
 .i .i-media .mi.mi-bg figcaption{font-size:10px;opacity:.72;letter-spacing:.02em}
 /* 2026-11-01：名片框「背景 + 边框」叠加成整卡（.i-stack 由 board_core.js 打标）
-   role=background 垫底、role=frame 压上，两张图同宽居中 —— 才是游戏内名片的样子。
-   ★ 仅在同时存在两层时启用；只有背景的卡片仍走上面的「次图」样式（不放大、不冒充边框）。
-   ★ 头像板是 roster 模式，`.i.roster .i-media{display:flex!important}` 会压过 grid，
-     故这里全部用 !important 覆盖（同权重时后写者胜）。 */
-.i.k-nc .i-media.i-stack{display:grid!important;grid-template-areas:"stack";
-  place-items:center;justify-items:center;padding:10px 10px 12px}
-.i.k-nc .i-media.i-stack>.mi{grid-area:stack!important;display:block!important;margin:0!important;
-  width:100%;max-width:100%;flex:none!important}
-.i.k-nc .i-media.i-stack>.mi img{display:block;width:100%!important;max-width:100%!important;
-  height:auto!important;max-height:none!important;object-fit:contain}
-.i.k-nc .i-media.i-stack>.mi.mi-bg{z-index:0;pointer-events:none}
-.i.k-nc .i-media.i-stack>.mi:not(.mi-bg){z-index:1}
-.i.k-nc .i-media.i-stack>.mi.mi-bg img{opacity:1;filter:none;border-radius:9px;
-  box-shadow:0 3px 12px rgba(0,0,0,.45)}
+   ★ 正确叠法是「背景铺满边框的透明内孔，边框在外包住」——不是两图等宽居中。
+     每张边框的内孔位置由 build_avatar_frames.py 量好写进 images[].hole，
+     前端经 --hl/--ht/--hw/--hh 传进来：边框图正常占满宽度撑开容器，
+     背景按内孔百分比绝对定位铺进去。
+   ★ 头像板是 roster 模式，`.i.roster .i-media{display:flex!important}` 会压过这里的布局，
+     故全部用 !important 覆盖（同权重时后写者胜）。 */
+.i.k-nc .i-media.i-stack{position:relative;display:block!important;padding:0;line-height:0}
+.i.k-nc .i-media.i-stack>.mi{display:block!important;margin:0!important;width:100%;max-width:100%;flex:none!important}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg){position:relative!important;z-index:1}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) img{display:block;width:100%!important;height:auto!important;
+  max-height:none!important;background:none!important;padding:0!important;border-radius:0!important;
+  box-shadow:none!important;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.i.k-nc .i-media.i-stack>.mi.mi-bg{position:absolute!important;left:var(--hl,9.4%);top:var(--ht,13.2%);
+  width:var(--hw,81.1%);height:var(--hh,73.9%);z-index:0;pointer-events:none}
+.i.k-nc .i-media.i-stack>.mi.mi-bg img{display:block;width:100%!important;height:100%!important;
+  max-height:none!important;object-fit:cover;object-position:center;
+  border-radius:0;opacity:1;filter:none;box-shadow:none}
 .i.k-nc .i-media.i-stack>.mi figcaption{display:none}
-.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) img{background:none!important;padding:0!important;
-  border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 /* 边框图缺失（当前包快照无该资源）：如实占位，不拿场景图顶替 */
 .i .i-media .mi.nofig{
   min-height:86px;min-width:150px;display:flex;align-items:center;justify-content:center;

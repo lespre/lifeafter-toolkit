@@ -1346,7 +1346,12 @@ function renderItemMedia(m){
      叠成同一张整卡 —— 背景垫底、边框压上，才是游戏内名片的样子。
      只有背景、没有边框的卡片不叠（背景仍按次图小图展示）。 */
   const _all=(m.images||[]);
-  const stack=_all.some(x=>x.role!=="background")&&_all.some(x=>x.role==="background");
+  const _fr=_all.find(x=>x.role!=="background");
+  /* 只有量到「内孔」的静态高清边框才叠 —— 背景要铺进边框的透明内孔、框在外包住。
+     Spine 首帧是 168×168 紧裁方图，套不进内孔，不叠（仍按次图展示）。 */
+  const stack=!!(_fr&&_fr.hole&&_all.some(x=>x.role==="background"));
+  const _h=(_fr&&_fr.hole)||[0.094,0.132,0.811,0.739];
+  const stStyle=stack?` style="--hl:${(_h[0]*100).toFixed(2)}%;--ht:${(_h[1]*100).toFixed(2)}%;--hw:${(_h[2]*100).toFixed(2)}%;--hh:${(_h[3]*100).toFixed(2)}%"`:"";
   const imgs=_all.slice(0,6).map((x,i)=>{
     const bg=(x.role==="background");
     /* ★ 叠加模式下不挂动图：名片框的 APNG 是 168×168 紧裁的中空边框，
@@ -1358,7 +1363,7 @@ function renderItemMedia(m){
   /* 边框图在当前包快照里确实缺失 → 如实占位，不用场景图顶替 */
   const nofig=(m.frame_status==="missing")?`<figure class="mi nofig"><span>边框图缺失<br>（当前包快照无该资源）</span><figcaption>缺口</figcaption></figure>`:"";
   const more=(m.images||[]).length>6?`<span class="mi-more">+${m.images.length-6}</span>`:"";
-  return `<div class="i-media${stack?" i-stack":""}">${nofig}${imgs}${ph}${more}</div>`;
+  return `<div class="i-media${stack?" i-stack":""}"${stStyle}>${nofig}${imgs}${ph}${more}</div>`;
 }
 /* 2026-10-30：动图播放。全局委托，卡片网格与 D2 灯箱共用一套；
    灯箱内（.c2-stage）放开了就不回退，卡片上移出即还原静态图。 */

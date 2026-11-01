@@ -15,7 +15,7 @@
     "label": "类型"
    }
   ],
-  "total": 673,
+  "total": 676,
   "icon_hit": 633,
   "provenance": {
    "contract_version": 3,
@@ -41,7 +41,7 @@
   "state_summary": {
    "头像框": 252,
    "头像": 204,
-   "名片框": 217,
+   "名片框": 220,
    "有图": 663,
    "缺图": 10,
    "有动画": 347
@@ -47869,6 +47869,177 @@
     "frame_note": "静态高清边框（image_path）"
    },
    "status_note": "名片框图片来源不可信：路径解析到场景截图或碎屑图（索引/CSV 校准问题），暂时只展示名片背景"
+  },
+  {
+   "id": "bc_580218",
+   "item_id": "580218",
+   "name": "（无名称）",
+   "kind": "名片框",
+   "server": "简单生存",
+   "image_path": "ui/mingpiankuang_icon/218/img_biankuang_218.png",
+   "spine_path": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_218",
+   "resource_path": "ui/mingpiankuang_icon/218/img_biankuang_b_218.png",
+   "detail_bg": "ui/mingpiankuang_icon/218/img_mingpian_218.png",
+   "order": 0,
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "business_card_scheme_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "business_card_scheme_data",
+    "row_key": "580218",
+    "field_refs": [
+     "frame_img_path",
+     "item_name",
+     "order"
+    ],
+    "name_source": "unresolved",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "business_card_scheme_data",
+       "row_key": "580218",
+       "field_refs": [
+        "frame_img_path",
+        "item_name",
+        "order"
+       ]
+      }
+     ]
+    },
+    "table_raw": "business_card_scheme_data"
+   },
+   "_media": {
+    "images": [],
+    "total": 0
+   }
+  },
+  {
+   "id": "bc_580219",
+   "item_id": "580219",
+   "name": "（无名称）",
+   "kind": "名片框",
+   "server": "简单生存",
+   "image_path": "ui/mingpiankuang_icon/219/img_biankuang_219.png",
+   "spine_path": "ui/spine_new/gexingwuliao/mingpiankuang/img_biankuang_219",
+   "resource_path": "ui/mingpiankuang_icon/219/img_biankuang_b_219.png",
+   "detail_bg": "ui/mingpiankuang_icon/219/img_mingpian_219.png",
+   "order": 0,
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "business_card_scheme_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "business_card_scheme_data",
+    "row_key": "580219",
+    "field_refs": [
+     "frame_img_path",
+     "item_name",
+     "order"
+    ],
+    "name_source": "unresolved",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "business_card_scheme_data",
+       "row_key": "580219",
+       "field_refs": [
+        "frame_img_path",
+        "item_name",
+        "order"
+       ]
+      }
+     ]
+    },
+    "table_raw": "business_card_scheme_data"
+   },
+   "_media": {
+    "images": [],
+    "total": 0
+   }
+  },
+  {
+   "id": "bc_580220",
+   "item_id": "580220",
+   "name": "（无名称）",
+   "kind": "名片框",
+   "server": "简单生存",
+   "image_path": "ui/mingpiankuang_icon/220/img_biankuang_220.png",
+   "spine_path": "",
+   "resource_path": "ui/mingpiankuang_icon/220/img_biankuang_b_220.png",
+   "detail_bg": "ui/mingpiankuang_icon/220/img_mingpian_220.png",
+   "order": 0,
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "business_card_scheme_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "source_lock_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+    "table": "business_card_scheme_data",
+    "row_key": "580220",
+    "field_refs": [
+     "frame_img_path",
+     "item_name",
+     "order"
+    ],
+    "name_source": "unresolved",
+    "upstream": {
+     "package_sha256": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+     "role": "SuperFashion"
+    },
+    "locator_chain": {
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true,
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "documents-py314-current",
+       "table": "business_card_scheme_data",
+       "row_key": "580220",
+       "field_refs": [
+        "frame_img_path",
+        "item_name",
+        "order"
+       ]
+      }
+     ]
+    },
+    "table_raw": "business_card_scheme_data"
+   },
+   "_media": {
+    "images": [],
+    "total": 0
+   }
   }
  ]
 }
