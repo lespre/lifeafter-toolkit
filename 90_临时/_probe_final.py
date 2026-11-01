@@ -1,42 +1,57 @@
 # -*- coding: utf-8 -*-
-"""决定性：挂饰的 charm 在 fashion_data？
-fashion_data 的 light 903 行 = 荧光棒（游戏里的「手持」外观）
-fashion_data 里有没有挂饰？看 brand_id / model_id 是否能对上 pendant 行"""
-import sys, pathlib, struct, collections
-PROJ=pathlib.Path('E:/la拆包项目')
-sys.path.insert(0,str(PROJ/'00_规范与工具/工具/工具库/00_共享核心'))
-from toolkit_core import bindict_table as BT
-CD=PROJ/'01_索引与产物/41_还原树/pe/配置/com/cdata'
-def load(n):
-    raw=(CD/f'{n}.py').read_bytes(); at=raw.find(b'x{')
-    L=struct.unpack_from('<I',raw,at+2)[0]; body=raw[at+6:at+6+L]
-    pool=BT.parse_legacy_chs_pool((CD/f'{n}_chs.py').read_bytes())
-    return BT.decode_table_rows(body,pool,resolve_jumps=False,lenient=True)[0]
-v=lambda x: x[1] if isinstance(x,tuple) else x
-F=load('fashion_data'); A=load('player_appear_data')
-M=load('player_module_appear_data')
-# 挂饰名集合
-pend_names={str(v(r['values'].get('name'))) for r in A if v(r['values'].get('part_type'))=='pendant'}
-f_names={str(v(r['values'].get('name'))) for r in F}
-print('=== 挂饰(pendant) 名 ∩ fashion_data 名 ===')
-inter=pend_names & f_names
-print('  交集', len(inter), list(inter)[:8])
-print()
-print('=== 挂饰名 ∩ module 表名 ===')
-m_names={str(v(r['values'].get('name'))) for r in M}
-print('  交集', len(pend_names & m_names))
-print()
-print('=== ★ fashion_data light 903 行的 charm 全空吗？再逐行核 ===')
-lt=[r for r in F if v(r['values'].get('part_type'))=='light']
-withch=[r for r in lt if v(r['values'].get('charm_value')) is not None]
-print('  light 行', len(lt), '| 有 charm', len(withch))
-print()
-print('=== ★★ 换个角度：module 表 part=20001（390 行，全有 charm，值 10/50/100/200）
-这批在游戏里是「挂饰」吗？看它们的 model_paths 指向哪 ===')
-m20001=[r for r in M if str(v(r['values'].get('part')))=='20001']
-import toolkit_core.bindict_table as BT2
-cnt=struct.unpack_from('<I',body,0)[0] if False else None
-for r in m20001[:3]:
-    d=r['values']
-    print('  ', r['key'], v(d.get('name')), '| model_paths', str(v(d.get('model_paths')))[:80])
-    print('       charm', v(d.get('charm_value')), '| desc', str(v(d.get('desc')))[:70])
+"""决定性对比：静态图 vs 新渲染帧0（等比同尺寸）+ 数值差异。"""
+import pathlib, sys
+import numpy as np
+from PIL import Image
+
+PROJ = pathlib.Path(r"e:/la拆包项目")
+WEB = PROJ / "02_wiki/web"
+sys.path.insert(0, str(WEB / "tools"))
+import spine_render_fix as FX
+from build_avatar_anim import load_pages, page_declared_sizes
+from avatar_resolve import Resolver
+
+OUT = PROJ / "90_临时/_check"
+RES = Resolver()
+S = 336
+
+CASES = [
+    ("450002", "ui/spine/touxiang_ani/touxiang_ani_03"),
+    ("450006", "ui/spine/touxiang_jiushiguang/icon_touxiang_06"),
+    ("450204", "ui/spine_new/gexingwuliao/touxiang/icon_touxiang_204"),
+]
+
+for tag, base in CASES:
+    at = WEB / "assets/spine_live" / (base + ".atlas")
+    skel, pages, regions = FX.load_atlas(at)
+    img_of, missing = load_pages(RES, base, pages,
+                                 page_declared_sizes(at.read_text(encoding="utf-8", errors="ignore")))
+    frs, meta = FX.render_frames(at, img_of, box=168, cnt=6,
+                                 aname=FX.anim_name(skel), crop="coverage")
+    static = Image.open(WEB / "assets/img_cache/avatar_catalog" / ("da_%s.png" % tag)).convert("RGBA")
+    print("=" * 60)
+    print(tag, "static", static.size, "meta", meta, "frames", len(frs))
+    cells = [("static", static)]
+    for i in (0, 2, 4):
+        cells.append(("f%d" % i, frs[i]))
+    sheet = Image.new("RGBA", (S * len(cells), S), (30, 32, 40, 255))
+    x = 0
+    for nm, im in cells:
+        rr = min(S / im.width, S / im.height)
+        big = im.resize((max(1, int(im.width * rr)), max(1, int(im.height * rr))), Image.LANCZOS)
+        sheet.alpha_composite(big, (x, (S - big.height) // 2)); x += S
+    sheet.convert("RGB").save(OUT / ("final_%s.jpg" % tag), quality=90)
+    # 数值：静态缩到帧0尺寸后比 alpha bbox 与平均色差
+    f0 = frs[0]
+    st = static.resize(f0.size, Image.LANCZOS)
+    a = np.asarray(f0, dtype=np.int16); b = np.asarray(st, dtype=np.int16)
+    print("  frame0", f0.size, "bbox", f0.getbbox(), "static scaled bbox", st.getbbox())
+    print("  mean|diff| rgb=%.2f alpha=%.2f" % (np.abs(a[..., :3] - b[..., :3]).mean(),
+                                               np.abs(a[..., 3] - b[..., 3]).mean()))
+    # 也试一下上下/左右翻转后差异，判断镜像
+    for nm, cand in (("flipL-R", f0.transpose(Image.FLIP_LEFT_RIGHT)),
+                     ("flipT-B", f0.transpose(Image.FLIP_TOP_BOTTOM)),
+                     ("rot180", f0.transpose(Image.ROTATE_180))):
+        c = np.asarray(cand, dtype=np.int16)
+        print("   %-8s mean|diff| rgb=%.2f" % (nm, np.abs(c[..., :3] - b[..., :3]).mean()))
+    print("  saved final_%s.jpg" % tag)

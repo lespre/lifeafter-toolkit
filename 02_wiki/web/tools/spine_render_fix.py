@@ -53,10 +53,18 @@ def parse_color(s):
 
 # ---------------------------------------------------------------- 骨骼
 def bone_world(skel, anim, t):
-    """骨骼世界矩阵（增量动画）。返回 {name: 2x3}。"""
+    """骨骼世界矩阵（增量动画）。返回 {name: 2x3}。
+
+    ★ inheritRotation / inheritScale：Spine 允许骨骼「不继承父级旋转/缩放」，
+      此时世界旋转/缩放只取自身值，但**位置仍由父级矩阵变换**。
+      450002 的头部骨骼 9 就是 inheritRotation:false —— 旧版一律继承父级，
+      让头在父链上多转 ~99°，于是「头方向反了」。
+    """
     bones = skel["bones"]
     anim_bones = (anim or {}).get("bones", {})
     world = {}
+    rot_of = {}
+    scl_of = {}
     for b in bones:
         name = b["name"]
         x, y = b.get("x", 0.0), b.get("y", 0.0)
@@ -72,9 +80,22 @@ def bone_world(skel, anim, t):
         if "scale" in tl:
             mx, my = sample(tl["scale"], t, (("x", 1.0), ("y", 1.0)))
             sx, sy = sx * mx, sy * my
-        local = mat_trs(x, y, rot, sx, sy)
         parent = b.get("parent")
-        world[name] = mat_mul(world[parent], local) if parent in world else local
+        pm = world.get(parent)
+        if pm is None:
+            rot_of[name], scl_of[name] = rot, (sx, sy)
+            world[name] = mat_trs(x, y, rot, sx, sy)
+            continue
+        wr = rot + (rot_of[parent] if b.get("inheritRotation", True) else 0.0)
+        ps = scl_of[parent] if b.get("inheritScale", True) else (1.0, 1.0)
+        wsx, wsy = sx * ps[0], sy * ps[1]
+        # 位置：本地 (x,y) 经父级矩阵变换（即使不继承旋转/缩放也照样跟随）
+        wx = pm[0][0] * x + pm[0][1] * y + pm[0][2]
+        wy = pm[1][0] * x + pm[1][1] * y + pm[1][2]
+        r = math.radians(wr)
+        c, s = math.cos(r), math.sin(r)
+        world[name] = [[c * wsx, -s * wsy, wx], [s * wsx, c * wsy, wy]]
+        rot_of[name], scl_of[name] = wr, (wsx, wsy)
     return world
 
 
@@ -424,7 +445,7 @@ def draw_region(canvas, page_img, region, att, world_mat, scale, off):
     sprite = crop.resize((dw, dh), Image.BILINEAR)
     ang = math.degrees(math.atan2(m[1][0], m[0][0]))
     if abs(ang) > 1e-3:
-        sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
+        sprite = sprite.rotate(ang, expand=True, resample=Image.BILINEAR)
     px = m[0][2] * scale + off[0]
     py = -m[1][2] * scale + off[1]
     return _composite_clipped(canvas, sprite,
@@ -643,7 +664,7 @@ def _region_sprite(page_img, region, att, world_mat, scale, off=(0, 0)):
     sprite = crop.resize((dw, dh), Image.BILINEAR)
     ang = math.degrees(math.atan2(m[1][0], m[0][0]))
     if abs(ang) > 1e-3:
-        sprite = sprite.rotate(-ang, expand=True, resample=Image.BILINEAR)
+        sprite = sprite.rotate(ang, expand=True, resample=Image.BILINEAR)
     px = m[0][2] * scale + off[0]
     py = -m[1][2] * scale + off[1]
     pos = (int(round(px - sprite.width / 2)), int(round(py - sprite.height / 2)))
@@ -796,6 +817,45 @@ def _coverage_bbox(frs, canvas):
     return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
 
 
+def _persistent_bbox(frs, canvas, ratio=0.85):
+    """「持久核心」包围盒：只统计在 ≥ratio 帧里都出现的像素。
+
+    飞过画面的云/粒子只在某几帧覆盖同一位置，会被排除；主体（背景+角色）
+    每帧都在，因此保留。用于识别「越界溢出的动态特效」并把取景收回到主体。
+    """
+    acc = None
+    for f in frs:
+        a = (np.asarray(f)[:, :, 3] > 4)
+        acc = a.astype(np.int16) if acc is None else (acc + a)
+    if acc is None:
+        return None
+    thr = max(1, int(math.ceil(len(frs) * ratio)))
+    ys, xs = np.nonzero(acc >= thr)
+    if xs.size == 0:
+        return None
+    return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
+
+
+def _pick_rect(frs, canvas, crop):
+    """取景矩形。
+
+    coverage：按逐帧覆盖率包围盒紧裁；但若**持久核心**明显更小（长边/面积差
+      1.6/1.8 倍以上），说明有特效横向飞出画面（450006 的云把画面拉成 3.2:1
+      长条，主体场景只剩一小块），此时改按持久核心取景、裁掉溢出特效。
+    """
+    minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
+    if crop == "coverage":
+        core = _persistent_bbox(frs, canvas)
+        if core:
+            w_cov, h_cov = maxx - minx + 1, maxy - miny + 1
+            w_cor, h_cor = core[2] - core[0] + 1, core[3] - core[1] + 1
+            if ((w_cov / w_cor >= 1.6 or h_cov / h_cor >= 1.6)
+                    and (w_cov * h_cov) / float(w_cor * h_cor) >= 1.8):
+                pad = int(round(max(w_cor, h_cor) * 0.06))
+                return (core[0] - pad, core[1] - pad, core[2] + pad, core[3] + pad)
+    return (minx, miny, maxx, maxy)
+
+
 def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=None,
                   internal=420, canvas=1400, crop="coverage"):
     """→ (frames[RGBA], meta)。
@@ -804,7 +864,8 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
     canvas：内部全画布边长（要足够大以容纳超出 skeleton 声明边界的装饰）。
     crop：
       · "coverage"（默认，头像/头像框）：按逐帧覆盖率包围盒紧裁 ——
-        主体刚好占满，不受飞散粒子影响。
+        主体刚好占满，不受飞散粒子影响；若有特效横向飞出（持久核心远小于
+        覆盖率包围盒），自动收回到持久核心，避免画面被拉成长条。
       · "artboard"（名片框）：按 skeleton 声明的 width/height 裁剪 ——
         名片框的火焰特效会横向溢出画板，用覆盖率会把画面裁成一条长条，
         按画板裁则与游戏内显示区域一致（溢出部分裁掉）。
@@ -844,7 +905,7 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
 
     frs = _render_all(skel, regions, page_imgs, anim, anim_slots, dur, cnt, scale,
                       off, canvas_wh, order_tl, slot_map, static_order)
-    minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
+    minx, miny, maxx, maxy = _pick_rect(frs, canvas, crop)
     long = max(maxx - minx + 1, maxy - miny + 1)
     # 主体远小于内部画布 → 按实测包围盒放大 scale 再渲一遍（最多一次）
     if long > 0 and long < internal * 0.9:
@@ -852,7 +913,7 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
         scale = min(scale * factor, 16.0)
         frs = _render_all(skel, regions, page_imgs, anim, anim_slots, dur, cnt, scale,
                           off, canvas_wh, order_tl, slot_map, static_order)
-        minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
+        minx, miny, maxx, maxy = _pick_rect(frs, canvas, crop)
     # ★ 不再用 _bg_rect 猜背景框：它会把面积大的方形装饰（烟花/粒子）
     #   当成背景框，裁出的画面里主体只剩一小点 —— 这正是「乱七八糟」的来源。
     if crop == "artboard":

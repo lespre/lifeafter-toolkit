@@ -110,8 +110,10 @@ def main():
     print("分类统计:", dict(c))
     for stem, typ, msg in issues[:60]:
         print("  [%s] %s  %s" % (typ, stem, msg))
-    json.dump([{"id": s, "type": t, "msg": m} for s, t, m in issues],
-              open("/tmp/qa_issues.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    out = WEB.parents[1] / "01_索引与产物/30_分析/avatar_anim_qa_issues.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps([{"id": s, "type": t, "msg": m} for s, t, m in issues],
+                              ensure_ascii=False, indent=1), encoding="utf-8")
 
 if __name__ == "__main__":
     main()
