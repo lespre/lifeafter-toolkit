@@ -111,6 +111,33 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "2、“伤害加成”的分段函数",
+      "category": "二、战力类 / （六）伤害计算 / 2、“伤害加成”的分段函数",
+      "board": "damage_bonus_piecewise",
+      "items": 13,
+      "generated": "2026-11-02",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（special_hurt_params_data、hurt_params_data）+ oversea/_kj1、_yk",
+      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
+      "evidence": {
+        "structure": 13
+      },
+      "state_summary": {
+        "跨服结论": 6,
+        "经典服": 3,
+        "简单生存服": 2,
+        "月卡服": 2
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "missing": 13
+        }
+      }
+    },
+    {
       "name": "（内测版）说明条目总表",
       "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "desc_catalog",
@@ -545,15 +572,15 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "期次": 789,
-        "成员": 1484,
+        "成员": 3742,
         "结构可证": 1415,
         "候选成员": 69,
-        "有成员期次": 289,
-        "空成员期次": 500,
+        "有成员期次": 402,
+        "空成员期次": 387,
         "进行中": 21,
         "未开始": 5,
         "2026起期次": 121,
-        "2026起有成员期次": 81
+        "2026起有成员期次": 88
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -669,8 +696,8 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）场景平衡",
-      "category": "二、战力类 / （六）场景平衡",
+      "name": "1、场景平衡",
+      "category": "二、战力类 / （六）伤害计算 / 1、场景平衡",
       "board": "scene_balance",
       "items": 573,
       "generated": "2026-10-24",
