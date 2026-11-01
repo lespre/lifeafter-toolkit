@@ -44,7 +44,6 @@ FAMILIES = [
     ("宣传图", "ui/shizhuang_icon/xuanchuantu/img_xuanchuan_{m}_001"),
     ("赠送图", "ui/shizhuang_icon/zengsong/img_zengsong_{m}_001"),
     ("主题预览", "ui/zhutihuodong_v5/zhutihuodong/changpaidianpu/yulan/img_shizhuang_{m}"),
-    ("主界面跑马灯", "ui/main_zhujiemian_v3/zoumadeng/shamozhenzhu/img_shamozhenzhu"),
 ]
 
 
