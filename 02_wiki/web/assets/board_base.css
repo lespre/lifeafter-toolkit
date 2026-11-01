@@ -436,12 +436,30 @@ body.c2-lock{overflow:hidden}
 .pchip-cand{display:inline-block;margin-left:4px;padding:0 4px;border-radius:3px;font-size:10px;line-height:14px;color:#e2c48c;background:rgba(217,164,65,.14);border:1px solid rgba(217,164,65,.4)}
 .fr-desc{margin:6px 0 2px;font-size:12px;line-height:1.55;color:#a9b8c2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 body.core-mode .i-media{display:flex!important;flex-wrap:nowrap!important;align-items:center;justify-content:space-between!important;gap:10px;width:100%!important;box-sizing:border-box}
-body.core-mode .i-media .mi{flex:0 0 auto!important;align-items:center}
-body.core-mode .i-media .mi:last-of-type{margin-left:auto}
-body.core-mode .i-media .mi img{width:auto;height:84px;max-width:100%}
-body.core-mode .i-media figure{margin:0;flex:0 0 auto;max-width:48%}
-body.core-mode .i-media img{max-height:96px;width:auto;max-width:100%;object-fit:contain}
+body.core-mode .i-media .mi{flex:1 1 auto!important;align-items:center;min-width:0;max-width:100%}
+body.core-mode .i-media .mi img{width:100%;height:auto;max-height:84px;max-width:100%;object-fit:contain}
+body.core-mode .i-media figure{margin:0;max-width:100%;min-width:0}
+body.core-mode .i-media img{max-height:96px;max-width:100%;object-fit:contain}
 body.core-mode .i-media figcaption{display:none}
+/* 2026-11-02：核芯特技图标改为子卡左上角小角标（不再占用卡面右侧大图位） */
+body.core-mode .i{position:relative;padding:10px 11px}
+body.core-mode .i-media .mi.mi-skill{position:absolute!important;left:8px;top:8px;z-index:5;flex:none!important;
+  width:30px!important;height:30px!important;max-width:none!important;margin:0!important;padding:2px;box-sizing:border-box;
+  border-radius:8px;background:rgba(12,18,24,.42);border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 2px 6px rgba(0,0,0,.35);overflow:hidden}
+body.core-mode .i-media .mi.mi-skill img{width:100%!important;height:100%!important;max-height:none!important;
+  object-fit:contain;border-radius:6px}
+/* 2026-11-02：核芯属性小标签直接跟在核芯名字后面 */
+body.core-mode .i-elem{display:inline-block;margin-left:5px;padding:0 5px;border-radius:8px;
+  font-size:11px;line-height:16px;font-weight:500;border:1px solid currentColor;vertical-align:middle}
+body.core-mode .i-elem[data-el="火"]{color:#ff9a7a}
+body.core-mode .i-elem[data-el="冰"]{color:#7fc4ff}
+body.core-mode .i-elem[data-el="酸"]{color:#a6d96a}
+body.core-mode .i-elem[data-el="电"]{color:#c6a2ff}
+/* 2026-11-02：卡面品级 pill 左对齐贴卡边（原 kv 键列把「极品（12星）」推到右侧），武器类型同排 */
+.i.nucleus .core-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 1px}
+.i.nucleus .core-meta .grade-pill{font-size:11.5px;padding:0 7px;line-height:18px;white-space:nowrap}
+.i.nucleus .core-meta .core-wt{font-size:11px;color:#8f9bb3;white-space:nowrap}
 .stars-inline{color:#d9a441;letter-spacing:1px;font-size:11px}
 
 /* 核芯详情区排版：键列固定宽，值列允许换行但不乱断 */
@@ -1122,18 +1140,33 @@ body.b-activity_master .am-rows .i.am-row:nth-child(3n){border-left:1px solid va
   body.b-activity_master .am-when{grid-column:2;flex-direction:row;align-items:center;gap:8px}
 }
 
-/* ══ 无人机板（drone_catalog，2026-11-02）：统一经典服式名册 ══
-   简单生存服视为经典服子集：287 原始行同名合并为 239 条，一份紧凑行卡；
-   有官方类型的行补类型/品级 pill，缺失字段留空，不猜。
+/* ══ 无人机板（drone_catalog，2026-11-02）：经典服名册 · 按类别分区 ══
+   源修正：181xxx 无人机模块（能量核心/发动机/结构框架/导航仪）已剔除，不是机体；
+   经典服行类型由机体文案/名称家族前缀推导（数据里带 kind_source）。
+   179 条 = 49 简单服 + 经典服变体，按 21 个类别分区；同名并列仍标「同名列」。
    ★ 只作用于 body.b-drone_catalog，其它板零影响。 */
 body.b-drone_catalog #grid{display:block}
 
-/* ── 顶部说明条 ── */
+/* ── 顶部说明条 + 类别索引 ── */
 body.b-drone_catalog .ds-nav{display:flex;flex-direction:column;gap:7px;
-  padding:12px 14px;margin:0 0 10px;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+  padding:12px 14px;margin:0 0 12px;border:1px solid var(--border);border-radius:10px;background:var(--card)}
 body.b-drone_catalog .ds-nav-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
 body.b-drone_catalog .ds-nav-title{font-size:12px;font-weight:650;letter-spacing:.14em;color:var(--gold)}
 body.b-drone_catalog .ds-nav-sub{font-size:11px;color:var(--muted-2)}
+body.b-drone_catalog .ds-chips{display:flex;flex-wrap:wrap;gap:6px}
+body.b-drone_catalog .ds-chip{display:inline-flex;align-items:center;gap:5px;
+  padding:2px 8px;border:1px solid var(--border);border-radius:7px;background:rgba(255,255,255,.03);
+  font-size:11.5px;line-height:1.7;color:var(--muted);text-decoration:none;white-space:nowrap}
+body.b-drone_catalog .ds-chip:hover{border-color:var(--border-strong);background:var(--hover);color:var(--text)}
+body.b-drone_catalog .ds-chip b{font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums}
+body.b-drone_catalog .ds-nav-note{font-size:10.5px;line-height:1.6;color:var(--muted-2);opacity:.8}
+
+/* ── 类别分区 ── */
+body.b-drone_catalog .ds-cat{margin:0 0 14px;scroll-margin-top:216px}
+body.b-drone_catalog .ds-cat-hd{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;
+  padding:0 2px 4px;border-bottom:1px solid var(--border)}
+body.b-drone_catalog .ds-cat-name{font-size:13px;font-weight:650;letter-spacing:.06em;color:var(--gold)}
+body.b-drone_catalog .ds-cat-n{font-size:10.5px;color:var(--muted-2);font-variant-numeric:tabular-nums}
 
 /* ── 名册：紧凑行卡（有图才出图，无图只留占位） ── */
 body.b-drone_catalog .ds-roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(224px,1fr));
@@ -1154,9 +1187,6 @@ body.b-drone_catalog .ds-crow-nm{min-width:0;white-space:nowrap;overflow:hidden;
 body.b-drone_catalog .ds-crow-meta{display:flex;align-items:center;gap:5px;min-width:0;
   font-size:10.5px;color:var(--muted-2)}
 body.b-drone_catalog .ds-crow-id{flex:0 0 auto;color:var(--muted-2);font-variant-numeric:tabular-nums}
-body.b-drone_catalog .ds-type{flex:0 0 auto;font-size:9.5px;line-height:1.55;padding:0 5px;
-  border-radius:4px;color:var(--ca);background:rgba(140,120,220,.12);
-  border:1px solid rgba(140,120,220,.28);white-space:nowrap}
 body.b-drone_catalog .ds-grade{flex:0 0 auto;font-size:9.5px;padding:0 5px;line-height:1.55}
 body.b-drone_catalog .ds-dup{opacity:.62}
 body.b-drone_catalog .ds-dup-tag{font-size:9.5px;padding:0 4px;border:1px dashed var(--border-strong);
@@ -1164,6 +1194,7 @@ body.b-drone_catalog .ds-dup-tag{font-size:9.5px;padding:0 4px;border:1px dashed
 
 @media (max-width:720px){
   body.b-drone_catalog .ds-roster{grid-template-columns:minmax(0,1fr)}
+  body.b-drone_catalog .ds-cat{scroll-margin-top:14px}
 }
 
 /* ═══════════════════════════════════════════════════════════════════

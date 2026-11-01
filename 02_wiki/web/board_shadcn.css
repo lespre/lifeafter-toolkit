@@ -135,8 +135,7 @@ select{cursor:pointer}
 
 /* nucleus 核芯卡：折叠摘要 + 星级段拆段（2026-09-04） */
 .i.nucleus .i-head.toggle{cursor:pointer;user-select:none}
-.i.nucleus .i-head.toggle::after{content:" ▾ 点击展开星级详情";font-size:11px;color:#8a8a96;margin-left:8px;white-space:nowrap}
-.i.nucleus .i-head.toggle.open::after{content:" ▴ 收起详情";font-size:11px;color:#8a8a96;margin-left:8px}
+/* 2026-11-02（用户口径）：核芯卡不再显示「点击展开星级详情 / 收起详情」提示文字 */
 .i.lottery .i-head.toggle{cursor:pointer;user-select:none}
 .i.lottery .i-head.toggle::after{content:" ▸ 展开详情";font-size:11px;color:#8a8a96;margin-left:8px;white-space:nowrap}
 .i.lottery .i-head.toggle.open::after{content:" ▾ 收起详情";font-size:11px;color:#8a8a96;margin-left:8px}

@@ -135,7 +135,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）无人机总表",
+      "name": "无人机总表",
       "category": "二、战力类 / （三）无人机",
       "board": "drone_catalog",
       "items": 287,
@@ -533,7 +533,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）当期&历史每期抽奖奖池（按活动表重建）",
+      "name": "当期&历史每期抽奖奖池（按活动表重建）",
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
       "items": 1098,

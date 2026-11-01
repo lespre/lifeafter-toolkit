@@ -832,7 +832,7 @@ def main() -> int:
         per["member_kinds"] = dict(Counter(i["kind"] for i in items if i["period_id"] == per["period_id"]))
 
     meta = copy.deepcopy(old["meta"])
-    meta["name"] = "（内测版）当期&历史每期抽奖奖池（按活动表重建）"
+    meta["name"] = "当期&历史每期抽奖奖池（按活动表重建）"
     meta["generated"] = TODAY.isoformat()
     meta["package_sha"] = SNAPSHOT_SHA256
     meta["source_server"] = ("当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；"

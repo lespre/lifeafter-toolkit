@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
+import re
 import shutil
 import sys
 import time
@@ -32,6 +33,35 @@ CBG = PROJ / "00_规范与工具/治理/参考资料/藏宝阁_CBG/json/game_aut
 BOARD = WEB / "data/boards/drone_catalog.json"
 BOARD_JS = WEB / "data/boards/drone_catalog.js"
 ICON_DIR = WEB / "assets/drone_icons"
+CLASSIC_KIND = "经典服收录"
+# 181xxx 是无人机部件（能量核心/发动机/结构框架/导航仪），不是机体；
+# 用户 2026-11-02 口径：部件也保留，按名称归入「机体部件」类别单列（不再混进各家族）。
+MODULE_ID_LO, MODULE_ID_HI = 181000, 181999
+MODULE_NAME_KEYS = ("能量核心", "发动机", "结构框架", "导航仪")
+# 经典服 all_equips 没有 kind 字段；类型只能从机体文案「X无人机」或名称家族前缀推导。
+DRONE_FAMILIES = ("基础", "医疗", "战斗", "战虎", "负重", "自爆", "采集", "战辅",
+                  "盾补", "守卫", "光盾", "电弧", "飞猪", "镭蛇", "狡兔", "灵龙",
+                  "猎犬", "火凤", "奔马", "晶蝶")
+FAMILY_RE = re.compile("(" + "|".join(DRONE_FAMILIES) + ")无人机")
+NAME_HEAD_RE = re.compile(r"[：:・\-]")
+
+
+def classify_drone(name, desc) -> tuple[str, str]:
+    """返回 (类别, 推导来源)。来源写进 kind_source，便于核验，不伪装成官方 kind。"""
+    nm = str(name or "")
+    if any(k in nm for k in MODULE_NAME_KEYS):
+        return "机体部件", "module"      # 用户口径：181xxx 部件也保留，单列一类
+    head = NAME_HEAD_RE.split(nm)[0]
+    if head in DRONE_FAMILIES:
+        return head, "name-prefix"
+    m = FAMILY_RE.search(str(desc or ""))
+    if m:
+        return m.group(1), "desc"
+    for k in DRONE_FAMILIES:
+        if k in nm:
+            return k, "name"
+    return "其他机体", "fallback"
+
 
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核心"))
 sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/01_解码定位复原/图集与取图"))
@@ -94,6 +124,12 @@ def main() -> int:
         if not a.dry:
             it["classic_ref"] = cls
             it["server_branches"] = sorted(set((it.get("server_branches") or []) + ["经典服", "简单生存"]))
+            if str(it.get("server_branch") or "").startswith("经典服"):
+                # 经典服行没有官方 kind：从机体文案/名称前缀推导，并记录来源
+                kind, kind_src = classify_drone(cls["name"], cls["desc"])
+                it["kind"] = kind
+                it["kind_source"] = kind_src
+                it["kind_derived"] = True
             if diff:
                 st["存量差异文案"] += 1
         st["存量更新"] += 1
@@ -114,12 +150,15 @@ def main() -> int:
             st["新卡有图"] += 1
         else:
             media["missing"].append({"base": "ui/item_icon/icon_%d" % iid, "suffix": "_b"})
+        kind, kind_src = classify_drone(v.get("name"), v.get("desc"))
         card = {
             "id": "drone_%d" % iid,
             "drone_id": iid,
             "name": v.get("name") or ("无人机 %d" % iid),
             "name_status": "resolved",
-            "kind": "经典服收录",
+            "kind": kind,
+            "kind_source": kind_src,
+            "kind_derived": True,
             "kind_code": None,
             "grade": None,
             "grade_level": v.get("level"),
@@ -144,10 +183,19 @@ def main() -> int:
         items.append(card)
 
     if not a.dry:
+        n_simple = sum(1 for it in items
+                       if not str(it.get("server_branch") or "").startswith("经典服"))
+        n_mod = sum(1 for iid in classic if MODULE_ID_LO <= iid <= MODULE_ID_HI)
+        board["meta"]["title"] = ("无人机总表（经典服 %d 项（含部件 %d）· 简单生存服 %d 台）"
+                                  % (len(classic), n_mod, n_simple))
         board["meta"]["server_note"] = (
-            "机体名册 = 简单生存服 49 台（全字段）∪ 经典服（藏宝阁 CBG all_equips 18xxxx 段 %d 行，"
-            "name/desc/icon/level）。经典服 all_equips_data_base 已定位（经典 npk entry 11805）"
-            "但 0x73 解码字段错位，技能/模块字段等解码修复后回填。" % len(classic))
+            "机体名册 = 简单生存服 %d 台（全字段）+ 经典服（藏宝阁 CBG all_equips 18xxxx 机体段 %d 行，"
+            "name/desc/icon/level）。181xxx 零部件（能量核心/发动机/结构框架/导航仪 %d 项）"
+            "按名称归入「机体部件」类别保留。经典服行没有类型字段，kind 由机体文案「X无人机」"
+            "或名称家族前缀推导，kind_source 记 desc/name-prefix/module。"
+            "经典服 all_equips_data_base 已定位（经典 npk entry 11805）"
+            "但 0x73 解码字段错位，技能/模块字段等解码修复后回填。"
+            % (n_simple, len(classic), n_mod))
         board["meta"]["source_server"] = "简单生存服（全字段）+ 经典服（CBG 名册并集）"
         ts = time.strftime("%Y%m%d_%H%M%S")
         shutil.copy2(BOARD, BOARD.with_name(BOARD.name + ".bak_%s_classic" % ts))

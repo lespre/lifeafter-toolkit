@@ -174,14 +174,15 @@
 
 /* 头像/核芯/料理：默认卡偏宽 → 直接给网格设窄列宽（内联，压过任何外部样式） */
 (function(){
-  var NARROW={avatar_catalog:228, mutation_core_full:228, edible_catalog:228};
+  /* 2026-11-02：核芯板子卡再收窄（150px，接近正方形），其余两板维持 210px */
+  var NARROW={avatar_catalog:210, mutation_core_full:150, edible_catalog:210};
   function apply(){
     var b=new URLSearchParams(location.search).get('b');
     if(!NARROW[b]) return;
     var g=document.getElementById('grid');
     if(!g) return;
-    g.style.gridTemplateColumns='repeat(auto-fill,minmax(210px,1fr))';
-    g.style.gap='12px';
+    g.style.gridTemplateColumns='repeat(auto-fill,minmax('+NARROW[b]+'px,1fr))';
+    g.style.gap=b==='mutation_core_full'?'10px':'12px';
   }
   document.addEventListener('DOMContentLoaded', apply);
   var g=document.getElementById('grid');

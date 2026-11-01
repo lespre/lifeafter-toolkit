@@ -142,11 +142,41 @@ def export_png(tex, out):
     return False
 
 
+def alpha_bbox(im, pad=2):
+    """贴图实际内容框（alpha 非零区域，外扩 pad 像素）。全透明返回 None。"""
+    bb = im.getbbox()
+    if not bb:
+        return None
+    x0, y0, x1, y1 = bb
+    return (max(0, x0 - pad), max(0, y0 - pad),
+            min(im.width, x1 + pad), min(im.height, y1 + pad))
+
+
+def trim_frames(imgs):
+    """按全帧「并集内容框」裁边：去掉画布四周的透明留白，同时保留帧间运动位移。
+    游戏 csb 的画布普遍比实际光效大很多（如 480×404 里只有 208×120），
+    不裁边、按 contain 铺进文字盒就会显得特别小。"""
+    boxes = [alpha_bbox(im) for im in imgs]
+    valid = [b for b in boxes if b]
+    if not valid:
+        return imgs
+    x0 = min(b[0] for b in valid)
+    y0 = min(b[1] for b in valid)
+    x1 = max(b[2] for b in valid)
+    y1 = max(b[3] for b in valid)
+    if all((x1 - x0, y1 - y0) == im.size for im in imgs):
+        return imgs
+    return [im.crop((x0, y0, x1, y1)) for im in imgs]
+
+
 def shrink(out, max_w=480):
-    """缩到 ≤ max_w，控制体积（只是预览，不改变资源内容）。"""
+    """裁掉透明留白后缩到 ≤ max_w，控制体积（只是预览，不改变资源内容）。"""
     try:
         from PIL import Image
-        im = Image.open(out)
+        im = Image.open(out).convert("RGBA")
+        bb = alpha_bbox(im)
+        if bb:
+            im = im.crop(bb)
         if im.width > max_w:
             im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
         im.save(out, "PNG", optimize=True)
@@ -510,6 +540,8 @@ def build_anims(board, full_map=None):
         k = min(n_orig, ANIM_MAX_FRAMES)
         if k < n_orig:
             seq = [seq[round(i * (n_orig - 1) / (k - 1))] for i in range(k)]
+        seq = trim_frames(seq)          # 去透明留白（并集框，保留帧间位移）
+        dom = seq[0].size
         canvas = (ANIM_W, max(1, round(dom[1] * ANIM_W / dom[0])))
         frames = [im.resize(canvas, Image.LANCZOS) for im in seq]
         dur = max(20, round(ANIM_FRAME_MS * n_orig / len(frames)))

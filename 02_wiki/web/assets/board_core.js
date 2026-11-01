@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102sharp2")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102-dronecat4")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1480,7 +1480,9 @@ function renderItemMedia(m){
     /* 2026-11-02：烘焙过的背景（fit=frame）与边框图同尺寸，孔外已是全透明 alpha，
        直接 inset:0 铺满即可 —— 不再按 --hl/--hw 摆位，也不吃 clip-path。 */
     const _full=(bg&&x.fit==="frame")?" mi-bg-full":"";
-    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}${_full}"${_cp}><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
+    /* 2026-11-02：核芯特技图单独打标（核芯板 CSS 将其挪到子卡左上角当小角标） */
+    const _skill=(x.kind==="核芯特技")?" mi-skill":"";
+    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}${_full}${_skill}"${_cp}><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
   }).join("");
   const ph=m.placeholder?`<figure class="mi ph"><img src="${esc(m.placeholder)}" alt="客户端占位图" loading="lazy"><figcaption>占位</figcaption></figure>`:"";
   /* 边框图确实缺失 → 如实标注，但不拿场景图顶替「边框」这个身份；
@@ -4609,20 +4611,26 @@ if(ACTIVITY_BOARD){
   });
 }
 
-/* ════════════════════ 无人机板「经典服名册」（2026-11-02 定稿口径）
-   用户口径：简单生存服的无人机是经典服的子集 ⇒ 不再分「类型展柜 + 经典服区」，
-   统一成一份经典服式紧凑名册。287 原始行按同名合并：简单服 48 条并入同名经典服行
-   补类型/品级/评分，仅「基础无人机」单独成行 → 239 条；缺失字段照实留空，不猜类型。
+/* ════════════════════ 无人机板「经典服名册 · 按类别分区」（2026-11-02 第二次口径）
+   源修正：CBG 18xxxx 里的 181xxx 是无人机模块（能量核心/发动机/结构框架/导航仪），
+   旧版整段并入把 60 条模块混进机体名册，已从源数据剔除（227 行 = 49 简单服 + 178 经典服卡）。
+   经典服 all_equips 没有 kind 字段：生成器按机体文案「X无人机」/名称家族前缀推导 kind，
+   并写 kind_source（desc/name-prefix/fallback）留痕；渲染只读数据，不再猜类型。
+   同名合并：简单服记录补类型/品级，并让位一条 id 最小的经典行 → 179 条、21 个类别。
    ★ 类名统一 ds-*，样式挂 body.b-drone_catalog，其它板零影响。 */
 const DRONE_BOARD=(function(){try{return (getParam("b")||"")==="drone_catalog";}catch(e){return false;}})();
 const DRONE_CLASSIC_KIND="经典服收录";
 const DRONE_GRADE_CLS={"基础":"g-绿","进阶":"g-蓝","高阶":"g-紫","典藏":"g-金"};
+const DRONE_CAT_ORDER=["基础","医疗","战斗","战虎","负重","自爆","采集","战辅","盾补","守卫",
+  "光盾","电弧","飞猪","镭蛇","狡兔","灵龙","猎犬","火凤","奔马","晶蝶","其他机体","机体部件"];
+const DRONE_KIND_SRC={desc:"机体说明推导","name-prefix":"名称前缀推导",name:"名称推导",fallback:"其他/未归类",module:"部件名归类"};
 
 /* 同名合并：每个有简单服记录的经典服名字只让位一行（id 最小的 18x 行），
-   其余 182 变体保留；简单服记录补进 kind/grade/power，供卡面与 D2 使用。 */
+   其余变体保留；简单服记录补进 kind/grade/power，供卡面与 D2 使用。 */
 function droneUnified(items){
-  const classic=items.filter(it=>String(it.kind||"")===DRONE_CLASSIC_KIND);
-  const simple=items.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND);
+  const isCl=it=>String(it.server_branch||"").startsWith("经典服")||String(it.kind||"")===DRONE_CLASSIC_KIND;
+  const classic=items.filter(isCl);
+  const simple=items.filter(it=>!isCl(it));
   const byName=new Map();
   for(const it of classic){
     const n=String(it.name||"");
@@ -4648,13 +4656,26 @@ function droneUnified(items){
     ||Number(a.drone_id||0)-Number(b.drone_id||0));
   return out;
 }
-/* 统一行卡：图 + 名字 + 编号 +（有则）官方类型/品级；同名并列弱化并标「同名列」 */
+function droneCatRank(k){
+  const i=DRONE_CAT_ORDER.indexOf(k);
+  return i<0?999:i;
+}
+/* 按类别分组：类别顺序固定（基础→…→其他机体），同类别内保持名称序 */
+function droneGroups(list){
+  const m=new Map();
+  for(const it of list){
+    const k=String(it.kind||"其他机体");
+    if(!m.has(k))m.set(k,[]);
+    m.get(k).push(it);
+  }
+  return [...m.entries()].sort((a,b)=>
+    droneCatRank(a[0])-droneCatRank(b[0])||b[1].length-a[1].length);
+}
+/* 统一行卡：图 + 名字 + 编号 +（有则）品级；类别由所属分区标题表达，行内不再重复 */
 function droneRow(it,cidx,dup){
   const im=((it._media&&it._media.images)||[])[0];
-  const kind=String(it.kind||"");
   const grade=String(it.grade||"");
   const tags=[];
-  if(kind&&kind!==DRONE_CLASSIC_KIND)tags.push(`<span class="ds-type">${esc(kind)}</span>`);
   if(grade)tags.push(`<span class="grade-pill ds-grade ${DRONE_GRADE_CLS[grade]||""}">${esc(grade)}</span>`);
   return `<div class="i roster ds-crow${dup?" ds-dup":""}" data-cidx="${cidx}">
     <span class="ds-crow-fig${im?"":" ds-empty"}">${im?`<img src="${esc(im.png)}" alt="" loading="lazy">`:'<span class="ds-fig-ph">无</span>'}</span>
@@ -4667,11 +4688,12 @@ function droneRow(it,cidx,dup){
 /* D2 详情卡：与网格卡解耦（同一 id 只缓存这一份），字段平铺，不再逐卡重复审计标签 */
 function droneD2Html(it){
   const kind=String(it.kind||"");
-  const isClassic=kind===DRONE_CLASSIC_KIND;
+  const isClassic=String(it.server_branch||"").startsWith("经典服");
+  const kindSrc=DRONE_KIND_SRC[String(it.kind_source||"")]||"";
   const im=(it._media&&it._media.total)?renderItemMedia(it._media):"";
   const rows=[];
   const put=(k,v)=>{if(v==null||String(v)==="")return;rows.push([k,String(v)]);};
-  put("类型",isClassic?"经典服收录（类型未标注）":kind);
+  put("类型",kind?(kind+(kindSrc?`（${kindSrc}）`:"")):(isClassic?"经典服收录（类型未标注）":""));
   if(it.grade!=null)put("品级",it.grade);
   if(it.power!=null)put("评分基数",it.power+"（静态表 base_score，不等同实机面板战力）");
   if(it.desc)put("机体说明",it.desc);
@@ -4705,14 +4727,30 @@ function droneShelfRender(items,g){
   const list=droneUnified(items);
   C2.prov=ROSTER_D2;C2.chips=list;C2.html={};
   for(const it of list)C2.html[c2IdOf(it)]=droneD2Html(it);
-  const cnt={};
-  for(const it of list){const n=String(it.name||"");cnt[n]=(cnt[n]||0)+1;}
-  const rich=list.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length;
-  const rows=list.map((it,i)=>droneRow(it,i,cnt[String(it.name||"")]>1)).join("");
-  g.innerHTML=`<div class="ds-nav"><div class="ds-nav-hd">
-    <span class="ds-nav-title">经典服无人机名册</span>
-    <span class="ds-nav-sub">${list.length} 条 · 按名称排序 · ${rich} 条带官方类型/品级 · 同名并列已标记</span>
-  </div></div><div class="ds-roster">${rows}</div>`;
+  const cnt={},idx=new Map();
+  list.forEach((it,i)=>{
+    const n=String(it.name||"");
+    cnt[n]=(cnt[n]||0)+1;
+    idx.set(it,i);
+  });
+  const groups=droneGroups(list);
+  const chips=groups.map(([k,arr],i)=>
+    `<a class="ds-chip" href="#ds-cat-${i}">${esc(k)}<b>${arr.length}</b></a>`).join("");
+  const secs=groups.map(([k,arr],i)=>{
+    const rows=arr.map(it=>droneRow(it,idx.get(it),cnt[String(it.name||"")]>1)).join("");
+    return `<section class="ds-cat" id="ds-cat-${i}">
+      <div class="ds-cat-hd"><span class="ds-cat-name">${esc(k)}</span><span class="ds-cat-n">${arr.length} 条</span></div>
+      <div class="ds-roster">${rows}</div>
+    </section>`;
+  }).join("");
+  g.innerHTML=`<div class="ds-nav">
+    <div class="ds-nav-hd">
+      <span class="ds-nav-title">经典服无人机名册</span>
+      <span class="ds-nav-sub">${list.length} 条 · ${groups.length} 个类别 · 按类别分区 · 同名并列已标记</span>
+    </div>
+    <nav class="ds-chips" aria-label="类别索引">${chips}</nav>
+    <div class="ds-nav-note">类型不是 CBG 源字段：由机体说明「X无人机」或名称家族前缀推导（kind_source 留痕）；181xxx 能量核心/发动机/结构框架/导航仪属零部件，按名称归入「机体部件」类别保留。</div>
+  </div>${secs}`;
   if(C2.open)c2Resync();
 }
 
@@ -4863,7 +4901,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   const droneTotal=DRONE_BOARD?droneUnified(DATA.items).length:0;
   const countEl=document.getElementById("count");
   const countHtml=DRONE_BOARD
-    ? `显示 ${droneList.length} / ${droneTotal} 条 · 经典服式名册 · 其中 ${droneList.filter(it=>String(it.kind||"")!==DRONE_CLASSIC_KIND).length} 条带类型/品级（原始 ${DATA.items.length} 行已按同名合并）`
+    ? `显示 ${droneList.length} / ${droneTotal} 条 · ${new Set(droneList.map(it=>String(it.kind||""))).size} 个类别 · 经典服名册（含 181xxx 机体部件）`
     : FASHION_BOARD
     ? `显示 ${items.length} / ${DATA.items.length} 件 · 多图(>4) ${items.filter(it=>((it._media&&it._media.images)||[]).length>4).length} 件 · 仅占位 ${items.filter(it=>it.icon_state==="含占位").length} 件`
     : (VEHICLE_BOARD
@@ -5083,16 +5121,14 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         `${referenceSection}${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`+
         `${techSection}</div>`;
     }else if(nucleusMode){
-      /* 简略卡面：只留 品级 / 星上限 / 武器类型；特技、升星段、溯源全部折进点开的详情 */
+      /* 简略卡面（2026-11-02）：品级 pill 左对齐贴卡边 + 武器类型同排；核芯属性在名字后；其余全部折进详情 */
       const sum=[];
       if(it.grade_clean||it.grade_label){
         const gl=it.grade_label||it.grade_clean;
         const gc=it.grade_color?` g-${esc(it.grade_color)}`:"";
-        sum.push(`<div class="k">品级</div><div class="v"><span class="grade-pill${gc}">${esc(gl)}</span></div>`);
+        sum.push(`<span class="grade-pill${gc}">${esc(gl)}</span>`);
       }
-      sum.push(`<div class="k">星上限</div><div class="v">${it.max_star==null?"待定":esc(it.max_star)}</div>`);
-      if(it.weapon_type_display)sum.push(`<div class="k">武器类型</div><div class="v">${esc(it.weapon_type_display)}</div>`);
-      if(it.element)sum.push(`<div class="k">核芯属性</div><div class="v">${esc(it.element)}</div>`);
+      if(it.weapon_type_display)sum.push(`<span class="core-wt">${esc(it.weapon_type_display)}</span>`);
       const det=[];
       if(it.skill_desc)det.push(`<div class="k">核芯特技</div><div class="v nucleus-desc">${richText(it.skill_desc)}</div>`);
       if(it.rank_star_segments&&typeof it.rank_star_segments==="object"){const segs=Object.keys(it.rank_star_segments).sort((a,b)=>Number(a)-Number(b)).map(s=>`<div class="star"><b>${esc(s)}星</b><div class="star-txt">${richText(zhText(String(it.rank_star_segments[s])))}</div></div>`).join("");det.push(`<div class="k">升星解锁</div><div class="v stars">${segs}</div>`);}
@@ -5104,8 +5140,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         `<div class="kv"><div class="k">证据等级</div><div class="v">${esc(EV_CN[it.evidence]||it.evidence||"")}</div>`+
         `<div class="k">状态标签</div><div class="v">${esc((Array.isArray(it.status_tags)?it.status_tags:[]).map(t=>STATE_CN[t]||COMMON_VAL_CN[t]||t).join("、"))}</div></div></details>`:"";
       const extraBlock=`${rewardsSection}${poolsSection}${activityPoolRefsSection}${variantSection}${behaviorSection}${childSection}`;
-      bodyHtml=`<div class="kv">${sum.join("")}<div class="i-detail" hidden><div class="kv">${det.join("")}</div>`+
-        `${extraBlock}${techBlock}</div></div>`;
+      bodyHtml=`<div class="core-meta">${sum.join("")}</div>`+
+        `<div class="i-detail" hidden><div class="kv">${det.join("")}</div>`+
+        `${extraBlock}${techBlock}</div>`;
     }else if(rosterMode){
       /* 名册类板（meta.card_mode="roster"）：卡面只留 图轨(≤4 张) + 名字 + 编号(head) +
          meta.card_summary 声明的字段；其余字段、礼包逐条说明、溯源全部折进点开的详情区 */
@@ -5147,7 +5184,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     const html=`<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}${rosterMode?" roster":""}${kindCls?" "+kindCls:""}"${nucleusMode?` data-cidx="${coreList.indexOf(it)}"`:(rosterMode?` data-cidx="${i}"`:"")}>
       ${mediaBlock}
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
-        <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
+        <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${nucleusMode&&it.element?`<span class="i-elem" data-el="${esc(it.element)}" title="核芯属性">${esc(it.element)}</span>`:""}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
         ${referenceTitle(it.reference_fields)}
         <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
         ${TITLE_BOARD?titleBadges(it):""}</div>
