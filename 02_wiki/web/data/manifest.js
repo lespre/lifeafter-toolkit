@@ -563,7 +563,7 @@ window.WIKI_MANIFEST = {
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
       "items": 1484,
-      "generated": "2026-11-02",
+      "generated": "20261102",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
@@ -572,15 +572,15 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "期次": 789,
-        "成员": 3742,
+        "成员": 1484,
         "结构可证": 1415,
         "候选成员": 69,
-        "有成员期次": 402,
-        "空成员期次": 387,
+        "有成员期次": 289,
+        "空成员期次": 500,
         "进行中": 21,
         "未开始": 5,
         "2026起期次": 121,
-        "2026起有成员期次": 88
+        "2026起有成员期次": 81
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -589,6 +589,33 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 1484
+        }
+      }
+    },
+    {
+      "name": "影音资源库 · 音频 19,959 + 视频 300",
+      "category": "三、综合资料 / （七）影音资源",
+      "board": "media_catalog",
+      "items": 20259,
+      "generated": "2026-11-02",
+      "source_server": "PE 测试服 · res/sound.gpk + 热更 res.sound.layers.1.1.npk 样本名索引；res/video.gpk 还原树",
+      "package_sha": "2a2aea562f139faa41347d33edb13bf94e9d84c5dafb36fd3039ac203ff77555",
+      "evidence": {
+        "structure": 20259
+      },
+      "state_summary": {
+        "音频": 19959,
+        "视频": 300,
+        "可播放": 20258,
+        "待提取": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "missing": 20259
         }
       }
     },
