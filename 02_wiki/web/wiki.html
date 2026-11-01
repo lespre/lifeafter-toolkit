@@ -42,7 +42,7 @@
   <a class="feature" href="#cat-4"><span class="num">04 / ARCHIVE</span><img src="assets/recipe_icons/icon_125058_b.png" alt=""><h3>生存百科 ↗</h3><span>料理 · 配方 · 道具</span></a>
  </div>
  <div class="directory">
-  <aside class="side"><div class="eyebrow">DIRECTORY / 目录</div><nav id="categoryNav" aria-label="侧边分类导航"></nav><a href="updates.html">更新记录 ↗</a><div id="gen"></div></aside>
+  <aside class="side"><label class="side-opt" title="勾选后才显示名称带「内测版」的板块"><input type="checkbox" id="optPreview"> <span>显示内测板块</span></label><div class="eyebrow">DIRECTORY / 目录</div><nav id="categoryNav" aria-label="侧边分类导航"></nav><a href="updates.html">更新记录 ↗</a><div id="gen"></div></aside>
   <div><div id="searchStatus" role="status" aria-live="polite"></div><div id="homeEmpty" class="empty" hidden>未找到匹配的资料板块，请尝试其他关键词。</div><div id="systemCards"></div></div>
  </div>
 </main>
@@ -56,6 +56,8 @@
   var M = window.WIKI_MANIFEST;
   var P = window.WIKI_PUBLICATION_POLICY;
   var host = document.getElementById('systemCards');
+  var SHOW_PREVIEW = (localStorage.getItem('wiki_show_preview') === '1');
+  function isPreviewBoard(b){ return !!(b && /内测/.test(String(b.name || ''))); }
   var navSide = document.getElementById('categoryNav');
   var navTop = document.getElementById('topNav');
   if(!T || !M || !host) return;
@@ -99,7 +101,10 @@
 
   function tally(n){
     var boards = 0, ph = 0, i;
-    for(i=0;i<(n.boards||[]).length;i++) if(byId[n.boards[i]]) boards++;
+    for(i=0;i<(n.boards||[]).length;i++){
+      var _b = byId[n.boards[i]];
+      if(_b && (SHOW_PREVIEW || !isPreviewBoard(_b))) boards++;
+    }
     if(n.placeholder && !boards) ph++;
     for(i=0;i<(n.children||[]).length;i++){
       var r = tally(n.children[i]); boards += r.boards; ph += r.ph;
@@ -271,7 +276,7 @@
       var topList = [];
       for(var bi=0; bi<(top.boards||[]).length; bi++){
         var nm0 = top.boards[bi];
-        if(byId[nm0]) topList.push([nm0, byId[nm0], false, '']);
+        if(byId[nm0] && (SHOW_PREVIEW || !isPreviewBoard(byId[nm0]))) topList.push([nm0, byId[nm0], false, '']);
       }
 
       // 整个大类合成一个网格：叶子不再各占一行
@@ -280,7 +285,7 @@
         var ch = top.children[ci];
         for(var bi2=0; bi2<(ch.boards||[]).length; bi2++){
           var nm2 = ch.boards[bi2];
-          if(byId[nm2]) allList.push([nm2, byId[nm2], false, '']);
+          if(byId[nm2] && (SHOW_PREVIEW || !isPreviewBoard(byId[nm2]))) allList.push([nm2, byId[nm2], false, '']);
         }
         for(var ci2=0; ci2<(ch.children||[]).length; ci2++) collect(ch.children[ci2], '', allList);
       }
@@ -304,9 +309,13 @@
       navTop.appendChild(a2);
     });
 
-    var boards = Object.keys(byId).length;
+    var boards = 0;
     var items = 0;
-    for(var x=0;x<M.boards.length;x++) items += (M.boards[x].items || 0);
+    for(var x=0;x<M.boards.length;x++){
+      var _bb = M.boards[x];
+      if(!SHOW_PREVIEW && isPreviewBoard(_bb)) continue;
+      boards++; items += (_bb.items || 0);
+    }
     var sb=document.getElementById('statBoards'), si=document.getElementById('statItems'), sc=document.getElementById('statCats');
     if(sb) sb.textContent = boards;
     if(si) si.textContent = items.toLocaleString('en-US');
@@ -339,6 +348,15 @@
   });
 
   document.getElementById('homeSearchForm').addEventListener('submit', function(e){ e.preventDefault(); document.getElementById('searchStatus').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); });
+  var _cbPreview = document.getElementById('optPreview');
+  if(_cbPreview){
+    _cbPreview.checked = SHOW_PREVIEW;
+    _cbPreview.addEventListener('change', function(){
+      SHOW_PREVIEW = _cbPreview.checked;
+      try { localStorage.setItem('wiki_show_preview', SHOW_PREVIEW ? '1' : '0'); } catch(e) {}
+      render();
+    });
+  }
   render();
 })();
 
