@@ -39,6 +39,8 @@ FAMS = [
     ("赠送图", "ui/shizhuang_icon/zengsong/img_zengsong_{m}_001"),
     ("主题预览", "ui/zhutihuodong_v5/zhutihuodong/changpaidianpu/yulan/img_shizhuang_{m}"),
     ("衣柜背景", "ui/zhutihuodong_v5_icon/zhishoushizhuang/bg/img_shizhuang_{m}_001"),
+    ("衣柜背景·旧", "ui/zhutihuodong_v5/zhutihuodong/zhishoushizhuang/bg/img_shizhuang_{m}_bg"),
+    ("染色底板", "ui/zhutihuodong_v5_icon/zhishoushizhuang/bg/img_ransediban_{m}"),
 ]
 
 

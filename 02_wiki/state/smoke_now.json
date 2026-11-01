@@ -1,6 +1,6 @@
 {
   "base": "http://127.0.0.1:8765",
-  "at": "2026-11-01T13:57:30.002Z",
+  "at": "2026-11-01T13:59:07.515Z",
   "results": [
     {
       "board": "fashion_wardrobe",
@@ -1113,33 +1113,347 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED"
-      ],
+      "consoleErrors": [],
       "facts": {
-        "title": "加载中…",
-        "metaline": "",
-        "count": "",
-        "pillCount": 0,
-        "filterSelects": 6,
-        "gridChildren": 0,
-        "cardTags": [],
-        "stateTagKinds": [],
-        "siteNavItems": 0,
+        "title": "（内测版）（三）无人机",
+        "metaline": "来源：PE 还原树 pe_20261020 · all_equips_data（kj1） · 简单生存服 · 生成 2026-10-19技术详情",
+        "count": "显示 287 / 287 条",
+        "pillCount": 10,
+        "filterSelects": 8,
+        "gridChildren": 287,
+        "cardTags": [
+          {
+            "n": "基础无人机",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "追风海鸥",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "银月白鸽",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "极光护卫",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "狂暴猛鹰",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "银翼猎手",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "烈色闪电",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "战虎-烈火",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "战虎-皎月",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "青石巨象",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "黑耀猛犸",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "擎天巨兽",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "黄金狮子",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "雷霆雄狮",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "烈焰狮王",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "白羽蜻蜓",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "密林瓢虫",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "丛林斥候",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "碧蓝游枭",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "冲天云枭",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "流光夜枭",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "暗夜精灵",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "凶暴飞鲨",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "铁臂金刚",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "炎熔霸虎",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "烈日红蜂",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "盾甲金牛",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "青翼",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "苍风",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "狂沙镭蛇",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "镭蛇：利齿",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "镭蛇：曼巴",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "疾风狡兔",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "黄袍",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "黑金",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "青龙",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "赤龙",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "守御灵龙",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "猎犬:獠牙",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "猎犬:赤影",
+            "tags": [
+              "静态配置",
+              "运行时结果未确认"
+            ],
+            "ev": "结构已解析"
+          }
+        ],
+        "stateTagKinds": [
+          "static-config",
+          "runtime-final-unknown",
+          "unverified"
+        ],
+        "siteNavItems": 33,
         "hasHamburger": true,
-        "bodyClasses": "wiki-board",
+        "bodyClasses": "wiki-board b-drone_catalog",
         "hasHorizontalScroll": false,
         "drawer": "block->block|opened",
-        "detailOpens": "no-card"
+        "detailOpens": "no-panel"
       }
     },
     {
@@ -2619,33 +2933,346 @@
       "navOk": true,
       "navErr": "",
       "pageErrors": [],
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED",
-        "Failed to load resource: net::ERR_CONNECTION_REFUSED"
-      ],
+      "consoleErrors": [],
       "facts": {
-        "title": "加载中…",
-        "metaline": "",
-        "count": "",
-        "pillCount": 0,
-        "filterSelects": 6,
-        "gridChildren": 0,
-        "cardTags": [],
-        "stateTagKinds": [],
-        "siteNavItems": 0,
+        "title": "（四）芯片",
+        "metaline": "来源：chip_type_data · 测试服 · 生成 2026-09-06技术详情",
+        "count": "显示 65 / 65 条",
+        "pillCount": 7,
+        "filterSelects": 7,
+        "gridChildren": 65,
+        "cardTags": [
+          {
+            "n": "不屈战意",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "临危不惧",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "乱战好手",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "从容不迫",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "以攻为守",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "先发制人",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "全神贯注",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "势如破竹",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "医疗克星",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "原力装置",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "反制装甲",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "坚如磐石",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "坚韧不拔",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "好事成双",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "孤注一掷",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "定点击破",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "寒霜守护",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "应急防御",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "异变赋能",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "异能压制",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "强击连发",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "意识防护",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "战地治疗",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "战术换弹",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "撕裂伤口",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "无坚不摧",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "格斗大师",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "波动冲击",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "爆破专家",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "特化护甲",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "狂猛奔袭",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "生生不息",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "疾刃强斩",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "绝境反击",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "蓄势待发",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "近程防御",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "远程打击",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "连环暴击",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "重整旗鼓",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          },
+          {
+            "n": "铁壁防御",
+            "tags": [
+              "静态配置",
+              "待确认"
+            ],
+            "ev": "结构已解析"
+          }
+        ],
+        "stateTagKinds": [
+          "static-config",
+          "unresolved"
+        ],
+        "siteNavItems": 33,
         "hasHamburger": true,
-        "bodyClasses": "wiki-board",
+        "bodyClasses": "wiki-board b-chip_item_catalog",
         "hasHorizontalScroll": false,
-        "drawer": "none->none|opened",
-        "detailOpens": "no-card"
+        "drawer": "none->block|opened",
+        "detailOpens": "no-panel"
       }
     },
     {
