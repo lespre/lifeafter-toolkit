@@ -16,7 +16,7 @@ ROOT = PROJ / "01_索引与产物/41_还原树/pe/配置/_未命名"
 def main() -> int:
     name = sys.argv[1] if len(sys.argv) > 1 else "00061965.bin"
     raw = (ROOT / name).read_bytes()
-    code = SD.load_code(raw) if hasattr(SD, "load_code") else None
+    r, code, end = SD.load_module(str(ROOT / name))
     print("SD 接口:", [x for x in dir(SD) if not x.startswith("_")][:15])
     if code is None:
         print("load_code 不可用")

@@ -95,17 +95,17 @@ CLASS_CN = {
 
 # 2026 起解不开的家族：写清「为什么解不开」，不编造成员
 GAP_REASON = {
-    "NucleusLotteryHD": "nucleus_lottery_pool_data 只有权重与 reward_pool_id，reward_pool_id 指向加密池，无道具字段",
-    "SecretFashionHD": "secret_fashion_goods_data 字段 schema 丢失（只有 0x36 槽位对），取不到道具",
-    "OnlyFashionLotteryHD": "only_fashion_hd_reward_pool_conf 字段 schema 丢失",
-    "T1BuildingObjectLotteryHDV2": "T1_bobj_lottery_v2 奖励池未闭合到道具 id",
-    "RouletteLotteryHD": "roulette_conf_data.lottery_ids 是奖池号不是道具",
+    "NucleusLotteryHD": "池内容在服务端：nucleus_lottery_pool_data 只下发权重与 reward_pool_id（391851–391853），无道具字段",
+    "SecretFashionHD": "secret_fashion_goods_data 字段 schema 丢失（只有 0x36 槽位对），客户端未下发可解字段",
+    "OnlyFashionLotteryHD": "only_fashion_hd_reward_pool_conf 字段 schema 丢失（仅剩池号 391050–391052）",
+    "T1BuildingObjectLotteryHDV2": "T1_bobj_lottery_v2 奖励池未闭合到道具 id（extra_reward_dict 是映射，不是道具列表）",
+    "RouletteLotteryHD": "roulette_conf_data.lottery_ids 只给池号（391465/391522/391735），客户端无池内容表",
     "ScorpioSuperLotteryHD": "extra_param 首元素为字符串，无数值绑定",
     "DragonPrayLotteryHD": "record_items 只有信用点与未知道具，不是奖池成员",
     "GenreWeaponLotteryHD": "extra_param 缺失",
     "FashionDiyLotteryHD": "extra_param 缺失",
     "WishFashionHDV2": "extra_param 缺失",
-    "XiYangYangLotteryHD": "无可靠成员字段",
+    "XiYangYangLotteryHD": "xi_yang_yang_lottery_conf_data 不是单 conf，池展示位无法归属单期",
     "WeekCoinLotteryHD": "无可靠成员字段",
     "FashionBoxLotteryHD": "奖励池表未闭合到道具 id",
     "AccumulateGiftLotteryHD": "奖励池表未闭合到道具 id",
@@ -141,6 +141,15 @@ class CDTable:
             body = raw[at + 6: at + 6 + ln]
             cnt = struct.unpack_from("<I", body, 0)[0]
             self.blob = body[8 + 4 * cnt:]
+        if self.blob is None:
+            # nxs 容器的 jump 偏移相对「去掉 8 + 4*count 索引区后的表体」；
+            # 不补这段，所有 .nxs 表的 grp() 恒为空。
+            try:
+                body, _meta = B73.extract_body(raw)
+                cnt = struct.unpack_from("<I", body, 0)[0]
+                self.blob = body[8 + 4 * cnt:]
+            except Exception:  # noqa: BLE001 - 表体解不开则不提供 jump 能力
+                self.blob = None
 
     def grp(self, value) -> list[int]:
         if isinstance(value, bool):
@@ -228,6 +237,7 @@ def _add(out: list, iid, field: str, kind: str, table: str, row_key, slot=None,
 
 T_SF = T_CHIP = T_TEAM = T_TEAMR = T_BUILD = T_WEAP = T_MULTI = None
 T_VEH = T_FALCON = T_BLN = T_LN = T_LIVE = T_PIGEON = None
+T_XYY = T_XYY_CONF = None
 SF_PANEL_KEYS: dict = defaultdict(set)
 
 # ── 奖励包展开：reward id → random_item_reward_data_<n> 行 → jump 叶子 ─────
@@ -252,6 +262,33 @@ NPK_POOL_BASE = (29769, 14650,
                  "com/cdata/reward_pool_data_base_chs.py")
 ITEM_NAMES_NPK: dict = {}   # item_id → 道具名
 POOL_NAME: dict = {}        # 池号 → 池名
+EXTRA_NAMES: dict = {}      # gift_data / fashion_data 等表内自带 name
+
+
+def _init_extra_names():
+    """名字补充源：表内自带 name 且 key 就是道具 id。
+
+    gift_data（礼包）、fashion_data（时装）、recipe（配方/涂装）、
+    player_module_appear_data（展示外观）——2026 未映射的 105xxx/106xxx
+    实际全是配方/涂装 id，名字只在 recipe 表里。
+    """
+    src = (("gift_data", "name"), ("fashion_data", "name"),
+           ("recipe", "name"), ("player_module_appear_data", "name"))
+    for stem, field in src:
+        t = load(stem)
+        if t is None:
+            continue
+        n = 0
+        for r in t.rows:
+            k, f = r["key"], r["fields"]
+            if isinstance(k, bool) or not isinstance(k, int) or k <= 0:
+                continue
+            nm = f.get(field) or f.get("name_female")
+            if isinstance(nm, str) and nm.strip():
+                EXTRA_NAMES.setdefault(k, nm.strip())
+                n += 1
+        print("  名字源 %-30s %d 条" % (stem, n))
+    print("扩展名字源：%d 条（去重后）" % len(EXTRA_NAMES))
 
 
 def _init_rewards():
@@ -446,6 +483,7 @@ def _expand_members(members: list, depth: int = 0, seen: frozenset = frozenset()
 def _init_tables():
     global T_SF, T_CHIP, T_TEAM, T_TEAMR, T_BUILD, T_WEAP, T_MULTI
     global T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON
+    global T_XYY, T_XYY_CONF
     T_SF = load("super_fashion_lottery_conf_data")
     T_CHIP = load("special_chip_lottery_hd_conf_data")
     T_TEAM = load("lottery_team_hd_conf_data")
@@ -459,6 +497,8 @@ def _init_tables():
     T_LN = load("limit_nucleus_lottery_conf_data")
     T_LIVE = load("lottery_live_bonus_data")
     T_PIGEON = load("pigeon_wish_conf_data")
+    T_XYY_CONF = load("xi_yang_yang_lottery_conf_data")
+    T_XYY = load("xi_yang_yang_lottery_reward_pool_conf_data")
     if T_SF:
         for k, f in T_SF.by_key.items():
             v = f.get("panel_show_item_ids")
@@ -493,9 +533,9 @@ def _sf_like(conf):
     # 面板 jump 组被多个 conf 共用时不能归给单期（实测 225/230 共用 jump:566）
     if isinstance(panel, str) and panel.startswith("jump:") and len(SF_PANEL_KEYS.get(panel, ())) == 1:
         for iid in T_SF.grp(panel):
-            _add(out, iid, "panel_show_item_ids", "展示道具", T_SF.stem, conf)
+            _add(out, iid, "panel_show_item_ids", "宣传面板展示", T_SF.stem, conf)
     for f in ("left_item_id", "right_item_id", "item_id_3"):
-        _add(out, row.get(f), f, "展示道具", T_SF.stem, conf)
+        _add(out, row.get(f), f, "宣传面板展示", T_SF.stem, conf)
     return out, ("" if out else "面板与主推道具均为空")
 
 
@@ -528,7 +568,7 @@ def _falcon(activity_id, conf):
     out: list = []
     for f in ("special_show_item_ids", "special_show_item_ids2"):
         for iid in T_FALCON.grp(row.get(f)):
-            _add(out, iid, f, "展示道具", T_FALCON.stem, row.get("conf_id") or activity_id)
+            _add(out, iid, f, "宣传面板展示", T_FALCON.stem, row.get("conf_id") or activity_id)
     return out, ("" if out else "special_show_item_ids 无内容")
 
 
@@ -572,6 +612,27 @@ def _nucleus_single(conf, tbl, label: str):
     return out, ("" if out else "核芯道具 id 缺失")
 
 
+def _xi_yang_yang(conf):
+    """羊狼寻宝：conf 只有 1 行时，reward_pool_conf 的 59 行即该期奖池展示位。
+
+    reward_pool_conf_data 没有 conf 字段，59 行按键排序（sort 23→0）；
+    客户端只下发这一个 conf，因此可整体归给该期，多 conf 时不猜。
+    """
+    if T_XYY is None:
+        return [], "xi_yang_yang_lottery_reward_pool_conf_data 缺失"
+    if not isinstance(conf, int):
+        return [], "extra_param 非整数，无可绑定的配置 key"
+    if T_XYY_CONF is None or conf not in T_XYY_CONF.by_key:
+        return [], "xi_yang_yang_lottery_conf_data 无 key %s" % conf
+    if len(T_XYY_CONF.rows) != 1:
+        return [], "xi_yang_yang_lottery_conf_data 有 %d 个 conf，池展示位无法归属单期" % len(T_XYY_CONF.rows)
+    out: list = []
+    for r in sorted(T_XYY.rows, key=lambda x: x["fields"].get("sort") if isinstance(x["fields"].get("sort"), int) else -1):
+        for iid in T_XYY.grp(r["fields"].get("show_item_ids")):
+            _add(out, iid, "show_item_ids", "宣传面板展示", T_XYY.stem, r["key"], r["fields"].get("sort"))
+    return out, ("" if out else "%s.show_item_ids 无内容" % T_XYY.stem)
+
+
 def bind_recent(cls: str, activity_id: int, conf):
     """2026 起：按家族固定链路绑定成员；解不开的返回空 + 理由。"""
     if cls in ("SuperFashionLotteryHD", "DragonBlessingLotteryHD", "BlessingsAlwaysLotteryHD"):
@@ -594,11 +655,11 @@ def bind_recent(cls: str, activity_id: int, conf):
     if cls == "BuildingObjectLotteryHD":
         return _conf_items(T_BUILD, conf, "furniture_item_ids", "奖池奖励")
     if cls == "WeaponDecompositionLotteryHD":
-        return _conf_items(T_WEAP, conf, "display_item_ids", "展示道具")
+        return _conf_items(T_WEAP, conf, "display_item_ids", "宣传面板展示")
     if cls == "MultiOptionalLotteryHD":
-        return _conf_items(T_MULTI, conf, "show_item_ids", "展示道具")
+        return _conf_items(T_MULTI, conf, "show_item_ids", "宣传面板展示")
     if cls == "VehicleLotteryHD":
-        return _conf_items(T_VEH, conf, "display_item_ids", "展示道具")
+        return _conf_items(T_VEH, conf, "display_item_ids", "宣传面板展示")
     if cls == "FalconStrikeLotteryHD":
         return _falcon(activity_id, conf)
     if cls == "BuildNucleusLotteryHD":
@@ -609,6 +670,8 @@ def bind_recent(cls: str, activity_id: int, conf):
         return _live(activity_id)
     if cls in ("PigeonWishHD", "PigeonWishHDV2"):
         return _pigeon(conf)
+    if cls == "XiYangYangLotteryHD":
+        return _xi_yang_yang(conf)
     return [], GAP_REASON.get(cls, "该家族暂无结构可证的成员字段")
 
 
@@ -619,6 +682,7 @@ def main() -> int:
     _init_tables()
     _init_rewards()
     _init_npk_sources()
+    _init_extra_names()
 
     im = json.loads((WEB / "data/boards/item_master_full.json").read_text(encoding="utf-8"))
     names = {str(i.get("item_id")): i.get("name") for i in im["items"] if i.get("name")}
@@ -638,15 +702,26 @@ def main() -> int:
                 if nm and k not in names:
                     names[k] = nm
         elif mode == "list":
-            for v in (data.get("items") or {}).values():
-                if isinstance(v, dict) and v.get("name") and v.get("item_id") is not None:
-                    names.setdefault(str(v["item_id"]), v["name"])
+            # show_item_names.json 的 items 形如 {item_id: {"展示名": [来源表…]}}，
+            # 外层 key 才是 item_id；旧写法要求 v["item_id"]，导致 23k 条一条没用上。
+            for k, v in (data.get("items") or {}).items():
+                nm = v.get("name") if isinstance(v, dict) else v
+                if not (isinstance(nm, str) and nm) and isinstance(v, dict):
+                    for kk in v.keys():
+                        if isinstance(kk, str) and kk:
+                            nm = kk
+                            break
+                if isinstance(nm, str) and nm:
+                    names.setdefault(str(k), nm)
         else:
             for rows_ in (data.get("by_ns") or {}).values():
                 for k, v in rows_.items():
                     nm = v.get("name") if isinstance(v, dict) else v
                     if nm and k not in names:
                         names[k] = nm
+    # 礼包 / 时装表自带 name（key 就是道具 id）：gift_data、fashion_data
+    for iid, nm in EXTRA_NAMES.items():
+        names.setdefault(str(iid), nm)
     # 快照 npk 的 *_base 真表（cdata 里只有 815B 存根）：道具名优先，池名最后兜底
     for iid, nm in ITEM_NAMES_NPK.items():
         names.setdefault(str(iid), nm)
@@ -702,7 +777,7 @@ def main() -> int:
 
     def table_sha(name: str) -> str:
         for t in (T_SF, T_CHIP, T_TEAM, T_TEAMR, T_BUILD, T_WEAP, T_MULTI,
-                  T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON):
+                  T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON, T_XYY, T_XYY_CONF):
             if t is not None and t.stem == name:
                 return t.sha
         rt = REWARD_TABLES.get(name)
@@ -741,7 +816,7 @@ def main() -> int:
             if not new_members:
                 ids = show_map.get(str(rk), [])
                 if ids:
-                    new_members = [{"item_id": str(x), "field": "show_item_ids", "kind": "展示道具",
+                    new_members = [{"item_id": str(x), "field": "show_item_ids", "kind": "宣传面板展示",
                                     "table": "common_hd_show_reward_data",
                                     "row_key": rk, "slot": None} for x in dict.fromkeys(ids)]
                     gap = ""
@@ -763,12 +838,12 @@ def main() -> int:
         carried = [it for it in old_items.get(pid, [])
                    if not (recent and new_members and str(it.get("item_id")) in REWARD_IDS)]
         for it in carried:
-            # 旧板只回填名字（不改成员集），让上一版遗留的「道具 <id>」尽量显示真名
-            if str(it.get("name") or "").startswith("道具 "):
-                nm = names.get(str(it.get("item_id")))
-                if nm:
-                    it = dict(it)
-                    it["name"] = nm
+            # 旧板只回填名字（不改成员集），让上一版遗留的「道具 <id>」/「未识别道具 <id>」显示真名
+            nm = names.get(str(it.get("item_id")))
+            if nm and str(it.get("name") or "").startswith(("道具 ", "未识别道具 ")):
+                it = dict(it)
+                it["name"] = nm
+                it["status_tags"] = [t for t in (it.get("status_tags") or []) if t != "unresolved"]
             items.append(it)
             per["member_count"] += 1
         srcs = []
@@ -882,7 +957,8 @@ def main() -> int:
         "decode": {"kind": "vm-bytecode-exec+legacy-x-container",
                    "tables": {t.stem: t.sha for t in
                               (T_SF, T_CHIP, T_TEAM, T_TEAMR, T_BUILD, T_WEAP, T_MULTI,
-                               T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON) if t is not None},
+                               T_VEH, T_FALCON, T_BLN, T_LN, T_LIVE, T_PIGEON,
+                               T_XYY, T_XYY_CONF) if t is not None},
                    "table_file_id": HD_FILE_ID,
                    "replay": {"rows": hd_meta.get("rows")}},
     }
@@ -894,12 +970,16 @@ def main() -> int:
         "家具抽奖 furniture_item_ids；武器分解 / 自选保底 / 载具 / 飞隼 用展示道具；"
         "大版本奖池 / 龙祈福袋 / 福运常在用面板（面板 jump 组被多期共用时改用该期自己的主推道具）；"
         "限定芯片 up_chips+new_chips；核芯补给/核芯集市 limit_nucleus_item_id；典藏直播 rare_item_ids；"
-        "许愿池取 grand_reward_item_id。2026 前保持上一版规则不动，等下一轮再深化。"
+        "许愿池取 grand_reward_item_id；羊狼寻宝取 xi_yang_yang_lottery_reward_pool_conf_data"
+        "（客户端只有 1 个 conf 时，59 个展示位整体归该期）。2026 前保持上一版规则不动，等下一轮再深化。"
         "★ 奖励包展开：配置里有些「道具 id」实际是 reward 包（返回礼包 944646、面板 10588 这类），"
         "本版按 random_item_reward_data_<n> 行 → items jump 帧展开成真实道具与数量，"
         "原包 id 保留在 item.reward_id / source 作证据；礼包内嵌套组最多展开 3 层。"
-        "★ 名字多源回填：item_master_full → common_item_names → show_item_names → item_names_ns，"
-        "仍未命中的保留「道具 <id>」并由前端标注「未解析」。"
+        "★ 名字多源回填：item_master_full → common_item_names → show_item_names → item_names_ns"
+        " → gift_data / fashion_data / recipe（配方·涂装）/ player_module_appear_data 自带 name"
+        " → 快照 npk 道具名表；仍未命中的保留「道具 <id>」并由前端标注「未解析」。"
+        "★ 奖池内容边界：2026 年池号（≥390804）在 reward_pool_data_base / reward_pool_level_item_ids "
+        "里没有可归属的池体，客户端只下发展示位与奖励包；这类期次如实留空并写明 gap_reason，不编造。"
         "成员分 kind：奖池奖励 / 展示道具 / 大奖 —— 展示道具不当奖励。"
         "解不开的家族（核芯抽奖、秘藏时装、不放回抽奖、T1 家具、转盘、天蝎座等）不编造，"
         "理由写在期次的 gap_reason，汇总见 meta.gap_summary。"
