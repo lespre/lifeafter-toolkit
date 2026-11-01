@@ -59,7 +59,7 @@
   var SHOW_PREVIEW_NAV=(function(){try{return localStorage.getItem('wiki_show_preview')==='1';}catch(e){return false;}})();
   function _navVis(id){var b=byId[id];return !!b && (SHOW_PREVIEW_NAV || !/内测/.test(String(b.name||'')));}
   var nav=document.getElementById('siteNav');
-  var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>';
+  var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>'+'<a class="leafrow" id="navOptPreviewRow" href="javascript:void(0)" style="display:flex!important;align-items:center;gap:6px;color:#c9d3e6!important"><input type="checkbox" id="navOptPreview" style="width:13px;height:13px;accent-color:#b6a7df"'+(SHOW_PREVIEW_NAV?' checked':'')+'>显示内测板块</a>';
   (T['树']||[]).forEach(function(top){
     html += '<div class="grp">'+(ICON[top.id]||'') + '<span>' + top.name + '</span></div>';
     var rows=[];
@@ -81,6 +81,14 @@
     });
   });
   nav.innerHTML=html;
+  (function(){
+    var cb=document.getElementById('navOptPreview');
+    if(!cb)return;
+    cb.addEventListener('change', function(){
+      try{ localStorage.setItem('wiki_show_preview', cb.checked ? '1' : '0'); }catch(e){}
+      location.reload();
+    });
+  })();
   /* 侧栏自适应：优先缩字号（最小 9px）保证单行放得下，仍放不下才回退省略号 */
   function fitNav(){
     var els=nav.querySelectorAll('a, .leafhd, .grp');

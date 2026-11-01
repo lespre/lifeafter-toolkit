@@ -686,15 +686,23 @@ body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-num
      背景按内孔百分比绝对定位铺进去。
    ★ 头像板是 roster 模式，`.i.roster .i-media{display:flex!important}` 会压过这里的布局，
      故全部用 !important 覆盖（同权重时后写者胜）。 */
-.i.k-nc .i-media.i-stack{position:relative;display:block!important;padding:0;line-height:0}
-.i.k-nc .i-media.i-stack>.mi{display:block!important;margin:0!important;width:100%;max-width:100%;flex:none!important}
-.i.k-nc .i-media.i-stack>.mi:not(.mi-bg){position:relative!important;z-index:1}
-.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) img{display:block;width:100%!important;height:auto!important;
-  max-height:none!important;background:none!important;padding:0!important;border-radius:0!important;
-  box-shadow:none!important;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
-.i.k-nc .i-media.i-stack>.mi.mi-bg{position:absolute!important;left:var(--hl,9.4%);top:var(--ht,13.2%);
-  width:var(--hw,81.1%);height:var(--hh,73.9%);z-index:0;pointer-events:none}
-.i.k-nc .i-media.i-stack>.mi.mi-bg img{display:block;width:100%!important;height:100%!important;
+.i.k-nc .i-media.i-stack{position:relative;display:block!important;padding:0;line-height:0;
+  aspect-ratio:var(--ar,1292/810)}
+/* 每个图层都绝对定位、卡面比例由 --ar 锁死 —— 悬停切 Spine 动图时尺寸不跳 */
+.i.k-nc .i-media.i-stack>.mi{position:absolute!important;inset:0!important;
+  display:block!important;margin:0!important;width:auto;max-width:none;flex:none!important}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg){z-index:1}
+.i.k-nc .i-media.i-stack>.mi:not(.mi-bg) img{display:block;width:100%!important;height:100%!important;
+  object-fit:fill;max-height:none!important;background:none!important;padding:0!important;
+  border-radius:0!important;box-shadow:none!important;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+/* 背景层：整张卡大小的透明图层，里面那张照片按内孔 bbox 摆好；
+   边框量到轮廓（JS 给背景层写内联 clip-path）时，照片只在内孔里显形，
+   斜边/角饰处一律裁掉 —— 背景永远不会露到框外。没有轮廓则退回 bbox 直铺。 */
+.i.k-nc .i-media.i-stack>.mi.mi-bg{inset:0!important;width:100%!important;height:100%!important;
+  z-index:0;pointer-events:none;overflow:hidden}
+.i.k-nc .i-media.i-stack>.mi.mi-bg img{position:absolute!important;display:block;
+  left:calc(var(--hl,9.4%) - .35%);top:calc(var(--ht,13.2%) - .35%);
+  width:calc(var(--hw,81.1%) + .7%);height:calc(var(--hh,73.9%) + .7%);
   max-height:none!important;object-fit:cover;object-position:center;
   border-radius:0;opacity:1;filter:none;box-shadow:none}
 .i.k-nc .i-media.i-stack>.mi figcaption{display:none}
@@ -914,3 +922,20 @@ body.view-mode .vnote{font-size:11px;color:var(--muted-2);margin-top:9px;line-he
 .fr-sib-card:hover{border-color:var(--accent,#b6a7df)}
 .fr-sib-card.seen{border-color:var(--accent,#b6a7df);box-shadow:0 0 0 1px var(--accent,#b6a7df) inset}
 @media(max-width:900px){.fr-sibs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* 板页侧栏的内测开关（#siteNav 内，强制可见） */
+#siteNav .side-opt{display:flex;align-items:center;gap:6px;font-size:12px;
+  color:#9aa6bd;padding:6px 12px 10px;cursor:pointer;white-space:nowrap}
+#siteNav .side-opt input{width:13px;height:13px;accent-color:#b6a7df;cursor:pointer;flex:0 0 auto}
+#siteNav .side-opt:hover{color:#e7eaf4}
+
+/* 兜底：确保板页侧栏开关文字可见 */
+#siteNav .side-opt{justify-content:flex-start!important;color:#c9d3e6!important;
+  font-size:12px!important;line-height:20px!important;text-align:left!important}
+
+/* 内测开关：输入框必须窄，否则会被全局 input 宽度规则拉满、把文字挤成竖排 */
+#siteNav #navOptPreviewRow{white-space:nowrap!important;font-size:12px!important;height:auto!important;
+  min-height:0!important;line-height:20px!important;padding:4px 12px 10px!important;overflow:visible!important}
+#siteNav #navOptPreview{width:13px!important;height:13px!important;min-width:0!important;
+  max-width:13px!important;flex:0 0 13px!important;margin:0!important;padding:0!important;
+  accent-color:#b6a7df}
