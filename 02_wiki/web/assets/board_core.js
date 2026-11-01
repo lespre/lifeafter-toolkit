@@ -1162,13 +1162,22 @@ function fillFilterSelects(items){
   /* 称号板：筛选只保留数据里真有的轴 —— 获取途径（分组同源）、颜色档位、特性（动态/美术字）。
      其它控件（武器/皮肤系列、排序）全部隐藏。 */
   if(TITLE_BOARD){
-    ["fGrade","fType","fIp","fRelease","fNameSt","fOrder","fDir"].forEach(id=>{
+    ["fGrade","fType","fIp","fRelease","fNameSt","fDir"].forEach(id=>{
       const el=document.getElementById(id);if(el)el.style.display="none";
     });
     const sh=document.getElementById("sortHint");if(sh)sh.style.display="none";
     const lh=document.getElementById("listingHint");if(lh)lh.style.display="none";
     const wrap=document.getElementById("fCustomWrap");if(wrap)wrap.innerHTML="";
     DATA._custFilters=[];
+    /* 排序轴：称号编号（item_id）。沿用 #fOrder/id_asc,id_desc 的既有取值语义，
+       前端只在组内改变方向，分组顺序（获取途径）保持不动。 */
+    const oSel=document.getElementById("fOrder");
+    if(oSel){
+      oSel.innerHTML=`<option value="id_asc" selected>编号：小 → 大</option><option value="id_desc">编号：大 → 小</option>`;
+      oSel.value="id_asc";
+      oSel.title="先按获取途径分组，组内按称号编号排序";
+      oSel.style.display="";
+    }
     const mk=(label,opts)=>{
       const s=document.createElement("select");
       s.innerHTML=`<option value="">${esc(label)}</option>`+
@@ -1340,7 +1349,9 @@ function renderItemMedia(m){
   const stack=_all.some(x=>x.role!=="background")&&_all.some(x=>x.role==="background");
   const imgs=_all.slice(0,6).map((x,i)=>{
     const bg=(x.role==="background");
-    const hot=(anim&&i===0&&!bg);
+    /* ★ 叠加模式下不挂动图：名片框的 APNG 是 168×168 紧裁的中空边框，
+       换成整卡背景上会突然缩成方框、比例全乱 —— 静止整卡比变形好。 */
+    const hot=(anim&&i===0&&!bg&&!stack);
     return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}"><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
   }).join("");
   const ph=m.placeholder?`<figure class="mi ph"><img src="${esc(m.placeholder)}" alt="客户端占位图" loading="lazy"><figcaption>占位</figcaption></figure>`:"";
@@ -4080,11 +4091,15 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         ? (a.sort_660||0)-(b.sort_660||0)
         : (b.sort_660||0)-(a.sort_660||0))
     : items;
-  /* 称号板：先按获取途径分组排序（组内保持原始称号 ID 升序），组头由下面的 map 注入。
+  /* 称号板：第一次序 = 获取途径分组（组头由下面的 map 注入），第二次序 = 组内称号编号（可切升/降）。
      注意 list 可能还是 items 本体（默认路径），这里只改顺序、不改集合。 */
   if(TITLE_BOARD){
+    /* 组内按称号编号排序；方向取自 #fOrder（id_asc / id_desc，见 fillFilterSelects）。
+       分组先后不动，保证「获取途径」分类仍是第一次序。 */
+    const st=sortState();
+    const sign=st.dir==="asc"?1:-1;
     list.sort((a,b)=>titleGroupOrder(titleGroupKey(a))-titleGroupOrder(titleGroupKey(b))
-      ||(Number(a.item_id||0)-Number(b.item_id||0)));
+      ||sign*(Number(a.item_id||0)-Number(b.item_id||0)));
   }
   let lastTitleGroup="";
   /* 2026-10-30：核芯板全量入 chips——基础（绿）核芯（家园守卫限定 4 条）无 skill_desc/升星段，
