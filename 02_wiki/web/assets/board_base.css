@@ -1355,7 +1355,7 @@ body.b-gene_potential_catalog .gene-d2-na{color:var(--muted-2);font-size:12px}
   border-radius:0 6px 6px 0;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center}
 #navCollapse:hover{color:var(--fg,#e7eaf4);border-color:var(--accent,#b6a7df)}
 body.nav-collapsed{padding-left:0!important}
-body.nav-collapsed #siteNav{width:0!important;overflow:hidden;border-right:none}
+body.nav-collapsed #siteNav{width:0!important;min-width:0!important;max-width:0!important;padding:0!important;overflow:hidden;border-right:none}
 body.nav-collapsed #navCollapse{left:0;border-left:1px solid var(--border,#2b3446);
   border-radius:0 6px 6px 0}
 @media(max-width:900px){#navCollapse{display:none}}
