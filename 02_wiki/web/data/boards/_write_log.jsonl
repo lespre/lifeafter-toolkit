@@ -14,3 +14,5 @@
 {"ts": "2026-11-01 20:10:20", "board": "fashion_wardrobe", "items": 3152, "sha_before": "3d54a62e30f23fb5", "sha_after": "bddf0e0bff9e78b6", "script": "fetch_icons_v6_families.py", "pid": 44584}
 {"ts": "2026-11-01 20:13:57", "board": "fashion_wardrobe", "items": 3152, "sha_before": "bddf0e0bff9e78b6", "sha_after": "5035a1630158176b", "script": "fetch_partial_gender_v6b.py", "pid": 40760}
 {"ts": "2026-11-01 20:14:01", "board": "fashion_wardrobe", "items": 3152, "sha_before": "5035a1630158176b", "sha_after": "4f9bce3175e42e97", "script": "recompute_gender_icon_state.py", "pid": 42396}
+{"ts": "2026-11-01 20:18:34", "board": "fashion_wardrobe", "items": 3152, "sha_before": "4f9bce3175e42e97", "sha_after": "b62ff56c4c30a9a5", "script": "move_art_out_of_icons.py", "pid": 41236}
+{"ts": "2026-11-01 20:18:36", "board": "fashion_wardrobe", "items": 3152, "sha_before": "b62ff56c4c30a9a5", "sha_after": "24bf01a65314e12e", "script": "recompute_gender_icon_state.py", "pid": 39552}
