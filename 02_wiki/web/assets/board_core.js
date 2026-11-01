@@ -4180,6 +4180,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     return tgHead+html;
   }).join("");
   if((CORE_BOARD||rosterBoard)&&C2.open)c2Resync();
+  if(TITLE_BOARD)syncTitleHeadTop();
 }
 
 /* 2026-10-29：MVP 结算动画 D2 详情内嵌视频播放（视频本体尚未提取 → onerror 兜底提示游戏内路径） */

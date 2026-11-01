@@ -243,7 +243,10 @@ def main() -> int:
         dur = FX.anim_duration(skel, aname) or 1.0
         cnt = max(6, min(a.frames, int(round(dur * FPS_FALLBACK))))
         try:
-            frs, meta = FX.render_frames(at_f, img_of, box=a.size, cnt=cnt, aname=aname)
+            # 名片框按画板裁（火焰溢出属正常），头像/头像框按覆盖率紧裁
+            crop = "artboard" if it.get("kind") == "名片框" else "coverage"
+            frs, meta = FX.render_frames(at_f, img_of, box=a.size, cnt=cnt,
+                                         aname=aname, crop=crop)
         except Exception as ex:                            # noqa: BLE001
             fail += 1
             fails.append((iid, base, "渲染失败 " + str(ex)[:50]))

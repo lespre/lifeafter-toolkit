@@ -797,12 +797,17 @@ def _coverage_bbox(frs, canvas):
 
 
 def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=None,
-                  internal=420, canvas=1400):
+                  internal=420, canvas=1400, crop="coverage"):
     """→ (frames[RGBA], meta)。
 
     box：最终输出最长边（px）。internal：主体在内部画布上应占的最长边。
     canvas：内部全画布边长（要足够大以容纳超出 skeleton 声明边界的装饰）。
-    先在大画布渲染所有帧，再对并集包围盒紧裁，最后等比缩到 box。
+    crop：
+      · "coverage"（默认，头像/头像框）：按逐帧覆盖率包围盒紧裁 ——
+        主体刚好占满，不受飞散粒子影响。
+      · "artboard"（名片框）：按 skeleton 声明的 width/height 裁剪 ——
+        名片框的火焰特效会横向溢出画板，用覆盖率会把画面裁成一条长条，
+        按画板裁则与游戏内显示区域一致（溢出部分裁掉）。
 
     ★ 两遍渲染（2026-11-01）：不同骨架声明的 width/height 与实际内容尺寸
       差异极大（3.8 素材常见声明 520×1025 而主体只有 ~110 单位），
@@ -850,6 +855,15 @@ def render_frames(atlas: pathlib.Path, page_imgs: dict, box=220, cnt=24, aname=N
         minx, miny, maxx, maxy = _coverage_bbox(frs, canvas)
     # ★ 不再用 _bg_rect 猜背景框：它会把面积大的方形装饰（烟花/粒子）
     #   当成背景框，裁出的画面里主体只剩一小点 —— 这正是「乱七八糟」的来源。
+    if crop == "artboard":
+        # 名片框：按 skeleton 声明的画板裁（火焰特效横向溢出画板属正常，
+        # 用覆盖率包围盒会把画面裁成 2.5:1 的长条）
+        half_w = W * scale / 2.0
+        half_h = H * scale / 2.0
+        minx = int(max(0, math.floor(off[0] - half_w)))
+        maxx = int(min(canvas - 1, math.ceil(off[0] + half_w)))
+        miny = int(max(0, math.floor(off[1] - half_h)))
+        maxy = int(min(canvas - 1, math.ceil(off[1] + half_h)))
     # 留 4px 边
     minx = max(0, minx - 4); miny = max(0, miny - 4)
     maxx = min(canvas - 1, maxx + 4); maxy = min(canvas - 1, maxy + 4)
