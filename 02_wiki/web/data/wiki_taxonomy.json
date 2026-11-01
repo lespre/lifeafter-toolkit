@@ -132,6 +132,52 @@
    "boards": [],
    "children": [
     {
+     "name": "（一）全量道具总表",
+     "boards": [
+      "item_master_full"
+     ]
+    },
+    {
+     "name": "（二）配方",
+     "boards": [
+      "recipe_catalog"
+     ]
+    },
+    {
+     "name": "（三）说明条目、文字与提示总表",
+     "boards": [
+      "desc_catalog",
+      "text_notice_catalog",
+      "gift_data_text_sources"
+     ]
+    },
+    {
+     "name": "（四）实体技能",
+     "boards": [
+      "entity_catalog",
+      "skill_catalog"
+     ]
+    },
+    {
+     "name": "（五）状态",
+     "boards": [
+      "buff_catalog"
+     ]
+    },
+    {
+     "name": "（六）图鉴收集",
+     "boards": [
+      "illustration_catalog"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "service_package",
+   "name": "四、服务与包体",
+   "boards": [],
+   "children": [
+    {
      "name": "（一）服务器类型",
      "boards": [
       "server_types"
@@ -141,59 +187,30 @@
      "name": "（二）CDN 资源库",
      "boards": [
       "cdn_library"
-     ],
-     "children": []
+     ]
     },
     {
      "name": "（三）本地还原树",
      "boards": [
       "local_restore_tree"
-     ],
-     "children": []
-    },
-    {
-     "name": "（四）全量道具总表",
-     "boards": [
-      "item_master_full"
      ]
     },
     {
-     "name": "（五）配方",
-     "boards": [
-      "recipe_catalog"
-     ]
-    },
-    {
-     "name": "（六）说明条目、文字与提示总表",
-     "boards": [
-      "desc_catalog",
-      "text_notice_catalog",
-      "gift_data_text_sources"
-     ]
-    },
-    {
-     "name": "（七）实体技能",
-     "boards": [
-      "entity_catalog",
-      "skill_catalog"
-     ]
-    },
-    {
-     "name": "（八）状态",
-     "boards": [
-      "buff_catalog"
-     ]
-    },
-    {
-     "name": "（九）图鉴收集",
-     "boards": [
-      "illustration_catalog"
-     ]
-    },
-    {
-     "name": "（十）文件名还原方法论",
+     "name": "（四）文件名还原方法论",
      "boards": [
       "name_restore_method"
+     ]
+    },
+    {
+     "name": "（五）测试服与白名单",
+     "boards": [
+      "server_whitelist"
+     ]
+    },
+    {
+     "name": "（六）包体入口与版本线",
+     "boards": [
+      "package_entries"
      ]
     }
    ]

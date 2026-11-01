@@ -1582,7 +1582,7 @@ function frCard(it,cidx,full){
     <div class="fr-sub">
       <span class="fr-part b-${cls}" title="表的 part_type：${esc(it.part||"（表里无该字段）")}">${esc(partCn||"部位未标注")}</span>
       ${it.gender_scope?`<span class="fr-gender" title="${esc(it.gender_scope_note||it.gender_scope)}">${esc(it.gender||"仅单性别")}</span>`:""}
-      ${it.charm_value ? `<span class="fr-charm" title="魅力值：fashion_data.charm_value">魅力 ${esc(it.charm_value)}</span>` : ""}
+      ${(it.charm_value||it.equip_charm) ? `<span class="fr-charm" title="魅力值：${esc(it.charm_note||(it.charm_value?"fashion_data.charm_value":"all_equips_data.charm_value（装备表）"))}${(it.charm_candidates||[]).length?" · 各款式行取值 "+esc(it.charm_candidates.join(" /"))+"（取主行）":""}">魅力 ${esc(it.charm_value||it.equip_charm)}</span>` : ""}
       ${mid!=null?`<span class="fr-model" title="model_id（fashion_data 表）${refs.length?` · 外观编号（player_appear_data）：${refs.join(" / ")}`:""}">model ${esc(mid)}${refs.length?`<span class="fr-ref"> · ${esc(refs[0])}${refs.length>1?`+${refs.length-1}`:""}</span>`:""}</span>`:`<span class="fr-model">model —</span>`}
       ${(()=>{const vm=it.version_merge;if(!vm||!(vm.aliases||[]).length)return "";
         return `<span class="fr-alt" title="同一 model 的另一条记录，已并入本卡：${esc(vm.aliases.join("、"))}">含${esc((vm.prefixes||[]).join("")||"新")}·版</span>`;})()}
@@ -1651,7 +1651,10 @@ function frKvHtml(it){
   const durDays=(it.durations||[]).length?`（${it.durations.join("/")}天）`:"";
   const pairs=[];
   if(it.grade_level!=null)pairs.push(["品级",(it.grade_levels&&it.grade_levels.length>1?it.grade_levels.map(gradeLabel).join("/")+"（取最高）":"品级 "+gradeLabel(it.grade_level))]);
-  if(it.charm_value!=null)pairs.push(["魅力值",String(it.charm_value)]);
+  if(it.charm_value!=null)pairs.push(["魅力值",String(it.charm_value)+(it.charm_note?(" · "+String(it.charm_note).split("（")[0]):"")]);
+  if(it.equip_charm!=null)pairs.push(["魅力值（装备表）",String(it.equip_charm)+(it.equip_level!=null?" · 装备品级 "+it.equip_level:"")]);
+  if((it.charm_candidates||[]).length)pairs.push(["魅力值候选",it.charm_candidates.join(" / ")+"（同一卡各款式行取值不一致，当前取主行，待核对）"]);
+  if((it.equip_charm_candidates||[]).length)pairs.push(["魅力值候选",it.equip_charm_candidates.join(" / ")+"（同名装备行取值不一致，待核对）"]);
   pairs.push(["期限",durCn+durDays]);
   if((it.time_limited_variants||[]).length)pairs.push(["时限档",it.time_limited_variants.map(d=>d+"天").join(" / ")]);
   pairs.push(["性别",(it.gender||"图标未标性别")]);
@@ -1685,7 +1688,7 @@ function frKvHtml(it){
   if((it.special_idle_anims||[]).length)pairs.push(["展示动作",it.special_idle_anims.join(" / ")]);
   if(it.fashion_action_id!=null)pairs.push(["专属动作",String(it.fashion_action_id)]);
   /* 2026-11-01 用户点选的染色/获取/展示组 */
-  if(it.dye)pairs.push(["染色方案",frDyeText(it)]);
+  if(it.dye)pairs.push(["染色方案",frDyeText(it)+(it.dye.appear_ids?` · 外观染色 ${it.dye.appear_ids.join(" / ")}`:"")+(it.dye.appear_sockets?` · 插槽 ${it.dye.appear_sockets.join(" / ")}`:"")]);
   if((it.dye&&(it.dye.hair||[]).length))pairs.push(["发色方案",frHairDyeText(it)]);
   if((it.model_change_color_id||[]).length)pairs.push(["默认配色 id",it.model_change_color_id.join(" / ")]);
   if(it.obtain_res)pairs.push(["获取途径",it.obtain_res]);
@@ -1701,7 +1704,12 @@ function frKvHtml(it){
   if(it.bone_info)pairs.push(["新骨骼",`是${(it.bone_info.soft_bone_ids||[]).length?" · 软骨骼 "+(it.bone_info.soft_bone_ids||[]).join(" / "):""}`]);
   if(it.green_model)pairs.push(["风底形态模型",[...(it.green_model.female||[]),...(it.green_model.female_high||[])].join(" / ")||"—"]);
   if((it.preview_group||[]).length)pairs.push(["专属预览",it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ ")]);
-  if(it.cohabit_level)pairs.push(["同居好感度",frCohabitText(it)]);
+  if(it.model_paths){
+    const mp=it.model_paths;
+    pairs.push(["模型路径",[...(mp.model||[]).map(x=>"主体 "+x),...(mp.high||[]).map(x=>"高模 "+x),...(mp.body||[]).map(x=>"身体 "+x),...(mp.socket||[]).map(x=>"挂点 "+x),...(mp.v2_socket||[]).map(x=>"v2挂点 "+x)].join(" ｜ ")]);
+  }
+  if(it.npc_hidden)pairs.push(["NPC 展示","不在 NPC/怪物身上出现"]);
+  if(it.cohabit_level)pairs.push(["friendliness 分值",frCohabitText(it)+"（按部位固定：背包1960/衣服1280/头饰680，与魅力值无关；语义待核）"]);
   if(it.part_code!=null)pairs.push(["内部部位码",`${it.part_code} · ${it.part_code_cn||"—"}（部位判定唯一口径）`]);
   if(it.show_name&&it.show_name!==it.name)pairs.push(["游戏内显示名",it.show_name]);
   if(it.man_show_name)pairs.push(["男版显示名",it.man_show_name]);
@@ -1780,7 +1788,7 @@ function frKvHtml(it){
 }
 /* 卡面下方的两个折叠区（详情 + 技术详情）：只在 D2 灯箱/停靠栏里渲染，网格卡面不再出现 */
 function frDetailsHTML(it,kv){
-  const fdesc=(it.desc||it.desc_note||it.desc_man||it.flower_bud||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope||it.dye||it.obtain_res||it.theme||it.show_start||(it.value_words||[]).length||(it.other_get_methods||[]).length||it.uncap_appear_gender||it.rebirth_tex||(it.preview_group||[]).length||it.cohabit_level||it.part_code!=null)
+  const fdesc=(it.desc||it.desc_note||it.desc_man||it.flower_bud||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope||it.dye||it.obtain_res||it.theme||it.show_start||(it.value_words||[]).length||(it.other_get_methods||[]).length||it.uncap_appear_gender||it.rebirth_tex||(it.preview_group||[]).length||it.cohabit_level||it.part_code!=null||it.model_paths||it.npc_hidden||it.model_note||it.equip_charm!=null||(it.durations&&it.durations.length))
     ?`<details class="fdesc"${FD_OPEN_ALL?" open":""}><summary>详情</summary><div class="fdesc-body">${
         ((it.vehicle_ids||[]).length>1?`<div class="fd-row"><span class="fd-k">全部编号</span><span class="fd-v mono">${it.vehicle_ids.join(" / ")}</span></div>`:"")+
         (it.gender?`<div class="fd-row"><span class="fd-k">性别</span><span class="fd-v">${esc(it.gender)}${it.gender_scope?` · <b>${esc(it.gender_scope)}</b>`:""}</span></div>`:"")+
@@ -1789,7 +1797,8 @@ function frDetailsHTML(it,kv){
         (it.desc_note&&!it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${esc(it.desc_note)}</span></div>`:"")+
         (it.effect_text?`<div class="fd-row"><span class="fd-k">效果</span><span class="fd-v">${esc(it.effect_text)}</span></div>`:"")+
         (it.effect_text?`<div class="fd-row"><span class="fd-k">效果来源</span><span class="fd-v mono">${esc(it.effect_source||"—")}</span></div>`:"")+
-        (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.charm_note)}</span></div>`:"")+
+        (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${it.charm_value!=null?esc(it.charm_value)+" · ":""}${esc(it.charm_note)}${(it.charm_candidates||[]).length?`<br><span style="opacity:.75">各款式行取值：${esc(it.charm_candidates.join(" / "))}（当前取主行，待核对）</span>`:""}</span></div>`:"")+
+        (it.equip_charm!=null?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.equip_charm)}${it.equip_level!=null?` · 装备品级 ${esc(it.equip_level)}`:""}<br><span style="opacity:.75">来源：all_equips_data（装备表）· ${esc(it.equip_charm_source||"")}</span></span></div>`:"")+
         (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是 · <span class=\"mono\">reborn_vis=1</span>（再生者形态下把背上的花苞藏起来）":"否"}</span></div>`:"")+
         (it.flower_bud?`<div class="fd-row"><span class="fd-k">换花</span><span class="fd-v">${esc(frFlowerText(it))}${it.flower_bud.reborn_socket?`<br><span class="mono" style="opacity:.75">挂点 ${esc(it.flower_bud.reborn_socket.socket||"flower")} · ${it.flower_bud.reborn_socket.only_reborn?"仅再生者形态挂载":"常规挂载"}${(it.flower_bud.reborn_socket.models||[]).length?" · "+esc(it.flower_bud.reborn_socket.models[0]):""}</span>`:""}</span></div>`:"")+
         (it.dye?`<div class="fd-row"><span class="fd-k">染色方案</span><span class="fd-v">${esc(frDyeText(it))}${frDyeSwatches(it)}${(it.dye.hair||[]).length?`<br><span class="mono" style="opacity:.75">发色 ${esc(frHairDyeText(it))}</span>`:""}</span></div>`:"")+
@@ -1801,9 +1810,13 @@ function frDetailsHTML(it,kv){
         (it.uncap_appear_gender?`<div class="fd-row"><span class="fd-k">未解锁外观</span><span class="fd-v">版本 ${esc((it.uncap_appear_gender.values||[]).join(" / "))}<br><span style="opacity:.75">${esc(it.uncap_appear_gender.note||"")}</span></span></div>`:"")+
         (it.rebirth_tex?`<div class="fd-row"><span class="fd-k">再生形态贴图</span><span class="fd-v">是（背包专属贴图）</span></div>`:"")+
         ((it.preview_group||[]).length?`<div class="fd-row"><span class="fd-k">专属预览</span><span class="fd-v">${esc(it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ "))}</span></div>`:"")+
+        (it.model_paths?`<div class="fd-row"><span class="fd-k">模型路径</span><span class="fd-v mono">${esc([...(it.model_paths.model||[]).map(x=>"主体 "+x),...(it.model_paths.high||[]).map(x=>"高模 "+x),...(it.model_paths.body||[]).map(x=>"身体 "+x),...(it.model_paths.socket||[]).map(x=>"挂点 "+x),...(it.model_paths.v2_socket||[]).map(x=>"v2挂点 "+x)].join(" ｜ "))}</span></div>`:"")+
+        (it.model_note?`<div class="fd-row"><span class="fd-k">模型说明</span><span class="fd-v">${esc(it.model_note)}</span></div>`:"")+
+        (it.npc_hidden?`<div class="fd-row"><span class="fd-k">NPC 展示</span><span class="fd-v">不在 NPC/怪物身上出现</span></div>`:"")+
+        ((it.durations&&it.durations.length)?`<div class="fd-row"><span class="fd-k">时限</span><span class="fd-v">${it.duration_state==="permanent"?"永久":(it.duration_state==="timed"?"限时":"永久 + 限时")}（${it.durations.join(" / ")} 天）</span></div>`:"")+
         (it.part_code!=null?`<div class="fd-row"><span class="fd-k">内部部位码</span><span class="fd-v"><span class="mono">${it.part_code}</span> · ${esc(it.part_code_cn||"")}（部位判定唯一口径）</span></div>`:"")+
         (it.show_name&&it.show_name!==it.name?`<div class="fd-row"><span class="fd-k">游戏内显示名</span><span class="fd-v">${esc(it.show_name)}</span></div>`:"")+
-        (it.cohabit_level?`<div class="fd-row"><span class="fd-k">同居好感度</span><span class="fd-v">${esc(frCohabitText(it))}<br><span style="opacity:.75">同居五档：相遇 0 · 相知 700 · 相伴 1500 · 同行 3000 · 同心 6000</span></span></div>`:"")+
+        (it.cohabit_level?`<div class="fd-row"><span class="fd-k">friendliness</span><span class="fd-v">${esc(frCohabitText(it))}<br><span style="opacity:.75">按部位固定：背包 1960 · 衣服 1280 · 头饰 680（与魅力值无关）<br><span style="opacity:.75">100 分制隐藏分值；数值刻度与同居五档相同，但配置表未把时装与好感度关联，<b>语义待核</b></span></span></div>`:"")+
         (it.show_no_have!=null?`<div class="fd-row"><span class="fd-k">未拥有时</span><span class="fd-v">${it.show_no_have?"衣柜里也显示":"衣柜里不显示"}</span></div>`:"")+
         (it.desc_man?`<div class="fd-row"><span class="fd-k">男版描述</span><span class="fd-v">${richText(it.desc_man)}</span></div>`:"")+
         ((it.name_man||it.name_female)?`<div class="fd-row"><span class="fd-k">分版命名</span><span class="fd-v">女版 ${esc(it.name_female||"—")} / 男版 ${esc(it.name_man||"—")}</span></div>`:"")+
@@ -1942,14 +1955,42 @@ if(SCENE_TABLE)document.body.classList.add("scene-mode","sbt-mode");
 const ST_TABLE=(function(){try{return (getParam("b")||"")==="server_types";}catch(e){return false;}})();
 if(ST_TABLE)document.body.classList.add("st-mode","sbt-mode");
 /* ── 可切换展示视图（?view=xxx）────────────────────────────────────────
-   CDN 资源库 cdn_library：table / group / matrix
-   本地还原树 local_restore_tree：tree / columns / dash
+   CDN 资源库 cdn_library：group（默认，目录组折叠 + 体积条）/ table（全量表格）
+   本地还原树 local_restore_tree：index（默认，聚合概览 + 模块双列）/ dash（仅聚合概览）
    ★ 全部视图只用板内既有字段，不引入任何推断值；
-     唯一的派生量（体积条宽度、占比、聚合计数）都由字段直接算出。 */
+     唯一的派生量（体积条宽度、占比、聚合计数）都由字段直接算出。
+   ★ 2026-11-01 用户定稿：CDN 走「目录组折叠 + 体积条」，明细表在组内展开；
+     还原树走「聚合概览 + 模块双列索引」（按文件名首段分模块，
+     因为 .nxs 与 _chs.py 强配对、全局双列会 27774 : 5827 失衡）。 */
 const CDN_BOARD=(function(){try{return (getParam("b")||"")==="cdn_library";}catch(e){return false;}})();
 const TREE_BOARD=(function(){try{return (getParam("b")||"")==="local_restore_tree";}catch(e){return false;}})();
-const VIEW=(function(){try{return (getParam("view")||"").toLowerCase();}catch(e){return "";}})();
+let VIEW=(function(){try{return (getParam("view")||"").toLowerCase();}catch(e){return "";}})();
 if(CDN_BOARD||TREE_BOARD)document.body.classList.add("view-mode");
+/* 当前视图名（各板默认值不同，非法值回退到默认视图） */
+function curView(){
+  const def=CDN_BOARD?"group":"index";
+  const allow=CDN_BOARD?["group","table"]:["index","dash"];
+  return allow.indexOf(VIEW)>=0?VIEW:def;
+}
+/* 视图切换：写入 URL 并重绘（可分享、可回退） */
+function setView(v){
+  VIEW=v;
+  try{
+    const u=new URLSearchParams(location.search);
+    u.set("view",v);
+    history.replaceState(null,"",location.pathname+"?"+u.toString());
+  }catch(e){}
+  /* 同步按钮高亮（切换器可能还没建好，故做空值保护） */
+  try{
+    const n=document.getElementById("viewSwitch");
+    if(n)for(const btn of n.querySelectorAll(".viewsw-btn")){
+      const on=btn.dataset.view===v;
+      btn.classList.toggle("on",on);
+      btn.setAttribute("aria-pressed",String(on));
+    }
+  }catch(e){}
+  render();
+}
 const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
 const V={cls:new Set(),sub:new Set(),img:"",sort:""};
 (function(){
@@ -2246,7 +2287,7 @@ function vCard(it,i){
           (it.desc_note&&!it.desc?`<div class="fd-row"><span class="fd-k">描述</span><span class="fd-v">${esc(it.desc_note)}</span></div>`:"")+
           (it.effect_text?`<div class="fd-row"><span class="fd-k">效果</span><span class="fd-v">${esc(it.effect_text)}</span></div>`:"")+
           (it.effect_text?`<div class="fd-row"><span class="fd-k">效果来源</span><span class="fd-v mono">${esc(it.effect_source||"—")}</span></div>`:"")+
-          (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.charm_note)}</span></div>`:"")+
+          (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${it.charm_value!=null?esc(it.charm_value)+" · ":""}${esc(it.charm_note)}${(it.charm_candidates||[]).length?`<br><span style="opacity:.75">各款式行取值：${esc(it.charm_candidates.join(" / "))}（当前取主行，待核对）</span>`:""}</span></div>`:"")+
           (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
           (it.obtain_res?`<div class="fd-row"><span class="fd-k">获取途径</span><span class="fd-v">${esc(it.obtain_res)}</span></div>`:"")+
           (it.theme?`<div class="fd-row"><span class="fd-k">套装主题</span><span class="fd-v">${esc(it.theme.name)}</span></div>`:"")+
@@ -3321,16 +3362,84 @@ function stRender(items){
   if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
 }
 
-/* ── 可切换视图：CDN 资源库 / 本地还原树 ──────────────────────────── */
+/* ── 可切换视图：CDN 资源库 / 本地还原树 ────────────────────────────
+   体积口径统一为十进制：MB ÷ 1000 = GB（与 meta.row_stats.total_gb 同源，
+   避免同页出现 160.3 GB 与 164.1 GB 两个互相打架的数字）。 */
 function fmtMB(mb){
   const v=Number(mb||0);
-  if(v>=1024)return (v/1024).toFixed(v>=10240?0:1)+" GB";
+  /* 十进制 GB（÷1000）：与 meta.row_stats.total_gb 同源。
+     保留 1 位小数 —— 板级事实是 164.1 GB，不能显示成 "164 GB"（精度丢失）。 */
+  if(v>=1000)return (v/1000).toFixed(1)+" GB";
   return v.toLocaleString("en-US")+" MB";
 }
 function fmtInt(n){return Number(n||0).toLocaleString("en-US");}
 function vEl(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+/* 本地状态三色：全在本地 / 部分在本地 / 全未下载（事实字段 local_state 的直译，不做推断） */
+function cdnStateCls(done,part,n){
+  if(done+part>=n)return "ok";
+  if(done+part===0)return "miss";
+  return "warn";
+}
+/* 两块板的统一筛选口径：证据等级 + 板级自定义筛选（meta.filters）+ 搜索框。
+   ★ 与通用渲染路径的 filters 判定保持同一套语义，不另立口径。 */
+/* 视图切换器（CDN 资源库 / 本地还原树）
+   按钮组放在控件栏；当前视图写入 ?view=（可分享、可回退）。 */
+const VIEW_OPTS={
+  cdn_library:[["group","目录组"],["table","全量表格"]],
+  local_restore_tree:[["index","概览+索引"],["dash","仅概览"]],
+};
+function buildViewSwitch(){
+  const box=document.getElementById("viewSwitch");
+  if(!box)return;
+  const opts=VIEW_OPTS[b]||[];
+  if(!opts.length){box.style.display="none";return;}
+  box.style.display="";
+  box.innerHTML="";
+  const cur=curView();
+  for(const [k,label] of opts){
+    const btn=document.createElement("button");
+    btn.type="button";
+    btn.className="viewsw-btn"+(k===cur?" on":"");
+    btn.dataset.view=k;
+    btn.textContent=label;
+    btn.setAttribute("aria-pressed",String(k===cur));
+    btn.addEventListener("click",()=>{setView(k);});
+    box.appendChild(btn);
+  }
+}
+function viewFilterItems(){
+  const q=(document.getElementById("q")||{}).value||"";
+  const qLower=String(q).trim().toLowerCase();
+  const feEl=document.getElementById("fEv");
+  const fe=feEl?feEl.value:"";
+  const cf=DATA&&Array.isArray(DATA._custFilters)?DATA._custFilters:[];
+  const hay=TREE_BOARD?treeHay():cdnHay();
+  const out=[];
+  const src=(DATA&&DATA.items)||[];
+  for(let i=0;i<src.length;i++){
+    const it=src[i];
+    if(fe&&it.evidence!==fe)continue;
+    let skip=false;
+    for(const c of cf){
+      const v=c.sel?c.sel.value:"";
+      if(v&&String(it[c.key]??"")!==v){skip=true;break;}
+    }
+    if(skip)continue;
+    if(qLower&&!hay[i].includes(qLower))continue;
+    out.push(it);
+  }
+  return out;
+}
+/* CDN 检索串：逻辑包名 / 目录组 / 变体文件 / 档位 / 本地状态（板内既有字段） */
+function cdnHay(){
+  if(!DATA._cdnHay){
+    DATA._cdnHay=(DATA.items||[]).map(it=>
+      `${it.name||""} ${it.group||""} ${it.variant_names||""} ${it.tiers||""} ${it.local_state||""} ${it.id||""}`.toLowerCase());
+  }
+  return DATA._cdnHay;
+}
 
-/* ── CDN 视图一：可排序大表格 ─────────────────────────────────────── */
+/* ── CDN 视图二（?view=table）：全量可排序表格（方案 A）──────────────── */
 const CDN_TCOLS=["逻辑包","目录组","卷数","变体合计","单卷最大","条目数","档位数","本地","变体文件"];
 function cdnVal(it,k){
   if(k==="逻辑包")return it.name||"";
@@ -3353,13 +3462,11 @@ function cdnTableRender(items){
     return String(a.name||"").localeCompare(String(b.name||""),"zh-CN");
   });
   const g=document.getElementById("grid");g.innerHTML="";
-  const wrap=vEl("div","vscroll");
   const t=vEl("table","vtab");
-  const thead=vEl("thead");
-  const trh=vEl("tr");
+  const thead=vEl("thead");const trh=vEl("tr");
   for(const c of CDN_TCOLS){
     const th=vEl("th",null,esc(c)+(CDN_SORT.key===c?(CDN_SORT.dir>0?" ▲":" ▼"):""));
-    th.onclick=()=>{if(CDN_SORT.key===c)CDN_SORT.dir*=-1;else{CDN_SORT.key=c;CDN_SORT.dir=(c==="变体合计"||c==="单卷最大"||c==="条目数"||c==="卷数"||c==="档位数")?-1:1;}render();};
+    th.onclick=()=>{if(CDN_SORT.key===c)CDN_SORT.dir*=-1;else{CDN_SORT.key=c;CDN_SORT.dir=(["变体合计","单卷最大","条目数","卷数","档位数"].indexOf(c)>=0)?-1:1;}render();};
     trh.appendChild(th);
   }
   thead.appendChild(trh);t.appendChild(thead);
@@ -3380,277 +3487,259 @@ function cdnTableRender(items){
     for(const [cls,val] of cells){const td=vEl("td",cls,cls==="num"?"":val);if(cls==="num")td.textContent=val;tr.appendChild(td);}
     tb.appendChild(tr);
   }
-  t.appendChild(tb);wrap.appendChild(t);g.appendChild(wrap);
-  const c=document.getElementById("count");if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
-}
-
-/* ── CDN 视图二：目录组折叠 + 体积条 ─────────────────────────────── */
-function cdnGroupRender(items){
-  const groups=new Map();
-  for(const it of items){
-    const g=it.group||"(未分组)";
-    if(!groups.has(g))groups.set(g,[]);
-    groups.get(g).push(it);
-  }
-  const rows=[...groups.entries()].map(([name,list])=>{
-    const total=list.reduce((s,x)=>s+(Number(x.size_total_mb)||0),0);
-    const ent=list.reduce((s,x)=>s+(Number(x.entries)||0),0);
-    const local=list.filter(x=>x.local_state==="完整").length;
-    return {name,list,total,ent,local,n:list.length};
-  });
-  /* 排序：本地完成率低的排前面（那是「缺什么」的关键信息），再按体积降序 */
-  rows.sort((a,b)=>(a.local/a.n)-(b.local/b.n)||b.total-a.total);
-  const maxTotal=Math.max(...rows.map(r=>r.total),1);
-  const g=document.getElementById("grid");g.innerHTML="";
-  const wrap=vEl("div","vgroups");
-  for(const r of rows){
-    const box=vEl("div","vgroup");
-    const head=vEl("div","vgroup-h");
-    const caret=vEl("span","vcaret","▸");
-    const bar=vEl("span","vbar");
-    const fill=vEl("i");fill.style.width=Math.max(2,Math.round(r.total/maxTotal*100))+"%";
-    if(r.local===r.n)fill.className="ok";else if(r.local===0)fill.className="miss";else fill.className="warn";
-    bar.appendChild(fill);
-    head.appendChild(caret);
-    head.appendChild(vEl("span","vg-name",esc(r.name)));
-    head.appendChild(bar);
-    head.appendChild(vEl("span","vg-num",`${r.n} 包 · ${fmtMB(r.total)} · 条目 ${fmtInt(r.ent)}`));
-    head.appendChild(vEl("span","vtag "+(r.local===r.n?"ok":(r.local===0?"miss":"warn")),`本地 ${r.local}/${r.n}`));
-    const body=vEl("div","vgroup-b");body.hidden=true;
-    const t=vEl("table","vsub");
-    t.innerHTML="<thead><tr><th>逻辑包</th><th>卷数</th><th>变体合计</th><th>单卷最大</th><th>条目数</th><th>档位</th><th>本地</th></tr></thead>";
-    const tb=vEl("tbody");
-    const list=r.list.slice().sort((a,b)=>(Number(b.size_total_mb)||0)-(Number(a.size_total_mb)||0));
-    for(const it of list){
-      const tr=vEl("tr");
-      const cells=[
-        ["mono",esc(it.name||"")],
-        ["num",fmtInt(it.files)],
-        ["num",fmtMB(it.size_total_mb)],
-        ["num",fmtMB(it.size_max_mb)],
-        ["num",fmtInt(it.entries)],
-        ["",esc(it.tiers||"-")],
-        ["",`<span class="vtag ${it.local_state==="完整"?"ok":(it.local_state==="部分"?"warn":"miss")}">${esc(it.local_state||"-")}</span>`],
-      ];
-      for(const [cls,val] of cells){const td=vEl("td",cls,cls==="num"?"":val);if(cls==="num")td.textContent=val;tr.appendChild(td);}
-      tb.appendChild(tr);
-    }
-    t.appendChild(tb);body.appendChild(t);
-    head.onclick=()=>{body.hidden=!body.hidden;caret.textContent=body.hidden?"▸":"▾";};
-    box.appendChild(head);box.appendChild(body);wrap.appendChild(box);
-  }
-  g.appendChild(wrap);
-  const c=document.getElementById("count");if(c)c.textContent=`${rows.length} 个目录组 · 共 ${items.length} 个逻辑包`;
-}
-
-/* ── CDN 视图三：档位矩阵 ─────────────────────────────────────────── */
-function cdnMatrixRender(items){
-  /* 档位全集 = 所有条目 tiers 字段的并集（tiers 形如 "0,1,2,5,6,8,10,11"，是事实字段） */
-  const tierSet=new Set();
-  for(const it of items){
-    String(it.tiers||"").split(",").forEach(s=>{const t=s.trim();if(t!=="")tierSet.add(t);});
-  }
-  const tiers=[...tierSet].sort((a,b)=>Number(a)-Number(b));
-  const sorted=items.slice().sort((a,b)=>(Number(b.size_total_mb)||0)-(Number(a.size_total_mb)||0));
-  const TOPN=Math.min(sorted.length,40);
-  const shown=sorted.slice(0,TOPN);
-  const maxT=Math.max(...shown.map(x=>Number(x.size_total_mb)||0),1);
-  const g=document.getElementById("grid");g.innerHTML="";
+  t.appendChild(tb);
+  /* 全量表 9 列：外层给横向滚动容器，窄屏不撑破页面（rules/frontend.yml 硬规则） */
   const wrap=vEl("div","vscroll");
-  const t=vEl("table","vmat");
-  let head="<thead><tr><th>逻辑包</th>";
-  for(const tr of tiers)head+=`<th class="mt">t${esc(tr)}</th>`;
-  head+="<th class="+'"num">变体合计</th></tr></thead>';
-  t.innerHTML=head;
+  wrap.appendChild(t);
+  g.appendChild(wrap);
+  const c=document.getElementById("count");
+  if(c)c.textContent=`显示 ${items.length} / ${(DATA.items||[]).length} 个逻辑包 · 点表头排序`;
+}
+
+/* ── CDN 视图一（默认 ?view=group）：目录组折叠 + 体积条 ───────────────
+   体积条宽度 = 该组 size_total_mb 之和 ÷ 最大组之和（纯派生比例，无推断）；
+   组内展开体是行内明细表（逻辑包级），即「目录组折叠为主、明细表为辅」。 */
+function cdnPackTable(list){
+  const t=vEl("table","vtab vtab-sub");
+  t.innerHTML="<thead><tr><th>逻辑包</th><th>卷数</th><th>变体合计</th><th>单卷最大</th><th>条目数</th><th>档位</th><th>本地</th></tr></thead>";
   const tb=vEl("tbody");
-  for(const it of shown){
+  const s=list.slice().sort((a,b)=>(Number(b.size_total_mb)||0)-(Number(a.size_total_mb)||0));
+  for(const it of s){
     const tr=vEl("tr");
-    const td0=vEl("td","mono",esc(it.name||""));tr.appendChild(td0);
-    const have=new Set(String(it.tiers||"").split(",").map(s=>s.trim()).filter(Boolean));
-    const ratio=(Number(it.size_total_mb)||0)/maxT;
-    const lvl=ratio>0.6?4:(ratio>0.3?3:(ratio>0.1?2:1));
-    for(const tg of tiers){
-      const on=have.has(tg);
-      const td=vEl("td","mc"+(on?" l"+lvl:""),on?"":"");
-      if(on)td.title=`${it.name} · 档位 t${tg} · ${fmtMB(it.size_total_mb)}`;
-      tr.appendChild(td);
-    }
-    const tdN=vEl("td","num");tdN.textContent=fmtMB(it.size_total_mb);tr.appendChild(tdN);
+    const cells=[
+      ["mono",esc(it.name||"")],
+      ["num",fmtInt(it.files)],
+      ["num",fmtMB(it.size_total_mb)],
+      ["num",fmtMB(it.size_max_mb)],
+      ["num",fmtInt(it.entries)],
+      ["dim",esc(it.tiers||"-")],
+      ["",`<span class="vtag ${it.local_state==="完整"?"ok":(it.local_state==="部分"?"warn":"miss")}">${esc(it.local_state||"-")}</span>`],
+    ];
+    for(const [cls,val] of cells){const td=vEl("td",cls,cls==="num"?"":val);if(cls==="num")td.textContent=val;tr.appendChild(td);}
     tb.appendChild(tr);
   }
-  t.appendChild(tb);wrap.appendChild(t);
-  const leg=vEl("div","vlegend",
-    `矩阵只显示体积最大的 ${TOPN} 个逻辑包（共 ${items.length} 个）；格子 = 该包含此档位，深浅按该包变体合计体积。`
-    +`<span class="ms l1"></span>小<span class="ms l2"></span><span class="ms l3"></span><span class="ms l4"></span>大`
-    +`<span class="ms none"></span>无此档`);
-  g.appendChild(wrap);g.appendChild(leg);
-  const c=document.getElementById("count");if(c)c.textContent=`档位 ${tiers.length} 档 · 显示体积 Top ${TOPN} / ${items.length} 个逻辑包`;
+  t.appendChild(tb);return t;
 }
-
-function cdnRender(view,items){
-  if(view==="table"){cdnTableRender(items);return true;}
-  if(view==="group"){cdnGroupRender(items);return true;}
-  if(view==="matrix"){cdnMatrixRender(items);return true;}
-  return false;
-}
-
-/* ── 还原树视图一：目录树（首字母分桶）──────────────────────────── */
-function treeTreeRender(items){
-  const buckets=new Map();
-  for(const it of items){
-    const fn=String(it.name||"").split("/").pop()||"";
-    const ch=(fn[0]||"#").toUpperCase();
-    if(!buckets.has(ch))buckets.set(ch,[]);
-    buckets.get(ch).push(it);
-  }
-  const keys=[...buckets.keys()].sort();
+function cdnGroupRender(items){
   const g=document.getElementById("grid");g.innerHTML="";
-  const wrap=vEl("div","vgroups");
-  const root=vEl("div","vgroup");
-  const rh=vEl("div","vgroup-h");
-  rh.appendChild(vEl("span","vg-name","▾ com/cdata"));
-  rh.appendChild(vEl("span","vg-num",`${fmtInt(items.length)} 个文件 · ${fmtMB(items.reduce((s,x)=>s+(Number(x.size_kb)||0),0)/1024)}`));
-  root.appendChild(rh);
-  const rbody=vEl("div","vgroup-b");rbody.hidden=false;
-  root.appendChild(rbody);
-  for(const k of keys){
-    const list=buckets.get(k);
-    const box=vEl("div","vgroup vsub1");
-    const head=vEl("div","vgroup-h");
+  const groups=new Map();
+  for(const it of items){
+    const k=it.group||"(未分组)";
+    if(!groups.has(k))groups.set(k,[]);
+    groups.get(k).push(it);
+  }
+  const rows=[...groups.entries()].map(([name,list])=>{
+    const mb=list.reduce((s,x)=>s+(Number(x.size_total_mb)||0),0);
+    const ent=list.reduce((s,x)=>s+(Number(x.entries)||0),0);
+    const done=list.filter(x=>x.local_state==="完整").length;
+    const part=list.filter(x=>x.local_state==="部分").length;
+    return {name,list,mb,ent,done,part,n:list.length};
+  }).sort((a,b)=>b.mb-a.mb||b.n-a.n);
+  const maxMb=Math.max(...rows.map(r=>r.mb),1);
+  const rs=(DATA.meta&&DATA.meta.row_stats)||{};
+  const ss=(DATA.meta&&DATA.meta.state_summary)||{};
+  const wrap=vEl("div","vwrap");
+  const sum=vEl("div","vsum");
+  const tile=(k,v,n)=>sum.appendChild(vEl("div","vtile",`<div class="vt-k">${esc(k)}</div><div class="vt-v">${esc(v)}</div><div class="vt-n">${esc(n||"")}</div>`));
+  tile("逻辑包",fmtInt(rs.logical_packs!=null?rs.logical_packs:(DATA.items||[]).length),"全量 · 去掉分卷后缀归并");
+  tile("文件卷",fmtInt(rs.files),"全量");
+  tile("条目数",fmtInt(rs.entries),"全量");
+  tile("变体合计",fmtMB((Number(rs.total_gb)||0)*1000),"全量 · 十进制 GB");
+  tile("本地已下载",fmtMB((Number(rs.local_gb)||0)*1000),"全量");
+  tile("本地状态",["完整","部分","未下载"].filter(k=>ss[k]!=null).map(k=>`${k} ${ss[k]}`).join(" · ")||"未记录","全量");
+  wrap.appendChild(sum);
+  const gs=vEl("div","vgroups");
+  for(const r of rows){
+    const box=vEl("div","vgroup");
+    const h=vEl("div","vgroup-h");
     const caret=vEl("span","vcaret","▸");
-    head.appendChild(caret);
-    head.appendChild(vEl("span","vg-name",esc(k)+" 开头"));
-    head.appendChild(vEl("span","vg-num",`${fmtInt(list.length)} 个文件`));
+    const bar=vEl("span","vbar");const fill=vEl("i");fill.style.width=Math.max(1,Math.round(r.mb/maxMb*100))+"%";bar.appendChild(fill);
+    h.appendChild(caret);
+    h.appendChild(vEl("span","vg-name",esc(r.name)));
+    h.appendChild(bar);
+    h.appendChild(vEl("span","vg-num",`${r.n} 包 · ${fmtMB(r.mb)} · 条目 ${fmtInt(r.ent)}`));
+    h.appendChild(vEl("span","vtag "+cdnStateCls(r.done,r.part,r.n),`本地 ${r.done+r.part}/${r.n}`));
     const body=vEl("div","vgroup-b");body.hidden=true;
-    const ul=vEl("div","vfiles");
-    for(const it of list.slice(0,60)){
-      ul.appendChild(vEl("div","vfile",
-        `<span class="vp">${esc(it.name)}</span><span class="vk">${esc(it.ext||"")}</span>`
-        +`<span class="vk">${Number(it.size_kb||0).toLocaleString("en-US")} KB</span>`
-        +`<span class="vk">${esc(it.mtime||"")}</span>`));
-    }
-    if(list.length>60)ul.appendChild(vEl("div","vfile vmore",`…另 ${fmtInt(list.length-60)} 个（同组，点搜索可定位）`));
-    body.appendChild(ul);
-    head.onclick=()=>{body.hidden=!body.hidden;caret.textContent=body.hidden?"▸":"▾";};
-    box.appendChild(head);box.appendChild(body);rbody.appendChild(box);
+    body.appendChild(cdnPackTable(r.list));
+    h.onclick=()=>{body.hidden=!body.hidden;caret.textContent=body.hidden?"▸":"▾";};
+    box.appendChild(h);box.appendChild(body);gs.appendChild(box);
   }
-  wrap.appendChild(root);g.appendChild(wrap);
-  const c=document.getElementById("count");if(c)c.textContent=`${keys.length} 个首字母桶 · 共 ${fmtInt(items.length)} 个文件`;
+  wrap.appendChild(gs);g.appendChild(wrap);
+  const c=document.getElementById("count");
+  if(c)c.textContent=`${rows.length} 个目录组 · 显示 ${items.length} / ${(DATA.items||[]).length} 个逻辑包`;
+}
+function cdnRender(items){
+  if(curView()==="table"){cdnTableRender(items);return;}
+  cdnGroupRender(items);
 }
 
-/* ── 还原树视图二：.py / .nxs 双列索引 ──────────────────────────── */
-function treeColumnsRender(items){
-  const py=[],nxs=[],other=[];
-  for(const it of items){
-    const e=String(it.ext||"").toLowerCase();
-    if(e===".py")py.push(it);else if(e===".nxs")nxs.push(it);else other.push(it);
+/* ── 还原树视图 ────────────────────────────────────────────────────────
+   模块 = 文件名第一个下划线之前的片段（纯字符串切分，不含语义推断）。
+   为什么不按 .py/.nxs 全局分两列：全量 .py 27,774 / .nxs 5,827 严重失衡，
+   且 .nxs 与 _chs.py 强配对（5,249/5,827），按模块分组才看得出配对关系。 */
+let TREE_MODS=[];
+const TREE_MOD_CAP=200;
+function treeModuleOf(it){
+  const fn=String(it.name||"").split("/").pop()||"";
+  const i=fn.indexOf("_");
+  return i>0?fn.slice(0,i):fn;
+}
+/* 还原树检索串：文件名/扩展名/落盘时间/体积/来源（板内既有字段，不做推断） */
+function treeHay(){
+  if(!DATA._treeHay){
+    DATA._treeHay=(DATA.items||[]).map(it=>`${it.name||""} ${it.ext||""} ${it.mtime||""} ${it.size_kb??""} ${it.source||""}`.toLowerCase());
   }
-  const g=document.getElementById("grid");g.innerHTML="";
-  const wrap=vEl("div","vcols");
-  const mkCol=(title,sub,list,cls)=>{
-    const col=vEl("div","vcol");
-    col.appendChild(vEl("div","vcol-h",`<span class="vtag ${cls}">${esc(title)}</span><span class="vg-num">${fmtInt(list.length)} 个 · ${esc(sub)}</span>`));
-    const box=vEl("div","vcol-b");
-    const CAP=400;
-    for(const it of list.slice(0,CAP)){
-      box.appendChild(vEl("div","vfile",
-        `<span class="vp">${esc(String(it.name||"").split("/").pop())}</span>`
-        +`<span class="vk">${Number(it.size_kb||0).toLocaleString("en-US")} KB</span>`
-        +`<span class="vk">${esc(it.mtime||"")}</span>`));
-    }
-    if(list.length>CAP)box.appendChild(vEl("div","vfile vmore",`…另 ${fmtInt(list.length-CAP)} 个，用上方搜索框过滤`));
-    col.appendChild(box);
-    return col;
+  return DATA._treeHay;
+}
+function treeItems(){
+  const q=(document.getElementById("q").value||"").trim().toLowerCase();
+  const fe=document.getElementById("fEv").value;
+  const hay=treeHay();
+  const out=[];
+  for(let i=0;i<(DATA.items||[]).length;i++){
+    const it=DATA.items[i];
+    if(fe&&it.evidence!==fe)continue;
+    if(q&&!hay[i].includes(q))continue;
+    out.push(it);
+  }
+  return out;
+}
+/* 概览（板级全量事实，不随筛选变化） */
+function treeOverview(){
+  const m=DATA.meta||{};
+  const ss=m.state_summary||{};
+  const es=m.ext_stats||{};
+  const box=vEl("div","vpanel");
+  box.appendChild(vEl("div","vpanel-h","全量概览（板级事实 · 不随筛选变化）"));
+  const tiles=vEl("div","vtiles");
+  const tile=(k,v,n)=>tiles.appendChild(vEl("div","vtile",`<div class="vt-k">${esc(k)}</div><div class="vt-v">${esc(v)}</div><div class="vt-n">${esc(n||"")}</div>`));
+  tile("文件总数",fmtInt(ss["文件"]!=null?ss["文件"]:itemsTotal()),"配置树 + 增量快照");
+  tile(".py 表定义",fmtInt(es[".py"]!=null?es[".py"]:0),"可直接读的表定义");
+  tile(".nxs 封装",fmtInt(es[".nxs"]!=null?es[".nxs"]:0),"打包/加密封装");
+  tile("配置树",fmtInt(ss["配置树"]!=null?ss["配置树"]:0),"合并体");
+  tile("增量快照",fmtInt(ss["仅增量快照"]!=null?ss["仅增量快照"]:0),"热更增量");
+  tile("名称还原率",String(ss["已还原文件名比例"]!=null?ss["已还原文件名比例"]:"未记录"),"全量");
+  box.appendChild(tiles);
+  return box;
+}
+function itemsTotal(){return (DATA.items||[]).length;}
+/* 当前筛选下的分布（派生自筛选后条目） */
+function treeDist(items){
+  const byExt=new Map(),byDay=new Map();
+  let kb=0;
+  for(const it of items){
+    kb+=Number(it.size_kb)||0;
+    const e=String(it.ext||"(无)").toLowerCase();byExt.set(e,(byExt.get(e)||0)+1);
+    const d=String(it.mtime||"").slice(0,10)||"(无日期)";byDay.set(d,(byDay.get(d)||0)+1);
+  }
+  const box=vEl("div","vpanel");
+  box.appendChild(vEl("div","vpanel-h","当前筛选的分布"));
+  const bars=vEl("div","vbars");
+  const addBar=(k,v,max,cls)=>{
+    const row=vEl("div","vbar-row");
+    row.appendChild(vEl("span","vb-k",esc(k)));
+    const bar=vEl("span","vbar");const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/max*100))+"%";if(cls)fill.className=cls;bar.appendChild(fill);row.appendChild(bar);
+    row.appendChild(vEl("span","vb-n",fmtInt(v)));
+    bars.appendChild(row);
   };
-  wrap.appendChild(mkCol(".py 源表","可直接读的表定义",py,"ok"));
-  wrap.appendChild(mkCol(".nxs 容器","加密/打包封装",nxs,"warn"));
-  g.appendChild(wrap);
-  if(other.length){
-    const box=vEl("div","vcols");box.appendChild(vEl("div","vcol",`<div class="vcol-h"><span class="vtag miss">其他封装</span><span class="vg-num">${fmtInt(other.length)} 个</span></div>`));
-    g.appendChild(box);
-  }
-  const c=document.getElementById("count");if(c)c.textContent=`.py ${fmtInt(py.length)} · .nxs ${fmtInt(nxs.length)} · 共 ${fmtInt(items.length)} 个文件`;
+  const ex=[...byExt.entries()].sort((a,b)=>b[1]-a[1]);
+  const mxE=Math.max(...ex.map(x=>x[1]),1);
+  for(const [k,v] of ex)addBar(k,v,mxE,"ok");
+  const dy=[...byDay.entries()].sort((a,b)=>String(b[0]).localeCompare(String(a[0])));
+  const mxD=Math.max(...dy.map(x=>x[1]),1);
+  for(const [k,v] of dy)addBar(k,v,mxD,"warn");
+  box.appendChild(bars);
+  box.appendChild(vEl("div","vnote",`筛选后 ${fmtInt(items.length)} 个文件 · 合计 ${fmtInt(kb)} KB`));
+  return box;
 }
-
-/* ── 还原树视图三：聚合看板 ─────────────────────────────────────── */
-function treeDashRender(items){
-  const byExt=new Map(),byPrefix=new Map(),byDay=new Map();
-  let totalKB=0;
-  for(const it of items){
-    totalKB+=Number(it.size_kb)||0;
-    const e=String(it.ext||"(无)").toLowerCase();
-    byExt.set(e,(byExt.get(e)||0)+1);
-    const fn=String(it.name||"").split("/").pop()||"";
-    const p=fn.split("_")[0]||"(其他)";
-    byPrefix.set(p,(byPrefix.get(p)||0)+1);
-    const d=String(it.mtime||"").slice(0,10)||"(无日期)";
-    byDay.set(d,(byDay.get(d)||0)+1);
+function treeModCol(mi,ci,list){
+  const col=vEl("div","vcol");
+  col.appendChild(vEl("div","vcol-h",`<span class="vtag ${ci===0?"ok":"warn"}">${ci===0?".py 表定义":".nxs 封装"}</span><span class="vg-num">${fmtInt(list.length)} 个</span>`));
+  const b=vEl("div","vcol-b");
+  b.dataset.mi=mi;b.dataset.ci=ci;
+  col.appendChild(b);
+  col._list=list;
+  return col;
+}
+function treeModFill(b,offset){
+  const col=b.parentNode;
+  const list=col._list||[];
+  const slice=list.slice(offset,offset+TREE_MOD_CAP);
+  for(const it of slice){
+    b.appendChild(vEl("div","vfile",
+      `<span class="vp">${esc(String(it.name||"").split("/").pop())}</span>`
+      +`<span class="vk">${esc(it.ext||"")}</span>`
+      +`<span class="vk">${Number(it.size_kb||0).toLocaleString("en-US")} KB</span>`
+      +`<span class="vk">${esc(it.mtime||"")}</span>`));
   }
-  const top=(m,n)=>[...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n);
-  const maxP=Math.max(...top(byPrefix,24).map(x=>x[1]),1);
-  const maxD=Math.max(...top(byDay,8).map(x=>x[1]),1);
+  const rest=list.length-offset-slice.length;
+  if(rest>0){
+    const btn=document.createElement("button");
+    btn.type="button";btn.className="vmore";btn.textContent=`加载更多（还有 ${fmtInt(rest)} 个）`;
+    btn.onclick=(e)=>{e.stopPropagation();btn.remove();treeModFill(b,offset+TREE_MOD_CAP);};
+    b.appendChild(btn);
+  }
+}
+/* 还原树视图一（默认 ?view=index）：聚合概览 + 模块双列索引 */
+function treeIndexRender(items){
   const g=document.getElementById("grid");g.innerHTML="";
   const wrap=vEl("div","vdash");
-  /* 概览卡 */
-  const tiles=vEl("div","vtiles");
-  const tile=(k,v,note)=>tiles.appendChild(vEl("div","vtile",`<div class="vt-k">${esc(k)}</div><div class="vt-v">${esc(v)}</div><div class="vt-n">${esc(note||"")}</div>`));
-  tile("文件总数",fmtInt(items.length),"全部在 com/cdata 下");
-  tile("封装类型",String(byExt.size)+" 种",[...byExt.keys()].join(" / "));
-  tile("合计体积",fmtMB(totalKB/1024),"中位 "+(items.length?Number(items[Math.floor(items.length/2)].size_kb||0).toFixed(1):"0")+" KB");
-  tile("名称还原率","100%","路径还原自客户端产物");
-  wrap.appendChild(tiles);
-  /* 前缀分布 */
-  const p1=vEl("div","vpanel");
-  p1.appendChild(vEl("div","vpanel-h","按文件名前缀分组（文件名第一个下划线之前）· Top 24"));
-  const pb=vEl("div","vbars");
-  for(const [k,v] of top(byPrefix,24)){
-    const row=vEl("div","vbar-row");
-    row.appendChild(vEl("span","vb-k",esc(k)));
-    const bar=vEl("span","vbar");
-    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/maxP*100))+"%";
-    bar.appendChild(fill);row.appendChild(bar);
-    row.appendChild(vEl("span","vb-n",fmtInt(v)));
-    pb.appendChild(row);
+  wrap.appendChild(treeOverview());
+  wrap.appendChild(treeDist(items));
+  const modMap=new Map();
+  for(const it of items){
+    const mo=treeModuleOf(it);
+    if(!modMap.has(mo))modMap.set(mo,[]);
+    modMap.get(mo).push(it);
   }
-  p1.appendChild(pb);
-  p1.appendChild(vEl("div","vnote",`共 ${fmtInt(byPrefix.size)} 个前缀组，此处只列 Top 24；分组规则为「文件名第一个下划线之前」，是字符串切片、不含语义推断。`));
-  wrap.appendChild(p1);
-  /* 封装分布 + 落盘日期 */
-  const p2=vEl("div","vpanel");
-  p2.appendChild(vEl("div","vpanel-h","封装类型分布"));
-  const eb=vEl("div","vbars");
-  for(const [k,v] of top(byExt,10)){
-    const row=vEl("div","vbar-row");
-    row.appendChild(vEl("span","vb-k",esc(k)));
-    const bar=vEl("span","vbar");
-    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/items.length*100))+"%";fill.className="ok";
-    bar.appendChild(fill);row.appendChild(bar);
-    row.appendChild(vEl("span","vb-n",fmtInt(v)));
-    eb.appendChild(row);
-  }
-  p2.appendChild(eb);
-  p2.appendChild(vEl("div","vpanel-h","落盘日期分布（最近 8 天）"));
-  const db=vEl("div","vbars");
-  for(const [k,v] of top(byDay,8)){
-    const row=vEl("div","vbar-row");
-    row.appendChild(vEl("span","vb-k",esc(k)));
-    const bar=vEl("span","vbar");
-    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/maxD*100))+"%";fill.className="warn";
-    bar.appendChild(fill);row.appendChild(bar);
-    row.appendChild(vEl("span","vb-n",fmtInt(v)));
-    db.appendChild(row);
-  }
-  p2.appendChild(db);
-  wrap.appendChild(p2);
+  const mods=[...modMap.entries()].map(([name,list])=>({name,list})).sort((a,b)=>b.list.length-a.list.length||a.name.localeCompare(b.name));
+  TREE_MODS=mods;
+  const idx=vEl("div","vpanel");
+  idx.appendChild(vEl("div","vpanel-h",`模块索引 · ${fmtInt(mods.length)} 个模块（按文件数降序；展开看模块内 .py / .nxs 双列）`));
+  const list=vEl("div","vmods");
+  mods.forEach((mo,mi)=>{
+    const py=mo.list.filter(x=>x.ext===".py"),nx=mo.list.filter(x=>x.ext===".nxs");
+    const box=vEl("div","vmod");
+    const h=vEl("div","vmod-h");
+    const caret=vEl("span","vcaret","▸");
+    h.appendChild(caret);
+    h.appendChild(vEl("span","vg-name",esc(mo.name)));
+    h.appendChild(vEl("span","vg-num",`${mo.list.length} 个 · .py ${py.length} / .nxs ${nx.length}`));
+    const body=vEl("div","vmod-b");body.hidden=true;
+    h.onclick=()=>{
+      if(body.hidden&&!body.dataset.built){
+        body.dataset.built="1";
+        const cols=vEl("div","vcols");
+        const c0=treeModCol(mi,0,py),c1=treeModCol(mi,1,nx);
+        cols.appendChild(c0);cols.appendChild(c1);
+        body.appendChild(cols);
+        treeModFill(c0.querySelector(".vcol-b"),0);
+        treeModFill(c1.querySelector(".vcol-b"),0);
+      }
+      body.hidden=!body.hidden;
+      caret.textContent=body.hidden?"▸":"▾";
+    };
+    box.appendChild(h);box.appendChild(body);list.appendChild(box);
+  });
+  idx.appendChild(list);
+  wrap.appendChild(idx);
   g.appendChild(wrap);
-  const c=document.getElementById("count");if(c)c.textContent=`${fmtInt(items.length)} 个文件 · ${fmtInt(byPrefix.size)} 个前缀组 · ${fmtInt(byDay.size)} 个落盘日期`;
+  const c=document.getElementById("count");
+  if(c)c.textContent=`${fmtInt(mods.length)} 个模块 · 显示 ${fmtInt(items.length)} / ${fmtInt(itemsTotal())} 个文件`;
 }
-
-function treeRender(view,items){
-  if(view==="tree"){treeTreeRender(items);return true;}
-  if(view==="columns"){treeColumnsRender(items);return true;}
-  if(view==="dash"){treeDashRender(items);return true;}
-  return false;
+/* 还原树视图二（?view=dash）：仅聚合概览 */
+function treeDashRender(items){
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vdash");
+  wrap.appendChild(treeOverview());
+  wrap.appendChild(treeDist(items));
+  g.appendChild(wrap);
+  const c=document.getElementById("count");
+  if(c)c.textContent=`显示 ${fmtInt(items.length)} / ${fmtInt(itemsTotal())} 个文件`;
+}
+function treeRender(items){
+  if(curView()==="dash"){treeDashRender(items);return;}
+  treeIndexRender(items);
 }
 
 function render(){
@@ -3681,6 +3770,15 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   }
   function saleOf(it){const s=pick(it,"sale_ts");return typeof s==="number"?s:0;}
   const candidateSkinBoard=b==="weapon_skin_static_candidates_v01";
+  /* CDN 资源库 / 本地还原树：自带的「可切换展示视图」（?view=xxx）。
+     ★ 必须拦在大表分支（HUGE_TABLE_MIN=15000）之前 ——
+       local_restore_tree 有 33,601 条，若落进 hugeDraw 就会变成 3 万张卡片。
+     ★ 筛选口径与通用路径一致：证据等级 + 板级自定义筛选（meta.filters）+ 搜索框。 */
+  if(CDN_BOARD||TREE_BOARD){
+    const vItems=viewFilterItems();
+    if(CDN_BOARD)cdnRender(vItems); else treeRender(vItems);
+    return;
+  }
   if(Array.isArray(DATA._hay)&&DATA.items.length>=HUGE_TABLE_MIN){
     // 大表（全道具总表等）：轻量索引过滤 + 分批渲染（按钮/滚动触底加载），可浏览到全部条目。
     hugePrepare(q,fe);
@@ -4381,6 +4479,7 @@ else loadBoard(b,d=>{
   if(FASHION_BOARD){frBuildFilters(d.items);fdOpenAll();}
   if(VEHICLE_BOARD)vBuildFilters(d.items);
   if(CHIP_BOARD)cBuildFilters(d.items);
+  if(CDN_BOARD||TREE_BOARD)buildViewSwitch();
   render();
   c2DeepLink();   // D2 深链：?id= 直开详情（芯片/时装/武器皮肤/异变核芯四板；由 C2.chips 是否就绪自守卫）
   /* ★ 2026-10-18：上架状态实时刷新 —— 每 30 秒检查一次，有皮肤跨过 sale_ts 就重绘，

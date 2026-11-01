@@ -12,7 +12,7 @@ r"""补齐时装卡（fashion_wardrobe）的染色 / 获取 / 展示类字段（
 | `dye.hair` | `fashion_data.hair_change_color_id` → `appear_change_hair_color_data`（14 行） | 14 个 id，**14/14 全对上**，带 `color_socket` / `model_type` |
 | `model_change_color_id` | `fashion_data` | 11,168 行几乎全量（默认配色 id），用户点名要，原样存 |
 | `obtain_res` | `fashion_obtain_res_data`（1,161 行） | 主键直命中 1,043 行 / **749 卡**；文本如「于活动获得」「于商城获得」 |
-| `theme` | `fashion_obtain_handbook_data`（392 行） | 861 行 / **859 卡**；带 `theme_name` + 海报图 + `open_time`。时限变体按**同名基础款**兜底（168/168 全中） |
+| `theme` | `fashion_obtain_handbook_data`（392 行） | 861 行 / **859 卡**；带 `theme_name` + 海报图 + `open_time`。海报图字段有两代：老行 `img_path`/`poster_img_path`，新行 `new_img_path`/`new_poster_img_path`，两种都读。时限变体按**同名基础款**兜底（168/168 全中） |
 | `show_start` | `fashion_data.start_show_ts` | Unix 秒 → UTC+8 日期（最早 2026-01-22，最晚 2026-09-24） |
 | `gift_package` | `fashion_data.gift_package_id` | 形如 `[1, 922299]`；库里无对应礼包表，只存号 |
 | `display_bg` | `fashion_data.bg_ids` → `fashion_bg_data`（137 行） | 26 个 id，**26/26 全对上**，带背景图路径与场景文件 |
@@ -30,13 +30,16 @@ r"""补齐时装卡（fashion_wardrobe）的染色 / 获取 / 展示类字段（
 
 ## 口径边界
 
-* **`friendliness` = 同居好感度点数**（11-01 全表扫描查实）：全库只有 5 张表带这个字段
-  （fashion_data / fashion_data_for_export / player_appear_data / player_appear_v2_bag_data / cohabit_level_data），
-  而 `cohabit_level_data` 给出同居五档阈值：相遇 0 → 相知 700 → 相伴 1500 → 同行 3000 → 同心 6000；
-  `home_level_data.upgrade_friendliness_limit` 是家园等级给出的好感度上限（300/1500/2500/5000/15000…）。
-  ⇒ 这不是魅力值换算，而是「穿这件时装给伴侣加的同居好感度」，因此与 charm_value 无单调关系
-  （魅力 20 的背包给 1960、魅力 1500 的整套只给 680）。
-  ★ `add_friendliness_data`（10 档 critical_prob/critical_ratio/add_range）是**品级→暴击**表，与本字段无关。
+* **`friendliness` = 时装自带的隐藏分值，绝大多数款式是「按部位的固定值」**（11-01 查实）：
+  背包 **1960**（全部背包无一例外）/ 衣服 **1280** / 头饰 **680** / 整套 680·1280·1580·1960；
+  199 款老时装（无 part_type）散在 240~1280。**与 charm_value 无关** —— 魅力 20 的背包和魅力 3000 的背包
+  拿的都是 1960（互信息里 charm 占 68% 是**假相关**：部位同时决定两者）。
+  ⚠️ **语义未确证**：数值量纲是 100 分制（游戏通用 score 刻度：700/1500/3000 在大量表里出现；
+  `cohabit_level_data` 恰好用 friendliness 承载同居五档 100 分/天）；但**没有任何表把时装与同居/好感度
+  关联**（cohabit_* 表群 30 张里只有 cost_item_id / item_count 之类道具字段，没有时装关联），
+  且同名字段在别处语义不同（`zss_zombie_friend_data.friendliness` 上限 300）。
+  ⇒ 只能确定「这是时装自带的一个 100 分制隐藏分值，按部位固定」，**它在游戏里影响什么，表里查不到**。
+  ★ `add_friendliness_data`（品级区间 → 暴击概率）与本字段无关。
 * `is_slim_bag`（6,563 行 = 全部衣服/头饰/套装，恒 1）与 `faked_times_limit`（160 行恒 1）
   实测无区分度，不写入。
 * `theme_codes` 全是 `['yh']`，本身无区分度，已并入 `theme`（主题名来自主题表）。
@@ -86,18 +89,28 @@ NOTE_A = ("外观补齐二：value_words=卖点标签（value_word_ids→fashion
           "uncap_appear_gender=未解锁/不封顶时的外观版本（与脱帽款对应）；"
           "bone_info/green_model=新骨骼与风底形态模型（只进技术详情）")
 
+NOTE_F = ("外观补齐六（外观层 player_appear_data）：model_paths=模型路径（model/high/body）；"
+          "npc_hidden=forbid_in_npc_monster（禁止在 NPC/怪物身上出现）；"
+          "dye.appear_ids/appear_idx/appear_sockets=外观层染色 id/槽位/插槽；"
+          "tech_flags 另存外观挂点名、软骨骼、替换武器动作、AI 展示权重、待机隐藏主武器")
+
 NOTE_E = ("外观补齐五：part_code=内部部位码（部位判定唯一口径，名字/描述不可信；1头发头饰 3衣服整套 4背包 5荧光棒）；"
           "show_name/man_show_name=游戏内显示名（时限变体行显示基础款名）；"
           "show_schedule=上架与可见时间；misc_flags=礼包次数/背包假词条/折星型/组队背景/疾跑动作等零散开关；"
           "tech_flags 另存挂点、软骨骼、v2/link/dynamic 挂点等技术字段（长列表只留前几项）")
 
-NOTE_D = ("外观补齐四：cohabit_friendliness=同居好感度点数（fashion_data.friendliness；"
-          "同居五档 相遇0/相知700/相伴1500/同行3000/同心6000，家园等级 upgrade_friendliness_limit 封顶）；"
+NOTE_D = ("外观补齐四：cohabit_friendliness=fashion_data.friendliness 原值（时装自带隐藏分值，"
+          "按部位固定：背包1960/衣服1280/头饰680/整套680·1280·1580·1960，与魅力值无关；"
+          "量纲为100分制、恰与同居五档阈值同刻度，但配置表未把时装与好感度关联，语义待核）；"
           "tech_flags=技术字段留档（socket_model_use_high_model / forbid_primary_high_model / theme_codes / "
           "is_slim_bag / faked_times_limit / valid_scene_ids，均恒 1 或无区分度）")
 
 NOTE_C = ("外观补齐三：preview_group=专属预览分组（preview_id→player_fashion_preview_data.group_id，32/32 全中；"
           "带「专属动画/幻彩特效/组队背景/专属待机/伴飞小凤」标签与预览待机动作名）")
+
+NOTE_G = ("外观补齐七（复核）：theme 海报图兼容两代字段（img_path/poster_img_path → "
+          "new_img_path/new_poster_img_path/poster_bg_path）；捏脸卡不参与按名回捞商品层字段"
+          "（修复「临渊对决」捏脸卡误挂时装 theme/display_bg/model_change_color_id）")
 
 NOTE_B = ("外观补齐：dye=染色方案（change_color_id→appear_change_color_data，384/388 对上，带 HEX 色值）"
         "＋dye.hair=发色方案（appear_change_hair_color_data，14/14）；"
@@ -198,6 +211,7 @@ def main() -> int:
         fmap[r["key"]] = {
             "key": r["key"],
             "name": sv(r["values"].get("name")),
+            "appear_ids": jl(f_blob, r, "appear_ids", f_pool),
             "change_color_id": jl(f_blob, r, "change_color_id", f_pool),
             "hair_change_color_id": jl(f_blob, r, "hair_change_color_id", f_pool),
             "model_change_color_id": jl(f_blob, r, "model_change_color_id", f_pool),
@@ -274,6 +288,35 @@ def main() -> int:
         for r in rows:
             out[r["key"]] = {"row": r, "blob": blob, "pool": pool}
         return out
+
+    # 外观层：player_appear_data（模型路径 / 挂点 / 染色 / NPC 限制 / AI 权重）
+    a_rows, a_blob, a_pool = load("player_appear_data")
+    amap: dict[int, dict] = {}
+    for r in a_rows:
+        val = r["values"]
+        amap[r["key"]] = {
+            "name": sv(val.get("name")),
+            "model_name": sv(val.get("model_name")),
+            "high_model_name": sv(val.get("high_model_name")),
+            "human_body_model_name": sv(val.get("human_body_model_name")),
+            "part": sv(val.get("part")),
+            "part_type": sv(val.get("part_type")),
+            "hide_head": bool(sv(val.get("hide_head"))),
+            "hide_face": bool(sv(val.get("hide_face"))),
+            "hide_pendant": bool(sv(val.get("hide_pendant"))),
+            "forbid_in_npc_monster": bool(sv(val.get("forbid_in_npc_monster"))),
+            "need_idle_hide_main_weapon": sv(val.get("need_idle_hide_main_weapon")),
+            "ai_player_weight": sv(val.get("ai_player_weight")),
+            "yh_ai_player_weight": sv(val.get("yh_ai_player_weight")),
+            "friendliness": sv(val.get("friendliness")),
+            "appear_change_color_id": jl(a_blob, r, "change_color_id", a_pool),
+            "appear_change_color_idx": jl(a_blob, r, "change_color_idx", a_pool),
+            "appear_change_color_socket": jl(a_blob, r, "change_color_socket", a_pool),
+            "appear_socket_names": jl(a_blob, r, "socket_names", a_pool),
+            "appear_socket_models": jl(a_blob, r, "socket_models", a_pool),
+            "appear_soft_bone_ids": jl(a_blob, r, "soft_bone_ids", a_pool),
+            "replace_weapon_anim": jl(a_blob, r, "replace_weapon_anim", a_pool),
+        }
 
     # 卖点标签 / 其他获取方式：这两张表用 00 共享工具读（自动识别 legacy / nxs 封装）
     vw_tab = cdata_nxs.load_table("fashion_value_word_data", CD)
@@ -383,10 +426,16 @@ def main() -> int:
         if not tn:
             continue
         ids = aget(hbook, k, "fashion_ids") or []
+        # 主题表的海报字段分两代：老行 img_path / poster_img_path（83 行），
+        # 新行 new_img_path / new_poster_img_path / poster_bg_path（约 292 行）。
+        # 只读老字段会让新主题的卡面全空，故按「老 → 新 → 海报底图」兜底。
         info = {
             "name": str(tn),
-            "img": first(aget(hbook, k, "img_path") or []) or None,
-            "poster": first(aget(hbook, k, "poster_img_path") or []) or None,
+            "img": (first(aget(hbook, k, "img_path") or [])
+                    or first(aget(hbook, k, "new_img_path") or []) or None),
+            "poster": (first(aget(hbook, k, "poster_img_path") or [])
+                       or first(aget(hbook, k, "new_poster_img_path") or [])
+                       or first(aget(hbook, k, "poster_bg_path") or []) or None),
             "open_time": ts2date(first(aget(hbook, k, "open_time") or [])),
         }
         for i in ids:
@@ -410,12 +459,27 @@ def main() -> int:
             elif isinstance(k, str) and k.isdigit():
                 rk.append(int(k))
         frecs = [fmap[k] for k in rk if k in fmap]
-        if not frecs:
-            # 兜底：按卡名回捞 fashion_data 行（要求该行有部位码，避免 NPC/怪物撞名）
+        # 外观行要经 fashion 行的 appear_ids 关联（卡片的 row_keys 是商品层行键，不是外观行键）
+        app_ids2: list = []
+        for fr in frecs:
+            for x in fr["appear_ids"]:
+                if isinstance(x, int) and x not in app_ids2:
+                    app_ids2.append(x)
+        arecs2 = [amap[a] for a in app_ids2 if a in amap]
+        if not frecs and not it.get("face_kind"):
+            # 兜底：按卡名回捞 fashion_data 行（要求该行有部位码，避免 NPC/怪物撞名）。
+            # ★ 捏脸卡（face_kind）不参与：捏脸与商品层同名时（如「临渊对决」同时是品牌捏脸
+            #   与一套时装），按名回捞会把时装的 theme/display_bg/model_change_color_id 挂到捏脸卡上。
             cand = by_base_name.get(base_name(str(it.get("name") or ""))) or []
             picked = [fmap[k] for k in cand if fmap[k]["part_code"] is not None]
             if picked:
                 frecs = picked
+                app_ids2 = []
+                for fr in frecs:
+                    for x in fr["appear_ids"]:
+                        if isinstance(x, int) and x not in app_ids2:
+                            app_ids2.append(x)
+                arecs2 = [amap[a] for a in app_ids2 if a in amap]
         if not frecs:
             for key in ("dye", "obtain_res", "theme", "show_start", "gift_package",
                         "display_bg", "anim_graph", "model_change_color_id",
@@ -423,7 +487,8 @@ def main() -> int:
                         "rebirth_tex", "other_get_methods", "uncap_appear_gender",
                         "bone_info", "green_model", "preview_group",
                         "cohabit_friendliness", "cohabit_level", "tech_flags",
-                        "part_code", "part_code_cn", "show_name", "man_show_name", "show_schedule", "misc_flags"):
+                        "part_code", "part_code_cn", "show_name", "man_show_name", "show_schedule", "misc_flags",
+                        "model_paths", "npc_hidden"):
                 it.pop(key, None)
             continue
 
@@ -774,6 +839,73 @@ def main() -> int:
                 tech[key] = acc[:4] + ([f"…共{len(acc)}项"] if len(acc) > 4 else [])
         if any(fr["hide_in_bag"] for fr in frecs):
             tech["hide_in_bag"] = True
+        for key, lab in (("appear_socket_names", "外观挂点名"), ("appear_soft_bone_ids", "外观软骨骼"),
+                         ("replace_weapon_anim", "替换武器动作")):
+            acc3: list = []
+            for a in arecs2:
+                for x in a.get(key) or []:
+                    sx = str(x)
+                    if sx and sx not in acc3:
+                        acc3.append(sx)
+            if acc3:
+                tech[key] = acc3[:4] + ([f"…共{len(acc3)}项"] if len(acc3) > 4 else [])
+        for key in ("ai_player_weight", "yh_ai_player_weight", "need_idle_hide_main_weapon"):
+            w = None
+            for a in arecs2:
+                if a.get(key) is not None:
+                    w = a.get(key)
+                    break
+            if w is not None:
+                tech[key] = w
+        # ── 外观层：模型路径 / NPC 限制 / 染色 / 挂点 ──
+        if arecs2:
+            mp: dict = {}
+            for key, lab in (("model_name", "model"), ("high_model_name", "high"),
+                             ("human_body_model_name", "body")):
+                vals2: list = []
+                for a in arecs2:
+                    v2 = a.get(key)
+                    if v2 and str(v2) not in vals2:
+                        vals2.append(str(v2))
+                if vals2:
+                    mp[lab] = vals2
+            if mp:
+                it["model_paths"] = mp
+                stat["model_paths"] += 1
+            else:
+                it.pop("model_paths", None)
+            if any(a.get("forbid_in_npc_monster") for a in arecs2):
+                it["npc_hidden"] = True
+                stat["npc_hidden"] += 1
+            else:
+                it.pop("npc_hidden", None)
+
+        # 外观层染色补进 dye（商品层给方案 id，外观层给该外观自己的染色 id / 槽位 / 插槽）
+        if frecs:
+            ac_ids: list = []
+            ac_idx: list = []
+            ac_sock: list = []
+            for a in arecs2:
+                for x in a.get("appear_change_color_id") or []:
+                    if str(x) not in ac_ids:
+                        ac_ids.append(str(x))
+                for x in a.get("appear_change_color_idx") or []:
+                    if str(x) not in ac_idx:
+                        ac_idx.append(str(x))
+                for x in a.get("appear_change_color_socket") or []:
+                    if str(x) not in ac_sock:
+                        ac_sock.append(str(x))
+            if ac_ids or ac_idx or ac_sock:
+                d0 = it.get("dye") or {}
+                if ac_ids:
+                    d0["appear_ids"] = ac_ids
+                if ac_idx:
+                    d0["appear_idx"] = ac_idx
+                if ac_sock:
+                    d0["appear_sockets"] = ac_sock
+                it["dye"] = d0
+                stat["dye_appear"] += 1
+
         # ── 内部部位码（部位判定唯一口径）──
         pc = None
         for fr in frecs:
@@ -867,13 +999,16 @@ def main() -> int:
               "gift_package", "display_bg", "anim_graph", "glowstick_switchable", "hide_idle_anim",
               "value_words", "rebirth_tex", "other_get_methods", "uncap_appear_gender",
               "bone_info", "green_model", "preview_group", "cohabit_friendliness", "tech_flags",
-              "part_code", "show_name", "man_show_name", "show_schedule", "misc_flags"):
+              "part_code", "show_name", "man_show_name", "show_schedule", "misc_flags",
+              "model_paths", "npc_hidden", "dye_appear"):
         print(f"  {k:24s}{stat[k]}")
 
     if args.dry:
         print("(dry-run 未写盘)")
         return 0
 
+    notes_util.append_note(board, NOTE_G)
+    notes_util.append_note(board, NOTE_F)
     notes_util.append_note(board, NOTE_E)
     notes_util.append_note(board, NOTE_D)
     notes_util.append_note(board, NOTE_C)

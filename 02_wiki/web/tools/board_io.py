@@ -43,6 +43,10 @@ from typing import Any
 _SEPARATORS = (",", ":")
 
 
+class BoardConflict(RuntimeError):
+    """板文件在读取与写回之间被别人改过 —— 拒绝覆盖。"""
+
+
 def _canonical(obj: Any) -> str:
     """紧凑 JSON 序列化：中文不转义、无多余空白。"""
     return json.dumps(obj, ensure_ascii=False, separators=_SEPARATORS)
@@ -110,10 +114,59 @@ def write_text(path: pathlib.Path, text: str, *, retries: int = 4) -> None:
     raise last if last is not None else OSError(f"write failed: {path}")
 
 
-def write_board(path_json: pathlib.Path, board: dict[str, Any]) -> str:
-    """写板 .json，返回写入的文本内容。"""
+def _sha_of(path: pathlib.Path) -> str:
+    import hashlib
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return ""
+
+
+def _log_write(path_json: pathlib.Path, board: dict[str, Any], sha_before: str, sha_after: str) -> None:
+    """记一条写入台账：谁、什么时候、写了多少条、前后 sha。
+
+    目的：多个 agent / 多个脚本都会写 boards/*，没有台账时
+    「板子被谁改回旧版本」这类事故查不出来。台账是行的、append-only 的，
+    与板文件本身分离，不参与发布契约。
+    """
+    import datetime
+    import json as _json
+    import os
+    log = path_json.parent / "_write_log.jsonl"
+    try:
+        import sys as _sys
+        entry = {
+            "ts": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "board": path_json.stem,
+            "items": len(board.get("items") or []),
+            "sha_before": sha_before[:16],
+            "sha_after": sha_after[:16],
+            "script": pathlib.Path(_sys.argv[0]).name if _sys.argv else "?",
+            "pid": os.getpid(),
+        }
+        with log.open("a", encoding="utf-8", newline="\n") as f:
+            f.write(_json.dumps(entry, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+
+
+def write_board(path_json: pathlib.Path, board: dict[str, Any], *,
+                expect_sha: str | None = None) -> str:
+    """写板 .json，返回写入的文本内容。
+
+    ``expect_sha``: 乐观并发控制 —— 传入「我以为的旧内容 sha256」，
+    若磁盘上的当前内容已经不是它，说明别人先写过，直接抛 ``BoardConflict``
+    而不是把对方的修改覆盖掉。不传则保持原来的无条件覆盖行为（向后兼容）。
+    """
+    sha_before = _sha_of(path_json)
+    if expect_sha is not None and sha_before and sha_before != expect_sha:
+        raise BoardConflict(
+            f"{path_json.name} 已被其他写入者修改（期望 {expect_sha[:16]}，实际 {sha_before[:16]}）；"
+            "请重新读取后再写"
+        )
     text = dumps_board(board)
     write_text(path_json, text)
+    _log_write(path_json, board, sha_before, _sha_of(path_json))
     return text
 
 

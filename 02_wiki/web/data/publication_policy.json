@@ -28,7 +28,7 @@
   "gift_data_text_sources": {
    "publication_status": "published",
    "reason": "当前 Documents BA8 包的 gift_data base/CHS 同快照行级文字表。每条名称与说明均保留 row key、字段 CHS 槽位、文本值 CHS 槽位与 decoded payload SHA；仅为文本来源，不表示礼盒可得、可开启、奖励、价格、货币、限购或活动启用。",
-   "category": "一、道具总表 / （二）礼盒"
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
   },
   "nucleus_cards_classic": {
    "publication_status": "published_hidden",
@@ -57,7 +57,7 @@
   },
   "weapon_skin_sfx_text_sources": {
    "publication_status": "published",
-   "category": "二、时装类 / （七）武器皮肤",
+   "category": "一、时装类 / （二）武器皮肤",
    "items": 115,
    "reason": "武器皮肤图鉴：113 条 current_parent（正式名 113/113 verified，来自同快照 common_item_data_base row key==skin_id）+ 2 条仅行为资源行；含品级/武器类型/模型路径/SFX 子项/时限变体/上架状态（release_state：on_sale/upcoming/no_sale_field/behavior_only，正源=皮肤行 sale_ts）。静态存在不等于可得、价格、概率或战斗效果。"
   },
@@ -88,11 +88,12 @@
   },
   "vehicle_full": {
    "publication_status": "published",
-   "reason": "载具全量总表：vehicle_ui_data 同快照 277 行逐行重放（205 严格 + 72 行尾内联变体宽容重放）；名称/描述/品牌/类型/数值全部同表内字段，图标按「UI 清单路径 → fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。"
+   "reason": "载具全量总表：vehicle_ui_data 同快照 277 行逐行重放（205 严格 + 72 行尾内联变体宽容重放）；名称/描述/品牌/类型/数值全部同表内字段，图标按「UI 清单路径 → fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。",
+   "category": "一、时装类 / （三）载具"
   },
   "tactical_chip_full": {
    "publication_status": "published",
-   "category": "二、战力类 /（二）战术芯片",
+   "category": "二、战力类 / （二）战术芯片",
    "reason": "战术芯片全量表：chip_type_data 71 枚（=道具行/图鉴同源）+ belt_chip_data 同名主键 852 行（71×12 档，属性 desc/参数/品质/拆解全部同表内字段）。道具行只按图标文件名编号匹配 common_item（不做等整数跨源拼接），奖池只读 chip_roll_weight_data.reward_id 参数组；图标按「UI 清单路径 → .ktx fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。",
    "items": 71
   },
@@ -104,15 +105,15 @@
   },
   "server_types": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源） / （四）服型"
+   "category": "四、服务与包体 / （一）服务器类型"
   },
   "lottery_periods": {
    "publication_status": "published",
-   "category": "三、活动类 / （一）限时主题类 / 1、当期&历史每期抽奖奖池"
+   "category": "置顶、活动奖池与预告 / （一）活动奖池"
   },
   "drone_catalog": {
    "publication_status": "published",
-   "category": "二、战力类 / （六）无人机"
+   "category": "二、战力类 / （三）无人机"
   },
   "upcoming_auto": {
    "publication_status": "published",
@@ -122,17 +123,17 @@
   },
   "item_master_full": {
    "publication_status": "published",
-   "category": "一、道具总表 / （一）ITEM_MASTER v0.1",
+   "category": "三、综合资料 / （一）全量道具总表",
    "items": 1189,
    "reason": "P4-A 冻结产物：1,189 条 verified item；hide_in_bag 缺席保持 unresolved。"
   },
   "activity_master": {
    "publication_status": "published",
-   "category": "三、活动类 / （零）活动总表"
+   "category": "置顶、活动奖池与预告 / （一）活动奖池"
   },
   "skill_catalog": {
    "publication_status": "published",
-   "category": "ok"
+   "category": "三、综合资料 / （四）实体技能"
   },
   "title_catalog": {
    "publication_status": "published",
@@ -140,7 +141,7 @@
   },
   "avatar_catalog": {
    "publication_status": "published",
-   "category": "ok"
+   "category": "一、时装类 / （五）头像、头像框、名片框"
   },
   "talent_catalog": {
    "publication_status": "published",
@@ -150,45 +151,45 @@
   },
   "edible_catalog": {
    "publication_status": "published",
-   "category": "二、战力类"
+   "category": "二、战力类 / （四）料理与食谱"
   },
   "illustration_catalog": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源）"
+   "category": "三、综合资料 / （六）图鉴收集"
   },
   "recipe_catalog": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源）"
+   "category": "三、综合资料 / （二）配方"
   },
   "buff_catalog": {
    "publication_status": "published",
-   "category": "二、战力类"
+   "category": "三、综合资料 / （五）状态"
   },
   "entity_catalog": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源）"
+   "category": "三、综合资料 / （四）实体技能"
   },
   "desc_catalog": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源）"
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
   },
   "text_notice_catalog": {
    "publication_status": "published",
-   "category": "四、资料层（道具总表 / 文本来源）"
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
   },
   "gene_potential_catalog": {
    "publication_status": "published",
-   "category": "二、战力类"
+   "category": "二、战力类 / （七）各种族潜能"
   },
   "scene_balance": {
    "publication_status": "published",
-   "category": "三、活动类 / （四）PvP 场景平衡",
+   "category": "二、战力类 / （六）场景平衡",
    "reason": "场景加成上下限：special_hurt_params_data(kj1) × space_data。按场景名合并，PvP 优先。",
    "items": 63
   },
   "kill_broadcast": {
    "publication_status": "published",
-   "category": "三、活动类 / （五）击败播报",
+   "category": "一、时装类 / （四）击败播报与全场最佳动画",
    "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。",
    "items": 13
   },
@@ -270,21 +271,35 @@
   },
   "cdn_library": {
    "publication_status": "published",
-   "category": "三、综合资料 / （九）CDN 资源库",
+   "category": "四、服务与包体 / （二）CDN 资源库",
    "items": 711,
    "reason": "CDN 资源库总览：清单 1650 个文件归并为 711 个逻辑包（含多卷与画质/设备档变体），体积/档位/条目数取自 CDN 清单与 cdn_index（只拉头+条目表，未下载荷）；本地状态按 pe_npk_full / pe_npk_20261029 / pe_gres_android 实测。静态清单不等于客户端实装内容，档位选择由设备决定。"
   },
   "local_restore_tree": {
    "publication_status": "published",
-   "category": "三、综合资料 / （三）本地还原树",
+   "category": "四、服务与包体 / （三）本地还原树",
    "items": 33601,
    "reason": "本地还原树全量配置清单：一行 = 一个已还原的配置文件（合并账本 v2 的 files 记录），含相对路径、类型、字节、来源（合并体/增量快照）、落盘时间与目录名称还原率。只读本地冻结产物，不含线上客户端数据，也不表示可用性/可得性。"
   },
   "name_restore_method": {
    "publication_status": "published",
-   "category": "三、综合资料 / （十）文件名还原方法论",
+   "category": "四、服务与包体 / （四）文件名还原方法论",
    "reason": "方法论板：文件名还原的十一条路径与实测命中数（本会话实测，脚本可复跑）。结论 3,600/7,192=50.1%；有效 5 条、证伪 6 条、未做 1 条。只记录方法与数字，不含未验证结论。",
-   "items": 12,
+   "items": 13,
+   "generated": "2026-11-01"
+  },
+  "server_whitelist": {
+   "publication_status": "published",
+   "reason": "服务器与白名单：五轮名单规模、门禁分区判据、三道对齐。全部来自公网明文与已解码的分区表，数字为本轮实测。",
+   "category": "四、服务与包体 / （五）测试服与白名单",
+   "items": 20,
+   "generated": "2026-11-01"
+  },
+  "package_entries": {
+   "publication_status": "published",
+   "reason": "包体入口全矩阵：国内真入口 47、假 200 占位 18、海外 63；版本线关系与分发参数。全部为公开清单实测。",
+   "category": "四、服务与包体 / （六）包体入口与版本线",
+   "items": 19,
    "generated": "2026-11-01"
   }
  }

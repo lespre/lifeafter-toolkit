@@ -1,0 +1,12 @@
+import { chromium } from 'file:///C:/Users/Administrator/AppData/Local/hermes/hermes-agent/node_modules/playwright/index.mjs';
+const b = await chromium.launch({ executablePath: 'C:/Users/Administrator/AppData/Local/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-win64/chrome-headless-shell.exe' });
+const p = await b.newPage({ viewport: { width: 1500, height: 1100 } });
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://127.0.0.1:8765/board.html?b=fashion_wardrobe', { waitUntil:'networkidle' });
+await p.waitForTimeout(1400);
+await p.fill('#q','澜起掠影'); await p.waitForTimeout(1600);
+const n = await p.locator('.fcard').count();
+console.log('澜起掠影 卡数', n);
+await p.locator('.fcard').first().click(); await p.waitForTimeout(1700);
+await p.screenshot({ path:'90_临时/shot_proj.png' });
+console.log('errors', errs); await b.close();

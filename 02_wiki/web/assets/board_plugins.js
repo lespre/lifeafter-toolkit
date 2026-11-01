@@ -36,7 +36,8 @@
     fashion: '<img class="gi" src="assets/fashion_icon_refs/icon_40095_b.png" alt="">',
     combat:  '<img class="gi" src="assets/core_icons/item_icon_jin_bing_b.png" alt="">',
     activity:'<img class="gi" src="assets/lottery_icons/102602.png" alt="">',
-    reference:'<img class="gi" src="assets/item_icons/icon_10004_b.png" alt="">'
+    reference:'<img class="gi" src="assets/item_icons/icon_10004_b.png" alt="">',
+    service_package:'<img class="gi" src="assets/item_icons/icon_fushegaoxiao_box1_b.png" alt="">'
   };
   var cur=new URLSearchParams(location.search).get('b')||'';
   var TITLES={};
@@ -57,7 +58,7 @@
   var nav=document.getElementById('siteNav');
   var html='<div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div>';
   (T['树']||[]).forEach(function(top){
-    html += '<div class="grp">'+ICON[top.id] + '<span>' + top.name + '</span></div>';
+    html += '<div class="grp">'+(ICON[top.id]||'') + '<span>' + top.name + '</span></div>';
     var rows=[];
     (top.boards||[]).forEach(function(id){
       if(!byId[id]) return;

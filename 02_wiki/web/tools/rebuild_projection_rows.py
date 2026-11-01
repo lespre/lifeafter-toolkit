@@ -56,13 +56,32 @@ def main() -> int:
     d["items"] = [i for i in d["items"] if i.get("part") != "投影"]
 
     added = 0
+    # 2026-11-01：同款投影的时限变体合并成一张卡（同名 + 同 buff_id）。
+    #   body_sfx_data 里「澜起掠影」有 4 行（永久/7天/30天/90天，同 buff_id 24565），
+    #   旧写法按行建卡 → 板上 4 张独立卡，与时装卡「时限变体并入原子卡」口径不一致。
+    #   名字不同的（如「九尾蓝狐-星空幻梦」）是皮肤变体，保持独立卡。
+    _groups = {}
     for r in rows:
         nm = str(g(r, "buff_item_name") or "").strip()
         if not nm:
             continue
-        iid = g(r, "buff_item_id")
-        d["items"].append({
-            "id": "proj_%s" % iid,
+        _groups.setdefault((nm, str(g(r, "buff_id"))), []).append(r)
+
+    for _key, _rs in _groups.items():
+        _rs.sort(key=lambda r: (g(r, "valid_days") is not None, r["key"]))
+        _main = _rs[0]
+        _days = sorted({g(r, "valid_days") for r in _rs if g(r, "valid_days") is not None})
+        _perm = any(g(r, "valid_days") is None for r in _rs)
+        for r in _rs:
+            nm = str(g(r, "buff_item_name") or "").strip()
+            iid = g(r, "buff_item_id")
+            is_main = (r is _main)
+            _item = {
+            "id": "proj_%s" % (iid if is_main else _main["key"]),
+            "row_keys": [g(x, "buff_item_id") for x in _rs],
+            "durations": _days,
+            "duration_state": ("mixed" if (_perm and _days) else ("timed" if _days else "permanent")),
+            "has_permanent": _perm,
             "name": "伴身投影·%s" % nm if not nm.startswith("伴身投影") else nm,
             "item_id": iid,
             "buff_id": g(r, "buff_id"),
@@ -91,10 +110,13 @@ def main() -> int:
                 "locator_chain": {"chain_status": "replayed-structural", "scope": "record",
                                   "no_cross_source_field_join": True,
                                   "steps": [{"kind": "decoded-table-row", "source_id": lock["source_id"],
-                                             "table": "body_sfx_data", "row_key": r["key"],
-                                             "field_refs": ["buff_id", "buff_item_id", "buff_item_name"]}]},
+                                             "table": "body_sfx_data", "row_key": x["key"],
+                                             "field_refs": ["buff_id", "buff_item_id", "buff_item_name"]}
+                                            for x in _rs]},
             },
-        })
+            }
+            if is_main:
+                d["items"].append(_item)
         added += 1
 
     bf.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")

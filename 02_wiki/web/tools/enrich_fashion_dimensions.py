@@ -191,6 +191,9 @@ def load_board_rows():
             "reborn_vis": bool(sv(val.get("reborn_vis"))),
             "force_gender": sv(val.get("force_gender")),
             "takeoff_head": bool(sv(val.get("takeoff_head"))),
+            "hide_head": bool(sv(val.get("hide_head"))),
+            "hide_face": bool(sv(val.get("hide_face"))),
+            "hide_pendant": bool(sv(val.get("hide_pendant"))),
             "gender": sv(val.get("gender")),
             "model_name": sv(val.get("model_name")),
             "high_model_name": sv(val.get("high_model_name")),
@@ -414,6 +417,16 @@ def main() -> int:
             it["flower_bud"] = bud
             stat["flower_bud"] += 1
 
+        # D3b 隐藏部位：商品层 hide_other_part + 外观层 hide_head / hide_face / hide_pendant
+        hp = list(it.get("hide_parts") or [])
+        for a in pool_recs:
+            for fld, cn in (("hide_head", "头部"), ("hide_face", "面部"), ("hide_pendant", "挂饰")):
+                if a.get(fld) and cn not in hp:
+                    hp.append(cn)
+        if hp:
+            it["hide_parts"] = hp
+            stat["hide_parts"] += 1
+
         # D4 藏花（字段名 reborn_vis；11-01 用户游戏内核对：就是藏花）
         # ★ 全表 29,708 个 bool 值 100% 是 True，一个 False 都没有 —— 这个序列化格式不落 False，
         #   缺省即「没开」。所以只有「写了 reborn_vis=1」才是打开，不存在「=0 才隐藏」的读法。
@@ -531,7 +544,7 @@ def main() -> int:
 
     print("== 覆盖统计（卡）")
     for k in ("show_no_have", "desc_man", "name_split", "flower_bud", "reborn_vis",
-              "takeoff_head"):
+              "takeoff_head", "hide_parts"):
         print(f"  {k:22s}{stat[k]}")
     print("  gender_scope:", dict(scope_stat))
     n_scope = sum(1 for x in board["items"] if x.get("gender_scope"))

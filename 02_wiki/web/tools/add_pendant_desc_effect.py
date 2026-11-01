@@ -266,8 +266,13 @@ def main() -> int:
                     it["desc_note"] = ("描述未收录：该部位来自 %s，表里无 desc 字段；"
                                        "本体的 desc/charm/效果在 all_equips_data（PE 缺卷）"
                                        % (it.get("source") or ""))
-            if not a.dry and it.get("charm_value") is None:
-                it["charm_note"] = "魅力值未收录（该部位表无 charm_value，需 all_equips_data 补卷）"
+            if not a.dry and it.get("charm_value") is not None:
+                # ★ 2026-11-01：魅力值说明统一由 fill_equip_charm.py 负责（它读装备表
+                #   all_equips_data 完整载荷，能给出真实值与来源）。
+                #   本脚本**不写 charm_note**（否则会出现「既有 equip_charm 又说未收录」的矛盾），
+                #   但**保留** fill_equip_charm 已经写好的「未收录」说明 —— 只在自身有值时清掉。
+                if str(it.get("charm_note") or "").startswith("player_appear_data.charm_value"):
+                    it.pop("charm_note", None)
             # 花苞：player_appear_race_ctrl_data 自带 level，能补品级
             if bucket == "半感染者花苞" and it.get("grade_level") is None:
                 for rk in (it.get("row_keys") or []):

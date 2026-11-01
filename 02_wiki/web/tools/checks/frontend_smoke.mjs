@@ -83,7 +83,7 @@ const OUT = arg("--out", null);
 const DIFF_AGAINST = arg("--diff", null);
 const VIEWPORTS = arg("--mobile", "1") !== "0";
 
-// 默认板组：覆盖不同渲染模式（大表 / 时装 / 载具 / 芯片 / 名册级 / 静态导出）
+// 默认板组：覆盖不同渲染模式（大表 / 时装 / 载具 / 芯片 / 名册级 / 静态导出 / 自定义视图）
 const DEFAULT_BOARDS = [
   "fashion_wardrobe",
   "vehicle_full",
@@ -95,6 +95,9 @@ const DEFAULT_BOARDS = [
   "common_item_text_sources",
   "lottery_periods",
   "title_catalog",
+  // 2026-11-01 新增：自定义展示视图（body.view-mode）—— CDN 目录组折叠 / 还原树模块索引
+  "cdn_library",
+  "local_restore_tree",
 ];
 
 const boards = (arg("--boards", "") || "")
