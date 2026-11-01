@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="--top-h: 188px;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>（一）服务器类型 · Wiki</title>
+<script src="data/publication_policy.js?v=ec7cf93a17f7"></script>
+<script src="data/manifest.js?v=20261102-eqtag1"></script>
+<script src="data/wiki_taxonomy.js"></script>
+<script src="data/workbench_manifest.js?v=7ee9dbaa765c"></script>
+<script src="data/weapon_skin_audio_attachments.js?v=bc990a74b699"></script>
+<script src="data/media/weapon_skin_media.js?v=a7232deb9d2a"></script>
+<script src="data/media/weapon_skin_skeleton.js?v=f921edf44d09"></script>
+<!-- ★ 新增（2026-09-20，CUBE_PICKER）：环境立方体（IBL cube）清册。
+     ⚠ 源数据里**没有**选择器决定预览该用哪一套 cube ⇒ 查看器里的「环境 cube」下拉是**取证/对比工具**，
+     不代表「游戏就是这么选的」。清册由 01_索引与产物/_target_1110025/_cubepick_build.py 按名字哈希枚举源容器后解码生成。
+     非 defer ⇒ 早于下方 defer 的 weapon_skin_viewer.js 执行，保证选择器首次填充时清册已就绪。 -->
+<script src="data/media/weapon_skin_cubes.js?v=cf095dc3fd73"></script>
+<!-- ★ 新增（2026-09-20，MERGE_FIX）：**自造近似**环境立方体清册（custom_studio_20260920）。
+     ⚠ 与上一行不同：这里面的 cube **不是游戏资产**（status='self_authored_approximate'，
+     authority=user_authorized_manual_20260920，由游戏自己的背景板重采样而来）。
+     它**故意落在**总清单既有枚举（source_verified/partial/unresolved）之外，因此绝不计入
+     「已定位源 cube」的 32 套；下拉里以独立分组「自造·近似（非游戏资产）」单列，文案写明非游戏资产。
+     本文件无副作用：只注册 window.WikiWeaponSkinCubesCustom，并在主清单已存在时**幂等** append
+     （同名不覆盖 ⇒ 踩不到真源 cube）。必须排在 weapon_skin_cubes.js 之后、defer 的 viewer.js 之前。 -->
+<script src="data/media/weapon_skin_cubes_custom.js?v=d40de75427ba"></script>
+<link rel="stylesheet" href="assets/weapon_skin_viewer.css?v=neox4">
+<script defer="" src="assets/weapon_skin_viewer.js?v=34983ec79804"></script>
+<script defer="" src="assets/weapon_skin_sfx_adapter.js?v=32d4c81fae01"></script>
+<link rel="stylesheet" href="board_shadcn.css?v=20261023-narrow">
+<link rel="stylesheet" href="assets/board_theme_aftermath.css?v=20261018a">
+<link rel="stylesheet" href="assets/board_theme_official.css?v=20261019p">
+<link rel="stylesheet" href="assets/board_base.css?v=20261102-eqd2-1-title11">
+
+<meta name="theme-color" content="#10131d">
+<link rel="icon" type="image/png" href="assets/brand/logo_mark.png">
+<link rel="stylesheet" href="assets/board_theme_dusk.css?v=20261025-02">
+<link rel="stylesheet" href="assets/board_tokens.css?v=20261101-title3">
+<script defer="" src="assets/board_ui.js?v=20261025-01"></script>
+<script defer="" src="assets/board_navdrawer.js?v=20261030-01"></script>
+<script src="data/boards/server_types.js?v=20261102eqtag1"></script></head>
+<body class="wiki-board st-mode sbt-mode b-server_types">
+<aside id="siteNav" aria-label="资料分类"><div class="hd"><a class="board-home" href="wiki.html" aria-label="返回 Wiki 首页"><img class="nav-logo" src="assets/logo_lifeafter_wiki.png" alt="LIFEAFTER WIKI"></a></div><a class="leafrow" id="navOptPreviewRow" href="javascript:void(0)" style="display:flex!important;align-items:center;gap:6px;color:#c9d3e6!important"><input type="checkbox" id="navOptPreview" style="width:13px;height:13px;accent-color:#b6a7df">显示内测板块</a><div class="grp"><img class="gi" src="assets/skin_posters/1110012.png" alt=""><span>置顶、活动奖池与预告</span></div><a class="leafrow" href="board.html?b=activity_master">（一）活动奖池</a><a class="leafrow" href="board.html?b=upcoming_auto">（二）预告专栏</a><div class="grp"><img class="gi" src="assets/fashion_icon_refs/icon_40095_b.png" alt=""><span>一、时装类</span></div><a class="leafrow" href="board.html?b=fashion_wardrobe">（一）人物时装</a><a class="leafrow" href="board.html?b=weapon_skin_sfx_text_sources">（二）武器皮肤</a><a class="leafrow" href="board.html?b=vehicle_full">（三）载具</a><a class="leafrow" href="board.html?b=kill_broadcast">（四）击败播报与全场最佳动画</a><a class="leafrow" href="board.html?b=avatar_catalog">（五）头像、头像框、名片框</a><div class="grp"><img class="gi" src="assets/core_icons/item_icon_jin_bing_b.png" alt=""><span>二、战力类</span></div><a class="leafrow" href="board.html?b=mutation_core_full">（一）异变核芯</a><a class="leafrow" href="board.html?b=tactical_chip_full">（二）战术芯片</a><a class="leafrow" href="board.html?b=edible_catalog">（四）料理与食谱</a><div class="leafhd">（五）装备属性（武器·护甲）</div><a class="sub" href="board.html?b=equipment_attrs">装备属性 · 三服总览</a><a class="sub" href="board.html?b=equipment_attrs_kj1">装备属性 · 简单生存服</a><a class="sub" href="board.html?b=equipment_attrs_classic">装备属性 · 经典服</a><a class="sub" href="board.html?b=equipment_attrs_yk">装备属性 · 月卡服</a><div class="grp"><img class="gi" src="assets/item_icons/icon_10004_b.png" alt=""><span>三、综合资料</span></div><a class="leafrow" href="board.html?b=item_master_full">（一）全量道具总表</a><div class="grp"><img class="gi" src="assets/item_icons/icon_fushegaoxiao_box1_b.png" alt=""><span>四、服务与包体</span></div><a class="leafrow on" href="board.html?b=server_types">（一）服务器类型</a><a class="leafrow" href="board.html?b=cdn_library">（二）CDN 资源库</a><a class="leafrow" href="board.html?b=local_restore_tree">（三）本地还原树</a></aside>
+<header class="hd2">
+  <button id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false"><span aria-hidden="true">☰</span><span>资料分类</span></button><div class="hd2-crumb">
+    <a href="wiki.html">← 返回 Wiki 首页</a>
+    <a href="index.html">三线状态</a>
+  </div>
+  <h1 id="title">（一）服务器类型</h1>
+  <div class="meta-line" id="metaline" title="源包摘要＝该板块生成时所用客户端快照的摘要（不同板块快照可能不同）">来源：server_types.py · 生成 2026-10-23<span class="techlink-wrap"><a class="techlink" href="javascript:void(0)">技术详情</a></span></div>
+  <div class="pills" id="pills"><span class="pill">条目 <b>21</b></span><span class="pill">结构已解析 <b>21</b></span><span class="pill state-pill static-config">静态配置 <b>21</b></span></div>
+<div class="notes" id="notes" style="display: none;"><details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv"><div class="k">板块说明</div><div class="v">`_auto_oversea_data_&lt;后缀&gt;` = 服务器类型变体，不是渠道。硬核服 yh 无奖池属预期；xq/xyd/cn 用户亦不确定，标待确认，不推断。</div><div class="k">源包摘要</div><div class="v mono">0000000000000000…</div><div class="k">条目等级</div><div class="v">结构已解析</div><div class="k">生成时间</div><div class="v">2026-10-23</div></div></details></div></header>
+<div class="wrap">
+  <div class="controls">
+    <input id="q" type="search" aria-label="搜索板内条目" placeholder="搜索名称 / ID / 任意字段…" autocomplete="off">
+    <select id="fEv">
+      <option value="">全部证据等级</option>
+      <option value="structure">结构已解析</option>
+      <option value="verified">业务链已核验</option>
+      <option value="candidate">候选待验证</option>
+    </select>
+    <details class="board-filters" id="boardFilters"><summary>筛选条件</summary><span id="fFashionWrap" style="display:none"></span></details>
+    <select id="fRelease" style="display:none"><option value="">全部上架状态</option></select>
+    <select id="fNameSt" style="display:none"><option value="">全部名称状态</option></select>
+    <div id="fGrade" style="display:none;position:relative">
+      <button type="button" id="fGradeBtn" aria-haspopup="listbox" aria-expanded="false" title="点击展开品级列表（可多选；一个都不勾 = 全部）" style="font:inherit;font-size:12px;color:#3f3f46;background:#fff;border:1px solid #e4e4e7;border-radius:8px;padding:6px 10px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+        <span id="fGradeLabel">品级：全部</span><span style="color:#a1a1aa">▾</span>
+      </button>
+      <div id="fGradePanel" role="listbox" aria-multiselectable="true" style="display:none;position:absolute;top:calc(100% + 4px);left:0;width:max-content;min-width:200px;max-width:320px;max-height:290px;overflow:auto;background:#fff;border:1px solid #e4e4e7;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:60;box-sizing:border-box"></div>
+    </div>
+    <select id="fType" style="display:none"><option value="">全部武器种类</option></select>
+    <select id="fIp" style="display:none"><option value="">全部联动IP</option></select>
+    <span id="listingHint" class="sort-hint" style="display:none"></span>
+    <span class="srv-sw" id="serverSwitch" style="display:none" aria-label="服别切换"></span>
+    <span id="fCustomWrap"></span>
+    <span id="viewSwitch" style="display:none"></span>
+    <span id="sortHint" class="sort-hint" style="display:none"></span>
+    <select id="fOrder" style="display:none" aria-label="排列依据">
+      <option value="gallery">排序：游戏图鉴序列</option>
+      <option value="id">排序：皮肤ID</option>
+    </select>
+    <button id="fDir" type="button" class="dir-btn" style="display:none" title="切换排列方向（↑/↓）" aria-label="切换排列方向" data-bound="1">↓ 降序</button>
+    <button id="fDensity" type="button" class="density-btn" aria-pressed="false" title="卡片密度：舒适（大图 4 列）— 点击切紧凑" data-bound="1" data-density="comfortable" style="display: none;">密度：舒适</button>
+    <span class="count" id="count" role="status" aria-live="polite">显示 21 / 21 条</span>
+  </div>
+  
+  <div class="grid" id="grid"><table class="sbt"><thead><tr><th>服型后缀</th><th>名称</th><th>标签</th><th>本端表数</th><th>状态</th><th>判定依据</th><th>证据等级</th><th>来源</th></tr></thead><tbody><tr><td class="num">au</td><td>au · 澳洲区</td><td><span class="tag">澳洲区</span></td><td class="num">363</td><td><span class="tag">已确认</span></td><td class="wrap">region=au</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">-</td><td>base · 通用/经典服（无后缀）</td><td><span class="tag">通用 / 经典服</span></td><td class="num">0</td><td><span class="tag">已确认</span></td><td class="wrap">用户口径：经典服可能不走后缀，用无后缀 base 表</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">cn</td><td>cn · 未定（★待确认）</td><td><span class="tag">未定（★待确认）</span></td><td class="num">1</td><td><span class="tag">待确认</span></td><td class="wrap">用户也不确定</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">eu</td><td>eu · 欧洲区</td><td><span class="tag">欧洲区</span></td><td class="num">396</td><td><span class="tag">已确认</span></td><td class="wrap">region=eu</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">hmt</td><td>hmt · 港澳台区</td><td><span class="tag">港澳台区</span></td><td class="num">367</td><td><span class="tag">已确认</span></td><td class="wrap">region=hmt</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">jp</td><td>jp · 日本区</td><td><span class="tag">日本区</span></td><td class="num">398</td><td><span class="tag">已确认</span></td><td class="wrap">region=jp</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kj1</td><td>kj1 · 简单生存</td><td><span class="tag">简单生存</span></td><td class="num">3,226</td><td><span class="tag">已确认</span></td><td class="wrap">server_cluster_data: theme=kj1 → theme_name=简单生存</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kjhmt</td><td>kjhmt · 简单生存·港澳台</td><td><span class="tag">简单生存·港澳台</span></td><td class="num">1,947</td><td><span class="tag">已确认</span></td><td class="wrap">theme=kjhmt, region=hmt</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kjjp</td><td>kjjp · 简单生存·日本</td><td><span class="tag">简单生存·日本</span></td><td class="num">1,965</td><td><span class="tag">已确认</span></td><td class="wrap">theme=kjjp, region=jp</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kjna</td><td>kjna · 简单生存·北美</td><td><span class="tag">简单生存·北美</span></td><td class="num">1,952</td><td><span class="tag">已确认</span></td><td class="wrap">theme=kjna, region=na</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kjsea</td><td>kjsea · 简单生存·东南亚</td><td><span class="tag">简单生存·东南亚</span></td><td class="num">1,938</td><td><span class="tag">已确认</span></td><td class="wrap">theme=kjsea, region=sea</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kjxq</td><td>kjxq · 简单生存</td><td><span class="tag">简单生存</span></td><td class="num">3,282</td><td><span class="tag">已确认</span></td><td class="wrap">table_region_code=kjxq → theme=kj1</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">kr</td><td>kr · 韩国区</td><td><span class="tag">韩国区</span></td><td class="num">358</td><td><span class="tag">已确认</span></td><td class="wrap">region=kr</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">na</td><td>na · 北美区</td><td><span class="tag">北美区</span></td><td class="num">402</td><td><span class="tag">已确认</span></td><td class="wrap">region=na</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">sea</td><td>sea · 东南亚区</td><td><span class="tag">东南亚区</span></td><td class="num">367</td><td><span class="tag">已确认</span></td><td class="wrap">region=sea</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">xq</td><td>xq · 未定（★待确认）</td><td><span class="tag">未定（★待确认）</span></td><td class="num">130</td><td><span class="tag">待确认</span></td><td class="wrap">用户也不确定</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">xyd</td><td>xyd · 未定（★待确认）</td><td><span class="tag">未定（★待确认）</span></td><td class="num">126</td><td><span class="tag">待确认</span></td><td class="wrap">用户也不确定</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">yh</td><td>yh · 硬核</td><td><span class="tag">硬核</span></td><td class="num">0</td><td><span class="tag">已确认</span></td><td class="wrap">theme=yh；★无奖池、无表后缀（用户口径）</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">yk</td><td>yk · 会员专享（月卡服）</td><td><span class="tag">会员专享（月卡服）</span></td><td class="num">1,442</td><td><span class="tag">已确认</span></td><td class="wrap">server_cluster_data: theme=yk → theme_name=会员专享</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">ykxq</td><td>ykxq · 会员专享·新区</td><td><span class="tag">会员专享·新区</span></td><td class="num">0</td><td><span class="tag">已确认</span></td><td class="wrap">table_region_code=ykxq</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr><tr><td class="num">yxq</td><td>yxq · 会员专享·新区？</td><td><span class="tag">会员专享·新区？</span></td><td class="num">0</td><td><span class="tag">待确认</span></td><td class="wrap">未证；table_region_code=ykxq 同一族，标待确认</td><td class="dim">static/candidate</td><td class="dim">toolkit_core/server_types.py</td></tr></tbody></table></div>
+</div>
+
+<!-- board:split -->
+<script src="assets/board_dict.js?v=20261030-01"></script>
+<script src="assets/board_core.js?v=20261102-eqd2-1-title11-eqtag1"></script>
+
+
+
+
+
+
+
+
+<script src="assets/board_plugins.js?v=20261101-08"></script>
+
+
+<div id="navScrim" aria-hidden="true"></div></body></html>

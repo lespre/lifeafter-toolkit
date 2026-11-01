@@ -1,6 +1,6 @@
 window.WIKI_BOARD_edible_catalog = {
  "meta": {
-  "name": "（内测版）料理与食谱",
+  "name": "料理与食谱",
   "category": "二、战力类 / （四）料理与食谱",
   "source_server": "PE 体验服 · 配置合并体（基线 script.py314.lc.npk + 2026-10 增量快照）",
   "package_sha": "f40201831bd5f3af503028bd19d8f8b1ccf13de907dd82f709bfc7a85df90662",

@@ -1,5 +1,5 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-11-01",
+  "generated": "2026-11-02",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-11-01",
@@ -167,7 +167,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）料理与食谱",
+      "name": "料理与食谱",
       "category": "二、战力类 / （四）料理与食谱",
       "board": "edible_catalog",
       "items": 1335,
@@ -699,7 +699,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）服型总表 · 服务器类型后缀与依据",
+      "name": "服型总表 · 服务器类型后缀与依据",
       "category": "四、服务与包体 / （一）服务器类型",
       "board": "server_types",
       "items": 21,

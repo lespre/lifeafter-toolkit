@@ -176,11 +176,12 @@ def load_csb_raws(csbs):
         if not fp.is_file():
             print("  容器缺失:", cont)
             continue
-        for row in rows:
-            try:
-                payloads[("pc", cont, row)] = gpk_row_bytes(fp, row)
-            except Exception as e:
-                print("  读取失败:", cont, row, e)
+        try:
+            # 块感知读取：gres 族一包多块，不能按「表在 64、载荷 16+off+20」的单块公式硬算
+            for row, raw in read_pack_rows(fp, rows).items():
+                payloads[("pc", cont, row)] = raw
+        except Exception as e:
+            print("  读取失败:", cont, e)
     if pe:
         by_pack = {}
         for p, (pack, row) in pe.items():

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-r"""（内测版）料理与食谱板：按新 PE 还原树全量重建（幂等）。
+r"""料理与食谱板：按新 PE 还原树全量重建（幂等）。
 
 数据源（全部实读，不跨表臆断）：
     01_索引与产物/41_还原树/pe/配置/com/cdata/
@@ -630,7 +630,7 @@ def main() -> int:
     n_no = sum(1 for c in items if c.get("icon_state") == "客户端未下发")
 
     meta = {
-        "name": "（内测版）料理与食谱",
+        "name": "料理与食谱",
         "category": "二、战力类 / （四）料理与食谱",
         "source_server": SOURCE_SERVER,
         "package_sha": pkg_sha,
