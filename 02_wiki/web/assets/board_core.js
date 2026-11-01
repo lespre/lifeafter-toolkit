@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev7")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102eqtag1")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1259,6 +1259,16 @@ function fillFilterSelects(items){
       wrap.appendChild(sel);
       DATA._custFilters.push({key:f.key,sel});
     });
+    if(EDIBLE_BOARD){
+      const n=items.filter(it=>String(it.kind||"")==="食材").length;
+      const lb=document.createElement("label");
+      lb.className="tg-toggle";
+      lb.innerHTML=`<input type="checkbox" id="tgEdible"><span>展开食材 / 可食用物品（${n}）</span>`;
+      wrap.appendChild(lb);
+      const cb=lb.querySelector("input");
+      cb.checked=edibleShowIngredients;
+      cb.onchange=()=>{edibleShowIngredients=cb.checked;render();};
+    }
     return;
   }
   const skinLike=items.some(it=>pick(it,"level")!=null||pick(it,"weapon_type_label"));
@@ -1355,11 +1365,10 @@ function renderItemCard(it){
    ★ 类名 eq-* + body.equip-mode，其它板零影响。 */
 const EQUIP_FACE=new Set(["id","name","row_key","equip_label","weapon_kind_label","durability",
   "max_shield","shield_label","base_score","charm_value","desc","level","icon","icon_state","_media"]);
-function equipCardHTML(it,cidx){
-  const imgs=((it._media&&it._media.images)||[]).filter(x=>x&&x.png);
-  const rail=imgs.length
-    ? `<div class="fr-rail">${imgs.slice(0,1).map(x=>`<figure><img src="${esc(x.png)}" alt="" loading="lazy"></figure>`).join("")}</div>`
-    : `<div class="fr-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
+/* 装备大图（_media.images 首个即 2:1 图标）：卡面与 D2 详情共用同一份图源 */
+function equipImgs(it){return ((it._media&&it._media.images)||[]).filter(x=>x&&x.png);}
+/* 关键属性 pill：卡面与详情共用，避免两处口径漂移 */
+function equipPillsHTML(it){
   const sub=[];
   if(it.equip_label)sub.push(`<span class="fr-part" title="装备类型" data-k="equip_label">${esc(it.equip_label)}</span>`);
   if(it.weapon_kind_label)sub.push(`<span class="fr-part" title="武器细类（按 weapon_kind 归纳）" data-k="weapon_kind_label">${esc(it.weapon_kind_label)}</span>`);
@@ -1368,24 +1377,67 @@ function equipCardHTML(it,cidx){
   if(it.shield_label)sub.push(`<span class="fr-part" title="护盾档位" data-k="shield_label">${esc(it.shield_label)}</span>`);
   if(it.base_score!=null)sub.push(`<span class="fr-charm" title="评分">评分 ${esc(it.base_score)}</span>`);
   if(it.charm_value!=null&&it.charm_value!=="")sub.push(`<span class="fr-charm" title="魅力值">魅力 ${esc(it.charm_value)}</span>`);
-  const desc=String(it.desc||"").trim();
+  return sub.join("");
+}
+/* 其余字段（卡内折叠区与 D2 详情共用同一份清单） */
+function equipRestRows(it){
   const kv=[];
   Object.entries(it).forEach(([k,v])=>{
     if(EQUIP_FACE.has(k)||FIXED.has(k)||v==null||v===""||(Array.isArray(v)&&!v.length))return;
     const mono=(k==="model_path"||k==="row_key")?" mono":"";
     kv.push(`<div class="k">${esc(FIELD_CN[k]||k)}</div><div class="v${mono}">${esc(fmtVal(k,v))}</div>`);
   });
+  return kv.join("");
+}
+function equipCardHTML(it,cidx){
+  const imgs=equipImgs(it);
+  const rail=imgs.length
+    ? `<div class="fr-rail">${imgs.slice(0,1).map(x=>`<figure><img src="${esc(x.png)}" alt="" loading="lazy"></figure>`).join("")}</div>`
+    : `<div class="fr-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
+  const desc=String(it.desc||"").trim();
   return `<div class="i eqcard"${cidx==null?"":` data-cidx="${cidx}"`}>
     ${rail}
     <div class="fr-head"><div class="fr-name" title="${esc(it.name||it.id)}">${esc(it.name||it.id)}</div>${
       it.level!=null?`<span class="fr-grade" title="等级">Lv ${esc(it.level)}</span>`:""}</div>
-    <div class="fr-sub">${sub.join("")}</div>
+    <div class="fr-sub">${equipPillsHTML(it)}</div>
     ${desc?`<div class="eq-desc">${esc(desc)}</div>`:""}
     <details class="tech sub"><summary>其余字段 / 数据详情</summary>
-      <div class="kv">${kv.join("")}</div>
+      <div class="kv">${equipRestRows(it)}</div>
       ${renderTechSection([["provenance",effProv(it)],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}
     </details>
   </div>`;
+}
+/* 2026-11-02（用户反馈「点击不能打开子卡详情」）：
+   D2 详情不能直接复用卡面 —— 卡面把字段折进 details，而 c2Render 会强制收起 tech 折叠区，
+   点开看到的还是同一张缩小的卡。这里自建详情体：大图 + 关键 pill + 完整描述 + 属性表 + 其余字段，
+   全部默认可见；只有溯源审计仍折叠。 */
+function equipD2Body(it,mode){
+  const imgs=equipImgs(it);
+  FR_IMGS[it.id]=((it._media||{}).images||[]).map(x=>x.png);
+  const rail=imgs.length
+    ? `<div class="eq-d2-rail">${imgs.map((x,i)=>`<figure class="eq-d2-thumb${i===0?" fr-zoom":""}" data-idx="${i}" title="${i===0?"点击看大图":esc(x.base||"")}"><img src="${esc(x.png)}" alt="" loading="lazy"></figure>`).join("")}</div>`
+    : `<div class="eq-d2-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
+  const desc=String(it.desc||"").trim();
+  const rows=[];
+  const put=(label,v)=>{if(v!==null&&v!==undefined&&v!=="")rows.push(`<div class="k">${esc(label)}</div><div class="v">${esc(v)}</div>`);};
+  put("装备类型",it.equip_label);
+  put("武器细类",it.weapon_kind_label);
+  put("等级",it.level);
+  put("耐久",it.durability);
+  put("护盾值",it.max_shield);
+  put("护盾档位",it.shield_label);
+  put("基础评分",it.base_score);
+  put("魅力值",it.charm_value);
+  const rest=equipRestRows(it);
+  const content=`<div class="c2-embed eq-d2">
+    ${rail}
+    <div class="fr-sub">${equipPillsHTML(it)}</div>
+    ${desc?`<div class="eq-d2-desc">${esc(desc)}</div>`:""}
+    ${rows.length?`<div class="fr-sec">属性</div><div class="fr-kv">${rows.join("")}</div>`:""}
+    ${rest?`<div class="fr-sec">其余字段</div><div class="fr-kv">${rest}</div>`:""}
+    ${renderTechSection([["provenance",effProv(it)],["field_provenance",it.field_provenance],["source",it.source],["evidence_level",it.evidence_level],["status_tags",it.status_tags]])}
+  </div>`;
+  return mode==="dock"?content:c2BarHTML(it,(C2.prov&&C2.prov.meta)?C2.prov.meta(it):"","main")+content;
 }
 /* 时装图标（游戏内真实引用）：最多显示 6 张，其余计数；无资源时用客户端占位图 */
 function renderItemMedia(m){
@@ -1583,8 +1635,8 @@ function cardOpensD2(card){
     (card.classList.contains("vcard")&&VEHICLE_BOARD)||
     (card.classList.contains("skin-card")&&document.body.classList.contains("skin-mode"))||
     (card.classList.contains("nucleus")&&CORE_BOARD)||
-    (card.classList.contains("roster")||
-    (card.classList.contains("eqcard")&&EQUIP_BOARD));
+    card.classList.contains("roster")||
+    (card.classList.contains("eqcard")&&EQUIP_BOARD);
 }
 /* ── 大图查看器（灯箱）：点缩略图或 +N 打开，可左右翻、Esc 关 ── */
 const FR_IMGS=Object.create(null);
@@ -2537,6 +2589,10 @@ const CORE_BOARD=(function(){try{return (getParam("b")||"")==="mutation_core_ful
    style 是等级档位（初/中/高级/资深…），不是分类，因此不参与分组。
    中文标签按各行 desc 实证归纳，不做跨表推断。 */
 const TITLE_BOARD=(function(){try{return (getParam("b")||"")==="title_catalog";}catch(e){return false;}})();
+/* 料理与食谱板（edible_catalog，2026-11-02）：料理为主表，食材默认折叠为次级分组。
+   折叠只影响可见范围，仍可勾选展开、仍可被类型筛选命中（不影响其它板）。 */
+const EDIBLE_BOARD=(function(){try{return (getParam("b")||"")==="edible_catalog";}catch(e){return false;}})();
+let edibleShowIngredients=false;
 /* 头像 / 头像框 / 名片框板（avatar_catalog，2026-11-01）：三类混排，
    排序轴只有「标号」（item_id）。先按类型分组（头像 → 头像框 → 名片框），
    组内按标号排；默认大 → 小（新出的编号在前），可切小 → 大。 */
@@ -2609,29 +2665,32 @@ function titleLine(it){
   if(!ln)return "";
   return `<i class="sk-ln" aria-hidden="true" style="background-image:url('assets/title_skin/${ln}.png')"></i>`;
 }
-/* 美术字：art_png 由 build_title_art_assets.py 只对「导出成功」的条目回填，
-   因此不会出现 404；无图时回落纯文字。文字仍保留在 DOM（隐藏），搜索/冒烟取文本不受影响。
-   美术字本身已带颜色/描边，此时不再叠底光、也不改文字色（避免二次上色）。 */
+/* 美术字 + 底图：游戏里这是一枚「称号图」的两层 —— 动态 csb 的底图/光效在下，
+   美术字叠在上面（同一张图内叠加），不是上下两张分开排。
+   · art_png 由 build_title_art_assets.py 只对「导出成功」的条目回填，不会 404；
+   · 底图取 dyn_webp（逐帧动画，作为背景层）→ dyn_png（首帧）；
+   · dyn_has_text：底图贴图本身已经把称号字画进去了（如 1214 骑士集结 的 vx 贴图），
+     此时只显示底图，避免和美术字叠成重影。该标记来自资源实测，不是猜的。
+   · 文字仍保留在 DOM（has-art 时隐藏），搜索/冒烟取文本不受影响。 */
 function titleName(it){
   const nm=esc(it.name||it.display_name||it.id);
-  const art=it.art_png;
-  const hex=art?"":(TITLE_SKIN_TXT[String(it.color||"")]||"");
-  const bodyHtml=art
-    ?`<img class="i-art" src="${esc(art)}" alt=""><span class="i-name-txt">${nm}</span>`
-    :nm;
-  return `<span class="i-title${hex?" tinted":""}"${hex?` style="--tc:${hex}"`:""}>`
-    +(art?"":titleSkin(it))+bodyHtml+(art?"":titleLine(it))+`</span>`;
-}
-/* 动态称号预览：dyn_webp = build_title_dyn_assets.py 逐帧合成的循环动画（同 csb 的称号共用一份）；
-   没有动画时回落 dyn_png（csb 内引用贴图的首帧）。两者都没有就不渲染，卡片不受影响。 */
-function titleDyn(it){
-  const src=it.dyn_webp||it.dyn_png;
-  if(!src)return "";
-  const n=Number(it.dyn_frames||0);
-  const tip=it.dyn_webp?"动态称号：逐帧动画（循环播放）"
-    :(n>1?`动画共 ${n} 帧，此处为首帧`:"");
-  return `<div class="i-dyn"><img src="${esc(src)}" alt="" loading="lazy" decoding="async"`
-    +(tip?` title="${esc(tip)}"`:"")+`></div>`;
+  const art=it.art_png,bg=it.dyn_webp||it.dyn_png;
+  if(bg&&it.dyn_has_text)
+    return `<img class="i-logo-solo" src="${esc(bg)}" alt=""><span class="i-name-txt">${nm}</span>`;
+  if(art){
+    const inner=`<img class="i-art" src="${esc(art)}" alt=""><span class="i-name-txt">${nm}</span>`;
+    if(bg)
+      return `<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${inner}</span>`;
+    return `<span class="i-title">${inner}</span>`;
+  }
+  const hex=TITLE_SKIN_TXT[String(it.color||"")]||"";
+  /* 无美术字的动态称号：同样是「文字叠在动态底图上」——底图当背景层，文字在上层；
+     此时不再叠档位光晕（底图就是背景），保留档位字色。 */
+  const txt=`<span class="i-title${hex?" tinted":""}"${hex?` style="--tc:${hex}"`:""}>`
+    +(bg?"":titleSkin(it))+nm+(bg?"":titleLine(it))+`</span>`;
+  return bg
+    ?`<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${txt}</span>`
+    :txt;
 }
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
    只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
@@ -3328,6 +3387,7 @@ function bindD2ImgZoom(scope){
   scope.querySelectorAll("img").forEach(img=>{
     if(img.closest(".fr-zoom"))return;          /* 图轨另有绑定 */
     if(img.closest(".c2-side"))return;          /* 侧栏缩略图=切换条目 */
+    if(img.closest("[data-sib-id]"))return;     /* 同 model 卡片：点图=跳转该子卡，不开大图 */
     if(img.closest("video,audio"))return;
     if(img.closest(".ph,.nofig"))return;         /* 客户端占位图 / 缺图占位，无可放大 */
     if(img.dataset.d2zoom)return;
@@ -3408,6 +3468,18 @@ const CORE_D2={
       `<span class="skin-tag">星上限 ${it.max_star==null?"待定":esc(it.max_star)}</span>`+
       (it.weapon_type_display?`<span class="skin-tag">${esc(it.weapon_type_display)}</span>`:"")+
       `<span class="c2-no">道具ID ${esc(it.item_id??it.id)}</span>`;
+  }
+};
+/* 2026-11-02：装备属性板 D2 详情（三服总览 + 三张分服卡共用）——
+   自建详情体（equipD2Body），字段默认全部可见，不再复用卡面折叠区。 */
+const EQUIP_D2={
+  idOf:it=>it.id,
+  name:it=>it.name||it.display_name||it.id,
+  body:equipD2Body,
+  meta:it=>{
+    const sb=it.server_branch||"";
+    return (sb?`<span class="skin-tag">${esc(sb)}</span>`:"")+
+      `<span class="c2-no">行键 ${esc(it.row_key??it.id)}</span>`;
   }
 };
 /* 表现类目徽章已删（2026-10-29，与列表冗余）：相关委托一并移除 */
@@ -4097,6 +4169,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   }
   const items=DATA.items.filter(it=>{
     if(upcomingBoard && upExpired(it))return false;
+    if(EDIBLE_BOARD && !edibleShowIngredients && String(it.kind||"")==="食材")return false;
     if(fe&&it.evidence!==fe)return false;
     if(FASHION_BOARD&&!frPass(it))return false;
     if(VEHICLE_BOARD&&!vPass(it))return false;
@@ -4299,6 +4372,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     list.sort((a,b)=>avatarSort(a,b,st.dir==="asc"?1:-1));
   }
   let lastTitleGroup="";
+  let edHeadShown=false;
   /* 2026-10-30：核芯板全量入 chips——基础（绿）核芯（家园守卫限定 4 条）无 skill_desc/升星段，
      之前按 rank_star_segments 过滤会把它们漏出 D2，且走普通 kv 卡分支格式乱 */
   const coreList=CORE_BOARD?list.slice():null;
@@ -4308,15 +4382,11 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
      核芯板必须保持 CORE_D2，否则 provider 被覆盖回旧版网格卡直嵌（2026-10-30 修复） */
   const rosterBoard=!CORE_BOARD&&String(DATA.meta&&DATA.meta.card_mode)==="roster";
   if(rosterBoard){C2.prov=ROSTER_D2;C2.chips=list;C2.html={};}
-  /* 2026-11-02：装备属性四卡接 D2 —— 卡面点击打开完整详情（复用卡内折叠区） */
-  if(EQUIP_BOARD){C2.prov=EQUIP_D2;C2.chips=list;C2.html={};}
+  /* 2026-11-02：装备属性四卡接 D2 —— 卡面点击打开自建详情（equipD2Body） */
+  if(EQUIP_BOARD){C2.prov=EQUIP_D2;C2.chips=list;}
   g.innerHTML=list.map((it,i)=>{
-    /* 2026-11-02：装备属性四卡按「人物时装同款」卡面渲染；整卡同时缓存给 D2 详情复用 */
-    if(EQUIP_BOARD){
-      const h=equipCardHTML(it,i);
-      C2.html[c2IdOf(it)]=h;
-      return h;
-    }
+    /* 2026-11-02：装备属性四卡按「人物时装同款」卡面渲染 */
+    if(EQUIP_BOARD)return equipCardHTML(it,i);
     /* 核芯板所有条目都按核芯卡渲染（基础核芯无特技/升星段，卡面只剩品级+星上限+描述） */
     const nucleusMode=!!it.rank_star_segments||CORE_BOARD;
     const rosterMode=!nucleusMode&&rosterBoard;
@@ -4405,7 +4475,10 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       const labelOf=k=>labels[k]||FIELD_CN[k]||k;
       /* meta.hide_fields：板上无意义的字段（如头像板 server 全板无跨服差异）整列不显示 */
       const hideSet=new Set(Array.isArray(DATA.meta.hide_fields)?DATA.meta.hide_fields:[]);
-      const rRows=extra.filter(p=>!hideSet.has(p[0])&&p[0]!=="gift_items"&&!(Array.isArray(p[1])&&!p[1].length)).map(([k,v])=>
+      /* 料理板：卡面已用 card_summary 展示的字段（名称/类别/效果/制作设施）不再在详情里重复一遍 */
+      const edSumKeys=EDIBLE_BOARD?new Set((Array.isArray(DATA.meta.card_summary)?DATA.meta.card_summary:[]).map(p=>p[0])):null;
+      const rRows=extra.filter(p=>!hideSet.has(p[0])&&p[0]!=="gift_items"&&!(Array.isArray(p[1])&&!p[1].length)
+          &&!(edSumKeys&&edSumKeys.has(p[0]))).map(([k,v])=>
         `<div class="k">${esc(labelOf(k))}</div><div class="v${(k==="skill_desc"||k==="rank_segments")?" nucleus-desc":""}">${esc(fmtVal(k,v))}</div>`).join("");
       bodyHtml=`<div class="kv">${sum.join("")}</div>`+
         `<div class="i-detail" hidden><div class="kv">${rRows}${gRows}</div>${renderMvpVideos(it)}</div>`;
@@ -4426,7 +4499,6 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
       ${mediaBlock}
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
         <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
-        ${TITLE_BOARD?titleDyn(it):""}
         ${referenceTitle(it.reference_fields)}
         <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
         ${TITLE_BOARD?titleBadges(it):""}</div>
@@ -4446,7 +4518,13 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         tgHead=`<div class="tg-head" data-tg="${esc(gk||"none")}"><span class="tg-name">${esc(titleGroupLabel(gk))}</span><span class="tg-n">${n} 条</span></div>`;
       }
     }
-    return tgHead+html;
+    let edHead="";
+    if(EDIBLE_BOARD&&edibleShowIngredients&&String(it.kind||"")==="食材"&&!edHeadShown){
+      edHeadShown=true;
+      const n=list.filter(x=>String(x.kind||"")==="食材").length;
+      edHead=`<div class="tg-head ed-head"><span class="tg-name">食材 / 可食用物品</span><span class="tg-n">${n} 条</span></div>`;
+    }
+    return edHead+tgHead+html;
   }).join("");
   if((CORE_BOARD||rosterBoard||EQUIP_BOARD)&&C2.open)c2Resync();
   if(TITLE_BOARD)syncTitleHeadTop();
@@ -4498,6 +4576,162 @@ function periodStatus(p){
   if(e&&t>e)return {k:"ended",txt:"已结束"};
   return {k:"on",txt:"当期"};
 }
+/* ════════════════ 期次时间轴 + 奖池抽屉（仅本板，meta.period_empty="show"）════════════════
+   布局 = 年度时间轴（年 → 月 → 期次），空期次在月内压成一行摘要；
+   点期次不再就地展开，改为右侧抽屉看奖池成员（成员带图）。*/
+function ptPick(id){PF.sel=(PF.sel===id?null:id);render();}
+function ptClose(){PF.sel=null;render();}
+function ptMonth(k){PF.month=PF.month||{};PF.month[k]=!PF.month[k];render();}
+function ptYear(y){PF.year=y;PF.month={};PF.sel=null;render();}
+/* 构建期查不到名字时会回退成「道具 <id>」，这是数据缺口，不是正式名 */
+const PT_UNRES=/^道具\s*\d+$/;
+function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
+  const FAM=p=>p.family||"—";
+  const YR=p=>String(p.start||"").slice(0,4)||"—";
+  const MO=p=>String(p.start||"").slice(5,7)||"—";
+  const stOf=p=>{
+    const t=new Date();
+    const s=p.start?new Date(p.start+"T00:00:00"):null;
+    const e=p.end?new Date(p.end+"T23:59:59"):null;
+    if(!s&&!e)return{k:"unknown",txt:"无时间"};
+    if(s&&t<s)return{k:"upcoming",txt:"即将开始"};
+    if(e&&t>e)return{k:"ended",txt:"已结束"};
+    if(!e)return{k:"longrun",txt:"长期在架"};
+    return{k:"on",txt:"当期"};
+  };
+  const RANK={on:0,upcoming:1,longrun:2,ended:3,unknown:4};
+  const qv=((document.getElementById("q")||{}).value||"").trim();
+  const stCount={on:0,upcoming:0,longrun:0,ended:0,unknown:0};
+  periods.forEach(p=>stCount[stOf(p).k]++);
+  const withMembers=periods.filter(p=>(byPeriod[p.period_id]||[]).length).length;
+  const fams=[...new Set(periods.map(FAM))];
+  const kinds=[...new Set(list.map(i=>i.kind).filter(Boolean))];
+  const years=[...new Set(periods.map(YR))].sort((a,b)=>(Number(b)||-1)-(Number(a)||-1));
+  if(!years.includes(PF.year))PF.year=years[0]||"—";
+  const chip=(label,n,active,fn)=>`<button class="pf-chip${active?" on":""}" onclick="${fn}">${label}${n!=null?` <b>${n}</b>`:""}</button>`;
+  const optsHtml=(cur,arr)=>arr.map(o=>`<option value="${esc(o.v)}"${o.v===cur?" selected":""}>${esc(o.t)}</option>`).join("");
+  const famOpts=[{v:"all",t:"全部家族"},...fams.map(f=>({v:f,t:`${f}（${periods.filter(p=>FAM(p)===f).length}）`}))];
+  const kindOpts=[{v:"all",t:"全部类型"},...kinds.map(k=>({v:k,t:`${k}（${list.filter(i=>i.kind===k).length}）`}))];
+  const bar=`<div class="pf-bar pf-bar-one">
+    <span class="pf-label">状态</span>
+    ${chip("全部",null,PF.status==="all","pSet('status','all')")}
+    ${chip("当期",stCount.on,PF.status==="on","pSet('status','on')")}
+    ${chip("即将开始",stCount.upcoming,PF.status==="upcoming","pSet('status','upcoming')")}
+    ${chip("长期在架",stCount.longrun,PF.status==="longrun","pSet('status','longrun')")}
+    ${chip("已结束",stCount.ended,PF.status==="ended","pSet('status','ended')")}
+    ${stCount.unknown?chip("无时间",stCount.unknown,PF.status==="unknown","pSet('status','unknown')"):""}
+    <span class="pf-sep"></span>
+    <select class="pf-sel" title="按家族筛选" onchange="pSet('family',this.value)">${optsHtml(PF.family,famOpts)}</select>
+    <select class="pf-sel" title="按奖励类型筛选" onchange="pSet('kind',this.value)">${optsHtml(PF.kind,kindOpts)}</select>
+    <span class="pf-sep"></span>
+    ${chip("只看有内容",withMembers,PF.only==="1","pSet('only','1')")}
+    ${chip("全部期次",periods.length,PF.only==="0","pSet('only','0')")}
+  </div>`;
+  /* 当期条：只在「最新年份 + 未筛家族 + 未筛状态」时出现，不打断历史浏览 */
+  const showNow=PF.status==="all"&&PF.family==="all"&&PF.year===years[0]&&qv==="";
+  const nowP=showNow?periods.filter(p=>["on","upcoming"].includes(stOf(p).k))
+    .sort((a,b)=>RANK[stOf(a).k]-RANK[stOf(b).k]||String(a.start||"").localeCompare(String(b.start||""))):[];
+  const nowHtml=nowP.length?`<div class="pt-now">${nowP.map(p=>{
+    const st=stOf(p), n=(byPeriod[p.period_id]||[]).length;
+    return `<div class="pt-nowcard" onclick="ptPick('${p.period_id}')">
+      <div class="ptnc-t">${esc(cleanLabel(p.label)||p.period_id)}</div>
+      <div class="ptnc-d">${esc(p.start||"—")}${p.end?" → "+esc(p.end):""}</div>
+      <div class="ptnc-m"><span class="pstate ${st.k}">${st.txt}</span><span class="pfam">${esc(FAM(p))}</span>
+        <span class="ptnc-n">${n?n+" 件":"—"}</span></div></div>`;
+  }).join("")}</div>`:"";
+  const yearsHtml=`<div class="pt-years">${years.map(y=>{
+    const n=periods.filter(p=>YR(p)===y).length;
+    return `<button class="${y===PF.year?"on":""}" onclick="ptYear('${esc(y)}')">${esc(y)}<b>${n}</b></button>`;
+  }).join("")}</div>`;
+  const memOf=p=>{
+    let m=byPeriod[p.period_id]||[];
+    if(PF.kind!=="all")m=m.filter(x=>x.kind===PF.kind);
+    return m;
+  };
+  const base=periods.filter(p=>YR(p)===PF.year)
+    .filter(p=>PF.status==="all"||stOf(p).k===PF.status)
+    .filter(p=>PF.family==="all"||FAM(p)===PF.family);
+  const hideEmpty=PF.only==="1"||qv!=="";
+  const months=[...new Set(base.map(MO))].sort((a,b)=>b.localeCompare(a));   // 新月份在前
+  let body="";
+  months.forEach(m=>{
+    const rows=base.filter(p=>MO(p)===m)
+      .sort((a,b)=>RANK[stOf(a).k]-RANK[stOf(b).k]||String(b.start||"").localeCompare(String(a.start||"")));
+    const live=rows.filter(p=>memOf(p).length), dead=rows.filter(p=>!memOf(p).length);
+    if(!live.length&&(hideEmpty||!dead.length))return;
+    body+=`<div class="pt-m"><span class="pt-mk">${esc(m)} 月</span>
+      <span class="pt-ml">${live.length} 期有内容${dead.length?" · "+dead.length+" 期空":""}</span></div>`;
+    live.forEach(p=>{
+      const st=stOf(p), n=memOf(p).length;
+      body+=`<div class="pt-row${PF.sel===p.period_id?" sel":""}" onclick="ptPick('${p.period_id}')">
+        <span class="pt-dt">${esc(p.start||"—")}</span>
+        <span class="pt-nm">${esc(cleanLabel(p.label)||p.period_id)}<span class="pfam">${esc(FAM(p))}</span><span class="pt-n">${n} 件</span>${st.k==="on"?'<span class="pstate on">当期</span>':""}</span>
+        <span class="pt-ar">▸</span></div>`;
+    });
+    if(dead.length&&!hideEmpty){
+      const key=PF.year+"|"+m, open=(PF.month||{})[key];
+      body+=`<div class="pt-row pt-empty${open?" open":""}" onclick="ptMonth('${esc(key)}')">
+        <span class="pt-dt">${dead.length} 期</span>
+        <span class="pt-nm">暂无可证成员<span class="pt-n">${[...new Set(dead.map(FAM))].length} 个家族</span></span>
+        <span class="pt-ar">${open?"▾":"▸"}</span></div>`;
+      if(open)dead.forEach(p=>{
+        body+=`<div class="pt-row pt-empty" onclick="event.stopPropagation()">
+          <span class="pt-dt">${esc(p.start||"—")}</span>
+          <span class="pt-nm">${esc(cleanLabel(p.label)||p.period_id)}<span class="pfam">${esc(FAM(p))}</span></span>
+          <span class="pt-ar">${stOf(p).txt}</span></div>`;
+      });
+    }
+  });
+  const sel=PF.sel?periods.find(p=>p.period_id===PF.sel):null;
+  let drawer="";
+  if(sel){
+    const st=stOf(sel), mem=byPeriod[sel.period_id]||[];
+    const unresN=mem.filter(it=>PT_UNRES.test(String(it.name||"").trim())).length;
+    const pools=new Map();
+    mem.forEach(it=>{
+      const k=it.pool_uid||it.pool_id||it.pool_label||"—";
+      if(!pools.has(k))pools.set(k,{label:it.pool_label||k,items:[]});
+      pools.get(k).items.push(it);
+    });
+    const poolHtml=[...pools.values()].map(pl=>{
+      pl.items.sort((a,b)=>(a.slot??999)-(b.slot??999));
+      const plName=pl.label&&pl.label!=="—"?pl.label:"奖池";
+      return `<div class="ptd-pool">${esc(plName)} · ${pl.items.length} 件</div><div class="ptd-items">${
+        pl.items.map(it=>{
+          const im=((it._media||{}).images||[])[0];
+          const pic=im&&im.png?`<img src="${esc(im.png)}" alt="" loading="lazy">`:`<span class="ptd-ph">无图</span>`;
+          /* 名字未解析：构建期只能回退成「道具 <id>」，这里如实标注，不伪装成正式名 */
+          const bad=PT_UNRES.test(String(it.name||"").trim());
+          const kindLine=esc(it.kind||"")+(it.slot!=null?" · 槽位 "+esc(String(it.slot)):"")+(it.evidence==="candidate"?" · 候选":"");
+          return `<div class="ptd-item${bad?" unres":""}" title="${bad?"名字未解析（源表只给到道具 id）":esc(it.name||"")}">
+            <div class="ptd-img">${pic}</div>
+            <div class="ptd-n">${bad?"未知道具":esc(it.name||it.id)}</div>
+            <div class="ptd-k">${bad?"#"+esc(it.item_id||"")+" · 名字未解析":kindLine}</div>
+          </div>`;
+        }).join("")}</div>`;
+    }).join("");
+    drawer=`<div class="ptd-mask" onclick="ptClose()"></div>
+      <aside class="pt-drawer" role="dialog" aria-label="期次奖池详情">
+        <div class="ptd-head">
+          <span class="pstate ${st.k}">${st.txt}</span><span class="pfam">${esc(FAM(sel))}</span>
+          <button class="ptd-x" onclick="ptClose()" title="关闭">×</button>
+          <div class="ptd-name">${esc(cleanLabel(sel.label)||sel.period_id)}</div>
+          <div class="ptd-meta">${esc(sel.start||"—")}${sel.end?" → "+esc(sel.end):""} · ${sel.pool_count||1} 池 · 共 ${mem.length} 件${sel.pool_size?" · 池内 "+sel.pool_size+" 件（服务端下发）":""}${unresN?` · <span class="ptd-unres">其中 ${unresN} 件名字未解析</span>`:""}</div>
+        </div>
+        <div class="ptd-body">${mem.length?poolHtml:`<div class="ptd-gap">暂无可证成员${sel.gap_reason?" · "+esc(sel.gap_reason):""}</div>`}</div>
+      </aside>`;
+  }
+  /* 抽屉必须挂在 body 下：#grid 在 .wrap(z-index:1) 的层叠上下文里，
+     留在 #grid 内会被顶栏(z-index:30)盖住。*/
+  setTimeout(()=>{
+    document.querySelectorAll("body > .pt-drawer, body > .ptd-mask").forEach(e=>e.remove());
+    const dr=document.querySelector("#grid .pt-drawer"), mk=document.querySelector("#grid .ptd-mask");
+    if(dr)document.body.appendChild(dr);
+    if(mk)document.body.appendChild(mk);
+  },0);
+  return bar+nowHtml+yearsHtml+`<div class="pt-list">${body||'<div class="empty">当前筛选下没有期次</div>'}</div>`+drawer;
+}
+
 function renderPeriodMode(list){
   const meta=DATA.meta||{};
   /* 仅本板（meta.period_empty="show"）启用的两件事：
@@ -4557,6 +4791,10 @@ function renderPeriodMode(list){
       return String(b.start||"").localeCompare(String(a.start||""));
     });
   }
+  /* 本板（789 期）改用「年度时间轴 + 右侧抽屉」布局：
+     时间轴按 年 → 月 排列，空期次在月内压成一行摘要；点期次从右侧抽屉看奖池（带图）。
+     其它 period 板没有 period_empty 开关，仍走下面的卡片布局。 */
+  if(showEmpty)return renderPeriodTimeline(periods,byPeriod,list,cleanLabel);
 
   const fams=[...new Set(periods.map(p=>p.family).filter(Boolean))];
   const kinds=[...new Set(list.map(i=>i.kind).filter(Boolean))];
