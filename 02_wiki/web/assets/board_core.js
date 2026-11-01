@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facemedia")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev5")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1419,6 +1419,8 @@ function frGenders(it){
   if(!g)return [];
   if(g==="仅女款")return ["女"];
   if(g==="仅男款")return ["男"];
+  // 2026-11-01：gender_scope=通用（男女共用模型/挂点）⇒ 两种性别都能穿，性别筛选两边都要命中
+  if(g==="通用")return ["女","男"];
   return g.split("/");
 }
 function frPass(it){
@@ -1453,8 +1455,12 @@ function frRail(it){
       ? `<div class="fr-rail"><figure class="ph" title="客户端占位图（图标资源未随客户端下发）"><img src="${esc(ph)}" alt="占位" loading="lazy"></figure></div>`
       : `<div class="fr-rail"><figure class="ph"><span class="fr-dur">无图标</span></figure></div>`;
   }
-  const show=imgs.slice(0,4).map((x,i)=>
-    `<figure class="fr-zoom" data-idx="${i}" title="${esc((x.base||"")+(x.suffix||""))}"><img src="${esc(x.png)}" alt="${esc(x.base||"")}" loading="lazy"></figure>`).join("");
+  /* 2026-11-01：头饰/面饰/挂饰 一张卡会同时有男图和女图（player_module_appear_data 的
+     icon / female_icon 两列），必须把「哪张是男、哪张是女」标在图上，否则两张并排看不出区别。 */
+  const show=imgs.slice(0,4).map((x,i)=>{
+    const gtag=(x.label==="男"||x.label==="女")?`<span class="fr-gtag" title="${x.label}款图标">${x.label}</span>`:"";
+    return `<figure class="fr-zoom" data-idx="${i}" title="${esc((x.base||"")+(x.suffix||""))}">${gtag}<img src="${esc(x.png)}" alt="${esc(x.base||"")}" loading="lazy"></figure>`;
+  }).join("");
   const more=imgs.length>4?`<button type="button" class="fr-more fr-zoom" data-idx="4" title="该件共 ${imgs.length} 张图标，点击展开">+${imgs.length-4}</button>`:"";
   return `<div class="fr-rail">${show}${more}</div>`;
 }
@@ -1553,6 +1559,14 @@ function fdOpenAll(){
   try{ if(new URLSearchParams(location.search).get('open')!=='1')return; }catch(e){return;}
   document.querySelectorAll('details.fdesc').forEach(d=>d.open=true);
 }
+/* 藏花（花苞替换）：优先用花部外观名，其次用 .gim 模型文件名，最后退到花部行号 */
+function frFlowerText(it){
+  const fb=it.flower_bud||{};
+  if((fb.names||[]).length)return fb.names.join(" / ");
+  const ps=(fb.paths||[]).map(p=>String(p).split(/[\\/]/).pop());
+  if(ps.length)return ps.join(" / ");
+  return (fb.appear_ids||[]).join(" / ")||"—";
+}
 function frCard(it,cidx,full){
   const bk=frBuckets(it),bkCn=bk.join(" / ");
   const partCn=(it.all_parts&&it.all_parts.length?it.all_parts.map(p=>COMMON_PART_CN[p]||p).join(" / "):(COMMON_PART_CN[it.part]||it.part||""));
@@ -1575,6 +1589,10 @@ function frCard(it,cidx,full){
       ${(()=>{const vma=it.alias_merge;if(!vma||!(vma.aliases||[]).length)return "";
         const nm=vma.aliases.map(x=>String(x).split("-")[0]).join("、");
         return `<span class="fr-alt fr-alias" title="表里同 model 同一件时装的另一条记录（开发/占位名），已并入本卡：${esc(vma.aliases.join("、"))}">别名 ${esc(nm)}</span>`;})()}
+      ${((it.value_words||[]).length)?`<span class="fr-alt fr-vw" title="${esc(frValueWordsTitle(it))}">${esc(frValueWords(it).split(" / ")[0]||"卖点")}${(it.value_words||[]).length>1?` +${(it.value_words||[]).length-1}`:""}</span>`:""}
+      ${(it.dye&&((it.dye.scheme_count||0)>0||((it.dye.hair||[]).length>0)))?`<span class="fr-alt fr-dye" title="${esc(frDyeText(it))}${it.dye&&(it.dye.hair||[]).length?"；发色 "+esc(frHairDyeText(it)):""}">可染色</span>`:""}
+      ${it.reborn_vis?`<span class="fr-alt fr-bud" title="fashion_data.reborn_vis=1：藏花——再生者形态下把背上的花苞藏起来（2026-11-01 游戏内核对确认）。与「换花」互斥，只出现在头发/衣服/套装，背包 0">藏花</span>`:""}
+      ${it.flower_bud?`<span class="fr-alt fr-flower" title="换花：replace_flower_path 把花苞换成主题花，不走藏花；${it.flower_bud&&it.flower_bud.reborn_socket?"挂在 "+(it.flower_bud.reborn_socket.socket||"flower")+" 挂点、仅再生者形态挂载：":""}${esc(frFlowerText(it))}">换花</span>`:""}
       ${(()=>{const g=(it._media&&it._media.missing)||[];if(!g.length)return "";
         const gs=[...new Set(g.map(x=>x.gender).filter(Boolean))].sort().join("");
         const who=gs==="男女"?"男女":(gs||"");
@@ -1582,6 +1600,40 @@ function frCard(it,cidx,full){
     </div>
     ${full?frDetailsHTML(it,frKvHtml(it)):""}
   </div>`;
+}
+/* 2026-11-01：染色方案（change_color_id → appear_change_color_data，384/388 对上）*/
+function frDyeText(it){
+  const d=it.dye;if(!d)return "";
+  const parts=[];const n=d.scheme_count||0;
+  if(n)parts.push(`${n} 套方案`);
+  if((d.scheme_ids||[]).length)parts.push(`id ${d.scheme_ids.join(" / ")}`);
+  if((d.colors||[]).length)parts.push(`配色 ${d.colors.slice(0,6).join(" ")}${(d.colors.length>6?" …":"")}`);
+  return parts.join(" · ");
+}
+function frDyeSwatches(it){
+  const cols=(it.dye&&it.dye.colors)||[];if(!cols.length)return "";
+  const rgb=c=>(c.length>=8?c.slice(2):c);
+  return `<span class="fr-swatch">${cols.slice(0,8).map(c=>`<i style="background:#${esc(rgb(c))}"></i>`).join("")}</span>`;
+}
+function frHairDyeText(it){
+  const h=(it.dye&&it.dye.hair)||[];if(!h.length)return "";
+  const out=[];
+  for(const x of h){
+    const cs=(x.color_socket||[]).filter(Boolean);
+    out.push(`${x.id}${cs.length?"（"+cs.join("/")+"）":""}`);
+  }
+  return out.join(" · ");
+}
+/* 2026-11-01：卖点标签（value_word_ids → fashion_value_word_data，26 个标签）*/
+function frValueWords(it){
+  const vw=(it.value_words||[]);
+  if(!vw.length)return "";
+  return vw.map(x=>x.text).filter(Boolean).join(" / ");
+}
+function frValueWordsTitle(it){
+  const vw=(it.value_words||[]);
+  if(!vw.length)return "";
+  return vw.map(x=>`${x.text}：${x.long_text||""}`).join("\n");
 }
 /* 审计键值对：D2 灯箱/停靠栏「技术详情」区专用（网格卡面不再渲染） */
 function frKvHtml(it){
@@ -1604,9 +1656,48 @@ function frKvHtml(it){
   if((it.name_variants||[]).length>1)pairs.push(["表内变体名",it.name_variants.join("、")]);
   const bools=[];
   if(it.fashion_preview)bools.push("可预览");
-  if(it.show_no_have)bools.push("未拥有也展示");
+  if(it.show_no_have===true)bools.push("未拥有也展示");
+  if(it.show_no_have===false)bools.push("不拥有就不显示");
   if(it.hide_in_bag)bools.push("背包内隐藏");
+  if(it.glowstick_switchable)bools.push("荧光棒可切换");
+  if(it.hide_idle_anim)bools.push("展示动作可关");
   if(bools.length)pairs.push(["展示开关",bools.join(" / ")]);
+  /* 2026-11-01 用户点名补的维度：藏花 / 遮挡与再生者可见 / 分版描述 / 其它小参 */
+  if(it.flower_bud)pairs.push(["换花",frFlowerText(it)+(it.flower_bud.appear_ids?`（花部行 ${it.flower_bud.appear_ids.join(" / ")}）`:"")+
+    (it.flower_bud.reborn_socket?` · ${it.flower_bud.reborn_socket.only_reborn?"仅再生者挂载":"常规挂载"}`:"")]);
+  if(it.reborn_vis!=null)pairs.push(["藏花",it.reborn_vis?"是 · reborn_vis=1":"否"]);
+  if(it.desc_man)pairs.push(["男版描述",it.desc_man]);
+  if(it.name_man||it.name_female)pairs.push(["分版命名",
+    `女版 ${it.name_female||"—"} / 男版 ${it.name_man||"—"}`]);
+  if(it.brand_id!=null)pairs.push(["品牌编号",String(it.brand_id)]);
+  if((it.suit_buff_ids||[]).length)pairs.push(["套装 buff",it.suit_buff_ids.join(" / ")]);
+  if((it.mutex_modules||[]).length)pairs.push(["互斥模块",it.mutex_modules.join(" / ")]);
+  if(it.takeoff_head)pairs.push(["可脱帽","是"]);
+  if(it.not_show_rebirth_makeup)pairs.push(["不显示再生妆容","是"]);
+  if((it.special_idle_anims||[]).length)pairs.push(["展示动作",it.special_idle_anims.join(" / ")]);
+  if(it.fashion_action_id!=null)pairs.push(["专属动作",String(it.fashion_action_id)]);
+  /* 2026-11-01 用户点选的染色/获取/展示组 */
+  if(it.dye)pairs.push(["染色方案",frDyeText(it)]);
+  if((it.dye&&(it.dye.hair||[]).length))pairs.push(["发色方案",frHairDyeText(it)]);
+  if((it.model_change_color_id||[]).length)pairs.push(["默认配色 id",it.model_change_color_id.join(" / ")]);
+  if(it.obtain_res)pairs.push(["获取途径",it.obtain_res]);
+  if(it.theme)pairs.push(["套装主题",it.theme.name+(it.theme.open_time?` · 开放 ${it.theme.open_time}`:"")]);
+  if(it.show_start)pairs.push(["上架时间",it.show_start]);
+  if((it.gift_package||[]).length)pairs.push(["礼包 id",it.gift_package.join(" / ")]);
+  if((it.display_bg||[]).length)pairs.push(["展示背景",it.display_bg.map(b=>`${b.img||("bg"+b.id)}${b.scn?" · "+b.scn:""}`).join(" ｜ ")]);
+  if(it.anim_graph)pairs.push(["专属动作图",[it.anim_graph.anim?`动作 ${it.anim_graph.anim}`:"",it.anim_graph.ui?`UI ${it.anim_graph.ui}`:""].filter(Boolean).join(" · ")]);
+  if((it.value_words||[]).length)pairs.push(["卖点标签",frValueWords(it)]);
+  if(it.rebirth_tex)pairs.push(["再生形态贴图","是（背包专属贴图）"]);
+  if((it.other_get_methods||[]).length)pairs.push(["其他获取方式",it.other_get_methods.map(m=>`${m.title?m.title+"：":""}${m.desc}`).join(" ｜ ")]);
+  if(it.uncap_appear_gender)pairs.push(["未解锁外观",`版本 ${(it.uncap_appear_gender.values||[]).join(" / ")} · ${it.uncap_appear_gender.note||""}`]);
+  if(it.bone_info)pairs.push(["新骨骼",`是${(it.bone_info.soft_bone_ids||[]).length?" · 软骨骼 "+(it.bone_info.soft_bone_ids||[]).join(" / "):""}`]);
+  if(it.green_model)pairs.push(["风底形态模型",[...(it.green_model.female||[]),...(it.green_model.female_high||[])].join(" / ")||"—"]);
+  if((it.preview_group||[]).length)pairs.push(["专属预览",it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ ")]);
+  if(it.point_light_id!=null)pairs.push(["光源预设",String(it.point_light_id)]);
+  if(it.foreign_name)pairs.push(["外文名",it.foreign_name]);
+  if(it.is_2025||it.is_climb_tower)pairs.push(["活动标签",
+    [it.is_2025?"2025 款":null,it.is_climb_tower?"爬塔款":null].filter(Boolean).join(" / ")]);
+  if(it.new_fashion_id_str)pairs.push(["部位代码",it.new_fashion_id_str]);
   if((it.model_ids||[]).length>1)pairs.push(["全部模型ID",it.model_ids.join(" / ")]);
   if(refs.length)pairs.push(["外观编号",refs.join(" / ")]);
   const am=it.appearance_merge;
@@ -1651,7 +1742,7 @@ function frKvHtml(it){
 }
 /* 卡面下方的两个折叠区（详情 + 技术详情）：只在 D2 灯箱/停靠栏里渲染，网格卡面不再出现 */
 function frDetailsHTML(it,kv){
-  const fdesc=(it.desc||it.desc_note||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope)
+  const fdesc=(it.desc||it.desc_note||it.desc_man||it.flower_bud||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope||it.dye||it.obtain_res||it.theme||it.show_start||(it.value_words||[]).length||(it.other_get_methods||[]).length||it.uncap_appear_gender||it.rebirth_tex||(it.preview_group||[]).length)
     ?`<details class="fdesc"${FD_OPEN_ALL?" open":""}><summary>详情</summary><div class="fdesc-body">${
         ((it.vehicle_ids||[]).length>1?`<div class="fd-row"><span class="fd-k">全部编号</span><span class="fd-v mono">${it.vehicle_ids.join(" / ")}</span></div>`:"")+
         (it.gender?`<div class="fd-row"><span class="fd-k">性别</span><span class="fd-v">${esc(it.gender)}${it.gender_scope?` · <b>${esc(it.gender_scope)}</b>`:""}</span></div>`:"")+
@@ -1661,7 +1752,20 @@ function frDetailsHTML(it,kv){
         (it.effect_text?`<div class="fd-row"><span class="fd-k">效果</span><span class="fd-v">${esc(it.effect_text)}</span></div>`:"")+
         (it.effect_text?`<div class="fd-row"><span class="fd-k">效果来源</span><span class="fd-v mono">${esc(it.effect_source||"—")}</span></div>`:"")+
         (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.charm_note)}</span></div>`:"")+
-        (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏半感染者花苞</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
+        (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是 · <span class=\"mono\">reborn_vis=1</span>（再生者形态下把背上的花苞藏起来）":"否"}</span></div>`:"")+
+        (it.flower_bud?`<div class="fd-row"><span class="fd-k">换花</span><span class="fd-v">${esc(frFlowerText(it))}${it.flower_bud.reborn_socket?`<br><span class="mono" style="opacity:.75">挂点 ${esc(it.flower_bud.reborn_socket.socket||"flower")} · ${it.flower_bud.reborn_socket.only_reborn?"仅再生者形态挂载":"常规挂载"}${(it.flower_bud.reborn_socket.models||[]).length?" · "+esc(it.flower_bud.reborn_socket.models[0]):""}</span>`:""}</span></div>`:"")+
+        (it.dye?`<div class="fd-row"><span class="fd-k">染色方案</span><span class="fd-v">${esc(frDyeText(it))}${frDyeSwatches(it)}${(it.dye.hair||[]).length?`<br><span class="mono" style="opacity:.75">发色 ${esc(frHairDyeText(it))}</span>`:""}</span></div>`:"")+
+        (it.obtain_res?`<div class="fd-row"><span class="fd-k">获取途径</span><span class="fd-v">${esc(it.obtain_res)}</span></div>`:"")+
+        (it.theme?`<div class="fd-row"><span class="fd-k">套装主题</span><span class="fd-v">${esc(it.theme.name)}${it.theme.open_time?` · <span class="mono">开放 ${esc(it.theme.open_time)}</span>`:""}</span></div>`:"")+
+        (it.show_start?`<div class="fd-row"><span class="fd-k">上架时间</span><span class="fd-v">${esc(it.show_start)}</span></div>`:"")+
+        ((it.value_words||[]).length?`<div class="fd-row"><span class="fd-k">卖点标签</span><span class="fd-v">${esc(frValueWords(it))}</span></div>`:"")+
+        ((it.other_get_methods||[]).length?`<div class="fd-row"><span class="fd-k">其他获取方式</span><span class="fd-v">${esc(it.other_get_methods.map(m=>`${m.title?m.title+"：":""}${m.desc}`).join(" ｜ "))}</span></div>`:"")+
+        (it.uncap_appear_gender?`<div class="fd-row"><span class="fd-k">未解锁外观</span><span class="fd-v">版本 ${esc((it.uncap_appear_gender.values||[]).join(" / "))}<br><span style="opacity:.75">${esc(it.uncap_appear_gender.note||"")}</span></span></div>`:"")+
+        (it.rebirth_tex?`<div class="fd-row"><span class="fd-k">再生形态贴图</span><span class="fd-v">是（背包专属贴图）</span></div>`:"")+
+        ((it.preview_group||[]).length?`<div class="fd-row"><span class="fd-k">专属预览</span><span class="fd-v">${esc(it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ "))}</span></div>`:"")+
+        (it.show_no_have!=null?`<div class="fd-row"><span class="fd-k">未拥有时</span><span class="fd-v">${it.show_no_have?"衣柜里也显示":"衣柜里不显示"}</span></div>`:"")+
+        (it.desc_man?`<div class="fd-row"><span class="fd-k">男版描述</span><span class="fd-v">${richText(it.desc_man)}</span></div>`:"")+
+        ((it.name_man||it.name_female)?`<div class="fd-row"><span class="fd-k">分版命名</span><span class="fd-v">女版 ${esc(it.name_female||"—")} / 男版 ${esc(it.name_man||"—")}</span></div>`:"")+
         ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
         (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
       }</div></details>`:"";
@@ -1789,7 +1893,13 @@ function frRender(){
      · 图轨复用时装那套灯箱（.fr-rail/.fr-zoom/.fr-box + FR_IMGS），一套交互两板共用
    ★ 类名全部 v*，图轨/灯箱复用 fr-*；样式挂 body.vehicle-mode —— 时装板与武器皮肤板零影响。 */
 const SCENE_TABLE=(function(){try{return (getParam("b")||"")==="scene_balance";}catch(e){return false;}})();
-if(SCENE_TABLE)document.body.classList.add("scene-mode");
+if(SCENE_TABLE)document.body.classList.add("scene-mode","sbt-mode");
+/* 服务器类型（board id = server_types）：与场景平衡同款表格视图。
+   本板只有 21 条、字段全是「后缀 / 标签 / 表数 / 判定依据 / 状态」这类结构化事实，
+   卡片化会把它们压成看不清的长文本 ⇒ 走 sbt 表格（可点表头排序）。
+   ★ sbt-mode 是表格外观的公共开关（样式见 board_base.css），scene-mode 只保留场景专属微调。 */
+const ST_TABLE=(function(){try{return (getParam("b")||"")==="server_types";}catch(e){return false;}})();
+if(ST_TABLE)document.body.classList.add("st-mode","sbt-mode");
 const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
 const V={cls:new Set(),sub:new Set(),img:"",sort:""};
 (function(){
@@ -2087,7 +2197,9 @@ function vCard(it,i){
           (it.effect_text?`<div class="fd-row"><span class="fd-k">效果</span><span class="fd-v">${esc(it.effect_text)}</span></div>`:"")+
           (it.effect_text?`<div class="fd-row"><span class="fd-k">效果来源</span><span class="fd-v mono">${esc(it.effect_source||"—")}</span></div>`:"")+
           (it.charm_note?`<div class="fd-row"><span class="fd-k">魅力值</span><span class="fd-v">${esc(it.charm_note)}</span></div>`:"")+
-          (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏半感染者花苞</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
+          (it.reborn_vis!=null?`<div class="fd-row"><span class="fd-k">藏花</span><span class="fd-v">${it.reborn_vis?"是":"否"}</span></div>`:"")+
+          (it.obtain_res?`<div class="fd-row"><span class="fd-k">获取途径</span><span class="fd-v">${esc(it.obtain_res)}</span></div>`:"")+
+          (it.theme?`<div class="fd-row"><span class="fd-k">套装主题</span><span class="fd-v">${esc(it.theme.name)}</span></div>`:"")+
           ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
           (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
         }</div></details>`:""}
@@ -3088,6 +3200,77 @@ function sbRender(items){
   if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
 }
 
+/* ── 服务器类型表格视图（board id = server_types）───────────────────────
+   列全部来自 board 数据字段，不做任何推断：
+     服型后缀 suffix / 名称 name / 标签 label / 本端表数 table_count
+     状态 state / 判定依据 why / 证据等级 evidence_level / 来源 source
+   ★ 判定依据 why 是长句，单独给 wrap 类，避免被 nowrap 截断。 */
+let ST_SORT={key:"suffix",dir:1};
+function stVal(it,k){
+  if(k==="服型后缀")return it.suffix||"";
+  if(k==="名称")return it.name||"";
+  if(k==="标签")return it.label||"";
+  if(k==="本端表数")return Number(it.table_count||0);
+  if(k==="状态")return it.state||"";
+  if(k==="判定依据")return it.why||"";
+  if(k==="证据等级")return it.evidence_level||"";
+  if(k==="来源")return it.source||"";
+  return it.name||"";
+}
+function stRender(items){
+  const cols=["服型后缀","名称","标签","本端表数","状态","判定依据","证据等级","来源"];
+  const sorted=items.slice().sort((a,b)=>{
+    const k=ST_SORT.key,v1=stVal(a,k),v2=stVal(b,k);
+    if(typeof v1==="number"&&typeof v2==="number"){
+      if(v1!==v2)return (v1-v2)*ST_SORT.dir;
+    }else{
+      const c=String(v1).localeCompare(String(v2),"zh-CN");
+      if(c)return c*ST_SORT.dir;
+    }
+    return String(a.suffix||"").localeCompare(String(b.suffix||""),"zh-CN");
+  });
+  const g=document.getElementById("grid");
+  g.innerHTML="";
+  const t=document.createElement("table");
+  t.className="sbt";
+  const thead=document.createElement("thead");
+  const trh=document.createElement("tr");
+  for(const c of cols){
+    const th=document.createElement("th");
+    th.textContent=c+(ST_SORT.key===c?(ST_SORT.dir>0?" ▲":" ▼"):"");
+    th.onclick=()=>{
+      if(ST_SORT.key===c)ST_SORT.dir*=-1;else{ST_SORT.key=c;ST_SORT.dir=1;}
+      render();
+    };
+    trh.appendChild(th);
+  }
+  thead.appendChild(trh);t.appendChild(thead);
+  const tb=document.createElement("tbody");
+  for(const it of sorted){
+    const tr=document.createElement("tr");
+    const cells=[
+      ["num",it.suffix||"-"],
+      ["",esc(it.name||"-")],
+      ["",`<span class="tag">${esc(it.label||"-")}</span>`],
+      ["num",Number(it.table_count||0).toLocaleString("en-US")],
+      ["",`<span class="tag">${esc(it.state||"-")}</span>`],
+      ["wrap",esc(it.why||"-")],
+      ["dim",esc(it.evidence_level||"-")],
+      ["dim",esc(it.source||"-")],
+    ];
+    for(const [cls,val] of cells){
+      const td=document.createElement("td");
+      if(cls)td.className=cls;
+      if(cls==="num")td.textContent=val; else td.innerHTML=String(val);
+      tr.appendChild(td);
+    }
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb);g.appendChild(t);
+  const c=document.getElementById("count");
+  if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
+}
+
 function render(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   if(DATA)DATA._query=q;
@@ -3192,6 +3375,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   // 预告专栏：给「预计日已过但源表仍算未上线」的条目打标（卡面显示「已过预计」）
   if(upcomingBoard){ items.forEach(it=>{ it._late=upLate(it); }); }
   if(SCENE_TABLE){ sbRender(items); return; }
+  if(ST_TABLE){ stRender(items); return; }
   const g=document.getElementById("grid");g.innerHTML="";
   const hasSfxChildren=items.some(it=>Array.isArray(it.sfx_items));
   const childCount=items.reduce((sum,it)=>sum+(Array.isArray(it.sfx_items)?it.sfx_items.length:0),0);

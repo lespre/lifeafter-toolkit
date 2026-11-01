@@ -65,6 +65,12 @@ body.fashion-mode .i{padding:12px 12px 10px}
   border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .fr-rail figure img{width:100%;height:100%;object-fit:contain;display:block}
 .fr-rail figure.ph img{opacity:.5;filter:grayscale(1)}
+/* 2026-11-01：男女双图角标（头饰/面饰/挂饰 icon 与 female_icon 两列各自出图，需标明性别） */
+.fr-rail figure{position:relative}
+.fr-rail .fr-gtag{position:absolute;top:4px;left:4px;z-index:2;pointer-events:none;
+  padding:0 5px;border-radius:4px;font-size:10px;line-height:15px;font-weight:600;
+  color:#fff;background:rgba(15,18,26,.62);border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(2px)}
 .fr-more{align-self:center;flex:0 0 auto;font-size:11.5px;color:#52525b;background:#f4f4f5;border:1px solid #e4e4e7;
   border-radius:7px;padding:2px 7px;white-space:nowrap}
 .fr-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
@@ -94,6 +100,13 @@ body.fashion-mode .i{padding:12px 12px 10px}
   border-radius:6px;padding:0 6px;white-space:nowrap}
 /* 同款别名标记：同 model 同部位的另一条记录是开发/占位名（desc=占位占位），已按一件并入本卡 */
 .fr-alias{color:#0f766e;background:#f0fdfa;border-color:#99f6e4}
+/* 2026-11-01 花苞相关两个标记：遮=背包包围盒挡住再生者花苞；藏=这件把花苞换成主题花 */
+.fr-bud{color:#065f46;background:#ecfdf5;border-color:#6ee7b7}
+.fr-dye{color:#7c2d12;background:#fff7ed;border-color:#fdba74}
+.fr-vw{color:#5b21b6;background:#f5f3ff;border-color:#c4b5fd}
+.fr-swatch{display:inline-flex;gap:2px;margin-left:6px;vertical-align:middle}
+.fr-swatch i{display:inline-block;width:11px;height:11px;border-radius:2px;border:1px solid rgba(0,0,0,.18)}
+.fr-flower{color:#be123c;background:#fff1f2;border-color:#fda4af}
 .fr-grade{flex:0 0 auto;font-size:11px;font-weight:650;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;
   border-radius:6px;padding:1px 7px;white-space:nowrap}
 .fr-charm{font-size:11.5px;color:#a16207;background:#fefce8;border:1px solid #fde68a;border-radius:6px;
@@ -109,17 +122,21 @@ body.fashion-mode .i details.tech summary{font-size:12px}
 .fr-kv .v{color:#3f3f46;word-break:break-word}
 .fr-kv .v.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all}
 .fr-sec{font-size:11px;color:#a1a1aa;padding:6px 2px 1px;border-top:1px dashed #ececf0;margin-top:4px}
-/* ── 场景平衡表格模式（board id = scene_balance）── */
-body.scene-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
-body.scene-mode .grid table.sbt{width:100%;border-collapse:collapse;font-size:12.5px}
-body.scene-mode .sbt thead th{position:sticky;top:0;background:#131c23;color:#8fa3b0;font-weight:500;
+/* ── 表格视图（sbt-mode：场景平衡 scene_balance / 服务器类型 server_types 共用）──
+   sbt-mode 是表格外观的公共开关；scene-mode / st-mode 只留各自的专属微调。 */
+body.sbt-mode .grid{display:block;overflow:auto;border:1px solid #1e2b33;border-radius:10px;background:#0f161c}
+body.sbt-mode .grid table.sbt{width:100%;border-collapse:collapse;font-size:12.5px}
+body.sbt-mode .sbt thead th{position:sticky;top:0;background:#131c23;color:#8fa3b0;font-weight:500;
   text-align:left;padding:9px 12px;border-bottom:1px solid #22303a;white-space:nowrap;cursor:pointer;user-select:none}
-body.scene-mode .sbt thead th:hover{color:#cfe4f2}
-body.scene-mode .sbt tbody td{padding:8px 12px;border-bottom:1px solid #182129;color:#dbe6ee;white-space:nowrap}
-body.scene-mode .sbt tbody tr:hover td{background:#131d25}
-body.scene-mode .sbt td.num{font-family:ui-monospace,Consolas,monospace;color:#a9c0cf}
-body.scene-mode .sbt td.scene{color:#eaf2f8}
-body.scene-mode .sbt .tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+body.sbt-mode .sbt thead th:hover{color:#cfe4f2}
+body.sbt-mode .sbt tbody td{padding:8px 12px;border-bottom:1px solid #182129;color:#dbe6ee;white-space:nowrap}
+body.sbt-mode .sbt tbody tr:hover td{background:#131d25}
+body.sbt-mode .sbt td.num{font-family:ui-monospace,Consolas,monospace;color:#a9c0cf}
+body.sbt-mode .sbt td.scene{color:#eaf2f8}
+/* 长文本列：判定依据 / 来源 —— 不截断，允许折行 */
+body.sbt-mode .sbt td.wrap{white-space:normal;min-width:300px;max-width:520px;color:#a2b9c7;line-height:1.55}
+body.sbt-mode .sbt td.dim{color:#6f8492;font-size:11.5px;max-width:280px;overflow:hidden;text-overflow:ellipsis}
+body.sbt-mode .sbt .tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
   border:1px solid #2a3a45;color:#9dbccd;background:#141e26}
 
 /* ── 载具模式（board id = vehicle_full）：复用 fr-* 图轨/灯箱，仅补类型色与「类型图」标记 ── */
