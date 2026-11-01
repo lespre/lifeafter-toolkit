@@ -1,0 +1,225 @@
+### fashion_data  rows=11169  fields=100
+action_disable_soft_bone	14	1	;1
+anim_graph_id	481	39	20; | 21; | 17;18
+anim_graph_id_unlink	70	9	;60 | ;61 | ;135
+appear_ids	11169	2269	[10180, 110200] | [10120, 110140] | [10150, 110170]
+back_weapon_vis	399	1	True
+bag_fake_entryword	2277	32	[2] | [1] | [3]
+bg_ids	233	26	[4] | [5] | [7]
+body_soft_bone_id	1539	129	[3544_1_1_0, 3544_2_1_0] | [3583_1_1_0, 3583_2_1_0] | [3572_1_1_0, 3572_2_1_0]
+brand_id	2608	5	3 | 2 | 4
+can_hide_special_idle_anim	565	1	True
+change_color_id	1355	194	[354410, 354411] | [314940, 314941] | [315030, 315031]
+change_color_idx	1668	133	1 | 6 | 8
+change_color_socket	903	67	[b_m_3587_1, b_f_3587_1, b_m_3587_2, b_f_3587_2] | [b_m_3588_1, b_f_3588_1, b_m_3588_2, b_m_3588_3…] | [b_f_3554_1, b_f_3554_2]
+charm_value	9176	40	40 | 30 | 50
+desc	11041	2181	一件永久款头饰。 | 获得一件7天时限的时装头饰“纸箱头”。 | 获得一件永久时装头饰“南瓜头”。
+dynamic_macro_name	7	1	u_overall_opacity
+dynamic_socket_names_female	35	5	[b_f_3490_1] | [h_f_3534_1] | [h_f_3535_1]
+dynamic_socket_names_male	35	5	[b_m_3490_1] | [h_m_3534_1, h_m_3534_2] | [h_m_3535_1, h_m_3535_2]
+faked_times_limit	160	1	1
+fashion_action_id	3829	590	9 | 10 | 11
+fashion_preview	9142	1	True
+female_desc	21	3	还原丽的战斗服。#r「明日之后×EVANGELION」联动限定物品。 | 还原明日香的战斗服。#r「明日之后×EVANGELION」联动限定物品。 | 还原真理的战斗服。#r 「明日之后×EVANGELION」联动限定物品。
+female_name	21	3	战斗服・EVA零号机版 | 战斗服・EVA2号机版 | 战斗服・EVA8号机版
+flowing_light_group_id	14	1	3310
+forbid_primary_high_model	84	1	[1]
+force_gender	84	1	1
+foreign_name	302	92	金银势力 | 粉武士 | 象牙塔
+friendliness	1355	18	400 | 300 | 500
+gift_package_id	23	11	[1, 922299] | [1, 821412] | [1, 921093]
+gift_package_present_times_limit	31	1	999
+green_model_path_female	252	25	character/players2021/b_f_3411/fengdi_b_f_3411001. | character/players2021/b_f_3411/fengdi_b_f_3411001. | character/players2021/b_f_3411/fengdi_b_f_3411001.
+green_model_path_female_high	56	5	character/players2021/b_f_3425/fengdi_b_f_3425_hig | character/players2021/b_f_3425/fengdi_b_f_3425_hig | character/players2021/b_f_3425/fengdi_b_f_3425_hig
+hair_change_color_id	49	7	[326250, 326251] | [326230, 326231] | [326210, 326211]
+hd_run_replace_anim	21	1	nucleus_attack_01_02_01
+hide_in_bag	11169	1	True
+hide_other_part	762	5	[face] | [pendant] | [hat]
+hide_part	1	1	[1]
+icons	11169	2111	[ui/item_icon/icon_32548, ui/item_icon/icon_32553] | [ui/item_icon/icon_32537, ui/item_icon/icon_32542] | [ui/item_icon/icon_32540, ui/item_icon/icon_32545]
+is_2025	122	1	True
+is_available_glowstick	896	1	1
+is_climb_tower	929	1	True
+is_new_bone	596	1	True
+is_slim_bag	6563	1	[1]
+level	11169	7	4 | 3 | 1
+link_model_paths	6563	1	[, , , …]
+link_socket_names	6563	12	[, , , …] | [b_m_3640a_s01;b_f_3640a_s01, b_m_3640a_s02;, b_m_ | [b_m_3640a_s01;b_f_3640a_s01, b_m_3640a_s02;, b_m_
+link_softbone_ids	6563	6	[, , , …] | [;677, , ;680, ;681…] | [;647, , , …]
+man_desc	33	13	生化危机中里昂·斯科特·肯尼迪曾经穿着的衣服。 | Resident Evil中亚伯·威斯卡的衣服。 | 巴特在生活和执行任务时所穿着的服装
+man_name	22	22	战术专家（Resident Evil） | 战斗服・EVA初号机版 | 战斗服・EVA初号机版-1天
+man_show_name	18	3	战斗服・EVA初号机版 | 战斗服・EVA Mark.06版 | 战斗服・EVA第13号机版
+max_stack_num	11169	1	2147483647
+model_change_color_id	11168	31	1 | 3 | 2
+model_id	11169	626	3002 | 2012 | 2015
+model_socket	903	1	waist_r
+mutex_modules	349	3	[1, 2] | [1, 2, 20001] | [1]
+name	11169	8895	极地朋克 | 战术迷彩 | 兄弟会
+new_bone_soft_bone_id	282	32	248;249 | 246;247 | ;306
+new_fashion_id_str	1631	1574	hat_3002_1_0 | hat_2012_1_0 | hat_2015_1_0
+not_show_rebirth_makeup	63	1	True
+obtain_notify	10237	1	1
+other_get_methods	7	1	[17]
+part	9544	4	1 | 3 | 4
+part_type	9538	5	bag | hat | cloth
+point_light_id	896	7	1 | 4 | 2
+preview_id	621	32	7 | 21 | 6
+rebirth_tex	427	1	True
+reborn_vis	1121	1	True
+replace_flower_path	63	5	[character\monsters\cloth_3551_hua\cloth_3551_hua. | [character\monsters\cloth_3551_hua\cloth_3551_hua. | [character\monsters\cloth_3551_hua\cloth_3551_hua.
+show_name	8176	1153	可乐玩偶包 | 今日来耕田-头饰 | 九色鹿-衣服
+show_no_have	4837	1	1
+show_time_offset_ids	203	3	[2108, 2103] | [2108, 2102] | [2101, 2102]
+show_valid_times	0	0	
+socket_model_use_high_model	441	1	True
+socket_models_female	2158	296	[character/players2021/bag_f_3180/bag_f_3180_2.gim | [character/players2021/bag_f_3180/bag_f_3180_2.gim | [character/players2021/bag_f_3180/bag_f_3180_2.gim
+socket_models_male	1910	262	[character/players2021/bag_m_3180/bag_m_3180_2.gim | [character/players2021/bag_m_3180/bag_m_3180_2.gim | [character/players2021/bag_m_3180/bag_m_3180_2.gim
+socket_names_dont_load_in_cine	175	17	[h_m_3397_2] | [b_f_3397_1, b_f_3397_2, b_f_3397_3] | [b_m_3436_1_high]
+socket_names_female	2158	231	[bag_f_3180_2] | [b_f_3583_1] | [b_f_3587_1, b_f_3587_2]
+socket_names_male	1910	194	[bag_m_3143_2] | [h_m_3397_1, h_m_3397_2] | [b_m_3587_1, b_m_3587_2]
+soft_bone_ids_female	2158	202	[139] | [3583_1_1_1] | [3587_1_1_1, 3587_1_1_2]
+soft_bone_ids_male	1910	166	[139] | [3397_2_2_2, 3397_2_2_1] | [3587_2_1_1, 3587_2_1_2]
+sort_key	11168	5	2 | 1 | 4
+special_fixed_attr_ids	2	1	[2315]
+special_idle_anims2	800	54	[bq_3216003_idle_01, bq_3216003_idle_01] | [bq_3216004_idle_01, bq_3216004_idle_01] | [bq_3397_idle_01, bq_3397_idle_01]
+start_show_ts	96	5	1772064000 | 1769040000 | 1774483200
+suit_buff_id	320	36	[16971, 16973] | [21187, 21188] | [20359, 20360]
+team_match_bg_conf	84	6	3 | 4 | 1
+tex_compress_type	6563	2	2 | 1
+theme_codes	168	1	[yh]
+time_offset_ori_show_valid_times	175	9	[9698, 10065] | [4984, 10065] | [14412, 10065]
+training_rank_season_id	4	4	[1, 2] | [4] | [6]
+ui_anim_graph_id	447	39	19; | 22; | 15;16
+uncap_appear_gender	133	3	3 | 1 | 2
+v2_socket_model_path	8635	7	[, , , …] | [, character/players2021/b_m_3578/b_m_3578_2.gim;c | [, character/players2021/b_m_3578/b_m_3578_2.gim;c
+v2_socket_names	8635	211	[, , , …] | [;b_f_3583_1, , , …] | [h_m_3397_1;, h_m_3397_2;, , …]
+v2_socket_soft_bone_ids	8635	206	[, , , …] | [;283, , , …] | [894;, 895;, , …]
+v2_soft_bone_id	1833	173	;191 | 281; | 126;121
+valid_days	8912	9	7 | 30 | 3
+valid_scene_ids	4	1	[280]
+value_word_ids	412	28	[2] | [1] | [2, 4]
+zhexing_type	56	1	;jk
+
+### player_appear_data  rows=5604  fields=121
+action_disable_soft_bone	3	1	;1
+ai_player_weight	2623	2	1 | -1
+anim_graph_id	104	66	39 | 12 | 7
+anim_graph_id_unlink	12	11	121 | 125 | 149
+back_weapon_vis	114	1	True
+bag_fake_entryword	590	24	[1, 11, 51, 201] | [3, 12, 52, 202] | [1]
+bg_ids	70	19	[25] | [54] | [33]
+body_soft_bone_id	538	322	62 | 213 | 214
+brand_id	750	5	3 | 5 | 2
+can_hide_special_idle_anim	164	1	True
+change_color_id	612	600	100001 | 100003 | 14
+change_color_idx	345	7	1 | 2 | 3
+change_color_socket	260	72	[party] | [1] | [qunbai]
+charm_value	2359	35	25 | 15 | 200
+desc	2909	813	注意看，这个男人叫小帅，这个女人是小美 | 抢眼的黄色和可爱的形象，让尊贵的CC直播玩家充满魅力。 | 我们的故事从这里开始。#r合住专属的时装，在合住商店用合住积分兑换。#r在#f(5)合住等级达到1级
+doface_panel_model_name	34	33	character/players/b_f_3051/h_f_3051_high.gim | character/players/b_f_3047/h_f_3047_high.gim | character/players/b_f_3060/h_f_3060_high.gim
+dynamic_macro_name	2	1	u_overall_opacity
+dynamic_socket_names	4	4	[h_f_3167_1] | [b_f_3167_2, b_f_3167_3, b_f_3167_4, b_f_3167_5…] | [h_m_3167_1]
+dynamic_socket_names_female	10	5	[h_f_3534_1] | [h_f_3535_1] | [b_f_3490_1]
+dynamic_socket_names_male	10	5	[h_m_3534_1, h_m_3534_2] | [h_m_3535_1, h_m_3535_2] | [b_m_3490_1]
+extra_soft_bone_col_id	4	4	55 | 54 | 66
+fashion_action_id	887	316	32163 | 32164 | 32633
+fashion_preview	2433	1	True
+female_desc	6	3	还原丽的战斗服。#r「明日之后×EVANGELION」联动限定物品。 | 还原明日香的战斗服。#r「明日之后×EVANGELION」联动限定物品。 | 还原真理的战斗服。#r 「明日之后×EVANGELION」联动限定物品。
+female_name	6	3	战斗服・EVA零号机版 | 战斗服・EVA2号机版 | 战斗服・EVA8号机版
+flowing_light_group_id	4	1	3310
+forbid_in_npc_monster	102	1	True
+forbid_primary_high_model	141	2	True | [1]
+force_gender	27	1	1
+friendliness	1701	7	680 | 720 | 1960
+gender	2783	1	1
+gift_package_id	26	6	[1, 921934] | [1, 794120] | [1, 922071]
+gift_package_present_times_limit	6	1	999
+green_model_path_female	72	25	character/players2021/b_f_3261/fengdi_b_f_3261.gim | character/players2021/b_f_3265/fengdi_b_f_3265001. | character/players2021/b_f_3266/fengdi_b_f_3266001.
+green_model_path_female_high	16	5	character/players2021/b_f_3294/fengdi_b_f_3294_hig | character/players2021/b_f_3425/fengdi_b_f_3425_hig | character/players2021/b_f_3427/fengdi_b_f_3427_hig
+hair_change_color_id	14	14	326210 | 326220 | 326230
+handle_transparent	1	1	True
+hd_run_replace_anim	10	1	nucleus_attack_01_02_01
+hide_bag	6	1	True
+hide_face	125	1	True
+hide_head	163	1	True
+hide_pendant	117	1	True
+high_model_name	3343	3117	character/players/b_f_3062/h_f_3062_high.gim | character/players/b_f_3053/h_f_3053_high.gim | character/players2021/b_f_3560/h_f_3560_high.gim
+human_body_model_name	319	287	character/players/b_f_3140/model_h_f_3140001.gim | character/players/b_f_3141/model_h_f_3141001.gim | character/players/f_f_02/model_f_f_002.gim
+is_2025	39	1	True
+is_available_glowstick	256	1	1
+is_climb_tower	238	1	True
+is_new_bone	164	1	True
+is_slim_bag	2172	2	1 | [1]
+is_uncap_appear	38	1	True
+level	2925	6	4 | 3 | 5
+link_model_paths	1875	1	[, , , …]
+link_socket_names	1875	13	[, , , …] | [;h_f_3640a_s01, , , …] | [;h_f_3640b_s01, , , …]
+link_softbone_ids	1875	7	[, , , …] | [;678, , , …] | [;867, , , …]
+man_desc	6	3	还原真嗣的战斗服。#r 「明日之后×EVANGELION」联动限定物品。 | 还原熏的战斗服。#r 「明日之后×EVANGELION」联动限定物品。 | 还原真嗣第十三号机的战斗服。#r 「明日之后×EVANGELION」联动限定物品。
+man_name	6	3	战斗服・EVA初号机版 | 战斗服・EVA Mark.06版 | 战斗服・EVA第13号机版
+model_change_color_id	2925	31	5 | 6 | 7
+model_id	2925	600	3002 | 3009 | 3057
+model_name	4703	4316	character/players/b_f_2001/h_f_2001001.gim | character/players/b_f_2001/h_f_2001002.gim | character/players/b_f_2001/h_f_2001003.gim
+model_scale	70	7	0.7 | 0.9 | 1.2
+model_socket	458	2	bag_sp | waist_r
+mutex_modules	310	4	[2] | [1, 2] | [1]
+name	5602	2425	白色马尾 | 黑色马尾 | 紫红马尾
+need_idle_hide_main_weapon	122	1	1
+new_bone_high_model_name	27	27	character/players2021/b_f_3564/h_f_3564_link_high. | character/players2021/b_f_3565/h_f_3565_link_high. | character/players2021/b_f_3597_link/h_f_3597_high0
+new_bone_model_name	27	27	character/players2021/b_f_3564/h_f_3564_link.gim | character/players2021/b_f_3565/h_f_3565_link.gim | character/players2021/b_f_3597_link/h_f_3597001.gi
+new_bone_soft_bone_id	85	61	[140] | [157] | [249]
+no_uncap	79	1	True
+not_show_rebirth_makeup	46	1	True
+obtain_notify	2465	1	1
+oversea_change_color_id	2	2	205 | 207
+oversea_high_model_name	9	5	character/players/b_f_3067_oversea/h_f_3067_high.g | character/players/b_f_3067_oversea/b_f_3067_high.g | character/players/b_f_3067_oversea/b_f_3067_high.g
+oversea_human_body_model_name	3	2	character/players/b_m_3060_oversea/model_b_m_30600 | character/players/b_m_3060_oversea/model_b_m_30600 | character/players/b_m_3060_oversea/model_b_m_30600
+oversea_model_name	27	12	character/players/b_f_3042_oversea/h_f_3042001.gim | character/players/b_f_3033_oversea/h_f_3033001.gim | character/players/b_f_3067_oversea/h_f_3067001.gim
+part	5604	7	1 | 2 | 3
+part_type	2925	6	hat | cloth | suit
+point_light_id	466	7	1 | 3 | 4
+preview_id	186	32	2 | 3 | 1
+rebirth_noise_tex	33	1	True
+rebirth_tex	155	1	True
+reborn_vis	425	1	True
+replace_flower_id	10	10	70893 | 70894 | 70895
+replace_weapon_anim	0	0	
+sfx_cfg	2	1	run,fx_03,effect/fx/players/pendant/fx_pendant_164 | run,fx_03,effect/fx/players/pendant/fx_pendant_164
+sfx_submesh_replace_mtl	42	1	True
+sfx_submesh_uniform_value	42	1	1.0
+show_no_have	1202	1	1
+show_time_offset_ids	51	3	[2108, 2102] | [2108, 2103] | [2101, 2102]
+show_valid_times	0	0	
+socket_model_only_for_reborn	15	3	[0, 1] | [1] | [0, 0, 1]
+socket_model_use_high_model	127	1	True
+socket_models	1493	1029	[character/players/b_f_3037/h_f_3037_1001.gim] | [character/players/b_f_3031/h_f_3031_1001.gim] | [character/players/b_f_3053/h_f_3053_1.gim]
+socket_names	1493	466	[pigtail] | [party] | [h_f_3061_1]
+socket_names_dont_load_in_cine	50	17	[b_f_3263_1003, b_f_3263_2003, h_f_3263_1003, b_m_ | [b_f_3263_1004, b_f_3263_2004, h_f_3263_1004, b_m_ | [h_m_3366_2]
+soft_bone_ids	1484	394	[4] | [5] | [9]
+soft_bone_ids_female	2	1	[208]
+sort_key	2925	5	1 | 4 | 2
+special_idle_anims	850	4	[idle_show_01, idle_show_shoot_01] | [artu_idle_show_01, idle_show_shoot_01] | [bq_3216003_idle_01, bq_3216003_idle_01]
+special_idle_anims2	245	55	[bq_3216003_idle_01, bq_3216003_idle_01] | [bq_3216004_idle_01, bq_3216004_idle_01] | [idle_show_3158, idle_show_3158]
+start_show_ts	28	5	1772064000 | 1769040000 | 1773273600
+state_action_anim	0	0	
+state_action_socket	0	0	
+suit_app_id	10	10	30100 | 30070 | 30656
+suit_buff_id	94	36	[16988, 16989] | [16990, 16991] | [13274, 13274]
+takeoff_head	6	1	True
+team_match_bg_conf	24	6	1 | 2 | 3
+tex_compress_type	1875	2	2 | 1
+theme_codes	23	1	[yh]
+time_offset_ori_show_valid_times	44	9	[164888488, 100] | [4984, 10065] | [14412, 10065]
+ui_anim_graph_id	97	64	40 | 13 | 7
+uncap_app_id	10	10	30240 | 30220 | 30655
+uncap_app_id_new	79	76	10983 | 10978 | 110983
+uncap_appear_gender	73	3	2 | 1 | 3
+v2_socket_model_path	11	7	[character\players2021_f_3534_f_3534_1.gim, char | [character\players2021_f_3535_f_3535_1.gim, char | [character\players2021_f_3537_f_3537_1.gim, char
+v2_socket_names	579	335	[,h_f_3263_1003, , , …] | [,h_f_3263_1004, , , …] | [, , , …]
+v2_socket_soft_bone_ids	575	346	[, 339, , …] | [, 344, , …] | [, , , …]
+v2_soft_bone_id	509	271	[, 336] | [, 340] | [901]
+value_word_ids	102	21	[24, 17, 18, 19] | [11, 17, 18, 19…] | [1, 3, 4, 5…]
+yh_ai_infection_player_weight	19	1	1
+yh_ai_player_weight	106	1	1
+zhexing_type	16	1	;jk
+

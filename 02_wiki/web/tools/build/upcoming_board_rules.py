@@ -124,6 +124,7 @@ def enrich_period_status(board: dict, boards: Path) -> list[str]:
         return []
     src = json.loads(p.read_text(encoding="utf-8"))
     per = {str(x.get("period_id")): x for x in (src.get("periods") or [])}
+    FAM = {"进行中": "奖池（进行中）", "未开始": "奖池（未开始）", "已结束": "奖池（已结束）"}
     got: list[str] = []
     for it in board.get("items") or []:
         pid = str(it.get("period_id") or "")
@@ -140,6 +141,9 @@ def enrich_period_status(board: dict, boards: Path) -> list[str]:
             it["period_start"] = row.get("start") or ""
             if row.get("end"):
                 it["period_end"] = row.get("end")
+            # 家族标签跟着状态走：期次开赛了还挂「未开始」会自相矛盾
+            if st in FAM:
+                it["family"] = FAM[st]
             got.append("%s ← %s(%s)" % (it.get("id"), st, key))
     for pg in board.get("periods") or []:
         pid = str(pg.get("period_id") or "")
@@ -150,6 +154,8 @@ def enrich_period_status(board: dict, boards: Path) -> list[str]:
         st = str(row.get("status") or "").strip()
         if st:
             pg["status"] = st
+            if st in FAM:
+                pg["family"] = FAM[st]
         if row.get("end"):
             pg["end"] = row.get("end")
     return got

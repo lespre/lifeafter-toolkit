@@ -1,8 +1,8 @@
 {
  "threshold_pct": 20.0,
- "published_boards": 28,
- "green": 27,
- "red": 1,
+ "published_boards": 29,
+ "green": 29,
+ "red": 0,
  "delta_alerts": 0,
  "rows": [
   {
@@ -98,8 +98,8 @@
   {
    "board": "fashion_wardrobe",
    "name": "人物·全量时装衣柜",
-   "items": 3135,
-   "baseline": 3135,
+   "items": 3152,
+   "baseline": 3152,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},
@@ -150,6 +150,16 @@
    "name": "击败播报 / MVP 结算动画",
    "items": 13,
    "baseline": 13,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
+   "delta_alert": false
+  },
+  {
+   "board": "local_restore_tree",
+   "name": "本地还原树 · 配置表全量清单（路径 · 类型 · 落盘时间 · 名称还原率）",
+   "items": 33601,
+   "baseline": 33601,
    "delta_pct": 0.0,
    "error_count": 0,
    "error_kinds": {},
@@ -259,14 +269,10 @@
    "board": "upcoming_auto",
    "name": "新更新与预告（自动）",
    "items": 16,
-   "baseline": 14,
-   "delta_pct": 14.3,
-   "error_count": 12,
-   "error_kinds": {
-    "items[N].provenance.source_id": 4,
-    "items[N].provenance.locator_chain.steps[0].source_id": 4,
-    "items[N].provenance.source_lock_sha256": 4
-   },
+   "baseline": 16,
+   "delta_pct": 0.0,
+   "error_count": 0,
+   "error_kinds": {},
    "delta_alert": false
   },
   {

@@ -8,7 +8,7 @@ publish_gate:
   role: 校验 + 导出 manifest.js / 每板 .js / manifest.json / build_meta.js
   note: 它不是全量构建器：只校验既有 boards/*.json 并导出产物
 inventory_generator: python 02_wiki/web/tools/build/gen_rules_inventory.py
-board_count: 54
+board_count: 51
 high_risk_boards:
 - board: fashion_wardrobe
   script_count: 70
@@ -41,7 +41,6 @@ boards:
 - cdn_library
 - chip_item_catalog
 - common_item_text_sources
-- core_skill_12star
 - desc_catalog
 - drone_catalog
 - edible_catalog
@@ -50,7 +49,6 @@ boards:
 - fashion_face
 - fashion_face_slots
 - fashion_glow_slots
-- fashion_identity_unresolved_v01
 - fashion_kaijia
 - fashion_projection_slots
 - fashion_wardrobe
@@ -59,10 +57,9 @@ boards:
 - gift_data_text_sources
 - illustration_catalog
 - item_master_full
-- item_master_v01
 - kill_broadcast
+- local_restore_tree
 - lottery_periods
-- lottery_pool_resolved_v01
 - mutation_core_full
 - nucleus_cards_classic
 - nucleus_entry_slots

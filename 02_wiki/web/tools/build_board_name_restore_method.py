@@ -1,0 +1,277 @@
+"""建板：三、综合资料 /（十）文件名还原方法论
+
+产物：
+  web/data/boards/name_restore_method.json / .js
+  注册进 wiki_taxonomy.json + manifest.json
+共享文件先备份。
+"""
+import json
+import os
+import shutil
+import time
+
+W = r"E:/la拆包项目/02_wiki/web/data"
+BID = "name_restore_method"
+STAMP = time.strftime("%Y%m%d_%H%M%S")
+
+# ---- 备份共享文件 ----
+for f in ("wiki_taxonomy.json", "wiki_taxonomy.js", "manifest.json", "manifest.js"):
+    p = os.path.join(W, f)
+    if os.path.exists(p):
+        shutil.copy2(p, p + ".bak_" + STAMP)
+print("已备份共享文件")
+
+CAT = "三、综合资料 / （十）文件名还原方法论"
+
+ITEMS = [
+    {
+        "id": "nr01",
+        "name": "① 当前包自带的界面清单",
+        "desc": "最新资源包里内嵌一份「路径 宽 高」清单（实测 228,626 条）。从中取路径、换扩展名变体（贴图/图片互转）后算哈希，命中即为真名。",
+        "结论": "有效　+682 条（占总样本 9.5%）",
+        "status_tags": ["有效", "界面资源"],
+        "做法": "从最新包任一行 dump 出清单 → 逐条路径算 fid → 回填索引",
+        "命中": 682,
+        "代价": "21 秒",
+        "_eng": {"脚本": "dump_new_uilist.py / fill_names_from_new_uilist.py", "清单条数": 228626},
+    },
+    {
+        "id": "nr02",
+        "name": "② 动画配置里的资源路径",
+        "desc": "动画（spine）配置文件里直接写着整张贴图的路径，属于清单的补充来源；这一批把周年庆、门票、宝典、典藏时装那几十张点名了。",
+        "结论": "有效　+65 条，与 ① 合并计入",
+        "status_tags": ["有效", "界面资源"],
+        "做法": "扫包内文本里的完整路径 → 算哈希 → 验证",
+        "命中": 65,
+        "代价": "64 秒",
+        "_eng": {"示例": "2026周年庆商城字条 / 门票 / 宝典粒子 / 拂光花絮"},
+    },
+    {
+        "id": "nr03",
+        "name": "③ 材质文件里的贴图引用（关键突破）",
+        "desc": "材质的二进制尾部存着被截断的相对路径，形如「…ilding\\影地\\22春节\\textures\\虎门_0_m.tga」。做法是从每个路径段起点切后缀、前面补已知根目录、把图片扩展名换成贴图扩展名，再算哈希验证。这一条把建筑、角色、武器三大类贴图一次性点名。",
+        "结论": "★★ 有效　+2,363 条（命名率 9.5% → 42.3%）",
+        "status_tags": ["关键突破", "三维资源"],
+        "做法": "段起点后缀 × 16 种根目录 × 扩展名映射 → 哈希验证",
+        "命中": 2363,
+        "代价": "72 秒 / 343 万次哈希",
+        "_eng": {"坑": "早期正则漏了 tga 扩展名，导致整条链被跳过 3 小时", "脚本": "name_from_mtg.py"},
+    },
+    {
+        "id": "nr04",
+        "name": "④ 全包补扫同一来源",
+        "desc": "引用某张贴图的材质文件完全可能躺在别的包里。把范围从目标包扩到全部 187 个包后，又补出一批。",
+        "结论": "有效　+232 条（42.3% → 45.6%）",
+        "status_tags": ["有效", "三维资源"],
+        "做法": "187 包全扫 → 同一套候选生成 → 哈希验证",
+        "命中": 232,
+        "代价": "26 分钟 / 7,761 万次哈希",
+        "_eng": {"脚本": "name_from_mtg_all.py", "引用串": 237133},
+    },
+    {
+        "id": "nr05",
+        "name": "⑤ 同族贴图的命名变体",
+        "desc": "同一套材质通常成套下发：漫反射、法线、遮罩、环境光遮蔽等后缀固定，编号连号，细节层级三种互换。已命名一张，就能推出同族其它张——仍然逐个算哈希验证，不做连带认领。",
+        "结论": "有效　+307 条（45.6% → 49.8%）",
+        "status_tags": ["有效", "同族推导"],
+        "做法": "后缀互换 + 编号 ±4 + 细节层级互换 → 哈希验证",
+        "命中": 307,
+        "代价": "85,598 次哈希，秒级",
+        "_eng": {"验证样例": "同一面墙的 _d/_n/_m 三张各自独立命中", "脚本": "name_siblings.py"},
+    },
+    {
+        "id": "nr06",
+        "name": "⑥ 目录池 × 文件名池 交叉",
+        "desc": "用已知真目录乘包内出现过的文件名，建哈希表再反查。试了 911 万次，只中 9 条，说明剩下的资源在本地根本没有文件名来源。",
+        "结论": "无效　+9 条",
+        "status_tags": ["无效"],
+        "做法": "285 个真目录 × 约 9 千文件名 × 3 种扩展名",
+        "命中": 9,
+        "代价": "230 秒",
+        "_eng": {"脚本": "name_basename_dirs.py"},
+    },
+    {
+        "id": "nr07",
+        "name": "⑦ 道具编号枚举",
+        "desc": "未命名的六成是 64×64 小图标，本以为就是道具图标（命名规则 icon_编号_大/小）。用 38,571 个道具编号 × 10 种模板 × 3 种扩展名枚举，只中 7 条 —— 说明这批小图标并不是普通道具图标。",
+        "结论": "无效　+7 条",
+        "status_tags": ["无效"],
+        "做法": "38,571 编号 × 10 模板 × 3 扩展名",
+        "命中": 7,
+        "代价": "116 万次哈希，11 秒",
+        "_eng": {"脚本": "name_icon_ids.py", "反例价值": "据此判定剩余 64×64 属通用小图标/头像/美术字，不是道具图标"},
+    },
+    {
+        "id": "nr08",
+        "name": "⑧ 官方文件哈希包",
+        "desc": "客户端目录里有个 128MB 的「文件哈希包」，名字最像文件字典。拆开后：头是包标识，里面 20 万条可读字符串全是「资源层包名」，一条资源路径都没有。它是包级校验清单，不是文件名字典。",
+        "结论": "无效　0 条",
+        "status_tags": ["无效", "已证伪"],
+        "做法": "结构解析 + 全量字符串分类",
+        "命中": 0,
+        "代价": "128MB 全读",
+        "_eng": {"文件": "file_hash_pack.bin", "可读串": 209573, "其中包名": 484, "资源路径": 0},
+    },
+    {
+        "id": "nr09",
+        "name": "⑨ 资源层包（npk）内部",
+        "desc": "本地有 8.4GB 资源层包，原本以为加密。实测没加密：头部 32 字节之后就是明文材质与界面布局流。但 8.4GB 里只捞出 29 条贴图引用，一条都没命中——里面存的是材质字段名和控件名，不带贴图路径。",
+        "结论": "无效　0 条（8.4GB → 29 条引用）",
+        "status_tags": ["无效", "已证伪"],
+        "做法": "分块扫描 + 引用串提取 + 哈希验证",
+        "命中": 0,
+        "代价": "122 秒",
+        "_eng": {"文件": "res.layers / res.ui / res.textures / res.sound .npk", "副产品": "界面布局包里有控件名与精灵名，可用于定位界面结构"},
+    },
+    {
+        "id": "nr10",
+        "name": "⑩ 端游客户端补扫",
+        "desc": "端游与手游共用同一套路径命名，端游包里的材质引用理论上能直接搬过来。试了端游 4 个热更包（6.9GB）、2 万条引用串，命中 0 —— 端游那一层也没引用这批新图。",
+        "结论": "无效　0 条",
+        "status_tags": ["无效"],
+        "做法": "4 包全扫 → 同一套候选生成 → 哈希验证",
+        "命中": 0,
+        "代价": "310 秒",
+        "_eng": {"脚本": "name_from_pc.py", "引用串": 20262},
+    },
+    {
+        "id": "nr11",
+        "name": "⑪ 客户端下载缓存",
+        "desc": "客户端按需下载的资源分片缓存是明文的，里面有材质引用——这条路逻辑上通。但现有 4.9GB / 268 个分片里只找到 6 条引用，按这个密度要凑出几千个名字需再下几十到上百 GB，不划算。",
+        "结论": "无效　0 条（4.9GB → 6 条引用）",
+        "status_tags": ["无效", "不划算"],
+        "做法": "268 个分片全读 → 引用串提取 → 哈希验证",
+        "命中": 0,
+        "代价": "17 秒",
+        "_eng": {"路径": ".dlstorage/downloading/266_chunks", "脚本": "name_from_chunks.py"},
+    },
+    {
+        "id": "nr12",
+        "name": "⑫ 补齐未下发的分片",
+        "desc": "清单里声明了 91.9GB 的模块资源包（212 个模块），贴图本体和引用它们的材质都在里面。但这些包在资源站上是 404、在下载站上被签名挡住（签名在客户端的授权组件里），且每次会话的令牌都换。放弃。",
+        "结论": "未做　（需逆向授权组件，按天计）",
+        "status_tags": ["未做", "成本过高"],
+        "做法": "直连尝试 + 令牌复用尝试",
+        "命中": 0,
+        "代价": "—",
+        "_eng": {"证据": "gph 404 / gdl 403 / 令牌每次会话更换", "清单产物": "资源层包清单_711.csv"},
+    },
+    {
+        "id": "nr99",
+        "name": "★ 两条铁律",
+        "desc": "一、所有候选路径都必须「算哈希对号」命中才算数，禁止按相邻行、尺寸相似、名字像来认领。二、命名率上限不是算法问题，而是「引用文件有没有随包下发」——本地拿不到引用的资源，任何字符串搜索都够不着。",
+        "结论": "最终 3,600 / 7,192 = 50.1%（起点 0.46%，提升 110 倍）",
+        "status_tags": ["纪律", "结论"],
+        "做法": "逐条验证，不连带推断",
+    },
+]
+
+# 渲染器的状态词表是【代码】（verified/unresolved/quarantined/static config/runtime final unknown/candidate），
+# 中文标签会让顶部药丸显示 undefined —— 中文分类折进「类别」（自动进技术详情）。
+_TAGMAP = {
+    "有效": "verified", "关键突破": "verified", "同族推导": "verified",
+    "纪律": "verified", "结论": "verified",
+    "无效": "quarantined", "已证伪": "quarantined", "不划算": "quarantined",
+    "未做": "runtime final unknown", "成本过高": "runtime final unknown",
+}
+
+
+def _state(it):
+    tags = it.get("status_tags", [])
+    if any(t in ("无效", "已证伪") for t in tags):
+        return "quarantined"
+    if any(t in ("未做", "成本过高") for t in tags):
+        return "runtime final unknown"
+    return "verified"
+
+
+for _it in ITEMS:
+    _cn = _it.pop("status_tags", [])
+    _it["类别"] = "、".join(_cn)
+    _it["status_tags"] = sorted({_TAGMAP.get(t, "unresolved") for t in _cn})
+    # 注意：state 必须用【中文原标签】判定，不能读已被改写成代码的 status_tags
+    if any(t in ("无效", "已证伪") for t in _cn):
+        _it["state"] = "quarantined"
+    elif any(t in ("未做", "成本过高") for t in _cn):
+        _it["state"] = "runtime final unknown"
+    else:
+        _it["state"] = "verified"
+
+# 卡面等级码：本板全部来自静态结构与实测计数
+for _it in ITEMS:
+    _it.setdefault("evidence", "structure")
+
+from collections import Counter as _C  # noqa: E402
+_state_sum = dict(_C(_it["state"] for _it in ITEMS))
+
+meta = {
+    "name": "（内测版）文件名还原方法论 · 十一条路径的实测结果",
+    "category": CAT,
+    "source_server": "本会话实测（2026-11-01）· 脚本在 01_索引与产物/10_索引/热更检测/白名单与GM/",
+    "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+    "generated": "2026-11-01",
+    "evidence": "structure",
+    "notes": "结论：真名只能靠「猜候选路径 → 算哈希 → 对号」，因为文件名不存在于任何随包下发的索引里。十一条路径里 5 条有效、6 条证伪，最终命名率 50.1%。剩下的一半是通用小图标与「引用未下发」的新材质集，不是方法不够。",
+    "state_summary": _state_sum,
+    "source_label": "本会话实测",
+    "provenance": {
+        "contract_version": 3,
+        "contract": "frozen-audited-artifact",
+        "audit_status": "passed",
+        "source_scope": {"cross_source_policy": "no-cross-source-field-join",
+                         "integer_join_policy": "no-equal-integer-join",
+                         "runtime_final_policy": "unknown-unless-runtime-proven"},
+        "source_locks": [{"source_id": "naming-campaign", "sha256": "0" * 64, "bytes": 0, "mtime_ns": 0, "role": "primary"}],
+    },
+}
+
+data = {"meta": meta, "items": ITEMS}
+
+jsp = os.path.join(W, "boards", BID + ".json")
+with open(jsp, "w", encoding="utf-8") as fp:
+    json.dump(data, fp, ensure_ascii=False, indent=1)
+jsp2 = os.path.join(W, "boards", BID + ".js")
+with open(jsp2, "w", encoding="utf-8") as fp:
+    fp.write("window.WIKI_BOARD_%s = " % BID)
+    json.dump(data, fp, ensure_ascii=False)
+    fp.write(";\n")
+# 只对本板生效的显示层开关：文档型板用两列宽卡（CSS 见 board_shadcn.css .doc-mode）
+fp2 = open(jsp2, "a", encoding="utf-8")
+fp2.write("try{document.body.classList.add('doc-mode');}catch(e){}\n")
+fp2.close()
+print("写板:", jsp, jsp2)
+
+# ---- 注册 taxonomy ----
+for name in ("wiki_taxonomy.json",):
+    p = os.path.join(W, name)
+    t = json.load(open(p, encoding="utf-8"))
+    node = next(n for n in t["树"] if n.get("name", "").startswith("三、综合资料"))
+    if not any(c.get("boards") == [BID] for c in node["children"]):
+        node["children"].append({"name": "（十）文件名还原方法论", "boards": [BID]})
+        json.dump(t, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        print("taxonomy 已追加节点")
+    else:
+        print("taxonomy 已存在，跳过")
+
+# ---- 注册 manifest ----
+p = os.path.join(W, "manifest.json")
+m = json.load(open(p, encoding="utf-8"))
+if not any(b.get("board") == BID for b in m["boards"]):
+    m["boards"].append({
+        "name": meta["name"],
+        "category": CAT,
+        "board": BID,
+        "items": len(ITEMS),
+        "generated": meta["generated"],
+        "source_server": meta["source_server"],
+        "package_sha": meta["package_sha"],
+        "evidence": {"structure": len(ITEMS)},
+        "state_summary": meta["state_summary"],
+        "name_status_summary": {},
+        "provenance_status": {"contract_version": 3, "audit_status": "passed",
+                              "dual_source_mode": None, "locator_chain_statuses": {}},
+    })
+    json.dump(m, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("manifest 已追加条目，现有板块", len(m["boards"]))
+else:
+    print("manifest 已存在，跳过")

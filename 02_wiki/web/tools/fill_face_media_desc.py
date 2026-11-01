@@ -102,43 +102,33 @@ def normalize(icon: str) -> str:
     return p
 
 
-def candidates(icon: str) -> tuple[list, str]:
-    """返回 (候选列表 [(基路径, 性别标签)], 表内声明路径)。
+def candidates(icon: str) -> list:
+    """同一张声明的图标，在本目录与备用目录里各试一次（**只换目录，不换性别**）。
 
-    顺序：男版原路径 → 女版同模块名 → 各自的备用目录。
-    性别标签为 "男" / "女" / None（icon 名字里没有 _h_m_/_h_f_ 段时不标）。
+    ★ 修正：以前这里在男版取不到时会自动换成女版同名资源当成本卡的「图标」。
+      但 player_module_appear_data 是 **icon(男) + female_icon(女) 两列**，
+      女版本来就该单独展示，拿去顶男版会变成「一卡只有一张图、性别还标错」。
     """
     declared = normalize(icon)
     if not declared:
-        return [], ""
+        return []
     stem = declared.rsplit("/", 1)[-1]
-    g = None
-    if "_h_m_" in declared:
-        g = "男"
-    elif "_h_f_" in declared:
-        g = "女"
-    out: list = []
+    out = []
+    for base in [declared] + [d + stem for d in ALT_DIRS]:
+        if base not in out:
+            out.append(base)
+    return out
 
-    def add(base, gender):
-        for b, _gg in out:
-            if b == base:
-                return
-        out.append((base, gender))
 
-    add(declared, g)
-    alt_stem = None
+def gender_of(declared: str, field: str):
+    """图标性别：路径里有 _h_m_/_h_f_ 就照路径判；通用图（无性别段）返回 None。"""
     if "_h_m_" in declared:
-        alt_stem = stem.replace("_h_m_", "_h_f_")
-        add("ui/item_icon/" + alt_stem, "女")
-    elif "_h_f_" in declared:
-        alt_stem = stem.replace("_h_f_", "_h_m_")
-        add("ui/item_icon/" + alt_stem, "男")
-    for d in ALT_DIRS:
-        add(d + stem, g)
-    if alt_stem:
-        for d in ALT_DIRS:
-            add(d + alt_stem, "女" if "_h_f_" in alt_stem else "男")
-    return out, declared
+        return "男"
+    if "_h_f_" in declared:
+        return "女"
+    if field == "female_icon":
+        return "女"
+    return None
 
 
 def probe(conn, base: str):
@@ -166,7 +156,8 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     conn = pe_fetch.con()
 
-    st = {"卡": 0, "描述": 0, "有图": 0, "缺图": 0, "复用已有图": 0, "女版替代": 0, "无源行": 0}
+    st = {"卡": 0, "描述": 0, "有图": 0, "双图": 0, "单图": 0, "单图缺": 0,
+          "缺图": 0, "无源行": 0}
     miss: list[tuple[str, str, str]] = []
 
     for it in d["items"]:
@@ -195,24 +186,53 @@ def main() -> int:
             it["desc"] = None
             it["desc_note"] = f"{TBL}.desc 为空（行 {rk}）"
 
-        # ── 2D 图标 ────────────────────────────────────────────
-        cands, declared = candidates(row.get("icon"))
-        hit = None
-        hit_gender = None
-        for base, g in cands:
-            hit = probe(conn, base)
-            if hit:
-                hit_gender = g
-                break
+        # ── 2D 图标（男 icon / 女 female_icon 两列都要）───────────
+        # 同一张卡的所有变体行（row_variants）都看，取两列去重后的声明路径清单。
+        decl: list[tuple[str, str]] = []      # [(声明路径, 字段名)]
+        seen_p: set[str] = set()
+        for rr in [row] + [src.get(int(k)) for k in (it.get("row_variants") or [])
+                           if str(k).isdigit()] :
+            if not rr:
+                continue
+            for field in ("icon", "female_icon"):
+                p = normalize(rr.get(field))
+                if p and p not in seen_p:
+                    seen_p.add(p)
+                    decl.append((p, field))
+        if not decl:
+            decl = [(normalize(row.get("icon")), "icon")]
+        # 男在前、女在后，通用图放最后
+        order = {"男": 0, "女": 1, None: 2}
+        decl.sort(key=lambda x: order.get(gender_of(x[0], x[1]), 2))
 
-        if hit:
+        imgs: list[dict] = []
+        icons_all: list[dict] = []
+        no_gender: list[str] = []
+        idx = 0
+        for declared, field in decl:
+            g = gender_of(declared, field)
+            hit = None
+            for base in candidates(declared):
+                hit = probe(conn, base)
+                if hit:
+                    break
+            if not hit:
+                icons_all.append({"path": declared, "gender": g, "png": None})
+                no_gender.append(g or declared)
+                st["单图缺"] += 1
+                miss.append((it["name"], declared, "PE 包内无该图标资源"))
+                continue
             base, suf, full = hit
-            sub_f = ("_h_f_" in base and "_h_m_" in declared)
-            rel = "assets/fashion_posters/%s.png" % it["id"]
+            rel = "assets/fashion_posters/%s%s.png" % (it["id"], "" if idx == 0 else f"_{idx}")
             dst = WEB / rel
-            keep = (not a.dry) and dst.is_file() and dst.stat().st_size > MIN_PNG_BYTES
-            ok = keep
-            if not keep and not a.dry:
+            want_base = full.rsplit(".", 1)[0]
+            # ★ 必须校验旧文件到底是不是这张图：命名规则从「单张 <id>.png」改成
+            #   「男 <id>.png / 女 <id>_1.png」后，旧的女版图会正好躺在 <id>.png 上，
+            #   只看「文件存在且够大」就会把女图当男图复用。用上一版 _media 记的 base 对账。
+            prev_by_rel = {im.get("png"): im.get("base") for im in (it.get("_media") or {}).get("images") or []}
+            ok = ((not a.dry) and dst.is_file() and dst.stat().st_size > MIN_PNG_BYTES
+                  and prev_by_rel.get(rel) == want_base)
+            if not ok and not a.dry:
                 if dst.exists():
                     dst.unlink()
                 try:
@@ -220,60 +240,75 @@ def main() -> int:
                 except Exception:
                     ok = False
                 ok = ok and dst.is_file() and dst.stat().st_size > MIN_PNG_BYTES
-            if not ok and not a.dry:
-                st["缺图"] += 1
-                miss.append((it["name"], declared, "表内声明路径在 PE 包里解不出图"))
-                it["icon_state"] = "缺图"
-                it["icon_missing_reason"] = "表里 icon 路径在 PE 包里取不到图"
-                it["icon_count"] = 0
-                it["icon_source"] = f"{TBL}.icon"
-                it["icons_all"] = [{"path": declared, "gender": None, "png": None}]
-                it["_media"] = {"images": [], "total": 0}
-                it.pop("icon_note", None)
+            if not ok:
+                icons_all.append({"path": declared, "gender": g, "png": None})
+                st["单图缺"] += 1
+                miss.append((it["name"], declared, "PE 包内声明路径解不出图"))
+                continue
+            icons_all.append({"path": base, "gender": g, "png": rel})
+            imgs.append({
+                "png": rel,
+                "base": full.rsplit(".", 1)[0],
+                "suffix": suf,
+                "label": g or "图标",
+                "source": f"{TBL}.{field} → {declared}",
+                "fetch": "pe",
+                "bytes": dst.stat().st_size if dst.is_file() else None,
+            })
+            idx += 1
+
+        want = {g for _p, f in decl for g in [gender_of(_p, f)] if g}
+        # 卡片性别口径：按**表里声明的列**判，不按「哪张图恰好取到了」判
+        #（取不到图是打包问题，不能反推这件外观只有单性别）
+        if want == {"男", "女"}:
+            it["gender"] = "女/男"
+        elif want == {"女"}:
+            it["gender"] = "女"
+        elif want == {"男"}:
+            it["gender"] = "男"
+        got = {i["gender"] for i in icons_all if i["png"]}
+        if imgs:
+            it["icon_state"] = "有图"
+            it["icon_count"] = len(imgs)
+            it["icon_source"] = f"{TBL}.icon（男）/ female_icon（女）"
+            it["icons_all"] = icons_all
+            it["_media"] = {"images": imgs, "icons_total": len(icons_all), "total": len(imgs)}
+            it.pop("icon_missing_reason", None)
+            lack = sorted(want - got)
+            if lack:
+                it["icon_note"] = ("表内 %s 版图标路径在 PE 包里取不到，卡面只展示%s；"
+                                   "男女表现可能不同，缺的那一类不是没有、是这一版包里没打包。"
+                                   % ("、".join(lack), "、".join(sorted(got))))
             else:
-                if keep:
-                    st["复用已有图"] += 1
-                it["icon_state"] = "有图"
-                it["icon_count"] = 1
-                it["icon_source"] = f"{TBL}.icon"
-                it["icons_all"] = [{"path": base, "gender": hit_gender, "png": rel}]
-                it["_media"] = {
-                    "images": [{
-                        "png": rel,
-                        "base": full.rsplit(".", 1)[0],
-                        "label": "图标（女版）" if sub_f else "图标",
-                        "source": f"{TBL}.icon → {declared}",
-                        "fetch": "pe",
-                        "bytes": dst.stat().st_size if dst.is_file() else None,
-                    }],
-                    "total": 1,
-                }
-                if sub_f:
-                    it["icon_note"] = ("表内声明的是男版图标路径 %s，PE 包内只有同模块的女版资源 %s，"
-                                       "已按女版替代；男女表现可能不同。" % (declared, base))
-                    st["女版替代"] += 1
-                it.pop("icon_missing_reason", None)
-                if not sub_f:
-                    it.pop("icon_note", None)
-                st["有图"] += 1
+                it.pop("icon_note", None)
+            st["有图"] += 1
+            st["双图" if len(imgs) >= 2 else "单图"] += 1
         else:
-            st["缺图"] += 1
-            miss.append((it["name"], declared, "PE 包内无该图标资源"))
             it["icon_state"] = "缺图"
-            it["icon_missing_reason"] = "表里 icon 路径在 PE 包里取不到图"
+            it["icon_missing_reason"] = "表里 icon / female_icon 声明的路径在 PE 包里都取不到图"
             it["icon_count"] = 0
-            it["icon_source"] = f"{TBL}.icon"
-            it["icons_all"] = [{"path": declared, "gender": None, "png": None}]
+            it["icon_source"] = f"{TBL}.icon（男）/ female_icon（女）"
+            it["icons_all"] = icons_all
             it["_media"] = {"images": [], "total": 0}
             it.pop("icon_note", None)
+            st["缺图"] += 1
+
+
+        # 清掉多余的序号图（例如上一版出过 _1.png，这一版只有 1 张）
+        if not a.dry:
+            for n in range(len(imgs), len(imgs) + 4):
+                p = OUT / ("%s_%d.png" % (it["id"], n))
+                if p.is_file():
+                    p.unlink()
 
         # ── 溯源字段校正 ───────────────────────────────────────
         # 卡面 source 原文写的是「面饰专池 BA entry…（0x73 legacy CHS 池，名+时限可靠）」，
         # 那时描述/图标还没解出来。现在四个字段都按 row_key 直取同一行，
         # 卡面说明必须跟着改，否则和 provenance 自相矛盾。
-        it["source"] = (f"{TBL} 行解码（row_key {rk} 直取 name / part / icon / desc / charm_value；"
-                        f"时限变体为同组行 row_variants 合并）")
-        refs = ["name", "part", "icon", "desc"]
+        it["source"] = (f"{TBL} 行解码（row_key {rk} 直取 name / part / icon / female_icon / desc / "
+                        f"charm_value；时限变体为同组行 row_variants 合并；"
+                        f"男图取 icon、女图取 female_icon，两列都单独出图）")
+        refs = ["name", "part", "icon", "female_icon", "desc"]
         prov["field_refs"] = refs
         prov["name_source"] = f"{TBL}.name"
         prov["desc_source"] = {
@@ -288,7 +323,7 @@ def main() -> int:
             "source_lock_sha256": prov.get("source_lock_sha256"),
             "table": TBL,
             "row_key": rk,
-            "field_refs": ["icon"],
+            "field_refs": ["icon", "female_icon"],
         }
         ch = prov.get("locator_chain") or {}
         for step in ch.get("steps") or []:
@@ -296,15 +331,21 @@ def main() -> int:
                 step["field_refs"] = refs
 
     note = ("头饰/面饰/挂饰（并入自 fashion_face 的 face_* 条目）2D 图与描述回填："
-            f"来源 {TBL}（按 provenance.row_key 取行），图标字段 icon、描述字段 desc。"
-            f"描述命中 {st['描述']} 条；2D 图命中 {st['有图']} 条"
-            f"（其中男版缺失改用同模块女版的 {st['女版替代']} 条，"
-            f"女版已在卡片 icon_note 与图注里标注，不冒充男版），"
-            f"PE 包内男/女版都没有而如实标缺图 {st['缺图']} 条；不导占位图、不按行号猜图。")
+            f"来源 {TBL}（按 provenance.row_key 取行），描述字段 desc，"
+            f"男图字段 icon、女图字段 female_icon —— **两列分别出图，不互相顶替**。"
+            f"描述命中 {st['描述']} 条；出图成功 {st['有图']} 条"
+            f"（男女各 1 张的 {st['双图']} 条，只有单边资源的 {st['单图']} 条，"
+            f"单边缺失已在卡片 icon_note 注明是「包里没打包」而不是「没有这个东西」），"
+            f"两列都取不到而如实标缺图 {st['缺图']} 条；不导占位图、不按行号猜图、不跨性别顶替。")
+    # 旧版口径（只取 icon 单列、女版顶替男版）必须清掉，否则和新口径同时挂着一句话打脸
+    _meta = d.setdefault("meta", {})
+    _parts = [p for p in (_meta.get("notes") or "").split(notes_util.SEP)
+              if p.strip() and not p.strip().startswith("头饰/面饰/挂饰（并入自 fashion_face 的 face_* 条目）2D 图与描述回填")]
+    _meta["notes"] = notes_util.SEP.join(_parts)
     notes_util.append_note(d, note)
 
-    print("=== face_* 2D图 / 描述 回填 ===")
-    for k in ("卡", "描述", "有图", "女版替代", "缺图", "复用已有图", "无源行"):
+    print("=== face_* 2D图 / 描述 回填（男女双图）===")
+    for k in ("卡", "描述", "有图", "双图", "单图", "单图缺", "缺图", "无源行"):
         print("  %-6s %d" % (k, st[k]))
     if miss:
         print("  缺图样例（前 8）：")

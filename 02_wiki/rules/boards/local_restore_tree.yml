@@ -1,0 +1,12 @@
+board: local_restore_tree
+name: 本地还原树 · 配置表全量清单（路径 · 类型 · 落盘时间 · 名称还原率）
+category: 三、综合资料 / （三）本地还原树
+source_server: 本地 PE 还原树（41_还原树/pe），不读线上客户端
+package_sha: 919a6aa4962e37018cee1a6147586cff466d2e75f5c34dc1c8c7f7d9f45a7251
+generated: '2026-11-01'
+evidence: structure
+items: 33601
+primary_builders: []
+postprocess_scripts: []
+script_count: 0
+rebuild_risk: low

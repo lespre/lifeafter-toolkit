@@ -1582,7 +1582,7 @@ function frCard(it,cidx,full){
     <div class="fr-sub">
       <span class="fr-part b-${cls}" title="表的 part_type：${esc(it.part||"（表里无该字段）")}">${esc(partCn||"部位未标注")}</span>
       ${it.gender_scope?`<span class="fr-gender" title="${esc(it.gender_scope_note||it.gender_scope)}">${esc(it.gender||"仅单性别")}</span>`:""}
-      <span class="fr-charm${it.charm_value?"":" na"}" title="魅力值：fashion_data.charm_value">${it.charm_value?"魅力 "+esc(it.charm_value):"魅力 —"}</span>
+      ${it.charm_value ? `<span class="fr-charm" title="魅力值：fashion_data.charm_value">魅力 ${esc(it.charm_value)}</span>` : ""}
       ${mid!=null?`<span class="fr-model" title="model_id（fashion_data 表）${refs.length?` · 外观编号（player_appear_data）：${refs.join(" / ")}`:""}">model ${esc(mid)}${refs.length?`<span class="fr-ref"> · ${esc(refs[0])}${refs.length>1?`+${refs.length-1}`:""}</span>`:""}</span>`:`<span class="fr-model">model —</span>`}
       ${(()=>{const vm=it.version_merge;if(!vm||!(vm.aliases||[]).length)return "";
         return `<span class="fr-alt" title="同一 model 的另一条记录，已并入本卡：${esc(vm.aliases.join("、"))}">含${esc((vm.prefixes||[]).join("")||"新")}·版</span>`;})()}
@@ -1623,6 +1623,14 @@ function frHairDyeText(it){
     out.push(`${x.id}${cs.length?"（"+cs.join("/")+"）":""}`);
   }
   return out.join(" · ");
+}
+/* 2026-11-01：同居好感度（fashion_data.friendliness → cohabit_level_data 五档）*/
+function frCohabitText(it){
+  const c=it.cohabit_level;if(!c)return "";
+  const parts=[String(c.value)];
+  if(c.reached)parts.push(`达「${c.reached}」`);
+  if(c.next)parts.push(`距「${c.next}」还差 ${c.gap}`);
+  return parts.join(" · ");
 }
 /* 2026-11-01：卖点标签（value_word_ids → fashion_value_word_data，26 个标签）*/
 function frValueWords(it){
@@ -1693,6 +1701,36 @@ function frKvHtml(it){
   if(it.bone_info)pairs.push(["新骨骼",`是${(it.bone_info.soft_bone_ids||[]).length?" · 软骨骼 "+(it.bone_info.soft_bone_ids||[]).join(" / "):""}`]);
   if(it.green_model)pairs.push(["风底形态模型",[...(it.green_model.female||[]),...(it.green_model.female_high||[])].join(" / ")||"—"]);
   if((it.preview_group||[]).length)pairs.push(["专属预览",it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ ")]);
+  if(it.cohabit_level)pairs.push(["同居好感度",frCohabitText(it)]);
+  if(it.part_code!=null)pairs.push(["内部部位码",`${it.part_code} · ${it.part_code_cn||"—"}（部位判定唯一口径）`]);
+  if(it.show_name&&it.show_name!==it.name)pairs.push(["游戏内显示名",it.show_name]);
+  if(it.man_show_name)pairs.push(["男版显示名",it.man_show_name]);
+  if(it.show_schedule)pairs.push(["上架/可见时间",Object.entries(it.show_schedule).map(([k,v])=>`${k} ${Array.isArray(v)?v.join(" / "):v}`).join(" ｜ ")]);
+  if(it.misc_flags){
+    const mf=it.misc_flags;
+    const MFLAB={"gift_package_present_times_limit":"礼包次数上限","bag_fake_entryword":"背包假词条","zhexing_type":"折星型",
+      "training_rank_season_id":"训练赛赛季","special_fixed_attr_ids":"固定属性","hide_part":"隐藏部件",
+      "team_match_bg_conf":"组队背景配置","hd_run_replace_anim":"疾跑替换动作","flowing_light_group_id":"流光组",
+      "dynamic_macro_name":"动态宏","tex_compress_type":"贴图压缩","model_socket":"模型挂点",
+      "max_stack_num":"最大堆叠","obtain_notify":"获取通知"};
+    for(const [k,v] of Object.entries(mf))pairs.push([MFLAB[k]||k,Array.isArray(v)?v.join(" / "):String(v)]);
+  }
+  if(it.tech_flags){
+    const tf=it.tech_flags;
+    const TFLAB={"socket_names_female":"女版挂点名","socket_names_male":"男版挂点名","soft_bone_ids_female":"女版软骨骼",
+      "soft_bone_ids_male":"男版软骨骼","v2_socket_names":"v2 挂点名","v2_soft_bone_id":"v2 软骨骼",
+      "link_socket_names":"联动挂点名","link_softbone_ids":"联动软骨骼","body_soft_bone_id":"身体软骨骼",
+      "action_disable_soft_bone":"动作禁用软骨骼","dynamic_socket_names_female":"女版动态挂点",
+      "dynamic_socket_names_male":"男版动态挂点","socket_names_dont_load_in_cine":"剧场不加载挂点",
+      "anim_graph_id_unlink":"解链动作图","hide_in_bag":"背包内隐藏"};
+    for(const [k,v] of Object.entries(tf)){ if(TFLAB[k])pairs.push([TFLAB[k],Array.isArray(v)?v.join(" / "):String(v)]); }
+    if(tf.socket_model_use_high_model)pairs.push(["挂点用高模","是（纯技术）"]);
+    if((tf.forbid_primary_high_model||[]).length)pairs.push(["禁用主高模",tf.forbid_primary_high_model.join(" / ")+"（纯技术）"]);
+    if((tf.theme_codes||[]).length)pairs.push(["主题码",tf.theme_codes.join(" / ")+"（全库仅此一值）"]);
+    if(tf.is_slim_bag)pairs.push(["精简外观","是（实测：所有衣服/头饰/套装恒 1，与背包无关）"]);
+    if((tf.faked_times_limit||[]).length)pairs.push(["时限次数上限",tf.faked_times_limit.join(" / ")+"（实测恒 1，与时限无关）"]);
+    if((tf.valid_scene_ids||[]).length)pairs.push(["限定场景",tf.valid_scene_ids.join(" / ")+"（全库仅 4 行）"]);
+  }
   if(it.point_light_id!=null)pairs.push(["光源预设",String(it.point_light_id)]);
   if(it.foreign_name)pairs.push(["外文名",it.foreign_name]);
   if(it.is_2025||it.is_climb_tower)pairs.push(["活动标签",
@@ -1742,7 +1780,7 @@ function frKvHtml(it){
 }
 /* 卡面下方的两个折叠区（详情 + 技术详情）：只在 D2 灯箱/停靠栏里渲染，网格卡面不再出现 */
 function frDetailsHTML(it,kv){
-  const fdesc=(it.desc||it.desc_note||it.desc_man||it.flower_bud||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope||it.dye||it.obtain_res||it.theme||it.show_start||(it.value_words||[]).length||(it.other_get_methods||[]).length||it.uncap_appear_gender||it.rebirth_tex||(it.preview_group||[]).length)
+  const fdesc=(it.desc||it.desc_note||it.desc_man||it.flower_bud||it.effect_text||it.charm_note||it.reborn_vis!=null||it.back_weapon_vis!=null||(it.hide_parts||[]).length||it.gender||it.gender_scope||it.dye||it.obtain_res||it.theme||it.show_start||(it.value_words||[]).length||(it.other_get_methods||[]).length||it.uncap_appear_gender||it.rebirth_tex||(it.preview_group||[]).length||it.cohabit_level||it.part_code!=null)
     ?`<details class="fdesc"${FD_OPEN_ALL?" open":""}><summary>详情</summary><div class="fdesc-body">${
         ((it.vehicle_ids||[]).length>1?`<div class="fd-row"><span class="fd-k">全部编号</span><span class="fd-v mono">${it.vehicle_ids.join(" / ")}</span></div>`:"")+
         (it.gender?`<div class="fd-row"><span class="fd-k">性别</span><span class="fd-v">${esc(it.gender)}${it.gender_scope?` · <b>${esc(it.gender_scope)}</b>`:""}</span></div>`:"")+
@@ -1763,6 +1801,9 @@ function frDetailsHTML(it,kv){
         (it.uncap_appear_gender?`<div class="fd-row"><span class="fd-k">未解锁外观</span><span class="fd-v">版本 ${esc((it.uncap_appear_gender.values||[]).join(" / "))}<br><span style="opacity:.75">${esc(it.uncap_appear_gender.note||"")}</span></span></div>`:"")+
         (it.rebirth_tex?`<div class="fd-row"><span class="fd-k">再生形态贴图</span><span class="fd-v">是（背包专属贴图）</span></div>`:"")+
         ((it.preview_group||[]).length?`<div class="fd-row"><span class="fd-k">专属预览</span><span class="fd-v">${esc(it.preview_group.map(g=>`组 ${g.group}${(g.tags||[]).length?" · "+(g.tags||[]).join(" / "):""}${(g.anims||[]).length?" · "+(g.anims||[]).join(" / "):""}`).join(" ｜ "))}</span></div>`:"")+
+        (it.part_code!=null?`<div class="fd-row"><span class="fd-k">内部部位码</span><span class="fd-v"><span class="mono">${it.part_code}</span> · ${esc(it.part_code_cn||"")}（部位判定唯一口径）</span></div>`:"")+
+        (it.show_name&&it.show_name!==it.name?`<div class="fd-row"><span class="fd-k">游戏内显示名</span><span class="fd-v">${esc(it.show_name)}</span></div>`:"")+
+        (it.cohabit_level?`<div class="fd-row"><span class="fd-k">同居好感度</span><span class="fd-v">${esc(frCohabitText(it))}<br><span style="opacity:.75">同居五档：相遇 0 · 相知 700 · 相伴 1500 · 同行 3000 · 同心 6000</span></span></div>`:"")+
         (it.show_no_have!=null?`<div class="fd-row"><span class="fd-k">未拥有时</span><span class="fd-v">${it.show_no_have?"衣柜里也显示":"衣柜里不显示"}</span></div>`:"")+
         (it.desc_man?`<div class="fd-row"><span class="fd-k">男版描述</span><span class="fd-v">${richText(it.desc_man)}</span></div>`:"")+
         ((it.name_man||it.name_female)?`<div class="fd-row"><span class="fd-k">分版命名</span><span class="fd-v">女版 ${esc(it.name_female||"—")} / 男版 ${esc(it.name_man||"—")}</span></div>`:"")+
@@ -1900,6 +1941,15 @@ if(SCENE_TABLE)document.body.classList.add("scene-mode","sbt-mode");
    ★ sbt-mode 是表格外观的公共开关（样式见 board_base.css），scene-mode 只保留场景专属微调。 */
 const ST_TABLE=(function(){try{return (getParam("b")||"")==="server_types";}catch(e){return false;}})();
 if(ST_TABLE)document.body.classList.add("st-mode","sbt-mode");
+/* ── 可切换展示视图（?view=xxx）────────────────────────────────────────
+   CDN 资源库 cdn_library：table / group / matrix
+   本地还原树 local_restore_tree：tree / columns / dash
+   ★ 全部视图只用板内既有字段，不引入任何推断值；
+     唯一的派生量（体积条宽度、占比、聚合计数）都由字段直接算出。 */
+const CDN_BOARD=(function(){try{return (getParam("b")||"")==="cdn_library";}catch(e){return false;}})();
+const TREE_BOARD=(function(){try{return (getParam("b")||"")==="local_restore_tree";}catch(e){return false;}})();
+const VIEW=(function(){try{return (getParam("view")||"").toLowerCase();}catch(e){return "";}})();
+if(CDN_BOARD||TREE_BOARD)document.body.classList.add("view-mode");
 const VEHICLE_BOARD=(function(){try{return (getParam("b")||"")==="vehicle_full";}catch(e){return false;}})();
 const V={cls:new Set(),sub:new Set(),img:"",sort:""};
 (function(){
@@ -2858,7 +2908,7 @@ const FR_D2={
     const partCn=(it.all_parts&&it.all_parts.length?it.all_parts.map(p=>COMMON_PART_CN[p]||p).join(" / "):(COMMON_PART_CN[it.part]||it.part||""));
     const mid=(it.model_id!=null)?it.model_id:((it.model_ids&&it.model_ids[0])!=null?it.model_ids[0]:null);
     return `<span class="fr-part b-${cls}">${esc(partCn||"部位未标注")}</span>`+
-      `<span class="fr-charm${it.charm_value?"":" na"}">${it.charm_value?"魅力 "+esc(it.charm_value):"魅力 —"}</span>`+
+      (it.charm_value ? `<span class="fr-charm">魅力 ${esc(it.charm_value)}</span>` : "")+
       (mid!=null?`<span class="fr-model">model ${esc(mid)}</span>`:"");
   }
 };
@@ -3269,6 +3319,338 @@ function stRender(items){
   t.appendChild(tb);g.appendChild(t);
   const c=document.getElementById("count");
   if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
+}
+
+/* ── 可切换视图：CDN 资源库 / 本地还原树 ──────────────────────────── */
+function fmtMB(mb){
+  const v=Number(mb||0);
+  if(v>=1024)return (v/1024).toFixed(v>=10240?0:1)+" GB";
+  return v.toLocaleString("en-US")+" MB";
+}
+function fmtInt(n){return Number(n||0).toLocaleString("en-US");}
+function vEl(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+
+/* ── CDN 视图一：可排序大表格 ─────────────────────────────────────── */
+const CDN_TCOLS=["逻辑包","目录组","卷数","变体合计","单卷最大","条目数","档位数","本地","变体文件"];
+function cdnVal(it,k){
+  if(k==="逻辑包")return it.name||"";
+  if(k==="目录组")return it.group||"";
+  if(k==="卷数")return Number(it.files||0);
+  if(k==="变体合计")return Number(it.size_total_mb||0);
+  if(k==="单卷最大")return Number(it.size_max_mb||0);
+  if(k==="条目数")return Number(it.entries||0);
+  if(k==="档位数")return Number(it.tier_count||0);
+  if(k==="本地")return it.local_state||"";
+  if(k==="变体文件")return it.variant_names||"";
+  return it.name||"";
+}
+let CDN_SORT={key:"变体合计",dir:-1};
+function cdnTableRender(items){
+  const sorted=items.slice().sort((a,b)=>{
+    const k=CDN_SORT.key,v1=cdnVal(a,k),v2=cdnVal(b,k);
+    if(typeof v1==="number"&&typeof v2==="number"){if(v1!==v2)return (v1-v2)*CDN_SORT.dir;}
+    else{const c=String(v1).localeCompare(String(v2),"zh-CN");if(c)return c*CDN_SORT.dir;}
+    return String(a.name||"").localeCompare(String(b.name||""),"zh-CN");
+  });
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vscroll");
+  const t=vEl("table","vtab");
+  const thead=vEl("thead");
+  const trh=vEl("tr");
+  for(const c of CDN_TCOLS){
+    const th=vEl("th",null,esc(c)+(CDN_SORT.key===c?(CDN_SORT.dir>0?" ▲":" ▼"):""));
+    th.onclick=()=>{if(CDN_SORT.key===c)CDN_SORT.dir*=-1;else{CDN_SORT.key=c;CDN_SORT.dir=(c==="变体合计"||c==="单卷最大"||c==="条目数"||c==="卷数"||c==="档位数")?-1:1;}render();};
+    trh.appendChild(th);
+  }
+  thead.appendChild(trh);t.appendChild(thead);
+  const tb=vEl("tbody");
+  for(const it of sorted){
+    const tr=vEl("tr");
+    const cells=[
+      ["mono",esc(it.name||"")],
+      ["",esc(it.group||"-")],
+      ["num",fmtInt(it.files)],
+      ["num",fmtMB(it.size_total_mb)],
+      ["num",fmtMB(it.size_max_mb)],
+      ["num",fmtInt(it.entries)],
+      ["num",fmtInt(it.tier_count)],
+      ["",`<span class="vtag ${it.local_state==="完整"?"ok":(it.local_state==="部分"?"warn":"miss")}">${esc(it.local_state||"-")}</span>`],
+      ["dim",esc(it.variant_names||"-")],
+    ];
+    for(const [cls,val] of cells){const td=vEl("td",cls,cls==="num"?"":val);if(cls==="num")td.textContent=val;tr.appendChild(td);}
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb);wrap.appendChild(t);g.appendChild(wrap);
+  const c=document.getElementById("count");if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
+}
+
+/* ── CDN 视图二：目录组折叠 + 体积条 ─────────────────────────────── */
+function cdnGroupRender(items){
+  const groups=new Map();
+  for(const it of items){
+    const g=it.group||"(未分组)";
+    if(!groups.has(g))groups.set(g,[]);
+    groups.get(g).push(it);
+  }
+  const rows=[...groups.entries()].map(([name,list])=>{
+    const total=list.reduce((s,x)=>s+(Number(x.size_total_mb)||0),0);
+    const ent=list.reduce((s,x)=>s+(Number(x.entries)||0),0);
+    const local=list.filter(x=>x.local_state==="完整").length;
+    return {name,list,total,ent,local,n:list.length};
+  });
+  /* 排序：本地完成率低的排前面（那是「缺什么」的关键信息），再按体积降序 */
+  rows.sort((a,b)=>(a.local/a.n)-(b.local/b.n)||b.total-a.total);
+  const maxTotal=Math.max(...rows.map(r=>r.total),1);
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vgroups");
+  for(const r of rows){
+    const box=vEl("div","vgroup");
+    const head=vEl("div","vgroup-h");
+    const caret=vEl("span","vcaret","▸");
+    const bar=vEl("span","vbar");
+    const fill=vEl("i");fill.style.width=Math.max(2,Math.round(r.total/maxTotal*100))+"%";
+    if(r.local===r.n)fill.className="ok";else if(r.local===0)fill.className="miss";else fill.className="warn";
+    bar.appendChild(fill);
+    head.appendChild(caret);
+    head.appendChild(vEl("span","vg-name",esc(r.name)));
+    head.appendChild(bar);
+    head.appendChild(vEl("span","vg-num",`${r.n} 包 · ${fmtMB(r.total)} · 条目 ${fmtInt(r.ent)}`));
+    head.appendChild(vEl("span","vtag "+(r.local===r.n?"ok":(r.local===0?"miss":"warn")),`本地 ${r.local}/${r.n}`));
+    const body=vEl("div","vgroup-b");body.hidden=true;
+    const t=vEl("table","vsub");
+    t.innerHTML="<thead><tr><th>逻辑包</th><th>卷数</th><th>变体合计</th><th>单卷最大</th><th>条目数</th><th>档位</th><th>本地</th></tr></thead>";
+    const tb=vEl("tbody");
+    const list=r.list.slice().sort((a,b)=>(Number(b.size_total_mb)||0)-(Number(a.size_total_mb)||0));
+    for(const it of list){
+      const tr=vEl("tr");
+      const cells=[
+        ["mono",esc(it.name||"")],
+        ["num",fmtInt(it.files)],
+        ["num",fmtMB(it.size_total_mb)],
+        ["num",fmtMB(it.size_max_mb)],
+        ["num",fmtInt(it.entries)],
+        ["",esc(it.tiers||"-")],
+        ["",`<span class="vtag ${it.local_state==="完整"?"ok":(it.local_state==="部分"?"warn":"miss")}">${esc(it.local_state||"-")}</span>`],
+      ];
+      for(const [cls,val] of cells){const td=vEl("td",cls,cls==="num"?"":val);if(cls==="num")td.textContent=val;tr.appendChild(td);}
+      tb.appendChild(tr);
+    }
+    t.appendChild(tb);body.appendChild(t);
+    head.onclick=()=>{body.hidden=!body.hidden;caret.textContent=body.hidden?"▸":"▾";};
+    box.appendChild(head);box.appendChild(body);wrap.appendChild(box);
+  }
+  g.appendChild(wrap);
+  const c=document.getElementById("count");if(c)c.textContent=`${rows.length} 个目录组 · 共 ${items.length} 个逻辑包`;
+}
+
+/* ── CDN 视图三：档位矩阵 ─────────────────────────────────────────── */
+function cdnMatrixRender(items){
+  /* 档位全集 = 所有条目 tiers 字段的并集（tiers 形如 "0,1,2,5,6,8,10,11"，是事实字段） */
+  const tierSet=new Set();
+  for(const it of items){
+    String(it.tiers||"").split(",").forEach(s=>{const t=s.trim();if(t!=="")tierSet.add(t);});
+  }
+  const tiers=[...tierSet].sort((a,b)=>Number(a)-Number(b));
+  const sorted=items.slice().sort((a,b)=>(Number(b.size_total_mb)||0)-(Number(a.size_total_mb)||0));
+  const TOPN=Math.min(sorted.length,40);
+  const shown=sorted.slice(0,TOPN);
+  const maxT=Math.max(...shown.map(x=>Number(x.size_total_mb)||0),1);
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vscroll");
+  const t=vEl("table","vmat");
+  let head="<thead><tr><th>逻辑包</th>";
+  for(const tr of tiers)head+=`<th class="mt">t${esc(tr)}</th>`;
+  head+="<th class="+'"num">变体合计</th></tr></thead>';
+  t.innerHTML=head;
+  const tb=vEl("tbody");
+  for(const it of shown){
+    const tr=vEl("tr");
+    const td0=vEl("td","mono",esc(it.name||""));tr.appendChild(td0);
+    const have=new Set(String(it.tiers||"").split(",").map(s=>s.trim()).filter(Boolean));
+    const ratio=(Number(it.size_total_mb)||0)/maxT;
+    const lvl=ratio>0.6?4:(ratio>0.3?3:(ratio>0.1?2:1));
+    for(const tg of tiers){
+      const on=have.has(tg);
+      const td=vEl("td","mc"+(on?" l"+lvl:""),on?"":"");
+      if(on)td.title=`${it.name} · 档位 t${tg} · ${fmtMB(it.size_total_mb)}`;
+      tr.appendChild(td);
+    }
+    const tdN=vEl("td","num");tdN.textContent=fmtMB(it.size_total_mb);tr.appendChild(tdN);
+    tb.appendChild(tr);
+  }
+  t.appendChild(tb);wrap.appendChild(t);
+  const leg=vEl("div","vlegend",
+    `矩阵只显示体积最大的 ${TOPN} 个逻辑包（共 ${items.length} 个）；格子 = 该包含此档位，深浅按该包变体合计体积。`
+    +`<span class="ms l1"></span>小<span class="ms l2"></span><span class="ms l3"></span><span class="ms l4"></span>大`
+    +`<span class="ms none"></span>无此档`);
+  g.appendChild(wrap);g.appendChild(leg);
+  const c=document.getElementById("count");if(c)c.textContent=`档位 ${tiers.length} 档 · 显示体积 Top ${TOPN} / ${items.length} 个逻辑包`;
+}
+
+function cdnRender(view,items){
+  if(view==="table"){cdnTableRender(items);return true;}
+  if(view==="group"){cdnGroupRender(items);return true;}
+  if(view==="matrix"){cdnMatrixRender(items);return true;}
+  return false;
+}
+
+/* ── 还原树视图一：目录树（首字母分桶）──────────────────────────── */
+function treeTreeRender(items){
+  const buckets=new Map();
+  for(const it of items){
+    const fn=String(it.name||"").split("/").pop()||"";
+    const ch=(fn[0]||"#").toUpperCase();
+    if(!buckets.has(ch))buckets.set(ch,[]);
+    buckets.get(ch).push(it);
+  }
+  const keys=[...buckets.keys()].sort();
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vgroups");
+  const root=vEl("div","vgroup");
+  const rh=vEl("div","vgroup-h");
+  rh.appendChild(vEl("span","vg-name","▾ com/cdata"));
+  rh.appendChild(vEl("span","vg-num",`${fmtInt(items.length)} 个文件 · ${fmtMB(items.reduce((s,x)=>s+(Number(x.size_kb)||0),0)/1024)}`));
+  root.appendChild(rh);
+  const rbody=vEl("div","vgroup-b");rbody.hidden=false;
+  root.appendChild(rbody);
+  for(const k of keys){
+    const list=buckets.get(k);
+    const box=vEl("div","vgroup vsub1");
+    const head=vEl("div","vgroup-h");
+    const caret=vEl("span","vcaret","▸");
+    head.appendChild(caret);
+    head.appendChild(vEl("span","vg-name",esc(k)+" 开头"));
+    head.appendChild(vEl("span","vg-num",`${fmtInt(list.length)} 个文件`));
+    const body=vEl("div","vgroup-b");body.hidden=true;
+    const ul=vEl("div","vfiles");
+    for(const it of list.slice(0,60)){
+      ul.appendChild(vEl("div","vfile",
+        `<span class="vp">${esc(it.name)}</span><span class="vk">${esc(it.ext||"")}</span>`
+        +`<span class="vk">${Number(it.size_kb||0).toLocaleString("en-US")} KB</span>`
+        +`<span class="vk">${esc(it.mtime||"")}</span>`));
+    }
+    if(list.length>60)ul.appendChild(vEl("div","vfile vmore",`…另 ${fmtInt(list.length-60)} 个（同组，点搜索可定位）`));
+    body.appendChild(ul);
+    head.onclick=()=>{body.hidden=!body.hidden;caret.textContent=body.hidden?"▸":"▾";};
+    box.appendChild(head);box.appendChild(body);rbody.appendChild(box);
+  }
+  wrap.appendChild(root);g.appendChild(wrap);
+  const c=document.getElementById("count");if(c)c.textContent=`${keys.length} 个首字母桶 · 共 ${fmtInt(items.length)} 个文件`;
+}
+
+/* ── 还原树视图二：.py / .nxs 双列索引 ──────────────────────────── */
+function treeColumnsRender(items){
+  const py=[],nxs=[],other=[];
+  for(const it of items){
+    const e=String(it.ext||"").toLowerCase();
+    if(e===".py")py.push(it);else if(e===".nxs")nxs.push(it);else other.push(it);
+  }
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vcols");
+  const mkCol=(title,sub,list,cls)=>{
+    const col=vEl("div","vcol");
+    col.appendChild(vEl("div","vcol-h",`<span class="vtag ${cls}">${esc(title)}</span><span class="vg-num">${fmtInt(list.length)} 个 · ${esc(sub)}</span>`));
+    const box=vEl("div","vcol-b");
+    const CAP=400;
+    for(const it of list.slice(0,CAP)){
+      box.appendChild(vEl("div","vfile",
+        `<span class="vp">${esc(String(it.name||"").split("/").pop())}</span>`
+        +`<span class="vk">${Number(it.size_kb||0).toLocaleString("en-US")} KB</span>`
+        +`<span class="vk">${esc(it.mtime||"")}</span>`));
+    }
+    if(list.length>CAP)box.appendChild(vEl("div","vfile vmore",`…另 ${fmtInt(list.length-CAP)} 个，用上方搜索框过滤`));
+    col.appendChild(box);
+    return col;
+  };
+  wrap.appendChild(mkCol(".py 源表","可直接读的表定义",py,"ok"));
+  wrap.appendChild(mkCol(".nxs 容器","加密/打包封装",nxs,"warn"));
+  g.appendChild(wrap);
+  if(other.length){
+    const box=vEl("div","vcols");box.appendChild(vEl("div","vcol",`<div class="vcol-h"><span class="vtag miss">其他封装</span><span class="vg-num">${fmtInt(other.length)} 个</span></div>`));
+    g.appendChild(box);
+  }
+  const c=document.getElementById("count");if(c)c.textContent=`.py ${fmtInt(py.length)} · .nxs ${fmtInt(nxs.length)} · 共 ${fmtInt(items.length)} 个文件`;
+}
+
+/* ── 还原树视图三：聚合看板 ─────────────────────────────────────── */
+function treeDashRender(items){
+  const byExt=new Map(),byPrefix=new Map(),byDay=new Map();
+  let totalKB=0;
+  for(const it of items){
+    totalKB+=Number(it.size_kb)||0;
+    const e=String(it.ext||"(无)").toLowerCase();
+    byExt.set(e,(byExt.get(e)||0)+1);
+    const fn=String(it.name||"").split("/").pop()||"";
+    const p=fn.split("_")[0]||"(其他)";
+    byPrefix.set(p,(byPrefix.get(p)||0)+1);
+    const d=String(it.mtime||"").slice(0,10)||"(无日期)";
+    byDay.set(d,(byDay.get(d)||0)+1);
+  }
+  const top=(m,n)=>[...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n);
+  const maxP=Math.max(...top(byPrefix,24).map(x=>x[1]),1);
+  const maxD=Math.max(...top(byDay,8).map(x=>x[1]),1);
+  const g=document.getElementById("grid");g.innerHTML="";
+  const wrap=vEl("div","vdash");
+  /* 概览卡 */
+  const tiles=vEl("div","vtiles");
+  const tile=(k,v,note)=>tiles.appendChild(vEl("div","vtile",`<div class="vt-k">${esc(k)}</div><div class="vt-v">${esc(v)}</div><div class="vt-n">${esc(note||"")}</div>`));
+  tile("文件总数",fmtInt(items.length),"全部在 com/cdata 下");
+  tile("封装类型",String(byExt.size)+" 种",[...byExt.keys()].join(" / "));
+  tile("合计体积",fmtMB(totalKB/1024),"中位 "+(items.length?Number(items[Math.floor(items.length/2)].size_kb||0).toFixed(1):"0")+" KB");
+  tile("名称还原率","100%","路径还原自客户端产物");
+  wrap.appendChild(tiles);
+  /* 前缀分布 */
+  const p1=vEl("div","vpanel");
+  p1.appendChild(vEl("div","vpanel-h","按文件名前缀分组（文件名第一个下划线之前）· Top 24"));
+  const pb=vEl("div","vbars");
+  for(const [k,v] of top(byPrefix,24)){
+    const row=vEl("div","vbar-row");
+    row.appendChild(vEl("span","vb-k",esc(k)));
+    const bar=vEl("span","vbar");
+    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/maxP*100))+"%";
+    bar.appendChild(fill);row.appendChild(bar);
+    row.appendChild(vEl("span","vb-n",fmtInt(v)));
+    pb.appendChild(row);
+  }
+  p1.appendChild(pb);
+  p1.appendChild(vEl("div","vnote",`共 ${fmtInt(byPrefix.size)} 个前缀组，此处只列 Top 24；分组规则为「文件名第一个下划线之前」，是字符串切片、不含语义推断。`));
+  wrap.appendChild(p1);
+  /* 封装分布 + 落盘日期 */
+  const p2=vEl("div","vpanel");
+  p2.appendChild(vEl("div","vpanel-h","封装类型分布"));
+  const eb=vEl("div","vbars");
+  for(const [k,v] of top(byExt,10)){
+    const row=vEl("div","vbar-row");
+    row.appendChild(vEl("span","vb-k",esc(k)));
+    const bar=vEl("span","vbar");
+    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/items.length*100))+"%";fill.className="ok";
+    bar.appendChild(fill);row.appendChild(bar);
+    row.appendChild(vEl("span","vb-n",fmtInt(v)));
+    eb.appendChild(row);
+  }
+  p2.appendChild(eb);
+  p2.appendChild(vEl("div","vpanel-h","落盘日期分布（最近 8 天）"));
+  const db=vEl("div","vbars");
+  for(const [k,v] of top(byDay,8)){
+    const row=vEl("div","vbar-row");
+    row.appendChild(vEl("span","vb-k",esc(k)));
+    const bar=vEl("span","vbar");
+    const fill=vEl("i");fill.style.width=Math.max(1,Math.round(v/maxD*100))+"%";fill.className="warn";
+    bar.appendChild(fill);row.appendChild(bar);
+    row.appendChild(vEl("span","vb-n",fmtInt(v)));
+    db.appendChild(row);
+  }
+  p2.appendChild(db);
+  wrap.appendChild(p2);
+  g.appendChild(wrap);
+  const c=document.getElementById("count");if(c)c.textContent=`${fmtInt(items.length)} 个文件 · ${fmtInt(byPrefix.size)} 个前缀组 · ${fmtInt(byDay.size)} 个落盘日期`;
+}
+
+function treeRender(view,items){
+  if(view==="tree"){treeTreeRender(items);return true;}
+  if(view==="columns"){treeColumnsRender(items);return true;}
+  if(view==="dash"){treeDashRender(items);return true;}
+  return false;
 }
 
 function render(){

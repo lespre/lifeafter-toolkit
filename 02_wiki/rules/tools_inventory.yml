@@ -1,10 +1,10 @@
 version: 1
 generated_by: web/tools/build/gen_rules_inventory.py
-total: 696
+total: 705
 role_counts:
-  other: 79
-  patch: 213
-  check: 75
+  other: 80
+  patch: 218
+  check: 78
   build: 155
   probe: 99
   infra: 75
@@ -148,6 +148,13 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  add_missing_face_cards.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   add_named_only_toggle.py:
     role: patch
     writes_boards: false
@@ -475,6 +482,12 @@ scripts:
     archive_candidate: false
     archived: false
     boards: []
+  audit_pages_full.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   audit_rebuild_chain.py:
     role: check
     writes_boards: false
@@ -484,6 +497,12 @@ scripts:
   audit_rebuildability.py:
     role: check
     writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
+  audit_site_refs.py:
+    role: check
+    writes_boards: true
     archive_candidate: false
     archived: false
     boards: []
@@ -692,7 +711,6 @@ scripts:
     archive_candidate: false
     archived: false
     boards:
-    - core_skill_12star
     - mutation_core_full
   build_equipment_attrs.py:
     role: build
@@ -1256,6 +1274,12 @@ scripts:
     archived: false
     boards:
     - fashion_wardrobe
+  check_tree_freshness.py:
+    role: check
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   checks.py:
     role: other
     writes_boards: false
@@ -1795,6 +1819,20 @@ scripts:
     boards:
     - edible_catalog
     - recipe_book
+  fill_face_charm.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
+  fill_face_media_desc.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   fill_fashion_by_model.py:
     role: patch
     writes_boards: true
@@ -1964,6 +2002,13 @@ scripts:
     archived: false
     boards:
     - lottery_periods
+  fill_projection_charm.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards:
+    - fashion_wardrobe
   fill_sf_entry_items.py:
     role: patch
     writes_boards: true
@@ -2180,7 +2225,6 @@ scripts:
     archive_candidate: false
     archived: false
     boards:
-    - fashion_identity_unresolved_v01
     - fashion_wardrobe
     - lottery_periods
   fix_fashion_gender_pairs.py:
@@ -2417,7 +2461,6 @@ scripts:
     archived: false
     boards:
     - chip_item_catalog
-    - fashion_identity_unresolved_v01
   gen_home.py:
     role: other
     writes_boards: false
@@ -3565,8 +3608,7 @@ scripts:
     writes_boards: true
     archive_candidate: false
     archived: false
-    boards:
-    - item_master_v01
+    boards: []
   rebuild_item_master_v02.py:
     role: build
     writes_boards: false
@@ -3976,6 +4018,12 @@ scripts:
     boards:
     - kill_broadcast
     - mutation_core_full
+  restore_zeroed_from_clone.py:
+    role: patch
+    writes_boards: false
+    archive_candidate: false
+    archived: false
+    boards: []
   restructure_wardrobe_parts.py:
     role: other
     writes_boards: false
@@ -4292,6 +4340,12 @@ scripts:
   stamp_board_contract.py:
     role: build
     writes_boards: true
+    archive_candidate: false
+    archived: false
+    boards: []
+  summarize_ref_audit.py:
+    role: other
+    writes_boards: false
     archive_candidate: false
     archived: false
     boards: []

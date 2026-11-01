@@ -89,10 +89,10 @@ body.wiki-board .fdesc>summary:before{color:#b6a7df}
 body.wiki-board .fdesc>summary:hover{color:#e3d7fb}
 body.wiki-board .fdesc[open]>summary{color:#d5c3f1}
 body.wiki-board .fdesc-body{font-size:12px;line-height:1.85;color:#c6d0e3;margin-top:10px;white-space:normal}
-body.wiki-board .fd-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:9px;margin:5px 0;min-width:0}
+body.wiki-board .fd-row{display:grid;grid-template-columns:108px minmax(0,1fr);gap:9px;margin:5px 0;min-width:0}
 body.wiki-board .fd-k{color:#9faec9;min-width:0}
 body.wiki-board .fd-v{color:#d0d9e9;white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}
-body.wiki-board :is(.fr-kv,.kv){grid-template-columns:86px minmax(0,1fr);gap:6px 10px;min-width:0}
+body.wiki-board :is(.fr-kv,.kv){grid-template-columns:100px minmax(0,1fr);gap:6px 10px;min-width:0}
 body.wiki-board :is(.fr-kv,.kv) .k{color:#9eacc7!important}
 body.wiki-board :is(.fr-kv,.kv) .v{color:#cbd5e7!important;overflow-wrap:anywhere;min-width:0}
 body.wiki-board :is(.fr-sec,.src,.i-detail,.i-more,.skin-detail,.reference,.sfx-children,.variant-children,.behavior-resources){border-color:#35415a!important}

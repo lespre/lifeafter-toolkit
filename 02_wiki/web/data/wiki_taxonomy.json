@@ -138,19 +138,33 @@
      ]
     },
     {
-     "name": "（二）全量道具总表",
+     "name": "（二）CDN 资源库",
+     "boards": [
+      "cdn_library"
+     ],
+     "children": []
+    },
+    {
+     "name": "（三）本地还原树",
+     "boards": [
+      "local_restore_tree"
+     ],
+     "children": []
+    },
+    {
+     "name": "（四）全量道具总表",
      "boards": [
       "item_master_full"
      ]
     },
     {
-     "name": "（三）配方",
+     "name": "（五）配方",
      "boards": [
       "recipe_catalog"
      ]
     },
     {
-     "name": "（四）说明条目、文字与提示总表",
+     "name": "（六）说明条目、文字与提示总表",
      "boards": [
       "desc_catalog",
       "text_notice_catalog",
@@ -158,30 +172,29 @@
      ]
     },
     {
-     "name": "（五）实体技能",
+     "name": "（七）实体技能",
      "boards": [
       "entity_catalog",
       "skill_catalog"
      ]
     },
     {
-     "name": "（六）状态",
+     "name": "（八）状态",
      "boards": [
       "buff_catalog"
      ]
     },
     {
-     "name": "（七）图鉴收集",
+     "name": "（九）图鉴收集",
      "boards": [
       "illustration_catalog"
      ]
     },
     {
-     "name": "（八）CDN 资源库",
+     "name": "（十）文件名还原方法论",
      "boards": [
-      "cdn_library"
-     ],
-     "children": []
+      "name_restore_method"
+     ]
     }
    ]
   }

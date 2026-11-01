@@ -62,7 +62,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）状态效果总表",
-      "category": "三、综合资料 / （七）状态",
+      "category": "三、综合资料 / （八）状态",
       "board": "buff_catalog",
       "items": 18232,
       "generated": "2026-10-23",
@@ -86,7 +86,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "CDN 资源库总览（逻辑包 · 变体 · 档位 · 本地状态）",
-      "category": "三、综合资料 / （九）CDN 资源库",
+      "category": "三、综合资料 / （二）CDN 资源库",
       "board": "cdn_library",
       "items": 711,
       "generated": "2026-10-31",
@@ -112,7 +112,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）说明条目总表",
-      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （六）说明条目、文字与提示总表",
       "board": "desc_catalog",
       "items": 3630,
       "generated": "2026-10-21",
@@ -194,7 +194,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）实体总表",
-      "category": "三、综合资料 / （六）实体技能",
+      "category": "三、综合资料 / （七）实体技能",
       "board": "entity_catalog",
       "items": 9219,
       "generated": "2026-10-23",
@@ -248,12 +248,13 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 3135,
+      "items": 3154,
       "generated": "2026-10-24",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 3135
+        "structure": 3152,
+        "candidate": 2
       },
       "state_summary": {
         "unresolved": 2197,
@@ -269,7 +270,8 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 3135
+          "missing": 2,
+          "replayed-structural": 3152
         }
       }
     },
@@ -300,7 +302,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）当前包 · 礼盒名称与说明文字表",
-      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （六）说明条目、文字与提示总表",
       "board": "gift_data_text_sources",
       "items": 5477,
       "generated": "2026-09-13",
@@ -324,7 +326,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）图鉴收集总表",
-      "category": "三、综合资料 / （八）图鉴收集",
+      "category": "三、综合资料 / （九）图鉴收集",
       "board": "illustration_catalog",
       "items": 954,
       "generated": "2026-10-21",
@@ -350,7 +352,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "全量道具总表",
-      "category": "三、综合资料 / （二）全量道具总表",
+      "category": "三、综合资料 / （四）全量道具总表",
       "board": "item_master_full",
       "items": 30252,
       "generated": "2026-10-23",
@@ -408,6 +410,35 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "replayed-structural": 13
+        }
+      }
+    },
+    {
+      "name": "本地还原树 · 配置表全量清单（路径 · 类型 · 落盘时间 · 名称还原率）",
+      "category": "三、综合资料 / （九）本地还原树",
+      "board": "local_restore_tree",
+      "items": 33601,
+      "generated": "2026-11-01",
+      "source_server": "本地 PE 还原树（41_还原树/pe），不读线上客户端",
+      "package_sha": "919a6aa4962e37018cee1a6147586cff466d2e75f5c34dc1c8c7f7d9f45a7251",
+      "evidence": {
+        "structure": 33601
+      },
+      "state_summary": {
+        "文件": 33601,
+        "配置树": 30609,
+        "仅增量快照": 2992,
+        "被热更覆盖": 2992,
+        "正式名": 33601,
+        "已还原文件名比例": "100.0%"
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "missing": 33601
         }
       }
     },
@@ -470,8 +501,34 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "（内测版）文件名还原方法论 · 十一条路径的实测结果",
+      "category": "三、综合资料 / （十）文件名还原方法论",
+      "board": "name_restore_method",
+      "items": 13,
+      "generated": "2026-11-01",
+      "source_server": "本会话实测（2026-11-01）· 脚本在 01_索引与产物/10_索引/热更检测/白名单与GM/",
+      "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "evidence": {
+        "candidate": 13
+      },
+      "state_summary": {
+        "verified": 6,
+        "quarantined": 6,
+        "runtime final unknown": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "missing": 13
+        }
+      }
+    },
+    {
       "name": "（内测版）配方总表",
-      "category": "三、综合资料 / （四）配方",
+      "category": "三、综合资料 / （五）配方",
       "board": "recipe_catalog",
       "items": 4189,
       "generated": "2026-10-21",
@@ -548,7 +605,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）技能总表",
-      "category": "三、综合资料 / （六）实体技能",
+      "category": "三、综合资料 / （七）实体技能",
       "board": "skill_catalog",
       "items": 6191,
       "generated": "2026-10-23",
@@ -623,7 +680,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "（内测版）文本与提示（错误码 / 官方公告）",
-      "category": "三、综合资料 / （五）说明条目、文字与提示总表",
+      "category": "三、综合资料 / （六）说明条目、文字与提示总表",
       "board": "text_notice_catalog",
       "items": 14841,
       "generated": "2026-10-23",

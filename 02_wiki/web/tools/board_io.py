@@ -36,6 +36,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import time
 from typing import Any
 
 # 条目内部紧凑分隔符（无空格）
@@ -87,11 +88,26 @@ def dumps_board_js(board_id: str, board_text: str) -> str:
     return f"window.WIKI_BOARD_{board_id} = " + board_text.rstrip() + ";\n"
 
 
-def write_text(path: pathlib.Path, text: str) -> None:
-    """以 UTF-8 + LF 写文本（幂等；不追加空行）。"""
+def write_text(path: pathlib.Path, text: str, *, retries: int = 4) -> None:
+    """以 UTF-8 + LF 写文本（幂等；不追加空行）。
+
+    2026-11-01：Windows 上偶发 `OSError [Errno 22] Invalid argument`（写 3~33MB 的大文件时
+    出现，同一文件手动重试即成功，疑似沙箱/杀软的文件代理层瞬时错误）。这里加有限重试，
+    避免一次瞬时失败把整个 build_wiki 打断、留下半更新产物。
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write(text)
+    last: OSError | None = None
+    for attempt in range(retries):
+        try:
+            with open(path, "w", encoding="utf-8", newline="\n") as f:
+                f.write(text)
+            return
+        except OSError as exc:      # noqa: PERF203 - 需要逐次重试
+            last = exc
+            if attempt + 1 >= retries:
+                break
+            time.sleep(0.25 * (attempt + 1))
+    raise last if last is not None else OSError(f"write failed: {path}")
 
 
 def write_board(path_json: pathlib.Path, board: dict[str, Any]) -> str:
