@@ -37,6 +37,7 @@ CLASS_CN = {
     "T1BuildingObjectLotteryHDV2": "家具抽奖", "WelfareJumpHuoDong": "福利跳转",
     "NucleusLotteryHD": "核芯抽奖", "ClimbTowerHuoDong": "爬塔",
     "FashionBoxLotteryHD": "时装盒抽奖", "PigeonWishHDV2": "许愿池",
+    "PigeonWishHD": "许愿池",
     "MultiOptionalLotteryHD": "自选保底抽奖", "RadiationFundHD": "辐射基金",
     "DoubleClimbTowerSummaryHD": "双塔总结", "DiscountMarketHD": "折扣商店",
     "NucleusHD": "核芯活动", "JigsawHD": "拼图", "ChainGiftHD": "连充礼包",

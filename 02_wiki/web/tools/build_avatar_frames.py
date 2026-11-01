@@ -129,14 +129,12 @@ def fetch_background(res: Resolver, logical: str, dst: pathlib.Path):
     return True
 
 
-def hole_bbox(path: pathlib.Path):
-    """边框图中心透明内孔的相对包围盒 (l, t, w, h)（0~1）；量不到返回 None。
+def hole_geom(path: pathlib.Path):
+    """量边框的「内孔」几何：返回 {"bbox":[l,t,w,h], "clip":[[x,y],...]}（0~1）；量不到 None。
 
-    ★ 为什么要它：名片框的正确叠法是「背景铺满框内孔、边框在外包住」，不是两图等宽居中。
-      实测 118 张静态边框的内孔宽高比中位 1.73，与背景图（432×252 / 1080×630 ≈1.72）
-      基本一致 —— 内孔就是背景该占的位置。每张边框的内孔位置不同（上边距 11%~15%），
-      必须逐图量出来，前端才能把背景精确贴进去。
-    做法：取中心行、中心列的「包含中心的连续透明段」，两者交集即内孔（中空边框通用）。
+    为什么不只用 bbox：内孔不是矩形（框边常是斜的/带角饰），矩形背景按 bbox 铺会从
+    斜边处露到框外。所以同时给一条沿透明内孔轮廓简化出来的多边形（clip），
+    前端把背景按 bbox 铺进去、再用 polygon 裁掉多余部分，才是「框完全包住背景」。
     """
     try:
         with Image.open(path) as im:
@@ -149,19 +147,62 @@ def hole_bbox(path: pathlib.Path):
     cy, cx = h // 2, w // 2
     if a[cy, cx] > 8:                                   # 中心不透明 → 不是中空框
         return None
+    try:
+        import cv2
+    except Exception:                                   # noqa: BLE001
+        return _hole_fallback(a)
+    mask = (a <= 8).astype(np.uint8)
+    _n, labels, stats, _cent = cv2.connectedComponentsWithStats(mask, 4)
+    lab = int(labels[cy, cx])
+    x, y, bw, bh, area = stats[lab]
+    if area > 0 and x > 0 and y > 0 and x + bw < w and y + bh < h:
+        bbox = [x / w, y / h, bw / w, bh / h]
+        clip = None
+        # 轮廓简化：epsilon 取长边的 0.6%，既能贴边又不让点太多
+        sub = (labels[y:y + bh, x:x + bw] == lab).astype(np.uint8)
+        cnts, _ = cv2.findContours(sub, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if cnts:
+            c = max(cnts, key=cv2.contourArea)
+            eps = 0.006 * max(bw, bh)
+            poly = cv2.approxPolyDP(c, eps, True).reshape(-1, 2)
+            if 3 <= len(poly) <= 120:
+                clip = [[round((x + px) / w, 4), round((y + py) / h, 4)]
+                        for px, py in poly]
+        return {"bbox": bbox, "clip": clip}
+    # 内孔与画布外侧连通（框有缺口）→ 退回中心行列法
+    return _hole_fallback(a)
+
+
+def _hole_fallback(a):
+    """中心行 / 中心列的连续透明段交集（内孔与外界连通时的兜底），返回 bbox 形态。"""
+    h, w = a.shape
+    cy, cx = h // 2, w // 2
+    if a[cy, cx] > 8:
+        return None
     row = a[cy] > 8
     left = np.where(row[:cx])[0]
     right = np.where(row[cx + 1:])[0]
     x0 = int(left.max()) + 1 if len(left) else 0
-    x1 = cx + 1 + int(right.min()) - 1 if len(right) else w - 1
+    x1 = cx + int(right.min()) if len(right) else w - 1
     col = a[:, cx] > 8
     up = np.where(col[:cy])[0]
     down = np.where(col[cy + 1:])[0]
     y0 = int(up.max()) + 1 if len(up) else 0
-    y1 = cy + 1 + int(down.min()) - 1 if len(down) else h - 1
+    y1 = cy + int(down.min()) if len(down) else h - 1
+    ys, xs = np.where(a > 8)                             # 夹到不透明内容外接框内
+    if len(xs):
+        x0, x1 = max(x0, int(xs.min())), min(x1, int(xs.max()))
+        y0, y1 = max(y0, int(ys.min())), min(y1, int(ys.max()))
     if x1 <= x0 or y1 <= y0:
         return None
-    return (x0 / w, y0 / h, (x1 - x0 + 1) / w, (y1 - y0 + 1) / h)
+    return {"bbox": [x0 / w, y0 / h, (x1 - x0 + 1) / w, (y1 - y0 + 1) / h],
+            "clip": None}
+
+
+def hole_bbox(path: pathlib.Path):
+    """兼容旧调用：只要 bbox。"""
+    g = hole_geom(path)
+    return g["bbox"] if g else None
 
 
 def main() -> int:
@@ -229,6 +270,24 @@ def main() -> int:
                             "base": it.get("spine_path")}
                 note = "Spine 动画（无独立首帧文件）"
                 stat["Spine首帧"] += 1
+        # Spine 边框同样量内孔：它也是「中空边框 + 场景底图」的同一套画法，
+        # 只是贴图页缺失、只能拿到渲染图。量到了前端照样能叠（框在外、背景在孔内）。
+        if main_img is not None and "hole" not in main_img:
+            src = WEB / main_img["png"]
+            g = hole_geom(src) if src.is_file() else None
+            if g:
+                main_img["hole"] = [round(v, 4) for v in g["bbox"]]
+                # 非矩形内孔：额外交一条多边形轮廓，前端裁掉溢出框外的部分
+                if g.get("clip"):
+                    main_img["clip"] = g["clip"]
+        # 边框图原始宽高：前端要靠它固定卡面比例，悬停换成 Spine 动图时才不会跳尺寸
+        if main_img is not None:
+            src = WEB / main_img["png"]
+            try:
+                with Image.open(src) as _im:
+                    main_img["w"], main_img["h"] = _im.width, _im.height
+            except Exception:
+                pass
 
         # 4) 背景图：主动按 resource_path 找名片场景底图（_b_ 命名）
         bg = None
@@ -246,7 +305,10 @@ def main() -> int:
                         and cur_solid >= SOLID_MAX)
         if cur_is_scene:
             if bg is None:
-                bg = {"png": cur["png"], "label": "名片背景", "role": "background",
+                # 头像框没有「名片背景」这个概念，实心原图如实叫「实心原图」，不串词
+                bg = {"png": cur["png"],
+                      "label": "名片背景" if kind == "名片框" else "实心原图",
+                      "role": "background",
                       "base": cur.get("base") or it.get("resource_path")}
                 stat["场景图降级"] += 1
             else:
@@ -257,8 +319,14 @@ def main() -> int:
                 continue
             if x is not cur and not x.get("role"):
                 x["role"] = "background"
+            # 历史误标：头像框的次图曾被写成「名片背景」，这里按类型纠回
+            if kind != "名片框" and x.get("label") == "名片背景":
+                x["label"] = "实心原图"
 
-        others = [x for x in imgs if x is not cur and x is not bg]
+        # 按 png 去重：脚本可重复跑，背景层不能每跑一次多挂一份
+        _bg_png = (bg or {}).get("png")
+        others = [x for x in imgs
+                  if x is not cur and (not _bg_png or x.get("png") != _bg_png)]
         if kind == "名片框" and bg is None:
             bg_missing.append((iid, it.get("name")))
         if main_img is None:

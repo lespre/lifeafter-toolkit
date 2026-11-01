@@ -28,7 +28,9 @@
 
 输出：01_索引与产物/30_分析/all_equips_全量_node索引_20261029/
   all_equips_attrs_classic.json / _kj1.json / _yk.json
-  行结构 key/name/equip_type/weapon_type/attrs/attrs_frame（与 20261022/20261029 冻结同构）
+  行结构 key/name/equip_type/weapon_type/attrs/attrs_frame +
+  icon/desc/level/durability/max_shield/shield_type/weapon_kind/model_path/
+  base_score/charm_value（2026-11-01 按用户定版补展示字段，包源不变就地覆盖）
 """
 import json
 import pathlib
@@ -137,7 +139,9 @@ def extract(tag: str, cfg: dict) -> dict:
     stats = {"slots_declared": scnt, "buckets": bc, "index_pairs": len(pairs),
              "rows_decoded": len(rows), "unbound": len(unbound),
              "pool_strings": len(pool), "attrs_total": 0, "attrs_ok": 0,
-             "frames": {}}
+             "frames": {}, "fields": {}}
+    FIELDS = ("icon", "desc", "level", "durability", "max_shield", "shield_type",
+              "weapon_kind", "model_path", "base_score", "charm_value")
     out = []
     for r in rows:
         v = r.get("values") or {}
@@ -145,6 +149,11 @@ def extract(tag: str, cfg: dict) -> dict:
         rec = {"key": r["key"], "name": g("name"),
                "equip_type": g("equip_type"), "weapon_type": g("weapon_type"),
                "attrs": None, "attrs_frame": None}
+        for k in FIELDS:
+            val = g(k)
+            rec[k] = val
+            if val not in (None, "", []):
+                stats["fields"][k] = stats["fields"].get(k, 0) + 1
         aattr = v.get("attrs")
         if isinstance(aattr, tuple) and str(aattr[1]).startswith("jump:"):
             stats["attrs_total"] += 1
@@ -160,7 +169,7 @@ def extract(tag: str, cfg: dict) -> dict:
         out.append(rec)
 
     payload = {"meta": {
-        "generated": "2026-10-29",
+        "generated": "2026-11-01",
         "table": tag,
         "label": cfg["label"],
         "source_package": str(cfg["pack"]).replace("\\", "/"),
@@ -169,7 +178,9 @@ def extract(tag: str, cfg: dict) -> dict:
             "pool(fid %s)" % cfg["fid_pool"]: {"bytes": len(raw_pool), "strings": len(pool)},
         },
         "decode": ("node 索引法（76 01 0b + 桶数组 + node 溢出区键对，2026-10-29 结案）；"
-                   "lenient=True 回收行尾 inline list variant；attrs=0xC6/0x86 帧"),
+                   "lenient=True 回收行尾 inline list variant；attrs=0xC6/0x86 帧；"
+                   "2026-11-01 增补展示字段 icon/desc/level/durability/max_shield/"
+                   "shield_type/weapon_kind/model_path/base_score/charm_value"),
         "stats": stats,
     }, "rows": out}
     OUT_DIR.mkdir(parents=True, exist_ok=True)

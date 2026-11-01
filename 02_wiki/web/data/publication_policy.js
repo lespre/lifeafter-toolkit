@@ -260,8 +260,8 @@ window.WIKI_PUBLICATION_POLICY = {
     "equipment_attrs": {
       "publication_status": "published",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
-      "items": 1647,
-      "reason": "装备属性（武器·护甲）单卡双服（2026-10-29 用户定版「本来就是一个子卡」）：目录一张卡，条目级 server_branch（简单生存服=kj1 / 经典服=base）+ 页内「服别」下拉筛选，分服行数据不混排。数据=PE pe_20261020 快照 oversea_data_kj1（共创服玩家称呼）+ apk_20261002 安装基线经典服行表，node 索引法 100% 解码（30_分析/all_equips_全量_node索引_20261029），attrs 全命中。筛选/体验版合并规则两服一致（详见卡内 notes）。全量边界：护臂/进化武器行数值在未留盘热更 inc 分片内，待增量载荷入库后重跑 03_执行/all_equips_full_extract.py 补全。"
+      "items": 2586,
+      "reason": "装备属性（武器·护甲）三服总览卡（2026-11-01 用户定版：按服别拆独立卡 + 另出总览卡）：共 2586 条，条目级 server_branch（简单生存服=kj1 / 经典服=base / 月卡服=yk）+ 页内「服别」下拉筛选，分服行数据不混排；三张分服卡见 equipment_attrs_kj1 / _classic / _yk。数据=30_分析/all_equips_全量_node索引_20261029 三表（node 索引法 100% 解码活跃行，2026-11-01 就地扩 icon/desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value）。2D 图标取客户端 ui/item_icon 大图 _b，三服同路径共用。weapon_kind 为数值码，中文标签按装备名归纳（非官方枚举）。全量边界：护臂/进化武器行数值在未留盘热更 inc 分片内，待增量载荷入库后重跑补全。"
     },
     "appearance_bud": {
       "publication_status": "published",
@@ -301,6 +301,24 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "四、服务与包体 / （六）包体入口与版本线",
       "items": 19,
       "generated": "2026-11-01"
+    },
+    "equipment_attrs_kj1": {
+      "publication_status": "published",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "items": 590,
+      "reason": "装备属性（武器·护甲）分服卡 · 简单生存服（数据通道 kj1）：590 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+    },
+    "equipment_attrs_classic": {
+      "publication_status": "published",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "items": 1057,
+      "reason": "装备属性（武器·护甲）分服卡 · 经典服（数据通道 classic）：1057 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+    },
+    "equipment_attrs_yk": {
+      "publication_status": "published",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "items": 939,
+      "reason": "装备属性（武器·护甲）分服卡 · 月卡服（数据通道 yk）：939 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
     }
   }
 };

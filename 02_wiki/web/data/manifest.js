@@ -217,22 +217,23 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）装备属性（武器 · 护甲）",
+      "name": "（内测版）装备属性（武器 · 护甲） · 三服总览",
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "board": "equipment_attrs",
-      "items": 1647,
-      "generated": "2026-10-29",
-      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1）+ 经典服（base）",
-      "package_sha": "e5e88cefae289b9d6645da43922226fd038c5831d492f3a8916ec4e35bebe7e1",
+      "items": 2586,
+      "generated": "2026-11-01",
+      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
+      "package_sha": "2236364e0ed4dfb295fb48bddc16fb527a734cb6b9a4144505167a5598ee9f9a",
       "evidence": {
-        "structure": 1647
+        "structure": 2586
       },
       "state_summary": {
-        "unresolved": 1647,
-        "static config": 1647,
+        "unresolved": 2586,
+        "static config": 2586,
         "verified": 0,
-        "runtime final unknown": 1647,
-        "有属性": 1647
+        "runtime final unknown": 2586,
+        "有属性": 2586,
+        "有图标": 2090
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -240,7 +241,94 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1647
+          "replayed-structural": 2586
+        }
+      }
+    },
+    {
+      "name": "（内测版）装备属性（武器 · 护甲） · 简单生存服",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "board": "equipment_attrs_kj1",
+      "items": 590,
+      "generated": "2026-11-01",
+      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
+      "package_sha": "c947fc1bb4b4627f536275e84ff24102db52a1eaebad7efabf8694a96f9d1268",
+      "evidence": {
+        "structure": 590
+      },
+      "state_summary": {
+        "unresolved": 590,
+        "static config": 590,
+        "verified": 0,
+        "runtime final unknown": 590,
+        "有属性": 590,
+        "有图标": 485
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 590
+        }
+      }
+    },
+    {
+      "name": "（内测版）装备属性（武器 · 护甲） · 经典服",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "board": "equipment_attrs_classic",
+      "items": 1057,
+      "generated": "2026-11-01",
+      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
+      "package_sha": "2920fef142c4ce07ac6011f6f28e33fc10391652d88a987e69cdefcd6e5c16cc",
+      "evidence": {
+        "structure": 1057
+      },
+      "state_summary": {
+        "unresolved": 1057,
+        "static config": 1057,
+        "verified": 0,
+        "runtime final unknown": 1057,
+        "有属性": 1057,
+        "有图标": 845
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 1057
+        }
+      }
+    },
+    {
+      "name": "（内测版）装备属性（武器 · 护甲） · 月卡服",
+      "category": "二、战力类 / （五）装备属性（武器·护甲）",
+      "board": "equipment_attrs_yk",
+      "items": 939,
+      "generated": "2026-11-01",
+      "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1） + 经典服（classic） + 月卡服（yk）",
+      "package_sha": "b8179d7599d8266d20c880a451a5ef0e1da323cb3eab86756d8595238519e05e",
+      "evidence": {
+        "structure": 939
+      },
+      "state_summary": {
+        "unresolved": 939,
+        "static config": 939,
+        "verified": 0,
+        "runtime final unknown": 939,
+        "有属性": 939,
+        "有图标": 760
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 939
         }
       }
     },

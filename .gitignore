@@ -192,3 +192,8 @@ _tmp_*.json
 # 灾后备份（2026-11-01 文件清零事故），不入库
 .git_broken_20261101/
 02_wiki/web/_recover_20261101/
+
+# 临时产物（不入库）
+.trae-html-share-packages/
+90_临时/_check/
+02_wiki/web/_mock_sib.html

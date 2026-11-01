@@ -103,7 +103,10 @@
     {
      "name": "（五）装备属性（武器·护甲）",
      "boards": [
-      "equipment_attrs"
+      "equipment_attrs",
+      "equipment_attrs_kj1",
+      "equipment_attrs_classic",
+      "equipment_attrs_yk"
      ]
     },
     {

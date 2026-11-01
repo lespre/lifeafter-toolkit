@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev5")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261101facev6")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1169,13 +1169,12 @@ function fillFilterSelects(items){
     const lh=document.getElementById("listingHint");if(lh)lh.style.display="none";
     const wrap=document.getElementById("fCustomWrap");if(wrap)wrap.innerHTML="";
     DATA._custFilters=[];
-    /* 排序轴：称号编号（item_id）。沿用 #fOrder/id_asc,id_desc 的既有取值语义，
-       前端只在组内改变方向，分组顺序（获取途径）保持不动。 */
+    /* 排序轴：称号编号（item_id），默认大 → 小。沿用 #fOrder 的既有 id_asc/id_desc 语义。 */
     const oSel=document.getElementById("fOrder");
     if(oSel){
-      oSel.innerHTML=`<option value="id_asc" selected>编号：小 → 大</option><option value="id_desc">编号：大 → 小</option>`;
-      oSel.value="id_asc";
-      oSel.title="先按获取途径分组，组内按称号编号排序";
+      oSel.innerHTML=`<option value="id_desc" selected>编号：大 → 小</option><option value="id_asc">编号：小 → 大</option>`;
+      oSel.value="id_desc";
+      oSel.title="按称号编号排序；勾选「按获取途径分组」后改为组内排序";
       oSel.style.display="";
     }
     const mk=(label,opts)=>{
@@ -1190,6 +1189,14 @@ function fillFilterSelects(items){
     /* 特性是数组字段（flags），走自定义判定，不按字符串等值比较 */
     DATA._custFilters.push({sel:mk("全部特性",[["动态","动态"],["美术字","美术字"]]),
       test:(it,v)=>Array.isArray(it.flags)&&it.flags.includes(v)});
+    /* 分组改为可勾选：默认平铺（整表按编号排），勾上才按获取途径分组 */
+    const cbLabel=document.createElement("label");
+    cbLabel.className="tg-toggle";
+    cbLabel.innerHTML=`<input type="checkbox" id="tgGroup"><span>按获取途径分组</span>`;
+    wrap.appendChild(cbLabel);
+    const cb=cbLabel.querySelector("input");
+    cb.checked=titleGroupOn;
+    cb.onchange=()=>{titleGroupOn=cb.checked;render();};
     return;
   }
   // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
@@ -1220,7 +1227,13 @@ function fillFilterSelects(items){
   wrap.innerHTML="";DATA._custFilters=[];
   if(cfg&&cfg.length){
     gSel.style.display=tSel.style.display=iSel.style.display=relSel.style.display=nsSel.style.display="none";
-    if(!nucleusSort)oSel.style.display="none";
+    if(AVATAR_BOARD){
+      /* 头像板排序：只有「标号」一轴；组内比较 item_id，默认大 → 小 */
+      oSel.innerHTML=`<option value="id_desc" selected>标号：大 → 小（默认）</option><option value="id_asc">标号：小 → 大</option>`;
+      oSel.value="id_desc";
+      oSel.title="按标号（item_id）排序；先按类型分组（头像 / 头像框 / 名片框），再在组内比较标号";
+      oSel.style.display="";
+    } else if(!nucleusSort)oSel.style.display="none";
     cfg.forEach((f,ix)=>{
       const set=new Set();
       items.forEach(it=>{const v=it[f.key];if(v!=null&&String(v)!=="")set.add(String(v));});
@@ -1351,17 +1364,27 @@ function renderItemMedia(m){
      Spine 首帧是 168×168 紧裁方图，套不进内孔，不叠（仍按次图展示）。 */
   const stack=!!(_fr&&_fr.hole&&_all.some(x=>x.role==="background"));
   const _h=(_fr&&_fr.hole)||[0.094,0.132,0.811,0.739];
-  const stStyle=stack?` style="--hl:${(_h[0]*100).toFixed(2)}%;--ht:${(_h[1]*100).toFixed(2)}%;--hw:${(_h[2]*100).toFixed(2)}%;--hh:${(_h[3]*100).toFixed(2)}%"`:"";
+  /* --ar：卡面比例锁死成边框图本身的宽高比。叠加模式的每个图层都绝对定位，
+     否则悬停换成低分辨率 Spine 动图时，img 的内在尺寸一变整卡就跳高。 */
+  const _ar=(_fr&&_fr.w&&_fr.h)?`--ar:${_fr.w}/${_fr.h};`:"";
+  const stStyle=stack?` style="${_ar}--hl:${(_h[0]*100).toFixed(2)}%;--ht:${(_h[1]*100).toFixed(2)}%;--hw:${(_h[2]*100).toFixed(2)}%;--hh:${(_h[3]*100).toFixed(2)}%"`:"";
   const imgs=_all.slice(0,6).map((x,i)=>{
     const bg=(x.role==="background");
-    /* ★ 叠加模式下不挂动图：名片框的 APNG 是 168×168 紧裁的中空边框，
-       换成整卡背景上会突然缩成方框、比例全乱 —— 静止整卡比变形好。 */
-    const hot=(anim&&i===0&&!bg&&!stack);
-    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}"><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
+    /* 非矩形内孔：用边框量出来的透明区轮廓做 clip-path，背景只在孔里显形，
+       矩形 bbox 兜不住斜边/角饰，不裁就会从框外露出来。 */
+    const _cp=(bg&&_fr&&_fr.clip&&_fr.clip.length>=3)
+      ?` style="clip-path:polygon(${_fr.clip.map(p=>`${(p[0]*100).toFixed(2)}% ${(p[1]*100).toFixed(2)}%`).join(",")})"`
+      :"";
+    /* 叠加模式照样挂动图：卡面比例已被 --ar 锁死，悬停换 src 不会改变卡面尺寸。
+       只有排在后面的次图（非主图）不挂，避免一张卡上多个动图同时播放。 */
+    const hot=(anim&&i===0&&!bg);
+    return `<figure class="mi${hot?" mi-anim":""}${bg?" mi-bg":""}"${_cp}><img src="${esc(x.png)}" alt="${esc(x.base||x.suffix||"")}" loading="lazy"${hot?` data-anim="${anim}"`:""}>${hot?`<span class="anim-dot" title="有 Spine 动画，悬停播放 / 点开详情自动播放">动</span>`:""}<figcaption>${esc(x.label||x.suffix||"raw")}</figcaption></figure>`;
   }).join("");
   const ph=m.placeholder?`<figure class="mi ph"><img src="${esc(m.placeholder)}" alt="客户端占位图" loading="lazy"><figcaption>占位</figcaption></figure>`:"";
-  /* 边框图在当前包快照里确实缺失 → 如实占位，不用场景图顶替 */
-  const nofig=(m.frame_status==="missing")?`<figure class="mi nofig"><span>边框图缺失<br>（当前包快照无该资源）</span><figcaption>缺口</figcaption></figure>`:"";
+  /* 边框图确实缺失 → 如实标注，但不拿场景图顶替「边框」这个身份；
+     若手里还有名片背景，就让背景独占卡面（状态标签仍写「无边框图」），
+     不要一块「缺口」占位框 + 一张缩小背景图并列显示。 */
+  const nofig=(m.frame_status==="missing"&&_all.length===0)?`<figure class="mi nofig"><span>边框图缺失<br>（当前包快照无该资源）</span><figcaption>缺口</figcaption></figure>`:"";
   const more=(m.images||[]).length>6?`<span class="mi-more">+${m.images.length-6}</span>`:"";
   return `<div class="i-media${stack?" i-stack":""}"${stStyle}>${nofig}${imgs}${ph}${more}</div>`;
 }
@@ -1587,6 +1610,8 @@ function frClose(){
   if(box){box.style.display="none";box.querySelector("img").src="";}
 }
 document.addEventListener("click",e=>{
+  /* 同 model 卡片内的缩略图不参与「点图看大图」 */
+  if(e.target.closest&&e.target.closest("[data-sib-id]"))return;
   const t=e.target.closest?e.target.closest(".fr-zoom"):null;
   if(!t)return;
   const card=t.closest(".fcard");
@@ -1635,10 +1660,6 @@ function frCard(it,cidx,full){
         const nm=vma.aliases.map(x=>String(x).split("-")[0]).join("、");
         return `<span class="fr-alt fr-alias" title="表里同 model 同一件时装的另一条记录（开发/占位名），已并入本卡：${esc(vma.aliases.join("、"))}">别名 ${esc(nm)}</span>`;})()}
       ${((it.value_words||[]).length)?`<span class="fr-alt fr-vw" title="${esc(frValueWordsTitle(it))}">${esc(frValueWords(it).split(" / ")[0]||"卖点")}${(it.value_words||[]).length>1?` +${(it.value_words||[]).length-1}`:""}</span>`:""}
-      ${(()=>{const _m=(mid!=null)?String(mid):null;const _g=_m&&window.FR_MODEL_INDEX&&window.FR_MODEL_INDEX[_m];
-        if(!_g||_g.length<2)return "";const _others=_g.filter(x=>x.id!==it.id);
-        if(!_others.length)return "";
-        return `<a class="fr-alt fr-sib" href="#" data-sib-model="${esc(_m)}" title="同 model ${esc(_m)} 的其它部件：${esc(_others.map(x=>x.name).join("、"))}">同 model ${_g.length}</a>`;})()}
       ${(it.dye&&((it.dye.scheme_count||0)>0||((it.dye.hair||[]).length>0)))?`<span class="fr-alt fr-dye" title="${esc(frDyeText(it))}${it.dye&&(it.dye.hair||[]).length?"；发色 "+esc(frHairDyeText(it)):""}">可染色</span>`:""}
       ${it.reborn_vis?`<span class="fr-alt fr-bud" title="reborn_vis=1">藏花</span>`:""}
       ${it.flower_bud?`<span class="fr-alt fr-flower" title="换花：replace_flower_path 把花苞换成主题花，不走藏花；${it.flower_bud&&it.flower_bud.reborn_socket?"挂在 "+(it.flower_bud.reborn_socket.socket||"flower")+" 挂点、仅再生者形态挂载：":""}${esc(frFlowerText(it))}">换花</span>`:""}
@@ -1872,11 +1893,28 @@ function frDetailsHTML(it,kv){
         ((it.hide_parts||[]).map(x=>`<div class="fd-row"><span class="fd-k">隐藏${esc(x)}</span><span class="fd-v">是</span></div>`).join(""))+
         (it.back_weapon_vis!=null?`<div class="fd-row"><span class="fd-k">隐藏副武器</span><span class="fd-v">${it.back_weapon_vis?"是":"否"}</span></div>`:"")
       }</div></details>`:"";
+  /* 同 model：与「同系列图」同级、放在它上面 */
+  const sibs=(function(){
+    const m=(it.model_id!=null)?String(it.model_id):null;
+    const g=m&&window.FR_MODEL_INDEX&&window.FR_MODEL_INDEX[m];
+    if(!g||g.length<2)return [];
+    return g.filter(x=>String(x.id)!==String(it.id));
+  })();
+  const sibHtml=sibs.length?`<details class="tech fr-sibbox"><summary>同 model ${sibs.length+1}</summary><div class="fr-sibs-grid">${
+    sibs.map(function(x){
+      const _im=(window.FR_IMGS&&window.FR_IMGS[String(x.id)])||[];
+      const _src=(_im.length?_im[0]:(x.png||""));
+      const _pg=(x.grade!=null?(" · 品级"+x.grade):"");
+      return `<a class="fr-sib-card" href="#" data-sib-id="${esc(String(x.id))}" data-sib-from="${esc(String(it.id))}" title="${esc(x.name)}">`+
+        (_src?`<img src="${esc(_src)}" alt="" loading="lazy">`:`<span class="noimg">无图</span>`)+
+        `<div class="n">${esc(x.name)}</div><div class="p">${esc(x.part||"")}${esc(_pg)}</div></a>`;
+    }).join("")
+  }</div></details>`:"";
   const art=((it._media||{}).art)||[];
   const artHtml=art.length?`<details class="tech fr-artbox"><summary>同系列图 ${art.length}</summary><div class="fr-art">${
     art.map(a=>`<a href="${esc(a.png)}" target="_blank" rel="noopener" title="${esc(a.family||"")} · ${esc(a.source||"")}"><img src="${esc(a.png)}" alt="${esc(a.label||a.family||"")}" loading="lazy"><span>${esc(a.label||a.family||"")}</span></a>`).join("")
   }</div></details>`:"";
-  return fdesc+artHtml+`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>`;
+  return fdesc+sibHtml+artHtml+`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="fr-kv">${kv}</div></details>`;
 }
 /* 折叠时显示描述的前一小段，展开看全文 */
 function frDescHead(desc){
@@ -2457,6 +2495,24 @@ const CORE_BOARD=(function(){try{return (getParam("b")||"")==="mutation_core_ful
    style 是等级档位（初/中/高级/资深…），不是分类，因此不参与分组。
    中文标签按各行 desc 实证归纳，不做跨表推断。 */
 const TITLE_BOARD=(function(){try{return (getParam("b")||"")==="title_catalog";}catch(e){return false;}})();
+/* 头像 / 头像框 / 名片框板（avatar_catalog，2026-11-01）：三类混排，
+   排序轴只有「标号」（item_id）。先按类型分组（头像 → 头像框 → 名片框），
+   组内按标号排；默认大 → 小（新出的编号在前），可切小 → 大。 */
+const AVATAR_BOARD=(function(){try{return (getParam("b")||"")==="avatar_catalog";}catch(e){return false;}})();
+const AVATAR_KIND_ORD={"头像":0,"头像框":1,"名片框":2};
+function avatarSort(a,b,sign){
+  const ka=AVATAR_KIND_ORD[a.kind]!=null?AVATAR_KIND_ORD[a.kind]:9;
+  const kb=AVATAR_KIND_ORD[b.kind]!=null?AVATAR_KIND_ORD[b.kind]:9;
+  if(ka!==kb)return ka-kb;
+  const na=Number(a.item_id),nb=Number(b.item_id);
+  const va=Number.isFinite(na)?na:null, vb=Number.isFinite(nb)?nb:null;
+  if(va!==null&&vb!==null&&va!==vb)return sign*(va-vb);   // 标号缺省（非数字）固定排最后
+  if(va===null&&vb!==null)return 1;
+  if(vb===null&&va!==null)return -1;
+  return String(a.item_id||"").localeCompare(String(b.item_id||""));
+}
+/* 分组开关（2026-11-01）：默认平铺、整表按编号排；勾选后才按获取途径分组 */
+let titleGroupOn=false;
 const TITLE_GROUPS=[
   ["SpecProfLevel","职业认证"],
   ["ProfLevel","生存等级"],
@@ -2482,6 +2538,29 @@ function titleBadges(it){
   if(it.style)out.push(`<span class="tb tb-lv" title="源表 style 档位">档位 ${esc(it.style)}</span>`);
   (Array.isArray(it.flags)?it.flags:[]).forEach(f=>out.push(`<span class="tb tb-f">${esc(f)}</span>`));
   return out.length?`<div class="i-badges">${out.join("")}</div>`:"";
+}
+/* 称号视觉层：档位色贴图 + 美术字图（全部是真实资源导出，不画仿制）。
+   贴图命名与来源见 web/tools/build_title_art_assets.py：
+     line_N = 称号名下划线（1 蓝 / 2 紫 / 3 金 / 8 绿）
+     bg_N   = 称号名底光（2 紫 / 3 金 / 4 红）
+   红/蓝/绿没有对应 bg，紫/金没有双向缺失，因此按「有就叠、没有就只画一条」。 */
+const TITLE_SKIN_BG={紫:"bg_2",金:"bg_3",红:"bg_4"};
+const TITLE_SKIN_LINE={蓝:"line_1",紫:"line_2",金:"line_3",绿:"line_8"};
+function titleSkin(it){
+  const c=String(it.color||"");
+  const bg=TITLE_SKIN_BG[c],ln=TITLE_SKIN_LINE[c];
+  if(!bg&&!ln)return "";
+  return `<div class="i-skin" aria-hidden="true">`
+    +(bg?`<i class="sk-bg" style="background-image:url('assets/title_skin/${bg}.png')"></i>`:"")
+    +(ln?`<i class="sk-ln" style="background-image:url('assets/title_skin/${ln}.png')"></i>`:"")
+    +`</div>`;
+}
+/* 美术字：art_png 由 build_title_art_assets.py 只对「导出成功」的条目回填，
+   因此不会出现 404；无图时回落纯文字。文字仍保留在 DOM（隐藏），搜索/冒烟取文本不受影响。 */
+function titleName(it){
+  const nm=esc(it.name||it.display_name||it.id);
+  if(!it.art_png)return nm;
+  return `<img class="i-art" src="${esc(it.art_png)}" alt=""><span class="i-name-txt">${nm}</span>`;
 }
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
    只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
@@ -2942,6 +3021,37 @@ function c2Open(i,opt){
     if(url){try{history.pushState({c2:1},"",url);C2.pushed=true;}catch(e){}}
   }
 }
+
+/* 2026-11-01：同 model 跳转（定义在作用域内，才能访问 C2 / c2Open / frCard） */
+function _frEnsureChip(item){
+  if(!item||!C2.chips)return -1;
+  const idOf=(x)=>{try{return String(c2IdOf(x));}catch(e){return String(x&&x.id);}};
+  let i=C2.chips.findIndex(x=>idOf(x)===String(item.id));
+  if(i<0){
+    C2.chips.push(item); i=C2.chips.length-1;
+    try{ if(C2.html){C2.html[idOf(item)]=frCard(item,i);}
+         if(C2.htmlFull){C2.htmlFull[idOf(item)]=frCard(item,i,true);} }catch(e){}
+  }
+  return i;
+}
+window.__frJumpSibling=function(fromId,toId){
+  const byId=(window.FR_ITEM_BY_ID)||{};
+  const fromItem=byId[String(fromId)]||null, toItem=byId[String(toId)]||null;
+  const idOf=(x)=>{try{return String(c2IdOf(x));}catch(e){return String(x&&x.id);}};
+  const fi=fromItem?_frEnsureChip(fromItem):C2.chips.findIndex(x=>idOf(x)===String(fromId));
+  const ti=toItem?_frEnsureChip(toItem):C2.chips.findIndex(x=>idOf(x)===String(toId));
+  if(ti<0)return false;
+  if(fi>=0 && !(C2.pinned&&idOf(C2.pinned)===String(fromId))){
+    const keep=C2.idx; C2.idx=fi;
+    try{ c2TogglePin(); }catch(e){}
+    C2.idx=keep;
+  }
+  c2Open(ti);
+  document.querySelectorAll('.fr-sib-card').forEach(el=>el.classList.remove('seen'));
+  const el=document.querySelector('.fr-sib-card[data-sib-id="'+String(toId).replace(/"/g,'')+'"]');
+  if(el)el.classList.add('seen');
+  return true;
+};
 function c2Close(){
   if(C2.pushed){history.back();return;}   // 回退触发 popstate → c2HardClose，历史不留脏项
   c2HardClose();
@@ -4013,12 +4123,15 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     // 时装板：卡面只留 图轨/名字/部位/品级/魅力值/model_id；详情/技术详情只在 D2 灯箱里（frCard full 版缓存到 C2.htmlFull）
     // 顺序 = 先按筛选结果，再按排序控件（默认保留板上原序 = 归一名字序）
     const frList=frSortList(items);
-    /* 同 model 索引：用于卡内「同 model N」跳转（钉住后可点，滚到兄弟卡并高亮） */
+    /* 同 model 索引：★ 用【未过滤】的 items 建（不受全局筛选影响），并挂整条 item 供跳转 */
     window.FR_MODEL_INDEX={};
-    for(const _it of frList){
+    window.FR_ITEM_BY_ID={};
+    for(const _it of ((DATA&&DATA.items)||items)){
+      window.FR_ITEM_BY_ID[String(_it.id)]=_it;
       const _m=(_it.model_id!=null)?String(_it.model_id):null;
       if(!_m)continue;
-      (window.FR_MODEL_INDEX[_m]=window.FR_MODEL_INDEX[_m]||[]).push({id:_it.id,name:_it.name,part:_it.part});
+      const _png=(((_it._media||{}).images||[])[0]||{}).png||"";
+      (window.FR_MODEL_INDEX[_m]=window.FR_MODEL_INDEX[_m]||[]).push({id:_it.id,name:_it.name,part:_it.part,grade:_it.grade_level,png:_png});
     }
     C2.prov=FR_D2;C2.chips=frList;C2.html={};C2.htmlFull={};
     /* 深链：?d2=<卡id> 直接打开该卡的详情（也方便实测/分享某一子卡） */
@@ -4026,8 +4139,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     if(_d2id){
       const _di=frList.findIndex(x=>String(c2IdOf(x))===String(_d2id));
       if(_di>=0) setTimeout(()=>{try{c2Open(_di);
-        if((function(){try{return getParam("art");}catch(e){return "";}})()==="1"){
-          document.querySelectorAll(".fr-artbox").forEach(d=>d.open=true);
+        const _openAll=(function(){try{return getParam("art");}catch(e){return "";}})()==="1";
+        if(_openAll){
+          document.querySelectorAll(".fr-artbox,.fr-sibbox").forEach(d=>d.open=true);
         }}catch(e){}},60);
     }
     g.innerHTML=frList.map((it,i)=>{
@@ -4096,15 +4210,22 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
         ? (a.sort_660||0)-(b.sort_660||0)
         : (b.sort_660||0)-(a.sort_660||0))
     : items;
-  /* 称号板：第一次序 = 获取途径分组（组头由下面的 map 注入），第二次序 = 组内称号编号（可切升/降）。
+  /* 称号板：分组由「按获取途径分组」勾选项控制；未勾选时整表按编号排，勾选后组内按编号排。
      注意 list 可能还是 items 本体（默认路径），这里只改顺序、不改集合。 */
   if(TITLE_BOARD){
-    /* 组内按称号编号排序；方向取自 #fOrder（id_asc / id_desc，见 fillFilterSelects）。
-       分组先后不动，保证「获取途径」分类仍是第一次序。 */
     const st=sortState();
     const sign=st.dir==="asc"?1:-1;
-    list.sort((a,b)=>titleGroupOrder(titleGroupKey(a))-titleGroupOrder(titleGroupKey(b))
-      ||sign*(Number(a.item_id||0)-Number(b.item_id||0)));
+    if(titleGroupOn){
+      list.sort((a,b)=>titleGroupOrder(titleGroupKey(a))-titleGroupOrder(titleGroupKey(b))
+        ||sign*(Number(a.item_id||0)-Number(b.item_id||0)));
+    }else{
+      list.sort((a,b)=>sign*(Number(a.item_id||0)-Number(b.item_id||0)));
+    }
+  }
+  /* 头像板：先类型分组、组内按标号（item_id）；默认大 → 小。 */
+  if(AVATAR_BOARD){
+    const st=sortState();
+    list.sort((a,b)=>avatarSort(a,b,st.dir==="asc"?1:-1));
   }
   let lastTitleGroup="";
   /* 2026-10-30：核芯板全量入 chips——基础（绿）核芯（家园守卫限定 4 条）无 skill_desc/升星段，
@@ -4225,7 +4346,8 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     const html=`<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}${rosterMode?" roster":""}${kindCls?" "+kindCls:""}"${nucleusMode?` data-cidx="${coreList.indexOf(it)}"`:(rosterMode?` data-cidx="${i}"`:"")}>
       ${mediaBlock}
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
-        <div><div class="i-name">${esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
+        <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
+        ${TITLE_BOARD?titleSkin(it):""}
         ${referenceTitle(it.reference_fields)}
         <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
         ${TITLE_BOARD?titleBadges(it):""}</div>
@@ -4237,7 +4359,7 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     if(rosterMode)C2.html[c2IdOf(it)]=html;
     /* 称号板：分组头随卡片一起进网格（grid-column:1/-1），位置和数据顺序同源 */
     let tgHead="";
-    if(TITLE_BOARD){
+    if(TITLE_BOARD&&titleGroupOn){
       const gk=titleGroupKey(it);
       if(i===0||gk!==lastTitleGroup){
         lastTitleGroup=gk;
@@ -4655,3 +4777,52 @@ document.addEventListener("click", function(e){
   el.classList.add("fr-flash");
   setTimeout(()=>el.classList.remove("fr-flash"),1600);
 });
+
+
+/* 2026-11-01：详情内「同 model」点击 = 钉住当前卡 + 左侧打开目标卡（方案B 交互） */
+function frEnsureChip(item){
+  try{ if(!item||typeof C2==='undefined'||!C2.chips)return -1; }catch(e){ return -1; }
+  const idOf=(x)=>{try{return String(c2IdOf(x));}catch(e){return String(x&&x.id);}};
+  let i=C2.chips.findIndex(x=>idOf(x)===String(item.id));
+  if(i<0){
+    C2.chips.push(item); i=C2.chips.length-1;
+    try{ if(C2.html){C2.html[idOf(item)]=frCard(item,i);}
+         if(C2.htmlFull){C2.htmlFull[idOf(item)]=frCard(item,i,true);} }catch(e){}
+  }
+  return i;
+}
+function frJumpSibling(fromId,toId){
+  const chips=(typeof C2!=='undefined'&&C2.chips)||[];
+  const idOf=(x)=>{try{return String(c2IdOf(x));}catch(e){return String(x&&x.id);}};
+  const byId=(window.FR_ITEM_BY_ID)||{};
+  const fromItem=byId[String(fromId)]||null, toItem=byId[String(toId)]||null;
+  const fi=(fromItem?frEnsureChip(fromItem):chips.findIndex(x=>idOf(x)===String(fromId)));
+  const ti=(toItem?frEnsureChip(toItem):chips.findIndex(x=>idOf(x)===String(toId)));
+  if(ti<0){
+    var _b=(new URLSearchParams(location.search).get('b'))||'';
+    location.href='board.html?b='+encodeURIComponent(_b)+'&d2='+encodeURIComponent(toId);
+    return;
+  }
+  if(fi>=0 && !(C2.pinned && idOf(C2.pinned)===String(fromId))){
+    const keep=C2.idx; C2.idx=fi;
+    try{ c2TogglePin(); }catch(e){}
+    C2.idx=keep;
+  }
+  try{ c2Open(ti); }catch(e){
+    var _b2=(new URLSearchParams(location.search).get('b'))||'';
+    location.href='board.html?b='+encodeURIComponent(_b2)+'&d2='+encodeURIComponent(toId);
+  }
+  document.querySelectorAll('.fr-sib-card').forEach(el=>el.classList.remove('seen'));
+  const el=document.querySelector('.fr-sib-card[data-sib-id="'+String(toId).replace(/"/g,'')+'"]');
+  if(el)el.classList.add('seen');
+}
+document.addEventListener("click", function(e){
+  const a=e.target.closest&&e.target.closest("[data-sib-id]");
+  if(!a)return;
+  e.preventDefault(); e.stopPropagation();
+  var from=a.getAttribute("data-sib-from"), to=a.getAttribute("data-sib-id");
+  if(typeof window.__frJumpSibling==="function" && window.__frJumpSibling(from,to)) return;
+  var _b=(new URLSearchParams(location.search).get('b'))||'';
+  location.href='board.html?b='+encodeURIComponent(_b)+'&d2='+encodeURIComponent(to);
+});
+

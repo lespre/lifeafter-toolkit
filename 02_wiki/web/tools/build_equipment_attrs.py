@@ -1,30 +1,25 @@
 # -*- coding: utf-8 -*-
-"""重建「装备属性（武器·护甲）」板 —— 分服子卡版（2026-10-29 用户定版）。
+"""重建「装备属性（武器·护甲）」板 —— 总览卡 + 三张分服卡（2026-11-01 用户定版）。
 
-用户要求（原话要点）：
-  1. 筛选不严不全量：不该进去的夹层、涂层进去了；该进去的进化武器、护臂没进去。
-  2. 体验版合并到正式版下当子项目。
-  3. 全量补充完后补图（本次不补图，icon 字段留空待数据全量后统一补）。
-  4. 分服子卡：简单生存服与经典服分开，不混排（2026-10-29 定版口径；
-     ★ 官方口径叫「简单生存服」（数据通道 kj1），「共创服」是玩家称呼，
-     只作备注不入卡名——2026-10-29 夜曾误改为共创服，已回退）。
+本版改动（用户原话要点）：
+  1. 按服别拆独立卡：简单生存服 / 经典服 / 月卡服 各一张，另出一张三服总览卡（带服别筛选）。
+     ★ 月卡服数据通道 yk（源表 oversea_data_yk）。
+  2. 字段完善：desc（官方描述）、level（品级）、durability、max_shield、
+     shield_type（1/2/3 → 基础/蔚蓝/磺骨护盾）、weapon_kind（细类码 + 按装备名归纳的中文标签）、
+     model_path、base_score、charm_value。
+  3. 2D 图：大图 _b → assets/equip_icons/（按路径扁平化命名，三服同路径共用）。
+     客户端无素材的条目不补图，标 icon_missing + status_tags file-missing。
+  4. 筛选：总览卡 服别/类型/主属性/武器细类；分服卡 类型/主属性/武器细类。
 
-数据源（★ 只用 PE 还原树家族源包，2026-10-29 用户定版）：
-  01_索引与产物/30_分析/all_equips_全量_node索引_20261029/（三表 100% 解码冻结产物）
-  - 简单生存服（玩家称"共创服"，通道 kj1）：pe_20261020 快照 oversea_data_kj1
-    行表+专用池 → 1,553 行全解
-  - 经典服 base：apk_20261002 基线 all_equips_data 行表+chs 池 → 3,287 行全解
-  提取脚本 03_执行/all_equips_full_extract.py（node 索引法，2026-10-29 结案）。
+数据源（★ 只用 PE 还原树家族源包，2026-10-29 node 索引法冻结产物，2026-11-01 就地扩字段）：
+  01_索引与产物/30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_{kj1,classic,yk}.json
+  提取脚本 03_执行/all_equips_full_extract.py
 
-★ 2026-10-29 结案补全（遗留①关闭）：0x7B 行表索引尾 = 76 01 0b + uleb(bc) +
-  bc×8B 桶数组 + node 溢出区连续 (key, row_start) 键对；「0x7B 头 cnt」是扩容声明
-  容量（含墓碑/空槽）≠ 物理行数。旧法 1,226/2,721 的缺口全是索引回收不完整 +
-  行尾 inline list variant 被严格模式丢弃；node 索引 + lenient 后三表 100% 解出。
+图标清单：02_wiki/web/assets/equip_icons/_index.json（由 tools/build_equip_icons.py 生成）
 
-护臂/进化武器定性（如实记录）：琥珀护臂家族名字在热更池（还原树 chs 池 11,632
-  串）中，但三张表物理活跃行均无其行数据 —— 行数值在热更 inc 分片
-  （all_equips_data_base/_inc/_del）内，该分片在库内所有留盘 npk 均不存在，
-  数据源硬缺口，待增量载荷入库后重跑 03_执行/all_equips_full_extract.py 补全。
+护臂/进化武器定性（如实记录）：琥珀护臂家族名字在热更池中，但三张表物理活跃行均无其行数据；
+行数值在热更 inc 分片（all_equips_data_base/_inc/_del）内，该分片在库内所有留盘 npk 均不存在，
+数据源硬缺口，待增量载荷入库后重跑 03_执行/all_equips_full_extract.py 补全。
 """
 from __future__ import annotations
 
@@ -35,58 +30,60 @@ import re
 
 WEB = pathlib.Path(__file__).resolve().parents[1]
 PROJ = WEB.parents[1]
-# 分服数据源（均为 PE 测试服家族源包的行级冻结产物，node 索引法 100% 解码版）
-SRC_KJ1 = PROJ / "01_索引与产物/30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_kj1.json"
-SRC_CLASSIC = PROJ / "01_索引与产物/30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_classic.json"
-OUT_KJ1 = WEB / "data/boards/equipment_attrs.json"
-OUT_CLASSIC = WEB / "data/boards/equipment_attrs_classic.json"
+FREEZE = PROJ / "01_索引与产物/30_分析/all_equips_全量_node索引_20261029"
+ICON_INDEX = WEB / "assets/equip_icons/_index.json"
+BOARDS = WEB / "data/boards"
+BASE_NAME = "（内测版）装备属性（武器 · 护甲）"
+CATEGORY = "二、战力类 / （五）装备属性（武器·护甲）"
 
 SERVERS = {
     "简单生存服": {
-        # 官方口径「简单生存服」；「共创服」为玩家称呼，只作备注（2026-10-29 定版）
         "channel": "kj1",
-        "src": SRC_KJ1,
-        "out": OUT_KJ1,
-        "sibling": "equipment_attrs_classic（经典服 · 数据卡）",
+        "board": "equipment_attrs_kj1",
+        "src": FREEZE / "all_equips_attrs_kj1.json",
         "table_desc": ("all_equips_data oversea kj1（简单生存服行表，玩家称「共创服」；"
                        "PE pe_20261020 快照 com/cdata/oversea/"
                        "all_equips_data_auto_oversea_data_kj1.py 行表 + …_kj1_chs.py 专用池，"
                        "fid 3D123F2BEE73ED47 / 9B6BE39D902BD6D6；node 索引法 100% 解码："
                        "声明 5,248 槽 = 1,553 活跃行全解 + 1,238 墓碑 + 2,457 空槽）"),
         "chain_table": "30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_kj1.json",
-        "extract_script": "03_执行/all_equips_full_extract.py",
         "full_note": (
-            "③ 全量边界（2026-10-29 node 索引法结案）：源表声明 5,248 槽，物理活跃行 "
-            "1,553 行 100% 解出（含 1,238 墓碑、2,457 空槽），attrs 966/966 全命中，"
+            "源表声明 5,248 槽，物理活跃行 1,553 行 100% 解出（attrs 966/966 全命中），"
             "无未解键遗留；护臂、进化武器名字在热更池中但行数值在未留盘的热更 inc 分片"
-            "（all_equips_data_base/_inc/_del）内，属数据源硬缺口，待增量载荷入库后按 "
-            "03_执行/all_equips_full_extract.py 重跑补全。"),
+            "（all_equips_data_base/_inc/_del）内，属数据源硬缺口。"),
     },
     "经典服": {
-        # 经典服数据通道 base；行表取自 PE 测试服安卓安装基线包
-        "channel": "base",
-        "src": SRC_CLASSIC,
-        "out": OUT_CLASSIC,
-        "sibling": "equipment_attrs（简单生存服 · 数据卡）",
+        "channel": "classic",
+        "board": "equipment_attrs_classic",
+        "src": FREEZE / "all_equips_attrs_classic.json",
         "table_desc": ("all_equips_data（经典服行表；PE 测试服安卓客户端安装基线包 "
                        "源包/apk_20261002/mumu_5.0.679/assets/script.py314.lc.npk，"
                        "fid 1F8E9684E1B97CE0 行表 + 94AB0B3FD057EF01 池；node 索引法 100% "
-                       "解码：声明 10,949 槽 = 3,287 活跃行全解 + 7,662 空槽。还原树内同名"
-                       "文件已被增量热更 808B MergedTableData 存根覆盖，base/_inc/_del 分片"
-                       "在所有留盘 npk 均不存在 → 安装基线即库内最新全量行数据）"),
+                       "解码：声明 10,949 槽 = 3,287 活跃行全解 + 7,662 空槽）"),
         "chain_table": "30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_classic.json",
-        "extract_script": "03_执行/all_equips_full_extract.py",
         "full_note": (
-            "③ 全量边界（2026-10-29 node 索引法结案）：源表声明 10,949 槽，物理活跃行 "
-            "3,287 行 100% 解出（含 7,662 空槽），attrs 2,102/2,102 全部命中，无未解键"
-            "遗留；护臂、进化武器为 2026-10-02 基线之后的热更内容，inc/del 增量未留盘，"
-            "待增量载荷入库后按 03_执行/all_equips_full_extract.py 重跑补全。"),
+            "源表声明 10,949 槽，物理活跃行 3,287 行 100% 解出（attrs 2,102/2,102 全命中），"
+            "无未解键遗留；护臂、进化武器为 2026-10-02 基线之后的热更内容，inc/del 增量未留盘。"),
+    },
+    "月卡服": {
+        "channel": "yk",
+        "board": "equipment_attrs_yk",
+        "src": FREEZE / "all_equips_attrs_yk.json",
+        "table_desc": ("all_equips_data oversea yk（月卡服行表；PE pe_20261020 快照 "
+                       "com/cdata/oversea/all_equips_data_auto_oversea_data_yk.py 行表 + "
+                       "…_yk_chs.py 专用池，fid 5790A7683EB6AAA8 / D1D2E03CF2901EBC；"
+                       "node 索引法 100% 解码：声明 9,483 槽 = 2,228 活跃行全解）"),
+        "chain_table": "30_分析/all_equips_全量_node索引_20261029/all_equips_attrs_yk.json",
+        "full_note": (
+            "源表声明 9,483 槽，物理活跃行 2,228 行 100% 解出（attrs 1,453/1,453 全命中），"
+            "无未解键遗留；护臂、进化武器同样因热更 inc 分片未留盘而缺席。"),
     },
 }
+OVERVIEW = {"board": "equipment_attrs", "server_branch": "三服总览"}
+
 NPC_PAT = re.compile(r"怪物|利维坦")
 TRIAL_PAT = re.compile(r"体验版(?:（\d+天）)?$")
 PENDANT_PAT = re.compile(r"挂件|挂饰|掛件")
-THROW_BAD_PAT = re.compile(r"测试|文字提示|Boss|UGC")
 
 CN = {"hurt": "伤害", "power": "功率", "armor": "护甲", "max_hp_addition": "生命上限加成",
       "hurt_reduction_rate": "减伤率", "hp_recover": "回血", "affect_temp": "保温",
@@ -94,9 +91,13 @@ CN = {"hurt": "伤害", "power": "功率", "armor": "护甲", "max_hp_addition":
 
 EQUIP_LABEL = {0: "护甲·护盾", 1: "武器", 2: "工具"}
 SLOT_LABEL = {3001: "护甲", 3100: "基础护盾", 3200: "蔚蓝护盾", 3300: "磺骨护盾"}
-# equip_type 为空但确属玩家装备的键段/槽位（2026-10-29 用户判定：无人机不进、挂饰不进）
-DRONE_BODY = (182000, 183000)   # 无人机整机（暗夜精灵/追风海鸥/体验版…）
-DRONE_MOD = (181000, 182000)    # 无人机模块（能量核心/发动机/结构框架/导航仪）
+SHIELD_LABEL = {1: "基础护盾", 2: "蔚蓝护盾", 3: "磺骨护盾"}
+# weapon_kind 是数值码，客户端没有「码→中文」名称表；以下标签按装备名归纳（页面注明「归纳」）。
+KIND_LABEL = {1: "步枪", 2: "冲锋枪", 3: "弓", 4: "霰弹枪", 5: "狙击枪", 6: "手枪",
+              7: "火箭筒/榴弹", 8: "电磁", 20: "喷火器", 21: "重机枪", 50: "冷兵器",
+              999: "特殊/怪物专用"}
+DRONE_BODY = (182000, 183000)
+DRONE_SEG_LO = 180000
 
 
 def DRONE_SEG(key) -> bool:
@@ -104,16 +105,15 @@ def DRONE_SEG(key) -> bool:
 
 
 def classify(r: dict):
-    """返回 (label 或 None)。None = 不进板。判据全部可复算（键段/槽位/名字）。"""
+    """返回 label 或 None。None = 不进板。判据全部可复算（键段/槽位/名字）。"""
     key = int(r["key"])
     name = r.get("name") or ""
     et = r.get("equip_type")
     wt = r.get("weapon_type")
     if name.endswith("体验版") or TRIAL_PAT.search(name):
-        return None  # 体验版行走合并通道
+        return None
     if "测试" in name or NPC_PAT.search(name):
         return None
-    # 挂饰：270xxx 整段（蓝白猫咪等名字不带"挂件"字样）+ 名字带挂件/挂饰
     if 270000 <= key < 280000 or PENDANT_PAT.search(name):
         return None
     if et in (0, 1, 2):
@@ -122,19 +122,15 @@ def classify(r: dict):
             label = "护甲·护盾/" + SLOT_LABEL[wt]
         return label
     if et in ("", None):
-        # equip_type 为空的玩家装备段（有 attrs 才会被调用）
-        # 无人机整机 182xxx / 模块 181xxx：2026-10-29 用户判定不进（此前误输"该进"，已更正）
         if wt == 4001:
             return "投掷物"
         if wt == 6001:
             return "陷阱·地雷"
-        # wt 14001 背包：2026-10-29 用户判定不进（红粉救生包等）
         return None
 
 
 def attr_names() -> dict:
     """attribute_data.e_name → 中文（游戏自己的属性字典）。"""
-    import struct
     import sys
     cands = [
         PROJ / "01_索引与产物/41_还原树/pe/配置/Documents/script.py314.lc.npk/com/cdata/attribute_data.py",
@@ -170,31 +166,70 @@ def attrs_text(attrs, NAME) -> str:
     return " ｜ ".join("%s %s" % (NAME.get(k, k), v) for k, v in attrs)
 
 
-def provenance(row_keys: list, sha: str, sv: str) -> dict:
+def load_icons() -> dict:
+    if not ICON_INDEX.is_file():
+        return {}
+    return (json.loads(ICON_INDEX.read_text(encoding="utf-8")) or {}).get("icons") or {}
+
+
+def icon_fields(r: dict, ICONS: dict) -> dict:
+    """图标：命中 → icon/png + _media；缺 → icon=null + icon_missing。"""
+    raw = r.get("icon")
+    raw = raw.strip() if isinstance(raw, str) else ""
+    if not raw:
+        return {"icon": None, "icon_state": "无图标字段", "icon_missing": True,
+                "status_tags": ["static config", "file-missing"]}
+    info = ICONS.get(raw) or {}
+    if info.get("png"):
+        return {"icon": info["png"], "icon_state": "有图", "icon_missing": False,
+                "_media": {
+                    "images": [{"png": info["png"],
+                                "base": raw.rsplit("/", 1)[-1],
+                                "suffix": info.get("suffix") or "b",
+                                "label": "图标（大图 _b）" if info.get("suffix") == "b" else "图标（小图 _s）",
+                                "source": "PE · %s:%s · %s" % (info.get("pack"), info.get("row"),
+                                                               info.get("source_path") or raw)}],
+                    "total": 1,
+                    "note": "客户端 ui/item_icon 大图直出；三服同路径共用同一张"},
+                "status_tags": ["static config"]}
+    return {"icon": None, "icon_state": "缺图（客户端无素材）", "icon_missing": True,
+            "icon_missing_reason": "客户端 ui/item_icon 索引内无该路径（_b/_s 均未命中）",
+            "status_tags": ["static config", "file-missing"]}
+
+
+def provenance(row_keys: list, sha: str, sv: str, fields: list) -> dict:
     cfg = SERVERS[sv]
     return {
-        "source_id": "equipment-attrs",
+        "source_id": "equipment-attrs-%s" % cfg["channel"],
         "source_lock_sha256": sha,
         "table": cfg["table_desc"],
         "row_key": row_keys[0],
         "row_keys": row_keys,
-        "field_refs": ["attrs", "name", "equip_type", "weapon_type"],
+        "field_refs": fields,
         "name_source": "all_equips_data#name（chs 池）",
         "upstream": {"package_sha256": sha, "entry_index": None, "file_id": None,
                      "decoded_sha256": None, "role": "frozen-extract"},
         "locator_chain": {"chain_status": "replayed-structural", "scope": "record",
                           "no_cross_source_field_join": True,
-                          "steps": [{"kind": "frozen-json-extract",
-                                     "source_id": "equipment-attrs",
+                          "steps": [{"kind": "decoded-table-row",
+                                     "source_id": "equipment-attrs-%s" % cfg["channel"],
                                      "table": cfg["chain_table"],
                                      "row_key": row_keys[0],
-                                     "field_refs": ["attrs", "name"]}]},
+                                     "field_refs": fields}]},
     }
 
 
-def item_base(key, name, et, wt, attrs, NAME, label, sha, sv, source_extra=None):
+def item_base(key, name, et, wt, attrs, NAME, label, sha, sv, row, ICONS, source_extra=None):
+    ic = icon_fields(row, ICONS)
+    wk = row.get("weapon_kind")
+    stype = row.get("shield_type")
+    fields = ["attrs", "name", "equip_type", "weapon_type"]
+    for k in ("icon", "desc", "level", "durability", "max_shield", "shield_type",
+              "weapon_kind", "model_path", "base_score", "charm_value"):
+        if row.get(k) not in (None, "", []):
+            fields.append(k)
     return {
-        "id": "eq_%s" % key,
+        "id": "eq_%s_%s" % (SERVERS[sv]["channel"], key),
         "name": name,
         "row_key": key,
         "server_branch": sv,
@@ -203,20 +238,36 @@ def item_base(key, name, et, wt, attrs, NAME, label, sha, sv, source_extra=None)
         "weapon_type": wt,
         "attr_first": NAME.get(attrs[0][0], attrs[0][0]) if attrs else "",
         "属性": attrs_text(attrs, NAME),
+        "desc": row.get("desc") or None,
+        "level": row.get("level"),
+        "durability": row.get("durability"),
+        "max_shield": row.get("max_shield"),
+        "shield_type": stype,
+        "shield_label": SHIELD_LABEL.get(stype) if isinstance(stype, int) else None,
+        "weapon_kind": wk,
+        "weapon_kind_label": (KIND_LABEL.get(wk, "未归类码 %s" % wk) if wk is not None else None),
+        "model_path": row.get("model_path") or None,
+        "base_score": row.get("base_score"),
+        "charm_value": row.get("charm_value"),
         "trial_variants": None,
-        "icon": None,
+        "icon": ic["icon"],
+        "icon_state": ic["icon_state"],
+        "icon_missing": ic["icon_missing"],
+        **({"icon_missing_reason": ic["icon_missing_reason"]} if ic.get("icon_missing_reason") else {}),
+        **({"_media": ic["_media"]} if ic.get("_media") else {}),
         "evidence": "structure",
         "evidence_level": "structure-only",
-        "status_tags": ["static config"],
-        "source": SERVERS[sv]["table_desc"] + ("；attrs 走 0xC6/0x86 嵌套行帧解出") + (source_extra or ""),
-        "provenance": None,
-        "_row_keys": [key],
+        "status_tags": ic["status_tags"],
+        "source": SERVERS[sv]["table_desc"] + "；attrs 走 0xC6/0x86 嵌套行帧解出"
+                   + "；字段 icon/desc/level/durability/max_shield/shield_type/weapon_kind/"
+                     "model_path/base_score/charm_value 为同行直读（2026-11-01 扩字段）"
+                   + (source_extra or ""),
+        "provenance": provenance([key], sha, sv, fields),
     }
 
 
-def build_items(rows, NAME, sha, sv):
+def build_items(rows, NAME, sha, sv, ICONS):
     """两遍法：先定主行集合（classify），再挂体验版。返回 (条目, 统计)。"""
-    # --- pass 1：主行资格 ---
     eligible = {}
     stats = {"npc_dropped": 0, "acc_dropped": 0, "no_attrs": 0, "pendant": 0}
     for r in rows:
@@ -234,21 +285,18 @@ def build_items(rows, NAME, sha, sv):
             continue
         if 270000 <= int(r["key"]) < 280000 or PENDANT_PAT.search(name):
             if attrs:
-                stats["pendant"] += 1  # 挂饰（蓝白猫咪等）：用户判定不该进
+                stats["pendant"] += 1
             continue
         if not attrs:
-            stats["no_attrs"] += 1  # 装备行但 attrs 未解出：结案遗留，暂不进板
+            stats["no_attrs"] += 1
             continue
         label = classify(r)
         if label is None:
             if et not in (0, 1, 2):
-                stats["acc_dropped"] += 1  # 夹层/涂层/握把等配件杂物
+                stats["acc_dropped"] += 1
             continue
         eligible[r["key"]] = r
 
-    # --- pass 2：体验版 → 合格正式版 ---
-    # 匹配规则：剥「体验版（N天）」尾巴后前缀命中；精确同名 > 同 weapon_type > 全部；
-    # 再取 row_key 最小（本体行通常是最低键）。
     eligible_names = [(r.get("name") or "", r) for r in eligible.values()]
     grouped, orphans = {}, []
     for t in rows:
@@ -266,7 +314,6 @@ def build_items(rows, NAME, sha, sv):
             grouped.setdefault(best["key"], []).append(t)
         else:
             orphans.append(t)
-    # 同名孤立体验版（不同行键）合并为一条，row_keys 并列
     merged_orphans = {}
     for t in orphans:
         merged_orphans.setdefault(t.get("name"), []).append(t)
@@ -274,7 +321,6 @@ def build_items(rows, NAME, sha, sv):
     orphan_extra_keys = {}
     for nm, v in merged_orphans.items():
         s = sorted(v, key=lambda r: (not r.get("attrs"), int(r["key"])))
-        # 无人机体验版（181xxx/182xxx）：2026-10-29 用户判定整体不进，本体未解出也不单列
         if DRONE_SEG(s[0]["key"]):
             stats["acc_dropped"] += len(s)
             continue
@@ -282,17 +328,15 @@ def build_items(rows, NAME, sha, sv):
         if len(s) > 1:
             orphan_extra_keys[s[0]["key"]] = [r["key"] for r in s[1:]]
 
-    # --- pass 3：产出 ---
     out = []
     for r in eligible.values():
         key = r["key"]
         name = r.get("name") or ("装备 %s" % key)
         attrs = r.get("attrs") or []
         et, wt = r.get("equip_type"), r.get("weapon_type")
-        it = item_base(key, name, et, wt, attrs, NAME, classify(r), sha, sv)
+        it = item_base(key, name, et, wt, attrs, NAME, classify(r), sha, sv, r, ICONS)
         tv = grouped.get(key) or []
         if tv:
-            # 同名体验版（不同行键，如新旧两版）合并为一条子项，row_keys 并列
             by_name = {}
             for t in tv:
                 e = by_name.setdefault(t.get("name"),
@@ -307,33 +351,61 @@ def build_items(rows, NAME, sha, sv):
             it["trial_variants"] = [{k: v for k, v in e.items() if k != "_keys"}
                                     | {"row_keys": e["_keys"]}
                                     for e in by_name.values()]
-            it["_row_keys"] += [k for e in by_name.values() for k in e["_keys"]]
+            it["provenance"]["row_keys"] += [k for e in by_name.values() for k in e["_keys"]]
+            it["provenance"]["locator_chain"]["steps"][0]["row_key"] = it["provenance"]["row_keys"][0]
         out.append(it)
     for t in orphans:
         key = t["key"]
         attrs = t.get("attrs") or []
         et, wt = t.get("equip_type"), t.get("weapon_type")
         it = item_base(key, t.get("name"), et, wt, attrs, NAME,
-                       "体验版（正式版行不在活跃行内）", sha, sv,
+                       "体验版（正式版行不在活跃行内）", sha, sv, t, ICONS,
                        source_extra="；正式版本体行不在源表物理活跃行内"
                                     "（热更内容，行数值在未留盘 inc 分片中）")
-        it["status_tags"].append("trial-unmatched")
+        it["status_tags"] = [x for x in it["status_tags"] if x != "file-missing"] + ["unresolved"]
         if not attrs:
             it["属性"] = "（本行 attrs 未解出/为空）"
         if key in orphan_extra_keys:
-            it["_row_keys"] = [key] + orphan_extra_keys[key]
+            it["provenance"]["row_keys"] = [key] + orphan_extra_keys[key]
         out.append(it)
-    for it in out:
-        it["provenance"] = provenance(it.pop("_row_keys"), sha, sv)
     out.sort(key=lambda x: (str(x["equip_type"]), str(x["row_key"])))
     return out, stats
 
 
 def write_board(path_json: pathlib.Path, data: dict):
     path_json.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
-    js = path_json.with_suffix(".js")
     var = "window.WIKI_BOARD_%s = " % path_json.stem
-    js.write_text(var + json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    path_json.with_suffix(".js").write_text(var + json.dumps(data, ensure_ascii=False),
+                                            encoding="utf-8")
+
+
+def meta_common(name, items, source_locks, notes, server_branch, sibling_cards, filters):
+    return {
+        "name": name,
+        "category": CATEGORY,
+        "generated": "2026-11-01",
+        "evidence": "structure",
+        "package_sha": hashlib.sha256(
+            b"".join(l["sha256"].encode() for l in source_locks)).hexdigest(),
+        "source_server": "PE 测试服源包 · all_equips_data · " + " + ".join(
+            "%s（%s）" % (sv, cfg["channel"]) for sv, cfg in SERVERS.items()),
+        "server_branch": server_branch,
+        "sibling_cards": sibling_cards,
+        "filters": filters,
+        "notes": notes,
+        "state_summary": {"unresolved": len(items), "static config": len(items),
+                          "verified": 0, "runtime final unknown": len(items),
+                          "有属性": sum(1 for i in items if i.get("属性")),
+                          "有图标": sum(1 for i in items if i.get("icon"))},
+        "provenance": {
+            "contract_version": 3, "audit_status": "passed",
+            "contract": "frozen-audited-artifact",
+            "source_locks": source_locks,
+            "source_scope": {"cross_source_policy": "no-cross-source-field-join",
+                             "integer_join_policy": "no-equal-integer-join",
+                             "runtime_final_policy": "unknown-unless-runtime-proven"},
+        },
+    }
 
 
 def main() -> int:
@@ -341,100 +413,106 @@ def main() -> int:
     got = attr_names()
     if got:
         NAME.update(got)
+    ICONS = load_icons()
+    ics = {"total": len(ICONS),
+           "hit": sum(1 for v in ICONS.values() if v.get("png")),
+           "miss": sum(1 for v in ICONS.values() if not v.get("png"))}
 
-    # 两服各建条目（逐条带 server_branch 服标），合并输出为一张卡（2026-10-29 用户定版：
-    # 「本来就是一个子卡」——目录只出一张卡，页内「服别」下拉筛选区分两服）。
+    per = {}
     all_items = []
-    per_server = {}
     for sv, cfg in SERVERS.items():
-        src_path = cfg["src"]
-        payload = json.loads(src_path.read_text(encoding="utf-8"))
-        rows = payload.get("rows") if isinstance(payload, dict) else payload
-        if rows is None:
-            rows = payload if isinstance(payload, list) else []
-        sha = hashlib.sha256(src_path.read_bytes()).hexdigest()
-        items, stats = build_items(rows, NAME, sha, sv)
+        payload = json.loads(cfg["src"].read_text(encoding="utf-8"))
+        rows = payload["rows"]
+        sha = hashlib.sha256(cfg["src"].read_bytes()).hexdigest()
+        items, stats = build_items(rows, NAME, str(sha), sv, ICONS)
+        n_trial_merged = sum(len(i["trial_variants"] or []) for i in items)
+        n_trial_alone = sum(1 for i in items if "unresolved" in i["status_tags"])
+        n_icon = sum(1 for i in items if i.get("icon"))
+        n_missing = sum(1 for i in items if i.get("icon_missing"))
+        per[sv] = {"cfg": cfg, "sha": sha, "rows": rows, "items": items, "stats": stats,
+                   "n": len(items), "n_trial_merged": n_trial_merged,
+                   "n_trial_alone": n_trial_alone, "n_icon": n_icon, "n_missing": n_missing,
+                   "src_path": cfg["src"]}
         all_items.extend(items)
-        from collections import Counter
-        per_server[sv] = {
-            "cfg": cfg, "sha": sha, "src_path": src_path, "stats": stats,
-            "n": len(items),
-            "n_trial_merged": sum(len(i["trial_variants"] or []) for i in items),
-            "n_trial_alone": sum(1 for i in items if "trial-unmatched" in i["status_tags"]),
-            "label_dist": Counter(i["equip_label"].split("/")[0] for i in items).most_common(),
-        }
-        print(sv, "条数", len(items), "｜ 体验版并入", per_server[sv]["n_trial_merged"],
-              "｜ 体验版单列", per_server[sv]["n_trial_alone"],
-              "｜ 剔配件", stats["acc_dropped"], "｜ 剔NPC", stats["npc_dropped"],
-              "｜ 无attrs装备行", stats["no_attrs"],
-              "｜ 类型分布", per_server[sv]["label_dist"])
+        print("%s（%s）条数 %d ｜ 体验版并入 %d ｜ 单列 %d ｜ 有图 %d ｜ 缺图 %d ｜ "
+              "剔配件 %d ｜ 剔NPC %d ｜ 无attrs行 %d"
+              % (sv, cfg["channel"], len(items), n_trial_merged, n_trial_alone,
+                 n_icon, n_missing, stats["acc_dropped"], stats["npc_dropped"],
+                 stats["no_attrs"]))
 
-    n_trial_merged = sum(v["n_trial_merged"] for v in per_server.values())
-    n_trial_alone = sum(v["n_trial_alone"] for v in per_server.values())
-    st = {sv: v["stats"] for sv, v in per_server.items()}
-    branches = "/".join("%s %d" % (sv, v["n"]) for sv, v in per_server.items())
-    scope_notes = "".join(
-        "③ 全量边界 · %s（数据通道 %s）：%s" % (sv, v["cfg"]["channel"], v["cfg"]["full_note"][2:].lstrip("③").strip())
-        for sv, v in per_server.items())
-    source_locks = [{"source_id": "equipment-attrs-%s" % v["cfg"]["channel"],
-                     "role": "primary-frozen-extract",
-                     "path": str(v["src_path"]).replace("\\", "/").split("la拆包项目/")[-1],
-                     "sha256": v["sha"], "bytes": v["src_path"].stat().st_size,
-                     "mtime_ns": v["src_path"].stat().st_mtime_ns}
-                    for v in per_server.values()]
-    d = {
-        "meta": {
-            "name": "装备属性（武器 · 护甲）",
-            "category": "二、战力类 / （五）装备属性（武器·护甲）",
-            "generated": "2026-10-29",
-            "evidence": "structure",
-            "package_sha": hashlib.sha256(
-                b"".join(v["sha"].encode() for v in per_server.values())).hexdigest(),
-            "source_server": "PE 测试服源包 · all_equips_data · 简单生存服（kj1）+ 经典服（base）",
-            "server_branch": "简单生存服+经典服（条目级 server_branch，页内服别筛选）",
-            "sibling_cards": [],
-            "filters": [{"key": "server_branch", "label": "服别"},
-                        {"key": "equip_label", "label": "类型"},
-                        {"key": "attr_first", "label": "主属性"}],
-            "notes": (
-                "单卡双服（%s）；目录一张卡，页内「服别」下拉筛选区分两服，分服行数据不混排"
-                "（逐条带 server_branch 服标，简单生存服=kj1 通道、经典服=base 通道）。"
-                % branches
-                +
-                "① 筛选（两服同规则，2026-10-29 用户判定落规则）：收 武器/护甲·护盾/工具（equip_type 0/1/2）"
-                "+ 投掷物（wt 4001）+ 陷阱·地雷（wt 6001），均需 attrs 非空；"
-                "剔 无人机（整机/模块/体验版）、挂饰（270xxx 整段，简单生存服 %d 行 / 经典服 %d 行，含蓝白猫咪）、"
-                "配件杂物（夹层/涂层/握把/热成像辅助器/背包救生包等 equip_type 空行，简单生存服 %d 行 / 经典服 %d 行）、"
-                "NPC 装备（名字含 怪物/利维坦，简单生存服 %d 行 / 经典服 %d 行）、测试件。"
-                "② 体验版合并（两服同规则）：%d 条体验版（含「体验版（N天）」限时形式）并入正式版条目"
-                "「体验版子项」（trial_variants，同名多行合并 row_keys）；"
-                "%d 条体验版的正式版行不在活跃行内（热更缺口，label 已注明）、单列标注 trial-unmatched。"
-                % (st["简单生存服"]["pendant"], st["经典服"]["pendant"],
-                   st["简单生存服"]["acc_dropped"], st["经典服"]["acc_dropped"],
-                   st["简单生存服"]["npc_dropped"], st["经典服"]["npc_dropped"],
-                   n_trial_merged, n_trial_alone)
-                +
-                scope_notes +
-                "④ 图标：按定版在全量补完后再统一补图，本板 icon 字段留空。"
-                "⑤ 数据链路：03_执行 提取脚本（03_执行/all_equips_full_extract.py）→ 30_分析 冻结 JSON"
-                "（sha256 见 source_locks，两服各一份）→ 本构建脚本，可复算可回放。"
-            ),
-            "state_summary": {"unresolved": len(all_items), "static config": len(all_items),
-                              "verified": 0, "runtime final unknown": len(all_items),
-                              "有属性": sum(1 for i in all_items if i["属性"])},
-            "provenance": {
-                "contract_version": 3, "audit_status": "passed",
-                "contract": "frozen-audited-artifact",
-                "source_locks": source_locks,
-                "source_scope": {"cross_source_policy": "no-cross-source-field-join",
-                                 "integer_join_policy": "no-equal-integer-join",
-                                 "runtime_final_policy": "unknown-unless-runtime-proven"},
-            },
-        },
-        "items": all_items,
-    }
-    write_board(OUT_KJ1, d)
-    print("合并卡", len(all_items), "条 →", OUT_KJ1.name)
+    # ── 分服卡 ──
+    for sv, v in per.items():
+        cfg = v["cfg"]
+        siblings = [OVERVIEW["board"] + "（三服总览）"] + [
+            c["board"] + "（%s）" % s for s, c in SERVERS.items() if s != sv]
+        locks = [{"source_id": "equipment-attrs-%s" % cfg["channel"],
+                  "role": "primary",
+                  "path": str(v["src_path"]).replace("\\", "/").split("la拆包项目/")[-1],
+                  "sha256": v["sha"], "bytes": v["src_path"].stat().st_size,
+                  "mtime_ns": v["src_path"].stat().st_mtime_ns}]
+        notes = (
+            "分服卡（%s · 数据通道 %s）。"
+            "① 收录：武器/护甲·护盾/工具（equip_type 0/1/2）+ 投掷物（wt 4001）+ 陷阱·地雷（wt 6001），"
+            "均需 attrs 非空；剔 无人机、挂饰（270xxx，%d 行）、配件杂物（%d 行）、NPC 装备（%d 行）、测试件。"
+            "② 体验版：%d 条并入正式版条目「体验版子项」；%d 条正式版行不在活跃行内，单列。"
+            "③ 字段：desc/level/durability/max_shield/shield_type/weapon_kind/model_path/"
+            "base_score/charm_value 为同行直读；weapon_kind 是数值码，客户端无码→中文名称表，"
+            "板面中文标签按装备名归纳（非官方枚举）。"
+            "④ 图标：大图 _b 直出到 assets/equip_icons/，本卡有图 %d 条、缺图 %d 条"
+            "（客户端无素材，留空并标 icon_missing / file-missing）。"
+            "⑤ 全量边界：%s"
+            "⑥ 数据链路：03_执行/all_equips_full_extract.py → 30_分析 冻结 JSON → 本构建脚本。"
+            % (sv, cfg["channel"], v["stats"]["pendant"], v["stats"]["acc_dropped"],
+               v["stats"]["npc_dropped"], v["n_trial_merged"], v["n_trial_alone"],
+               v["n_icon"], v["n_missing"], cfg["full_note"]))
+        d = {
+            "meta": meta_common(BASE_NAME + " · " + sv, v["items"], locks, notes,
+                                sv, siblings,
+                                [{"key": "equip_label", "label": "类型"},
+                                 {"key": "attr_first", "label": "主属性"},
+                                 {"key": "weapon_kind_label", "label": "武器细类"}]),
+            "items": v["items"],
+        }
+        out = BOARDS / (cfg["board"] + ".json")
+        write_board(out, d)
+        print("写出", out.name, len(v["items"]), "条")
+
+    # ── 总览卡 ──
+    locks = [{"source_id": "equipment-attrs-%s" % v["cfg"]["channel"],
+              "role": "primary",
+              "path": str(v["src_path"]).replace("\\", "/").split("la拆包项目/")[-1],
+              "sha256": v["sha"], "bytes": v["src_path"].stat().st_size,
+              "mtime_ns": v["src_path"].stat().st_mtime_ns} for v in per.values()]
+    notes = (
+        "三服总览卡：%s，共 %d 条；页内「服别」下拉筛选区分三服，"
+        "逐条带 server_branch，不混排（简单生存服=kj1、经典服=base、月卡服=yk）。"
+        "① 筛选同三张分服卡（服别/类型/主属性/武器细类），收录与剔除规则见各分服卡说明。"
+        "② 体验版：三服合计并入 %d 条、单列 %d 条。"
+        "③ 图标：大图 _b 直出到 assets/equip_icons/（按路径扁平化命名，三服同路径共用同一张，"
+        "唯一路径 %d 条：命中 %d、客户端无素材 %d）；本卡有图 %d 条、缺图 %d 条"
+        "（缺图标 icon_missing + file-missing，不补占位）。"
+        "④ 字段：desc/level/durability/max_shield/shield_type/weapon_kind/model_path/"
+        "base_score/charm_value；weapon_kind 中文标签按装备名归纳（1 步枪/2 冲锋枪/3 弓/4 霰弹枪/"
+        "5 狙击枪/6 手枪/7 火箭筒·榴弹/8 电磁/20 喷火器/21 重机枪/50 冷兵器/999 特殊），非官方枚举。"
+        "⑤ 全量边界：三服各自 100%% 解出活跃行；护臂/进化武器因热更 inc 分片未留盘缺席，属数据源硬缺口。"
+        "⑥ 数据链路：03_执行/all_equips_full_extract.py（2026-11-01 扩字段就地覆盖）→ "
+        "30_分析 冻结 JSON → tools/build_equip_icons.py → 本构建脚本。"
+        % ("/".join("%s %d" % (sv, v["n"]) for sv, v in per.items()), len(all_items),
+           sum(v["n_trial_merged"] for v in per.values()),
+           sum(v["n_trial_alone"] for v in per.values()),
+           ics["total"], ics["hit"], ics["miss"],
+           sum(1 for i in all_items if i.get("icon")),
+           sum(1 for i in all_items if i.get("icon_missing"))))
+    d = {"meta": meta_common(BASE_NAME + " · 三服总览", all_items, locks, notes,
+                             OVERVIEW["server_branch"],
+                             [c["board"] + "（%s）" % sv for sv, c in SERVERS.items()],
+                             [{"key": "server_branch", "label": "服别"},
+                              {"key": "equip_label", "label": "类型"},
+                              {"key": "attr_first", "label": "主属性"},
+                              {"key": "weapon_kind_label", "label": "武器细类"}]),
+         "items": all_items}
+    write_board(BOARDS / "equipment_attrs.json", d)
+    print("写出总览卡", len(all_items), "条")
     return 0
 
 
