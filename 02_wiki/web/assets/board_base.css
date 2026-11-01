@@ -1349,16 +1349,6 @@ body.b-gene_potential_catalog .gene-d2-na{color:var(--muted-2);font-size:12px}
 
 /* ── 左栏折叠（板页）────────────────────────────────────────────
    固定手柄在侧栏右缘；折叠后侧栏收起到 0，正文跟随，状态记 localStorage */
-#navCollapse{position:fixed;left:212px;top:50%;transform:translateY(-50%);z-index:120;
-  width:14px;height:56px;padding:0;border:1px solid var(--border,#2b3446);border-left:none;
-  background:var(--card,#171b26);color:var(--muted,#9aa6bd);cursor:pointer;
-  border-radius:0 6px 6px 0;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center}
-#navCollapse:hover{color:var(--fg,#e7eaf4);border-color:var(--accent,#b6a7df)}
-body.nav-collapsed{padding-left:0!important}
-body.nav-collapsed #siteNav{width:0!important;min-width:0!important;max-width:0!important;padding:0!important;overflow:hidden;border-right:none}
-body.nav-collapsed #navCollapse{left:0;border-left:1px solid var(--border,#2b3446);
-  border-radius:0 6px 6px 0}
-@media(max-width:900px){#navCollapse{display:none}}
 
 /* ── 左栏类目折叠（板页）──────────────────────────────────────── */
 #siteNav .grp,#siteNav .leafhd{cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}

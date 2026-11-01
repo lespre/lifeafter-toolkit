@@ -102,7 +102,7 @@
       }
       var lid=tid+'/'+leaf.name, br=branchSuffix(ids), lc=_isClosed(lid);
       body += '<div class="leafhd'+(lc?' closed':'')+'" data-leaf="'+_esc(lid)+'" role="button" tabindex="0">'+
-              '<i class="car">▾</i><span>'+_esc(leaf.name)+'</span></div>';
+              '<span>'+_esc(leaf.name)+'</span><i class="car">▾</i></div>';
       body += '<div class="leafbody" data-lbody="'+_esc(lid)+'"'+(lc?' style="display:none"':'')+'>';
       ids.forEach(function(id){
         body += '<a class="sub'+(id===cur?' on':'')+'" href="board.html?b='+encodeURIComponent(id)+'">'+
@@ -150,27 +150,6 @@
     cb.addEventListener('change', function(){
       try{ localStorage.setItem('wiki_show_preview', cb.checked ? '1' : '0'); }catch(e){}
       location.reload();
-    });
-  })();
-  /* 2026-11-01：左栏折叠手柄（进入子卡后也能一键收起，给详情让宽度） */
-  (function(){
-    if(document.getElementById('navCollapse'))return;
-    var KEY='board_nav_collapsed';
-    var btn=document.createElement('button');
-    btn.id='navCollapse';btn.type='button';btn.title='折叠 / 展开资料分类';
-    btn.setAttribute('aria-label','折叠或展开左侧资料分类');
-    document.body.appendChild(btn);
-    function apply(c){
-      document.body.classList.toggle('nav-collapsed',c);
-      btn.textContent=c?'»':'«';
-      try{localStorage.setItem(KEY,c?'1':'0');}catch(e){}
-      /* 让依赖布局宽度的浮层（停靠缩略图 / 灯箱）重新计算位置 */
-      try{window.dispatchEvent(new Event('resize'));}catch(e){}
-    }
-    var saved=false;try{saved=localStorage.getItem(KEY)==='1';}catch(e){}
-    apply(saved);
-    btn.addEventListener('click',function(){
-      apply(!document.body.classList.contains('nav-collapsed'));
     });
   })();
   /* 侧栏自适应：优先缩字号（最小 9px）保证单行放得下，仍放不下才回退省略号 */
