@@ -240,6 +240,9 @@ class Names:
         self.fashion = _opt_table(TREE / "fashion_data.py", TREE / "fashion_data_chs.py")
         self.gift = _opt_table(TREE / "gift_data.py", TREE / "gift_data_chs.py")
         self.recipe = _opt_table(TREE / "recipe.py", TREE / "recipe_chs.py")
+        # 展示外观（74154xxxx / 74159xxxx 这类池内时装）：名字只在这张表里
+        self.appear = _opt_table(TREE / "player_module_appear_data.py",
+                                 TREE / "player_module_appear_data_chs.py")
         self.common_ov = _opt_table(OVER / "common_item_data_auto_oversea_data_kj1.py",
                                     OVER / "common_item_data_auto_oversea_data_kj1_chs.py")
         self.equips = _opt_table(OVER / "all_equips_data_auto_oversea_data_yk.py",
@@ -247,6 +250,7 @@ class Names:
 
         for label, table in (("fashion_data", self.fashion), ("gift_data", self.gift),
                              ("recipe", self.recipe),
+                             ("player_module_appear_data", self.appear),
                              ("common_item(oversea kj1)", self.common_ov),
                              ("all_equips(oversea yk)", self.equips)):
             mapping = {}
@@ -279,7 +283,7 @@ class Names:
     def _order(self, item_id: int) -> list[str]:
         s = str(item_id)
         if s.startswith(FASHION_PREFIX) or len(s) >= 9:
-            return ["fashion_data", "show_item_names.json", "gift_data",
+            return ["fashion_data", "player_module_appear_data", "show_item_names.json", "gift_data",
                     "common_item_names.json", "common_item(oversea kj1)", "all_equips(oversea yk)"]
         if s.startswith(("105", "103", "106")):
             return ["recipe", "common_item_names.json", "gift_data",
