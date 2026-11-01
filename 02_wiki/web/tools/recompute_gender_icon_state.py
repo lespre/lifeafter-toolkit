@@ -45,8 +45,9 @@ def main() -> int:
         # 图自带 label：女 / 男（文件名不可靠：多数卡两张图都不带性别后缀）
         labels = [str(im.get("label") or "") for im in imgs]
         label_list = labels
-        has_f = any("女" in x for x in labels)
-        has_m = any("男" in x for x in labels)
+        universal = any("通用" in x for x in labels)
+        has_f = universal or any("女" in x for x in labels)
+        has_m = universal or any("男" in x for x in labels)
         if not imgs:
             has_f = has_m = False
 
