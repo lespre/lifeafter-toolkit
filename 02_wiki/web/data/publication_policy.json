@@ -247,21 +247,18 @@
    "reason": "影音资源库：左侧分类树 + 常驻播放器。音频 19,959 条 = res/sound.gpk（含热更 layers npk）FSB5 样本名索引的去重样本名，可播文件为 01_索引与产物/20_提取/影音/audio 下已转码 mp3（页面未转码的条目如实标「待提取」）；视频 300 条 = 41_还原树内 res/video.gpk 已还原 mp4（含 103 条按条目号命名的未命名视频）。无 cdata 表行 ⇒ 按名册级（roster / static-export）通道登记，媒体文件不复制进 web。"
   },
   "damage_attack": {
-   "publication_status": "unpublished",
+   "publication_status": "published",
    "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
-   "reason": "攻击力五阶段：source_hurt 分段曲线，按场景 id × 服型解码。",
    "items": 3
   },
   "damage_defense": {
-   "publication_status": "unpublished",
+   "publication_status": "published",
    "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
-   "reason": "守方侧：b_class/c_class 曲线，三服逐值一致。",
    "items": 3
   },
   "damage_bonus": {
-   "publication_status": "unpublished",
+   "publication_status": "published",
    "category": "二、战力类 / （六）伤害计算 / 3、加成",
-   "reason": "加成六阶段：p2p 分段曲线，按场景 × 三服解码。",
    "items": 19
   }
  }

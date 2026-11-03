@@ -111,6 +111,85 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "2、攻击力",
+      "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
+      "board": "damage_attack",
+      "items": 3,
+      "generated": "2026-11-04",
+      "source_server": "PE 测试服 · special_hurt_params_data（经典服）/ _kj1（简单生存）/ _yk（月卡）/ hurt_params_data（全局默认）",
+      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
+      "evidence": {
+        "structure": 3
+      },
+      "state_summary": {
+        "经典服": 1,
+        "简单生存服": 1,
+        "月卡服": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 3
+        }
+      }
+    },
+    {
+      "name": "3、加成",
+      "category": "二、战力类 / （六）伤害计算 / 3、加成",
+      "board": "damage_bonus",
+      "items": 19,
+      "generated": "2026-11-04",
+      "source_server": "PE 测试服 · special_hurt_params_data（经典服）/ _kj1（简单生存）/ _yk（月卡）/ hurt_params_data（全局默认）",
+      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
+      "evidence": {
+        "structure": 19
+      },
+      "state_summary": {
+        "跨服": 4,
+        "经典服": 5,
+        "简单生存服": 5,
+        "月卡服": 5
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 19
+        }
+      }
+    },
+    {
+      "name": "4、守方侧",
+      "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
+      "board": "damage_defense",
+      "items": 3,
+      "generated": "2026-11-04",
+      "source_server": "PE 测试服 · special_hurt_params_data / _kj1 / _yk / hurt_params_data（b_class、c_class 列）",
+      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
+      "evidence": {
+        "structure": 3
+      },
+      "state_summary": {
+        "经典服": 1,
+        "简单生存服": 1,
+        "月卡服": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 3
+        }
+      }
+    },
+    {
       "name": "（内测版）说明条目总表",
       "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "desc_catalog",
