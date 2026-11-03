@@ -479,17 +479,9 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "条目总数": 30252,
-        "命名空间": {
-          "common_item": 29450,
-          "gift_data": 748,
-          "belt_chip": 54
-        },
-        "证据等级": {
-          "static/candidate": 30252
-        },
-        "状态标签": {
-          "static config": 30252
-        },
+        "命名空间": "common_item 29,450 / gift_data 748 / belt_chip 54",
+        "证据等级": "static/candidate 30,252",
+        "状态标签": "static config 30,252",
         "名册级条目": 0,
         "行级可定位条目": 30252
       },
