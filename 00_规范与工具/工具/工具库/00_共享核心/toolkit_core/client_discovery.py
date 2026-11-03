@@ -30,8 +30,10 @@ _LINE_MARKERS = {
 
 def _marker_map(root: Path) -> dict[str, bool]:
     doc = root / "Documents"
-    return {m: (doc / m).is_file() if m.startswith("download_") or m in {
-        "local_state_314_lc", "cloud.json", "update.ini"} else (root / m).is_file()
+    # download_* 在真机上可能是【目录】（热更包存放目录），用 exists 判定，
+    # 以前用 is_file() 会把体验服误判成正式服（雷电 PE 实测）。
+    return {m: (doc / m).exists() if m.startswith("download_") or m in {
+        "local_state_314_lc", "cloud.json", "update.ini"} else (root / m).exists()
             for m in _MARKERS}
 
 
