@@ -33,7 +33,9 @@ import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from la_paths import ARTIFACTS  # noqa: E402
-from build_media_catalog import SOUND_INDEX, SOUND_BANK_DIR, MEDIA_AUDIO_DIR, audio_cat_of, safe_stem  # noqa: E402
+from build_media_catalog import (SOUND_INDEX, SOUND_BANK_DIR, MEDIA_AUDIO_DIR,  # noqa: E402
+                                 MIN_WAV_BYTES, MIN_MEDIA_MP3_BYTES,
+                                 audio_cat_of, safe_stem)
 
 VGMSTREAM = pathlib.Path(r"C:\Users\Administrator\AppData\Local\Temp\vgm\ex\vgmstream-cli.exe")
 HOTFIX_NPK = ARTIFACTS / "源包" / "pe_npk_20261029" / "res.sound.layers.1.1.npk"
@@ -75,7 +77,7 @@ def _decode_all(bank_file: pathlib.Path, tmpdir: pathlib.Path, tag: str, n_sampl
     out: dict[int, pathlib.Path] = {}
     for i in range(n_samples):
         p = tmpdir / f"{tag}_{i + 1}.wav"
-        if p.exists() and p.stat().st_size > 1000:
+        if p.exists() and p.stat().st_size > MIN_WAV_BYTES:
             out[i] = p
     return out
 
@@ -84,7 +86,7 @@ def _to_mp3(wav: pathlib.Path, mp3: pathlib.Path) -> bool:
     cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(wav),
            "-c:a", "libmp3lame", "-q:a", "5", str(mp3)]
     r = subprocess.run(cmd, capture_output=True)
-    return r.returncode == 0 and mp3.exists() and mp3.stat().st_size > 1024
+    return r.returncode == 0 and mp3.exists() and mp3.stat().st_size > MIN_MEDIA_MP3_BYTES
 
 
 def _work(entry: int) -> dict:
@@ -99,7 +101,7 @@ def _work(entry: int) -> dict:
     pending = []
     for sidx, name in todo:
         mp3 = MEDIA_AUDIO_DIR / audio_cat_of(name) / (safe_stem(name) + ".mp3")
-        if mp3.exists() and mp3.stat().st_size > 1024 and not _G["force"]:
+        if mp3.exists() and mp3.stat().st_size > MIN_MEDIA_MP3_BYTES and not _G["force"]:
             stat["skip"] += 1
             continue
         pending.append((sidx, name, mp3))
@@ -162,7 +164,7 @@ def main() -> int:
             if only and audio_cat_of(name) not in only:
                 continue
             mp3 = MEDIA_AUDIO_DIR / audio_cat_of(name) / (safe_stem(name) + ".mp3")
-            if not (mp3.exists() and mp3.stat().st_size > 1024):
+            if not (mp3.exists() and mp3.stat().st_size > MIN_MEDIA_MP3_BYTES):
                 need += 1
     print("待转码 %d 条 / %d 个 bank（分类=%s）" % (need, len(banks), ",".join(sorted(only)) if only else "全部"), flush=True)
     if args.max_samples and need > args.max_samples:

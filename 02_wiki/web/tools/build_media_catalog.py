@@ -35,6 +35,10 @@ VIDEO_ROOT = ARTIFACTS / "41_还原树" / "pe" / "资源"
 VIDEO_ENTRY_INDEX = (INDEX_ROOT / "site_data" / "audit" / "package_indexes"
                      / "gpk_test_res_video_gpk.entries.jsonl")
 MEDIA_AUDIO_DIR = ARTIFACTS / "20_提取" / "影音" / "audio"
+# 最小体积门槛：允许 10 ms 静音占位样本（silense_001s：WAV 202 B / mp3 477 B），
+# 仍拒绝空文件与只有头的截断产物（空 WAV ≈44 B）。
+MIN_WAV_BYTES = 150
+MIN_MEDIA_MP3_BYTES = 200
 BOARD_ID = "media_catalog"
 
 # 物证通道（2026-11-02）：影音板没有 cdata 表行，按既有「名册级条目」通道登记。
@@ -157,7 +161,7 @@ def build() -> dict:
             "bank_entry": int(entry),
             "sample_index": int(sidx),
             "media_path": rel_web(mp3),
-            "extracted": mp3.exists() and mp3.stat().st_size > 1024,
+            "extracted": mp3.exists() and mp3.stat().st_size > MIN_MEDIA_MP3_BYTES,
             "evidence": "structure",
             "evidence_level": "structure-only",
             "source": "sound.gpk 样本索引 · bank %d #%d" % (int(entry), int(sidx)),

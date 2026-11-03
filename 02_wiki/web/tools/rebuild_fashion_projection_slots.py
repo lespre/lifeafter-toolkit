@@ -1,241 +1,221 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""rebuild_fashion_projection_slots — 伴身投影（投影格）定位链板导出器
+"""rebuild_fashion_projection_slots — 伴身投影（投影格）名册：buff 层 + 道具层
 
-定位链（2026-09-04，用户三张实机锚点图）：
-  游戏「时装搭配→投影」格的外观=buff_data 表（base entry 006675 FID 445751514818606E
-  + CHS 002918 FID 1E23D0CBDFC4BEA7）中 sfx_path 指向 effect/.../benshentouying/
-  （伴身投影资源目录）的 SfxBuff/IdleChangeFollowBuff/AddSocketModelBuff 行。
-  name 形态：伴身投影·X / 伴身投影-X / 投影·X / 有龙则灵-X（sfx 同目录，无投影字样）。
-  实机锚点核对：用户三图 27 名 → 24 精确命中本表（回旋音阶/烈焰燃蝶/浮光花丛/九尾蓝狐/
-  浑天穹焰/赤红月噬/星海寄情/临渊流火/有龙则灵系/五行之力/破阵相思/燕字回时/时空裂隙/
-  澜起掠影/浮灵幽幽/樱吹雪/悠游天地/梵影华光/海洋之歌/雪映流光/蔷薇来信/西湖燕尔/
-  青焰流光/好运时间）；星河流淌/无尽之紫/星礼星愿 待续（buff 池 0 命中）。
+源（只读，均在仓库内）：
+  buff 层  `41_还原树/pe/配置/com/cdata/buff_data.py` + `_chs.py`
+     → sfx_path 指向 `effect/…/benshentouying/`（伴身投影资源目录）或名字含「投影」的行
+  item 层  `30_分析/90_表缓存/base_B42760CCA41DBC25.py`（common_item 数据体；
+     cdata 里只是 815B MergedTableData 桩）+ 池 `base_EF3A8474A5E5F7A4.py`
+     → 640000–640999 段（「科技会研发的最新投影道具」/联名/典藏主题）行，带 item id 与图标
+
+为什么分两层而不做名字 join：buff 行的 name 形如「伴身投影·X」，道具行是「X」，
+两者是**不同层**（效果执行 / 背包道具），跨层同名不构成同一记录的证据
+⇒ 各出一行、用 `layer` 标层，不伪造跨源字段合并。
+
+口径：
+  - buff 层跳过 `伴身投影·1219测试资源`（占位资源，不是上线外观）
+  - item 层取 640000 段全量（desc 前缀「科技会研发的最新投影道具」或「臻选典藏/联动限定」）
+
+用法：python 02_wiki/web/tools/rebuild_fashion_projection_slots.py [--check]
 """
 from __future__ import annotations
-import pathlib
 
-import hashlib
-import json
-import struct
+import datetime
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pe_source as src  # noqa: E402
+from board_io import write_board_pair  # noqa: E402
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TOOLKIT_CORE  # noqa: E402
-sys.path.insert(0, str(TOOLKIT_CORE))
-from live_npk_reader import LiveNpkReader, _unpack_entry  # noqa: E402
-from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
-from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
-
-BUFF_BASE_FID = "445751514818606E"
-BUFF_CHS_FID = "1E23D0CBDFC4BEA7"
-SKIP_NAMES = {"\u4f34\u8eab\u6295\u5f71\u00b71219\u6d4b\u8bd5\u8d44\u6e90"}  # 伴身投影·1219测试资源
-
-
-def _xbody(payload: bytes) -> bytes:
-    marker = payload.find(b"x{")
-    if marker < 0:
-        raise ValueError("buff base: no x{ container")
-    length = struct.unpack_from("<I", payload, marker + 2)[0]
-    start = marker + 6
-    end = start + length
-    if end > len(payload):
-        raise ValueError("buff base: x{ frame exceeds payload")
-    return payload[start:end]
+BOARD_ID = "fashion_projection_slots"
+OUT = src.board_path(BOARD_ID)
+BUFF_TABLE = "buff_data"
+ITEM_TABLE = "common_item"
+ITEM_SEG = (640000, 641000)
+SKIP_BUFF_NAMES = {"伴身投影·1219测试资源"}
+SFX_MARK = "benshentouying"
 
 
-def _read_by_fid(reader: LiveNpkReader, file_id_hex: str) -> tuple[Any, bytes, dict]:
-    matches = [e for e in reader._entries if e.file_id == int(file_id_hex, 16)]
-    if len(matches) != 1:
-        raise RuntimeError(f"expected one entry for FID {file_id_hex}, got {len(matches)}")
-    entry = matches[0]
-    with reader.package_path.open("rb") as h:
-        h.seek(entry.offset)
-        packed = h.read(entry.packed_size)
-    decoded = _unpack_entry(packed, entry.declared_size, entry.flag)
-    reader._assert_unchanged()
-    return entry, decoded, {
-        "entry_index": entry.entry_index,
-        "file_id": file_id_hex,
-        "decoded_sha256": hashlib.sha256(decoded).hexdigest(),
-    }
-
-
-def build_board(registry_path: Path) -> dict:
-    ROOT = Path(__file__).resolve().parents[1]
-    registry = json.loads(registry_path.read_text(encoding="utf-8"))
-    source = next(s for s in registry["sources"] if s["source_id"] == "documents-py314-current")
-    reader = LiveNpkReader(Path(source["path"]), "documents")
-    meta = reader.source_metadata()
-    if meta["package_sha256"] != source["expected_sha256"]:
-        raise RuntimeError("current package SHA differs from live source registry")
-
-    b_entry, b_payload, b_prov = _read_by_fid(reader, BUFF_BASE_FID)
-    c_entry, c_payload, c_prov = _read_by_fid(reader, BUFF_CHS_FID)
-    pool = parse_legacy_chs_pool(c_payload)
-    rows, unbound = decode_table_rows_with_chs_slots(_xbody(b_payload), pool)
-    source_entries = [
-        {**b_prov, "role": "buff_data_base"},
-        {**c_prov, "role": "buff_data_chs"},
-    ]
-
-    items = []
-    for r in rows:
-        nm = r["values"].get("name")
-        sp = r["values"].get("sfx_path")
-        if not (isinstance(nm, tuple) and isinstance(nm[1], str)):
+def _buff_items() -> tuple[list[dict], dict]:
+    table = src.load(BUFF_TABLE)
+    lock = src.lock_of(table["base"], source_id=src.SOURCE_TREE)
+    out = []
+    for r in table["rows"]:
+        name = src.val(r, "name")
+        sfx = src.val(r, "sfx_path")
+        if not isinstance(name, str):
             continue
-        name = nm[1]
-        sfx = sp[1] if isinstance(sp, tuple) and isinstance(sp[1], str) else None
-        is_proj = ("\u6295\u5f71" in name) or (sfx and "benshentouying" in sfx)
-        if not is_proj or name in SKIP_NAMES:
+        if name in SKIP_BUFF_NAMES:
             continue
-        prov = r.get("value_provenance", {}).get("name")
-        text_prov = {}
-        if isinstance(prov, dict) and isinstance(prov.get("field_chs_slot"), int) \
-                and isinstance(prov.get("value_chs_slot"), int):
-            text_prov["name"] = {**prov, "scalar_type": "0x05", "text": name}
-        def val(f):
-            v = r["values"].get(f)
-            if isinstance(v, tuple) and v[1] is not None:
-                return v[1]
-            return None
-        items.append({
+        if not (SFX_MARK in str(sfx or "") or "投影" in name):
+            continue
+        vp = (r.get("value_provenance") or {}).get("name") or {}
+        out.append({
             "id": f"proj_{r['key']}",
             "row_key": r["key"],
             "name": name,
             "display_name": name,
-            "buff_class": val("buff_class"),
-            "sfx_path": sfx,
-            "sfx_socket": val("sfx_socket"),
-            "type": val("type"),
-            "effect_duration": val("effect_duration"),
-            "schema_refs": [r["schema"]],
+            "layer": "buff",
+            "buff_class": src.val(r, "buff_class"),
+            "sfx_path": src.val(r, "sfx_path"),
+            "sfx_socket": src.val(r, "sfx_socket"),
+            "type": src.val(r, "type"),
+            "effect_duration": src.val(r, "effect_duration"),
+            "item_id": None,
+            "icon": None,
+            "desc": None,
+            "schema_refs": [r.get("schema")],
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "source": (
-                "buff_data (FID 445751514818606E+1E23D0CBDFC4BEA7) row whose sfx_path "
-                "points into effect/.../benshentouying/ or name contains 投影"
-            ),
-            "text_provenance": text_prov,
-            "provenance": {
-                "source_lock_sha256": meta["package_sha256"],
-                "source_entries": source_entries,
-                "table": "buff_data",
-                "row_key": r["key"],
-                "field_refs": [
-                    f"buff_data.row_key={r['key']}",
-                    "buff_data.name column-level 0x05 (buff name)",
-                    f"buff_data.name CHS field_slot={prov.get('field_chs_slot') if isinstance(prov, dict) else '-'} "
-                    f"value_slot={prov.get('value_chs_slot') if isinstance(prov, dict) else '-'}",
-                ],
-                "name_source": "buff_data name/sfx_path 定位链：伴身投影资源目录 benshentouying",
+            "status_tags": ["static config"],
+            "source": (f"{BUFF_TABLE} 中 sfx_path 指向 effect/…/benshentouying/ 或名字含「投影」的行"
+                       "（伴身投影效果执行层）· PE 还原树"),
+            "text_provenance": {
+                "name": {
+                    "field_chs_slot": vp.get("field_chs_slot"),
+                    "value_chs_slot": vp.get("value_chs_slot"),
+                    "scalar_type": "0x05",
+                    "text": name,
+                },
             },
+            "provenance": src.item_provenance(
+                source_id=src.SOURCE_TREE,
+                lock_sha=lock["sha256"],
+                table=BUFF_TABLE,
+                row_key=r["key"],
+                field_refs=[f"{BUFF_TABLE}.row_key={r['key']}", "name", "sfx_path", "sfx_socket",
+                            "buff_class", "type", "effect_duration"],
+                name_source=f"{BUFF_TABLE} name 列（0x05 槽位回放）+ sfx 目录 benshentouying 定位链",
+                upstream_role=BUFF_TABLE,
+                entry=src.entry_of(table, f"{BUFF_TABLE}_base"),
+            ),
         })
+    return out, {"rows": len(table["rows"]), "lock": lock}
 
-    # common_item 640000 系投影道具层名册：buff 名册缺的 3 个（星河流淌/无尽之紫/星礼星愿）
-    # 以已发布 common_item 板为源（行级槽位已回放）
-    ci_path = ROOT / "data" / "boards" / "common_item_text_sources.json"
-    if not ci_path.exists():          # 该板已并入 item_master_full，回落到它
-        ci_path = ROOT / "data" / "boards" / "item_master_full.json"
-    ci_raw = json.loads(ci_path.read_text(encoding="utf-8"))["items"]
-    ci_items = {}
-    for it in ci_raw:
-        k = it.get("item_id", it.get("id"))
-        if k is not None:
-            ci_items[int(k)] = it
-    for ci_id in (640001, 640020, 640032):
-        it = ci_items.get(ci_id)
-        if it is None:
+
+def _item_items() -> tuple[list[dict], dict]:
+    ci = src.common_item()
+    lock = src.lock_of(ci["base"], source_id=src.SOURCE_CACHE)
+    out = []
+    for r in ci["rows"]:
+        key = int(r["key"])
+        if not (ITEM_SEG[0] <= key < ITEM_SEG[1]):
             continue
-        items.append({
-            "id": f"proj_item_{ci_id}",
-            "row_key": it["item_id"],
-            "name": it["name"],
-            "display_name": it["name"],
+        out.append({
+            "id": f"proj_item_{key}",
+            "row_key": key,
+            "name": src.val(r, "name"),
+            "display_name": src.val(r, "name"),
+            "layer": "item",
             "buff_class": None,
             "sfx_path": None,
             "sfx_socket": None,
             "type": None,
             "effect_duration": None,
-            "schema_refs": it.get("schema_refs", []),
+            "item_id": key,
+            "icon": src.val(r, "icon"),
+            "desc": src.val(r, "desc"),
+            "schema_refs": [r.get("schema")],
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "source": ("common_item 640000 \u7cfb\u6295\u5f71\u9053\u5177\u540d\u518c"
-                       "\uff08icon_fx_640xxx\uff0c\u7528\u6237\u5b9e\u673a\u951a\u70b9\u540d\u4e0e\u4e4b\u4e00\u81f4\uff09"),
-            "text_provenance": it.get("text_provenance", {}),
-            "provenance": {
-                "source_lock_sha256": meta["package_sha256"],
-                "source_entries": source_entries,
-                "table": "common_item",
-                "row_key": it["item_id"],
-                "field_refs": [
-                    f"common_item.item_id={it['item_id']}",
-                    "common_item name/desc/icon column-level 0x05",
-                ],
-                "name_source": "common_item 640000 \u7cfb\u6295\u5f71\u9053\u5177\uff08buff \u540d\u518c\u7f3a\u8fd9 3 \u540d\uff09",
+            "status_tags": ["static config"],
+            "source": (f"{ITEM_TABLE} 640000–640999 段（投影道具：科技会投影道具 / 典藏主题 / 联名外观）"
+                       "· 表缓存 base_" + src.COMMON_ITEM_FID),
+            "text_provenance": {
+                "name": {
+                    "field_chs_slot": (r.get("value_provenance") or {}).get("name", {}).get("field_chs_slot")
+                    if r.get("value_provenance") else None,
+                    "value_chs_slot": None,
+                    "scalar_type": "0x05",
+                    "text": src.val(r, "name"),
+                },
             },
+            "provenance": src.item_provenance(
+                source_id=src.SOURCE_CACHE,
+                lock_sha=lock["sha256"],
+                table=ITEM_TABLE,
+                row_key=key,
+                field_refs=[f"{ITEM_TABLE}.key={key}", "name", "icon", "desc", "level"],
+                name_source=f"{ITEM_TABLE} name 列（0x05 池槽回放，池=base_{src.COMMON_ITEM_POOL_FID}）",
+                upstream_role=ITEM_TABLE,
+                entry=src.entry_of(ci, f"{ITEM_TABLE}_base"),
+            ),
         })
+    return out, {"rows": len(ci["rows"]), "lock": lock}
 
-    items.sort(key=lambda x: x["name"])
-    return {
+
+def build() -> dict:
+    buffs, bmeta = _buff_items()
+    items_layer, imeta = _item_items()
+    items = buffs + items_layer
+    board = {
         "meta": {
-            "name": "\u5f53\u524d\u5305 \u00b7 \u4f34\u8eab\u6295\u5f71\uff08\u6295\u5f71\u683c\uff09",
+            "name": "当前包 · 伴身投影（投影格）",
             "category": "二、时装类 / （五）投影",
-            "source_server": source["server_branch"],
-            "package_sha": meta["package_sha256"],
-            "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source_server": ("PE 测试服 · 表 41_还原树/pe/配置/com/cdata（buff 层）"
+                              " + 表缓存 common_item（道具层）"),
+            "package_sha": bmeta["lock"]["sha256"],
+            "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "evidence": "structure",
             "notes": (
-                "\u6295\u5f71\u5b9a\u4f4d\u94fe\uff1abuff_data \u4f34\u8eab\u6295\u5f71\u7cfb\uff08sfx \u76ee\u5f55 "
-                "effect/.../benshentouying\uff09\u3002\u7528\u6237\u5b9e\u673a\u951a\u70b9 3 \u56fe 27 \u540d 24 \u547d\u4e2d"
-                "\uff1b\u661f\u6cb3\u6d41\u6d8c/\u65e0\u5c3d\u4e4b\u7d2b/\u661f\u793c\u661f\u613f \u5f85\u7eed\uff08buff \u6c60 0 \u547d\u4e2d\uff09\u3002"
-                "\u6709\u9f99\u5219\u7075\u7cfb 4 \u53d8\u4f53 sfx \u540c\u76ee\u5f55\u6536\u5f55\u3002"
-                "\u4ec5\u6587\u5b57/\u914d\u7f6e\u6765\u6e90\uff0c\u4e0d\u8868\u793a\u5f53\u524d\u53ef\u83b7\u5f97\u3002"
+                f"投影定位链两层并出：buff 层 {len(buffs)} 条（{BUFF_TABLE} 里 sfx 指向 "
+                f"effect/…/{SFX_MARK}/ 或名字含「投影」的行，= 伴身投影效果执行层）；"
+                f"道具层 {len(items_layer)} 条（{ITEM_TABLE} 640000 段 = 投影道具本体，带 item id/图标/描述）。"
+                "两层是不同记录（效果 vs 背包道具），不做跨层同名合并，用 layer 字段区分。"
+                "已跳过占位资源「伴身投影·1219测试资源」。仅文字/配置来源，不表示当前可获得。"
+                f"道具层数据体取自表缓存 base_{src.COMMON_ITEM_FID}（cdata 内为 815B 桩表），"
+                f"池=base_{src.COMMON_ITEM_POOL_FID}。"
             ),
+            "source_label": f"{BUFF_TABLE} + {ITEM_TABLE} · 测试服 PE 还原树",
             "provenance": {
+                "contract_version": 3,
                 "audit_status": "passed",
-                "source_locks": [{
-                    "sha256": meta["package_sha256"],
-                    "bytes": meta["bytes"],
-                    "mtime_ns": meta["mtime_ns"],
-                    "path_hint": "Documents/script.py314.lc.npk",
-                }],
-                "source_id": source["source_id"],
-                "base_entry": source_entries[0],
-                "chs_entry": source_entries[1],
-                "fid_lookup": True,
+                "contract": "frozen-audited-artifact",
+                "source_locks": [dict(bmeta["lock"], role="primary"),
+                                 dict(imeta["lock"], role="comparison")],
+                "source_scope": {
+                    "cross_source_policy": "no-cross-source-field-join",
+                    "integer_join_policy": "no-equal-integer-join",
+                    "runtime_final_policy": "unknown-unless-runtime-proven",
+                },
+            },
+            "state_summary": {
+                "verified": 0, "unresolved": 0, "quarantined": 0,
+                "static config": len(items), "runtime final unknown": 0,
             },
         },
-        "items": items,
         "stats": {
-            "source_rows": len(rows),
-            "unbound_rows": len(unbound),
+            "buff_rows": bmeta["rows"],
+            "common_item_rows": imeta["rows"],
+            "buff_layer_items": len(buffs),
+            "item_layer_items": len(items_layer),
             "catalog_entries": len(items),
         },
+        "items": items,
     }
+    return board
 
 
-def main() -> int:
-    import argparse
-    ROOT = Path(__file__).resolve().parents[1]
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--registry", type=Path, default=ROOT / "data" / "live_sources.json")
-    parser.add_argument("--output", type=Path,
-                        default=ROOT / "data" / "boards" / "fashion_projection_slots.json")
-    args = parser.parse_args()
-    board = build_board(args.registry)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    tmp = args.output.with_suffix(args.output.suffix + ".tmp")
-    tmp.write_text(json.dumps(board, ensure_ascii=False) + "\n", encoding="utf-8")
-    tmp.replace(args.output)
-    print(json.dumps({"items": len(board["items"]), "stats": board["stats"]}, ensure_ascii=False))
+def main(argv: list[str]) -> int:
+    board = build()
+    old = src.old_board(BOARD_ID)
+    if old:
+        on = {it["name"] for it in old["items"]}
+        nn = {it["name"] for it in board["items"]}
+        print(f"旧 {len(old['items'])} 条 / 新 {len(board['items'])} 条")
+        print(f"名字：新增 {len(nn - on)} · 消失 {len(on - nn)}")
+        print("  旧有新无:", sorted(on - nn)[:8])
+        dup = sorted(n for n in nn if sum(1 for it in board["items"] if it["name"] == n) > 1)
+        print(f"  跨层同名 {len(dup)} 条（正常，buff 层 vs 道具层）: {dup[:6]}")
+    print(f"stats={board['stats']}")
+    if "--check" in argv:
+        return 0
+    write_board_pair(OUT, board, BOARD_ID)
+    print(f"✅ {BOARD_ID}: {len(board['items'])} 条 → {OUT}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

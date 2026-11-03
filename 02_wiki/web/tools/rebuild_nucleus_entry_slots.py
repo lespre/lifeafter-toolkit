@@ -1,220 +1,178 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""rebuild_nucleus_entry_slots — 核芯词条板（nucleus_entry_data 87 条，含数值区间）
+"""rebuild_nucleus_entry_slots — 核芯词条名册（nucleus_entry_data，含数值区间）
 
-定位链（2026-09-04）：
-  核芯属性词条表=nucleus_entry_data（base entry 007998 FID ? / CHS 008771 FID ?）。
-  87 词条：desc=词条模板（如 #f(5)移动速度提升{0}#n）、upgrade_desc=升级文本、entry_type 1/2、
-  weight=洗炼权重、buff_id=buff 执行引用、min_values/max_values=jump→0x27 kind 0x12/0x22
-  nibble 组（float32/double×N，2026-09-04 解码器补丁支持）。
-  数值链：核芯(common_item 660000) → 词条(本表) → 效果执行(buff_data)。本板=词条名册+数值区间；
-  各级成长表/星级特效仍待（nucleus_build_data 无 base，卡点维持）。
+源（只读 PE 还原树）：`nucleus_entry_data.py` + 配对池 `nucleus_entry_data_chs.py`
+
+字段与口径：
+  - `name` / `display_name` = `upgrade_desc` 去富文本（#f(5)… #n）与 `{0}` 占位后派生
+    （**不改写原文**：`text_provenance` 保留 desc / upgrade_desc 的 CHS 槽位与逐字原文）
+  - `entry_type` / `weight` / `buff_id` = 同行标量
+  - `min_values` / `max_values` = jump 目标 **0x27 组**（kind 0x12=f32 / 0x22=f64）解出的数值组，
+    解不出就留空并记 `frame_status`，不猜（本包绝大多数词条该组为 [0.0, 0.0]，
+    真实数值档由 nucleus_entry 的 value_types/value_random_strides 与服务端洗炼下发）
+  - 词条 ↔ 核芯归属**不在本表**（nucleus_entry_data 是模板层，不是某枚核芯的固定词条）
+
+用法：python 02_wiki/web/tools/rebuild_nucleus_entry_slots.py [--check]
 """
 from __future__ import annotations
-import sys
-import pathlib
 
-import json
+import datetime
 import re
-import struct
-from datetime import datetime, timezone
+import sys
 from pathlib import Path
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import ANALYSIS_ROOT, TOOLKIT_CORE  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pe_source as src  # noqa: E402
+from board_io import write_board_pair  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "boards" / "nucleus_entry_slots.json"
+BOARD_ID = "nucleus_entry_slots"
+TABLE = "nucleus_entry_data"
+OUT = src.board_path(BOARD_ID)
 
-BASE_ENTRY = {"entry_index": 7998, "role": "nucleus_entry_data_base"}
-CHS_ENTRY = {"entry_index": 8771, "role": "nucleus_entry_data_chs"}
-# 源锁 sha 从 data/live_sources.json 的 documents-py314-current 动态取（禁止写死；
-# 写死会在客户端热更后静默产出过期 package_sha —— 2026-09-13 实测踩到）
-def _package_sha() -> str:
-    import json as _json
-    from pathlib import Path as _P
-    reg = _json.loads((_P(__file__).resolve().parents[1] / "data" / "live_sources.json").read_text(encoding="utf-8"))
-    for _s in reg.get("sources", []):
-        if _s.get("source_id") == "documents-py314-current":
-            return _s["expected_sha256"]
-    raise RuntimeError("documents-py314-current not registered in data/live_sources.json")
+_RICH = re.compile(r"#[a-zA-Z]\([^)]*\)|#[a-zA-Z]")
+_PLACEHOLDER = re.compile(r"\{\d+\}")
 
 
-PACKAGE_SHA = _package_sha()
-
-ENTRIES_DIR = Path(ANALYSIS_ROOT / "config_work/script_py314_docs_BA8A239A/entries")
-
-
-def _xbody(payload: bytes) -> bytes:
-    marker = payload.find(b"x{")
-    ln = struct.unpack_from("<I", payload, marker + 2)[0]
-    return payload[marker + 6: marker + 6 + ln]
-
-
-def _load_decoder():
-    sys_path = [
-        str(TOOLKIT_CORE),
-        str(ROOT / "tools"),
-    ]
-    import sys
-    for p in sys_path:
-        if p not in sys.path:
-            sys.path.insert(0, p)
-    from toolkit_core.bindict_table import parse_legacy_chs_pool
-    from toolkit_core.bindict_table import _resolve_27_group_reference
-    from bindict_provenance import decode_table_rows_with_chs_slots
-    return parse_legacy_chs_pool, _resolve_27_group_reference, decode_table_rows_with_chs_slots
+def display_from(desc: str | None) -> str | None:
+    """词条展示名 = 去富文本 + 去 {N} 占位（派生自原文，不改写原文）。"""
+    if not isinstance(desc, str):
+        return None
+    s = _RICH.sub("", desc)
+    s = _PLACEHOLDER.sub("", s)
+    s = s.replace("#r", " ").replace("\n", " ")
+    # 词条名 = 冒号前的标题段（旧板同口径：`无尽攻势·特级：突击步枪…` → `无尽攻势·特级`）
+    for sep in ("：", ":"):
+        if sep in s:
+            s = s.split(sep, 1)[0]
+    s = s.strip(" ：:。")
+    return s or None
 
 
-def _strip_rich(t: str) -> str:
-    return re.sub(r"#(?:[rcn]|f\(\d+\)|c[0-9a-fA-F]{6})", "", t)
+def build() -> dict:
+    table = src.load(TABLE)
+    lock = src.lock_of(table["base"], source_id=src.SOURCE_TREE)
+    blob = table["blob"]
 
-
-def _load_provenance():
-    """Load source lock + entry FID/decoded-sha from the registered live package."""
-    import hashlib
-    import sys as _sys
-    reg = json.loads((ROOT / "data/live_sources.json").read_text(encoding="utf-8"))
-    source = next(s for s in reg["sources"] if s["source_id"] == "documents-py314-current")
-    sys_path = [str(TOOLKIT_CORE), str(ROOT / "tools")]
-    for p in sys_path:
-        if p not in _sys.path:
-            _sys.path.insert(0, p)
-    from live_npk_reader import LiveNpkReader, _unpack_entry
-    reader = LiveNpkReader(Path(source["path"]), "documents")
-    meta = reader.source_metadata()
-    out = {}
-    for idx, role in ((7998, "nucleus_entry_data_base"), (8771, "nucleus_entry_data_chs")):
-        e = [x for x in reader._entries if x.entry_index == idx][0]
-        with reader.package_path.open("rb") as h:
-            h.seek(e.offset)
-            packed = h.read(e.packed_size)
-        dec = _unpack_entry(packed, e.declared_size, e.flag)
-        out[role] = {"entry_index": e.entry_index, "file_id": f"{e.file_id:016X}",
-                     "decoded_sha256": hashlib.sha256(dec).hexdigest()}
-    return {
-        "audit_status": "passed",
-        "source_locks": [{"sha256": meta["package_sha256"],
-                          "bytes": 270106156, "mtime_ns": 1788266451099903500,
-                          "path_hint": "Documents/script.py314.lc.npk"}],
-        "source_id": source["source_id"],
-        "base_entry": out["nucleus_entry_data_base"],
-        "chs_entry": out["nucleus_entry_data_chs"],
-    }
-
-
-def build_board() -> dict:
-    parse_pool, resolve_ref, decode_rows = _load_decoder()
-    prov = _load_provenance()
-    base = (ENTRIES_DIR / "007998.bin").read_bytes()
-    chs = (ENTRIES_DIR / "008771.bin").read_bytes()
-    pool = parse_pool(chs)
-    rows, unbound = decode_rows(_xbody(base), pool)
-    if unbound:
-        raise RuntimeError(f"unbound rows: {unbound[:3]}")
-    body_start = 8 + 4 * 137  # nucleus_entry count=137 (87 named + empty)
-    blob = _xbody(base)[body_start:]
     items = []
-    for r in sorted(rows, key=lambda x: x["key"]):
-        v = r["values"]
-        desc_t = v.get("desc")
-        up_t = v.get("upgrade_desc")
-        desc = desc_t[1] if isinstance(desc_t, tuple) else ""
-        upgrade = up_t[1] if isinstance(up_t, tuple) else ""
-        disp_raw = _strip_rich(upgrade or desc).replace("{0}", "").strip()
-        # 专属词条 desc 形如「分裂弹片·特级：射击时有概率…」——冒号前=词条名
-        if "：" in disp_raw:
-            disp = disp_raw.split("：", 1)[0].strip()
-        elif ":" in disp_raw:
-            disp = disp_raw.split(":", 1)[0].strip()
-        else:
-            disp = disp_raw
-        minv = maxv = None
-        for fld in ("min_values", "max_values"):
-            fv = v.get(fld)
-            if isinstance(fv, tuple) and isinstance(fv[1], str) and fv[1].startswith("jump:"):
-                ref = int(fv[1][5:])
-                g = resolve_ref(blob, ref)
-                if g:
-                    if fld == "min_values":
-                        minv = g["values"]
-                    else:
-                        maxv = g["values"]
-        pv = r.get("value_provenance", {})
-        item = {
-            "id": f"nentry_{r['key']}",
-            "entry_id": r["key"],
-            "name": disp,
-            "display_name": disp,
-            "source": "nucleus_entry_data base 007998 / CHS 008771 行级槽位回放（当前包，锁从 live_sources 动态取）",
-            "entry_type": v.get("entry_type", [None, None])[1] if isinstance(v.get("entry_type"), tuple) else v.get("entry_type"),
-            "weight": v.get("weight", [None, None])[1] if isinstance(v.get("weight"), tuple) else v.get("weight"),
-            "buff_id": v.get("buff_id", [None, None])[1] if isinstance(v.get("buff_id"), tuple) else v.get("buff_id"),
-            "min_values": minv,
-            "max_values": maxv,
+    for r in table["rows"]:
+        desc = src.val(r, "desc")
+        up_desc = src.val(r, "upgrade_desc")
+        name = display_from(up_desc) or display_from(desc)
+        f_min = src.frame_at(src.val(r, "min_values"), blob)
+        f_max = src.frame_at(src.val(r, "max_values"), blob)
+        vp_desc = (r.get("value_provenance") or {}).get("desc") or {}
+        vp_up = (r.get("value_provenance") or {}).get("upgrade_desc") or {}
+        items.append({
+            "id": f"nentry_{src.val(r, 'entry_id')}",
+            "entry_id": src.val(r, "entry_id"),
+            "name": name,
+            "display_name": name,
+            "source": (f"{TABLE} 行级槽位回放（desc=词条模板、upgrade_desc=升级文案；PE 还原树）"
+                       "；数值组按 jump 目标帧解，解不出留空"),
+            "entry_type": src.val(r, "entry_type"),
+            "weight": src.val(r, "weight"),
+            "buff_id": src.val(r, "buff_id"),
+            "min_values": (f_min or {}).get("values", []),
+            "max_values": (f_max or {}).get("values", []),
+            "frame_status": {
+                "min_values": (f_min or {}).get("kind", "unresolved"),
+                "max_values": (f_max or {}).get("kind", "unresolved"),
+            },
             "text_provenance": {
-                "desc": {"field_chs_slot": pv.get("desc", {}).get("field_chs_slot"),
-                         "value_chs_slot": pv.get("desc", {}).get("value_chs_slot"),
-                         "text": desc},
-                "upgrade_desc": {"field_chs_slot": pv.get("upgrade_desc", {}).get("field_chs_slot"),
-                                 "value_chs_slot": pv.get("upgrade_desc", {}).get("value_chs_slot"),
-                                 "text": upgrade},
+                "desc": {
+                    "field_chs_slot": vp_desc.get("field_chs_slot"),
+                    "value_chs_slot": vp_desc.get("value_chs_slot"),
+                    "text": desc,
+                },
+                "upgrade_desc": {
+                    "field_chs_slot": vp_up.get("field_chs_slot"),
+                    "value_chs_slot": vp_up.get("value_chs_slot"),
+                    "text": up_desc,
+                },
             },
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "provenance": {
-                "source_lock_sha256": PACKAGE_SHA,
-                "source_entries": [prov["base_entry"], prov["chs_entry"]],
-                "name_source": "same-snapshot nucleus_entry_data row key -> desc/upgrade_desc CHS slot -> value CHS slot -> display_name derived (strip rich / {0} / prefix before ：)",
-                "table": "nucleus_entry_data",
-                "row_key": r["key"],
-                "field_refs": [
-                    f"nucleus_entry_data.key={r['key']}",
-                    "nucleus_entry_data.entry_id == key (row key)",
-                    "nucleus_entry_data.desc",
-                    f"nucleus_entry_data.desc CHS field_slot={pv.get('desc', {}).get('field_chs_slot')} value_slot={pv.get('desc', {}).get('value_chs_slot')}",
-                    "nucleus_entry_data.upgrade_desc",
-                    f"nucleus_entry_data.upgrade_desc CHS field_slot={pv.get('upgrade_desc', {}).get('field_chs_slot')} value_slot={pv.get('upgrade_desc', {}).get('value_chs_slot')}",
-                    "nucleus_entry_data.min_values / max_values",
-                    "nucleus_entry_data.min_values jump → 0x27 kind 0x12/0x22 nibble group (decoder patch 27.51)",
-                ],
-            },
-        }
-        items.append(item)
-    return {
+            "status_tags": ["static config"],
+            "provenance": src.item_provenance(
+                source_id=src.SOURCE_TREE,
+                lock_sha=lock["sha256"],
+                table=TABLE,
+                row_key=src.val(r, "entry_id"),
+                field_refs=[f"{TABLE}.row_key={src.val(r, 'entry_id')}", "entry_id", "entry_type",
+                            "weight", "buff_id", "desc", "upgrade_desc", "min_values", "max_values"],
+                name_source=f"{TABLE}.upgrade_desc|desc 去富文本与 {{0}} 占位派生（原文入 text_provenance）",
+                upstream_role=TABLE,
+                entry=src.entry_of(table, f"{TABLE}_base"),
+            ),
+        })
+
+    items.sort(key=lambda it: (it["entry_id"] if isinstance(it["entry_id"], int) else 0))
+    board = {
         "meta": {
-            "name": "核芯词条名册（nucleus_entry_data 87 条·含数值区间）",
+            "name": f"核芯词条名册（{TABLE} {len(items)} 条·含数值区间）",
             "category": "三、战力类 / （2）异变核芯·词条",
-            "source_server": "documents-py314-current",
-            "package_sha": PACKAGE_SHA,
-            "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · nucleus_entry_data",
+            "package_sha": lock["sha256"],
+            "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "evidence": "structure",
             "notes": (
-                "核芯词条表（nucleus_entry_data base 007998/CHS 008771）87 词条："
-                "desc=词条模板（{0}=数值占位）；min/max_values=0x12/0x22 nibble 数值组（2026-09-04 解码器补丁后解析）；"
-                "weight=洗炼权重；buff_id=效果执行引用；display_name=由 upgrade_desc/desc 去富文本与 {0} 派生（不改写原文）。"
-                "词条↔核芯关联与星级成长表仍待（卡点维持）。"
+                f"{TABLE} 全量 {len(items)} 行（unbound {len(table['unbound'])}）：desc=词条模板（{{0}}=数值占位）、"
+                "upgrade_desc=升级文案、entry_type 1/2、weight=洗炼权重、buff_id=效果执行引用；"
+                "min/max_values 按 jump 目标 0x27 组解（kind 0x12/0x22 = f32/f64），"
+                "本包绝大多数为 [0.0, 0.0]（真实数值档由服务端洗炼下发），解不出时留空并写 frame_status。"
+                "display_name 由 upgrade_desc/desc 去富文本与 {0} 派生（不改写原文）。"
+                "词条 ↔ 核芯归属不在本表（模板层），故本板不建归属链。"
             ),
-            "provenance": {**_load_provenance(),
-                           "package_sha": PACKAGE_SHA},
+            "source_label": f"{TABLE} · 测试服 PE 还原树",
+            "provenance": {
+                "contract_version": 3,
+                "audit_status": "passed",
+                "contract": "frozen-audited-artifact",
+                "source_locks": [dict(lock, role="primary")],
+                "source_scope": {
+                    "cross_source_policy": "no-cross-source-field-join",
+                    "integer_join_policy": "no-equal-integer-join",
+                    "runtime_final_policy": "unknown-unless-runtime-proven",
+                },
+            },
+            "state_summary": {
+                "verified": 0, "unresolved": 0, "quarantined": 0,
+                "static config": len(items), "runtime final unknown": 0,
+            },
+        },
+        "stats": {
+            "source_rows": len(table["rows"]),
+            "unbound_rows": len(table["unbound"]),
+            "named_rows": sum(1 for it in items if it["name"]),
+            "nonzero_value_rows": sum(1 for it in items
+                                      if any(v for v in (it["min_values"] + it["max_values"]))),
+            "catalog_entries": len(items),
         },
         "items": items,
-        "stats": {
-            "catalog_entries": len(items),
-            "with_min_max": sum(1 for i in items if i["min_values"] is not None and i["max_values"] is not None),
-            "type1": sum(1 for i in items if i["entry_type"] == 1),
-            "type2": sum(1 for i in items if i["entry_type"] == 2),
-        },
     }
+    return board
 
 
-def main() -> int:
-    board = build_board()
-    DEFAULT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    DEFAULT_OUTPUT.write_text(json.dumps(board, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({"items": len(board["items"]), "stats": board["stats"]}, ensure_ascii=False))
+def main(argv: list[str]) -> int:
+    board = build()
+    old = src.old_board(BOARD_ID)
+    if old:
+        on = {it.get("entry_id") for it in old["items"]}
+        nn = {it["entry_id"] for it in board["items"]}
+        print(f"旧 {len(old['items'])} 条 / 新 {len(board['items'])} 条")
+        print(f"entry_id 集合：新增 {len(nn - on)} · 消失 {len(on - nn)}")
+        same_name = sum(1 for a, b in zip(sorted(old["items"], key=lambda x: x.get("entry_id") or 0),
+                                          sorted(board["items"], key=lambda x: x.get("entry_id") or 0))
+                        if a.get("name") == b.get("name"))
+        print(f"同序同名对齐 {same_name} / {min(len(old['items']), len(board['items']))}")
+    print(f"stats={board['stats']}")
+    if "--check" in argv:
+        return 0
+    write_board_pair(OUT, board, BOARD_ID)
+    print(f"✅ {BOARD_ID}: {len(board['items'])} 条 → {OUT}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

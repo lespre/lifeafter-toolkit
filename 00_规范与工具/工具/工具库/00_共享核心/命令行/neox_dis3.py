@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-"""NeoX 反汇编 v3：解码组合指令参数 + BINARY_OP 枚举名。"""
+"""NeoX 反汇编 v3：解码组合指令参数 + BINARY_OP 枚举名。
+
+用法：neox_dis3.py <目标文件> [--list | 函数名]
+"""
+import os
 import sys
+import tempfile
 
 sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
 from toolkit_core import script_decode as SD  # noqa: E402
 
-P = r"E:/la拆包项目/01_索引与产物/41_还原树/apk_mumu_5.0.679/assets/script.py314.lc.npk/com/formula/HurtCalc.py"
-OUT = r"C:/Users/Administrator/AppData/Local/hermes/cache/scratch"
+OUT = os.path.join(tempfile.gettempdir(), "neox_dis3")
 
 SHIFTED = {"LOAD_ATTR", "LOAD_GLOBAL", "LOAD_METHOD", "STORE_ATTR", "LOAD_SUPER_ATTR"}
 PLAIN = {"LOAD_NAME", "STORE_NAME", "IMPORT_NAME", "IMPORT_FROM", "LOAD_FROM_DICT_OR_GLOBALS"}
@@ -80,21 +84,33 @@ def listing(c):
 
 
 def main() -> int:
-    which = sys.argv[1] if len(sys.argv) > 1 else "--list"
-    cs = codes(open(P, "rb").read())
+    args = sys.argv[1:]
+    if not args or args[0] in ("-h", "--help"):
+        print("用法: neox_dis3.py <目标文件> [--list | 函数名]")
+        return 0
+    src = args[0]
+    if not os.path.isfile(src):
+        print("文件不存在:", src)
+        return 2
+    which = args[1] if len(args) > 1 else "--list"
+    cs = codes(open(src, "rb").read())
     if which == "--list":
         for c in cs:
             print("  @%-7d arg=%-2d %-38s %dB" % (c.off, c.argcount, c.name.v, c.code_len))
         return 0
+    hit = False
     for c in cs:
         if c.name.v == which:
+            hit = True
             body = listing(c)
-            dest = OUT + "/dis3_" + which + ".txt"
+            os.makedirs(OUT, exist_ok=True)
+            dest = os.path.join(OUT, "dis3_" + which + ".txt")
             open(dest, "w", encoding="utf-8").write("\n".join(body))
             print("写出", dest, len(body), "行")
-            return 0
-    print("没找到", which)
-    return 1
+    if not hit:
+        print("没找到", which)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

@@ -66,9 +66,87 @@ def parse_ktx(filepath):
     astc_data = data[texture_offset:texture_offset + mip0_size]
     return (real_w, real_h, astc_data)
 
-def ktx_to_png(ktx_path, png_path, astcenc=ASTCENC):
-    """单个 .ktx 转 .png"""
+# ══════════════════════════════════════════════════════════════════════
+# 真 KTX 1.1（角色/时装侧）：ETC2/EAC 像素格式，非伪装 ASTC
+#
+# 武器侧 .ktx 是"伪装 KTX 头 + 属性列表 + ASTC 8x8"，走上面的 astcenc 路径；
+# 角色/时装侧 .ktx（players/players2021/players2025）是**标准 KTX 1.1**：
+#   identifier «KTX 11», glInternalFormat=0x9278(GL_COMPRESSED_RGBA8_ETC2_EAC),
+#   1 级 → 1024x1024，11 级 mip，mip0 imageSize=1048576（4bpp）。
+# 实测 b_f_3715001a.ktx 1398236B：64 头 + 4B imageSize + 1048576+262144+…（mip 链）。
+# 老解析器从 offset64 起按"属性列表"扫，会把 mip0 的 1048576B 当成属性而返回 None
+# （实测报 parse failed）。故这里按 KTX 1.1 头逐字段解析，用 texture2ddecoder 解码。
+# ══════════════════════════════════════════════════════════════════════
+KTX11_ID = b'\xabKTX 11\xbb\r\n\x1a\n'
+# glInternalFormat → (解码函数名, 是否有 alpha)
+ETC2_FORMATS = {
+    0x9274: ('decode_etc2', False),      # RGB8_ETC2
+    0x9275: ('decode_etc2', False),      # SRGB8_ETC2
+    0x9276: ('decode_etc2a1', True),     # RGB8_PUNCHTHROUGH_ALPHA1
+    0x9277: ('decode_etc2a1', True),     # SRGB8_PUNCHTHROUGH_ALPHA1
+    0x9278: ('decode_etc2a8', True),     # RGBA8_ETC2_EAC
+    0x9279: ('decode_etc2a8', True),     # SRGB8_ALPHA8_ETC2_EAC
+    0x9270: ('decode_eacr', False),      # R11_EAC
+    0x9271: ('decode_eacr_signed', False),
+    0x9272: ('decode_eacrg', False),     # RG11_EAC
+    0x9273: ('decode_eacrg_signed', False),
+}
+
+
+def parse_ktx11(filepath):
+    """解析标准 KTX 1.1 头，返回 (w, h, fmt, mip0_bytes) 或 None。"""
+    with open(filepath, 'rb') as f:
+        head = f.read(64)
+        if len(head) < 64 or not head.startswith(KTX11_ID):
+            return None
+        fmt = struct.unpack_from('<I', head, 0x1C)[0]
+        w = struct.unpack_from('<I', head, 0x24)[0]
+        h = struct.unpack_from('<I', head, 0x28)[0]
+        kv = struct.unpack_from('<I', head, 0x3C)[0]
+        f.seek(64 + kv)
+        img_size = struct.unpack_from('<I', f.read(4), 0)[0]
+        data = f.read(img_size)
+    if w == 0 or h == 0 or len(data) < img_size:
+        return None
+    return w, h, fmt, data
+
+
+def ktx11_to_png(ktx_path, png_path):
+    """标准 KTX 1.1（ETC2/EAC）→ PNG。返回 (ok, msg)。"""
     try:
+        from PIL import Image
+        import texture2ddecoder as t2d
+    except Exception as exc:      # 依赖缺失：明确报错而不是静默失败
+        return False, '依赖缺失(Pillow/texture2ddecoder): %r' % (exc,)
+    got = parse_ktx11(ktx_path)
+    if got is None:
+        return False, 'KTX1.1 头解析失败'
+    w, h, fmt, data = got
+    dec = ETC2_FORMATS.get(fmt)
+    if dec is None:
+        return False, '未支持的 glInternalFormat=0x%04x' % fmt
+    fn_name, has_alpha = dec
+    out = getattr(t2d, fn_name)(data, w, h)
+    mode = 'RGBA' if has_alpha else 'RGB'
+    if not has_alpha:
+        # 无 alpha 的解码器返回 3 通道；不足时按 4 通道兜底
+        if len(out) == w * h * 4:
+            mode = 'RGBA'
+        elif len(out) == w * h * 3:
+            mode = 'RGB'
+        else:
+            return False, '解码输出长度异常 %d' % len(out)
+    os.makedirs(os.path.dirname(png_path), exist_ok=True)
+    Image.frombytes(mode, (w, h), out).save(png_path)
+    return True, '%dx%d fmt=0x%04x' % (w, h, fmt)
+
+
+def ktx_to_png(ktx_path, png_path, astcenc=ASTCENC):
+    """单个 .ktx 转 .png（自动判族：标准 KTX1.1 ETC2 / 伪装 ASTC）"""
+    try:
+        with open(ktx_path, 'rb') as _f:
+            if _f.read(12) == KTX11_ID:
+                return ktx11_to_png(ktx_path, png_path)
         result = parse_ktx(ktx_path)
         if result is None:
             return False, "parse failed"

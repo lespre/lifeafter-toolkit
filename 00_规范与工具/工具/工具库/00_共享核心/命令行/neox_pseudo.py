@@ -3,16 +3,19 @@
 
 不是完整反编译器：只做栈模拟 + 表达式拼装 + 跳转标注，
 目的是把 891 条指令压成能读的语句序列。
+
+用法：neox_pseudo.py <目标文件> [函数名（默认 calc_internal）]
 """
 from __future__ import annotations
 
+import os
 import sys
+import tempfile
 
 sys.path.insert(0, r"E:/la拆包项目/00_规范与工具/工具/工具库/00_共享核心")
 from toolkit_core import script_decode as SD  # noqa: E402
 
-P = r"E:/la拆包项目/01_索引与产物/41_还原树/apk_mumu_5.0.679/assets/script.py314.lc.npk/com/formula/HurtCalc.py"
-OUT = r"C:/Users/Administrator/AppData/Local/hermes/cache/scratch"
+OUT = os.path.join(tempfile.gettempdir(), "neox_pseudo")
 
 BIN = {0: "+", 1: "&", 2: "//", 3: "<<", 4: "@", 5: "*", 6: "%", 7: "|", 8: "**",
        9: ">>", 10: "-", 11: "/", 12: "^", 13: "+=", 14: "&=", 15: "//=", 16: "<<=",
@@ -174,16 +177,28 @@ def decompile(c, limit=100000):
 
 
 def main() -> int:
-    which = sys.argv[1] if len(sys.argv) > 1 else "calc_internal"
-    for c in codes(open(P, "rb").read()):
+    args = sys.argv[1:]
+    if not args or args[0] in ("-h", "--help"):
+        print("用法: neox_pseudo.py <目标文件> [函数名（默认 calc_internal）]")
+        return 0
+    src = args[0]
+    if not os.path.isfile(src):
+        print("文件不存在:", src)
+        return 2
+    which = args[1] if len(args) > 1 else "calc_internal"
+    hit = False
+    for c in codes(open(src, "rb").read()):
         if c.name.v == which:
+            hit = True
             body = decompile(c)
-            dest = OUT + "/pseudo_" + which + ".txt"
+            os.makedirs(OUT, exist_ok=True)
+            dest = os.path.join(OUT, "pseudo_" + which + ".txt")
             open(dest, "w", encoding="utf-8").write("\n".join(body))
             print("写出", dest, len(body), "行")
-            return 0
-    print("没找到", which)
-    return 1
+    if not hit:
+        print("没找到", which)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

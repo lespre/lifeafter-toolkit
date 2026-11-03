@@ -78,7 +78,9 @@ def main() -> int:
             "status_tags": ["static config"], "source": "recipe",
             "provenance": prov(r["key"], "recipe"),
         })
+    import datetime as _dt
     board = {"meta": {"name": "配方总表", "category": "四、资料层 / （七）配方",
+                      "generated": _dt.date.today().strftime("%Y-%m-%d"),
                       "source_server": "简单生存服（体验服 Documents 快照）",
                       "id_label": "配方ID", "hide_media": True,
                       "evidence": "structure", "card_mode": "roster",

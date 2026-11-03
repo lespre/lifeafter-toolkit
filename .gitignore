@@ -203,3 +203,6 @@ _tmp_*.json
 90_临时/__pycache__/
 __pycache__/
 90_临时/
+
+# 板块归档（体积大，只留本地，不入库）
+02_wiki/web/data/boards/_archive_*

@@ -26,7 +26,7 @@ def _sha(b):
     return hashlib.sha256(b).hexdigest()[:16]
 
 
-def build_glb(mesh_path, texmap_path, set_names, out_path, label='', center=False, submap=None):
+def build_glb(mesh_path, texmap_path, set_names, out_path, label='', center=False, submap=None, mat_opts=None):
     P, uv, idx, meta = MP.parse_mesh2(mesh_path)
     tv, tf = meta['tv'], meta['tf']
     d = open(mesh_path, 'rb').read()
@@ -93,11 +93,18 @@ def build_glb(mesh_path, texmap_path, set_names, out_path, label='', center=Fals
 
     # 每个 set 的贴图
     set_tex = {}
+    img_cache = {}          # 源文件路径 -> image 索引（同一贴图被多材料引用时只内嵌一次）
+    img_meta = {}           # 源文件路径 -> 槽位元数据（复用图片时保持不变）
     for si, s in enumerate(sets):
         ent = {}
         for slot, key in (('a', 'a'), ('n', 'n'), ('m', 'm')):
             fp = s.get(key)
             if not fp or not os.path.exists(fp):
+                continue
+            if fp in img_cache:
+                textures.append(dict(source=img_cache[fp], sampler=0))
+                ent[slot] = len(textures) - 1
+                ent[slot + '_meta'] = img_meta[fp]
                 continue
             if slot == 'm':
                 # glTF metallicRoughness: G=粗糙度, B=金属度;
@@ -114,12 +121,14 @@ def build_glb(mesh_path, texmap_path, set_names, out_path, label='', center=Fals
                 pb, size = b.getvalue(), (src.shape[1], src.shape[0])
             else:
                 pb, size = _png_bytes(fp)
+            img_cache[fp] = len(images)
             images.append(dict(bufferView=add_view(pb), mimeType='image/png', name='%s_%s' % (set_names[si], key)))
             textures.append(dict(source=len(images) - 1, sampler=0))
             ent[slot] = len(textures) - 1
             ent[slot + '_meta'] = dict(path=fp.replace('\\', '/'), sha256_16=_sha(pb), w=size[0], h=size[1],
                                        channel_repack=('glTF MR: G=roughness(source R), B=metallic(source G); 数值不变'
                                                        if slot == 'm' else None))
+            img_meta[fp] = ent[slot + '_meta']
         set_tex[set_names[si]] = ent
         mat = dict(name='MAT_%s' % set_names[si], pbrMetallicRoughness=dict(
             metallicFactor=1.0, roughnessFactor=1.0,
@@ -133,6 +142,15 @@ def build_glb(mesh_path, texmap_path, set_names, out_path, label='', center=Fals
         mat['extras'] = dict(source_slots={k: ent[k + '_meta'] for k in ('a', 'n', 'm') if k + '_meta' in ent},
                              note='metallicRoughness 来自 ParamMap: 源 R=粗糙度(ParamMap.x), G=金属度(ParamMap.y); '
                                   '导出时按 glTF 规范做纯格式级通道重排(G=roughness,B=metallic), 数值未变')
+        # 可选材质覆盖（角色时装用：alphaMode/自发光等）；武器路径不传该参数，行为不变
+        if mat_opts and set_names[si] in mat_opts:
+            for k, v in mat_opts[set_names[si]].items():
+                if k in ('alphaMode', 'alphaCutoff', 'emissiveFactor', 'doubleSided'):
+                    mat[k] = v
+                elif k in ('metallicFactor', 'roughnessFactor', 'baseColorFactor'):
+                    mat['pbrMetallicRoughness'][k] = v
+                else:
+                    mat['extras'][k] = v
         materials.append(mat)
     mat_index = {s: i for i, s in enumerate(set_names)}
 

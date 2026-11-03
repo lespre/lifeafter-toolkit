@@ -128,6 +128,7 @@ def main() -> int:
                       "obtain": str(g(r, "quest") or ""),
                       "style": st, "color": col, "flags": flags,
                       "anim_csb": anim, "art_icon": art,
+                      "special_style": str(g(r, "special_style") or ""),
                       "evidence": "structure", "evidence_level": "static/candidate",
                       "status_tags": ["static config"],
                       "source": "title_conf_data", "provenance": prov(r["key"], "title_conf_data")})

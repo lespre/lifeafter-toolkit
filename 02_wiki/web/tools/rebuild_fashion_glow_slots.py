@@ -1,202 +1,168 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""rebuild_fashion_glow_slots — 荧光棒板（player_appear_data 荧光棒名册）
+"""rebuild_fashion_glow_slots — 荧光棒板（player_appear_data 「light」部件名册）
 
-源（BA8 当前快照）：player_appear_data base entry 007074 FID 484AB42BD31AE503
-  + CHS 006403 FID 4151CFD3191DCAD7。
-定位链（2026-09-04，用户指出时装表筛法不全）：
-  时装搭配「荧光棒」格外观=player_appear_data 中 name 含 荧光棒 的行（part=5 荧光棒部件，
-  gender 0=男/1=女 成对，key 5xxxx/15xxxx）；9 款：彩虹大神荧光棒/彩虹荧光棒/
-  荧光棒·守护/救援/求索/漫步/腾飞/追随/闪耀。desc 层含赛季获取说明
-  （辐射诡楼 XX 赛季 XX 骑士奖励，下赛季回收）。
-  注：旧板（fashion_glow_slots v1 2 条）从时装表筛 name 含荧光棒——只抓到
-  彩虹大神荧光棒与普通荧光棒，缺 荧光棒·X 系列 7 款（本板补全）。
+源（只读 PE 还原树）：`player_appear_data.py` + 配对池 `player_appear_data_chs.py`
+
+定位链（2026-09-04 用户指出时装表筛法不全 → 2026-11-04 落到 PE 还原树）：
+  游戏「时装搭配→荧光棒」格的外观 = `player_appear_data` 里 **part=5（荧光棒部件）** 的行：
+    ① `part_type == "light"`（新版 schema 的部件类型标签，本轮实测 108 名）
+    ② 或名字含「荧光棒 / 应援棒」（旧 schema 行没有 part_type 字段，
+       如 彩虹荧光棒 / 荧光棒·守护…腾飞；这些只能按名收录并标注）
+  男女成对（key 5xxxxx / 15xxxxx，gender 0=男 1=女），desc 层含赛季获取说明。
+
+与旧板（v1 2 条）/旧 slots 板（116 条）的差异：
+  - v1 只从时装表筛「荧光棒」字面 ⇒ 只有 2 条；本板补全 light 部件全族。
+  - 本轮 117 条 = 旧 116 − 普通荧光棒（本包已无行）+ 软萌獭獭（新行）。
+
+用法：python 02_wiki/web/tools/rebuild_fashion_glow_slots.py [--check]
 """
 from __future__ import annotations
-import pathlib
 
-import hashlib
-import json
-import struct
+import collections
+import datetime
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pe_source as src  # noqa: E402
+from board_io import write_board_pair  # noqa: E402
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from la_paths import TOOLKIT_CORE  # noqa: E402
-sys.path.insert(0, str(TOOLKIT_CORE))
-from live_npk_reader import LiveNpkReader, _unpack_entry  # noqa: E402
-from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
-from toolkit_core.bindict_table import parse_legacy_chs_pool  # noqa: E402
+BOARD_ID = "fashion_glow_slots"
+TABLE = "player_appear_data"
+OUT = src.board_path(BOARD_ID)
 
-PA_BASE_FID = "484AB42BD31AE503"
-PA_CHS_FID = "4151CFD3191DCAD7"
-
-
-def _xbody(payload: bytes) -> bytes:
-    marker = payload.find(b"x{")
-    if marker < 0:
-        raise ValueError("no x{ container")
-    length = struct.unpack_from("<I", payload, marker + 2)[0]
-    end = marker + 6 + length
-    if end > len(payload):
-        raise ValueError("x{ frame exceeds payload")
-    return payload[marker + 6:end]
+GLOW_PART = 5
+GLOW_NAME_HINTS = ("荧光棒", "应援棒")
 
 
-def _read_by_fid(reader: LiveNpkReader, fid_hex: str):
-    matches = [e for e in reader._entries if e.file_id == int(fid_hex, 16)]
-    if len(matches) != 1:
-        raise RuntimeError(f"FID {fid_hex}: {len(matches)} matches")
-    e = matches[0]
-    with reader.package_path.open("rb") as h:
-        h.seek(e.offset)
-        packed = h.read(e.packed_size)
-    decoded = _unpack_entry(packed, e.declared_size, e.flag)
-    reader._assert_unchanged()
-    return e, decoded, {
-        "entry_index": e.entry_index,
-        "file_id": fid_hex,
-        "decoded_sha256": hashlib.sha256(decoded).hexdigest(),
-    }
+def _is_glow(row: dict) -> bool:
+    if src.val(row, "part") != GLOW_PART:
+        return False
+    if src.val(row, "part_type") == "light":
+        return True
+    nm = src.val(row, "name")
+    return isinstance(nm, str) and any(h in nm for h in GLOW_NAME_HINTS)
 
 
-def build_board(registry_path: Path) -> dict:
-    registry = json.loads(registry_path.read_text(encoding="utf-8"))
-    source = next(s for s in registry["sources"] if s["source_id"] == "documents-py314-current")
-    reader = LiveNpkReader(Path(source["path"]), "documents")
-    meta = reader.source_metadata()
-    if meta["package_sha256"] != source["expected_sha256"]:
-        raise RuntimeError("current package SHA differs from registry")
+def build() -> dict:
+    table = src.load(TABLE)
+    lock = src.lock_of(table["base"], source_id=src.SOURCE_TREE)
+    rows = table["rows"]
 
-    _, b_payload, b_prov = _read_by_fid(reader, PA_BASE_FID)
-    _, c_payload, c_prov = _read_by_fid(reader, PA_CHS_FID)
-    pool = parse_legacy_chs_pool(c_payload)
-    rows, unbound = decode_table_rows_with_chs_slots(_xbody(b_payload), pool)
-    source_entries = [
-        {**b_prov, "role": "player_appear_data_base"},
-        {**c_prov, "role": "player_appear_data_chs"},
-    ]
-
-    glow_rows = []
+    groups: dict[str, list[dict]] = collections.OrderedDict()
     for r in rows:
-        nm = r["values"].get("name")
-        if not (isinstance(nm, tuple) and isinstance(nm[1], str)):
+        if not _is_glow(r):
             continue
-        name = nm[1]
-        k = r["key"]
-        # 51 段（5100000≤k<5200000 男 / 15100000≤k<15200000 女）=荧光棒/应援棒专段
-        # （用户锚点 灿若星 5103001/墨染清荷 5103701/可乐小子应援棒 5101701 100% 在段内；
-        #   段内 96 名无挂件词；挂件在 50 段 MOSS 5006801/三笠Q版挂件 5007201 等）
-        in_51 = (5100000 <= k < 5200000) or (15100000 <= k < 15200000)
-        has_word = ("\u8367\u5149\u68d2" in name) or ("\u5e94\u63f4\u68d2" in name)
-        if not (in_51 or has_word):
+        nm = src.val(r, "name")
+        if not (isinstance(nm, str) and nm.strip()):
             continue
-        def val(f):
-            v = r["values"].get(f)
-            return v[1] if isinstance(v, tuple) else None
-        glow_rows.append({
-            "key": r["key"], "name": nm[1], "gender": val("gender"), "part": val("part"),
-            "model_name": val("model_name"), "schema": r["schema"],
-            "prov": r.get("value_provenance", {}).get("name"),
-        })
-    # 按名聚合：男女行合成一条（variants 存另一性别 key）
-    by_name: dict[str, dict] = {}
-    for g in glow_rows:
-        if g["name"] not in by_name:
-            by_name[g["name"]] = g
-        else:
-            by_name[g["name"]]["pair_key"] = g["key"]
+        groups.setdefault(nm.strip(), []).append(r)
+
     items = []
-    for name in sorted(by_name):
-        g = by_name[name]
-        tp = {}
-        if isinstance(g["prov"], dict) and isinstance(g["prov"].get("field_chs_slot"), int):
-            tp["name"] = {**g["prov"], "scalar_type": "0x05", "text": g["name"]}
+    for name, members in groups.items():
+        members = sorted(members, key=lambda r: (src.val(r, "gender") or 0, int(r["key"])))
+        rep = members[0]
+        others = [r["key"] for r in members[1:]]
         items.append({
-            "id": f"glow_{g['key']}",
-            "row_key": g["key"],
+            "id": f"glow_{rep['key']}",
+            "row_key": rep["key"],
             "name": name,
             "display_name": name,
-            "gender": g["gender"],
-            "part": g["part"],
-            "model_name": g["model_name"],
-            "pair_key": g.get("pair_key"),
-            "schema_refs": [g["schema"]],
+            "gender": src.val(rep, "gender"),
+            "part": src.val(rep, "part"),
+            "model_name": src.val(rep, "model_name"),
+            "pair_key": others[0] if others else None,
+            "schema_refs": sorted({r["schema"] for r in members if r.get("schema") is not None}),
             "evidence": "structure",
             "evidence_level": "structure-only",
-            "source": ("player_appear_data name \u542b \u8367\u5149\u68d2 \u884c\uff08part=5 "
-                       "\u8367\u5149\u68d2\u90e8\u4ef6\uff0c\u7537\u5973\u6210\u5bf9 key 5xxxx/15xxxx\uff09"),
-            "text_provenance": tp,
-            "provenance": {
-                "source_lock_sha256": meta["package_sha256"],
-                "source_entries": source_entries,
-                "table": "player_appear_data",
-                "row_key": g["key"],
-                "field_refs": [
-                    f"player_appear_data.row_key={g['key']}",
-                    "player_appear_data name column-level 0x05",
-                ],
-                "name_source": "player_appear_data \u8367\u5149\u68d2\u540d\u518c\uff08\u7528\u6237\u6307\u51fa\u65f6\u88c5\u8868\u7b5b\u6cd5\u4e0d\u5168\u540e\u91cd\u5efa\uff09",
+            "status_tags": ["static config"],
+            "source": (f"{TABLE} 中 part=5 且 part_type=='light'（或名字含 荧光棒/应援棒）的行；"
+                       "男女成对 key 5xxxxx/15xxxxx · PE 还原树"),
+            "text_provenance": {
+                "name": {
+                    "field_chs_slot": (rep.get("value_provenance") or {}).get("name", {}).get("field_chs_slot"),
+                    "value_chs_slot": (rep.get("value_provenance") or {}).get("name", {}).get("value_chs_slot"),
+                    "scalar_type": "0x05",
+                    "text": src.val(rep, "name"),
+                },
             },
+            "provenance": src.item_provenance(
+                source_id=src.SOURCE_TREE,
+                lock_sha=lock["sha256"],
+                table=TABLE,
+                row_key=rep["key"],
+                field_refs=[f"{TABLE}.row_key={rep['key']}", "part", "part_type", "name", "gender", "model_name"],
+                name_source=f"{TABLE} name 列（0x05 槽位回放）；part=5 + part_type/名字双判据",
+                upstream_role=TABLE,
+                entry=src.entry_of(table, f"{TABLE}_base"),
+            ),
         })
 
-    return {
+    items.sort(key=lambda it: (it["gender"] if it["gender"] is not None else -1, it["row_key"]))
+    board = {
         "meta": {
-            "name": "\u5f53\u524d\u5305 \u00b7 \u8367\u5149\u68d2\uff08player_appear_data \u540d\u518c\uff09",
+            "name": "当前包 · 荧光棒（player_appear_data 名册）",
             "category": "二、时装类 / （四）荧光棒",
-            "source_server": source["server_branch"],
-            "package_sha": meta["package_sha256"],
-            "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata · player_appear_data",
+            "package_sha": lock["sha256"],
+            "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "evidence": "structure",
             "notes": (
-                "\u8367\u5149\u68d2\u540d\u518c 9 \u6b3e\uff08\u5bf9\u6bd4 v1 \u65f6\u88c5\u8868\u7b5b\u6cd5 2 \u6761\uff1a"
-                "\u8865\u5168 \u8367\u5149\u68d2\u00b7\u5b88\u62a4/\u6551\u63f4/\u6c42\u7d22/\u6f2b\u6b65/\u817e\u98de/\u8ffd\u968f/\u95ea\u8000 7 \u6b3e\uff09\uff1b"
-                "desc \u5c42\u542b\u8d5b\u5b63\u83b7\u53d6\u8bf4\u660e\uff08\u8f90\u5c04\u8be1\u697c XX \u8d5b\u5b63 XX \u9a91\u58eb\u5956\u52b1\uff0c"
-                "\u4e0b\u8d5b\u5b63\u56de\u6536\uff09\u3002\u4ec5\u6587\u5b57/\u914d\u7f6e\u6765\u6e90\uff0c\u4e0d\u8868\u793a\u5f53\u524d\u53ef\u5f97\u3002"
+                f"荧光棒名册 {len(items)} 款：{TABLE} 中 part=5（荧光棒部件）且 "
+                "part_type=='light' 的行，另收旧 schema 无 part_type 的「荧光棒/应援棒」按名行"
+                "（彩虹荧光棒 / 荧光棒·守护…腾飞 等，标注按名收录）。"
+                "男女成对（key 5xxxxx / 15xxxxx，gender 0=男 1=女），pair_key 指向另一性别行。"
+                "desc 层含赛季获取说明（辐射诡楼 XX 赛季 XX 骑士奖励，下赛季回收）。"
+                "仅文字/配置来源，不表示当前可得。"
             ),
+            "source_label": f"{TABLE} · 测试服 PE 还原树",
             "provenance": {
+                "contract_version": 3,
                 "audit_status": "passed",
-                "source_locks": [{
-                    "sha256": meta["package_sha256"],
-                    "bytes": meta["bytes"],
-                    "mtime_ns": meta["mtime_ns"],
-                    "path_hint": "Documents/script.py314.lc.npk",
-                }],
-                "source_id": source["source_id"],
-                "base_entry": source_entries[0],
-                "chs_entry": source_entries[1],
-                "fid_lookup": True,
+                "contract": "frozen-audited-artifact",
+                "source_locks": [dict(lock, role="primary")],
+                "source_scope": {
+                    "cross_source_policy": "no-cross-source-field-join",
+                    "integer_join_policy": "no-equal-integer-join",
+                    "runtime_final_policy": "unknown-unless-runtime-proven",
+                },
+            },
+            "state_summary": {
+                "verified": 0, "unresolved": 0, "quarantined": 0,
+                "static config": len(items), "runtime final unknown": 0,
             },
         },
-        "items": items,
         "stats": {
             "source_rows": len(rows),
-            "unbound_rows": len(unbound),
-            "glow_rows": len(glow_rows),
+            "unbound_rows": len(table["unbound"]),
+            "glow_rows": sum(len(v) for v in groups.values()),
             "catalog_entries": len(items),
         },
+        "items": items,
     }
+    return board
 
 
-def main() -> int:
-    import argparse
-    ROOT = Path(__file__).resolve().parents[1]
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--registry", type=Path, default=ROOT / "data" / "live_sources.json")
-    parser.add_argument("--output", type=Path,
-                        default=ROOT / "data" / "boards" / "fashion_glow_slots.json")
-    args = parser.parse_args()
-    board = build_board(args.registry)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    tmp = args.output.with_suffix(args.output.suffix + ".tmp")
-    tmp.write_text(json.dumps(board, ensure_ascii=False) + "\n", encoding="utf-8")
-    tmp.replace(args.output)
-    print(json.dumps({"items": len(board["items"]), "stats": board["stats"]}, ensure_ascii=False))
+def main(argv: list[str]) -> int:
+    board = build()
+    old = src.old_board(BOARD_ID)
+    if old:
+        on = {it["name"] for it in old["items"]}
+        nn = {it["name"] for it in board["items"]}
+        print(f"旧 {len(old['items'])} 条 / 新 {len(board['items'])} 条")
+        print(f"名字：新增 {len(nn - on)} · 消失 {len(on - nn)}")
+        if nn - on:
+            print("  新增:", sorted(nn - on))
+        if on - nn:
+            print("  消失:", sorted(on - nn))
+    print(f"stats={board['stats']}")
+    if "--check" in argv:
+        return 0
+    write_board_pair(OUT, board, BOARD_ID)
+    print(f"✅ {BOARD_ID}: {len(board['items'])} 条 → {OUT}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

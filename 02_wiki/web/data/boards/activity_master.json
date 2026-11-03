@@ -3,7 +3,7 @@
   "name": "活动总表 · 全部活动与起止时间",
   "category": "三、活动类 / （零）活动总表",
   "source_server": "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）",
-  "generated": "2026-11-01",
+  "generated": "2026-11-04",
   "evidence": "structure",
   "card_mode": "roster",
   "filters": [
@@ -65,9 +65,9 @@
    "ui_class": "界面类"
   },
   "state_summary": {
-   "未开始": 22,
+   "未开始": 35,
    "进行中": 115,
-   "已结束": 3304,
+   "已结束": 3307,
    "无时间": 78
   },
   "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
@@ -95,7 +95,7 @@
     "table_file_id": "A703C08E329A6FE2"
    }
   },
-  "notes": "一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，3519 行全量）；旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。"
+  "notes": "一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，3535 行全量）；旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。"
  },
  "periods": [],
  "items": [
@@ -165,6 +165,846 @@
     "tech": {
      "hd_class": "HuoDongEntranceAdjust",
      "hd_type": "活动入口调整",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777047",
+   "item_id": 7777047,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-11",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-11-03",
+   "end": "2027-12-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777047,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777047,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777046",
+   "item_id": 7777046,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-10",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-10-03",
+   "end": "2027-11-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777046,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777046,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777045",
+   "item_id": 7777045,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-09",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-09-03",
+   "end": "2027-10-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777045,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777045,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777044",
+   "item_id": 7777044,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-08",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-08-03",
+   "end": "2027-09-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777044,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777044,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777043",
+   "item_id": 7777043,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-07",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-07-03",
+   "end": "2027-08-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777043,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777043,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777042",
+   "item_id": 7777042,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-06",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-06-03",
+   "end": "2027-07-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777042,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777042,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777041",
+   "item_id": 7777041,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-05",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-05-03",
+   "end": "2027-06-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777041,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777041,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777040",
+   "item_id": 7777040,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-04",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-04-03",
+   "end": "2027-05-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777040,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777040,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777039",
+   "item_id": 7777039,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-03",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-03-03",
+   "end": "2027-04-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777039,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777039,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777038",
+   "item_id": 7777038,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-02",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-02-03",
+   "end": "2027-03-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777038,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777038,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777037",
+   "item_id": 7777037,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2027-01",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2027-01-03",
+   "end": "2027-02-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777037,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777037,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
+    }
+   }
+  },
+  {
+   "id": "act_7777036",
+   "item_id": 7777036,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2026-12",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2026-12-03",
+   "end": "2027-01-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777036,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777036,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
      "ui_class": ""
     }
    }
@@ -315,7 +1155,7 @@
    "name": "装备藏馆",
    "kind": "活动",
    "activity_type": "抽奖类活动",
-   "sub_title": "全新机枪酸核芯",
+   "sub_title": "全新武器酸核芯",
    "month": "2026-11",
    "permanent": "限时",
    "first_level_tab": "推荐",
@@ -1301,7 +2141,7 @@
    "first_level_tab": "推荐",
    "tab_name": "",
    "start": "2026-11-06",
-   "end": "2026-11-19",
+   "end": "2026-12-03",
    "activity_status": "未开始",
    "family": "未开始",
    "family_key": "Activity",
@@ -1636,6 +2476,146 @@
      "hd_class": "CommonShopHD",
      "hd_type": "通用兑换商城活动",
      "ui_class": "CommonShopHDUI"
+    }
+   }
+  },
+  {
+   "id": "act_3674",
+   "item_id": 3674,
+   "name": "核芯养成福利",
+   "kind": "活动",
+   "activity_type": "核芯活动",
+   "sub_title": "新核芯快速升星",
+   "month": "2026-11",
+   "permanent": "限时",
+   "first_level_tab": "推荐",
+   "tab_name": "",
+   "start": "2026-11-06",
+   "end": "2026-12-03",
+   "activity_status": "未开始",
+   "family": "未开始",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 3674,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 3674,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "NucleusHD",
+     "hd_type": "核芯福利活动",
+     "ui_class": "NucleusMissionHDUI"
+    }
+   }
+  },
+  {
+   "id": "act_7777035",
+   "item_id": 7777035,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2026-11",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2026-11-03",
+   "end": "2026-12-03",
+   "activity_status": "进行中",
+   "family": "进行中",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777035,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777035,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
     }
    }
   },
@@ -2842,8 +3822,8 @@
    "tab_name": "",
    "start": "2026-10-12",
    "end": "2026-11-01",
-   "activity_status": "进行中",
-   "family": "进行中",
+   "activity_status": "已结束",
+   "family": "已结束",
    "family_key": "Activity",
    "_media": {
     "images": [],
@@ -3176,6 +4156,76 @@
      "hd_class": "XiaerSeasonPassHD",
      "hd_type": "夏尔赛事通行证",
      "ui_class": "XiaerSeasonPassHDUI"
+    }
+   }
+  },
+  {
+   "id": "act_7777034",
+   "item_id": 7777034,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2026-10",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2026-10-03",
+   "end": "2026-11-03",
+   "activity_status": "已结束",
+   "family": "已结束",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777034,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777034,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
     }
    }
   },
@@ -6746,6 +7796,76 @@
      "hd_class": "NucleusLotteryHD",
      "hd_type": "限定核芯研制",
      "ui_class": "NucleusLotteryHDUI"
+    }
+   }
+  },
+  {
+   "id": "act_7777033",
+   "item_id": 7777033,
+   "name": "先行者活动",
+   "kind": "活动",
+   "activity_type": "常规活动",
+   "sub_title": "",
+   "month": "2026-09",
+   "permanent": "限时",
+   "first_level_tab": "",
+   "tab_name": "",
+   "start": "2026-09-03",
+   "end": "2026-10-03",
+   "activity_status": "已结束",
+   "family": "已结束",
+   "family_key": "Activity",
+   "_media": {
+    "images": [],
+    "total": 0
+   },
+   "evidence": "structure",
+   "evidence_level": "static/candidate",
+   "status_tags": [
+    "static config"
+   ],
+   "source": "huodong_conf_data",
+   "provenance": {
+    "source_id": "documents-py314-current",
+    "table": "huodong_conf_data",
+    "row_key": 7777033,
+    "field_refs": [
+     "name",
+     "hd_class",
+     "start_ts",
+     "end_ts"
+    ],
+    "name_source": "huodong_conf_data#name（字节码重放）",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "replayed-script-table-row",
+       "source_id": "documents-py314-current",
+       "table": "huodong_conf_data",
+       "row_key": 7777033,
+       "field_refs": [
+        "name",
+        "hd_class",
+        "start_ts",
+        "end_ts"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+    "upstream": {
+     "package_sha256": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+     "entry_index": 19597,
+     "file_id": "A703C08E329A6FE2",
+     "role": "script-table-replay"
+    },
+    "tech": {
+     "hd_class": "BackflowMentorHD",
+     "hd_type": "先行者活动",
+     "ui_class": ""
     }
    }
   },
