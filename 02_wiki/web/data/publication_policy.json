@@ -239,13 +239,6 @@
    "items": 939,
    "reason": "装备属性（武器·护甲）分服卡 · 月卡服（数据通道 yk）：939 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
   },
-  "damage_bonus_piecewise": {
-   "publication_status": "published",
-   "category": "二、战力类 / （六）伤害计算 / 3、加成",
-   "reason": "“伤害加成”的分段函数结论：表体 interval/factor/offset 的分段线性结构、六条加成率曲线 + source_hurt、三服参数差异与 PvP 两服对照。13 条结论，均可回到 special_hurt_params_data / _kj1 / _yk / hurt_params_data。",
-   "items": 13,
-   "generated": "2026-11-02"
-  },
   "media_catalog": {
    "publication_status": "published",
    "category": "三、综合资料 / （七）影音资源",
@@ -254,12 +247,19 @@
    "reason": "影音资源库：左侧分类树 + 常驻播放器。音频 19,959 条 = res/sound.gpk（含热更 layers npk）FSB5 样本名索引的去重样本名，可播文件为 01_索引与产物/20_提取/影音/audio 下已转码 mp3（页面未转码的条目如实标「待提取」）；视频 300 条 = 41_还原树内 res/video.gpk 已还原 mp4（含 103 条按条目号命名的未命名视频）。无 cdata 表行 ⇒ 按名册级（roster / static-export）通道登记，媒体文件不复制进 web。"
   },
   "damage_attack": {
-   "publication_status": "published",
-   "category": "二、战力类 / （六）伤害计算 / 2、攻击力"
+   "publication_status": "unpublished",
+   "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
+   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
   },
   "damage_defense": {
-   "publication_status": "published",
-   "category": "二、战力类 / （六）伤害计算 / 4、守方侧"
+   "publication_status": "unpublished",
+   "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
+   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
+  },
+  "damage_bonus": {
+   "publication_status": "unpublished",
+   "category": "二、战力类 / （六）伤害计算 / 3、加成",
+   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
   }
  }
 }

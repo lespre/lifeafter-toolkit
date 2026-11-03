@@ -55,6 +55,22 @@ REG = PROJ / "01_索引与产物/30_分析/icon_registry.json"
 TREE_REL = "01_索引与产物/41_还原树/pe/配置/com/cdata"
 SOURCE_ID = "pe-config-merged"
 
+# ───────────────────────────────────────── 冻结快照源（武器/护甲段）
+# 树里的 all_equips_data.py 是 808 B 桩；all_equips_data_kj1.py / _yk.py 是 `0x73` 模块、
+# 索引尾不是 `0x76`，现有解码器解不出 name/icon。2026-11-01 已用 node 索引法从
+# script.py314.lc.npk 解出成品行并冻结在 30_分析（equipment_attrs 板块的数据源），
+# 这里**直接读冻结产物**，不再重解码 —— 拿不到更新数据时就地写明"仍按冻结快照"。
+SNAP_DIR = PROJ / "01_索引与产物/30_分析/all_equips_全量_node索引_20261029"
+SNAP_SOURCE_ID = "all_equips-frozen-2026-11-01"
+SNAP_DIR_REL = "01_索引与产物/30_分析/all_equips_全量_node索引_20261029"
+# (namespace, 文件名, 主名优先级 0=最高)。经典服为基准：classic > kj1 > yk
+SNAPSHOTS = [
+    ("all_equips_classic", "all_equips_attrs_classic.json", 0),
+    ("all_equips_kj1",     "all_equips_attrs_kj1.json",     1),
+    ("all_equips_yk",      "all_equips_attrs_yk.json",      2),
+]
+SNAP_EXTRA_FIELDS = ("weapon_type", "equip_type", "level")
+
 # 图标落盘目录（首命中优先）。板里写 assets/<dir>/<id>.png
 ICON_DIRS = ("item_icons_full", "lottery_icons", "item_icons", "img_cache",
              "edible_icons", "recipe_icons", "chip_icons", "core_icons",
@@ -231,6 +247,45 @@ def load_tables() -> "OrderedDict[str, Tbl]":
     return out
 
 
+class Snap:
+    """冻结快照表：只有成品行（key/name/icon/…），没有可解的 CHS 池。
+
+    来源 = 2026-11-01 用 node 索引法从 `script.py314.lc.npk`（pe_20261020 / apk_20261002）
+    解出的 `equipment_attrs` 数据源，已冻结进 30_分析。树里的 `all_equips_data*.py`
+    解不出（808 B 桩 / `0x73` 模块 / 索引尾非 `0x76`），所以这里不重解码。
+    """
+
+    def __init__(self, ns: str, path: Path, prio: int):
+        d = json.loads(path.read_text(encoding="utf-8"))
+        meta = d.get("meta") or {}
+        self.ns = ns
+        self.path = path
+        self.prio = prio
+        self.table = meta.get("table")
+        self.generated = meta.get("generated")
+        self.source_package = meta.get("source_package")
+        self.label = meta.get("label")
+        self.rows: dict[int, dict] = {}
+        for r in d.get("rows") or []:
+            k = r.get("key")
+            if isinstance(k, int):
+                self.rows[k] = r
+        self.n_rows = len(self.rows)
+        self.sha = sha256_file(path)
+        self.bytes = path.stat().st_size
+        self.mtime_ns = path.stat().st_mtime_ns
+        self.rel = SNAP_DIR_REL.split("01_索引与产物/")[-1] + "/" + path.name
+
+
+def load_snapshots() -> "OrderedDict[str, Snap]":
+    out: "OrderedDict[str, Snap]" = OrderedDict()
+    for ns, fname, prio in sorted(SNAPSHOTS, key=lambda x: x[2]):
+        p = SNAP_DIR / fname
+        if p.is_file():
+            out[ns] = Snap(ns, p, prio)
+    return out
+
+
 def _png_key(stem: str) -> str | None:
     """把 `<id>.png` / `icon_<id>_b.png` / `af_<id>.png` / `nc_<id>.png` / `chip_<id>_s.png`
     归一成 id 串。**只接受纯数字**——`item_icon_jin_bing_b` 这类开发名一律不认，
@@ -264,6 +319,7 @@ def png_index() -> dict[str, str]:
 
 def build() -> tuple[dict, dict]:
     tables = load_tables()
+    snaps = load_snapshots()
     reg = json.loads(REG.read_text(encoding="utf-8"))["icons"]
     pngs = png_index()
 
@@ -312,8 +368,54 @@ def build() -> tuple[dict, dict]:
             if icon and not rec["icon"]:
                 rec["icon"], rec["icon_ns"] = icon, stem
 
-    return merged, {"ns_rows": stat_ns, "tables": tables,
-                    "pngs": pngs, "reg": reg, "collide": collide}
+    # ── 武器/护甲段：冻结快照（classic → kj1 → yk 依次，先到者定主名）
+    snap_stat = Counter()
+    snap_new = 0
+    snap_overlap = 0
+    snap_name_alt = 0
+    for ns, sn in snaps.items():
+        stat_ns[ns] = sn.n_rows
+        for key, row in sn.rows.items():
+            name = row.get("name")
+            name = name.strip() if isinstance(name, str) else ""
+            v = row.get("icon")
+            icon = v.strip() if isinstance(v, str) and v.strip().startswith("ui/") else None
+            equip = {f: row.get(f) for f in SNAP_EXTRA_FIELDS}
+            desc = row.get("desc")
+            desc = desc.strip() if isinstance(desc, str) else ""
+            rec = merged.get(key)
+            if rec is None:
+                merged[key] = {
+                    "name": name, "name_ns": ns if name else None,
+                    "name_field": "name" if name else None,
+                    "icon": icon, "icon_ns": ns if icon else None,
+                    "namespaces": [ns], "equip": equip,
+                    "desc_brief": desc[:120] if desc else None,
+                }
+                snap_new += 1
+                continue
+            snap_overlap += 1
+            if ns not in rec["namespaces"]:
+                rec["namespaces"].append(ns)
+            # 跨服同号：主名留在先到者（classic 基准），其余记 name_alt —— 不另起一条事实
+            if name and name != rec["name"]:
+                collide += 1
+                snap_name_alt += 1
+                rec.setdefault("name_alt", []).append(f"{ns}={name}")
+                if not rec["name"]:
+                    rec["name"], rec["name_ns"] = name, ns
+                    rec["name_field"] = "name"
+            if icon and not rec["icon"]:
+                rec["icon"], rec["icon_ns"] = icon, ns
+            if equip and not rec.get("equip"):
+                rec["equip"] = equip
+            if desc and not rec.get("desc_brief"):
+                rec["desc_brief"] = desc[:120]
+
+    return merged, {"ns_rows": stat_ns, "tables": tables, "snaps": snaps,
+                    "pngs": pngs, "reg": reg, "collide": collide,
+                    "snap_new": snap_new, "snap_overlap": snap_overlap,
+                    "snap_name_alt": snap_name_alt}
 
 
 def main() -> int:
@@ -333,13 +435,20 @@ def main() -> int:
 
     merged, ctx = build()
     tables: "OrderedDict[str, Tbl]" = ctx["tables"]
+    snaps: "OrderedDict[str, Snap]" = ctx["snaps"]
     reg, pngs = ctx["reg"], ctx["pngs"]
 
     # ── 源锁：本板实际读的表的联合摘要（与 edible_catalog 同口径）
     h = hashlib.sha256()
     for stem in tables:
         h.update(("%s:%s\n" % (stem, tables[stem].sha)).encode())
+    for ns in snaps:
+        h.update(("%s:%s\n" % (ns, snaps[ns].sha)).encode())
     pkg_sha = h.hexdigest()
+    snap_sha = hashlib.sha256()
+    for ns in snaps:
+        snap_sha.update(("%s:%s\n" % (ns, snaps[ns].sha)).encode())
+    snap_sha_hex = snap_sha.hexdigest()
     lock = {
         "source_id": SOURCE_ID,
         "sha256": pkg_sha,
@@ -352,6 +461,23 @@ def main() -> int:
                  f"sha256 为上述 {len(tables)} 张表文件的联合摘要，bytes/mtime_ns 为合计/最新值；"
                  "common_item 真身在 30_分析/90_表缓存/base_B42760CCA41DBC25.py（树里是 815 B 桩）",
     }
+    snap_lock = {
+        "source_id": SNAP_SOURCE_ID,
+        "sha256": snap_sha_hex,
+        "bytes": sum(s.bytes for s in snaps.values()),
+        "mtime_ns": max(s.mtime_ns for s in snaps.values()),
+        # 门禁只认 primary / comparison（rules 里没有第三个角色）：
+        # 配置树是 primary，装备快照是**另一份独立源**，故记 comparison 而非 primary。
+        "role": "comparison",
+        "path": SNAP_DIR_REL,
+        "tables": list(snaps),
+        "generated": max((s.generated or "") for s in snaps.values()) if snaps else None,
+        "source_package": sorted({s.source_package for s in snaps.values() if s.source_package}),
+        "notes": "武器/护甲段（item id 10000–70000 与跨服专属段）来自 2026-11-01 冻结快照："
+                 "node 索引法从 script.py314.lc.npk 解出的 equipment_attrs 成品行，自带 name/icon。"
+                 "树里 all_equips_data.py 是 808 B 桩、all_equips_data_kj1/_yk 是 0x73 模块且索引尾非 0x76，"
+                 "现有解码器解不出 ⇒ 本板不重解码，仍按该冻结快照；跨服同号以 classic 为基准、其余记 name_alt。",
+    }
 
     today = dt.date.today().isoformat()
     items = []
@@ -359,6 +485,24 @@ def main() -> int:
     named = 0
     tag_stat = Counter()
     alt_n = 0
+    ICON_FIELD_OF = {s[0]: s[2] for s in SELECTED}
+
+    def tbl_rel(ns: str) -> str:
+        if ns in tables:
+            return tables[ns].rel
+        if ns in snaps:
+            return snaps[ns].rel
+        return ns
+
+    def tbl_sha(ns: str) -> str | None:
+        if ns in tables:
+            return tables[ns].sha
+        if ns in snaps:
+            return snaps[ns].sha
+        return None
+
+    def src_id(ns: str) -> str:
+        return SNAP_SOURCE_ID if ns in snaps else SOURCE_ID
 
     for key, rec in merged.items():
         name = rec["name"]
@@ -386,7 +530,11 @@ def main() -> int:
 
         frefs = [rec["name_field"]] if rec["name_field"] else []
         if rec["icon_ns"]:
-            frefs.append(SELECTED[[s[0] for s in SELECTED].index(rec["icon_ns"])][2])
+            f = ICON_FIELD_OF.get(rec["icon_ns"])
+            if not f and rec["icon_ns"] in snaps:
+                f = "icon"
+            if f:
+                frefs.append(f)
         if not frefs:
             frefs = ["id"]
 
@@ -405,20 +553,20 @@ def main() -> int:
             "icon_source": icon_source,
             "icon_state": icon_state,
             "provenance": {
-                "source_id": SOURCE_ID,
-                "source_lock_sha256": pkg_sha,
-                "table": tables[ns].rel if ns in tables else ns,
+                "source_id": src_id(ns),
+                "source_lock_sha256": snap_sha_hex if ns in snaps else pkg_sha,
+                "table": tbl_rel(ns),
                 "row_key": key,
                 "field_refs": frefs,
                 "name_source": (f"{ns}#{rec['name_field']}" if rec["name_field"]
                                 else f"{ns}#无 name 字段（名称未解析）"),
                 "namespaces": rec["namespaces"],
                 "upstream": {
-                    "package_sha256": pkg_sha,
+                    "package_sha256": snap_sha_hex if ns in snaps else pkg_sha,
                     "entry_index": None,
                     "file_id": None,
                     "role": ns,
-                    "table_sha256": tables[ns].sha if ns in tables else None,
+                    "table_sha256": tbl_sha(ns),
                 },
                 "locator_chain": {
                     "chain_status": "replayed-structural",
@@ -426,14 +574,21 @@ def main() -> int:
                     "no_cross_source_field_join": True,
                     "steps": [{
                         "kind": "decoded-table-row",
-                        "source_id": SOURCE_ID,
-                        "table": tables[ns].rel if ns in tables else ns,
+                        "source_id": src_id(ns),
+                        "table": tbl_rel(ns),
                         "row_key": key,
                         "field_refs": frefs,
                     }],
                 },
             },
         }
+        # 装备行附带的分类字段（只在该行真有值时出现，避免 6 万条空列）
+        for f in SNAP_EXTRA_FIELDS:
+            v = (rec.get("equip") or {}).get(f)
+            if v not in (None, ""):
+                it[f] = v
+        if rec.get("desc_brief"):
+            it["desc_brief"] = rec["desc_brief"]
         if rec.get("name_alt"):
             it["name_alt"] = " / ".join(rec["name_alt"])
         if png:
@@ -448,29 +603,40 @@ def main() -> int:
         "meta": {
             "name": "全量道具总表",
             "category": "三、综合资料 / （一）全量道具总表",
-            "source_server": "测试服 · PE 配置合并体（基线 script.py314.lc.npk + 2026-10 增量）",
+            "source_server": "测试服 · PE 配置合并体（基线 script.py314.lc.npk + 2026-10 增量）"
+                             " + 三服装备冻结快照（classic / kj1 / yk，2026-11-01）",
             "source_label": ("测试服 · 41_还原树/pe/配置/com/cdata（"
-                             + " / ".join(tables) + "）"),
+                             + " / ".join(tables) + "）"
+                             + " ＋ 30_分析/all_equips_全量_node索引_20261029（"
+                             + " / ".join(snaps) + "）"),
             "generated": today,
             "evidence": "structure",
             "count": total,
             "notes": (
                 f"本版由当前 PE 还原树逐表重建（旧版是 ITEM_MASTER_v03 快照，只有 30,251 条 = 一半覆盖）。"
-                f"共 {len(tables)} 张表入册："
+                f"配置表 {len(tables)} 张入册："
                 + " / ".join(f"{s} {ctx['ns_rows'][s]:,}" for s in tables)
+                + (f"；另接装备冻结快照 {len(snaps)} 份："
+                   + " / ".join(f"{s} {ctx['ns_rows'][s]:,}" for s in snaps)
+                   + f"（新增 {ctx['snap_new']:,} 个此前完全没有的 id，补齐 10000–70000 武器/护甲段）"
+                   if snaps else "")
                 + f"；按 item_id 去重后 {total:,} 条。"
                 "跨表同号不合并成一条事实：记 provenance.namespaces 与 name_alt 并打 unresolved 标签"
                 f"（本轮同号异名 {ctx['collide']:,} 条）。"
+                "装备段跨服同号以经典服为基准（classic > kj1 > yk），其余服名字只记 name_alt，不另起一条。"
+                "装备快照是 2026-11-01 冻结产物（node 索引法解 script.py314.lc.npk）：树里 all_equips_data*.py "
+                "解不出（808 B 桩 / 0x73 模块 / 索引尾非 0x76），故仍按该冻结快照，未重解码。"
                 "图标优先取表自己的 icon 字段，其次 30_分析/icon_registry.json；icon_state 三态区分"
                 "「已导出 / 源已定位未导出 / 无图标源」。evidence_level=structure-only：结构可证、未经实机核验。"
             ),
             "package_sha": pkg_sha,
-            "package_sha_source": f"本板实际读取的 {len(tables)} 张表文件的联合 sha256（同 edible_catalog 口径）",
+            "package_sha_source": (f"本板实际读取的 {len(tables)} 张配置表 + {len(snaps)} 份装备快照"
+                                   "文件的联合 sha256（同 edible_catalog 口径）"),
             "provenance": {
                 "contract_version": 3,
                 "contract": "frozen-audited-artifact",
                 "audit_status": "passed",
-                "source_locks": [lock],
+                "source_locks": ([lock] + ([snap_lock] if snaps else [])),
                 "source_scope": {"cross_source_policy": "no-cross-source-field-join",
                                  "integer_join_policy": "no-equal-integer-join",
                                  "runtime_final_policy": "unknown-unless-runtime-proven"},
@@ -498,6 +664,8 @@ def main() -> int:
                 "icon_path": "图标路径", "icon_source": "图标来源",
                 "icon_png": "图标文件", "icon_state": "图标状态",
                 "name_alt": "同号异名",
+                "weapon_type": "武器类型", "equip_type": "装备类型",
+                "level": "装备等级", "desc_brief": "描述摘要",
             },
             "hide_fields": ["_prov_shape", "evidence", "evidence_level", "icon",
                             "icon_path", "icon_png", "id", "provenance", "source",
@@ -513,6 +681,10 @@ def main() -> int:
     board, hoisted = hoist_board_defaults(board)
 
     print(f"表 {len(tables)} 张：" + " / ".join(f"{s} {ctx['ns_rows'][s]:,}" for s in tables))
+    if snaps:
+        print(f"装备快照 {len(snaps)} 份：" + " / ".join(f"{s} {ctx['ns_rows'][s]:,}" for s in snaps)
+              + f"｜新增 id {ctx['snap_new']:,}｜与既有表同号 {ctx['snap_overlap']:,}"
+              + f"（其中异名 {ctx['snap_name_alt']:,} 记 name_alt）")
     print(f"条目 {total:,}（旧板 30,252）｜有名字 {named:,} ({named/total:.1%})")
     print("图标：" + " / ".join(f"{k} {v:,}" for k, v in icon_stat.most_common()))
     print("命名空间：" + " / ".join(f"{k} {v:,}" for k, v in ns_count.most_common()))
@@ -570,6 +742,20 @@ def write_markdown(items: list[dict], reg: dict) -> None:
       重写文档，不重跑 40 分钟解码也不会写出过期数字。
     """
     census = load_census()
+    # 装备冻结快照的核数（写进第 6 节边界：条数必须由数据算，不手写）
+    _snaps = load_snapshots()
+    _servers: dict[int, set[str]] = {}
+    _names: dict[int, set[str]] = {}
+    for _s in _snaps.values():
+        for _k, _r in _s.rows.items():
+            _servers.setdefault(_k, set()).add(_s.ns)
+            _nm = _r.get("name")
+            if isinstance(_nm, str) and _nm.strip():
+                _names.setdefault(_k, set()).add(_nm.strip())
+    SNAP_ROWS = sum(s.n_rows for s in _snaps.values())
+    SNAP_KEYS = set(_servers)
+    SNAP_MULTI = sum(1 for v in _servers.values() if len(v) > 1)
+    SNAP_DIFF = sum(1 for v in _names.values() if len(v) > 1)
     # 表行数一律取普查口径（同一个读取路径），避免与构建时的 rows 打架
     table_rows = {s: (census.get(s) or {}).get("rows") or 0 for s, *_ in SELECTED}
     # ★ 注册表 key 是**字符串**、条目 item_id 是**整数** ⇒ 必须先归一。
@@ -632,6 +818,13 @@ def write_markdown(items: list[dict], reg: dict) -> None:
     A("")
     A("逐条说明：")
     A("")
+    A("- **all_equips_{classic,kj1,yk}（装备冻结快照，3,287 / 1,553 / 2,228 行）**：武器/护甲段"
+      "（item id 10000–70000 与跨服专属段）的唯一现成来源，位于 "
+      "`30_分析/all_equips_全量_node索引_20261029/`（2026-11-01，node 索引法解 `script.py314.lc.npk`，"
+      "是「装备属性」板块的数据源），行自带 `name` / `icon`（`ui/item_icon/...`）。"
+      "树里的 `all_equips_data.py` 是 808 B 桩、`all_equips_data_kj1/_yk` 是 `0x73` 模块且索引尾非 `0x76`，"
+      "现有解码器解不出 ⇒ 接入方式为**直接读冻结快照，不重解码**；跨服同号以经典服为基准"
+      "（classic > kj1 > yk），其余服名字只记 `name_alt`，不另起一条。")
     A("- **common_item_data（38,231）**：唯一权威的道具行；`name`/`icon` 都是同表字段。"
       "树里那份是 815 B 的 MergedTableData 壳，真身在表缓存，**这一点必须写进板 meta**，否则下一个人会以为树里没表。")
     A("- **fashion_data（11,169）**：时装/外观名册，`icons` 是 jump 字符串组（`0x27` 组 → 池槽位 → `ui/...`）。"
@@ -696,10 +889,13 @@ def write_markdown(items: list[dict], reg: dict) -> None:
       "名字在 `monster_data_*` 分表与 `monster_icon_data` 里，与本表无关。")
     A("- **`furniture_base_data` / `building_base_data` 没有名字也没有图标**："
       "它们是结构参数表（grid_w / model_name），家具/建筑名册走 common_item 的家具段与 `furniture_*` 名册族。")
-    A("- **武器/护甲（10000–70000 段）不在本表**：`common_item_data` 的 key 从 7000 直接跳到 70001；"
-      "装备名册 `all_equips_data` 在树里是 **808 B 桩**，它的真身 `all_equips_data_kj1` / `_yk`（各 1.27 MB）"
-      "**没有 `_chs` 池、索引尾也不是 0x76**，现有解码器解不出 name/icon ⇒ 装备留在「装备属性」板块，"
-      "不往总表里凑数。旧板同样没有（旧板 30,251 里也不存在 10001），所以这不是本版引入的缺口。")
+    A("- **武器/护甲段（10000–70000）来自「装备冻结快照」，不是从树里重解码的**："
+      "`common_item_data` 的 key 从 7000 直接跳到 70001，故这一段只能由 "
+      "`all_equips_attrs_{classic,kj1,yk}.json`（2026-11-01 冻结，node 索引法解 `script.py314.lc.npk`）补齐；"
+      f"三份快照共 {SNAP_ROWS:,} 行、按 key 去重后 **{len(SNAP_KEYS):,}** 条"
+      f"（{SNAP_MULTI:,} 个 key 跨服重复，{SNAP_DIFF:,} 个名字有差异 ⇒ 只记 `name_alt`，不另起一条）。"
+      "树里 `all_equips_data*.py` 至今解不出（808 B 桩 / `0x73` 模块 / 索引尾非 `0x76`），"
+      "因此**拿不到比 2026-11-01 更新的装备数据**；要说「更新」必须先解决这三个文件的解码。")
     A("- **`monster_info_display_data`（23 行）/ `monster_init_dialog_data`（553 行）**："
       "前者是怪物图鉴展示行，后者 name 字段是**对话文件名**，都不是道具名，故不入册。")
     MD_OUT.parent.mkdir(parents=True, exist_ok=True)

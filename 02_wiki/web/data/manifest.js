@@ -111,33 +111,6 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "3、加成",
-      "category": "二、战力类 / （六）伤害计算 / 3、加成",
-      "board": "damage_bonus_piecewise",
-      "items": 13,
-      "generated": "2026-11-02",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（special_hurt_params_data、hurt_params_data）+ oversea/_kj1、_yk",
-      "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
-      "evidence": {
-        "structure": 13
-      },
-      "state_summary": {
-        "跨服结论": 6,
-        "经典服": 3,
-        "简单生存服": 2,
-        "月卡服": 2
-      },
-      "name_status_summary": {},
-      "provenance_status": {
-        "contract_version": 3,
-        "audit_status": "passed",
-        "dual_source_mode": null,
-        "locator_chain_statuses": {
-          "missing": 13
-        }
-      }
-    },
-    {
       "name": "（内测版）说明条目总表",
       "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "desc_catalog",
@@ -470,22 +443,22 @@ window.WIKI_MANIFEST = {
       "name": "全量道具总表",
       "category": "三、综合资料 / （一）全量道具总表",
       "board": "item_master_full",
-      "items": 65237,
+      "items": 69047,
       "generated": "2026-11-04",
-      "source_server": "测试服 · PE 配置合并体（基线 script.py314.lc.npk + 2026-10 增量）",
-      "package_sha": "a1faa3bd3c6aebf7b8224be3563f35fa265e45be77986857527cebdd3e2acf97",
+      "source_server": "测试服 · PE 配置合并体（基线 script.py314.lc.npk + 2026-10 增量） + 三服装备冻结快照（classic / kj1 / yk，2026-11-01）",
+      "package_sha": "7ceb1d091776aa52ab8722de79cce0b56e8e474391947d3043a36187acf5d740",
       "evidence": {
-        "structure": 65237
+        "structure": 69047
       },
       "state_summary": {
-        "条目总数": 65237,
-        "命名空间": "common_item_data 38,231 / fashion_data 11,169 / gift_data 5,653 / edible_item_data 4,440 / recipe 4,249 / player_module_appear_data 1,200 / vehicle_ui_data 278 / avatar_frame_conf_data 14 / body_sfx_data 2 / equip_coating_data 1",
-        "证据等级": "structure-only 65,237",
-        "状态标签": "static config 65,237 / unresolved 553",
-        "有名字": "65,237（100.0%）",
-        "有图标源": "64,795（99.3%）",
-        "跨表同号": 553,
-        "行级可定位条目": 65237
+        "条目总数": 69047,
+        "命名空间": "common_item_data 38,231 / fashion_data 11,169 / gift_data 5,653 / edible_item_data 4,440 / recipe 4,249 / all_equips_classic 3,030 / player_module_appear_data 1,200 / all_equips_yk 669 / vehicle_ui_data 278 / all_equips_kj1 111 / avatar_frame_conf_data 14 / body_sfx_data 2 / equip_coating_data 1",
+        "证据等级": "structure-only 69,047",
+        "状态标签": "static config 69,047 / unresolved 726",
+        "有名字": "69,047（100.0%）",
+        "有图标源": "68,009（98.5%）",
+        "跨表同号": 726,
+        "行级可定位条目": 69047
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -493,7 +466,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 65237
+          "replayed-structural": 69047
         }
       }
     },
