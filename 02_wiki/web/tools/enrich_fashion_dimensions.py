@@ -423,6 +423,16 @@ def main() -> int:
             for fld, cn in (("hide_head", "头部"), ("hide_face", "面部"), ("hide_pendant", "挂饰")):
                 if a.get(fld) and cn not in hp:
                     hp.append(cn)
+        # ★ 2026-11-04 用户口径：商品层写「挂件/面饰/头饰」，外观层写「挂件/面部/头部」，
+        #   两套词表指向同一批部位，渲染时会显示成「隐藏挂件 是 / 隐藏挂饰 是」这种重复行。
+        #   统一到部位名词表并去重（保留第一次出现的顺序）。
+        _SYN = {"挂件": "挂饰", "面部": "面饰", "头部": "头饰"}
+        seen_hp = []
+        for _x in hp:
+            _y = _SYN.get(_x, _x)
+            if _y not in seen_hp:
+                seen_hp.append(_y)
+        hp = seen_hp
         if hp:
             it["hide_parts"] = hp
             stat["hide_parts"] += 1
