@@ -2461,7 +2461,8 @@ def cmd_hotfix_apply(args) -> int:
                                   container_dir=cdir,
                                   container=getattr(args, "container", None),
                                   allow_suspicious=_force,
-                                  collect_lists=_dump_lists)
+                                  collect_lists=_dump_lists,
+                                  tree_prefix=getattr(args, "tree_prefix", None))
         # ★★ 2026-09-30 守卫：拒绝「几乎全在覆盖」的写入。
         #   实测（拿 Documents 热更包的差量块去比已合并的树）：
         #     扫 27,072 · 覆盖 25,511（94%）· 相同 19 · 失败 1,542
@@ -2472,7 +2473,8 @@ def cmd_hotfix_apply(args) -> int:
             pre = RM.merge_script_pack(sp, tree, idx, names, dry_run=True,
                                        container_dir=cdir,
                                        container=getattr(args, "container", None),
-                                       allow_suspicious=_force)
+                                       allow_suspicious=_force,
+                                       tree_prefix=getattr(args, "tree_prefix", None))
             bad = (pre.same == 0 and (pre.added + pre.updated) > 0)
             ratio = (pre.updated + pre.failed) / max(pre.scanned, 1)
             if bad or ratio > 0.60:
@@ -6357,6 +6359,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="★ 真写（不加此参数只做 dry-run —— 保护唯一权威产物）")
     ha.add_argument("--force", action="store_true",
                     help="★ 跳过「相同 0 但有新增/覆盖」的安全守卫（默认拒绝写入）")
+    ha.add_argument("--tree-prefix", dest="tree_prefix", default=None,
+                    help="★ 脚本层落点前缀（本项目的树是 <树根>/配置/…，传 配置）")
     ha.add_argument("--dump-lists", dest="dump_lists", action="store_true",
                     help="★ 把 新增/覆盖/拒写/失败 的【完整清单】落成 tsv（默认台账只留 15 条样例）")
     ha.add_argument("--out", type=Path, help="报告目录（默认 30_分析\\热更就地增补_<时间>）")

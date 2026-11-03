@@ -250,6 +250,7 @@ def merge_script_pack(pack: Path, tree_root: Path, index_db: Path,
                       container_dir: Optional[str] = None,
                       container: Optional[str] = None,
                       only_named: bool = False,
+                      tree_prefix: Optional[str] = None,
                       allow_suspicious: bool = False,
                       collect_lists: bool = False,
                       workers: Optional[int] = None) -> MergeStats:
@@ -344,12 +345,18 @@ def merge_script_pack(pack: Path, tree_root: Path, index_db: Path,
     tasks = []
     for fid_hex, row, off, packed, decoded, flag in rows:
         path = names.get((fid_hex or "").upper())
+        # ★ 2026-11-04：本项目的树把脚本层铺在 <树根>/配置/ 下（不带容器分区），
+        #   给 tree_prefix 时按「树根/前缀/游戏内路径」落点，否则沿用老的「树根/容器/路径」。
+        if tree_prefix:
+            base_dir = tree_prefix
+        else:
+            base_dir = cont_dir
         if path:
-            rel = os.path.join(cont_dir, path.replace("/", "\\"))
+            rel = os.path.join(base_dir, path.replace("/", "\\"))
         else:
             if only_named:
                 continue
-            rel = os.path.join(cont_dir, "_未命名", "%08d.bin" % row)
+            rel = os.path.join(base_dir, "_未命名", "%08d.bin" % row)
         tasks.append((fid_hex, row, off, packed, decoded, flag, rel, bool(path)))
     st.scanned = len(tasks)
     st.named = sum(1 for t in tasks if t[7])
