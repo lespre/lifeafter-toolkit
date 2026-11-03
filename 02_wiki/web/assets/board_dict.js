@@ -33,7 +33,7 @@ const FIELD_CN={gender_scope:"性别范围",gender_scope_note:"标注说明",gen
   server_branch:"所属服务器",released:"上架状态",nucleus_attr_type:"核芯类型",item_id:"物品ID",
   trial_variants:"体验版子项",equip_label:"类型",weapon_type:"槽位/类型码",equip_type:"装备大类码",attr_first:"主属性",
   max_shield:"护盾值",shield_type:"护盾档位码",shield_label:"护盾档位",weapon_kind:"武器细类码",
-  weapon_kind_label:"武器细类",icon_state:"图标状态",icon_missing:"缺图",
+  weapon_kind_label:"武器细类",icon_state:"图标状态",icon_missing:"缺图",namespace:"所属表",icon_source:"图标来源",icon_png:"图标文件",icon_path:"图标路径",
   family:"攻防类别",max_stack_num:"最大堆叠数",hide_in_bag:"背包隐藏值",hide_in_bag_state:"背包隐藏状态",
   record_key:"记录键",schema_ref:"结构引用",table:"静态表",identity_state:"身份状态",business_id_allowed:"允许作为业务ID",
   static_name_literals:"同行静态名称字面值",unresolved_identity_candidates:"未解析身份候选",
