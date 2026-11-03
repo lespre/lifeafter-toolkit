@@ -249,17 +249,20 @@
   "damage_attack": {
    "publication_status": "unpublished",
    "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
-   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
+   "reason": "攻击力五阶段：source_hurt 分段曲线，按场景 id × 服型解码。",
+   "items": 3
   },
   "damage_defense": {
    "publication_status": "unpublished",
    "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
-   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
+   "reason": "守方侧：b_class/c_class 曲线，三服逐值一致。",
+   "items": 3
   },
   "damage_bonus": {
    "publication_status": "unpublished",
    "category": "二、战力类 / （六）伤害计算 / 3、加成",
-   "reason": "伤害系统由另一条线制作中，meta.provenance 未就绪，暂不上架（等其补溯源后改回 published）"
+   "reason": "加成六阶段：p2p 分段曲线，按场景 × 三服解码。",
+   "items": 19
   }
  }
 }
