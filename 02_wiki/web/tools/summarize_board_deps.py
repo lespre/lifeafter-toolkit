@@ -77,6 +77,12 @@ def main() -> int:
         except Exception:
             pass
 
+    pol = {}
+    try:
+        pol = json.loads((WEB / "data/publication_policy.json").read_text(encoding="utf-8")).get("boards") or {}
+    except Exception:
+        pol = {}
+
     rows = []
     for p in sorted(BOARDS.glob("*.json")):
         bid = p.stem
@@ -119,31 +125,50 @@ def main() -> int:
             elif find_script(b):
                 resolved.append(find_script(b))
         builders = resolved
+        # 未登记的 builder：脚本正文提到该 board id，且文件名含 board 的关键词
+        if not builders:
+            tok = bid.split(".")[0]
+            for p in TOOLS.glob("*.py"):
+                try:
+                    txt = p.read_text(encoding="utf-8", errors="ignore")
+                except OSError:
+                    continue
+                if f'"{bid}"' in txt and ("write_board_pair" in txt or "board_io" in txt):
+                    builders.append(f"tools/{p.name}（未登记）")
+                    break
+                if tok in p.stem and f'"{bid}"' in txt:
+                    builders.append(f"tools/{p.name}（未登记）")
+                    break
+        status = (pol.get(bid) or {}).get("publication_status") or "—"
         ok = bool(builders)
         rows.append({
             "board": bid, "name": name, "items": items,
             "rebuildable": ok, "builders": builders,
             "tables": sorted(tables), "verified": bool(r.get("verified")),
             "notes": (r.get("notes") or "")[:60],
+            "status": status,
         })
 
     rows.sort(key=lambda x: (not x["rebuildable"], -x["items"]))
+    pub = [r for r in rows if r["status"] == "published"]
     ok_n = sum(1 for r in rows if r["rebuildable"])
+    pub_ok = sum(1 for r in pub if r["rebuildable"])
 
     lines = ["# 板块重建能力 · 依赖表汇总", "",
-             f"- 板块总数 **{len(rows)}**，可重建 **{ok_n}**，缺 builder **{len(rows) - ok_n}**", "",
+             f"- 板块文件 **{len(rows)}**，可重建 **{ok_n}**",
+             f"- 其中**已发布** {len(pub)} 个：可重建 {pub_ok}，缺 builder {len(pub) - pub_ok}",
+             f"- 未发布/隔离 {len(rows) - len(pub)} 个（这些不需要 builder，除非要重新上架）", "",
              "> 「可重建」= 能找到 builder 脚本且文件存在；表名是从 builder 正文 / 规则 yml / 注册表 inputs 里扫出来的，",
              "> 可能与真实读取略有出入，审阅时以脚本为准。", ""]
 
     for title, group in (("## 一、可重建", [r for r in rows if r["rebuildable"]]),
                          ("## 二、缺 builder（无法自动重建）", [r for r in rows if not r["rebuildable"]])):
         lines += [title, ""]
-        lines += ["| 板块 | 名称 | 条目 | builder | 依赖表 | 已验证 |", "|---|---|---:|---|---|---|"]
+        lines += ["| 板块 | 名称 | 条目 | 状态 | builder | 依赖表 |", "|---|---|---:|---|---|---|"]
         for r in group:
             tb = "<br>".join(f"`{t}`" for t in r["tables"][:6]) or "—"
             bs = "<br>".join(r["builders"][:2]) or "—"
-            lines.append(f"| `{r['board']}` | {r['name']} | {r['items']:,} | {bs} | {tb} | "
-                         f"{'✓' if r['verified'] else ''} |")
+            lines.append(f"| `{r['board']}` | {r['name']} | {r['items']:,} | {r['status']} | {bs} | {tb} |")
         lines.append("")
 
     OUT.write_text("\n".join(lines), encoding="utf-8")
