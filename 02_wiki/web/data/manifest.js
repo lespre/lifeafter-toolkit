@@ -562,25 +562,25 @@ window.WIKI_MANIFEST = {
       "name": "当期&历史每期抽奖奖池（按活动表重建）",
       "category": "置顶、活动奖池与预告 / （一）活动奖池",
       "board": "lottery_periods",
-      "items": 1483,
-      "generated": "20261102",
+      "items": 3410,
+      "generated": "20261103",
       "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 1427,
+        "structure": 3354,
         "candidate": 56
       },
       "state_summary": {
         "期次": 789,
-        "成员": 1484,
-        "结构可证": 1415,
-        "候选成员": 69,
-        "有成员期次": 289,
-        "空成员期次": 500,
+        "成员": 3410,
+        "结构可证": 3354,
+        "候选成员": 56,
+        "有成员期次": 305,
+        "空成员期次": 484,
         "进行中": 21,
         "未开始": 5,
         "2026起期次": 121,
-        "2026起有成员期次": 81
+        "2026起有成员期次": 90
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -588,7 +588,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1483
+          "replayed-structural": 3410
         }
       }
     },

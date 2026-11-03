@@ -69,8 +69,13 @@ def load_names() -> dict:
 def main() -> int:
     src = ANALYSIS / f"奖池成员_{GEN}.json"
     if not src.exists():
-        print("找不到成员文件:", src)
-        return 2
+        # 跨天复跑：退回最新一份（文件名带日期）
+        cands = sorted(ANALYSIS.glob("奖池成员_*.json"))
+        if not cands:
+            print("找不到成员文件:", src)
+            return 2
+        src = cands[-1]
+        print("用最新成员文件:", src.name)
     doc = json.loads(src.read_text(encoding="utf-8"))
     per_items = doc["periods"]
 
