@@ -221,3 +221,13 @@
 {"ts": "2026-11-04 19:00:02", "board": "title_catalog", "items": 1550, "sha_before": "fff563a0382ac865", "sha_after": "e3f8af4398d890f3", "script": "-c", "pid": 29256}
 {"ts": "2026-11-04 22:43:26", "board": "title_catalog", "items": 1550, "sha_before": "e3f8af4398d890f3", "sha_after": "e3f8af4398d890f3", "script": "build_title_dyn_from_pe.py", "pid": 32980}
 {"ts": "2026-11-04 22:44:24", "board": "title_catalog", "items": 1550, "sha_before": "e3f8af4398d890f3", "sha_after": "bbbf9a9a7fb4e115", "script": "build_title_dyn_from_pe.py", "pid": 9704}
+{"ts": "2026-11-05 00:01:04", "board": "title_catalog", "items": 1550, "sha_before": "bbbf9a9a7fb4e115", "sha_after": "bbbf9a9a7fb4e115", "script": "build_title_anim_from_csb_pe.py", "pid": 33892}
+{"ts": "2026-11-05 00:27:59", "board": "title_catalog", "items": 1550, "sha_before": "bbbf9a9a7fb4e115", "sha_after": "248d7980f34366a0", "script": "build_title_anim_from_csb_pe_fast.py", "pid": 18192}
+{"ts": "2026-11-05 00:36:49", "board": "title_catalog", "items": 1550, "sha_before": "248d7980f34366a0", "sha_after": "e942e82dd68688b1", "script": "build_title_anim_from_csb_pe_v3.py", "pid": 34704}
+{"ts": "2026-11-05 00:37:20", "board": "title_catalog", "items": 1550, "sha_before": "e942e82dd68688b1", "sha_after": "4dadda633bc7c811", "script": "build_title_anim_csb_strict.py", "pid": 14520}
+{"ts": "2026-11-05 00:37:34", "board": "title_catalog", "items": 1550, "sha_before": "4dadda633bc7c811", "sha_after": "4dadda633bc7c811", "script": "build_title_anim_csb_strict.py", "pid": 26356}
+{"ts": "2026-11-05 00:38:07", "board": "title_catalog", "items": 1550, "sha_before": "4dadda633bc7c811", "sha_after": "1ae82cd28e5b5ec2", "script": "build_title_anim_csb_pinyin.py", "pid": 31864}
+{"ts": "2026-11-05 00:42:12", "board": "title_catalog", "items": 1550, "sha_before": "1ae82cd28e5b5ec2", "sha_after": "77eb62467052e469", "script": "fix_dead_dyn_webp.py", "pid": 35684}
+{"ts": "2026-11-05 00:47:20", "board": "title_catalog", "items": 1550, "sha_before": "77eb62467052e469", "sha_after": "38bc5ec9734a56db", "script": "build_title_dyn_from_pe.py", "pid": 4760}
+{"ts": "2026-11-05 00:47:20", "board": "title_catalog", "items": 1550, "sha_before": "38bc5ec9734a56db", "sha_after": "38bc5ec9734a56db", "script": "fix_dead_dyn_webp.py", "pid": 22728}
+{"ts": "2026-11-05 00:53:39", "board": "title_catalog", "items": 1550, "sha_before": "38bc5ec9734a56db", "sha_after": "38bc5ec9734a56db", "script": "fix_dead_dyn_webp.py", "pid": 36944}
