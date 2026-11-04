@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>（六）伤害计算 · UI 方案对比（4 板块 × 3 方案）</title>
+<style>
+:root{--ink:#16202e;--mut:#6b7686;--line:#e3e8f0;--bg:#f6f8fb;--card:#fff;
+--c1:#1f5fbf;--c2:#c2410c;--c3:#166534;--soft:#eef3fb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.7 "Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:26px;margin:0 0 6px}
+h2{font-size:19px;margin:46px 0 4px;padding-top:14px;border-top:2px solid var(--line)}
+h2 span{font-size:12px;color:var(--mut);font-weight:400;margin-left:8px}
+.lede{color:var(--mut);font-size:13px;margin:6px 0 18px}
+.verdict{background:#fff6ed;border:1px solid #f3d3b5;border-left:4px solid var(--c2);border-radius:6px;padding:12px 14px;margin:16px 0 8px;font-size:13px}
+.verdict b{color:var(--c2)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.chips a{text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px}
+.chips a:hover{border-color:var(--c1);color:var(--c1)}
+.opt{display:grid;grid-template-columns:104px 1fr;gap:16px;margin:22px 0 30px}
+.tag{font-size:12px;line-height:1.4}
+.tag b{display:block;font-size:15px;color:var(--c1)}
+.tag .fit{display:block;color:var(--mut);margin-top:6px}
+.tag .bad{display:block;color:#a33;margin-top:6px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;box-shadow:0 2px 10px rgba(17,32,56,.04)}
+/* A 文档式 */
+.A h3{font-size:15px;margin:0 0 6px}
+.A .sec{margin:0 0 16px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.A .sec:last-child{border:0;padding:0;margin:0}
+.A p{margin:5px 0;font-size:13.5px}
+.A .kv{display:flex;gap:18px;flex-wrap:wrap;margin:6px 0;font-size:13px}
+.A .kv i{font-style:normal;color:var(--mut);margin-right:4px}
+.A table{border-collapse:collapse;font-size:12.5px;margin:8px 0 2px;width:100%}
+.A th,.A td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+.A th{background:var(--soft);font-weight:600;color:#33465e}
+/* B 矩阵 */
+.B table{border-collapse:collapse;width:100%;font-size:13px}
+.B th,.B td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:middle}
+.B thead th{background:#f0f4fa;font-size:12.5px;color:#33465e}
+.B td.num{font-variant-numeric:tabular-nums;text-align:center;font-size:13.5px}
+.B .win{color:var(--c3);font-weight:600}
+.B .tight{color:var(--c2);font-weight:600}
+.B tr:hover td{background:#fbfcfe}
+.legend{font-size:11.5px;color:var(--mut);margin-top:8px}
+/* C 卡片 */
+.C .stack{display:grid;gap:12px}
+.C .row{display:grid;grid-template-columns:170px 1fr 190px;gap:16px;align-items:center;
+border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fcfdff}
+.C .who b{display:block;font-size:15px}
+.C .who span{font-size:12px;color:var(--mut)}
+.C .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.C .cell{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 11px;text-align:center}
+.C .cell em{display:block;font-style:normal;font-size:11.5px;color:var(--mut)}
+.C .cell b{display:block;font-size:22px;line-height:1.25}
+.C .cell.classic b{color:var(--c1)}
+.C .cell.simple b{color:var(--c2)}
+.C .cell.moon b{color:var(--c3)}
+.C .diff{font-size:12px;color:var(--mut);text-align:right}
+.C .diff strong{color:var(--c2)}
+.note{font-size:11.5px;color:var(--mut);margin-top:10px}
+@media(max-width:900px){.opt{grid-template-columns:1fr}.C .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>（六）伤害计算 · 板块 UI 方案对比</h1>
+<p class="lede">每个板块 3 个方案，用真实数值渲染，直接看哪种顺眼。选定后我按所选方案改 `board.html` 的渲染。</p>
+
+<div class="verdict">
+  <b>先说结论：现在的卡片不适合读。</b> 1366 宽下 5 张卡并排，每张只有约 150px，长句被挤成 6–9 行；
+  「算法 / 依据 / 说明」全堆在卡面，扫一眼只能看到字数，看不到数字；三服对比还得逐卡横向找。
+  它适合「查某一项」，不适合「对照某一组」。
+</div>
+
+<div class="chips">
+  <a href="#b1">1、场景</a><a href="#b2">2、攻击力</a><a href="#b3">3、加成</a><a href="#b4">4、守方侧</a>
+</div>
+
+<!-- ============ 1 场景 ============ -->
+<h2 id="b1">1、场景<span>每个场景一行，重点是「谁有行、窗口、门槛、K」</span></h2>
+
+<div class="opt">
+  <div class="tag"><b>方案 A</b>文档式<em class="fit">适合：内容多、要顺着读</em><em class="bad">缺点：查单项慢</em></div>
+  <div class="panel A">
+    <div class="sec">
+      <h3>远星城 · 三档完全不同</h3>
+      <p>远星城不是一张配置，而是 23 / 448 / 698 三套。23 两服攻击逐段相同；448 经典高压、简单缺行；698 简单略松。</p>
+      <div class="kv"><span><i>场景 ID</i>23 / 448 / 698</span><span><i>经典行</i>30403 / 30952 / 25147</span><span><i>简单行</i>7472 / — / 9291</span></div>
+    </div>
+    <div class="sec">
+      <h3>夏尔镇 · 按子模式拆开</h3>
+      <p>6/799/19/20 一套、304/305 一套；616 经典缺行落默认，简单有 10574。</p>
+      <table>
+        <tr><th>场景组</th><th>经典窗口</th><th>简单窗口</th><th>月卡</th></tr>
+        <tr><td>6 / 799 / 19 / 20</td><td>0.8 ~ 1.8</td><td>0.8 ~ 1.8</td><td>无行 → 0.5 ~ 2.0</td></tr>
+        <tr><td>304 / 305</td><td>0.6 ~ 1.6</td><td>0.6 ~ 1.8</td><td>无行 → 0.5 ~ 2.0</td></tr>
+        <tr><td>616</td><td>无行 → 0.4 ~ 3.0</td><td>有行 10574</td><td>无行 → 0.5 ~ 2.0</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 B</b>矩阵表<em class="fit">适合：横向对照、快速定位</em><em class="bad">缺点：解释性文字放不下</em></div>
+  <div class="panel B">
+    <table>
+      <thead><tr><th>场景组</th><th>经典服</th><th>简单生存服</th><th>月卡服</th><th>差异点</th></tr></thead>
+      <tbody>
+        <tr><td>远星城 23</td><td class="num">有 30403</td><td class="num">有 7472</td><td class="num">无行</td><td>仅窗口 / 门槛 / K</td></tr>
+        <tr><td>远星城 448</td><td class="num">有 30952<br><small>1.0~1.5</small></td><td class="num tight">无行</td><td class="num">无行</td><td><span class="tight">经典最紧</span></td></tr>
+        <tr><td>远星城 698</td><td class="num">有 25147</td><td class="num">有 9291</td><td class="num">无行</td><td>断点 30/40/60 vs 35/60/80</td></tr>
+        <tr><td>夏尔镇 6 / 799 / 19 / 20</td><td class="num">有</td><td class="num">有</td><td class="num">无行</td><td>断点 30 vs 50</td></tr>
+        <tr><td>夏尔镇 304 / 305</td><td class="num">有</td><td class="num">有</td><td class="num">无行</td><td>上限 1.6 vs 1.8</td></tr>
+      </tbody>
+    </table>
+    <div class="legend">绿色 = 较宽松；橙色 = 较严格；「无行」= 本服该场景没有配置行</div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 C</b>卡片 + 三服并列<em class="fit">适合：一眼看出谁松谁紧</em><em class="bad">缺点：占竖向空间</em></div>
+  <div class="panel C">
+    <div class="stack">
+      <div class="row">
+        <div class="who"><b>远星城 448</b><span>高压档</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>1.0~1.5</b></div>
+          <div class="cell simple"><em>简单生存</em><b>无行</b></div>
+          <div class="cell moon"><em>月卡服</em><b>无行</b></div>
+        </div>
+        <div class="diff">经典 <strong>封顶 20.75</strong><br>另两服回退全局</div>
+      </div>
+      <div class="row">
+        <div class="who"><b>夏尔镇 304 / 305</b><span>战斗子模式</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>0.6~1.6</b></div>
+          <div class="cell simple"><em>简单生存</em><b>0.6~1.8</b></div>
+          <div class="cell moon"><em>月卡服</em><b>无行</b></div>
+        </div>
+        <div class="diff">上线差 <strong>0.2</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2 攻击力 ============ -->
+<h2 id="b2">2、攻击力<span>核心是三段折线的断点与同输入对比</span></h2>
+
+<div class="opt">
+  <div class="tag"><b>方案 A</b>文档式<em class="fit">适合：讲清五阶段</em><em class="bad">缺点：数字不突出</em></div>
+  <div class="panel A">
+    <div class="sec">
+      <h3>五阶段</h3>
+      <p>① 基础攻击 ×(1+hurt_ratio) → ② 扣护甲 → ③ 分段折线 → ④ 下限兜底 → ⑤ 战术修正。只有 ③④ 分服。</p>
+      <p>夏尔镇 6：经典 30/50/70/100，简单 50/60/70/100；同输入 x=100 得 <b>63</b> 与 <b>71</b>。</p>
+    </div>
+    <div class="sec">
+      <h3>三服取数</h3>
+      <div class="kv"><span><i>经典</i>min_attack 12 · M 0.4</span><span><i>简单</i>min_attack 24 · M 0.4</span><span><i>月卡</i>na 10 · M 0.3 · 不压缩</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 B</b>矩阵表<em class="fit">适合：比数值</em><em class="bad">缺点：看不到曲线形状</em></div>
+  <div class="panel B">
+    <table>
+      <thead><tr><th>场景</th><th>经典断点</th><th>简单断点</th><th>x=50 经典 / 简单 / 月卡</th><th>x=100 经典 / 简单 / 月卡</th></tr></thead>
+      <tbody>
+        <tr><td>远星城 23</td><td class="num">30/50/70/100</td><td class="num">30/50/70/100</td><td class="num">44 / 44 / <span class="win">50</span></td><td class="num">63.0 / 63.0 / <span class="win">100</span></td></tr>
+        <tr><td>远星城 448</td><td class="num tight">20/25/30</td><td class="num">无（不压缩）</td><td class="num">21 / 50 / 50</td><td class="num tight">20.8 / <span class="win">100</span> / 100</td></tr>
+        <tr><td>远星城 698</td><td class="num">30/40/60</td><td class="num">35/60/80</td><td class="num">37 / 44 / 50</td><td class="num">38.4 / <span class="win">52.2</span> / 100</td></tr>
+        <tr><td>夏尔镇 6</td><td class="num">30/50/70/100</td><td class="num">50/60/70/100</td><td class="num">44 / <span class="win">50</span> / 50</td><td class="num">63.0 / <span class="win">71.0</span> / 100</td></tr>
+        <tr><td>夏尔镇 304/305</td><td class="num">30/50/70/100</td><td class="num">30/50/70/100</td><td class="num">44 / 44 / 50</td><td class="num">63.0 / 63.0 / 100</td></tr>
+      </tbody>
+    </table>
+    <div class="legend">月卡全部无行 → 全局表无 source_hurt 列 → 不压缩，数值即原值</div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 C</b>卡片 + 大数字<em class="fit">适合：抓住关键差距</em><em class="bad">缺点：细节要再点开</em></div>
+  <div class="panel C">
+    <div class="stack">
+      <div class="row">
+        <div class="who"><b>夏尔镇 6</b><span>x = 100 的实际攻击力</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>63</b></div>
+          <div class="cell simple"><em>简单生存</em><b>71</b></div>
+          <div class="cell moon"><em>月卡服</em><b>100</b></div>
+        </div>
+        <div class="diff">简单 <strong>+8</strong>（晚 20 点起压）</div>
+      </div>
+      <div class="row">
+        <div class="who"><b>远星城 448</b><span>x = 100 的实际攻击力</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>20.8</b></div>
+          <div class="cell simple"><em>简单生存</em><b>100</b></div>
+          <div class="cell moon"><em>月卡服</em><b>100</b></div>
+        </div>
+        <div class="diff">经典 <strong>封顶</strong>，另两服无压制</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3 加成 ============ -->
+<h2 id="b3">3、加成<span>核心是 rate 落在哪段、压缩后剩多少</span></h2>
+
+<div class="opt">
+  <div class="tag"><b>方案 A</b>文档式<em class="fit">适合：解释负数不过曲线</em><em class="bad">缺点：多场景对照费劲</em></div>
+  <div class="panel A">
+    <div class="sec">
+      <h3>六步</h3>
+      <p>rate = 1 + Σ桶 → 玩家对玩家再加「攻方加成 − 守方减免」→ 夹窗口 → delta = rate−1 → 过 p2p → 生效 = delta+1。</p>
+      <p>加成 1.6、减免 1.8 → rate 0.80 → delta −0.2 → <b>负数不过曲线</b> → 生效 0.80（夏尔镇两服相同）。</p>
+    </div>
+    <div class="sec">
+      <h3>夏尔镇 6 的四个采样点</h3>
+      <table>
+        <tr><th>原始加成</th><th>经典服</th><th>简单生存</th><th>月卡服</th></tr>
+        <tr><td>+20%</td><td>1.20</td><td>1.10</td><td>1.20</td></tr>
+        <tr><td>+40%</td><td>1.34</td><td>1.20</td><td>1.40</td></tr>
+        <tr><td>+60%</td><td>1.42</td><td>1.30</td><td>1.60</td></tr>
+        <tr><td>+80%</td><td>1.47</td><td>1.40</td><td>1.80</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 B</b>矩阵表<em class="fit">适合：多场景多服比对</em><em class="bad">缺点：段落式解释弱</em></div>
+  <div class="panel B">
+    <table>
+      <thead><tr><th>场景</th><th>服</th><th>+20%</th><th>+40%</th><th>+60%</th><th>+80%</th><th>净 0.6</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">远星城 23</td><td>经典</td><td class="num">1.20</td><td class="num">1.34</td><td class="num">1.42</td><td class="num">1.47</td><td class="num tight">0.75</td></tr>
+        <tr><td>简单</td><td class="num">1.10</td><td class="num">1.20</td><td class="num">1.30</td><td class="num">1.40</td><td class="num">0.80</td></tr>
+        <tr><td>月卡</td><td class="num">1.20</td><td class="num">1.40</td><td class="num">1.60</td><td class="num">1.80</td><td class="num">0.60</td></tr>
+        <tr><td rowspan="3">夏尔镇 6</td><td>经典</td><td class="num">1.20</td><td class="num">1.34</td><td class="num">1.42</td><td class="num">1.47</td><td class="num">0.80</td></tr>
+        <tr><td>简单</td><td class="num">1.10</td><td class="num">1.20</td><td class="num">1.30</td><td class="num">1.40</td><td class="num">0.80</td></tr>
+        <tr><td>月卡</td><td class="num">1.20</td><td class="num">1.40</td><td class="num">1.60</td><td class="num">1.80</td><td class="num">0.60</td></tr>
+      </tbody>
+    </table>
+    <div class="legend">rate ≤ 1 段：夏尔镇两服都托底 0.80；月卡托底 0.50</div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 C</b>卡片 + 大数字<em class="fit">适合：只关心「压成多少」</em><em class="bad">缺点：段结构看不见</em></div>
+  <div class="panel C">
+    <div class="stack">
+      <div class="row">
+        <div class="who"><b>夏尔镇 6 · +60%</b><span>原始 rate 1.60</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>1.42</b></div>
+          <div class="cell simple"><em>简单生存</em><b>1.30</b></div>
+          <div class="cell moon"><em>月卡服</em><b>1.60</b></div>
+        </div>
+        <div class="diff">经典压 <strong>11%</strong>；简单压 19%</div>
+      </div>
+      <div class="row">
+        <div class="who"><b>加成 1.6 对减免 1.8</b><span>净 0.80</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>0.80</b></div>
+          <div class="cell simple"><em>简单生存</em><b>0.80</b></div>
+          <div class="cell moon"><em>月卡服</em><b>0.80</b></div>
+        </div>
+        <div class="diff">负数不过曲线，<strong>三服一致</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4 守方侧 ============ -->
+<h2 id="b4">4、守方侧<span>结论是三服一致，重点在「不是差异来源」</span></h2>
+
+<div class="opt">
+  <div class="tag"><b>方案 A</b>文档式<em class="fit">适合：讲清与「守方减免」的区别</em><em class="bad">缺点：几乎没数字可看</em></div>
+  <div class="panel A">
+    <div class="sec">
+      <h3>这一段做什么</h3>
+      <p>目标自身增伤/减伤桶先乘成 t，d = t−1 过 b_class，snapshot 乘 (1+d)；之后叠额外伤害，最后按目标最大 HP 百分比夹取并向上取整。</p>
+    </div>
+    <div class="sec">
+      <h3>不要混淆</h3>
+      <p>加成环节里的「守方减免」是 player_hurt_reduction_rate，直接减 rate；这里的「目标减伤桶」是目标属性，乘成 t 后走 b_class。两条不同的量。</p>
+    </div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 B</b>矩阵表<em class="fit">适合：确认三服是否一致</em><em class="bad">缺点：内容单薄</em></div>
+  <div class="panel B">
+    <table>
+      <thead><tr><th>曲线</th><th>经典服</th><th>简单生存服</th><th>月卡服</th><th>是否分服</th></tr></thead>
+      <tbody>
+        <tr><td>b_class</td><td class="num">0/0.8 · 0.8/1.0 · 1.0+</td><td class="num">同左</td><td class="num">同左</td><td class="num win">一致</td></tr>
+        <tr><td>c_class</td><td class="num">0/1.0 · 1.0/1.2 · 1.2+</td><td class="num">同左</td><td class="num">同左</td><td class="num win">一致</td></tr>
+        <tr><td>HP 百分比上限</td><td class="num">同函数</td><td class="num">同左</td><td class="num">同左</td><td class="num win">一致</td></tr>
+      </tbody>
+    </table>
+    <div class="legend">守方侧不产生跨服差异，差异只可能来自玩家身上的桶</div>
+  </div>
+</div>
+
+<div class="opt">
+  <div class="tag"><b>方案 C</b>卡片 + 一致标记<em class="fit">适合：结论型板块</em><em class="bad">缺点：信息量低</em></div>
+  <div class="panel C">
+    <div class="stack">
+      <div class="row">
+        <div class="who"><b>b_class</b><span>防守方加成压缩</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>一致</b></div>
+          <div class="cell simple"><em>简单生存</em><b>一致</b></div>
+          <div class="cell moon"><em>月卡服</em><b>一致</b></div>
+        </div>
+        <div class="diff">0/0.8 · 0.8/1.0 · <strong>1.0+</strong></div>
+      </div>
+      <div class="row">
+        <div class="who"><b>c_class</b><span>武器乘算减伤</span></div>
+        <div class="three">
+          <div class="cell classic"><em>经典服</em><b>一致</b></div>
+          <div class="cell simple"><em>简单生存</em><b>一致</b></div>
+          <div class="cell moon"><em>月卡服</em><b>一致</b></div>
+        </div>
+        <div class="diff">0/1.0 · 1.0/1.2 · <strong>1.2+</strong></div>
+      </div>
+    </div>
+    <div class="note">这一板如果选 C，基本就只剩一张「三服一致」的结论卡，意义不大；A 更能解释它与加成环节里的减免不是同一个量。</div>
+  </div>
+</div>
+
+<p class="note" style="margin-top:40px">说明：以上为静态样张，数据取自 4 张配置表的实际解码结果；选定方案后，我会把它落到 board.html 的渲染层，而不是只改这一页。</p>
+</div>
+</body>
+</html>

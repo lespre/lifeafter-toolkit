@@ -1,0 +1,95 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3301_f",
+ "series": "3301",
+ "gender": "f",
+ "label": "3301 · 女 · 2021 整套 suit",
+ "note": "suit_ 整套网格(3子网格)+背包，验证 suit 目录与 b_/h_ 的差异",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "suit",
+   "label": "整套",
+   "source_mesh": "players2021/suit_f_3301/suit_f_3301.mesh",
+   "file": "suit.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "suit_f_3301_high_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "suit_f_3301_high_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "suit_f_3301_high_2",
+     "shader": "pbr_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 6545,
+   "faces": 7791,
+   "submeshes": 3,
+   "materials_exported": 3,
+   "bytes": 408440
+  },
+  {
+   "id": "bag",
+   "label": "背包",
+   "source_mesh": "players2021/bag_f_3301/bag_f_3301.mesh",
+   "file": "bag.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "bag_m_3301_high_0",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 4,
+   "faces": 2,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 877056
+  }
+ ]
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Spine 动画播放 · 明日之后</title>
+<style>
+  :root{--bg:#0e1014;--panel:#14171c;--line:#23272e;--fg:#e8eaf0;--dim:#aab2c0;--acc:#ffb02e;--blue:#8fd3ff}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+            font-family:system-ui,"Microsoft YaHei",sans-serif}
+  #top{position:fixed;left:0;right:0;top:0;height:48px;z-index:30;display:flex;align-items:center;gap:10px;
+       padding:0 12px;background:rgba(20,23,28,.94);border-bottom:1px solid var(--line)}
+  #top h1{margin:0;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #top .ver{margin-left:auto;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;
+            background:#26384b;color:var(--blue);white-space:nowrap}
+  #burger{display:none;border:1px solid var(--line);background:#1b1f26;color:var(--fg);
+          border-radius:8px;padding:5px 10px;font-size:13px;cursor:pointer}
+  #wrap{position:absolute;left:0;right:0;top:48px;bottom:0;display:flex}
+  #list{width:240px;flex:0 0 240px;overflow-y:auto;background:var(--panel);
+        border-right:1px solid var(--line);padding:6px 8px 14px}
+  #list h3{margin:12px 4px 5px;font-size:12px;color:#5f6b7d;font-weight:600}
+  #list .it{padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--dim);
+            line-height:1.3;word-break:break-all}
+  #list .it:hover{background:#1d2129;color:var(--fg)}
+  #list .it.on{background:#2a3140;color:var(--acc);font-weight:700}
+  #main{flex:1;position:relative;min-width:0;background:#0a0c10}
+  canvas{display:block;width:100%;height:100%}
+  #hud{position:absolute;left:12px;top:10px;font-size:13px;color:var(--blue);font-weight:700;
+       text-shadow:0 0 6px #000;pointer-events:none;max-width:calc(100% - 24px)}
+  #hud small{display:block;font-weight:400;font-size:11px;color:#8b96a8;margin-top:3px}
+  #bar{position:absolute;left:12px;bottom:12px;right:12px;display:flex;gap:10px;align-items:center;
+       font-size:12px;color:var(--dim);flex-wrap:wrap}
+  #bar select,#bar button{background:#1b1f26;color:var(--fg);border:1px solid var(--line);
+       border-radius:7px;padding:5px 9px;font-size:12px;cursor:pointer}
+  #bar label{display:flex;align-items:center;gap:5px;cursor:pointer}
+  #err{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#ff8f6b;font-size:13px;
+       text-align:center;max-width:80%;display:none;white-space:pre-wrap}
+  #mask{display:none}
+  @media (max-width:820px){
+    #burger{display:block}
+    #wrap{display:block}
+    #list{position:fixed;left:0;top:48px;bottom:0;width:80vw;max-width:320px;z-index:25;
+          transform:translateX(-102%);transition:transform .22s ease}
+    body.nav #list{transform:translateX(0)}
+    body.nav #mask{display:block;position:fixed;left:0;right:0;top:48px;bottom:0;z-index:20;
+                   background:rgba(0,0,0,.45)}
+    #main{position:absolute;left:0;right:0;top:0;bottom:0}
+  }
+</style></head><body>
+<div id="top">
+  <h1>Spine 动画播放</h1>
+  <span class="ver" id="ver">Spine 3.8 运行时</span>
+  <button id="burger">目录</button>
+</div>
+<div id="wrap">
+  <div id="mask"></div>
+  <div id="list"></div>
+  <div id="main">
+    <canvas id="c"></canvas>
+    <div id="hud"></div>
+    <div id="err"></div>
+    <div id="bar">
+      <select id="animSel"></select>
+      <button id="playBtn">暂停</button>
+      <label>速度 <input id="speed" type="range" min="0.1" max="3" step="0.1" value="1" style="width:80px"></label>
+      <label><input id="bones" type="checkbox"> 显示骨骼</label>
+      <span id="stat" style="margin-left:auto;color:#5f6b7d"></span>
+    </div>
+  </div>
+</div>
+<script src="./runtime/spine-core-3.8.js"></script>
+<script src="./runtime/spine-webgl-3.8.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const canvas = $('c');
+const hud = $('hud'), errEl = $('err'), statEl = $('stat');
+
+const gl = canvas.getContext('webgl', {alpha:true, premultipliedAlpha:true})
+        || canvas.getContext('experimental-webgl');
+let renderer, assetManager, skeletonRenderer, skeleton = null;
+let state = null, skeletonData = null;
+let curJson = null, curAtlas = null, playing = true;
+let camTarget = {x:0, y:0, w:100, h:100};
+
+function fail(msg){ errEl.style.display='block'; errEl.textContent = msg; window.__err = msg; }
+
+try {
+  renderer = new spine.webgl.SceneRenderer(canvas, gl);
+  assetManager = new spine.webgl.AssetManager(gl);
+  skeletonRenderer = new spine.webgl.SkeletonRenderer(renderer);
+  skeletonRenderer.premultipliedAlpha = false;
+} catch (e) {
+  fail('运行时初始化失败：' + e);
+}
+
+/* ---------- 清单 ---------- */
+fetch('./list.json').then(r => r.json()).then(buildList).catch(e => fail('读不到 list.json：' + e));
+
+function buildList(data){
+  const list = $('list');
+  const byGroup = {};
+  for (const it of data.items) (byGroup[it.group] ||= []).push(it);
+  const order = ['touxiang','touxiangkuang','mingpiankuang','touxiang_ani'];
+  const names = {touxiang:'头像动画', touxiangkuang:'头像框', mingpiankuang:'名片框', touxiang_ani:'头像特效'};
+  let first = null;
+  const groups = order.filter(g => byGroup[g]).concat(Object.keys(byGroup).filter(g => !order.includes(g)));
+  for (const g of groups){
+    const h = document.createElement('h3');
+    h.textContent = (names[g] || g) + ' · ' + byGroup[g].length;
+    list.appendChild(h);
+    for (const it of byGroup[g]){
+      const d = document.createElement('div');
+      d.className = 'it'; d.textContent = it.name;
+      d.onclick = () => {
+        [...list.querySelectorAll('.it')].forEach(x => x.classList.remove('on'));
+        d.classList.add('on'); loadItem(it);
+        if (innerWidth <= 820) document.body.classList.remove('nav');
+      };
+      list.appendChild(d);
+      if (!first) first = {d, it};
+    }
+  }
+  statEl.textContent = data.count + ' 套可播';
+  if (first){ first.d.classList.add('on'); loadItem(first.it); }
+}
+
+/* ---------- 加载 ---------- */
+function loadItem(it){
+  errEl.style.display = 'none';
+  hud.innerHTML = it.name + '<small>' + it.group + ' · ' + it.anims.join(' / ') + '</small>';
+  curJson = it.json; curAtlas = it.atlas;
+  skeleton = null; state = null; skeletonData = null;
+  $('animSel').innerHTML = '';
+  assetManager.loadText(it.json);
+  assetManager.loadTextureAtlas(it.atlas);
+  const t0 = Date.now();
+  const tick = setInterval(() => {
+    const a = assetManager.get(it.atlas), j = assetManager.get(it.json);
+    if (a && j){
+      clearInterval(tick);
+      try { build(it); } catch (e){ fail('解析骨架失败：' + e); }
+    } else if (Date.now() - t0 > 15000){
+      clearInterval(tick);
+      fail('加载超时：' + it.name + '\n（atlas / json / png 可能缺件）');
+    }
+  }, 60);
+}
+
+function build(it){
+  const atlas = assetManager.get(curAtlas);
+  if (!atlas) throw new Error('atlas 未加载');
+  const loader = new spine.AtlasAttachmentLoader(atlas);
+  const json = new spine.SkeletonJson(loader);
+  // ★ 这个 runtime 的 readSkeletonData 用 root.skins.length 遍历 ⇒ 它要 4.x 的数组格式；
+  //   游戏的 json 是 3.x 的对象格式（{"default": {...}}），不转换的话 skin 循环一次都不跑，附件全 null。
+  const rawText = assetManager.get(curJson);
+  const rootObj = (typeof rawText === 'string') ? JSON.parse(rawText) : rawText;
+  if (rootObj.skins && !Array.isArray(rootObj.skins)){
+    rootObj.skins = Object.keys(rootObj.skins).map(k => ({ name: k, attachments: rootObj.skins[k] }));
+  }
+  skeletonData = json.readSkeletonData(rootObj);
+  skeleton = new spine.Skeleton(skeletonData);
+  // ★ 3.8 运行时不会自动套默认皮肤：不 setSkin 的话所有 slot 的 attachment 都是 null（画布全空）
+  try {
+    if (skeletonData.defaultSkin) skeleton.setSkin(skeletonData.defaultSkin);
+    else if (skeletonData.skins && skeletonData.skins.length) skeleton.setSkin(skeletonData.skins[0]);
+  } catch (e) { window.__skinErr = String(e); }
+  skeleton.setToSetupPose();
+  skeleton.updateWorldTransform();
+
+  const off = new spine.Vector2(), size = new spine.Vector2();
+  skeleton.getBounds(off, size, []);
+  let cw = size.x, chh = size.y, cx = off.x + size.x / 2, cy = off.y + size.y / 2;
+  // setup pose 无附件时 getBounds 会给出 NaN/0 ⇒ 回退到 jani 里声明的画布尺寸
+  if (!isFinite(cw) || !isFinite(chh) || cw < 1 || chh < 1 || !isFinite(cx) || !isFinite(cy)){
+    cw = Number(skeletonData.width) || 200;
+    chh = Number(skeletonData.height) || 200;
+    cx = cw / 2; cy = chh / 2;
+  }
+  camTarget = {x: cx, y: cy, w: cw, h: chh};
+  window.__bounds = {raw: [off.x, off.y, size.x, size.y], used: camTarget};
+  window.__dbg = () => ({
+    item: it.name, bones: skeleton ? skeleton.bones.length : 0,
+    slots: skeleton ? skeleton.slots.length : 0,
+    attachedSlots: skeleton ? skeleton.slots.filter(s => s.getAttachment()).length : 0,
+    attachedNames: skeleton ? skeleton.slots.filter(s => s.getAttachment()).slice(0, 5).map(s => s.data.name + ':' + s.getAttachment().constructor.name) : [],
+    skins: skeletonData ? skeletonData.skins.map(s => s.name) : [],
+    hasDefaultSkin: !!(skeletonData && skeletonData.defaultSkin),
+    defaultSkinName: skeletonData && skeletonData.defaultSkin ? skeletonData.defaultSkin.name : null,
+    defaultSkinAttachments: skeletonData && skeletonData.defaultSkin && skeletonData.defaultSkin.getAttachments
+        ? skeletonData.defaultSkin.getAttachments().length : null,
+    skinErr: window.__skinErr || null,
+    currentSkin: skeleton && skeleton.skin ? skeleton.skin.name : null,
+    regions: atlas.regions.length, pages: atlas.pages.length,
+    camTarget: camTarget,
+    cam: renderer ? {x: renderer.camera.position.x, y: renderer.camera.position.y,
+                     vw: renderer.camera.viewportWidth, vh: renderer.camera.viewportHeight,
+                     zoom: renderer.camera.zoom} : null,
+    firstSlotAttachment: skeleton && skeleton.slots[0] ? String(skeleton.slots[0].getAttachment()) : null,
+  });
+  /* 直接读资产管理器里拿到的 json 原文，和 runtime 的解析结果对质 */
+  window.__raw = () => {
+    try {
+      const t = assetManager.get(curJson);
+      const o = (typeof t === 'string') ? JSON.parse(t) : t;
+      const sk = o.skins || {};
+      const first = Object.keys(sk)[0];
+      return {
+        gotType: typeof t, textLen: (typeof t === 'string' ? t.length : -1),
+        spineVer: (o.skeleton || {}).spine,
+        skinNames: Object.keys(sk),
+        slotCount: (o.slots || []).length,
+        firstSkin: first, firstSkinSlots: Object.keys(sk[first] || {}).slice(0, 4),
+        firstSkinFirstAttach: sk[first] ? sk[first][Object.keys(sk[first])[0]] : null,
+        runtimeDefaultSkin: !!skeletonData.defaultSkin,
+      };
+    } catch (e) { return { err: String(e) }; }
+  };
+  /* 管线自检：直接画 atlas 第一张贴图页，能出像素就说明 WebGL 通路正常 */
+  window.__probeTexture = () => {
+    try {
+      const reg = atlas.regions[0];
+      renderer.begin();
+      renderer.drawTexture(reg.texture, camTarget.x, camTarget.y, 100, 100);
+      renderer.end();
+      return 'drew ' + reg.name;
+    } catch (e) { return 'ERR ' + e; }
+  };
+
+  const sd = new spine.AnimationStateData(skeletonData);
+  state = new spine.AnimationState(sd);
+  const anims = skeletonData.animations.map(a => a.name);
+  const sel = $('animSel');
+  sel.innerHTML = '';
+  for (const a of anims){
+    const o = document.createElement('option'); o.value = a; o.textContent = a; sel.appendChild(o);
+  }
+  state.setAnimation(0, anims[0], true);
+  sel.onchange = () => state.setAnimation(0, sel.value, true);
+  window.__loaded = (window.__loaded || 0) + 1;
+  resize();
+}
+
+/* ---------- 渲染 ---------- */
+function resize(){
+  const w = canvas.clientWidth || 1, h = canvas.clientHeight || 1;
+  canvas.width = w; canvas.height = h;          // ★ 不乘 dpr：SceneRenderer 内部按 CSS 像素设 viewport
+  gl.viewport(0, 0, w, h);
+}
+let last = performance.now();
+function frame(now){
+  requestAnimationFrame(frame);
+  const dt = Math.min((now - last) / 1000, 0.05); last = now;
+  if (!renderer) return;
+  const cw = canvas.clientWidth || 1, ch = canvas.clientHeight || 1;
+  // 按画布宽高比换算世界单位，保证模型等比且铺满（别直接把 bbox 尺寸塞进 viewport，会拉伸）
+  const pad = 1.18;
+  const scale = Math.max(camTarget.w / cw, camTarget.h / ch) * pad;
+  renderer.camera.viewportWidth = cw * scale;
+  renderer.camera.viewportHeight = ch * scale;
+  renderer.camera.position.x = camTarget.x;
+  renderer.camera.position.y = camTarget.y;
+  renderer.camera.update();
+
+  if (skeleton){
+    if (playing && state) state.update(dt * parseFloat($('speed').value));
+    if (state) state.apply(skeleton);
+    skeleton.updateWorldTransform();
+  }
+  renderer.begin();
+  if (skeleton){
+    if ($('bones').checked) skeletonRenderer.draw(skeleton);
+    else renderer.drawSkeleton(skeleton, false);
+  }
+  renderer.end();
+}
+requestAnimationFrame(frame);
+
+/* ---------- 交互 ---------- */
+$('playBtn').onclick = () => { playing = !playing; $('playBtn').textContent = playing ? '暂停' : '播放'; };
+$('burger').onclick = () => document.body.classList.toggle('nav');
+$('mask').onclick = () => document.body.classList.remove('nav');
+addEventListener('resize', () => { resize(); });
+</script></body></html>

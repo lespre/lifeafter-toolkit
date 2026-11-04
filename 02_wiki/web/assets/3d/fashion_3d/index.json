@@ -1,0 +1,1164 @@
+{
+ "outfits": [
+  {
+   "schema_version": 1,
+   "outfit_id": "3715_f",
+   "series": "3715",
+   "gender": "f",
+   "label": "3715 · 女 · 2025 合体网格",
+   "note": "players2025 重制款，_link 目录为全件合体（21 子网格含特效层）",
+   "material": "approximate",
+   "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+   "center": "auto",
+   "viewer": {
+    "rotate_x_deg": 0,
+    "up": "y"
+   },
+   "parts": [
+    {
+     "id": "body",
+     "label": "衣服",
+     "source_mesh": "players2025/fas_f_3715/b_f_3715a_link/b_f_3715a.mesh",
+     "file": "body.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "b_f_3715_high_0",
+       "shader": "pbr_skin",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "b_f_3715_high_1",
+       "shader": "pbr_subsurface_billboard",
+       "slots": [
+        "a",
+        "m"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "b_f_3715_high_2",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 3,
+       "name": "b_f_3715_high_3",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 4,
+       "name": "b_f_3715_high_4",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 5,
+       "name": "b_f_3715_high_5",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 6,
+       "name": "b_f_3715_high_6",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 7,
+       "name": "b_f_3715_high_7",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 8,
+       "name": "b_f_3715_high_8",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 9,
+       "name": "b_f_3715_high_9",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 10,
+       "name": "b_f_3715_high_10",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 11,
+       "name": "b_f_3715_high_11",
+       "shader": "pbr_subsurface_crystal",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": null
+      },
+      {
+       "i": 12,
+       "name": "b_f_3715_high_15",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 13,
+       "name": "b_f_3715_high_16",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 14,
+       "name": "b_f_3715_high_fx01",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 15,
+       "name": "b_f_3715_high_fx02",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 16,
+       "name": "b_f_3715_high_fx03",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 17,
+       "name": "b_f_3715_high_fx04",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 18,
+       "name": "b_f_3715_high_fx06",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 19,
+       "name": "b_f_3715_high_fx07",
+       "shader": "uber_fx_common",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 20,
+       "name": "b_f_3715_high_fx08",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [
+      "b_f_3715_high_3: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_4: detail normal 已合并(detail_normal_stocking_01.ktx)",
+      "b_f_3715_high_6: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_7: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_8: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_9: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_10: detail normal 已合并(detail_normal_silk_02.ktx)",
+      "b_f_3715_high_11: detail normal 已合并(crystal_bump_n03.ktx)",
+      "b_f_3715_high_16: detail normal 已合并(detail_normal_silk_02.ktx)"
+     ],
+     "vertices": 22603,
+     "faces": 24956,
+     "submeshes": 21,
+     "materials_exported": 21,
+     "bytes": 26019008
+    },
+    {
+     "id": "hair",
+     "label": "头发",
+     "source_mesh": "players2025/fas_f_3715/h_f_3715a_link/h_f_3715a.mesh",
+     "file": "hair.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "h_f_3715_high_0",
+       "shader": "pbr_hair_test",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "MASK",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "h_f_3715_high_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "h_f_3715_high_2",
+       "shader": "pbr_subsurface_billboard",
+       "slots": [],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 3,
+       "name": "h_f_3715_high_3",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 4,
+       "name": "h_f_3715_high_4",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      }
+     ],
+     "warnings": [],
+     "vertices": 17196,
+     "faces": 16078,
+     "submeshes": 5,
+     "materials_exported": 5,
+     "bytes": 5086496
+    }
+   ]
+  },
+  {
+   "schema_version": 1,
+   "outfit_id": "3640_m",
+   "series": "3640",
+   "gender": "m",
+   "label": "3640 · 男 · 2025 合体网格",
+   "note": "2025 重制男款，冰雪/晶体材质占比高",
+   "material": "approximate",
+   "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+   "center": "auto",
+   "viewer": {
+    "rotate_x_deg": 0,
+    "up": "y"
+   },
+   "parts": [
+    {
+     "id": "body",
+     "label": "衣服",
+     "source_mesh": "players2025/fas_m_3640/b_m_3640a_link/b_m_3640a.mesh",
+     "file": "body.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "b_m_3640a_0",
+       "shader": "pbr_skin",
+       "slots": [
+        "a",
+        "m"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "b_m_3640a_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "b_m_3640a_2",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 3,
+       "name": "b_m_3640a_3",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 4,
+       "name": "b_m_3640a_4",
+       "shader": "pbr_subsurface_ice_snow",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 5,
+       "name": "b_m_3640a_5",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 6,
+       "name": "b_m_3640a_6",
+       "shader": "pbr_crystal",
+       "slots": [
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 7,
+       "name": "b_m_3640a_7",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 8,
+       "name": "b_m_3640a_8",
+       "shader": "pbr_crystal",
+       "slots": [
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 9,
+       "name": "b_m_3640a_9",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 10,
+       "name": "b_m_3640a_10",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 11,
+       "name": "b_m_3640a_11",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 12,
+       "name": "b_m_3640a_12",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 13,
+       "name": "b_m_3640a_13",
+       "shader": "pbr_crystal",
+       "slots": [
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 14,
+       "name": "b_m_3640a_14",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 15,
+       "name": "b_m_3640a_15",
+       "shader": "pbr_silk",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 16,
+       "name": "b_m_3640a_16",
+       "shader": "pbr_crystal",
+       "slots": [
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": null
+      },
+      {
+       "i": 17,
+       "name": "b_m_3640a_17",
+       "shader": "uber_fx_common_multilayer",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [
+      "b_m_3640a_3: detail normal 已合并(detail_normal_silk_03.ktx)",
+      "b_m_3640a_6: detail normal 已合并(crystal_bump_n02.ktx)",
+      "b_m_3640a_8: detail normal 已合并(crystal_bump_n03.ktx)",
+      "b_m_3640a_10: detail normal 已合并(crystal_bump_n02.ktx)",
+      "b_m_3640a_11: detail normal 已合并(detail_normal_silk_03.ktx)",
+      "b_m_3640a_15: detail normal 已合并(detail_normal_silk_03.ktx)",
+      "b_m_3640a_16: detail normal 已合并(crystal_bump_n02.ktx)"
+     ],
+     "vertices": 16031,
+     "faces": 17357,
+     "submeshes": 18,
+     "materials_exported": 18,
+     "bytes": 8561484
+    },
+    {
+     "id": "hair",
+     "label": "头发",
+     "source_mesh": "players2025/fas_m_3640/h_m_3640a_link/h_m_3640a.mesh",
+     "file": "hair.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "h_m_3640a_0",
+       "shader": "pbr_hair",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "MASK",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 1,
+       "name": "h_m_3640a_1",
+       "shader": "pbr_subsurface_ice_snow",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "h_m_3640a_2",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 3,
+       "name": "h_m_3640a_3",
+       "shader": "pbr_subsurface_ice_snow",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 4,
+       "name": "h_m_3640a_4",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 12277,
+     "faces": 10702,
+     "submeshes": 5,
+     "materials_exported": 5,
+     "bytes": 916420
+    }
+   ]
+  },
+  {
+   "schema_version": 1,
+   "outfit_id": "3223_f",
+   "series": "3223",
+   "gender": "f",
+   "label": "3223 · 女 · 2021 分件组合",
+   "note": "衣服(4子网格)+外层件(1)+头发(2)+背包(2)，验证多文件并置",
+   "material": "approximate",
+   "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+   "center": "auto",
+   "viewer": {
+    "rotate_x_deg": 0,
+    "up": "y"
+   },
+   "parts": [
+    {
+     "id": "body",
+     "label": "衣服",
+     "source_mesh": "players2021/b_f_3223/b_f_3223.mesh",
+     "file": "body.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "b_f_3223_01",
+       "shader": "pbr_skin",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "b_f_3223_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "b_f_3223_2",
+       "shader": "uber_mask_rim_diss",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 3,
+       "name": "b_f_3223_3",
+       "shader": "uber_mask_rim_diss",
+       "slots": [
+        "a"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [],
+     "vertices": 7926,
+     "faces": 10387,
+     "submeshes": 4,
+     "materials_exported": 4,
+     "bytes": 1508624
+    },
+    {
+     "id": "outer",
+     "label": "外层件",
+     "source_mesh": "players2021/b_f_3223/b_f_3223_1.mesh",
+     "file": "outer.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "b_f_3223_0",
+       "shader": "pbr_sss",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 183,
+     "faces": 216,
+     "submeshes": 1,
+     "materials_exported": 1,
+     "bytes": 765060
+    },
+    {
+     "id": "hair",
+     "label": "头发",
+     "source_mesh": "players2021/b_f_3223/h_f_3223.mesh",
+     "file": "hair.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "h_f_3223_0",
+       "shader": "pbr_h_2u",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "h_f_3223_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 2977,
+     "faces": 3480,
+     "submeshes": 2,
+     "materials_exported": 2,
+     "bytes": 155948
+    },
+    {
+     "id": "bag",
+     "label": "背包",
+     "source_mesh": "players2021/bag_f_3223/bag_f_3223.mesh",
+     "file": "bag.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "bag_m_3224_0",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "bag_m_3224_1",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [],
+     "vertices": 204,
+     "faces": 86,
+     "submeshes": 2,
+     "materials_exported": 2,
+     "bytes": 458152
+    }
+   ]
+  },
+  {
+   "schema_version": 1,
+   "outfit_id": "3245_f",
+   "series": "3245",
+   "gender": "f",
+   "label": "3245 · 女 · 2021 分件组合",
+   "note": "衣服(7子网格，含 transparent/rim_diss 层)+头发(3)+背包(3)",
+   "material": "approximate",
+   "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+   "center": "auto",
+   "viewer": {
+    "rotate_x_deg": 0,
+    "up": "y"
+   },
+   "parts": [
+    {
+     "id": "body",
+     "label": "衣服",
+     "source_mesh": "players2021/b_f_3245/b_f_3245.mesh",
+     "file": "body.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "b_f_3245_high_0",
+       "shader": "pbr_skin",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "b_f_3245_1",
+       "shader": "pbr_sss",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "b_f_3245_2",
+       "shader": "pbr_transparent",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 3,
+       "name": "b_f_3245_3",
+       "shader": "uber_mask_rim_diss",
+       "slots": [
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 4,
+       "name": "b_f_3245_4",
+       "shader": "uber_mask_rim_diss",
+       "slots": [],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 5,
+       "name": "b_f_3245_5",
+       "shader": "uber_mask_rim_diss",
+       "slots": [
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 6,
+       "name": "b_f_3245_7",
+       "shader": "uber_mask_rim_diss",
+       "slots": [],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [],
+     "vertices": 14850,
+     "faces": 19184,
+     "submeshes": 7,
+     "materials_exported": 7,
+     "bytes": 1949728
+    },
+    {
+     "id": "hair",
+     "label": "头发",
+     "source_mesh": "players2021/b_f_3245/h_f_3245.mesh",
+     "file": "hair.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "h_f_3245_high_0",
+       "shader": "pbr_h_2u",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "h_f_3245_high_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "h_f_3245_high_2",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 3758,
+     "faces": 3485,
+     "submeshes": 3,
+     "materials_exported": 3,
+     "bytes": 303452
+    },
+    {
+     "id": "bag",
+     "label": "背包",
+     "source_mesh": "players2021/bag_f_3245/bag_f_3245.mesh",
+     "file": "bag.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "bag_m_3245_high_0",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "bag_m_3245_high_1",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      },
+      {
+       "i": 2,
+       "name": "bag_m_3245_high_2",
+       "shader": "pbr_crystal",
+       "slots": [
+        "a",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.0
+      }
+     ],
+     "warnings": [
+      "bag_m_3245_high_1: detail normal 已合并(crystal_bump_n03.ktx)",
+      "bag_m_3245_high_2: detail normal 已合并(crystal_bump_n03.ktx)"
+     ],
+     "vertices": 469,
+     "faces": 504,
+     "submeshes": 3,
+     "materials_exported": 3,
+     "bytes": 516804
+    }
+   ]
+  },
+  {
+   "schema_version": 1,
+   "outfit_id": "3301_f",
+   "series": "3301",
+   "gender": "f",
+   "label": "3301 · 女 · 2021 整套 suit",
+   "note": "suit_ 整套网格(3子网格)+背包，验证 suit 目录与 b_/h_ 的差异",
+   "material": "approximate",
+   "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+   "center": "auto",
+   "viewer": {
+    "rotate_x_deg": 0,
+    "up": "y"
+   },
+   "parts": [
+    {
+     "id": "suit",
+     "label": "整套",
+     "source_mesh": "players2021/suit_f_3301/suit_f_3301.mesh",
+     "file": "suit.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "suit_f_3301_high_0",
+       "shader": "pbr_skin",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 1,
+       "name": "suit_f_3301_high_1",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      },
+      {
+       "i": 2,
+       "name": "suit_f_3301_high_2",
+       "shader": "pbr_transparent",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "BLEND",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 6545,
+     "faces": 7791,
+     "submeshes": 3,
+     "materials_exported": 3,
+     "bytes": 408440
+    },
+    {
+     "id": "bag",
+     "label": "背包",
+     "source_mesh": "players2021/bag_f_3301/bag_f_3301.mesh",
+     "file": "bag.glb",
+     "missing": [],
+     "materials": [
+      {
+       "i": 0,
+       "name": "bag_m_3301_high_0",
+       "shader": "pbr_default",
+       "slots": [
+        "a",
+        "m",
+        "n"
+       ],
+       "alphaMode": "OPAQUE",
+       "metallicFactor": 0.12
+      }
+     ],
+     "warnings": [],
+     "vertices": 4,
+     "faces": 2,
+     "submeshes": 1,
+     "materials_exported": 1,
+     "bytes": 877056
+    }
+   ]
+  }
+ ]
+}

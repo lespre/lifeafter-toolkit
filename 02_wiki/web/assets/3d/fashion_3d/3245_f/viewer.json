@@ -1,0 +1,207 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3245_f",
+ "series": "3245",
+ "gender": "f",
+ "label": "3245 · 女 · 2021 分件组合",
+ "note": "衣服(7子网格，含 transparent/rim_diss 层)+头发(3)+背包(3)",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_f_3245/b_f_3245.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3245_high_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_f_3245_1",
+     "shader": "pbr_sss",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_f_3245_2",
+     "shader": "pbr_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_f_3245_3",
+     "shader": "uber_mask_rim_diss",
+     "slots": [
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 4,
+     "name": "b_f_3245_4",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 5,
+     "name": "b_f_3245_5",
+     "shader": "uber_mask_rim_diss",
+     "slots": [
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 6,
+     "name": "b_f_3245_7",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [],
+   "vertices": 14850,
+   "faces": 19184,
+   "submeshes": 7,
+   "materials_exported": 7,
+   "bytes": 1949776
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_f_3245/h_f_3245.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_f_3245_high_0",
+     "shader": "pbr_h_2u",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "h_f_3245_high_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "h_f_3245_high_2",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 3758,
+   "faces": 3485,
+   "submeshes": 3,
+   "materials_exported": 3,
+   "bytes": 303452
+  },
+  {
+   "id": "bag",
+   "label": "背包",
+   "source_mesh": "players2021/bag_f_3245/bag_f_3245.mesh",
+   "file": "bag.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "bag_m_3245_high_0",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "bag_m_3245_high_1",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 2,
+     "name": "bag_m_3245_high_2",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "bag_m_3245_high_1: detail normal 已合并(crystal_bump_n03.ktx)",
+    "bag_m_3245_high_2: detail normal 已合并(crystal_bump_n03.ktx)"
+   ],
+   "vertices": 469,
+   "faces": 504,
+   "submeshes": 3,
+   "materials_exported": 3,
+   "bytes": 516804
+  }
+ ]
+}

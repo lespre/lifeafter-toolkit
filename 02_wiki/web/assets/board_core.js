@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261102-ncname6")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261103-media1")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1534,19 +1534,33 @@ const FASHION_BOARD=(function(){try{return (getParam("b")||"")==="fashion_wardro
 const EQUIP_BOARD=(function(){try{return /^equipment_attrs/.test(getParam("b")||"");}catch(e){return false;}})();
 /* ════════════════════ 基因潜能板（board id = gene_potential_catalog）════════════════════
    2026-11-02 用户口径：必须像装备属性板一样分服务器，不能把两服混进同一张视图。
-   数据事实（104 条）：简单生存 48 条（种族 × 潜能等级 Lv0–Lv3，带效果与节点分值）；
-   经典服 86 条 = 两服共有 30 条字段级（同口径）+ 仅经典服 56 条名册级（只有名字 + 档位）。
-   ⇒ 页内服别 Tab（两服总览 / 简单生存 / 经典服）；经典服页内再分「字段级 / 名册级」两块。
+   2026-11-04 起数据来自 PE 活树行级解码（133 条）：
+   经典服 111 条（gene_node_data.nxs 141 行去掉 30 条 race=1 通用，全字段）+ 简单生存 48 条
+   （kj1 63 行去 15 条通用）；其中简单生存独有 22 条（id 前缀 gene_kj1_）。
+   两服同名节点分值不完全一致（初级 300/400），另一侧写在 node_score_branches。
+   ⇒ 页内服别 Tab（两服总览 / 简单生存 / 经典服）；两页都用「种族 × 等级」矩阵，
+      等级泳道按数据里实际出现的 level 动态生成（经典服有 Lv0–Lv6，不再写死 Lv0–Lv3）。
    ★ 类名统一 gene-*，样式只挂 body.b-gene_potential_catalog，其它板零影响。 */
 const GENE_BOARD=(function(){try{return (getParam("b")||"")==="gene_potential_catalog";}catch(e){return false;}})();
 const GENE_SERVERS=[
   {key:"overview",label:"两服总览",branch:null,desc:"服别入口"},
   {key:"kj1",label:"简单生存",branch:"简单生存",desc:"字段级 · 种族 × 等级"},
-  {key:"classic",label:"经典服",branch:"经典服",desc:"字段级 + 名册级"}
+  {key:"classic",label:"经典服",branch:"经典服",desc:"行级字段 · 种族 × 6 档"}
 ];
 const GENE_RACE_ORDER=["人类","半感染者","械骨人"];
 const GENE_RACE_CLS={"人类":"r-human","半感染者":"r-infected","械骨人":"r-bone"};
-const GENE_LEVELS=[0,1,2,3];
+const GENE_LEVEL_BASE=[0,1,2,3];
+/* 等级泳道：基线 Lv0–Lv3（简单生存口径）∪ 数据里实际出现的 level。
+   经典服表有 Lv4–Lv6（特级/超级/究级），写死 4 列会把它们整片藏掉。 */
+function geneLaneLevels(list,idxs){
+  const set=new Set(GENE_LEVEL_BASE);
+  (idxs||[]).forEach(i=>{const v=Number(list[i]&&list[i].level);if(Number.isFinite(v))set.add(v);});
+  return [...set].sort((a,b)=>a-b);
+}
+function geneLevelRange(list){
+  const lv=geneLaneLevels(list,list.map((_,i)=>i));
+  return lv.length?(lv.length===1?`Lv${lv[0]}`:`Lv${lv[0]}–Lv${lv[lv.length-1]}`):"—";
+}
 const GENE_TIER_ORDER=["初级","中级","高级","超级","特级","究级"];
 let GENE_SERVER=(function(){
   try{
@@ -1606,7 +1620,7 @@ function geneStatsHTML(list){
     return `<div class="gene-stats">
       <span class="gene-stat">条目 <b>${list.length}</b></span>
       <span class="gene-stat">字段级 <b>${field}</b></span>
-      <span class="gene-stat">名册级 <b>${roster}</b></span>
+      ${roster?`<span class="gene-stat">名册级 <b>${roster}</b></span>`:""}
       <span class="gene-stat">两服共有字段级 <b>${shared}</b></span>
     </div>`;
   }
@@ -1636,7 +1650,7 @@ function geneRaceMatrix(list,htmls,idxs){
   order.forEach(race=>{
     const arr=byRace.get(race);
     if(!arr||!arr.length)return;
-    const lanes=GENE_LEVELS.map(lv=>{
+    const lanes=geneLaneLevels(list,idxs).map(lv=>{
       const lane=arr.filter(i=>Number(list[i].level)===lv);
       return `<div class="gene-lane">
         <div class="gene-lane-h"><span>Lv${lv}</span><b>${lane.length}</b></div>
@@ -1692,18 +1706,19 @@ function geneOverviewRender(g,items){
   const shared=items.filter(it=>geneBranches(it).length>1);
   const clField=cl.filter(it=>!geneIsRoster(it)).length;
   const clRoster=cl.filter(geneIsRoster).length;
+  const clKj1=kj.length-shared.length;  /* 简单生存独有节点（id 前缀 gene_kj1_） */
   const hit=(items.length!==DATA.items.length)
     ? `<div class="gene-ov-hit">当前搜索 / 筛选命中 ${items.length} 条 —— 点下方服别查看命中结果</div>`:"";
   g.innerHTML=geneTabsHTML()+hit+`<div class="gene-ov">
     ${geneOvCard("kj1","简单生存","字段级 · 种族 × 等级",kj.length,
-      [`种族 ${GENE_RACE_ORDER.filter(r=>kj.some(it=>geneRaceOf(it)===r)).length} 个 · 潜能等级 Lv0–Lv3`,
+      [`种族 ${GENE_RACE_ORDER.filter(r=>kj.some(it=>geneRaceOf(it)===r)).length} 个 · 潜能等级 ${geneLevelRange(kj)}`,
        "带效果文本与节点分值",
        `含两服共有 ${shared.length} 条`],"kj1")}
-    ${geneOvCard("classic","经典服","字段级 + 名册级",cl.length,
-      [`字段级 ${clField} 条（含共有 ${shared.length} 条）`,
-       `名册级 ${clRoster} 条 · 6 个档位`,
-       "名册级仅名字与档位，不猜种族 / 数值"],"classic")}
-  </div>`+`<div class="gene-ov-note">两服共有 ${shared.length} 条字段级节点会同时出现在两服页内；经典服另有 ${clRoster} 条仅池名册级条目，字段解码突破后回填。</div>`;
+    ${geneOvCard("classic","经典服","行级字段 · 种族 × 6 档",cl.length,
+      [`行级字段 ${clField} 条（含两服共有 ${shared.length} 条）`,
+       `等级 ${geneLevelRange(cl)} · 6 档 + 特殊节点`,
+       "效果文本 / 节点分值均取自表体；同名节点分值差异见 node_score_branches"],"classic")}
+  </div>`+`<div class="gene-ov-note">两服共有 ${shared.length} 条同名节点会同时出现在两服页内；简单生存另有 ${clKj1} 条独有节点（id 前缀 gene_kj1_），经典服条目已全部是行级字段。</div>`;
   if(C2.open)c2Resync();
 }
 function geneCountText(list){
@@ -1713,7 +1728,7 @@ function geneCountText(list){
   }
   if(GENE_SERVER==="classic"){
     const field=list.filter(it=>!geneIsRoster(it)).length,roster=list.filter(geneIsRoster).length;
-    return `显示 ${list.length} / ${total} 条 · 经典服 · 字段级 ${field} 条 · 名册级 ${roster} 条`;
+    return `显示 ${list.length} / ${total} 条 · 经典服 · 行级字段 ${field} 条`+(roster?` · 名册级 ${roster} 条`:"");
   }
   return `显示 ${list.length} / ${total} 条 · 简单生存 · ${GENE_RACE_ORDER.filter(r=>list.some(it=>geneRaceOf(it)===r)).length} 个种族 · ${new Set(list.map(it=>it.level).filter(v=>v!=null)).size} 个等级`;
 }
@@ -2368,12 +2383,17 @@ function frRender(){
    ★ 类名全部 v*，图轨/灯箱复用 fr-*；样式挂 body.vehicle-mode —— 时装板与武器皮肤板零影响。 */
 const SCENE_TABLE=(function(){try{return (getParam("b")||"")==="scene_balance";}catch(e){return false;}})();
 if(SCENE_TABLE)document.body.classList.add("scene-mode","sbt-mode");
+const PIECEWISE=(function(){try{return (getParam("b")||"")==="damage_bonus_piecewise";}catch(e){return false;}})();
+if(PIECEWISE)document.body.classList.add("pw-mode");
 /* 服务器类型（board id = server_types）：与场景平衡同款表格视图。
    本板只有 21 条、字段全是「后缀 / 标签 / 表数 / 判定依据 / 状态」这类结构化事实，
    卡片化会把它们压成看不清的长文本 ⇒ 走 sbt 表格（可点表头排序）。
    ★ sbt-mode 是表格外观的公共开关（样式见 board_base.css），scene-mode 只保留场景专属微调。 */
 const ST_TABLE=(function(){try{return (getParam("b")||"")==="server_types";}catch(e){return false;}})();
 if(ST_TABLE)document.body.classList.add("st-mode","sbt-mode");
+/* 影音资源板（2026-11-02）：自助渲染 —— 左侧分类树 + 常驻播放器 + 可整组入队的队列。
+   数据：data/boards/media_catalog.js（全量音频样本名 + 还原树视频清单）。 */
+const MEDIA_BOARD=(function(){try{return (getParam("b")||"")==="media_catalog";}catch(e){return false;}})();
 /* ── 可切换展示视图（?view=xxx）────────────────────────────────────────
    CDN 资源库 cdn_library：group（默认，目录组折叠 + 体积条）/ table（全量表格）
    本地还原树 local_restore_tree：index（默认，聚合概览 + 模块双列）/ dash（仅聚合概览）
@@ -2882,12 +2902,22 @@ function titleBadges(it){
    红/蓝/绿没有对应 bg，紫/金没有双向缺失，因此按「有就叠、没有就只画一条」。 */
 const TITLE_SKIN_BG={紫:"bg_2",金:"bg_3",红:"bg_4"};
 const TITLE_SKIN_LINE={蓝:"line_1",紫:"line_2",金:"line_3",绿:"line_8"};
-/* 称号文字颜色：全部取自游戏原生贴图的实测像素（见 _probe_title_colors3.py）——
-     line_1 蓝 芯 #8CBDC5→#AAE4E4；bg_2 紫 心 #BE74FF；line_3 金 芯 #D0AF6D→#FDDB75；
-     bg_4 红 心 #EF5229；line_8 绿 芯 #ADC67C→#CEF09B。
-   取两端之间的代表值（比暗端亮、比高光端略压），保证深色卡面上可读。
+/* 称号文字颜色 + 描边：全部取自游戏原生贴图的实测像素（_probe_skin_colors.py）——
+   线框贴图 img_chenghao_line_N 是 31x6 的小条，结构固定为「外圈深色描边 + 内芯横向渐变」，
+   正好就是游戏里称号文字的「填充渐变 + 描边色」：
+     line_1 蓝 芯 #7EA7AF→#AAE4E4 描边 #283249
+     line_2 紫 芯 #A471A4→#CAA8DB 描边 #49283C
+     line_3 金 芯 #BE9D5B→#F1CF7A 描边 #473625
+     line_8 绿 芯 #87A85E→#C3E590 描边 #483726
+   红没有线框贴图，只有 bg_4 光晕（芯 #E84F1C→#FF5522），描边按同一条「深色外圈」规则取暗红。
    5/6/7 档源表无对应贴图（颜色字段留空），照旧不上色、不叠贴图。 */
-const TITLE_SKIN_TXT={蓝:"#8FD6EA",紫:"#C68CFF",金:"#F3D26A",红:"#EF6A45",绿:"#B9DE8A"};
+const TITLE_SKIN_TXT={
+  蓝:["#7EA7AF","#AAE4E4","#283249"],
+  紫:["#A471A4","#CAA8DB","#49283C"],
+  金:["#BE9D5B","#F1CF7A","#473625"],
+  红:["#E84F1C","#FF5522","#4A1B10"],
+  绿:["#87A85E","#C3E590","#483726"]
+};
 /* 底光 / 下划线：锚在「称号名文字自身」的盒子上（.i-title = inline-block 收缩到文字宽），
    底光以文字中心为圆心按贴图原生比例 235:62 缩放，下划线贴住文字底边；
    不再用 import 时猜的 top/left 像素偏移，换字号/换列宽都不会错位。 */
@@ -2902,6 +2932,14 @@ function titleLine(it){
   const ln=TITLE_SKIN_LINE[c];
   if(!ln)return "";
   return `<i class="sk-ln" aria-hidden="true" style="background-image:url('assets/title_skin/${ln}.png')"></i>`;
+}
+/* 特殊装饰（title_conf_data.special_style）：love/star/cake 各有一枚小徽标贴图，
+   取自还原树 ui/chenghao_icon/img_chenghao_<x>_3.png，贴在称号文字左侧。
+   sun 在源表里没有对应贴图，按「取不到就不画」跳过。 */
+const TITLE_SPECIAL={love:"love_3",star:"star_3",cake:"cake_3"};
+function titleSpecial(it){
+  const f=TITLE_SPECIAL[String(it.special_style||"")];
+  return f?`<img class="i-sp" src="assets/title_skin/${f}.png" alt="">`:"";
 }
 /* 美术字 + 底图：游戏里这是一枚「称号图」的两层 —— 动态 csb 的底图/光效在下，
    美术字叠在上面（同一张图内叠加），不是上下两张分开排。
@@ -2921,11 +2959,17 @@ function titleName(it){
       return `<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${inner}</span>`;
     return `<span class="i-title">${inner}</span>`;
   }
-  const hex=TITLE_SKIN_TXT[String(it.color||"")]||"";
+  const c=String(it.color||"");
+  const t=TITLE_SKIN_TXT[c];
+  /* 金色档自带自发光（游戏内金字外圈有暖金光晕），其余档位只上渐变色 + 描边。
+     发光必须只作用在文字本身：文字单独包一层 .i-nm，避免 filter 波及底光/下划线/装饰图。 */
+  const glow=c==="金";
+  const sp=titleSpecial(it);
+  const nmTxt=t?`<span class="i-nm">${nm}</span>`:nm;
   /* 无美术字的动态称号：同样是「文字叠在动态底图上」——底图当背景层，文字在上层；
-     此时不再叠档位光晕（底图就是背景），保留档位字色。 */
-  const txt=`<span class="i-title${hex?" tinted":""}"${hex?` style="--tc:${hex}"`:""}>`
-    +(bg?"":titleSkin(it))+nm+(bg?"":titleLine(it))+`</span>`;
+     此时不再叠档位光晕（底图就是背景），保留档位字色 + 描边。 */
+  const txt=`<span class="i-title${t?" tinted":""}${glow?" glow":""}${sp?" has-sp":""}"${t?` style="--ta:${t[0]};--tb:${t[1]};--ts:${t[2]}"`:""}>`
+    +(bg?"":titleSkin(it))+sp+nmTxt+(bg?"":titleLine(it))+`</span>`;
   return bg
     ?`<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${txt}</span>`
     :txt;
@@ -3821,6 +3865,278 @@ function sbVal(it,k){
   if(k==="加成区间")return it.range||"";
   return it.name||"";
 }
+/* ── 2、“伤害加成”的分段函数：自定义公式视图 ─────────────────────────
+   不再用名册卡：结论卡 + 三服曲线列（每服一张竖表），公式等宽字体分行显示。 */
+const PW_SRV=[["经典服","pw-s-classic"],["简单生存服","pw-s-survival"],["月卡服","pw-s-month"]];
+const PW_CURVE=[["a_class","a_class"],["p2p","p2p"],["m2p","m2p"]];
+const PW_COLOR={"经典服":"#6ea8ff","简单生存服":"#f0a35e","月卡服":"#b79bff"};
+/* 结论卡的白话文案：不展示原始公式，只讲人话（原始数值仍可在“说明与依据”里查）。 */
+const PW_TITLE_CN={
+  pw01:"结论①：加成不是照搬，要分段折算",
+  pw02:"结论②：6 条加成曲线 + 1 条攻击力曲线",
+  pw03:"结论③：每条配置都有生效窗口",
+  pw04:"结论④：三服结构相同、参数不同",
+  pw05:"结论⑤：PvP 服差主要在两张图",
+  pw06:"结论⑥：经典服内部也有多套分段",
+  pw13:"数据来源与复跑方式"
+};
+const PW_NOTE_CN={
+  pw01:"原始加成不是直接照搬：系统把它切成几段，每段按固定比例折算，拐点处接上，得到实际加成。",
+  pw02:"一共 6 条按“原始加成率”计算的曲线（a_class、p2p、d2p、m2p、b_class、c_class），外加 1 条按“攻击力”计算的曲线（source_hurt）。",
+  pw03:"每条配置只在一定窗口内生效（有下限、上限），另有一档 p2d 下限；同一场景可能有多个档位行，不能只取第一条。",
+  pw04:"南希 803：经典服 K=1.6、简单生存服 K=1.0、月卡服 K=1.2，M 都是 0.6 —— 三服共用同一套结构，只是参数不同。",
+  pw05:"PvP 的服差集中在南希市和红杉镇-全面战争：简单生存服把 a_class 压到约 10%，经典服仍保留 100% 或 5 段形态。",
+  pw06:"经典服自己也有至少 4 套 a_class 分段，不能用一个固定系数代表整个服，必须看具体场景的专属行。"
+};
+function pwFmt(x,unit){
+  if(x===Infinity)return "∞";
+  const v=unit==="rate"?x*100:x;
+  const r=Math.round(v*10)/10;
+  return (Math.abs(r-Math.round(r))<1e-6?String(Math.round(r)):String(r))+(unit==="rate"?"%":"");
+}
+/* 把 [a,b] kx+o 的分段文本解析成数字段；兼容 y= / ∞ / ；| 分隔。 */
+function pwParse(v){
+  const out=[];
+  for(const raw of String(v||"").split(/[|；;\n]/)){
+    const seg=raw.trim();
+    if(!seg||seg==="—"||seg==="-")continue;
+    const m=seg.match(/^\[\s*([-+]?[0-9.]+)\s*,\s*([^\]]+?)\s*\]\s*(?:y\s*=)?\s*(?:([-+]?[0-9.]+)\s*x)?\s*(?:([-+]\s*[0-9.]+))?$/);
+    if(!m)continue;
+    const a=Number(m[1]);
+    const bs=m[2].trim();
+    const b=/∞|inf/i.test(bs)?Infinity:Number(bs);
+    const k=m[3]===undefined?0:Number(m[3]);
+    const o=m[4]===undefined?0:Number(String(m[4]).replace(/\s/g,""));
+    if(!isFinite(a)||(b!==Infinity&&!isFinite(b)))continue;
+    out.push({a,b,k,o});
+  }
+  return out;
+}
+/* 原始分段公式（默认折叠，只给需要核对的人看）。 */
+function pwSegs(v){
+  const s=String(v??"").trim();
+  if(!s||s==="—"||s==="-")return "";
+  return s.split(/\n|；|;|\|/).map(x=>x.trim()).filter(Boolean)
+    .map(x=>`<span class="pw-seg">${esc(x)}</span>`).join("");
+}
+/* 分段 → 中文说明。unit=rate 用百分比（0.3=30%），unit=atk 用原数值。 */
+function pwCnSegs(v,unit){
+  const segs=pwParse(v).filter(s=>s.b===Infinity||s.b>s.a);
+  if(!segs.length)return "";
+  const f=x=>pwFmt(x,unit);
+  const parts=[];
+  segs.forEach((s,i)=>{
+    const yAt=x=>s.k*x+s.o;
+    if(i===0){
+      if(Math.abs(s.k-1)<1e-9&&Math.abs(s.o)<1e-9){
+        parts.push(s.b===Infinity?"全程 100% 计入（不压缩）":`${f(s.a)}~${f(s.b)}：全额计入`);
+        return;
+      }
+      if(s.b===Infinity){
+        parts.push(`全程每 1 点只按 ${f(s.k)} 计入`);
+        return;
+      }
+      parts.push(`${f(s.a)}~${f(s.b)}：每 1 点只按 ${f(s.k)} 计入（到 ${f(s.b)} 时实际约 ${f(yAt(s.b))}）`);
+      return;
+    }
+    if(s.b===Infinity){
+      parts.push(Math.abs(s.k)<1e-9
+        ? `超过 ${f(s.a)} 后封顶（实际约 ${f(yAt(s.a))}）`
+        : `超过 ${f(s.a)} 后：每多 1 点只算 ${f(s.k)}`);
+      return;
+    }
+    parts.push(`${f(s.a)}~${f(s.b)}：超出部分每 1 点只算 ${f(s.k)}（到 ${f(s.b)} 时实际约 ${f(yAt(s.b))}）`);
+  });
+  return parts.join("；")+"。";
+}
+/* 曲线图：横轴原始值，纵轴折算后实际值；虚线是“完全不压缩”参考。 */
+function pwChart(title,series,opt){
+  const unit=(opt&&opt.unit)==="atk"?"atk":"rate";
+  const f=x=>pwFmt(x,unit);
+  const valid=(series||[]).filter(s=>s.segs&&s.segs.length);
+  if(!valid.length)return `<figure class="pw-fig"><figcaption><b>${esc(title)}</b></figcaption><div class="pw-empty">无数据</div></figure>`;
+  let xmax=0;
+  for(const s of valid)for(const g of s.segs)if(g.b!==Infinity)xmax=Math.max(xmax,g.b);
+  xmax=Math.max(unit==="rate"?1.2:1,(xmax*1.2||1));
+  xmax=Math.round(xmax*100)/100;
+  const pts=valid.map(s=>{
+    const arr=[];
+    for(const g of s.segs){
+      if(g.b!==Infinity&&g.b<=g.a)continue;
+      const lo=Math.max(0,g.a),hi=Math.min(g.b===Infinity?xmax:g.b,xmax);
+      if(hi<lo)continue;
+      arr.push([lo,g.k*lo+g.o],[hi,g.k*hi+g.o]);
+    }
+    return arr;
+  });
+  let ymax=unit==="rate"?0.2:1;
+  pts.forEach(a=>a.forEach(([x,y])=>{if(isFinite(y))ymax=Math.max(ymax,y);}));
+  ymax=Math.max(ymax*1.12,unit==="rate"?0.4:2);
+  const W=340,H=196,L=44,R=12,T=26,B=34,pwW=W-L-R,ph=H-T-B;
+  const sx=x=>L+(x/xmax)*pwW, sy=y=>T+ph-(Math.max(0,Math.min(ymax,y))/ymax)*ph;
+  const h=['<svg viewBox="0 0 '+W+' '+H+'" class="pw-chart" role="img" aria-label="'+esc(title)+'">'];
+  for(let i=0;i<=4;i++){
+    const xv=xmax*i/4,yv=ymax*i/4;
+    h.push(`<line x1="${sx(xv).toFixed(1)}" y1="${T}" x2="${sx(xv).toFixed(1)}" y2="${T+ph}" class="grid"/>`);
+    h.push(`<text x="${sx(xv).toFixed(1)}" y="${T+ph+15}" class="tick" text-anchor="middle">${f(xv)}</text>`);
+    h.push(`<line x1="${L}" y1="${sy(yv).toFixed(1)}" x2="${L+pwW}" y2="${sy(yv).toFixed(1)}" class="grid"/>`);
+    h.push(`<text x="${L-6}" y="${(sy(yv)+3.5).toFixed(1)}" class="tick" text-anchor="end">${f(yv)}</text>`);
+  }
+  h.push(`<line x1="${L}" y1="${T+ph}" x2="${L+pwW}" y2="${T+ph}" class="axis"/>`);
+  h.push(`<line x1="${L}" y1="${T}" x2="${L}" y2="${T+ph}" class="axis"/>`);
+  if(unit==="rate"){
+    const lim=Math.min(xmax,ymax);
+    h.push(`<line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(lim)}" y2="${sy(lim)}" class="pw-ref"/>`);
+    h.push(`<text x="${sx(lim)-4}" y="${sy(lim)-6}" class="pw-reflab" text-anchor="end">不压缩参考线</text>`);
+  }
+  valid.forEach((s,idx)=>{
+    const color=opt&&opt.colors?opt.colors[idx]:"#8fa3b0";
+    const d=pts[idx].map(([x,y])=>`${sx(x).toFixed(1)},${sy(y).toFixed(1)}`).join(" ");
+    if(d)h.push(`<polyline points="${d}" fill="none" stroke="${color}" class="pw-line"/>`);
+  });
+  h.push(`<text x="${L+pwW/2}" y="${H-6}" class="pw-axlab" text-anchor="middle">${unit==="rate"?"原始加成率":"攻击力"}</text>`);
+  h.push(`<text x="12" y="${T+ph/2}" class="pw-axlab" transform="rotate(-90 12 ${T+ph/2})">${unit==="rate"?"折算后实际加成":"折算后系数"}</text>`);
+  h.push("</svg>");
+  const lg=valid.map((s,i)=>`<span class="pw-lg"><i style="background:${opt&&opt.colors?opt.colors[i]:"#8fa3b0"}"></i>${esc(s.name)}</span>`).join("");
+  return `<figure class="pw-fig"><figcaption><b>${esc(title)}</b>${lg}</figcaption>${h.join("")}</figure>`;
+}
+function pwCurveCN(label,formula,unit){
+  return `<div class="pw-curve"><b>${esc(label)}</b><div class="pw-cn">${esc(pwCnSegs(formula,unit)||"—")}</div></div>`;
+}
+function pwNoteHTML(it){
+  const det=[it["说明"],it["依据"]].filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join("");
+  return `<article class="pw-note${it.id==="pw13"?" pw-wide":""}">
+    <div class="pw-note-hd"><span class="pw-id">${esc(it.id)}</span><h3>${esc(PW_TITLE_CN[it.id]||it.name)}</h3></div>
+    <p class="pw-concl">${esc(PW_NOTE_CN[it.id]||it["结论"]||"")}</p>
+    ${det?`<details class="pw-det"><summary>说明与依据</summary>${det}</details>`:""}
+  </article>`;
+}
+function pwServerHTML(it){
+  const srv=it["服型"]||"";
+  const cls=(PW_SRV.find(x=>x[0]===srv)||[])[1]||"";
+  const curves=(it.rate_curves||[]).map(c=>pwCurveCN(c.label,c.formula,"rate")).join("");
+  const raw=(it.rate_curves||[]).map(c=>`<div class="pw-raw-row"><b>${esc(c.label)}</b><code>${pwSegs(c.formula)}</code></div>`).join("");
+  return `<article class="pw-srv-col ${cls}">
+    <header>
+      <h3>${esc(srv)}</h3>
+      <div class="pw-meta">${esc(it["生效窗口"]||"")}<br>${esc(it["数据行"]||"")}</div>
+    </header>
+    <div class="pw-curves">${curves}</div>
+    ${it.attack_curve?`<div class="pw-atk"><h4>source_hurt<span>按攻击力</span></h4><div class="pw-cn">${esc(pwCnSegs(it.attack_curve,"atk")||"—")}</div></div>`:""}
+    <details class="pw-raw"><summary>原始分段公式</summary>${raw}
+      ${it.attack_curve?`<div class="pw-raw-row"><b>source_hurt</b><code>${pwSegs(it.attack_curve)}</code></div>`:""}
+    </details>
+  </article>`;
+}
+function pwRender(items){
+  const notes=items.filter(it=>it.kind==="结论");
+  const rate=items.filter(it=>it.kind==="曲线族");
+  const atk=items.filter(it=>it.kind==="攻击力曲线");
+  const srvItems=[];
+  for(const [srv] of PW_SRV){
+    const one=rate.find(it=>it["服型"]===srv);
+    const a=atk.find(it=>it["服型"]===srv);
+    if(one||a)srvItems.push(pwServerHTML(one?Object.assign({},one,{attack_curve:a&&a.attack_curve}):a));
+  }
+  const RCOL=PW_SRV.map(x=>PW_COLOR[x[0]]);
+  const rateSeries=k=>PW_SRV.map(([srv])=>{
+    const it=rate.find(x=>x["服型"]===srv);
+    const c=it&&(it.rate_curves||[]).find(x=>x.key===k);
+    return c?{name:srv,segs:pwParse(c.formula)}:null;
+  }).filter(Boolean);
+  const atkSeries=()=>PW_SRV.map(([srv])=>{
+    const it=atk.find(x=>x["服型"]===srv);
+    return it&&it.attack_curve?{name:srv,segs:pwParse(it.attack_curve)}:null;
+  }).filter(Boolean);
+  const charts=[
+    pwChart("a_class（主加成曲线）",rateSeries("a_class"),{unit:"rate",colors:RCOL}),
+    pwChart("p2p（玩家对玩家）",rateSeries("p2p"),{unit:"rate",colors:RCOL}),
+    pwChart("m2p（另一组方向）",rateSeries("m2p"),{unit:"rate",colors:RCOL}),
+    pwChart("source_hurt（按攻击力）",atkSeries(),{unit:"atk",colors:RCOL})
+  ].join("");
+  const g=document.getElementById("grid");
+  g.innerHTML=`<div class="pw-page">
+    <section class="pw-sec">
+      <div class="pw-sec-hd"><h2>结论</h2><span>${notes.length} 条 · 点开可看说明与依据</span></div>
+      <div class="pw-notes">${notes.map(pwNoteHTML).join("")}</div>
+    </section>
+    <section class="pw-sec">
+      <div class="pw-sec-hd"><h2>曲线长什么样</h2><span>横轴是原始加成率 / 攻击力，纵轴是折算后的实际值；虚线是“完全不压缩”参考</span></div>
+      <div class="pw-figs">${charts}</div>
+      <p class="pw-tip">数值都是小数：配置里写的 0.3 就是 30%、0.05 就是 5%，公式直接拿小数算，白话再换算成百分比。例如加成 25% 时，a_class 第一段是 0.7×0.25 = 17.5%。<br>负数怎么办：配置里每一段的起点最低就是 0（没有任何负数区间），所以图也只从 0 画起。攻击力 &lt; 0、加成率 &lt; 0 属于配置表之外的情况——表里没有定义，不能把 kx+o 往 0 左边外推当作真实结果。</p>
+    </section>
+    <section class="pw-sec">
+      <div class="pw-sec-hd"><h2>三服中文对照</h2><span>a_class / p2p / m2p / source_hurt 的逐段白话；原始公式折叠在每列底部</span></div>
+      <div class="pw-srv">${srvItems.join("")}</div>
+    </section>
+    <footer class="pw-src">数据来自 special_hurt_params_data（经典服）/ _kj1（简单生存服）/ _yk（月卡服）/ hurt_params_data（全局默认）。
+      完整图表：<a href="${encodeURI("伤害系统逆向/场景平衡_分段函数.html")}" target="_blank">三服全曲线及逐段表</a>
+      · <a href="${encodeURI("伤害系统逆向/场景平衡_PvP两服.html")}" target="_blank">PvP 两服 7 图对照</a></footer>
+  </div>`;
+  const c=document.getElementById("count");
+  if(c)c.textContent=`显示 ${items.length} / ${DATA.items.length} 条`;
+}
+function sbPvpHTML(name){
+  const g=(DATA.meta&&DATA.meta.pvp_detail&&DATA.meta.pvp_detail[name])||{};
+  const pickSegs=(srv,k)=>{
+    for(const r of (((g.servers||{})[srv])||[])){
+      const segs=pwParse(r.curves&&r.curves[k]);
+      if(segs.length)return segs;
+    }
+    return [];
+  };
+  const RCOL=PW_SRV.map(x=>PW_COLOR[x[0]]);
+  const charts=PW_CURVE.map(([k,lab])=>pwChart(lab,
+    PW_SRV.map(([srv])=>({name:srv,segs:pickSegs(srv,k)})).filter(s=>s.segs.length),
+    {unit:"rate",colors:RCOL})).join("");
+  const cols=PW_SRV.map(([srv,cls])=>{
+    const rows=((g.servers||{})[srv])||[];
+    const body=rows.length?rows.map(r=>`<div class="pvd-row">
+        <div class="pvd-meta"><b>${esc(r.label||"")}</b><span>${esc(r.meta||"")}</span></div>
+        ${PW_CURVE.map(([k,lab])=>`<div class="pvd-curve"><b>${lab}</b><div class="pw-cn">${esc(pwCnSegs(r.curves&&r.curves[k],"rate")||"—")}</div></div>`).join("")}
+        <details class="pvd-raw"><summary>原始公式</summary>
+          ${PW_CURVE.map(([k,lab])=>`<div class="pw-raw-row"><b>${lab}</b><code>${pwSegs(r.curves&&r.curves[k])}</code></div>`).join("")}
+        </details>
+      </div>`).join(""):`<div class="pvd-empty">无专属行</div>`;
+    return `<div class="pvd-col ${cls}"><div class="pvd-srv">${srv}<em>${rows.length} 行</em></div>${body}</div>`;
+  }).join("");
+  return `<div class="pvd"><div class="pvd-hd">${esc(name)} · 伤害加成怎么算<span>三服对照 · 曲线图 + 白话</span></div>
+    <div class="pvd-charts">${charts}</div>
+    <p class="pvd-tip">线越早往下弯，说明该服把加成压得越狠；灰虚线是“完全不压缩”参考（实际值 = 原始值）；表内没有负数区间，图从 0 起。</p>
+    <div class="pvd-grid">${cols}</div></div>`;
+}
+function sbToggleDetail(tr,name){
+  let nx=tr.nextElementSibling;
+  if(nx&&nx.classList.contains("sb-xrow")&&nx.getAttribute("data-g")===name){
+    const show=nx.hidden;
+    nx.hidden=!show;
+    tr.classList.toggle("open",show);
+    return;
+  }
+  const xr=document.createElement("tr");
+  xr.className="sb-xrow";xr.setAttribute("data-g",name);
+  const td=document.createElement("td");
+  td.colSpan=8;td.innerHTML=sbPvpHTML(name);
+  xr.appendChild(td);tr.after(xr);tr.classList.add("open");
+}
+function sbToggleAll(open){
+  const t=document.querySelector("table.sbt");
+  if(!t)return;
+  const seen=new Set();
+  for(const tr of t.querySelectorAll("tbody tr.sb-pvp")){
+    const name=tr.getAttribute("data-g");
+    if(!name)continue;
+    const isOpen=tr.classList.contains("open");
+    if(open){
+      /* 同一场景可能占多行（不同服型），展开全部时每个场景只插入一份面板 */
+      if(seen.has(name)||isOpen)continue;
+      seen.add(name);
+      sbToggleDetail(tr,name);
+    }else if(isOpen){
+      sbToggleDetail(tr,name);
+    }
+  }
+}
 function sbRender(items){
   const cols=["场景","场景编号","服型","加成下限","加成上限","加成区间","生效最低攻击","来源类型"];
   const sorted=items.slice().sort((a,b)=>{
@@ -3835,6 +4151,16 @@ function sbRender(items){
   });
   const g=document.getElementById("grid");
   g.innerHTML="";
+  const groups=new Set(items.filter(it=>it.pvp_group).map(it=>it.pvp_group));
+  if(groups.size){
+    const bar=document.createElement("div");
+    bar.className="sb-bar";
+    bar.innerHTML=`<span>PvP 场景 ${groups.size} 个 · 点场景行展开经典服 / 简单生存服 / 月卡服 的分段函数</span>
+      <button type="button" data-act="open">展开全部</button>
+      <button type="button" data-act="close">收起全部</button>`;
+    bar.onclick=e=>{const a=e.target.getAttribute("data-act");if(a)sbToggleAll(a==="open");};
+    g.appendChild(bar);
+  }
   const t=document.createElement("table");
   t.className="sbt";
   const thead=document.createElement("thead");
@@ -3852,8 +4178,9 @@ function sbRender(items){
   const tb=document.createElement("tbody");
   for(const it of sorted){
     const tr=document.createElement("tr");
+    const pvp=(it.pvp_group&&DATA.meta.pvp_detail&&DATA.meta.pvp_detail[it.pvp_group])?it.pvp_group:null;
     const cells=[
-      ["scene",it.name||""],
+      ["scene",(pvp?'<span class="sb-x">▸</span> ':"")+esc(it.name||"")+(pvp?'<span class="sb-pill">三服公式</span>':'')],
       ["num",(it["场景编号"]||"").replace(" 个：","")],
       ["",`<span class="tag">${esc(it["服型"]||"-")}</span>`],
       ["num",it.lower??"-"],
@@ -3867,6 +4194,11 @@ function sbRender(items){
       if(cls)td.className=cls;
       if(cls==="num")td.textContent=val; else td.innerHTML=String(val);
       tr.appendChild(td);
+    }
+    if(pvp){
+      tr.className="sb-pvp";
+      tr.setAttribute("data-g",pvp);
+      tr.onclick=()=>sbToggleDetail(tr,pvp);
     }
     tb.appendChild(tr);
   }
@@ -4754,6 +5086,213 @@ function droneShelfRender(items,g){
   if(C2.open)c2Resync();
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   影音资源板（board id = media_catalog，2026-11-02）
+   左：分类树（音频按样本名前缀 / 视频按还原目录，仅导航，不是官方分类）
+   右：常驻播放器 + 队列列表（整组入队 / 连播 / 倍速）
+   数据：data/boards/media_catalog.js；音频 mp3 在 20_提取/影音/audio，
+        视频直接引用 41_还原树 内 mp4（都不复制进 web）。
+   ═══════════════════════════════════════════════════════════════════ */
+const ML={cat:"all-audio",q:"",queue:[],qi:-1,auto:false,speed:1,limit:200,catNames:{},built:false};
+function mlN(n){return Number(n||0).toLocaleString("zh-CN");}
+function mlVisible(){
+  let arr=ML.items||[];
+  if(ML.cat==="all-audio")arr=arr.filter(x=>x.kind==="a");
+  else if(ML.cat==="all-video")arr=arr.filter(x=>x.kind==="v");
+  else arr=arr.filter(x=>x.category===ML.cat);
+  const q=ML.q.toLowerCase();
+  if(q)arr=arr.filter(x=>String(x.name||"").toLowerCase().includes(q)||String(x.file_stem||"").toLowerCase().includes(q));
+  return arr;
+}
+function mlPlayers(){
+  return {a:document.getElementById("mlAudio"),v:document.getElementById("mlVideo")};
+}
+function mlMsg(t){const el=document.getElementById("mlMsg");if(!el)return;el.textContent=t||"";el.style.display=t?"block":"none";}
+function mlMarkRow(){
+  document.querySelectorAll("#mlList .ml-row").forEach(el=>{
+    el.classList.toggle("on",Number(el.dataset.i)===ML.qi);
+    el.classList.toggle("playing",Number(el.dataset.i)===ML.qi);
+  });
+}
+function mlSetNow(it){
+  const t=document.getElementById("mlTitle"),s=document.getElementById("mlSub"),p=document.getElementById("mlPos");
+  if(!t)return;
+  if(!it){t.textContent="未选择条目";s.textContent="从右侧列表点一条开始";if(p)p.textContent="";return;}
+  t.textContent=it.name;
+  const cat=ML.catNames[it.category]||it.category||"";
+  s.textContent=cat+(it.kind==="v"?" · 视频":" · 音频")+(it.kind==="a"?(it.extracted?"":" · 待提取"):"");
+  if(p)p.textContent=ML.queue.length?`队列 ${ML.qi+1} / ${ML.queue.length}`:"";
+}
+function mlToggleLabel(){
+  const {a,v}=mlPlayers();
+  const it=ML.queue[ML.qi];
+  const el=it&&it.kind==="v"?v:a;
+  const btn=document.getElementById("mlToggle");
+  if(!btn)return;
+  const playing=el&&!el.paused&&!el.ended;
+  btn.textContent=playing?"暂停":"播放";
+  const wave=document.getElementById("mlWave");
+  if(wave)wave.classList.toggle("playing",!!playing);
+}
+function mlPlayAt(i,queue){
+  const arr=queue||mlVisible();
+  if(!arr.length)return;
+  ML.queue=arr;
+  ML.qi=Math.max(0,Math.min(i,arr.length-1));
+  const it=arr[ML.qi];
+  const {a,v}=mlPlayers();
+  mlSetNow(it);
+  if(it.kind==="v"){
+    a.pause();a.removeAttribute("src");a.style.display="none";a.load();
+    v.style.display="block";
+    v.src=encodeURI(it.media_path);v.load();v.playbackRate=ML.speed;
+    mlMsg("");
+    v.play().catch(()=>mlMsg("视频无法播放：请确认文件存在，且以本地文件方式打开本页。"));
+  }else{
+    v.pause();v.removeAttribute("src");v.style.display="none";v.load();
+    if(!it.extracted){
+      a.pause();a.removeAttribute("src");a.style.display="none";a.load();
+      mlMsg("该样本尚未转码（待提取）。原音在 FSB5 音库中，运行 tools/convert_audio_to_mp3.py 后即可播放。");
+    }else{
+      a.style.display="block";
+      a.src=encodeURI(it.media_path);a.load();a.playbackRate=ML.speed;
+      mlMsg("");
+      a.play().catch(()=>mlMsg("音频无法播放：请确认文件存在，且以本地文件方式打开本页。"));
+    }
+  }
+  mlMarkRow();
+  setTimeout(mlToggleLabel,30);
+}
+function mlRenderCats(){
+  const box=document.getElementById("mlCats");if(!box)return;
+  const cats=(DATA.meta.categories||[]);
+  const a=cats.filter(c=>c.kind==="a"),v=cats.filter(c=>c.kind==="v");
+  const c=DATA.meta.counts||{};
+  const btn=(id,name,count)=>`<button type="button" class="ml-cat ${ML.cat===id?"on":""}" data-cat="${esc(id)}"><span>${esc(name)}</span><em>${mlN(count)}</em></button>`;
+  box.innerHTML=
+    `<div class="ml-group"><div class="ml-group-hd">音频 <span>${mlN(c.audio)}</span></div>`+
+    btn("all-audio","全部音频",c.audio)+a.map(x=>btn(x.id,x.name,x.count)).join("")+`</div>`+
+    `<div class="ml-group"><div class="ml-group-hd">视频 <span>${mlN(c.video)}</span></div>`+
+    btn("all-video","全部视频",c.video)+v.map(x=>btn(x.id,x.name,x.count)).join("")+`</div>`;
+}
+function mlRenderList(){
+  const list=document.getElementById("mlList");if(!list)return;
+  const arr=mlVisible();
+  const titleEl=document.getElementById("mlListTitle"),cntEl=document.getElementById("mlListCount");
+  if(titleEl)titleEl.textContent=ML.cat==="all-audio"?"全部音频":ML.cat==="all-video"?"全部视频":(ML.catNames[ML.cat]||ML.cat);
+  if(cntEl)cntEl.textContent=`${mlN(arr.length)} 条`+(ML.q?` · 搜索「${ML.q}」`:"");
+  const limit=Math.min(ML.limit,arr.length);
+  let html="";
+  for(let i=0;i<limit;i++){
+    const it=arr[i];
+    const tag=ML.catNames[it.category]||it.category||"";
+    const st=it.kind==="a"?(it.extracted?`<span class="ml-st ok">可播放</span>`:`<span class="ml-st wait">待提取</span>`):`<span class="ml-st vid">视频</span>`;
+    html+=`<div class="ml-row${ML.qi>=0&&ML.queue[ML.qi]===it?" on":""}" data-i="${i}" title="${esc(it.name)}">`+
+      `<span class="ml-ic">${it.kind==="a"?"♪":"▶"}</span>`+
+      `<span class="ml-name">${esc(it.name)}</span>`+
+      `<span class="ml-tag">${esc(tag)}</span>${st}`+
+      `<span class="ml-go">播放</span></div>`;
+  }
+  list.innerHTML=html||`<div class="ml-empty">该分类下没有匹配条目</div>`;
+}
+function mlRefresh(){mlRenderCats();mlRenderList();}
+function mediaLibraryRender(items){
+  ML.items=items;
+  const grid=document.getElementById("grid");
+  const ctr=document.querySelector(".controls");
+  if(ctr)ctr.style.display="none";
+  const m=DATA.meta||{};
+  if(!ML.built||!grid.querySelector("#mlWrap")){
+    ML.catNames={};(m.categories||[]).forEach(c=>ML.catNames[c.id]=c.name);
+    grid.innerHTML=
+      `<div class="ml-wrap" id="mlWrap">`+
+      `<aside class="ml-tree">`+
+        `<div class="ml-tree-hd"><b>影音资源库</b><span>音频 ${mlN((m.counts||{}).audio)} · 视频 ${mlN((m.counts||{}).video)}</span></div>`+
+        `<div class="ml-search"><input id="mlQ" type="search" placeholder="搜索条目名…" autocomplete="off"><button type="button" id="mlQClear" aria-label="清空">×</button></div>`+
+        `<div class="ml-groups" id="mlCats"></div>`+
+        `<div class="ml-tree-note">分类按样本名前缀 / 视频目录粗分组，仅作导航，不是官方分类。</div>`+
+      `</aside>`+
+      `<main class="ml-main">`+
+        `<section class="ml-player">`+
+          `<div class="ml-now"><div class="ml-kicker">正在播放</div><div class="ml-title" id="mlTitle">未选择条目</div><div class="ml-sub" id="mlSub">从右侧列表点一条开始</div></div>`+
+          `<div class="ml-stage"><div class="ml-wave" id="mlWave">${Array.from({length:36},(_,i)=>`<i style="height:${18+(i*37)%64}%"></i>`).join("")}</div>`+
+            `<audio id="mlAudio" controls preload="none" style="display:none"></audio>`+
+            `<video id="mlVideo" controls playsinline preload="none" style="display:none"></video>`+
+            `<div class="ml-msg" id="mlMsg" style="display:none"></div></div>`+
+          `<div class="ml-ctl">`+
+            `<button type="button" class="ml-btn" id="mlPrev">上一首</button>`+
+            `<button type="button" class="ml-btn primary" id="mlToggle">播放</button>`+
+            `<button type="button" class="ml-btn" id="mlNext">下一首</button>`+
+            `<span class="ml-speed"><label for="mlSpeed">倍速</label><select id="mlSpeed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></span>`+
+            `<label class="ml-auto"><input type="checkbox" id="mlAuto"> 连播</label>`+
+            `<span class="ml-pos" id="mlPos"></span>`+
+          `</div>`+
+        `</section>`+
+        `<section class="ml-listbox">`+
+          `<div class="ml-list-head"><div><b id="mlListTitle">全部音频</b> <span id="mlListCount"></span></div>`+
+            `<div class="ml-list-actions"><button type="button" id="mlQueueAll">整组入队</button><button type="button" id="mlRandom">随机一首</button></div></div>`+
+          `<div class="ml-list" id="mlList"></div>`+
+          `<button type="button" class="ml-more" id="mlMore">加载更多</button>`+
+        `</section>`+
+      `</main></div>`;
+    mlBind();
+    ML.built=true;
+  }
+  mlRefresh();
+}
+function mlBind(){
+  const wrap=document.getElementById("mlWrap");if(!wrap)return;
+  wrap.addEventListener("click",e=>{
+    const cat=e.target.closest(".ml-cat");
+    if(cat){ML.cat=cat.dataset.cat;ML.limit=200;mlRefresh();return;}
+    const row=e.target.closest(".ml-row");
+    if(row){mlPlayAt(Number(row.dataset.i),mlVisible());return;}
+  });
+  const q=document.getElementById("mlQ");
+  if(q)q.addEventListener("input",()=>{ML.q=q.value.trim();ML.limit=200;mlRenderList();});
+  const qc=document.getElementById("mlQClear");
+  if(qc)qc.addEventListener("click",()=>{ML.q="";if(q)q.value="";ML.limit=200;mlRenderList();});
+  const more=document.getElementById("mlMore");
+  if(more)more.addEventListener("click",()=>{ML.limit+=200;mlRenderList();});
+  const qa=document.getElementById("mlQueueAll");
+  if(qa)qa.addEventListener("click",()=>{const arr=mlVisible();if(arr.length)mlPlayAt(0,arr);});
+  const rnd=document.getElementById("mlRandom");
+  if(rnd)rnd.addEventListener("click",()=>{const arr=mlVisible();if(arr.length)mlPlayAt(Math.floor(Math.random()*arr.length),arr);});
+  const prev=document.getElementById("mlPrev");
+  if(prev)prev.addEventListener("click",()=>{
+    if(!ML.queue.length)return mlPlayAt(0,mlVisible());
+    mlPlayAt(ML.qi<=0?ML.queue.length-1:ML.qi-1,ML.queue);
+  });
+  const next=document.getElementById("mlNext");
+  if(next)next.addEventListener("click",()=>{
+    if(!ML.queue.length)return mlPlayAt(0,mlVisible());
+    mlPlayAt((ML.qi+1)%ML.queue.length,ML.queue);
+  });
+  const tg=document.getElementById("mlToggle");
+  if(tg)tg.addEventListener("click",()=>{
+    const it=ML.queue[ML.qi];
+    if(!it)return mlPlayAt(0,mlVisible());
+    const {a,v}=mlPlayers();
+    const el=it.kind==="v"?v:a;
+    if(el.paused)el.play().catch(()=>{});else el.pause();
+  });
+  const sp=document.getElementById("mlSpeed");
+  if(sp)sp.addEventListener("change",()=>{
+    ML.speed=Number(sp.value)||1;
+    const {a,v}=mlPlayers();a.playbackRate=ML.speed;v.playbackRate=ML.speed;
+  });
+  const au=document.getElementById("mlAuto");
+  if(au)au.addEventListener("change",()=>{ML.auto=au.checked;});
+  const {a,v}=mlPlayers();
+  const ended=()=>{
+    mlToggleLabel();
+    if(ML.auto&&ML.qi+1<ML.queue.length)mlPlayAt(ML.qi+1,ML.queue);
+    else mlToggleLabel();
+  };
+  if(a){a.addEventListener("ended",ended);a.addEventListener("play",mlToggleLabel);a.addEventListener("pause",mlToggleLabel);}
+  if(v){v.addEventListener("ended",ended);v.addEventListener("play",mlToggleLabel);v.addEventListener("pause",mlToggleLabel);}
+}
+
 function render(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   if(DATA)DATA._query=q;
@@ -4874,7 +5413,9 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
   });
   // 预告专栏：给「预计日已过但源表仍算未上线」的条目打标（卡面显示「已过预计」）
   if(upcomingBoard){ items.forEach(it=>{ it._late=upLate(it); }); }
+  if(PIECEWISE){ pwRender(items); return; }
   if(SCENE_TABLE){ sbRender(items); return; }
+  if(MEDIA_BOARD||(DATA&&DATA.meta&&DATA.meta.board_mode==="media_library")){ mediaLibraryRender(items); return; }
   if(ST_TABLE){ stRender(items); return; }
   const g=document.getElementById("grid");g.innerHTML="";
   const hasSfxChildren=items.some(it=>Array.isArray(it.sfx_items));
@@ -5916,6 +6457,11 @@ else loadBoard(b,d=>{
   if(CHIP_BOARD)cBuildFilters(d.items);
   if(CDN_BOARD||TREE_BOARD)buildViewSwitch();
   render();
+  /* 影音资源板：显式接管。个别环境里 render() 内的分派分支会被旧脚本缓存跳过，
+     所以在启动链路里再调一次；mediaLibraryRender 幂等（已建好只刷新列表）。 */
+  if(MEDIA_BOARD||(DATA&&DATA.meta&&DATA.meta.board_mode==="media_library")){
+    try{ mediaLibraryRender(DATA.items); }catch(e){ console.error("mediaLibraryRender", e); }
+  }
   c2DeepLink();   // D2 深链：?id= 直开详情（芯片/时装/武器皮肤/异变核芯四板；由 C2.chips 是否就绪自守卫）
   /* ★ 2026-10-18：上架状态实时刷新 —— 每 30 秒检查一次，有皮肤跨过 sale_ts 就重绘，
      不跨就不动（避免每分钟整页重排、丢展开状态）。 */

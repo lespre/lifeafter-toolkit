@@ -17,7 +17,7 @@ input[type=range]{width:100%;accent-color:#6f9fba}
 code{color:#d9a441}
 </style></head><body>
 <h1>PvP 伤害倍率计算器</h1>
-<div class="sub">公式来自 com/formula/HurtCalc.py 反编译：<code>伤害 = 基础 × (1+Σ加成) × (1−Σ减免) × 部位 × 暴击</code>；140/141 属性经压缩表为恒等，直接相加。</div>
+<div class="sub">公式来自 com/formula/HurtCalc.py 反编译（2026-11-03 字节级校正）：<code>倍率 = 1 + 曲线a( clamp(1+Σ加成−Σ减免, 0.8, 1.5) − 1 )</code>，再乘部位与暴击；场景窗口取南希 803 经典服。</div>
 
 <div class="card">
   <div class="row"><label>攻击方 对玩家伤害加成</label><input id="a" type="range" min="0" max="200" value="40"><span class="val" id="av">40%</span></div>
@@ -30,16 +30,22 @@ code{color:#d9a441}
 
 <div class="card">
   <div class="out">
-    <div class="box"><div class="k">加成桶 (1+A)</div><div class="v" id="oa">—</div></div>
-    <div class="box"><div class="k">减免桶 (1−R)</div><div class="v" id="or">—</div></div>
-    <div class="box"><div class="k">非暴击倍率</div><div class="v" id="on">—</div></div>
-    <div class="box"><div class="k">暴击倍率</div><div class="v" id="oc">—</div></div>
+    <div class="box"><div class="k">合并倍率 (1+A−R)</div><div class="v" id="oa">—</div></div>
+    <div class="box"><div class="k">夹到窗口 [0.8, 1.5]</div><div class="v" id="or">—</div></div>
+    <div class="box"><div class="k">a_class 曲线后</div><div class="v" id="on">—</div></div>
+    <div class="box"><div class="k">部位/暴击后</div><div class="v" id="oc">—</div></div>
   </div>
-  <div class="note">加成/减免上限按 100% 夹逼（减免桶不会为负）。部位系数与暴击为独立乘区。</div>
+  <div class="note">加成与减免先相减成一桶，夹到场景窗口后再过 a_class 曲线（只有正区 Δ 才被改写）；部位、暴击才是独立乘区。</div>
 </div>
 
 <script>
 const ids = ["a","a2","r","r2","p","c"];
+function aClass(x){            // 南希 803 经典服：0.7x → 0.3x+0.12 → 0.1x+0.28
+  if (x <= 0) return x;        // 负区不换算
+  if (x <= 0.3) return 0.7*x;
+  if (x <= 0.8) return 0.3*x + 0.12;
+  return 0.1*x + 0.28;
+}
 function calc(){
   const v = {};
   ids.forEach(i => v[i] = +document.getElementById(i).value / 100);
@@ -48,10 +54,13 @@ function calc(){
   });
   const A = v.a + v.a2;
   const R = Math.min(v.r + v.r2, 1);
-  document.getElementById("oa").textContent = (1+A).toFixed(2) + "×";
-  document.getElementById("or").textContent = (1-R).toFixed(2) + "×";
-  document.getElementById("on").textContent = ((1+A)*(1-R)*v.p).toFixed(2) + "×";
-  document.getElementById("oc").textContent = ((1+A)*(1-R)*v.p*v.c).toFixed(2) + "×";
+  const raw = 1 + A - R;
+  const clamped = Math.min(1.5, Math.max(0.8, raw));
+  const rate = 1 + aClass(clamped - 1);
+  document.getElementById("oa").textContent = raw.toFixed(2) + "×";
+  document.getElementById("or").textContent = clamped.toFixed(2) + "×";
+  document.getElementById("on").textContent = rate.toFixed(2) + "×";
+  document.getElementById("oc").textContent = (rate*v.p*v.c).toFixed(2) + "×";
 }
 ids.forEach(i => document.getElementById(i).addEventListener("input", calc));
 calc();

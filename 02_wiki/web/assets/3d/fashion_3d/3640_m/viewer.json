@@ -1,0 +1,322 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3640_m",
+ "series": "3640",
+ "gender": "m",
+ "label": "3640 · 男 · 2025 合体网格",
+ "note": "2025 重制男款，冰雪/晶体材质占比高",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2025/fas_m_3640/b_m_3640a_link/b_m_3640a.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3640a_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3640a_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_m_3640a_2",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_m_3640a_3",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_m_3640a_4",
+     "shader": "pbr_subsurface_ice_snow",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_m_3640a_5",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "b_m_3640a_6",
+     "shader": "pbr_crystal",
+     "slots": [
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 7,
+     "name": "b_m_3640a_7",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 8,
+     "name": "b_m_3640a_8",
+     "shader": "pbr_crystal",
+     "slots": [
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 9,
+     "name": "b_m_3640a_9",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 10,
+     "name": "b_m_3640a_10",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 11,
+     "name": "b_m_3640a_11",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 12,
+     "name": "b_m_3640a_12",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 13,
+     "name": "b_m_3640a_13",
+     "shader": "pbr_crystal",
+     "slots": [
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 14,
+     "name": "b_m_3640a_14",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 15,
+     "name": "b_m_3640a_15",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 16,
+     "name": "b_m_3640a_16",
+     "shader": "pbr_crystal",
+     "slots": [
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 17,
+     "name": "b_m_3640a_17",
+     "shader": "uber_fx_common_multilayer",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "b_m_3640a_3: detail normal 已合并(detail_normal_silk_03.ktx)",
+    "b_m_3640a_6: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_m_3640a_8: detail normal 已合并(crystal_bump_n03.ktx)",
+    "b_m_3640a_10: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_m_3640a_11: detail normal 已合并(detail_normal_silk_03.ktx)",
+    "b_m_3640a_15: detail normal 已合并(detail_normal_silk_03.ktx)",
+    "b_m_3640a_16: detail normal 已合并(crystal_bump_n02.ktx)"
+   ],
+   "vertices": 16031,
+   "faces": 17357,
+   "submeshes": 18,
+   "materials_exported": 18,
+   "bytes": 8561484
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2025/fas_m_3640/h_m_3640a_link/h_m_3640a.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3640a_0",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_m_3640a_1",
+     "shader": "pbr_subsurface_ice_snow",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "h_m_3640a_2",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "h_m_3640a_3",
+     "shader": "pbr_subsurface_ice_snow",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "h_m_3640a_4",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 12277,
+   "faces": 10702,
+   "submeshes": 5,
+   "materials_exported": 5,
+   "bytes": 916420
+  }
+ ]
+}

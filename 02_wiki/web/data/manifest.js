@@ -64,19 +64,19 @@ window.WIKI_MANIFEST = {
       "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
       "items": 681,
-      "generated": "2026-10-22",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源 41_还原树/pe/资源",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "generated": "2026-11-04",
+      "source_server": "PE 活树 · 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data、business_card_scheme_data）",
+      "package_sha": "bundle:c891380939ed0f329bc06b1beaeb8f2276edaea38cda6202d76b724a31f5b409",
       "evidence": {
         "structure": 681
       },
       "state_summary": {
-        "头像框": 252,
-        "头像": 204,
-        "名片框": 220,
-        "有图": 663,
-        "缺图": 10,
-        "有动画": 347
+        "条目": 681,
+        "kind": {
+          "头像框": 254,
+          "名片框": 220,
+          "头像": 207
+        }
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -140,7 +140,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "2、攻击力",
-      "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
+      "category": "二、战力类 / 2、攻击力",
       "board": "damage_attack",
       "items": 3,
       "generated": "2026-11-04",
@@ -166,7 +166,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "3、加成",
-      "category": "二、战力类 / （六）伤害计算 / 3、加成",
+      "category": "二、战力类 / 3、加成",
       "board": "damage_bonus",
       "items": 19,
       "generated": "2026-11-04",
@@ -193,7 +193,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "4、守方侧",
-      "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
+      "category": "二、战力类 / 4、守方侧",
       "board": "damage_defense",
       "items": 3,
       "generated": "2026-11-04",
@@ -441,7 +441,7 @@ window.WIKI_MANIFEST = {
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
       "items": 3150,
-      "generated": "2026-10-24",
+      "generated": "2026-11-04",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
@@ -449,12 +449,10 @@ window.WIKI_MANIFEST = {
         "candidate": 2
       },
       "state_summary": {
-        "unresolved": 2197,
-        "static config": 2197,
-        "verified": 0,
-        "runtime final unknown": 2197,
-        "有图": 2045,
-        "无图": 987
+        "有图": 2232,
+        "无图": 918,
+        "活树行数": 11169,
+        "已覆盖行数": 11169
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -471,15 +469,28 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）种族潜能总表",
       "category": "二、战力类 / （七）各种族潜能",
       "board": "gene_potential_catalog",
-      "items": 104,
-      "generated": "2026-10-23",
-      "source_server": "简单生存（字段级）+ 经典服（池名册级，待解码）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 133,
+      "generated": "2026-11-04",
+      "source_server": "经典服（行级）+ 简单生存（行级）",
+      "package_sha": "feed0d7e093e1b86bb7d9c64714c606be01bd4604812707e49d818d77a387e55",
       "evidence": {
-        "structure": 104
+        "structure": 133
       },
       "state_summary": {
-        "条目": 63
+        "条目": 133,
+        "kind": {
+          "种族潜能": 133
+        },
+        "race_name": {
+          "人类": 46,
+          "械骨人": 44,
+          "半感染者": 43
+        },
+        "server_branch": {
+          "经典服（PE gene_node_data base 行级）": 85,
+          "经典服 + 简单生存（同种族同名节点，两服同名册）": 26,
+          "简单生存（PE oversea gene_node_data kj1 行级，经典服无此节点）": 22
+        }
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -487,8 +498,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "missing": 56,
-          "replayed-structural": 48
+          "replayed-structural": 133
         }
       }
     },
@@ -522,17 +532,25 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）图鉴收集总表",
       "category": "三、综合资料 / （六）图鉴收集",
       "board": "illustration_catalog",
-      "items": 954,
-      "generated": "2026-10-21",
+      "items": 1547,
+      "generated": "2026-11-04",
       "source_server": "简单生存服（体验服 Documents 快照）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 954
+        "structure": 1547
       },
       "state_summary": {
-        "条目": 954,
-        "食物": 581,
-        "特殊能力": 373
+        "条目": 1547,
+        "kind": {
+          "图鉴·食物": 581,
+          "图鉴·特殊能力": 340,
+          "图鉴·怪物": 260,
+          "图鉴·食材": 247,
+          "图鉴·遗失碎片": 42,
+          "图鉴·孢子技能": 33,
+          "图鉴·海域特产": 32,
+          "图鉴·大类": 8
+        }
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -540,7 +558,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 954
+          "replayed-structural": 1547
         }
       }
     },
@@ -791,23 +809,18 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "场景伤害加成（按服型分档）",
-      "category": "二、战力类 / （五）伤害计算公式与场景平衡",
+      "name": "1、场景平衡",
+      "category": "二、战力类 / 1、场景平衡",
       "board": "scene_balance",
       "items": 1364,
-      "generated": "2026-10-24",
+      "generated": "2026-11-04",
       "source_server": "PE 还原树 pe_20261020（测试服预发包，同时携带经典服源与简单生存服源）",
       "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
       "evidence": {
         "structure": 1364
       },
       "state_summary": {
-        "unresolved": 1364,
-        "static config": 1364,
-        "verified": 0,
-        "runtime final unknown": 1364,
-        "有专属行": 758,
-        "默认行": 606
+        "条目": 1364
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -923,15 +936,22 @@ window.WIKI_MANIFEST = {
       "name": "（内测版）天赋总表",
       "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能",
       "board": "talent_catalog",
-      "items": 5304,
-      "generated": "2026-10-29",
-      "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
+      "items": 4944,
+      "generated": "2026-11-04",
+      "source_server": "PE 测试服 · 41_还原树/pe/配置/com/cdata（逐表行级）",
+      "package_sha": "65e79e4de5aba347e34d08dd58ff7c9ccac2cd74763089d76a24ca54f12d54b9",
       "evidence": {
-        "structure": 5304
+        "structure": 4944
       },
       "state_summary": {
-        "条目": 5304
+        "条目": 4944,
+        "kind": {
+          "天赋": 4944
+        },
+        "tree": {
+          "基础": 4112,
+          "主题": 832
+        }
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -939,7 +959,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 5304
+          "replayed-structural": 4944
         }
       }
     },

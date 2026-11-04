@@ -23,7 +23,8 @@
   <h1>伤害计算器</h1>
   <div class="src">
     数据：装备属性（all_equips attrs，0xC6/0x86 嵌套行帧）× 场景加成（special_hurt_params_data，按服型分档）× 伤害逆向结论<br>
-    口径：伤害 = 攻击力 × (1 + 场景加成) × (1 − 减伤率) × 部位 × 暴击
+    口径（2026-11-03 字节级校正）：伤害 = 攻击力 × clamp(1 + 加成 − 减伤, 场景下限, 场景上限) × a_class曲线 × 部位 × 暴击<br>
+    加成与减伤先相减成一桶再夹取；a_class 曲线按场景行取（803 已导出，其他场景暂按恒等）
   </div>
 
   <div class="subnav" style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px">
@@ -42,6 +43,7 @@
   <div class="row"><label>服型</label><select id="server"></select></div>
   <div class="row"><label>武器</label><select id="weapon"></select></div>
   <div class="row"><label>目标护甲</label><select id="target"></select></div>
+  <div class="row"><label>攻击方加成</label><input id="add" type="number" value="0.5" step="0.05"></div>
   <div class="row"><label>场景</label><select id="scene"></select></div>
   <div class="row"><label>部位系数</label><input id="part" type="number" value="1" step="0.05"></div>
   <div class="row"><label>暴击系数</label><input id="crit" type="number" value="1" step="0.05"></div>
@@ -51,8 +53,8 @@
     <div class="big" id="range">—</div>
     <div class="kv" id="detail"></div>
     <div class="note">
-      区间内的具体值取决于「攻击力 vs 护甲」的分段曲线，客户端里未证实，所以这里只给区间不给点值。
-      部位/暴击是独立乘区，默认 1。
+      加成与减伤合并成一个倍率，先夹到该场景的窗口（lower~upper），再过 a_class 曲线；803 之外的场景曲线行还没逐行导出，暂按恒等。
+      部位/暴击是独立乘区，默认 1。攻击力→基础伤害的曲线也未证，这里直接用攻击力数值。
     </div>
   </div>
 </div>
@@ -105,13 +107,17 @@ function calc(){
   const power=attrNum(w,['武器火力','功率']);
   const red=t&&t.name!=='（不选）'?attrNum(t,['伤害减免百分比','减伤率']):0;
   const armor=t&&t.name!=='（不选）'?attrNum(t,['护甲值','护甲']):0;
-  const lo=hurt*(1+sc.lower)*(1-red)*part*crit;
-  const hi=hurt*(1+sc.upper)*(1-red)*part*crit;
-  document.getElementById('range').textContent=`${lo.toFixed(1)} ~ ${hi.toFixed(1)}`;
+  const add=parseFloat(document.getElementById('add').value)||0;
+  const lo=sc.lower!=null?sc.lower:1, hi=sc.upper!=null?sc.upper:1;
+  const raw=1+add-red;
+  const net=Math.min(hi,Math.max(lo,raw));   // 场景窗口夹取
+  const dmg=hurt*net*part*crit;
+  document.getElementById('range').textContent=`${dmg.toFixed(1)}`;
   document.getElementById('detail').innerHTML=
     `<span>武器 ${w.name}（攻击力 ${hurt}｜火力 ${power}）</span>`+
     `<span>目标 ${t?t.name:'—'}（护甲 ${armor}｜减伤 ${red}）</span>`+
-    `<span>场景 ${sc.name}（${sc.range}）</span>`;
+    `<span>场景 ${sc.name}（窗口 ${sc.range}）</span>`+
+    `<span>合并倍率 1+${add.toFixed(2)}−${red.toFixed(2)} = ${raw.toFixed(2)} → 夹取 ${net.toFixed(2)}</span>`;
 }
 boot();
 </script>

@@ -1,1 +1,274 @@
-{"schema": "lifeafter-wiki-publication-policy-v2", "generated": "2026-11-01", "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。", "boards": {"chip_item_catalog": {"publication_status": "published_hidden", "category": "三、战力类 / （四）芯片", "reason": "芯片图鉴 v2：chip_type 池 003278 中文短名 65 全集（=游戏图鉴同源，用户 UI 65 实证）；id 挂接=common_item 道具行 56 + USER 锚 conf 引用 2（坚如磐石=331026/坚韧不拔=331018）+9 配置名无道具行（id 静态不可得 6+未知 3）。品级/效果文本无静态源。", "items": 65, "superseded_by": "tactical_chip_full", "note": "已被 tactical_chip_full 取代，保留直链，不进首页导航"}, "fashion_face": {"publication_status": "quarantined", "reason": "从两个 legacy CHS 全池以正则筛选名称，未建立 table row→name/part/time 关系；池内字符串存在不等于该字符串是面饰记录。"}, "fashion_wardrobe": {"publication_status": "published", "reason": "★ 2026-09-28 解除隔离并转 published。原隔离理由两条已解：① 「名字/部件取整行 CHS 字符串的正则启发式」→ 改用【表结构解析产物】的 name / part_type 字段（BinDict 按 schema 逐行解出，非正则）；② 「聚合后丢失原表 row key，不能回溯」→ 每条带 row_keys（该外观的全部 row_key，可回溯）。★ join 口径 = 归一名字（剥部件后缀 / 剥「·XXX」/ 剥时效包装）；禁用 model_id —— 旧板与表的 model_id 交集 0，数字相等是巧合（实测 76.9% 假命中）。★ 名字只从 fashion_data 来（玩家可见表）；player_appear_data 是部件工程表，只作 desc 补源（混入会把「005high套（女）」「100级甲」等内部工程名当时装名，实测踩过）。覆盖 1253 件 / desc 1224 件（97.7%）/ row_keys 100%。证据等级 = structure（静态度量，非运行时可证）。", "category": "一、时装类 / （一）人物时装", "items": 1253}, "gift_data_text_sources": {"publication_status": "published", "reason": "当前 Documents BA8 包的 gift_data base/CHS 同快照行级文字表。每条名称与说明均保留 row key、字段 CHS 槽位、文本值 CHS 槽位与 decoded payload SHA；仅为文本来源，不表示礼盒可得、可开启、奖励、价格、货币、限购或活动启用。", "category": "三、综合资料 / （三）说明条目、文字与提示总表"}, "nucleus_cards_classic": {"publication_status": "published_hidden", "category": "三、战力类 / （三）核芯", "reason": "核芯卡定版（双服合并）：经典服 nucleus_build_data 主表(40949/34899)+kj1(9503/28181) 12 星体系 76 颗 + 简单生存服独有 1 颗（淬焰燃锋）；品级=经典服 kj1 common_item 覆盖 + BA8 660000 兜底；星级段 5/9/12 解锁点；武器类型=种类（码）同行。", "superseded_by": "mutation_core_full", "note": "已被 mutation_core_full 取代，保留直链，不进首页导航"}, "nucleus_entry_slots": {"publication_status": "unpublished", "category": "三、战力类 / （2）异变核芯·词条", "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"}, "nucleus_item_catalog": {"publication_status": "unpublished", "category": "三、战力类 / （2）异变核芯", "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"}, "weapon_skin_sfx_text_sources": {"publication_status": "published", "category": "一、时装类 / （二）武器皮肤", "items": 115, "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data + SFX；基线缺失时版本状态标无基线不可比"}, "weapon_skin_static_candidates_v01": {"publication_status": "published_hidden", "category": "二、时装类 / （七）武器皮肤（隐藏审计板：静态候选 / 身份未解析）", "items": 115, "reason": "P4-C 身份研究仍冻结；展示 126 条静态配置行与 3 条 behavior-only 行，全部 identity unresolved，旧整数补名和父项推断均未启用。"}, "vehicle_full": {"publication_status": "published", "reason": "载具全量总表：vehicle_ui_data 同快照 277 行逐行重放（205 严格 + 72 行尾内联变体宽容重放）；名称/描述/品牌/类型/数值全部同表内字段，图标按「UI 清单路径 → fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。", "category": "一、时装类 / （三）载具"}, "tactical_chip_full": {"publication_status": "published", "category": "二、战力类 / （二）战术芯片", "reason": "战术芯片全量表：chip_type_data 71 枚（=道具行/图鉴同源）+ belt_chip_data 同名主键 852 行（71×12 档，属性 desc/参数/品质/拆解全部同表内字段）。道具行只按图标文件名编号匹配 common_item（不做等整数跨源拼接），奖池只读 chip_roll_weight_data.reward_id 参数组；图标按「UI 清单路径 → .ktx fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。", "items": 71}, "mutation_core_full": {"publication_status": "published", "category": "二、战力类 / （一）异变核芯", "items": 133, "reason": "核芯唯一总表：common_item 660000 段 132 行 + nucleus_build_data(kj1) 76 枚按名合并；星上限按经典服 12 星展示；卡面简略、详情展开。"}, "server_types": {"publication_status": "published", "category": "四、服务与包体 / （一）服务器类型"}, "lottery_periods": {"publication_status": "published", "category": "置顶、活动奖池与预告 / （一）活动奖池"}, "drone_catalog": {"publication_status": "published", "category": "二、战力类 / （三）无人机"}, "upcoming_auto": {"publication_status": "published", "category": "置顶、活动奖池与预告 / （二）预告专栏", "items": 16, "reason": "预告专栏唯一板：武器皮肤未上架段 + 未开始奖池期次（万圣绮夜）连带成员。分类与条目数随板产物同步；数值来自各源板行，不含上线/价格/概率推断。"}, "item_master_full": {"publication_status": "published", "category": "三、综合资料 / （一）全量道具总表", "items": 1189, "reason": "P4-A 冻结产物：1,189 条 verified item；hide_in_bag 缺席保持 unresolved。"}, "activity_master": {"publication_status": "published", "category": "置顶、活动奖池与预告 / （一）活动奖池"}, "skill_catalog": {"publication_status": "published", "category": "三、综合资料 / （四）实体技能"}, "title_catalog": {"publication_status": "published", "category": "一、时装类 / （六）称号"}, "avatar_catalog": {"publication_status": "published", "category": "一、时装类 / （五）头像、头像框、名片框"}, "talent_catalog": {"publication_status": "published", "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能", "items": 5304, "reason": "天赋总表（2026-10-29 用户定版「八也合回一个」）：原按职业系拆分的战斗天赋/职业天赋两卡合并回一张总表，id 无重叠；页内「职业系」筛选区分 战斗/采集/制造。数据=体验服 Documents 快照 new_talent_data / talent_profession_data（简单生存服）。"}, "edible_catalog": {"publication_status": "published", "category": "二、战力类 / （四）料理与食谱"}, "illustration_catalog": {"publication_status": "published", "category": "三、综合资料 / （六）图鉴收集"}, "recipe_catalog": {"publication_status": "published", "category": "三、综合资料 / （二）配方"}, "buff_catalog": {"publication_status": "published", "category": "三、综合资料 / （五）状态"}, "entity_catalog": {"publication_status": "published", "category": "三、综合资料 / （四）实体技能"}, "desc_catalog": {"publication_status": "published", "category": "三、综合资料 / （三）说明条目、文字与提示总表"}, "text_notice_catalog": {"publication_status": "published", "category": "三、综合资料 / （三）说明条目、文字与提示总表"}, "gene_potential_catalog": {"publication_status": "published", "category": "二、战力类 / （七）各种族潜能"}, "scene_balance": {"publication_status": "published", "category": "二、战力类 / （六）伤害计算 / 1、场景", "reason": "场景加成上下限：special_hurt_params_data(kj1) × space_data。按场景名合并，PvP 优先。", "items": 63}, "kill_broadcast": {"publication_status": "published", "category": "一、时装类 / （四）击败播报与全场最佳动画", "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。", "items": 13}, "common_item_text_sources": {"publication_status": "retired", "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"}, "fashion_wardrobe_slots": {"publication_status": "retired", "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"}, "future_lottery_preview": {"publication_status": "unpublished", "category": "零、新更新与预告专栏（游戏未上线资源预告） / （2）新奖池活动", "items": 26, "reason": "该板依赖 reward_pool_data_base（PE 还原树无此表，只有 PC Documents），builder 的源 SHA 校验拒绝重建；板文件本身也不存在。暂不上架，等 PE 侧补表或改用活动表口径重做。"}, "equipment_attrs": {"publication_status": "published", "category": "二、战力类 / （五）装备属性（武器·护甲）", "items": 2586, "reason": "装备属性（武器·护甲）三服总览卡（2026-11-01 用户定版：按服别拆独立卡 + 另出总览卡）：共 2586 条，条目级 server_branch（简单生存服=kj1 / 经典服=base / 月卡服=yk）+ 页内「服别」下拉筛选，分服行数据不混排；三张分服卡见 equipment_attrs_kj1 / _classic / _yk。数据=30_分析/all_equips_全量_node索引_20261029 三表（node 索引法 100% 解码活跃行，2026-11-01 就地扩 icon/desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value）。2D 图标取客户端 ui/item_icon 大图 _b，三服同路径共用。weapon_kind 为数值码，中文标签按装备名归纳（非官方枚举）。全量边界：护臂/进化武器行数值在未留盘热更 inc 分片内，待增量载荷入库后重跑补全。"}, "appearance_bud": {"publication_status": "published", "category": "一、时装类 / （八）半感染者花苞", "items": 168, "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"}, "cdn_library": {"publication_status": "published", "category": "四、服务与包体 / （二）CDN 资源库", "items": 711, "reason": "CDN 资源库总览：清单 1650 个文件归并为 711 个逻辑包（含多卷与画质/设备档变体），体积/档位/条目数取自 CDN 清单与 cdn_index（只拉头+条目表，未下载荷）；本地状态按 pe_npk_full / pe_npk_20261029 / pe_gres_android 实测。静态清单不等于客户端实装内容，档位选择由设备决定。"}, "local_restore_tree": {"publication_status": "published", "category": "四、服务与包体 / （三）本地还原树", "items": 33601, "reason": "本地还原树全量配置清单：一行 = 一个已还原的配置文件（合并账本 v2 的 files 记录），含相对路径、类型、字节、来源（合并体/增量快照）、落盘时间与目录名称还原率。只读本地冻结产物，不含线上客户端数据，也不表示可用性/可得性。"}, "name_restore_method": {"publication_status": "published", "category": "四、服务与包体 / （四）文件名还原方法论", "reason": "方法论板：文件名还原的十一条路径与实测命中数（本会话实测，脚本可复跑）。结论 3,600/7,192=50.1%；有效 5 条、证伪 6 条、未做 1 条。只记录方法与数字，不含未验证结论。", "items": 13, "generated": "2026-11-01"}, "server_whitelist": {"publication_status": "published", "reason": "服务器与白名单：五轮名单规模、门禁分区判据、三道对齐。全部来自公网明文与已解码的分区表，数字为本轮实测。", "category": "四、服务与包体 / （五）测试服与白名单", "items": 20, "generated": "2026-11-01"}, "package_entries": {"publication_status": "published", "reason": "包体入口全矩阵：国内真入口 47、假 200 占位 18、海外 63；版本线关系与分发参数。全部为公开清单实测。", "category": "四、服务与包体 / （六）包体入口与版本线", "items": 19, "generated": "2026-11-01"}, "equipment_attrs_kj1": {"publication_status": "published", "category": "二、战力类 / （五）装备属性（武器·护甲）", "items": 590, "reason": "装备属性（武器·护甲）分服卡 · 简单生存服（数据通道 kj1）：590 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"}, "equipment_attrs_classic": {"publication_status": "published", "category": "二、战力类 / （五）装备属性（武器·护甲）", "items": 1057, "reason": "装备属性（武器·护甲）分服卡 · 经典服（数据通道 classic）：1057 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"}, "equipment_attrs_yk": {"publication_status": "published", "category": "二、战力类 / （五）装备属性（武器·护甲）", "items": 939, "reason": "装备属性（武器·护甲）分服卡 · 月卡服（数据通道 yk）：939 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"}, "media_catalog": {"publication_status": "published", "category": "三、综合资料 / （七）影音资源", "items": 20259, "generated": "2026-11-02", "reason": "影音资源库：左侧分类树 + 常驻播放器。音频 19,959 条 = res/sound.gpk（含热更 layers npk）FSB5 样本名索引的去重样本名，可播文件为 01_索引与产物/20_提取/影音/audio 下已转码 mp3（页面未转码的条目如实标「待提取」）；视频 300 条 = 41_还原树内 res/video.gpk 已还原 mp4（含 103 条按条目号命名的未命名视频）。无 cdata 表行 ⇒ 按名册级（roster / static-export）通道登记，媒体文件不复制进 web。"}, "damage_attack": {"publication_status": "published", "category": "二、战力类 / （六）伤害计算 / 2、攻击力", "items": 3}, "damage_defense": {"publication_status": "published", "category": "二、战力类 / （六）伤害计算 / 4、守方侧", "items": 3}, "damage_bonus": {"publication_status": "published", "category": "二、战力类 / （六）伤害计算 / 3、加成", "items": 19}, "weapon_skin_catalog_pe": {"publication_status": "retired", "reason": "草案版（精简字段），格式已被正式板取代", "items": 145, "superseded_by": "weapon_skin_sfx_text_sources"}}}
+{
+ "schema": "lifeafter-wiki-publication-policy-v2",
+ "generated": "2026-11-01",
+ "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。",
+ "boards": {
+  "chip_item_catalog": {
+   "publication_status": "published_hidden",
+   "category": "三、战力类 / （四）芯片",
+   "reason": "芯片图鉴 v2：chip_type 池 003278 中文短名 65 全集（=游戏图鉴同源，用户 UI 65 实证）；id 挂接=common_item 道具行 56 + USER 锚 conf 引用 2（坚如磐石=331026/坚韧不拔=331018）+9 配置名无道具行（id 静态不可得 6+未知 3）。品级/效果文本无静态源。",
+   "items": 65,
+   "superseded_by": "tactical_chip_full",
+   "note": "已被 tactical_chip_full 取代，保留直链，不进首页导航"
+  },
+  "fashion_face": {
+   "publication_status": "quarantined",
+   "reason": "从两个 legacy CHS 全池以正则筛选名称，未建立 table row→name/part/time 关系；池内字符串存在不等于该字符串是面饰记录。"
+  },
+  "fashion_wardrobe": {
+   "publication_status": "published",
+   "reason": "★ 2026-09-28 解除隔离并转 published。原隔离理由两条已解：① 「名字/部件取整行 CHS 字符串的正则启发式」→ 改用【表结构解析产物】的 name / part_type 字段（BinDict 按 schema 逐行解出，非正则）；② 「聚合后丢失原表 row key，不能回溯」→ 每条带 row_keys（该外观的全部 row_key，可回溯）。★ join 口径 = 归一名字（剥部件后缀 / 剥「·XXX」/ 剥时效包装）；禁用 model_id —— 旧板与表的 model_id 交集 0，数字相等是巧合（实测 76.9% 假命中）。★ 名字只从 fashion_data 来（玩家可见表）；player_appear_data 是部件工程表，只作 desc 补源（混入会把「005high套（女）」「100级甲」等内部工程名当时装名，实测踩过）。覆盖 1253 件 / desc 1224 件（97.7%）/ row_keys 100%。证据等级 = structure（静态度量，非运行时可证）。",
+   "category": "一、时装类 / （一）人物时装",
+   "items": 1253
+  },
+  "gift_data_text_sources": {
+   "publication_status": "published",
+   "reason": "当前 Documents BA8 包的 gift_data base/CHS 同快照行级文字表。每条名称与说明均保留 row key、字段 CHS 槽位、文本值 CHS 槽位与 decoded payload SHA；仅为文本来源，不表示礼盒可得、可开启、奖励、价格、货币、限购或活动启用。",
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
+  },
+  "nucleus_cards_classic": {
+   "publication_status": "published_hidden",
+   "category": "三、战力类 / （三）核芯",
+   "reason": "核芯卡定版（双服合并）：经典服 nucleus_build_data 主表(40949/34899)+kj1(9503/28181) 12 星体系 76 颗 + 简单生存服独有 1 颗（淬焰燃锋）；品级=经典服 kj1 common_item 覆盖 + BA8 660000 兜底；星级段 5/9/12 解锁点；武器类型=种类（码）同行。",
+   "superseded_by": "mutation_core_full",
+   "note": "已被 mutation_core_full 取代，保留直链，不进首页导航"
+  },
+  "nucleus_entry_slots": {
+   "publication_status": "unpublished",
+   "category": "三、战力类 / （2）异变核芯·词条",
+   "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"
+  },
+  "nucleus_item_catalog": {
+   "publication_status": "unpublished",
+   "category": "三、战力类 / （2）异变核芯",
+   "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"
+  },
+  "weapon_skin_sfx_text_sources": {
+   "publication_status": "published",
+   "category": "一、时装类 / （二）武器皮肤",
+   "items": 115,
+   "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data + SFX；基线缺失时版本状态标无基线不可比"
+  },
+  "weapon_skin_static_candidates_v01": {
+   "publication_status": "published_hidden",
+   "category": "二、时装类 / （七）武器皮肤（隐藏审计板：静态候选 / 身份未解析）",
+   "items": 115,
+   "reason": "P4-C 身份研究仍冻结；展示 126 条静态配置行与 3 条 behavior-only 行，全部 identity unresolved，旧整数补名和父项推断均未启用。"
+  },
+  "vehicle_full": {
+   "publication_status": "published",
+   "reason": "载具全量总表：vehicle_ui_data 同快照 277 行逐行重放（205 严格 + 72 行尾内联变体宽容重放）；名称/描述/品牌/类型/数值全部同表内字段，图标按「UI 清单路径 → fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。",
+   "category": "一、时装类 / （三）载具"
+  },
+  "tactical_chip_full": {
+   "publication_status": "published",
+   "category": "二、战力类 / （二）战术芯片",
+   "reason": "战术芯片全量表：chip_type_data 71 枚（=道具行/图鉴同源）+ belt_chip_data 同名主键 852 行（71×12 档，属性 desc/参数/品质/拆解全部同表内字段）。道具行只按图标文件名编号匹配 common_item（不做等整数跨源拼接），奖池只读 chip_roll_weight_data.reward_id 参数组；图标按「UI 清单路径 → .ktx fid → gpk_loc0」逐图核验后从 pe_packs 解码。只证静态表内容与资源存在，不证业务启用/当前可获取。",
+   "items": 71
+  },
+  "mutation_core_full": {
+   "publication_status": "published",
+   "category": "二、战力类 / （一）异变核芯",
+   "items": 133,
+   "reason": "核芯唯一总表：common_item 660000 段 132 行 + nucleus_build_data(kj1) 76 枚按名合并；星上限按经典服 12 星展示；卡面简略、详情展开。"
+  },
+  "server_types": {
+   "publication_status": "published",
+   "category": "四、服务与包体 / （一）服务器类型"
+  },
+  "lottery_periods": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / （一）活动奖池"
+  },
+  "drone_catalog": {
+   "publication_status": "published",
+   "category": "二、战力类 / （三）无人机"
+  },
+  "upcoming_auto": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / （二）预告专栏",
+   "items": 16,
+   "reason": "预告专栏唯一板：武器皮肤未上架段 + 未开始奖池期次（万圣绮夜）连带成员。分类与条目数随板产物同步；数值来自各源板行，不含上线/价格/概率推断。"
+  },
+  "item_master_full": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （一）全量道具总表",
+   "items": 1189,
+   "reason": "P4-A 冻结产物：1,189 条 verified item；hide_in_bag 缺席保持 unresolved。"
+  },
+  "activity_master": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / （一）活动奖池"
+  },
+  "skill_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （四）实体技能"
+  },
+  "title_catalog": {
+   "publication_status": "published",
+   "category": "一、时装类 / （六）称号"
+  },
+  "avatar_catalog": {
+   "publication_status": "published",
+   "category": "一、时装类 / （五）头像、头像框、名片框",
+   "items": 681
+  },
+  "talent_catalog": {
+   "publication_status": "published",
+   "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能",
+   "items": 4944,
+   "reason": "天赋总表（2026-10-29 用户定版「八也合回一个」）：原按职业系拆分的战斗天赋/职业天赋两卡合并回一张总表，id 无重叠；页内「职业系」筛选区分 战斗/采集/制造。数据=体验服 Documents 快照 new_talent_data / talent_profession_data（简单生存服）。"
+  },
+  "edible_catalog": {
+   "publication_status": "published",
+   "category": "二、战力类 / （四）料理与食谱"
+  },
+  "illustration_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （六）图鉴收集",
+   "items": 1547
+  },
+  "recipe_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （二）配方"
+  },
+  "buff_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （五）状态"
+  },
+  "entity_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （四）实体技能"
+  },
+  "desc_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
+  },
+  "text_notice_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （三）说明条目、文字与提示总表"
+  },
+  "gene_potential_catalog": {
+   "publication_status": "published",
+   "category": "二、战力类 / （七）各种族潜能",
+   "items": 133
+  },
+  "scene_balance": {
+   "publication_status": "published",
+   "category": "二、战力类 / （六）伤害计算 / 1、场景",
+   "reason": "场景加成上下限：special_hurt_params_data(kj1) × space_data。按场景名合并，PvP 优先。",
+   "items": 63
+  },
+  "kill_broadcast": {
+   "publication_status": "published",
+   "category": "一、时装类 / （四）击败播报与全场最佳动画",
+   "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。",
+   "items": 13
+  },
+  "common_item_text_sources": {
+   "publication_status": "retired",
+   "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+  },
+  "fashion_wardrobe_slots": {
+   "publication_status": "retired",
+   "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
+  },
+  "future_lottery_preview": {
+   "publication_status": "unpublished",
+   "category": "零、新更新与预告专栏（游戏未上线资源预告） / （2）新奖池活动",
+   "items": 26,
+   "reason": "该板依赖 reward_pool_data_base（PE 还原树无此表，只有 PC Documents），builder 的源 SHA 校验拒绝重建；板文件本身也不存在。暂不上架，等 PE 侧补表或改用活动表口径重做。"
+  },
+  "equipment_attrs": {
+   "publication_status": "published",
+   "category": "二、战力类 / （五）装备属性（武器·护甲）",
+   "items": 2586,
+   "reason": "装备属性（武器·护甲）三服总览卡（2026-11-01 用户定版：按服别拆独立卡 + 另出总览卡）：共 2586 条，条目级 server_branch（简单生存服=kj1 / 经典服=base / 月卡服=yk）+ 页内「服别」下拉筛选，分服行数据不混排；三张分服卡见 equipment_attrs_kj1 / _classic / _yk。数据=30_分析/all_equips_全量_node索引_20261029 三表（node 索引法 100% 解码活跃行，2026-11-01 就地扩 icon/desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value）。2D 图标取客户端 ui/item_icon 大图 _b，三服同路径共用。weapon_kind 为数值码，中文标签按装备名归纳（非官方枚举）。全量边界：护臂/进化武器行数值在未留盘热更 inc 分片内，待增量载荷入库后重跑补全。"
+  },
+  "appearance_bud": {
+   "publication_status": "published",
+   "category": "一、时装类 / （八）半感染者花苞",
+   "items": 168,
+   "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
+  },
+  "cdn_library": {
+   "publication_status": "published",
+   "category": "四、服务与包体 / （二）CDN 资源库",
+   "items": 711,
+   "reason": "CDN 资源库总览：清单 1650 个文件归并为 711 个逻辑包（含多卷与画质/设备档变体），体积/档位/条目数取自 CDN 清单与 cdn_index（只拉头+条目表，未下载荷）；本地状态按 pe_npk_full / pe_npk_20261029 / pe_gres_android 实测。静态清单不等于客户端实装内容，档位选择由设备决定。"
+  },
+  "local_restore_tree": {
+   "publication_status": "published",
+   "category": "四、服务与包体 / （三）本地还原树",
+   "items": 33601,
+   "reason": "本地还原树全量配置清单：一行 = 一个已还原的配置文件（合并账本 v2 的 files 记录），含相对路径、类型、字节、来源（合并体/增量快照）、落盘时间与目录名称还原率。只读本地冻结产物，不含线上客户端数据，也不表示可用性/可得性。"
+  },
+  "name_restore_method": {
+   "publication_status": "published",
+   "category": "四、服务与包体 / （四）文件名还原方法论",
+   "reason": "方法论板：文件名还原的十一条路径与实测命中数（本会话实测，脚本可复跑）。结论 3,600/7,192=50.1%；有效 5 条、证伪 6 条、未做 1 条。只记录方法与数字，不含未验证结论。",
+   "items": 13,
+   "generated": "2026-11-01"
+  },
+  "server_whitelist": {
+   "publication_status": "published",
+   "reason": "服务器与白名单：五轮名单规模、门禁分区判据、三道对齐。全部来自公网明文与已解码的分区表，数字为本轮实测。",
+   "category": "四、服务与包体 / （五）测试服与白名单",
+   "items": 20,
+   "generated": "2026-11-01"
+  },
+  "package_entries": {
+   "publication_status": "published",
+   "reason": "包体入口全矩阵：国内真入口 47、假 200 占位 18、海外 63；版本线关系与分发参数。全部为公开清单实测。",
+   "category": "四、服务与包体 / （六）包体入口与版本线",
+   "items": 19,
+   "generated": "2026-11-01"
+  },
+  "equipment_attrs_kj1": {
+   "publication_status": "published",
+   "category": "二、战力类 / （五）装备属性（武器·护甲）",
+   "items": 590,
+   "reason": "装备属性（武器·护甲）分服卡 · 简单生存服（数据通道 kj1）：590 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+  },
+  "equipment_attrs_classic": {
+   "publication_status": "published",
+   "category": "二、战力类 / （五）装备属性（武器·护甲）",
+   "items": 1057,
+   "reason": "装备属性（武器·护甲）分服卡 · 经典服（数据通道 classic）：1057 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+  },
+  "equipment_attrs_yk": {
+   "publication_status": "published",
+   "category": "二、战力类 / （五）装备属性（武器·护甲）",
+   "items": 939,
+   "reason": "装备属性（武器·护甲）分服卡 · 月卡服（数据通道 yk）：939 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+  },
+  "media_catalog": {
+   "publication_status": "published",
+   "category": "三、综合资料 / （七）影音资源",
+   "items": 20259,
+   "generated": "2026-11-02",
+   "reason": "影音资源库：左侧分类树 + 常驻播放器。音频 19,959 条 = res/sound.gpk（含热更 layers npk）FSB5 样本名索引的去重样本名，可播文件为 01_索引与产物/20_提取/影音/audio 下已转码 mp3（页面未转码的条目如实标「待提取」）；视频 300 条 = 41_还原树内 res/video.gpk 已还原 mp4（含 103 条按条目号命名的未命名视频）。无 cdata 表行 ⇒ 按名册级（roster / static-export）通道登记，媒体文件不复制进 web。"
+  },
+  "damage_attack": {
+   "publication_status": "published",
+   "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
+   "items": 3
+  },
+  "damage_defense": {
+   "publication_status": "published",
+   "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
+   "items": 3
+  },
+  "damage_bonus": {
+   "publication_status": "published",
+   "category": "二、战力类 / （六）伤害计算 / 3、加成",
+   "items": 19
+  },
+  "weapon_skin_catalog_pe": {
+   "publication_status": "retired",
+   "reason": "草案版（精简字段），格式已被正式板取代",
+   "items": 145,
+   "superseded_by": "weapon_skin_sfx_text_sources"
+  }
+ }
+}

@@ -110,12 +110,13 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "avatar_catalog": {
       "publication_status": "published",
-      "category": "一、时装类 / （五）头像、头像框、名片框"
+      "category": "一、时装类 / （五）头像、头像框、名片框",
+      "items": 681
     },
     "talent_catalog": {
       "publication_status": "published",
       "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能",
-      "items": 5304,
+      "items": 4944,
       "reason": "天赋总表（2026-10-29 用户定版「八也合回一个」）：原按职业系拆分的战斗天赋/职业天赋两卡合并回一张总表，id 无重叠；页内「职业系」筛选区分 战斗/采集/制造。数据=体验服 Documents 快照 new_talent_data / talent_profession_data（简单生存服）。"
     },
     "edible_catalog": {
@@ -124,7 +125,8 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "illustration_catalog": {
       "publication_status": "published",
-      "category": "三、综合资料 / （六）图鉴收集"
+      "category": "三、综合资料 / （六）图鉴收集",
+      "items": 1547
     },
     "recipe_catalog": {
       "publication_status": "published",
@@ -148,7 +150,8 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "gene_potential_catalog": {
       "publication_status": "published",
-      "category": "二、战力类 / （七）各种族潜能"
+      "category": "二、战力类 / （七）各种族潜能",
+      "items": 133
     },
     "scene_balance": {
       "publication_status": "published",

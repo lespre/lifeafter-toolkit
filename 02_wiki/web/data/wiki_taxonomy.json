@@ -1,1 +1,236 @@
-{"schema": "wiki-taxonomy/v1", "generated": "2026-11-02", "说明": "置顶、活动奖池与预告 + 三分类；「（六）场景平衡」改为「（六）伤害计算」，下含 1、场景平衡 / 2、“伤害加成”的分段函数", "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…", "折叠": false, "树": [{"id": "preview", "name": "置顶、活动奖池与预告", "boards": [], "children": [{"name": "（一）活动奖池", "boards": ["activity_master", "lottery_periods"], "children": []}, {"name": "（二）预告专栏", "boards": ["upcoming_auto"], "children": []}]}, {"id": "fashion", "name": "一、时装类", "boards": [], "children": [{"name": "（一）人物时装", "boards": ["fashion_wardrobe"]}, {"name": "（二）武器皮肤", "boards": ["weapon_skin_sfx_text_sources"]}, {"name": "（三）载具", "boards": ["vehicle_full"]}, {"name": "（四）击败播报与全场最佳动画", "boards": ["kill_broadcast"]}, {"name": "（五）头像、头像框、名片框", "boards": ["avatar_catalog"]}, {"name": "（六）称号", "boards": ["title_catalog"], "children": []}]}, {"id": "combat", "name": "二、战力类", "boards": [], "children": [{"name": "（一）异变核芯", "boards": ["mutation_core_full"]}, {"name": "（二）战术芯片", "boards": ["tactical_chip_full"]}, {"name": "（三）无人机", "boards": ["drone_catalog"]}, {"name": "（四）料理与食谱", "boards": ["edible_catalog"]}, {"name": "（五）装备属性（武器·护甲）", "boards": ["equipment_attrs", "equipment_attrs_kj1", "equipment_attrs_classic", "equipment_attrs_yk"]}, {"name": "（六）伤害计算", "boards": ["scene_balance", "damage_attack", "damage_bonus", "damage_defense"]}, {"name": "（七）各种族潜能", "boards": ["gene_potential_catalog"]}, {"name": "（八）战斗天赋、职业天赋、职业技能", "boards": ["talent_catalog"]}]}, {"id": "reference", "name": "三、综合资料", "boards": [], "children": [{"name": "（一）全量道具总表", "boards": ["item_master_full"]}, {"name": "（二）配方", "boards": ["recipe_catalog"]}, {"name": "（三）说明条目、文字与提示总表", "boards": ["desc_catalog", "text_notice_catalog", "gift_data_text_sources"]}, {"name": "（四）实体技能", "boards": ["entity_catalog", "skill_catalog"]}, {"name": "（五）状态", "boards": ["buff_catalog"]}, {"name": "（六）图鉴收集", "boards": ["illustration_catalog"]}, {"name": "（七）影音资源", "boards": ["media_catalog"]}]}, {"id": "service_package", "name": "四、服务与包体", "boards": [], "children": [{"name": "（一）服务器类型", "boards": ["server_types"]}, {"name": "（二）CDN 资源库", "boards": ["cdn_library"]}, {"name": "（三）本地还原树", "boards": ["local_restore_tree"]}, {"name": "（四）文件名还原方法论", "boards": ["name_restore_method"]}, {"name": "（五）测试服与白名单", "boards": ["server_whitelist"]}, {"name": "（六）包体入口与版本线", "boards": ["package_entries"]}]}]}
+{
+ "schema": "wiki-taxonomy/v1",
+ "generated": "2026-11-02",
+ "说明": "置顶、活动奖池与预告 + 三分类；「（六）场景平衡」改为「（六）伤害计算」，下含 1、场景平衡 / 2、“伤害加成”的分段函数",
+ "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…",
+ "折叠": false,
+ "树": [
+  {
+   "id": "preview",
+   "name": "置顶、活动奖池与预告",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）活动奖池",
+     "boards": [
+      "activity_master",
+      "lottery_periods"
+     ],
+     "children": []
+    },
+    {
+     "name": "（二）预告专栏",
+     "boards": [
+      "upcoming_auto"
+     ],
+     "children": []
+    }
+   ]
+  },
+  {
+   "id": "fashion",
+   "name": "一、时装类",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）人物时装",
+     "boards": [
+      "fashion_wardrobe"
+     ]
+    },
+    {
+     "name": "（二）武器皮肤",
+     "boards": [
+      "weapon_skin_sfx_text_sources"
+     ]
+    },
+    {
+     "name": "（三）载具",
+     "boards": [
+      "vehicle_full"
+     ]
+    },
+    {
+     "name": "（四）击败播报与全场最佳动画",
+     "boards": [
+      "kill_broadcast"
+     ]
+    },
+    {
+     "name": "（五）头像、头像框、名片框",
+     "boards": [
+      "avatar_catalog"
+     ]
+    },
+    {
+     "name": "（六）称号",
+     "boards": [
+      "title_catalog"
+     ],
+     "children": []
+    }
+   ]
+  },
+  {
+   "id": "combat",
+   "name": "二、战力类",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）异变核芯",
+     "boards": [
+      "mutation_core_full"
+     ]
+    },
+    {
+     "name": "（二）战术芯片",
+     "boards": [
+      "tactical_chip_full"
+     ]
+    },
+    {
+     "name": "（三）无人机",
+     "boards": [
+      "drone_catalog"
+     ]
+    },
+    {
+     "name": "（四）料理与食谱",
+     "boards": [
+      "edible_catalog"
+     ]
+    },
+    {
+     "name": "（五）装备属性（武器·护甲）",
+     "boards": [
+      "equipment_attrs",
+      "equipment_attrs_kj1",
+      "equipment_attrs_classic",
+      "equipment_attrs_yk"
+     ]
+    },
+    {
+     "name": "1、场景平衡",
+     "boards": [
+      "scene_balance"
+     ]
+    },
+    {
+     "name": "2、伤害计算",
+     "boards": [
+      "damage_attack",
+      "damage_bonus",
+      "damage_defense"
+     ]
+    },
+    {
+     "name": "（七）各种族潜能",
+     "boards": [
+      "gene_potential_catalog"
+     ]
+    },
+    {
+     "name": "（八）战斗天赋、职业天赋、职业技能",
+     "boards": [
+      "talent_catalog"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reference",
+   "name": "三、综合资料",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）全量道具总表",
+     "boards": [
+      "item_master_full"
+     ]
+    },
+    {
+     "name": "（二）配方",
+     "boards": [
+      "recipe_catalog"
+     ]
+    },
+    {
+     "name": "（三）说明条目、文字与提示总表",
+     "boards": [
+      "desc_catalog",
+      "text_notice_catalog",
+      "gift_data_text_sources"
+     ]
+    },
+    {
+     "name": "（四）实体技能",
+     "boards": [
+      "entity_catalog",
+      "skill_catalog"
+     ]
+    },
+    {
+     "name": "（五）状态",
+     "boards": [
+      "buff_catalog"
+     ]
+    },
+    {
+     "name": "（六）图鉴收集",
+     "boards": [
+      "illustration_catalog"
+     ]
+    },
+    {
+     "name": "（七）影音资源",
+     "boards": [
+      "media_catalog"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "service_package",
+   "name": "四、服务与包体",
+   "boards": [],
+   "children": [
+    {
+     "name": "（一）服务器类型",
+     "boards": [
+      "server_types"
+     ]
+    },
+    {
+     "name": "（二）CDN 资源库",
+     "boards": [
+      "cdn_library"
+     ]
+    },
+    {
+     "name": "（三）本地还原树",
+     "boards": [
+      "local_restore_tree"
+     ]
+    },
+    {
+     "name": "（四）文件名还原方法论",
+     "boards": [
+      "name_restore_method"
+     ]
+    },
+    {
+     "name": "（五）测试服与白名单",
+     "boards": [
+      "server_whitelist"
+     ]
+    },
+    {
+     "name": "（六）包体入口与版本线",
+     "boards": [
+      "package_entries"
+     ]
+    }
+   ]
+  }
+ ]
+}
