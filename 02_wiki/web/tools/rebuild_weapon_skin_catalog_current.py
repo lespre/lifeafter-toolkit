@@ -44,7 +44,7 @@ from bindict_provenance import decode_table_rows_with_chs_slots  # noqa: E402
 from toolkit_core.bindict_rows import uleb  # noqa: E402
 from toolkit_core.bindict_table import parse_legacy_chs_pool, parse_index  # noqa: E402
 
-SOURCE_REGISTRY = ROOT / "data" / "live_sources.json"
+SOURCE_REGISTRY = ROOT / "data" / "live_sources_pe.json"
 DEFAULT_OUTPUT = ROOT / "data" / "boards" / "weapon_skin_sfx_text_sources.json"
 DEFAULT_CSV_OUTPUT = ROOT / str(INDEX_ROOT / "site_data") / "exports" / "weapon_skin_catalog_current.csv"
 DEFAULT_REFERENCE_CSV = ROOT / str(INDEX_ROOT / "site_data") / "reference_inputs" / "weapon_skin_catalog_user_reference_v3_2.csv"
@@ -607,7 +607,8 @@ def make_main_item(
         "official_desc": official["desc"],
         "name_resolution": resolution,
         "sfx_consensus_state": sfx_consensus_state(children),
-        "version_status": "BA8/root 均有" if skin_id in root_keys else "BA8 新增（相对 root 对照）",
+        "version_status": ("无基线（不可比）" if root_keys is None
+                           else ("BA8/root 均有" if skin_id in root_keys else "BA8 新增（相对 root 对照）")),
         "model_path": model_path,
         "field_provenance": row.get("value_provenance", {}),
         "level": level,
@@ -645,7 +646,7 @@ def make_main_item(
             "root_comparison": {
                 "source_lock_sha256": root_metadata["package_sha256"],
                 "comparison": "key-presence only; never used as current display-name source",
-                "root_row_present": skin_id in root_keys,
+                "root_row_present": (None if root_keys is None else skin_id in root_keys),
             },
         },
     }
@@ -720,7 +721,8 @@ def make_variant_item(
         "official_desc": None,
         "name_resolution": resolution,
         "sfx_consensus_state": sfx_consensus_state(children),
-        "version_status": "BA8/root 均有" if variant_id in root_keys else "BA8 新增（相对 root 对照）",
+        "version_status": ("无基线（不可比）" if root_keys is None
+                           else ("BA8/root 均有" if variant_id in root_keys else "BA8 新增（相对 root 对照）")),
         "model_path": model_path,
         "level": level,
         "grade": grade_label(level),
@@ -750,7 +752,7 @@ def make_variant_item(
             "root_comparison": {
                 "source_lock_sha256": root_metadata["package_sha256"],
                 "comparison": "key-presence only; never used as current display-name source",
-                "root_row_present": variant_id in root_keys,
+                "root_row_present": (None if root_keys is None else variant_id in root_keys),
             },
         },
     }
@@ -1286,21 +1288,30 @@ def main(argv: list[str] | None = None) -> int:
             + ", ".join(map(str, orphan_variant_parents[:8]))
         )
 
-    root_reader = LiveNpkReader(ROOT_BASELINE_PATH, "root 8-27 comparison baseline")
-    root_meta = root_reader.source_metadata()
-    if root_meta["package_sha256"] != ROOT_BASELINE_SHA256:
-        raise RuntimeError("root comparison SHA mismatch; refuse to use changed baseline")
-    if root_meta["bytes"] != ROOT_BASELINE_BYTES or root_meta["mtime_ns"] != ROOT_BASELINE_MTIME_NS:
-        raise RuntimeError("root comparison stat mismatch; refuse to use changed baseline")
-    root_entries = {f"{entry.file_id:016X}": entry for entry in root_reader._entries}
-    root_base, root_base_entry = read_payload(
-        root_reader, ROOT_BASELINE_PATH, root_entries, FIDS["weapon_skin_base"], "root_weapon_skin_base"
-    )
-    root_chs, root_chs_entry = read_payload(
-        root_reader, ROOT_BASELINE_PATH, root_entries, FIDS["weapon_skin_chs"], "root_weapon_skin_chs"
-    )
-    root_skin_rows, _ = table_rows(root_base, root_chs)
-    root_keys = {row["key"] for row in root_skin_rows if isinstance(row.get("key"), int)}
+    # ★ 2026-11-04：历史基线容器（8-27 root 包）在本机不存在，且按要求只用 PE 源。
+    #   基线存在才做「新增/移除」对比；不存在就降级为「无基线（不可比）」，不假装有对照。
+    root_meta = None
+    root_keys = None
+    root_base_entry = root_chs_entry = None
+    if ROOT_BASELINE_PATH.is_file():
+        root_reader = LiveNpkReader(ROOT_BASELINE_PATH, "root 8-27 comparison baseline")
+        root_meta = root_reader.source_metadata()
+        if root_meta["package_sha256"] != ROOT_BASELINE_SHA256:
+            raise RuntimeError("root comparison SHA mismatch; refuse to use changed baseline")
+        if root_meta["bytes"] != ROOT_BASELINE_BYTES or root_meta["mtime_ns"] != ROOT_BASELINE_MTIME_NS:
+            raise RuntimeError("root comparison stat mismatch; refuse to use changed baseline")
+        root_entries = {f"{entry.file_id:016X}": entry for entry in root_reader._entries}
+        root_base, root_base_entry = read_payload(
+            root_reader, ROOT_BASELINE_PATH, root_entries, FIDS["weapon_skin_base"], "root_weapon_skin_base"
+        )
+        root_chs, root_chs_entry = read_payload(
+            root_reader, ROOT_BASELINE_PATH, root_entries, FIDS["weapon_skin_chs"], "root_weapon_skin_chs"
+        )
+        root_skin_rows, _ = table_rows(root_base, root_chs)
+        root_keys = {row["key"] for row in root_skin_rows if isinstance(row.get("key"), int)}
+        print("基线容器存在，做新增/移除对比：root 行", len(root_keys))
+    else:
+        print("⚠ 基线容器缺失 → 跳过「相对 root 的新增/移除」对比（标为无基线不可比）")
 
     current_sfx_entries = [
         current_decoded["weapon_skin_sfx_base"][1], current_decoded["weapon_skin_sfx_chs"][1],
@@ -1308,8 +1319,7 @@ def main(argv: list[str] | None = None) -> int:
     skin_source_entries = [
         current_decoded["weapon_skin_base"][1], current_decoded["weapon_skin_chs"][1],
         current_decoded["weapon_skin_sfx_base"][1], current_decoded["weapon_skin_sfx_chs"][1],
-        root_base_entry, root_chs_entry,
-    ]
+    ] + ([root_base_entry, root_chs_entry] if root_base_entry else [])
     item_source_entries = [
         current_decoded["common_item_base"][1], current_decoded["common_item_chs"][1],
     ]
@@ -1329,7 +1339,8 @@ def main(argv: list[str] | None = None) -> int:
     # 结构判据（不写死具体 id —— 快照会变：2026-09-10 热更后为 1110185/1110186）：
     #  行为资源行存在、无 weapon_skin_data 父项、无 common_item 道具行。
     if not behavior_preview_ids:
-        raise RuntimeError("no behavior-only preview rows found in current snapshot")
+        # 2026-11-04：热更后该包内已无非父项的行为资源行；不中止，只记为 0（不编造预览层）
+        print("⚠ 当前包内没有 behavior-only 预览行 → 预览层置空")
     bad_preview = sorted(x for x in behavior_preview_ids if x in item_by_key)
     if bad_preview:
         raise RuntimeError(f"behavior-only rows unexpectedly have item rows: {bad_preview}")
@@ -1503,8 +1514,8 @@ def main(argv: list[str] | None = None) -> int:
         "behavior_preview_rows": len(preview_ids),
         "catalog_rows": len(items),
         "nested_variant_rows": nested_variants,
-        "root_comparison_parent_rows": len(root_keys),
-        "ba8_only_parent_rows": len(parent_set - root_keys),
+        "root_comparison_parent_rows": (0 if root_keys is None else len(root_keys)),
+        "ba8_only_parent_rows": (None if root_keys is None else len(parent_set - root_keys)),
         "sfx_rows": sfx_count,
         "sfx_parent_skins": len(sfx_skin_ids),
         "sfx_on_variant_skins": len(sfx_on_variants),

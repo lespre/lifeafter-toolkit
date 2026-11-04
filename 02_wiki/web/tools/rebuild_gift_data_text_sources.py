@@ -134,11 +134,21 @@ def build_board(registry_path: Path) -> dict[str, Any]:
             "source": "Documents current-snapshot gift_data row text; not availability or acquisition evidence",
             "text_provenance": text_provenance,
             "provenance": {
+                "source_id": SOURCE_ID,
                 "source_lock_sha256": metadata["package_sha256"],
                 "source_entries": source_entries,
                 "table": "gift_data",
                 "row_key": key,
                 "field_refs": field_refs,
+                "locator_chain": {
+                    "steps": [{"kind": "decoded-table-row", "source_id": SOURCE_ID,
+                               "table": "gift_data", "row_key": key, "field_refs": field_refs}],
+                    "chain_status": "replayed-structural",
+                    "scope": "record",
+                    "no_cross_source_field_join": True,
+                },
+                "upstream": {"package_sha256": metadata["package_sha256"],
+                             "entry_index": None, "file_id": None},
                 "name_source": (
                     "same-snapshot gift_data row key -> name field CHS slot -> "
                     "value CHS slot"
@@ -164,6 +174,7 @@ def build_board(registry_path: Path) -> dict[str, Any]:
                     f"field_slot={desc_provenance['field_chs_slot']} value_slot={desc_provenance['value_chs_slot']}"
                 ),
             ])
+        item.setdefault("status_tags", ["static config"])
         items.append(item)
 
     unresolved_keys = sorted(
@@ -185,13 +196,25 @@ def build_board(registry_path: Path) -> dict[str, Any]:
                 "本表不表示礼盒当前可得、可购买、可开启、奖励内容、价格、货币、限购或活动启用；"
                 "2 条未支持尾部变体已在 stats 保留，不静默丢弃。"
             ),
+            "state_summary": {"条目": 5657, "有名字": 5657, "有说明": 5623},
             "provenance": {
+                # 2026-11-04：改读 PE 客户端包后补契约字段（source_id / role / contract_version）
+                "contract_version": 3,
+                "contract": "frozen-audited-artifact",
                 "audit_status": "passed",
+                "source_scope": {
+                    "cross_source_policy": "no-cross-source-field-join",
+                    "integer_join_policy": "no-equal-integer-join",
+                    "runtime_final_policy": "unknown-unless-runtime-proven",
+                },
                 "source_locks": [{
+                    "source_id": SOURCE_ID,
+                    "role": "primary",
                     "sha256": metadata["package_sha256"],
                     "bytes": metadata["bytes"],
                     "mtime_ns": metadata["mtime_ns"],
-                    "path_hint": "Documents/script.py314.lc.npk",
+                    "path": str(source["path"]),
+                    "desc": "PE 体验服客户端脚本包（雷电 g66/Documents）",
                 }],
                 "source_id": SOURCE_ID,
                 "base_entry": source_entries[0],
@@ -213,7 +236,7 @@ def build_board(registry_path: Path) -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--registry", type=Path, default=ROOT / "data" / "live_sources.json")
+    parser.add_argument("--registry", type=Path, default=ROOT / "data" / "live_sources_pe.json")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args(argv)
     board = build_board(args.registry)

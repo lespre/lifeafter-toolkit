@@ -44,10 +44,11 @@
    "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"
   },
   "weapon_skin_sfx_text_sources": {
-   "publication_status": "published",
+   "publication_status": "retired",
    "category": "一、时装类 / （二）武器皮肤",
    "items": 115,
-   "reason": "武器皮肤图鉴：113 条 current_parent（正式名 113/113 verified，来自同快照 common_item_data_base row key==skin_id）+ 2 条仅行为资源行；含品级/武器类型/模型路径/SFX 子项/时限变体/上架状态（release_state：on_sale/upcoming/no_sale_field/behavior_only，正源=皮肤行 sale_ts）。静态存在不等于可得、价格、概率或战斗效果。"
+   "reason": "已被 weapon_skin_catalog_pe 取代（旧版依赖 PC 包 + 8-27 基线，均不可用）",
+   "superseded_by": "weapon_skin_catalog_pe"
   },
   "weapon_skin_static_candidates_v01": {
    "publication_status": "published_hidden",
@@ -260,6 +261,11 @@
    "publication_status": "published",
    "category": "二、战力类 / （六）伤害计算 / 3、加成",
    "items": 19
+  },
+  "weapon_skin_catalog_pe": {
+   "publication_status": "published",
+   "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data，直接读雷电客户端包；不做历史基线对比",
+   "items": 145
   }
  }
 }

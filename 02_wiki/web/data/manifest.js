@@ -455,26 +455,28 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（内测版）当前包 · 礼盒名称与说明文字表",
-      "category": "三、综合资料 / （三）说明条目、文字与提示总表",
+      "name": "当前包 · 礼盒名称与说明文字表",
+      "category": "一、道具总表 / （二）礼盒",
       "board": "gift_data_text_sources",
-      "items": 5477,
-      "generated": "2026-09-13",
-      "source_server": "简单生存服",
-      "package_sha": "508bb5bdaac0aaf09acc43a31939e150abf45a22429846c7fb49bc1b5b20cdf3",
+      "items": 5657,
+      "generated": "2026-11-04",
+      "source_server": "playertest",
+      "package_sha": "6218ca752e8d17fcff84fd9bb3914eaa05d4d0869a0dd688832583f6cde556c6",
       "evidence": {
-        "structure": 5477
+        "structure": 5657
       },
       "state_summary": {
-        "static config": 5477
+        "条目": 5657,
+        "有名字": 5657,
+        "有说明": 5623
       },
       "name_status_summary": {},
       "provenance_status": {
         "contract_version": 3,
         "audit_status": "passed",
-        "dual_source_mode": "dual-version-dual-server",
+        "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 5477
+          "replayed-structural": 5657
         }
       }
     },
@@ -1007,34 +1009,28 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
+      "name": "（二）武器皮肤 · 当前包图鉴",
       "category": "一、时装类 / （二）武器皮肤",
-      "board": "weapon_skin_sfx_text_sources",
-      "items": 124,
-      "generated": "2026-10-17T00:06:34+08:00",
-      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（weapon_skin_data.py、weapon_skin_sfx_function_data.py） · 资源 41_还原树/pe/资源",
-      "package_sha": "06b3361167280c62c42a44f7c9a45d1e4749a3e6a6f87bb032224157761a9274",
+      "board": "weapon_skin_catalog_pe",
+      "items": 145,
+      "generated": "2026-11-04",
+      "source_server": "PE 体验服客户端 script.py314.lc.npk（雷电 11-03 热更后）",
+      "package_sha": "6218ca752e8d17fcff84fd9bb3914eaa05d4d0869a0dd688832583f6cde556c6",
       "evidence": {
-        "structure": 124
+        "structure": 145
       },
       "state_summary": {
-        "verified": 0,
-        "unresolved": 122,
-        "quarantined": 0,
-        "static config": 122,
-        "runtime final unknown": 0
+        "条目": 145,
+        "有道具行": 143,
+        "有音效": 84
       },
-      "name_status_summary": {
-        "verified": 138,
-        "candidate": 1,
-        "unresolved": 3
-      },
+      "name_status_summary": {},
       "provenance_status": {
         "contract_version": 3,
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 124
+          "replayed-structural": 145
         }
       }
     }
