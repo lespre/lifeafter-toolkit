@@ -32,18 +32,23 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "头像总表（头像框 / 动态头像）",
-      "category": "四、资料层 / （五）头像",
+      "name": "头像 / 头像框 / 名片框",
+      "category": "一、时装类 / （五）头像、头像框、名片框",
       "board": "avatar_catalog",
-      "items": 460,
-      "generated": "",
-      "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+      "items": 681,
+      "generated": "2026-10-22",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（dynamic_avatar_conf_data、avatar_frame_conf_data） · 资源 41_还原树/pe/资源",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 460
+        "structure": 681
       },
       "state_summary": {
-        "条目": 460
+        "头像框": 252,
+        "头像": 204,
+        "名片框": 220,
+        "有图": 663,
+        "缺图": 10,
+        "有动画": 347
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -51,7 +56,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 460
+          "replayed-structural": 681
         }
       }
     },
@@ -405,20 +410,23 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "人物·全量时装衣柜",
-      "category": "二、时装类 / （一）全量时装总表",
+      "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 1253,
-      "generated": "2026-09-28",
-      "source_server": "体验服 script 表结构解析（正式解出的 name/desc/part_type/model_id 字段）",
-      "package_sha": "2f2a4fc069a7c76710388ef7e31e153ed0d0023190e231f8223c415bde183df7",
+      "items": 3150,
+      "generated": "2026-10-24",
+      "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
+      "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 1253
+        "structure": 3148,
+        "candidate": 2
       },
       "state_summary": {
-        "unresolved": 1253,
-        "static config": 1253,
+        "unresolved": 2197,
+        "static config": 2197,
         "verified": 0,
-        "runtime final unknown": 1253
+        "runtime final unknown": 2197,
+        "有图": 2045,
+        "无图": 987
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -426,20 +434,21 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 1253
+          "missing": 2,
+          "replayed-structural": 3148
         }
       }
     },
     {
-      "name": "种族潜能总表",
-      "category": "二、战力类 / （六）种族潜能",
+      "name": "（内测版）种族潜能总表",
+      "category": "二、战力类 / （七）各种族潜能",
       "board": "gene_potential_catalog",
-      "items": 63,
-      "generated": "2026-11-04",
-      "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+      "items": 104,
+      "generated": "2026-10-23",
+      "source_server": "简单生存（字段级）+ 经典服（池名册级，待解码）",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 63
+        "structure": 104
       },
       "state_summary": {
         "条目": 63
@@ -450,7 +459,8 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 63
+          "missing": 56,
+          "replayed-structural": 48
         }
       }
     },
@@ -481,18 +491,20 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "图鉴收集总表",
-      "category": "四、资料层 / （六）图鉴收集",
+      "name": "（内测版）图鉴收集总表",
+      "category": "三、综合资料 / （六）图鉴收集",
       "board": "illustration_catalog",
-      "items": 373,
-      "generated": "",
+      "items": 954,
+      "generated": "2026-10-21",
       "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 373
+        "structure": 954
       },
       "state_summary": {
-        "条目": 373
+        "条目": 954,
+        "食物": 581,
+        "特殊能力": 373
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -500,7 +512,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 373
+          "replayed-structural": 954
         }
       }
     },
@@ -880,18 +892,18 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "天赋总表",
-      "category": "二、战力类 / （八）天赋",
+      "name": "（内测版）天赋总表",
+      "category": "二、战力类 / （八）战斗天赋、职业天赋、职业技能",
       "board": "talent_catalog",
-      "items": 4111,
-      "generated": "",
+      "items": 5304,
+      "generated": "2026-10-29",
       "source_server": "简单生存服（体验服 Documents 快照）",
-      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+      "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 4111
+        "structure": 5304
       },
       "state_summary": {
-        "条目": 4111
+        "条目": 5304
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -899,7 +911,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 4111
+          "replayed-structural": 5304
         }
       }
     },

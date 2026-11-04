@@ -84,10 +84,44 @@ def main() -> int:
             print(f"  {bid:34s} {Path(cmd[-1]).name}  (timeout {to}s)")
         return 0
 
+    # ★ 缩水守卫：builder 跑完若条目显著变少（>10%），回滚该板并记录
+    import shutil
+    BOARDS = WEB / "data" / "boards"
+    BAK = PROJ / "90_临时" / "board_backup_before_rebuild"
+
+    def _count(bid: str) -> int:
+        p = BOARDS / f"{bid}.json"
+        if not p.is_file():
+            return -1
+        try:
+            return len(json.loads(p.read_text(encoding="utf-8")).get("items") or [])
+        except Exception:
+            return -1
+
+    def _backup(bid: str) -> None:
+        for ext in (".json", ".js"):
+            src = BOARDS / f"{bid}{ext}"
+            if src.is_file():
+                BAK.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, BAK / f"{bid}{ext}")
+
+    def _restore(bid: str) -> None:
+        for ext in (".json", ".js"):
+            src = BAK / f"{bid}{ext}"
+            if src.is_file():
+                shutil.copy2(src, BOARDS / f"{bid}{ext}")
+
     results = []
     for bid, cmd, to in steps:
         print(f"▶ {bid} …", flush=True)
+        before = _count(bid)
+        _backup(bid)
         rc, note = run(cmd, to)
+        after = _count(bid)
+        if before > 0 and 0 <= after < before * 0.9:
+            _restore(bid)
+            note = f"⚠ 缩水 {before}→{after}（{(after-before)/before*100:.0f}%），已回滚旧板 | {note}"
+            rc = 1
         ok = "✓" if rc == 0 else "✗"
         print(f"  {ok} rc={rc} {note[:160]}", flush=True)
         results.append({"board": bid, "rc": rc, "note": note})
