@@ -171,10 +171,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
     },
     "future_lottery_preview": {
-      "publication_status": "published",
+      "publication_status": "unpublished",
       "category": "零、新更新与预告专栏（游戏未上线资源预告） / （2）新奖池活动",
       "items": 26,
-      "reason": "预告专栏：reward_pool_data_base 中 expiration_time 晚于快照日期的活动实例（按活动名+到期日聚类）；预告=未来档实例，非上线断言。"
+      "reason": "该板依赖 reward_pool_data_base（PE 还原树无此表，只有 PC Documents），builder 的源 SHA 校验拒绝重建；板文件本身也不存在。暂不上架，等 PE 侧补表或改用活动表口径重做。"
     },
     "equipment_attrs": {
       "publication_status": "published",
