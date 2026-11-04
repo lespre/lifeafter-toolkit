@@ -1,7 +1,7 @@
 {
  "schema": "wiki-taxonomy/v1",
- "generated": "2026-11-01",
- "说明": "置顶、活动奖池与预告 + 三分类（原「三、活动奖池」并入置顶类后重编号）",
+ "generated": "2026-11-02",
+ "说明": "置顶、活动奖池与预告 + 三分类；「（六）场景平衡」改为「（六）伤害计算」，下含 1、场景平衡 / 2、“伤害加成”的分段函数",
  "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…",
  "折叠": false,
  "树": [
@@ -41,7 +41,7 @@
     {
      "name": "（二）武器皮肤",
      "boards": [
-      "weapon_skin_sfx_text_sources"
+      "weapon_skin_catalog_pe"
      ]
     },
     {
@@ -110,9 +110,12 @@
      ]
     },
     {
-     "name": "（六）场景平衡",
+     "name": "（六）伤害计算",
      "boards": [
-      "scene_balance"
+      "scene_balance",
+      "damage_attack",
+      "damage_bonus",
+      "damage_defense"
      ]
     },
     {
@@ -171,6 +174,12 @@
      "name": "（六）图鉴收集",
      "boards": [
       "illustration_catalog"
+     ]
+    },
+    {
+     "name": "（七）影音资源",
+     "boards": [
+      "media_catalog"
      ]
     }
    ]

@@ -15,10 +15,6 @@ window.WIKI_PUBLICATION_POLICY = {
       "publication_status": "quarantined",
       "reason": "从两个 legacy CHS 全池以正则筛选名称，未建立 table row→name/part/time 关系；池内字符串存在不等于该字符串是面饰记录。"
     },
-    "fashion_kaijia": {
-      "publication_status": "quarantined",
-      "reason": "以预先手写的联动名集合从启发式时装字符串中命中；未保存逐行 key、字段位置、同包名称来源，不能作为联动外观或缺项结论。"
-    },
     "fashion_wardrobe": {
       "publication_status": "published",
       "reason": "★ 2026-09-28 解除隔离并转 published。原隔离理由两条已解：① 「名字/部件取整行 CHS 字符串的正则启发式」→ 改用【表结构解析产物】的 name / part_type 字段（BinDict 按 schema 逐行解出，非正则）；② 「聚合后丢失原表 row key，不能回溯」→ 每条带 row_keys（该外观的全部 row_key，可回溯）。★ join 口径 = 归一名字（剥部件后缀 / 剥「·XXX」/ 剥时效包装）；禁用 model_id —— 旧板与表的 model_id 交集 0，数字相等是巧合（实测 76.9% 假命中）。★ 名字只从 fashion_data 来（玩家可见表）；player_appear_data 是部件工程表，只作 desc 补源（混入会把「005high套（女）」「100级甲」等内部工程名当时装名，实测踩过）。覆盖 1253 件 / desc 1224 件（97.7%）/ row_keys 100%。证据等级 = structure（静态度量，非运行时可证）。",
@@ -47,44 +43,18 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "三、战力类 / （2）异变核芯",
       "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"
     },
-    "shop_static_candidates": {
-      "publication_status": "quarantined",
-      "reason": "静态 mapping/detail 无 runtime selector 和 consumer 字段语义，且元数据为旧 SHA 780363…；不能作为当前货架、价格、限购、限定核芯或芯片保底依据。"
-    },
-    "vehicle_catalog": {
-      "publication_status": "quarantined",
-      "reason": "all_equips 名称字段已确认跨记录错位，当前名称来自目录推断、同系列投票及语素白名单；这不是 item→name 的定位链。"
-    },
     "weapon_skin_sfx_text_sources": {
-      "publication_status": "published",
+      "publication_status": "retired",
       "category": "一、时装类 / （二）武器皮肤",
       "items": 115,
-      "reason": "武器皮肤图鉴：113 条 current_parent（正式名 113/113 verified，来自同快照 common_item_data_base row key==skin_id）+ 2 条仅行为资源行；含品级/武器类型/模型路径/SFX 子项/时限变体/上架状态（release_state：on_sale/upcoming/no_sale_field/behavior_only，正源=皮肤行 sale_ts）。静态存在不等于可得、价格、概率或战斗效果。"
-    },
-    "vehicle_garage_names": {
-      "publication_status": "published_hidden",
-      "reason": "47 辆实机车库锚（user-verified：用户截图+vehicle_ui_data 尾索引序 1:1）；型号/body_model=待 vehicle_ui 行级配对（27.114）；vehicle_catalog 模型板保持 quarantined",
-      "superseded_by": "vehicle_full",
-      "note": "已被 vehicle_full 取代，保留直链，不进首页导航"
-    },
-    "weapon_skin_structure_v01": {
-      "publication_status": "published_hidden",
-      "category": "二、时装类 / （七）武器皮肤（隐藏审计板：已证明结构）",
-      "items": 3,
-      "reason": "P4-C frozen_unresolved：只展示已冻结的函数级结构；verified weapon-skin self-ID = 0。首页收口 2026-09-12：改为隐藏审计板（数据保留、直链可达、不再单独占首页武器皮肤入口）。"
+      "reason": "已被 weapon_skin_catalog_pe 取代（旧版依赖 PC 包 + 8-27 基线，均不可用）",
+      "superseded_by": "weapon_skin_catalog_pe"
     },
     "weapon_skin_static_candidates_v01": {
       "publication_status": "published_hidden",
       "category": "二、时装类 / （七）武器皮肤（隐藏审计板：静态候选 / 身份未解析）",
       "items": 115,
       "reason": "P4-C 身份研究仍冻结；展示 126 条静态配置行与 3 条 behavior-only 行，全部 identity unresolved，旧整数补名和父项推断均未启用。"
-    },
-    "weapon_skin_active": {
-      "publication_status": "published_hidden",
-      "category": "（内部·审计）武器皮肤 active 投影（非图鉴入口）",
-      "items": 126,
-      "reason": "active 结构视图（111 main + 15 timed 顶层成行，基准 BA8A pre-09-10）。图鉴唯一入口 = weapon_skin_sfx_text_sources（115，当前包 328b8446 基准，FID 直读）。保留直链供审计/交叉核对，manifest/首页永不列出。",
-      "internal_only": true
     },
     "vehicle_full": {
       "publication_status": "published",
@@ -101,7 +71,7 @@ window.WIKI_PUBLICATION_POLICY = {
       "publication_status": "published",
       "category": "二、战力类 / （一）异变核芯",
       "items": 133,
-      "reason": "异变核芯全量表：common_item 660000 段 133 行（83 个唯一核芯名）逐行 name/desc/icon 槽位回放，按名字精确关联 gift_data 的「（禁交易）」礼包行 100 个与核芯卡 skill_icon；全部 108 张图逐张过 pe_file_index/gpk_loc0 精确命中后从 pe_packs 解码（命中率 1.0）。品级取自 desc 原文前缀，不做推断。只证静态表内容与资源存在，不证当前可得/可购买。"
+      "reason": "核芯唯一总表：common_item 660000 段 132 行 + nucleus_build_data(kj1) 76 枚按名合并；星上限按经典服 12 星展示；卡面简略、详情展开。"
     },
     "server_types": {
       "publication_status": "published",
@@ -183,7 +153,7 @@ window.WIKI_PUBLICATION_POLICY = {
     },
     "scene_balance": {
       "publication_status": "published",
-      "category": "二、战力类 / （六）场景平衡",
+      "category": "二、战力类 / （六）伤害计算 / 1、场景",
       "reason": "场景加成上下限：special_hurt_params_data(kj1) × space_data。按场景名合并，PvP 优先。",
       "items": 63
     },
@@ -193,63 +163,13 @@ window.WIKI_PUBLICATION_POLICY = {
       "reason": "击败播报 5 条（common_item_kill_board_data：名字/icon_jisha01-05/「<皮肤>升格至二阶后获得」）+ MVP 结算动画 8 条（mvp_action_data：bq_mvp_01..08、时长、track/*.xml 轨道、演示视频、获取方式）。旧板的播报文案与皮肤击败特效已剔除。",
       "items": 13
     },
-    "chenshi_slots": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "chip_lottery_guarantee_panel_static": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
     "common_item_text_sources": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "fashion_bag_slots": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "fashion_bestplay_slots": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "fashion_face_slots": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "fashion_glow_slots": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "fashion_projection_slots": {
       "publication_status": "retired",
       "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
     },
     "fashion_wardrobe_slots": {
       "publication_status": "retired",
       "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "lottery_kaijia_panel_static": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "manjian_market_panel_static": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "mystery_shop_panel_static": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "nucleus_lottery_panel_static": {
-      "publication_status": "retired",
-      "reason": "已由 Wiki v0.1 的冻结 P4 产物板替代；旧数据保留归档但不进入默认展示。"
-    },
-    "skin_behavior_preview": {
-      "publication_status": "published_hidden",
-      "category": "未列入导航（原 置顶、活动奖池与预告 / （二）预告专栏）",
-      "items": 9,
-      "reason": "2026-11-01 用户判定：预告专栏不再单列武器皮肤预览板——武器皮肤全量已在「一、时装类（二）武器皮肤」(weapon_skin_sfx_text_sources)。本板数据保留、直链可开，但不进导航/首页/清单。"
     },
     "future_lottery_preview": {
       "publication_status": "published",
@@ -319,6 +239,33 @@ window.WIKI_PUBLICATION_POLICY = {
       "category": "二、战力类 / （五）装备属性（武器·护甲）",
       "items": 939,
       "reason": "装备属性（武器·护甲）分服卡 · 月卡服（数据通道 yk）：939 条，只含该服行数据，不混入其它服。筛选=类型/主属性/武器细类；字段=同行直读 desc/level/durability/max_shield/shield_type/weapon_kind/model_path/base_score/charm_value；图标=客户端 ui/item_icon 大图 _b（assets/equip_icons/，同路径三服共用），客户端无素材的条目留空并标 icon_missing。"
+    },
+    "media_catalog": {
+      "publication_status": "published",
+      "category": "三、综合资料 / （七）影音资源",
+      "items": 20259,
+      "generated": "2026-11-02",
+      "reason": "影音资源库：左侧分类树 + 常驻播放器。音频 19,959 条 = res/sound.gpk（含热更 layers npk）FSB5 样本名索引的去重样本名，可播文件为 01_索引与产物/20_提取/影音/audio 下已转码 mp3（页面未转码的条目如实标「待提取」）；视频 300 条 = 41_还原树内 res/video.gpk 已还原 mp4（含 103 条按条目号命名的未命名视频）。无 cdata 表行 ⇒ 按名册级（roster / static-export）通道登记，媒体文件不复制进 web。"
+    },
+    "damage_attack": {
+      "publication_status": "published",
+      "category": "二、战力类 / （六）伤害计算 / 2、攻击力",
+      "items": 3
+    },
+    "damage_defense": {
+      "publication_status": "published",
+      "category": "二、战力类 / （六）伤害计算 / 4、守方侧",
+      "items": 3
+    },
+    "damage_bonus": {
+      "publication_status": "published",
+      "category": "二、战力类 / （六）伤害计算 / 3、加成",
+      "items": 19
+    },
+    "weapon_skin_catalog_pe": {
+      "publication_status": "published",
+      "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data，直接读雷电客户端包；不做历史基线对比",
+      "items": 145
     }
   }
 };

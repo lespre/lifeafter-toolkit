@@ -651,7 +651,7 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "异变核芯 · 全量表",
+      "name": "异变核芯 · 全量表（12 星）",
       "category": "二、战力类 / （一）异变核芯",
       "board": "mutation_core_full",
       "items": 133,
@@ -663,10 +663,7 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "核芯": 133,
-        "极品": 51,
-        "高级": 63,
-        "中级": 11,
-        "基础": 8
+        "12 星上限": 133
       },
       "name_status_summary": {},
       "provenance_status": {

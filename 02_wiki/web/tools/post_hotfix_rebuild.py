@@ -70,6 +70,11 @@ def main() -> int:
             continue
         steps.append((bid, [PY, "-u", str(p)], 300))
 
+    # 前置链：merge_core_boards 依赖 nucleus.json（由 build_nucleus_board 生成）
+    pre = TOOLS / "build_nucleus_board.py"
+    if pre.is_file():
+        steps.append(("前置:nucleus", [PY, "-u", str(pre)], 300))
+
     if not only or "lottery" in (only or set()):
         steps.insert(0, ("lottery_pipeline", [PY, "-u", str(TOOLS / "lottery_pipeline.py")], 900))
 
