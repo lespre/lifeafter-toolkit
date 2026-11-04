@@ -128,7 +128,14 @@ def main() -> int:
 
     # ★ 武器皮肤后处理链：重建只出数据，真名/官方描述/媒体要再叠一层
     POST = ["rebuild_weapon_skin_media.py", "attach_skin_posters.py", "fill_weapon_skin_media.py",
-            "merge_skin_effect_show.py", "restore_effect_show_names.py", "backfill_skin_official_desc.py"]
+            "merge_skin_effect_show.py", "backfill_skin_official_desc.py"]
+    # ★ 真名必须从当前树重解，而不是沿用旧产物
+    print("▶ 重解真名表 la.py skin fx-names …", flush=True)
+    rc, note = run([PY, "-u", str(PROJ / "la.py"), "skin", "fx-names", "--out",
+                    str(PROJ / "01_索引与产物/30_分析/weapon_skin_effect_show.json")], 300)
+    print(f"  {'✓' if rc == 0 else '✗'} rc={rc} {note[:120]}", flush=True)
+    results.append({"board": "pre:skin-fx-names", "rc": rc, "note": note})
+
     for name in POST:
         p2 = TOOLS / name
         if not p2.is_file():
