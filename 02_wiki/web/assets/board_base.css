@@ -686,11 +686,11 @@ body.b-title_catalog .i-logo{position:relative;display:inline-flex;align-items:c
   min-height:52px;padding:6px 16px;max-width:100%;line-height:0;isolation:isolate}
 body.b-title_catalog .i-logo .i-logo-bg{position:absolute;inset:0;background-repeat:no-repeat;
   background-position:center;background-size:contain;pointer-events:none;z-index:0}
-body.b-title_catalog .i-logo .i-art{position:relative;z-index:1;max-height:30px;max-width:100%;object-fit:contain}
+body.b-title_catalog .i-logo .i-art{position:relative;z-index:1;max-height:64px;max-width:100%;width:auto;object-fit:contain}
 /* 无美术字的动态称号：文字层压在底图之上（.i-logo 的 line-height:0 只用于图片层，这里复位） */
 body.b-title_catalog .i-logo .i-title{line-height:1.35;z-index:1}
 body.b-title_catalog .i-logo-solo{display:block;max-width:100%;max-height:54px;object-fit:contain}
-body.b-title_catalog .i-name .i-art{max-width:100%;max-height:32px;object-fit:contain;vertical-align:middle}
+body.b-title_catalog .i-name .i-art{max-width:100%;max-height:64px;width:auto;object-fit:contain;vertical-align:middle}
 body.b-title_catalog .i-name.has-art .i-name-txt{display:none}
 
 /* 分组勾选项：默认不勾（整表平铺按编号排）；勾上才按获取途径分组 */
@@ -1599,3 +1599,16 @@ body.b-media_catalog .ml-more:hover{color:var(--fg)}
   body.b-media_catalog .ml-tag,body.b-media_catalog .ml-go{display:none}
 }
 
+
+/* ── 公式块（伤害类板块 meta.formula） ───────────────────────── */
+.formula-box{margin:0 0 14px;border:1px solid var(--border);border-radius:10px;
+  background:var(--card);overflow:hidden}
+.formula-box .fb-hd{padding:9px 14px;font-size:13px;font-weight:600;letter-spacing:.4px;
+  color:var(--foreground);background:rgba(255,255,255,.04);border-bottom:1px solid var(--border)}
+.formula-box .fb-row{padding:11px 14px;border-bottom:1px dashed var(--border)}
+.formula-box .fb-row:last-child{border-bottom:0}
+.formula-box .fb-t{font-size:12px;font-weight:600;color:var(--muted-foreground);margin-bottom:5px}
+.formula-box .fb-e{font-size:13.5px;line-height:1.85;color:var(--foreground);
+  background:rgba(255,255,255,.05);border-left:3px solid var(--accent);
+  border-radius:4px;padding:8px 10px;white-space:normal}
+.formula-box .fb-n{margin-top:6px;font-size:12px;line-height:1.7;color:var(--muted-foreground)}

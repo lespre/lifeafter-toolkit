@@ -72,11 +72,9 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "条目": 681,
-        "kind": {
-          "头像框": 254,
-          "名片框": 220,
-          "头像": 207
-        }
+        "头像框": 254,
+        "名片框": 220,
+        "头像": 207
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -478,19 +476,9 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "条目": 133,
-        "kind": {
-          "种族潜能": 133
-        },
-        "race_name": {
-          "人类": 46,
-          "械骨人": 44,
-          "半感染者": 43
-        },
-        "server_branch": {
-          "经典服（PE gene_node_data base 行级）": 85,
-          "经典服 + 简单生存（同种族同名节点，两服同名册）": 26,
-          "简单生存（PE oversea gene_node_data kj1 行级，经典服无此节点）": 22
-        }
+        "人类": 46,
+        "半感染者": 43,
+        "械骨人": 44
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -541,16 +529,14 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "条目": 1547,
-        "kind": {
-          "图鉴·食物": 581,
-          "图鉴·特殊能力": 340,
-          "图鉴·怪物": 260,
-          "图鉴·食材": 247,
-          "图鉴·遗失碎片": 42,
-          "图鉴·孢子技能": 33,
-          "图鉴·海域特产": 32,
-          "图鉴·大类": 8
-        }
+        "图鉴·食物": 581,
+        "图鉴·特殊能力": 340,
+        "图鉴·怪物": 260,
+        "图鉴·食材": 247,
+        "图鉴·遗失碎片": 42,
+        "图鉴·孢子技能": 33,
+        "图鉴·海域特产": 32,
+        "图鉴·大类": 8
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -945,13 +931,9 @@ window.WIKI_MANIFEST = {
       },
       "state_summary": {
         "条目": 4944,
-        "kind": {
-          "天赋": 4944
-        },
-        "tree": {
-          "基础": 4112,
-          "主题": 832
-        }
+        "天赋": 4944,
+        "基础": 4112,
+        "主题": 832
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -992,8 +974,8 @@ window.WIKI_MANIFEST = {
       "category": "四、资料层 / （四）称号",
       "board": "title_catalog",
       "items": 1550,
-      "generated": "",
-      "source_server": "简单生存服（体验服 Documents 快照）",
+      "generated": "2026-11-04",
+      "source_server": "PE 测试服 · 41_还原树/pe/配置/com/cdata（title_conf_data / shining_title_conf_data）",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
         "structure": 1550

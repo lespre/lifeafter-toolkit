@@ -6383,6 +6383,19 @@ else loadBoard(b,d=>{
     _kv+=`<div class="k">生成时间</div><div class="v">${esc(String(m.generated||"未记录"))}</div>`;
     n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv">${_kv}</div></details>`;
   }
+  /* 公式块：meta.formula = [{t,e,n}]，显示在列表上方（伤害类板块用） */
+  if(Array.isArray(m.formula)&&m.formula.length&&document.getElementById("grid")){
+    const host=document.getElementById("grid").parentNode;
+    const box=document.createElement("div");
+    box.className="formula-box";
+    box.innerHTML='<div class="fb-hd">计算公式</div>'+m.formula.map(r=>
+      '<div class="fb-row">'+
+        (r.t?'<div class="fb-t">'+esc(r.t)+'</div>':'')+
+        (r.e?'<div class="fb-e mono">'+esc(r.e).replace(/\n/g,'<br>')+'</div>':'')+
+        (r.n?'<div class="fb-n">'+esc(r.n)+'</div>':'')+
+      '</div>').join("");
+    host.insertBefore(box,host.firstChild);
+  }
   if(m.liaison_descs&&m.liaison_descs.length){
     const notesEl=document.getElementById("notes");
     const box=document.createElement("div");

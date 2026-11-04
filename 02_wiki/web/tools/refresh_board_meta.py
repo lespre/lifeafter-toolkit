@@ -30,7 +30,9 @@ def main() -> int:
             vals = [str(i.get(k)) for i in items if i.get(k)]
             if vals:
                 dist[k] = dict(Counter(vals).most_common(8))
-        meta["state_summary"] = {"条目": len(items), **{k: v for k, v in dist.items()}}
+        # state_summary 是页头 pills 的数据源，只能放已知状态键；分布另存 distribution
+        meta["distribution"] = dist
+        meta.setdefault("state_summary", {})
         meta["items"] = len(items)
         write_board_pair(p, board)
         print(f"{bid}: generated {old} → {meta['generated']} | 条目 {len(items)} | 分布 {list(dist)}")
