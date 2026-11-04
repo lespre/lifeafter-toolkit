@@ -128,7 +128,7 @@ def main() -> int:
 
     # ★ 武器皮肤后处理链：重建只出数据，真名/官方描述/媒体要再叠一层
     POST = ["rebuild_weapon_skin_media.py", "attach_skin_posters.py", "fill_weapon_skin_media.py",
-            "merge_skin_effect_show.py", "backfill_skin_official_desc.py"]
+            "merge_skin_effect_show.py", "restore_effect_show_names.py", "backfill_skin_official_desc.py"]
     for name in POST:
         p2 = TOOLS / name
         if not p2.is_file():
