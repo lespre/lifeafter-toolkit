@@ -185,7 +185,7 @@ window.WIKI_PUBLICATION_POLICY = {
     "appearance_bud": {
       "publication_status": "published",
       "category": "一、时装类 / （八）半感染者花苞",
-      "items": 148,
+      "items": 168,
       "reason": "花苞为半感染者专属；条目取时装表的 reborn_vis 字段（是否隐藏半感染者花苞）。"
     },
     "cdn_library": {
