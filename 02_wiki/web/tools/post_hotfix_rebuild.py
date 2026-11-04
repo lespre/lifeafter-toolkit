@@ -92,6 +92,18 @@ def main() -> int:
         print(f"  {ok} rc={rc} {note[:160]}", flush=True)
         results.append({"board": bid, "rc": rc, "note": note})
 
+    # ★ 武器皮肤后处理链：重建只出数据，真名/官方描述/媒体要再叠一层
+    POST = ["rebuild_weapon_skin_media.py", "attach_skin_posters.py", "fill_weapon_skin_media.py",
+            "merge_skin_effect_show.py", "backfill_skin_official_desc.py"]
+    for name in POST:
+        p2 = TOOLS / name
+        if not p2.is_file():
+            continue
+        print(f"▶ 后处理 {name} …", flush=True)
+        rc, note = run([PY, "-u", str(p2)], 300)
+        print(f"  {'✓' if rc == 0 else '✗'} rc={rc} {note[:120]}", flush=True)
+        results.append({"board": f"post:{name}", "rc": rc, "note": note})
+
     print("▶ build_wiki …", flush=True)
     rc, note = run([PY, "-u", str(TOOLS / "build_wiki.py")], 900)
     results.append({"board": "build_wiki", "rc": rc, "note": note})

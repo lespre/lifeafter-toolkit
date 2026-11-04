@@ -28,9 +28,11 @@ DATA = WEB / "data"
 TEXT_JS = DATA / "boards" / "common_item_text_sources.js"
 TARGETS = [
     DATA / "boards" / "weapon_skin_sfx_text_sources",   # 图鉴唯一入口
-    DATA / "boards" / "skin_behavior_preview",          # 未上线预告
+    DATA / "boards" / "skin_behavior_preview",          # 未上线预告（已下架时自动跳过）
     DATA / "workbench_boards" / "weapon_skin_active",   # active 内部投影
 ]
+# 2026-11-04：被下架/移除的目标板跳过，不要因为一个不存在的文件整跑失败
+TARGETS = [t for t in TARGETS if t.with_suffix(".js").is_file() or t.with_suffix(".json").is_file()]
 
 DESC_SOURCE = "common_item_data_base_row"
 
