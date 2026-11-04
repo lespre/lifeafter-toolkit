@@ -1006,28 +1006,34 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "（二）武器皮肤 · 当前包图鉴",
-      "category": "一、时装类 / （二）武器皮肤",
-      "board": "weapon_skin_catalog_pe",
-      "items": 145,
-      "generated": "2026-11-04",
-      "source_server": "PE 体验服客户端 script.py314.lc.npk（雷电 11-03 热更后）",
+      "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
+      "category": "二、时装类 / （七）武器皮肤",
+      "board": "weapon_skin_sfx_text_sources",
+      "items": 125,
+      "generated": "2026-11-04T15:17:15+08:00",
+      "source_server": "体验服 Documents BA8A 当前快照（root 仅版本对照）",
       "package_sha": "6218ca752e8d17fcff84fd9bb3914eaa05d4d0869a0dd688832583f6cde556c6",
       "evidence": {
-        "structure": 145
+        "structure": 125
       },
       "state_summary": {
-        "条目": 145,
-        "有道具行": 143,
-        "有音效": 84
+        "verified": 0,
+        "unresolved": 125,
+        "quarantined": 0,
+        "static config": 125,
+        "runtime final unknown": 0
       },
-      "name_status_summary": {},
+      "name_status_summary": {
+        "verified": 145,
+        "candidate": 0,
+        "unresolved": 0
+      },
       "provenance_status": {
         "contract_version": 3,
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 145
+          "replayed-structural": 125
         }
       }
     }

@@ -44,11 +44,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "reason": "2026-09-04 被核芯卡（双服合并版 nucleus_cards_classic）取代，数据 json 保留存档"
     },
     "weapon_skin_sfx_text_sources": {
-      "publication_status": "retired",
+      "publication_status": "published",
       "category": "一、时装类 / （二）武器皮肤",
       "items": 115,
-      "reason": "已被 weapon_skin_catalog_pe 取代（旧版依赖 PC 包 + 8-27 基线，均不可用）",
-      "superseded_by": "weapon_skin_catalog_pe"
+      "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data + SFX；基线缺失时版本状态标无基线不可比"
     },
     "weapon_skin_static_candidates_v01": {
       "publication_status": "published_hidden",
@@ -263,9 +262,10 @@ window.WIKI_PUBLICATION_POLICY = {
       "items": 19
     },
     "weapon_skin_catalog_pe": {
-      "publication_status": "published",
-      "reason": "PE 源重建（2026-11-04）：weapon_skin_data + common_item_data，直接读雷电客户端包；不做历史基线对比",
-      "items": 145
+      "publication_status": "retired",
+      "reason": "草案版（精简字段），格式已被正式板取代",
+      "items": 145,
+      "superseded_by": "weapon_skin_sfx_text_sources"
     }
   }
 };

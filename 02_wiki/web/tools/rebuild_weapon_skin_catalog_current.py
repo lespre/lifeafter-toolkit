@@ -521,6 +521,29 @@ def behavior_resources(row: dict[str, Any]) -> list[dict[str, Any]]:
     return sorted(result, key=lambda item: item["field"])
 
 
+
+def _fallback_official(skin_id: int, row: dict[str, Any], metadata: dict[str, Any],
+                       entries: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """没有 common_item 道具行时的降级：用表内名（若有），否则「皮肤 <id>」。
+    2026-11-04：热更新增皮肤在 common_item 里还没有行，不能让整板中止。"""
+    raw = decoded_values(row)
+    name = raw.get("name") or raw.get("skin_name")
+    name = str(name) if isinstance(name, str) and name.strip() else f"皮肤 {skin_id}"
+    official = {"name": name, "name_provenance": None, "desc": None, "desc_provenance": None}
+    resolution = {"state": "unresolved_no_item_row",
+                  "note": "本次快照 common_item_data 无该道具行（多为最新热更新内容）"}
+    provenance = {
+        "source_id": CURRENT_SOURCE_ID,
+        "source_lock_sha256": metadata["package_sha256"],
+        "source_entries": entries,
+        "table": "weapon_skin_data",
+        "row_key": skin_id,
+        "field_refs": ["name"],
+        "name_source": "weapon_skin_data#name" if raw.get("name") or raw.get("skin_name") else "placeholder",
+    }
+    return official, resolution, provenance
+
+
 def official_item_fields(
     skin_id: int,
     item_row: dict[str, Any] | None,
@@ -644,7 +667,7 @@ def make_main_item(
                 "proves": "same-snapshot formal item name exists for this skin id; not activity/availability proof",
             },
             "root_comparison": {
-                "source_lock_sha256": root_metadata["package_sha256"],
+                "source_lock_sha256": (root_metadata["package_sha256"] if root_metadata else None),
                 "comparison": "key-presence only; never used as current display-name source",
                 "root_row_present": (None if root_keys is None else skin_id in root_keys),
             },
@@ -750,7 +773,7 @@ def make_variant_item(
             "member_sfx_row_keys": [child["row_key"] for child in children],
             "business_chain": business_chain,
             "root_comparison": {
-                "source_lock_sha256": root_metadata["package_sha256"],
+                "source_lock_sha256": (root_metadata or metadata)["package_sha256"],
                 "comparison": "key-presence only; never used as current display-name source",
                 "root_row_present": (None if root_keys is None else variant_id in root_keys),
             },
@@ -1370,7 +1393,11 @@ def main(argv: list[str] | None = None) -> int:
         row = all_skin_rows[skin_id]
         item_row = item_by_key.get(skin_id)
         if item_row is None:
-            raise RuntimeError(f"main skin {skin_id} lacks common_item_data_base row")
+            # 新皮肤在 common_item 里没有行 → 降级取名，不中止整板
+            _o, _r, _p = _fallback_official(skin_id, row, current_meta,
+                                            skin_source_entries + item_source_entries)
+            main_names[skin_id] = _o["name"]
+            continue
         official, resolution, provenance = official_item_fields(
             skin_id, item_row, current_meta, skin_source_entries + item_source_entries
         )
@@ -1402,9 +1429,13 @@ def main(argv: list[str] | None = None) -> int:
     for skin_id in sorted(main_ids):
         row = all_skin_rows[skin_id]
         item_row = item_by_key.get(skin_id)
-        official, resolution, provenance = official_item_fields(
-            skin_id, item_row, current_meta, skin_source_entries + item_source_entries
-        )
+        if item_row is None:
+            official, resolution, provenance = _fallback_official(
+                skin_id, row, current_meta, skin_source_entries + item_source_entries)
+        else:
+            official, resolution, provenance = official_item_fields(
+                skin_id, item_row, current_meta, skin_source_entries + item_source_entries
+            )
         variants = sorted(
             (variant_records[vid] for vid in variants_by_main.get(skin_id, [])),
             key=lambda item: item["skin_id"],
@@ -1597,10 +1628,22 @@ def main(argv: list[str] | None = None) -> int:
             ),
             "provenance": {
                 "audit_status": "passed",
+                "contract_version": 3,
+                "contract": "frozen-audited-artifact",
+                "source_scope": {
+                    "cross_source_policy": "no-cross-source-field-join",
+                    "integer_join_policy": "no-equal-integer-join",
+                    "runtime_final_policy": "unknown-unless-runtime-proven",
+                },
                 "source_locks": [
-                    {"role": "current_documents", "sha256": current_meta["package_sha256"], "bytes": current_meta["bytes"], "mtime_ns": current_meta["mtime_ns"]},
-                    {"role": "root_comparison_only", "sha256": root_meta["package_sha256"], "bytes": root_meta["bytes"], "mtime_ns": root_meta["mtime_ns"]},
-                ],
+                    {"source_id": CURRENT_SOURCE_ID, "role": "primary",
+                     "sha256": current_meta["package_sha256"], "bytes": current_meta["bytes"],
+                     "mtime_ns": current_meta["mtime_ns"], "path": str(registered.get("path") or ""),
+                     "desc": "PE 体验服客户端脚本包"},
+                ] + ([{"source_id": "root-baseline", "role": "comparison",
+                       "sha256": root_meta["package_sha256"], "bytes": root_meta["bytes"],
+                       "mtime_ns": root_meta["mtime_ns"], "desc": "8-27 root 基线（仅键对比）"}]
+                     if root_meta else []),
                 "method": "weapon_skin_data parents/variants + common_item_data_base name/desc + exact SFX skin_id join; root key comparison only",
             },
             "reference_sources": [{
