@@ -680,15 +680,23 @@ body.b-title_catalog .i-title.glow .i-nm{animation:title-glow-pulse 2.8s ease-in
 @media (prefers-reduced-motion:reduce){
   body.b-title_catalog .i-title.glow .i-nm{animation:none;
     filter:drop-shadow(0 0 3px rgba(241,207,122,.55)) drop-shadow(0 0 8px rgba(241,207,122,.30))}}
-/* 美术字 + 动态底图：叠成一枚「称号图」——底图（csb 首帧/逐帧动画）在下层居中铺开，
-   美术字在上层，与游戏内一致；不再上下各排一张。 */
+/* 美术字 + 动态底图：一枚「称号图」的容器（不再是两张图上下各排一张）。
+   注意：底图绝不与美术字同尺寸同位置叠放 —— 那会叠出第二份称号字（重影），
+   具体分层规则见下面的 .i-logo-glow / .i-logo-bg。 */
 body.b-title_catalog .i-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;
   min-height:52px;padding:6px 16px;max-width:100%;line-height:0;isolation:isolate}
-body.b-title_catalog .i-logo .i-logo-bg{position:absolute;inset:0;background-repeat:no-repeat;
-  background-position:center;background-size:contain;pointer-events:none;z-index:0}
+/* 底图两层语义分开（2026-11-06 去重影）：
+   · .i-logo-glow = 「有美术字时」底图只当背光：从 art 盒子四边外扩 + 半透明，
+     与 art 绝不是同尺寸同位置，因此不会和美术字叠出第二份字；
+   · .i-logo-bg   = 「没有美术字时」底图当底板，文字压在上面。 */
+body.b-title_catalog .i-logo .i-logo-glow{position:absolute;inset:-22% -20%;background-repeat:no-repeat;
+  background-position:center;background-size:contain;pointer-events:none;z-index:0;
+  opacity:.5;filter:blur(.4px) saturate(.9)}
+body.b-title_catalog .i-logo .i-logo-bg{position:absolute;inset:-16% -12%;background-repeat:no-repeat;
+  background-position:center;background-size:contain;pointer-events:none;z-index:0;opacity:.92}
 body.b-title_catalog .i-logo .i-art{position:relative;z-index:1;max-height:64px;max-width:100%;width:auto;object-fit:contain}
 /* 无美术字的动态称号：文字层压在底图之上（.i-logo 的 line-height:0 只用于图片层，这里复位） */
-body.b-title_catalog .i-logo .i-title{line-height:1.35;z-index:1}
+body.b-title_catalog .i-logo .i-title{line-height:1.35;z-index:1;position:relative}
 body.b-title_catalog .i-logo-solo{display:block;max-width:100%;max-height:54px;object-fit:contain}
 body.b-title_catalog .i-name .i-art{max-width:100%;max-height:64px;width:auto;object-fit:contain;vertical-align:middle}
 body.b-title_catalog .i-name.has-art .i-name-txt{display:none}
@@ -1612,3 +1620,9 @@ body.b-media_catalog .ml-more:hover{color:var(--fg)}
   background:rgba(255,255,255,.05);border-left:3px solid var(--accent);
   border-radius:4px;padding:8px 10px;white-space:normal}
 .formula-box .fb-n{margin-top:6px;font-size:12px;line-height:1.7;color:var(--muted-foreground)}
+
+/* 有美术字/动态图时隐藏 DOM 文本（仍保留在 DOM 里供搜索）——用 :has 兜住
+   .i-title/.i-logo 两种包装，避免图片与文字重叠成"两遍字" */
+body.b-title_catalog .i-title:has(.i-art) .i-name-txt,
+body.b-title_catalog .i-title:has(.i-logo-solo) .i-name-txt,
+body.b-title_catalog .i-logo:has(.i-art) .i-name-txt{display:none}

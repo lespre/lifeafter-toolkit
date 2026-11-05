@@ -2951,13 +2951,22 @@ function titleSpecial(it){
 function titleName(it){
   const nm=esc(it.name||it.display_name||it.id);
   const art=it.art_png,bg=it.dyn_webp||it.dyn_png;
+  /* 2026-11-06 去重影：同一称号只画「一次」图像，优先级
+     dyn(自带文字) > art_png > 底图柔光 > 纯文字
+     · dyn_has_text：底图贴图本身已经把称号字画好了 → 只画底图（i-logo-solo），
+       文字节点留在 DOM 里、由 has-art 规则视觉隐藏；
+     · 同时有 art 和底图：art 是唯一的称号图像，底图退成背后一层
+       放大 + 半透明的「柔光」（i-logo-glow）。绝不再让两层同尺寸同位置叠在一起 ——
+       那正是重影的来源（同一份称号字被画两遍）；
+     · 只有底图：底图当底板（i-logo-bg），文字压在上面。 */
+  const txtNode=`<span class="i-name-txt">${nm}</span>`;
   if(bg&&it.dyn_has_text)
-    return `<img class="i-logo-solo" src="${esc(bg)}" alt=""><span class="i-name-txt">${nm}</span>`;
+    return `<span class="i-title has-art"><img class="i-logo-solo" src="${esc(bg)}" alt="">${txtNode}</span>`;
   if(art){
-    const inner=`<img class="i-art" src="${esc(art)}" alt=""><span class="i-name-txt">${nm}</span>`;
+    const inner=`<img class="i-art" src="${esc(art)}" alt="">${txtNode}`;
     if(bg)
-      return `<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${inner}</span>`;
-    return `<span class="i-title">${inner}</span>`;
+      return `<span class="i-logo"><i class="i-logo-glow" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${inner}</span>`;
+    return `<span class="i-title has-art">${inner}</span>`;
   }
   const c=String(it.color||"");
   const t=TITLE_SKIN_TXT[c];
