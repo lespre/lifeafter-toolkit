@@ -20,6 +20,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from toolkit_core import img_fetch as IF  # noqa: E402
 from board_io import write_board_pair  # noqa: E402
+from title_anim_pace import frame_duration  # noqa: E402
 
 WEB = PROJ / "02_wiki/web"
 CSB_DIR = PROJ / "01_索引与产物/30_分析/title_csb_pe/gpk_all"
@@ -78,7 +79,7 @@ def main() -> int:
             imgs = [im.resize((MAX_W, max(1, int(h * MAX_W / w))), Image.LANCZOS) for im in imgs]
         key = re.sub(r"[^0-9A-Za-z_]+", "_", stem)
         dst = OUT / f"csb_{key}.webp"
-        imgs[0].save(dst, save_all=True, append_images=imgs[1:], duration=40, loop=0, quality=60, method=4)
+        imgs[0].save(dst, save_all=True, append_images=imgs[1:], duration=frame_duration(len(imgs)), loop=0, quality=60, method=4)
         it["dyn_webp"] = f"assets/title_dyn/pe/csb_{key}.webp"
         it["dyn_webp_source"] = "PE csb 帧序列（%s）" % match["file"]
         done += 1

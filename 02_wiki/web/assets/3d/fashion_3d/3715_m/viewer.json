@@ -1,0 +1,208 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3715_m",
+ "series": "3715",
+ "gender": "m",
+ "label": "3715 · 男 · players2025 重制款，_link 目录为全件合体",
+ "note": "players2025 重制款，_link 目录为全件合体",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2025/fas_m_3715/b_m_3715a_link/b_m_3715a.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3715_high_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3715_high_1",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_m_3715_high_2",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_m_3715_high_3",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_m_3715_high_4",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_m_3715_high_5",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "b_m_3715_high_6",
+     "shader": "pbr_subsurface_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": null
+    },
+    {
+     "i": 7,
+     "name": "b_m_3715_high_7",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 8,
+     "name": "b_m_3715_high_fx01",
+     "shader": "uber_fx_common_multilayer",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 9,
+     "name": "b_m_3715_high_9",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [
+    "b_m_3715_high_1: detail normal 已合并(detail_normal_stocking_01.ktx)",
+    "b_m_3715_high_5: detail normal 已合并(detail_normal_stocking_01.ktx)",
+    "b_m_3715_high_6: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_m_3715_high_7: detail normal 已合并(crystal_bump_n.ktx)"
+   ],
+   "vertices": 19232,
+   "faces": 21533,
+   "submeshes": 10,
+   "materials_exported": 10,
+   "bytes": 18675196
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2025/fas_m_3715/h_m_3715a_link/h_m_3715a.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3715_high_0",
+     "shader": "pbr_hair_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "h_m_3715_high_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "h_m_3715_high_2",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    }
+   ],
+   "warnings": [
+    "h_m_3715_high_2: detail normal 已合并(crystal_bump_n03.ktx)"
+   ],
+   "vertices": 17099,
+   "faces": 15380,
+   "submeshes": 3,
+   "materials_exported": 3,
+   "bytes": 6841580
+  }
+ ]
+}

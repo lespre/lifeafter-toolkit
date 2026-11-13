@@ -1,5 +1,88 @@
 # CHANGELOG
 
+## 2026-11-13 — 专题内容归入主表入口（关联入口，不混源）
+
+用户「宸世和神秘商店你都补到 1 活动总表和 2 活动奖池里吧，你看看好不好补，甲虫补到无人机里去，然后武器皮肤的也补进去」。
+
+- ★ **核查结论：要补的东西大部分早就在主表里** —— `activity_master` 已有宸世 `act_2538`、神秘商店 **35 期**；`lottery_periods` 已有宸世 **969 条**、神秘商店 **1927 件**。真缺口只有 11-12 实机包新解的 **21 个池（391874~391894）**：奖池板收录 1840 池、最大池号 **391873**，21 池全不在（10 个已在专题板、剩 11 个在临时 JSON）。历史内容缺的从来不是数据，是独立入口。
+- ★ **不好补的三道坎**：① 四块主板全是 `frozen-audited-artifact v3`、源锁旧包 `documents-py314-current`，专题板是 11-12 实机包 `f93ff230…`；实测直接塞条目每条 3 个契约错（`source_id` / `locator_chain.steps[0].source_id` / `source_lock_sha256`），追加 11-12 源锁可绕过但会推翻「独立建板 + 独立源锁」口径，**未采用**。② 主板构建脚本全量 `write_text` 覆盖，手工合并下次重建即丢。③ `lottery_periods` 按 `period_id` 分组渲染、专题条目无此字段；`drone_catalog` 是机体无人机 180000+、甲虫是战术无人机 270439，硬并破坏板语义。
+- **用户判定口径**：不放宽跨快照混源、主表冻结数据零改动、**走关联入口**；甲虫与 13 款新皮肤保持独立板。
+- **交付**：新增可复算构建器 `web/tools/build/build_related_boards.py`（从 `publication_policy.json` + 板产物实时读名称/分类/条目数，校验目标板 `published` 否则不产死链，展示页文件存在才写，字节级幂等、dry-run 默认、路径走 `la_paths`）→ 产物 `web/data/related_boards.{json,js}`（4 主表 / 6 条关联）。前端 `board.html` 引入配置与 `#relatedBoards` 容器、`board_core.js` 整块覆盖渲染（幂等、全量 `esc()` + `encodeURIComponent`）、`board_base.css` 16 条 `.rb-*` 规则（全 `var(--token)`、1440/390 双视口无横向滚动）。**主表 `items` / `provenance` / `source_locks` 一律未动。**
+- **门禁全绿**：node --check 5/5、HTML 标签栈匹配、build_wiki exit 0、frontend_smoke --diff 与基线完全一致（无需重生成基线）、关联区定向 8/8 双视口 + 非目标板正确隐藏、gate 红板 0/环比 0、G1~G5 PASS（G4 100%）、provenance_fallback 18 板 243139 条四项全过。报告 13.11 节。
+
+## 2026-11-12（专题）— 甲虫无人机 · 战术无人机拆解
+
+- 用户要「拆一下甲虫无人机相关信息」。字节级结论：甲虫无人机 = 战术无人机（drone_skill_mapping_data key 270439），11-12 还原树最晚加入（setting_pos=14 最大），护盾型（3 技能图标均 icon_dujiaoxianhudun_skill.png＝独脚仙护盾），关联 3 技能（270439/270440/270441）、手动 BUFF 25311 / 自动 BUFF 25312；strategy 为未解码枚举（不猜含义）。
+- ★ 两套无人机子系统别混：战术无人机（drone_skill_mapping_data，270xxx，有技能映射）≠ 机体无人机（drone_catalog，180000+，有涂装/典藏版）；wiki「无人机总表」是后者。全族 9 款（狡兔/光盾/电弧/灵龙/猎犬/奔马/晶蝶/镭蛇/甲虫）均在 drone_skill_mapping_data 同表解出。
+- 关键判断：在 drone_catalog（287 条，经典服 all_equips 源，源锁 c9e12b43…）按谱系短名匹配 kind+name，8 款同族均有 6~18 条机体条目，甲虫 0 条 → 最晚加入 / 未进藏宝阁参考（也是此前 wiki 看不到它的根因）。
+- 证据链：全树「甲虫无人机」整词仅 2 命中（drone_skill_mapping_data_chs 权威 + skill_stage_data_5404 拼接无关）；270439 数字 0 ASCII 命中（在 x{ blob）；25311/25312 命中全是场景表数字巧合；阳性对照正常。
+- 未解出（铁律不猜）：BUFF 25311/25312 不在 buff_data（键体系不同）；技能效果在加密二进制表（monster_skill_data 非 cdata）；获取方式未在可解码表定位。
+- 交付：新板 jiachong_wurenji_20261112（16 卡：结论 + 9 族 + 3 技能 + 3 护盾实体 / 单一 11-12 源锁 / 契约 0 错 / 分类「二、战力类 / （三）无人机」/ manifest 44→45 板）、独立展示页 web/jiachong_wurenji.html、数据件 甲虫无人机_信息_20261112.json、脚本 build/publish_jiachong_wurenji_20261112.py、首页置顶专题公告。
+- ★ 不混源：机体总表收录数（drone_catalog，源锁 c9e12b43…）属跨源字段，只在 HTML 展示页呈现、不进 v3 冻结新板（契约会拦）。
+- 门禁全绿：build_wiki exit 0、gate 红板 0/环比 0、冒烟甲虫定向 16/16 双视口 err=0/0（全默认板组 28 视口 err=0/0）、溯源回退 18 板 243139 条四项全过、G1~G5 PASS（G4 100% / 595567 条）；重启 8765 后甲虫板 16 卡可见；11-07 冒烟基线过期已备份并重生成。报告第十三节。
+- **11-13 二次追补·技能效果全链路解出**：用户「去把他相关信息解开吧」。① 技能效果已解出——之前误判「monster_skill_id 指向加密二进制表」，实际 11-12 还原树有无人机专属表可解码：`skill_data` key 270432/270433/270434 = 独角仙无人机-护盾-基础/高阶/典藏（即甲虫=独角仙无人机，cd=1.0/range=1000）；`skill_stage_data_5408` 链路 cast_stage→succ(duration=10s)+params，params 是 **0x86 编码块**（用 `decode_86_row` 解，非 0x27），解出 jump:220020/220021/220022；`monster_data_220` 对应护盾实体 HP=5000、持续 10s、范围 500、模型 drone_1013_hudun.gim → 甲虫 3 技能各召唤 5000HP/10s/范围500 护盾。② BUFF 25311/25312 仍 unresolved：453 张候选表值级深搜仅被 mapping 引用、本地无定义表（疑似服务端/0x73 加密）。③ 获取方式仍 unresolved：2544 张 shop/lottery/activity 表值级搜，270439 仅 new_pve_monster_attr_data（护盾 PVE 属性）出现、无任何获取表引用。板 13→16 卡（新增 3 护盾实体卡，同源 11-12 包），展示页新增第三节，数据件新增 skill_effects，公告改写「已解出」；甲虫板纳入 frontend_smoke 默认板组并重生成基线（备份 smoke_baseline.json.bak_20261113）。门禁全绿。报告 13.8 节。
+- **11-13 三次追补·继续深挖，BUFF/获取 精确钉死在加密表**：用户「继续深挖看看」。改用**字节级全树扫描（ASCII + 4 字节小端双轨，带阳性对照）** + 项目内 0x73 解码器 `decode_73_table`。① 护盾实体细字段补全（monster_data_220 220020/220021/220022）：模型 drone_1013_hudun.gim、scale 0.8/0.8/0.9、monster_type 26048/26049/26050、special_function 465、**出生附带 buff 5069**、**免疫 buff 类型 [15]**（born_buff_ids/immune_buff_types jump 解开）——并厘清 5069 是护盾固有 buff，与无人机自身 25311/25312 是两回事。② BUFF 25311/25312 精确否定：4 字节小端命中**只在 0x73 加密分服表 buff_data_kj1/yk**（`decode_73_table` 报 Bindict73Error，非裸 7b/fb 体、zlib 也解不出合法表体）；经典 buff_data 与全部可解码表无此二键；旁证经典 buff_data_chs.py 含 UI 串「无人机玩家点击独角仙技能」。③ 获取方式精确否定：场景刷怪表/任务步骤表的 4 字节小端命中经解码验证引用为 0（坐实数字巧合）；270439 仅 new_pve_monster_attr_data(key) PVE 属性出现；drone_conf/release_setting/purchase/release_quest 均为全局/分类级不含 270439；逐机配置 drone_base_conf 0x73 加密不可解。④ 交付回补：护盾卡补 born_buff/免疫/scale/monster_type/special_function，结论卡与 meta notes 改精确否定，展示页第三节增「出生buff/免疫类型」列、第五节改写精确否定；冒烟基线因甲虫板内容增补 pillCount 8→10，已备份 smoke_baseline.json.bak_20261113_deep 并重生成。门禁全绿。报告 13.10 节。
+
+## 2026-11-12（专题）— 神秘商店全量核查
+
+- 用户追问「没有神秘商店吗」。结论：**历史数据一直在 wiki（35 期活动 / 16 期完整配置 / 1927 件商品 / 8 条官方规则 / 5 特权 / 6 级权重），缺的是独立入口；但 1119 先行版本没有新一期神秘商店**。
+- 四项证据：`secret_fashion_conf_data` 仅 16 期、最大 key 3628（万圣专场 10-12~11-01 已结束）；11-12 实机完整包合并报告 `secret_fashion` 命中 0 次（表未变更）；活动总表 35 期全部已结束、无未开始期次；预告板 32 条无神秘商店。11-19 起商店类只有商队集市 3686 / 赛事商店 3676。按月度节奏本可再开一期但静态包未埋，`runtime_final_state=unresolved`。
+- 机制：每期单轮上架 9 件、最大分组 5、免费刷新 1 次、周一/周五系统刷新；刷新币逐期独立、活动结束清除；商店等级每期重置不跨期继承；4/6 级可自选 A/S 心愿。16 期专场名与刷新币 ID 全部解出。
+- ★ 边界：`secret_fashion_goods_data` 字段 schema 丢失（最新期 210 槽位 / 9 个字段编号），只列原值不解释；1927 件是「可刷出的商品集合成员」，无价格/折扣/概率。
+- 交付：新板 `shenmi_shangdian_20261112`（21 卡 / 契约 0 错 / manifest 43→44 板、241,632 条）、独立展示页 `02_wiki/web/shenmi_shangdian.html`（1927 件逐期明细）、数据件 `神秘商店_期次与商品_20261112.json`、首页置顶专题公告。1927 件商品来自 11-03 源，只在 HTML 引用、不进冻结板。
+- 门禁：node --check 4/4、HTML 12,448 标签栈匹配、build_wiki exit 0、契约红板 0 / 环比 0、冒烟 26 视口 err=0/0（42 diff 仍为 11-07 基线过期）、新板定向 21/21、溯源回退 18 板 243,139 条全过、G1~G5 PASS。报告第十二节。
+
+## 2026-11-12（专题）— 风尚绮遇三奖池全格
+
+- 用户追问「华宴序曲奖池、绮梦绘卷奖池是什么，有没有详细的」。查清：两者不是独立活动，是 `act_3677 风尚绮遇`（2026-11-26~12-10，未开始）组合活动下的三个并列奖池 tab。
+- `multi_optional_lottery_conf_data` group 12/13/14 → 池 391885 幻海旖旎（huanhai，ensure 90/120）、391883 华宴序曲（liujin，60/80）、391884 绮梦绘卷（tonghua，90/120）；头奖正式名 金色奏鸣曲 134531 / 人偶契约 136043 / 幻海魅灵 135429（池内 note 统一写「幻海魅灵时装」是策划描述，非道具名）。
+- 官方 8 条规则出自 `desc_info_data_chs`（混合池/指定时装保底、中途切换进度继承、重复道具转化→风尚币、收集奖励不重领、每池每日 1000 次上限）；入口绮遇物资箱、兑换商店 81。
+- 11-12 实机包 `reward_pool_data` 按 file_id 直读：三主池 + 镜像池 391892/893/894 各 35 格，全格中文名 / 数量 / prob_note / 权重解出；镜像池与第一套只差第 22 格（配方残页×600 → 能量电池×6），conf 未引用。5 组件全 `base`/`inherit`，无分服差异。
+- 交付：新板 `fengshang_qiyu_20261112`（7 卡 / 契约 0 错 / manifest 42→43 板）、独立展示页 `02_wiki/web/fengshang_qiyu.html`、数据件 `风尚绮遇_三奖池_20261112.json`、首页置顶专题公告。21 个新池可见数 4→10。
+- 门禁：node --check 4/4、HTML 2,183 标签结构通过、build_wiki exit 0、契约红板 0 / 环比 0、冒烟 26 视口 err=0/0（42 diff 仍为 11-07 基线过期）、新板定向 7/7、溯源回退 18 板 243,139 条全过、G1~G5 PASS。报告第十一节。
+
+## 2026-11-12（专题）— 宸世臻藏奖池与展示页
+
+- 用户追问「应该可以查到宸世的奖池，或者你看看有没有展示页」。核查结论：数据一直在 wiki「奖池期次总表」里（筛「宸世」= 987 条 / 133 池），缺的是独立入口；游戏内展示页也确实存在。
+- 主配置 `optional_conf_data` key=2538：基础池 390927、高级币 153036（宸晶臻石／旧称天赏石）、低级币 153040、主面板 `PanelSuperFashionLotteryV14`。`optional_version_data` 31 期（最新 2026-11-19~12-03，replace_id 65）、`optional_pool_replace_data` 191 行 / 66 组。
+- ★ 补正上轮结论：按 file_id 从 11-12 实机包直读 `reward_pool_data`，解出 1,860 池 / 24,558 格 / 上界 391894；新增 `391874/391875/391881/391882` 四池即最新两期宸世奖池，wiki 板尚未收录。「当前期静态不可得」只对旧快照成立。
+- 展示页证据：报纸子页 `NewspaperSubPageChenShiZhenCang(.py/2.py)`（CSB + 4 个展示位 + 前往查看）、22 个 spine 预览 ktx、`common_hd_reward_preview_data` 703 行、`token_icon_data` 153036 图标；8/8 字节级命中 + 阳性对照。
+- 交付：新建导航可见板 `chenshi_zhencang_20261112`（36 卡 / 单一 11-12 源锁 / 契约 0 错 / manifest 41→42 板）、独立展示页 `02_wiki/web/chenshi_zhencang.html`、数据件 `宸世臻藏_奖池与展示页_20261112.json`、首页置顶专题公告。
+- 门禁：node --check 4/4、build_wiki exit 0、契约红板 0 / 环比 0、冒烟 26 视口 err=0/0（42 处 diff 仍为 11-07 基线过期）、新板定向 36/36、溯源回退 18 板 243139 条四项全过、G1~G5 全 PASS。报告第九节。
+
+## 2026-11-12（可见性修复）— 新武器皮肤 / 新时装真正显示在 wiki 页面上
+
+- 用户反馈「看不出区别」：数据已入板但页面不可见。根因 ① `weapon_skin_catalog_pe` 在 `publication_policy.json` 是 `retired`（不进 manifest），用户看的是 published 的 `weapon_skin_sfx_text_sources`（125 条）；② `board_core.js` 的 `FR.img` 默认「有图」，8 张新时装标「无图」被默认筛选整组隐藏。
+- ★ 纠错：13 款新皮肤**有正式名**（不灭之焰/之瞳/之刃·冠亚季军铭刻 + 胜利节奏）。上轮只看树里 815 B 的 `common_item_data.py` 桩才误判「不可定名」；实机 `script.py314.lc.npk` 同包 `common_item_base` 按 `key==skin_id` 解得真名，口径与可见板一致。
+- 冻结板不能混源：直接把 13 条加进 `weapon_skin_sfx_text_sources` 触发 **39 条契约错误**（source_id / locator_chain / source_lock_sha256），`frozen-audited-artifact v3` 机器化禁止。改为新建导航可见板 `weapon_skin_hotfix_20261112`（13 款、独立 11-12 源锁、未扫描字段留空不伪造），manifest 40 → **41 板**。
+- 时装：解出 16 个真实图标路径（`fashion_data.icons` jump 组），新资源未入索引实导 0/16 ⇒ 不伪造图；前端对 `hotfix_layer=20261112` 放行默认「有图」筛选并把 8 张卡前置，默认卡片数 **2224 → 2232（+8）**。
+- 首页 `data/updates.json` 置顶新增 `2026-11-12 · 热更` 公告，列出新增板块与内容。
+- 门禁全绿：`node --check` 4/4、`build_wiki.py` exit 0、契约红板 0 / 环比 0、冒烟 26 组 `err=0/0` + 新板定向 13/13 双视口、溯源回退 18 板 243139 条四项全过、`clone_repro_check` G1~G5 全 PASS（新基线 `v1.8.0` 指纹快照使 G4 97.86% → 100.0%）。
+- 备份 `90_临时/board_backup_20261112/pre_visible/`；报告第八节 `30_分析/热更_20261112/热更更新报告_20261112.md`。待办：16 个新图标、11-07 冒烟基线、各板源锁字面量。
+
+## 2026-11-12（补更）— 武器皮肤 / 人物时装跟 11-12 热更
+
+- 复核发现首轮漏更：`fashion_data.py` 11169→11226（+57 行）、`weapon_skin_data.py` 145→158（+13 行）、`player_appear_data.py` 5604→5635、`player_module_appear_data.py` 1194→1202；`fashion_wardrobe`/`appearance_bud` 的 8 个源锁全部失配。
+- `weapon_skin_catalog_pe`：145→**158**（PE 当前包图鉴，纯自动生成板）。`data/live_sources_pe.json` 切到 11-12 实机包 `f93ff230…`/310,621,072 B，`build_pe_live_sources.py` 常量与 builder 服别文案同步。
+- `fashion_wardrobe`：3150→**3158**。只补本次 57 行聚合的 8 张卡（不灭荣光·冠/亚/季军/铭刻、战地旋律），既有 3150 张卡与媒体字段原样保留；未跑 `sync_fashion_wardrobe_live.py --apply`（dry-run 要补 1210 张历史欠账）。驱动 `90_临时/热更_20261112/add_fashion_skin_hotfix_20261112.py`。
+- 主展示「正式名图鉴」`weapon_skin_sfx_text_sources`（125 条全 verified / frozen-audited-artifact）**未塞占位卡**：新皮肤无同快照道具行，静态包内不可定名，按项目定论等实机 UI 短名锚点。清单 `30_分析/热更_20261112/新增武器皮肤_待定名清单_20261112.json`。
+- 细分板（fashion_face / *_slots / appearance_bud / avatar_catalog / weapon_skin_static_candidates_v01 等）同样过期，未擅自重建，待逐板确认口径。
+- 门禁复跑：`build_wiki.py` exit 0、契约红板 0 / 环比告警 0、冒烟 26 组视口 `err=0/0`（40 处 diff = 38 基线过期 + 2 本次时装条目数）、溯源回退 18 板 243139 条四项全过。
+- 备份 `90_临时/board_backup_20261112/pre_skin_fashion/`；报告第七节 `30_分析/热更_20261112/热更更新报告_20261112.md`。
+
+## 2026-11-12 — 热更更新：PE 实机 20261112_000345 进树 + 受影响板块重建
+
+- 数据源：官方测试服 11-12（PC `20261112_030312_playertest_newpc` / 安卓 PE `20261112_000345_playertest_android`，rev 5896772）；
+  用户提示 PE 源已更新后核验实机：`update.ini=0.261112000.0`、`script.py314.lc.npk` 310,621,072 B、overlay `1794470613153` 与 CDN `overlay3` 包名一致。
+- 还原树：CDN 增量包先覆盖 25 张 cdata 表（按完整路径复核，43 张全部已存在，无新增文件）；
+  再以实机完整包合并：新增 7 / 覆盖 3,696 / 相同 23,454 / 守卫跳过 1,889 / 失败 0，合并前抽查确认非差量块。
+- 板块（只重建受影响板）：活动总表 3535→3553、奖池 27505→27514、预告 51→32（活动轮换）、击败播报 13→16（新增 3 款全国巅峰赛限定）、本地还原树 33601（大小/时间刷新）。
+- 修复：奖池板重建后丢失 `meta.provenance_defaults` 的一组 `add4586e5ef0b884`，导致 999 条契约错误，已从同源备份文本级补回；
+  `build_kill_broadcast.py` 过时的 `len(kb)!=5` 硬断言放宽为 `<5` 并改动态行数说明。
+- 门禁：`build_wiki.py` exit 0、契约红板 0 / 环比告警 0、冒烟 26 组视口 `err=0/0`。
+- ★ 待定版：各板 `source_locks` / `decode.table_sha256` / `meta.notes` 仍指向 11-06、10-30 旧包字面量，换源后声明与实际取数不一致；冒烟基线停在 11-07。
+- 报告 `01_索引与产物/30_分析/热更_20261112/热更更新报告_20261112.md`；全量备份 `90_临时/board_backup_20261112/`、`90_临时/tree_backup_20261112/`。
+
 ## 2026-10-30（夜 02:50）— 人物时装：单性别款（实际仅女款）标注进卡面与详情
 
 - 用户要求：（一）人物时装里仅单性别的款要标在子卡详情里（至少不湮之花、白月魁）。

@@ -1,0 +1,16 @@
+{
+ "schema_version": 2,
+ "generated": "2026-11-12",
+ "scope": "PE 体验服（只用 PE 源；不再引用 E:/mrzh）",
+ "sources": [
+  {
+   "source_id": "documents-py314-current",
+   "path": "E:\\la拆包项目\\90_临时\\pe_client_20261112\\Documents\\script.py314.lc.npk",
+   "server_branch": "playertest",
+   "expected_sha256": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+   "expected_bytes": 310621072,
+   "expected_mtime_ns": 1794480610959340800,
+   "note": "PE 体验服客户端脚本包（雷电 /sdcard/Android/data/com.netease.mrzh/files/netease/g66/Documents）"
+  }
+ ]
+}

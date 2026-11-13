@@ -24,6 +24,7 @@ sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from toolkit_core import android_gpk as AG  # noqa: E402
 from toolkit_core.path_fid import fid_of  # noqa: E402
 from board_io import write_board_pair  # noqa: E402
+from title_anim_pace import frame_duration  # noqa: E402
 
 WEB = PROJ / "02_wiki/web"
 DB = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
@@ -134,7 +135,7 @@ def main() -> int:
             frames = [f.resize((MAX_W, max(1, int(h * MAX_W / w))), Image.LANCZOS) for f in frames]
         key = re.sub(r"[^0-9A-Za-z_]+", "_", iid)
         dst = OUT / f"csb_{key}.webp"
-        frames[0].save(dst, save_all=True, append_images=frames[1:], duration=40, loop=0,
+        frames[0].save(dst, save_all=True, append_images=frames[1:], duration=frame_duration(len(frames)), loop=0,
                        quality=60, method=4)
         h = hashlib.md5(dst.read_bytes()).hexdigest()
         hashes.setdefault(h, []).append(iid)

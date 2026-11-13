@@ -1,24 +1,24 @@
 window.WIKI_MANIFEST = {
-  "generated": "2026-11-05",
+  "generated": "2026-11-13",
   "builder": "build_wiki.py v0.4-strict-dual-source-gated",
   "publication_policy": "publication_policy.json",
   "policy_generated": "2026-11-01",
   "boards": [
     {
       "name": "活动总表 · 全部活动与起止时间",
-      "category": "三、活动类 / （零）活动总表",
+      "category": "置顶、活动奖池与预告 / 1、活动总表",
       "board": "activity_master",
-      "items": 3535,
-      "generated": "2026-11-04",
-      "source_server": "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）",
-      "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+      "items": 3553,
+      "generated": "2026-11-12",
+      "source_server": "huodong_conf 主表 · 2026-11-06 热更（VM 字节码执行）",
+      "package_sha": "0fd7c78e170d120e0bd4c5542caa296a4fb44464a283d251cf660f80588f49f2",
       "evidence": {
-        "structure": 3535
+        "structure": 3553
       },
       "state_summary": {
-        "未开始": 35,
-        "进行中": 115,
-        "已结束": 3307,
+        "未开始": 30,
+        "进行中": 125,
+        "已结束": 3320,
         "无时间": 78
       },
       "name_status_summary": {},
@@ -27,7 +27,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 3535
+          "replayed-structural": 3553
         }
       }
     },
@@ -88,7 +88,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "状态效果总表",
-      "category": "二、战力类 / （十一）状态效果",
+      "category": "三、综合资料 / （五）状态",
       "board": "buff_catalog",
       "items": 18718,
       "generated": "2026-11-04",
@@ -112,7 +112,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "CDN 资源库总览（逻辑包 · 变体 · 档位 · 本地状态）",
-      "category": "四、综合资料 / （四）CDN 资源库",
+      "category": "四、服务与包体 / （二）CDN 资源库",
       "board": "cdn_library",
       "items": 711,
       "generated": "2026-10-31",
@@ -137,8 +137,34 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "宸世臻藏 · 期次 / 奖池 / 展示页（11-12 实机）",
+      "category": "置顶、活动奖池与预告 / 3、宸世臻藏",
+      "board": "chenshi_zhencang_20261112",
+      "items": 36,
+      "generated": "2026-11-12",
+      "source_server": "PE 测试服 11-12 热更（20261112_000345_playertest_android，rev 5896772）",
+      "package_sha": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+      "evidence": {
+        "structure": 36
+      },
+      "state_summary": {
+        "期次": 31,
+        "11-12 新增奖池": 4,
+        "活动主配置": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 36
+        }
+      }
+    },
+    {
       "name": "2、攻击力",
-      "category": "二、战力类 / 2、攻击力",
+      "category": "二、战力类 / 2、伤害计算",
       "board": "damage_attack",
       "items": 3,
       "generated": "2026-11-04",
@@ -164,7 +190,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "3、加成",
-      "category": "二、战力类 / 3、加成",
+      "category": "二、战力类 / 2、伤害计算",
       "board": "damage_bonus",
       "items": 19,
       "generated": "2026-11-04",
@@ -191,7 +217,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "4、守方侧",
-      "category": "二、战力类 / 4、守方侧",
+      "category": "二、战力类 / 2、伤害计算",
       "board": "damage_defense",
       "items": 3,
       "generated": "2026-11-04",
@@ -217,7 +243,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "说明条目总表",
-      "category": "四、资料层 / （九）说明条目",
+      "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "desc_catalog",
       "items": 3684,
       "generated": "2026-11-04",
@@ -272,7 +298,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "可食用物品总表",
-      "category": "二、战力类 / （九）可食用物品",
+      "category": "二、战力类 / （四）料理与食谱",
       "board": "edible_catalog",
       "items": 4451,
       "generated": "",
@@ -296,7 +322,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "实体总表",
-      "category": "四、资料层 / （八）实体",
+      "category": "三、综合资料 / （四）实体技能",
       "board": "entity_catalog",
       "items": 9423,
       "generated": "2026-11-04",
@@ -438,19 +464,19 @@ window.WIKI_MANIFEST = {
       "name": "人物·全量时装衣柜",
       "category": "一、时装类 / （一）人物时装",
       "board": "fashion_wardrobe",
-      "items": 3150,
+      "items": 3158,
       "generated": "2026-11-04",
       "source_server": "PE 测试服 · 表 41_还原树/pe/配置/com/cdata（fashion_data.py、fashion_data_chs.py、player_appear_data.py） · 资源 41_还原树/pe/资源",
       "package_sha": "0a9d368c03d17c1b1ea19706d4975a64cdfe7281e3c2bdc015385d933df32b0b",
       "evidence": {
-        "structure": 3148,
+        "structure": 3156,
         "candidate": 2
       },
       "state_summary": {
         "有图": 2232,
-        "无图": 918,
-        "活树行数": 11169,
-        "已覆盖行数": 11169
+        "无图": 926,
+        "活树行数": 11226,
+        "已覆盖行数": 12620
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -459,7 +485,35 @@ window.WIKI_MANIFEST = {
         "dual_source_mode": null,
         "locator_chain_statuses": {
           "missing": 2,
-          "replayed-structural": 3148
+          "replayed-structural": 3156
+        }
+      }
+    },
+    {
+      "name": "风尚绮遇 · 华宴序曲 / 绮梦绘卷 / 幻海旖旎三奖池（11-12 先行包）",
+      "category": "置顶、活动奖池与预告 / 4、风尚绮遇（1119 先行）",
+      "board": "fengshang_qiyu_20261112",
+      "items": 7,
+      "generated": "2026-11-12",
+      "source_server": "PE 测试服 11-12 热更（20261112_000345_playertest_android，rev 5896772）",
+      "package_sha": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+      "evidence": {
+        "structure": 7
+      },
+      "state_summary": {
+        "奖池": 3,
+        "镜像池": 3,
+        "每池格数": 35,
+        "官方规则": 8,
+        "组合活动": 1
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 7
         }
       }
     },
@@ -492,7 +546,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "当前包 · 礼盒名称与说明文字表",
-      "category": "一、道具总表 / （二）礼盒",
+      "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "gift_data_text_sources",
       "items": 5657,
       "generated": "2026-11-04",
@@ -580,18 +634,49 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "甲虫无人机 · 战术无人机拆解（11-12 实机）",
+      "category": "二、战力类 / （三）无人机",
+      "board": "jiachong_wurenji_20261112",
+      "items": 16,
+      "generated": "2026-11-12",
+      "source_server": "PE 测试服 11-12 热更（20261112_000345_playertest_android，rev 5896772）",
+      "package_sha": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+      "evidence": {
+        "structure": 16
+      },
+      "state_summary": {
+        "同族战术无人机": 9,
+        "甲虫关联技能": 3,
+        "技能真实效果": "已解出（护盾实体 HP5000/10s/范围500/出生buff5069/免疫[15]）",
+        "auto_buff": 25312,
+        "manual_buff": 25311,
+        "BUFF定义": "0x73加密分服表(buff_data_kj1/yk)不可解",
+        "获取方式": "无 shop/lottery/activity/mission 引用，drone_base_conf 0x73加密",
+        "机体总表收录": "见展示页（跨源不并入）"
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 16
+        }
+      }
+    },
+    {
       "name": "击败播报 / MVP 结算动画",
       "category": "三、活动类 / （五）击败播报",
       "board": "kill_broadcast",
-      "items": 13,
+      "items": 16,
       "generated": "2026-10-22",
       "source_server": "简单生存服·体验服（Documents py314 树）",
       "package_sha": "c9e12b43ec93d7d1c75720958b990c7b4a0b0cf971b505b91cfdc2c0eddb5523",
       "evidence": {
-        "structure": 13
+        "structure": 16
       },
       "state_summary": {
-        "击败播报": 5,
+        "击败播报": 8,
         "MVP 结算动画": 8
       },
       "name_status_summary": {},
@@ -600,7 +685,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 13
+          "replayed-structural": 16
         }
       }
     },
@@ -609,7 +694,7 @@ window.WIKI_MANIFEST = {
       "category": "四、服务与包体 / （三）本地还原树",
       "board": "local_restore_tree",
       "items": 33601,
-      "generated": "2026-11-04",
+      "generated": "2026-11-12",
       "source_server": "本地 PE 还原树（41_还原树/pe），不读线上客户端",
       "package_sha": "919a6aa4962e37018cee1a6147586cff466d2e75f5c34dc1c8c7f7d9f45a7251",
       "evidence": {
@@ -634,28 +719,49 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "当期&历史每期抽奖奖池（按活动表重建）",
-      "category": "置顶、活动奖池与预告 / （一）活动奖池",
+      "name": "奖池期次总表（期次 → 奖池 → 成员 + 11-03 全量池格）",
+      "category": "置顶、活动奖池与预告 / 2、活动奖池",
       "board": "lottery_periods",
-      "items": 3410,
-      "generated": "20261104",
-      "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
+      "items": 27514,
+      "generated": "20261112",
+      "source_server": "雷电模拟器 14 · 2026-11-03 设备包（PE 侧）",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 3354,
+        "structure": 27458,
         "candidate": 56
       },
       "state_summary": {
-        "期次": 789,
-        "成员": 3410,
-        "结构可证": 3354,
+        "期次": 809,
+        "成员": 27514,
+        "结构可证": 27458,
         "候选成员": 56,
-        "有成员期次": 305,
-        "空成员期次": 484,
-        "进行中": 21,
-        "未开始": 5,
-        "2026起期次": 121,
-        "2026起有成员期次": 90
+        "有成员期次": 526,
+        "空成员期次": 283,
+        "进行中": 22,
+        "未开始": 7,
+        "2026起期次": 141,
+        "2026起有成员期次": 135,
+        "全量池": 1839,
+        "池格行": 24245,
+        "分服替换格": 26,
+        "仅分服新增格": 5,
+        "绑上期次卡的池": 1085,
+        "未归属活动池": 755,
+        "伪期次卡": 13,
+        "池归属P0期次卡自带": 1085,
+        "池归属P1活动号直连": 0,
+        "池归属P2配置键+家族": 0,
+        "池归属P4广播活动名": 0,
+        "池归属P5同实例多档位": 0,
+        "池归属P5兄弟池": 0,
+        "池归属P6组内同活动": 0,
+        "池归属P6自选替换对": 0,
+        "池归属P6许愿大奖池簇": 0,
+        "池归属P6飞隼轮次锚定": 0,
+        "池归属P7许愿最近大奖池": 0,
+        "池归属P7返利小队同行": 0,
+        "池归属P8替换池反推": 0,
+        "池归属P3家族伪期次": 755
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -663,7 +769,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 3410
+          "replayed-structural": 27514
         }
       }
     },
@@ -772,7 +878,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "配方总表",
-      "category": "四、资料层 / （七）配方",
+      "category": "三、综合资料 / （二）配方",
       "board": "recipe_catalog",
       "items": 4200,
       "generated": "2026-11-04",
@@ -820,7 +926,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "服型总表 · 服务器类型后缀与依据",
-      "category": "四、资料层 / （四）服型",
+      "category": "四、服务与包体 / （一）服务器类型",
       "board": "server_types",
       "items": 21,
       "generated": "2026-11-04",
@@ -868,8 +974,36 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "神秘商店 · 期次 / 规则 / 商品导览（11-12 核查）",
+      "category": "置顶、活动奖池与预告 / 5、神秘商店",
+      "board": "shenmi_shangdian_20261112",
+      "items": 21,
+      "generated": "2026-11-12",
+      "source_server": "PE 测试服 11-12 热更（20261112_000345_playertest_android，rev 5896772）",
+      "package_sha": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+      "evidence": {
+        "structure": 21
+      },
+      "state_summary": {
+        "完整配置期次": 16,
+        "活动历史期次": 35,
+        "已发布商品": 1927,
+        "官方规则": 8,
+        "1119 新期": 0
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 21
+        }
+      }
+    },
+    {
       "name": "技能总表",
-      "category": "二、战力类 / （七）技能",
+      "category": "三、综合资料 / （四）实体技能",
       "board": "skill_catalog",
       "items": 6191,
       "generated": "",
@@ -947,7 +1081,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "文本与提示（错误码 / 官方公告）",
-      "category": "四、资料层 / （十）文本与提示",
+      "category": "三、综合资料 / （三）说明条目、文字与提示总表",
       "board": "text_notice_catalog",
       "items": 14899,
       "generated": "2026-11-04",
@@ -971,7 +1105,7 @@ window.WIKI_MANIFEST = {
     },
     {
       "name": "称号总表",
-      "category": "四、资料层 / （四）称号",
+      "category": "一、时装类 / （六）称号",
       "board": "title_catalog",
       "items": 1550,
       "generated": "2026-11-04",
@@ -994,21 +1128,21 @@ window.WIKI_MANIFEST = {
       }
     },
     {
-      "name": "新更新与预告（自动）",
+      "name": "（内测版）新更新与预告（自动）",
       "category": "置顶、活动奖池与预告 / （二）预告专栏",
       "board": "upcoming_auto",
-      "items": 51,
-      "generated": "20261104",
-      "source_server": "当前还原树主表（com/cdata/huodong_conf_data，2026-10-30 热更）；★ 本版无 kj1（简单生存服）变体，不标注服别",
+      "items": 32,
+      "generated": "20261112",
+      "source_server": "雷电模拟器 14 · 2026-11-03 设备包（PE 侧）",
       "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
       "evidence": {
-        "structure": 51
+        "structure": 32
       },
       "state_summary": {
-        "武器皮肤": 11,
-        "奖池成员": 40,
-        "奖池期次": 5,
-        "合计": 51
+        "武器皮肤": 6,
+        "奖池成员": 26,
+        "奖池期次": 6,
+        "合计": 32
       },
       "name_status_summary": {},
       "provenance_status": {
@@ -1016,7 +1150,7 @@ window.WIKI_MANIFEST = {
         "audit_status": "passed",
         "dual_source_mode": null,
         "locator_chain_statuses": {
-          "replayed-structural": 51
+          "replayed-structural": 32
         }
       }
     },
@@ -1048,8 +1182,33 @@ window.WIKI_MANIFEST = {
       }
     },
     {
+      "name": "11-12 热更 · 新增武器皮肤（13 款 · 正式名）",
+      "category": "一、时装类 / （二）武器皮肤",
+      "board": "weapon_skin_hotfix_20261112",
+      "items": 13,
+      "generated": "2026-11-12",
+      "source_server": "PE 测试服 11-12 热更（20261112_000345_playertest_android，rev 5896772）",
+      "package_sha": "f93ff230742802c5556aad9aabf028728ebcb448da9cc33c6c7f9afea5c10029",
+      "evidence": {
+        "structure": 13
+      },
+      "state_summary": {
+        "新增武器皮肤": 13,
+        "正式名已解出": 13
+      },
+      "name_status_summary": {},
+      "provenance_status": {
+        "contract_version": 3,
+        "audit_status": "passed",
+        "dual_source_mode": null,
+        "locator_chain_statuses": {
+          "replayed-structural": 13
+        }
+      }
+    },
+    {
       "name": "当前包 · 武器皮肤图鉴（正式名 + 时限变体 + 预告层）",
-      "category": "二、时装类 / （七）武器皮肤",
+      "category": "一、时装类 / （二）武器皮肤",
       "board": "weapon_skin_sfx_text_sources",
       "items": 125,
       "generated": "2026-11-04T15:17:15+08:00",

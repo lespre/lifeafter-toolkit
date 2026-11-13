@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-"""把已导出的称号动态底图（首帧 ta_<item_id>.png）回填到 title_catalog。
+"""把已导出的称号动态底图**首帧** ta_<item_id>.png 回填到 title_catalog。
 
-只回填本地确实存在的文件，不猜、不新导出。
+★ 2026-11-07：本脚本**不再回填 dyn_webp**。旧写法按 `anim/<csb 名>.webp` 是否存在
+直接挂动画，会把未通过内容校验的 csb 动画重新挂回板上（含混帧/首帧不符的资源）。
+循环动画的唯一挂载口径 = `build_title_dyn_sequences.py`（精确帧序列 + 四项内容校验）。
+本脚本只负责首帧，不猜、不新导出。
 """
 from __future__ import annotations
 
@@ -19,26 +22,17 @@ DYN = WEB / "assets/title_dyn"
 
 def main() -> int:
     board = json.loads(BOARD.read_text(encoding="utf-8"))
-    n = n_anim = 0
+    n = 0
     for it in board["items"]:
         iid = str(it.get("item_id") or "")
         if not iid:
             continue
-        rel = f"assets/title_dyn/ta_{iid}.png"
         if (DYN / f"ta_{iid}.png").is_file():
-            it["dyn_png"] = rel
+            it["dyn_png"] = f"assets/title_dyn/ta_{iid}.png"
             n += 1
-        csb = str(it.get("anim_csb") or "").strip()
-        if csb:
-            stem = csb.replace("\\", "/").rsplit("/", 1)[-1]
-            if stem.endswith(".csb"):
-                stem = stem[:-4]
-            wp = DYN / "anim" / f"{stem}.webp"
-            if wp.is_file():
-                it["dyn_webp"] = f"assets/title_dyn/anim/{stem}.webp"
-                n_anim += 1
     write_board_pair(BOARD, board)
-    print(f"回填 dyn_png {n} 条 · dyn_webp {n_anim} 条 / 共 {len(board['items'])} 条")
+    print(f"回填 dyn_png {n} 条 / 共 {len(board['items'])} 条；"
+          "dyn_webp 由 build_title_dyn_sequences.py 统一裁定，本脚本不碰")
     return 0
 
 

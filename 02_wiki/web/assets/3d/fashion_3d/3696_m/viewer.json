@@ -1,0 +1,103 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3696_m",
+ "series": "3696",
+ "gender": "m",
+ "label": "3696 · 男 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_m_3696/h_m_3696.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3696_high001_0",
+     "shader": "pbr_hair_test",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 10770,
+   "faces": 9420,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 813212
+  },
+  {
+   "id": "outer",
+   "label": "外层件",
+   "source_mesh": "players2021/b_m_3696/h_m_3696_1.mesh",
+   "file": "outer.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3696_001_0",
+     "shader": "pbr_hair_test",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "h_m_3696_001_fx01",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 2,
+     "name": "h_m_3696_001_fx03",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 3,
+     "name": "h_m_3696_001_fx05",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 4,
+     "name": "h_m_3696_001_fx08",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [],
+   "vertices": 5045,
+   "faces": 5630,
+   "submeshes": 5,
+   "materials_exported": 5,
+   "bytes": 587416
+  }
+ ]
+}

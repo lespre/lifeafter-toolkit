@@ -1,0 +1,214 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3479_f",
+ "series": "3479",
+ "gender": "f",
+ "label": "3479 · 女 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_f_3479/b_f_3479.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3479_high_0",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_f_3479_high_1",
+     "shader": "pbr_silk_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_f_3479_high_2",
+     "shader": "pbr_silk_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_f_3479_high_3",
+     "shader": "pbr_silk_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_f_3479_high_4",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 5,
+     "name": "b_f_3479_high_5",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 6,
+     "name": "b_f_3479_high_6",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 7,
+     "name": "b_f_3479_high_7",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 8,
+     "name": "b_f_3479_high_8",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 9,
+     "name": "b_f_3479_high_9",
+     "shader": "uber_fx_common",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "b_f_3479_high_0: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3479_high_1: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3479_high_2: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3479_high_3: detail normal 已合并(detail_normal_silk_02.ktx)"
+   ],
+   "vertices": 13862,
+   "faces": 11727,
+   "submeshes": 10,
+   "materials_exported": 10,
+   "bytes": 6482552
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_f_3479/h_f_3479.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_f_3479_high_0",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_f_3479_high_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "h_f_3479_high_2",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "h_f_3479_high_3",
+     "shader": "pbr_hair",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 8340,
+   "faces": 7386,
+   "submeshes": 4,
+   "materials_exported": 4,
+   "bytes": 1042636
+  }
+ ]
+}

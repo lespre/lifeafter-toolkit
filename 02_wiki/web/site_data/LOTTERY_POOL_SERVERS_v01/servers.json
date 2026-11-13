@@ -1,0 +1,261 @@
+{
+ "components": [
+  "base",
+  "kj1",
+  "kjxq",
+  "yk",
+  "ykxq"
+ ],
+ "equivalence": [
+  {
+   "a": "kj1",
+   "a_rows": 24250,
+   "b": "kjxq",
+   "b_rows": 24250,
+   "common": 24250,
+   "equivalent": true,
+   "only_a": 0,
+   "only_b": 0,
+   "reward_diff": 0
+  },
+  {
+   "a": "yk",
+   "a_rows": 24245,
+   "b": "ykxq",
+   "b_rows": 24245,
+   "common": 24245,
+   "equivalent": true,
+   "only_a": 0,
+   "only_b": 0,
+   "reward_diff": 0
+  },
+  {
+   "a": "base",
+   "a_rows": 24245,
+   "b": "kj1",
+   "b_rows": 24250,
+   "common": 24245,
+   "equivalent": false,
+   "only_a": 0,
+   "only_b": 5,
+   "reward_diff": 8
+  },
+  {
+   "a": "base",
+   "a_rows": 24245,
+   "b": "yk",
+   "b_rows": 24245,
+   "common": 24245,
+   "equivalent": false,
+   "only_a": 0,
+   "only_b": 0,
+   "reward_diff": 18
+  }
+ ],
+ "generator": "02_wiki/web/tools/lottery_enrich.py",
+ "lottery_tables_official": {
+  "T1_bobj_lottery_buff_conf_data": {
+   "oversea_table": "_auto_oversea_data_sea",
+   "suffix": "sea"
+  },
+  "T1_bobj_lottery_reward_pool_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "T1_bobj_lottery_v2_base_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "T1_bobj_lottery_v2_reward_pool_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "T2_bobj_lottery_base_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykxq",
+   "suffix": "ykxq"
+  },
+  "T2_bobj_lottery_reward_pool_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "ac_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_sea",
+   "suffix": "sea"
+  },
+  "building_lottery_v2_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "common_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_sea",
+   "suffix": "sea"
+  },
+  "desc_info_data": {
+   "oversea_table": "_auto_oversea_data_ykxq",
+   "suffix": "ykxq"
+  },
+  "fashion_diy_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "huodong_lottery_video_conf": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "light_paradise_lottery_data": {
+   "oversea_table": "_auto_oversea_data_ykxq",
+   "suffix": "ykxq"
+  },
+  "limit_nucleus_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "lottery_live_score_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "lottery_team_hd_chat_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "lottery_team_hd_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "lottery_team_hd_reward_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "lottery_team_hd_score_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "lottery_team_reward_type_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "multi_optional_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "new_vehicle_lottery_v2_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "newbie_support_lottery_reward": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "newbie_support_lottery_reward_conf": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "nt_lottery_item_show_conf_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "nt_super_fashion_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "nucleus_lottery_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "nucleus_lottery_pool_data": {
+   "oversea_table": "_auto_oversea_data_kr",
+   "suffix": "kr"
+  },
+  "optional_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "reward_pool_ban_item_id": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "reward_pool_data": {
+   "oversea_table": "_auto_oversea_data_ykxq",
+   "suffix": "ykxq"
+  },
+  "reward_pool_level_item_ids": {
+   "oversea_table": "_auto_oversea_data_kr",
+   "suffix": "kr"
+  },
+  "reward_pool_no_item_no_list": {
+   "oversea_table": "_auto_oversea_data_kr",
+   "suffix": "kr"
+  },
+  "roulette_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "scratch_card_reward_pool_conf": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "special_chip_lottery_hd_conf_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "special_chip_lottery_hd_rule_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "super_fashion_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_sea",
+   "suffix": "sea"
+  },
+  "super_fashion_lottery_dragon_pray_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "super_fashion_lottery_v2_mission_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "super_fashion_lottery_v2_ui_conf_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "vehicle_lottery_base_conf_data": {
+   "oversea_table": "_auto_oversea_data_ykjp",
+   "suffix": "ykjp"
+  },
+  "xi_yang_yang_lottery_conf_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  },
+  "xi_yang_yang_lottery_mission_data": {
+   "oversea_table": "_auto_oversea_data_kjxq",
+   "suffix": "kjxq"
+  }
+ },
+ "notes": "★ 5 个 component 实际只有 3 套内容：kj1 ≡ kjxq（23,286 行逐键奖励 0 差异）、yk ≡ ykxq（23,281 行 0 差异）。base 是全量底座。官方 oversea_table_map_data（2,651 条 主表→覆盖表 映射，需 script_table_replay(int_keys_only=False) 才能解，默认会把这些字符串键全丢掉）记录 12 个服后缀；其中 reward_pool_data 官方映射到 ykxq。但实测磁盘上 reward_pool_data 覆盖表只有 kj1(237 行)/kjxq(237 行)/yk(162 行) 有真实数据，其余 10 个后缀是 0 行空壳 ⇒ 「官方映射」描述的是加载关系，不等于该服有差异。带「异变核芯-极光狙击」的是 kj 系（简单生存服特征），yk 系没有。",
+ "official_oversea_map": {
+  "entries": 2650,
+  "source": "01_索引与产物/41_还原树/pe/配置/com/cdata/oversea/oversea_table_map_data.py",
+  "suffix_table_counts": {
+   "eu": 43,
+   "kj1": 2,
+   "kjjp": 9,
+   "kjsea": 3,
+   "kjxq": 1171,
+   "kr": 42,
+   "na": 11,
+   "sea": 104,
+   "xyd": 74,
+   "yk": 8,
+   "ykjp": 154,
+   "ykxq": 1029
+  }
+ },
+ "rows_per_component": {
+  "base": 24245,
+  "kj1": 24250,
+  "kjxq": 24250,
+  "yk": 24245,
+  "ykxq": 24245
+ },
+ "schema": "lottery_server_identity/v0.1"
+}

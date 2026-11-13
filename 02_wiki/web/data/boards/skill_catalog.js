@@ -1,7 +1,7 @@
 window.WIKI_BOARD_skill_catalog = {
  "meta": {
   "name": "技能总表",
-  "category": "二、战力类 / （七）技能",
+  "category": "三、综合资料 / （四）实体技能",
   "generated": "",
   "id_label": "技能ID",
   "source_server": "简单生存服（体验服 Documents 快照）",
@@ -72,7 +72,8 @@ window.WIKI_BOARD_skill_catalog = {
    }
   },
   "notes": "一行 = skill_data 一行；冷却/射程为客户端数值。",
-  "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e"
+  "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+  "category_before": "二、战力类 / （七）技能"
  },
  "periods": [],
  "items": [

@@ -1,0 +1,50 @@
+{
+ "_note": "活动 → 静态面板 的候选映射。来源不是运行注册表，而是「hd_type / ui_class 与面板命名语义对应」的证据匹配，故一律标为 candidate，页面按候选展示，不作为事实。运行注册表 hd_ui_scheme_data 在本包内是二进制表，现有解码器（vm_cdata_table / script_table_replay）解不出（unhashable list），故未采用。",
+ "rules": [
+  "只收 hd_type 或 ui_class 与面板英文名能逐词对上的情况；对不上的一律不收。",
+  "strong = 词义完全对应（如 不放回抽奖↔bufanghuichoujiang、周年签到↔zhounianqiandao）。",
+  "candidate = 类型对应但面板为通用模板，同一面板可能被多类活动复用。"
+ ],
+ "map": {
+  "3642": {
+   "panels": ["huodong_bufanghuichoujiang_main_v1", "huodong_buhuiliuchoujiang_item_jiangli_v1", "huodong_buhuiliuchoujiang_store_v2"],
+   "confidence": "strong",
+   "evidence": "hd_type=不放回清盘抽奖；面板名 bufanghuichoujiang / buhuiliuchoujiang = 不放回抽奖"
+  },
+  "3656": {
+   "panels": ["huancai_diancang_choujiang_zs", "huancai_diancang_choujiang_zs_item", "huancai_diancang_choujiang_fuqilinmen_v9", "huancai_diancang_choujiang_ssjx_v1"],
+   "confidence": "strong",
+   "evidence": "hd_type=幻彩典藏抽奖活动2；面板名 huancai_diancang_choujiang = 幻彩典藏抽奖"
+  },
+  "3658": {
+   "panels": ["yunying_zhounianqiandao_v2_jiangli", "yunying_zhounianqiandao_v2_dajiang_heng"],
+   "confidence": "strong",
+   "evidence": "hd_type=签到活动、名称=周年签到；面板名 zhounianqiandao = 周年签到，且面板内含「第N天」签到格"
+  },
+  "3674": {
+   "panels": ["jixun_hexin_fuli_main", "jixun_hexin_fuli_task_item"],
+   "confidence": "strong",
+   "evidence": "hd_type=核芯福利活动；面板名 hexin_fuli = 核芯福利"
+  },
+  "3662": {
+   "panels": ["shizhuang_choujiang_mix_main", "shizhuang_choujiang_mix_tab", "shizhuang_choujiang_mix_baodi_tishi"],
+   "confidence": "candidate",
+   "evidence": "hd_type=多时装抽奖；面板名 shizhuang_choujiang_mix = 时装抽奖混合"
+  },
+  "3665": {
+   "panels": ["choujiang_hexinjishi_main"],
+   "confidence": "candidate",
+   "evidence": "hd_type=核芯抽奖；面板名 hexinjishi = 核心基石（同属核芯系列，非逐词对应）"
+  },
+  "3667": {
+   "panels": ["huodong_duihuan_shangdian_muban_v3", "huodong_shangdian_muban_tips"],
+   "confidence": "candidate",
+   "evidence": "hd_type=代币兑换；面板名 duihuan_shangdian_muban = 兑换商店模板（通用模板）"
+  },
+  "3669": {
+   "panels": ["huodong_duihuan_shangdian_muban_v3", "huodong_shangdian_muban_tips"],
+   "confidence": "candidate",
+   "evidence": "hd_type=通用兑换商城活动；面板名 duihuan_shangdian_muban = 兑换商店模板（通用模板）"
+  }
+ }
+}

@@ -21,6 +21,10 @@
   python build_title_dyn_assets.py         # 首帧 + 整段动画
   python build_title_dyn_assets.py anim    # 只重做整段动画（不动首帧）
 不猜：csb 取不到或贴图取不到就不填，前端只显示已有内容。
+
+★ 2026-11-07：本脚本只**产出** anim/ 资源与 dyn_png，重跑会清掉 item.dyn_webp。
+  循环动画最终挂载口径（精确帧序列 + 内容校验）在 `build_title_dyn_sequences.py`，
+  ⇒ 跑完本脚本后**必须再跑一次** build_title_dyn_sequences.py --apply 恢复映射。
 """
 from __future__ import annotations
 
@@ -41,7 +45,7 @@ ANIM_DIR = WEB / "assets/title_dyn/anim"
 ANIM_W = 140
 ANIM_Q = 55
 ANIM_MAX_FRAMES = 40
-ANIM_FRAME_MS = 40          # 源 csb 没写时长，按 25fps 估；循环总时长按原帧数折算
+ANIM_FRAME_MS = 40          # 源 csb 没写时长，按 25fps 估（非游戏内实测）；整轮下限见 title_anim_pace.py
 FRAME_CACHE = PROJ / "90_临时/_title_dyn_frame_cache"
 
 CORE = PROJ / "00_规范与工具/工具/工具库/00_共享核心"
@@ -54,6 +58,7 @@ from toolkit_core import img_fetch as IF  # noqa: E402
 from toolkit_core.path_fid import fid_of  # noqa: E402
 from gpk_reader import aes_ecb  # noqa: E402
 import la_unpack_core as UC  # noqa: E402
+from title_anim_pace import frame_duration  # noqa: E402
 
 MRZH = pathlib.Path(r"E:\mrzh")
 RPMAP = PROJ / "01_索引与产物/10_索引/indexes/row_path_map.db"
@@ -544,7 +549,9 @@ def build_anims(board, full_map=None):
         dom = seq[0].size
         canvas = (ANIM_W, max(1, round(dom[1] * ANIM_W / dom[0])))
         frames = [im.resize(canvas, Image.LANCZOS) for im in seq]
-        dur = max(20, round(ANIM_FRAME_MS * n_orig / len(frames)))
+        # 整轮区间由 title_anim_pace.frame_duration 统一裁定：既不让少帧动画频闪，
+        # 也不让「按 csb 原始帧数折算」的动画慢到 5~6 秒一轮、看着像静止。
+        dur = frame_duration(len(frames), round(ANIM_FRAME_MS * n_orig / len(frames)))
         dst = ANIM_DIR / csb_anim_name(csb)
         # method=6 体积略小但慢 40 倍（实测 19s vs 0.4s/40 帧），method=4 够用
         frames[0].save(dst, "WEBP", save_all=True, append_images=frames[1:],

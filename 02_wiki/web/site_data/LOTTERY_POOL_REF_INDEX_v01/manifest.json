@@ -1,0 +1,236 @@
+{
+ "generator": "02_wiki/web/tools/build_lottery_pool_ref_index.py",
+ "generated_at": "2026-11-07",
+ "tree": "01_索引与产物/源包/pe_device_20261103/cdata/com/cdata",
+ "pool_dataset": "02_wiki/web/site_data/LOTTERY_POOL_PE1103_v01",
+ "pool_count": 1840,
+ "pool_keys_sha256": "aef6b4c5e763a3979dccb792f873f3aa1b1c47306387c8cf472c9c6c4786e8d7",
+ "tables_scanned": 16710,
+ "tables_decoded": 394,
+ "tables_hit": 55,
+ "pools_with_ref": 1278,
+ "pools_without_ref": 562,
+ "table_sha256": {
+  "T1_bobj_lottery_v2_base_conf_data.py": {
+   "sha256": "5fb7750d888eb20d93e70025e2fb695ab6632290bc6bf7a00374c845ae92788a",
+   "pools": 12
+  },
+  "T2_bobj_lottery_reward_conf_data.py": {
+   "sha256": "6e6a786d561eaad4c66d9a43bc1ddf114af5e9cbec7d88629f97efa2876a4b17",
+   "pools": 42
+  },
+  "distortion_infect_monster_data_1950.py": {
+   "sha256": "0eec5c904bc482d68ad7be68ac7921eee5a2a2dd6890f3b2572a25d0d6a02fdb",
+   "pools": 22
+  },
+  "distortion_infect_monster_data_1951.py": {
+   "sha256": "a1769008eaa3c4f95f323cc634015634429c33355f853e872aa48355f11b3477",
+   "pools": 32
+  },
+  "distortion_infect_monster_data_3703.py": {
+   "sha256": "938204dff727f53e575f316fc7e3939d0b31c9ac0b79b850e70bcdcb5665f4b5",
+   "pools": 1
+  },
+  "falcon_strike_conf_data.py": {
+   "sha256": "8cf75e62ff5d9c7d8d4d06c1057a1058f97d0844930e1a5bfb6cfeca48eb118b",
+   "pools": 2
+  },
+  "falcon_strike_round_conf_data.py": {
+   "sha256": "e02f7aec65467469903067081e4c63569652c4528fa47139af089c189a82e3db",
+   "pools": 21
+  },
+  "furniture_return_conf_data.py": {
+   "sha256": "0b2f01f4eb12f7874e2a6948d4ce54ffa3ee84d031cae3b064ade549b2ee9c3a",
+   "pools": 3
+  },
+  "monster_data_390.py": {
+   "sha256": "3db1874febaea5499ba1a332ebd140e304916e8e41293ba58fe1deb62f87e336",
+   "pools": 328
+  },
+  "monster_data_740.py": {
+   "sha256": "352159d9e09448165611dceef0f7bc87321c0a94749f6975156a318a6099a187",
+   "pools": 1
+  },
+  "multi_optional_lottery_conf_data.py": {
+   "sha256": "5ce4f3859abcc3f61935fee044473f49e7d1bdde3558e4696009e3d851398899",
+   "pools": 11
+  },
+  "new_pve_monster_attr_data.py": {
+   "sha256": "46386c20f0af3d9906cf2226fe8976151adfae39f3ae426ff7ac88acdc6b1dfd",
+   "pools": 104
+  },
+  "nucleus_lottery_pool_data.py": {
+   "sha256": "5e0ac81ee12a75acd22a1adaa78d5d95fa3f2849b30a028dc26a58041859148c",
+   "pools": 5
+  },
+  "only_fashion_hd_lottery_conf.py": {
+   "sha256": "a9c4fd0987d59978d1b1ab16161bf2e7fd3eeb369ca2a99282e77c7ac45dfde4",
+   "pools": 9
+  },
+  "optional_conf_data.py": {
+   "sha256": "157cc418fcaa3554035f04518d0a2d7d9a80ced01487f8abddf920d476678a71",
+   "pools": 1
+  },
+  "optional_pool_replace_data.py": {
+   "sha256": "df1d16dcda95667849777f236ede796a35f0030f6d399f0235b9025d759c1858",
+   "pools": 127
+  },
+  "oversea/ac_lottery_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "87557fb1c2051ffaa177d33825612888cb38dcea671784b5730bd18537f41300",
+   "pools": 1
+  },
+  "oversea/ac_lottery_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "115b13423a2620c819a5bccbe0c71e626f5884a9569dd3d9c584c2d651bc9786",
+   "pools": 1
+  },
+  "oversea/climb_tower_monster_attr_detail_data_auto_oversea_data_kj1.py": {
+   "sha256": "ed3bb3ad8f7659898539787630739f288a6c814c7b2125a2e5d953dd4f012fe1",
+   "pools": 1
+  },
+  "oversea/climb_tower_monster_attr_detail_data_auto_oversea_data_kjxq.py": {
+   "sha256": "e6117ac6780db9687ef7245ca6225d25e10b3c297c01cd40ccf9218ac43bbfcb",
+   "pools": 1
+  },
+  "oversea/death_zone_attr_data_auto_oversea_data_kj1.py": {
+   "sha256": "69fee68a20c86e4f400c818f2f75372f3c17633720b51c1803ac919813eeaa37",
+   "pools": 1
+  },
+  "oversea/death_zone_attr_data_auto_oversea_data_kjxq.py": {
+   "sha256": "a287dff7326f6e93fd713ba696133570da7ddd89505586a16c16dfe660d4352d",
+   "pools": 1
+  },
+  "oversea/egg_plant_reward_data_auto_oversea_data_kj1.py": {
+   "sha256": "bfb9ec3db19ed50119500cf91896fbc1cb42367044c04653fdb8a5e28dce2498",
+   "pools": 3
+  },
+  "oversea/egg_plant_reward_data_auto_oversea_data_kjxq.py": {
+   "sha256": "96e8a6235c5320c8054a70abba6b53336d68618e8b258d6b9ca01c0a0075e96d",
+   "pools": 3
+  },
+  "oversea/greet_supply_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "8b36038bd833885ded0669cd93e249435250b7679558b74da467a3ad71b8f6ab",
+   "pools": 4
+  },
+  "oversea/greet_supply_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "150ae14f718fec63fe82c3c2a2f2e9ba8e3d838412a330c7d46450790ad25326",
+   "pools": 4
+  },
+  "oversea/multi_optional_lottery_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "9be48cd038db61873c95dea056f6d49e3a3bb4f5db4a3ada34873cd6c128a55a",
+   "pools": 11
+  },
+  "oversea/multi_optional_lottery_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "9678574639d23704b56b831b964ee2f8985e4adfcb3c8292f9bc0efcbe644157",
+   "pools": 11
+  },
+  "oversea/nt_super_fashion_lottery_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "7e231796deebf5cab033545d84bbd8b44f3f54c87d86a25bb8cd4864b7f0ad8a",
+   "pools": 3
+  },
+  "oversea/nt_super_fashion_lottery_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "f26149631be3e9bca67e2a7a6cd8fa71dad7785ec6f90f1646d344610f7895c8",
+   "pools": 3
+  },
+  "oversea/nucleus_lottery_pool_data_auto_oversea_data_kj1.py": {
+   "sha256": "ee5d66ff548b73b7ad8a4a888e8b6d2a5e49ddf266b04e4a234358dce184b4f9",
+   "pools": 375
+  },
+  "oversea/nucleus_lottery_pool_data_auto_oversea_data_kjxq.py": {
+   "sha256": "ba5a8274302d7b62acc214dedb1d96f6300b4e38e9b82c32cce48444d67eac6d",
+   "pools": 375
+  },
+  "oversea/optional_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "7cf21b5dd60429c9bee0afbf8ed89f96c74802154dfb7932396cbad2637d939c",
+   "pools": 1
+  },
+  "oversea/optional_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "659b42c5359196bbccbcfa805e7f18f75c31070b1c39cc78fcb6951cbfe01e96",
+   "pools": 1
+  },
+  "oversea/refresh_entities_122_auto_oversea_data_yk.py": {
+   "sha256": "2f56bd8a3f9e844ca4da7a735b2c05398f34d9b7785098f85cb3918fbc44d620",
+   "pools": 2
+  },
+  "oversea/relay_huodong_mission_reward_data_auto_oversea_data_kj1.py": {
+   "sha256": "112f97c17d2f428661da01c25a42d18a80adf0c4206de355e132e1d69a1204a6",
+   "pools": 2
+  },
+  "oversea/relay_huodong_mission_reward_data_auto_oversea_data_kjxq.py": {
+   "sha256": "07abf8a388a916c7862548a6188c1a0297eae00eeb0ba727ee40c576825b084d",
+   "pools": 2
+  },
+  "oversea/super_fashion_lottery_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "fa67a9b0bbda83f843b15a438a7a3879b6e1553f257212797b45e8f75a73da65",
+   "pools": 28
+  },
+  "oversea/super_fashion_lottery_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "5abf2b05b1acc828e2b49f067f972300f0d4753ab6afbc3b6df9c13031badacb",
+   "pools": 28
+  },
+  "oversea/vehicle_lottery_base_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "b61b0ef232035be308e3d8dc615ca9d2265c3df9aa9f6f1cd2c80412407fd0ed",
+   "pools": 3
+  },
+  "oversea/vehicle_lottery_base_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "e409a32b48343d92dd8029eaec2db41a07537cba6866a7c5ef2529fa1f884aeb",
+   "pools": 3
+  },
+  "oversea/white_valentine_day_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "6b16c247c5638b856b1c797a7c35e39cdb19107c05cb2138288297ee042f1de2",
+   "pools": 1
+  },
+  "oversea/white_valentine_day_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "ac4d8bfec13a2adab7ef42f191d69cfd080f1f208b979985099adbdd19d4f469",
+   "pools": 1
+  },
+  "oversea/xi_yang_yang_lottery_conf_data_auto_oversea_data_kj1.py": {
+   "sha256": "a13f58b5ff438cbbd605feb0e0da6c225538c1e2a104fe25298766264681c1f8",
+   "pools": 3
+  },
+  "oversea/xi_yang_yang_lottery_conf_data_auto_oversea_data_kjxq.py": {
+   "sha256": "eed40d70702b5cb01e4ab74de5772e2e24ad13eb2d514ad6bca644ae7ed15bdc",
+   "pools": 3
+  },
+  "pigeon_wish_conf_data.py": {
+   "sha256": "1ac2e02cc8c72e7011244d20e8579cd14268af2bee91d22cbafa72282dc5f206",
+   "pools": 16
+  },
+  "pigeon_wish_lottery_data.py": {
+   "sha256": "dda2125d374a336b909dad2489e179671787b03329fe543d1f5fbb188fd1603d",
+   "pools": 90
+  },
+  "refresh_entities_122.py": {
+   "sha256": "81056d06a01193f456926b6c78d1067324fd1dbdf7ab86e009f9b566eb9c7d1d",
+   "pools": 14
+  },
+  "refresh_entities_25.py": {
+   "sha256": "76de4169c0fe2a7fac3e6194541ddf906dde938160416f8d80f18b0b392399b9",
+   "pools": 14
+  },
+  "storage_box_data.py": {
+   "sha256": "131ad2a0bec47e8ad591c9038793ade5737e808015f1e3326170246e8ddc409a",
+   "pools": 22
+  },
+  "super_fashion_lottery_conf_data.py": {
+   "sha256": "910fb7c0c4cd8a22e9940305f14d16098ade4901b0a37faf7efde65c4c1548fa",
+   "pools": 188
+  },
+  "super_fashion_lottery_dragon_reward_ui_data.py": {
+   "sha256": "e0f839bd3cd1bfa3b9a8413e0c659bec6f6b034be6b53abd99f325bef8c2b113",
+   "pools": 4
+  },
+  "trade_items.py": {
+   "sha256": "cdd4b4ee5b8d0c31eb50a9bba9ac16b8be701c6ae2615971963764fff2799052",
+   "pools": 3
+  },
+  "vehicle_lottery_base_conf_data.py": {
+   "sha256": "4bc364ea52d5aecc69492462782c03ae83b0f6514cec513dd671799c353e0a87",
+   "pools": 3
+  },
+  "weapon_decomposition_base_conf_data.py": {
+   "sha256": "5ba93c96f7fc41b35ca167048a81ea92018b913eea9e126ec944a29670e3e43f",
+   "pools": 16
+  }
+ },
+ "notes": "字段名无关的池引用扫描：整数值命中即引用，逐行记 (table,row_key,field)。预筛仅用 ULEB 字节存在性，真伪由解码后的整数值判定。"
+}

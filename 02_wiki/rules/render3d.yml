@@ -1,0 +1,222 @@
+# ══════════════════════════════════════════════════════════════════════════
+# render3d.yml — 时装 / 武器皮肤 3D 资产流水线契约
+#   方针 + 口径 + 可复算规则 + 阶段图，脚本只读不写，禁止任何生成器覆盖。
+#
+#   定位：这条线是「资产生产线」，不是「板级重建」。因此**不并入**
+#   rules/pipeline_graph.yml 的板级 stages（那是人工判定的重建顺序，
+#   语义不同）；CLI 约定与其对齐（--apply dry-run / --stage / --check / 0-1-2）。
+#   将来若要发布成板，另按四层登记：taxonomy → 板产物 meta.category →
+#   rules/boards/*.yml → manifest.js，并过 strict_v2 门禁。
+#
+#   建立：2026-11-07　依据：报告_3D渲染研究_时装与武器皮肤_20261102.md
+#         ＋ 皮肤渲染定位链_可复用流程_v1.md（v1-draft，只作路线图）
+# ══════════════════════════════════════════════════════════════════════════
+version: 1
+maintained_by: human
+generated_by: null
+
+# ── 方针 ───────────────────────────────────────────────────────────────────
+policy:
+  goal: >
+    把 3D 线从「散落的一次性研究脚本」变成「可幂等重跑、有契约、有质检、
+    有证据、能被编排调度的资产流水线」；先如实复现既有成果，再谈扩量与保真。
+  boundary: >
+    本轮只做 roster → export → verify 三段资产生产。不发布成板、不进主站导航、
+    不修改任何生产默认文件（weapon_skin_viewer.js / fashion3d.html / manifest.js
+    / data/media/weapon_skin_media.js 全部只读）。
+  non_goals:
+    - 不追求 100% 保真（IBL cube / 第二 UV / uber_fx / .gim 骨骼 / .sfx 本体仍未解）
+    - 不注入游戏进程、不扫线上 npk（全程静态离线）
+    - 不把 approximate 包装成 source_matched
+  principles:
+    - 数据源白名单之外一律不读；拿不到证据标 unresolved 并写报告，绝不伪造
+    - 选型规则必须可复算，并先过 golden_set 全量一致率验证才允许扩量
+    - 默认 dry-run，--apply 才落盘；先算差异，一致则不写（字节级幂等）
+    - 缺源标 missing，不用别的图/别的部件顶替
+    - 任何为好看而调的数值标 approximate，留待用户批准
+    - 回归不得破坏已建成皮肤（既有 5 套为冻结基准）
+
+# ── 数据源边界（用户铁律）────────────────────────────────────────────────
+data_sources:
+  allow:
+    - 01_索引与产物/41_还原树/pe/资源      # mesh / mtg / ktx / c159 / gim
+    - 01_索引与产物/30_分析/_fashion3d      # 冻结索引与普查产物
+    - 02_wiki/web/assets/3d                # 既有产物（只读对照基准）
+  forbid:
+    - 线上 / 远程 npk
+    - 客户端进程注入
+    - 任何未在 allow 中的路径（写死设备路径亦禁）
+  note: >
+    路径一律经 la_paths 派生，脚本内不得出现 E:/ 或 e:\ 字面量。
+    溯源字面量（source_locks.sha256/path）若将来写进板产物，必须保持字面量；
+    本流水线的 roster / manifest 属运行态校验，sha256 实时计算，两者不混。
+
+# ── 保真分级（沿用 11-02 报告既有口径，不新造）──────────────────────────
+fidelity:
+  levels: [source_matched, source_candidate, approximate, unresolved]
+  default: approximate
+  rule: >
+    source_matched = 材质参数逐项有 c159/mtg 源值且查看器消费；
+    source_candidate = 有源候选但未逐值配对；
+    approximate = PBR 由 .mtg 材料/贴图直出，IBL 为程序化 studio、
+    detail normal 按同 UV 近似合并、第二 UV 集与 uber_fx 逐层参数未进 GLB；
+    unresolved = 源缺失或语义未定证，fail-closed 不出图。
+  known_gaps:
+    - IBL cube：common/env_map 在还原树确认不存在，磁盘 .cube 采样 0 命中
+    - 材质级 u_cube_brightness / u_rotate_angle 生产链未消费
+    - 作者 mip(8级) / u_lightmap_factor / u_env_day2night_exposure 未取或硬编
+    - .mtg RenderStates、TransparentMode 逐值统计（unresolved）
+    - .gim 骨骼挂接、.sfx 特效本体、切线手性（不导出 TANGENT）
+    - ★ .gim 几何缺口（2026-11-07 修正理解）：.gim 与 .c159 同格式（magic c1 59 41 0d），
+      本质是 NeoX「对象/场景描述符」——字段名表 + 带 tag 值流 + 引用串（指向子件/LOD/
+      材质/挂点的 .gim/.mesh/.mtg）。绝大多数 .gim 是装配图，几何体在同級或外部 .mesh；
+      仅极少数大文件（如 players/r_m_1000，672KB）内嵌顶点缓冲。
+      ⇒ suit_f_3007_eu 的「几何体缺件」已证伪：其 .gim 引用
+      `character\players\suit_f_3007\suit_f_3007.mesh`（194KB 合法 .mesh，存在于树内），
+      r3d_core.resolve_mesh 现已通过 r3d_gim 跨目录解析该引用，3007_f 由 unresolved 升为 ready。
+      全量 survey 已从 1253 ready / 1 unresolved 变为 1254 ready / 0 unresolved。
+      r3d_gim.py 已落地（解析描述符 + 抽取引用 + 探测内嵌几何候选），内嵌几何的完整抽取
+      （blob 步长/分量解析）为后续子任务，且大文件多位于 fashion/weapon 根之外。
+
+# ── 阶段图（书写顺序 = 执行顺序）────────────────────────────────────────
+stages:
+  - id: roster
+    tool: s1_roster.py
+    input: [fashion_index.json, render3d.yml, 41_还原树/pe/资源]
+    output: 02_wiki/state/render3d/roster.json
+    gate: >-
+      每个 unit 的 mesh 须通过魔数校验（44 字节 _shadow 桩/坏魔数剔除），
+      同级无合法 .mesh 且有 .gim → 标 unresolved_geometry_format；
+      mesh 缺失 → 标 missing（几何不在，无法出图）；
+      .mtg（基础材质）缺失但 mesh 在 → 按 white_model 政策标 ready 出白模
+      （用户 2026-11-07 决策：放行白模，几何可见、无贴图；不顶替变体材质）。
+  - id: export
+    tool: s2_export.py
+    input: [roster.json, fashion_glb.py（动态加载，覆写路径常量）]
+    output: 02_wiki/state/render3d/staging/<outfit_id>/
+    gate: staging 与既有产物逐文件 sha256 比较，一致即跳过；--apply 才替换
+  - id: verify
+    tool: s3_verify.py
+    input: [roster.json, staging/, assets/3d/fashion_3d/]
+    output: 02_wiki/state/render3d/verify_report.json
+    gate: golden_set 一致率 5/5、GLB 头合法、无空件、missing[] 为空、复跑幂等
+  - id: report
+    tool: run_pipeline.py
+    input: [verify_report.json]
+    output: 02_wiki/state/render3d/pipeline_report.json
+    gate: 退出码 0 才算通过；1 质检失败；2 规则/参数错误
+
+# ── 第二条线：武器皮肤（复用同套 r3d_core machinery，只读生产产物）────────
+#   武器资产已建成（assets/3d/weapon_skin/ 379 GLB），本线只做质检+溯源基线，
+#   不重建（重建属 build_weapon_glb.py 包装，留待后续阶段）。
+#   已知：目录名(1110013) 与 c159 普查 skin_freq 键(skin_1007_007) 不同体系，
+#        无映射 ⇒ 源证据默认 unresolved，不伪造。
+weapon_stages:
+  - id: weapon_inventory
+    tool: w1_inventory.py
+    input: [assets/3d/weapon_skin/*/viewer.json, weapon_c159_material_survey.json]
+    output: 02_wiki/state/render3d/weapon_inventory.json
+    gate: 枚举全部皮肤目录；GLB 头校验；viewer 引用核对；源证据 best-effort，缺失标 unresolved
+  - id: weapon_verify
+    tool: w3_weapon_verify.py
+    input: [weapon_inventory.json]
+    output: 02_wiki/state/render3d/weapon_verify_report.json
+    gate: GLB 非法/引用缺失/保真非法 ⇒ 红灯；无 viewer/溯源缺失/绝对路径 ⇒ 黄灯
+
+# ── 描述符解码器（2026-11-07 新增，被 resolve_mesh 复用）─────────────────
+#   r3d_gim.py：NeoX/c159 描述符（.gim/.c159）解析——字段名表 + 带 tag 值流 +
+#   引用串抽取（子件 / LOD / 材质 / 挂点的 .gim/.mesh/.mtg）+ 内嵌几何候选探测。
+#   只读，不写盘，纪律同 r3d_core（la_paths 派生、fail-closed、绝不伪造）。
+#   用途：resolve_mesh 在候选为 .gim 或缺件时，解析同级 .gim 引用的外部 .mesh，
+#   把「几何体为 .gim / 跨目录装配」从 unresolved 升级为 ready（已救回 3007_f）。
+#   ⚠ 内嵌几何（大文件如 r_m_1000 的 89,640B 顶点缓冲）的完整抽取为后续子任务。
+
+# ── 冻结基准：11-02 已交付的 5 套 ───────────────────────────────────────
+# ★ 字面量冻结，禁止运行时从产物反推（产物坏了基准不能跟着坏）。
+# ★ 以 viewer.json 记录的真实 source_mesh 为准，不以 fashion_glb.py 当前
+#   SPEC 为准：当前脚本把 3223/3245 的 hair 写成了独立 h_ 目录，磁盘不存在，
+#   直接复跑会破坏既有产物（2026-11-07 实测）。
+golden_set:
+  - id: 3223_f
+    series: '3223'
+    gender: f
+    label: '3223 · 女 · 2021 分件组合'
+    note: '衣服(4子网格)+外层件(1)+头发(2)+背包(2)，验证多文件并置'
+    parts:
+      - {part_id: body,  label: 衣服,   source_mesh: 'players2021/b_f_3223/b_f_3223.mesh',    file: body.glb,  vertices: 7926,  submeshes: 4}
+      - {part_id: outer, label: 外层件, source_mesh: 'players2021/b_f_3223/b_f_3223_1.mesh',  file: outer.glb, vertices: 183,   submeshes: 1}
+      - {part_id: hair,  label: 头发,   source_mesh: 'players2021/b_f_3223/h_f_3223.mesh',    file: hair.glb,  vertices: 2977,  submeshes: 2}
+      - {part_id: bag,   label: 背包,   source_mesh: 'players2021/bag_f_3223/bag_f_3223.mesh', file: bag.glb,   vertices: 204,   submeshes: 2}
+  - id: 3245_f
+    series: '3245'
+    gender: f
+    label: '3245 · 女 · 2021 分件组合'
+    note: '衣服(7子网格，含 transparent/rim_diss 层)+头发(3)+背包(3)'
+    parts:
+      - {part_id: body, label: 衣服, source_mesh: 'players2021/b_f_3245/b_f_3245.mesh',    file: body.glb, vertices: 14850, submeshes: 7}
+      - {part_id: hair, label: 头发, source_mesh: 'players2021/b_f_3245/h_f_3245.mesh',    file: hair.glb, vertices: 3758,  submeshes: 3}
+      - {part_id: bag,  label: 背包, source_mesh: 'players2021/bag_f_3245/bag_f_3245.mesh', file: bag.glb, vertices: 469,   submeshes: 3}
+  - id: 3301_f
+    series: '3301'
+    gender: f
+    label: '3301 · 女 · 2021 整套 suit'
+    note: 'suit_ 整套网格(3子网格)+背包，验证 suit 目录与 b_/h_ 的差异'
+    parts:
+      - {part_id: suit, label: 整套, source_mesh: 'players2021/suit_f_3301/suit_f_3301.mesh', file: suit.glb, vertices: 6545, submeshes: 3}
+      - {part_id: bag,  label: 背包, source_mesh: 'players2021/bag_f_3301/bag_f_3301.mesh',   file: bag.glb,  vertices: 4,    submeshes: 1}
+  - id: 3640_m
+    series: '3640'
+    gender: m
+    label: '3640 · 男 · 2025 合体网格'
+    note: '2025 重制男款，冰雪/晶体材质占比高'
+    parts:
+      - {part_id: body, label: 衣服, source_mesh: 'players2025/fas_m_3640/b_m_3640a_link/b_m_3640a.mesh', file: body.glb, vertices: 16031, submeshes: 18}
+      - {part_id: hair, label: 头发, source_mesh: 'players2025/fas_m_3640/h_m_3640a_link/h_m_3640a.mesh', file: hair.glb, vertices: 12277, submeshes: 5}
+  - id: 3715_f
+    series: '3715'
+    gender: f
+    label: '3715 · 女 · 2025 合体网格'
+    note: 'players2025 重制款，_link 目录为全件合体（21 子网格含特效层）'
+    parts:
+      - {part_id: body, label: 衣服, source_mesh: 'players2025/fas_f_3715/b_f_3715a_link/b_f_3715a.mesh', file: body.glb, vertices: 22603, submeshes: 21}
+      - {part_id: hair, label: 头发, source_mesh: 'players2025/fas_f_3715/h_f_3715a_link/h_f_3715a.mesh', file: hair.glb, vertices: 17196, submeshes: 5}
+
+# ── 索引 → 清单 的可复算选型规则（r3d_rules.py 实现，改这里必须同步改代码）
+selection_rules:
+  group_by: [series, gender]
+  roots: [players2025, players2021]
+  exclude_roots: [players]
+  part_prefix: {b: body, h: hair, bag: bag, suit: suit}
+  players2025_prefer: '_link 目录（全件合体）＞ 普通目录；同 prefix 取 tail 字典序最小'
+  players2021_multi_mesh: >
+    b_ 目录内若存在 <stem>_1.mesh 且有同名 .mtg ⇒ 追加 part_id=outer；
+    若存在 h_<gender>_<series>.mesh 且无独立 h_ 目录 ⇒ 用它作 hair。
+  fail_closed: '无法唯一判定 → status=unresolved，写报告，不猜不补'
+  require_golden_agreement: 5
+
+# ── 白模政策（2026-11-07 用户决策：放行白模）─────────────────────────────
+#   实测：全量 survey 的「缺失 10 套」经逐套核验，9 套（311119_f / 311120_f /
+#   3174_f / 3190_m / 326366_f / 3452_f / 3452_m / 3479_m / 3480_m）的 .mesh
+#   基础几何全部存在且魔数合法，仅「基础 .mtg 材质」缺失（目录里只剩 LOD /
+#   shadow / high 变体 .mtg，疑似部分基础件被改名）；1 套 6018_f 几何本身不全
+#   （仅头发 high 几何、且唯一 .mtg 是阴影材质）→ 仍按 missing 跳过。
+#   决策：几何在 + 基础材质缺 ⇒ 按白模渲染（默认白色 PBR，无贴图），让几何可见；
+#         NOT 用变体材质顶替（口径未批准），也不伪造。
+white_model:
+  enabled: true
+  # 几何本身不完整 / 只有阴影材质的套，仍按 missing 跳过，不顶替：
+  exclude_units: [6018_f]
+  material: {metallicFactor: 0.0, roughnessFactor: 0.75, baseColorFactor: [1, 1, 1, 1]}
+  note: >
+    白模由 s2_export 在流水线侧注入的 build_part 覆写实现（不修改共享
+    fashion_glb.py）：基础 .mtg 缺失时，喂一个空 sets + 上述白色 mat_opts 给
+    export_glb.build_glb，单 set 自动覆盖全部子网格。带 mtg 的套仍走原
+    build_part，行为不变。s1_roster 仅在 mesh 在且单元未被 exclude 时把部件标
+    ready 并记录 mtg_missing=true。
+
+# ── 待用户判定（本轮不擅自定口径）──────────────────────────────────────
+owner_decision_pending:
+  - 3D 产物是「研究原型」还是「发布成板」：发布需 strict_v2 双源契约，当前只有单一来源
+  - 是否把时装批跑从 5 套扩到 840 系列 / 1310 个可判定的 (series,gender) 组（实测：1264 可判定、46 unresolved、8 条跨容器串号按未证排除）
+  - 保真目标：接受 approximate 铺量，还是先攻 source_matched
+  - fashion3d.html / skin3d.html 是否进主站导航（涉及四层分类登记）

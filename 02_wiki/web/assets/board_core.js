@@ -126,7 +126,7 @@ function loadBoard(b,cb){
   // Workbench 模式：projection 存在则读 artifacts/active 派生数据；否则回落 legacy board（兼容，未删除）
   s.src=wbProjectionIds().has(b)
     ? `data/workbench_boards/${b}.js?v=wb2`
-    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261103-media1")}`;
+    : `data/boards/${b}.js?v=${encodeURIComponent(getParam("v")||"20261108-cache1")}`;
   s.onload=()=>{
     const d=window["WIKI_BOARD_"+b];
     if(!d||!d.meta||!Array.isArray(d.items)){showLoadError("数据格式不完整："+b);return;}
@@ -1197,6 +1197,29 @@ function fillFilterSelects(items){
     const cb=cbLabel.querySelector("input");
     cb.checked=titleGroupOn;
     cb.onchange=()=>{titleGroupOn=cb.checked;render();};
+    /* 动效开关：把循环 WebP 换成静态首帧（不重绘整板）；状态写进 URL 便于分享 */
+    const animLabel=document.createElement("label");
+    animLabel.className="tg-toggle t-anim-toggle";
+    /* 没导出静态首帧的条数由产物实时算（2026-11-07 动态资源重挂后会变），别写死。 */
+    const noStill=(DATA.items||[]).filter(x=>!!x.dyn_webp&&!x.dyn_png).length;
+    animLabel.title="把循环 WebP 切成静态首帧"
+      +(noStill?`；${noStill} 条没有导出首帧的动态称号仍会播放（资源如实）`:"；全部动态称号都有静态首帧");
+    animLabel.innerHTML=`<input type="checkbox" id="tAnimPause"><span>暂停动效</span>`;
+    wrap.appendChild(animLabel);
+    const animCb=animLabel.querySelector("input");
+    animCb.checked=titleAnimPaused;
+    animCb.onchange=()=>setTitleAnimPaused(animCb.checked);
+    /* 动态资源覆盖率（只读统计，来自当前板产物）：源表 flags 标「动态」N 条，
+       其中只有 M 条导出了循环 WebP。把差距摆在控件栏，避免把「只有静态首帧」
+       误读成「页面没播动画」。统计口径 = dyn_webp 字段非空，不猜、不补资源。 */
+    const dynAll=(DATA.items||[]).filter(x=>Array.isArray(x.flags)&&x.flags.includes("动态")).length;
+    const dynAnim=(DATA.items||[]).filter(x=>!!x.dyn_webp).length;
+    const stat=document.createElement("span");
+    stat.className="t-anim-stat";
+    stat.textContent=`动态 ${dynAnim}/${dynAll} 条有循环动画`;
+    stat.title=`源表标记「动态」共 ${dynAll} 条；当前快照导出循环 WebP ${dynAnim} 条，其余只有静态首帧或完全未导出 —— 不伪造资源，因此不会动`;
+    animLabel.title+=` ｜ 源表动态 ${dynAll} 条，导出循环动画 ${dynAnim} 条`;
+    wrap.appendChild(stat);
     return;
   }
   // 板级自定义筛选（meta.filters 配置）：与武器皮肤筛选模组解耦
@@ -1745,7 +1768,9 @@ function geneD2Body(it,mode){
   put("来源表",it.source);
   put("证据等级",EV_CN[it.evidence]||it.evidence);
   put("状态标签",(Array.isArray(it.status_tags)?it.status_tags:[]).map(t=>STATE_CN[t]||COMMON_VAL_CN[t]||t).join("、"));
-  put("源表行键",it.provenance&&it.provenance.row_key);
+  /* 溯源常量已上提到 meta.provenance_defaults，必须走 effProv() 回退，
+     否则该板的「源表行键」在上提后会静默空掉（provenance_fallback_check 锁这一点）。 */
+  put("源表行键",effProv(it).row_key);
   const eff=String(it.effect_desc||"").trim();
   const kv=rows.map(([k,v])=>`<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`).join("");
   const content=`<div class="c2-embed gene-d2">
@@ -1845,7 +1870,8 @@ function frPass(it){
   // 「有图/含占位」图示筛选吞掉；默认（未选任何部位，全部视图）仍按图示筛选正常隐藏。
   const _fxNoImg=(it.icon_state||"").indexOf("无2D图")===0;
   const _skipImg=_fxNoImg&&FR.parts.size>0;
-  if(!_skipImg){
+  const _isHotfix=(it.hotfix_layer==="20261112");
+  if(!_skipImg&&!_isHotfix){
     if(FR.img==="有图"&&it.icon_state!=="有图")return false;
     if(FR.img==="含占位"&&it.icon_state!=="含占位")return false;
   }
@@ -2405,12 +2431,50 @@ const MEDIA_BOARD=(function(){try{return (getParam("b")||"")==="media_catalog";}
 const CDN_BOARD=(function(){try{return (getParam("b")||"")==="cdn_library";}catch(e){return false;}})();
 const TREE_BOARD=(function(){try{return (getParam("b")||"")==="local_restore_tree";}catch(e){return false;}})();
 let VIEW=(function(){try{return (getParam("view")||"").toLowerCase();}catch(e){return "";}})();
-if(CDN_BOARD||TREE_BOARD)document.body.classList.add("view-mode");
+/* 奖池分服板（lottery_servers，2026-11-07）：1761 个池的逐格静态结构，
+   每池带 base 全量格 + 各分服覆盖格（见 tools/build_lottery_board.py）。 */
+const LOTTERY_BOARD=(function(){try{return (getParam("b")||"")==="lottery_servers";}catch(e){return false;}})();
+if(CDN_BOARD||TREE_BOARD||LOTTERY_BOARD)document.body.classList.add("view-mode");
 /* 当前视图名（各板默认值不同，非法值回退到默认视图） */
 function curView(){
+  /* 称号板（2026-11-06 二次修订）：默认 visual = 卡面带「动态底图 + 美术字」视觉槽，
+     art = 同一组合的大图预览，text = 纯文字名册。?view=art 是上一版的链接，继续兼容。
+     三种视图的称号名都恒为卡头可读文字，图片只在独立槽内，不覆盖任何文本。
+     这里用 getParam("b") 而非 TITLE_BOARD 常量 —— curView 定义在常量之前，避免 TDZ。 */
+  if((getParam("b")||"")==="title_catalog")
+    return VIEW==="text"?"text":VIEW==="art"?"art":"visual";
+  /* 奖池分服板：diff = 只看两服有差异的池（默认）；pool = 全部 1761 池 */
+  if(LOTTERY_BOARD)return VIEW==="pool"?"pool":"diff";
   const def=CDN_BOARD?"group":"index";
   const allow=CDN_BOARD?["group","table"]:["index","dash"];
   return allow.indexOf(VIEW)>=0?VIEW:def;
+}
+/* 动效开关：dyn_webp 是逐帧合成的循环 WebP，默认播放；?anim=0 或控件栏「暂停动效」
+   切回 dyn_png 静态首帧。只影响展示，不改数据。
+   ★ 2026-11-07：不再让系统「减少动态效果」静默停掉全部称号动画 —— 这里的 WebP
+     是被展示的内容本体（游戏内称号牌），不是装饰动效；静默暂停会被误读成「这些
+     动态的怎么不动」。reduce-motion 仍会关掉 CSS 文字浮动（见 board_base.css），
+     需要完全静止的用户勾「暂停动效」即可。 */
+let titleAnimPaused=(function(){
+  try{return getParam("anim")==="0";}catch(e){return false;}
+})();
+function setTitleAnimPaused(v){
+  titleAnimPaused=!!v;
+  try{
+    const u=new URLSearchParams(location.search);
+    if(v)u.set("anim","0");else u.delete("anim");
+    history.replaceState(null,"",location.pathname+"?"+u.toString());
+  }catch(e){}
+  /* 只换图片 src，不整板重绘：滚动位置 / 详情展开状态不丢 */
+  try{
+    for(const img of document.querySelectorAll("#grid .t-vis-bg[data-anim]")){
+      const next=titleAnimPaused?(img.dataset.still||img.dataset.anim):img.dataset.anim;
+      if(next&&img.getAttribute("src")!==next)img.setAttribute("src",next);
+      /* 与 titleVisual() 同一判据：class 忠实表示「当前 src 是动画」；
+         个别没有静态首帧的条目暂停后仍是 webp，不假装已经暂停。 */
+      img.classList.toggle("is-anim",!!next&&/\.webp($|\?)/.test(next));
+    }
+  }catch(e){}
 }
 /* 视图切换：写入 URL 并重绘（可分享、可回退） */
 function setView(v){
@@ -2892,7 +2956,23 @@ function titleBadges(it){
   const out=[];
   if(it.color)out.push(`<span class="tb tb-c" data-c="${esc(it.color)}">${esc(it.color)}色</span>`);
   if(it.style)out.push(`<span class="tb tb-lv" title="源表 style 档位">档位 ${esc(it.style)}</span>`);
-  (Array.isArray(it.flags)?it.flags:[]).forEach(f=>out.push(`<span class="tb tb-f">${esc(f)}</span>`));
+  /* 源表 flags 是「标记」，art_png/dyn_* 是「导出结果」：两者不一致时如实写清楚，
+     不再让卡上标着「动态」却显示一张不会动的静态首帧（2026-11-07 细化）。
+     · 动态 + dyn_webp      ⇒ 会动的循环动画，正常标签；
+     · 动态 + 仅 dyn_png    ⇒「动态 · 仅首帧」（当前快照只导出静态首帧，动画未导出）；
+     · 动态 + 无任何底图    ⇒「动态 · 未导出」。
+     筛选口径仍按源表 flags 原值，这里只改显示文案，不伪造资源。 */
+  (Array.isArray(it.flags)?it.flags:[]).forEach(f=>{
+    let suffix="",tip="";
+    if(f==="美术字"&&!it.art_png){suffix=" · 未导出";tip="源表标记美术字，但资源在当前快照中未导出";}
+    else if(f==="动态"&&!it.dyn_webp){
+      suffix=it.dyn_png?" · 仅首帧":" · 未导出";
+      tip=it.dyn_png?"源表标记为动态称号；当前快照只导出静态首帧，循环动画未导出，卡面不会动"
+                    :"源表标记动态，但底图与动画均未导出";
+    }
+    const miss=!!suffix;
+    out.push(`<span class="tb tb-f${miss?" tb-miss":""}"${tip?` title="${esc(tip)}"`:""}>${esc(f)}${esc(suffix)}</span>`);
+  });
   return out.length?`<div class="i-badges">${out.join("")}</div>`:"";
 }
 /* 称号视觉层：档位色贴图 + 美术字图（全部是真实资源导出，不画仿制）。
@@ -2918,6 +2998,21 @@ const TITLE_SKIN_TXT={
   红:["#E84F1C","#FF5522","#4A1B10"],
   绿:["#87A85E","#C3E590","#483726"]
 };
+/* 2026-11-07 局内字色提亮（可复算，唯一来源 = 本函数 + 下面 titleName 的三段变量）：
+   原生贴图实测色是「内芯渐变端点」，直接铺到深色卡面上偏暗 —— 实测页面称号字
+   亮像素中位 135.8 / p90 181，而游戏内美术字图是 200.6 / 252，差 60~70。
+   按 RGB 线性插值向暖白高光混合：hi=mix(亮端,.52)、mid=mix(亮端,.24)、lo=暗端原色，
+   做竖向三段金属渐变（上亮下暗，接近局内金字），描边色仍用原贴图 --ts 但减细。
+   ★ 原始 TITLE_SKIN_TXT 保持贴图实测字面量不动，提亮是**派生展示层系数**，
+     改一个系数即可全量重算，不逐条调色、不伪造资源。 */
+const TITLE_HI_RGB=[255,243,206];
+function titleMix(hex,k){
+  const h=String(hex||"").replace("#","");
+  if(h.length!==6)return hex;
+  const c=[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));
+  return "#"+c.map((v,i)=>Math.max(0,Math.min(255,Math.round(v+(TITLE_HI_RGB[i]-v)*k)))
+    .toString(16).padStart(2,"0")).join("");
+}
 /* 底光 / 下划线：锚在「称号名文字自身」的盒子上（.i-title = inline-block 收缩到文字宽），
    底光以文字中心为圆心按贴图原生比例 235:62 缩放，下划线贴住文字底边；
    不再用 import 时猜的 top/left 像素偏移，换字号/换列宽都不会错位。 */
@@ -2941,47 +3036,134 @@ function titleSpecial(it){
   const f=TITLE_SPECIAL[String(it.special_style||"")];
   return f?`<img class="i-sp" src="assets/title_skin/${f}.png" alt="">`:"";
 }
-/* 美术字 + 底图：游戏里这是一枚「称号图」的两层 —— 动态 csb 的底图/光效在下，
-   美术字叠在上面（同一张图内叠加），不是上下两张分开排。
-   · art_png 由 build_title_art_assets.py 只对「导出成功」的条目回填，不会 404；
-   · 底图取 dyn_webp（逐帧动画，作为背景层）→ dyn_png（首帧）；
-   · dyn_has_text：底图贴图本身已经把称号字画进去了（如 1214 骑士集结 的 vx 贴图），
-     此时只显示底图，避免和美术字叠成重影。该标记来自资源实测，不是猜的。
-   · 文字仍保留在 DOM（has-art 时隐藏），搜索/冒烟取文本不受影响。 */
-function titleName(it){
-  const nm=esc(it.name||it.display_name||it.id);
-  const art=it.art_png,bg=it.dyn_webp||it.dyn_png;
-  /* 2026-11-06 去重影：同一称号只画「一次」图像，优先级
-     dyn(自带文字) > art_png > 底图柔光 > 纯文字
-     · dyn_has_text：底图贴图本身已经把称号字画好了 → 只画底图（i-logo-solo），
-       文字节点留在 DOM 里、由 has-art 规则视觉隐藏；
-     · 同时有 art 和底图：art 是唯一的称号图像，底图退成背后一层
-       放大 + 半透明的「柔光」（i-logo-glow）。绝不再让两层同尺寸同位置叠在一起 ——
-       那正是重影的来源（同一份称号字被画两遍）；
-     · 只有底图：底图当底板（i-logo-bg），文字压在上面。 */
-  const txtNode=`<span class="i-name-txt">${nm}</span>`;
-  if(bg&&it.dyn_has_text)
-    return `<span class="i-title has-art"><img class="i-logo-solo" src="${esc(bg)}" alt="">${txtNode}</span>`;
-  if(art){
-    const inner=`<img class="i-art" src="${esc(art)}" alt="">${txtNode}`;
-    if(bg)
-      return `<span class="i-logo"><i class="i-logo-glow" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${inner}</span>`;
-    return `<span class="i-title has-art">${inner}</span>`;
+/* ── 2026-11-06 展示口径（二次修订：动态 / 底图加回来）───────────────────
+   游戏里一枚动态称号本来就是两层：csb 底图/光效在下，美术字叠在上。
+   上一版把两层一起拿掉太过；真正的 bug 不是「叠两层」，而是：
+     ① 把底图绝对定位放大铺到卡头上，压住称号名 / ID / 标签；
+     ② dyn_has_text 的底图自身已画好称号字时又叠一份美术字 ⇒ 真重影；
+     ③ 有 art 就隐藏标题文字 ⇒ 同系列忽图忽字；卡片高度 131~182px 乱跳。
+   现规则（图片回归，但关进独立的视觉槽）：
+     · .t-vis 是普通流内的固定高度盒子 + overflow:hidden，绝不覆盖卡头文字；
+     · dyn_webp（循环动画）优先 → 暂停动效时退回 dyn_png 静态首帧；
+     · dyn_has_text ⇒ 只画底图，绝不叠美术字/文字（资源实测，仅 1214 骑士集结）；
+     · 有底图但底图不带字、又没有美术字的 215 条 ⇒ 用与卡头同源的档位称号字
+       叠在底图上层（文字漂在底图上，游戏内真实层次），文字只在槽内、不铺卡头；
+     · 标题文字恒在卡头、恒可读，DOM 文本不因图片隐藏；
+     · 三种视图（visual 默认 / art 大图 / text 纯文字）内所有卡都有或都无该槽 ⇒ 严格等高；
+     · 源表标记了动态/美术字但资源未导出 ⇒ 如实写「未导出」，不猜图、不静默降级。
+   flags 是源表事实，art_png/dyn_* 是导出结果，两者分开呈现。 */
+function titleVisualOn(){return TITLE_BOARD&&curView()!=="text";}
+function titleVisualLarge(){return curView()==="art";}
+function titleMissing(it){
+  const fl=Array.isArray(it.flags)?it.flags:[];
+  const out=[];
+  if(fl.indexOf("美术字")>=0&&!it.art_png)out.push("美术字");
+  if(fl.indexOf("动态")>=0&&!(it.dyn_webp||it.dyn_png))out.push("动态");
+  return out;
+}
+function titleDynSrc(it){
+  const anim=it.dyn_webp||"",still=it.dyn_png||"";
+  /* 暂停动效时优先静态首帧；没有首帧就仍用动态图（不伪造资源） */
+  return (!titleAnimPaused&&anim)?anim:(still||anim);
+}
+/* 完全没有称号图的 1280 条：用**同档位原生**底光贴图铺一条「纯文字称号条」，
+   让空槽不是一片死黑。贴图与卡头 .sk-bg 同源（title_skin/），不画仿制字、不猜资源。
+   ★ 2026-11-07：线框只保留文字自带的 .sk-ln（titleLine 同源同档位）。
+     早期这里还铺一条槽底线框 .t-vis-skin-ln，与文字下划线叠成两道线 —— 游戏内只有一道。 */
+function titleSkinVisual(it){
+  const c=String(it.color||"");
+  const b=TITLE_SKIN_BG[c];
+  return b?`<i class="t-vis-skin" aria-hidden="true" style="background-image:url('assets/title_skin/${b}.png')"></i>`:"";
+}
+function titleVisual(it){
+  const large=titleVisualLarge();
+  const bg=titleDynSrc(it);
+  const art=it.dyn_has_text?"":it.art_png;   /* 底图自带字 ⇒ 美术字不上场 */
+  const anim=it.dyn_webp||"",still=it.dyn_png||"";
+  let inner="";
+  if(bg){
+    /* is-anim 忠实表示「当前 src 是动画」：没有静态首帧的条目，
+       即使勾了暂停动效，src 仍是 webp（如实保留，不伪造首帧）。 */
+    const isAnim=/\.webp($|\?)/.test(bg);
+    inner+=`<img class="t-vis-bg${isAnim?" is-anim":""}" src="${esc(bg)}" alt="" aria-hidden="true" loading="lazy"`
+      +(still?` data-still="${esc(still)}"`:"")+(anim?` data-anim="${esc(anim)}"`:"")
+      +(anim&&!still?` title="该动态称号未导出静态首帧，暂停动效后仍显示动画"`:"")+`>`;
   }
+  if(art)inner+=`<img class="t-vis-art" src="${esc(art)}" alt="${esc(it.name||it.id)} 称号美术字" loading="lazy">`;
+  /* 2026-11-06 三次修订：把「文字漂在底图之上」的层次补回来。
+     有底图、底图自身不带字、又没有美术字图的 215 条，用与卡头同源的档位称号字
+     叠在底图上层（DOM 文字：可读、可搜索、不伪造资源）——这正是游戏内动态称号的样子。
+     dyn_has_text（底图已画好整句称号字）⇒ 不再叠任何文字，避免两遍字。
+     ★ 文字只存在于 .t-vis 槽内，绝不绝对定位铺到卡头压住称号名 / ID / 标签。 */
+  const txtOnBg=!!(bg&&!art&&!it.dyn_has_text);
+  if(txtOnBg)inner+=`<span class="t-vis-txt on-bg">${titleName(it)}</span>`;
+  if(!bg&&!art){
+    /* 槽里恒有「称号视觉」：有资源 = 美术字/底图，无资源 = 同档位原生字色 +
+       底光/线框把称号名渲染成一条纯文字称号条（复用 titleName，不画仿制字、不猜资源）。
+       这样 1550 张卡不再「忽图忽空」，与卡头恒可读的名册文字是「预览 ↔ 条目」两层。 */
+    inner=titleSkinVisual(it)+`<span class="t-vis-plain">${titleName(it)}</span>`;
+    const miss=titleMissing(it);
+    if(miss.length)inner+=`<span class="t-vis-miss-sub">${esc(miss.join(" / "))} 资源未导出</span>`;
+  }
+  /* 角标如实写资源类型，方便分辨「动态 / 静态底图 / 美术字 / 字叠底图 / 档位字预览」，不参与筛选口径 */
+  const tags=[];
+  if(!bg&&!art){
+    tags.push("档位字预览");
+    if(titleMissing(it).length)tags.push("未导出");
+  }else{
+    /* 角标直接回答「会不会动」：只有 dyn_webp 才是循环动画；仅 dyn_png 是静态首帧，
+       源表 flags 标了动态也不会动 —— 如实写，别让人以为是页面坏了。 */
+    if(it.dyn_webp)tags.push("动态 · 循环播放");
+    else if(it.dyn_png)tags.push("静态首帧 · 动画未导出");
+    if(art)tags.push("美术字");
+    if(txtOnBg)tags.push("字叠底图");
+    /* 1214 骑士集结：静态首帧/动画首帧已画好整句称号字，动画另有一帧是纯光效。
+       如实标注，别让人以为「这条漏了字」。 */
+    if(it.dyn_has_text)tags.push("底图自带字");
+  }
+  const cap=tags.length?`<span class="t-vis-cap">${tags.map(t=>esc(t)).join(" · ")}</span>`:"";
+  /* 节奏口径如实说明（2026-11-07）：csb 时间轴未随冻结产物导出，40ms/帧是导出估值，
+     title_anim_pace.py 已把过短循环归一到 ≥1200ms/轮。这是展示层补偿，不是游戏内实测帧率。 */
+  const paceNote=it.dyn_webp
+    ?` title="动态动画已按同批资源统一为≥1200ms/轮；原 40ms/帧为导出估值，非游戏内时间轴实测"`
+    :"";
+  return `<div class="t-vis${large?" large":""}${txtOnBg?" has-txt":""}"${paceNote}>${inner}${cap}</div>`;
+}
+/* 2026-11-07：游戏内称号字是一整条，不换行。
+   把名字折算成「等效字数」--n（全角 1em / 半角 0.56em），交给 CSS 用容器宽度
+   反算字号 —— 超长名自动缩小，而不是折成两行。可复算规则，不按名字逐个调。 */
+function titleCharUnits(s){
+  let w=0;
+  for(const ch of String(s||""))w+=/[\x00-\xff]/.test(ch)?0.56:1;
+  return Math.max(1,Math.round(w*10)/10);
+}
+function titleName(it){
+  const raw=String(it.name||it.display_name||it.id||"");
+  const nm=esc(raw);
   const c=String(it.color||"");
   const t=TITLE_SKIN_TXT[c];
-  /* 金色档自带自发光（游戏内金字外圈有暖金光晕），其余档位只上渐变色 + 描边。
-     发光必须只作用在文字本身：文字单独包一层 .i-nm，避免 filter 波及底光/下划线/装饰图。 */
-  const glow=c==="金";
   const sp=titleSpecial(it);
   const nmTxt=t?`<span class="i-nm">${nm}</span>`:nm;
-  /* 无美术字的动态称号：同样是「文字叠在动态底图上」——底图当背景层，文字在上层；
-     此时不再叠档位光晕（底图就是背景），保留档位字色 + 描边。 */
-  const txt=`<span class="i-title${t?" tinted":""}${glow?" glow":""}${sp?" has-sp":""}"${t?` style="--ta:${t[0]};--tb:${t[1]};--ts:${t[2]}"`:""}>`
-    +(bg?"":titleSkin(it))+sp+nmTxt+(bg?"":titleLine(it))+`</span>`;
-  return bg
-    ?`<span class="i-logo"><i class="i-logo-bg" aria-hidden="true" style="background-image:url('${esc(bg)}')"></i>${txt}</span>`
-    :txt;
+  /* 文字恒可见：档位色渐变 + 描边、左侧特殊徽标、底光/下划线都锚在文字盒上。
+     金色档恢复「静态」暖金柔光（游戏内金字外圈光晕），但不做呼吸动画 ——
+     999 条金档同时跑 keyframes 会把整页拖成闪烁噪点。图片一律交给 titleVisual()。 */
+  const glow=c==="金";
+  /* 三段金属渐变 + 同档位亮色外发光：--ta 高光芯 / --tm 中段 / --tb 底部原色 /
+     --tg 发光色（取原生亮端）。描边仍用 --ts，颜色不脱离贴图实测色调。 */
+  const style=`--n:${titleCharUnits(raw)}${t
+    ?`;--ta:${titleMix(t[1],.52)};--tm:${titleMix(t[1],.24)};--tb:${t[0]};--ts:${t[2]};--tg:${t[1]}`
+    :""}`;
+  return `<span class="i-title${t?" tinted":""}${glow?" glow":""}${sp?" has-sp":""}" style="${style}">`
+    +titleSkin(it)+sp+nmTxt+titleLine(it)+`</span>`;
+}
+/* 称号名是否已由「视觉槽」承载：无美术字图、且底图自身不带字时，槽里会画档位字
+   （t-vis-plain）或把字叠在底图上（t-vis-txt on-bg）。此时卡头不再重复显示同名，
+   与游戏内「一枚称号只出现一次名字」一致。
+   文字视图（text）不渲染视觉槽 ⇒ 名字仍在卡头；有美术字图 / 底图自带字 ⇒ 卡头保留名字
+   （前者是「图 + 文字标签」，后者底图已画好整句字、槽里不再叠字）。 */
+function titleNameInSlot(it){
+  if(!titleVisualOn())return false;
+  return !it.art_png && !it.dyn_has_text;
 }
 /* 分组头吸顶要让开 .controls 粘性条（半透明底，透出会糊字）。
    只算「控件条自身高度」塞给 --tg-h；垂直位置在 CSS 里与 .controls 用同一个
@@ -4312,6 +4494,8 @@ function cdnStateCls(done,part,n){
 const VIEW_OPTS={
   cdn_library:[["group","目录组"],["table","全量表格"]],
   local_restore_tree:[["index","概览+索引"],["dash","仅概览"]],
+  title_catalog:[["visual","名册 · 动态"],["art","大图预览"],["text","名册 · 文字"]],
+  lottery_servers:[["diff","分服差异"],["pool","全部奖池"]],
 };
 function buildViewSwitch(){
   const box=document.getElementById("viewSwitch");
@@ -4338,7 +4522,7 @@ function viewFilterItems(){
   const feEl=document.getElementById("fEv");
   const fe=feEl?feEl.value:"";
   const cf=DATA&&Array.isArray(DATA._custFilters)?DATA._custFilters:[];
-  const hay=TREE_BOARD?treeHay():cdnHay();
+  const hay=TREE_BOARD?treeHay():(LOTTERY_BOARD?lotteryHay():cdnHay());
   const out=[];
   const src=(DATA&&DATA.items)||[];
   for(let i=0;i<src.length;i++){
@@ -4515,6 +4699,266 @@ function treeHay(){
     DATA._treeHay=(DATA.items||[]).map(it=>`${it.name||""} ${it.ext||""} ${it.mtime||""} ${it.size_kb??""} ${it.source||""}`.toLowerCase());
   }
   return DATA._treeHay;
+}
+
+/* ═══ 奖池分服板（lottery_servers，2026-11-07）═════════════════════════
+   每 item = 一个池：
+     it.cells = 经典服（base）逐格 [slot, item_id, count, note, prob]
+     it.ov    = 各分服相对 base 的**覆盖格**（同格式，只含被改 / 新增的格）
+   某服视图 = cells 打底 + ov 覆盖，等价于 site_data 里该服的对应行。
+   ★ 展示口径（2026-11-08 用户定稿）：分三块 —— 经典服 / 简单生存服 / 月卡服，
+     每池卡内用服别切换条，同一时刻只显示**该服最终生效的一张表**（base + relay
+     已合并），不再把 base 与分服覆盖并排列出多列表格。
+   ★ 块由「覆盖内容完全相同」判等合并（kj1≡kjxq、yk≡ykxq 由门禁 G12 逐键复算），
+     不写死名单；块名只做展示映射（见 LOTTERY_BLOCK_CN），未登记代号原样列出。
+   ★ 1761 池不一次铺开：diff 视图只列有分服差异的池，pool 视图分批加载。 */
+const LOTTERY_SERVER_ORDER=["base","kj1","kjxq","yk","ykxq"];
+const LOTTERY_PAGE=120;
+let LOTTERY_SHOWN=LOTTERY_PAGE;
+
+function lotteryCellsOf(it,comp){
+  const base=(it.cells||[]).map(r=>r.slice());
+  if(comp==="base")return base;
+  const ov=(it.ov||{})[comp]||[];
+  if(!ov.length)return base;
+  const bySlot=new Map();
+  for(const r of base)bySlot.set(r[0],r);
+  const extra=[];
+  for(const r of ov){
+    if(bySlot.has(r[0]))bySlot.set(r[0],r);else extra.push(r);
+  }
+  return Array.from(bySlot.values()).concat(extra)
+    .sort((a,b)=>(a[0]==null?1e9:a[0])-(b[0]==null?1e9:b[0]));
+}
+function lotteryDiffOf(it){
+  const out={};
+  const bm=new Map((it.cells||[]).map(r=>[r[0],r]));
+  for(const c of LOTTERY_SERVER_ORDER){
+    if(c==="base")continue;
+    const ov=(it.ov||{})[c]||[];
+    let rep=0,add=0;
+    for(const r of ov){
+      const b=bm.get(r[0]);
+      if(!b)add++;
+      else if(b[1]!==r[1]||b[2]!==r[2])rep++;
+    }
+    out[c]={ov:ov.length,replaced:rep,added:add};
+  }
+  return out;
+}
+function lotteryHasDiff(it){
+  const d=lotteryDiffOf(it);
+  for(const c in d)if(d[c].replaced||d[c].added)return true;
+  return false;
+}
+/* 块 = 经典服 + 每个「覆盖内容互不相同」的分服组；内容相同的服合并成一块并标注 */
+function lotteryCols(it){
+  /* 仅分服存在的池（state=channel_only）没有 base 格：不出空列，免得整列都是「—」 */
+  const out=(it.cells&&it.cells.length)?[{comp:"base",same:[]}]:[];
+  const ov=it.ov||{};
+  const sigs=new Map();
+  for(const c of LOTTERY_SERVER_ORDER){
+    if(c==="base")continue;
+    const rows=ov[c]||[];
+    if(!rows.length)continue;
+    const sig=JSON.stringify(rows);
+    if(sigs.has(sig)){sigs.get(sig).same.push(c);continue;}
+    const col={comp:c,same:[]};
+    sigs.set(sig,col);
+    out.push(col);
+  }
+  return out;
+}
+function lotteryHay(){
+  if(!DATA._lotHay){
+    DATA._lotHay=(DATA.items||[]).map(it=>{
+      const parts=[it.name||"",it.id||"",String(it.pool||""),(it.活动||[]).join(",")];
+      const ov=it.ov||{};
+      for(const c in ov){
+        const rows=ov[c]||[];
+        for(const r of rows){
+          if(r[3])parts.push(r[3]);
+          if(r[1]!=null)parts.push(String(r[1]));
+        }
+      }
+      return parts.join(" ").toLowerCase();
+    });
+  }
+  return DATA._lotHay;
+}
+function lotteryPct(p){
+  if(typeof p!=="number"||!isFinite(p))return "";
+  const v=p*100;
+  const s=v>=1?v.toFixed(2):(v>=0.01?v.toFixed(3):v.toFixed(4));
+  return s.replace(/0+$/,"").replace(/\.$/,"")+"%";
+}
+function lotteryCellHtml(r){
+  if(!r)return '<span class="lot-none">—</span>';
+  const id=r[1],cnt=r[2],note=r[3],prob=r[4];
+  let nm;
+  if(note&&String(note).trim())nm='<span class="lot-nm">'+esc(note)+"</span>";
+  else if(id!=null)nm='<span class="lot-nm lot-noname">id '+esc(id)+"</span>";
+  else nm='<span class="lot-none">—</span>';
+  const bits=[];
+  if(id!=null)bits.push('<span class="lot-iid">'+esc(id)+"</span>");
+  if(cnt!=null&&Number(cnt)!==1)bits.push('<span class="lot-cnt">×'+esc(cnt)+"</span>");
+  const ps=lotteryPct(prob);
+  if(ps)bits.push('<span class="lot-prob">'+ps+"</span>");
+  return nm+(bits.length?'<span class="lot-meta">'+bits.join("")+"</span>":"");
+}
+/* 服块（2026-11-08 用户口径）：三块 = 经典服 / 简单生存服 / 月卡服。
+   块 = 经典服（base）+ 每个「覆盖内容互不相同」的分服组；kj1≡kjxq、yk≡ykxq
+   由覆盖内容逐键判等合并（见 lotteryCols），不写死名单。
+   块名只用于展示，未登记的分服代号原样列出，不对数据下额外结论。 */
+const LOTTERY_BLOCK_CN={kj1:"简单生存服",yk:"月卡服"};
+function lotteryBlockName(col){
+  if(col.comp==="base")return "经典服";
+  const codes=[col.comp].concat(col.same||[]);
+  for(const c of codes)if(LOTTERY_BLOCK_CN[c])return LOTTERY_BLOCK_CN[c];
+  return codes.join(" / ");
+}
+function lotteryBlocks(it){
+  return lotteryCols(it).map(col=>({comp:col.comp,name:lotteryBlockName(col),alias:col.same||[]}));
+}
+function lotteryDefaultBlock(it,blocks){
+  const bs=blocks||lotteryBlocks(it);
+  const d=lotteryDiffOf(it);
+  for(const b of bs){
+    if(b.comp==="base")continue;
+    const x=d[b.comp];
+    if(x&&(x.replaced||x.added))return b.comp;
+  }
+  return bs.length?bs[0].comp:"base";
+}
+function lotteryTabsHtml(it,active){
+  const blocks=lotteryBlocks(it);
+  if(blocks.length<=1)return "";   // 只有一套内容：不出切换条
+  return '<div class="lot-tabs" role="tablist">'+blocks.map(b=>{
+    const alias=b.alias.length?'<em>'+esc(b.alias.join(" / "))+"</em>":"";
+    const on=b.comp===active;
+    return '<button type="button" role="tab" class="lot-tab'+(on?" is-on":"")+'"'
+      +' aria-selected="'+(on?"true":"false")+'" data-lot-tab="'+esc(b.comp)+'"'
+      +' title="'+esc(b.alias.length?b.name+"（覆盖内容同 "+b.alias.join(" / ")+"）":b.name)+'">'
+      +esc(b.name)+alias+"</button>";
+  }).join("")+"</div>";
+}
+/* 单块生效表：该服 = base 打底 + 覆盖格；不再把 base 与分服并排列出。
+   差异行（相对经典服被替换 / 新增）保留高亮。 */
+function lotteryTableHtml(it,comp){
+  const blocks=lotteryBlocks(it);
+  const block=blocks.find(b=>b.comp===comp)||blocks[0]||{comp:"base",name:"经典服",alias:[]};
+  const cells=lotteryCellsOf(it,block.comp);
+  const bm=new Map((it.cells||[]).map(r=>[r[0],r]));
+  const alias=block.alias.length?'<span class="lot-alias">覆盖内容同 '+esc(block.alias.join(" / "))+"</span>":"";
+  const body=cells.map(r=>{
+    const b=bm.get(r[0]);
+    const changed=block.comp!=="base"&&(!b||b[1]!==r[1]||b[2]!==r[2]);
+    return '<tr'+(changed?' class="is-diff"':"")+'><th scope="row">'+esc(r[0]==null?"—":r[0])
+      +"</th><td>"+lotteryCellHtml(r)+"</td></tr>";
+  }).join("");
+  return '<div class="lot-tbl-wrap"><table class="lot-tbl"><thead><tr><th scope="col" class="lot-slot">格</th>'
+    +'<th scope="col">'+esc(block.name)+alias+"</th></tr></thead><tbody>"+body+"</tbody></table></div>";
+}
+function lotteryBodyHtml(it,comp){
+  return lotteryTabsHtml(it,comp)+lotteryTableHtml(it,comp);
+}
+/* 卡头计数：每个合并后的分服块只报一次（kj1 / kjxq 不重复计数）；
+   经典服无此池（channel_only）时不报差异计数，由「经典服无此池」标签说明。 */
+function lotteryBadgesHtml(it){
+  if(!(it.cells&&it.cells.length))return "";
+  const d=lotteryDiffOf(it);
+  const out=[];
+  for(const b of lotteryBlocks(it)){
+    if(b.comp==="base")continue;
+    const x=d[b.comp];
+    if(!x)continue;
+    if(x.replaced)out.push('<span class="lot-bdg is-rep">'+esc(b.name)+" 换 "+x.replaced+"</span>");
+    if(x.added)out.push('<span class="lot-bdg is-add">'+esc(b.name)+" 增 "+x.added+"</span>");
+  }
+  return out.join("");
+}
+function lotteryTitleOf(it){
+  const n=String(it.name||"");
+  const p=String(it.pool);
+  if(n.slice(0,p.length+3)===p+" · ")return n.slice(p.length+3);
+  return n;
+}
+function lotteryCardHtml(it,openDefault){
+  const blocks=lotteryBlocks(it);
+  const active=lotteryDefaultBlock(it,blocks);
+  const tagAct=(it.活动&&it.活动.length)?'<span class="lot-tag">活动 '+esc(it.活动.join("、"))+"</span>":"";
+  const tagKid=(it.子池&&it.子池.length)?'<span class="lot-tag is-kid">含子池 '+it.子池.length+" 格</span>":"";
+  const tagRt=it.运行时替换?'<span class="lot-tag is-rt">运行时会替换</span>':"";
+  const tagNew=(it.state==="channel_only")?'<span class="lot-tag is-new">经典服无此池</span>':"";
+  return '<article class="lot-card'+(openDefault?" is-open":"")+'" data-pool="'+esc(it.pool)+'">'
+    +'<div class="lot-head"><span class="lot-id">'+esc(it.pool)+"</span>"
+    +'<span class="lot-title">'+esc(lotteryTitleOf(it))+"</span>"
+    +'<span class="lot-cells">'+esc(it.格数)+" 格</span></div>"
+    +'<div class="lot-tags">'+tagNew+tagAct+tagKid+tagRt+lotteryBadgesHtml(it)+"</div>"
+    +'<button type="button" class="lot-toggle" data-lot-toggle aria-expanded="'+(openDefault?"true":"false")+'">'
+    +(openDefault?"收起逐格":"展开逐格")+"</button>"
+    +'<div class="lot-body" data-lot-active="'+esc(active)+'">'
+    +(openDefault?lotteryBodyHtml(it,active):"")+"</div>"
+    +"</article>";
+}
+function lotteryItemOf(card){
+  const pk=Number(card.dataset.pool);
+  return (DATA.items||[]).find(x=>x.pool===pk);
+}
+/* 服别切换：同一时刻只显示一个服块的生效表，不再并排列出 base 与分服 relay */
+function lotteryTab(card,btn){
+  const it=lotteryItemOf(card);
+  if(!it)return;
+  const body=card.querySelector(".lot-body");
+  const comp=btn.dataset.lotTab;
+  if(!body||!comp)return;
+  body.dataset.lotActive=comp;
+  body.innerHTML=lotteryBodyHtml(it,comp);
+}
+function lotteryToggle(card,btn){
+  const open=card.classList.toggle("is-open");
+  btn.setAttribute("aria-expanded",String(open));
+  btn.textContent=open?"收起逐格":"展开逐格";
+  const body=card.querySelector(".lot-body");
+  if(open&&body&&!body.innerHTML.trim()){
+    const it=lotteryItemOf(card);
+    if(it)body.innerHTML=lotteryBodyHtml(it,body.dataset.lotActive||lotteryDefaultBlock(it));
+  }
+}
+function lotteryBindOnce(){
+  const grid=document.getElementById("grid");
+  if(!grid||grid._lotBound)return;
+  grid._lotBound=true;
+  grid.addEventListener("click",function(e){
+    if(!e.target||!e.target.closest)return;
+    const tab=e.target.closest("[data-lot-tab]");
+    const tog=e.target.closest("[data-lot-toggle]");
+    const card=(tab||tog)?(tab||tog).closest(".lot-card"):null;
+    if(!card)return;
+    if(tab){lotteryTab(card,tab);return;}
+    lotteryToggle(card,tog);
+  });
+}
+function lotteryRender(items){
+  const grid=document.getElementById("grid");
+  if(!grid)return;
+  lotteryBindOnce();
+  const view=curView();
+  const list=(view==="diff")?items.filter(lotteryHasDiff):items;
+  const total=list.length;
+  if(total<=LOTTERY_PAGE)LOTTERY_SHOWN=LOTTERY_PAGE;
+  const show=(view==="diff")?total:Math.min(LOTTERY_SHOWN,total);
+  const parts=[];
+  for(let i=0;i<show;i++)parts.push(lotteryCardHtml(list[i],view==="diff"));
+  if(show<total){
+    parts.push('<button type="button" class="lot-more" id="lotMore">还有 '+(total-show)+" 个池 · 加载更多</button>");
+  }
+  if(!parts.length)parts.push('<div class="lot-empty-box">没有匹配的奖池</div>');
+  grid.innerHTML=parts.join("");
+  const cnt=document.getElementById("count");
+  if(cnt)cnt.textContent=show+" / "+total+" 个池"+(view==="diff"?"（仅列有分服差异的池）":"");
+  const mb=document.getElementById("lotMore");
+  if(mb)mb.addEventListener("click",function(){LOTTERY_SHOWN+=LOTTERY_PAGE;lotteryRender(items);});
 }
 function treeItems(){
   const q=(document.getElementById("q").value||"").trim().toLowerCase();
@@ -4905,7 +5349,10 @@ function amD2Body(it,mode){
   add("页签",it.first_level_tab);
   add("页签名",amPlain(it.tab_name));
   add("来源",it.source);
-  const pr=it.provenance||{};const tech=pr.tech||{};
+  /* 同 effProv() 回退：活动板 D2 的源表行键 / 原始类名 / 定位链 / 源包摘要
+     都可能来自板级默认值，直读条目级溯源对象会让整段溯源消失。
+     （注释里刻意不写裸字段名：provenance_fallback_check 按源码文本做静态扫描。） */
+  const pr=effProv(it)||{};const tech=pr.tech||{};
   const tr=[];
   const tadd=(k,v)=>{if(v!=null&&String(v).trim()!=="")tr.push(`<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`);};
   tadd("证据等级",EV_CN[it.evidence]||it.evidence);
@@ -5334,12 +5781,16 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
      ★ 必须拦在大表分支（HUGE_TABLE_MIN=15000）之前 ——
        local_restore_tree 有 33,601 条，若落进 hugeDraw 就会变成 3 万张卡片。
      ★ 筛选口径与通用路径一致：证据等级 + 板级自定义筛选（meta.filters）+ 搜索框。 */
-  if(CDN_BOARD||TREE_BOARD){
+  if(CDN_BOARD||TREE_BOARD||LOTTERY_BOARD){
     const vItems=viewFilterItems();
-    if(CDN_BOARD)cdnRender(vItems); else treeRender(vItems);
+    if(LOTTERY_BOARD)lotteryRender(vItems);
+    else if(CDN_BOARD)cdnRender(vItems); else treeRender(vItems);
     return;
   }
-  if(Array.isArray(DATA._hay)&&DATA.items.length>=HUGE_TABLE_MIN){
+  /* 期次板（card_mode="period"）= 时间轴 + 右侧抽屉，按需渲染；
+     不能被大表分支接管，否则 26k 条会退化成通用卡片并丢掉时间轴。 */
+  if(Array.isArray(DATA._hay)&&DATA.items.length>=HUGE_TABLE_MIN
+     &&String(DATA.meta&&DATA.meta.card_mode)!=="period"){
     // 大表（全道具总表等）：轻量索引过滤 + 分批渲染（按钮/滚动触底加载），可浏览到全部条目。
     hugePrepare(q,fe);
     hugeDraw(true);
@@ -5733,11 +6184,12 @@ const skinBoard=b==="weapon_skin_sfx_text_sources"
     const kindCls=AVATAR_KIND_CLS[it.kind]||"";
     const html=`<div class="i${nucleusMode?" nucleus":""}${lotteryMode?" lottery":""}${rosterMode?" roster":""}${kindCls?" "+kindCls:""}"${nucleusMode?` data-cidx="${coreList.indexOf(it)}"`:(rosterMode?` data-cidx="${i}"`:"")}>
       ${mediaBlock}
+      ${TITLE_BOARD&&titleVisualOn()?titleVisual(it):""}
       <div class="i-head${nucleusMode||lotteryMode?" toggle":""}"${nucleusMode||lotteryMode?` role="button" tabindex="0" aria-expanded="false" onkeydown="onDetailKey(event,this)" onclick="toggleDetail(this)"`:""}>
-        <div><div class="i-name${TITLE_BOARD&&it.art_png?" has-art":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${nucleusMode&&it.element?`<span class="i-elem" data-el="${esc(it.element)}" title="核芯属性">${esc(it.element)}</span>`:""}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
+        <div class="i-name${TITLE_BOARD&&titleNameInSlot(it)?" head-name-hidden":""}">${TITLE_BOARD?titleName(it):esc(it.name||it.display_name||it.id)}${nucleusMode&&it.element?`<span class="i-elem" data-el="${esc(it.element)}" title="核芯属性">${esc(it.element)}</span>`:""}${it.ip?`<span class="tag-ip">${esc(it.ip)}</span>`:""}</div>
         ${referenceTitle(it.reference_fields)}
         <div class="i-id" title="id">${nucleusMode||rosterMode?`${esc(DATA.meta.id_label||"道具ID")} ${esc(it.item_id??it.id)}`:`${esc(it.id)}`}</div>
-        ${TITLE_BOARD?titleBadges(it):""}</div>
+        ${TITLE_BOARD?titleBadges(it):""}
         <span class="head-tags">${nucleusMode?"":`<span class="ev ${it.evidence}">${EV_CN[it.evidence]||it.evidence}</span>${it.image_status?`<span class="ev gap" title="${esc(it.image_note||"该资源在当前包快照中不可得")}">${esc(it.image_status)}</span>`:""}${renderStateTags(it.status_tags)}`}</span>
       </div>
       ${bodyHtml}
@@ -5816,7 +6268,9 @@ function periodStatus(p){
 /* ════════════════ 期次时间轴 + 奖池抽屉（仅本板，meta.period_empty="show"）════════════════
    布局 = 年度时间轴（年 → 月 → 期次），空期次在月内压成一行摘要；
    点期次不再就地展开，改为右侧抽屉看奖池成员（成员带图）。*/
-function ptPick(id){PF.sel=(PF.sel===id?null:id);render();}
+let PTD_CAP=10;  /* 抽屉一次渲染几个池；「未归属池」一期 933 池，全渲染 DOM 会撑到 35 万像素 */
+function ptPick(id){PF.sel=(PF.sel===id?null:id);PTD_CAP=10;render();}
+function ptdMore(){PTD_CAP+=20;render();}
 function ptClose(){PF.sel=null;render();}
 function ptMonth(k){PF.month=PF.month||{};PF.month[k]=!PF.month[k];render();}
 function ptYear(y){PF.year=y;PF.month={};PF.sel=null;render();}
@@ -5885,7 +6339,9 @@ function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
     if(PF.kind!=="all")m=m.filter(x=>x.kind===PF.kind);
     return m;
   };
-  const base=periods.filter(p=>YR(p)===PF.year)
+  /* 搜索时跨年份：命中项可能落在别的年度页签（如无日期的池族卡在「—」），
+     若仍按 PF.year 过滤，会出现「搜到了 N 条但列表空」。 */
+  const base=periods.filter(p=>qv!==""||YR(p)===PF.year)
     .filter(p=>PF.status==="all"||stOf(p).k===PF.status)
     .filter(p=>PF.family==="all"||FAM(p)===PF.family);
   const hideEmpty=PF.only==="1"||qv!=="";
@@ -5902,7 +6358,8 @@ function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
       const st=stOf(p), n=memOf(p).length;
       body+=`<div class="pt-row${PF.sel===p.period_id?" sel":""}" onclick="ptPick('${p.period_id}')">
         <span class="pt-dt">${esc(p.start||"—")}</span>
-        <span class="pt-nm">${esc(cleanLabel(p.label)||p.period_id)}<span class="pfam">${esc(FAM(p))}</span><span class="pt-n">${n} 件</span>${st.k==="on"?'<span class="pstate on">当期</span>':""}</span>
+        <span class="pt-nm">${esc(cleanLabel(p.label)||p.period_id)}${FAM(p)&&FAM(p)!=="—"?`<span class="pfam">${esc(FAM(p))}</span>`:""}<span class="pt-n">${n} 件</span>${st.k==="on"?'<span class="pstate on">当期</span>':""}</span>
+        ${p.ch_cells?`<span class="pch" title="${p.ch_pools} 个池、共 ${p.ch_cells} 格在简单生存服被替换成别的东西">⇄ ${p.ch_cells}</span>`:""}
         <span class="pt-ar">▸</span></div>`;
     });
     if(dead.length&&!hideEmpty){
@@ -5924,23 +6381,49 @@ function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
   if(sel){
     const st=stOf(sel), mem=byPeriod[sel.period_id]||[];
     const unresN=mem.filter(it=>PT_UNRES.test(String(it.name||"").trim())).length;
+    /* 分服差异块：只列 (item_id,count) 真的和经典服不同的格，同值的服合并成一列 */
+    const chItems=mem.filter(it=>it.ch);
+    let chBlock="";
+    if(chItems.length){
+      const svs=[]; chItems.forEach(it=>Object.keys(it.ch).forEach(k=>{if(svs.indexOf(k)<0)svs.push(k);}));
+      const SVN=s=>s==="kj1"?"简单生存服":s;
+      /* kj1 与 kjxq 逐键同内容（G12 复算 0 差异），标题合并成一行 */
+      const pairKJ=svs.indexOf("kj1")>=0&&svs.indexOf("kjxq")>=0&&svs.length===2;
+      const svLabel=pairKJ?"简单生存服":svs.map(SVN).join(" / ");
+      const chRows=chItems.map(it=>{
+        const byVal={}; svs.forEach(s=>{const v=it.ch[s]; if(v)(byVal[v]=byVal[v]||[]).push(s);});
+        /* 这一格只被换成一种东西时省略服名前缀，抽屉窄，少一次折行 */
+        const rep=Object.keys(byVal).length===1
+          ?`→ <b>${esc(Object.keys(byVal)[0])}</b>`
+          :Object.keys(byVal).map(v=>`${esc(byVal[v].map(SVN).join("/"))} → <b>${esc(v)}</b>`).join("；");
+        return `<tr><td class="s">${esc(it.pool_id)}·${esc(it.slot)}</td><td class="o">${esc(it.name)}</td><td>${rep}</td></tr>`;
+      }).join("");
+      chBlock=`<div class="ptd-chbox">
+        <div class="ptd-cht"><b>分服差异</b> · ${chItems.length} 格被替换（基准：经典服）</div>
+        <table class="ptd-chtbl"><thead><tr><th>池·槽</th><th>经典服</th><th title="${pairKJ?"kj1 / kjxq 逐键 0 差异，已由门禁 G12 复算":""}">${esc(svLabel)}</th></tr></thead>
+        <tbody>${chRows}</tbody></table></div>`;
+    }
     const pools=new Map();
     mem.forEach(it=>{
       const k=it.pool_uid||it.pool_id||it.pool_label||"—";
       if(!pools.has(k))pools.set(k,{label:it.pool_label||k,items:[]});
       pools.get(k).items.push(it);
     });
-    const poolHtml=[...pools.values()].map(pl=>{
+    /* 有分服差异的池排前面，打开抽屉就能看到改了什么 */
+    const poolArr=[...pools.values()].sort((a,b)=>(b.items.some(i=>i.ch)?1:0)-(a.items.some(i=>i.ch)?1:0));
+    const poolHtml=poolArr.slice(0,PTD_CAP).map(pl=>{
       pl.items.sort((a,b)=>(a.slot??999)-(b.slot??999));
       const plName=pl.label&&pl.label!=="—"?pl.label:"奖池";
       return `<div class="ptd-pool">${esc(plName)} · ${pl.items.length} 件</div><div class="ptd-items">${
         pl.items.map(it=>{
           const im=((it._media||{}).images||[])[0];
-          const pic=im&&im.png?`<img src="${esc(im.png)}" alt="" loading="lazy">`:`<span class="ptd-ph">无图</span>`;
+          /* 池格行没有 _media，图在 it.icon（构建期已核对文件存在，icon_state=已下发） */
+          const icoSrc=(im&&im.png)||(it.icon&&it.icon_state==="已下发"?it.icon:"");
+          const pic=icoSrc?`<img src="${esc(icoSrc)}" alt="" loading="lazy">`:`<span class="ptd-ph">无图</span>`;
           /* 名字未解析：构建期只能回退成「道具 <id>」，这里如实标注，不伪装成正式名 */
           const bad=PT_UNRES.test(String(it.name||"").trim());
           const kindLine=esc(it.kind||"")+(it.count!=null?" ×"+esc(String(it.count)):"")+(it.slot!=null?" · 槽位 "+esc(String(it.slot)):"")+(it.evidence==="candidate"?" · 候选":"");
-          return `<div class="ptd-item${bad?" unres":""}" title="${bad?"名字未解析（源表只给到道具 id）":esc(it.name||"")}">
+          return `<div class="ptd-item${bad?" unres":""}${it.ch?" has-ch":""}" title="${bad?"名字未解析（源表只给到道具 id）":esc(it.name||"")}">
             <div class="ptd-img">${pic}</div>
             <div class="ptd-n">${bad?"未知道具":esc(it.name||it.id)}</div>
             <div class="ptd-k">${bad?"#"+esc(it.item_id||"")+" · 名字未解析":kindLine}</div>
@@ -5955,7 +6438,7 @@ function renderPeriodTimeline(periods,byPeriod,list,cleanLabel){
           <div class="ptd-name">${esc(cleanLabel(sel.label)||sel.period_id)}</div>
           <div class="ptd-meta">${esc(sel.start||"—")}${sel.end?" → "+esc(sel.end):""} · ${sel.pool_count||1} 池 · 共 ${mem.length} 件${sel.pool_size?" · 池内 "+sel.pool_size+" 件（服务端下发）":""}${unresN?` · <span class="ptd-unres">其中 ${unresN} 件名字未解析</span>`:""}</div>
         </div>
-        <div class="ptd-body">${mem.length?poolHtml:`<div class="ptd-gap">暂无可证成员${sel.gap_reason?" · "+esc(sel.gap_reason):""}</div>`}</div>
+        ${chBlock}<div class="ptd-body">${mem.length?(poolHtml+(poolArr.length>PTD_CAP?`<div class="ptd-more" onclick="ptdMore()">还有 ${poolArr.length-PTD_CAP} 个池 · 显示更多</div>`:"")):`<div class="ptd-gap">暂无可证成员${sel.gap_reason?" · "+esc(sel.gap_reason):""}</div>`}</div>
       </aside>`;
   }
   /* 抽屉必须挂在 body 下：#grid 在 .wrap(z-index:1) 的层叠上下文里，
@@ -6392,6 +6875,37 @@ else loadBoard(b,d=>{
     _kv+=`<div class="k">生成时间</div><div class="v">${esc(String(m.generated||"未记录"))}</div>`;
     n.innerHTML=`<details class="tech"><summary>技术详情 / 数据来源 / 审计信息</summary><div class="kv">${_kv}</div></details>`;
   }
+  /* 2026-11-13 关联专题入口：主表是 v3 冻结旧包、专题板是 11-12 实机包独立源锁。
+     用户口径＝不放宽跨快照混源，主表 items / provenance / source_locks 一律零改动，
+     只在页面级给跳转入口。配置由 tools/build/build_related_boards.py 从
+     publication_policy + 板产物实时生成（不手填），此处只读。
+     ★ innerHTML 整体覆盖 ⇒ 幂等；所有外部字符串过 esc()，链接参数过 encodeURIComponent。 */
+  (function(){
+    const host=document.getElementById("relatedBoards");
+    if(!host)return;
+    const cfg=window.WIKI_RELATED_BOARDS;
+    const rec=cfg&&cfg.hosts?cfg.hosts[b]:null;
+    const links=rec&&Array.isArray(rec.links)?rec.links:[];
+    if(!links.length){host.style.display="none";host.innerHTML="";return;}
+    const cards=links.map(function(r){
+      const bid=String(r.board||"");
+      const href="board.html?b="+esc(encodeURIComponent(bid));
+      const page=String(r.page||"");
+      const pageLink=page?'<a href="'+esc(page)+'" target="_blank" rel="noopener">独立展示页 ↗</a>':"";
+      return '<div class="rb-card">'
+        +'<a class="rb-name" href="'+href+'">'+esc(String(r.name||bid))+'</a>'
+        +'<div class="rb-cat">'+esc(String(r.category||""))+'</div>'
+        +'<div class="rb-why">'+esc(String(r.reason||""))+'</div>'
+        +'<div class="rb-foot"><b>'+(Number(r.items)||0)+'</b> 条'
+        +'<span class="rb-acts"><a href="'+href+'">打开板块 →</a>'+pageLink+'</span>'
+        +'</div></div>';
+    }).join("");
+    host.innerHTML='<div class="rb-hd">相关专题</div>'
+      +(rec.note?'<div class="rb-note">'+esc(String(rec.note))+'</div>':"")
+      +'<div class="rb-list">'+cards+'</div>'
+      +(cfg.note?'<div class="rb-src">'+esc(String(cfg.note))+'</div>':"");
+    host.style.display="block";
+  })();
   /* 公式块：meta.formula = [{t,e,n}]，显示在列表上方（伤害类板块用） */
   if(Array.isArray(m.formula)&&m.formula.length&&document.getElementById("grid")){
     const host=document.getElementById("grid").parentNode;
@@ -6477,7 +6991,7 @@ else loadBoard(b,d=>{
   if(FASHION_BOARD){frBuildFilters(d.items);fdOpenAll();}
   if(VEHICLE_BOARD)vBuildFilters(d.items);
   if(CHIP_BOARD)cBuildFilters(d.items);
-  if(CDN_BOARD||TREE_BOARD)buildViewSwitch();
+  if(CDN_BOARD||TREE_BOARD||TITLE_BOARD||LOTTERY_BOARD)buildViewSwitch();
   render();
   /* 影音资源板：显式接管。个别环境里 render() 内的分派分支会被旧脚本缓存跳过，
      所以在启动链路里再调一次；mediaLibraryRender 幂等（已建好只刷新列表）。 */

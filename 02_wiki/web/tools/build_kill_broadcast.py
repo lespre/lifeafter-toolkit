@@ -215,8 +215,8 @@ def main() -> int:
     kb = decode_kill_board()
     mv = decode_mvp_actions()
     skin_links = decode_mvp_skin_links()
-    if len(kb) != 5:
-        raise SystemExit(f"击败播报行数异常：{len(kb)}（期望 5）")
+    if len(kb) < 5:
+        raise SystemExit(f"击败播报行数异常：{len(kb)}（下限 5，热更可新增）")
     if len(mv) != 8:
         raise SystemExit(f"MVP 行数异常：{len(mv)}（期望 8）")
 
@@ -292,7 +292,7 @@ def main() -> int:
             "card_summary": [["kind", "类型"], ["acquire", "获取方式"]],
             "state_summary": state,
             "note": (
-                "击败播报 = common_item_kill_board_data 的 5 行（icon/名字/说明直接来自该表 CHS 池，"
+                f"击败播报 = common_item_kill_board_data 的 {len(kb)} 行（icon/名字/说明直接来自该表 CHS 池，"
                 "说明句写明「<皮肤>升格至二阶后获得」）；MVP 结算动画 = mvp_action_data 的 8 行"
                 "（动画名 bq_mvp_01..08、时长、轨道 track/*.xml、演示视频、获取方式）。"
                 "旧板把 error_code_data 的播报文案与 weapon_skin_sfx_function_data 的"

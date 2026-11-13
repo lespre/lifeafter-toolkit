@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-"""用 PE 原生帧贴图重建称号动画（不依赖 csb、不碰 PC）。
+"""【已停用】用 PE 原生帧贴图按「家族」重建称号动画（不依赖 csb、不碰 PC）。
 
-链路：pe_index 里 ui/chenghao/<家族>/**loop** 帧 → 按名取 (pack,row) → AG 解码 KTX
-      → 合成循环 WebP → assets/title_dyn/pe/<家族>.webp → 回填 item.dyn_webp
+⚠️ 2026-11-07 复核判定此口径**错误**：按 ui/chenghao/<家族> 取帧会把同一家族下
+不同变体的不同底图当成一个序列（ugc 三张完全不同的牌、miwuhaiyu 三个不同图标、
+tianxie/kumufengchun 多款混帧），播放时底图乱跳；且用 `key in anim_csb` 子串
+把同一份动画挂给十几张卡。⇒ 默认拒绝执行，产物 assets/title_dyn/pe/ 不再被引用。
+**现行口径 = build_title_dyn_sequences.py**（按 item.dyn_tex 精确帧序列）。
+确需复现旧产物做回归比对时，显式加 `--legacy`。
 """
 from __future__ import annotations
 
@@ -21,6 +25,7 @@ sys.path.insert(0, str(PROJ / "00_规范与工具/工具/工具库/00_共享核�
 sys.path.insert(0, str(PROJ / "02_wiki/web/tools"))
 from toolkit_core import android_gpk as AG  # noqa: E402
 from board_io import write_board_pair  # noqa: E402
+from title_anim_pace import frame_duration  # noqa: E402
 
 DB = PROJ / "01_索引与产物/10_索引/热更检测/pe_index.sqlite3"
 PACKS = PROJ / "01_索引与产物/源包/pe_gres_android"
@@ -73,6 +78,10 @@ def decode_frames(entries: list[tuple[str, str, int]], limit: int = MAX_FRAMES) 
 
 
 def main() -> int:
+    if "--legacy" not in sys.argv[1:]:
+        print("已停用：按家族拼帧会把不同变体的底图轮流播放（2026-11-07 复核）。\n"
+              "现行口径请跑 build_title_dyn_sequences.py；需复现旧产物请显式加 --legacy。")
+        return 0
     OUT.mkdir(parents=True, exist_ok=True)
     fam = frames_by_family()
     board = json.loads(BOARD.read_text(encoding="utf-8"))
@@ -89,7 +98,7 @@ def main() -> int:
         if w > MAX_W:
             imgs = [im.resize((MAX_W, int(h * MAX_W / w)), Image.LANCZOS) for im in imgs]
         dst = OUT / f"{key}.webp"
-        imgs[0].save(dst, save_all=True, append_images=imgs[1:], duration=40, loop=0,
+        imgs[0].save(dst, save_all=True, append_images=imgs[1:], duration=frame_duration(len(imgs)), loop=0,
                      quality=60, method=4)
         for it in board["items"]:
             csb = str(it.get("anim_csb") or "")

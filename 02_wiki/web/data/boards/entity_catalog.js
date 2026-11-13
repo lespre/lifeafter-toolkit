@@ -1,7 +1,7 @@
 window.WIKI_BOARD_entity_catalog = {
  "meta": {
   "name": "实体总表",
-  "category": "四、资料层 / （八）实体",
+  "category": "三、综合资料 / （四）实体技能",
   "source_server": "简单生存服（体验服 Documents 快照）",
   "generated": "2026-11-04",
   "id_label": "实体ID",
@@ -70,7 +70,8 @@ window.WIKI_BOARD_entity_catalog = {
     }
    }
   },
-  "notes": "一行 = common_entity_data 一行；偏内部对象，供检索用。"
+  "notes": "一行 = common_entity_data 一行；偏内部对象，供检索用。",
+  "category_before": "四、资料层 / （八）实体"
  },
  "periods": [],
  "items": [

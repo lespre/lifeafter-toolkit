@@ -30,6 +30,35 @@ INDEX = Path(r"E:\la拆包项目\01_索引与产物\10_索引")
 BOARD = WEB / "data/boards/lottery_periods.json"
 ASSETS = WEB / "assets"
 GEN = dt.date.today().strftime("%Y%m%d")
+POOL_ROWS = WEB / "site_data" / "LOTTERY_POOL_PE1103_v01" / "rows.jsonl"
+_POOL_ROW_NAMES: dict | None = None
+
+
+def pool_row_names() -> dict:
+    """item_id → 池行中文备注（去尾部 *N）。
+
+    覆盖 R.Names / 索引都没有名字、但池格备注里有真名的道具（如 400019）。
+    只做按 item_id 的名字查询，不做字段拼接。
+    """
+    global _POOL_ROW_NAMES
+    if _POOL_ROW_NAMES is None:
+        out: dict[str, str] = {}
+        if POOL_ROWS.exists():
+            with POOL_ROWS.open(encoding="utf-8") as f:
+                for line in f:
+                    r = json.loads(line)
+                    iid, note = r.get("item_id"), r.get("note")
+                    if iid is None or not isinstance(note, str):
+                        continue
+                    nm = note.strip()
+                    if "*" in nm:
+                        head, _, tail = nm.rpartition("*")
+                        if head and tail.isdigit():
+                            nm = head.strip()
+                    if nm and nm != "待取名":
+                        out.setdefault(str(int(iid)), nm)
+        _POOL_ROW_NAMES = out
+    return _POOL_ROW_NAMES
 
 
 def load_names() -> dict:
@@ -41,6 +70,12 @@ def load_names() -> dict:
         d = json.loads(p.read_text(encoding="utf-8"))
         for k, v in (d.get("items") or {}).items():
             nm = v.get("name") if isinstance(v, dict) else v
+            if not (isinstance(nm, str) and nm.strip()) and isinstance(v, dict):
+                # show_item_names 是 {item_id: {"展示名": [来源表…]}}，外层 key 才是 id
+                for kk in v.keys():
+                    if isinstance(kk, str) and kk.strip():
+                        nm = kk
+                        break
             if isinstance(nm, str) and nm.strip():
                 out.setdefault(str(k), nm.strip())
     # 时装：fashion_wardrobe 的 row_keys 就是 637xxx / 74xxx 这类道具 id
@@ -120,7 +155,10 @@ def main() -> int:
                     pass
             if not name:
                 name = names_map.get(str(iid)) or board_names.get(str(iid))
-                name_src = "index:item_names" if names_map.get(str(iid)) else "board:existing" 
+                name_src = "index:item_names" if names_map.get(str(iid)) else "board:existing"
+            if not name:
+                name = pool_row_names().get(str(iid))
+                name_src = "reward_pool_data.note（按 item_id 查名）" if name else None
             icon_rel = None
             png = ASSETS / "lottery_icons" / f"{iid}.png"
             if not png.exists():

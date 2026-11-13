@@ -136,7 +136,14 @@ def parse_mtg(path: str) -> dict:
     b = open(path, "rb").read()
     if not b.startswith(MTG_MAGIC):
         raise ValueError("不是 mtg（magic=%r）" % b[:4].hex())
-    ns = read_names(b) if read_names else {}
+    try:
+        ns = read_names(b) if read_names else {}
+    except Exception:
+        # .mtg 的材质/贴图提取不依赖名字表（read_names 仅产出诊断性
+        # name_table 字段）；个别 .mtg 名字表首串被头字段污染成
+        # aAnimParam/bAnimParam，read_names 会抛「未找到 AnimParam 起点」，
+        # 不应因此阻断真正的材质解析，降级为空名字表即可。
+        ns = {}
     mats = _read_material_names(b)
     if not mats:
         raise ValueError("未找到材料实例名标记 %r" % MAT_NAME_MARK)

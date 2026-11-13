@@ -1,0 +1,197 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3618_m",
+ "series": "3618",
+ "gender": "m",
+ "label": "3618 · 男 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_m_3618/b_m_3618.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3618_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3618_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_m_3618_2",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_m_3618_3",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_m_3618_4",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_m_3618_5",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 6,
+     "name": "b_m_3618_6",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [
+    "b_m_3618_4: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_m_3618_5: detail normal 已合并(crystal_bump_n02.ktx)"
+   ],
+   "vertices": 9582,
+   "faces": 11467,
+   "submeshes": 7,
+   "materials_exported": 7,
+   "bytes": 4001820
+  },
+  {
+   "id": "outer",
+   "label": "外层件",
+   "source_mesh": "players2021/b_m_3618/b_m_3618_1.mesh",
+   "file": "outer.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3618_1_0",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3618_1_1",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    }
+   ],
+   "warnings": [
+    "b_m_3618_1_0: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_m_3618_1_1: detail normal 已合并(crystal_bump_n02.ktx)"
+   ],
+   "vertices": 915,
+   "faces": 369,
+   "submeshes": 2,
+   "materials_exported": 2,
+   "bytes": 1598792
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_m_3618/h_m_3618.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3618_0",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_m_3618_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 7935,
+   "faces": 7595,
+   "submeshes": 2,
+   "materials_exported": 2,
+   "bytes": 485472
+  }
+ ]
+}

@@ -1,22 +1,1130 @@
-window.WIKI_BOARD_damage_bonus = {"meta":{"name":"3、加成","category":"二、战力类 / 3、加成","generated":"2026-11-04","evidence":"structure","source_server":"PE 测试服 · special_hurt_params_data（经典服）/ _kj1（简单生存）/ _yk（月卡）/ hurt_params_data（全局默认）","package_sha":"5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6","card_mode":"roster","id_label":"服型","filters":[],"card_summary":[["服型","服型"],["场景","场景"],["结论","结论"]],"hide_media":true,"notes":"三条通用原则 + 5 个场景组（远星城 23/448/698、夏尔镇 6/799/19/20、304/305）× 3 服（经典/简单生存/月卡）+ 数据来源。月卡在关注的这些场景均无专属行，按全局默认取值并标注未证实。","provenance":{"contract_version":3,"audit_status":"passed","contract":"frozen-audited-artifact","source_scope":{"cross_source_policy":"no-cross-source-field-join","integer_join_policy":"no-equal-integer-join","runtime_final_policy":"unknown-unless-runtime-proven"},"source_locks":[{"source_id":"pe-script-hurtcalc","role":"primary","sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","bytes":249746676,"mtime_ns":1793370321325025700,"path":"E:\\la拆包项目\\01_索引与产物\\源包\\pe_hotfix\\20261030_2225\\script.py314.lc.npk","desc":"PE 体验服脚本包（HurtCalc 反汇编来源）"},{"source_id":"pe-table-special-hurt-params","role":"comparison","sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","bytes":91326,"mtime_ns":1792520582367349000,"path":"E:\\la拆包项目\\01_索引与产物\\41_还原树\\pe\\配置\\com\\cdata\\special_hurt_params_data.py","desc":"special_hurt_params_data（经典服分场景伤害参数）"},{"source_id":"pe-table-hurt-params-global","role":"comparison","sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","bytes":1667,"mtime_ns":1792856006984819700,"path":"E:\\la拆包项目\\01_索引与产物\\41_还原树\\pe\\配置\\com\\cdata\\hurt_params_data.nxs","desc":"hurt_params_data 全局默认（本树仅存 .nxs 体）"}],"note":"溯源由 fill_damage_provenance.py 依条目自述来源补齐；结论本身由伤害系统那条线产出"},"state_summary":{"跨服":4,"经典服":5,"简单生存服":5,"月卡服":5},"formula":[{"t":"① 加成桶求和","e":"rate = 1 + Σ桶ᵢ","n":"桶ᵢ 为各条伤害加成（装备/技能/称号/场景等），同类桶相加，不同类互乘由各自桶定义。"},{"t":"② PvP 配对项","e":"rate ← rate + 攻方加成 − 守方减免","n":"仅玩家对玩家加入；守方减免指 player_hurt_reduction_rate，是配对项，不是守方自身减伤桶。"},{"t":"③ 夹窗口","e":"rate = min(上限, max(下限, rate))","n":"夹的是 rate 本身，不是 delta。经典远星城 23 窗口 [0.75, 1.80]。"},{"t":"④ 分段折线（只作用于 delta）","e":"delta = rate − 1 ；若 delta>0 或曲线首端≤0 ⇒ delta = k·delta + b","n":"经典远星城 23：[0,0.2] 1x+0｜[0.2,0.4] 0.7x+0.06｜[0.4,0.6] 0.4x+0.18｜[0.6,1] 0.25x+0.27｜[1,∞] 0.1x+0.42。delta≤0 且首端>0 时原样返回。"},{"t":"⑤ 最终倍率与伤害","e":"生效倍率 = 1 + delta ；伤害 = 攻击侧结果 × 生效倍率","n":"算例：加成 1.6、减免 1.8 → net 0.80 → delta −0.20 → 生效 0.80（下限 0.80 托住）。"}]},"items":[
-{"name":"原则①：rate 先夹窗口，再对 delta 做分段折线","服型":"跨服","server_type":"跨服","场景":"全部","结论":"rate = 1 + Σ桶；玩家对玩家再加「攻方加成 − 守方减免」；随后夹进 [下限, 上限]，delta = rate − 1 过 p2p 曲线，最后 delta + 1 才是生效倍率。","算法":"rate = 1+Σ桶 → += 攻方加成 − 守方减免 → min(上限, max(下限, rate)) → delta = rate−1 → delta = k·delta+b → 生效 = delta+1","说明":"窗口夹的是 rate 本身，不是 delta；曲线只改 delta 的大小，不改符号方向。","依据":"hurt_calc byte 5504-16002","evidence":"structure","evidence_level":"structure-only","source":"HurtCalc 反汇编","status_tags":["static config"],"id":"pw01","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*","p2p_*","hurt_calc:byte5504-16002"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 hurt_calc byte 5504-16002","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*","p2p_*","hurt_calc:byte5504-16002"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"原则②：rate ≤ 1 时负数不过曲线，只剩窗口下限","服型":"跨服","server_type":"跨服","场景":"全部","结论":"曲线生效条件是「delta > 0，或该曲线首端 ≤ 0」。夏尔镇 / 远星城主表的 p2p 首端都 > 0，所以加成抵不过减免时不会被再放大，只被下限托住。","算法":"if delta > 0 or interval[0] <= 0: delta = k·delta+b；否则原样返回","说明":"算例：加成 1.6、减免 1.8 → net 0.80 → delta −0.20 → 生效 0.80（下限 0.80 时正好托住）。","依据":"_apply_rate_factor @149483","evidence":"structure","evidence_level":"structure-only","source":"HurtCalc 反汇编","status_tags":["static config"],"id":"pw02","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"原则③：三服差异只在 rate > 1 段与窗口上下限","服型":"跨服","server_type":"跨服","场景":"全部","结论":"b_class / c_class 三服逐值相同；rate ≤ 1 段夏尔镇两服下限相同。差异从 rate > 1 开始：经典低段更松、高段递减，简单全程 0.5 斜率。","算法":"见各服各场景卡片","说明":"月卡服在本轮关注场景（远星城 23/448/698、夏尔镇 6/799/19/20、304/305）均无专属行。","依据":"p2p_a_class_* 与 min/max_hurt_additional_rate 列","evidence":"structure","evidence_level":"structure-only","source":"HurtCalc 反汇编 + 四张表","status_tags":["static config"],"id":"pw03","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"经典服 · 远星城 23","服型":"经典服","server_type":"经典服","场景":"远星城 23","区域":"远星城","结论":"窗口 [0.75, 1.80]，+60%→1.42，净 0.6 时为 0.75。","算法":"p2p 分段：[0,0.2] 1x+0；[0.2,0.4] 0.7x+0.06；[0.4,0.6] 0.4x+0.18；[0.6,1] 0.25x+0.27；[1,∞] 0.1x+0.42","生效值":"+20%→1.20  +40%→1.34  +60%→1.42  +80%→1.47","下限表现":"净 0.6 → 0.75","数据行":"本服表第 30403 行","说明":"—","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 30403 行","status_tags":["static config"],"id":"pw04","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"30403","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"30403","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"简单生存服 · 远星城 23","服型":"简单生存服","server_type":"简单生存服","场景":"远星城 23","区域":"远星城","结论":"窗口 [0.80, 1.90]，+60%→1.30，净 0.6 时为 0.80。","算法":"p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44","生效值":"+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40","下限表现":"净 0.6 → 0.80","数据行":"本服表第 7472 行","说明":"该服无本场景专属行，回退值未逐行证实","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 7472 行","status_tags":["static config"],"id":"pw05","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"7472","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"7472","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"月卡服 · 远星城 23","服型":"月卡服","server_type":"月卡服","场景":"远星城 23","区域":"远星城","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw06","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"经典服 · 远星城 448","服型":"经典服","server_type":"经典服","场景":"远星城 448","区域":"远星城","结论":"窗口 [1.00, 1.50]，+60%→1.05，净 0.6 时为 1.00。","算法":"p2p 分段：[0,0.5] 0.1x+0；[0.5,1] 0.05x+0.025；[1,∞] 0x+0.075","生效值":"+20%→1.02  +40%→1.04  +60%→1.05  +80%→1.05","下限表现":"净 0.6 → 1.00","数据行":"本服表第 30952 行","说明":"—","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 30952 行","status_tags":["static config"],"id":"pw07","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"30952","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"30952","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"简单生存服 · 远星城 448","服型":"简单生存服","server_type":"简单生存服","场景":"远星城 448","区域":"远星城","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"该服无本场景专属行，回退值未逐行证实","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw08","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"月卡服 · 远星城 448","服型":"月卡服","server_type":"月卡服","场景":"远星城 448","区域":"远星城","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw09","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"经典服 · 远星城 698","服型":"经典服","server_type":"经典服","场景":"远星城 698","区域":"远星城","结论":"窗口 [0.80, 1.50]，+60%→1.27，净 0.6 时为 0.80。","算法":"p2p 分段：[0,0.3] 0.7x+0；[0.3,0.8] 0.3x+0.12；[0.8,∞] 0.1x+0.28","生效值":"+20%→1.14  +40%→1.24  +60%→1.27  +80%→1.27","下限表现":"净 0.6 → 0.80","数据行":"本服表第 25147 行","说明":"—","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 25147 行","status_tags":["static config"],"id":"pw10","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"25147","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"25147","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"简单生存服 · 远星城 698","服型":"简单生存服","server_type":"简单生存服","场景":"远星城 698","区域":"远星城","结论":"窗口 [0.80, 1.80]，+60%→1.30，净 0.6 时为 0.80。","算法":"p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44","生效值":"+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40","下限表现":"净 0.6 → 0.80","数据行":"本服表第 9291 行","说明":"该服无本场景专属行，回退值未逐行证实","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 9291 行","status_tags":["static config"],"id":"pw11","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"9291","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"9291","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"月卡服 · 远星城 698","服型":"月卡服","server_type":"月卡服","场景":"远星城 698","区域":"远星城","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw12","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"经典服 · 夏尔镇 6 / 799 / 19 / 20","服型":"经典服","server_type":"经典服","场景":"夏尔镇 6 / 799 / 19 / 20","区域":"夏尔镇","结论":"窗口 [0.80, 1.80]，+60%→1.42，净 0.6 时为 0.80。","算法":"p2p 分段：[0,0.2] 1x+0；[0.2,0.4] 0.7x+0.06；[0.4,0.6] 0.4x+0.18；[0.6,1] 0.25x+0.27；[1,∞] 0.1x+0.42","生效值":"+20%→1.20  +40%→1.34  +60%→1.42  +80%→1.47","下限表现":"净 0.6 → 0.80","数据行":"本服表第 33168 行","说明":"—","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 33168 行","status_tags":["static config"],"id":"pw13","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"33168","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"33168","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"简单生存服 · 夏尔镇 6 / 799 / 19 / 20","服型":"简单生存服","server_type":"简单生存服","场景":"夏尔镇 6 / 799 / 19 / 20","区域":"夏尔镇","结论":"窗口 [0.80, 1.80]，+60%→1.30，净 0.6 时为 0.80。","算法":"p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44","生效值":"+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40","下限表现":"净 0.6 → 0.80","数据行":"本服表第 8284 行","说明":"该服无本场景专属行，回退值未逐行证实","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 8284 行","status_tags":["static config"],"id":"pw14","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"8284","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"8284","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"月卡服 · 夏尔镇 6 / 799 / 19 / 20","服型":"月卡服","server_type":"月卡服","场景":"夏尔镇 6 / 799 / 19 / 20","区域":"夏尔镇","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw15","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"经典服 · 夏尔镇 304 / 305","服型":"经典服","server_type":"经典服","场景":"夏尔镇 304 / 305","区域":"夏尔镇","结论":"窗口 [0.60, 1.60]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,∞] 0.1x+0.9","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.60","下限表现":"净 0.6 → 0.60","数据行":"本服表第 63950 行","说明":"—","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 63950 行","status_tags":["static config"],"id":"pw16","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"63950","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"63950","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"简单生存服 · 夏尔镇 304 / 305","服型":"简单生存服","server_type":"简单生存服","场景":"夏尔镇 304 / 305","区域":"夏尔镇","结论":"窗口 [0.60, 1.80]，+60%→1.30，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44","生效值":"+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40","下限表现":"净 0.6 → 0.60","数据行":"本服表第 13302 行","说明":"该服无本场景专属行，回退值未逐行证实","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"本服表第 13302 行","status_tags":["static config"],"id":"pw17","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"13302","field_refs":["source_hurt_*","p2p_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"13302","field_refs":["source_hurt_*","p2p_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"月卡服 · 夏尔镇 304 / 305","服型":"月卡服","server_type":"月卡服","场景":"夏尔镇 304 / 305","区域":"夏尔镇","结论":"窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。","算法":"p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97","生效值":"+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80","下限表现":"净 0.6 → 0.60","数据行":"全局 hurt_params_data","说明":"yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）","依据":"special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列","evidence":"structure","evidence_level":"structure-only","source":"全局 hurt_params_data","status_tags":["static config"],"id":"pw18","provenance":{"source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-hurt-params-global","table":"hurt_params_data","row_key":"global","field_refs":["p2p_a_class_*","min_hurt_additional_rate"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}},
-{"name":"数据来源与复跑","服型":"跨服","server_type":"跨服","场景":"全部","结论":"四张表 + 一个生成脚本即可复跑；数字与场景平衡板同源。","算法":"gen_piecewise.load(classic/kj1/yk/global) → norm → segments","说明":"经典服 693 行、简单生存 98 行、月卡 12 行、全局默认 1 行。","依据":"90_临时/gen_piecewise.py、gen_xe_report.py","evidence":"structure","evidence_level":"structure-only","source":"本地生成","status_tags":["static config"],"id":"pw19","provenance":{"source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"],"name_source":"伤害系统自研结论（另一条线），本脚本只补溯源不改编排","note":"代码依据 HurtCalc 反汇编","locator_chain":{"steps":[{"kind":"decoded-table-row","source_id":"pe-table-special-hurt-params","table":"special_hurt_params_data","row_key":"table-wide","field_refs":["source_hurt_*"]}],"chain_status":"replayed-structural","scope":"record","no_cross_source_field_join":true},"source_lock_sha256":"e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea","upstream":{"package_sha256":"62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce","entry_index":null,"file_id":null}}}
-]
+window.WIKI_BOARD_damage_bonus = {
+ "meta": {
+  "name": "3、加成",
+  "category": "二、战力类 / 2、伤害计算",
+  "generated": "2026-11-04",
+  "evidence": "structure",
+  "source_server": "PE 测试服 · special_hurt_params_data（经典服）/ _kj1（简单生存）/ _yk（月卡）/ hurt_params_data（全局默认）",
+  "package_sha": "5e79176cb6136bd38b1cc0ad42914d0b90202ee4d5a9e966bf5c7eb56a5a7ae6",
+  "card_mode": "roster",
+  "id_label": "服型",
+  "filters": [],
+  "card_summary": [
+   [
+    "服型",
+    "服型"
+   ],
+   [
+    "场景",
+    "场景"
+   ],
+   [
+    "结论",
+    "结论"
+   ]
+  ],
+  "hide_media": true,
+  "notes": "三条通用原则 + 5 个场景组（远星城 23/448/698、夏尔镇 6/799/19/20、304/305）× 3 服（经典/简单生存/月卡）+ 数据来源。月卡在关注的这些场景均无专属行，按全局默认取值并标注未证实。",
+  "provenance": {
+   "contract_version": 3,
+   "audit_status": "passed",
+   "contract": "frozen-audited-artifact",
+   "source_scope": {
+    "cross_source_policy": "no-cross-source-field-join",
+    "integer_join_policy": "no-equal-integer-join",
+    "runtime_final_policy": "unknown-unless-runtime-proven"
+   },
+   "source_locks": [
+    {
+     "source_id": "pe-script-hurtcalc",
+     "role": "primary",
+     "sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "bytes": 249746676,
+     "mtime_ns": 1793370321325025700,
+     "path": "E:\\la拆包项目\\01_索引与产物\\源包\\pe_hotfix\\20261030_2225\\script.py314.lc.npk",
+     "desc": "PE 体验服脚本包（HurtCalc 反汇编来源）"
+    },
+    {
+     "source_id": "pe-table-special-hurt-params",
+     "role": "comparison",
+     "sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+     "bytes": 91326,
+     "mtime_ns": 1792520582367349000,
+     "path": "E:\\la拆包项目\\01_索引与产物\\41_还原树\\pe\\配置\\com\\cdata\\special_hurt_params_data.py",
+     "desc": "special_hurt_params_data（经典服分场景伤害参数）"
+    },
+    {
+     "source_id": "pe-table-hurt-params-global",
+     "role": "comparison",
+     "sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+     "bytes": 1667,
+     "mtime_ns": 1792856006984819700,
+     "path": "E:\\la拆包项目\\01_索引与产物\\41_还原树\\pe\\配置\\com\\cdata\\hurt_params_data.nxs",
+     "desc": "hurt_params_data 全局默认（本树仅存 .nxs 体）"
+    }
+   ],
+   "note": "溯源由 fill_damage_provenance.py 依条目自述来源补齐；结论本身由伤害系统那条线产出"
+  },
+  "state_summary": {
+   "跨服": 4,
+   "经典服": 5,
+   "简单生存服": 5,
+   "月卡服": 5
+  },
+  "formula": [
+   {
+    "t": "① 加成桶求和",
+    "e": "rate = 1 + Σ桶ᵢ",
+    "n": "桶ᵢ 为各条伤害加成（装备/技能/称号/场景等），同类桶相加，不同类互乘由各自桶定义。"
+   },
+   {
+    "t": "② PvP 配对项",
+    "e": "rate ← rate + 攻方加成 − 守方减免",
+    "n": "仅玩家对玩家加入；守方减免指 player_hurt_reduction_rate，是配对项，不是守方自身减伤桶。"
+   },
+   {
+    "t": "③ 夹窗口",
+    "e": "rate = min(上限, max(下限, rate))",
+    "n": "夹的是 rate 本身，不是 delta。经典远星城 23 窗口 [0.75, 1.80]。"
+   },
+   {
+    "t": "④ 分段折线（只作用于 delta）",
+    "e": "delta = rate − 1 ；若 delta>0 或曲线首端≤0 ⇒ delta = k·delta + b",
+    "n": "经典远星城 23：[0,0.2] 1x+0｜[0.2,0.4] 0.7x+0.06｜[0.4,0.6] 0.4x+0.18｜[0.6,1] 0.25x+0.27｜[1,∞] 0.1x+0.42。delta≤0 且首端>0 时原样返回。"
+   },
+   {
+    "t": "⑤ 最终倍率与伤害",
+    "e": "生效倍率 = 1 + delta ；伤害 = 攻击侧结果 × 生效倍率",
+    "n": "算例：加成 1.6、减免 1.8 → net 0.80 → delta −0.20 → 生效 0.80（下限 0.80 托住）。"
+   }
+  ],
+  "category_before": "二、战力类 / 3、加成"
+ },
+ "items": [
+  {
+   "name": "原则①：rate 先夹窗口，再对 delta 做分段折线",
+   "服型": "跨服",
+   "server_type": "跨服",
+   "场景": "全部",
+   "结论": "rate = 1 + Σ桶；玩家对玩家再加「攻方加成 − 守方减免」；随后夹进 [下限, 上限]，delta = rate − 1 过 p2p 曲线，最后 delta + 1 才是生效倍率。",
+   "算法": "rate = 1+Σ桶 → += 攻方加成 − 守方减免 → min(上限, max(下限, rate)) → delta = rate−1 → delta = k·delta+b → 生效 = delta+1",
+   "说明": "窗口夹的是 rate 本身，不是 delta；曲线只改 delta 的大小，不改符号方向。",
+   "依据": "hurt_calc byte 5504-16002",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "HurtCalc 反汇编",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw01",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "table-wide",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*",
+     "hurt_calc:byte5504-16002"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 hurt_calc byte 5504-16002",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "table-wide",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*",
+        "hurt_calc:byte5504-16002"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "原则②：rate ≤ 1 时负数不过曲线，只剩窗口下限",
+   "服型": "跨服",
+   "server_type": "跨服",
+   "场景": "全部",
+   "结论": "曲线生效条件是「delta > 0，或该曲线首端 ≤ 0」。夏尔镇 / 远星城主表的 p2p 首端都 > 0，所以加成抵不过减免时不会被再放大，只被下限托住。",
+   "算法": "if delta > 0 or interval[0] <= 0: delta = k·delta+b；否则原样返回",
+   "说明": "算例：加成 1.6、减免 1.8 → net 0.80 → delta −0.20 → 生效 0.80（下限 0.80 时正好托住）。",
+   "依据": "_apply_rate_factor @149483",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "HurtCalc 反汇编",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw02",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "table-wide",
+    "field_refs": [
+     "source_hurt_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "table-wide",
+       "field_refs": [
+        "source_hurt_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "原则③：三服差异只在 rate > 1 段与窗口上下限",
+   "服型": "跨服",
+   "server_type": "跨服",
+   "场景": "全部",
+   "结论": "b_class / c_class 三服逐值相同；rate ≤ 1 段夏尔镇两服下限相同。差异从 rate > 1 开始：经典低段更松、高段递减，简单全程 0.5 斜率。",
+   "算法": "见各服各场景卡片",
+   "说明": "月卡服在本轮关注场景（远星城 23/448/698、夏尔镇 6/799/19/20、304/305）均无专属行。",
+   "依据": "p2p_a_class_* 与 min/max_hurt_additional_rate 列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "HurtCalc 反汇编 + 四张表",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw03",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "table-wide",
+    "field_refs": [
+     "source_hurt_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "table-wide",
+       "field_refs": [
+        "source_hurt_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "经典服 · 远星城 23",
+   "服型": "经典服",
+   "server_type": "经典服",
+   "场景": "远星城 23",
+   "区域": "远星城",
+   "结论": "窗口 [0.75, 1.80]，+60%→1.42，净 0.6 时为 0.75。",
+   "算法": "p2p 分段：[0,0.2] 1x+0；[0.2,0.4] 0.7x+0.06；[0.4,0.6] 0.4x+0.18；[0.6,1] 0.25x+0.27；[1,∞] 0.1x+0.42",
+   "生效值": "+20%→1.20  +40%→1.34  +60%→1.42  +80%→1.47",
+   "下限表现": "净 0.6 → 0.75",
+   "数据行": "本服表第 30403 行",
+   "说明": "—",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 30403 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw04",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "30403",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "30403",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "简单生存服 · 远星城 23",
+   "服型": "简单生存服",
+   "server_type": "简单生存服",
+   "场景": "远星城 23",
+   "区域": "远星城",
+   "结论": "窗口 [0.80, 1.90]，+60%→1.30，净 0.6 时为 0.80。",
+   "算法": "p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44",
+   "生效值": "+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40",
+   "下限表现": "净 0.6 → 0.80",
+   "数据行": "本服表第 7472 行",
+   "说明": "该服无本场景专属行，回退值未逐行证实",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 7472 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw05",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "7472",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "7472",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "月卡服 · 远星城 23",
+   "服型": "月卡服",
+   "server_type": "月卡服",
+   "场景": "远星城 23",
+   "区域": "远星城",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw06",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "经典服 · 远星城 448",
+   "服型": "经典服",
+   "server_type": "经典服",
+   "场景": "远星城 448",
+   "区域": "远星城",
+   "结论": "窗口 [1.00, 1.50]，+60%→1.05，净 0.6 时为 1.00。",
+   "算法": "p2p 分段：[0,0.5] 0.1x+0；[0.5,1] 0.05x+0.025；[1,∞] 0x+0.075",
+   "生效值": "+20%→1.02  +40%→1.04  +60%→1.05  +80%→1.05",
+   "下限表现": "净 0.6 → 1.00",
+   "数据行": "本服表第 30952 行",
+   "说明": "—",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 30952 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw07",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "30952",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "30952",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "简单生存服 · 远星城 448",
+   "服型": "简单生存服",
+   "server_type": "简单生存服",
+   "场景": "远星城 448",
+   "区域": "远星城",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "该服无本场景专属行，回退值未逐行证实",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw08",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "月卡服 · 远星城 448",
+   "服型": "月卡服",
+   "server_type": "月卡服",
+   "场景": "远星城 448",
+   "区域": "远星城",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw09",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "经典服 · 远星城 698",
+   "服型": "经典服",
+   "server_type": "经典服",
+   "场景": "远星城 698",
+   "区域": "远星城",
+   "结论": "窗口 [0.80, 1.50]，+60%→1.27，净 0.6 时为 0.80。",
+   "算法": "p2p 分段：[0,0.3] 0.7x+0；[0.3,0.8] 0.3x+0.12；[0.8,∞] 0.1x+0.28",
+   "生效值": "+20%→1.14  +40%→1.24  +60%→1.27  +80%→1.27",
+   "下限表现": "净 0.6 → 0.80",
+   "数据行": "本服表第 25147 行",
+   "说明": "—",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 25147 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw10",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "25147",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "25147",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "简单生存服 · 远星城 698",
+   "服型": "简单生存服",
+   "server_type": "简单生存服",
+   "场景": "远星城 698",
+   "区域": "远星城",
+   "结论": "窗口 [0.80, 1.80]，+60%→1.30，净 0.6 时为 0.80。",
+   "算法": "p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44",
+   "生效值": "+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40",
+   "下限表现": "净 0.6 → 0.80",
+   "数据行": "本服表第 9291 行",
+   "说明": "该服无本场景专属行，回退值未逐行证实",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 9291 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw11",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "9291",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "9291",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "月卡服 · 远星城 698",
+   "服型": "月卡服",
+   "server_type": "月卡服",
+   "场景": "远星城 698",
+   "区域": "远星城",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw12",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "经典服 · 夏尔镇 6 / 799 / 19 / 20",
+   "服型": "经典服",
+   "server_type": "经典服",
+   "场景": "夏尔镇 6 / 799 / 19 / 20",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.80, 1.80]，+60%→1.42，净 0.6 时为 0.80。",
+   "算法": "p2p 分段：[0,0.2] 1x+0；[0.2,0.4] 0.7x+0.06；[0.4,0.6] 0.4x+0.18；[0.6,1] 0.25x+0.27；[1,∞] 0.1x+0.42",
+   "生效值": "+20%→1.20  +40%→1.34  +60%→1.42  +80%→1.47",
+   "下限表现": "净 0.6 → 0.80",
+   "数据行": "本服表第 33168 行",
+   "说明": "—",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 33168 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw13",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "33168",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "33168",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "简单生存服 · 夏尔镇 6 / 799 / 19 / 20",
+   "服型": "简单生存服",
+   "server_type": "简单生存服",
+   "场景": "夏尔镇 6 / 799 / 19 / 20",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.80, 1.80]，+60%→1.30，净 0.6 时为 0.80。",
+   "算法": "p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44",
+   "生效值": "+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40",
+   "下限表现": "净 0.6 → 0.80",
+   "数据行": "本服表第 8284 行",
+   "说明": "该服无本场景专属行，回退值未逐行证实",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 8284 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw14",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "8284",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "8284",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "月卡服 · 夏尔镇 6 / 799 / 19 / 20",
+   "服型": "月卡服",
+   "server_type": "月卡服",
+   "场景": "夏尔镇 6 / 799 / 19 / 20",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw15",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "经典服 · 夏尔镇 304 / 305",
+   "服型": "经典服",
+   "server_type": "经典服",
+   "场景": "夏尔镇 304 / 305",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.60, 1.60]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,∞] 0.1x+0.9",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.60",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "本服表第 63950 行",
+   "说明": "—",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 63950 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw16",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "63950",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "63950",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "简单生存服 · 夏尔镇 304 / 305",
+   "服型": "简单生存服",
+   "server_type": "简单生存服",
+   "场景": "夏尔镇 304 / 305",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.60, 1.80]，+60%→1.30，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1.1] 0.5x+0；[1.1,∞] 0.1x+0.44",
+   "生效值": "+20%→1.10  +40%→1.20  +60%→1.30  +80%→1.40",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "本服表第 13302 行",
+   "说明": "该服无本场景专属行，回退值未逐行证实",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本服表第 13302 行",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw17",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "13302",
+    "field_refs": [
+     "source_hurt_*",
+     "p2p_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "13302",
+       "field_refs": [
+        "source_hurt_*",
+        "p2p_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "月卡服 · 夏尔镇 304 / 305",
+   "服型": "月卡服",
+   "server_type": "月卡服",
+   "场景": "夏尔镇 304 / 305",
+   "区域": "夏尔镇",
+   "结论": "窗口 [0.50, 2.00]，+60%→1.60，净 0.6 时为 0.60。",
+   "算法": "p2p 分段：[0,1] 1x+0；[1,1.2] 0.3x+0.7；[1.2,1.5] 0.2x+0.82；[1.5,∞] 0.1x+0.97",
+   "生效值": "+20%→1.20  +40%→1.40  +60%→1.60  +80%→1.80",
+   "下限表现": "净 0.6 → 0.60",
+   "数据行": "全局 hurt_params_data",
+   "说明": "yk 表无本场景行，按全局 hurt_params_data 取值（回退逻辑未逐行证实）",
+   "依据": "special_hurt_params_data / _kj1 / _yk / hurt_params_data 的 p2p 与窗口列",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "全局 hurt_params_data",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw18",
+   "provenance": {
+    "source_id": "pe-table-hurt-params-global",
+    "table": "hurt_params_data",
+    "row_key": "global",
+    "field_refs": [
+     "p2p_a_class_*",
+     "min_hurt_additional_rate"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-hurt-params-global",
+       "table": "hurt_params_data",
+       "row_key": "global",
+       "field_refs": [
+        "p2p_a_class_*",
+        "min_hurt_additional_rate"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "7adfc76402696ad52e7a52279638373b848c61bd3cc2e021dba35e6c7011cffa",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  },
+  {
+   "name": "数据来源与复跑",
+   "服型": "跨服",
+   "server_type": "跨服",
+   "场景": "全部",
+   "结论": "四张表 + 一个生成脚本即可复跑；数字与场景平衡板同源。",
+   "算法": "gen_piecewise.load(classic/kj1/yk/global) → norm → segments",
+   "说明": "经典服 693 行、简单生存 98 行、月卡 12 行、全局默认 1 行。",
+   "依据": "90_临时/gen_piecewise.py、gen_xe_report.py",
+   "evidence": "structure",
+   "evidence_level": "structure-only",
+   "source": "本地生成",
+   "status_tags": [
+    "static config"
+   ],
+   "id": "pw19",
+   "provenance": {
+    "source_id": "pe-table-special-hurt-params",
+    "table": "special_hurt_params_data",
+    "row_key": "table-wide",
+    "field_refs": [
+     "source_hurt_*"
+    ],
+    "name_source": "伤害系统自研结论（另一条线），本脚本只补溯源不改编排",
+    "note": "代码依据 HurtCalc 反汇编",
+    "locator_chain": {
+     "steps": [
+      {
+       "kind": "decoded-table-row",
+       "source_id": "pe-table-special-hurt-params",
+       "table": "special_hurt_params_data",
+       "row_key": "table-wide",
+       "field_refs": [
+        "source_hurt_*"
+       ]
+      }
+     ],
+     "chain_status": "replayed-structural",
+     "scope": "record",
+     "no_cross_source_field_join": true
+    },
+    "source_lock_sha256": "e97345ae662542fb21c94f500e558be6ad508d5db91aab510b2f1e55ad2e2cea",
+    "upstream": {
+     "package_sha256": "62e10e5ed1e6759089750d4cc0e865c36a1ee22a420ba198b127566171e396ce",
+     "entry_index": null,
+     "file_id": null
+    }
+   }
+  }
+ ]
 };

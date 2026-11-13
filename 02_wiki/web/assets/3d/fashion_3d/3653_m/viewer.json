@@ -1,0 +1,173 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3653_m",
+ "series": "3653",
+ "gender": "m",
+ "label": "3653 · 男 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_m_3653/b_m_3653.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3653_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3653_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_m_3653_2",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_m_3653_3",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_m_3653_4",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_m_3653_5",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "b_m_3653_6",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 7,
+     "name": "b_m_3653_7",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    }
+   ],
+   "warnings": [],
+   "vertices": 7081,
+   "faces": 8227,
+   "submeshes": 8,
+   "materials_exported": 8,
+   "bytes": 1832868
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_m_3653/h_m_3653.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3653_0",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_m_3653_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "h_m_3653_2",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [
+      "a",
+      "m"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 4694,
+   "faces": 4104,
+   "submeshes": 3,
+   "materials_exported": 3,
+   "bytes": 456500
+  }
+ ]
+}

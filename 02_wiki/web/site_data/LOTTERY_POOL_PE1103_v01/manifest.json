@@ -1,0 +1,384 @@
+{
+ "artifact_claim": "Per-server static lottery pool structure decoded from the 2026-11-03 LDPlayer device package; NOT a runtime-final or current-server payout list.",
+ "component_order": [
+  "base",
+  "kj1",
+  "kjxq",
+  "yk",
+  "ykxq"
+ ],
+ "generated_at": "2026-11-07T21:04:56+08:00",
+ "generator": "02_wiki/web/tools/build_lottery_pool_pe1103.py",
+ "notes": "本数据集取自 11-03 雷电模拟器**设备包**（PE 侧），按 file_id 精确取件并解码，不是 PC 侧包、不是 10 月包、不是 MuMu 包。复合键 (pool_key, item_no) 由表内 0x27 跳转组直读；reward 同样由 jump 组直读，全程不做整数等值 join、不跨源猜字段。base 1,839 池 / 24,245 格，与结构表 reward_pool_no_item_no_list 的 1,839 池完全一致；相对旧冻结产物（BA8A / 10 月 PC 侧）新增 79 池（含浮光花序 391848 的 28 格），重叠 23,273 格中 10 格奖励不同 —— 属 11 月版本推进。diff 只在同服与 base 同键之间计算：base=经典服本体 / same=该服覆盖但奖励相同 / replaced=该服覆盖且奖励被换 / added=该服新增此格 / inherit=该服未覆盖、沿用 base。服等价性：kj1≡kjxq、yk≡ykxq（逐键 0 差异，已由本脚本自复算）。★ inc 分片（55F871522812BFCF）在 11-03 包内存在但**未并入**（其编码未确证，强解有产出错奖励的风险）；del 分片（A5F5FFFDB4CEF3A8）11-03 包内**不存在**。两项均如实登记在 manifest.shards，未做任何合并动作。runtime_final_state 恒为 unresolved：optional_pool_replace_data 等表会在运行时替换奖励，本产物是静态结构，不是当前实发结果。",
+ "parts": {
+  "0F748A9290B9B1BA": {
+   "bytes": 30907,
+   "entry": {
+    "decoded": 6496,
+    "flag": 0,
+    "index": 2234,
+    "offset": 122057056,
+    "packed": 6496
+   },
+   "kind": "pool",
+   "present": true,
+   "sha256": "b306798ecdc13ce2127c9b793b15cc8f43dc675a36a4a2642dcae2cc6fe07abb"
+  },
+  "1565D71D87A32C5D": {
+   "bytes": 14293,
+   "entry": {
+    "decoded": 4496,
+    "flag": 0,
+    "index": 3053,
+    "offset": 160829148,
+    "packed": 4496
+   },
+   "kind": "pool",
+   "present": true,
+   "sha256": "9b4dd7d4ee276dfc82110726fd4618fa31c1164aab9b100b4b45e4b93fa7c8e8"
+  },
+  "69E58821939CB515": {
+   "bytes": 663541,
+   "entry": {
+    "decoded": 142288,
+    "flag": 0,
+    "index": 15265,
+    "offset": 218569784,
+    "packed": 142288
+   },
+   "kind": "pool",
+   "present": true,
+   "sha256": "3fe4c83f61f7520c693190a24b113e7c6ddf325add1e639f61cfb22d76aac9f2"
+  },
+  "7C1978372D53EA7A": {
+   "bytes": 18890,
+   "entry": {
+    "decoded": 9552,
+    "flag": 0,
+    "index": 17917,
+    "offset": 19560532,
+    "packed": 9552
+   },
+   "kind": "data",
+   "present": true,
+   "sha256": "a6f9f34f8862ceec0a2985a5738660e5e007dda22f12d12d9d1fda40237986f7"
+  },
+  "BBC2EAAA769B560A": {
+   "bytes": 13020,
+   "entry": {
+    "decoded": 6816,
+    "flag": 0,
+    "index": 27188,
+    "offset": 160833644,
+    "packed": 6816
+   },
+   "kind": "data",
+   "present": true,
+   "sha256": "1d7acc62d71aa30ed0ab2525a763d6426255cb3791f5809992b5f715bfcae509"
+  },
+  "BEC1A7DD859A26BB": {
+   "bytes": 30906,
+   "entry": {
+    "decoded": 6496,
+    "flag": 0,
+    "index": 27639,
+    "offset": 19570084,
+    "packed": 6496
+   },
+   "kind": "pool",
+   "present": true,
+   "sha256": "842f91e9945ea9311e17fb6cbe03dd89dadf10742e94389618693d3fddb0c1d8"
+  },
+  "D558884A36C972C5": {
+   "bytes": 1133981,
+   "entry": {
+    "decoded": 671360,
+    "flag": 0,
+    "index": 30946,
+    "offset": 217898424,
+    "packed": 671360
+   },
+   "kind": "data",
+   "present": true,
+   "sha256": "5c55a5b72bac4450bc87f6d876fce66d4d5db78ec80fd44b343ecefb88d70f9f"
+  },
+  "E6D350D76C052B91": {
+   "bytes": 18891,
+   "entry": {
+    "decoded": 9552,
+    "flag": 0,
+    "index": 33489,
+    "offset": 122047504,
+    "packed": 9552
+   },
+   "kind": "data",
+   "present": true,
+   "sha256": "ca5b7e9800499f755ef447ff557a9a29566e7554f1e9acf36dfeb4311e433001"
+  },
+  "F3F1166CFA11E8EB": {
+   "bytes": 13018,
+   "entry": {
+    "decoded": 6816,
+    "flag": 0,
+    "index": 35327,
+    "offset": 160822332,
+    "packed": 6816
+   },
+   "kind": "data",
+   "present": true,
+   "sha256": "6eaf377eb4af2797a605be567ded82960e34896f7408e0a0dd3015257edd2a16"
+  },
+  "F8BBD20A0AC69BA3": {
+   "bytes": 14295,
+   "entry": {
+    "decoded": 4496,
+    "flag": 0,
+    "index": 35979,
+    "offset": 160840460,
+    "packed": 4496
+   },
+   "kind": "pool",
+   "present": true,
+   "sha256": "e6a94a5d33214165cd2af48899c9c548fadd49071efd7b867f657b4fe31c75f6"
+  }
+ },
+ "publication_tier": "verified-runtime-structure",
+ "record_type": "dataset_manifest",
+ "rows_file": "rows.jsonl",
+ "runtime_final_state": "unresolved",
+ "schema": "lottery_pool_pe1103/v0.1",
+ "shards": [
+  {
+   "applied": false,
+   "bytes": 2763,
+   "component": "inc",
+   "file_id": "55F871522812BFCF",
+   "note": "11-03 包内存在但**未并入**：该分片编码未确证，强解有产出错奖励的风险",
+   "present": true,
+   "reason": null,
+   "sha256": "766a573cb374fed1aa686a6160b70258842afcd86ca3bfd8201d3d697581c04b"
+  },
+  {
+   "applied": false,
+   "bytes": null,
+   "component": "del",
+   "file_id": "A5F5FFFDB4CEF3A8",
+   "note": "11-03 包内不存在该 file_id，无法合并",
+   "present": false,
+   "reason": "该 file_id 在 11-03 包内不存在",
+   "sha256": null
+  }
+ ],
+ "source": {
+  "device_profile": "雷电模拟器 14 · 2026-11-03 设备包（PE 侧）",
+  "package_bytes": 250112428,
+  "package_entry_count": 36973,
+  "package_path": "01_索引与产物/源包/pe_device_20261103/script.py314.lc.npk",
+  "package_sha256": "6218ca752e8d17fcff84fd9bb3914eaa05d4d0869a0dd688832583f6cde556c6",
+  "selection_rule": "按 file_id 精确取件（file_id 是游戏侧跨版本稳定的逻辑标识，见 rules/unnamed_table_registry.yml）；不按行号名、不按文件名猜"
+ },
+ "stats": {
+  "components": [
+   {
+    "chs_file_id": "69E58821939CB515",
+    "chs_sha256": "3fe4c83f61f7520c693190a24b113e7c6ddf325add1e639f61cfb22d76aac9f2",
+    "component": "base",
+    "data_file_id": "D558884A36C972C5",
+    "data_sha256": "5c55a5b72bac4450bc87f6d876fce66d4d5db78ec80fd44b343ecefb88d70f9f",
+    "pool_key_range": [
+     390000,
+     391873
+    ],
+    "pools": 1839,
+    "rows": 24245,
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "chs_file_id": "BEC1A7DD859A26BB",
+    "chs_sha256": "842f91e9945ea9311e17fb6cbe03dd89dadf10742e94389618693d3fddb0c1d8",
+    "component": "kj1",
+    "data_file_id": "7C1978372D53EA7A",
+    "data_sha256": "a6f9f34f8862ceec0a2985a5738660e5e007dda22f12d12d9d1fda40237986f7",
+    "pool_key_range": [
+     390011,
+     391793
+    ],
+    "pools": 224,
+    "rows": 237,
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "chs_file_id": "0F748A9290B9B1BA",
+    "chs_sha256": "b306798ecdc13ce2127c9b793b15cc8f43dc675a36a4a2642dcae2cc6fe07abb",
+    "component": "kjxq",
+    "data_file_id": "E6D350D76C052B91",
+    "data_sha256": "ca5b7e9800499f755ef447ff557a9a29566e7554f1e9acf36dfeb4311e433001",
+    "pool_key_range": [
+     390011,
+     391793
+    ],
+    "pools": 224,
+    "rows": 237,
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "chs_file_id": "1565D71D87A32C5D",
+    "chs_sha256": "9b4dd7d4ee276dfc82110726fd4618fa31c1164aab9b100b4b45e4b93fa7c8e8",
+    "component": "yk",
+    "data_file_id": "F3F1166CFA11E8EB",
+    "data_sha256": "6eaf377eb4af2797a605be567ded82960e34896f7408e0a0dd3015257edd2a16",
+    "pool_key_range": [
+     390216,
+     391843
+    ],
+    "pools": 146,
+    "rows": 162,
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "chs_file_id": "F8BBD20A0AC69BA3",
+    "chs_sha256": "e6a94a5d33214165cd2af48899c9c548fadd49071efd7b867f657b4fe31c75f6",
+    "component": "ykxq",
+    "data_file_id": "BBC2EAAA769B560A",
+    "data_sha256": "1d7acc62d71aa30ed0ab2525a763d6426255cb3791f5809992b5f715bfcae509",
+    "pool_key_range": [
+     390216,
+     391843
+    ],
+    "pools": 146,
+    "rows": 162,
+    "state": "verified",
+    "unbound_rows": 0
+   }
+  ],
+  "per_component": {
+   "base": {
+    "base": 24245,
+    "rows": 24245,
+    "with_note": 24215,
+    "with_prob": 22229
+   },
+   "kj1": {
+    "added": 5,
+    "inherit": 24013,
+    "replaced": 8,
+    "rows": 24250,
+    "same": 224,
+    "with_note": 24220,
+    "with_prob": 22234
+   },
+   "kjxq": {
+    "added": 5,
+    "inherit": 24013,
+    "replaced": 8,
+    "rows": 24250,
+    "same": 224,
+    "with_note": 24220,
+    "with_prob": 22234
+   },
+   "yk": {
+    "inherit": 24083,
+    "replaced": 18,
+    "rows": 24245,
+    "same": 144,
+    "with_note": 24215,
+    "with_prob": 22229
+   },
+   "ykxq": {
+    "inherit": 24083,
+    "replaced": 18,
+    "rows": 24245,
+    "same": 144,
+    "with_note": 24215,
+    "with_prob": 22229
+   }
+  },
+  "server_equivalence": [
+   {
+    "a": "base",
+    "b": "kj1",
+    "equivalent": false,
+    "reward_diff": 24021,
+    "rows_a": 24245,
+    "rows_b": 237
+   },
+   {
+    "a": "base",
+    "b": "kjxq",
+    "equivalent": false,
+    "reward_diff": 24021,
+    "rows_a": 24245,
+    "rows_b": 237
+   },
+   {
+    "a": "base",
+    "b": "yk",
+    "equivalent": false,
+    "reward_diff": 24101,
+    "rows_a": 24245,
+    "rows_b": 162
+   },
+   {
+    "a": "base",
+    "b": "ykxq",
+    "equivalent": false,
+    "reward_diff": 24101,
+    "rows_a": 24245,
+    "rows_b": 162
+   },
+   {
+    "a": "kj1",
+    "b": "kjxq",
+    "equivalent": true,
+    "reward_diff": 0,
+    "rows_a": 237,
+    "rows_b": 237
+   },
+   {
+    "a": "kj1",
+    "b": "yk",
+    "equivalent": false,
+    "reward_diff": 99,
+    "rows_a": 237,
+    "rows_b": 162
+   },
+   {
+    "a": "kj1",
+    "b": "ykxq",
+    "equivalent": false,
+    "reward_diff": 99,
+    "rows_a": 237,
+    "rows_b": 162
+   },
+   {
+    "a": "kjxq",
+    "b": "yk",
+    "equivalent": false,
+    "reward_diff": 99,
+    "rows_a": 237,
+    "rows_b": 162
+   },
+   {
+    "a": "kjxq",
+    "b": "ykxq",
+    "equivalent": false,
+    "reward_diff": 99,
+    "rows_a": 237,
+    "rows_b": 162
+   },
+   {
+    "a": "yk",
+    "b": "ykxq",
+    "equivalent": true,
+    "reward_diff": 0,
+    "rows_a": 162,
+    "rows_b": 162
+   }
+  ],
+  "total_rows": 121235
+ }
+}

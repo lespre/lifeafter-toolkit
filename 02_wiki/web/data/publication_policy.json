@@ -3,6 +3,13 @@
  "generated": "2026-11-01",
  "policy": "默认拒绝。Wiki v0.1 允许既有非冲突已验板，以及通过 P4 简化总验收的四个冻结产物板；unresolved/quarantined 不得伪装为 verified，runtime final 未证明即 unknown。",
  "boards": {
+  "lottery_servers": {
+   "publication_status": "published_hidden",
+   "category": "四、奖池 / （二）分服全量池对照",
+   "reason": "奖池分服全量板（1,839 池 / base 24,245 格 + 四服覆盖）：2026-11-07 起数据源切到雷电模拟器 14 · 2026-11-03 设备包（PE 侧）按 file_id 精确取件解码的冻结数据集 LOTTERY_POOL_PE1103_v01 —— 复合键 (pool_key,item_no)、奖励原值、中文备注、概率全部同源直读，不再跨源拼字段。旧口径登记的 79 个 content_missing 缺口池（391794~391873）已撤销：这 79 个池在 11-03 包内每一格都有内容。差异结论（kj1/kjxq 各 8 替换 + 5 新增；yk/ykxq 各 18 替换）已由 check_lottery_servers.py 的 G1~G13 独立复算，runtime_final 恒 unresolved。",
+   "items": 1840,
+   "note": "可直链 ?b=lottery_servers，不进首页导航；首页主入口是 lottery_periods（期次时间轴，已并入 11-03 全量池格）。"
+  },
   "chip_item_catalog": {
    "publication_status": "published_hidden",
    "category": "三、战力类 / （四）芯片",
@@ -78,7 +85,7 @@
   },
   "lottery_periods": {
    "publication_status": "published",
-   "category": "置顶、活动奖池与预告 / （一）活动奖池"
+   "category": "置顶、活动奖池与预告 / 2、活动奖池"
   },
   "drone_catalog": {
    "publication_status": "published",
@@ -86,7 +93,7 @@
   },
   "upcoming_auto": {
    "publication_status": "published",
-   "category": "置顶、活动奖池与预告 / （二）预告专栏",
+   "category": "置顶、活动奖池与预告 / 3、预告专栏",
    "items": 16,
    "reason": "预告专栏唯一板：武器皮肤未上架段 + 未开始奖池期次（万圣绮夜）连带成员。分类与条目数随板产物同步；数值来自各源板行，不含上线/价格/概率推断。"
   },
@@ -98,7 +105,7 @@
   },
   "activity_master": {
    "publication_status": "published",
-   "category": "置顶、活动奖池与预告 / （一）活动奖池"
+   "category": "置顶、活动奖池与预告 / 1、活动总表"
   },
   "skill_catalog": {
    "publication_status": "published",
@@ -269,6 +276,36 @@
    "reason": "草案版（精简字段），格式已被正式板取代",
    "items": 145,
    "superseded_by": "weapon_skin_sfx_text_sources"
+  },
+  "weapon_skin_hotfix_20261112": {
+   "publication_status": "published",
+   "category": "一、时装类 / （二）武器皮肤",
+   "items": 13,
+   "reason": "11-12 PE 实机热更新增 13 款武器皮肤，独立声明 11-12 源锁；不并入 BA8 基线冻结板（契约禁止混源）"
+  },
+  "chenshi_zhencang_20261112": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / 3、宸世臻藏",
+   "items": 36,
+   "reason": "回答宸世臻藏奖池 / 展示页查询；单一 11-12 实机包源锁，不并入 11-03 冻结奖池板（契约禁止混源）"
+  },
+  "fengshang_qiyu_20261112": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / 4、风尚绮遇（1119 先行）",
+   "items": 7,
+   "reason": "回答华宴序曲 / 绮梦绘卷奖池查询；补上 11-12 先行包 17 个未可见新池中的 6 个；单一 11-12 实机包源锁，禁止跨快照混源"
+  },
+  "shenmi_shangdian_20261112": {
+   "publication_status": "published",
+   "category": "置顶、活动奖池与预告 / 5、神秘商店",
+   "items": 21,
+   "reason": "回答「没有神秘商店吗」：历史 35 期 / 16 期配置 / 1927 件商品补独立可见入口，并核清 1119 先行版本无新期；单一 11-12 实机包源锁，历史商品只在展示页引用，禁止跨快照混源"
+  },
+  "jiachong_wurenji_20261112": {
+   "publication_status": "published",
+   "category": "二、战力类 / （三）无人机",
+   "items": 16,
+   "reason": "回答「甲虫无人机」拆解查询：战术无人机（drone_skill_mapping_data key 270439）最晚加入档（pos 14）、护盾型、3 技能 2 BUFF；技能真实效果已解出（召唤护盾实体 HP5000/10s/范围500）；单一 11-12 实机包源锁，机体总表收录（跨源）只在展示页呈现，禁止跨快照混源"
   }
  }
 }

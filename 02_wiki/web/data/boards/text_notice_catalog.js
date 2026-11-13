@@ -1,7 +1,7 @@
 window.WIKI_BOARD_text_notice_catalog = {
  "meta": {
   "name": "文本与提示（错误码 / 官方公告）",
-  "category": "四、资料层 / （十）文本与提示",
+  "category": "三、综合资料 / （三）说明条目、文字与提示总表",
   "source_server": "简单生存服（体验服 Documents 快照）",
   "generated": "2026-11-04",
   "id_label": "编号",
@@ -70,7 +70,8 @@ window.WIKI_BOARD_text_notice_catalog = {
     }
    }
   },
-  "notes": "错误码面向开发/排障，官方公告面向玩家推送；两者都不是图鉴物件。"
+  "notes": "错误码面向开发/排障，官方公告面向玩家推送；两者都不是图鉴物件。",
+  "category_before": "四、资料层 / （十）文本与提示"
  },
  "periods": [],
  "items": [

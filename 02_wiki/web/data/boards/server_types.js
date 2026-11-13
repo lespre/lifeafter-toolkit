@@ -1,7 +1,7 @@
 window.WIKI_BOARD_server_types = {
  "meta": {
   "name": "服型总表 · 服务器类型后缀与依据",
-  "category": "四、资料层 / （四）服型",
+  "category": "四、服务与包体 / （一）服务器类型",
   "source_server": "toolkit_core/server_types.py（唯一来源，依据均可在客户端复核）",
   "package_sha": "0000000000000000000000000000000000000000000000000000000000000000",
   "generated": "2026-11-04",
@@ -28,7 +28,8 @@ window.WIKI_BOARD_server_types = {
      "role": "primary"
     }
    ]
-  }
+  },
+  "category_before": "四、资料层 / （四）服型"
  },
  "items": [
   {

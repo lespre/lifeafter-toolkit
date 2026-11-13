@@ -167,13 +167,26 @@ def g3_portability() -> dict:
     }
 
 
+def _snapshot_created(d: pathlib.Path) -> str:
+    """按 meta.json 的 created 取快照时间；缺 meta 时退回目录 mtime。
+    ★ 不能按目录名字典序挑「最新」：正式标签 v1.5.0 / v1.6.0 会永远压住
+      时间戳标签 20261107_0900（'2' < 'v'），导致刷新快照后仍比旧参照。"""
+    try:
+        meta = json.loads((d / "meta.json").read_text(encoding="utf-8"))
+        if meta.get("created"):
+            return str(meta["created"])
+    except Exception:
+        pass
+    return time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(d.stat().st_mtime))
+
+
 def g4_fingerprint() -> dict:
     """条目级指纹可复现性：现产物指纹 vs 最近一次快照指纹。"""
     sys.path.insert(0, str(TOOLS / "build"))
     from snapshot import board_fingerprint  # noqa: E402
     snaps = sorted([d for d in (STATE / "snapshots").iterdir()
-                     if d.is_dir() and (d / "fingerprints.json").exists()]) if \
-        (STATE / "snapshots").exists() else []
+                     if d.is_dir() and (d / "fingerprints.json").exists()],
+                   key=_snapshot_created) if (STATE / "snapshots").exists() else []
     if not snaps:
         return {"ok": True, "reason": "尚无快照，跳过（先跑 snapshot.py）"}
     latest = snaps[-1]

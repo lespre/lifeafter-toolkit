@@ -623,17 +623,21 @@ body.b-avatar_catalog .head-tags,
 body.b-mutation_core_full .head-tags,
 body.b-edible_catalog .head-tags{flex-shrink:0;transform:scale(.92);transform-origin:right center}
 
-/* ── 称号板（title_catalog，2026-11-01）：1539 条以文字为主，密排 + 获取途径分组 ──
-   卡头只留 称号名 / 称号ID（获取途径由分组头统一标注，不在每张卡上重复）；
-   说明压到 2 行（全文仍在 D2 详情里，不受 clamp 影响）；
-   分组头横跨整行并吸顶；桌面端位置 = .controls 的粘性 top + 控件条高度（--tg-h，
+/* ── 称号板（title_catalog，2026-11-06 重构）：1550 条，默认「名册 · 文字」视图 ──
+   卡头恒为可读的 称号名 / 称号ID / 属性小标，说明压到 2 行（全文仍在 D2 详情里）；
+   称号图只在「图像预览」视图的固定高度预览槽出现，绝不铺到卡头压住文字；
+   两个视图内卡片各自等高（旧版 131~182px 乱跳）；
+   获取途径分组头横跨整行并吸顶；桌面端位置 = .controls 的粘性 top + 控件条高度（--tg-h，
    由 board_core.syncTitleHeadTop() 写入），与控件条用同一个 --top-h 表达式，校准后仍对齐；
    ≤760px 时 .controls 改为 static，分组头直接贴顶。 */
 body.b-title_catalog .wrap{max-width:1780px}
-body.b-title_catalog #grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-items:start}
+body.b-title_catalog #grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-items:stretch}
 body.b-title_catalog #grid>.i{padding:10px 12px;gap:4px}
 body.b-title_catalog #grid>.i .i-head{align-items:center}
 body.b-title_catalog #grid>.i .i-name{font-size:13.5px;line-height:1.3}
+/* 视觉/大图视图里，称号名已由视觉槽承载（美术字图/底图/字叠底图/档位字）⇒ 卡头名字
+   不再可见，但保留节点并 visibility:hidden，占住原高度 ⇒ 带名卡与去重卡行列对齐、不串位。 */
+body.b-title_catalog #grid>.i .i-name.head-name-hidden{visibility:hidden}
 body.b-title_catalog #grid>.i .i-id{font-size:11px}
 body.b-title_catalog #grid>.i .head-tags{display:none}
 /* 属性小标：颜色（按档位贴图实测色）/ 档位 / 特性（动态、美术字） */
@@ -647,59 +651,117 @@ body.b-title_catalog .tb-c[data-c="金"]{color:var(--tb-gold);border-color:var(-
 body.b-title_catalog .tb-c[data-c="红"]{color:var(--tb-red);border-color:var(--tb-red)}
 body.b-title_catalog .tb-c[data-c="绿"]{color:var(--tb-green);border-color:var(--tb-green)}
 body.b-title_catalog .tb-f{color:var(--accent);border-color:var(--accent-border)}
-/* 称号视觉（2026-11-02 重做）：底光 / 下划线贴图不再按卡片整宽拉伸 + 写死 top 偏移，
-   而是锚在「称号名文字自身」的盒子（.i-title）上：
-     · .i-title = inline-block，宽度收缩到文字实际宽度；
-     · .sk-bg 以文字中心为圆心、按贴图原生比例 235:62 缩放（原生可见区只占中间 68%，相当于光晕）；
-     · .sk-ln 左右贴住文字盒，底边下压 4px —— 位置由文字推导，换字号/列宽都不会错位。
-   颜色取自游戏原生贴图实测（js 里 TITLE_SKIN_TXT），美术字图本身已有颜色则不叠贴图、不上色。 */
+/* 称号文字（2026-11-06 二次修订）：标题恒为可读文字，档位底光 / 下划线锚在文字盒上。
+   底光的高度被限制在「文字行高 +10px」内：按贴图原生 235:62 比例铺满会在文字上下
+   各溢出 ~20px，正好糊住下一行的称号ID（旧版诡异观感之一）。现在只做文字背后一条
+   横向柔光带，宽度收在文字宽 +32px，透明度 .42。
+   金色档恢复「静态」暖金柔光；呼吸动画仍不恢复 —— 999 条金档同时跑 keyframes 会闪烁。 */
 body.b-title_catalog .i-title{position:relative;display:inline-block;max-width:100%;isolation:isolate}
 body.b-title_catalog .i-title .sk-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(235px,calc(100% + 44px));aspect-ratio:235/62;
-  background-repeat:no-repeat;background-size:100% 100%;opacity:.55;pointer-events:none;z-index:-1}
-body.b-title_catalog .i-title .sk-ln{position:absolute;left:0;right:0;bottom:-4px;height:3px;
-  background-repeat:no-repeat;background-size:100% 100%;opacity:.9;pointer-events:none}
+  width:min(220px,calc(100% + 32px));height:calc(100% + 10px);
+  background-repeat:no-repeat;background-size:100% 100%;opacity:.42;pointer-events:none;z-index:-1}
+body.b-title_catalog .i-title .sk-ln{position:absolute;left:0;right:0;bottom:-2px;height:3px;
+  background-repeat:no-repeat;background-size:100% 100%;opacity:.8;pointer-events:none}
 /* 特殊装饰徽标（love/star/cake）：贴图 26~34px 方图，按行高缩到 18px 贴在文字左侧 */
 body.b-title_catalog .i-title .i-sp{height:18px;width:auto;margin-right:3px;vertical-align:-4px;pointer-events:none}
-/* 带装饰徽标时，下划线只压在文字下面（避开左侧 18px 徽标 + 3px 间距） */
 body.b-title_catalog .i-title.has-sp .sk-ln{left:21px}
-/* 档位字色 = 游戏原生贴图实测的「内芯渐变 + 外圈深色描边」：
-   填充用横向渐变裁到字形（background-clip:text），描边用 text-stroke 画在字形边缘，
-   与游戏内金色/紫色等称号的描边一致。描边只作用在 .i-nm（文字层），不波及贴图。 */
+/* 档位字色 = 原生贴图实测色调 + 2026-11-07 提亮派生的「竖向三段金属渐变」：
+   上段高光芯 --ta → 中段 --tm → 底部原色 --tb，外圈深色描边仍是 --ts 但减到 .45px
+   （旧版 .6px 描边 + 暗渐变会把小字压成空心暗字，实测比局内美术字暗 60~70 亮度）。
+   静态亮色外发光只作用在文字层，不做 keyframes —— 999 条金档同时闪是噪点不是效果。 */
 body.b-title_catalog .i-title.tinted .i-nm{
-  background-image:linear-gradient(100deg,var(--ta) 0%,var(--tb) 100%);
+  background-image:linear-gradient(180deg,var(--ta) 0%,var(--tm) 48%,var(--tb) 100%);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
-  -webkit-text-stroke:.6px var(--ts)}
-/* 金色档自发光：游戏里金字外圈有一层暖金光晕（呼吸式明暗）。
-   filter 只挂在 .i-nm 上，底光/下划线/装饰徽标不受影响。 */
-@keyframes title-glow-pulse{
-  from{filter:drop-shadow(0 0 2px rgba(241,207,122,.40)) drop-shadow(0 0 5px rgba(241,207,122,.24))}
-  to{filter:drop-shadow(0 0 4px rgba(253,219,117,.80)) drop-shadow(0 0 10px rgba(241,207,122,.46))}}
-body.b-title_catalog .i-title.glow .i-nm{animation:title-glow-pulse 2.8s ease-in-out infinite alternate}
+  -webkit-text-stroke:.45px var(--ts);
+  filter:drop-shadow(0 0 2px color-mix(in srgb,var(--tg) 60%,transparent))}
+/* 金色档在通用发光之外再叠一层暖金柔光（静态，不是呼吸动画） */
+body.b-title_catalog .i-title.glow .i-nm{
+  filter:drop-shadow(0 0 2px color-mix(in srgb,var(--tg) 75%,transparent))
+         drop-shadow(0 0 7px color-mix(in srgb,var(--tg) 38%,transparent))}
+/* 称号视觉槽（2026-11-06 三次修订：文字漂在底图之上）：
+   · 普通流内独立盒子，固定高度 + overflow:hidden ⇒ 绝不覆盖卡头文字，同视图内严格等高；
+   · 底图 / 循环 WebP 在下（.t-vis-bg 绝对居中），称号字在上：有美术字用 .t-vis-art，
+     没有美术字用与卡头同源的档位 DOM 文字 .t-vis-txt（215 条）；
+     dyn_has_text 的底图自带字时两层称号字都不叠，避免重影；
+   · 动态 WebP 的称号字再叠一层极轻的上下浮动（:has(.is-anim) 自动跟随「暂停动效」）；
+   · 暂停动效只换 src 为静态首帧，不重绘；无资源写说明，不静默留白。 */
+body.b-title_catalog .t-vis{position:relative;height:88px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;container-type:inline-size;
+  margin:0 0 8px;padding:4px 8px;border:1px solid var(--border);border-radius:8px;
+  background:var(--panel);overflow:hidden;isolation:isolate}
+body.b-title_catalog .t-vis.large{height:150px}
+body.b-title_catalog .t-vis-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+  opacity:1;pointer-events:none;z-index:0}
+/* 美术字图是游戏内原图：不再压一层黑投影（会把金字压灰），只做极轻的亮度还原 */
+body.b-title_catalog .t-vis-art{position:relative;z-index:1;max-width:86%;max-height:58px;
+  width:auto;height:auto;object-fit:contain;pointer-events:none;
+  filter:brightness(1.06) saturate(1.04)}
+body.b-title_catalog .t-vis.large .t-vis-art{max-height:104px}
+/* 文字漂在底图之上：称号字绝对居中叠在底图上层（z-index:2），只在槽内。
+   径向暗晕只衬文字那一小块，不盖掉底图主体；DOM 文字可读、可搜索，不伪造资源。 */
+/* 2026-11-07：暗晕从 .44 收到 .16 —— 可读性改由「提亮的字 + 深色描边」承担，
+   压暗背景只会把整枚称号牌（含底图光效）拖灰，正是「不像局内」的另一半原因。 */
+body.b-title_catalog .t-vis-txt.on-bg{position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);z-index:2;max-width:92%;padding:5px 14px;
+  text-align:center;line-height:1.3;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(5,8,18,.16) 0%,rgba(5,8,18,.06) 58%,transparent 78%)}
+/* 单行称号牌（2026-11-07）：游戏内称号字是一整条，不换行。
+   --n = 等效字数（titleCharUnits：全角 1 / 半角 0.56）；字号 = min(档位基准, 槽可用宽 / 字数)，
+   用容器查询单位 cqw 随列宽自动变化 ⇒ 超长名缩小而不折行。
+   前面那行固定字号是不支持 cqw 时的兜底，也保证不会退回两行。 */
+body.b-title_catalog .t-vis .i-title{white-space:nowrap;max-width:none;font-weight:600}
+/* 加粗后字宽略增，单行公式把安全系数从 .94 收到 .90，仍按等效字数可复算 */
+body.b-title_catalog .t-vis-txt.on-bg .i-title,
+body.b-title_catalog .t-vis-plain .i-title{
+  font-size:16px;
+  font-size:min(16px,calc((100cqw - 40px) / max(var(--n,8),1) * .90))}
+body.b-title_catalog .t-vis.large .t-vis-txt.on-bg .i-title,
+body.b-title_catalog .t-vis.large .t-vis-plain .i-title{
+  font-size:23px;
+  font-size:min(23px,calc((100cqw - 40px) / max(var(--n,8),1) * .90))}
+body.b-title_catalog .t-vis-txt.on-bg .i-title{filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+/* 「漂」：只对循环 WebP 的动态称号做 ±2px 低频浮动（41 条，非全板动画）。
+   :has(.is-anim) 会随「暂停动效」换 src 自动失效；reduce-motion 下再兜一层。 */
+@keyframes title-txt-float{from{transform:translateY(-2px)}to{transform:translateY(2px)}}
+body.b-title_catalog .t-vis:has(.t-vis-bg.is-anim) .t-vis-txt .i-title,
+body.b-title_catalog .t-vis:has(.t-vis-bg.is-anim) .t-vis-art{
+  animation:title-txt-float 4.6s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){
-  body.b-title_catalog .i-title.glow .i-nm{animation:none;
-    filter:drop-shadow(0 0 3px rgba(241,207,122,.55)) drop-shadow(0 0 8px rgba(241,207,122,.30))}}
-/* 美术字 + 动态底图：一枚「称号图」的容器（不再是两张图上下各排一张）。
-   注意：底图绝不与美术字同尺寸同位置叠放 —— 那会叠出第二份称号字（重影），
-   具体分层规则见下面的 .i-logo-glow / .i-logo-bg。 */
-body.b-title_catalog .i-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;
-  min-height:52px;padding:6px 16px;max-width:100%;line-height:0;isolation:isolate}
-/* 底图两层语义分开（2026-11-06 去重影）：
-   · .i-logo-glow = 「有美术字时」底图只当背光：从 art 盒子四边外扩 + 半透明，
-     与 art 绝不是同尺寸同位置，因此不会和美术字叠出第二份字；
-   · .i-logo-bg   = 「没有美术字时」底图当底板，文字压在上面。 */
-body.b-title_catalog .i-logo .i-logo-glow{position:absolute;inset:-22% -20%;background-repeat:no-repeat;
-  background-position:center;background-size:contain;pointer-events:none;z-index:0;
-  opacity:.5;filter:blur(.4px) saturate(.9)}
-body.b-title_catalog .i-logo .i-logo-bg{position:absolute;inset:-16% -12%;background-repeat:no-repeat;
-  background-position:center;background-size:contain;pointer-events:none;z-index:0;opacity:.92}
-body.b-title_catalog .i-logo .i-art{position:relative;z-index:1;max-height:64px;max-width:100%;width:auto;object-fit:contain}
-/* 无美术字的动态称号：文字层压在底图之上（.i-logo 的 line-height:0 只用于图片层，这里复位） */
-body.b-title_catalog .i-logo .i-title{line-height:1.35;z-index:1;position:relative}
-body.b-title_catalog .i-logo-solo{display:block;max-width:100%;max-height:54px;object-fit:contain}
-body.b-title_catalog .i-name .i-art{max-width:100%;max-height:64px;width:auto;object-fit:contain;vertical-align:middle}
-body.b-title_catalog .i-name.has-art .i-name-txt{display:none}
+  body.b-title_catalog .t-vis:has(.t-vis-bg.is-anim) .t-vis-txt .i-title,
+  body.b-title_catalog .t-vis:has(.t-vis-bg.is-anim) .t-vis-art{animation:none}}
+/* 无称号图的卡：同档位原生底光 / 线框贴图铺一层淡底，槽不再是死黑一片。
+   与卡头 .sk-bg/.sk-ln 同一批资源，不画仿制字、不猜资源。 */
+body.b-title_catalog .t-vis-skin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(220px,calc(100% - 16px));height:calc(100% - 14px);
+  background-repeat:no-repeat;background-size:100% 100%;opacity:.40;pointer-events:none;z-index:0}
+/* 线框只由文字自身的 .sk-ln 提供（游戏内只有一道下划线），不再铺槽底线框 */
+/* 无称号图 ⇒ 槽里用同档位原生样式渲染称号名（预览层），卡头仍是名册文字；
+   「未导出」作为一行小字如实说明，不把缺失包装成有图。 */
+body.b-title_catalog .t-vis-plain{position:relative;z-index:1;max-width:100%;
+  font-size:15px;line-height:1.3;text-align:center}
+body.b-title_catalog .t-vis-plain .i-title{font-size:15px}
+body.b-title_catalog .t-vis-miss-sub{position:relative;z-index:1;font-size:10px;line-height:1.4;
+  color:var(--fg-muted);text-align:center;opacity:.8}
+body.b-title_catalog .t-vis-cap{position:absolute;right:5px;bottom:3px;z-index:2;
+  font-size:9.5px;line-height:1.4;color:var(--fg-muted);background:var(--panel);
+  border:1px solid var(--border);border-radius:4px;padding:0 4px;opacity:.8;pointer-events:none}
+/* 视图切换按钮：称号板不进 body.view-mode，这里单独给一份同款样式 */
+body.b-title_catalog .viewsw-btn{font:inherit;font-size:11.5px;line-height:1.5;color:var(--muted);
+  background:var(--hover);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:5px 11px;cursor:pointer;white-space:nowrap}
+body.b-title_catalog .viewsw-btn:hover{color:var(--fg);border-color:var(--accent-border)}
+body.b-title_catalog .viewsw-btn.on{color:var(--accent);background:var(--accent-soft);
+  border-color:var(--accent-border);font-weight:600}
+/* 资源未导出标签：虚线边 + 降饱和，与「有资源」区分；flags 的筛选口径不变 */
+body.b-title_catalog .tb-miss{border-style:dashed;opacity:.72}
+
+/* 动态资源覆盖率提示（只读统计）：把「源表标动态 N 条 / 只有 M 条导出循环动画」
+   摆在控件栏，避免把「仅静态首帧」误读成页面没播动画。窄屏隐藏，信息并入开关 title。 */
+body.b-title_catalog .controls .t-anim-stat{font-size:11px;line-height:1.5;
+  color:var(--fg-muted);opacity:.85;margin-left:8px;white-space:nowrap}
+@media (max-width:640px){body.b-title_catalog .controls .t-anim-stat{display:none}}
 
 /* 分组勾选项：默认不勾（整表平铺按编号排）；勾上才按获取途径分组 */
 body.b-title_catalog .controls .tg-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:8px;
@@ -715,15 +777,31 @@ body.b-title_catalog .controls .tg-toggle input:checked::after{content:"";width:
   border-left:2px solid #1a1408;border-bottom:2px solid #1a1408;
   transform:translateY(-1px) rotate(-45deg)}
 body.b-title_catalog #grid>.i>.kv{grid-template-columns:46px minmax(0,1fr);gap:1px 8px}
+/* 说明固定占 2 行高度：1 行文案的卡不再比 2 行文案的卡矮一截，全板等高 */
 body.b-title_catalog #grid>.i>.kv>.v{font-size:12.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;
-  -webkit-box-orient:vertical;overflow:hidden}
+  -webkit-box-orient:vertical;overflow:hidden;min-height:3.1em}
 body.b-title_catalog .tg-head{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;margin:16px 0 0;
   padding:6px 4px 4px;border-bottom:1px solid var(--border);
   position:sticky;top:calc(var(--top-h,150px) + 12px + var(--tg-h,112px));z-index:8;background:var(--bg)}
 body.b-title_catalog .tg-name{font-size:13px;font-weight:650;letter-spacing:.02em;color:var(--gold)}
 body.b-title_catalog .tg-n{font-size:11px;color:var(--fg-muted);font-variant-numeric:tabular-nums}
 @media (max-width:760px){body.b-title_catalog .tg-head{top:0}}
-@media (max-width:640px){body.b-title_catalog #grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  body.b-title_catalog #grid{grid-template-columns:minmax(0,1fr)}
+  /* 窄屏收紧视觉槽，避免一屏只放得下两张卡；同视图内所有卡一起收，仍严格等高 */
+  body.b-title_catalog .t-vis{height:68px}
+  body.b-title_catalog .t-vis.large{height:112px}
+  body.b-title_catalog .t-vis-art{max-height:46px}
+  body.b-title_catalog .t-vis.large .t-vis-art{max-height:78px}
+  body.b-title_catalog .t-vis-txt.on-bg .i-title,
+  body.b-title_catalog .t-vis-plain .i-title{
+    font-size:13.5px;
+    font-size:min(13.5px,calc((100cqw - 30px) / max(var(--n,8),1) * .94))}
+  body.b-title_catalog .t-vis.large .t-vis-txt.on-bg .i-title,
+  body.b-title_catalog .t-vis.large .t-vis-plain .i-title{
+    font-size:18px;
+    font-size:min(18px,calc((100cqw - 30px) / max(var(--n,8),1) * .94))}
+}
 
 /* 料理与食谱板（edible_catalog，2026-11-02）：料理为主表 + 食材折叠次级分组 */
 body.b-edible_catalog .controls .tg-toggle{display:inline-flex;align-items:center;gap:6px;margin-left:8px;
@@ -1621,8 +1699,39 @@ body.b-media_catalog .ml-more:hover{color:var(--fg)}
   border-radius:4px;padding:8px 10px;white-space:normal}
 .formula-box .fb-n{margin-top:6px;font-size:12px;line-height:1.7;color:var(--muted-foreground)}
 
-/* 有美术字/动态图时隐藏 DOM 文本（仍保留在 DOM 里供搜索）——用 :has 兜住
-   .i-title/.i-logo 两种包装，避免图片与文字重叠成"两遍字" */
-body.b-title_catalog .i-title:has(.i-art) .i-name-txt,
-body.b-title_catalog .i-title:has(.i-logo-solo) .i-name-txt,
-body.b-title_catalog .i-logo:has(.i-art) .i-name-txt{display:none}
+/* 2026-11-06：标题文字恒可见，图片只在独立预览槽出现 ——
+   旧版「有美术字就 hidden 文本」的 :has 兜底规则已删除（那会让称号名在卡面上凭空消失）。 */
+
+/* ══ 2026-11-13 关联专题入口（主表 → 11-12 实机包独立源锁专题板）══
+   跨快照不混源 ⇒ 只做页面级跳转，主表冻结数据零改动。
+   颜色/圆角一律 var(--token)，不裸 hex；min-width:0 + 换行 ⇒ 1440/390 双视口无横向滚动。 */
+body.wiki-board .related-boards{margin:0 0 16px;padding:12px 14px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  box-sizing:border-box;min-width:0;max-width:100%}
+body.wiki-board .rb-hd{font-size:13px;font-weight:600;color:var(--fg);
+  letter-spacing:.3px;margin:0 0 6px}
+body.wiki-board .rb-note{font-size:12px;line-height:1.7;color:var(--muted);
+  margin:0 0 10px;overflow-wrap:anywhere}
+body.wiki-board .rb-src{font-size:11.5px;line-height:1.6;color:var(--muted-2);
+  margin:10px 0 0;padding-top:8px;border-top:1px dashed var(--border);overflow-wrap:anywhere}
+body.wiki-board .rb-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:10px;min-width:0}
+body.wiki-board .rb-card{min-width:0;max-width:100%;padding:10px 12px;
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  box-sizing:border-box;display:flex;flex-direction:column;gap:5px;overflow-wrap:anywhere}
+body.wiki-board .rb-name{font-size:13px;font-weight:600;color:var(--accent);
+  text-decoration:none;line-height:1.45}
+body.wiki-board .rb-name:hover{text-decoration:underline}
+body.wiki-board .rb-cat{font-size:11.5px;color:var(--muted-2)}
+body.wiki-board .rb-why{font-size:11.5px;line-height:1.6;color:var(--muted)}
+body.wiki-board .rb-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  font-size:11.5px;color:var(--muted);margin-top:2px}
+body.wiki-board .rb-foot b{color:var(--fg);font-weight:600}
+body.wiki-board .rb-acts{display:flex;flex-wrap:wrap;gap:10px;min-width:0}
+body.wiki-board .rb-acts a{color:var(--accent);text-decoration:none;white-space:nowrap}
+body.wiki-board .rb-acts a:hover{text-decoration:underline}
+@media (max-width:640px){
+  body.wiki-board .related-boards{padding:10px 11px;margin:0 0 12px}
+  body.wiki-board .rb-list{grid-template-columns:minmax(0,1fr)}
+  body.wiki-board .rb-card{padding:9px 10px}
+}

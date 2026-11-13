@@ -1,0 +1,213 @@
+{
+ "artifact_claim": "Per-server static lottery pool structure with decoded reward, quantity, Chinese note, probability annotation and expiry; NOT a runtime-final or current-server payout list.",
+ "component_order": [
+  "base",
+  "kj1",
+  "kjxq",
+  "yk",
+  "ykxq"
+ ],
+ "enrich": {
+  "activities": {
+   "activities": 223,
+   "bound": 223,
+   "file": "activities.json",
+   "multi_activity_pools": 40,
+   "pools_bound": 177,
+   "schema": "lottery_activities/v0.1"
+  },
+  "child_pools": {
+   "child_pools": 41,
+   "count": 49,
+   "file": "child_pools.json",
+   "schema": "lottery_child_pools/v0.1"
+  },
+  "desc_blocks": {
+   "blocks": 24,
+   "file": "desc_blocks.json",
+   "schema": "lottery_desc_blocks/v0.1",
+   "state_dist": {
+    "candidate": 12,
+    "unresolved": 11,
+    "verified": 1
+   }
+  },
+  "runtime_replace": {
+   "file": "runtime_replace.json",
+   "ids_without_version": 34,
+   "replace_ids": 64,
+   "rules": 185,
+   "schema": "lottery_runtime_replace/v0.1",
+   "unresolved": 0,
+   "verified": 185,
+   "version_known_ids": 30
+  },
+  "servers": {
+   "file": "servers.json",
+   "rows_per_component": {
+    "base": 24245,
+    "kj1": 24250,
+    "kjxq": 24250,
+    "yk": 24245,
+    "ykxq": 24245
+   },
+   "schema": "lottery_server_identity/v0.1"
+  }
+ },
+ "generated_at": "2026-11-07T22:41:51+08:00",
+ "generator": "02_wiki/web/tools/build_lottery_servers.py",
+ "notes": "每条 = 某服某池某一格的静态结构；component 字段区分服，禁止跨服比较 slot 序号。★ 数据源（2026-11-07 起）：雷电模拟器 14 · 2026-11-03 设备包（PE 侧），按 file_id 精确取件解码的冻结数据集 LOTTERY_POOL_PE1103_v01。复合键 (pool_key, item_no)、奖励原值、中文备注、概率、到期、广播模板全部同源直读 —— **不跨源拼字段**（旧口径是从 PC 侧冻结产物拿键、再按 reward 值往 PE 树挂中文字段，属跨源拼接）。base 1,839 池 / 24,245 格（unbound_rows=0）；kj1/kjxq 各 24,250 行（inherit 24,013 / same 224 / replaced 8 / added 5）；yk/ykxq 各 24,245 行（inherit 24,083 / same 144 / replaced 18）。diff 由上游数据集在解码时逐格与 base 对比得出：same=奖励相同仅补字段 / replaced=奖励被换 / added=base 无此格 / inherit=该服未覆盖、沿用 base。note 是策划备注，与道具正式名可能不同写法；展示时建议 item_id + note 并列。probability_semantics：prob_note 是静态权重/概率标注，不含保底与 pity 算法。runtime_final_state 恒为 unresolved：optional_* 系列表会在运行时替换奖励，本产物不是当前实发结果。验收由 check_lottery_servers.py 的 G1~G13 逐项复算（键唯一 / diff 自证 / note 与概率覆盖率 / 服等价性 / 子池 / 活动 / 运行时替换 / 公示块）。★ 分片：inc 分片未并入（编码未确证）、del 分片 11-03 包内不存在 —— 二者都在 manifest.shards 里如实登记。",
+ "publication_tier": "verified-runtime-structure",
+ "record_type": "dataset_manifest",
+ "rows_file": "rows.jsonl",
+ "runtime_final_state": "unresolved",
+ "schema": "lottery_pool_servers/v0.1",
+ "stats": {
+  "components": [
+   {
+    "channel": null,
+    "data_file_id": "D558884A36C972C5",
+    "manifest_rows": 24245,
+    "name": "base",
+    "pool_key_range": [
+     390000,
+     391873
+    ],
+    "pools": 1839,
+    "role": "classic",
+    "rows": 24245,
+    "sha256": "5c55a5b72bac4450bc87f6d876fce66d4d5db78ec80fd44b343ecefb88d70f9f",
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "channel": "kj1",
+    "data_file_id": "7C1978372D53EA7A",
+    "manifest_rows": 237,
+    "name": "kj1",
+    "pool_key_range": [
+     390011,
+     391793
+    ],
+    "pools": 224,
+    "role": "channel",
+    "rows": 24250,
+    "sha256": "a6f9f34f8862ceec0a2985a5738660e5e007dda22f12d12d9d1fda40237986f7",
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "channel": "kjxq",
+    "data_file_id": "E6D350D76C052B91",
+    "manifest_rows": 237,
+    "name": "kjxq",
+    "pool_key_range": [
+     390011,
+     391793
+    ],
+    "pools": 224,
+    "role": "channel",
+    "rows": 24250,
+    "sha256": "ca5b7e9800499f755ef447ff557a9a29566e7554f1e9acf36dfeb4311e433001",
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "channel": "yk",
+    "data_file_id": "F3F1166CFA11E8EB",
+    "manifest_rows": 162,
+    "name": "yk",
+    "pool_key_range": [
+     390216,
+     391843
+    ],
+    "pools": 146,
+    "role": "channel",
+    "rows": 24245,
+    "sha256": "6eaf377eb4af2797a605be567ded82960e34896f7408e0a0dd3015257edd2a16",
+    "state": "verified",
+    "unbound_rows": 0
+   },
+   {
+    "channel": "ykxq",
+    "data_file_id": "BBC2EAAA769B560A",
+    "manifest_rows": 162,
+    "name": "ykxq",
+    "pool_key_range": [
+     390216,
+     391843
+    ],
+    "pools": 146,
+    "role": "channel",
+    "rows": 24245,
+    "sha256": "1d7acc62d71aa30ed0ab2525a763d6426255cb3791f5809992b5f715bfcae509",
+    "state": "verified",
+    "unbound_rows": 0
+   }
+  ],
+  "per_component": {
+   "base": {
+    "base": 24245,
+    "field_full": 24215,
+    "field_partial": 30,
+    "rows": 24245,
+    "with_note": 24215,
+    "with_prob": 22229
+   },
+   "kj1": {
+    "added": 5,
+    "field_full": 24220,
+    "field_partial": 30,
+    "inherit": 24013,
+    "replaced": 8,
+    "rows": 24250,
+    "same": 224,
+    "with_note": 24220,
+    "with_prob": 22234
+   },
+   "kjxq": {
+    "added": 5,
+    "field_full": 24220,
+    "field_partial": 30,
+    "inherit": 24013,
+    "replaced": 8,
+    "rows": 24250,
+    "same": 224,
+    "with_note": 24220,
+    "with_prob": 22234
+   },
+   "yk": {
+    "field_full": 24215,
+    "field_partial": 30,
+    "inherit": 24083,
+    "replaced": 18,
+    "rows": 24245,
+    "same": 144,
+    "with_note": 24215,
+    "with_prob": 22229
+   },
+   "ykxq": {
+    "field_full": 24215,
+    "field_partial": 30,
+    "inherit": 24083,
+    "replaced": 18,
+    "rows": 24245,
+    "same": 144,
+    "with_note": 24215,
+    "with_prob": 22229
+   }
+  },
+  "total_rows": 121235
+ },
+ "upstream": {
+  "dataset": "LOTTERY_POOL_PE1103_v01",
+  "device_profile": "雷电模拟器 14 · 2026-11-03 设备包（PE 侧）",
+  "manifest_sha256": null,
+  "path": "02_wiki/web/site_data/LOTTERY_POOL_PE1103_v01/rows.jsonl",
+  "selection_rule": "按 file_id 精确取件（file_id 是游戏侧跨版本稳定的逻辑标识，见 rules/unnamed_table_registry.yml）；不按行号名、不按文件名猜",
+  "sha256": "4609a2a2bee6aa535134899ef13504c0d055f13b4f1b1106927995fe06c95591",
+  "snapshot_bytes": 250112428,
+  "snapshot_path": null,
+  "snapshot_sha256": "6218ca752e8d17fcff84fd9bb3914eaa05d4d0869a0dd688832583f6cde556c6"
+ }
+}

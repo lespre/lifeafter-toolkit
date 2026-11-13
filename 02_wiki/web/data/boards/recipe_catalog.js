@@ -1,7 +1,7 @@
 window.WIKI_BOARD_recipe_catalog = {
  "meta": {
   "name": "配方总表",
-  "category": "四、资料层 / （七）配方",
+  "category": "三、综合资料 / （二）配方",
   "generated": "2026-11-04",
   "source_server": "简单生存服（体验服 Documents 快照）",
   "id_label": "配方ID",
@@ -72,7 +72,8 @@ window.WIKI_BOARD_recipe_catalog = {
     }
    }
   },
-  "notes": "一行 = recipe 一行；材料明细未在本表，走产出/配方关联。"
+  "notes": "一行 = recipe 一行；材料明细未在本表，走产出/配方关联。",
+  "category_before": "四、资料层 / （七）配方"
  },
  "periods": [],
  "items": [

@@ -1,7 +1,7 @@
 {
  "meta": {
   "name": "说明条目总表",
-  "category": "四、资料层 / （九）说明条目",
+  "category": "三、综合资料 / （三）说明条目、文字与提示总表",
   "source_server": "简单生存服（体验服 Documents 快照）",
   "generated": "2026-11-04",
   "id_label": "条目ID",
@@ -69,7 +69,8 @@
     }
    }
   },
-  "notes": "一行 = desc_info_data 一行（游戏内帮助/提示文案）。"
+  "notes": "一行 = desc_info_data 一行（游戏内帮助/提示文案）。",
+  "category_before": "四、资料层 / （九）说明条目"
  },
  "periods": [],
  "items": [

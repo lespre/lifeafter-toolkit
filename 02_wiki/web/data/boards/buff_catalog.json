@@ -1,7 +1,7 @@
 {
  "meta": {
   "name": "状态效果总表",
-  "category": "二、战力类 / （十一）状态效果",
+  "category": "三、综合资料 / （五）状态",
   "source_server": "简单生存服（体验服 Documents 快照）",
   "generated": "2026-11-04",
   "id_label": "效果ID",
@@ -71,7 +71,8 @@
     }
    }
   },
-  "notes": "一行 = buff_data 一行；纯内部 buff 也在内，说明为空则不显示。"
+  "notes": "一行 = buff_data 一行；纯内部 buff 也在内，说明为空则不显示。",
+  "category_before": "二、战力类 / （十一）状态效果"
  },
  "periods": [],
  "items": [

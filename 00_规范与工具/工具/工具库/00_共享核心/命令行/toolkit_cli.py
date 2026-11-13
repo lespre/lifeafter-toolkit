@@ -3888,7 +3888,10 @@ def _lot_target_rows(path: Path):
                "type": d.get("reward_target_type"), "ns": d.get("item_namespace"),
                "child": d.get("child_pool_key"),
                "state": d.get("target_identity_status"),
-               "runtime": d.get("runtime_final_status")}
+               "runtime": d.get("runtime_final_status"),
+               # ★ 2026-11-07：分服产物带 component 时必须保留，
+               #   否则 (pool, slot) 跨服撞车，名字会挂到别的服的奖励上。
+               "component": d.get("component")}
 
 
 def _lot_attr(boards: Path) -> dict:
@@ -3967,6 +3970,12 @@ def _lot_load(pool_jsonl: Path, targets_jsonl: Path, *, with_manifest=False):
     if targets_jsonl.is_file():
         for t in _lot_target_rows(targets_jsonl):
             tg[(t["pool"], t["slot"])] = t
+            # ★ 2026-11-07：分服索引。targets 一旦带 component，就同时建
+            #   (component, pool, slot) 精确键 —— 同一池同一格在不同服可以是
+            #   不同奖励（实测 pool 391513 slot 2：base=660055 / kj1=660023），
+            #   只留 (pool, slot) 会让后者覆盖前者，名字与原始值对不上。
+            if t.get("component"):
+                tg[(t["component"], t["pool"], t["slot"])] = t
     return (man, pools, tg) if with_manifest else (pools, tg)
 
 
@@ -3987,7 +3996,45 @@ def _lot_pair(pool_jsonl: Path, targets_jsonl: Path):
     if targets_jsonl.is_file():
         for t in _lot_target_rows(targets_jsonl):
             tg[(t["pool"], t["slot"])] = t
+            # ★ 2026-11-07：分服索引。targets 一旦带 component，就同时建
+            #   (component, pool, slot) 精确键 —— 同一池同一格在不同服可以是
+            #   不同奖励（实测 pool 391513 slot 2：base=660055 / kj1=660023），
+            #   只留 (pool, slot) 会让后者覆盖前者，名字与原始值对不上。
+            if t.get("component"):
+                tg[(t["component"], t["pool"], t["slot"])] = t
     return pools, tg
+
+
+def _tg_of(tg: dict, component, pool, slot) -> dict:
+    """按 (服, 池, 格) 精确取 target；没有服维度时退回 (池, 格)。
+
+    ★ 2026-11-07：分服产物里同一 (pool, slot) 在不同服可以是不同奖励
+      （实测 pool 391513 slot 2：base=660055 裂变效应 / kj1=660023 极光狙击），
+      只用 (pool, slot) 会让后写的覆盖先写的，表现为「名字与原始值对不上」。
+    """
+    if component:
+        t = tg.get((component, pool, slot))
+        if t:
+            return t
+    return tg.get((pool, slot)) or {}
+
+
+def _eff_iid(t: dict, r: dict):
+    """这一格的**实际** item_id：行内原始值优先于 target 索引。
+
+    ★ 2026-11-07：`LOTTERY_REWARD_TARGETS` 是按 (pool, slot) 索引的，且只收
+      「已发布」组件（隔离的 kj1/kjxq 不在里面）。于是同一池同一格在不同服
+      奖励不同时，索引只会给出 base 那一行的 item_id，而池行自身带着本服的
+      原始值 —— 表现为 `item_id=660055（裂变效应） 原始=[660023]（极光狙击）`。
+      这是**跨服串号**，必须让行内值覆盖索引值。
+    """
+    raw_id = (r.get("raw") or [None])[0]
+    tid = t.get("item_id")
+    if t.get("type") == "child_pool":
+        return tid
+    if isinstance(raw_id, int) and tid != raw_id:
+        return raw_id
+    return tid if isinstance(tid, int) else raw_id
 
 
 def cmd_lottery_locate(args) -> int:
@@ -4409,10 +4456,8 @@ def cmd_lottery(args) -> int:
         if _IN:
             _by_ns: dict = {}
             for _r in rows[:args.limit]:
-                _t = tg.get((target_pool, _r["slot"])) or {}
-                _iid = _t.get("item_id")
-                if not isinstance(_iid, int):
-                    _iid = (_r["raw"] or [None])[0]
+                _t = _tg_of(tg, _r.get("component"), target_pool, _r["slot"])
+                _iid = _eff_iid(_t, _r)
                 _ns = _t.get("ns")
                 if isinstance(_iid, int):
                     _by_ns.setdefault(_ns, []).append(_iid)
@@ -4433,15 +4478,13 @@ def cmd_lottery(args) -> int:
                 for _k, _v in _IN.lookup_ns(_ns, _ids).items():
                     _nm[(_ns, _k)] = (_v or {}).get("name")
         for r in rows[:args.limit]:
-            t = tg.get((target_pool, r["slot"])) or {}
+            t = _tg_of(tg, r.get("component"), target_pool, r["slot"])
             mark = "○" if r["partition"] == "records" else "△隔离"
             if t.get("type") == "child_pool":
                 print("    slot %-3s %s → 子池 %s（数量 %s）｜%s"
                       % (r["slot"], mark, t.get("child"), t.get("count"), t.get("state")))
             else:
-                _iid = t.get("item_id")
-                if not isinstance(_iid, int):
-                    _iid = (r["raw"] or [None])[0]
+                _iid = _eff_iid(t, r)
                 _ns = t.get("ns")
                 _label = ""
                 if isinstance(_iid, int):
@@ -4449,11 +4492,11 @@ def cmd_lottery(args) -> int:
                     _label = ("名字=%s" % _n) if _n else (
                         "名字=★未收录" if _ns else "名字=★ns未知不回填")
                 print("    slot %-3s %s item_id=%-9s ×%-4s ns=%-10s 类型=%-10s %s 原始=%s"
-                      % (r["slot"], mark, t.get("item_id"), t.get("count"),
-                         t.get("ns"), t.get("type"), _label, r["raw"]))
+                      % (r["slot"], mark, _iid, t.get("count"),
+                         _ns, t.get("type"), _label, r["raw"]))
         seen = set()
         for r in rows:
-            t = tg.get((target_pool, r["slot"])) or {}
+            t = _tg_of(tg, r.get("component"), target_pool, r["slot"])
             c = t.get("child")
             if c is not None and c not in seen:
                 seen.add(c)
@@ -4465,7 +4508,7 @@ def cmd_lottery(args) -> int:
                                  "未解 —— 静态表无池名，本池未被任何看板认领"))
         by_item = {}
         for r in rows:
-            t = tg.get((target_pool, r["slot"])) or {}
+            t = _tg_of(tg, r.get("component"), target_pool, r["slot"])
             for k in {t.get("item_id"), (r["raw"] or [None])[0]}:
                 if isinstance(k, int):
                     by_item.setdefault(k, []).append(r["slot"])
@@ -4492,7 +4535,7 @@ def cmd_lottery(args) -> int:
         if args.json is not None:
             _dump({"pool_key": target_pool, "slots": [r["slot"] for r in rows],
                    "attribution": rec, "rows": [
-                       dict(r, target=tg.get((target_pool, r["slot"]))) for r in rows]}, args.json)
+                       dict(r, target=_tg_of(tg, r.get("component"), target_pool, r["slot"])) for r in rows]}, args.json)
         return 0
 
     if sub == "delta":

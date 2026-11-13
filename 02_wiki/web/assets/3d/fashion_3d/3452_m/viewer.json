@@ -1,0 +1,94 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3452_m",
+ "series": "3452",
+ "gender": "m",
+ "label": "3452 · 男 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_m_3452/b_m_3452.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "WHITE",
+     "shader": "white_model",
+     "slots": [],
+     "alphaMode": "OPAQUE"
+    }
+   ],
+   "warnings": [
+    "白模：缺基础 .mtg，已用默认白色 PBR 材质（metallic=0,rough=0.75）"
+   ],
+   "vertices": 6439,
+   "faces": 8038,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 304628,
+   "white_model": true
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_m_3452/h_m_3452.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "WHITE",
+     "shader": "white_model",
+     "slots": [],
+     "alphaMode": "OPAQUE"
+    }
+   ],
+   "warnings": [
+    "白模：缺基础 .mtg，已用默认白色 PBR 材质（metallic=0,rough=0.75）"
+   ],
+   "vertices": 3452,
+   "faces": 3498,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 154560,
+   "white_model": true
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/h_m_3452/h_m_3452.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_f_3452",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 703,
+   "faces": 999,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 1024228
+  }
+ ]
+}

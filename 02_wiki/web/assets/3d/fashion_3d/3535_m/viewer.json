@@ -1,0 +1,201 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3535_m",
+ "series": "3535",
+ "gender": "m",
+ "label": "3535 · 男 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_m_3535/b_m_3535.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_m_3535_0",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_m_3535_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_m_3535_2",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 3,
+     "name": "b_m_3535_3",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 4,
+     "name": "b_m_3535_4",
+     "shader": "pbr_crystal",
+     "slots": [
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 5,
+     "name": "b_m_3535_5",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "b_m_3535_6",
+     "shader": "pbr_clear_coat",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 7,
+     "name": "b_m_3535_fx_01",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 8,
+     "name": "b_m_3535_fx_02",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 9,
+     "name": "b_m_3535_fx_03",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 10,
+     "name": "b_m_3535_fx_04",
+     "shader": "uber_mask_rim_diss",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 11,
+     "name": "b_m_3535_fx_05",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 12,
+     "name": "b_m_3535_fx_06",
+     "shader": "uber_mask_rim_diss",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 13,
+     "name": "b_m_3535_7",
+     "shader": "pbr_crystal",
+     "slots": [
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "b_m_3535_2: detail normal 已合并(crystal_bump_n03.ktx)"
+   ],
+   "vertices": 15180,
+   "faces": 17634,
+   "submeshes": 14,
+   "materials_exported": 14,
+   "bytes": 6973892
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_m_3535/h_m_3535.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_m_3535_high",
+     "shader": "pbr_hair_test",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [],
+   "vertices": 16082,
+   "faces": 14990,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 825324
+  }
+ ]
+}

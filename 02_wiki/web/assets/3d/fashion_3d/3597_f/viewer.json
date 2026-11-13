@@ -1,0 +1,911 @@
+{
+ "schema_version": 1,
+ "outfit_id": "3597_f",
+ "series": "3597",
+ "gender": "f",
+ "label": "3597 · 女 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_f_3597/b_f_3597.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3597_high001_0",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_f_3597_high001_1",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_f_3597_high001_2",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_f_3597_high001_3",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_f_3597_high001_4",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_f_3597_high001_5",
+     "shader": "pbr_subsurface_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": null
+    },
+    {
+     "i": 6,
+     "name": "b_f_3597_high001_6",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 7,
+     "name": "b_f_3597_high001_7",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 8,
+     "name": "b_f_3597_high001_8",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 9,
+     "name": "b_f_3597_high001_9",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 10,
+     "name": "b_f_3597_high001_10",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 11,
+     "name": "b_f_3597_high001_11",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 12,
+     "name": "b_f_3597_high001_12",
+     "shader": "pbr_pearl_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 13,
+     "name": "b_f_3597_high001_13",
+     "shader": "pbr_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 14,
+     "name": "b_f_3597_high001_14",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 15,
+     "name": "b_f_3597_high001_15",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 16,
+     "name": "b_f_3597_high001_16",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 17,
+     "name": "b_f_3597_high001_17",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 18,
+     "name": "b_f_3597_high001_18",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 19,
+     "name": "b_f_3597_high001_19",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 20,
+     "name": "b_f_3597_high001_20",
+     "shader": "pbr_subsurface_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": null
+    },
+    {
+     "i": 21,
+     "name": "b_f_3597_high001_21",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 22,
+     "name": "b_f_3597_high001_22",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [
+    "b_f_3597_high001_0: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_2: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_3: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_5: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_7: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_14: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_15: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_17: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_20: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_21: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_22: detail normal 已合并(detail_normal_silk_02.ktx)"
+   ],
+   "vertices": 18446,
+   "faces": 15328,
+   "submeshes": 23,
+   "materials_exported": 23,
+   "bytes": 8922464
+  },
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_f_3597_link/b_f_3597.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3597_high001_0",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_f_3597_high001_1",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_f_3597_high001_2",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_f_3597_high001_3",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_f_3597_high001_4",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_f_3597_high001_5",
+     "shader": "pbr_subsurface_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": null
+    },
+    {
+     "i": 6,
+     "name": "b_f_3597_high001_6",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 7,
+     "name": "b_f_3597_high001_7",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 8,
+     "name": "b_f_3597_high001_8",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 9,
+     "name": "b_f_3597_high001_9",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 10,
+     "name": "b_f_3597_high001_10",
+     "shader": "pbr_skin",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 11,
+     "name": "b_f_3597_high001_11",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 12,
+     "name": "b_f_3597_high001_12",
+     "shader": "pbr_pearl_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 13,
+     "name": "b_f_3597_high001_13",
+     "shader": "pbr_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 14,
+     "name": "b_f_3597_high001_14",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 15,
+     "name": "b_f_3597_high001_15",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 16,
+     "name": "b_f_3597_high001_16",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 17,
+     "name": "b_f_3597_high001_17",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 18,
+     "name": "b_f_3597_high001_18",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 19,
+     "name": "b_f_3597_high001_19",
+     "shader": "pbr_silk",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 20,
+     "name": "b_f_3597_high001_20",
+     "shader": "pbr_subsurface_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": null
+    },
+    {
+     "i": 21,
+     "name": "b_f_3597_high001_21",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 22,
+     "name": "b_f_3597_high001_22",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    }
+   ],
+   "warnings": [
+    "b_f_3597_high001_0: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_2: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_3: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_5: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_7: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_14: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_15: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_17: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_20: detail normal 已合并(crystal_bump_n02.ktx)",
+    "b_f_3597_high001_21: detail normal 已合并(detail_normal_silk_02.ktx)",
+    "b_f_3597_high001_22: detail normal 已合并(detail_normal_silk_02.ktx)"
+   ],
+   "vertices": 18434,
+   "faces": 15328,
+   "submeshes": 23,
+   "materials_exported": 23,
+   "bytes": 8960652
+  },
+  {
+   "id": "body",
+   "label": "衣服",
+   "source_mesh": "players2021/b_f_3597_test/b_f_3597_high.mesh",
+   "file": "body.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3597_high_1",
+     "shader": "pbr_default",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 1,
+     "name": "b_f_3597_high_2",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 2,
+     "name": "b_f_3597_high_3",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 3,
+     "name": "b_f_3597_high_4",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "b_f_3597_high_5",
+     "shader": "pbr_silk_flow_dye",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "b_f_3597_high_6",
+     "shader": "pbr_transparent",
+     "slots": [
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "b_f_3597_high_7",
+     "shader": "uber_mask_rim_diss",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 7,
+     "name": "b_f_3597_high_8",
+     "shader": "pbr_skin",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [],
+   "vertices": 28768,
+   "faces": 32663,
+   "submeshes": 8,
+   "materials_exported": 8,
+   "bytes": 4554720
+  },
+  {
+   "id": "outer",
+   "label": "外层件",
+   "source_mesh": "players2021/b_f_3597/b_f_3597_1.mesh",
+   "file": "outer.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "b_f_3597_high_9",
+     "shader": "pbr_normal_dissolve",
+     "slots": [
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [],
+   "vertices": 195,
+   "faces": 224,
+   "submeshes": 1,
+   "materials_exported": 1,
+   "bytes": 34492
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_f_3597/h_f_3597.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_f_3597_0",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_f_3597_1",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 2,
+     "name": "h_f_3597_2",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 3,
+     "name": "h_f_3597_3",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 4,
+     "name": "h_f_3597_4",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "h_f_3597_2: detail normal 已合并(crystal_bump_n03.ktx)"
+   ],
+   "vertices": 8706,
+   "faces": 7443,
+   "submeshes": 5,
+   "materials_exported": 5,
+   "bytes": 805752
+  },
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/b_f_3597_link/h_f_3597.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "h_f_3597_high001_0",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "h_f_3597_high001_1",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 2,
+     "name": "h_f_3597_high001_2",
+     "shader": "pbr_subsurface_billboard",
+     "slots": [],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 3,
+     "name": "h_f_3597_high001_3",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 4,
+     "name": "h_f_3597_high001_4",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 5,
+     "name": "h_f_3597_high001_5",
+     "shader": "pbr_silk_flow_dye_transparent",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.12
+    },
+    {
+     "i": 6,
+     "name": "h_f_3597_high001_6",
+     "shader": "pbr_crystal",
+     "slots": [
+      "a",
+      "m",
+      "n"
+     ],
+     "alphaMode": "OPAQUE",
+     "metallicFactor": null
+    },
+    {
+     "i": 7,
+     "name": "h_f_3597_high001_7",
+     "shader": "pbr_hair",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "MASK",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 8,
+     "name": "h_f_3597_high_8",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [
+    "h_f_3597_high001_1: detail normal 已合并(crystal_bump_n03.ktx)",
+    "h_f_3597_high001_6: detail normal 已合并(crystal_bump_n03.ktx)"
+   ],
+   "vertices": 11718,
+   "faces": 10084,
+   "submeshes": 9,
+   "materials_exported": 9,
+   "bytes": 1257556
+  }
+ ]
+}

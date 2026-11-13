@@ -1,7 +1,7 @@
 {
  "schema": "wiki-taxonomy/v1",
- "generated": "2026-11-02",
- "说明": "置顶、活动奖池与预告 + 三分类；「（六）场景平衡」改为「（六）伤害计算」，下含 1、场景平衡 / 2、“伤害加成”的分段函数",
+ "generated": "2026-10-31",
+ "说明": "置顶、活动奖池与预告 + 三分类（原「三、活动奖池」并入置顶类后重编号）",
  "标号口径": "顶层中文序号一、二、三、四；子级（一）（二）…",
  "折叠": false,
  "树": [
@@ -11,15 +11,21 @@
    "boards": [],
    "children": [
     {
-     "name": "（一）活动奖池",
+     "name": "1、活动总表",
      "boards": [
-      "activity_master",
+      "activity_master"
+     ],
+     "children": []
+    },
+    {
+     "name": "2、活动奖池",
+     "boards": [
       "lottery_periods"
      ],
      "children": []
     },
     {
-     "name": "（二）预告专栏",
+     "name": "3、预告专栏",
      "boards": [
       "upcoming_auto"
      ],

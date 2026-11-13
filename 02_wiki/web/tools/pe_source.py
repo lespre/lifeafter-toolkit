@@ -47,9 +47,10 @@ CD = Path(TREE_ROOT / "pe/配置/com/cdata")
 CACHE = Path(ANALYSIS_ROOT / "90_表缓存")
 LEDGER = Path(TREE_ROOT / "pe/pe_config_merge_ledger_v2.json")
 
-# 源标识：还原树配置目录（逐表行级）/ 表缓存（大表数据体）
+# 源标识：还原树配置目录（逐表行级）/ 表缓存（大表数据体）/ 无名大表（契约登记）
 SOURCE_TREE = "pe-restore-tree-config"
 SOURCE_CACHE = "pe-table-cache"
+SOURCE_UNNAMED = "pe-restore-unnamed"
 
 # common_item：cdata 里是 815B 桩，真数据体在缓存里；池 = base_EF3A8474A5E5F7A4
 COMMON_ITEM_FID = "B42760CCA41DBC25"
@@ -86,13 +87,47 @@ def lock_of(path: Path, *, source_id: str, role: str = "primary", root: Path | N
 
 
 # ── 表定位与解码 ────────────────────────────────────────────────────
+def _is_table_body(p: Path) -> bool:
+    """这个文件是不是**真的表体**（含 `x{` 帧）。
+
+    ★ 判据为什么是 `x{` 而不是文件大小：`reward_pool_data.py` 这类
+      `SplitTableData / MergedTableData(_base,_inc,_del)` 分发壳只有 815B、
+      反汇编得到 0 行，但**文件确实存在**。只判「存在」会让回退永不触发。
+      壳一律 <4KB（实测 12 张全在 815~1000B），所以小文件才读内容判帧，
+      大文件直接认（省掉几 MB 的重复读）。
+    """
+    try:
+        if p.stat().st_size >= 4096:
+            return True
+        return b"x{" in p.read_bytes()
+    except OSError:
+        return False
+
+
+@functools.lru_cache(maxsize=64)
 def paths_of(stem: str) -> tuple[Path | None, Path | None]:
-    """返回 (base, chs)。cdata 优先，其次表缓存（按 FID 命名）。"""
+    """返回 (base, chs)。cdata 真表优先，其次无名大表（`rules/unnamed_table_registry.yml`）。
+
+    ★ 2026-11-07 补：`com/cdata/<表>.py` 有 12 张是 815B 的 `MergedTableData`
+      分发壳（`SplitTableData(_base,_inc,_del)`），本身 0 行，真数据体落在
+      `pe/配置/<容器>/_未命名/<行号>.bin`，文件名里没有逻辑表名。
+      以前这里只认 `com/cdata/<stem>.py` ⇒ 这些表在消费层看来「不存在」。
+      现在先验「是不是真表体」，再按契约里的 `file_id` 精确反查；
+      找不到逻辑名一律给 (None, None)，不猜。
+    """
     base = CD / f"{stem}.py"
     chs = CD / f"{stem}_chs.py"
-    if base.is_file():
+    if base.is_file() and _is_table_body(base):
         return base, (chs if chs.is_file() else None)
-    return None, None
+    try:
+        from unnamed_registry import paths_for_table
+    except Exception:
+        return (None, None) if not base.is_file() else (base, None)
+    hit_base, hit_pool = paths_for_table(stem)
+    if hit_base is not None and hit_base.is_file():
+        return hit_base, (hit_pool if hit_pool is not None and hit_pool.is_file() else None)
+    # 回退也没登记：退回原样（壳文件），让上层按自己的语义处理
+    return (base if base.is_file() else None), (chs if chs.is_file() else None)
 
 
 def body_of(raw: bytes) -> bytes:
@@ -115,6 +150,10 @@ def blob_of(body: bytes) -> bytes:
 @functools.lru_cache(maxsize=8)
 def _load_cached(key: str) -> dict:
     base, chs = paths_of(key)
+    if base is None:
+        raise FileNotFoundError(
+            f"找不到表 {key}：com/cdata 下没有，且未登记到 "
+            f"rules/unnamed_table_registry.yml（不猜路径）")
     pool: list[str] = []
     if chs is not None:
         pool = BT.parse_legacy_chs_pool(chs.read_bytes())
@@ -128,7 +167,7 @@ def _load_cached(key: str) -> dict:
         "blob": blob_of(body),
         "base": base,
         "chs": chs,
-        "source_id": SOURCE_TREE,
+        "source_id": SOURCE_TREE if base.parent == CD else SOURCE_UNNAMED,
     }
 
 
@@ -327,7 +366,7 @@ def old_board(board_id: str) -> dict | None:
 
 
 __all__ = [
-    "CD", "CACHE", "LEDGER", "SOURCE_TREE", "SOURCE_CACHE",
+    "CD", "CACHE", "LEDGER", "SOURCE_TREE", "SOURCE_CACHE", "SOURCE_UNNAMED",
     "COMMON_ITEM_FID", "COMMON_ITEM_POOL_FID",
     "sha256_of", "lock_of", "paths_of", "body_of", "blob_of",
     "load", "load_cached_table", "common_item",

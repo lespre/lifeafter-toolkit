@@ -115,7 +115,7 @@ def main() -> int:
             "category": "一、时装类 / （二）武器皮肤",
             "generated": dt.date.today().strftime("%Y-%m-%d"),
             "evidence": "structure",
-            "source_server": "PE 体验服客户端 script.py314.lc.npk（雷电 11-03 热更后）",
+            "source_server": "PE 体验服客户端 script.py314.lc.npk（雷电 11-12 热更后）",
             "package_sha": meta["package_sha256"],
             "id_label": "皮肤ID",
             "hide_media": True,

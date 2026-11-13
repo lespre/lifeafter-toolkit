@@ -1,11 +1,11 @@
 board: activity_master
 name: 活动总表 · 全部活动与起止时间
-category: 置顶、活动奖池与预告 / （一）活动奖池
-source_server: huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）
-package_sha: 1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e
-generated: '2026-10-31'
+category: 置顶、活动奖池与预告 / 1、活动总表
+source_server: huodong_conf 主表 · 2026-11-06 热更（VM 字节码执行）
+package_sha: 0fd7c78e170d120e0bd4c5542caa296a4fb44464a283d251cf660f80588f49f2
+generated: '2026-11-09'
 evidence: structure
-items: 3519
+items: 3535
 primary_builders:
 - build_activity_master.py
 postprocess_scripts:

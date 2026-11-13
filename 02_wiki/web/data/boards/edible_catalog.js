@@ -1,7 +1,7 @@
 window.WIKI_BOARD_edible_catalog = {
  "meta": {
   "name": "可食用物品总表",
-  "category": "二、战力类 / （九）可食用物品",
+  "category": "二、战力类 / （四）料理与食谱",
   "generated": "",
   "id_label": "物品ID",
   "source_server": "简单生存服（体验服 Documents 快照）",
@@ -70,7 +70,8 @@ window.WIKI_BOARD_edible_catalog = {
    }
   },
   "notes": "一行 = edible_item_data 一行。",
-  "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e"
+  "package_sha": "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e",
+  "category_before": "二、战力类 / （九）可食用物品"
  },
  "periods": [],
  "items": [

@@ -3,9 +3,10 @@
 """apply_taxonomy_hoist_20261031.py — 置顶类更名与活动奖池上提（幂等）
 
 口径（用户 2026-10-31 判定）：
-  1) 置顶类更名「置顶、活动奖池与预告」，内部分两个子项：
-       （一）活动奖池  = activity_master + lottery_periods
-       （二）预告专栏  = upcoming_auto   + skin_behavior_preview（自动检测未上架武器皮肤）
+  1) 置顶类更名「置顶、活动奖池与预告」，内部分三个子项（2026-11-08 拆分）：
+       1、活动总表  = activity_master
+       2、活动奖池  = lottery_periods
+       3、预告专栏  = upcoming_auto
   2) 原「三、活动奖池」顶层类因搬空而删除，后续顶层类整体重编号（四 → 三…）。
 
 只改 web/data/wiki_taxonomy.{json,js}，不碰任何板产物；
@@ -35,8 +36,9 @@ TOP_NUM = re.compile(r"^([%s]+)、" % CN)
 
 PREVIEW_NAME = "置顶、活动奖池与预告"
 PREVIEW_CHILDREN = [
-    {"name": "（一）活动奖池", "boards": ["activity_master", "lottery_periods"], "children": []},
-    {"name": "（二）预告专栏", "boards": ["upcoming_auto", "skin_behavior_preview"], "children": []},
+    {"name": "1、活动总表", "boards": ["activity_master"], "children": []},
+    {"name": "2、活动奖池", "boards": ["lottery_periods"], "children": []},
+    {"name": "3、预告专栏", "boards": ["upcoming_auto"], "children": []},
 ]
 DROP_TOP_ID = "activity"
 

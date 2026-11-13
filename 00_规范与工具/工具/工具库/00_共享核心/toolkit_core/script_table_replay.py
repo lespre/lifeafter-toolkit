@@ -64,6 +64,7 @@ r"""script_table_replay.py — 重放 NeoX 模块字节码，还原 cdata 表。
 from __future__ import annotations
 
 import json
+import re
 import struct
 from collections import Counter
 from pathlib import Path
@@ -88,6 +89,29 @@ def _consts_of(code) -> list:
 
 def _names_of(code) -> list:
     return [v.v for v in (code.names or [])]
+
+
+#: 热更后的主表改成「分发壳 + 匿名分片」：壳里只有
+#: `from com.cdata.<stem>_base import _base` 这类 import + MergedTableData(...)。
+#: 见 2026-11-07 取证：reward_pool_data.py / all_equips_data.py 等 12 张壳均如此。
+_SPLIT_SHARD_RE = re.compile(r"^com\.cdata\.[A-Za-z0-9_]+_(base|inc|del)$")
+
+
+def detect_split_dispatch(names, consts) -> dict:
+    """识别 SplitTableData / MergedTableData 分发壳，并列出它引用的分片模块。
+
+    只做「识别」，不猜分片内容、不伪造行。构建还原树时可用它做引用完整性校验：
+    `shard_modules` 里的模块若没有对应文件落盘，说明主表数据没被还原出来。
+    """
+    strs = [v for v in list(names) + list(consts) if isinstance(v, str)]
+    markers = ("MergedTableData", "SplitTableData")
+    has_marker = any(m in v for v in strs for m in markers)
+    mods = sorted({v for v in strs if _SPLIT_SHARD_RE.match(v)})
+    return {
+        "module_kind": "split_dispatch" if (has_marker or mods) else "table",
+        "shard_modules": mods,
+        "markers": [m for m in markers if any(m in v for v in strs)],
+    }
 
 
 def replay_module(src, *, int_keys_only: bool = True):
@@ -212,7 +236,14 @@ def replay_module(src, *, int_keys_only: bool = True):
             else:
                 stack.append(("<binop%d>" % a, lhs, rhs))
         elif nm == "STORE_NAME":
-            env[flat(names[a]) if 0 <= a < len(names) else a] = stack.pop() if stack else None
+            key = flat(names[a]) if 0 <= a < len(names) else a
+            # ★ 2026-11-07：导入型模块里 IMPORT_FROM 的 name 可能被 marshal 解成
+            #   list(Value)（实测 reward_pool_data.py 的 names[1/8/14]），直接拿它当
+            #   dict key 会 TypeError: unhashable type: 'list'。只做兜底，不猜语义。
+            if not isinstance(key, (str, int, float, bool, bytes)):
+                warn.append("STORE_NAME key 非标量 @%d（%s）" % (x.off, type(key).__name__))
+                key = repr(key)
+            env[key] = stack.pop() if stack else None
         elif nm == "LOAD_ATTR":
             if stack:
                 stack.append(("<attr>", stack.pop(), a))
@@ -257,6 +288,13 @@ def replay_module(src, *, int_keys_only: bool = True):
         "warning_samples": warn[:5],
         "module_vars": sorted(str(k) for k in env),
     }
+    dispatch = detect_split_dispatch(names, consts)
+    meta.update(dispatch)
+    if dispatch["module_kind"] == "split_dispatch":
+        meta["shard_note"] = (
+            "该文件是分发壳（SplitTableData / MergedTableData），本身不含行数据；"
+            "rows=0 属预期，行在 shard_modules 列出的分片模块里。"
+            "若这些模块未落盘，属于还原树构建/保留缺口，不是解析失败。")
     return rows, meta
 
 

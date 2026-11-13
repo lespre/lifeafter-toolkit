@@ -98,6 +98,10 @@ const DEFAULT_BOARDS = [
   // 2026-11-01 新增：自定义展示视图（body.view-mode）—— CDN 目录组折叠 / 还原树模块索引
   "cdn_library",
   "local_restore_tree",
+  // 2026-11-07 新增：奖池分服板（自定义视图 diff/pool + 逐格对照表）
+  "lottery_servers",
+  // 2026-11-12 新增：甲虫无人机（独角仙）战术无人机拆解板
+  "jiachong_wurenji_20261112",
 ];
 
 const boards = (arg("--boards", "") || "")

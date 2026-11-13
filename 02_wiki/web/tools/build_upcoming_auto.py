@@ -166,7 +166,7 @@ def main() -> int:
 
     meta = dict(lot["meta"])
     meta.update({
-        "name": "新更新与预告（自动）",
+        "name": "（内测版）新更新与预告（自动）",
         # ★ 分类只认 wiki_taxonomy.json 的当前口径（原来是「零、新更新与预告专栏…」旧类名，
         #   与导航树打架；改由 upcoming_board_rules.CATEGORY 单点维护）。
         "category": CATEGORY,

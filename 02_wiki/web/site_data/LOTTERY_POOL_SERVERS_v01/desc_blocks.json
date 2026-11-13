@@ -1,0 +1,1034 @@
+{
+ "blocks": 24,
+ "generator": "02_wiki/web/tools/lottery_enrich.py",
+ "items": [
+  {
+   "entries": [
+    {
+     "label": "星紫迷踪*1",
+     "no": "1",
+     "prob_text": "0.01%"
+    },
+    {
+     "label": "喵影星帷*1",
+     "no": "2",
+     "prob_text": "0.06%"
+    },
+    {
+     "label": "第十三页*1",
+     "no": "3",
+     "prob_text": "0.48%"
+    },
+    {
+     "label": "喵影随形*1",
+     "no": "4",
+     "prob_text": "4.80%"
+    },
+    {
+     "label": "能量电池*20",
+     "no": "5",
+     "prob_text": "1.92%"
+    },
+    {
+     "label": "配方残页*600",
+     "no": "6",
+     "prob_text": "7.99%"
+    },
+    {
+     "label": "稀有微晶*300",
+     "no": "7",
+     "prob_text": "15.99%"
+    },
+    {
+     "label": "[名片框]魔女星愿*1",
+     "no": "8",
+     "prob_text": "28.78%"
+    },
+    {
+     "label": "[头像框]魔女星愿*1",
+     "no": "9",
+     "prob_text": "39.97%"
+    }
+   ],
+   "entry_count": 9,
+   "match_score": 0.667,
+   "matched_pool": 391834,
+   "name": "万圣绮夜奖池",
+   "qty_matched": 6,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "心心相印时装盒",
+     "no": "1",
+     "prob_text": "5%"
+    },
+    {
+     "label": "丘比特的弓",
+     "no": "2",
+     "prob_text": "15%"
+    },
+    {
+     "label": "丘比特背包",
+     "no": "3",
+     "prob_text": "35%"
+    },
+    {
+     "label": "狗狗的爱",
+     "no": "4",
+     "prob_text": "45%"
+    }
+   ],
+   "entry_count": 4,
+   "match_score": 0.0,
+   "matched_pool": 390126,
+   "name": "丘比特的祝福",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "雪鹿圣诞衣服盒",
+     "no": "1",
+     "prob_text": "4.5%"
+    },
+    {
+     "label": "雪鹿圣诞头饰盒",
+     "no": "2",
+     "prob_text": "9.5%"
+    },
+    {
+     "label": "雪语铃铃",
+     "no": "3",
+     "prob_text": "15.6%"
+    },
+    {
+     "label": "麋鹿圣诞宠物服礼盒",
+     "no": "4",
+     "prob_text": "21.8%"
+    },
+    {
+     "label": "绒绒小麋鹿",
+     "no": "5",
+     "prob_text": "48.6%"
+    }
+   ],
+   "entry_count": 5,
+   "match_score": 0.7,
+   "matched_pool": 390737,
+   "name": "圣诞老人的礼盒",
+   "qty_matched": 0,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "地心引力时装盒",
+     "no": "1",
+     "prob_text": "5%"
+    },
+    {
+     "label": "极地探险家宠物礼包",
+     "no": "2",
+     "prob_text": "15%"
+    },
+    {
+     "label": "滑个龟龟",
+     "no": "3",
+     "prob_text": "35%"
+    },
+    {
+     "label": "雪境之光",
+     "no": "4",
+     "prob_text": "45%"
+    }
+   ],
+   "entry_count": 4,
+   "match_score": 0.0,
+   "matched_pool": 390126,
+   "name": "地心引力之礼",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "墨炎狐劫*1",
+     "no": "1",
+     "prob_text": "0.03%"
+    },
+    {
+     "label": "幽玄炎尾*1",
+     "no": "2",
+     "prob_text": "0.14%"
+    },
+    {
+     "label": "狐聆惑心*1",
+     "no": "3",
+     "prob_text": "0.34%"
+    },
+    {
+     "label": "墨炎狐巢*1",
+     "no": "4",
+     "prob_text": "4.09%"
+    },
+    {
+     "label": "能量电池*20",
+     "no": "5",
+     "prob_text": "5.11%"
+    },
+    {
+     "label": "双人动作：命运对决*1",
+     "no": "6",
+     "prob_text": "17.04%"
+    },
+    {
+     "label": "稀有微晶*300",
+     "no": "7",
+     "prob_text": "11.93%"
+    },
+    {
+     "label": "[名片框]逐焰之狐*1",
+     "no": "8",
+     "prob_text": "27.26%"
+    },
+    {
+     "label": "[头像框]逐焰之狐*1",
+     "no": "9",
+     "prob_text": "34.07%"
+    }
+   ],
+   "entry_count": 9,
+   "match_score": 0.667,
+   "matched_pool": 391356,
+   "name": "墨炎狐劫奖池",
+   "qty_matched": 6,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "墨隐麒麟*1",
+     "no": "1",
+     "prob_text": "0.03%"
+    },
+    {
+     "label": "墨自无心*1",
+     "no": "2",
+     "prob_text": "0.14%"
+    },
+    {
+     "label": "极品核芯自选箱(禁交易)*1",
+     "no": "3",
+     "prob_text": "0.35%"
+    },
+    {
+     "label": "不系舟*1",
+     "no": "4",
+     "prob_text": "3.49%"
+    },
+    {
+     "label": "能量电池*25",
+     "no": "5",
+     "prob_text": "3.49%"
+    },
+    {
+     "label": "重构分子*1500",
+     "no": "6",
+     "prob_text": "17.45%"
+    },
+    {
+     "label": "稀有微晶*400",
+     "no": "7",
+     "prob_text": "12.22%"
+    },
+    {
+     "label": "[名片框]隐墨灵痕*1",
+     "no": "8",
+     "prob_text": "27.93%"
+    },
+    {
+     "label": "[头像框]隐墨灵痕*1",
+     "no": "9",
+     "prob_text": "34.90%"
+    }
+   ],
+   "entry_count": 9,
+   "match_score": 0.889,
+   "matched_pool": 391659,
+   "name": "墨隐麒麟奖池",
+   "qty_matched": 8,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "幻影狩蝎*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "天蝎晶币*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "一瞬光年*1",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "琼华晶辉礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "荧蝎头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.76%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.625,
+   "matched_pool": 391044,
+   "name": "晶蝎秘宝概率公示",
+   "qty_matched": 5,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "极狐破坏者*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "极狐兑换币*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "能量电池*30",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "极狐主题装扮礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "极狐主题头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.75%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.5,
+   "matched_pool": 391094,
+   "name": "极狐秘宝概率公示",
+   "qty_matched": 4,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "樱灵狐梦*1",
+     "no": "1",
+     "prob_text": "0.03%"
+    },
+    {
+     "label": "狐绥绥*1",
+     "no": "2",
+     "prob_text": "0.14%"
+    },
+    {
+     "label": "心月狐*1",
+     "no": "3",
+     "prob_text": "0.34%"
+    },
+    {
+     "label": "梦中樱*1",
+     "no": "4",
+     "prob_text": "4.09%"
+    },
+    {
+     "label": "能量电池*20",
+     "no": "5",
+     "prob_text": "5.11%"
+    },
+    {
+     "label": "配方残页*600",
+     "no": "6",
+     "prob_text": "17.04%"
+    },
+    {
+     "label": "稀有微晶*300",
+     "no": "7",
+     "prob_text": "11.93%"
+    },
+    {
+     "label": "[名片框]朝樱衔光*1",
+     "no": "8",
+     "prob_text": "27.25%"
+    },
+    {
+     "label": "[头像框]朝樱衔光*1",
+     "no": "9",
+     "prob_text": "34.07%"
+    }
+   ],
+   "entry_count": 9,
+   "match_score": 0.889,
+   "matched_pool": 391548,
+   "name": "樱灵狐梦奖池",
+   "qty_matched": 8,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "樱舞花影时装盒",
+     "no": "1",
+     "prob_text": "5%"
+    },
+    {
+     "label": "樱花随行",
+     "no": "2",
+     "prob_text": "15%"
+    },
+    {
+     "label": "团团樱花",
+     "no": "3",
+     "prob_text": "35%"
+    },
+    {
+     "label": "樱花小公举宠物服礼盒",
+     "no": "4",
+     "prob_text": "45%"
+    }
+   ],
+   "entry_count": 4,
+   "match_score": 0.0,
+   "matched_pool": 390126,
+   "name": "樱花绽放之礼",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "信用点*99999",
+     "no": "1",
+     "prob_text": "0.002%"
+    },
+    {
+     "label": "信用点*6666",
+     "no": "2",
+     "prob_text": "0.04%"
+    },
+    {
+     "label": "马年限定坐骑*1",
+     "no": "3",
+     "prob_text": "4.63%"
+    },
+    {
+     "label": "异变核芯-电极效应*1",
+     "no": "4",
+     "prob_text": "3.47%"
+    },
+    {
+     "label": "异变核芯-裂变效应*1",
+     "no": "5",
+     "prob_text": "3.47%"
+    },
+    {
+     "label": "潜龙物资箱*10",
+     "no": "6",
+     "prob_text": "16.67%"
+    },
+    {
+     "label": "信用点*50",
+     "no": "7",
+     "prob_text": "18.18%"
+    },
+    {
+     "label": "信用点*20",
+     "no": "8",
+     "prob_text": "53.538%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.25,
+   "matched_pool": 391513,
+   "name": "潜龙宝珠概率公示",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "紫焰蛇矛*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "炽莲币*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "能量电池*30",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "赤火礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "红莲业火头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.76%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.75,
+   "matched_pool": 391094,
+   "name": "炽莲秘宝概率公示",
+   "qty_matched": 6,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "竹竹熊猫时装盒",
+     "no": "1",
+     "prob_text": "5%"
+    },
+    {
+     "label": "果赖折力",
+     "no": "2",
+     "prob_text": "15%"
+    },
+    {
+     "label": "熊猫果赖挂饰",
+     "no": "3",
+     "prob_text": "35%"
+    },
+    {
+     "label": "戴柳",
+     "no": "4",
+     "prob_text": "45%"
+    }
+   ],
+   "entry_count": 4,
+   "match_score": 0.0,
+   "matched_pool": 390126,
+   "name": "熊猫奇妙之礼",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "绿手园匠时装盒",
+     "no": "1",
+     "prob_text": "5%"
+    },
+    {
+     "label": "种地啦",
+     "no": "2",
+     "prob_text": "15%"
+    },
+    {
+     "label": "温暖港湾",
+     "no": "3",
+     "prob_text": "35%"
+    },
+    {
+     "label": "小小园丁宠物服礼盒",
+     "no": "4",
+     "prob_text": "45%"
+    }
+   ],
+   "entry_count": 4,
+   "match_score": 0.0,
+   "matched_pool": 390126,
+   "name": "牧歌春韵之礼",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "夺宝子弹",
+     "no": "1",
+     "prob_text": "6.2%"
+    },
+    {
+     "label": "其他奖励",
+     "no": "2",
+     "prob_text": "93.8%"
+    }
+   ],
+   "entry_count": 2,
+   "match_score": 0.0,
+   "matched_pool": 390004,
+   "name": "目标奖池",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "沙海月鸣*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "砂海币*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "半月琉璃*1",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "砂海珠泪礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "砂海遗珠头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.76%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.625,
+   "matched_pool": 391597,
+   "name": "砂海秘宝概率公示",
+   "qty_matched": 5,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "信用点*99999",
+     "no": "1",
+     "prob_text": "0.003%"
+    },
+    {
+     "label": "信用点*6666",
+     "no": "2",
+     "prob_text": "0.068%"
+    },
+    {
+     "label": "联动限定头饰*1",
+     "no": "3",
+     "prob_text": "7.163%"
+    },
+    {
+     "label": "异变核芯-贯通战术*1",
+     "no": "4",
+     "prob_text": "2.42%"
+    },
+    {
+     "label": "异变核芯-余烬流火*1",
+     "no": "5",
+     "prob_text": "2.42%"
+    },
+    {
+     "label": "幻夜物资箱*10",
+     "no": "6",
+     "prob_text": "15.47%"
+    },
+    {
+     "label": "信用点*50",
+     "no": "7",
+     "prob_text": "16.88%"
+    },
+    {
+     "label": "信用点*20",
+     "no": "8",
+     "prob_text": "55.576%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.25,
+   "matched_pool": 391513,
+   "name": "神谕童话概率公示",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "红尘剑仙*1",
+     "no": "1",
+     "prob_text": "0.06%"
+    },
+    {
+     "label": "炽翼使徒*1",
+     "no": "2",
+     "prob_text": "0.03%"
+    },
+    {
+     "label": "武备匣*1",
+     "no": "3",
+     "prob_text": "0.48%"
+    },
+    {
+     "label": "能量电池*20",
+     "no": "4",
+     "prob_text": "1.92%"
+    },
+    {
+     "label": "配方残页*600",
+     "no": "5",
+     "prob_text": "4.80%"
+    },
+    {
+     "label": "稀有微晶*300",
+     "no": "6",
+     "prob_text": "8.00%"
+    },
+    {
+     "label": "如果忧郁是一种天赋*1",
+     "no": "7",
+     "prob_text": "15.98%"
+    },
+    {
+     "label": "[名片框]剑问红尘*1",
+     "no": "8",
+     "prob_text": "28.77%"
+    },
+    {
+     "label": "[头像框]剑问红尘*1",
+     "no": "9",
+     "prob_text": "39.96%"
+    }
+   ],
+   "entry_count": 9,
+   "match_score": 0.778,
+   "matched_pool": 391813,
+   "name": "红尘剑仙奖池",
+   "qty_matched": 7,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "森林之主*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "织梦币*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "面饰：九重紫*1",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "织梦礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "垂光织梦头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.76%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.625,
+   "matched_pool": 391196,
+   "name": "织梦秘宝概率公示",
+   "qty_matched": 5,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "喜羊羊·绵云酣梦*1",
+     "no": "1",
+     "prob_text": "0.1%"
+    },
+    {
+     "label": "美羊羊·花田留影*1",
+     "no": "2",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "红太狼·气场全开*1",
+     "no": "3",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "灰太狼·今日计划*1",
+     "no": "4",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "喜羊羊·晴空气球*1",
+     "no": "5",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "灰太狼·胜券在握*1",
+     "no": "6",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "最棒的小羊",
+     "no": "7",
+     "prob_text": "32.4%"
+    },
+    {
+     "label": "青青草原装饰礼包",
+     "no": "8",
+     "prob_text": "54%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.0,
+   "matched_pool": 390003,
+   "name": "羊村伙伴奖池首抽概率",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "月桂兔兔",
+     "no": "1",
+     "prob_text": "16.2%"
+    },
+    {
+     "label": "其他奖励",
+     "no": "2",
+     "prob_text": "83.8%"
+    }
+   ],
+   "entry_count": 2,
+   "match_score": 0.0,
+   "matched_pool": 390004,
+   "name": "许愿奖池",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "欧皇饱饱趴趴玩偶*1",
+     "no": "1",
+     "prob_text": "0.1%"
+    },
+    {
+     "label": "流泪小企趴趴玩偶*1",
+     "no": "2",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "困困小刺趴趴玩偶*1",
+     "no": "3",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "尖叫吱吱趴趴玩偶*1",
+     "no": "4",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "食粉河狸趴趴玩偶*1",
+     "no": "5",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "萌萌小能趴趴玩偶*1",
+     "no": "6",
+     "prob_text": "2.7%"
+    },
+    {
+     "label": "豹豹抱抱",
+     "no": "7",
+     "prob_text": "32.4%"
+    },
+    {
+     "label": "豹豹抱抱装饰礼盒",
+     "no": "8",
+     "prob_text": "54%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 0.625,
+   "matched_pool": 391407,
+   "name": "趴趴小宠奖池首抽概率",
+   "qty_matched": 5,
+   "state": "candidate"
+  },
+  {
+   "entries": [
+    {
+     "label": "稀有奖励",
+     "no": "1",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "普通奖励",
+     "no": "2",
+     "prob_text": "81.13%"
+    }
+   ],
+   "entry_count": 2,
+   "match_score": 0.0,
+   "matched_pool": 390004,
+   "name": "转盘抽奖",
+   "qty_matched": 0,
+   "state": "unresolved"
+  },
+  {
+   "entries": [
+    {
+     "label": "金乌负日*1",
+     "no": "1",
+     "prob_text": "3.04%"
+    },
+    {
+     "label": "霸王令*100",
+     "no": "2",
+     "prob_text": "7.08%"
+    },
+    {
+     "label": "极品核芯自选箱（禁交易）*1",
+     "no": "3",
+     "prob_text": "7.59%"
+    },
+    {
+     "label": "却扇衷情*1",
+     "no": "4",
+     "prob_text": "7.97%"
+    },
+    {
+     "label": "霸王礼包*1",
+     "no": "5",
+     "prob_text": "11.89%"
+    },
+    {
+     "label": "稀有微晶*800",
+     "no": "6",
+     "prob_text": "13.80%"
+    },
+    {
+     "label": "霸王别姬头像礼包*1",
+     "no": "7",
+     "prob_text": "18.87%"
+    },
+    {
+     "label": "配方残页*400",
+     "no": "8",
+     "prob_text": "29.76%"
+    }
+   ],
+   "entry_count": 8,
+   "match_score": 1.0,
+   "matched_pool": 391473,
+   "name": "霸王秘宝概率公示",
+   "qty_matched": 8,
+   "state": "verified"
+  }
+ ],
+ "notes": "desc_info_data_chs.py 共 24 个公示块，条目形如 (序号, '名字*数量', '概率%')。★ 关键结论：公示给出的概率是**独立权威源** —— 池行的 prob_note 在这些块对应的池里大量为 None（如霸王秘宝池 391473 的 8 格全部无 prob_note，但公示合计正好 100%）。★ 配对判据（可复算）：格数相等 + 逐项名字归一后同序匹配 + 数量一致；得分 = 项命中均值（名字全等 1 分、包含 0.5 分，数量再对加 0.5 分，封顶 1）。实测只有「霸王秘宝概率公示」达到 1.00（8/8 名字 + 8/8 数量）；因此「用公示页反推池」不可行，公示只适合做交叉校验，不适合当主源。对不上的块多为新活动（奖励名不在旧快照池表里）或通用文案（'其他奖励'/'稀有奖励'）。",
+ "schema": "lottery_desc_blocks/v0.1",
+ "source": "01_索引与产物/41_还原树/pe/配置/com/cdata/desc_info_data_chs.py",
+ "state_dist": {
+  "candidate": 12,
+  "unresolved": 11,
+  "verified": 1
+ }
+}

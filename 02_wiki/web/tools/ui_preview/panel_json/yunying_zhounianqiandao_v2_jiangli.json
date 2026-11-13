@@ -1,0 +1,1572 @@
+{
+ "csb": "yunying_zhounianqiandao_v2_jiangli.csb",
+ "version": "2.1.0.0",
+ "textures": [],
+ "texturePngs": [],
+ "root": {
+  "class": "Node",
+  "name": "scene",
+  "z": 0,
+  "visible": false,
+  "alpha": 255,
+  "tag": 0,
+  "pos": [
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0
+  ],
+  "anchor": [
+   0.0,
+   0.0
+  ],
+  "color": [
+   255,
+   255,
+   255,
+   255
+  ],
+  "size": [
+   1334.0,
+   750.0
+  ],
+  "flipX": 255,
+  "flipY": 255,
+  "children": [
+   {
+    "class": "Panel",
+    "name": "pnl_item",
+    "z": 0,
+    "visible": false,
+    "alpha": 255,
+    "tag": 36,
+    "pos": [
+     0.0,
+     0.0
+    ],
+    "scale": [
+     1.0,
+     1.0
+    ],
+    "anchor": [
+     0.0,
+     0.0
+    ],
+    "color": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "size": [
+     183.0,
+     188.0
+    ],
+    "flipX": 255,
+    "flipY": 255,
+    "bg": null,
+    "clip": false,
+    "colorType": 0,
+    "bgAlpha": 102,
+    "singleColor": [
+     150,
+     200,
+     255,
+     255
+    ],
+    "children": [
+     {
+      "class": "ImageView",
+      "name": "img_jiangli_bg",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 37,
+      "pos": [
+       92.0,
+       95.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.5,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       184.0,
+       190.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_daojudiban.png",
+      "scale9": false,
+      "cap": [
+       0.0,
+       0.0,
+       184.0,
+       190.0
+      ],
+      "scale9size": [
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_spine_liuguang",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 38,
+      "pos": [
+       94.0,
+       94.0
+      ],
+      "scale": [
+       0.9599999785423279,
+       1.0
+      ],
+      "anchor": [
+       0.5,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       100.0,
+       100.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ]
+     },
+     {
+      "class": "ImageView",
+      "name": "img_jiangli_icon#a",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 46,
+      "pos": [
+       92.0,
+       100.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.5,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       136.0,
+       94.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "tex": null,
+      "scale9": false,
+      "cap": [
+       0.0,
+       0.0,
+       46.0,
+       46.0
+      ],
+      "scale9size": [
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_yijingqu_zhezhao0",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 39,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       183.0,
+       188.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_zhezhao0",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 40,
+        "pos": [
+         0.0,
+         0.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.0,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         183.0,
+         188.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_daojudiban_zhezhao.png",
+        "scale9": true,
+        "cap": [
+         16.0,
+         16.0,
+         159.0,
+         347.0
+        ],
+        "scale9size": [
+         183.0,
+         188.0
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Text",
+      "name": "txt_dijitian#f602",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 41,
+      "pos": [
+       8.0,
+       172.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       48.0,
+       18.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "text": "天0第",
+      "font": "",
+      "fontSize": 18,
+      "areaW": 0,
+      "areaH": 0,
+      "hAlign": 0,
+      "vAlign": 1,
+      "custom": false,
+      "textColor": [
+       255,
+       255,
+       255,
+       255
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_tag",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 42,
+      "pos": [
+       4.0,
+       154.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       1.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       44.0,
+       26.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_tag",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 43,
+        "pos": [
+         0.0,
+         13.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.0,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         57.0,
+         26.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5_icon/xinchunqiandao/chongci/img_biaoqian.png",
+        "scale9": false,
+        "cap": [
+         4.0,
+         4.0,
+         122.0,
+         18.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "Panel",
+        "name": "pnl_tag_txt",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 44,
+        "pos": [
+         5.0,
+         0.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.0,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         39.0,
+         26.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "bg": null,
+        "clip": false,
+        "colorType": 0,
+        "bgAlpha": 102,
+        "singleColor": [
+         150,
+         200,
+         255,
+         255
+        ],
+        "children": [
+         {
+          "class": "Text",
+          "name": "txt_tag#f1",
+          "z": 0,
+          "visible": false,
+          "alpha": 255,
+          "tag": 45,
+          "pos": [
+           -1.0,
+           13.0
+          ],
+          "scale": [
+           1.0,
+           1.0
+          ],
+          "anchor": [
+           0.0,
+           0.5
+          ],
+          "color": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "size": [
+           36.0,
+           18.0
+          ],
+          "flipX": 255,
+          "flipY": 255,
+          "text": "签标",
+          "font": "",
+          "fontSize": 18,
+          "areaW": 0,
+          "areaH": 0,
+          "hAlign": 0,
+          "vAlign": 1,
+          "custom": false,
+          "textColor": [
+           255,
+           255,
+           255,
+           255
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_spine_lizi",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 47,
+      "pos": [
+       94.0,
+       100.0
+      ],
+      "scale": [
+       0.800000011920929,
+       0.800000011920929
+      ],
+      "anchor": [
+       0.5,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       100.0,
+       100.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_btn_jiangli_lingqu",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 48,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       184.0,
+       44.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_lingqu_nor#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 49,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         44.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_nor.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_lingqu_down#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 50,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         44.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_down.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "Panel",
+        "name": "pnl_spine_kelingqu",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 51,
+        "pos": [
+         93.0,
+         21.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         100.0,
+         100.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "bg": null,
+        "clip": false,
+        "colorType": 0,
+        "bgAlpha": 102,
+        "singleColor": [
+         150,
+         200,
+         255,
+         255
+        ]
+       },
+       {
+        "class": "Text",
+        "name": "txt_dianjilingqu#f602",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 52,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         80.0,
+         20.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "text": "取领击点",
+        "font": "",
+        "fontSize": 20,
+        "areaW": 0,
+        "areaH": 0,
+        "hAlign": 1,
+        "vAlign": 1,
+        "custom": false,
+        "textColor": [
+         255,
+         255,
+         255,
+         255
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_btn_jiangli_buqian",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 53,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       183.0,
+       44.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_buqian_nor#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 54,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         38.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kebuqian_nor.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         38.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_buqian_down#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 55,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         38.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kebuqian_down.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         38.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "Panel",
+        "name": "pnl_spine_buqian",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 56,
+        "pos": [
+         92.0,
+         23.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         100.0,
+         100.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "bg": null,
+        "clip": false,
+        "colorType": 0,
+        "bgAlpha": 102,
+        "singleColor": [
+         150,
+         200,
+         255,
+         255
+        ]
+       },
+       {
+        "class": "Text",
+        "name": "txt_kebuqian#f602",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 57,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         60.0,
+         20.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "text": "签补可",
+        "font": "",
+        "fontSize": 20,
+        "areaW": 0,
+        "areaH": 0,
+        "hAlign": 1,
+        "vAlign": 1,
+        "custom": false,
+        "textColor": [
+         255,
+         255,
+         255,
+         255
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_btn_jiangli_mingri",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 58,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       183.0,
+       44.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_mingri_bg#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 59,
+        "pos": [
+         92.0,
+         3.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         70.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_nor.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_mingri_bg_down#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 0,
+        "tag": 60,
+        "pos": [
+         92.0,
+         3.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         70.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_down.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "Text",
+        "name": "txt_mingrikeling#f4",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 61,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         88.0,
+         22.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "text": "领可日明",
+        "font": "",
+        "fontSize": 22,
+        "areaW": 0,
+        "areaH": 0,
+        "hAlign": 1,
+        "vAlign": 1,
+        "custom": false,
+        "textColor": [
+         255,
+         255,
+         255,
+         255
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_btn_jiangli_mingri#Len",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 62,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       183.0,
+       44.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_mingri_bg#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 63,
+        "pos": [
+         92.0,
+         3.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         70.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_nor.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_mingri_bg_down#a",
+        "z": 0,
+        "visible": false,
+        "alpha": 0,
+        "tag": 64,
+        "pos": [
+         92.0,
+         3.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.0
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         70.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_down.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         70.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "Text",
+        "name": "txt_mingrikeling#f4",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 65,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         148.0,
+         40.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "text": "领可日明",
+        "font": "",
+        "fontSize": 18,
+        "areaW": 0,
+        "areaH": 0,
+        "hAlign": 1,
+        "vAlign": 1,
+        "custom": true,
+        "textColor": [
+         255,
+         255,
+         255,
+         255
+        ]
+       }
+      ]
+     },
+     {
+      "class": "Text",
+      "name": "txt_jiangli_number#f602#f2",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 66,
+      "pos": [
+       92.0,
+       64.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.5,
+       0.5
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       78.0,
+       20.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "text": "000000",
+      "font": "",
+      "fontSize": 20,
+      "areaW": 0,
+      "areaH": 0,
+      "hAlign": 1,
+      "vAlign": 1,
+      "custom": false,
+      "textColor": [
+       255,
+       255,
+       255,
+       255
+      ]
+     },
+     {
+      "class": "Panel",
+      "name": "pnl_btn_jiangli_yilingqu",
+      "z": 0,
+      "visible": false,
+      "alpha": 255,
+      "tag": 67,
+      "pos": [
+       0.0,
+       0.0
+      ],
+      "scale": [
+       1.0,
+       1.0
+      ],
+      "anchor": [
+       0.0,
+       0.0
+      ],
+      "color": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "size": [
+       183.0,
+       44.0
+      ],
+      "flipX": 255,
+      "flipY": 255,
+      "bg": null,
+      "clip": false,
+      "colorType": 0,
+      "bgAlpha": 102,
+      "singleColor": [
+       150,
+       200,
+       255,
+       255
+      ],
+      "children": [
+       {
+        "class": "ImageView",
+        "name": "img_btn_jiangli_lingqu_disable",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 68,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         178.0,
+         38.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_yilingqu.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         178.0,
+         38.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       },
+       {
+        "class": "ImageView",
+        "name": "img_jiangli_yilingqu_success",
+        "z": 0,
+        "visible": false,
+        "alpha": 255,
+        "tag": 69,
+        "pos": [
+         92.0,
+         22.0
+        ],
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "anchor": [
+         0.5,
+         0.5
+        ],
+        "color": [
+         255,
+         255,
+         255,
+         255
+        ],
+        "size": [
+         40.0,
+         34.0
+        ],
+        "flipX": 255,
+        "flipY": 255,
+        "tex": "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_wancheng.png",
+        "scale9": false,
+        "cap": [
+         0.0,
+         0.0,
+         40.0,
+         34.0
+        ],
+        "scale9size": [
+         0.0,
+         0.0
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "bytes": 13320,
+ "stats": {
+  "nodes": 35,
+  "by_class": {
+   "ImageView": 14,
+   "Panel": 13,
+   "Text": 7,
+   "Node": 1
+  },
+  "textures": [
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kebuqian_down.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kebuqian_nor.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_down.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_kelingqu_nor.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/btn_yilingqu.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_daojudiban.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_daojudiban_zhezhao.png",
+   "zhutihuodong_v5/zhutihuodong/xinchunqiandao/img_wancheng.png",
+   "zhutihuodong_v5_icon/xinchunqiandao/chongci/img_biaoqian.png"
+  ],
+  "texts": [
+   "天0第",
+   "签标",
+   "取领击点",
+   "签补可",
+   "领可日明",
+   "领可日明",
+   "000000"
+  ]
+ }
+}

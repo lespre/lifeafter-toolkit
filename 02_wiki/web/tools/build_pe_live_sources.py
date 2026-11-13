@@ -13,7 +13,7 @@ import time
 from pathlib import Path
 
 PROJ = Path(r"E:\la拆包项目")
-NPK = PROJ / "90_临时/pe_client/Documents/script.py314.lc.npk"
+NPK = PROJ / "90_临时/pe_client_20261112/Documents/script.py314.lc.npk"
 OUT = PROJ / "02_wiki/web/data/live_sources_pe.json"
 
 

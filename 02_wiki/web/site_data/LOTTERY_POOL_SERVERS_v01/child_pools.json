@@ -1,0 +1,3785 @@
+{
+ "child_pools": 41,
+ "count": 49,
+ "entries": [
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 241170,
+     "note": "涂装：翡翠",
+     "prob_note": "0.045",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 241171,
+     "note": "涂装：卧虎",
+     "prob_note": "0.05635",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 241173,
+     "note": "天蝎座",
+     "prob_note": "0.07508",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 153036,
+     "note": "待取名",
+     "prob_note": "0.82357",
+     "slot": 3
+    }
+   ],
+   "child_pool": 390830,
+   "parent_note": "待取名",
+   "parent_pool": 390829,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 103238,
+     "note": "涂装：空骑",
+     "prob_note": "0.0625",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103237,
+     "note": "配方：白羊近卫",
+     "prob_note": "0.04807",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 131101,
+     "note": "霹雳引擎",
+     "prob_note": "0.04807",
+     "slot": 2
+    },
+    {
+     "count": 10,
+     "item_id": 153040,
+     "note": "待取名",
+     "prob_note": "0.84136",
+     "slot": 3
+    }
+   ],
+   "child_pool": 390831,
+   "parent_note": "待取名",
+   "parent_pool": 390829,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 133497,
+     "note": "玲珑星辉臻藏礼盒",
+     "prob_note": "0.3333",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 133482,
+     "note": "涂装:曼巴",
+     "prob_note": "0.3333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 133483,
+     "note": "天蝎座臻藏礼盒",
+     "prob_note": "0.3333",
+     "slot": 2
+    }
+   ],
+   "child_pool": 390849,
+   "parent_note": "天蝎座",
+   "parent_pool": 390840,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 133497,
+     "note": "玲珑星辉臻藏礼盒",
+     "prob_note": "0.3333",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 133482,
+     "note": "涂装:曼巴",
+     "prob_note": "0.3333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 133483,
+     "note": "天蝎座臻藏礼盒",
+     "prob_note": "0.3333",
+     "slot": 2
+    }
+   ],
+   "child_pool": 390849,
+   "parent_note": "待取名",
+   "parent_pool": 390844,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 241345,
+     "note": "弓箭核芯自选箱",
+     "prob_note": null,
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660060,
+     "note": "异变核芯-强酸透穿",
+     "prob_note": null,
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 660061,
+     "note": "异变核芯-流光疾射",
+     "prob_note": null,
+     "slot": 2
+    }
+   ],
+   "child_pool": 390933,
+   "parent_note": "弓箭核芯子奖池",
+   "parent_pool": 390929,
+   "parent_slot": 7,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.5",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660047,
+     "note": "异变核芯-呼啸寒霜",
+     "prob_note": "0.5",
+     "slot": 1
+    }
+   ],
+   "child_pool": 390992,
+   "parent_note": "待取名",
+   "parent_pool": 390987,
+   "parent_slot": 11,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135043,
+     "note": "六时吉祥典藏",
+     "prob_note": "0.10246",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103224,
+     "note": "典藏涂装：红莲",
+     "prob_note": "0.07246",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 105309,
+     "note": "涂装:巨蛇霰弹典藏版",
+     "prob_note": "0.06667",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 131951,
+     "note": "甜甜猫咖主题方案",
+     "prob_note": "0.17094",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110024,
+     "note": "蛇霰弹枪",
+     "prob_note": "0.0064",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 468500,
+     "note": "花神背饰-背包",
+     "prob_note": "0.00512",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660068,
+     "note": "异变核芯-爆焰火花",
+     "prob_note": "0.28798",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660050,
+     "note": "异变核芯-连锁反应",
+     "prob_note": "0.28798",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391110,
+   "parent_note": "待取名",
+   "parent_pool": 391111,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135043,
+     "note": "六时吉祥典藏",
+     "prob_note": "0.10246",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103224,
+     "note": "典藏涂装：红莲",
+     "prob_note": "0.07246",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 105309,
+     "note": "涂装:巨蛇霰弹典藏版",
+     "prob_note": "0.06667",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 131951,
+     "note": "甜甜猫咖主题方案",
+     "prob_note": "0.17094",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110024,
+     "note": "蛇霰弹枪",
+     "prob_note": "0.0064",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 468500,
+     "note": "花神背饰-背包",
+     "prob_note": "0.00512",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660068,
+     "note": "异变核芯-爆焰火花",
+     "prob_note": "0.28798",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660050,
+     "note": "异变核芯-连锁反应",
+     "prob_note": "0.28798",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391110,
+   "parent_note": "待取名",
+   "parent_pool": 391117,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 10
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135043,
+     "note": "六时吉祥典藏",
+     "prob_note": "0.10417",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 131951,
+     "note": "甜甜猫咖主题方案",
+     "prob_note": "0.17094",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110024,
+     "note": "蛇霰弹枪",
+     "prob_note": "0.0079",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 468500,
+     "note": "花神背饰-背包",
+     "prob_note": "0.00632",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660024,
+     "note": "异变核芯-极寒冰爆",
+     "prob_note": "0.35534",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660050,
+     "note": "异变核芯-连锁反应",
+     "prob_note": "0.35534",
+     "slot": 5
+    }
+   ],
+   "child_pool": 391124,
+   "parent_note": "待取名",
+   "parent_pool": 391125,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135537,
+     "note": "赤月终焉典藏",
+     "prob_note": "0.10246",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103087,
+     "note": "典藏涂装：暗夜精灵",
+     "prob_note": "0.07246",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 105309,
+     "note": "涂装:巨蛇霰弹典藏版",
+     "prob_note": "0.06667",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 132937,
+     "note": "烟火筒",
+     "prob_note": "0.17094",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110115,
+     "note": "血大刀",
+     "prob_note": "0.00475",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 473740,
+     "note": "咏唱诗背包",
+     "prob_note": "0.00507",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 489200,
+     "note": "荆棘皇冠",
+     "prob_note": "0.0076",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660068,
+     "note": "异变核芯-鸣闪火花",
+     "prob_note": "0.28503",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660024,
+     "note": "异变核芯-极寒冰爆",
+     "prob_note": "0.28503",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391272,
+   "parent_note": "待取名",
+   "parent_pool": 391271,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135537,
+     "note": "赤月终焉典藏",
+     "prob_note": "0.10417",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 132937,
+     "note": "烟火筒",
+     "prob_note": "0.17094",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110115,
+     "note": "待取名",
+     "prob_note": "0.00595",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 473740,
+     "note": "待取名",
+     "prob_note": "0.00476",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 489200,
+     "note": "待取名",
+     "prob_note": "0.17855",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660068,
+     "note": "异变核芯-鸣闪火花",
+     "prob_note": "0.26782",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660024,
+     "note": "异变核芯-极寒冰爆",
+     "prob_note": "0.26782",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391277,
+   "parent_note": "待取名",
+   "parent_pool": 391276,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135758,
+     "note": "待取名",
+     "prob_note": "0.14205",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103248,
+     "note": "涂装：浴火金刚",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 105236,
+     "note": "涂装:蝶影双枪典藏版",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 132485,
+     "note": "狂鲨号背包",
+     "prob_note": "0.18182",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110131,
+     "note": "太阳之子",
+     "prob_note": "0.00466",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 473540,
+     "note": "月光弦音",
+     "prob_note": "0.00497",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 490900,
+     "note": "神明之眸",
+     "prob_note": "0.00746",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660074,
+     "note": "异变核芯-决斗时刻",
+     "prob_note": "0.19988",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660049,
+     "note": "异变核芯-刺骨冰锥",
+     "prob_note": "0.27983",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391388,
+   "parent_note": "待取名",
+   "parent_pool": 391387,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 135758,
+     "note": "待取名",
+     "prob_note": "0.14706",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 132485,
+     "note": "狂鲨号背包",
+     "prob_note": "0.18182",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110131,
+     "note": "太阳之子",
+     "prob_note": "0.00543",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 473540,
+     "note": "月光弦音",
+     "prob_note": "0.00579",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 490900,
+     "note": "神明之眸",
+     "prob_note": "0.00868",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660049,
+     "note": "异变核芯-刺骨冰锥",
+     "prob_note": "0.32561",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660002,
+     "note": "异变核芯-脉冲闪电",
+     "prob_note": "0.32561",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391398,
+   "parent_note": "待取名",
+   "parent_pool": 391397,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 136035,
+     "note": "潜龙濯月时装",
+     "prob_note": "0.11364",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103087,
+     "note": "典藏涂装：暗夜精灵",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 241825,
+     "note": "蛛酶蛛螯典藏自选",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 133385,
+     "note": "上岸锦鲤背包礼盒",
+     "prob_note": "0.16327",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110145,
+     "note": "天马行空",
+     "prob_note": "0.005",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 492000,
+     "note": "水天一色",
+     "prob_note": "0.008",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.23077",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660055,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.3",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391511,
+   "parent_note": "潜龙濯月福袋",
+   "parent_pool": 391510,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 136035,
+     "note": "潜龙濯月时装",
+     "prob_note": "0.11364",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 133385,
+     "note": "上岸锦鲤背包礼盒",
+     "prob_note": "0.22222",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110145,
+     "note": "天马行空",
+     "prob_note": "0.00641",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 492000,
+     "note": "水天一色",
+     "prob_note": "0.01708",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660023,
+     "note": "异变核芯-极光狙击",
+     "prob_note": "0.38439",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.25626",
+     "slot": 5
+    }
+   ],
+   "child_pool": 391537,
+   "parent_note": "待取名",
+   "parent_pool": 391536,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 136319,
+     "note": "待取名",
+     "prob_note": "0.13333",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 136320,
+     "note": "待取名",
+     "prob_note": "0.13793",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 136321,
+     "note": "待取名",
+     "prob_note": "0.22989",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.24943",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660073,
+     "note": "异变核芯-燎原炽焰",
+     "prob_note": "0.24943",
+     "slot": 4
+    }
+   ],
+   "child_pool": 391570,
+   "parent_note": "待取名",
+   "parent_pool": 391569,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 136319,
+     "note": "待取名",
+     "prob_note": "0.13333",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 136320,
+     "note": "待取名",
+     "prob_note": "0.13793",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 136321,
+     "note": "待取名",
+     "prob_note": "0.22989",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.22675",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660073,
+     "note": "异变核芯-燎原炽焰",
+     "prob_note": "0.2721",
+     "slot": 4
+    }
+   ],
+   "child_pool": 391579,
+   "parent_note": "待取名",
+   "parent_pool": 391578,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390001,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390008,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390006,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390053,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390046,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390048,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390049,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390050,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390097,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390090,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390092,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390093,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390094,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390141,
+     "note": "泡泡袜-通配",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390142,
+     "note": "泡泡袜-通配",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390143,
+     "note": "泡泡袜-通配",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390163,
+     "note": "蝴蝶结袜",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390164,
+     "note": "蝴蝶结袜",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390165,
+     "note": "蝴蝶结袜",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390193,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390195,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 20
+    }
+   ],
+   "child_pool": 391664,
+   "parent_note": "高级奖池",
+   "parent_pool": 391660,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390007,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390009,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390010,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390011,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390002,
+     "note": "双马尾",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390051,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390052,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390054,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390055,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390047,
+     "note": "短款水手服",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390095,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390096,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390098,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390099,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390091,
+     "note": "短裙",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390194,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390189,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390191,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390192,
+     "note": "乐福鞋",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390205,
+     "note": "小蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390206,
+     "note": "小蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 20
+    },
+    {
+     "count": 1,
+     "item_id": 1390207,
+     "note": "大蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 21
+    },
+    {
+     "count": 1,
+     "item_id": 1390208,
+     "note": "大蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 22
+    },
+    {
+     "count": 1,
+     "item_id": 1390209,
+     "note": "大蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 23
+    }
+   ],
+   "child_pool": 391665,
+   "parent_note": "中级奖池",
+   "parent_pool": 391660,
+   "parent_slot": 4,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390203,
+     "note": "小蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390235,
+     "note": "短蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390236,
+     "note": "短蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390237,
+     "note": "短蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390238,
+     "note": "短蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390239,
+     "note": "短蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390280,
+     "note": "蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390281,
+     "note": "蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390282,
+     "note": "蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391666,
+   "parent_note": "低级奖池",
+   "parent_pool": 391660,
+   "parent_slot": 5,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390012,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390021,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390015,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390062,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390064,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390057,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390058,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390060,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390107,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390109,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390103,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390104,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390105,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390160,
+     "note": "海军袜-通配",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390161,
+     "note": "海军袜-通配",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390162,
+     "note": "海军袜-通配",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390172,
+     "note": "丝带袜-通配",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390173,
+     "note": "丝带袜-通配",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390174,
+     "note": "丝带袜-通配",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390186,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390184,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 20
+    }
+   ],
+   "child_pool": 391667,
+   "parent_note": "高级奖池",
+   "parent_pool": 391661,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390019,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390020,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390022,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390016,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390017,
+     "note": "长发",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390061,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390063,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390065,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390066,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390059,
+     "note": "西装外套水手服",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390102,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390106,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390108,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390110,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390111,
+     "note": "中长裙",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390185,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390187,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390188,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390183,
+     "note": "玛丽珍鞋-蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 18
+    }
+   ],
+   "child_pool": 391668,
+   "parent_note": "中级奖池",
+   "parent_pool": 391661,
+   "parent_slot": 4,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390214,
+     "note": "发卡星星",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390215,
+     "note": "发卡星星",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390217,
+     "note": "发卡星星",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390219,
+     "note": "毛绒蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390220,
+     "note": "毛绒蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390221,
+     "note": "毛绒蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390242,
+     "note": "长蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390243,
+     "note": "长蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390244,
+     "note": "长蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390245,
+     "note": "长蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390246,
+     "note": "长蝴蝶结",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390288,
+     "note": "爱心",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390289,
+     "note": "爱心",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390290,
+     "note": "爱心",
+     "prob_note": "0.00999",
+     "slot": 13
+    }
+   ],
+   "child_pool": 391669,
+   "parent_note": "低级奖池",
+   "parent_pool": 391661,
+   "parent_slot": 5,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390030,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390033,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390025,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390074,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390076,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390068,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390069,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390072,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390120,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390122,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390124,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390116,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390118,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390154,
+     "note": "泡泡袜紧-通配",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390155,
+     "note": "泡泡袜紧-通配",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390156,
+     "note": "泡泡袜紧-通配",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390157,
+     "note": "日常袜-通配",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390158,
+     "note": "日常袜-通配",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390159,
+     "note": "日常袜-通配",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390175,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390177,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 20
+    }
+   ],
+   "child_pool": 391670,
+   "parent_note": "高级奖池",
+   "parent_pool": 391662,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390023,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390032,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390024,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390026,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390027,
+     "note": "高马尾",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390073,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390075,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390077,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390070,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390071,
+     "note": "长款水手服",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390119,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390121,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390123,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390125,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390117,
+     "note": "长裙",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390178,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390179,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390180,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390181,
+     "note": "玛丽珍鞋",
+     "prob_note": "0.00999",
+     "slot": 18
+    }
+   ],
+   "child_pool": 391671,
+   "parent_note": "中级奖池",
+   "parent_pool": 391662,
+   "parent_slot": 4,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390210,
+     "note": "发卡叉叉",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390211,
+     "note": "发卡叉叉",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390213,
+     "note": "发卡叉叉",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390222,
+     "note": "珍珠蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390223,
+     "note": "珍珠蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390224,
+     "note": "珍珠蝴蝶",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390225,
+     "note": "珐琅猫",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390226,
+     "note": "珐琅猫",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390227,
+     "note": "珐琅猫",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390252,
+     "note": "口水巾",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390254,
+     "note": "口水巾",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390255,
+     "note": "口水巾",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390256,
+     "note": "口水巾",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390257,
+     "note": "口水巾",
+     "prob_note": "0.00999",
+     "slot": 13
+    }
+   ],
+   "child_pool": 391672,
+   "parent_note": "低级奖池",
+   "parent_pool": 391662,
+   "parent_slot": 5,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390042,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390036,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390037,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390085,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390086,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390087,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390082,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390083,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390134,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390136,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390131,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390132,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390133,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390145,
+     "note": "丝袜-通配",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390146,
+     "note": "丝袜-通配",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390147,
+     "note": "丝袜-通配",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390148,
+     "note": "性感丝袜",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390149,
+     "note": "性感丝袜",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390150,
+     "note": "性感丝袜",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390166,
+     "note": "蝴蝶结袜-长中",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390167,
+     "note": "蝴蝶结袜-长中",
+     "prob_note": "0.00999",
+     "slot": 20
+    },
+    {
+     "count": 1,
+     "item_id": 1390168,
+     "note": "蝴蝶结袜-长中",
+     "prob_note": "0.00999",
+     "slot": 21
+    },
+    {
+     "count": 1,
+     "item_id": 1390202,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 22
+    },
+    {
+     "count": 1,
+     "item_id": 1390198,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 23
+    }
+   ],
+   "child_pool": 391673,
+   "parent_note": "高级奖池",
+   "parent_pool": 391663,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390039,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390041,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390043,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390044,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390038,
+     "note": "短发",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1390084,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 1390088,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 1390079,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 1390080,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 1390081,
+     "note": "紧身擦边",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 1390135,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 1390137,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 1390138,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 1390129,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 1390130,
+     "note": "超短裙",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 1390200,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 1390201,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 1390197,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 1390199,
+     "note": "细高跟鞋",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 1390228,
+     "note": "猫耳朵",
+     "prob_note": "0.00999",
+     "slot": 19
+    },
+    {
+     "count": 1,
+     "item_id": 1390229,
+     "note": "猫耳朵",
+     "prob_note": "0.00999",
+     "slot": 20
+    },
+    {
+     "count": 1,
+     "item_id": 1390230,
+     "note": "猫耳朵",
+     "prob_note": "0.00999",
+     "slot": 21
+    },
+    {
+     "count": 1,
+     "item_id": 1390283,
+     "note": "猫耳",
+     "prob_note": "0.00999",
+     "slot": 22
+    },
+    {
+     "count": 1,
+     "item_id": 1390284,
+     "note": "猫耳",
+     "prob_note": "0.00999",
+     "slot": 23
+    },
+    {
+     "count": 1,
+     "item_id": 1390285,
+     "note": "猫耳",
+     "prob_note": "0.00999",
+     "slot": 24
+    }
+   ],
+   "child_pool": 391674,
+   "parent_note": "中级奖池",
+   "parent_pool": 391663,
+   "parent_slot": 4,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 1390258,
+     "note": "长领带",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 1390259,
+     "note": "长领带",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1390260,
+     "note": "长领带",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1390262,
+     "note": "长领带",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1390263,
+     "note": "长领带",
+     "prob_note": "0.00999",
+     "slot": 4
+    }
+   ],
+   "child_pool": 391675,
+   "parent_note": "低级奖池",
+   "parent_pool": 391663,
+   "parent_slot": 5,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194184,
+     "note": "灰太狼摩托",
+     "prob_note": "0.000217528441844",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660055,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.00326292662766",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.00328467947184",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660055,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.0034804550695",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110169,
+     "note": "灰色协议",
+     "prob_note": "0.0326292662766",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 139138,
+     "note": "古堡执事",
+     "prob_note": "0.108764220922",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633220140,
+     "note": "大尾巴",
+     "prob_note": "0.195775597659",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.652585325531",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391701,
+   "parent_note": "灰太狼奖池",
+   "parent_pool": 391700,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194185,
+     "note": "喜羊羊摇摇车",
+     "prob_note": "0.000555247084953",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139139,
+     "note": "雪绵羊砂",
+     "prob_note": "0.0222098833981",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110168,
+     "note": "云上铃",
+     "prob_note": "0.0333148250972",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 633060140,
+     "note": "聪明的小羊",
+     "prob_note": "0.166574125486",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 160487,
+     "note": "羊村大门",
+     "prob_note": "0.166574125486",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 270147,
+     "note": "羊羊铃铛",
+     "prob_note": "0.166574125486",
+     "slot": 5
+    },
+    {
+     "count": 2,
+     "item_id": 1221390,
+     "note": "羊羊哨塔",
+     "prob_note": "0.166574125486",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 139140,
+     "note": "羊村墙体组合",
+     "prob_note": "0.277623542476",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391702,
+   "parent_note": "喜羊羊奖池",
+   "parent_pool": 391700,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194184,
+     "note": "灰太狼摩托",
+     "prob_note": "0.000217528441844",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660055,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.00326292662766",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.00328467947184",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660055,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.0034804550695",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110169,
+     "note": "灰色协议",
+     "prob_note": "0.0326292662766",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 139138,
+     "note": "古堡执事",
+     "prob_note": "0.108764220922",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633220140,
+     "note": "大尾巴",
+     "prob_note": "0.195775597659",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-裂变效应",
+     "prob_note": "0.652585325531",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391701,
+   "parent_note": "灰太狼奖池",
+   "parent_pool": 391709,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194185,
+     "note": "喜羊羊摇摇车",
+     "prob_note": "0.000555247084953",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139139,
+     "note": "雪绵羊砂",
+     "prob_note": "0.0222098833981",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110168,
+     "note": "云上铃",
+     "prob_note": "0.0333148250972",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 633060140,
+     "note": "聪明的小羊",
+     "prob_note": "0.166574125486",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 160487,
+     "note": "羊村大门",
+     "prob_note": "0.166574125486",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 270147,
+     "note": "羊羊铃铛",
+     "prob_note": "0.166574125486",
+     "slot": 5
+    },
+    {
+     "count": 2,
+     "item_id": 1221390,
+     "note": "羊羊哨塔",
+     "prob_note": "0.166574125486",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 139140,
+     "note": "羊村墙体组合",
+     "prob_note": "0.277623542476",
+     "slot": 7
+    }
+   ],
+   "child_pool": 391702,
+   "parent_note": "喜羊羊奖池",
+   "parent_pool": 391709,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 660081,
+     "note": "异变核芯-淬焰燃锋",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660000,
+     "note": "异变核芯-疾影火刃",
+     "prob_note": "0.00999",
+     "slot": 1
+    }
+   ],
+   "child_pool": 391731,
+   "parent_note": "极品核芯奖池",
+   "parent_pool": 391710,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 660003,
+     "note": "异变核芯-爆裂双响",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 660032,
+     "note": "异变核芯-锈刃连斩",
+     "prob_note": "0.00999",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 660005,
+     "note": "异变核芯-电磁天幕",
+     "prob_note": "0.00999",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660006,
+     "note": "异变核芯-连霜鹰眼",
+     "prob_note": "0.00999",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660025,
+     "note": "异变核芯-四联爆鸣",
+     "prob_note": "0.00999",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660033,
+     "note": "异变核芯-酸雨重炮",
+     "prob_note": "0.00999",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660028,
+     "note": "异变核芯-机动武装",
+     "prob_note": "0.00999",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660004,
+     "note": "异变核芯-萤火流星",
+     "prob_note": "0.00999",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660026,
+     "note": "异变核芯-电光溅射",
+     "prob_note": "0.00999",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 660063,
+     "note": "异变核芯-穿心冰矢",
+     "prob_note": "0.00999",
+     "slot": 9
+    },
+    {
+     "count": 1,
+     "item_id": 660069,
+     "note": "异变核芯-克敌坚冰",
+     "prob_note": "0.00999",
+     "slot": 10
+    },
+    {
+     "count": 1,
+     "item_id": 660007,
+     "note": "异变核芯-迅光追击",
+     "prob_note": "0.00999",
+     "slot": 11
+    },
+    {
+     "count": 1,
+     "item_id": 660008,
+     "note": "异变核芯-电光意志",
+     "prob_note": "0.00999",
+     "slot": 12
+    },
+    {
+     "count": 1,
+     "item_id": 660009,
+     "note": "异变核芯-溅射冰星",
+     "prob_note": "0.00999",
+     "slot": 13
+    },
+    {
+     "count": 1,
+     "item_id": 660011,
+     "note": "异变核芯-爆燃火箭",
+     "prob_note": "0.00999",
+     "slot": 14
+    },
+    {
+     "count": 1,
+     "item_id": 660034,
+     "note": "异变核芯-酸流涌动",
+     "prob_note": "0.00999",
+     "slot": 15
+    },
+    {
+     "count": 1,
+     "item_id": 660035,
+     "note": "异变核芯-酸蚀回响",
+     "prob_note": "0.00999",
+     "slot": 16
+    },
+    {
+     "count": 1,
+     "item_id": 660059,
+     "note": "异变核芯-磁力伴星",
+     "prob_note": "0.00999",
+     "slot": 17
+    },
+    {
+     "count": 1,
+     "item_id": 660070,
+     "note": "异变核芯-爆焰重击",
+     "prob_note": "0.00999",
+     "slot": 18
+    },
+    {
+     "count": 1,
+     "item_id": 660071,
+     "note": "异变核芯-克敌坚冰",
+     "prob_note": "0.00999",
+     "slot": 19
+    }
+   ],
+   "child_pool": 391712,
+   "parent_note": "高级核芯奖池",
+   "parent_pool": 391710,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139202,
+     "note": "待取名",
+     "prob_note": "0.14205",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103248,
+     "note": "涂装：浴火金刚",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 106380,
+     "note": "涂装:仿生火箭筒典藏版",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 132485,
+     "note": "狂鲨号背包",
+     "prob_note": "0.18182",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110173,
+     "note": "待取名",
+     "prob_note": "0.00447",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 633200140,
+     "note": "待取名",
+     "prob_note": "0.01023",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 741440120,
+     "note": "待取名",
+     "prob_note": "0.00716",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660080,
+     "note": "异变核芯-磁聚轰雷",
+     "prob_note": "0.2065",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660043,
+     "note": "异变核芯-极限火力",
+     "prob_note": "0.26845",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391723,
+   "parent_note": "待取名",
+   "parent_pool": 391722,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139202,
+     "note": "待取名",
+     "prob_note": "0.14706",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 132485,
+     "note": "狂鲨号背包",
+     "prob_note": "0.18182",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110173,
+     "note": "待取名",
+     "prob_note": "0.00537",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 633200140,
+     "note": "待取名",
+     "prob_note": "0.01228",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 741440120,
+     "note": "待取名",
+     "prob_note": "0.0086",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660080,
+     "note": "异变核芯-磁聚轰雷",
+     "prob_note": "0.32243",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660043,
+     "note": "异变核芯-极限火力",
+     "prob_note": "0.32243",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391730,
+   "parent_note": "待取名",
+   "parent_pool": 391729,
+   "parent_slot": 1,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 136319,
+     "note": "待取名",
+     "prob_note": "0.13333",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 136320,
+     "note": "待取名",
+     "prob_note": "0.13793",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 136321,
+     "note": "待取名",
+     "prob_note": "0.22989",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.24943",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660073,
+     "note": "异变核芯-燎原炽焰",
+     "prob_note": "0.24943",
+     "slot": 4
+    }
+   ],
+   "child_pool": 391570,
+   "parent_note": "待取名",
+   "parent_pool": 391742,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139261,
+     "note": "帝皇铠甲交易盒",
+     "prob_note": "0.14815",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139262,
+     "note": "帝皇铠骑交易盒",
+     "prob_note": "0.13333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 139263,
+     "note": "极光剑交易盒",
+     "prob_note": "0.20833",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 139264,
+     "note": "帝皇战翼交易盒",
+     "prob_note": "0.00911",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.27331",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660078,
+     "note": "异变核芯-凝华效应",
+     "prob_note": "0.22776",
+     "slot": 5
+    }
+   ],
+   "child_pool": 391763,
+   "parent_note": "待取名",
+   "parent_pool": 391762,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139261,
+     "note": "帝皇铠甲交易盒",
+     "prob_note": "0.15686",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139262,
+     "note": "帝皇铠骑交易盒",
+     "prob_note": "0.14286",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 139263,
+     "note": "极光剑交易盒",
+     "prob_note": "0.18519",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 660066,
+     "note": "异变核芯-电极效应",
+     "prob_note": "0.28096",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 660078,
+     "note": "异变核芯-凝华效应",
+     "prob_note": "0.23413",
+     "slot": 4
+    }
+   ],
+   "child_pool": 391768,
+   "parent_note": "待取名",
+   "parent_pool": 391767,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194190,
+     "note": "火刑战驱",
+     "prob_note": "0.000376506024096",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139292,
+     "note": "刑天铠甲",
+     "prob_note": "0.00188253012048",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 139293,
+     "note": "飞影铠甲",
+     "prob_note": "0.00188253012048",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1110181,
+     "note": "疾影枪",
+     "prob_note": "0.00564759036145",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110182,
+     "note": "火刑电光炮",
+     "prob_note": "0.00564759036145",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1110183,
+     "note": "战神烈火剑",
+     "prob_note": "0.00564759036145",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633070140,
+     "note": "刑天变身器",
+     "prob_note": "0.112951807229",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 633080140,
+     "note": "飞影变身器",
+     "prob_note": "0.112951807229",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 134061,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.376506024096",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 132694,
+     "note": "异变核芯-酸焰激流",
+     "prob_note": "0.376506024096",
+     "slot": 9
+    }
+   ],
+   "child_pool": 391772,
+   "parent_note": "飞刑福袋奖励",
+   "parent_pool": 391782,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 194190,
+     "note": "火刑战驱",
+     "prob_note": "0.000376506024096",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 139292,
+     "note": "刑天铠甲",
+     "prob_note": "0.00188253012048",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 139293,
+     "note": "飞影铠甲",
+     "prob_note": "0.00188253012048",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 1110181,
+     "note": "疾影枪",
+     "prob_note": "0.00564759036145",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110182,
+     "note": "火刑电光炮",
+     "prob_note": "0.00564759036145",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 1110183,
+     "note": "战神烈火剑",
+     "prob_note": "0.00564759036145",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633070140,
+     "note": "刑天变身器",
+     "prob_note": "0.112951807229",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 633080140,
+     "note": "飞影变身器",
+     "prob_note": "0.112951807229",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 134061,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.376506024096",
+     "slot": 8
+    },
+    {
+     "count": 1,
+     "item_id": 132694,
+     "note": "异变核芯-酸焰激流",
+     "prob_note": "0.376506024096",
+     "slot": 9
+    }
+   ],
+   "child_pool": 391772,
+   "parent_note": "飞刑福袋奖励",
+   "parent_pool": 391785,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 106657,
+     "note": "涂装:游隼狙击典藏版",
+     "prob_note": "0.00999",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 105512,
+     "note": "涂装:弧光电磁典藏版",
+     "prob_note": "0.00999",
+     "slot": 1
+    }
+   ],
+   "child_pool": 391793,
+   "parent_note": "日服用武器库典藏武器子奖池",
+   "parent_pool": 391792,
+   "parent_slot": 0,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139353,
+     "note": "幻夜神谕（夜神倪克斯&林七夜）",
+     "prob_note": "0.14205",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 103240,
+     "note": "涂装：翡翠",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 106296,
+     "note": "涂装:破潮弓·血月",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 633170140,
+     "note": "幻夜星轮（倪克斯）",
+     "prob_note": "0.16327",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110185,
+     "note": "奇迹",
+     "prob_note": "0.00413",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 139357,
+     "note": "诸神精神病院装扮礼包",
+     "prob_note": "0.00943",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 741470120,
+     "note": "星穹环冕（倪克斯群星）",
+     "prob_note": "0.0066",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660060,
+     "note": "异变核芯-贯通战术",
+     "prob_note": "0.2476",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660076,
+     "note": "异变核芯-余烬流火",
+     "prob_note": "0.2476",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391823,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391821,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139353,
+     "note": "幻夜神谕（夜神倪克斯&林七夜）",
+     "prob_note": "0.11364",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 633170140,
+     "note": "幻夜星轮（倪克斯）",
+     "prob_note": "0.16327",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110185,
+     "note": "奇迹",
+     "prob_note": "0.00689",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 139357,
+     "note": "诸神精神病院装扮礼包",
+     "prob_note": "0.01576",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 741470120,
+     "note": "星穹环冕（倪克斯群星）",
+     "prob_note": "0.01103",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660060,
+     "note": "异变核芯-贯通战术",
+     "prob_note": "0.41365",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660076,
+     "note": "异变核芯-余烬流火",
+     "prob_note": "0.27577",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391832,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391831,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139435,
+     "note": "向光生长",
+     "prob_note": "0.14205",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 105500,
+     "note": "典藏涂装：金龙",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 104999,
+     "note": "涂装:菌焰喷火器典藏",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 133298,
+     "note": "双龙啸焰",
+     "prob_note": "0.15152",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110189,
+     "note": "浪漫过载",
+     "prob_note": "0.00422",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 741590120,
+     "note": "白昼光影",
+     "prob_note": "0.01124",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633270140,
+     "note": "银棘时匣",
+     "prob_note": "0.00578",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660047,
+     "note": "异变核芯-呼啸寒霜",
+     "prob_note": "0.25293",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.25293",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391849,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391848,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139435,
+     "note": "向光生长",
+     "prob_note": "0.11364",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 133298,
+     "note": "双龙啸焰",
+     "prob_note": "0.15152",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110189,
+     "note": "浪漫过载",
+     "prob_note": "0.00588",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 741590120,
+     "note": "白昼光影",
+     "prob_note": "0.01567",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 633270140,
+     "note": "银棘时匣",
+     "prob_note": "0.00806",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660047,
+     "note": "异变核芯-呼啸寒霜",
+     "prob_note": "0.35262",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.35262",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391871,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391870,
+   "parent_slot": 2,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139435,
+     "note": "向光生长",
+     "prob_note": "0.14205",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 105500,
+     "note": "典藏涂装：金龙",
+     "prob_note": "0.08333",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 104999,
+     "note": "涂装:菌焰喷火器典藏",
+     "prob_note": "0.096",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 133298,
+     "note": "双龙啸焰",
+     "prob_note": "0.15152",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 1110189,
+     "note": "浪漫过载",
+     "prob_note": "0.00422",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 741590120,
+     "note": "白昼光影",
+     "prob_note": "0.01124",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 633270140,
+     "note": "银棘时匣",
+     "prob_note": "0.00578",
+     "slot": 6
+    },
+    {
+     "count": 1,
+     "item_id": 660047,
+     "note": "异变核芯-呼啸寒霜",
+     "prob_note": "0.25293",
+     "slot": 7
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.25293",
+     "slot": 8
+    }
+   ],
+   "child_pool": 391849,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391872,
+   "parent_slot": 3,
+   "state": "verified",
+   "times": 1
+  },
+  {
+   "child_items": [
+    {
+     "count": 1,
+     "item_id": 139435,
+     "note": "向光生长",
+     "prob_note": "0.11364",
+     "slot": 0
+    },
+    {
+     "count": 1,
+     "item_id": 133298,
+     "note": "双龙啸焰",
+     "prob_note": "0.15152",
+     "slot": 1
+    },
+    {
+     "count": 1,
+     "item_id": 1110189,
+     "note": "浪漫过载",
+     "prob_note": "0.00588",
+     "slot": 2
+    },
+    {
+     "count": 1,
+     "item_id": 741590120,
+     "note": "白昼光影",
+     "prob_note": "0.01567",
+     "slot": 3
+    },
+    {
+     "count": 1,
+     "item_id": 633270140,
+     "note": "银棘时匣",
+     "prob_note": "0.00806",
+     "slot": 4
+    },
+    {
+     "count": 1,
+     "item_id": 660047,
+     "note": "异变核芯-呼啸寒霜",
+     "prob_note": "0.35262",
+     "slot": 5
+    },
+    {
+     "count": 1,
+     "item_id": 660056,
+     "note": "异变核芯-球状闪电",
+     "prob_note": "0.35262",
+     "slot": 6
+    }
+   ],
+   "child_pool": 391871,
+   "parent_note": "斩神龙蛋福袋",
+   "parent_pool": 391873,
+   "parent_slot": 3,
+   "state": "verified",
+   "times": 1
+  }
+ ],
+ "generator": "02_wiki/web/tools/lottery_enrich.py",
+ "max_depth": 1,
+ "notes": "奖励格的 reward_raw = [子池号, 次数]，语义是「开该子池 N 次」而不是发某个道具；子池号与池表 key 同域（390000~391793）。已全量验证：43 格 ↔ 上游 targets 的 reward_target_type=child_pool 双向 43/43 一致；37 个子池全部存在于池表；子池内部再无 child_pool 引用 ⇒ 只有一层，不需要递归。「命中但未标」= 0，说明不存在漏标的池号引用；池号区间内另有 28 个普通道具 id 与池号同号段，已用「是否在池表里」区分，不是按号段猜的。",
+ "parent_pools": 37,
+ "schema": "lottery_child_pools/v0.1",
+ "state": "verified"
+}

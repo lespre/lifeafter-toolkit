@@ -1,0 +1,66 @@
+{
+ "schema_version": 1,
+ "outfit_id": "4155_f",
+ "series": "4155",
+ "gender": "f",
+ "label": "4155 · 女 · players2021 分件组合",
+ "note": "players2021 分件组合",
+ "material": "approximate",
+ "material_note": "PBR 由 .mtg 材料/贴图直出；贴图 1024；detail normal 已按同 UV 近似合并；alpha 按着色器语义（silk/transparent=BLEND，hair=MASK，fx=加法）；IBL cube、第二 UV 集与 uber_fx 多层参数仍未进 GLB",
+ "center": "auto",
+ "viewer": {
+  "rotate_x_deg": 0,
+  "up": "y"
+ },
+ "parts": [
+  {
+   "id": "hair",
+   "label": "头发",
+   "source_mesh": "players2021/h_f_4155/h_f_4155.mesh",
+   "file": "hair.glb",
+   "missing": [],
+   "materials": [
+    {
+     "i": 0,
+     "name": "fx_h_4155_01",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 1,
+     "name": "fx_h_4155_02",
+     "shader": "uber_fx_common",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 2,
+     "name": "fx_h_4155_03",
+     "shader": "uber_fx_common_multilayer",
+     "slots": [],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    },
+    {
+     "i": 3,
+     "name": "fx_h_4155_04",
+     "shader": "uber_fx_common_multilayer",
+     "slots": [
+      "a"
+     ],
+     "alphaMode": "BLEND",
+     "metallicFactor": 0.0
+    }
+   ],
+   "warnings": [],
+   "vertices": 1501,
+   "faces": 2398,
+   "submeshes": 4,
+   "materials_exported": 4,
+   "bytes": 87320
+  }
+ ]
+}

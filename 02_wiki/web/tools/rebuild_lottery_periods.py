@@ -98,7 +98,11 @@ class Table:
             self.by_key[row["key"]] = {"key": row["key"], "start": row["start"],
                                        "end": row.get("end"), "values": flat}
         self.sha256 = sha256_file(path)
-        self.rel = path.relative_to(TREE).as_posix()
+        try:
+            self.rel = path.relative_to(TREE).as_posix()
+        except ValueError:
+            # 允许直接解码别的树（如 11-03 设备包树）的表，rel 退化成全路径
+            self.rel = path.as_posix()
         # 0x36 映射表（池表/选项表）没有普通行：它的 by_key 只能从 0x76 索引尾取
         self.map_start: dict[int, int] = {}
         try:
@@ -106,18 +110,61 @@ class Table:
         except Exception:
             self.map_start = {}
 
-    def group(self, target: int):
+    def map_pairs(self, target: int):
+        """0x36 映射行 → [(slot, value)]，原样返回，不解释 value 语义。
+
+        value 既可能是跳转偏移（< blob 长度且落点是 0x27），也可能是内联整数
+        —— `super_fashion_lottery_conf_data.fortune_bag_dct` 的 pair 就是
+        (组号, 池号 391109)，值比 blob 大，不能当偏移。
+        """
         if not isinstance(target, int) or not (0 <= target < len(self.blob)):
             return None
-        if self.blob[target] != 0x27:
+        if self.blob[target] != 0x36:
             return None
-        kind = self.blob[target + 1]
-        values = resolve_jump_group(self.blob, target)
-        if values is None:
+        try:
+            return parse_map_row(self, target)
+        except (ValueError, IndexError):
             return None
-        if kind == 0x05:
-            return [self.pool[v] if v < len(self.pool) else f"<oob:{v}>" for v in values]
-        return values
+
+    def group(self, target: int):
+        """解 jump 目标。
+
+        以前只认 0x27，导致 `accumulate_rewards`（0x36）与 `fortune_bag_dct`（0x36）
+        这一类字段解析成空。现在按首字节分三种落地形态：
+
+        - 0x27 内联组：kind=0x05 走 CHS 文本池，其余走 ULEB 值；
+        - 0x36 映射行：每个 pair 的第二项若落在 0x27 上就是子组偏移，展开合并；
+          否则当内联整数（池号/档位）直接收集；
+        - 0x07 数组暂不解（编码未确证，见下）。
+        """
+        if not isinstance(target, int) or not (0 <= target < len(self.blob)):
+            return None
+        tag = self.blob[target]
+        if tag == 0x27:
+            kind = self.blob[target + 1]
+            values = resolve_jump_group(self.blob, target)
+            if values is None:
+                return None
+            if kind == 0x05:
+                return [self.pool[v] if v < len(self.pool) else f"<oob:{v}>" for v in values]
+            return values
+        if tag == 0x36:
+            pairs = self.map_pairs(target)
+            if not pairs:
+                return None
+            out = []
+            for _slot, value in pairs:
+                if 0 <= value < len(self.blob) and self.blob[value] == 0x27:
+                    sub = self.group(value)
+                    if sub:
+                        out.extend(sub)
+                else:
+                    out.append(value)
+            return out or None
+        # 0x07 数组（female_appear_ids / must_gain_show）编码未确证：
+        # 实测 [07][n] 之后每项的标记位混用 0x01 与 0x11，两者语义不明，
+        # 强解会产出错误外观 id。按铁律留 None，不臆造。
+        return None
 
     def jump_values(self, value) -> list:
         if not isinstance(value, str) or not value.startswith("jump:"):
@@ -285,7 +332,7 @@ class Names:
         if s.startswith(FASHION_PREFIX) or len(s) >= 9:
             return ["fashion_data", "player_module_appear_data", "show_item_names.json", "gift_data",
                     "common_item_names.json", "common_item(oversea kj1)", "all_equips(oversea yk)"]
-        if s.startswith(("105", "103", "106")):
+        if s.startswith(("105", "103", "106", "104")):
             return ["recipe", "common_item_names.json", "gift_data",
                     "common_item(oversea kj1)", "all_equips(oversea yk)", "fashion_data"]
         if s.startswith(GIFT_PREFIX):

@@ -206,3 +206,18 @@ __pycache__/
 
 # 板块归档（体积大，只留本地，不入库）
 02_wiki/web/data/boards/_archive_*
+
+# 本机预览、截图及 3D 流水线中间产物（保留源码与正式资源清单）
+/_ui_preview/
+/_截图/
+/02_wiki/state/render3d/
+/02_wiki/state/*.bak*
+/02_wiki/state/_smoke_lot_test.json
+/02_wiki/state/smoke_baseline_new.json
+/02_wiki/web/plan_preview.html
+/2026-11-12_热更新增图标.html
+
+# 页面依赖的专题关联配置与 PE 数据源登记，随代码分发
+!02_wiki/web/data/related_boards.js
+!02_wiki/web/data/related_boards.json
+!02_wiki/web/data/live_sources_pe.json

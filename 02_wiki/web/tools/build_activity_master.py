@@ -96,17 +96,17 @@ def day(ts) -> str:
     return datetime.datetime.fromtimestamp(ts + 8 * 3600, datetime.UTC).strftime("%Y-%m-%d")
 
 
-# ★ 2026-10-30 热更快照（溯源字面量，禁止改成运行时计算 —— 否则破坏字节级可复现）
-#   Documents/script.py314.lc.npk  237,984,616 B  mtime 2026-10-30 19:43
-SNAPSHOT_SHA256 = "1f0bee8d944de49d2ff1040fe4333a4cbf9319d004327b9738f464ef9d15a95e"
-SNAPSHOT_BYTES = 237984616
+# ★ 2026-11-06 热更快照（溯源字面量，禁止改成运行时计算 —— 否则破坏字节级可复现）
+#   Documents/script.py314.lc.npk  238,543,344 B  mtime 2026-11-06 08:11
+SNAPSHOT_SHA256 = "0fd7c78e170d120e0bd4c5542caa296a4fb44464a283d251cf660f80588f49f2"
+SNAPSHOT_BYTES = 238543344
 # com/cdata/huodong_conf_data.py（本次实际取数的表文件）
-TABLE_SHA256 = "cb5ece53e3c8f4522846686478ce59b365257c865322d72e1759def1b302e776"
+TABLE_SHA256 = "67a06959a9b243c8b15086a8e63f20617933b26d0713180c2febb47acc0e8966"
 # 表级 npk 定位：fid 由路径哈希得出（与包版本无关，稳定）；
-# entry_index 取自 01_索引与产物/10_索引/热更检测/npk_index.sqlite3（documents 层 row=19597，
-# base 层 row=69912）。★ 条目号随包版本会变，溯源以 package_sha256 为准。
+# entry_index 取自新包条目表（2026-11-06 包内 row=23397）。
+# ★ 条目号随包版本会变，溯源以 package_sha256 为准。
 TABLE_FILE_ID = "A703C08E329A6FE2"
-TABLE_ENTRY_INDEX = 19597
+TABLE_ENTRY_INDEX = 23397
 
 
 def _prov(tpl: dict, row_key: int, cls: str, hd_type: str, ui_class: str, table: str) -> dict:
@@ -158,7 +158,7 @@ def _load_rows() -> tuple[list[dict], str, str]:
             if _rows:
                 print("  VM 自检：行 %d ｜ 解析终点 %d / 文件 %d" % (len(_rows), _end, p.stat().st_size))
                 out = [{"key": k, "values": v} for k, v in _rows.items()]
-                return out, "huodong_conf 主表 · 2026-10-30 热更（VM 字节码执行）", p.name
+                return out, "huodong_conf 主表 · 2026-11-06 热更（VM 字节码执行）", p.name
         except Exception as exc:                     # noqa: BLE001
             print("  ⚠ VM 路径不可用：%s" % exc)
 
@@ -173,7 +173,7 @@ def _load_rows() -> tuple[list[dict], str, str]:
                       % (meta["rows"], meta["containers"], meta["map_add_writes"],
                          "完整" if meta["parse_complete"] else "不完整"))
                 out = [{"key": k, "values": v} for k, v in rows.items()]
-                return out, "huodong_conf 主表 · 2026-10-30 热更（字节码重放）", p.name
+                return out, "huodong_conf 主表 · 2026-11-06 热更（字节码重放）", p.name
             print("  ⚠ 重放得到 0 行，回落旧路径")
 
     # ── 回落：旧 bindict 表体（x{ …）
@@ -264,7 +264,7 @@ def main() -> int:
     board = {
         "meta": {
             "name": "活动总表 · 全部活动与起止时间",
-            "category": "三、活动类 / （零）活动总表",
+            "category": "置顶、活动奖池与预告 / 1、活动总表",
             "source_server": src_label,
             "generated": TODAY.isoformat(),
             "evidence": "structure",
@@ -293,7 +293,7 @@ def main() -> int:
                            "table_file_id": TABLE_FILE_ID},
             },
             "notes": ("一行 = huodong_conf 里一个活动；状态按今天计算。类型未识别时显示「其他活动」，原始类名在技术详情。"
-                      "★ 2026-10-30 热更：本版取自 huodong_conf 主表（字节码重放，%d 行全量）；"
+                      "★ 2026-11-06 热更：本版取自 huodong_conf 主表（字节码重放，%d 行全量）；"
                       "旧的 kj1（简单生存服）变体本次热更包未随包下发，故本版不再标注 kj1 服别。"
                       % len(items)),
         },

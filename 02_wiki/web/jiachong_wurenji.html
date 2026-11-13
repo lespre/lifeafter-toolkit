@@ -1,0 +1,79 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>甲虫无人机 · 信息拆解 · 2026-11-12</title><style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1b2333;--sub:#5f6b7f;--line:#e5e9f1;--brand:#234a86;--gold:#a8792c;--soft:#eef3fb;--warn:#fff6e8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:var(--brand)}.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 70px}
+header{background:linear-gradient(120deg,#1d3f75,#2f5fa8);color:#fff;border-radius:16px;padding:30px 32px;box-shadow:0 8px 28px rgba(29,63,117,.18)}
+header h1{margin:0 0 8px;font-size:29px;letter-spacing:1px}header p{margin:4px 0;color:#dbe7fb}
+.badges{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:3px 12px;font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi b{display:block;font-size:25px;color:var(--brand);line-height:1.2}.kpi span{font-size:12px;color:var(--sub)}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0}
+h2{font-size:19px;margin:0 0 12px;padding-left:11px;border-left:4px solid var(--gold)}
+h3{font-size:15px;margin:18px 0 8px;color:var(--brand)}
+p.note{color:var(--sub);font-size:13px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--soft);color:var(--brand);font-weight:600;white-space:nowrap}tr:hover td{background:#fafbfe}
+.scroll{overflow-x:auto} .mono{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#4a556b;word-break:break-all}
+.hl{background:#fff8ea;border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+.warn{background:var(--warn);border:1px solid #f0dcb8;border-radius:10px;padding:12px 16px;color:#735322;font-size:13px}
+ul,ol{padding-left:22px;margin:6px 0}li{margin:6px 0}
+footer{color:var(--sub);font-size:12px;text-align:center;margin-top:26px}
+@media(max-width:600px){.wrap{padding:14px 10px 50px}header{padding:20px 18px}header h1{font-size:22px}section{padding:15px 13px}}
+</style></head><body><div class="wrap">
+<header><h1>甲虫无人机 · 信息拆解</h1>
+<p>11-12 先行测试包（1119 版本）还原树中挖出的战术无人机 · 全族 9 款对照 + 机体收录情况</p>
+<div class="badges"><span class="badge">战术无人机 key 270439</span><span class="badge">setting_pos 14（序号最大）</span><span class="badge">独角仙无人机·护盾型</span><span class="badge">3 技能（基础/高阶/典藏）</span><span class="badge">护盾 5000HP/10s</span><span class="badge">机体总表 0 条</span></div></header>
+<div class="kpis">
+<div class="kpi"><b>9</b><span>同族战术无人机</span></div>
+<div class="kpi"><b>270439</b><span>甲虫无人机 key</span></div>
+<div class="kpi"><b>3</b><span>关联技能</span></div>
+<div class="kpi"><b>14</b><span>setting_pos（最大）</span></div>
+<div class="kpi"><b>5000</b><span>护盾 HP</span></div>
+<div class="kpi"><b>10s</b><span>护盾持续</span></div>
+<div class="kpi"><b>0</b><span>机体总表收录数</span></div>
+</div>
+
+<section><h2>一、它是什么</h2>
+<p><strong>甲虫无人机</strong>是游戏里的一款<strong>战术无人机</strong>（tactical drone）。它的完整中文名仅出现在 <code>drone_skill_mapping_data_chs.py</code> 的 <code>setting_text</code> 字段，对应 key <code>270439</code>，是无人机技能映射表里 <strong>setting_pos = 14（序号最大）</strong>的一档。它关联 3 个技能（<span class="mono">270439 / 270440 / 270441</span>），并带有手动 BUFF <span class="mono">25311</span> 与自动 BUFF <span class="mono">25312</span>。</p>
+<div class="hl"><strong>关键判断：</strong>它的 3 个技能的图标都指向 <code>icon_dujiaoxianhudun_skill.png</code>（独脚仙护盾），即<strong>护盾型无人机</strong>。现已从 <code>skill_data</code> / <code>skill_stage_data_5408</code> / <code>monster_data_220</code> 全链路解出真实效果：甲虫 = <strong>独角仙无人机</strong>，3 技能（基础/高阶/典藏）各召唤一面 <strong>5000 HP、持续 10 秒、覆盖 500 范围</strong>的护盾实体（详见第三节）。</div>
+<div class="warn"><strong>两套无人机别混：</strong>甲虫无人机属于「战术无人机」子系统（drone_skill_mapping_data，key 270xxx）；而 wiki 已有的 <code>drone_catalog</code> 总表（287 条）是「机体无人机」（drone_id 180000+，基础/医疗/光盾/电弧…）。战术无人机有技能映射，机体无人机有涂装/典藏版。两者 ID 体系不同。</div>
+</section>
+
+<section><h2>二、全族 9 款战术无人机对照</h2>
+<p class="note">全部 9 款均在同一张 <code>drone_skill_mapping_data</code> 解出；「机体收录」列指在 <code>drone_catalog</code> 机体总表里能否查到同名前缀的机体/皮肤条目。</p>
+<div class="scroll"><table><thead><tr><th>无人机</th><th>key</th><th>setting_pos</th><th>strategy</th><th>技能数</th><th>auto_buff</th><th>manual_buff</th><th>机体收录</th></tr></thead><tbody><tr><td><strong>镭蛇无人机</strong></td><td class='mono'>730001</td><td>6</td><td>1</td><td>8</td><td class='mono'>11022</td><td class='mono'>11021</td><td>12</td></tr><tr><td><strong>光盾无人机</strong></td><td class='mono'>270285</td><td>6</td><td>0</td><td>5</td><td class='mono'>11036</td><td class='mono'>11035</td><td>18</td></tr><tr><td><strong>电弧无人机</strong></td><td class='mono'>270320</td><td>8</td><td>0</td><td>7</td><td class='mono'>13238</td><td class='mono'>13237</td><td>18</td></tr><tr><td><strong>狡兔无人机</strong></td><td class='mono'>5033</td><td>9</td><td>0</td><td>8</td><td class='mono'>17212</td><td class='mono'>17211</td><td>8</td></tr><tr><td><strong>灵龙无人机</strong></td><td class='mono'>270406</td><td>10</td><td>0</td><td>5</td><td class='mono'>18448</td><td class='mono'>18447</td><td>11</td></tr><tr><td><strong>猎犬无人机</strong></td><td class='mono'>270414</td><td>11</td><td>0</td><td>8</td><td class='mono'>18808</td><td class='mono'>18807</td><td>8</td></tr><tr><td><strong>奔马无人机</strong></td><td class='mono'>270432</td><td>12</td><td>0</td><td>4</td><td class='mono'>24643</td><td class='mono'>24642</td><td>8</td></tr><tr><td><strong>晶蝶无人机</strong></td><td class='mono'>270436</td><td>13</td><td>2</td><td>3</td><td class='mono'>25000</td><td class='mono'>24999</td><td>6</td></tr><tr><td><strong>甲虫无人机</strong></td><td class='mono'>270439</td><td>14</td><td>0</td><td>3</td><td class='mono'>25312</td><td class='mono'>25311</td><td><strong>0（未收录）</strong></td></tr></tbody></table></div>
+<p class="note">strategy 为未解码枚举（值含义未在可解码表中定位，仅如实陈列）；甲虫排在最末（pos 14），其余按 pos 6~13 排列，镭蛇（730001）与光盾共用 pos 6。</p>
+</section>
+
+<section><h2>三、甲虫无人机 3 个技能（已解出真实效果）</h2>
+<div class="scroll"><table><thead><tr><th>技能 ID</th><th>monster_skill_id</th><th>type</th><th>技能图标</th><th>模块损耗</th></tr></thead><tbody><tr><td class='mono'>270439</td><td class='mono'>270432</td><td>1</td><td class='mono'>ui/drone_skill_icon/icon_dujiaoxianhudun_skill.png</td><td class='mono'>jump:139</td></tr><tr><td class='mono'>270440</td><td class='mono'>270433</td><td>1</td><td class='mono'>ui/drone_skill_icon/icon_dujiaoxianhudun_skill.png</td><td class='mono'>jump:139</td></tr><tr><td class='mono'>270441</td><td class='mono'>270434</td><td>1</td><td class='mono'>ui/drone_skill_icon/icon_dujiaoxianhudun_skill.png</td><td class='mono'>jump:139</td></tr></tbody></table></div>
+<h3>3 技能 = 召唤护盾实体（独角仙无人机1/2/典藏的盾）</h3>
+<p>甲虫无人机的内部代号是 <strong>独角仙无人机</strong>（技能名前缀「独角仙无人机-护盾-基础/高阶/典藏」）。3 个技能按档位各召唤一个<strong>护盾实体</strong>为玩家挡伤，效果已从 <code>skill_data</code> → <code>skill_stage_data_5408</code> → <code>monster_data_220</code> 全链路解出：</p>
+<div class="scroll"><table><thead><tr><th>档位</th><th>drone_skill_id</th><th>技能名（skill_data）</th><th>CD</th><th>施放范围</th><th>护盾实体 key</th><th>护盾 HP</th><th>持续</th><th>作用范围</th><th>出生buff</th><th>免疫类型</th><th>护盾模型</th></tr></thead><tbody><tr><td><strong>基础</strong></td><td class='mono'>270439</td><td>独角仙无人机-护盾-基础</td><td class='mono'>1.0s</td><td class='mono'>1000</td><td class='mono'>220020</td><td class='mono'>5000</td><td class='mono'>10.0s</td><td class='mono'>500.0</td><td class='mono'>[5069]</td><td class='mono'>[15]</td><td class='mono'>character/drones/drone_1013/drone_1013_hudun.gim</td></tr><tr><td><strong>高阶</strong></td><td class='mono'>270440</td><td>独角仙无人机-护盾-高阶</td><td class='mono'>1.0s</td><td class='mono'>1000</td><td class='mono'>220021</td><td class='mono'>5000</td><td class='mono'>10.0s</td><td class='mono'>500.0</td><td class='mono'>[5069]</td><td class='mono'>[15]</td><td class='mono'>character/drones/drone_1013/drone_1013_hudun.gim</td></tr><tr><td><strong>典藏</strong></td><td class='mono'>270441</td><td>独角仙无人机-护盾-典藏</td><td class='mono'>1.0s</td><td class='mono'>1000</td><td class='mono'>220022</td><td class='mono'>5000</td><td class='mono'>10.0s</td><td class='mono'>500.0</td><td class='mono'>[5069]</td><td class='mono'>[15]</td><td class='mono'>character/drones/drone_1013/drone_1013_hudun.gim</td></tr></tbody></table></div>
+<p class="note">链路：drone_skill_mapping_data(270439) → drone_skill_data(monster_skill_id) → skill_data（中文名/cd/range）→ skill_stage_data_5408（cast_stage→succ_id→duration 10s + params <strong>0x86 编码块</strong>，用项目 <code>decode_86_row</code> 解开）→ 跳 220020/220021/220022 → monster_data_220（护盾实体）。护盾实体 HP=5000、持续 10 秒、作用范围 500、scale 0.8、monster_type 26048、special_function 465；<strong>出生即附带 buff 5069</strong>、<strong>免疫 buff 类型 [15]</strong>、模型 drone_1013_hudun.gim。注意：护盾实体出生附带的 buff 5069 是护盾自身的固有 buff，与无人机自身的 25311/25312（manual/auto）是两回事。</p>
+<div class="hl"><strong>结论：</strong>甲虫无人机 = <strong>独角仙无人机</strong>，是护盾型战术无人机；3 技能（基础/高阶/典藏）各生成一面 <strong>5000 HP、持续 10 秒、覆盖 500 范围</strong>的护盾（模型 drone_1013_hudun.gim）。</div>
+</section>
+
+<section><h2>四、机体总表收录情况（重要）</h2>
+<p>在 <code>drone_catalog</code>（287 条机体，来自经典服藏宝阁 <code>all_equips</code> 参考、按名称前缀派生「光盾/电弧/灵龙/猎犬/奔马/晶蝶/镭蛇/狡兔」等机体）中：<strong>8 款同族战术无人机都有对应的机体/皮肤条目，唯独甲虫无人机 0 条</strong>。</p>
+<div class="scroll"><table><thead><tr><th>战术无人机</th><th>机体条目数</th><th>机体样本</th></tr></thead><tbody><tr><td><strong>镭蛇无人机</strong></td><td class='mono'>12</td><td>狂沙镭蛇 镭蛇：利齿 镭蛇：曼巴 镭蛇：北极星 镭蛇：碧影</td></tr><tr><td><strong>光盾无人机</strong></td><td class='mono'>18</td><td>白羊近卫 空骑 卧虎 翡翠 樱花</td></tr><tr><td><strong>电弧无人机</strong></td><td class='mono'>18</td><td>银甲臂猿 叶影 地狱火 浴火金刚 电弧：赤焰风华</td></tr><tr><td><strong>狡兔无人机</strong></td><td class='mono'>8</td><td>疾风狡兔 黄袍 黑金 灵玉 疾风狡兔</td></tr><tr><td><strong>灵龙无人机</strong></td><td class='mono'>11</td><td>青龙 赤龙 守御灵龙 荧蝎闪击 守御灵龙</td></tr><tr><td><strong>猎犬无人机</strong></td><td class='mono'>8</td><td>猎犬:獠牙 猎犬:赤影 潜袭猎犬 猎犬:流光 潜袭猎犬</td></tr><tr><td><strong>奔马无人机</strong></td><td class='mono'>8</td><td>无羁奔马 霜蹄 夜骐 辉光 无羁奔马</td></tr><tr><td><strong>晶蝶无人机</strong></td><td class='mono'>6</td><td>琉光晶蝶 绯影 碧辉 琉光晶蝶 绯影</td></tr><tr><td><strong>甲虫无人机</strong></td><td class='mono'>0</td><td>—</td></tr></tbody></table></div>
+<div class="hl">结合 setting_pos=14（序号最大）与机体 0 收录，甲虫无人机应为本批<strong>最晚加入的战术无人机</strong>，其机体/皮肤尚未进入藏宝阁参考（或尚未实装）。这是「未在 wiki 任何板收录」的根因——它既不在 <code>drone_catalog</code>，也不在任何活动/奖池板。</div>
+</section>
+
+<section><h2>五、仍待解开项（按铁律精确否定，不猜）</h2>
+<ul>
+<li><strong>BUFF 25311 / 25312（手动/自动）</strong>：仅被 <code>drone_skill_mapping_data</code> 的 manual_buff/auto_buff 引用。字节级全树扫描确认：25311/25312 的 4 字节小端命中<strong>只出现在 <code>buff_data_kj1</code> / <code>buff_data_yk</code> 这两个 0x73 加密分服表里</strong>（<code>decode_73_table</code> 报 <code>Bindict73Error</code>：既非裸 <code>7b/fb</code> 体、zlib 解压也产不出合法表体）；经典 <code>buff_data</code>（键范围 4~743659）与全部可解码候选表均无此二键。<strong>结论：其增益数值锁在加密分服 buff 表里，当前工具不可解。</strong>旁证：经典 <code>buff_data_chs.py</code> 含 UI 提示串「无人机玩家点击独角仙技能」——独角仙无人机技能按钮确存在于 UI，但 25311/25312 的具体增益数值不可读。</li>
+<li><strong>获取方式</strong>：<span class="mono">270439</span> 在 2544 张 shop/lottery/activity/item/exchange/gift/reward/quest 候选表的字段值中<strong>经解码验证均为 0 真实引用</strong>（场景刷怪表里的 4 字节小端命中是数字巧合）；仅在 <code>new_pve_monster_attr_data</code> key=270439 作为护盾实体的 PVE 属性出现。<code>drone_catalog</code> 机体总表 0 条；逐机基础配置 <code>drone_base_conf</code> 为 0x73 加密不可解。<strong>结论：获取途径在 11-12 本地可解码配置中未定义（可能服务端下发或尚未实装），不可解。</strong></li>
+<li><strong>已解出项</strong>：技能真实效果（第三节）已全链路解出——甲虫=独角仙无人机，3 技能各召唤 5000HP/10s/范围500 护盾实体（出生附带 buff 5069、免疫 buff 类型 [15]）。</li>
+</ul></section>
+
+<section><h2>六、证据与边界</h2>
+<h3>证据链</h3><ol><li>字节级搜「甲虫无人机」整词：全树仅 2 命中 → drone_skill_mapping_data_chs.py（权威，setting_text）+ skill_stage_data_5404_chs.py（字符串池拼接，无关）</li><li>全族 9 款战术无人机：狡兔/光盾/电弧/灵龙/猎犬/奔马/晶蝶/甲虫/镭蛇，均在 drone_skill_mapping_data 同表解出</li><li>甲虫 3 技能 270439/270440/270441 在 drone_skill_data 共用 icon_dujiaoxianhudun_skill.png（独脚仙护盾）</li><li>drone_catalog（287 条机体）按名称前缀匹配：8 款同族均有机体/皮肤条目，甲虫 0 条 → 最晚加入/未上架机体</li><li>阳性对照：宸世臻藏/风尚绮遇/神秘商店 在还原树中均正常命中，工具有效</li></ol>
+<h3>边界</h3><ol><li>甲虫无人机 是「战术无人机」（drone_skill_mapping_data），与 drone_catalog 的「机体无人机」（drone_id 180000+）是两套子系统，勿混</li><li>skill_stage_data_5404 里的「无人机正在帮助你攻击污染甲虫」是怪物 buff 文案，与甲虫无人机无关（污染甲虫是怪物）</li><li>本拆解基于 11-12 PE 实机静态配置；runtime_final_state 恒 unresolved，是否实装以正式服为准</li></ol>
+</section>
+
+<footer>甲虫无人机信息拆解 · 2026-11-12（深挖 11-13）· 源锁 pe-client-script-npk-20261112 · 静态配置 / runtime unresolved</footer>
+</div></body></html>

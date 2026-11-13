@@ -1,0 +1,90 @@
+# rules/unnamed_table_registry.yml — 「无名大表 → 逻辑表名」反向登记契约
+#
+# ★ 手工维护层：只登记**已实测确证**的条目，禁止脚本自动写入、禁止推定填值。
+#   用途：还原树 `pe/配置/<容器>/_未命名/` 里的编译表 blob 没有游戏内路径，
+#   只有 64-bit file_id 和行号名；本表把它们认回逻辑表名，供消费层按名取表。
+#
+# ── 为什么键必须用 file_id，不用行号 ──────────────────────────────────
+#   file_id 是游戏侧稳定的逻辑标识：冻结产物锁定的 BA8 快照（270,106,156 B）
+#   与当前本地 npk（不同版本）用的是同一串号。
+#   行号只是 entry 在包里的摆放位置，换包即变 —— 实测同一个逻辑表在
+#   冻结产物 manifest = 21380 / npk_index.entries.row = 24984 /
+#   fid_names 占位名 = 00022771.bin，三个数互不相同。
+#   ⇒ `observed_row_name` 仅供人工核对，解析时**一律不读它**。
+#
+# ── 歧义规则 ──────────────────────────────────────────────────────────
+#   同一行号名在不同容器下对应不同 file_id（如 00023026.bin 同时属于
+#   Documents / character_05 / scene_01）。所以每条登记必须带 container，
+#   反查时按 (file_id, container 前缀) 精确匹配，不按文件名模糊找。
+#
+# ── 组件维度（2026-11-07 补）─────────────────────────────────────────
+#   同一张逻辑表在不同服各有一份数据体，必须用 `component` 区分：
+#     · base  = 经典服（通用底座，所有服在它之上做覆盖）
+#     · ykxq  = 同名逻辑表在 ykxq 服的独立数据体（也是无名大表）
+#   反查默认 component=base；要取某个服的，显式传 component。
+#   `paths_for_table(name, component)` 是唯一入口，不要按名字猜。
+#
+# ── 版本边界 ──────────────────────────────────────────────────────────
+#   本表登记的是「身份」，不是「内容」。数据行数/字段值随游戏版本变化，
+#   板产物的 source_locks 仍按各自快照锁定，不因本表混排。
+#
+# ── 校验 ──────────────────────────────────────────────────────────────
+#   python 02_wiki/web/tools/check_unnamed_table_registry.py
+#   只读，不改任何文件；退出码 2 = 有登记项在树里找不到（应阻断后续构建）。
+#   「未登记的大表」只告警不阻断，由人工决定是否补登（见脚本输出清单）。
+
+schema: unnamed-table-registry/v1
+maintained_by: human
+generated_by: null
+key_policy: file_id
+row_name_is_authoritative: false
+
+# 还原树里无名层的根（相对 TREE_ROOT）；消费层与校验器共用
+tree_rel_root: pe/配置
+
+tables:
+  - logical_name: reward_pool_data
+    component: base
+    role: base
+    container: Documents/script.py314.lc.npk
+    data:
+      file_id: D558884A36C972C5
+      observed_row_name: "00022771.bin"
+      observed_bytes: 1119971
+      observed_rows: 23902
+      evidence: >
+        配 00011262.bin 池后 BT.decode_table_rows 解出 23,902 行、45 个字段名，
+        其中 note / prob_note / expiration_time / broadcast_content / reward 齐备，
+        23,898 行带中文 note；「异变核芯-裂变效应」「异变核芯-极光狙击」均命中。
+        冻结产物 LOTTERY_POOL_RESOLVED_v01.jsonl 的 base.data_entry.file_id 同值。
+    pool:
+      file_id: 69E58821939CB515
+      observed_row_name: "00011262.bin"
+      observed_bytes: 661115
+      observed_strings: 12511
+      evidence: >
+        lottery_chain.MP.pool_of_file 解出 12,511 串，头部为
+        expiration_time / reward / note / initial_weights / prob_note / ...
+        冻结产物 base.chs_entry.file_id 同值。
+
+  # ykxq 服：同名逻辑表在该服的**独立数据体**，也是无名大表。
+  # 与 base 的差别只在 file_id —— 这正是「按名找不到、按 id 才认得」的实例。
+  - logical_name: reward_pool_data
+    component: ykxq
+    role: channel-unnamed
+    container: Documents/script.py314.lc.npk
+    data:
+      file_id: BBC2EAAA769B560A
+      observed_row_name: "00019997.bin"
+      observed_bytes: 13209
+      observed_rows: 162
+      evidence: >
+        配 00026438.bin 池后解出 162 行、33 个字段名，unbound=0；
+        冻结产物 ykxq.data_entry.file_id 同值（该快照记 143 行，属版本差异）。
+    pool:
+      file_id: F8BBD20A0AC69BA3
+      observed_row_name: "00026438.bin"
+      observed_bytes: 14276
+      observed_strings: 470
+      evidence: >
+        解出 470 串；冻结产物 ykxq.chs_entry.file_id 同值。
